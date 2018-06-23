@@ -88,58 +88,45 @@ def runHiddenCommand (cmd) :
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 #-------------------- Supprimer une distribution existante
 TEMP_DIR = scriptDir + "/../DISTRIBUTION_EL_CANARI_" + VERSION_CANARI
+os.chdir (scriptDir + "/..")
 if os.path.isdir (TEMP_DIR):
   shutil.rmtree (TEMP_DIR)
 #-------------------- Creer le repertoire contenant la distribution
 os.mkdir (TEMP_DIR)
 os.chdir (TEMP_DIR)
 #-------------------- Importer canari
-texteSurConsole = runHiddenCommand (["svn", "export", "https://canari.rts-software.org/svn/version-2-swift/", TEMP_DIR + "/canari"])
-components = texteSurConsole.split ("Exported revision")
-#print "'" + components [1] + "'"
-components = components [1].split (".")
-numeroRevisionSVN = components [0].strip ()
-print "Révision SVN : '" + numeroRevisionSVN + "'"
-#-------------------- AUTHORS et COPYING
-os.mkdir (TEMP_DIR + "/COCOA-CANARI")
-runHiddenCommand (["svn",
-                   "export",
-                   "https://canari.rts-software.org/svn/AUTHORS",
-                   TEMP_DIR + "/COCOA-CANARI/AUTHORS"
-                 ])
-runHiddenCommand (["svn",
-                   "export",
-                   "https://canari.rts-software.org/svn/COPYING",
-                   TEMP_DIR + "/COCOA-CANARI/COPYING"
-                 ])
+runCommand (["rm", "-f", "archive.zip"])
+runCommand (["rm", "-fr", "ElCanari-dev-master"])
+runCommand (["curl", "-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.zip", "-o", "archive.zip"])
+runCommand (["unzip", "archive.zip"])
+runCommand (["rm", "archive.zip"])
+os.chdir (TEMP_DIR + "/ElCanari-dev-master")
 #-------------------- Obtenir l'année
 ANNEE = str (datetime.datetime.now().year)
 print "ANNÉE : '" + ANNEE + "'"
 #-------------------- Obtenir le numéro de build
-plistFileFullPath = TEMP_DIR + "/canari/ElCanari/canari-application/Info.plist"
-plistDictionary = plistlib.readPlist (plistFileFullPath)
-buildString = plistDictionary ['PMBuildString']
-print "Build String '" + buildString + "'"
-#--- Mettre à jour les numéros de version dans la plist
-plistDictionary ['CFBundleVersion'] = VERSION_CANARI + ", repository " + numeroRevisionSVN + ", build " + buildString
-plistDictionary ['CFBundleShortVersionString'] = VERSION_CANARI
-plistlib.writePlist (plistDictionary, plistFileFullPath)
+# plistFileFullPath = TEMP_DIR + "/ElCanari/canari-application/Info.plist"
+# plistDictionary = plistlib.readPlist (plistFileFullPath)
+# buildString = plistDictionary ['PMBuildString']
+# print "Build String '" + buildString + "'"
+# #--- Mettre à jour les numéros de version dans la plist
+# plistDictionary ['CFBundleVersion'] = VERSION_CANARI + ", repository " + numeroRevisionSVN + ", build " + buildString
+# plistDictionary ['CFBundleShortVersionString'] = VERSION_CANARI
+# plistlib.writePlist (plistDictionary, plistFileFullPath)
 #-------------------- Copier le fichier change.html
-runCommand (["cp", TEMP_DIR + "/canari/change.html", TEMP_DIR + "/change.html"])
+#runCommand (["cp", TEMP_DIR + "/canari/change.html", TEMP_DIR + "/change.html"])
 #-------------------- Compiler le projet Xcode
-os.chdir (TEMP_DIR + "/canari")
 runCommand (["rm", "-fr", "build"])
 runCommand (["/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
              "-target", "ElCanari",
              "-configuration", "Release"
             ])
-os.chdir (TEMP_DIR)
 #-------------------- Créer l'archive BZ2 de Canari
-runCommand (["cp", "-r", TEMP_DIR + "/canari/build/Release/ElCanari.app", TEMP_DIR])
+runCommand (["cp", "-r", "build/Release/ElCanari.app", "."])
 runCommand (["tar", "-cf", "ElCanari.app.tar", "ElCanari.app"])
 runCommand (["bzip2", "-9", "ElCanari.app.tar"])
 BZ2file = TEMP_DIR + "/ElCanari.app." + VERSION_CANARI + ".tar.bz2"
-runCommand (["mv", "ElCanari.app.tar.bz2", BZ2file])
+runCommand (["mv", "ElCanari.app.tar.bz2", TEMP_DIR])
 #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
 sommeControle = runHiddenCommand ([scriptDir + "/distribution-el-canari/sign_update.sh",
                                   BZ2file,
@@ -147,7 +134,7 @@ sommeControle = runHiddenCommand ([scriptDir + "/distribution-el-canari/sign_upd
 sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
 #-------------------- Ajouter les meta infos
 dict = {
-  "version-svn" : str (numeroRevisionSVN),
+#   "version-svn" : str (numeroRevisionSVN),
   "archive-sum" : sommeControle,
   "build" : buildString
 }
