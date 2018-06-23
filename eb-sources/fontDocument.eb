@@ -8,18 +8,18 @@ transient property class CharacterSegmentListClass ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-outletClass CanariCharacterGerberCodeTableView ;
+extern outlet class CanariCharacterGerberCodeTableView ;
 binding CanariCharacterGerberCodeTableView $characterGerberCode : transient CharacterGerberCodeClass ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-outletClass CanariFontSampleStringView ;
+extern outlet class CanariFontSampleStringView ;
 binding CanariFontSampleStringView $bezierPath : transient CGPath ;
 binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-outletClass CanariCharacterView ;
+extern outlet class CanariCharacterView ;
 binding CanariCharacterView $advance : transient Int ;
 binding CanariCharacterView $characterSegmentList : transient CharacterSegmentListClass ;
 binding CanariCharacterView $transparency : transient Double ;

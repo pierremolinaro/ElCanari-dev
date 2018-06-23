@@ -4,7 +4,7 @@
 
 enum DrillDataFormatEnum {excellon, excellonWithSeparateToolList}
 
-outletClass CanariDrillDataFormatTabView ;
+extern outlet class CanariDrillDataFormatTabView ;
 binding CanariDrillDataFormatTabView $selectedFormat : property DrillDataFormatEnum ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
