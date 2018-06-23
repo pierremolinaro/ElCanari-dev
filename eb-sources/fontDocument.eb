@@ -1,0 +1,172 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#     F O N T    D O C U M E N T
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+transient property class SegmentForFontCharacterClass ;
+transient property class CharacterGerberCodeClass ;
+transient property class CharacterSegmentListClass ;
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+outletClass CanariCharacterGerberCodeTableView ;
+binding CanariCharacterGerberCodeTableView $characterGerberCode : transient CharacterGerberCodeClass ;
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+outletClass CanariFontSampleStringView ;
+binding CanariFontSampleStringView $bezierPath : transient CGPath ;
+binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+outletClass CanariCharacterView ;
+binding CanariCharacterView $advance : transient Int ;
+binding CanariCharacterView $characterSegmentList : transient CharacterSegmentListClass ;
+binding CanariCharacterView $transparency : transient Double ;
+binding CanariCharacterView $displayFlow : transient Bool ;
+binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity SegmentForFontCharacterEntity {
+  toOne FontCharacterEntity myCharacter inverse toMany segments ;
+  
+  signature property Int x1 default 2 ;
+  signature property Int y1 default 1 ;
+
+  signature property Int x2 default 9 ;
+  signature property Int y2 default 8 ;
+
+  transient SegmentForFontCharacterClass segmentForDrawing dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity FontCharacterEntity {
+  toOne FontRootEntity myFont inverse toMany characters ;
+  signature toMany SegmentForFontCharacterEntity segments inverse toOne myCharacter ;
+  
+  signature property Int advance default 0 ;
+
+  transient Bool characterIsDefined dependsFrom self.advance, self.segments.count ;
+
+  transient CharacterSegmentListClass segmentArrayForDrawing dependsFrom self.segments.all.segmentForDrawing ;
+
+  transient CharacterGerberCodeClass gerberCode dependsFrom self.segmentArrayForDrawing ;
+
+  transient String gerberCodeInstructionCountMessage dependsFrom self.gerberCode ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity FontRootEntity {
+  signature toMany FontCharacterEntity characters inverse toOne myFont ;
+  signature property String comments default "" ;
+  property Int selectedTab default 0 ;
+  property Int selectedInspector default 0 ;
+
+  transient CGPath sampleStringBezierPath dependsFrom
+    self.characters.all.segmentArrayForDrawing,
+    self.characters.all.advance,
+    prefs.sampleString,
+    prefs.sampleStringSize
+  ;
+  
+  transient Double sampleStringBezierPathWidth dependsFrom self.sampleStringBezierPath ;
+  
+  transient Double sampleStringBezierPathAscent dependsFrom self.sampleStringBezierPath ;
+  
+  transient Double sampleStringBezierPathDescent dependsFrom self.sampleStringBezierPath ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class MissingCharacter {
+  property Int idx default 0 ; # Only for sorting
+  property String code default "??" ;
+  property String char default "?" ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+document PMFontDocument root FontRootEntity {
+#--- Toolbar
+  outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
+  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedTab ;
+  outlet CanariSignatureField mSignatureTextField $signature signature ;
+  outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
+
+#--- Character controller
+  customObjectController selectedCharacter classForSwift CurrentCharacterController : FontCharacterEntity ;
+
+#--- Advancement
+  outlet EBIntField advancementTextField $value selectedCharacter.advance {sendContinously:yes, autoFormatter:yes} ;
+  outlet EBSlider advancementSlider $intValue selectedCharacter.advance {sendContinously:yes} ;
+
+#--- Transparency
+  outlet EBDoubleField transparencyTextField $value prefs.fontEditionTransparency {sendContinously:no, autoFormatter:no} ;
+  outlet EBSlider transparencySlider $doubleValue prefs.fontEditionTransparency {sendContinously:yes} ;
+
+#--- Current Character
+  outlet CanariFontCharacterSelectButton mFontCharacterSelectButton $codePoint prefs.currentCharacterCodePoint ;
+  outlet EBIntField currentCharacterTextField $value prefs.currentCharacterCodePoint {sendContinously:no, autoFormatter:yes} ;
+  outlet EBStepper currentCharacterStepper $value prefs.currentCharacterCodePoint {sendContinously:yes} ;
+  outlet EBSwitch mShowGerberDrawingFlowCheckbox $value prefs.showGerberDrawingFlow ;
+  outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value prefs.showGerberDrawingIndexes ;
+  
+  outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
+  action addSegmentAction ;
+
+#--- Gerber Code inspector
+  outlet EBTextObserverField gerberCodeInstructionCountMessageTextField
+    $valueObserver selectedCharacter.gerberCodeInstructionCountMessage
+  ;
+  outlet CanariCharacterGerberCodeTableView mGerberCodeTableView $characterGerberCode selectedCharacter.gerberCode ;
+
+#--- Sample String
+  outlet EBTextField mSampleStringField $value prefs.sampleString {sendContinously:yes};
+
+#--- Sample string display
+  outlet CanariFontSampleStringView mFontSampleStringView
+    $bezierPath root.sampleStringBezierPath
+    $sampleStringFontSize prefs.sampleStringSize
+  ;
+
+#--- Missing characters inspector
+  transient String missingCharactersCountString dependsFrom root.characters.all.characterIsDefined ;
+  outlet EBTextObserverField missingCharactersCountTextField $valueObserver self.missingCharactersCountString ;
+
+  transient array MissingCharacter missingCharacterDescriptorArray dependsFrom root.characters.all.characterIsDefined ;
+
+  arrayController mMissingCharsController {allowsEmptySelection:yes, allowsMultipleSelection:yes}
+     self.missingCharacterDescriptorArray
+  {
+     column "code" sort idx EBTextObserverField $valueObserver self.code
+     column "char" EBTextObserverField $valueObserver self.char
+  }
+  outlet EBTableView mMissingCharsTableView $tableValue mMissingCharsController ;
+
+#--- Sample String Display
+  outlet EBDoubleField mSampleStringSizeField $value prefs.sampleStringSize {sendContinously:no, autoFormatter:no};
+  outlet EBDoubleObserverField mSampleStringWidthTextField $valueObserver root.sampleStringBezierPathWidth {autoFormatter:no};
+  outlet EBDoubleObserverField mSampleStringAscentTextField $valueObserver root.sampleStringBezierPathAscent {autoFormatter:no};
+  outlet EBDoubleObserverField mSampleStringDescentTextField $valueObserver root.sampleStringBezierPathDescent {autoFormatter:no};
+
+#--- View
+  outlet CanariCharacterView currentCharacterView
+    $advance selectedCharacter.advance
+    $characterSegmentList selectedCharacter.segmentArrayForDrawing
+    $transparency prefs.fontEditionTransparency
+    $displayFlow prefs.showGerberDrawingFlow
+    $displayDrawingIndexes prefs.showGerberDrawingIndexes
+  ;
+
+#--------------- Infos Tab
+#--- Comments
+  outlet EBTextView commentTextView $value root.comments ;
+#--- Reset
+  action resetVersionAndSignatureAction ;
+  outlet EBButton resetVersionAndSignatureButton $run self.resetVersionAndSignatureAction ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

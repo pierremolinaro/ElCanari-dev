@@ -1,0 +1,69 @@
+#----------------------------------------------------------------------------*
+#     C O N T R O L L E R S                                                  *
+#----------------------------------------------------------------------------*
+
+controllerClass EBMeasurementController {
+  binding $valueInEBUnit : integer16, integer32, integer64 ;
+  binding $measurementUnitFactor : integer16, integer32, integer64 ;
+  attribute valueInUnitFactor : double ;
+}
+
+#----------------------------------------------------------------------------*
+
+controllerClass PMSchematicsPaperWidthController {
+  binding $customWidth : integer16, integer32, integer64 ;
+  binding $choice : integer16, integer32, integer64 ;
+  attribute actualWidth : integer64 ;
+}
+
+#----------------------------------------------------------------------------*
+
+controllerClass PMSchematicsPaperHeightController {
+  binding $customHeight : integer16, integer32, integer64 ;
+  binding $choice : integer16, integer32, integer64 ;
+  attribute actualHeight : integer64 ;
+}
+
+#----------------------------------------------------------------------------*
+
+controllerClass AngleForSliderController {
+  binding $angle : double ;
+  attribute angleForSlider : double ;
+}
+
+#----------------------------------------------------------------------------*
+
+controllerClass PMDistanceArcController {
+  binding $radius : integer32 ;
+  binding $startAngle : double ;
+  binding $arcAngle : double ;
+  attribute direction : double ;
+  attribute distance : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+controllerClass PMOvalController {
+  binding $rectangleXOrigin : integer32 ;
+  binding $rectangleYOrigin : integer32 ;
+  binding $rectangleWidth : integer32 ;
+  binding $rectangleHeight : integer32 ;
+  attribute xCenter : integer32 ;
+  attribute yCenter : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+controllerClass PMTrackDirectionController {
+  binding $p1x : integer32 ;
+  binding $p1y : integer32 ;
+  binding $p1CanMove : boolean ;
+  binding $p2x : integer32 ;
+  binding $p2y : integer32 ;
+  binding $p2CanMove : boolean ;
+  binding $rotateLock : boolean ;
+  attribute directionInDegrees : double ;
+  attribute trackCanRotate : boolean ;
+}
+
+#----------------------------------------------------------------------------*

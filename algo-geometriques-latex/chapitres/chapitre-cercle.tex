@@ -1,0 +1,102 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../algos-geometriques.tex
+
+
+\chapter{Cercle}
+
+Un cercle est caractérisé par son centre et son rayon. C'est un type qui n'existe pas en Cocoa, il est défini dans \texttt{ElCanari} par une structure non mutable. Ce type est implémenté dans \texttt{CanariCircle.swift}. Il est simplement construit à partir d'un point et d'un rayon.
+
+\begin{lstlisting}
+struct CanariCircle {
+  let center : CGPoint
+  let radius : CGFloat
+
+  init (center : CGPoint, radius : CGFloat) {
+    self.center = center
+    self.radius = radius
+  }
+}
+\end{lstlisting}
+
+
+
+
+
+\section{Intersection entre deux cercles}
+
+Élémentaire, il y a intersection si la distance entre les centres est inférieure ou égale à la somme des rayons.
+
+
+\begin{lstlisting}
+  func intersects (circle : CanariCircle) -> Bool {
+    let d = CGPoint.distance (self.center, circle.center)
+    return d <= (self.radius + circle.radius)
+  }
+\end{lstlisting}
+
+
+
+
+
+
+\section{Intersection avec un segment}
+
+L'intersection entre un cercle et un segment est plus compliquée, il y a plusieurs tests à faire :
+\begin{itemize}
+\item d'abord, on teste si la distance entre le centre du cercle et les extrémités du segment ; si l'une de ces distances est inférieure au rayon du cercle, il y a intersection ;
+\item ensuite, on calcule les coordonnées du centre du cercle dans le repère dont l'origine est le centre du segment, et l'axe des abscisses la direction du segment ; il y a intersection si et seulement si :
+  \begin{itemize}
+  \item la valeur absolue de l'ordonnée du centre est inférieure au rayon ;
+  \item la valeur absolue de l'abscisse du centre est inférieure à la moitié de la distance entre les deux points.
+  \end{itemize}
+\end{itemize}
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0, 0) -- (2, 1) ;
+    \draw[thick] (0, 0) -- (2, 1) ;
+    \draw[fill] (0, 0) circle (2pt) ;
+    \draw[fill] (2, 1) circle (2pt) ;
+    \draw[left] (0, 0) node {$P_1$} ;
+    \draw[above] (2.5, 1.5) node {$C$} ;
+    \draw (2.5, 1.5) circle (30pt) ;
+    \draw[fill] (2.5, 1.5) circle (2pt) ;
+    \draw[right] (2, 1) node {$P_2$} ;
+    \begin{scope}[xshift=8cm]
+      \draw (0, 0) -- (2, 1) ;
+      \draw[thick] (0, 0) -- (2, 1) ;
+      \draw[fill] (0, 0) circle (2pt) ;
+      \draw[fill] (2, 1) circle (2pt) ;
+      \draw[left] (0, 0) node {$P_1$} ;
+      \draw[above] (1, 1.5) node {$C$} ;
+      \draw (1, 1.5) circle (30pt) ;
+      \draw[fill] (1, 1.5) circle (2pt) ;
+      \draw[right] (2, 1) node {$P_2$} ;
+      \draw (1, 1.5) -- (1.4, .7) ;
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+
+\begin{lstlisting}
+  func intersects (segmentFrom p1 : CGPoint, to p2 : CGPoint) -> Bool {
+    var intersects = CGPoint.distance (p1, self.center) <= self.radius
+    if !intersects {
+      intersects = CGPoint.distance (p2, self.center) <= self.radius
+    }
+    if !intersects {
+      let segmentAngle = CGPoint.angleInRadian (p1, p2)
+      let segmentCenter = CGPoint (x: (p1.x + p2.x) / 2.0, y: (p1.y + p2.y) / 2.0)
+      let tr = CGAffineTransform (rotationAngle: -segmentAngle)
+              .translatedBy (x:-segmentCenter.x, y:-segmentCenter.y)
+      let point = self.center.applying (tr)
+      intersects = abs (point.y) <= self.radius
+      if intersects {
+        let segmentLength = CGPoint.distance (p1, p2)
+        intersects = abs (point.x) <= (segmentLength * 0.5)
+      }
+    }
+    return intersects
+  }
+\end{lstlisting}
+

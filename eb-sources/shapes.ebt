@@ -1,0 +1,407 @@
+#----------------------------------------------------------------------------*
+#     S H A P E    C L A S S E S                                             *
+#----------------------------------------------------------------------------*
+
+shapeClass PMBezierCurveShape {
+  attribute p1 : NSPoint ;
+  attribute p2 : NSPoint ;
+  attribute ctrlP1 : NSPoint ;
+  attribute ctrlP2 : NSPoint ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute lineWidthMultipliedByTen : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute hiliteGuidesColor : NSColor onlyRedrawOnChange ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMArcCircleShape {
+  attribute center : NSPoint ;
+  attribute startingAngleInDegrees : double ;
+  attribute arcAngleInDegrees : double ;
+  attribute arcIsClosed : boolean ;
+  attribute radius : double ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute lineWidthMultipliedByTen : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute startingTangentLength : double ;
+  attribute endingTangentLength : double ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSegmentShape {
+  attribute p1 : NSPoint ;
+  attribute p2 : NSPoint ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute lineWidthMultipliedByTen : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMFramedOvalShape {
+  attribute r : NSRect ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute lineWidthMultipliedByTen : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSolidRectShape {
+  attribute r : NSRect ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSolidOvalShape {
+  attribute r : NSRect ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSymbolPinShape {
+  attribute origin : NSPoint ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute lineWidthMultipliedByTen : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMNCShape {
+  attribute origin : NSPoint ;
+  attribute direction : integer32 ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute lineWidthMultipliedByTen : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute font : NSFont ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSymbolPinNumberShape {
+  attribute font : NSFont ;
+  attribute origin : NSPoint ;
+  attribute alignment : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSymbolTextShape {
+  attribute font : NSFont ;
+  attribute text : NSString ;
+  attribute textColor : NSColor onlyRedrawOnChange ;
+  attribute origin : NSPoint ;
+  attribute alignment : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMComponentValueInSchematicsShape {
+  attribute stringValue : NSString ;
+  attribute isDisplayed : boolean ;
+  attribute font : NSFont ;
+  attribute origin : NSPoint ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMComponentNameInSchematicsShape {
+  attribute componentName : NSString ;
+  attribute font : NSFont ;
+  attribute origin : NSPoint ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSymbolPinNameShape {
+  attribute name : NSString ;
+  attribute nameIsDisplayedInSchematics : boolean ;
+  attribute font : NSFont ;
+  attribute origin : NSPoint ;
+  attribute alignment : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMPackagePadNumberShape {
+  attribute padString : NSString ;
+  attribute origin : NSPoint ;
+  attribute font : NSFont ;
+  attribute color : NSColor onlyRedrawOnChange ;
+}
+
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMPadShape {
+  attribute center : NSPoint ;
+  attribute size : NSSize ;
+  attribute padShape : integer32 ;
+  attribute componentSidePadColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute holeDiameter : double ;
+  attribute side : integer32 ;
+  attribute solderSidePadColor : NSColor onlyRedrawOnChange ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMGuideForPackageShape {
+  attribute p1 : NSPoint ;
+  attribute p2 : NSPoint ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMDimensionForPackageShape {
+  attribute p1 : NSPoint ;
+  attribute p2 : NSPoint ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute dimensionString : NSString ;
+  attribute dimensionFont : NSFont ;
+  attribute offsetForDimensionString : NSSize ;
+  attribute backgroundColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSimpleWireShape {
+  attribute p1 : NSPoint ;
+  attribute p1ConnectionKind : integer32 ;
+  attribute p2 : NSPoint ;
+  attribute p2ConnectionKind : integer32 ;
+  attribute wireContentColor : NSColor onlyRedrawOnChange ;
+  attribute lineWidthMultipliedByTen : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMLabelShapeShape {
+  attribute origin : NSPoint ;
+  attribute direction : integer32 ;
+  attribute connectionKind : integer32 ;
+  attribute color : NSColor onlyRedrawOnChange ;
+  attribute lineWidthMultipliedByTen : integer32 ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute netName : NSString ;
+  attribute font : NSFont ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMUnifiedRestrictRectangleShape {
+  attribute rect : NSRect ;
+  attribute onComponentSide : boolean ;
+  attribute onSolderSide : boolean ;
+  attribute componentSideColor : NSColor onlyRedrawOnChange ;
+  attribute solderSideColor : NSColor onlyRedrawOnChange ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMTextInBoardShape {
+  attribute origin : NSPoint ;
+  attribute direction : double ;
+  attribute side : integer32 ;
+  attribute textBezierPath : NSBezierPath ;
+  attribute legendComponentSideColor : NSColor onlyRedrawOnChange ; # For side == 0
+  attribute layoutComponentSideColor : NSColor onlyRedrawOnChange ; # For side == 1
+  attribute layoutSolderSideColor : NSColor onlyRedrawOnChange ;    # For side == 2
+  attribute legendSolderSideColor : NSColor onlyRedrawOnChange ;    # For side == 3
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMPackageInDeviceShapeNew {
+  attribute origin : NSPoint ;
+  attribute strokeBezierPathForLegend : NSBezierPath ;
+  attribute colorForLegend : NSColor onlyRedrawOnChange ;
+  attribute legendLineWidthMultipliedByTen : integer32 ;
+  attribute arrayOfBezierPathesToFillForComponentSidePads : NSArray ;
+  attribute colorForComponentSidePads : NSColor onlyRedrawOnChange ;
+  attribute arrayOfBezierPathesToFillForSolderSidePads : NSArray ;
+  attribute colorForSolderSidePads : NSColor onlyRedrawOnChange ;
+  attribute packageName : NSString ;
+  attribute fontForPackageName : NSFont ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute padArray : NSArray ;
+  attribute fontForDrawingPadNumbers : NSFont ;
+  attribute padNumberColor : NSColor onlyRedrawOnChange ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSymbolInDeviceShape {
+  attribute origin : NSPoint ;
+  attribute filledBezierPathForLegend : NSBezierPath ;
+  attribute strokeBezierPathForLegend : NSBezierPath ;
+  attribute texts : NSArray ;
+  attribute colorForLegend : NSColor onlyRedrawOnChange ;
+  attribute strokeLineWidthMultipliedByTen : integer32 ;
+  attribute symbolName : NSString ;
+  attribute fontForSymbolName : NSFont ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute pinArray : NSArray ;
+  attribute fontForDrawingPinNames : NSFont ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMPackageInBoardShape {
+  attribute origin : NSPoint ;
+  attribute firstPadLocationInPackageType : NSPoint ;
+  attribute rotationInDegrees : double ;
+  attribute padArray : NSArray ;
+  attribute padNumberFont : NSFont ;
+  attribute padNumberColor : NSColor onlyRedrawOnChange ;
+  attribute strokeBezierPathForLegend : NSBezierPath ;
+  attribute lineWidthForLegendMultipliedByTen : integer32 ;
+  attribute filledBezierPathForComponentSidePadsArray : NSArray ;
+  attribute filledBezierPathForSolderSidePadsArray : NSArray ;
+  attribute componentSideLegendColor : NSColor onlyRedrawOnChange ;
+  attribute solderSideLegendColor : NSColor onlyRedrawOnChange ;
+  attribute onComponentSide : boolean ;
+  attribute componentSidePadColor : NSColor onlyRedrawOnChange ;
+  attribute solderSidePadColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute componentNameBezierPath : NSBezierPath ;
+  attribute originForComponentName : NSPoint ;
+  attribute componentNameIsVisible : boolean ;
+  attribute componentValueBezierPath : NSBezierPath ;
+  attribute originForComponentValue : NSPoint ;
+  attribute componentValueIsVisible : boolean ;
+  attribute componentNameDirection : integer32 ;
+  attribute componentValueDirection : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSymbolInSchematicsShape {
+  attribute origin : NSPoint ;
+  attribute direction : integer32 ;
+  attribute symbolColor : NSColor onlyRedrawOnChange ;
+  attribute componentIsNotInBoard : boolean ;
+  attribute symbolColorForUnplacedComponent : NSColor onlyRedrawOnChange ;
+  attribute texts : NSArray ;
+  attribute strokeBezierPathForSymbol : NSBezierPath ;
+  attribute lineWidthForSymbolMultipliedByTen : integer32 ;
+  attribute filledBezierPathForSymbol : NSBezierPath ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+  attribute pinArray : NSArray ;
+  attribute pinNameColor : NSColor onlyRedrawOnChange ;
+  attribute pinNameFont : NSFont ;
+  attribute pinNumberColor : NSColor onlyRedrawOnChange ;
+  attribute pinNumberFont : NSFont ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMPadZoneShape {
+  attribute r : NSRect ;
+  attribute zoneColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMPadZoneNameShape {
+  attribute name : NSString ;
+  attribute origin : NSPoint ;
+  attribute font : NSFont ;
+  attribute alignment : integer32 ;
+  attribute zoneColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMTrackInBoardShape {
+  attribute p1 : NSPoint ;
+  attribute p2 : NSPoint ;
+  attribute side : integer32 ;
+  attribute trackActualWidth : integer32 ;
+  attribute trackComponentSideColor : NSColor onlyRedrawOnChange ;
+  attribute trackSolderSideColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMViaInBoardShape {
+  attribute location : NSPoint ;
+  attribute isVia : boolean ;
+  attribute holeDiameter : double ;
+  attribute padDiameter : double ;
+  attribute trackComponentSideColor : NSColor onlyRedrawOnChange ;
+  attribute trackSolderSideColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMPassingPointInBoardShape {
+  attribute location : NSPoint ;
+  attribute side : integer32 ;
+  attribute trackComponentSideColor : NSColor onlyRedrawOnChange ;
+  attribute trackSolderSideColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+
+shapeClass PMSegmentInBoardShape {
+  attribute p1 : NSPoint ;
+  attribute p2 : NSPoint ;
+  attribute side : integer32 ;
+  attribute componentSideLegendColor : NSColor onlyRedrawOnChange ;
+  attribute solderSideLegendColor : NSColor onlyRedrawOnChange ;
+  attribute lineWidth : double ;
+  attribute hiliteColor : NSColor onlyRedrawOnChange ;
+  attribute hiliteWidthMultipliedByTen : integer32 ;
+}
+
+#----------------------------------------------------------------------------*
+

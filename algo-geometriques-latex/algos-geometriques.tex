@@ -1,0 +1,449 @@
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass [a4paper, 11pt, openany] {book}
+\usepackage{verbatim}
+%\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{a4paper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   E N C O D A G E    D E S    S O U R C E S     :     U T F 8                                                         *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Paquetage pour le codage des sources en UTF-8
+\usepackage[utf8]{inputenc}
+
+%--- Latex demande ce paquetage pour mieux afficher le caractère "°" et \textquotesingle "'"
+\usepackage{textcomp}
+
+%--- Ce paquetage permet d'effectuer certaines césures, et ainsi d'éviter les messages "Overfull \hbox"
+\usepackage[T1]{fontenc}
+
+\usepackage{lmodern} % for French
+
+\usepackage{filecontents}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   R É G L A G E S    « F R A N Ç A I S »                                                                              *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Paquetage pour imposer les réglages français
+%\usepackage[francais]{babel}
+\usepackage[frenchb]{babel}
+
+%--- Contrôle de l'indentation et de la séparation des paragraphes
+\setlength{\parindent}{0pt} 
+%\setlength{\parskip}{1.2ex} % Reporté avant les chapitres
+
+%--- Ajouter une séparation à la fin des itemize
+\let\EndItemize\enditemize
+\def\enditemize{\EndItemize\vspace{1.2ex}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   M I S E    E N    P A G E                                                                                           *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Interligne 1,5 ligne
+\usepackage{setspace}
+\onehalfspacing
+
+%--- Marge gauche : 2,8 cm ; le paramètre \hoffset contient cette valeur, moins 1 pouce
+%    \hoffset = 2,8 cm - 2,54 cm = 0,26 cm
+\setlength{\hoffset}{0.26 cm}
+
+%--- Marges supplémentaires, différenciées pour les pages gauches et droites ; ici, aucune.
+\setlength{\oddsidemargin }{0 cm}
+\setlength{\evensidemargin}{0 cm}
+
+%--- Largeur du texte
+%    \textwidth = 210 mm - 28 mm - 28 mm = 15,4 cm
+\setlength{\textwidth}{15.4 cm}
+
+%--- Marge haute : 2,8 cm ; le paramètre \voffset contient cette valeur, moins 1 pouce
+%    \voffset = 2,8 cm - 2,54 cm = 0,26 cm
+\setlength{\voffset}{0.26 cm}
+
+%--- Distance entre la marge haute et l'en-tête : 0 cm
+\setlength{\topmargin}{0 cm}
+
+%--- Hauteur de l'en-tête de chaque page : 1 cm
+\setlength{\headheight}{1 cm}
+
+%--- Distance entre l'en-tête de chaque page et le corps : 0,5 cm
+\setlength{\headsep}{0.5 cm}
+
+%--- Hauteur du corps
+%    \textheight = 29,7 cm - 2,8 cm - 2,8 cm - 1,5 cm = 22,6 cm
+\setlength{\textheight}{22.6 cm}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   T R A C E R    U N E    L I G N E    H O R I Z O N T A L E                                                          *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\newcommand\ligne{\hrulefill}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   C H O I X    D E    L A    P O L I C E                                                                              *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%---------------------------------------------------- Pour utiliser la police "Fourier"
+%\usepackage{fouriernc}
+%\usepackage[scaled=0.875]{helvet}
+
+%\usepackage[scaled=0.8, default]{sourcesanspro}
+\usepackage[scaled=0.9, default, semibold]{sourcecodepro}
+\usepackage[default]{sourcesanspro}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   E X T E N S I O N S    P O U R    P R É S E N T E R    L E S    T A B L E A U X                                     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{array}
+
+%  http://en.wikibooks.org/wiki/LaTeX/Colors
+\usepackage[dvipsnames, svgnames, table]{xcolor} % À placer avant \usepackage{listings}
+
+%--- Ce paquetage permet de changer le style des légendes des tableaux et des figures (voir caption-eng.pdf) :
+%  - l'étiquette est en italique gras
+%  - le titre est en italique.
+\usepackage[font=it, labelfont=bf]{caption}
+
+%--- Par défaut, le paquetage nomme "Table" les tableaux. La commande
+%   suivante impose le nom "Tableau"
+% Voir http://fr.wikibooks.org/wiki/LaTeX/Éléments_flottants_et_figures
+\addto\captionsfrench{\def\tablename{Tableau}}
+
+%------------------------------------------------------------------------------------------ RÉFÉRENCES À UN TABLEAU
+% La référence au tableau "nom-du-tableau" est définie par \labelTableau{nom-du-tableau}
+\newcommand\labelTableau[1]{\label{tab:#1}}
+% Latex autorise deux types d'appel à une référence \ref{tab:nom-du-tableau} et \pageref{tab:nom-du-tableau}
+
+% \refTableau{}{nom-du-tableau} ---> "tableau x.y"   où x.y est le n° du tableau
+\newcommand\refTableau[1]{\hyperref[tab:#1]{tableau \ref*{tab:#1}}}
+
+% \refTableauSansPrefixe{}{nom-du-tableau} ---> "x.y"   où x.y est le n° du tableau
+\newcommand\refTableauSansPrefixe[1]{\hyperref[tab:#1]{\ref*{tab:#1}}}
+
+% \refTableauPage{}{nom-du-tableau} ---> "tableau x.y page n"   où x.y est le n° du tableau
+\newcommand\refTableauPage[1]{\hyperref[tab:#1]{tableau \ref*{tab:#1} page \pageref{tab:#1}}}
+
+% \refTableauPageSansPrefixe{}{nom-du-tableau} ---> "x.y page n"   où x.y est le n° du tableau
+\newcommand\refTableauPageSansPrefixe[1]{\hyperref[tab:#1]{\ref*{tab:#1} page \pageref{tab:#1}}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   T I K Z    -    P G F                                                                                               *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{tikz}
+\usepackage{tkz-graph}
+\usetikzlibrary{calc}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes.callouts}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{automata}
+\usetikzlibrary{positioning}
+\usepgflibrary{shapes.geometric}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   E N - T Ê T E S    E T    P I E D S    D E    P A G E S                                                             *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% Grâce au package "fancyhdr"
+% voir http://www.exomatik.net/U-Latex/Personnaliser#toc2
+%      http://www.trustonme.net/didactels/250.html
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%--- Numéro de page : à gauche pages paires, à droite pages impaires
+\fancyhead[EL,OR]{\thepage}
+%--- Nom de chapitre : à droite page paires
+\fancyhead[ER]{\leftmark}
+%--- Nom de section : à gauche page impaires
+\fancyhead[OL]{\rightmark}
+%--- Version : au milieu du pied de chaque page
+\fancyfoot[C]{Calculs géométriques de ElCanari}
+%--- filet en haut et en bas de chaque page
+\renewcommand{\headrulewidth}{0.5 pt}
+\renewcommand{\footrulewidth}{0.5 pt}
+
+\renewcommand{\chaptermark}[1]{\markboth{\bsc{\chaptername~\thechapter{}.} #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\bsc{\thesection{}.} #1}{}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   G E S T I O N    D E    L ' I N D E X                                                                               *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% http://www.cuk.ch/articles/4097
+% http://www.tuteurs.ens.fr/logiciels/latex/makeindex.html
+% http://linux.die.net/man/1/makeindex
+%
+% Attention ! Les deux commandes suivantes, ainsi que le \printindex placé plus bas ne
+% sont pas suffisants pour construire l'index : il faut utiliser l'utilitaire "makeIndex"
+% Voir le fichier de commande "build.command"
+\usepackage{makeidx}
+\makeindex
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   T O C B I D I N D                                                                                                   *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%    Pour faire figurer la liste des tableaux (et la table des matières)
+%    dans la table des matières
+\usepackage{tocbibind}
+
+\setcounter{tocdepth}{3}
+
+%\titlespacing{\chapter} {0pt} {*0} {*0} {}
+%\titlespacing{\section} {4ex} {*0} {*0} {}
+%\titlespacing{\subsection} {10ex} {*0} {*0} {}
+%\titlespacing{\subsubsection} {\subsubsectskip} {*0} {*0} {}
+
+%\setlength{\parindent}{50pt}
+%\makeatletter
+%\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+%                                    {3.25ex \@plus 1ex \@minus .2ex}%
+%                                    {2.3ex \ at plus.2ex}%
+%                                    {\normalfont\normalsize\bfseries}}
+%\makeatother
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   H Y P E R R E F                                                                                                     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Pour les hyperliens, et le contrôle de la génération PDF 
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+\hypersetup{linkcolor=blue}
+\hypersetup{breaklinks=true}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   R É F É R E N C E S                                                                                                 *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{subfig}
+
+%---- Nécessaire pour \refFigure...
+\usepackage{ifthen}
+
+% Au lieu d'écrire \chapter{titre-chapitre}, on écrit \chapterLabel{titre-chapitre}{label-chapitre}
+\newcommand \chapterLabel[2]{\chapter{#1}\label{chapter:#2}}
+
+% \refChapter{label-chapter} ---> "chapitre n"
+\newcommand \refChapter[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1}}}
+
+\newcommand \refChapterPage[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1} page \pageref{chapter:#1}}}
+
+% Au lieu d'écrire \section{titre-section}, on écrit \sectionLabel{titre-section}{label-section}
+\newcommand \sectionLabel[2]{\section{#1}\label{sec:#2}}
+
+
+% \refSectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la section
+\newcommand\refSectionPage[1]{\hyperref[sec:#1]{section \ref*{sec:#1} page \pageref{sec:#1}}}
+
+%------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE SUB-SECTION
+% Au lieu d'écrire \subsection{titre-section}, on écrit \subsectionLabel{titre-section}{label-subsection}
+\newcommand \subsectionLabel[2]{\subsection{#1}\label{subsec:#2}}
+
+
+% \refSubsectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la sub-section
+\newcommand\refSubsectionPage[1]{\hyperref[subsec:#1]{section \ref*{subsec:#1} page \pageref{subsec:#1}}}
+
+%------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE SUB-SUB-SECTION
+% Au lieu d'écrire \subsubsection{titre-section}, on écrit \subsubsectionLabel{titre-section}{label-subsubsection}
+\newcommand \subsubsectionLabel[2]{\subsubsection{#1}\label{subsubsec:#2}}
+
+
+% \refSubsubsectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la sub-section
+\newcommand\refSubsubsectionPage[1]{\hyperref[subsubsec:#1]{section \ref*{subsubsec:#1} page \pageref{subsubsec:#1}}}
+
+\newcommand\refSubsubsectionTitlePage[1]{\hyperref[subsubsec:#1]{section « \emph{\nameref*{subsubsec:#1}} » page \pageref{subsubsec:#1}}}
+
+%------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE FIGURE
+% La référence au tableau "nom-de-la-figure" est définie par \labelFigure{nom-de-la-figure}
+\newcommand\labelFigure[1]{\label{fig:#1}}
+% Latex autorise deux types d'appel à une référence \ref{fig:nom-de-la-figure} et \pageref{fig:nom-de-la-figure}
+
+% \refFigure{}{nom-de-la-figure}   ---> "figure x.y"   où x.y est le n° de la figure
+% \refFigure{z}{nom-de-la-figure}  ---> "figure x.y.z" où x.y est le n° de la figure
+\newcommand\refFigure[2]{\hyperref[fig:#2]{figure \ref*{fig:#2}{\ifthenelse{\equal{#1}{}}{}{.#1}}}}
+
+% \refFigureSansPrefixe{}{nom-de-la-figure}   ---> "x.y"   où x.y est le n° de la figure
+% \refFigureSansPrefixe{z}{nom-de-la-figure}  ---> "x.y.z" où x.y est le n° de la figure
+\newcommand\refFigureSansPrefixe[2]{\hyperref[fig:#2]{\ref*{fig:#2}{\ifthenelse{\equal{#1}{}}{}{.#1}}}}
+
+% \refFigurePage{}{nom-de-la-figure}   ---> "figure x.y page n"   où x.y est le n° de la figure
+% \refFigurePage{z}{nom-de-la-figure}  ---> "figure x.y.z page n" où x.y est le n° de la figure
+\newcommand\refFigurePage[2]{\hyperref[fig:#2]{figure \ref*{fig:#2}{\ifthenelse{\equal{#1}{}}{}{.#1}} page \pageref{fig:#2}}}
+
+% \refFigurePageSansPrefixe{}{nom-de-la-figure}   ---> "x.y page n"   où x.y est le n° de la figure
+% \refFigurePageSansPrefixe{z}{nom-de-la-figure}  ---> "x.y.z page n" où x.y est le n° de la figure
+\newcommand\refFigurePageSansPrefixe[2]{\hyperref[fig:#2]{\ref*{fig:#2}{\ifthenelse{\equal{#1}{}}{}{.#1}} page \pageref{fig:#2}}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   E X T E N S I O N S    P O U R    L ' É C R I T U R E    D E S     F O R M U L E S    M A T H É M A T I Q U E S     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%   A F F I C H A G E    D U    C O D E    S H E L L                                                                    *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\newcommand\tpp[1]{\colorbox{gray!12}{\ttfamily #1}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   C O D E   S O U R C E    S W I F T                                                                                  *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{listings}
+
+\lstdefinelanguage{swift}
+{
+  morekeywords={
+    func,if,then,else,for,in,while,do,switch,case,default,where,break,continue,fallthrough,return,
+    typealias,struct,class,enum,protocol,var,func,let,get,set,willSet,didSet,inout,init,deinit,extension,
+    subscript,prefix,operator,infix,postfix,precedence,associativity,left,right,none,convenience,dynamic,
+    final,lazy,mutating,nonmutating,optional,override,required,static,unowned,safe,weak,internal,
+    private,public,is,as,self,unsafe,dynamicType,true,false,nil,Type,Protocol,import
+  },
+  morecomment=[l]{//}, % l is for line comment
+  morecomment=[s]{/*}{*/}, % s is for start and end delimiter
+  morestring=[b]" % defines that strings are enclosed in double quotes
+}
+
+\definecolor{keyword}{HTML}{BA2CA3}
+\definecolor{string}{HTML}{D12F1B}
+\definecolor{comment}{HTML}{008400}
+
+\lstset{
+  language=swift,
+  basicstyle=\ttfamily\small,
+  showstringspaces=false, % lets spaces in strings appear as real spaces
+  columns=fixed,
+  keepspaces=true,
+  keywordstyle=\color{keyword},
+  stringstyle=\color{string},
+  commentstyle=\color{comment},
+  frame=L,
+}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{mdframed}
+\usepackage{amsmath,amsfonts,amssymb}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   D É B U T    D U    D O C U M E N T                                                                                 *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\begin{document} 
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   P A G E    D E    T I T R E                                                                                         *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+
+\title{\Huge\bf Algorithmes géométriques\\utilisés dans ElCanari}
+\author{Pierre Molinaro}
+\date \today 
+\maketitle
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   T A B L E    D E S    M A T I È R E S                                                                               *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\tableofcontents
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   L I S T E    D E S    T A B L E A U X                                                                               *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\listoftables
+\addtocontents{lot}{\protect\thispagestyle{empty}\protect\pagestyle{empty}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   L I S T E    D E S    F I G U R E S                                                                                 *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\listoffigures
+\addtocontents{lof}{\protect\thispagestyle{empty}\protect\pagestyle{empty}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   L E S    C H A P I T R E S                                                                                          *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Contrôle de la séparation des paragraphes
+%    On met cette définition ici, sinon elle affecte la table des matières, la liste des tableaux, ...
+\setlength{\parskip}{1.2ex}
+
+\input{chapitres/chapitre-point.tex}
+\input{chapitres/chapitre-rectangle-horizontal.tex}
+\input{chapitres/chapitre-cercle.tex}
+\input{chapitres/chapitre-rectangle.tex}
+\input{chapitres/chapitre-oblong.tex}
+
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   I N D E X                                                                                                           *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%\cleardoublepage % Pour commencer a une page impaire
+\phantomsection  % Pour faire correctement pointer l'hyperlien dans la table des matières
+
+%--- Ecrire l'index
+{\small
+\printindex
+}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+
+
+\end{document}

@@ -1,0 +1,27 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../algos-geometriques.tex
+
+
+\chapterLabel{Rectangle horizontal}{rectangleHorizontal}
+
+Par rectangle « horizontal », on entend un rectangle dont les côtés sont parallèles aux axes. Un tel rectangle est décrit par le type \texttt{CGRect}.
+
+Dans ce chapitre, des additions à ce type sont présentées. Elles sont définies comme des extensions du type \texttt{CGRect}, et implémentées dans \texttt{extension-CGRect.swift}.
+
+
+
+
+\section{Construction d'un rectangle à partir de deux points}
+
+Cet initialiseur permet de construire un rectangle à partir de deux points ; si les points sont confondus, la taille du rectangle est nulle.
+
+
+\begin{lstlisting}
+extension CGRect {
+  init (point p1: CGPoint, point p2: CGPoint) {
+    origin = CGPoint (x: min (p1.x, p2.x), y: min (p1.y, p2.y))
+    size = CGSize (width: abs (p1.x - p2.x), height: abs (p1.y - p2.y))
+  }
+}
+\end{lstlisting}
+

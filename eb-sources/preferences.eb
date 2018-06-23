@@ -1,0 +1,392 @@
+
+#! Library update 
+
+prefs {
+#--- Progress window during repository list download
+  outlet EBWindow mCheckingForLibraryUpdateWindow ;
+  outlet EBProgressIndicator mCheckingForLibraryUpdateProgressIndicator ;
+  outlet EBButton mCheckForLibraryUpdatesButton ;
+#--- Dialog for library updating
+  outlet EBWindow mLibraryUpdateWindow ;
+  outlet EBProgressIndicator mProgressIndicatorInLibraryUpdateWindow ;
+  outlet EBTextField mInformativeTextInLibraryUpdateWindow ;
+  outlet EBTableView mTableViewInLibraryUpdateWindow ;
+  outlet EBButton mUpDateButtonInLibraryUpdateWindow ;
+  outlet EBMenuItem mUpDateLibraryMenuItemInCanariMenu ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! Message Colors
+
+prefs {
+  property NSColor errorMessageColor   default red;
+  property NSColor warningMessageColor default orange;
+  property NSColor successMessageColor default blue;
+  outlet EBColorWell mErrorMessageColorColorWell   $color self.errorMessageColor {sendContinously:no} ;
+  outlet EBColorWell mWarningMessageColorColorWell $color self.warningMessageColor {sendContinously:no} ;
+  outlet EBColorWell mSuccessMessageColorColorWell $color self.successMessageColor {sendContinously:no} ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! Selection hilite
+prefs {
+  property NSColor selectionHiliteColor default cyan;
+  outlet EBColorWell mSelectionHiliteColorColorWell $color self.selectionHiliteColor {sendContinously:no};
+  property Int hiliteWidthMultipliedByTen default 15 ; # 1,5 pt
+  outlet EBPopUpButton selectionHilitePopupButton $selectedTag self.hiliteWidthMultipliedByTen ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! File Menu
+prefs {
+#--- Symbols
+  transient CanariMenuItemListClass mValueRevealInFinder_symbols dependsFrom
+#    self.usesSystemLibrary,
+    self.usesUserLibrary,
+    self.additionnalLibraryArray.all.mUses,
+    self.additionnalLibraryArray.all.mPath
+  ;
+  outlet CanariMenu mMenuRevealInFinder_symbols $populateSubmenus self.mValueRevealInFinder_symbols ;
+#--- Packages
+  transient CanariMenuItemListClass mValueRevealInFinder_packages dependsFrom
+#    self.usesSystemLibrary,
+    self.usesUserLibrary,
+    self.additionnalLibraryArray.all.mUses,
+    self.additionnalLibraryArray.all.mPath
+  ;
+  outlet CanariMenu mMenuRevealInFinder_packages $populateSubmenus self.mValueRevealInFinder_packages ;
+#--- Devices
+  transient CanariMenuItemListClass mValueRevealInFinder_devices dependsFrom
+#    self.usesSystemLibrary,
+    self.usesUserLibrary,
+    self.additionnalLibraryArray.all.mUses,
+    self.additionnalLibraryArray.all.mPath
+  ;
+  outlet CanariMenu mMenuRevealInFinder_devices $populateSubmenus self.mValueRevealInFinder_devices ;
+#--- Fonts
+  transient CanariMenuItemListClass mValueRevealInFinder_fonts dependsFrom
+#    self.usesSystemLibrary,
+    self.usesUserLibrary,
+    self.additionnalLibraryArray.all.mUses,
+    self.additionnalLibraryArray.all.mPath
+  ;
+  outlet CanariMenu mMenuRevealInFinder_fonts $populateSubmenus self.mValueRevealInFinder_fonts ;
+#--- Artworks
+  transient CanariMenuItemListClass mValueRevealInFinder_artworks dependsFrom
+#    self.usesSystemLibrary,
+    self.usesUserLibrary,
+    self.additionnalLibraryArray.all.mUses,
+    self.additionnalLibraryArray.all.mPath
+  ;
+  outlet CanariMenu mMenuRevealInFinder_artworks $populateSubmenus self.mValueRevealInFinder_artworks ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! Symbol Pane
+prefs {
+#--- Symbol Color
+  property NSColor symbolColor default brown;
+  outlet EBColorWell mSymbolColorColorWell $color self.symbolColor {sendContinously:no} ;
+#--- Symbol Grid Colors
+  property NSColor dotColorOfSymbolGrid   default black;
+  outlet EBColorWell mDotColorOfSymbolGridColorWell $color self.dotColorOfSymbolGrid {sendContinously:no} ;
+  property NSColor lineColorOfSymbolGrid  default gray;
+  outlet EBColorWell mLineColorOfSymbolGridColorWell $color self.lineColorOfSymbolGrid {sendContinously:no} ;
+#--- Symbol Background Color
+  property NSColor symbolBackgroundColor default white;
+  outlet EBColorWell mSymbolBackgroundColorColorWell $color self.symbolBackgroundColor {sendContinously:no} ;
+#--- Drawing Width
+  property Int symbolDrawingWidthMultipliedByTen default 5 ;
+  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenPopupButton $selectedTag self.symbolDrawingWidthMultipliedByTen ;
+#--- Pin Symbol Font
+  property NSFont pinNameFont default 6 ;
+  outlet EBFontButton mPinNameFontButton $fontValue self.pinNameFont ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! Package Pane
+
+prefs {
+#--- Package Grid Colors
+  property NSColor dotColorOfPackageGrid  default white;
+  outlet EBColorWell mDotColorOfPackageGridColorWell $color self.dotColorOfPackageGrid {sendContinously:no} ;
+  property NSColor lineColorOfPackageGrid default gray;
+  outlet EBColorWell mLineColorOfPackageGridColorWell $color self.lineColorOfPackageGrid {sendContinously:no} ;
+#--- Background Color
+  property NSColor packageBackgroundColor default black;
+  outlet EBColorWell mPackageBackgroundColorColorWell $color self.packageBackgroundColor {sendContinously:no} ;
+#--- Package Color
+  property NSColor packageColor default brown;
+  outlet EBColorWell mPackageColorColorWell $color self.packageColor {sendContinously:no} ;
+#--- Top Side Pad Color
+  property NSColor topSidePadColor default blue;
+  outlet EBColorWell mTopSidePadColorWell $color self.topSidePadColor {sendContinously:no} ;
+#--- Bottom Side Pad Color
+  property NSColor bottomSidePadColor default green;
+  outlet EBColorWell mBottomSidePadColorWell $color self.bottomSidePadColor {sendContinously:no} ;
+#--- Pad Number Color
+  property NSColor padNumberColor default red;
+  outlet EBColorWell mPadNumberColorColorWell $color self.padNumberColor {sendContinously:no} ;
+#--- Pad Number Font
+  property NSFont padNumberFont default 3 ; # toolTipsFontOfSize:3 ;
+  outlet EBFontButton mPadFontButton $fontValue self.padNumberFont ;
+#--- Package Guide Color
+  property NSColor packageGuideColor default yellow;
+  outlet EBColorWell mPackageGuideColorWell $color self.packageGuideColor {sendContinously:no} ;
+#--- Package Dimension Color
+  property NSColor packageDimensionColor default orange;
+  outlet EBColorWell mPackageDimensionColorWell $color self.packageDimensionColor {sendContinously:no} ;
+#--- Dimension Font
+  property NSFont dimensionFont default 2 ; # toolTipsFontOfSize:2 ;
+  outlet EBFontButton mDimensionFontButton $fontValue self.dimensionFont ;
+#--- Pad Zone Color
+  property NSColor padZoneColor default magenta;
+  outlet EBColorWell mPadZoneColorColorWell $color self.padZoneColor {sendContinously:no} ;
+#--- Drawing width
+  property Int packageDrawingWidthMultipliedByTen default 15 ;
+  outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag self.packageDrawingWidthMultipliedByTen ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! Device pane
+
+prefs {
+#--- Grid Colors
+  property NSColor mSymbolAndPackageGridDotColorForDevice default black;
+  outlet EBColorWell mSymbolAndPackageGridDotColorForDeviceColorWell $color self.mSymbolAndPackageGridDotColorForDevice {sendContinously:no} ;
+  property NSColor mSymbolAndPackageGridLineColorForDevice  default gray;
+  outlet EBColorWell mSymbolAndPackageLineDotColorForDeviceColorWell $color self.mSymbolAndPackageGridLineColorForDevice {sendContinously:no} ;
+#--- Package Color
+  property NSColor mSymbolAndPackageBackgroundColorForDevice default white;
+  outlet EBColorWell mSymbolAndPackageBackgroundColorForDeviceColorWell $color self.mSymbolAndPackageBackgroundColorForDevice {sendContinously:no} ;
+#--- Package Color
+  property NSColor mPackageColorForDevice default brown;
+  outlet EBColorWell mPackageColorForDeviceColorWell $color self.mPackageColorForDevice {sendContinously:no} ;
+#--- Pad Colors
+  property NSColor mTopSidePadColorForDevice default blue;
+  outlet EBColorWell mTopSidePadColorForDeviceColorWell $color self.mTopSidePadColorForDevice {sendContinously:no} ;
+  property NSColor mBottomSidePadColorForDevice default green;
+  outlet EBColorWell mBottomSidePadColorDorDeviveColorWell $color self.mBottomSidePadColorForDevice {sendContinously:no} ;
+#--- Pad Number Color
+  property NSColor mPadNumberColorForDevice default red;
+  outlet EBColorWell mPadNumberColorForDeviceColorWell $color self.mPadNumberColorForDevice {sendContinously:no} ;
+#--- Package Name Font
+  property NSFont mPackageNameFontForDevice default 9 ; # toolTipsFontOfSize:9 ;
+  outlet EBFontButton mPackageNameFontForDeviceFontButton $fontValue self.mPadNumberFontForDevice ;
+#--- Pad Number Font
+  property NSFont mPadNumberFontForDevice default 5 ; # toolTipsFontOfSize:5 ;
+  outlet EBFontButton mPadNumberFontForDeviceFontButton $fontValue self.mPadNumberFontForDevice ;
+#--- Symbol Color
+  property NSColor mSymbolColorForDevice default brown;
+  outlet EBColorWell mSymbolColorForDeviceColorWell $color self.mSymbolColorForDevice {sendContinously:no} ;
+#--- Symbol Name Font
+  property NSFont mSymbolNameFontForDevice default 9 ; #toolTipsFontOfSize:9 ;
+  outlet EBFontButton mSymbolNameFontForDeviceFontButton $fontValue self.mSymbolNameFontForDevice ;
+#--- Pin Name Font
+  property NSFont mPinNameFontForDevice default 6 ; #toolTipsFontOfSize:6 ;
+  outlet EBFontButton mPinNameFontForDeviceFontButton $fontValue self.mPinNameFontForDevice ;
+#--- Symbol drawing width
+  property Int symbolDrawingWidthForDeviceMultipliedByTen default 15 ;
+  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenForDevicePopupButton $selectedTag self.symbolDrawingWidthForDeviceMultipliedByTen ;
+#--- Package drawing width
+  property Int packageDrawingWidthForDeviceMultipliedByTen default 15 ;
+  outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenForDevicePopupButton $selectedTag self.packageDrawingWidthForDeviceMultipliedByTen ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! Schematic pane
+
+prefs {
+#--- Schematic Grid Colors
+  property NSColor dotColorGridForSchematic  default black;
+  outlet EBColorWell mDotColorGridForSchematicColorWell $color self.dotColorGridForSchematic {sendContinously:no} ;
+  property NSColor lineColorGridForSchematic default gray;
+  outlet EBColorWell mLineColorGridForSchematicColorWell $color self.lineColorGridForSchematic {sendContinously:no} ;
+#--- Symbol color for unplaced components
+  property NSColor symbolColorForUnplacedComponentsForSchematic default darkGray;
+  outlet EBColorWell mUnplacedComponentsColorForSchematicColorWell $color self.symbolColorForUnplacedComponentsForSchematic {sendContinously:no} ;
+#--- Symbol color
+  property NSColor symbolColorForSchematic default brown;
+  outlet EBColorWell mSymbolColorForSchematicColorWell $color self.symbolColorForSchematic {sendContinously:no} ;
+#--- Pin Name Font
+  property NSFont pinNameFontForSchematic default 6 ; # toolTipsFontOfSize:6;
+  outlet EBFontButton mPinNameFontForSchematicFontButton $fontValue self.pinNameFontForSchematic ;
+#--- Pin Name Color
+  property NSColor pinNameColorForSchematic default brown;
+  outlet EBColorWell mPinNameColorForSchematicColorWell $color self.pinNameColorForSchematic {sendContinously:no} ;
+#--- Pin Number Font
+  property NSFont pinNumberFontForSchematic default 6 ; # toolTipsFontOfSize:6 ;
+  outlet EBFontButton mPinNumberFontForSchematicFontButton $fontValue self.pinNumberFontForSchematic ;
+#--- Pin Number Color
+  property NSColor pinNumberColorForSchematic default darkGray;
+  outlet EBColorWell mPinNumberColorForSchematicColorWell $color self.pinNumberColorForSchematic {sendContinously:no} ;
+#--- Connection Color
+  property NSColor connectionColorForSchematic default black;
+  outlet EBColorWell mConnectionColorForSchematicColorWell $color self.connectionColorForSchematic {sendContinously:no} ;
+#--- Symbol drawing line width
+  property Int symbolDrawingWidthMultipliedByTenForSchematic default 5 ;
+  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton $selectedTag self.symbolDrawingWidthMultipliedByTenForSchematic ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! Board
+
+prefs {
+#--- Board Grid Colors
+  property NSColor dotColorGridForBoard   default black;
+  outlet EBColorWell mBoardDotColorGridColorWell $color self.dotColorGridForBoard {sendContinously:no}  ;
+  property NSColor lineColorGridForBoard  default gray;
+  outlet EBColorWell mBoardLineColorGridColorWell $color self.lineColorGridForBoard {sendContinously:no} ;
+#--- Board Background Color
+  property NSColor boardBackgroundColorForBoard default black;
+  outlet EBColorWell mBoardBackgroundColorWell $color self.boardBackgroundColorForBoard {sendContinously:no} ;
+#--- Board Error Background Color
+  property NSColor errorBackgroundColorForBoard default red;
+  outlet EBColorWell mBoardErrorBackgroundColorWell $color self.errorBackgroundColorForBoard {sendContinously:no};
+  property Bool drawErrorBackgroundForBoard default yes ;
+  outlet EBSwitch mBoardDrawErrorBackgroundCheckbox $value self.drawErrorBackgroundForBoard;
+#--- Board Warning Background Color
+  property NSColor warningBackgroundColorForBoard default orange;
+  outlet EBColorWell mBoardWarningBackgroundColorWell $color self.warningBackgroundColorForBoard {sendContinously:no};
+  property Bool drawEWarningBackgroundForBoard default yes ;
+  outlet EBSwitch mBoardDrawWarningBackgroundCheckbox $value self.drawEWarningBackgroundForBoard;
+#--- Board Limits Color
+  property NSColor boardLimitsColorForBoard default brown;
+  outlet EBColorWell mBoardLimitsColorWell $color self.boardLimitsColorForBoard {sendContinously:no} ;
+#--- Clearance Color
+  property NSColor boardClearanceColorForBoard default yellow;
+  outlet EBColorWell mBoardClearanceColorWell $color self.boardClearanceColorForBoard {sendContinously:no} ;
+#--- Component Side Restrict Rectangle Color
+  property NSColor topSideRestrictRectangleColorForBoard default blue;
+  outlet EBColorWell mBoardTopSideRestrictRectangleColorWell $color self.topSideRestrictRectangleColorForBoard {sendContinously:no} ;
+#--- Bottom Side Restrict Rectangle Color
+  property NSColor bottomSideRestrictRectangleColorForBoard default green;
+  outlet EBColorWell mBoardBottomSideRestrictRectangleColorWell $color self.bottomSideRestrictRectangleColorForBoard {sendContinously:no} ;
+#--- Top Side Legend Color
+  property NSColor topSideLegendColorForBoard default brown;
+  outlet EBColorWell mBoardTopSideLegendColorWell $color self.topSideLegendColorForBoard {sendContinously:no} ;
+#--- Top Side Layout Color
+  property NSColor topSideLayoutColorForBoard default blue;
+  outlet EBColorWell mBoardTopSideLayoutColorWell $color self.topSideLayoutColorForBoard {sendContinously:no} ;
+#--- Bottom Side Layout Color
+  property NSColor bottomSideLayoutColorForBoard default green;
+  outlet EBColorWell mBoardBottomSideLayoutColorWell $color self.bottomSideLayoutColorForBoard {sendContinously:no} ;
+#--- Bottom Side Legend Color
+  property NSColor bottomSideLegendColorForBoard default white;
+  outlet EBColorWell mBoardBottomSideLegendColorWell $color self.bottomSideLegendColorForBoard {sendContinously:no};
+#--- Top Side Pad Color
+  property NSColor topSidePadColorForBoard default blue;
+  outlet EBColorWell mBoardTopSidePadColorWell $color self.topSidePadColorForBoard {sendContinously:no};
+#--- Bottom Side Pad Color
+  property NSColor bottomSidePadColorForBoard default green;
+  outlet EBColorWell mBoardBottomSidePadColorWell $color self.bottomSidePadColorForBoard {sendContinously:no};
+#--- Pad Number Font
+  property NSFont padNumberFontForBoard default 3 ; # toolTipsFontOfSize:3 ;
+  outlet EBFontButton mBoardPadFontButton $fontValue self.padNumberFontForBoard;
+#--- Pad Number Color
+  property NSColor padNumberColorForBoard default red;
+  outlet EBColorWell mBoardPadNumberColorWell $color self.padNumberColorForBoard {sendContinously:no};
+#--- Package drawing width
+  property Int packageDrawingWidthMultpliedByTenForBoard default 5  ;
+  outlet EBPopUpButton mBoardPackageDrawingWidthMultipliedByTenPopupButton $selectedTag self.packageDrawingWidthMultpliedByTenForBoard ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! Font
+
+prefs {
+#--- Sample String
+  property String sampleString default "The quick brown fox jumps over the lazy dog" ;
+  outlet EBTextField mSampleStringField $value self.sampleString {sendContinously:yes};
+#--- Sample Font size
+  property Double sampleStringSize default 24.0 ;
+  outlet EBDoubleField mSampleStringSizeField $value self.sampleStringSize {sendContinously:no, autoFormatter:no};
+#--- Display order
+  property Bool showGerberDrawingFlow default yes ;
+  outlet EBSwitch mShowGerberDrawingFlowCheckbox $value self.showGerberDrawingFlow ;
+#--- Display indexes
+  property Bool showGerberDrawingIndexes default yes ;
+  outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value self.showGerberDrawingIndexes ;
+#--- Button for displaying current character
+  property validates Int currentCharacterCodePoint default 65 ; # "A"
+  outlet CanariFontCharacterSelectButton mFontCharacterSelectButton $codePoint self.currentCharacterCodePoint ;
+#--- Edition transparency
+  property Double fontEditionTransparency default 0.5 ;
+  outlet EBSlider mEditionTransparencySlider $doubleValue self.fontEditionTransparency {sendContinously:yes} ;
+  outlet EBDoubleField mEditionTransparencyTextField $value self.fontEditionTransparency {sendContinously:no, autoFormatter:no} ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! Library
+
+prefs {
+  externFunc setupForLibrary calledBy awakeFromNib ;
+#--- System Library path
+#  action revealSystemLibraryInFinderAction ;
+#  outlet EBButton mRevealInFinderLibraryInSystemApplicationSupportButton $run self.revealSystemLibraryInFinderAction ;
+#--- Using System Library path
+#  property Bool usesSystemLibrary default yes ;
+#  outlet EBSwitch mUseLibraryInSystemApplicationSupportPathCheckBox $value self.usesSystemLibrary ;
+#--- User Libary Path
+  action revealUserLibraryInFinderAction ;
+  outlet EBButton mRevealInFinderLibraryInUserApplicationSupportButton $run self.revealUserLibraryInFinderAction ;
+#--- Using User Library path
+  property Bool usesUserLibrary default yes ;
+  outlet EBSwitch mUseLibraryInUserApplicationSupportPathCheckBox $value self.usesUserLibrary ;
+#--- Create User Library path
+#  action createUserLibraryAction ;
+#  outlet EBButton mCreateLibraryInSystemApplicationSupportButton $run self.createUserLibraryAction ;
+#---
+  outlet NSBox mUpdateSystemLibraryBox ;
+#--- Update System Library path at startup
+  property Bool checkForSystemLibraryAtStartUp default yes ;
+  outlet EBSwitch mCheckForSystemLibraryAtStartUpSwitch $value self.checkForSystemLibraryAtStartUp ;
+#--- Array of additionnal libraries
+  array CanariLibraryEntry additionnalLibraryArray ;
+  outlet EBTableView mAdditionnalLibraryArrayTableView $tableValue additionnalLibraryArrayController ;
+  arrayController additionnalLibraryArrayController {
+    allowsEmptySelection:no, allowsMultipleSelection:no
+  } self.additionnalLibraryArray {
+     column "path" EBTextObserverField $valueObserver self.mPath
+     column "uses" EBSwitch $value self.mUses
+     column "status" EBImageObserverView $image self.mStatusImage
+     column "reveal" EBButton $run self.revealLibraryInFinderAction
+  }
+#--- Add Entry Button
+  action addLibraryEntryAction ;
+  outlet EBButton mAddLibraryEntryButton $run self.addLibraryEntryAction ;
+#--- Remove Entry Button
+  outlet EBButton mRemoveLibraryEntryButton
+    $run additionnalLibraryArrayController.remove
+    $enabled additionnalLibraryArrayController.selectedArray.count > 0
+  ;
+#--- Check Library button
+  action checkLibraryAction ;
+  outlet EBButton mCheckLibraryAction $run self.checkLibraryAction ;
+#--- Check Library result text view
+  outlet NSTextView mCheckLibraryResultTextView ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class CanariLibraryEntry {
+  externDelegate CanariLibraryEntryDelegate ;
+
+  property String mPath default "Hello" ;
+  property Bool mUses default yes ;
+  transient NSImage mStatusImage dependsFrom self.mPath ;
+  
+  action revealLibraryInFinderAction ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

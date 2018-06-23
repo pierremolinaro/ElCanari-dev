@@ -1,0 +1,555 @@
+#----------------------------------------------------------------------------*
+#     D E V I C E    D O C U M E N T                                         *
+#----------------------------------------------------------------------------*
+
+classForEntity PinInstanceForDeviceEntity {
+}{
+  objectObserver symbolInstanceObserver observe .symbolInstance ;
+  transient symbolInstanceName : NSString observe :symbolInstanceObserver.SymbolInstanceForDeviceEntity.symbolInstanceName ;
+  transient symbolTypeName : NSString observe :symbolInstanceObserver.SymbolInstanceForDeviceEntity.symbolTypeName ;
+
+  objectObserver pinTypeObserver observe .pinType ;
+  transient pinInstanceName : NSString observe :pinTypeObserver.SymbolTypePinForDeviceEntity.pinTypeName ;
+  transient pinQualifiedName : NSString observe .pinInstanceName, .symbolInstanceName ;
+  transient pinIsNotConnected : boolean observe .connection ;
+  objectObserver connectionObserver observe .connection ;
+  transient boundPadFullName : NSString observe :connectionObserver.PinPadConnectionInDeviceEntity.padFullName ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity SymbolTextForDeviceEntity {
+  attribute relativeOrigin : EBPoint := EBZeroPoint storedBy .stringForRelativeOrigin ;
+}{
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity SymbolTypeForDeviceEntity {
+  attribute bezierPathToStroke : NSBezierPath := nil storedBy .bezierPathToStrokeAsString ;
+  attribute bezierPathToFill : NSBezierPath := nil storedBy .bezierPathToFillAsString ;
+}{
+  transient instanceCount : integer32 observe .instances ;
+  transient hasNoInstance : boolean observe .instances ;
+  action resetSymbolTypeVersionAction ;
+  action editSymbolTypeAction ;
+  action exportSymbolTypeAction ;
+  transient fileDataNotEmpty : boolean observe .symbolFileData ;
+  
+  setObserver textsObserver observe .texts ;
+  transient textArray : NSArray observe
+    :textsObserver.SymbolTextForDeviceEntity.relativeOrigin,
+    :textsObserver.SymbolTextForDeviceEntity.text
+  ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity SymbolTypePinForDeviceEntity {
+  attribute relativeOrigin : EBPoint := EBZeroPoint storedBy .stringForRelativeOrigin ;
+  attribute pinNumberDisplayOrigin : EBPoint := EBZeroPoint storedBy .stringForPinNumberDisplayOrigin ;
+  attribute pinNameDisplayOrigin : EBPoint := EBZeroPoint storedBy .stringForPinNameDisplayOrigin ;
+}{
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity PinPadConnectionInDeviceEntity {
+}{
+  objectObserver representantObserver observe .connectedPad ;
+  objectObserver pinObserver observe .connectedPin ;
+  transient padFullName : NSString observe :representantObserver.PackagePadRepresentantInDeviceEntity.padFullName ;
+  transient symbolInstanceName : NSString observe :pinObserver.PinInstanceForDeviceEntity.symbolInstanceName ;
+  transient pinInstanceName : NSString observe :pinObserver.PinInstanceForDeviceEntity.pinInstanceName ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity PackageMasterPadForDeviceEntity {
+  attribute padCenter : EBPoint := EBZeroPoint storedBy .stringForCenter ;
+  attribute padSize : EBSize := 118872:228600 storedBy .stringForPadSize ;
+}{
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity PackagePadRepresentantInDeviceEntity {
+}{
+  transient padFullName : NSString observe .padNumber, .zoneName ;
+  transient isNotConnected : boolean observe .connection ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity PackageSlavePadForDeviceEntity {
+  attribute padCenter : EBPoint := EBZeroPoint storedBy .stringForCenter ;
+  attribute padSize : EBSize := 118872:228600 storedBy .stringForPadSize ;
+}{
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity SymbolInstanceForDeviceEntity controlledBy PMSymbolDeviceGraphicArrayController {
+#--- The EBPoint, center of display
+  attribute origin : EBPoint := EBZeroPoint storedBy .stringForDisplayInDeviceOrigin ;
+}{
+  objectObserver symbolTypeObserver observe .symbolType ;
+#--- The Bezier Pathes, got from SymbolTypeInDeviceEntity linked instance
+  transient strokeBezierPathForSymbol : NSBezierPath observe :symbolTypeObserver.SymbolTypeForDeviceEntity.bezierPathToStroke ;
+  transient filledBezierPathForSymbol : NSBezierPath observe :symbolTypeObserver.SymbolTypeForDeviceEntity.bezierPathToFill ;
+  transient textArray : NSArray observe :symbolTypeObserver.SymbolTypeForDeviceEntity.textArray ;
+  setObserver pinInstancesObserver observe .pins ;
+  transient pinInstanceArray : NSArray observe
+    :symbolTypeObserver.SymbolTypeForDeviceEntity.textArray,
+    :pinInstancesObserver.PinInstanceForDeviceEntity.boundPadFullName
+  ;
+  transient symbolTypeName : NSString observe :symbolTypeObserver.SymbolTypeForDeviceEntity.symbolTypeName ;
+
+#--- Symbol Shape
+  shape symbolShape : PMSymbolInDeviceShape [
+    .origin,
+    .filledBezierPathForSymbol,
+    .strokeBezierPathForSymbol,
+    .textArray,
+    PMDevicePreferences.root.symbolColor,
+    PMDevicePreferences.root.symbolDrawingWidthMultipliedByTen,
+    .symbolInstanceName,
+    PMDevicePreferences.root.symbolNameFont,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen,
+    .pinInstanceArray,
+    PMDevicePreferences.root.pinNameFont
+  ] ;
+
+  translate .origin ;
+}
+#----------------------------------------------------------------------------*
+
+graphicArrayControllerClass PMSymbolDeviceGraphicArrayController forEntity SymbolInstanceForDeviceEntity {
+  inspectorForEntity SymbolInstanceForDeviceEntity ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity PackageInDeviceEntity controlledBy PMPackageDeviceGraphicArrayController {
+#--- The EBPoint, center of package display
+  attribute displayOriginInDevice : EBPoint := EBZeroPoint storedBy .originStringForDisplayInDeviceOrigin ;
+  attribute strokeBezierPathForLegend : NSBezierPath := nil storedBy .stringForStrokeBezierPathForLegend ;
+  attribute arrayOfFilledBezierPathForComponentSidePads : NSArray := nil storedBy .dataEncodedArrayOfBezierPathesToFillForComponentSidePads ;
+  attribute arrayOfFilledBezierPathForSolderSidePads : NSArray := nil storedBy .dataEncodedArrayOfBezierPathesToFillForSolderSidePads ;
+}{
+
+  transient padArray : NSArray observe .pads ;
+
+  shape packageShape : PMPackageInDeviceShapeNew [
+    .displayOriginInDevice,
+    .strokeBezierPathForLegend,
+    PMDevicePreferences.root.packageColor,
+    PMDevicePreferences.root.packageDrawingWidthMultipliedByTen,
+    .arrayOfFilledBezierPathForComponentSidePads,
+    PMDevicePreferences.root.componentSidePadColor,
+    .arrayOfFilledBezierPathForSolderSidePads,
+    PMDevicePreferences.root.solderSidePadColor,
+    .packageName,
+    PMDevicePreferences.root.packageNameFont,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen,
+    .padArray,
+    PMDevicePreferences.root.padNumberFont,
+    PMDevicePreferences.root.padNumberColor
+  ] ;
+
+  translate .displayOriginInDevice ;
+
+  action editPackageTypeAction ;
+  action exportPackageTypeAction ;  
+  action resetPackageTypeVersionAction ;
+  
+  transient fileDataNotEmpty : boolean observe .packageFileData ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicArrayControllerClass PMPackageDeviceGraphicArrayController forEntity PackageInDeviceEntity {
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity DocumentionInPDFEntity {
+}{
+  action showDocInPDFaction ;
+  action savePDFdocAs ;
+
+  transient pdfDataSizeString : NSString observe .pdfData ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity DeviceRootEntity {
+}{
+  transient signatureHexString : NSString observe .signature ;
+
+  transient objectParameterForSymbolDisplay : NSObject observe .displaysShadows ;
+
+  transient alwaysFalse : boolean ; # Always returns NO
+
+  transient hasImage : boolean observe .imageData ;
+ 
+#--- Error and warning message
+  setObserver pinInstancesObserver observe .pinInstances ;
+  setObserver symbolInstancesObserver observe .symbolInstances ;
+  setObserver pinPadConnectionsObserver observe .pinPadConnections ;
+  transient statusMessage : NSData observe
+    .prefixString, .descriptionString, .padsRepresentants,
+    :pinInstancesObserver.PinInstanceForDeviceEntity.pinQualifiedName,
+    :pinPadConnectionsObserver.PinPadConnectionInDeviceEntity.connectedPin,
+    :pinPadConnectionsObserver.PinPadConnectionInDeviceEntity.connectedPad,
+    :symbolInstancesObserver.SymbolInstanceForDeviceEntity.symbolInstanceName,
+
+    .packages, .symbolTypes
+  ;
+
+#--- Status
+  transient computedStatus : integer32 observe .statusMessage ;
+
+#--- Package display parameters
+  transient packageDisplayParameters : integer32 observe
+    .displaysPadNumbers,.displaysPackageLegend,
+    .displaysComponentSidePads, .displaysSolderSidePads ;
+
+#--- Items for add symbol from file library button
+  setObserver symbolTypesObserver observe .symbolTypes ;
+  transient itemsForAddSymbolFromImportedLibraryButton : NSArray observe
+    :symbolTypesObserver.SymbolTypeForDeviceEntity.symbolTypeName,
+    :pinPadConnectionsObserver.PinPadConnectionInDeviceEntity.padFullName
+  ;
+}
+
+#----------------------------------------------------------------------------*
+
+binaryDocument PMDeviceDocument implements <EBGraphicArrayControllerDelegationProtocol>  root DeviceRootEntity {
+#--- Selected Tab
+  outlet segmentedControl : PMSegmentedControl $selectedIndex root.selectedTab ;
+  outlet statusImageView : PMStatusImage $statusValue root.computedStatus $binaryDataForToolTip root.statusMessage ;
+
+#---------------------- Description Tab
+
+  outlet descriptionTextField : NSTextField $value root.descriptionString ;
+
+  action removeImageAction ;
+  outlet removeImageButton : NSButton $run .removeImageAction $enabled root.hasImage ;
+  
+  action pasteImageAction ;
+  outlet pasteImageButton : NSButton $run .pasteImageAction ;
+
+  action copyImageAction ;
+  outlet copyImageButton : NSButton $run .copyImageAction ;
+
+  outlet descriptionImageView : PMDeviceDroppableImageView $data root.imageData ;
+
+ controller pdfDocController : NSArrayController DocumentionInPDFEntity
+    $contentSet root.pdfDocumentations {NSDeletesObjectsOnRemove:yes};
+
+  outlet pdfDocTableView : PMDevicePDFDroppableTableView $tableValue .pdfDocController {
+    NSTableColumn "name" NSTextFieldCell $value *.pdfName ;
+  } ;
+
+  outlet showDocinPDFButton : NSButton
+    $enabled .pdfDocController.canRemove
+    $target .pdfDocController.selection.showDocInPDFaction
+  ;
+
+  outlet savePDFDocAsButton : NSButton
+    $enabled .pdfDocController.canRemove
+    $target .pdfDocController.selection.savePDFdocAs
+  ;
+
+  outlet pdfDataSizeTextField : NSTextField
+    $value .pdfDocController.selection.pdfDataSizeString
+  ;
+
+  outlet removePDFDocButton : NSButton $runIfEnabled .pdfDocController.remove ;
+
+#------------------------------------------------------------------------------------------- Package Tab
+#--- Matrix for Package Inspector
+  outlet packageInspectorSegmentedControl : NSSegmentedControl ;
+  outlet packageInspectorViewOutlet : NSView ;
+
+#--- Package graphics
+  controller packageGraphicsController : PMPackageDeviceGraphicArrayController
+    $userIntegerParameterForDisplay root.packageDisplayParameters
+    $contentSet root.packages {NSDeletesObjectsOnRemove:yes} forView .packageView ;
+
+#--- Add Package
+  action addPackageAction ;
+  outlet addPackageButton : NSButton $run .addPackageAction ;
+
+#--- Grid, Zoom and Flip Inspector
+  outlet packageGridZoomFlipInspectorView : NSView ;
+  controller packageMeasurementController : EBMeasurementController
+   $measurementUnitFactor root.packageMeasurementUnitsFactor
+   $valueInEBUnit root.packageGrid
+  ;
+  outlet packageGridStylePopUpButton : NSPopUpButton $selectedIndex root.packageGridStyle;
+  outlet packageGridStepPopUpButton : NSPopUpButton $selectedTag root.packageGridFactor;
+  outlet packageGridTextField : NSTextField $value .packageMeasurementController.valueInUnitFactor ;
+  outlet packageMeasurementUnitsFactorPopUpButton : NSPopUpButton $selectedTag root.packageMeasurementUnitsFactor ;
+
+  outlet packageHorizontalFlipButton : NSButton $value root.packageHorizontalFlip;
+  outlet packageVerticalFlipButton : NSButton $value root.packageVerticalFlip;
+
+#--- Display Inspector
+  outlet packageDisplayInspectorView : NSView ;
+
+  outlet padNumberColorWell : NSColorWell $value PMDevicePreferences.root.padNumberColor ;
+  outlet displaysPadNumbersCheckbox : NSButton $value root.displaysPadNumbers ;
+
+  outlet packageLegendColorWell : NSColorWell $value PMDevicePreferences.root.packageColor ;
+  outlet displaysLegendCheckbox : NSButton $value root.displaysPackageLegend ;
+
+  outlet componentSidePadColorWell : NSColorWell $value PMDevicePreferences.root.componentSidePadColor ;
+  outlet displaysComponentSidePadCheckbox : NSButton $value root.displaysComponentSidePads ;
+
+  outlet solderSidePadColorWell : NSColorWell $value PMDevicePreferences.root.solderSidePadColor ;
+  outlet displaysSolderSidePadCheckbox : NSButton $value root.displaysSolderSidePads ;
+
+#--- Package View
+  outlet packageView : EBView
+    $backgroundColor PMDevicePreferences.root.backgroundColor
+    $gridStyle root.packageGridStyle
+    $gridFactor  root.packageGridFactor
+    $placementGrid root.packageGrid
+    $displayedGridStep root.packageGrid
+    $zoom root.packageZoom
+    $verticalFlip root.packageVerticalFlip
+    $horizontalFlip root.packageHorizontalFlip
+    $measurementUnitsFactor root.packageMeasurementUnitsFactor
+    $shouldAntialias PMGeneralPreferences.root.antiAliasing
+    $gridDotColor PMDevicePreferences.root.gridDotColor
+    $gridLineColor PMDevicePreferences.root.gridLineColor
+  ;
+  outlet packageScrollView : NSScrollView (PM_scroll_view_with_placards) ;
+
+
+#------------------------------------------------------------ Symbol Tab
+#--- Matrix for Symbol Inspector
+  outlet symbolInDeviceInspectorSegmentedControl : NSSegmentedControl ;
+  outlet symbolInspectorViewOutlet : NSView ;
+
+#--- Symbols graphics
+  controller symbolGraphicsController : PMSymbolDeviceGraphicArrayController
+    $contentSet root.symbolInstances {NSDeletesObjectsOnRemove:yes}
+    $userObjectParameterForDisplay root.objectParameterForSymbolDisplay
+  forView .symbolView ;
+
+#--- Add Symbol
+  action addSymbolFromFileLibraryAction ;
+  outlet addSymbolFromFileLibraryButton : NSButton
+    $run .addSymbolFromFileLibraryAction
+  ;
+
+  outlet addSymbolFromImportedLibraryButton : PMPullDownButtonWithItems
+   $menuItems root.itemsForAddSymbolFromImportedLibraryButton
+ ;
+
+#--- Symbol Inspector
+  outlet symbolInstanceInspectorView : NSView ;
+
+  outlet symbolInstanceName : NSTextField $value .symbolGraphicsController.selectedSymbolInstanceForDeviceEntity.symbolInstanceName ;
+
+  outlet symbolTypeTextField : NSTextField $value .symbolGraphicsController.selectedSymbolInstanceForDeviceEntity.symbolTypeName ;
+
+#--- Grid, Zoom and Flip Inspector
+  outlet symbolGridZoomFlipInspectorView : NSView ;
+  controller symbolMeasurementController : EBMeasurementController
+   $measurementUnitFactor root.symbolMeasurementUnitsFactor
+   $valueInEBUnit root.symbolGrid
+  ;
+  outlet symbolGridStylePopUpButton : NSPopUpButton $selectedIndex root.symbolGridStyle;
+  outlet symbolGridStepPopUpButton : NSPopUpButton $selectedTag root.symbolGridFactor;
+  outlet symbolGridTextField : NSTextField $value .symbolMeasurementController.valueInUnitFactor ;
+  outlet symbolMeasurementUnitsFactorPopUpButton : NSPopUpButton $selectedTag root.symbolMeasurementUnitsFactor ;
+
+  outlet symbolHorizontalFlipButton : NSButton $value root.symbolHorizontalFlip;
+  outlet symbolVerticalFlipButton : NSButton $value root.symbolVerticalFlip;
+
+#--- Symbol View
+  outlet defaultSymbolInspectorView : NSView ;
+  outlet symbolView : EBView
+    $backgroundColor PMDevicePreferences.root.backgroundColor
+    $gridStyle root.symbolGridStyle
+    $gridFactor  root.symbolGridFactor
+    $placementGrid root.symbolGrid
+    $displayedGridStep root.symbolGrid
+    $zoom root.symbolZoom
+    $verticalFlip root.symbolVerticalFlip
+    $horizontalFlip root.symbolHorizontalFlip
+    $measurementUnitsFactor root.symbolMeasurementUnitsFactor
+    $shouldAntialias PMGeneralPreferences.root.antiAliasing
+    $gridDotColor PMDevicePreferences.root.gridDotColor
+    $gridLineColor PMDevicePreferences.root.gridLineColor
+    inspectorView defaultSymbolInspectorView ;
+    inspector SymbolInstanceForDeviceEntity -> .symbolInstanceInspectorView ;
+  ;
+  outlet symbolScrollView : NSScrollView (PM_scroll_view_with_placards) ;
+
+#---------------------------------------------------------------------- Assignment Tab
+  outlet assignmentSplitView : NSSplitView ;
+
+  controller unaffectedSymbolPinController : NSArrayController PinInstanceForDeviceEntity filter pinIsNotConnected
+    $contentSet root.pinInstances ;
+
+  outlet unaffectedSymbolPinTableView : NSTableView $tableValue .unaffectedSymbolPinController {
+    NSTableColumn "symbol" NSTextFieldCell $value *.symbolInstanceName ;
+    NSTableColumn "pin" NSTextFieldCell $value *.pinInstanceName ;
+  } ;
+  
+  controller unassignedPadNumberController : NSArrayController PackagePadRepresentantInDeviceEntity filter isNotConnected
+    $contentSet root.padsRepresentants ;
+
+  outlet unassignedPadNumberTableView : NSTableView $tableValue .unassignedPadNumberController {
+    NSTableColumn "pad" NSTextFieldCell $value *.padFullName ;
+  } ;
+
+  controller pinPadConnectionController : NSArrayController PinPadConnectionInDeviceEntity
+    $contentSet root.pinPadConnections ;
+
+  outlet assignmentSymbolPinPadNumberTableView : NSTableView $tableValue .pinPadConnectionController {
+    NSTableColumn "pad" NSTextFieldCell $value *.padFullName ;
+    NSTableColumn "symbol" NSTextFieldCell $value *.symbolInstanceName ;
+    NSTableColumn "pin" NSTextFieldCell $value *.pinInstanceName ;
+  } ;
+
+  action bindAction ;
+  outlet bindButton : NSButton
+    $run .bindAction
+    $enabled .unassignedPadNumberController.canRemove & .unaffectedSymbolPinController.canRemove
+  ;
+
+  action ncAction ;
+  outlet ncButton : NSButton
+    $run .ncAction
+    $enabled .unassignedPadNumberController.canRemove
+  ;
+
+  action unbindAction ;
+  outlet unbindButton : NSButton
+    $run .unbindAction
+    $enabled .pinPadConnectionController.canRemove
+  ;
+
+  action deleteAllBindingsAction ;
+  outlet deleteAllBindingsButton : NSButton
+    $run .deleteAllBindingsAction
+    $enabled .pinPadConnectionController.canRemove
+  ;
+
+#----------------------------------------------------------------------- Library Tab
+
+  outlet libraryTabView : NSTabView $selectedIndex root.libraryTab ;
+
+  action resetSymbolsAndPackagesVersionAction ;
+  outlet resetSymbolsAndPackagesVersionButton : NSButton $run .resetSymbolsAndPackagesVersionAction ;
+
+  action updateSymbolsAndPackagesAction ;
+  outlet updateSymbolsAndPackagesButton : NSButton $run .updateSymbolsAndPackagesAction ;
+
+  outlet updateSymbolsAndPackagesTableView : NSTableView ;
+  outlet updateSymbolsAndPackagesPanel : NSPanel ;
+  outlet errorMessageInUpdateSymbolsAndPackagesPanelTextField : NSTextField ;
+  action showUpdateSearchErrorsAction ;
+  outlet showUpdateSearchErrorsButton : NSButton $run .showUpdateSearchErrorsAction ;
+
+  outlet updateErrorsForSymbolsAndPackagesTableView : NSTableView ;
+  outlet updateErrorsForSymbolsAndPackagesPanel : NSPanel ;
+
+#------------ Imported Symbol Library
+  controller symbolTypesController : NSArrayController SymbolTypeForDeviceEntity
+    $contentSet root.symbolTypes {NSDeletesObjectsOnRemove:yes} # Used by 'deleteSymbolInLbrary' button
+  ;
+
+  outlet importedSymbolLibraryTableView : NSTableView $tableValue .symbolTypesController {
+    NSTableColumn "count" NSTextFieldCell $value *.instanceCount ;
+    NSTableColumn "symbol" NSTextFieldCell $value *.symbolTypeName ;
+    NSTableColumn "version" NSTextFieldCell $value *.versionNumber ;
+  } ;
+
+  outlet deleteSymbolInLbrary : NSButton
+    $run .symbolTypesController.remove
+    $enabled .symbolTypesController.canRemove & .symbolTypesController.selection.hasNoInstance
+  ;
+
+  outlet editSymbolInLibrary : NSButton
+    $target .symbolTypesController.selection.editSymbolTypeAction
+    $enabled .symbolTypesController.canRemove
+  ;
+
+  action updateSymbolTypeAction ;
+  outlet updateSymbolInLibrary : NSButton
+    $run .updateSymbolTypeAction
+    $enabled .symbolTypesController.canRemove
+  ;
+
+  outlet exportSymbolButton : NSButton
+    $target .symbolTypesController.selection.exportSymbolTypeAction
+    $enabled .symbolTypesController.canRemove & .symbolTypesController.selection.fileDataNotEmpty
+  ;
+
+
+  outlet resetSymbolVersionInLibrary : NSButton
+    $target .symbolTypesController.selection.resetSymbolTypeVersionAction
+    $enabled .symbolTypesController.canRemove
+  ;
+
+#------------ Imported Package Library
+  controller importedPackageLibraryController : NSArrayController PackageInDeviceEntity
+    $contentSet root.packages {NSDeletesObjectsOnRemove:yes} ;
+
+  outlet importedPackageLibraryTableView : NSTableView $tableValue .importedPackageLibraryController {
+    NSTableColumn "package" NSTextFieldCell $value *.packageName ;
+    NSTableColumn "version" NSTextFieldCell $value *.versionNumber ;
+  } ;
+
+  outlet editPackageInLibrary : NSButton
+    $target .importedPackageLibraryController.selection.editPackageTypeAction
+    $enabled .importedPackageLibraryController.canRemove
+  ;
+
+  outlet exportPackageButton : NSButton
+    $target .importedPackageLibraryController.selection.exportPackageTypeAction
+    $enabled .importedPackageLibraryController.canRemove & .importedPackageLibraryController.selection.fileDataNotEmpty
+  ;
+
+  action updatePackageTypeAction ;
+  outlet updatePackageInLbrary : NSButton
+    $run .updatePackageTypeAction
+    $enabled .importedPackageLibraryController.canRemove
+  ;
+
+  outlet resetPackageVersionInLbrary : NSButton
+    $target .importedPackageLibraryController.selection.resetPackageTypeVersionAction
+    $enabled .importedPackageLibraryController.canRemove
+  ;
+
+#--------------------------------------------------------------------------------- Infos Tab
+#--- Comments
+  outlet commentTextView : NSTextView $value root.comments {NSContinuouslyUpdatesValue:yes} ;
+
+#--- Signature
+  outlet deviceSignatureTextField : NSTextField $value root.signatureHexString ;
+
+#--- Version
+  outlet versionTextField : NSTextField $value root.versionNumber ;
+
+#--- Reset
+  action resetVersionAndSignatureAction ;
+  outlet resetVersionAndSignatureButton : NSButton $run .resetVersionAndSignatureAction ;
+
+#--- Status
+  outlet statusTextView : NSTextView $data root.statusMessage $editable root.alwaysFalse ;
+
+#--- Prefix
+  outlet prefixTextField : NSTextField $value root.prefixString ;
+}
+
+#----------------------------------------------------------------------------*

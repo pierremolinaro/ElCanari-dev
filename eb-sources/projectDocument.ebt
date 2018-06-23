@@ -1,0 +1,2275 @@
+#----------------------------------------------------------------------------*
+#     P R O J E C T    D O C U M E N T                                       *
+#----------------------------------------------------------------------------*
+
+classForEntity ProjectRootEntity {
+}{
+  transient moreThanOneNetClass : boolean observe .netClasses ;
+  transient noAttachedArtworkFile : boolean observe .artworkFileName ;
+  transient alwaysFalse : boolean ;
+  transient moreThanOneSheet : boolean observe .sheets ;
+
+  objectObserver selectedSheetObserver observe .selectedSheet ;
+  transient sheetCanBeMovedDown : boolean observe :selectedSheetObserver.SheetEntity.sheetIndex ;
+  transient sheetCanBeMovedUp : boolean observe :selectedSheetObserver.SheetEntity.sheetIndex, .sheets ;
+
+  setObserver sheetObserver observe .sheets ;
+  transient boardUnsignedParameters : integer32 observe
+    .showComponentSidePadInBoard, .showSolderSidePadInBoard,
+    .showPadNumberInBoard, .showComponentSideRestrictRectangles,
+    .showSolderSideRestrictRectangles, .showComponentSideLegend, 
+    .showComponentSideLayout, .showSolderSideLayout, .showSolderSideLegend,
+    .boardLineWidth, .showBoardLimits, .boardClearance,
+    PMBoardPreferences.root.boardLimitsColor, .showBoardClearance,
+    PMBoardPreferences.root.errorBackgroundColor, PMBoardPreferences.root.warningBackgroundColor,
+    PMBoardPreferences.root.drawErrorBackground, PMBoardPreferences.root.drawWarningBackground
+  ;
+
+  setObserver symbolObserver observe .symbolsInProject ;
+
+  transient hasSymbolsToInsertInSchematics : boolean observe :symbolObserver.SymbolInProjectEntity.sheet ; 
+
+  transient sheetArray : NSArray observe
+    :sheetObserver.SheetEntity.sheetErrorCount,
+    :sheetObserver.SheetEntity.sheetWarningCount,
+    :sheetObserver.SheetEntity.sheetTitleWithIndex
+  ;
+
+  setObserver componentObserver observe .components ;
+  transient componentArray : NSArray observe
+    :componentObserver.ComponentInProjectEntity.projectForBoardGraphics,
+    :componentObserver.ComponentInProjectEntity.componentName
+  ;
+
+  transient componentSelectedPackageNameArray : NSArray observe
+    :componentObserver.ComponentInProjectEntity.selectedPackageName,
+    :componentObserver.ComponentInProjectEntity.isNotPlacedOnBoard
+  ;
+
+  transient stringForRenamingNetIsValid : boolean observe .stringForRenamingNet ;
+  transient buttonTitleForRenamingNet : NSString observe .stringForRenamingNet ;
+  transient errorMessageForRenamingNet : NSString observe .stringForRenamingNet ;
+
+  setObserver boardGraphicsObserver observe .boardGraphics ;
+
+  setObserver netObserver observe .nets ;
+  transient onePinNetCount : integer32 observe
+    :netObserver.NetEntity.connectedPinsCount
+  ;
+
+  transient netNameArray : NSArray observe :netObserver.NetEntity.netName ;
+
+  transient availableDevicesMenuItems : NSArray observe .devicesInLibrary ;
+ 
+  transient numberOfPackageToInsertTitle : NSString observe :componentObserver.ComponentInProjectEntity.isNotPlacedOnBoard ;
+
+  transient numberOfSymbolsToInsertTitle : NSString observe :symbolObserver.SymbolInProjectEntity.isNotPlacedOnSchematics ;
+
+  transient boardStatusDictionary : NSDictionary observe
+    :componentObserver.ComponentInProjectEntity.triggerForErrorAndWarningsInBoard,
+    :boardGraphicsObserver.TrackInBoardEntity.triggerForErrorAndWarningsInBoard,
+    :symbolObserver.SymbolInProjectEntity.triggerForErrorAndWarningsInBoard ;
+
+  transient errorCountInBoard : integer32 observe .boardStatusDictionary ; 
+  transient errorCountInBoardString : NSString observe .errorCountInBoard ; 
+  transient errorMessageInBoardString : NSString observe .errorCountInBoard ; 
+
+  transient warningCountInBoard : integer32 observe .boardStatusDictionary ; 
+  transient warningCountInBoardString : NSString observe .warningCountInBoard ;
+  transient warningMessageInBoardString : NSString observe .warningCountInBoard ;
+
+  transient schematicsStatus : integer32 observe .sheetArray, :symbolObserver.SymbolInProjectEntity.isNotPlacedOnSchematics, .onePinNetCount ;
+  transient schematicsStatusToolTipString : NSString observe .schematicsStatus ;
+
+  transient boardStatus : integer32 observe
+    .warningCountInBoard,
+    .errorCountInBoard,
+    :componentObserver.ComponentInProjectEntity.isNotPlacedOnBoard
+  ;
+
+  transient boardStatusToolTipString : NSString observe .boardStatus ;
+
+  transient designRuleCheckStatusCode : integer32 observe .boardStatus, .artworkFileName, .designRuleCheckStatus ;
+
+  transient designRuleCheckToolTipString : NSString observe .designRuleCheckStatusCode ;
+
+  transient segmentCountString : NSString observe :boardGraphicsObserver.TrackInBoardEntity.p1 ;
+ 
+  transient traceLength : integer32 observe :boardGraphicsObserver.TrackInBoardEntity.p1, :boardGraphicsObserver.TrackInBoardEntity.p2 ;
+ 
+  transient viaCountString : NSString observe :boardGraphicsObserver.ConnectorInBoardEntity.isVia ;
+
+  transient horizontalDensityDictionary : NSDictionary observe .showHorizontalDensity, .boardStatusDictionary ;
+
+  transient verticalDensityDictionary : NSDictionary observe .showVerticalDensity, .boardStatusDictionary ;
+
+  transient rastnest : NSBezierPath observe
+    .showRastnest,
+    .boardStatusDictionary,
+    .selectedNetForShowingRastnest,
+    :boardGraphicsObserver.PassingPointInBoardEntity.location,
+    :boardGraphicsObserver.PassingPointInBoardEntity.net
+  ;
+
+  transient componentCountString : NSString observe .components ;
+
+  transient netCountString : NSString observe .nets ;
+
+  transient schematicsSheetNumberingString : NSString observe
+    :selectedSheetObserver.SheetEntity.sheetIndex,
+    .sheets
+  ;
+  
+  transient paperCustomSizeTextFieldEnabled : boolean observe .schematicsPaperSizeChoice ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity PinForSymbolTypeInProjectEntity {
+  attribute origin : EBPoint := EBZeroPoint storedBy .stringForOrigin ;
+  attribute pinNumberDisplayOrigin : EBPoint := EBZeroPoint storedBy .stringForPinNumberDisplayOrigin ;
+  attribute pinNameDisplayOrigin : EBPoint := EBZeroPoint storedBy .stringForPinNameDisplayOrigin ;
+}{
+
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity TextForSymbolInProjectEntity {
+  attribute origin : EBPoint := EBZeroPoint storedBy .stringForOrigin ;
+}{
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity SymbolTypeInProjectEntity {
+  attribute strokeBezierPath : NSBezierPath := nil storedBy .stringForStrokeBezierPath ;
+  attribute filledBezierPath : NSBezierPath := nil storedBy .stringForFilledBezierPath ;
+}{
+  transient instanceCount : integer32 observe .instances ;
+  transient hasNoInstance : boolean observe .instances ;
+
+  setObserver textsObserver observe .texts ;
+
+  transient textArray : NSArray observe
+    :textsObserver.TextForSymbolInProjectEntity.text
+  ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity SymbolInstanceInProjectEntity {
+}{
+  objectObserver symbolTypeObserver observe .symbolType ;
+
+#--- Symbol Type Name
+  transient symbolTypeName : NSString observe :symbolTypeObserver.SymbolTypeInProjectEntity.symbolTypeName ;
+  transient strokeBezierPathForSymbol : NSBezierPath observe :symbolTypeObserver.SymbolTypeInProjectEntity.strokeBezierPath ;
+  transient filledBezierPathForSymbol : NSBezierPath observe :symbolTypeObserver.SymbolTypeInProjectEntity.filledBezierPath ;
+  transient textArray : NSArray observe :symbolTypeObserver.SymbolTypeInProjectEntity.textArray ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity PinPadDeviceInProjectEntity {
+}{
+  objectObserver pinForSymbolObserver observe .symbolPin ;
+  transient pinName : NSString observe :pinForSymbolObserver.PinForSymbolTypeInProjectEntity.pinName ;
+
+  objectObserver symbolInstanceObserver observe .symbol ;
+  transient symbolName : NSString observe :symbolInstanceObserver.SymbolInstanceInProjectEntity.symbolInstanceName ;
+
+  objectObserver representantObserver observe .padRepresentant ;
+  transient padQualifiedName : NSString observe :representantObserver.PadRepresentantInProjectEntity.padQualifiedName ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity PadRepresentantInProjectEntity {
+}{
+  transient padQualifiedName : NSString observe .zoneName, .padNumber ;
+
+  objectObserver pinPadDeviceObserver observe .pin ;
+  transient pinName : NSString observe :pinPadDeviceObserver.PinPadDeviceInProjectEntity.pinName ;
+  transient symbolName : NSString observe :pinPadDeviceObserver.PinPadDeviceInProjectEntity.symbolName ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity MasterPadInProjectEntity {
+  attribute padCenter : EBPoint := EBZeroPoint storedBy .stringForCenter ;
+  attribute padSize : EBSize := 118872:228600 storedBy .stringForPadSize ;
+}{
+  
+  objectObserver padRepresentantObserver observe .representant ;
+  transient padQualifiedName : NSString observe
+   :padRepresentantObserver.PadRepresentantInProjectEntity.padQualifiedName ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity SlavePadInProjectEntity {
+  attribute padCenter : EBPoint := EBZeroPoint storedBy .stringForCenter ;
+  attribute padSize : EBSize := 118872:228600 storedBy .stringForPadSize ;
+}{
+  objectObserver masterPadObserver observe .masterPad ;
+  transient padQualifiedName : NSString observe :masterPadObserver.MasterPadInProjectEntity.padQualifiedName ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity PackageTypeInProjectEntity {
+  attribute strokeBezierPath : NSBezierPath := nil storedBy .stringForStrokeBezierPath ;
+  attribute arrayOfFilledBezierPathForComponentSidePads : NSArray := nil storedBy .dataForArrayOfFilledBezierPathForComponentSidePads ;
+  attribute arrayOfFilledBezierPathForSolderSidePads : NSArray := nil storedBy .dataForArrayOfFilledBezierPathForSolderSidePads ;
+  attribute relativeOrigin : EBPoint := EBZeroPoint storedBy .stringForRelativeOrigin ;
+}{
+  setObserver padObserver observe .pads ;
+
+  transient firstPadLocation : EBPoint observe :padObserver.MasterPadInProjectEntity.padCenter ;
+
+  transient padArray : NSArray observe .firstPadLocation,
+   :padObserver.MasterPadInProjectEntity.padQualifiedName ;
+
+#--- The array of bezier paths that are filled for drawing component side pads
+  transient filledBezierPathForComponentSidePadsArray : NSArray observe .pads ;
+#--- The array of bezier paths that are filled for drawing solder side pads
+  transient filledBezierPathForSolderSidePadsArray : NSArray observe .pads ;
+
+  action editPackageTypeAction ;
+  action resetPackageTypeVersionAction ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity NCConnectionPointEntity {
+}{
+  objectObserver pinPadObserver observe .pinInProject ;
+
+  transient absoluteNSLocation : NSPoint observe :pinPadObserver.PinInProjectPadInBoardEntity.pinInSchematicsAbsoluteNSLocation ;
+  transient symbolDirection : integer32 observe :pinPadObserver.PinInProjectPadInBoardEntity.symbolDirection ;
+  
+  transient absoluteDirection : integer32 observe .symbolDirection , .relativeDirection ;
+
+  shape ncShape : PMNCShape [
+   .absoluteNSLocation,
+   .absoluteDirection,
+   PMSchematicPreferences.root.connectionColor,
+   PMSchematicPreferences.root.symbolDrawingWidthMultipliedByTen,
+   PMGeneralPreferences.root.selectionHiliteColor,
+   PMGeneralPreferences.root.hiliteWidthMultipliedByTen,
+   PMSymbolPreferences.root.pinNameFont
+  ] ;
+
+  geometry .absoluteNSLocation ;
+
+  rotate .relativeDirection := rotatedDirection (.relativeDirection) ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity PinInProjectPadInBoardEntity {
+  attribute padLocation : EBPoint := EBZeroPoint storedBy .stringForPadLocation ;
+}{
+  objectObserver pointObserver observe .pointInSheet ;
+  transient isConnected : boolean observe :pointObserver.PointInSheetEntity.connectionKind ;
+
+  objectObserver netObserver observe .net ;
+  objectObserver symbolInProjectObserver observe .symbol ;
+
+  transient geometricNSCenterOfSymbol : NSPoint observe :symbolInProjectObserver.SymbolInProjectEntity.geometricCenterOfSymbol ;
+  transient symbolDirection : integer32 observe :symbolInProjectObserver.SymbolInProjectEntity.direction ;
+
+  objectObserver pinObserver observe .pinInProject ;
+
+  transient pinName : NSString observe :pinObserver.PinPadDeviceInProjectEntity.pinName ;
+  transient padString : NSString observe :pinObserver.PinPadDeviceInProjectEntity.padQualifiedName ;
+
+  transient fullPinNameForSchematics : NSString observe
+    .pinName,
+    :symbolInProjectObserver.SymbolInProjectEntity.symbolInstanceName,
+    :symbolInProjectObserver.SymbolInProjectEntity.componentName
+  ;
+
+  transient netName : NSString observe :netObserver.NetEntity.netName ;
+
+  transient pinInSchematicsAbsoluteNSLocation : NSPoint observe .geometricNSCenterOfSymbol, .symbolDirection ;
+
+  action pinDidMoveAction observe .geometricNSCenterOfSymbol, .symbolDirection ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity SymbolInProjectEntity {
+  attribute originForComponentValueString : EBPoint := EBZeroPoint storedBy .stringForOriginForComponentValueString ;
+  attribute originForComponentNameString : EBPoint := EBZeroPoint storedBy .stringForOriginForComponentNameString ;
+  attribute geometricCenterOfSymbol : EBPoint := EBZeroPoint storedBy .stringForGeometricCenterOfSymbol ;
+} {
+  objectObserver componentObserver observe .component ;
+  objectObserver symbolInstanceObserver observe .symbolInstanceInDevice ;
+
+  transient componentName : NSString observe :componentObserver.ComponentInProjectEntity.componentName ;
+  transient componentValue : NSString observe :componentObserver.ComponentInProjectEntity.componentValue ;
+
+  transient strokeBezierPathForSymbol : NSBezierPath observe :symbolInstanceObserver.SymbolInstanceInProjectEntity.strokeBezierPathForSymbol ;
+  transient filledBezierPathForSymbol : NSBezierPath observe :symbolInstanceObserver.SymbolInstanceInProjectEntity.filledBezierPathForSymbol ;
+  transient textArray : NSArray observe :symbolInstanceObserver.SymbolInstanceInProjectEntity.textArray ;
+
+  transient geometricNSCenterOfSymbol : NSPoint observe .geometricCenterOfSymbol ;
+
+  transient symbolInstanceName : NSString observe :symbolInstanceObserver.SymbolInstanceInProjectEntity.symbolInstanceName ;
+  transient symbolTypeName : NSString observe :symbolInstanceObserver.SymbolInstanceInProjectEntity.symbolTypeName ;
+  
+  transient nameForUnplacedSymbolTableView : NSString observe .componentName, .symbolInstanceName, .componentValue ;
+
+  transient componentNameWithSymbolName : NSString observe .componentName, .symbolInstanceName ;
+
+  transient isNotPlacedOnSchematics : boolean observe .sheet ;
+  transient isNotPlacedOnBoard : boolean observe :componentObserver.ComponentInProjectEntity.isNotPlacedOnBoard ;
+
+#--- The pin array
+  setObserver pinObserver observe .pins ;
+  transient pinInstanceArray : NSArray observe
+   :pinObserver.PinInProjectPadInBoardEntity.pinName,
+   :pinObserver.PinInProjectPadInBoardEntity.isConnected,
+   :pinObserver.PinInProjectPadInBoardEntity.padString ;
+
+  transient triggerForErrorAndWarningsInBoard : boolean observe
+   :pinObserver.PinInProjectPadInBoardEntity.net
+  ;
+
+  shape symbolShape : PMSymbolInSchematicsShape [
+    .geometricCenterOfSymbol,
+    .direction,
+    PMSchematicPreferences.root.symbolColor,
+    .isNotPlacedOnBoard,
+    PMSchematicPreferences.root.symbolColorForUnplacedComponents,
+    .textArray,
+    .strokeBezierPathForSymbol,
+    PMSchematicPreferences.root.symbolDrawingWidthMultipliedByTen,
+    .filledBezierPathForSymbol,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen,
+    .pinInstanceArray,
+    PMSchematicPreferences.root.pinNameColor,
+    PMSchematicPreferences.root.pinNameFont,
+    PMSchematicPreferences.root.pinNumberColor,
+    PMSchematicPreferences.root.pinNumberFont
+  ] ;
+
+  shape valueShape : PMComponentValueInSchematicsShape [
+    .componentValue,
+    .componentValueIsVisible,
+    PMSymbolPreferences.root.pinNameFont,
+    .originForComponentValueString,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen
+  ] ;
+
+  shape nameShape : PMComponentNameInSchematicsShape [
+    .componentNameWithSymbolName,
+    PMSymbolPreferences.root.pinNameFont,
+    .originForComponentNameString,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen
+  ] ;
+
+  translate .geometricCenterOfSymbol ;
+  translate .originForComponentValueString ;
+  translate .originForComponentNameString ;
+
+  onMouseDraggedForCreation .geometricCenterOfSymbol := mouseDraggedEBLocationInGrid ;
+  onMouseDraggedForCreation .direction := 0 ;
+  onMouseDraggedForCreation .originForComponentValueString :=
+    offsetEBPoint (mouseDraggedEBLocationInGrid, EBMakeSize (228600, 228600)) ;
+  onMouseDraggedForCreation .originForComponentNameString :=
+    offsetEBPoint (mouseDraggedEBLocationInGrid, EBMakeSize (457200, 457200)) ;
+
+  knobIf .componentValueIsVisible : .originForComponentValueString style circularKnob cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .originForComponentValueString := mouseDraggedEBLocationInGrid ;
+  }
+
+  knob .originForComponentNameString style circularKnob cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .originForComponentNameString := mouseDraggedEBLocationInGrid ;
+  }
+
+  knob .geometricCenterOfSymbol cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .geometricCenterOfSymbol := mouseDraggedEBLocationInGrid ;
+    .originForComponentValueString := offsetEBPoint (.originForComponentValueString, mouseDraggedEBDelta) ;
+    .originForComponentNameString := offsetEBPoint (.originForComponentNameString, mouseDraggedEBDelta) ;
+  }
+
+  geometry .geometricCenterOfSymbol ;
+
+  rotate .originForComponentValueString := rotatedEBPoint (.originForComponentValueString) ;
+  rotate .originForComponentNameString := rotatedEBPoint (.originForComponentNameString) ;
+  rotate .geometricCenterOfSymbol := rotatedEBPoint (.geometricCenterOfSymbol) ;
+  rotate .direction := rotatedDirection (.direction) ;
+
+  action componentNameOrComponentValueDidChangeAction observe .componentName, .componentValue ;
+
+  transient triggerSchematicsStatus : boolean observe
+   .geometricCenterOfSymbol,
+   .direction,
+   :pinObserver.PinInProjectPadInBoardEntity.ncPoint
+  ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity NetEntity {
+}{
+  objectObserver netClassObserver observe .netClass ;
+  transient netClassTrackWidth : integer32 observe :netClassObserver.NetClassEntity.netClassTrackWidth ;
+  transient netClassName : NSString observe :netClassObserver.NetClassEntity.netClassName ;
+  transient netClassColor : NSColor observe :netClassObserver.NetClassEntity.netClassColor ;
+  transient netClassViaHoleDiameter : integer32 observe :netClassObserver.NetClassEntity.netClassViaHoleDiameter ;
+  transient netClassViaPadDiameter : integer32 observe :netClassObserver.NetClassEntity.netClassViaPadDiameter ;
+
+  setObserver pinObserver observe .padsInBoard ;
+  transient connectedPinsCountString : NSString observe :pinObserver.PinInProjectPadInBoardEntity.fullPinNameForSchematics ;
+  transient connectedPinsCount : integer32 observe :pinObserver.PinInProjectPadInBoardEntity.fullPinNameForSchematics ;
+}
+
+#----------------------------------------------------------------------------*
+
+outletClass PMSchematicsView : EBView {
+  binding $schematicsTitle : NSString ;
+  binding $schematicsSheetTitle : NSString ;
+  binding $schematicsSheetNumber : NSString ;
+  binding $schematicsVersion : NSString ;
+  binding $schematicsDate : NSDate ;
+  binding $schematicsStatusDictionary : NSDictionary ;
+}
+
+#----------------------------------------------------------------------------*
+
+outletClass PMBoardView : EBView {
+  binding $showBoardLimits : boolean ;
+  binding $showBoardClearance : boolean ;
+  binding $boardLineWidth : integer32 ;
+  binding $boardWidth : integer32 ;
+  binding $boardHeight : integer32 ;
+  binding $boardClearance : integer32 ;
+  binding $boardLimitsColor : NSColor ;
+  binding $boardSideClearanceColor : NSColor ;
+  binding $errorColor : NSColor ;
+  binding $warningColor : NSColor ;
+  binding $boardStatusDictionary : NSDictionary ;
+  binding $horizontalDensityDictionary : NSDictionary ;
+  binding $verticalDensityDictionary : NSDictionary ;
+  binding $radiusOfWarningOrErrorOvals : integer32 ;
+  binding $horizontalDensityDisplayTransparency : double ;
+  binding $verticalDensityDisplayTransparency : double ;
+  binding $rastnest : NSBezierPath ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity NetClassEntity {
+  attribute netClassColor : NSColor := blueColor storedBy .dataForNetClassColor ;
+}{
+  transient wireCountString : NSString observe .nets ;
+  transient canBeRemoved : boolean observe .nets ;
+  action netClassTrackWidthInDisplayUnitDidChangeAction observe .netClassTrackWidthInDisplayUnit ;
+  action netClassViaHoleDiameterInDisplayUnitDidChangeAction observe .netClassViaHoleDiameterInDisplayUnit ;
+  action netClassViaPadDiameterInDisplayUnitDidChangeAction observe .netClassViaPadDiameterInDisplayUnit ;
+  action displayUnitDidChangeAction observe .displayUnit ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity ComponentInProjectEntity {
+#--- Package Origin
+  attribute origin : EBPoint := EBZeroPoint storedBy .stringForOrigin ;
+#--- Component Name Origin
+  attribute componentNameOrigin : EBPoint := EBZeroPoint storedBy .stringForOriginForComponentName ;
+#--- Component Value Origin
+  attribute componentValueOrigin : EBPoint := EBZeroPoint storedBy .stringForOriginForComponentValue ;
+} {
+#--- Observers
+  objectObserver selectedPackageObserver observe .usedPackage ;
+  objectObserver deviceObserver observe .device ;
+
+  transient componentName : NSString observe .actualPrefix, .actualIndex ;
+  transient deviceName : NSString observe :deviceObserver.DeviceInProjectEntity.deviceName ;
+  transient componentNameForInsertionTableView : NSString observe .componentName, .componentValue, .deviceName ;
+
+  transient triggerForErrorAndWarningsInBoard : boolean observe .usedPackage, .origin, .rotationInDegrees ;
+
+#--- is placed in board
+  transient isNotPlacedOnBoard : boolean observe .projectForBoardGraphics ;
+
+#--- The bezier path that is stroke for drawing legend
+  transient strokeBezierPathForLegend : NSBezierPath observe :selectedPackageObserver.PackageTypeInProjectEntity.strokeBezierPath ;
+#--- The array of bezier paths that are filled for drawing component side pads
+  transient filledBezierPathForComponentSidePadsArray : NSArray observe :selectedPackageObserver.PackageTypeInProjectEntity.filledBezierPathForComponentSidePadsArray ;
+#--- The array of bezier paths that are filled for drawing solder side pads
+  transient filledBezierPathForSolderSidePadsArray : NSArray observe :selectedPackageObserver.PackageTypeInProjectEntity.filledBezierPathForSolderSidePadsArray ;
+#--- The array of NSValued'ed PadStruct that represent the pad centers and index
+  transient padArray : NSArray observe
+   :selectedPackageObserver.PackageTypeInProjectEntity.firstPadLocation,
+   :selectedPackageObserver.PackageTypeInProjectEntity.padArray ;
+#--- The package name
+  transient selectedPackageName : NSString observe :selectedPackageObserver.PackageTypeInProjectEntity.packageTypeName ;
+#--- Is in board string
+  transient isInBoardString : NSString observe .projectForBoardGraphics ;
+#--- symbols in schematics string
+  setObserver symbolObserver observe .symbols ;
+  transient symbolsInSchematicsString : NSString observe :symbolObserver.SymbolInProjectEntity.sheet ;
+#--- Component Name Bezier Path
+  transient componentNameBezierPath : NSBezierPath observe
+    .componentNameOrigin, .fontForComponentName, .fontSizeForComponentName, .componentName ;
+#--- Component Value Bezier Path
+  transient componentValueBezierPath : NSBezierPath observe
+    .componentValueOrigin, .fontForComponentValue, .fontSizeForComponentValue, .componentValue ;
+
+  transient firstPadLocation : EBPoint observe :selectedPackageObserver.PackageTypeInProjectEntity.firstPadLocation ;
+
+  action updatePadLocationAction observe .origin, .rotationInDegrees, :selectedPackageObserver.PackageTypeInProjectEntity.padArray ;
+
+  shape packageShape : PMPackageInBoardShape [
+    .origin,
+    .firstPadLocation,
+    .rotationInDegrees,
+    .padArray,
+    PMBoardPreferences.root.padNumberFont,
+    PMBoardPreferences.root.padNumberColor,
+    .strokeBezierPathForLegend,
+    PMBoardPreferences.root.packageDrawingWidthMultpliedByTen,
+    .filledBezierPathForComponentSidePadsArray,
+    .filledBezierPathForSolderSidePadsArray,
+    PMBoardPreferences.root.componentSideLegendColor,
+    PMBoardPreferences.root.solderSideLegendColor,
+    .onComponentSideInBoard,
+    PMBoardPreferences.root.componentSidePadColor,
+    PMBoardPreferences.root.solderSidePadColor,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen,
+    .componentNameBezierPath,
+    .componentNameOrigin,
+    .componentNameIsVisible,
+    .componentValueBezierPath,
+    .componentValueOrigin,
+    .componentValueIsVisible,
+    .componentNameDirection,
+    .componentValueDirection
+  ] ;
+
+  geometry .origin ;
+  onMouseDraggedForCreation .origin := mouseDraggedEBLocationInGrid ;
+  onMouseDraggedForCreation .componentNameOrigin := offsetEBPoint (mouseDraggedEBLocationInGrid, EBMakeSize (228600, 228600)) ; # 100 mils
+  onMouseDraggedForCreation .componentValueOrigin := offsetEBPoint (mouseDraggedEBLocationInGrid, EBMakeSize (457200, 457200)) ; # 200 mils
+  onMouseDraggedForCreation .rotationInDegrees := 0.0 ;
+  translate .origin ;
+  translate .componentNameOrigin ;
+  translate .componentValueOrigin ;
+  snap .origin := snappedEBPoint (.origin) ;
+  rotate .rotationInDegrees := rotatedAngleInDegrees (.rotationInDegrees) ;
+
+#--- Component Name Knob
+  knobIf .componentNameIsVisible : .componentNameOrigin style circularKnob cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .componentNameOrigin := mouseDraggedEBLocationInGrid ;
+  }
+#--- Component Value Knob
+  knobIf .componentValueIsVisible : .componentValueOrigin style circularKnob cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .componentValueOrigin := mouseDraggedEBLocationInGrid ;
+  }
+#--- Package Rotation Knob
+  knob pointByRotatingNSPoint (toNSPoint (.origin), 36.0, .rotationInDegrees)
+    style circularKnob cursor PMGeneralPreferences.upDownRightLeftCursor
+  {
+    .rotationInDegrees := angleInDegreesBetweenNSPoints (toNSPoint (.origin), mouseDraggedNSLocation) ;
+  }
+#--- Package origin knob
+  knob .origin cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .origin := mouseDraggedEBLocationInGrid ;
+    .componentNameOrigin := offsetEBPoint (.componentNameOrigin, mouseDraggedEBDelta) ;
+    .componentValueOrigin := offsetEBPoint (.componentValueOrigin, mouseDraggedEBDelta) ;
+  }
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity UnifiedRestrictRectangleEntity {
+  attribute rectangle : EBRect := EBZeroRect storedBy .stringForRect ;
+} {
+
+  transient componentSideCheckboxEnabled : boolean observe .sides ;  
+  transient solderSideCheckboxEnabled : boolean observe .sides ;  
+  
+  transientWithSetter restrictRectangleOnComponentSide : boolean observe .sides ;  
+  transientWithSetter restrictRectangleOnSolderSide : boolean observe .sides ;  
+  
+  shape restrictRectShape : PMUnifiedRestrictRectangleShape [
+   .rectangle,
+   .restrictRectangleOnComponentSide,
+   .restrictRectangleOnSolderSide,
+   PMBoardPreferences.root.componentSideRestrictRectangleColor,
+   PMBoardPreferences.root.solderSideRestrictRectangleColor
+  ] ;
+
+  onMouseDraggedForCreation .rectangle := makeEBRectFromEBPoints  (mouseDownEBLocationInGrid, mouseDraggedEBLocationInGrid) ;
+
+  knob bottomLeftOfEBRect (.rectangle) cursor PMGeneralPreferences.slashArrowsCursor {
+    .rectangle := makeEBRectFromEBPoints (mouseDraggedEBLocationInGrid, topRightOfEBRect (.rectangle)) ;
+  }
+  knob bottomRightOfEBRect (.rectangle) cursor PMGeneralPreferences.reverseSlashArrowsCursor {
+    .rectangle := makeEBRectFromEBPoints (mouseDraggedEBLocationInGrid, topLeftOfEBRect (.rectangle)) ;
+  }
+  knob topLeftOfEBRect (.rectangle) cursor PMGeneralPreferences.reverseSlashArrowsCursor {
+    .rectangle := makeEBRectFromEBPoints (mouseDraggedEBLocationInGrid, bottomRightOfEBRect (.rectangle)) ;
+  }
+  knob topRightOfEBRect (.rectangle) cursor PMGeneralPreferences.slashArrowsCursor {
+    .rectangle := makeEBRectFromEBPoints (mouseDraggedEBLocationInGrid, bottomLeftOfEBRect (.rectangle)) ;
+  }
+
+  geometry .rectangle ;
+
+  translate .rectangle ;
+
+  snap .rectangle := snappedEBRect (.rectangle) ;
+
+  flip .rectangle := flippedEBRect (.rectangle) ;
+
+  rotate .rectangle := rotatedEBRect (.rectangle) ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity DeviceInProjectEntity {
+
+}{
+  transient componentCount : integer32 observe .components ;
+  transient deviceIsNotUsed : boolean observe .components ;
+  transient fileDataNotEmpty : boolean observe .deviceFileData ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity SheetEntity {
+
+}{
+  setObserver pointObserver observe .points ;
+ 
+ setObserver graphicObserver observe .graphics ;
+
+  transient sheetStatusDictionary : NSDictionary observe
+    :pointObserver.PointInSheetEntity.location,
+    :pointObserver.PointInSheetEntity.connectionKind,
+    :graphicObserver.SymbolInProjectEntity.triggerSchematicsStatus
+  ;
+
+  transient sheetWarningCount : integer32 observe .sheetStatusDictionary ;
+  transient sheetErrorCount : integer32 observe .sheetStatusDictionary ;
+  transient sheetTitleWithIndex : NSString observe .sheetIndex, .sheetTitle ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity FontInProjectEntity {
+}{
+  transient textInBoardCount : integer32 observe .textsInBoards ;
+  transient componentNamesCount : integer32 observe .componentNames ;
+  transient componentValuesCount : integer32 observe .componentValues ;
+  transient fontIsNotUsed : boolean observe .textsInBoards, .componentNames, .componentValues ;
+
+  action editFontAction ;
+  action resetFontVersionAction ;
+
+  action fontDataDidChangeAction observe .fontCharacterDefinitionString, .fontSegmentDefinitionString ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity PassingPointInBoardEntity {
+  attribute location : EBPoint := EBZeroPoint storedBy .stringForLocation ;
+}{
+
+  shape pointShape : PMPassingPointInBoardShape [
+    .location,
+    .side,
+    PMBoardPreferences.root.componentSidePadColor,
+    PMBoardPreferences.root.solderSidePadColor,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen
+  ] ;
+  
+  translate .location ;
+
+  knob .location cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .location := mouseDraggedEBLocationInGrid ;
+  }
+
+  snap .location := snappedEBPoint (.location) ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity ConnectorInBoardEntity {
+  attribute location : EBPoint := EBZeroPoint storedBy .stringForLocation ;
+}{
+  setObserver tracksP1observer observe .tracksP1 ;
+
+  setObserver tracksP2observer observe .tracksP2 ;
+
+  transient triggerTrackLocationLock : boolean observe
+    :tracksP1observer.TrackInBoardEntity.manualPositionLockForP1,
+    :tracksP2observer.TrackInBoardEntity.manualPositionLockForP2
+  ;
+
+  transient isVia : boolean observe :tracksP1observer.TrackInBoardEntity.side, :tracksP2observer.TrackInBoardEntity.side ;
+
+  transient netName : NSString observe
+     :tracksP1observer.TrackInBoardEntity.netName,
+     :tracksP2observer.TrackInBoardEntity.netName
+  ;
+
+  transient netClassName : NSString observe :tracksP1observer.TrackInBoardEntity.netClassName, :tracksP2observer.TrackInBoardEntity.netClassName ;
+
+  transient holeDiameterFromNetClass : integer32 observe :tracksP1observer.TrackInBoardEntity.netClassViaHoleDiameter, :tracksP2observer.TrackInBoardEntity.netClassViaHoleDiameter ;
+
+  transient padDiameterFromNetClass : integer32 observe :tracksP1observer.TrackInBoardEntity.netClassViaPadDiameter, :tracksP2observer.TrackInBoardEntity.netClassViaPadDiameter ;
+
+  transient actualHoleDiameter : integer32 observe .useCustomHoleDiameter, .customHoleDiameter, .holeDiameterFromNetClass ; 
+
+  transient actualPadDiameter : integer32 observe .useCustomPadDiameter, .customPadDiameter, .padDiameterFromNetClass ; 
+
+  shape viaShape : PMViaInBoardShape [
+    .location,
+    .isVia,
+    .actualHoleDiameter,
+    .actualPadDiameter,
+    PMBoardPreferences.root.componentSidePadColor,
+    PMBoardPreferences.root.solderSidePadColor,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen
+  ] ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity TrackInBoardEntity {
+  attribute p1 : EBPoint := EBZeroPoint storedBy .stringForP1 ;
+  attribute p2 : EBPoint := EBZeroPoint storedBy .stringForP2 ;
+}{
+  objectObserver netObserver observe .net ;
+  transient netClassTrackWidth : integer32 observe :netObserver.NetEntity.netClassTrackWidth ;
+  transient netClassName : NSString observe :netObserver.NetEntity.netClassName ;
+  transient netClassViaHoleDiameter : integer32 observe :netObserver.NetEntity.netClassViaHoleDiameter ;
+  transient netClassViaPadDiameter : integer32 observe :netObserver.NetEntity.netClassViaPadDiameter ;
+  transient netName : NSString observe :netObserver.NetEntity.netName ;
+  transient hasNet : boolean observe .netName ;
+
+  action p1DidMoveAction observe .p1 ;
+
+  action p2DidMoveAction observe .p2 ;
+
+  transient directionInDegrees : double observe .p1, .p2 ;
+
+  transient noPadConnectedToP1 : boolean observe .padConnectedToP1 ;
+
+  transient noPadConnectedToP2 : boolean observe .padConnectedToP2 ;
+
+  objectObserver connectorConnectedToP1Observer observe .connectorConnectedToP1 ;
+
+  objectObserver connectorConnectedToP2Observer observe .connectorConnectedToP2 ;
+
+  transient p1OrConnectedTrackPointsAreLock : boolean observe
+    .manualPositionLockForP1,
+    :connectorConnectedToP1Observer.ConnectorInBoardEntity.triggerTrackLocationLock ;
+
+  transient p2OrConnectedTrackPointsAreLock : boolean observe
+    .manualPositionLockForP2,
+    :connectorConnectedToP2Observer.ConnectorInBoardEntity.triggerTrackLocationLock ;
+
+  transient p1CanMove : boolean observe .noPadConnectedToP1, .p1OrConnectedTrackPointsAreLock ;
+
+  transient p2CanMove : boolean observe .noPadConnectedToP2, .p2OrConnectedTrackPointsAreLock ;
+
+  transient actualTrackWidth : integer32 observe .useCustomTrackWidth, .customTrackWidth, .netClassTrackWidth ;
+
+  transient actualTrackWidthMeasurementUnit : integer32 
+    observe .useCustomTrackWidth, .customTrackWidthMeasurementUnit, .defaultTrackWidthMeasurementUnit
+  ;
+
+  shape trackShape : PMTrackInBoardShape [
+    .p1,
+    .p2,
+    .side,
+    .actualTrackWidth,
+    PMBoardPreferences.root.componentSideLayoutColor,
+    PMBoardPreferences.root.solderSideLayoutColor,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen
+  ] ;
+
+  onMouseDraggedForCreation .p1 := mouseDownEBLocation ;
+  onMouseDraggedForCreation .p2 := mouseDraggedEBLocation ;
+
+  knobIf .p1CanMove : .p1 cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .p1 := [.directionIsLockDuringKnobDragging
+            ? toEBPoint (pointByRotatingNSPoint (toNSPoint (.p2), distanceBetweenNSPoints (toNSPoint (.p2), mouseDraggedNSLocationInGrid), angleInDegreesBetweenNSPoints (toNSPoint (.p2), toNSPoint (.p1))))
+            : pointFromEBPointsAndDirectionGridOption (.p2, mouseDraggedEBLocationInGrid, NSShiftKey)
+           ] ;
+  }
+  knobIf .p2CanMove : .p2 cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .p2 := [.directionIsLockDuringKnobDragging
+            ? toEBPoint (pointByRotatingNSPoint (toNSPoint (.p1), distanceBetweenNSPoints (toNSPoint (.p1), mouseDraggedNSLocationInGrid), angleInDegreesBetweenNSPoints (toNSPoint (.p1), toNSPoint (.p2))))
+            : pointFromEBPointsAndDirectionGridOption (.p1, mouseDraggedEBLocationInGrid, NSShiftKey)
+           ] ;
+  }
+
+  translate .p1 ;
+  translate .p2 ;
+
+  transient triggerForErrorAndWarningsInBoard : boolean observe
+    .p1, .p2,
+    .padConnectedToP1, .padConnectedToP2,
+    .connectorConnectedToP1, .connectorConnectedToP2 ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity LineInBoardEntity {
+  attribute point1 : EBPoint := EBZeroPoint storedBy .p1 ;
+  attribute point2 : EBPoint := EBZeroPoint storedBy .p2 ;
+}{
+  onMouseDraggedForCreation .point1 := mouseDownEBLocationInGrid ;
+  onMouseDraggedForCreation .point2 := mouseDraggedEBLocationInGrid ;
+
+  knob .point1 cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .point1 := mouseDraggedEBLocationInGrid ;
+  }
+
+  knob .point2 cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .point2 := mouseDraggedEBLocationInGrid ;
+  }
+
+  translate .point1 ;
+  translate .point2 ;
+
+  snap .point1 := snappedEBPoint (.point1) ;
+  snap .point2 := snappedEBPoint (.point2) ;
+
+  shape lineInBoardShape : PMSegmentInBoardShape [
+    .point1,
+    .point2,
+    .side,
+    PMBoardPreferences.root.componentSideLegendColor,
+    PMBoardPreferences.root.solderSideLegendColor,
+    .width,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen
+  ] ;
+
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity TextInBoardEntity {
+  attribute origin : EBPoint := EBZeroPoint storedBy .stringForOrigin ;
+}{
+  transient textBezierPath : NSBezierPath observe .text, .font, .fontSize ;
+
+  shape textInBoardShape : PMTextInBoardShape [
+   .origin,
+   .direction,
+   .side,
+   .textBezierPath,
+   PMBoardPreferences.root.componentSideLegendColor,
+   PMBoardPreferences.root.componentSideLayoutColor,
+   PMBoardPreferences.root.solderSideLayoutColor,
+   PMBoardPreferences.root.solderSideLegendColor
+  ] ;
+
+  onMouseDraggedForCreation .origin := mouseDraggedEBLocationInGrid ;
+
+  knob .origin cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .origin := mouseDraggedEBLocationInGrid ;
+  }
+
+  knob pointByRotatingNSPoint (toNSPoint (.origin), NSWidth (bezierPathBounds (.textBezierPath)) / 2.0, .direction)
+  style circularKnob
+  cursor PMGeneralPreferences.upDownRightLeftCursor {
+    .direction := angleInDegreesBetweenNSPoints (toNSPoint (.origin), mouseDraggedNSLocation) ;
+  }
+
+  geometry .origin ;
+
+  translate .origin ;
+
+  snap .origin := snappedEBPoint (.origin) ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity SimpleWireEntity {
+} {
+
+  objectObserver netObserver observe .net ;
+  transient netClassColor : NSColor observe :netObserver.NetEntity.netClassColor ;
+  transient netName : NSString observe :netObserver.NetEntity.netName ;
+
+  objectObserver point1Observer observe .point1 ;
+  transient point1Location : EBPoint observe :point1Observer.PointInSheetEntity.location ;
+  transient point1ConnectionKind : integer32 observe :point1Observer.PointInSheetEntity.connectionKind ;
+
+  objectObserver point2Observer observe .point2 ;
+  transient point2Location : EBPoint observe :point2Observer.PointInSheetEntity.location ;
+  transient point2ConnectionKind : integer32 observe :point2Observer.PointInSheetEntity.connectionKind ;
+
+  shape wireShape : PMSimpleWireShape [
+    .point1Location,
+    .point1ConnectionKind,
+    .point2Location,
+    .point2ConnectionKind,
+    .netClassColor, # Wire Color
+    PMSymbolPreferences.root.drawingWidthMultipliedByTen,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen
+  ] ;
+
+  transient point1CanMove : boolean observe :point1Observer.PointInSheetEntity.pointCanMove ;
+  transient point2CanMove : boolean observe :point2Observer.PointInSheetEntity.pointCanMove ;
+  
+  action renameNetFromUserAction ;
+  action insulateNetFromUserAction ;
+  action mergeNetFromUserAction ;
+}
+
+#----------------------------------------------------------------------------*
+
+graphicClassForEntity SchematicLabelEntity {
+} {
+  objectObserver pointObserver observe .point ;
+  transient pointLocation : EBPoint observe :pointObserver.PointInSheetEntity.location ;
+  transient pointConnectionKind : integer32 observe :pointObserver.PointInSheetEntity.connectionKind ;
+  transient pointCanMove : boolean observe :pointObserver.PointInSheetEntity.pointCanMove ;
+
+  objectObserver netObserver observe .net ;
+  transient netName : NSString observe :netObserver.NetEntity.netName ;
+
+  shape labelShape : PMLabelShapeShape [
+    .pointLocation,
+    .direction,
+    .pointConnectionKind,
+    PMSchematicPreferences.root.symbolColor,
+    PMSymbolPreferences.root.drawingWidthMultipliedByTen,
+    PMGeneralPreferences.root.selectionHiliteColor,
+    PMGeneralPreferences.root.hiliteWidthMultipliedByTen,
+    .netName,
+    PMSymbolPreferences.root.pinNameFont
+  ] ;
+
+  geometry .pointLocation ;
+
+  rotate .direction := rotatedDirection (.direction) ;
+
+  action renameNetFromUserAction ;
+  action insulateNetFromUserAction ;
+  action mergeNetFromUserAction ;
+}
+
+#----------------------------------------------------------------------------*
+
+protocol <PMDragSymbolImageFromRowProviderProtocol> {}
+
+#----------------------------------------------------------------------------*
+
+protocol <PMDragPackageImageFromRowProviderProtocol> {}
+
+#----------------------------------------------------------------------------*
+
+binaryDocument PMProjectDocument
+implements <EBGraphicArrayControllerDelegationProtocol,
+            PMDragSymbolImageFromRowProviderProtocol,
+            PMDragPackageImageFromRowProviderProtocol>
+root ProjectRootEntity {
+
+#--- Schematics Internal Error Panel
+  outlet schematicsInternalErrorPanel : NSPanel ;
+  outlet schematicsInternalErrorTextView : NSTextView ;
+
+#--- Selected Tab
+  outlet selectedTabSegmentedControl : PMSegmentedControl $selectedIndex root.selectedTab ;
+
+#--- Progress indicator
+  outlet progressText : NSTextField ;
+  outlet progressIndicator : NSProgressIndicator ;
+  
+#---------------------- Components Tab
+  controller componentController : NSArrayController ComponentInProjectEntity
+    $contentSet root.components { NSDeletesObjectsOnRemove:yes} ;
+
+  outlet componentsTableView : NSTableView $tableValue .componentController {
+    NSTableColumn "name" NSTextFieldCell $value *.componentName ;
+    NSTableColumn "device" NSTextFieldCell $value *.deviceName ;
+    NSTableColumn "package" NSTextFieldCell $value *.selectedPackageName ;
+    NSTableColumn "inboard" NSTextFieldCell $value *.isInBoardString ;
+    NSTableColumn "symbolsplaced" NSTextFieldCell $value *.symbolsInSchematicsString ;
+    NSTableColumn "value" NSTextFieldCell $value *.componentValue ;
+  } ;
+
+  outlet componentCountTextField : NSTextField $value root.componentCountString ;
+
+  action updateAddComponentButtonMenu observe root.devicesInLibrary ;
+
+  action addComponentAction ;
+  outlet addComponentButton : NSButton $run .addComponentAction ;
+
+  action addComponentFromEmbeddedLibraryAction ;
+  outlet addComponentFromEmbeddedLibraryButton : NSPopUpButton ;
+
+  action duplicateComponentAction ;
+  outlet duplicationComponentButton : NSButton $run .duplicateComponentAction $enabled .componentController.canRemove ;
+
+  action removeComponentAction ;
+  outlet removeComponentButton : NSButton $run .removeComponentAction $enabled .componentController.canRemove ;
+
+  action renameComponentFromDeviceTabAction ;
+  outlet renameComponentFromDeviceTabButton : NSButton
+    $run .renameComponentFromDeviceTabAction
+    $enabled .componentController.canRemove
+  ;
+
+  action changeComponentValueAction ;
+  outlet changeComponentValueButton : NSButton $run .changeComponentValueAction $enabled .componentController.canRemove ;
+  outlet changeComponentValuePanel : NSPanel ;
+  outlet changeComponentValueComponentNameTextField : NSTextField 
+    $value . componentController.selection.componentName
+  ;
+  outlet changeComponentValueTextField : NSTextField ; # Bound in Source Text
+
+  action revealComponentInBoardAction ;
+  outlet revealComponentInBoardButton : NSButton
+    $run .revealComponentInBoardAction
+    $enabled ! .componentController.selection.isNotPlacedOnBoard
+  ;
+
+#--- Add Component Panel
+  outlet addComponentPanel : NSPanel ;
+  controller deviceForAddedComponentController : NSObjectController DeviceInProjectEntity ;
+  outlet addedComponentDeviceNameTextField : NSTextField $value .deviceForAddedComponentController.selection.deviceName ;
+  outlet addedComponentValueTextField : NSTextField $value .deviceForAddedComponentController.selection.defaultValueForComponent {NSContinuouslyUpdatesValue:yes} ;
+  outlet addedComponentValueVisibilityInBoardCheckBox : NSButton $value .deviceForAddedComponentController.selection.defaultVisibilityForValueInBoard ;
+  outlet addedComponentNameVisibilityInBoardCheckBox : NSButton $value .deviceForAddedComponentController.selection.defaultVisibilityForNameInBoard ;
+  outlet addedComponentValueVisibilityInSchematicsCheckBox : NSButton $value .deviceForAddedComponentController.selection.defaultVisibilityForValueInSchematics ;
+
+  #--- Package rotation
+  outlet addedComponentPackageRotationTextField : NSTextField $value .deviceForAddedComponentController.selection.defaultRotationForPackageInBoard {NSContinuouslyUpdatesValue:yes} ;
+  controller defaultPackageInBoardRotationController : AngleForSliderController $angle .deviceForAddedComponentController.selection.defaultRotationForPackageInBoard ;
+  outlet defaultPackageRotationSlider : PMSlider $value .defaultPackageInBoardRotationController.angleForSlider ;
+  #--- Package Selection PopUp
+  controller availableDefaultPackagesController : NSArrayController PackageTypeInProjectEntity $contentSet .deviceForAddedComponentController.selection.availablePackages ;
+  outlet availableDefaultPackagesPopup : NSPopUpButton PackageTypeInProjectEntity
+    $contentValuesAndContent .availableDefaultPackagesController.arrangedObjects.packageTypeName
+    $selectedObject .deviceForAddedComponentController.selection.defaultPackage ;
+
+#--- Change Package
+  action changeComponentPackageAction ;
+  outlet changeComponentPackageButton : NSButton $run .changeComponentPackageAction $enabled .componentController.canRemove ;
+  outlet changeComponentPackagePanel : NSPanel ;
+  outlet actualComponentNameForChangePackagePanel : NSTextField ;
+  controller currentComponentDeviceController : NSObjectController DeviceInProjectEntity $contentObject .componentController.selection.device ;
+  controller availablePackagesForCurrentComponentController : NSArrayController PackageTypeInProjectEntity
+    $contentSet .currentComponentDeviceController.selection.availablePackages ;
+  outlet availablePackagesPopUpMenu : NSPopUpButton PackageTypeInProjectEntity
+    $contentValuesAndContent .availablePackagesForCurrentComponentController.arrangedObjects.packageTypeName
+  ;
+
+#---------------------- Library Tab
+  outlet checkForDeviceAndFontUpdateAtOpeningCheckBox : NSButton $value root.checkForDeviceAndFontUpdateAtOpening ;
+
+  action resetDeviceAndFontsVersionNumbersAction ;
+  outlet resetDeviceAndFontsVersionNumbersButton : NSButton $run .resetDeviceAndFontsVersionNumbersAction ;
+
+  action updateDeviceAndFontsVersionNumbersAction ;
+  outlet updateDeviceAndFontsVersionNumbersButton : NSButton $run .updateDeviceAndFontsVersionNumbersAction ;
+
+  outlet updateDevicesAndFontsTableView : NSTableView ;
+  outlet updateDevicesAndFontsPanel : NSPanel ;
+  outlet errorMessageInUpdateDevicesAndFontsPanelTextField : NSTextField ;
+  action showUpdateSearchErrorsAction ;
+  outlet showUpdateSearchErrorsButton : NSButton $run .showUpdateSearchErrorsAction ;
+  
+  outlet updateErrorsForDevicesAndFontsTableView : NSTableView ;
+  outlet updateErrorsForDevicesAndFontsPanel : NSPanel ;
+  
+  #--- Devices
+  action addDeviceAction ;
+  outlet addDeviceButton : NSButton $run .addDeviceAction ;
+
+  outlet devicesFontsTabView : NSTabView $selectedIndex root.selectedTabInLibrary ;
+
+  controller deviceLibraryController : NSArrayController DeviceInProjectEntity
+    $contentSet root.devicesInLibrary { NSDeletesObjectsOnRemove:yes } ;
+
+  outlet devicesInLibraryTableView : NSTableView $tableValue .deviceLibraryController {
+    NSTableColumn "name" NSTextFieldCell $value *.deviceName ;
+    NSTableColumn "version" NSTextFieldCell $value *.deviceVersionNumber ;
+    NSTableColumn "componentcount" NSTextFieldCell $value *.componentCount ;
+  } ;
+
+  action deleteDeviceAction ;
+  outlet removeDeviceButton : NSButton $run .deleteDeviceAction $enabled .deviceLibraryController.selection.deviceIsNotUsed ;
+  action editDeviceAction ;
+  outlet editDeviceButton : NSButton $run .editDeviceAction $enabled .deviceLibraryController.canRemove ;
+  action updateDeviceAction ;
+  outlet updateDeviceButton : NSButton $run .updateDeviceAction $enabled .deviceLibraryController.canRemove ;
+  action resetDeviceVersionAction ;
+  outlet resetDeviceVersionButton : NSButton $run .resetDeviceVersionAction $enabled .deviceLibraryController.canRemove ;
+
+  action exportDeviceAction ;
+  outlet exportDeviceButton : NSButton
+    $run .exportDeviceAction
+    $enabled .deviceLibraryController.selection.fileDataNotEmpty
+  ;
+
+  controller symbolsInSelectedDeviceController : NSArrayController SymbolInstanceInProjectEntity
+    $contentSet .deviceLibraryController.selection.availableSymbols ;
+
+  outlet symbolsInDeviceTableView : NSTableView $tableValue .symbolsInSelectedDeviceController {
+    NSTableColumn "name" NSTextFieldCell $value *.symbolInstanceName ;
+    NSTableColumn "type" NSTextFieldCell $value *.symbolTypeName ;
+  } ;
+
+  controller packagesInDeviceController : NSArrayController PackageTypeInProjectEntity
+    $contentSet .deviceLibraryController.selection.availablePackages ;
+
+  outlet packagesInDeviceTableView : NSTableView $tableValue .packagesInDeviceController {
+    NSTableColumn "name" NSTextFieldCell $value *.packageTypeName ;
+  } ;
+
+  controller assignmentsInSelectedDeviceController : NSArrayController PadRepresentantInProjectEntity
+    $contentSet .deviceLibraryController.selection.pads ;
+
+  outlet assignmentsInDeviceTableView : NSTableView $tableValue .assignmentsInSelectedDeviceController {
+    NSTableColumn "pad" NSTextFieldCell $value *.padQualifiedName ;
+    NSTableColumn "symbol" NSTextFieldCell $value *.symbolName ;
+    NSTableColumn "pin" NSTextFieldCell $value *.pinName ;
+  } ;
+
+  #--- Fonts
+  controller embeddedFontController : NSArrayController FontInProjectEntity
+    $contentSet root.embeddedFonts { NSDeletesObjectsOnRemove:yes } ;
+
+  outlet embeddedFontTableView : NSTableView $tableValue .embeddedFontController {
+    NSTableColumn "name" NSTextFieldCell $value *.fontName ;
+    NSTableColumn "version" NSTextFieldCell $value *.versionNumber ;
+    NSTableColumn "counttexts" NSTextFieldCell $value *.textInBoardCount ;
+    NSTableColumn "countnames" NSTextFieldCell $value *.componentNamesCount ;
+    NSTableColumn "countvalues" NSTextFieldCell $value *.componentValuesCount ;
+  } ;
+
+  action addFontButtonAction ;
+  outlet addFontButton : NSButton $run .addFontButtonAction ;
+  outlet removeFontButton : NSButton $run .embeddedFontController.remove $enabled .embeddedFontController.selection.fontIsNotUsed ;
+
+  outlet editFontInLibrary : NSButton
+    $target .embeddedFontController.selection.editFontAction
+    $enabled .embeddedFontController.canRemove
+  ;
+
+  outlet resetFontVersionInLibrary : NSButton
+    $target .embeddedFontController.selection.resetFontVersionAction
+    $enabled .embeddedFontController.canRemove
+  ;
+
+  action updateFontAction ;
+  outlet updateFontInLibrary : NSButton
+    $run .updateFontAction
+    $enabled .embeddedFontController.canRemove
+  ;
+
+#---------------------- Schematics Tab
+
+#--- Schematics Inspector
+  outlet schematicsInspectorSegmentedControl : NSSegmentedControl ;
+  outlet schematicsInspectorViewOutlet : NSView ;
+
+#--- Create objects buttons
+  outlet addSchematicsWireButton : PMDraggingSourceButton ;
+
+#--- Net Default Prefix
+  action changeNetDefaultPrefixAction ;
+  outlet netDefaultPrefixButton : NSButton
+    $title root.netDefaultPrefix
+    $run .changeNetDefaultPrefixAction
+  ;
+  outlet changeNetDefaultPrefixPanel : NSPanel ;
+  outlet netDefaultPrefixTextField : NSTextField ;
+  outlet netDefaultPrefixOkButton : NSButton ;
+ 
+#--- Sheet Management
+  controller selectedSheetController : NSObjectController SheetEntity $contentObject root.selectedSheet ;
+  controller selectedSheetGraphicsController : PMGraphicArrayController
+    $contentSet .selectedSheetController.selection.graphics forView .schematicsView ;
+
+  controller sheetController : NSArrayController SheetEntity
+    $contentSet root.sheets
+  ; # Sort Descriptor added programmacaly
+
+
+#--- Sheet Inspector
+  outlet sheetInspectorView : NSView ;
+
+  action moveDownSelectedSheetAction ;
+  outlet moveDownSelectedSheetButton : NSButton
+    $enabled root.sheetCanBeMovedDown
+    $run .moveDownSelectedSheetAction
+   ;
+
+  action moveUpSelectedSheetAction ;
+  outlet moveUpSelectedSheetButton : NSButton
+    $enabled root.sheetCanBeMovedUp
+    $run .moveUpSelectedSheetAction
+   ;
+
+  outlet sheetManagementPopUp : NSPopUpButton SheetEntity
+    $contentValuesAndContent .sheetController.arrangedObjects.sheetTitleWithIndex
+    $selectedObject root.selectedSheet
+  ;
+
+  outlet sheetTitleTextField : NSTextField $value .selectedSheetController.selection.sheetTitle ;
+ 
+  outlet schematicsTitleTextField : NSTextField $value root.schematicsTitle ;
+  outlet schematicsVersionTextField : NSTextField $value root.schematicsVersion ;
+  outlet schematicsDatePicker : NSDatePicker $value root.schematicsDate ;
+
+  action setToCurrentDateAction ;
+  outlet schematicsSetToCurrentDateButton : NSButton $run .setToCurrentDateAction ;
+
+  outlet schematicsWarningsTextField : PMSchematicsWarningStatusTextField 
+    $sheetArray root.sheetArray
+    $warningsInCurrentSheet .selectedSheetController.selection.sheetWarningCount
+    $onePinNetCount root.onePinNetCount
+ ;
+
+  outlet schematicsErrorsTextField : PMSchematicsErrorStatusTextField 
+    $sheetArray root.sheetArray
+    $errorsInCurrentSheet .selectedSheetController.selection.sheetErrorCount
+ ;
+
+  action newSheetAction ;
+  outlet newSheetButton : NSButton $run .newSheetAction ;
+
+  action deleteSheetAction ;
+  outlet deleteSheetButton : NSButton
+    $run .deleteSheetAction
+    $enabled root.moreThanOneSheet
+  ;
+
+  outlet paperSizeMatrix : NSMatrix $selectedIndex root.schematicsPaperSizeChoice ;
+
+  controller schematicsWidthChoiceController : PMSchematicsPaperWidthController 
+    $customWidth root.schematicsCustomWidth
+    $choice root.schematicsPaperSizeChoice
+  ;
+  controller schematicsWidthController : EBMeasurementController
+    $valueInEBUnit .schematicsWidthChoiceController.actualWidth
+    $measurementUnitFactor root.schematicsWidthUnit
+  ;
+  outlet schematicsPaperWidthTextField : NSTextField $value .schematicsWidthController.valueInUnitFactor $enabled root.paperCustomSizeTextFieldEnabled ;
+  outlet schematicsPaperWidthPopUpButton : NSPopUpButton $selectedTag root.schematicsWidthUnit ;
+
+  controller schematicsHeightChoiceController : PMSchematicsPaperHeightController 
+    $customHeight root.schematicsCustomHeight
+    $choice root.schematicsPaperSizeChoice
+  ;
+
+  controller schematicsHeightController : EBMeasurementController
+    $valueInEBUnit .schematicsHeightChoiceController.actualHeight
+    $measurementUnitFactor root.schematicsHeightUnit
+  ;
+  outlet schematicsPaperHeightTextField : NSTextField $value .schematicsHeightController.valueInUnitFactor $enabled root.paperCustomSizeTextFieldEnabled ;
+  outlet schematicsPaperHeightPopUpButton : NSPopUpButton $selectedTag root.schematicsHeightUnit ;
+  
+  action setSchematicsSizeAction observe .schematicsWidthChoiceController.actualWidth, .schematicsHeightChoiceController.actualHeight ;
+
+#--- Grid Inspector
+  outlet schematicsGridInspectorView : NSView ;
+  controller schematicsMeasurementController : EBMeasurementController
+   $measurementUnitFactor root.schematicsMeasurementUnitsFactor
+   $valueInEBUnit root.schematicsGrid
+  ;
+  outlet schematicsGridStylePopUpButton : NSPopUpButton $selectedIndex root.schematicsGridStyle;
+  outlet schematicsGridStepPopUpButton : NSPopUpButton $selectedTag root.schematicsGridFactor;
+  outlet schematicsGridTextField : NSTextField $value .schematicsMeasurementController.valueInUnitFactor ;
+  outlet schematicsMeasurementUnitsFactorPopUpButton : NSPopUpButton $selectedTag root.schematicsMeasurementUnitsFactor ;
+
+  outlet schematicsHorizontalFlipButton : NSButton $value root.schematicsHorizontalFlip;
+  outlet schematicsVerticalFlipButton : NSButton $value root.schematicsVerticalFlip;
+
+
+#--- Symbols to insert inspector
+  outlet symbolToInsertInspectorView : NSView ;
+  outlet symbolToPlaceCountTextField : NSTextField $value root.numberOfSymbolsToInsertTitle ;
+  action symbolToPlaceCountDidChangeAction observe root.numberOfSymbolsToInsertTitle ;
+  controller symbolsToPlaceController : NSArrayController SymbolInProjectEntity filter isNotPlacedOnSchematics $contentSet root.symbolsInProject ;
+  outlet symbolsToInsertTableView : PMDraggingSourceTableViewForSymbolInSchematics $tableValue .symbolsToPlaceController {
+    NSTableColumn "name" NSTextFieldCell $value *.nameForUnplacedSymbolTableView $editable root.alwaysFalse ;
+  } ;
+
+#--- Symbol Inspector
+  outlet symbolInSchematicsInspectorView : NSView ;
+  outlet valueIsVisibleCheckBox : NSButton $value .selectedSheetGraphicsController.selectedSymbolInProjectEntity.componentValueIsVisible ;
+  controller currentComponentController : NSObjectController ComponentInProjectEntity $contentObject .selectedSheetGraphicsController.selectedSymbolInProjectEntity.component ;
+  outlet componentNameInSchematicsTextField : NSTextField $value .currentComponentController.selection.componentName ;
+  outlet symbolInstanceNameInSchematicsTextField : NSTextField $value .selectedSheetGraphicsController.selectedSymbolInProjectEntity.symbolInstanceName ;
+  outlet symbolTypeNameInSchematicsTextField : NSTextField $value .selectedSheetGraphicsController.selectedSymbolInProjectEntity.symbolTypeName ;
+  outlet deviceNameInSchematicsTextField : NSTextField $value .currentComponentController.selection.deviceName ;
+  outlet componentValueInSchematicsTextField : NSTextField $value .currentComponentController.selection.componentValue ;
+
+  action renameComponentFromSymbolInspectorAction ;
+  outlet renameComponentFromSymbolInspectorButton : NSButton $run .renameComponentFromSymbolInspectorAction ;
+
+#--- Wire inspector
+  outlet wireInspectorView : NSView ;
+  outlet wireNetNameTextField : NSTextField $value .selectedSheetGraphicsController.selectedSimpleWireEntity.netName ;
+
+  controller netClassesController : NSArrayController NetClassEntity $contentSet root.netClasses {NSDeletesObjectsOnRemove:yes} ;
+  controller wireNetClassController : NSObjectController NetEntity $contentObject .selectedSheetGraphicsController.selectedSimpleWireEntity.net ;
+  outlet wireNetClassPopUpButton : NSPopUpButton NetClassEntity
+    $contentValuesAndContent .netClassesController.arrangedObjects.netClassName
+    $selectedObject .wireNetClassController.selection.netClass ;
+
+  outlet wireRenameNetButton : NSButton
+    $target .selectedSheetGraphicsController.selectedSimpleWireEntity.renameNetFromUserAction
+    $enabled .wireNetClassController.canRemove
+  ;
+
+  outlet wireInsultateNetButton : NSButton
+    $target .selectedSheetGraphicsController.selectedSimpleWireEntity.insulateNetFromUserAction
+    $enabled .wireNetClassController.canRemove
+  ;
+
+  outlet wireMergeNetButton : NSButton
+    $target .selectedSheetGraphicsController.selectedSimpleWireEntity.mergeNetFromUserAction
+    $enabled .wireNetClassController.canRemove
+  ;
+
+#--- Label inspector
+  outlet labelInspectorView : NSView ;
+  outlet labelNetNameTextField : NSTextField $value .selectedSheetGraphicsController.selectedSchematicLabelEntity.netName ;
+
+  controller labelNetClassController : NSObjectController NetEntity $contentObject .selectedSheetGraphicsController.selectedSchematicLabelEntity.net ;
+  outlet labelNetClassPopUpButton : NSPopUpButton NetClassEntity
+    $contentValuesAndContent .netClassesController.arrangedObjects.netClassName
+    $selectedObject .labelNetClassController.selection.netClass ;
+
+  outlet labelRenameNetButton : NSButton
+    $target .selectedSheetGraphicsController.selectedSchematicLabelEntity.renameNetFromUserAction
+    $enabled .labelNetClassController.canRemove
+  ;
+
+  outlet labelInsultateNetButton : NSButton
+    $target .selectedSheetGraphicsController.selectedSchematicLabelEntity.insulateNetFromUserAction
+    $enabled .labelNetClassController.canRemove
+  ;
+
+  outlet labelMergeNetButton : NSButton
+    $target .selectedSheetGraphicsController.selectedSchematicLabelEntity.mergeNetFromUserAction
+    $enabled .labelNetClassController.canRemove
+  ;
+
+#--- Printing Schematics
+  outlet printingSchematicsView : PMSchematicsView
+    $backgroundColor PMSymbolPreferences.root.symbolBackgroundColor
+    $gridStyle root.schematicsGridStyle
+    $gridFactor  root.schematicsGridFactor
+    $placementGrid root.schematicsGrid
+    $displayedGridStep root.schematicsGrid
+    $verticalFlip root.schematicsVerticalFlip
+    $horizontalFlip root.schematicsHorizontalFlip
+    $shouldAntialias PMGeneralPreferences.root.antiAliasing
+    $gridDotColor PMSchematicPreferences.root.dotColorOfSchematicGrid
+    $gridLineColor PMSchematicPreferences.root.lineColorOfSchematicGrid
+    $schematicsTitle root.schematicsTitle
+    $schematicsVersion root.schematicsVersion
+    $schematicsDate root.schematicsDate
+    $schematicsSheetTitle .selectedSheetController.selection.sheetTitle
+  ;
+
+#--- Schematics View
+  outlet selectedObjectInSchematicsInspectorView : NSView ;
+  outlet schematicsView : PMSchematicsView
+    $backgroundColor PMSymbolPreferences.root.symbolBackgroundColor
+    $gridStyle root.schematicsGridStyle
+    $gridFactor  root.schematicsGridFactor
+    $placementGrid root.schematicsGrid
+    $displayedGridStep root.schematicsGrid
+    $zoom root.schematicsZoom
+    $verticalFlip root.schematicsVerticalFlip
+    $horizontalFlip root.schematicsHorizontalFlip
+    $measurementUnitsFactor root.schematicsMeasurementUnitsFactor
+    $shouldAntialias PMGeneralPreferences.root.antiAliasing
+    $gridDotColor PMSchematicPreferences.root.dotColorOfSchematicGrid
+    $gridLineColor PMSchematicPreferences.root.lineColorOfSchematicGrid
+    $schematicsTitle root.schematicsTitle
+    $schematicsVersion root.schematicsVersion
+    $schematicsSheetNumber root.schematicsSheetNumberingString
+    $schematicsDate root.schematicsDate
+    $schematicsSheetTitle .selectedSheetController.selection.sheetTitle
+    $schematicsStatusDictionary .selectedSheetController.selection.sheetStatusDictionary
+    inspectorView selectedObjectInSchematicsInspectorView ;
+    inspector SymbolInProjectEntity -> .symbolInSchematicsInspectorView ;
+    inspector SimpleWireEntity -> .wireInspectorView ;
+    inspector SchematicLabelEntity -> .labelInspectorView ;
+
+  ;
+  outlet schematicsScrollView : NSScrollView (PM_scroll_view_with_placards) ;
+
+  outlet mergingSeveralNetsPanel : NSPanel ;
+  outlet mergingSeveralNetsPopUpButton : NSPopUpButton ;
+
+#--- 'Move Selected Elements to Sheet' Panel
+  outlet moveSelectedElementToSheetPanel : NSPanel ;
+
+  outlet sheetManagementForMovingSelectedElementsPopUp : NSPopUpButton SheetEntity
+    $contentValuesAndContent .sheetController.arrangedObjects.sheetTitleWithIndex
+    $selectedObject root.selectedSheet
+  ;
+
+#--- Actions
+  action removeAllTracksAction ;
+
+#---------------------- Net Classes Tab
+  outlet displayUnitMenu : NSMenu ;
+
+  outlet netClassesTableView : NSTableView $tableValue .netClassesController {
+    NSTableColumn "name" NSTextFieldCell $value *.netClassName {NSValidatesImmediately:yes} ;
+    NSTableColumn "netcolor" PMColorWellCell $value *.netClassColor ;
+    NSTableColumn "unit" NSPopUpButtonCell $menu .displayUnitMenu $selectedTag *.displayUnit ;
+    NSTableColumn "width" NSTextFieldCell $value *.netClassTrackWidthInDisplayUnit ;
+    NSTableColumn "hole" NSTextFieldCell $value *.netClassViaHoleDiameterInDisplayUnit ;
+    NSTableColumn "pad" NSTextFieldCell $value *.netClassViaPadDiameterInDisplayUnit ;
+    NSTableColumn "used" NSTextFieldCell $value *.wireCountString ;
+  } ;
+
+  action addNetClassAction ;
+  outlet addNetClassButton : NSButton $run .addNetClassAction ;
+  outlet removeNetClass : NSButton $run .netClassesController.remove
+    $enabled .netClassesController.canRemove & .netClassesController.selection.canBeRemoved & root.moreThanOneNetClass ;
+
+#---------------------- Net Tab
+  outlet netCountTextField : NSTextField $value root.netCountString ;
+
+  controller netsController : NSArrayController NetEntity $contentSet root.nets {NSDeletesObjectsOnRemove:yes} ;
+
+  outlet netsTableView : NSTableView $tableValue .netsController {
+    NSTableColumn "netname" NSTextFieldCell $value *.netName ;
+    NSTableColumn "netclass" NSPopUpButtonCell NetClassEntity
+      $contentValuesAndContent .netClassesController.arrangedObjects.netClassName
+      $selectedObject *.netClass ;
+    NSTableColumn "connectedPins" NSTextFieldCell $value *.connectedPinsCountString ;
+  } ;
+
+  controller pinsOfSelectedNetController : NSArrayController PinInProjectPadInBoardEntity
+    $contentSet .netsController.selection.padsInBoard
+  ;
+
+  outlet pinsOfSelectedNetClassTableView : NSTableView $tableValue .pinsOfSelectedNetController {
+    NSTableColumn "pins" NSTextFieldCell $value *.fullPinNameForSchematics ;
+  } ;
+
+  action renameSelectedNetAction ;
+  outlet renameSelectedNetButton : NSButton $run .renameSelectedNetAction $enabled .netsController.canRemove ;
+
+  outlet renameNetPanel : NSPanel ;
+  outlet newNetNameTextField : NSTextField $value root.stringForRenamingNet {NSContinuouslyUpdatesValue:yes} ;
+  outlet renameNetErrorTextField : NSTextField $value root.errorMessageForRenamingNet ;
+  outlet doRenamingNetButton : NSButton $enabled root.stringForRenamingNetIsValid $title root.buttonTitleForRenamingNet ;
+
+  #--- Merge sub-net into an existing net
+   outlet mergeSubNetPanel : NSPanel ;
+   controller mergingPanelNetController : NSArrayController NetEntity $contentSet root.nets ;
+   outlet netsToMergePopUpButton : NSPopUpButton NetEntity
+     $contentValuesAndSelectedIndex .mergingPanelNetController.arrangedObjects.netName
+   ;
+#---------------------- Board Tab
+  controller boardGraphicsController : PMBoardGraphicArrayController
+    $contentSet root.boardGraphics
+    $userIntegerParameterForDisplay root.boardUnsignedParameters
+  forView .boardView ;
+
+#--- Board Inspector Selector
+  outlet boardInspectorSegmentedControl : NSSegmentedControl ;
+  outlet boardInspectorViewOutlet : NSView ;
+  action numberOfPackageToInsertDidChangeAction observe root.numberOfPackageToInsertTitle ;
+
+#--- Create objects buttons
+  outlet addBoardTextButton : PMDraggingSourceButton ;
+  outlet addBoardRestrictRectangleButton : PMDraggingSourceButton ;
+  outlet addBoardPassingPointButton : PMDraggingSourceButton ;
+  outlet addBoardLineInLegendButton : PMDraggingSourceButton ;
+  outlet addBoardTrackSegmentButton : PMDraggingSourceButton ;
+
+#--- Errors and warnings in board
+  outlet warningsInBoardTextField : NSTextField $value root.warningCountInBoardString $toolTip root.warningMessageInBoardString ;
+  outlet errorsInBoardTextField : NSTextField $value root.errorCountInBoardString $toolTip root.errorMessageInBoardString ;
+
+#--- Package To Insert Inspector
+  outlet packagesToPlaceInspectorView : NSView ;
+  outlet packagesToPlaceCountTextField : NSTextField $value root.numberOfPackageToInsertTitle ;
+
+
+  controller packageToPlaceController : NSArrayController ComponentInProjectEntity filter isNotPlacedOnBoard $contentSet root.components ;
+  outlet packagesToInsertTableView : PMDraggingSourceTableViewForPackageInBoard $tableValue .packageToPlaceController {
+    NSTableColumn "name" NSTextFieldCell $value *.componentNameForInsertionTableView $editable root.alwaysFalse ;
+  } ;
+
+#--- Display Inspector
+  outlet boardDisplayInspectorView : NSView ;
+
+  outlet showComponentSidePadInBoardCheckbox : NSButton $value root.showComponentSidePadInBoard ;
+  outlet componentSidePadColorWell : NSColorWell $value PMBoardPreferences.root.componentSidePadColor ;
+
+  outlet showSolderSidePadInBoardCheckbox : NSButton $value root.showSolderSidePadInBoard ;
+  outlet solderSidePadColorWell : NSColorWell $value PMBoardPreferences.root.solderSidePadColor ;
+
+  outlet showPadNumberInBoardCheckbox : NSButton $value root.showPadNumberInBoard ;
+  outlet padNumberColorColorWell : NSColorWell $value PMBoardPreferences.root.padNumberColor ;
+
+  outlet showComponentSideRestrictRectanglesCheckbox : NSButton $value root.showComponentSideRestrictRectangles ;
+  outlet componentSideRestrictRectangleColorWell : NSColorWell $value PMBoardPreferences.root.componentSideRestrictRectangleColor ;
+
+  outlet showSolderSideRestrictRectanglesCheckbox : NSButton $value root.showSolderSideRestrictRectangles ;
+  outlet solderSideRestrictRectangleColorWell : NSColorWell $value PMBoardPreferences.root.solderSideRestrictRectangleColor ;
+
+  outlet componentSideLegendColorWell : NSColorWell $value PMBoardPreferences.root.componentSideLegendColor ;
+  outlet showLegendComponentSideCheckbox : NSButton $value root.showComponentSideLegend ;
+
+  outlet componentSideLayoutColorWell : NSColorWell $value PMBoardPreferences.root.componentSideLayoutColor ;
+  outlet showLayoutComponentSideCheckbox : NSButton $value root.showComponentSideLayout ;
+
+  outlet solderSideLayoutColorWell : NSColorWell $value PMBoardPreferences.root.solderSideLayoutColor ;
+  outlet showLayoutSolderSideCheckbox : NSButton $value root.showSolderSideLayout ;
+
+  outlet solderSideLegendColorWell : NSColorWell $value PMBoardPreferences.root.solderSideLegendColor ;
+  outlet showLegendSolderSideCheckbox : NSButton $value root.showSolderSideLegend ;
+
+  outlet showBoardLimitsInBoardCheckbox : NSButton $value root.showBoardLimits ;
+  outlet boardLimitsColorWell : NSColorWell $value PMBoardPreferences.root.boardLimitsColor ;
+
+  outlet showBoardClearanceInBoardCheckbox : NSButton $value root.showBoardClearance ;
+  outlet boardClearanceColorWell : NSColorWell $value PMBoardPreferences.root.boardClearanceColor ;
+
+  outlet drawErrorBackgroundCheckbox : NSButton $value PMBoardPreferences.root.drawErrorBackground ;
+  outlet errorBackgroundColorWell : NSColorWell $value PMBoardPreferences.root.errorBackgroundColor ;
+
+  outlet drawWarningBackgroundCheckbox : NSButton $value PMBoardPreferences.root.drawWarningBackground ;
+  outlet warningBackgroundColorWell : NSColorWell $value PMBoardPreferences.root.warningBackgroundColor ;
+
+  outlet boardBackgroundColorWell : NSColorWell $value PMBoardPreferences.root.boardBackgroundColor ;
+
+  outlet warningAndErrorCircleDiameterSlider : PMSlider $value PMBoardPreferences.root.warningAndErrorCircleDiameterMultipliedByTen ;
+
+  outlet showHorizontalDensityCheckBox : NSButton $value root.showHorizontalDensity ;
+  outlet horizontalTransparencySlider : PMSlider $value root.horizontalDensityDisplayAlpha ;
+
+  outlet showVerticalDensityCheckBox : NSButton $value root.showVerticalDensity ;
+  outlet verticalTransparencySlider : PMSlider $value root.verticalDensityDisplayAlpha ;
+
+  outlet showRastnestMatrix : NSMatrix $selectedTag root.showRastnest ;
+
+  controller netsControllerForShowRastnest : NSArrayController NetEntity $contentSet root.nets ;
+  outlet netsForShowRastnestPopup : NSPopUpButton NetEntity
+    $contentValuesAndContent .netsControllerForShowRastnest.arrangedObjects.netName
+    $selectedObject root.selectedNetForShowingRastnest
+  ;
+
+  action selectionInBoardDidChange observe .boardGraphicsController.selectedObjects ;
+
+#--- Grid Inspector
+  outlet boardGridInspectorView : NSView ;
+  controller boardMeasurementController : EBMeasurementController
+   $measurementUnitFactor root.boardGridUnitsFactor
+   $valueInEBUnit root.boardGrid
+  ;
+  outlet boardGridStylePopUpButton : NSPopUpButton $selectedIndex root.boardGridStyle;
+  outlet boardGridStepPopUpButton : NSPopUpButton $selectedTag root.boardGridFactor;
+  outlet boardGridTextField : NSTextField $value .boardMeasurementController.valueInUnitFactor ;
+  outlet boardMeasurementUnitsFactorPopUpButton : NSPopUpButton $selectedTag root.boardGridUnitsFactor ;
+
+  outlet boardHorizontalFlipButton : NSButton $value root.boardHorizontalFlip;
+  outlet boardVerticalFlipButton : NSButton $value root.boardVerticalFlip;
+
+#--- Board Inspector
+  outlet boardSizeView : NSView ;
+  #--- Width
+  controller boardWidthMeasurementController : EBMeasurementController
+   $measurementUnitFactor root.boardWidthUnitsFactor
+   $valueInEBUnit root.boardWidth
+  ;
+  outlet boardWidthTextField : NSTextField $value .boardWidthMeasurementController.valueInUnitFactor ;
+  outlet boardWidthPopUpButton : NSPopUpButton $selectedTag root.boardWidthUnitsFactor;
+  #--- Height
+  controller boardHeightMeasurementController : EBMeasurementController
+   $measurementUnitFactor root.boardHeightUnitsFactor
+   $valueInEBUnit root.boardHeight
+  ;
+  outlet boardHeightTextField : NSTextField $value .boardHeightMeasurementController.valueInUnitFactor ;
+  outlet boardHeightPopUpButton : NSPopUpButton $selectedTag root.boardHeightUnitsFactor;
+  #--- Line width
+  controller boardLineWidthMeasurementController : EBMeasurementController
+   $measurementUnitFactor root.boardLineWidthUnitsFactor
+   $valueInEBUnit root.boardLineWidth
+  ;
+  outlet boardLineWidthTextField : NSTextField $value .boardLineWidthMeasurementController.valueInUnitFactor ;
+  outlet boardLineWidthPopUpButton : NSPopUpButton $selectedTag root.boardLineWidthUnitsFactor;
+
+  #--- Board clearance
+  controller boardClearanceMeasurementController : EBMeasurementController
+   $measurementUnitFactor root.boardClearanceUnitsFactor
+   $valueInEBUnit root.boardClearance
+  ;
+  outlet boardClearanceTextField : NSTextField $value .boardClearanceMeasurementController.valueInUnitFactor ;
+  outlet boardClearancePopUpButton : NSPopUpButton $selectedTag root.boardClearanceUnitsFactor;
+
+  #--- Board rotate
+  action boardRotateLeftAction ;
+  outlet boardRotateLeftButton : NSButton $run .boardRotateLeftAction ;
+  
+  action boardRotateRightAction ;
+  outlet boardRotateRightButton : NSButton $run .boardRotateRightAction ;
+  
+#--- Unified Restrict Rectangle Inspector
+  outlet unifiedRestrictRectangleInspectorView : NSView ;
+  outlet rectrictRectangleComponentSideCheckbox : NSButton
+    $value .boardGraphicsController.selectedUnifiedRestrictRectangleEntity.restrictRectangleOnComponentSide
+    $enabled .boardGraphicsController.selectedUnifiedRestrictRectangleEntity.componentSideCheckboxEnabled
+  ;
+  outlet rectrictRectangleSolderSideCheckbox : NSButton
+    $enabled .boardGraphicsController.selectedUnifiedRestrictRectangleEntity.solderSideCheckboxEnabled
+    $value .boardGraphicsController.selectedUnifiedRestrictRectangleEntity.restrictRectangleOnSolderSide
+  ;
+
+#--- Track in Board Inspector
+  outlet trackInBoardInspectorView : NSView ;
+
+  outlet trackIsPreservedByRouterCheckbox : NSButton $value .boardGraphicsController.selectedTrackInBoardEntity.preservedByRouter ;
+
+  outlet trackSidePopUpButton : NSPopUpButton $selectedIndex .boardGraphicsController.selectedTrackInBoardEntity.side ;
+
+  outlet trackNetNameTextField : NSTextField $value .boardGraphicsController.selectedTrackInBoardEntity.netName ;
+
+  outlet trackNetClassNameTextField : NSTextField $value .boardGraphicsController.selectedTrackInBoardEntity.netClassName ;
+
+  outlet trackUseCustomWidthCheckbox : NSButton $value .boardGraphicsController.selectedTrackInBoardEntity.useCustomTrackWidth ;
+
+  controller defaultTrackWidthController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedTrackInBoardEntity.netClassTrackWidth
+    $measurementUnitFactor .boardGraphicsController.selectedTrackInBoardEntity.defaultTrackWidthMeasurementUnit
+  ;
+
+  outlet defaultTrackWidthValueTextfield : NSTextField $value .defaultTrackWidthController.valueInUnitFactor ;
+
+  outlet defaultTrackWidthUnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedTrackInBoardEntity.defaultTrackWidthMeasurementUnit ;
+
+  controller customTrackWidthController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedTrackInBoardEntity.customTrackWidth
+    $measurementUnitFactor .boardGraphicsController.selectedTrackInBoardEntity.customTrackWidthMeasurementUnit
+  ;
+
+  outlet customTrackWidthValueTextfield : NSTextField
+    $enabled .boardGraphicsController.selectedTrackInBoardEntity.useCustomTrackWidth
+    $value .customTrackWidthController.valueInUnitFactor ;
+
+  outlet customTrackWidthUnitPopUpButton : NSPopUpButton
+    $enabled .boardGraphicsController.selectedTrackInBoardEntity.useCustomTrackWidth
+    $selectedTag .boardGraphicsController.selectedTrackInBoardEntity.customTrackWidthMeasurementUnit ;
+
+  controller trackDirectionController : PMTrackDirectionController
+    $p1x .boardGraphicsController.selectedTrackInBoardEntity.p1.x
+    $p1y .boardGraphicsController.selectedTrackInBoardEntity.p1.y
+    $p1CanMove .boardGraphicsController.selectedTrackInBoardEntity.p1CanMove
+    $p2x .boardGraphicsController.selectedTrackInBoardEntity.p2.x
+    $p2y .boardGraphicsController.selectedTrackInBoardEntity.p2.y
+    $p2CanMove .boardGraphicsController.selectedTrackInBoardEntity.p2CanMove
+    $rotateLock .boardGraphicsController.selectedTrackInBoardEntity.directionIsLockDuringKnobDragging
+  ;
+
+  outlet directionIsLockDuringKnobDraggingCheckbox : NSButton
+    $value .boardGraphicsController.selectedTrackInBoardEntity.directionIsLockDuringKnobDragging
+    $enabled .trackDirectionController.trackCanRotate
+  ;
+
+  outlet trackDirectionInDegreesTextField : NSTextField
+    $enabled .trackDirectionController.trackCanRotate
+    $value .trackDirectionController.directionInDegrees ;
+
+  controller trackDirectionSliderController : AngleForSliderController $angle .trackDirectionController.directionInDegrees ;
+
+  outlet trackDirectionInBoardSlider : PMSlider
+    $enabled .trackDirectionController.trackCanRotate
+    $value .trackDirectionSliderController.angleForSlider ;
+
+#--- P1
+  controller trackP1XController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedTrackInBoardEntity.p1.x
+    $measurementUnitFactor .boardGraphicsController.selectedTrackInBoardEntity.p1xMeasurementUnit
+  ;
+  outlet trackP1XTextfield : NSTextField
+    $value .trackP1XController.valueInUnitFactor ;
+  outlet trackP1XUnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedTrackInBoardEntity.p1xMeasurementUnit ;
+
+  controller trackP1YController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedTrackInBoardEntity.p1.y
+    $measurementUnitFactor .boardGraphicsController.selectedTrackInBoardEntity.p1yMeasurementUnit
+  ;
+  outlet trackP1YTextfield : NSTextField
+    $value .trackP1YController.valueInUnitFactor ;
+  outlet trackP1YUnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedTrackInBoardEntity.p1yMeasurementUnit ;
+
+#--- P2
+  controller trackP2XController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedTrackInBoardEntity.p2.x
+    $measurementUnitFactor .boardGraphicsController.selectedTrackInBoardEntity.p2xMeasurementUnit
+  ;
+  outlet trackP2XTextfield : NSTextField
+    $value .trackP2XController.valueInUnitFactor ;
+  outlet trackP2XUnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedTrackInBoardEntity.p2xMeasurementUnit ;
+
+  controller trackP2YController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedTrackInBoardEntity.p2.y
+    $measurementUnitFactor .boardGraphicsController.selectedTrackInBoardEntity.p2yMeasurementUnit
+  ;
+  outlet trackP2YTextfield : NSTextField
+    $value .trackP2YController.valueInUnitFactor ;
+  outlet trackP2YUnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedTrackInBoardEntity.p2yMeasurementUnit ;
+
+  outlet trackLockView : PMTrackLockView
+    $directionInDegrees .trackDirectionController.directionInDegrees
+    $noPadConnectedToP1 .boardGraphicsController.selectedTrackInBoardEntity.noPadConnectedToP1
+    $noPadConnectedToP2 .boardGraphicsController.selectedTrackInBoardEntity.noPadConnectedToP2
+    $manualLockForP1 .boardGraphicsController.selectedTrackInBoardEntity.p1OrConnectedTrackPointsAreLock
+    $manualLockForP2 .boardGraphicsController.selectedTrackInBoardEntity.p2OrConnectedTrackPointsAreLock
+    $trackObjects .boardGraphicsController.selectedObjects
+  ;
+
+#--- ERC Checking Inspector
+  outlet ercCheckingInspectorView : NSView ;
+  action hideERCErrorInBoardAction ;
+  outlet hideERCErrorInBoard : NSButton $run .hideERCErrorInBoardAction ;
+  outlet mERCCheckingErrorTableView : NSTableView ;
+  outlet mGenerationLogTextView : NSTextView ;
+
+#--- Router Inspector
+  outlet routerInspectorView : NSView ;
+
+  controller routerClearanceController : EBMeasurementController
+    $valueInEBUnit root.routerClearance
+    $measurementUnitFactor root.routerClearanceMeasurementUnitsFactor
+  ;
+
+  outlet routerClearanceTextfield : NSTextField
+    $value .routerClearanceController.valueInUnitFactor ;
+
+  outlet routerClearancePopUpButton : NSPopUpButton
+    $selectedTag root.routerClearanceMeasurementUnitsFactor ;
+
+  outlet routerRoutingSideMatrix : NSMatrix $selectedIndex root.routerRoutingSides ;
+
+  outlet routerRoutingAngleMatrix : NSMatrix $selectedIndex root.routerRoutingAngle ;
+
+  action exportDSNfileAction ;
+  outlet exportDSNfileButton : NSButton $run .exportDSNfileAction ;
+  
+  outlet auxiliaryViewForSaveDSNfilePanel : NSView ;
+  outlet exportTracksAndViasCheckbox : NSButton ;
+  outlet exportPassingPointsCheckbox : NSButton ;
+  
+  action launchFreeRoutingAction ;
+  outlet launchFreeRoutingButton : NSButton $run .launchFreeRoutingAction ;
+  
+  action importSESfileAction ;
+  outlet importSESfileButton : NSButton $run .importSESfileAction ;
+
+  action designRulesCheckAction ;
+  outlet designRuleCheckInRouterInspectorButton : NSButton $run .designRulesCheckAction $enabled ! root.noAttachedArtworkFile ;
+ 
+  outlet routerRoutingOriginPopUpButton : NSPopUpButton $selectedIndex root.routerRoutingOrigin ;
+
+  outlet routerRoutingDirectionPopUpButton : NSPopUpButton $selectedIndex root.routerRoutingDirection ;
+
+  outlet routePadsFromBackSideButton : NSButton $value root.routePadsFromBackSide ;
+
+#--- Autorouter
+  outlet autorouterPanel : NSPanel ;
+  action autorouterBeginSheetAction ;
+  outlet autorouterBeginSheetButton : NSButton $run .autorouterBeginSheetAction ;
+  outlet autorouterAutorunCheckbox : NSButton $value root.autorouterAutoRun ;
+  outlet autorouterDelaunayTriangulationsMatrix : NSMatrix $selectedIndex root.autorouterDelaunayTriangulation ;
+  action autorouterShowDelaunayTriangulationsAction observe root.autorouterDelaunayTriangulation ;
+  outlet autorouterTopologicalShortestPathesComputationsMatrix : NSMatrix $selectedIndex root.autorouterShowTopologicalShortestPathesComputations ;
+  action autorouterShowTopologicalShortestPathesComputationsAction observe root.autorouterShowTopologicalShortestPathesComputations ;
+  outlet autorouterBoardViewScalePopUpButton : NSPopUpButton $selectedTag root.autorouterBoardViewScale ;
+  action autorouterSetBoardViewScaleAction observe root.autorouterBoardViewScale ;
+  outlet autorouterWireDisplayPopUpButton : NSPopUpButton $selectedIndex root.autorouterWireDisplay ;
+  action autorouterWireDisplayAction observe root.autorouterWireDisplay ;
+
+#------------------------------------------------ Text in Board Inspector
+  outlet textInBoardInspectorView : NSView ;
+  outlet textInBoardTextField : NSTextField $value .boardGraphicsController.selectedTextInBoardEntity.text ;
+  outlet textInBoardSidePopUpButton : NSPopUpButton $selectedIndex .boardGraphicsController.selectedTextInBoardEntity.side ;
+  outlet textSizeInBoardTextField : NSTextField $value .boardGraphicsController.selectedTextInBoardEntity.fontSize ;
+  outlet textDirectionInBoardTextField : NSTextField $value .boardGraphicsController.selectedTextInBoardEntity.direction ;
+  controller textDirectionInBoardController : AngleForSliderController $angle .boardGraphicsController.selectedTextInBoardEntity.direction ;
+  outlet textDirectionInBoardSlider : PMSlider $value .textDirectionInBoardController.angleForSlider ;
+  outlet textInBoardFontPopup : NSPopUpButton FontInProjectEntity
+    $contentValuesAndContent .embeddedFontController.arrangedObjects.fontName
+    $selectedObject .boardGraphicsController.selectedTextInBoardEntity.font ;
+
+#--- Passing Point Inspector
+  outlet passingPointInBoardInspectorView : NSView ;
+  outlet passingPointSidePopUpButton : NSPopUpButton
+    $selectedIndex .boardGraphicsController.selectedPassingPointInBoardEntity.side
+  ;
+  controller passingPointNetController : NSArrayController NetEntity $contentSet root.nets ;
+  outlet passingPointNetPopUpButton : NSPopUpButton NetEntity
+    $contentValuesAndContent .passingPointNetController.arrangedObjects.netName
+    $selectedObject .boardGraphicsController.selectedPassingPointInBoardEntity.net ;
+
+  controller passingPointXController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedPassingPointInBoardEntity.location.x
+    $measurementUnitFactor .boardGraphicsController.selectedPassingPointInBoardEntity.locationXMeasurementUnit
+  ;
+  outlet passingPointXTextfield : NSTextField
+    $value .passingPointXController.valueInUnitFactor ;
+  outlet passingPointXUnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedPassingPointInBoardEntity.locationXMeasurementUnit ;
+
+  controller passingPointYController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedPassingPointInBoardEntity.location.y
+    $measurementUnitFactor .boardGraphicsController.selectedPassingPointInBoardEntity.locationYMeasurementUnit
+  ;
+  outlet passingPointYTextfield : NSTextField
+    $value .passingPointYController.valueInUnitFactor ;
+  outlet passingPointYUnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedPassingPointInBoardEntity.locationYMeasurementUnit ;
+
+#--- Via in Board Inspector
+  outlet viaInBoardInspectorView : NSView ;
+  #--- net Name
+  outlet viaNetNameTextField : NSTextField $value .boardGraphicsController.selectedConnectorInBoardEntity.netName ;
+  outlet viaNetClassNameTextField : NSTextField $value .boardGraphicsController.selectedConnectorInBoardEntity.netClassName ;
+  #--- Pad diameter from net class
+  controller padDiameterFromNetClassController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedConnectorInBoardEntity.padDiameterFromNetClass
+    $measurementUnitFactor .boardGraphicsController.selectedConnectorInBoardEntity.padDiameterFromNetClassDisplayUnit
+  ;
+  outlet padDiameterFromNetClassTextfield : NSTextField
+    $value .padDiameterFromNetClassController.valueInUnitFactor ;
+  outlet padDiameterForNetClassDisplayUnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedConnectorInBoardEntity.padDiameterFromNetClassDisplayUnit ;
+  #--- Custom Pad diameter
+  outlet useCustomPadDiameterCheckbox : NSButton $value .boardGraphicsController.selectedConnectorInBoardEntity.useCustomPadDiameter ;
+  controller customPadDiameterController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedConnectorInBoardEntity.customPadDiameter
+    $measurementUnitFactor .boardGraphicsController.selectedConnectorInBoardEntity.customPadDiameterDisplayUnit
+  ;
+  outlet customPadDiameterTextfield : NSTextField
+    $enabled .boardGraphicsController.selectedConnectorInBoardEntity.useCustomPadDiameter
+    $value .customPadDiameterController.valueInUnitFactor ;
+  outlet customPadDiameterDisplayUnitPopUpButton : NSPopUpButton
+    $enabled .boardGraphicsController.selectedConnectorInBoardEntity.useCustomPadDiameter
+    $selectedTag .boardGraphicsController.selectedConnectorInBoardEntity.customPadDiameterDisplayUnit ;
+  #--- Hole diameter from net class
+  controller holeDiameterFromNetClassController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedConnectorInBoardEntity.holeDiameterFromNetClass
+    $measurementUnitFactor .boardGraphicsController.selectedConnectorInBoardEntity.holeDiameterFromNetClassDisplayUnit
+  ;
+  outlet holeDiameterFromNetClassTextfield : NSTextField
+    $value .holeDiameterFromNetClassController.valueInUnitFactor ;
+  outlet holeDiameterForNetClassDisplayUnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedConnectorInBoardEntity.holeDiameterFromNetClassDisplayUnit ;
+  #--- Custom Hole diameter
+  outlet useCustomHoleDiameterCheckbox : NSButton $value .boardGraphicsController.selectedConnectorInBoardEntity.useCustomHoleDiameter ;
+  controller customHoleDiameterController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedConnectorInBoardEntity.customHoleDiameter
+    $measurementUnitFactor .boardGraphicsController.selectedConnectorInBoardEntity.customHoleDiameterDisplayUnit
+  ;
+  outlet customHoleDiameterTextfield : NSTextField
+    $enabled .boardGraphicsController.selectedConnectorInBoardEntity.useCustomHoleDiameter
+    $value .customHoleDiameterController.valueInUnitFactor ;
+  outlet customHoleDiameterDisplayUnitPopUpButton : NSPopUpButton
+    $enabled .boardGraphicsController.selectedConnectorInBoardEntity.useCustomHoleDiameter
+    $selectedTag .boardGraphicsController.selectedConnectorInBoardEntity.customHoleDiameterDisplayUnit ;
+
+#----------------------- Line in Board Inspector
+  outlet lineInBoardInspectorView : NSView ;
+  outlet lineInBoardSidePopUpMenu : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedLineInBoardEntity.side ;
+
+  controller lineInBoardWidthController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedLineInBoardEntity.width
+    $measurementUnitFactor .boardGraphicsController.selectedLineInBoardEntity.measurementUnitForWidth
+  ;
+
+  outlet lineInBoardWidthTextfield : NSTextField $value .lineInBoardWidthController.valueInUnitFactor ;
+  outlet lineInBoardWidthUnitPopUpButton : NSPopUpButton $selectedTag .boardGraphicsController.selectedLineInBoardEntity.measurementUnitForWidth ;
+
+  #--- First Point location
+  controller lineX1Controller : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedLineInBoardEntity.point1.x
+    $measurementUnitFactor .boardGraphicsController.selectedLineInBoardEntity.point1XmeasurementUnitsFactor
+  ;
+  outlet lineX1Textfield : NSTextField $value .lineX1Controller.valueInUnitFactor ;
+  outlet lineX1UnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedLineInBoardEntity.point1XmeasurementUnitsFactor ;
+
+  controller lineY1Controller : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedLineInBoardEntity.point1.y
+    $measurementUnitFactor .boardGraphicsController.selectedLineInBoardEntity.point1YmeasurementUnitsFactor
+  ;
+  outlet lineY1Textfield : NSTextField $value .lineY1Controller.valueInUnitFactor ;
+  outlet lineY1UnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedLineInBoardEntity.point1YmeasurementUnitsFactor ;
+
+  #--- Second Point location
+  controller lineX2Controller : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedLineInBoardEntity.point2.x
+    $measurementUnitFactor .boardGraphicsController.selectedLineInBoardEntity.point2XmeasurementUnitsFactor
+  ;
+  outlet lineX2Textfield : NSTextField $value .lineX2Controller.valueInUnitFactor ;
+  outlet lineX2UnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedLineInBoardEntity.point2XmeasurementUnitsFactor ;
+
+  controller lineY2Controller : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedLineInBoardEntity.point2.y
+    $measurementUnitFactor .boardGraphicsController.selectedLineInBoardEntity.point2YmeasurementUnitsFactor
+  ;
+  outlet lineY2Textfield : NSTextField $value .lineY2Controller.valueInUnitFactor ;
+  outlet lineY2UnitPopUpButton : NSPopUpButton
+    $selectedTag .boardGraphicsController.selectedLineInBoardEntity.point2YmeasurementUnitsFactor ;
+
+#------------------------ Component in Board Inspector
+  outlet packageInBoardInspectorView : NSView ;
+  #--- Controller for accessing corresponding device
+  controller deviceController : NSObjectController DeviceInProjectEntity $contentObject .boardGraphicsController.selectedComponentInProjectEntity.device ;
+  #--- Controller for accessing corresponding available packages
+  controller availablePackagesController : NSArrayController PackageTypeInProjectEntity $contentSet .deviceController.selection.availablePackages ;
+  #--- Package rotation
+  outlet packageInBoardRotationTextField : NSTextField $value .boardGraphicsController.selectedComponentInProjectEntity.rotationInDegrees ;
+  controller packageInBoardRotationController : AngleForSliderController $angle .boardGraphicsController.selectedComponentInProjectEntity.rotationInDegrees ;
+  outlet packageInBoardRotationSlider : PMSlider $value .packageInBoardRotationController.angleForSlider ;
+  #--- Package location
+  controller packageXController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedComponentInProjectEntity.origin.x
+    $measurementUnitFactor root.packageXmeasurementUnitsFactor
+  ;
+  outlet packageXTextfield : NSTextField
+    $value .packageXController.valueInUnitFactor ;
+  outlet packageXUnitPopUpButton : NSPopUpButton
+    $selectedTag root.packageXmeasurementUnitsFactor ;
+
+  controller packageYController : EBMeasurementController
+    $valueInEBUnit .boardGraphicsController.selectedComponentInProjectEntity.origin.y
+    $measurementUnitFactor root.packageYmeasurementUnitsFactor
+  ;
+  outlet packageYTextfield : NSTextField
+    $value .packageYController.valueInUnitFactor ;
+  outlet packageYUnitPopUpButton : NSPopUpButton
+    $selectedTag root.packageYmeasurementUnitsFactor ;
+  #--- Package Selection PopUp
+  outlet availablePackagesPopup : NSPopUpButton PackageTypeInProjectEntity
+    $contentValuesAndContent .availablePackagesController.arrangedObjects.packageTypeName
+    $selectedObject .boardGraphicsController.selectedComponentInProjectEntity.usedPackage ;
+  #--- Component Name
+  outlet componentNameIsVisibleCheckBox : NSButton $value .boardGraphicsController.selectedComponentInProjectEntity.componentNameIsVisible ;
+  outlet componentNameTextField : NSTextField $value .boardGraphicsController.selectedComponentInProjectEntity.componentName ;
+  outlet componentNameDirectionSegmentedControl : NSSegmentedControl $selectedIndex .boardGraphicsController.selectedComponentInProjectEntity.componentNameDirection ;
+  #--- Component Name Font
+  outlet componentNameFontPopup : NSPopUpButton FontInProjectEntity
+    $contentValuesAndContent .embeddedFontController.arrangedObjects.fontName
+    $selectedObject .boardGraphicsController.selectedComponentInProjectEntity.fontForComponentName ;
+  #--- Component Name Font Size
+  outlet componentNameFontSizeTextField : NSTextField $value .boardGraphicsController.selectedComponentInProjectEntity.fontSizeForComponentName ;
+  #--- Component Value
+  outlet componentValueIsVisibleCheckBox : NSButton $value .boardGraphicsController.selectedComponentInProjectEntity.componentValueIsVisible ;
+  outlet componentValueTextField : NSTextField $value .boardGraphicsController.selectedComponentInProjectEntity.componentValue ;
+  outlet componentValueDirectionSegmentedControl : NSSegmentedControl $selectedIndex .boardGraphicsController.selectedComponentInProjectEntity.componentValueDirection ;
+  #--- Component Value Font
+  outlet componentValueFontPopup : NSPopUpButton FontInProjectEntity
+    $contentValuesAndContent .embeddedFontController.arrangedObjects.fontName
+    $selectedObject .boardGraphicsController.selectedComponentInProjectEntity.fontForComponentValue ;
+  #--- Component Value Font Size
+  outlet componentValueFontSizeTextField : NSTextField $value .boardGraphicsController.selectedComponentInProjectEntity.fontSizeForComponentValue ;
+  #--- Component Side in Board
+  outlet componentSideMatrix : NSMatrix $selectedTag .boardGraphicsController.selectedComponentInProjectEntity.onComponentSideInBoard ;
+
+#------------------------ Board View
+  outlet selectedObjectInBoardInspectorView : NSView ;
+  outlet boardView : PMBoardView
+    $showBoardLimits root.showBoardLimits
+    $showBoardClearance root.showBoardClearance
+    $boardLineWidth root.boardLineWidth
+    $boardWidth root.boardWidth
+    $boardHeight root.boardHeight
+    $boardClearance root.boardClearance
+    $backgroundColor PMBoardPreferences.root.boardBackgroundColor
+    $gridStyle root.boardGridStyle
+    $gridFactor  root.boardGridFactor
+    $placementGrid root.boardGrid
+    $displayedGridStep root.boardGrid
+    $zoom root.boardZoom
+    $verticalFlip root.boardVerticalFlip
+    $horizontalFlip root.boardHorizontalFlip
+    $measurementUnitsFactor root.boardGridUnitsFactor
+    $shouldAntialias PMGeneralPreferences.root.antiAliasing
+    $gridDotColor PMBoardPreferences.root.dotColorOfBoardGrid
+    $gridLineColor PMBoardPreferences.root.lineColorOfBoardGrid
+    $boardLimitsColor PMBoardPreferences.root.boardLimitsColor
+    $boardSideClearanceColor PMBoardPreferences.root.boardClearanceColor
+    $errorColor PMBoardPreferences.root.errorBackgroundColor
+    $warningColor PMBoardPreferences.root.warningBackgroundColor
+    $boardStatusDictionary root.boardStatusDictionary
+    $radiusOfWarningOrErrorOvals PMBoardPreferences.root.warningAndErrorCircleDiameterMultipliedByTen
+    $horizontalDensityDictionary root.horizontalDensityDictionary
+    $verticalDensityDictionary root.verticalDensityDictionary
+    $horizontalDensityDisplayTransparency root.horizontalDensityDisplayAlpha
+    $verticalDensityDisplayTransparency root.verticalDensityDisplayAlpha
+    $rastnest root.rastnest
+
+    inspectorView selectedObjectInBoardInspectorView ;
+    inspector UnifiedRestrictRectangleEntity -> .unifiedRestrictRectangleInspectorView ;
+    inspector TextInBoardEntity -> .textInBoardInspectorView ;
+    inspector TrackInBoardEntity -> .trackInBoardInspectorView ;
+    inspector ComponentInProjectEntity -> .packageInBoardInspectorView ;
+    inspector LineInBoardEntity -> .lineInBoardInspectorView ;
+    inspector ConnectorInBoardEntity -> .viaInBoardInspectorView ;
+    inspector PassingPointInBoardEntity -> .passingPointInBoardInspectorView ;
+  ;
+  outlet boardScrollView : NSScrollView (PM_scroll_view_with_placards) ;
+
+#--- Menu action
+  action selectAllTracksAction ;
+  action selectAllViasAction ;
+  action selectAllPassingPointsAction ;
+  action selectAllRestrictRectanglesAction ;
+  action selectAllComponentsAction ;
+  action duplicateSelectedComponentsAction ;
+  action buildSubmenuOfSelectOneComponentMenuItemAction observe root.componentArray ;
+  outlet selectOneComponentMenuItem : NSMenuItem ;
+  action selectAllTracksFromSelectedTrackAction ;
+  outlet selectAllTracksFromSelectedTrack : NSMenuItem
+   $enabled .boardGraphicsController.selectedTrackInBoardEntity.hasNet
+   $run .selectAllTracksFromSelectedTrackAction
+  ;
+  action renameAllComponentsFromLeftToRightUpwardsAction ;
+
+  action updateSelectTrackFromNetItemAction observe root.netNameArray ;
+  outlet selectTracksFromNetMenuItem : NSMenuItem ;
+
+  action addComponentsToSelectionAction ;
+  action updateSelectionCountDisplay ;
+  outlet addComponentsToSelection_Panel : NSPanel ;
+  outlet addComponentsToSelectionComponentCountTextField : NSTextField ;
+  outlet addComponentsToSelectionOkButton : NSButton ;
+  outlet addComponentsToSelectionFromSheetCheckBox : NSButton $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromSheetErrorMessage: NSTextField ;
+  outlet addComponentsToSelectionFromSheetPopUpButton: NSPopUpButton $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromPackageCheckBox : NSButton $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromPackagePopUpButton: NSPopUpButton $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromComponentSideCheckBox : NSButton $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromComponentSideSegmentedControl: NSSegmentedControl $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromComponentNameVisibilityCheckBox : NSButton $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromComponentNameIsVisibleSegmentedControl: NSSegmentedControl $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromComponentNameDirectionCheckBox : NSButton $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromComponentNameDirectionSegmentedControl: NSSegmentedControl $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromComponentValueVisibilityCheckBox : NSButton $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromComponentValueIsVisibleSegmentedControl: NSSegmentedControl $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromComponentValueDirectionCheckBox : NSButton $run .updateSelectionCountDisplay ;
+  outlet addComponentsToSelectionFromComponentValueDirectionSegmentedControl: NSSegmentedControl $run .updateSelectionCountDisplay ;
+
+#--- Segment and via count text fields
+  outlet segmentCountTextField : NSTextField $value root.segmentCountString ;
+  outlet viaCountTextField : NSTextField $value root.viaCountString ;
+
+  controller traceLengthController : EBMeasurementController
+    $valueInEBUnit root.traceLength
+    $measurementUnitFactor root.measurementUnitForTraceLength
+  ;
+
+  outlet traceLengthTextField : NSTextField $value .traceLengthController.valueInUnitFactor ;
+  outlet traceLengthUnitPopUpButton : NSPopUpButton $selectedTag root.measurementUnitForTraceLength ;
+
+#---------------------- Artwork Tab
+  outlet artworkTabView : NSTabView $hidden root.noAttachedArtworkFile ;
+  outlet noArtworkTextField: NSTextField $hidden ! root.noAttachedArtworkFile ;
+
+#--- Board and Schematics Status images
+  outlet schematicsStatusForArtwork : PMStatusImage
+    $statusValue root.schematicsStatus
+    $toolTip root.schematicsStatusToolTipString
+  ;
+
+  outlet boardStatusForArtwork : PMStatusImage
+    $statusValue root.boardStatus
+    $toolTip root.boardStatusToolTipString
+  ;
+
+  outlet designRuleCheckStatusForArtwork : PMStatusImage
+    $statusValue root.designRuleCheckStatusCode
+    $toolTip root.designRuleCheckToolTipString
+  ;
+
+#--- ERC checking
+  outlet ercPanel : NSPanel ;
+  outlet artworkLogTextView : NSTextView ;
+  outlet designRuleCheckButton : NSButton $run .designRulesCheckAction $enabled ! root.noAttachedArtworkFile ;
+
+#--- Artwork File Generation
+  outlet generatingFilesPanel : NSPanel ;
+  action generateArtworkFilesAction ;
+  outlet generateArtworkFilesButton : NSButton $run .generateArtworkFilesAction $enabled ! root.noAttachedArtworkFile ;
+  outlet artworkGeneratesGerberButton : NSButton $value root.artworkGeneratesGerber $enabled ! root.noAttachedArtworkFile ;
+  outlet artworkGeneratesPDFButton : NSButton $value root.artworkGeneratesPDF $enabled ! root.noAttachedArtworkFile ;
+  outlet artworkGeneratesEPSButton : NSButton $value root.artworkGeneratesEPS $enabled ! root.noAttachedArtworkFile ;
+
+#--- Artwork Attachment/detachment
+  outlet artworkFileNameTextField : NSTextField $value root.artworkFileName ;
+  action performArtworkAttachmentDetachment ;
+  outlet attachDetachArtworkButton : NSButton $run .performArtworkAttachmentDetachment ;
+
+#--- Artwork Summary
+  controller artworkSummaryController : NSObjectController ArtworkRootEntity $contentObject root.artworkRootEntity ;
+#--- Minimum value for PP, TP, TT and TW
+  controller artworkMeasurementControllerFor_PP_TP_TT_TW : EBMeasurementController
+    $valueInEBUnit .artworkSummaryController.selection.minPP_TP_TT_TW_inEBunit
+    $measurementUnitFactor .artworkSummaryController.selection.minPP_TP_TT_TW_displayUnit
+  ;
+  outlet artworkMinPP_TP_TT_TW_Textfield : NSTextField $value .artworkMeasurementControllerFor_PP_TP_TT_TW.valueInUnitFactor ;
+  outlet artworkMinPP_TP_TT_TW_UnitPopUpButton : NSPopUpButton $selectedTag .artworkSummaryController.selection.minPP_TP_TT_TW_displayUnit ;
+
+#--- Minimum value for PHD
+  controller artworkMeasurementControllerFor_PHD : EBMeasurementController
+    $valueInEBUnit .artworkSummaryController.selection.minValueForPHDinEBUnit
+    $measurementUnitFactor .artworkSummaryController.selection.minValueForPHDdisplayUnit
+  ;
+  outlet artworkMinFor_PHD_Textfield : NSTextField $value .artworkMeasurementControllerFor_PHD.valueInUnitFactor ;
+  outlet artworkMinFor_PHD_UnitPopUpButton : NSPopUpButton $selectedTag .artworkSummaryController.selection.minValueForPHDdisplayUnit ;
+
+#--- Minimum value for OAR
+  controller artworkMeasurementControllerFor_OAR : EBMeasurementController
+    $valueInEBUnit .artworkSummaryController.selection.minValueForOARinEBUnit
+    $measurementUnitFactor .artworkSummaryController.selection.minValueForOARdisplayUnit
+  ;
+  outlet artworkMinFor_OAR_Textfield : NSTextField $value .artworkMeasurementControllerFor_OAR.valueInUnitFactor ;
+  outlet artworkMinFor_OAR_UnitPopUpButton : NSPopUpButton $selectedTag .artworkSummaryController.selection.minValueForOARdisplayUnit ;
+
+#------ Format Tab
+#--- Gerber Data Format
+  outlet gerberDataFormatPopUpButton : NSPopUpButton $selectedTag .artworkSummaryController.selection.gerberDataFormat $enabled root.alwaysFalse ;
+
+#--- Drill Data Format
+  outlet drillDataFormatPopUpButton : NSPopUpButton $selectedTag .artworkSummaryController.selection.drillDataFormat $enabled root.alwaysFalse ;
+
+#--- Drill Data View
+  outlet drillDataView : PMDrillDataView $drillFormat .artworkSummaryController.selection.drillDataFormat ;
+
+#--- Excellon Data Definition
+  outlet excellonDataView : NSView ;
+  controller excellonDataController : NSObjectController ExcellonDrillDataEntity
+    $contentObject .artworkSummaryController.selection.excellonDrillFormatDefinition ;
+  outlet excellonDrillDataFileExtensionTextField : NSTextField $value .excellonDataController.selection.drillDataFileExtension $enabled root.alwaysFalse ;
+
+#--- Excellon Data Definition (with separate drill tool list)
+  outlet excellonWithSeparateDrillToolListDataView : NSView ;
+  controller excellonWithSeparateDrillToolListDataController : NSObjectController ExcellonDrillDataWithSeparateToolListFileEntity
+    $contentObject .artworkSummaryController.selection.excellonDrillWithSeparateToolListFormatDefinition ;
+  outlet excellonHoleListFileExtensionTextField : NSTextField $value .excellonWithSeparateDrillToolListDataController.selection.drillListFileExtension $enabled root.alwaysFalse ;
+  outlet excellonSeparateToolListFileExtensionTextField : NSTextField $value .excellonWithSeparateDrillToolListDataController.selection.drillToolListFileExtension $enabled root.alwaysFalse ;
+
+#--- Generated Data file parameters
+  controller artworkGeneratedDataController : NSArrayController ArtworkFileGenerationParameters
+    $contentSet .artworkSummaryController.selection.fileGenerationParameterArray ;
+
+  outlet artworkGeneratorTableView : NSTableView $tableValue .artworkGeneratedDataController {
+    NSTableColumn "name" NSTextFieldCell $value *.name $editable root.alwaysFalse ;
+  } ;
+  outlet artworkFileExtensionTextfield : NSTextField $value .artworkGeneratedDataController.selection.fileExtension $enabled root.alwaysFalse ;
+
+  outlet artworkTextsLegendComponentSideButton : NSButton $value .artworkGeneratedDataController.selection.drawTextsLegendComponentSide $enabled root.alwaysFalse ;
+  outlet artworkTextsLayoutComponentSideButton : NSButton $value .artworkGeneratedDataController.selection.drawTextsLayoutComponentSide $enabled root.alwaysFalse ;
+  outlet artworkTextsLayoutSolderSideButton    : NSButton $value .artworkGeneratedDataController.selection.drawTextsLayoutSolderSide $enabled root.alwaysFalse ;
+  outlet artworkTextsLegendSolderSideButton    : NSButton $value .artworkGeneratedDataController.selection.drawTextsLegendSolderSide $enabled root.alwaysFalse ;
+  outlet artworkPadsComponentSideButton        : NSButton $value .artworkGeneratedDataController.selection.drawPadsComponentSide $enabled root.alwaysFalse ;
+  outlet artworkPadsSolderSideButton           : NSButton $value .artworkGeneratedDataController.selection.drawPadsSolderSide $enabled root.alwaysFalse ;
+  outlet artworkViasButton                     : NSButton $value .artworkGeneratedDataController.selection.drawVias $enabled root.alwaysFalse ;
+  outlet artworkPackageLegendButton            : NSButton $value .artworkGeneratedDataController.selection.drawPackageLegends $enabled root.alwaysFalse ;
+  outlet artworkComponentNamesButton           : NSButton $value .artworkGeneratedDataController.selection.drawComponentNames $enabled root.alwaysFalse ;
+  outlet artworkComponentValuesButton          : NSButton $value .artworkGeneratedDataController.selection.drawComponentValues $enabled root.alwaysFalse ;
+  outlet artworkTracksComponentSideButton      : NSButton $value .artworkGeneratedDataController.selection.drawTracksComponentSide $enabled root.alwaysFalse ;
+  outlet artworkTracksSolderSideButton         : NSButton $value .artworkGeneratedDataController.selection.drawTracksSolderSide $enabled root.alwaysFalse ;
+  outlet artworkBoardLimitsButton              : NSButton $value .artworkGeneratedDataController.selection.drawBoardLimits $enabled root.alwaysFalse ;
+  outlet artworkComponentValuesSolderSideButton: NSButton $value .artworkGeneratedDataController.selection.drawComponentValuesSolderSide $enabled root.alwaysFalse ;
+  outlet artworkComponentNamesSolderSideButton : NSButton $value .artworkGeneratedDataController.selection.drawComponentNamesSolderSide $enabled root.alwaysFalse ;
+  outlet artworkPackageLegendSolderSideButton  : NSButton $value .artworkGeneratedDataController.selection.drawPackageLegendsSolderSide $enabled root.alwaysFalse ;
+
+  outlet artworkPadHolesInPDFCheckBox          : NSButton $value .artworkGeneratedDataController.selection.drawPadHolesInPDF $enabled root.alwaysFalse ;
+  controller artworkPadHoleInPDFMeasurementController : EBMeasurementController
+   $measurementUnitFactor .artworkGeneratedDataController.selection.measurementUnitForPadHoleInPDF
+   $valueInEBUnit .artworkGeneratedDataController.selection.padHoleDiameterInPDF
+  ;
+  outlet artworkPadHoleInPDFValueTextField : NSTextField
+    $value .artworkPadHoleInPDFMeasurementController.valueInUnitFactor
+    $enabled root.alwaysFalse
+  ;
+  outlet artworkPadHoleDiameterInPDFSettingView : NSView
+    $hidden ! .artworkGeneratedDataController.selection.drawPadHolesInPDF
+  ;
+  outlet artworkMeasurementUnitForPadHoleInPDFPopUpButton : NSPopUpButton
+    $selectedTag .artworkGeneratedDataController.selection.measurementUnitForPadHoleInPDF
+  ;
+
+  outlet artworkHorizontalMirrorButton : NSButton $value .artworkGeneratedDataController.selection.horizontalMirror $enabled root.alwaysFalse ;
+
+#---------------------- Infos Tab
+  outlet artworkVersionTextField : NSTextField $value .artworkSummaryController.selection.versionNumber ;
+
+#--- Comments
+  outlet artworkCommentTextView : NSTextView $value .artworkSummaryController.selection.comments $editable root.alwaysFalse ;
+
+#--- Signature
+  outlet artworkSignatureTextField : NSTextField $value .artworkSummaryController.selection.signatureHexString ;
+}
+
+#----------------------------------------------------------------------------*
+
+classWithNib PMRenameComponentDialog {
+  outlet renameComponentPanel : NSPanel ;
+  outlet actualComponentNameForRenamePanel : NSTextField ;
+  controller prefixController : NSArrayController StringEntity ;
+  action prefixStringDidChangeAction ;
+  outlet prefixComboBox : NSComboBox
+    $contentValues .prefixController.arrangedObjects.string
+    $run .prefixStringDidChangeAction
+  ;
+  controller indexController : NSArrayController StringEntity ;
+  action indexForRenamingDidChangeAction ;
+  outlet indexPopUp : NSPopUpButton StringEntity
+    $contentValuesAndSelectedIndex .indexController.arrangedObjects.string
+    $run .indexForRenamingDidChangeAction ;
+  outlet performRenamingButton : NSButton ;
+  outlet performRenamingErrorMessageTextString : NSTextField ;
+}
+
+#----------------------------------------------------------------------------*
+
+classForEntity PointInSheetEntity {
+  attribute location : EBPoint := EBZeroPoint storedBy .stringForLocation ;
+}{
+  transient pointCanMove : boolean observe .symbolPins ;
+  
+  setObserver pinsObserver observe .symbolPins ;
+  transient connectionKind : integer32 observe :pinsObserver.PinInProjectPadInBoardEntity.ncPoint, .wireP1s, .wireP2s, .labels ;
+}
+
+#----------------------------------------------------------------------------*

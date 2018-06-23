@@ -1,0 +1,155 @@
+//
+//  check-libraries.swift
+//  canari
+//
+//  Created by Pierre Molinaro on 30/06/2015.
+//
+//
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+import Cocoa
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+enum StatusInMetadata : UInt8 {
+  case metadataStatusUnknown = 0
+  case metadataStatusSuccess = 1
+  case metadataStatusWarning = 2
+  case metadataStatusError   = 3
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+let PMSymbolVersion  = "PMSymbolVersion"
+let PMPackageVersion = "PMPackageVersion"
+let PMDeviceVersion  = "PMDeviceVersion"
+
+//--- Dictionary of for embedded symbols and packages in device metadatadictionary
+let PMDeviceSymbols = "PMDeviceSymbols"
+let PMDevicePackages = "PMDevicePackages"
+
+//let PMDeviceVersionInDialog           = "PMDeviceVersionInDialog"
+//let PMDeviceFullPathArrayInDialog     = "PMDevicePathesInDialog"
+//let PMDeviceRelativePathArrayInDialog = "PMRelativeDevicePathesInDialog"
+//let PMDeviceStatusInDialog            = "PMDeviceStatusInDialog"
+//let PMSymbolsInDialog                 = "PMSymbolsInDialog"
+//let PMPackagesInDialog                = "PMPackagesInDialog"
+//let PMDeviceDocListInDialog           = "PMDeviceDocListInDialog"
+//let PMDeviceTitleInDialog             = "PMDeviceTitleInDialog"
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+func canariError (_ message : String, informativeText: String) -> Error {
+  let dictionary : [NSObject : AnyObject] = [
+    NSLocalizedDescriptionKey as NSObject : message as AnyObject,
+    NSLocalizedRecoverySuggestionErrorKey as NSObject : informativeText as AnyObject,
+  ]
+  return NSError (
+    domain:Bundle.main.bundleIdentifier!,
+    code:1,
+    userInfo:dictionary
+  )
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+func badFormatErrorForFileAtPath (_ inFilePath : String, code : Int) -> Error {
+  return canariError (
+    String (format:"Cannot read '%@' file", inFilePath),
+    informativeText:"File does not have the required format (code: " + String (code) + ")."
+  )
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+private func readByte (_ inFileHandle : FileHandle) -> UInt8 {
+  let statusData : Data = inFileHandle.readData (ofLength: 1)
+  return statusData [0] // UnsafePointer<UInt8> ((statusData as NSData).bytes).pointee
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+private func readAutosizedUnsignedInteger (_ inFileHandle : FileHandle) -> UInt {
+  var result : UInt = 0
+  var shift : UInt = 0
+  var done = false
+  repeat{
+    let byte : UInt = UInt (readByte (inFileHandle))
+    let w = byte & 0x7F
+    result |= w << shift
+    shift += 7
+    done = (byte & 0x80) == 0
+  }while !done
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+private func readAutosizedData (_ inFileHandle : FileHandle) -> Data {
+  let dataLength = readAutosizedUnsignedInteger (inFileHandle)
+  return inFileHandle.readData (ofLength: Int (dataLength))
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+func metadataForFileAtPath (_ inFilePath : String,
+                            status: inout StatusInMetadata) throws -> NSDictionary {
+//--- Open file
+  let f = try FileHandle (forReadingFrom: (URL (fileURLWithPath: inFilePath)))
+//--- Read format string
+  let formatStringData : Data = f.readData (ofLength: kFormatSignature.utf8.count)
+  if formatStringData.count != kFormatSignature.utf8.count {
+    f.closeFile ()
+    throw badFormatErrorForFileAtPath (inFilePath, code:#line)
+  }else{
+    let signatureData = kFormatSignature.data (using: String.Encoding.utf8)
+    if signatureData! != formatStringData {
+      f.closeFile ()
+      throw badFormatErrorForFileAtPath (inFilePath, code:#line)
+    }
+  }
+//--- Read status
+  let byteStatus : StatusInMetadata? = StatusInMetadata (rawValue:readByte (f))
+  if let unwStatus = byteStatus {
+    status = unwStatus
+  }else{
+    f.closeFile ()
+    throw badFormatErrorForFileAtPath (inFilePath, code:#line)
+  }
+//--- Check byte is 1
+  let byte : UInt8 = readByte (f)
+  if byte != 1 {
+    f.closeFile ()
+    throw badFormatErrorForFileAtPath (inFilePath, code:#line)
+  }
+//--- Read metadata dictionary
+  let dictionaryData : Data = readAutosizedData (f)
+  let possibleDictionary : Any = try PropertyListSerialization.propertyList (
+    from: dictionaryData,
+    options:PropertyListSerialization.MutabilityOptions(),
+    format:nil
+  )
+  let metadataDictionary : NSDictionary
+  if let dict = possibleDictionary as? NSDictionary {
+    metadataDictionary = dict
+  }else{
+    f.closeFile ()
+    throw badFormatErrorForFileAtPath (inFilePath, code:#line)
+  }
+//---
+  f.closeFile ()
+//---
+  return metadataDictionary
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

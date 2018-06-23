@@ -1,0 +1,37 @@
+#----------------------------------------------------------------------------*
+#     E X T E R N    P R O T O C O L S                                       *
+#----------------------------------------------------------------------------*
+
+#extern protocol <EBGraphicArrayControllerDelegationProtocol> ;
+#extern protocol <PMPadProtocol> ;
+
+#----------------------------------------------------------------------------*
+#     U T I L I T Y    E N T I T I E S                                       *
+#----------------------------------------------------------------------------*
+
+#classForEntity StringEntity {
+#} {
+#}
+
+#----------------------------------------------------------------------------*
+include "eb-sources/canari-outlet-class-declaration.eb" ;
+#include "eb-sources/outlets.ebt" ;
+#include "eb-sources/controllers.ebt" ;
+#include "eb-sources/graphic_entity_and_controller.ebt" ;
+include "eb-sources/preferences.eb" ;
+#include "eb-sources/shapes.ebt" ;
+#include "eb-sources/library.ebt" ;
+#include "eb-sources/symbolDocument.ebt" ;
+#include "eb-sources/packageDocument.ebt" ;
+#include "eb-sources/deviceDocument.ebt" ;
+include "eb-sources/fontDocument.eb" ;
+include "eb-sources/artworkDocument.eb" ;
+include "eb-sources/mergerDocument.eb" ;
+#include "eb-sources/projectDocument.ebt" ;
+
+#----------------------------------------------------------------------------*
+
+#graphviz DeviceRootEntity to "DeviceRootEntity.dot" ;
+
+#----------------------------------------------------------------------------*
+

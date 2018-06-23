@@ -1,0 +1,196 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#     M E R G E R    D O C U M E N T
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum TrackSide {
+  front, back
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum PadShape {
+  rectangular, round
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum PadSide {
+  traversing, surface
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum PadKind {
+  master, slave
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+outletClass CanariBoardModelView ;
+binding CanariBoardModelView $size : transient Int, transient Int ;
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelPadEntity {
+  toOne BoardModelPackageEntity myPackage inverse toMany pads ;
+
+  property String name default "" ;
+  property Int x default 0 ;
+  property Int y default 0 ;
+  property Int width default 0 ;
+  property Int height default 0 ;
+  property Int holeDiameter default 0 ;
+  property PadShape shape default rectangular ;
+  property PadSide side default traversing ;
+  property PadKind kind default master ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelComponentNameSegmentEntity {
+  toOne BoardModelPackageEntity myPackage inverse toMany componentNameSegments ;
+
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelValueNameSegmentEntity {
+  toOne BoardModelPackageEntity myPackage inverse toMany componentValueSegments ;
+
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelPackageEntity {
+  toOne BoardModelEntity myModel inverse toMany packages ;
+  toMany BoardModelComponentNameSegmentEntity componentNameSegments inverse toOne myPackage ;
+  toMany BoardModelValueNameSegmentEntity componentValueSegments inverse toOne myPackage ;
+  toMany BoardModelPadEntity pads inverse toOne myPackage ;
+
+  property String name default "" ;
+  property Int padRotation default 0 ;
+
+  transient Int padCount dependsFrom self.pads.count ; # Inutilisé
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ViaShape {
+  property Int x default 0 ;
+  property Int y default 0 ;
+  property Int padDiameter default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelViaEntity {
+  toOne BoardModelEntity myModel inverse toMany vias ;
+
+  property Int x default 0 ;
+  property Int y default 0 ;
+  property Int holeDiameter default 0 ;
+  property Int padDiameter default 0 ;
+  
+  transient ViaShape viaShape dependsFrom self.x, self.y, self.padDiameter ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelTrackSegmentEntity {
+  toOne BoardModelEntity myModel inverse toMany tracks ;
+
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+  property Int width default 0 ;
+  property TrackSide side default front ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelEntity {
+  toOne MergerRootEntity myArtwork inverse toMany boardModels ;
+  toMany BoardModelTrackSegmentEntity tracks inverse toOne myModel ;
+  toMany BoardModelViaEntity vias inverse toOne myModel ;
+  toMany BoardModelPackageEntity packages inverse toOne myModel ;
+  
+  property String artworkName default "" ;
+  property String name default "" ;
+  property Int boardWidth default 0 ;
+  property Int boardWidthUnit default 0 ;
+  property Int boardHeight default 0 ;
+  property Int boardHeightUnit default 0 ;
+
+  transient Int trackCount dependsFrom self.tracks.count ;
+  transient Int viaCount dependsFrom self.vias.count ;
+  transient Int componentCount dependsFrom self.packages.count ;
+#  transient Int padCount dependsFrom self.packages.padCount ;
+
+#  transient CAShapeLayer viaShapes dependsFrom self.vias.count ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity MergerRootEntity {
+  toMany BoardModelEntity boardModels inverse toOne myArtwork ;
+  property Int selectedPageIndex default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+document PMMergerDocument root MergerRootEntity {
+#--- Selected Page
+  outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
+
+#--- Add board model
+  action addBoardModelAction ;
+  outlet EBButton addBoardModelButton $run self.addBoardModelAction ;
+
+#--- Model table view 
+  outlet EBTableView mBoardModelTableView $tableValue mBoardModelController ;
+  arrayController mBoardModelController {allowsEmptySelection:no, allowsMultipleSelection:no} root.boardModels {
+     column "name" sort name EBTextField $value self.name {sendContinously:no}
+  }
+  selectionController mBoardModelSelection : mBoardModelController.selectedArray ;
+
+#--- Board model name
+  outlet EBTextObserverField mBoardModelNameTextField $valueObserver mBoardModelSelection.name ;
+
+#--- Artwork model name
+  outlet EBTextObserverField mArtworkNameTextField $valueObserver mBoardModelSelection.artworkName ;
+
+#--- Model width display
+  outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag mBoardModelSelection.boardWidthUnit ;
+  outlet CanariDimensionTextField mBoardWidthTextField
+     $dimensionAndUnit mBoardModelSelection.boardHeight, mBoardModelSelection.boardWidthUnit
+  ;
+
+#--- Model Height display
+  outlet EBPopUpButton mBoardHeightUnitPopUp $selectedTag mBoardModelSelection.boardHeightUnit ;
+  outlet CanariDimensionTextField mBoardHeightTextField
+     $dimensionAndUnit mBoardModelSelection.boardHeight, mBoardModelSelection.boardHeightUnit
+  ;
+
+#--- Board model track count
+  outlet EBIntObserverField mBoardModelTrackCountTextField $valueObserver mBoardModelSelection.trackCount {autoFormatter : yes} ;
+
+#--- Board model via count
+  outlet EBIntObserverField mBoardModelViaCountTextField $valueObserver mBoardModelSelection.viaCount {autoFormatter : yes} ;
+
+#--- Board model component count
+  outlet EBIntObserverField mBoardModelComponentCountTextField $valueObserver mBoardModelSelection.componentCount {autoFormatter : yes} ;
+  
+#--- Model view
+  outlet CanariBoardModelView mBoardModelView $size mBoardModelSelection.boardWidth, mBoardModelSelection.boardHeight ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
