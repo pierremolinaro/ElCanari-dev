@@ -27,20 +27,6 @@ BOLD_GREEN = BOLD + GREEN
 BOLD_RED = BOLD + RED
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   DOWNLOAD FILE                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-def downloadArchive (archiveURL, filePath):
-  print BOLD_MAGENTA + "Download " + filePath + ENDC
-  runCommand (["rm", "-f", filePath + ".downloading"])
-  try:
-    urllib.urlretrieve (archiveURL,  filePath + ".downloading")
-    runCommand (["mv", filePath + ".downloading", filePath])
-  except:
-    print BOLD_RED () + "Error: no network connection" + ENDC ()
-    sys.exit (1)
-
-#----------------------------------------------------------------------------------------------------------------------*
 #   runCommand                                                                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -62,7 +48,7 @@ def runHiddenCommand (cmd) :
   str = "+"
   for s in cmd:
     str += " " + s
-  print BOLD_MAGENTA + str + ENDC
+  print (BOLD_MAGENTA + str + ENDC)
   result = ""
   compteur = 0
   childProcess = subprocess.Popen (cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -78,7 +64,7 @@ def runHiddenCommand (cmd) :
       print ""
       childProcess.wait ()
       if childProcess.returncode != 0 :
-        print BOLD_RED + "*** Error " + str (childProcess.returncode) + " ***" + ENDC
+        # print (BOLD_RED + "*** Error " + str (childProcess.returncode) + " ***" + ENDC)
         sys.exit (childProcess.returncode)
       return result
 
@@ -89,7 +75,7 @@ scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 #-------------------- Supprimer une distribution existante
 TEMP_DIR = scriptDir + "/../DISTRIBUTION_EL_CANARI_" + VERSION_CANARI
 os.chdir (scriptDir + "/..")
-if os.path.isdir (TEMP_DIR):
+while os.path.isdir (TEMP_DIR):
   shutil.rmtree (TEMP_DIR)
 #-------------------- Creer le repertoire contenant la distribution
 os.mkdir (TEMP_DIR)
@@ -105,14 +91,15 @@ os.chdir (TEMP_DIR + "/ElCanari-dev-master")
 ANNEE = str (datetime.datetime.now().year)
 print "ANNÉE : '" + ANNEE + "'"
 #-------------------- Obtenir le numéro de build
-# plistFileFullPath = TEMP_DIR + "/ElCanari/canari-application/Info.plist"
-# plistDictionary = plistlib.readPlist (plistFileFullPath)
-# buildString = plistDictionary ['PMBuildString']
+plistFileFullPath = TEMP_DIR + "/ElCanari-dev-master/ElCanari/canari-application/Info.plist"
+plistDictionary = plistlib.readPlist (plistFileFullPath)
+buildString = plistDictionary ['PMBuildString']
 # print "Build String '" + buildString + "'"
-# #--- Mettre à jour les numéros de version dans la plist
-# plistDictionary ['CFBundleVersion'] = VERSION_CANARI + ", repository " + numeroRevisionSVN + ", build " + buildString
-# plistDictionary ['CFBundleShortVersionString'] = VERSION_CANARI
-# plistlib.writePlist (plistDictionary, plistFileFullPath)
+#--- Mettre à jour les numéros de version dans la plist
+#plistDictionary ['CFBundleVersion'] = VERSION_CANARI + ", repository " + numeroRevisionSVN + ", build " + buildString
+plistDictionary ['CFBundleVersion'] = VERSION_CANARI + ", build " + buildString
+plistDictionary ['CFBundleShortVersionString'] = VERSION_CANARI
+plistlib.writePlist (plistDictionary, plistFileFullPath)
 #-------------------- Copier le fichier change.html
 #runCommand (["cp", TEMP_DIR + "/canari/change.html", TEMP_DIR + "/change.html"])
 #-------------------- Compiler le projet Xcode
@@ -126,11 +113,11 @@ runCommand (["cp", "-r", "build/Release/ElCanari.app", "."])
 runCommand (["tar", "-cf", "ElCanari.app.tar", "ElCanari.app"])
 runCommand (["bzip2", "-9", "ElCanari.app.tar"])
 BZ2file = TEMP_DIR + "/ElCanari.app." + VERSION_CANARI + ".tar.bz2"
-runCommand (["mv", "ElCanari.app.tar.bz2", TEMP_DIR])
+runCommand (["mv", "ElCanari.app.tar.bz2", BZ2file])
 #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
-sommeControle = runHiddenCommand ([scriptDir + "/distribution-el-canari/sign_update.sh",
+sommeControle = runHiddenCommand (["distribution-el-canari/sign_update.sh",
                                   BZ2file,
-                                  scriptDir + "/distribution-el-canari/dsa_priv.pem"])
+                                  "distribution-el-canari/dsa_priv.pem"])
 sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
 #-------------------- Ajouter les meta infos
 dict = {
@@ -144,19 +131,16 @@ f.close ()
 #-------------------- Vérifier si l'application est signée
 runCommand (["spctl", "-a", "-t", "exec", "-vv", "ElCanari.app"])
 #-------------------- Créer l'archive de Cocoa canari
-# cp ${DIR}/canari/AUTHORS ${DIR}/COCOA-CANARI &&
-# cp ${DIR}/canari/COPYING ${DIR}/COCOA-CANARI &&
-runCommand (["mv", "ElCanari.app", TEMP_DIR + "/COCOA-CANARI"])
-runCommand (["ln", "-s", "/Applications", TEMP_DIR + "/COCOA-CANARI/Applications"])
-# cp -r ${DIR}/canari/version-1/build/Release/Canari.app ${DIR}/COCOA-CANARI &&
-runCommand (["hdiutil",
-             "create",
-             "-srcfolder",
-             TEMP_DIR + "/COCOA-CANARI",
-             TEMP_DIR + "/ElCanari." + VERSION_CANARI + ".dmg"
-           ])
+nomArchive = "ElCanari-" + VERSION_CANARI
+runCommand (["mkdir", nomArchive])
+runCommand (["mv", "ElCanari.app", nomArchive + "/ElCanari.app"])
+runCommand (["ln", "-s", "/Applications", nomArchive + "/Applications"])
+runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg"])
+runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 #--- Supprimer les répertoires intermédiaires
-#shutil.rmtree (TEMP_DIR + "/canari")
-#shutil.rmtree (TEMP_DIR + "/COCOA-CANARI")
+while os.path.isdir (TEMP_DIR + "/COCOA-CANARI"):
+  shutil.rmtree (TEMP_DIR + "/COCOA-CANARI")
+while os.path.isdir (TEMP_DIR + "/ElCanari-dev-master"):
+  shutil.rmtree (TEMP_DIR + "/ElCanari-dev-master")
 
 #----------------------------------------------------------------------------------------------------------------------*
