@@ -256,8 +256,10 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_componentCount_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_trackCount_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viaCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
       //--- Added object set
@@ -272,8 +274,10 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_componentCount_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)
         addEBObserversOf_trackCount_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viaCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
       //--- Notify observers

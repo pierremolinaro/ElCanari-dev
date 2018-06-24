@@ -410,6 +410,120 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
+  //   Observers of 'horizontalFlip' stored property
+  //····················································································································
+
+  private var mObserversOf_horizontalFlip = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_horizontalFlip.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.horizontalFlip.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_horizontalFlip.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.horizontalFlip.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_horizontalFlip_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_horizontalFlip {
+        managedObject.horizontalFlip.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_horizontalFlip_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_horizontalFlip {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.horizontalFlip.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'verticalFlip' stored property
+  //····················································································································
+
+  private var mObserversOf_verticalFlip = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_verticalFlip.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.verticalFlip.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_verticalFlip.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.verticalFlip.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_verticalFlip_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_verticalFlip {
+        managedObject.verticalFlip.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_verticalFlip_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_verticalFlip {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.verticalFlip.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'trackCount' transient property
   //····················································································································
 
@@ -621,6 +735,8 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
+        removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedSet)
+        removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
         addEBObserversOf_artworkName_toElementsOfSet (addedSet)
@@ -630,6 +746,8 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
         addEBObserversOf_zoom_toElementsOfSet (addedSet)
+        addEBObserversOf_horizontalFlip_toElementsOfSet (addedSet)
+        addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -693,6 +811,18 @@ protocol BoardModelEntity_boardHeightUnit : class {
 
 protocol BoardModelEntity_zoom : class {
   var zoom : EBStoredProperty_Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_horizontalFlip : class {
+  var horizontalFlip : EBStoredProperty_Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_verticalFlip : class {
+  var verticalFlip : EBStoredProperty_Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1461,7 +1591,7 @@ final class ToOneRelationship_BoardModelEntity_myArtwork : EBAbstractProperty {
 //    Entity: BoardModelEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_trackCount, BoardModelEntity_viaCount, BoardModelEntity_componentCount
+class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_trackCount, BoardModelEntity_viaCount, BoardModelEntity_componentCount
 {
 
   //····················································································································
@@ -1481,6 +1611,10 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   var boardHeightUnit = EBStoredProperty_Int (0)
 
   var zoom = EBStoredProperty_Int (100)
+
+  var horizontalFlip = EBStoredProperty_Bool (false)
+
+  var verticalFlip = EBStoredProperty_Bool (false)
 
   //····················································································································
   //    Transient properties
@@ -1578,6 +1712,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.boardHeight.undoManager = undoManager ()
     self.boardHeightUnit.undoManager = undoManager ()
     self.zoom.undoManager = undoManager ()
+    self.horizontalFlip.undoManager = undoManager ()
+    self.verticalFlip.undoManager = undoManager ()
   //--- Install owner for relationships
     myArtwork.owner = self
     tracks.owner = self
@@ -1657,6 +1793,22 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       observerExplorer:&self.zoom.mObserverExplorer,
       valueExplorer:&self.zoom.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "horizontalFlip",
+      idx:self.horizontalFlip.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.horizontalFlip.mObserverExplorer,
+      valueExplorer:&self.horizontalFlip.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "verticalFlip",
+      idx:self.verticalFlip.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.verticalFlip.mObserverExplorer,
+      valueExplorer:&self.verticalFlip.mValueExplorer
+    )
     createEntryForToManyRelationshipNamed (
       "tracks",
       idx:tracks.mEasyBindingsObjectIndex,
@@ -1706,6 +1858,10 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.boardHeightUnit.mValueExplorer = nil
     self.zoom.mObserverExplorer = nil
     self.zoom.mValueExplorer = nil
+    self.horizontalFlip.mObserverExplorer = nil
+    self.horizontalFlip.mValueExplorer = nil
+    self.verticalFlip.mObserverExplorer = nil
+    self.verticalFlip.mValueExplorer = nil
     myArtwork.mObserverExplorer = nil
     myArtwork.mValueExplorer = nil
     // tracks.mObserverExplorer = nil
@@ -1730,6 +1886,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.boardHeight.storeIn (dictionary: ioDictionary, forKey: "boardHeight")
     self.boardHeightUnit.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
     self.zoom.storeIn (dictionary: ioDictionary, forKey: "zoom")
+    self.horizontalFlip.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
+    self.verticalFlip.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
     store (managedObjectArray: tracks.propval as NSArray, relationshipName:"tracks", intoDictionary: ioDictionary) ;
     store (managedObjectArray: vias.propval as NSArray, relationshipName:"vias", intoDictionary: ioDictionary) ;
     store (managedObjectArray: packages.propval as NSArray, relationshipName:"packages", intoDictionary: ioDictionary) ;
@@ -1749,6 +1907,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.boardHeight.readFrom (dictionary: inDictionary, forKey:"boardHeight")
     self.boardHeightUnit.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
     self.zoom.readFrom (dictionary: inDictionary, forKey:"zoom")
+    self.horizontalFlip.readFrom (dictionary: inDictionary, forKey:"horizontalFlip")
+    self.verticalFlip.readFrom (dictionary: inDictionary, forKey:"verticalFlip")
     tracks.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "tracks",
       inDictionary: inDictionary,

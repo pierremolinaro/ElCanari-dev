@@ -22,8 +22,10 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var boardWidth = EBPropertyProxy_Int () 
   var boardWidthUnit = EBPropertyProxy_Int () 
   var componentCount = EBPropertyProxy_Int () 
+  var horizontalFlip = EBPropertyProxy_Bool () 
   var name = EBPropertyProxy_String () 
   var trackCount = EBPropertyProxy_Int () 
+  var verticalFlip = EBPropertyProxy_Bool () 
   var viaCount = EBPropertyProxy_Int () 
   var zoom = EBPropertyProxy_Int () 
 
@@ -39,8 +41,10 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_boardWidth (model: model)
     bind_property_boardWidthUnit (model: model)
     bind_property_componentCount (model: model)
+    bind_property_horizontalFlip (model: model)
     bind_property_name (model: model)
     bind_property_trackCount (model: model)
+    bind_property_verticalFlip (model: model)
     bind_property_viaCount (model: model)
     bind_property_zoom (model: model)
   }
@@ -130,6 +134,14 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       valueExplorer:&componentCount.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "horizontalFlip",
+      idx:horizontalFlip.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&horizontalFlip.mObserverExplorer,
+      valueExplorer:&horizontalFlip.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "name",
       idx:name.mEasyBindingsObjectIndex,
       y:&y,
@@ -144,6 +156,14 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       view:view,
       observerExplorer:&trackCount.mObserverExplorer,
       valueExplorer:&trackCount.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "verticalFlip",
+      idx:verticalFlip.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&verticalFlip.mObserverExplorer,
+      valueExplorer:&verticalFlip.mValueExplorer
     )
     createEntryForPropertyNamed (
       "viaCount",
@@ -604,6 +624,76 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_horizontalFlip (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_horizontalFlip (horizontalFlip)
+    horizontalFlip.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.horizontalFlip.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    horizontalFlip.writeModelFunction = { (inValue : Bool) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.horizontalFlip.setProp (inValue)
+          }
+        }
+      }
+    }
+    horizontalFlip.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.horizontalFlip.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_name (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_name (name)
     name.readModelFunction = {
@@ -708,6 +798,76 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }else{
         return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_verticalFlip (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_verticalFlip (verticalFlip)
+    verticalFlip.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.verticalFlip.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    verticalFlip.writeModelFunction = { (inValue : Bool) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.verticalFlip.setProp (inValue)
+          }
+        }
+      }
+    }
+    verticalFlip.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.verticalFlip.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
       }
     }
   }
@@ -865,6 +1025,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     componentCount.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_componentCount (componentCount)
 //    mModel?.removeEBObserver (componentCount)
+  //--- horizontalFlip
+    horizontalFlip.readModelFunction = nil 
+    horizontalFlip.writeModelFunction = nil 
+    horizontalFlip.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_horizontalFlip (horizontalFlip)
+//    mModel?.removeEBObserver (horizontalFlip)
   //--- name
     name.readModelFunction = nil 
     name.writeModelFunction = nil 
@@ -877,6 +1043,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     trackCount.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_trackCount (trackCount)
 //    mModel?.removeEBObserver (trackCount)
+  //--- verticalFlip
+    verticalFlip.readModelFunction = nil 
+    verticalFlip.writeModelFunction = nil 
+    verticalFlip.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_verticalFlip (verticalFlip)
+//    mModel?.removeEBObserver (verticalFlip)
   //--- viaCount
     viaCount.readModelFunction = nil 
     viaCount.writeModelFunction = nil 
