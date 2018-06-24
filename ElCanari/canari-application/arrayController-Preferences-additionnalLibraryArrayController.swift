@@ -406,6 +406,24 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     }
   }
  
+ //····················································································································
+  //    select
+  //····················································································································
+
+  func select (object inObject: CanariLibraryEntry) {
+    if let model = mModel {
+      switch model.prop {
+      case .noSelection, .multipleSelection :
+        break
+      case .singleSelection (let objectArray) :
+        if objectArray.contains (inObject) {
+          var newSelectedObjectSet = Set <CanariLibraryEntry> ()
+          newSelectedObjectSet.insert (inObject)
+          mSelectedSet.mSet = newSelectedObjectSet
+        }
+      }
+    }
+  }
  
   //····················································································································
   //    add

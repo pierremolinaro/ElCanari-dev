@@ -387,7 +387,25 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
     }
   }
  
- 
+  //····················································································································
+  //    select
+  //····················································································································
+
+  func select (object inObject: BoardModelEntity) {
+    if let model = mModel {
+      switch model.prop {
+      case .noSelection, .multipleSelection :
+        break
+      case .singleSelection (let objectArray) :
+        if objectArray.contains (inObject) {
+          var newSelectedObjectSet = Set <BoardModelEntity> ()
+          newSelectedObjectSet.insert (inObject)
+          mSelectedSet.mSet = newSelectedObjectSet
+        }
+      }
+    }
+  }
+
   //····················································································································
   //    add
   //····················································································································

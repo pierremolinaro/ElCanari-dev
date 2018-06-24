@@ -387,7 +387,25 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     }
   }
  
- 
+  //····················································································································
+  //    select
+  //····················································································································
+
+  func select (object inObject: ArtworkFileGenerationParameters) {
+    if let model = mModel {
+      switch model.prop {
+      case .noSelection, .multipleSelection :
+        break
+      case .singleSelection (let objectArray) :
+        if objectArray.contains (inObject) {
+          var newSelectedObjectSet = Set <ArtworkFileGenerationParameters> ()
+          newSelectedObjectSet.insert (inObject)
+          mSelectedSet.mSet = newSelectedObjectSet
+        }
+      }
+    }
+  }
+
   //····················································································································
   //    add
   //····················································································································

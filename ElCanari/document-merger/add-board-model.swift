@@ -211,6 +211,7 @@ extension PMMergerDocument {
   //--- Dictionary import ok ?
     if errorArray.count == 0 { // Ok
       self.rootObject.boardModels.add (boardModel)
+      self.mBoardModelController.select (object:boardModel)
     }else{ // Error
       var s = ""
       for anError in errorArray {
