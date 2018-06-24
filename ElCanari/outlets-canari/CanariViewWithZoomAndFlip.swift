@@ -80,7 +80,6 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
         clipView.scaleUnitSquare(to: NSSize (width: hFlip * scale, height: vFlip * scale))
       }
       mZoomPopUpButton?.menu?.item (at:0)?.title = "\(Int ((self.actualScale () * 100.0).rounded (.toNearestOrEven))) %"
-      mZoomController?.updateModel (self)
     }
   }
   
@@ -112,6 +111,7 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
   func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
     mZoom = inSender.tag
     scaleToZoom ()
+    mZoomController?.updateModel (self)
   }
 
   //····················································································································

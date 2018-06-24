@@ -206,6 +206,7 @@ document PMMergerDocument root MergerRootEntity {
   
   outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
   outlet EBSwitch mVerticalFlipSwitch $value mBoardModelSelection.verticalFlip ;
+  outlet EBIntField mZoomField $value mBoardModelSelection.zoom {sendContinously:no, autoFormatter:yes} ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

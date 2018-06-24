@@ -119,11 +119,11 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "advance",
-      idx:advance.mEasyBindingsObjectIndex,
+      idx:self.advance.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&advance.mObserverExplorer,
-      valueExplorer:&advance.mValueExplorer
+      observerExplorer:&self.advance.mObserverExplorer,
+      valueExplorer:&self.advance.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -186,10 +186,10 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
         return .noSelection
       }
     }
-    advance.writeModelFunction = { [weak self] (inValue : Int) in
+    self.advance.writeModelFunction = { [weak self] (inValue : Int) in
       self?.mSelectedObject?.advance.setProp (inValue)
     }
-    advance.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.advance.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       self?.mSelectedObject?.advance.validateAndSetProp (candidateValue, windowForSheet:windowForSheet) ?? false
     }
   }

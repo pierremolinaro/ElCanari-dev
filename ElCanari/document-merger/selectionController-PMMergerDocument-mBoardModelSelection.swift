@@ -87,99 +87,99 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "artworkName",
-      idx:artworkName.mEasyBindingsObjectIndex,
+      idx:self.artworkName.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&artworkName.mObserverExplorer,
-      valueExplorer:&artworkName.mValueExplorer
+      observerExplorer:&self.artworkName.mObserverExplorer,
+      valueExplorer:&self.artworkName.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardHeight",
-      idx:boardHeight.mEasyBindingsObjectIndex,
+      idx:self.boardHeight.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&boardHeight.mObserverExplorer,
-      valueExplorer:&boardHeight.mValueExplorer
+      observerExplorer:&self.boardHeight.mObserverExplorer,
+      valueExplorer:&self.boardHeight.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardHeightUnit",
-      idx:boardHeightUnit.mEasyBindingsObjectIndex,
+      idx:self.boardHeightUnit.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&boardHeightUnit.mObserverExplorer,
-      valueExplorer:&boardHeightUnit.mValueExplorer
+      observerExplorer:&self.boardHeightUnit.mObserverExplorer,
+      valueExplorer:&self.boardHeightUnit.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardWidth",
-      idx:boardWidth.mEasyBindingsObjectIndex,
+      idx:self.boardWidth.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&boardWidth.mObserverExplorer,
-      valueExplorer:&boardWidth.mValueExplorer
+      observerExplorer:&self.boardWidth.mObserverExplorer,
+      valueExplorer:&self.boardWidth.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardWidthUnit",
-      idx:boardWidthUnit.mEasyBindingsObjectIndex,
+      idx:self.boardWidthUnit.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&boardWidthUnit.mObserverExplorer,
-      valueExplorer:&boardWidthUnit.mValueExplorer
+      observerExplorer:&self.boardWidthUnit.mObserverExplorer,
+      valueExplorer:&self.boardWidthUnit.mValueExplorer
     )
     createEntryForPropertyNamed (
       "componentCount",
-      idx:componentCount.mEasyBindingsObjectIndex,
+      idx:self.componentCount.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&componentCount.mObserverExplorer,
-      valueExplorer:&componentCount.mValueExplorer
+      observerExplorer:&self.componentCount.mObserverExplorer,
+      valueExplorer:&self.componentCount.mValueExplorer
     )
     createEntryForPropertyNamed (
       "horizontalFlip",
-      idx:horizontalFlip.mEasyBindingsObjectIndex,
+      idx:self.horizontalFlip.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&horizontalFlip.mObserverExplorer,
-      valueExplorer:&horizontalFlip.mValueExplorer
+      observerExplorer:&self.horizontalFlip.mObserverExplorer,
+      valueExplorer:&self.horizontalFlip.mValueExplorer
     )
     createEntryForPropertyNamed (
       "name",
-      idx:name.mEasyBindingsObjectIndex,
+      idx:self.name.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&name.mObserverExplorer,
-      valueExplorer:&name.mValueExplorer
+      observerExplorer:&self.name.mObserverExplorer,
+      valueExplorer:&self.name.mValueExplorer
     )
     createEntryForPropertyNamed (
       "trackCount",
-      idx:trackCount.mEasyBindingsObjectIndex,
+      idx:self.trackCount.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&trackCount.mObserverExplorer,
-      valueExplorer:&trackCount.mValueExplorer
+      observerExplorer:&self.trackCount.mObserverExplorer,
+      valueExplorer:&self.trackCount.mValueExplorer
     )
     createEntryForPropertyNamed (
       "verticalFlip",
-      idx:verticalFlip.mEasyBindingsObjectIndex,
+      idx:self.verticalFlip.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&verticalFlip.mObserverExplorer,
-      valueExplorer:&verticalFlip.mValueExplorer
+      observerExplorer:&self.verticalFlip.mObserverExplorer,
+      valueExplorer:&self.verticalFlip.mValueExplorer
     )
     createEntryForPropertyNamed (
       "viaCount",
-      idx:viaCount.mEasyBindingsObjectIndex,
+      idx:self.viaCount.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&viaCount.mObserverExplorer,
-      valueExplorer:&viaCount.mValueExplorer
+      observerExplorer:&self.viaCount.mObserverExplorer,
+      valueExplorer:&self.viaCount.mValueExplorer
     )
     createEntryForPropertyNamed (
       "zoom",
-      idx:zoom.mEasyBindingsObjectIndex,
+      idx:self.zoom.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&zoom.mObserverExplorer,
-      valueExplorer:&zoom.mValueExplorer
+      observerExplorer:&self.zoom.mObserverExplorer,
+      valueExplorer:&self.zoom.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -235,8 +235,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_artworkName (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_artworkName (artworkName)
-    artworkName.readModelFunction = {
+    model.addEBObserverOf_artworkName (self.artworkName)
+    self.artworkName.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -270,7 +270,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .noSelection
       }
     }
-    artworkName.writeModelFunction = { (inValue : String) in
+    self.artworkName.writeModelFunction = { (inValue : String) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -282,7 +282,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }
     }
-    artworkName.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
+    self.artworkName.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -305,8 +305,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardHeight (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardHeight (boardHeight)
-    boardHeight.readModelFunction = {
+    model.addEBObserverOf_boardHeight (self.boardHeight)
+    self.boardHeight.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -340,7 +340,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .noSelection
       }
     }
-    boardHeight.writeModelFunction = { (inValue : Int) in
+    self.boardHeight.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -352,7 +352,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }
     }
-    boardHeight.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.boardHeight.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -375,8 +375,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardHeightUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardHeightUnit (boardHeightUnit)
-    boardHeightUnit.readModelFunction = {
+    model.addEBObserverOf_boardHeightUnit (self.boardHeightUnit)
+    self.boardHeightUnit.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -410,7 +410,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .noSelection
       }
     }
-    boardHeightUnit.writeModelFunction = { (inValue : Int) in
+    self.boardHeightUnit.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -422,7 +422,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }
     }
-    boardHeightUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.boardHeightUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -445,8 +445,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardWidth (boardWidth)
-    boardWidth.readModelFunction = {
+    model.addEBObserverOf_boardWidth (self.boardWidth)
+    self.boardWidth.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -480,7 +480,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .noSelection
       }
     }
-    boardWidth.writeModelFunction = { (inValue : Int) in
+    self.boardWidth.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -492,7 +492,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }
     }
-    boardWidth.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.boardWidth.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -515,8 +515,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardWidthUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardWidthUnit (boardWidthUnit)
-    boardWidthUnit.readModelFunction = {
+    model.addEBObserverOf_boardWidthUnit (self.boardWidthUnit)
+    self.boardWidthUnit.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -550,7 +550,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .noSelection
       }
     }
-    boardWidthUnit.writeModelFunction = { (inValue : Int) in
+    self.boardWidthUnit.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -562,7 +562,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }
     }
-    boardWidthUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.boardWidthUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -585,8 +585,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_componentCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_componentCount (componentCount)
-    componentCount.readModelFunction = {
+    model.addEBObserverOf_componentCount (self.componentCount)
+    self.componentCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -625,8 +625,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_horizontalFlip (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_horizontalFlip (horizontalFlip)
-    horizontalFlip.readModelFunction = {
+    model.addEBObserverOf_horizontalFlip (self.horizontalFlip)
+    self.horizontalFlip.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -660,7 +660,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .noSelection
       }
     }
-    horizontalFlip.writeModelFunction = { (inValue : Bool) in
+    self.horizontalFlip.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -672,7 +672,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }
     }
-    horizontalFlip.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.horizontalFlip.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -695,8 +695,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_name (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_name (name)
-    name.readModelFunction = {
+    model.addEBObserverOf_name (self.name)
+    self.name.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -730,7 +730,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .noSelection
       }
     }
-    name.writeModelFunction = { (inValue : String) in
+    self.name.writeModelFunction = { (inValue : String) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -742,7 +742,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }
     }
-    name.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
+    self.name.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -765,8 +765,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_trackCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_trackCount (trackCount)
-    trackCount.readModelFunction = {
+    model.addEBObserverOf_trackCount (self.trackCount)
+    self.trackCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -805,8 +805,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_verticalFlip (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_verticalFlip (verticalFlip)
-    verticalFlip.readModelFunction = {
+    model.addEBObserverOf_verticalFlip (self.verticalFlip)
+    self.verticalFlip.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -840,7 +840,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .noSelection
       }
     }
-    verticalFlip.writeModelFunction = { (inValue : Bool) in
+    self.verticalFlip.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -852,7 +852,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }
     }
-    verticalFlip.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.verticalFlip.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -875,8 +875,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_viaCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_viaCount (viaCount)
-    viaCount.readModelFunction = {
+    model.addEBObserverOf_viaCount (self.viaCount)
+    self.viaCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -915,8 +915,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_zoom (zoom)
-    zoom.readModelFunction = {
+    model.addEBObserverOf_zoom (self.zoom)
+    self.zoom.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -950,7 +950,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .noSelection
       }
     }
-    zoom.writeModelFunction = { (inValue : Int) in
+    self.zoom.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -962,7 +962,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }
     }
-    zoom.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.zoom.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -990,77 +990,77 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   func unbind_selection () {
   //--- artworkName
-    artworkName.readModelFunction = nil 
-    artworkName.writeModelFunction = nil 
-    artworkName.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_artworkName (artworkName)
-//    mModel?.removeEBObserver (artworkName)
+    self.artworkName.readModelFunction = nil 
+    self.artworkName.writeModelFunction = nil 
+    self.artworkName.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_artworkName (self.artworkName)
+//    mModel?.removeEBObserver (self.artworkName)
   //--- boardHeight
-    boardHeight.readModelFunction = nil 
-    boardHeight.writeModelFunction = nil 
-    boardHeight.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_boardHeight (boardHeight)
-//    mModel?.removeEBObserver (boardHeight)
+    self.boardHeight.readModelFunction = nil 
+    self.boardHeight.writeModelFunction = nil 
+    self.boardHeight.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_boardHeight (self.boardHeight)
+//    mModel?.removeEBObserver (self.boardHeight)
   //--- boardHeightUnit
-    boardHeightUnit.readModelFunction = nil 
-    boardHeightUnit.writeModelFunction = nil 
-    boardHeightUnit.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_boardHeightUnit (boardHeightUnit)
-//    mModel?.removeEBObserver (boardHeightUnit)
+    self.boardHeightUnit.readModelFunction = nil 
+    self.boardHeightUnit.writeModelFunction = nil 
+    self.boardHeightUnit.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_boardHeightUnit (self.boardHeightUnit)
+//    mModel?.removeEBObserver (self.boardHeightUnit)
   //--- boardWidth
-    boardWidth.readModelFunction = nil 
-    boardWidth.writeModelFunction = nil 
-    boardWidth.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_boardWidth (boardWidth)
-//    mModel?.removeEBObserver (boardWidth)
+    self.boardWidth.readModelFunction = nil 
+    self.boardWidth.writeModelFunction = nil 
+    self.boardWidth.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_boardWidth (self.boardWidth)
+//    mModel?.removeEBObserver (self.boardWidth)
   //--- boardWidthUnit
-    boardWidthUnit.readModelFunction = nil 
-    boardWidthUnit.writeModelFunction = nil 
-    boardWidthUnit.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_boardWidthUnit (boardWidthUnit)
-//    mModel?.removeEBObserver (boardWidthUnit)
+    self.boardWidthUnit.readModelFunction = nil 
+    self.boardWidthUnit.writeModelFunction = nil 
+    self.boardWidthUnit.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_boardWidthUnit (self.boardWidthUnit)
+//    mModel?.removeEBObserver (self.boardWidthUnit)
   //--- componentCount
-    componentCount.readModelFunction = nil 
-    componentCount.writeModelFunction = nil 
-    componentCount.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_componentCount (componentCount)
-//    mModel?.removeEBObserver (componentCount)
+    self.componentCount.readModelFunction = nil 
+    self.componentCount.writeModelFunction = nil 
+    self.componentCount.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_componentCount (self.componentCount)
+//    mModel?.removeEBObserver (self.componentCount)
   //--- horizontalFlip
-    horizontalFlip.readModelFunction = nil 
-    horizontalFlip.writeModelFunction = nil 
-    horizontalFlip.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_horizontalFlip (horizontalFlip)
-//    mModel?.removeEBObserver (horizontalFlip)
+    self.horizontalFlip.readModelFunction = nil 
+    self.horizontalFlip.writeModelFunction = nil 
+    self.horizontalFlip.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_horizontalFlip (self.horizontalFlip)
+//    mModel?.removeEBObserver (self.horizontalFlip)
   //--- name
-    name.readModelFunction = nil 
-    name.writeModelFunction = nil 
-    name.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_name (name)
-//    mModel?.removeEBObserver (name)
+    self.name.readModelFunction = nil 
+    self.name.writeModelFunction = nil 
+    self.name.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_name (self.name)
+//    mModel?.removeEBObserver (self.name)
   //--- trackCount
-    trackCount.readModelFunction = nil 
-    trackCount.writeModelFunction = nil 
-    trackCount.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_trackCount (trackCount)
-//    mModel?.removeEBObserver (trackCount)
+    self.trackCount.readModelFunction = nil 
+    self.trackCount.writeModelFunction = nil 
+    self.trackCount.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_trackCount (self.trackCount)
+//    mModel?.removeEBObserver (self.trackCount)
   //--- verticalFlip
-    verticalFlip.readModelFunction = nil 
-    verticalFlip.writeModelFunction = nil 
-    verticalFlip.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_verticalFlip (verticalFlip)
-//    mModel?.removeEBObserver (verticalFlip)
+    self.verticalFlip.readModelFunction = nil 
+    self.verticalFlip.writeModelFunction = nil 
+    self.verticalFlip.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_verticalFlip (self.verticalFlip)
+//    mModel?.removeEBObserver (self.verticalFlip)
   //--- viaCount
-    viaCount.readModelFunction = nil 
-    viaCount.writeModelFunction = nil 
-    viaCount.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_viaCount (viaCount)
-//    mModel?.removeEBObserver (viaCount)
+    self.viaCount.readModelFunction = nil 
+    self.viaCount.writeModelFunction = nil 
+    self.viaCount.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_viaCount (self.viaCount)
+//    mModel?.removeEBObserver (self.viaCount)
   //--- zoom
-    zoom.readModelFunction = nil 
-    zoom.writeModelFunction = nil 
-    zoom.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_zoom (zoom)
-//    mModel?.removeEBObserver (zoom)
+    self.zoom.readModelFunction = nil 
+    self.zoom.writeModelFunction = nil 
+    self.zoom.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_zoom (self.zoom)
+//    mModel?.removeEBObserver (self.zoom)
     mModel = nil    
   }
 

@@ -107,179 +107,179 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "drawBoardLimits",
-      idx:drawBoardLimits.mEasyBindingsObjectIndex,
+      idx:self.drawBoardLimits.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawBoardLimits.mObserverExplorer,
-      valueExplorer:&drawBoardLimits.mValueExplorer
+      observerExplorer:&self.drawBoardLimits.mObserverExplorer,
+      valueExplorer:&self.drawBoardLimits.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawComponentNamesBottomSide",
-      idx:drawComponentNamesBottomSide.mEasyBindingsObjectIndex,
+      idx:self.drawComponentNamesBottomSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawComponentNamesBottomSide.mObserverExplorer,
-      valueExplorer:&drawComponentNamesBottomSide.mValueExplorer
+      observerExplorer:&self.drawComponentNamesBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawComponentNamesBottomSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawComponentNamesTopSide",
-      idx:drawComponentNamesTopSide.mEasyBindingsObjectIndex,
+      idx:self.drawComponentNamesTopSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawComponentNamesTopSide.mObserverExplorer,
-      valueExplorer:&drawComponentNamesTopSide.mValueExplorer
+      observerExplorer:&self.drawComponentNamesTopSide.mObserverExplorer,
+      valueExplorer:&self.drawComponentNamesTopSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawComponentValuesBottomSide",
-      idx:drawComponentValuesBottomSide.mEasyBindingsObjectIndex,
+      idx:self.drawComponentValuesBottomSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawComponentValuesBottomSide.mObserverExplorer,
-      valueExplorer:&drawComponentValuesBottomSide.mValueExplorer
+      observerExplorer:&self.drawComponentValuesBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawComponentValuesBottomSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawComponentValuesTopSide",
-      idx:drawComponentValuesTopSide.mEasyBindingsObjectIndex,
+      idx:self.drawComponentValuesTopSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawComponentValuesTopSide.mObserverExplorer,
-      valueExplorer:&drawComponentValuesTopSide.mValueExplorer
+      observerExplorer:&self.drawComponentValuesTopSide.mObserverExplorer,
+      valueExplorer:&self.drawComponentValuesTopSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPackageLegendBottomSide",
-      idx:drawPackageLegendBottomSide.mEasyBindingsObjectIndex,
+      idx:self.drawPackageLegendBottomSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawPackageLegendBottomSide.mObserverExplorer,
-      valueExplorer:&drawPackageLegendBottomSide.mValueExplorer
+      observerExplorer:&self.drawPackageLegendBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawPackageLegendBottomSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPackageLegendTopSide",
-      idx:drawPackageLegendTopSide.mEasyBindingsObjectIndex,
+      idx:self.drawPackageLegendTopSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawPackageLegendTopSide.mObserverExplorer,
-      valueExplorer:&drawPackageLegendTopSide.mValueExplorer
+      observerExplorer:&self.drawPackageLegendTopSide.mObserverExplorer,
+      valueExplorer:&self.drawPackageLegendTopSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPadHolesInPDF",
-      idx:drawPadHolesInPDF.mEasyBindingsObjectIndex,
+      idx:self.drawPadHolesInPDF.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawPadHolesInPDF.mObserverExplorer,
-      valueExplorer:&drawPadHolesInPDF.mValueExplorer
+      observerExplorer:&self.drawPadHolesInPDF.mObserverExplorer,
+      valueExplorer:&self.drawPadHolesInPDF.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPadsBottomSide",
-      idx:drawPadsBottomSide.mEasyBindingsObjectIndex,
+      idx:self.drawPadsBottomSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawPadsBottomSide.mObserverExplorer,
-      valueExplorer:&drawPadsBottomSide.mValueExplorer
+      observerExplorer:&self.drawPadsBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawPadsBottomSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPadsTopSide",
-      idx:drawPadsTopSide.mEasyBindingsObjectIndex,
+      idx:self.drawPadsTopSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawPadsTopSide.mObserverExplorer,
-      valueExplorer:&drawPadsTopSide.mValueExplorer
+      observerExplorer:&self.drawPadsTopSide.mObserverExplorer,
+      valueExplorer:&self.drawPadsTopSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTextsLayoutBottomSide",
-      idx:drawTextsLayoutBottomSide.mEasyBindingsObjectIndex,
+      idx:self.drawTextsLayoutBottomSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawTextsLayoutBottomSide.mObserverExplorer,
-      valueExplorer:&drawTextsLayoutBottomSide.mValueExplorer
+      observerExplorer:&self.drawTextsLayoutBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawTextsLayoutBottomSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTextsLayoutTopSide",
-      idx:drawTextsLayoutTopSide.mEasyBindingsObjectIndex,
+      idx:self.drawTextsLayoutTopSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawTextsLayoutTopSide.mObserverExplorer,
-      valueExplorer:&drawTextsLayoutTopSide.mValueExplorer
+      observerExplorer:&self.drawTextsLayoutTopSide.mObserverExplorer,
+      valueExplorer:&self.drawTextsLayoutTopSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTextsLegendBottomSide",
-      idx:drawTextsLegendBottomSide.mEasyBindingsObjectIndex,
+      idx:self.drawTextsLegendBottomSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawTextsLegendBottomSide.mObserverExplorer,
-      valueExplorer:&drawTextsLegendBottomSide.mValueExplorer
+      observerExplorer:&self.drawTextsLegendBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawTextsLegendBottomSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTextsLegendTopSide",
-      idx:drawTextsLegendTopSide.mEasyBindingsObjectIndex,
+      idx:self.drawTextsLegendTopSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawTextsLegendTopSide.mObserverExplorer,
-      valueExplorer:&drawTextsLegendTopSide.mValueExplorer
+      observerExplorer:&self.drawTextsLegendTopSide.mObserverExplorer,
+      valueExplorer:&self.drawTextsLegendTopSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTracksBottomSide",
-      idx:drawTracksBottomSide.mEasyBindingsObjectIndex,
+      idx:self.drawTracksBottomSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawTracksBottomSide.mObserverExplorer,
-      valueExplorer:&drawTracksBottomSide.mValueExplorer
+      observerExplorer:&self.drawTracksBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawTracksBottomSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawTracksTopSide",
-      idx:drawTracksTopSide.mEasyBindingsObjectIndex,
+      idx:self.drawTracksTopSide.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawTracksTopSide.mObserverExplorer,
-      valueExplorer:&drawTracksTopSide.mValueExplorer
+      observerExplorer:&self.drawTracksTopSide.mObserverExplorer,
+      valueExplorer:&self.drawTracksTopSide.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawVias",
-      idx:drawVias.mEasyBindingsObjectIndex,
+      idx:self.drawVias.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&drawVias.mObserverExplorer,
-      valueExplorer:&drawVias.mValueExplorer
+      observerExplorer:&self.drawVias.mObserverExplorer,
+      valueExplorer:&self.drawVias.mValueExplorer
     )
     createEntryForPropertyNamed (
       "fileExtension",
-      idx:fileExtension.mEasyBindingsObjectIndex,
+      idx:self.fileExtension.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&fileExtension.mObserverExplorer,
-      valueExplorer:&fileExtension.mValueExplorer
+      observerExplorer:&self.fileExtension.mObserverExplorer,
+      valueExplorer:&self.fileExtension.mValueExplorer
     )
     createEntryForPropertyNamed (
       "horizontalMirror",
-      idx:horizontalMirror.mEasyBindingsObjectIndex,
+      idx:self.horizontalMirror.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&horizontalMirror.mObserverExplorer,
-      valueExplorer:&horizontalMirror.mValueExplorer
+      observerExplorer:&self.horizontalMirror.mObserverExplorer,
+      valueExplorer:&self.horizontalMirror.mValueExplorer
     )
     createEntryForPropertyNamed (
       "measurementUnitForPadHoleInPDF",
-      idx:measurementUnitForPadHoleInPDF.mEasyBindingsObjectIndex,
+      idx:self.measurementUnitForPadHoleInPDF.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&measurementUnitForPadHoleInPDF.mObserverExplorer,
-      valueExplorer:&measurementUnitForPadHoleInPDF.mValueExplorer
+      observerExplorer:&self.measurementUnitForPadHoleInPDF.mObserverExplorer,
+      valueExplorer:&self.measurementUnitForPadHoleInPDF.mValueExplorer
     )
     createEntryForPropertyNamed (
       "name",
-      idx:name.mEasyBindingsObjectIndex,
+      idx:self.name.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&name.mObserverExplorer,
-      valueExplorer:&name.mValueExplorer
+      observerExplorer:&self.name.mObserverExplorer,
+      valueExplorer:&self.name.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padHoleDiameterInPDF",
-      idx:padHoleDiameterInPDF.mEasyBindingsObjectIndex,
+      idx:self.padHoleDiameterInPDF.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&padHoleDiameterInPDF.mObserverExplorer,
-      valueExplorer:&padHoleDiameterInPDF.mValueExplorer
+      observerExplorer:&self.padHoleDiameterInPDF.mObserverExplorer,
+      valueExplorer:&self.padHoleDiameterInPDF.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -335,8 +335,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawBoardLimits (drawBoardLimits)
-    drawBoardLimits.readModelFunction = {
+    model.addEBObserverOf_drawBoardLimits (self.drawBoardLimits)
+    self.drawBoardLimits.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -370,7 +370,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawBoardLimits.writeModelFunction = { (inValue : Bool) in
+    self.drawBoardLimits.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -382,7 +382,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawBoardLimits.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawBoardLimits.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -405,8 +405,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawComponentNamesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentNamesBottomSide (drawComponentNamesBottomSide)
-    drawComponentNamesBottomSide.readModelFunction = {
+    model.addEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide)
+    self.drawComponentNamesBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -440,7 +440,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawComponentNamesBottomSide.writeModelFunction = { (inValue : Bool) in
+    self.drawComponentNamesBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -452,7 +452,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawComponentNamesBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawComponentNamesBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -475,8 +475,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawComponentNamesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentNamesTopSide (drawComponentNamesTopSide)
-    drawComponentNamesTopSide.readModelFunction = {
+    model.addEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide)
+    self.drawComponentNamesTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -510,7 +510,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawComponentNamesTopSide.writeModelFunction = { (inValue : Bool) in
+    self.drawComponentNamesTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -522,7 +522,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawComponentNamesTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawComponentNamesTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -545,8 +545,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawComponentValuesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentValuesBottomSide (drawComponentValuesBottomSide)
-    drawComponentValuesBottomSide.readModelFunction = {
+    model.addEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide)
+    self.drawComponentValuesBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -580,7 +580,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawComponentValuesBottomSide.writeModelFunction = { (inValue : Bool) in
+    self.drawComponentValuesBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -592,7 +592,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawComponentValuesBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawComponentValuesBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -615,8 +615,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawComponentValuesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentValuesTopSide (drawComponentValuesTopSide)
-    drawComponentValuesTopSide.readModelFunction = {
+    model.addEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide)
+    self.drawComponentValuesTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -650,7 +650,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawComponentValuesTopSide.writeModelFunction = { (inValue : Bool) in
+    self.drawComponentValuesTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -662,7 +662,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawComponentValuesTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawComponentValuesTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -685,8 +685,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawPackageLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPackageLegendBottomSide (drawPackageLegendBottomSide)
-    drawPackageLegendBottomSide.readModelFunction = {
+    model.addEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide)
+    self.drawPackageLegendBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -720,7 +720,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawPackageLegendBottomSide.writeModelFunction = { (inValue : Bool) in
+    self.drawPackageLegendBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -732,7 +732,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawPackageLegendBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawPackageLegendBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -755,8 +755,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawPackageLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPackageLegendTopSide (drawPackageLegendTopSide)
-    drawPackageLegendTopSide.readModelFunction = {
+    model.addEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide)
+    self.drawPackageLegendTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -790,7 +790,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawPackageLegendTopSide.writeModelFunction = { (inValue : Bool) in
+    self.drawPackageLegendTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -802,7 +802,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawPackageLegendTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawPackageLegendTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -825,8 +825,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawPadHolesInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPadHolesInPDF (drawPadHolesInPDF)
-    drawPadHolesInPDF.readModelFunction = {
+    model.addEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF)
+    self.drawPadHolesInPDF.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -860,7 +860,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawPadHolesInPDF.writeModelFunction = { (inValue : Bool) in
+    self.drawPadHolesInPDF.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -872,7 +872,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawPadHolesInPDF.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawPadHolesInPDF.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -895,8 +895,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawPadsBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPadsBottomSide (drawPadsBottomSide)
-    drawPadsBottomSide.readModelFunction = {
+    model.addEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide)
+    self.drawPadsBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -930,7 +930,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawPadsBottomSide.writeModelFunction = { (inValue : Bool) in
+    self.drawPadsBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -942,7 +942,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawPadsBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawPadsBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -965,8 +965,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawPadsTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPadsTopSide (drawPadsTopSide)
-    drawPadsTopSide.readModelFunction = {
+    model.addEBObserverOf_drawPadsTopSide (self.drawPadsTopSide)
+    self.drawPadsTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1000,7 +1000,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawPadsTopSide.writeModelFunction = { (inValue : Bool) in
+    self.drawPadsTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1012,7 +1012,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawPadsTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawPadsTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1035,8 +1035,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTextsLayoutBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLayoutBottomSide (drawTextsLayoutBottomSide)
-    drawTextsLayoutBottomSide.readModelFunction = {
+    model.addEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide)
+    self.drawTextsLayoutBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1070,7 +1070,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawTextsLayoutBottomSide.writeModelFunction = { (inValue : Bool) in
+    self.drawTextsLayoutBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1082,7 +1082,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawTextsLayoutBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawTextsLayoutBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1105,8 +1105,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTextsLayoutTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLayoutTopSide (drawTextsLayoutTopSide)
-    drawTextsLayoutTopSide.readModelFunction = {
+    model.addEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide)
+    self.drawTextsLayoutTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1140,7 +1140,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawTextsLayoutTopSide.writeModelFunction = { (inValue : Bool) in
+    self.drawTextsLayoutTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1152,7 +1152,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawTextsLayoutTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawTextsLayoutTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1175,8 +1175,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTextsLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLegendBottomSide (drawTextsLegendBottomSide)
-    drawTextsLegendBottomSide.readModelFunction = {
+    model.addEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide)
+    self.drawTextsLegendBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1210,7 +1210,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawTextsLegendBottomSide.writeModelFunction = { (inValue : Bool) in
+    self.drawTextsLegendBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1222,7 +1222,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawTextsLegendBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawTextsLegendBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1245,8 +1245,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTextsLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLegendTopSide (drawTextsLegendTopSide)
-    drawTextsLegendTopSide.readModelFunction = {
+    model.addEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide)
+    self.drawTextsLegendTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1280,7 +1280,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawTextsLegendTopSide.writeModelFunction = { (inValue : Bool) in
+    self.drawTextsLegendTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1292,7 +1292,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawTextsLegendTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawTextsLegendTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1315,8 +1315,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTracksBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTracksBottomSide (drawTracksBottomSide)
-    drawTracksBottomSide.readModelFunction = {
+    model.addEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide)
+    self.drawTracksBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1350,7 +1350,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawTracksBottomSide.writeModelFunction = { (inValue : Bool) in
+    self.drawTracksBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1362,7 +1362,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawTracksBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawTracksBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1385,8 +1385,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawTracksTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTracksTopSide (drawTracksTopSide)
-    drawTracksTopSide.readModelFunction = {
+    model.addEBObserverOf_drawTracksTopSide (self.drawTracksTopSide)
+    self.drawTracksTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1420,7 +1420,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawTracksTopSide.writeModelFunction = { (inValue : Bool) in
+    self.drawTracksTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1432,7 +1432,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawTracksTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawTracksTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1455,8 +1455,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_drawVias (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawVias (drawVias)
-    drawVias.readModelFunction = {
+    model.addEBObserverOf_drawVias (self.drawVias)
+    self.drawVias.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1490,7 +1490,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    drawVias.writeModelFunction = { (inValue : Bool) in
+    self.drawVias.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1502,7 +1502,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    drawVias.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.drawVias.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1525,8 +1525,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_fileExtension (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_fileExtension (fileExtension)
-    fileExtension.readModelFunction = {
+    model.addEBObserverOf_fileExtension (self.fileExtension)
+    self.fileExtension.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1560,7 +1560,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    fileExtension.writeModelFunction = { (inValue : String) in
+    self.fileExtension.writeModelFunction = { (inValue : String) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1572,7 +1572,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    fileExtension.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
+    self.fileExtension.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1595,8 +1595,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_horizontalMirror (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_horizontalMirror (horizontalMirror)
-    horizontalMirror.readModelFunction = {
+    model.addEBObserverOf_horizontalMirror (self.horizontalMirror)
+    self.horizontalMirror.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1630,7 +1630,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    horizontalMirror.writeModelFunction = { (inValue : Bool) in
+    self.horizontalMirror.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1642,7 +1642,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    horizontalMirror.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.horizontalMirror.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1665,8 +1665,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_measurementUnitForPadHoleInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_measurementUnitForPadHoleInPDF (measurementUnitForPadHoleInPDF)
-    measurementUnitForPadHoleInPDF.readModelFunction = {
+    model.addEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF)
+    self.measurementUnitForPadHoleInPDF.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1700,7 +1700,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    measurementUnitForPadHoleInPDF.writeModelFunction = { (inValue : Int) in
+    self.measurementUnitForPadHoleInPDF.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1712,7 +1712,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    measurementUnitForPadHoleInPDF.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.measurementUnitForPadHoleInPDF.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1735,8 +1735,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_name (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_name (name)
-    name.readModelFunction = {
+    model.addEBObserverOf_name (self.name)
+    self.name.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1770,7 +1770,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    name.writeModelFunction = { (inValue : String) in
+    self.name.writeModelFunction = { (inValue : String) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1782,7 +1782,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    name.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
+    self.name.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1805,8 +1805,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //···················································································································*
 
   private final func bind_property_padHoleDiameterInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_padHoleDiameterInPDF (padHoleDiameterInPDF)
-    padHoleDiameterInPDF.readModelFunction = {
+    model.addEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF)
+    self.padHoleDiameterInPDF.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .noSelection :
@@ -1840,7 +1840,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .noSelection
       }
     }
-    padHoleDiameterInPDF.writeModelFunction = { (inValue : Int) in
+    self.padHoleDiameterInPDF.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1852,7 +1852,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    padHoleDiameterInPDF.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.padHoleDiameterInPDF.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .noSelection, .multipleSelection :
@@ -1880,137 +1880,137 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   func unbind_selection () {
   //--- drawBoardLimits
-    drawBoardLimits.readModelFunction = nil 
-    drawBoardLimits.writeModelFunction = nil 
-    drawBoardLimits.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawBoardLimits (drawBoardLimits)
-//    mModel?.removeEBObserver (drawBoardLimits)
+    self.drawBoardLimits.readModelFunction = nil 
+    self.drawBoardLimits.writeModelFunction = nil 
+    self.drawBoardLimits.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawBoardLimits (self.drawBoardLimits)
+//    mModel?.removeEBObserver (self.drawBoardLimits)
   //--- drawComponentNamesBottomSide
-    drawComponentNamesBottomSide.readModelFunction = nil 
-    drawComponentNamesBottomSide.writeModelFunction = nil 
-    drawComponentNamesBottomSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawComponentNamesBottomSide (drawComponentNamesBottomSide)
-//    mModel?.removeEBObserver (drawComponentNamesBottomSide)
+    self.drawComponentNamesBottomSide.readModelFunction = nil 
+    self.drawComponentNamesBottomSide.writeModelFunction = nil 
+    self.drawComponentNamesBottomSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide)
+//    mModel?.removeEBObserver (self.drawComponentNamesBottomSide)
   //--- drawComponentNamesTopSide
-    drawComponentNamesTopSide.readModelFunction = nil 
-    drawComponentNamesTopSide.writeModelFunction = nil 
-    drawComponentNamesTopSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawComponentNamesTopSide (drawComponentNamesTopSide)
-//    mModel?.removeEBObserver (drawComponentNamesTopSide)
+    self.drawComponentNamesTopSide.readModelFunction = nil 
+    self.drawComponentNamesTopSide.writeModelFunction = nil 
+    self.drawComponentNamesTopSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide)
+//    mModel?.removeEBObserver (self.drawComponentNamesTopSide)
   //--- drawComponentValuesBottomSide
-    drawComponentValuesBottomSide.readModelFunction = nil 
-    drawComponentValuesBottomSide.writeModelFunction = nil 
-    drawComponentValuesBottomSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawComponentValuesBottomSide (drawComponentValuesBottomSide)
-//    mModel?.removeEBObserver (drawComponentValuesBottomSide)
+    self.drawComponentValuesBottomSide.readModelFunction = nil 
+    self.drawComponentValuesBottomSide.writeModelFunction = nil 
+    self.drawComponentValuesBottomSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide)
+//    mModel?.removeEBObserver (self.drawComponentValuesBottomSide)
   //--- drawComponentValuesTopSide
-    drawComponentValuesTopSide.readModelFunction = nil 
-    drawComponentValuesTopSide.writeModelFunction = nil 
-    drawComponentValuesTopSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawComponentValuesTopSide (drawComponentValuesTopSide)
-//    mModel?.removeEBObserver (drawComponentValuesTopSide)
+    self.drawComponentValuesTopSide.readModelFunction = nil 
+    self.drawComponentValuesTopSide.writeModelFunction = nil 
+    self.drawComponentValuesTopSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide)
+//    mModel?.removeEBObserver (self.drawComponentValuesTopSide)
   //--- drawPackageLegendBottomSide
-    drawPackageLegendBottomSide.readModelFunction = nil 
-    drawPackageLegendBottomSide.writeModelFunction = nil 
-    drawPackageLegendBottomSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawPackageLegendBottomSide (drawPackageLegendBottomSide)
-//    mModel?.removeEBObserver (drawPackageLegendBottomSide)
+    self.drawPackageLegendBottomSide.readModelFunction = nil 
+    self.drawPackageLegendBottomSide.writeModelFunction = nil 
+    self.drawPackageLegendBottomSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide)
+//    mModel?.removeEBObserver (self.drawPackageLegendBottomSide)
   //--- drawPackageLegendTopSide
-    drawPackageLegendTopSide.readModelFunction = nil 
-    drawPackageLegendTopSide.writeModelFunction = nil 
-    drawPackageLegendTopSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawPackageLegendTopSide (drawPackageLegendTopSide)
-//    mModel?.removeEBObserver (drawPackageLegendTopSide)
+    self.drawPackageLegendTopSide.readModelFunction = nil 
+    self.drawPackageLegendTopSide.writeModelFunction = nil 
+    self.drawPackageLegendTopSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide)
+//    mModel?.removeEBObserver (self.drawPackageLegendTopSide)
   //--- drawPadHolesInPDF
-    drawPadHolesInPDF.readModelFunction = nil 
-    drawPadHolesInPDF.writeModelFunction = nil 
-    drawPadHolesInPDF.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawPadHolesInPDF (drawPadHolesInPDF)
-//    mModel?.removeEBObserver (drawPadHolesInPDF)
+    self.drawPadHolesInPDF.readModelFunction = nil 
+    self.drawPadHolesInPDF.writeModelFunction = nil 
+    self.drawPadHolesInPDF.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF)
+//    mModel?.removeEBObserver (self.drawPadHolesInPDF)
   //--- drawPadsBottomSide
-    drawPadsBottomSide.readModelFunction = nil 
-    drawPadsBottomSide.writeModelFunction = nil 
-    drawPadsBottomSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawPadsBottomSide (drawPadsBottomSide)
-//    mModel?.removeEBObserver (drawPadsBottomSide)
+    self.drawPadsBottomSide.readModelFunction = nil 
+    self.drawPadsBottomSide.writeModelFunction = nil 
+    self.drawPadsBottomSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide)
+//    mModel?.removeEBObserver (self.drawPadsBottomSide)
   //--- drawPadsTopSide
-    drawPadsTopSide.readModelFunction = nil 
-    drawPadsTopSide.writeModelFunction = nil 
-    drawPadsTopSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawPadsTopSide (drawPadsTopSide)
-//    mModel?.removeEBObserver (drawPadsTopSide)
+    self.drawPadsTopSide.readModelFunction = nil 
+    self.drawPadsTopSide.writeModelFunction = nil 
+    self.drawPadsTopSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawPadsTopSide (self.drawPadsTopSide)
+//    mModel?.removeEBObserver (self.drawPadsTopSide)
   //--- drawTextsLayoutBottomSide
-    drawTextsLayoutBottomSide.readModelFunction = nil 
-    drawTextsLayoutBottomSide.writeModelFunction = nil 
-    drawTextsLayoutBottomSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawTextsLayoutBottomSide (drawTextsLayoutBottomSide)
-//    mModel?.removeEBObserver (drawTextsLayoutBottomSide)
+    self.drawTextsLayoutBottomSide.readModelFunction = nil 
+    self.drawTextsLayoutBottomSide.writeModelFunction = nil 
+    self.drawTextsLayoutBottomSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide)
+//    mModel?.removeEBObserver (self.drawTextsLayoutBottomSide)
   //--- drawTextsLayoutTopSide
-    drawTextsLayoutTopSide.readModelFunction = nil 
-    drawTextsLayoutTopSide.writeModelFunction = nil 
-    drawTextsLayoutTopSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawTextsLayoutTopSide (drawTextsLayoutTopSide)
-//    mModel?.removeEBObserver (drawTextsLayoutTopSide)
+    self.drawTextsLayoutTopSide.readModelFunction = nil 
+    self.drawTextsLayoutTopSide.writeModelFunction = nil 
+    self.drawTextsLayoutTopSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide)
+//    mModel?.removeEBObserver (self.drawTextsLayoutTopSide)
   //--- drawTextsLegendBottomSide
-    drawTextsLegendBottomSide.readModelFunction = nil 
-    drawTextsLegendBottomSide.writeModelFunction = nil 
-    drawTextsLegendBottomSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawTextsLegendBottomSide (drawTextsLegendBottomSide)
-//    mModel?.removeEBObserver (drawTextsLegendBottomSide)
+    self.drawTextsLegendBottomSide.readModelFunction = nil 
+    self.drawTextsLegendBottomSide.writeModelFunction = nil 
+    self.drawTextsLegendBottomSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide)
+//    mModel?.removeEBObserver (self.drawTextsLegendBottomSide)
   //--- drawTextsLegendTopSide
-    drawTextsLegendTopSide.readModelFunction = nil 
-    drawTextsLegendTopSide.writeModelFunction = nil 
-    drawTextsLegendTopSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawTextsLegendTopSide (drawTextsLegendTopSide)
-//    mModel?.removeEBObserver (drawTextsLegendTopSide)
+    self.drawTextsLegendTopSide.readModelFunction = nil 
+    self.drawTextsLegendTopSide.writeModelFunction = nil 
+    self.drawTextsLegendTopSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide)
+//    mModel?.removeEBObserver (self.drawTextsLegendTopSide)
   //--- drawTracksBottomSide
-    drawTracksBottomSide.readModelFunction = nil 
-    drawTracksBottomSide.writeModelFunction = nil 
-    drawTracksBottomSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawTracksBottomSide (drawTracksBottomSide)
-//    mModel?.removeEBObserver (drawTracksBottomSide)
+    self.drawTracksBottomSide.readModelFunction = nil 
+    self.drawTracksBottomSide.writeModelFunction = nil 
+    self.drawTracksBottomSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide)
+//    mModel?.removeEBObserver (self.drawTracksBottomSide)
   //--- drawTracksTopSide
-    drawTracksTopSide.readModelFunction = nil 
-    drawTracksTopSide.writeModelFunction = nil 
-    drawTracksTopSide.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawTracksTopSide (drawTracksTopSide)
-//    mModel?.removeEBObserver (drawTracksTopSide)
+    self.drawTracksTopSide.readModelFunction = nil 
+    self.drawTracksTopSide.writeModelFunction = nil 
+    self.drawTracksTopSide.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawTracksTopSide (self.drawTracksTopSide)
+//    mModel?.removeEBObserver (self.drawTracksTopSide)
   //--- drawVias
-    drawVias.readModelFunction = nil 
-    drawVias.writeModelFunction = nil 
-    drawVias.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_drawVias (drawVias)
-//    mModel?.removeEBObserver (drawVias)
+    self.drawVias.readModelFunction = nil 
+    self.drawVias.writeModelFunction = nil 
+    self.drawVias.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_drawVias (self.drawVias)
+//    mModel?.removeEBObserver (self.drawVias)
   //--- fileExtension
-    fileExtension.readModelFunction = nil 
-    fileExtension.writeModelFunction = nil 
-    fileExtension.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_fileExtension (fileExtension)
-//    mModel?.removeEBObserver (fileExtension)
+    self.fileExtension.readModelFunction = nil 
+    self.fileExtension.writeModelFunction = nil 
+    self.fileExtension.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_fileExtension (self.fileExtension)
+//    mModel?.removeEBObserver (self.fileExtension)
   //--- horizontalMirror
-    horizontalMirror.readModelFunction = nil 
-    horizontalMirror.writeModelFunction = nil 
-    horizontalMirror.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_horizontalMirror (horizontalMirror)
-//    mModel?.removeEBObserver (horizontalMirror)
+    self.horizontalMirror.readModelFunction = nil 
+    self.horizontalMirror.writeModelFunction = nil 
+    self.horizontalMirror.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_horizontalMirror (self.horizontalMirror)
+//    mModel?.removeEBObserver (self.horizontalMirror)
   //--- measurementUnitForPadHoleInPDF
-    measurementUnitForPadHoleInPDF.readModelFunction = nil 
-    measurementUnitForPadHoleInPDF.writeModelFunction = nil 
-    measurementUnitForPadHoleInPDF.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_measurementUnitForPadHoleInPDF (measurementUnitForPadHoleInPDF)
-//    mModel?.removeEBObserver (measurementUnitForPadHoleInPDF)
+    self.measurementUnitForPadHoleInPDF.readModelFunction = nil 
+    self.measurementUnitForPadHoleInPDF.writeModelFunction = nil 
+    self.measurementUnitForPadHoleInPDF.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF)
+//    mModel?.removeEBObserver (self.measurementUnitForPadHoleInPDF)
   //--- name
-    name.readModelFunction = nil 
-    name.writeModelFunction = nil 
-    name.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_name (name)
-//    mModel?.removeEBObserver (name)
+    self.name.readModelFunction = nil 
+    self.name.writeModelFunction = nil 
+    self.name.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_name (self.name)
+//    mModel?.removeEBObserver (self.name)
   //--- padHoleDiameterInPDF
-    padHoleDiameterInPDF.readModelFunction = nil 
-    padHoleDiameterInPDF.writeModelFunction = nil 
-    padHoleDiameterInPDF.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_padHoleDiameterInPDF (padHoleDiameterInPDF)
-//    mModel?.removeEBObserver (padHoleDiameterInPDF)
+    self.padHoleDiameterInPDF.readModelFunction = nil 
+    self.padHoleDiameterInPDF.writeModelFunction = nil 
+    self.padHoleDiameterInPDF.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF)
+//    mModel?.removeEBObserver (self.padHoleDiameterInPDF)
     mModel = nil    
   }
 

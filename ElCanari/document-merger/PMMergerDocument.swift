@@ -27,6 +27,7 @@ import Cocoa
   @IBOutlet var mHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mVerticalFlipSwitch : EBSwitch?
+  @IBOutlet var mZoomField : EBIntField?
 
   //····················································································································
   //    Properties
@@ -233,6 +234,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mVerticalFlipSwitch' outlet is not an instance of 'EBSwitch'") ;
     }
+    if nil == mZoomField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mZoomField' outlet is nil") ;
+//    }else if !mZoomField!.isKindOfClass (EBIntField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mZoomField' outlet is not an instance of 'EBIntField'") ;
+    }
   //--------------------------- Array controllers
     mBoardModelController.bind_modelAndView (
       model: rootObject.boardModels,
@@ -266,6 +276,7 @@ import Cocoa
     mBoardModelView?.bind_verticalFlip (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
     mHorizontalFlipSwitch?.bind_value (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mVerticalFlipSwitch?.bind_value (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
+    mZoomField?.bind_value (self.mBoardModelSelection.zoom, file: #file, line: #line, sendContinously:false, autoFormatter:true)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -297,6 +308,7 @@ import Cocoa
     mBoardModelView?.unbind_verticalFlip ()
     mHorizontalFlipSwitch?.unbind_value ()
     mVerticalFlipSwitch?.unbind_value ()
+    mZoomField?.unbind_value ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers
