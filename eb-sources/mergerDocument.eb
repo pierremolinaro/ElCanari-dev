@@ -28,6 +28,7 @@ enum PadKind {
 
 extern outlet class CanariBoardModelView ;
 binding CanariBoardModelView $size : transient Int, transient Int ;
+binding CanariBoardModelView $zoom : property Int ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -130,6 +131,8 @@ entity BoardModelEntity {
   property Int boardHeight default 0 ;
   property Int boardHeightUnit default 0 ;
 
+  property Int zoom default 100 ;
+
   transient Int trackCount dependsFrom self.tracks.count ;
   transient Int viaCount dependsFrom self.vias.count ;
   transient Int componentCount dependsFrom self.packages.count ;
@@ -190,7 +193,10 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBIntObserverField mBoardModelComponentCountTextField $valueObserver mBoardModelSelection.componentCount {autoFormatter : yes} ;
   
 #--- Model view
-  outlet CanariBoardModelView mBoardModelView $size mBoardModelSelection.boardWidth, mBoardModelSelection.boardHeight ;
+  outlet CanariBoardModelView mBoardModelView
+    $size mBoardModelSelection.boardWidth, mBoardModelSelection.boardHeight
+    $zoom mBoardModelSelection.zoom
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

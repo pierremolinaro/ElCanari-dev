@@ -259,6 +259,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_trackCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viaCount_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelEntity in addedObjectSet {
@@ -274,6 +275,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)
         addEBObserversOf_trackCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viaCount_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }

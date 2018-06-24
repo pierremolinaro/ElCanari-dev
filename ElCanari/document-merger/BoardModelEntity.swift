@@ -353,6 +353,63 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
+  //   Observers of 'zoom' stored property
+  //····················································································································
+
+  private var mObserversOf_zoom = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_zoom.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.zoom.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_zoom.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.zoom.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_zoom_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_zoom {
+        managedObject.zoom.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_zoom {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.zoom.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'trackCount' transient property
   //····················································································································
 
@@ -563,6 +620,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
         addEBObserversOf_artworkName_toElementsOfSet (addedSet)
@@ -571,6 +629,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_boardWidthUnit_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_zoom_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -628,6 +687,12 @@ protocol BoardModelEntity_boardHeight : class {
 
 protocol BoardModelEntity_boardHeightUnit : class {
   var boardHeightUnit : EBStoredProperty_Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_zoom : class {
+  var zoom : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1396,7 +1461,7 @@ final class ToOneRelationship_BoardModelEntity_myArtwork : EBAbstractProperty {
 //    Entity: BoardModelEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_trackCount, BoardModelEntity_viaCount, BoardModelEntity_componentCount
+class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_trackCount, BoardModelEntity_viaCount, BoardModelEntity_componentCount
 {
 
   //····················································································································
@@ -1414,6 +1479,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   var boardHeight = EBStoredProperty_Int (0)
 
   var boardHeightUnit = EBStoredProperty_Int (0)
+
+  var zoom = EBStoredProperty_Int (100)
 
   //····················································································································
   //    Transient properties
@@ -1510,6 +1577,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.boardWidthUnit.undoManager = undoManager ()
     self.boardHeight.undoManager = undoManager ()
     self.boardHeightUnit.undoManager = undoManager ()
+    self.zoom.undoManager = undoManager ()
   //--- Install owner for relationships
     myArtwork.owner = self
     tracks.owner = self
@@ -1581,6 +1649,14 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       observerExplorer:&self.boardHeightUnit.mObserverExplorer,
       valueExplorer:&self.boardHeightUnit.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "zoom",
+      idx:self.zoom.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.zoom.mObserverExplorer,
+      valueExplorer:&self.zoom.mValueExplorer
+    )
     createEntryForToManyRelationshipNamed (
       "tracks",
       idx:tracks.mEasyBindingsObjectIndex,
@@ -1628,6 +1704,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.boardHeight.mValueExplorer = nil
     self.boardHeightUnit.mObserverExplorer = nil
     self.boardHeightUnit.mValueExplorer = nil
+    self.zoom.mObserverExplorer = nil
+    self.zoom.mValueExplorer = nil
     myArtwork.mObserverExplorer = nil
     myArtwork.mValueExplorer = nil
     // tracks.mObserverExplorer = nil
@@ -1651,6 +1729,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.boardWidthUnit.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
     self.boardHeight.storeIn (dictionary: ioDictionary, forKey: "boardHeight")
     self.boardHeightUnit.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
+    self.zoom.storeIn (dictionary: ioDictionary, forKey: "zoom")
     store (managedObjectArray: tracks.propval as NSArray, relationshipName:"tracks", intoDictionary: ioDictionary) ;
     store (managedObjectArray: vias.propval as NSArray, relationshipName:"vias", intoDictionary: ioDictionary) ;
     store (managedObjectArray: packages.propval as NSArray, relationshipName:"packages", intoDictionary: ioDictionary) ;
@@ -1669,6 +1748,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.boardWidthUnit.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
     self.boardHeight.readFrom (dictionary: inDictionary, forKey:"boardHeight")
     self.boardHeightUnit.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
+    self.zoom.readFrom (dictionary: inDictionary, forKey:"zoom")
     tracks.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "tracks",
       inDictionary: inDictionary,

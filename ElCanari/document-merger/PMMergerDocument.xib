@@ -377,7 +377,7 @@
                                 <rect key="frame" x="10" y="33" width="449" height="425"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <scrollView wantsLayer="YES" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="tch-UL-HLT">
+                                    <scrollView wantsLayer="YES" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="tch-UL-HLT" customClass="CanariScrollViewWithPlacard">
                                         <rect key="frame" x="3" y="-3" width="449" height="425"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" wantsLayer="YES" id="PpI-BL-fb0">

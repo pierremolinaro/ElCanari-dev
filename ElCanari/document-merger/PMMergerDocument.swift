@@ -241,6 +241,7 @@ import Cocoa
     mBoardModelViaCountTextField?.bind_valueObserver (self.mBoardModelSelection.viaCount, file: #file, line: #line, autoFormatter:true)
     mBoardModelComponentCountTextField?.bind_valueObserver (self.mBoardModelSelection.componentCount, file: #file, line: #line, autoFormatter:true)
     mBoardModelView?.bind_size (self.mBoardModelSelection.boardWidth, self.mBoardModelSelection.boardHeight, file: #file, line: #line)
+    mBoardModelView?.bind_zoom (self.mBoardModelSelection.zoom, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -267,6 +268,7 @@ import Cocoa
     mBoardModelViaCountTextField?.unbind_valueObserver ()
     mBoardModelComponentCountTextField?.unbind_valueObserver ()
     mBoardModelView?.unbind_size ()
+    mBoardModelView?.unbind_zoom ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers

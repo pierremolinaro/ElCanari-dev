@@ -25,6 +25,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var name = EBPropertyProxy_String () 
   var trackCount = EBPropertyProxy_Int () 
   var viaCount = EBPropertyProxy_Int () 
+  var zoom = EBPropertyProxy_Int () 
 
   //····················································································································
   //   BIND SELECTION
@@ -41,6 +42,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_name (model: model)
     bind_property_trackCount (model: model)
     bind_property_viaCount (model: model)
+    bind_property_zoom (model: model)
   }
 
   //····················································································································
@@ -150,6 +152,14 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       view:view,
       observerExplorer:&viaCount.mObserverExplorer,
       valueExplorer:&viaCount.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "zoom",
+      idx:zoom.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&zoom.mObserverExplorer,
+      valueExplorer:&zoom.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -742,6 +752,76 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     }
   }
 
+  //···················································································································*
+
+  private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_zoom (zoom)
+    zoom.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.zoom.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    zoom.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.zoom.setProp (inValue)
+          }
+        }
+      }
+    }
+    zoom.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.zoom.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
 
 
   //····················································································································
@@ -803,6 +883,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     viaCount.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_viaCount (viaCount)
 //    mModel?.removeEBObserver (viaCount)
+  //--- zoom
+    zoom.readModelFunction = nil 
+    zoom.writeModelFunction = nil 
+    zoom.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_zoom (zoom)
+//    mModel?.removeEBObserver (zoom)
     mModel = nil    
   }
 
