@@ -24,7 +24,9 @@ import Cocoa
   @IBOutlet var mBoardModelView : CanariBoardModelView?
   @IBOutlet var mBoardWidthTextField : CanariDimensionTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mVerticalFlipSwitch : EBSwitch?
 
   //····················································································································
   //    Properties
@@ -204,6 +206,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
+    if nil == mHorizontalFlipSwitch {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mHorizontalFlipSwitch' outlet is nil") ;
+//    }else if !mHorizontalFlipSwitch!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mHorizontalFlipSwitch' outlet is not an instance of 'EBSwitch'") ;
+    }
     if nil == mPageSegmentedControl {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -212,6 +223,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
+    }
+    if nil == mVerticalFlipSwitch {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mVerticalFlipSwitch' outlet is nil") ;
+//    }else if !mVerticalFlipSwitch!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mVerticalFlipSwitch' outlet is not an instance of 'EBSwitch'") ;
     }
   //--------------------------- Array controllers
     mBoardModelController.bind_modelAndView (
@@ -244,6 +264,8 @@ import Cocoa
     mBoardModelView?.bind_zoom (self.mBoardModelSelection.zoom, file: #file, line: #line)
     mBoardModelView?.bind_horizontalFlip (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mBoardModelView?.bind_verticalFlip (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
+    mHorizontalFlipSwitch?.bind_value (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
+    mVerticalFlipSwitch?.bind_value (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -273,6 +295,8 @@ import Cocoa
     mBoardModelView?.unbind_zoom ()
     mBoardModelView?.unbind_horizontalFlip ()
     mBoardModelView?.unbind_verticalFlip ()
+    mHorizontalFlipSwitch?.unbind_value ()
+    mVerticalFlipSwitch?.unbind_value ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers

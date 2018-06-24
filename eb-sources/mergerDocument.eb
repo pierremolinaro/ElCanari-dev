@@ -203,6 +203,9 @@ document PMMergerDocument root MergerRootEntity {
     $horizontalFlip mBoardModelSelection.horizontalFlip
     $verticalFlip mBoardModelSelection.verticalFlip
   ;
+  
+  outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
+  outlet EBSwitch mVerticalFlipSwitch $value mBoardModelSelection.verticalFlip ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

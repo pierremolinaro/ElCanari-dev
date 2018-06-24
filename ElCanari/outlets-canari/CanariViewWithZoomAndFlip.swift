@@ -65,9 +65,9 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
   fileprivate func scaleToZoom () { // 0 -> fit to window
     if let clipView = self.superview as? NSClipView {
       let currentUnitSquareSize : NSSize = clipView.convert (NSSize (width: 1.0, height: 1.0), from:nil)
-      let currentScale = 1.0 / currentUnitSquareSize.width ;
       let hFlip : CGFloat = self.mHorizontalFlip ? -1.0 : 1.0
       let vFlip : CGFloat = self.mVerticalFlip ? -1.0 : 1.0
+      let currentScale = 1.0 / currentUnitSquareSize.width ;
       if (0 == mZoom) { // Fit to window
         let sfr = clipView.frame
         let fr = self.frame
