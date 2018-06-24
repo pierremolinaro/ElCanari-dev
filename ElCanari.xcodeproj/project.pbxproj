@@ -175,7 +175,6 @@
 		CF87642A1DD4A11100D16B6B /* Controller_CanariCharacterView_transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8764291DD4A11100D16B6B /* Controller_CanariCharacterView_transparency.swift */; };
 		CF87642C1DD4A15A00D16B6B /* Controller_CanariCharacterView_characterGerberCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87642B1DD4A15A00D16B6B /* Controller_CanariCharacterView_characterGerberCode.swift */; };
 		CF87642E1DD4A19400D16B6B /* Controller_CanariCharacterView_advance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87642D1DD4A19400D16B6B /* Controller_CanariCharacterView_advance.swift */; };
-		CF87B16720DE91AA00EEA976 /* transient-BoardModelViaEntity-viaShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87B16620DE91AA00EEA976 /* transient-BoardModelViaEntity-viaShape.swift */; };
 		CF87B16920DE938000EEA976 /* transient-BoardModelEntity-viaShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87B16820DE938000EEA976 /* transient-BoardModelEntity-viaShapes.swift */; };
 		CF87B16B20DE983C00EEA976 /* ViaShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87B16A20DE983C00EEA976 /* ViaShape.swift */; };
 		CF880FEF1DDB85F400954D4E /* CanariCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF880FEE1DDB85F400954D4E /* CanariCircle.swift */; };
@@ -449,7 +448,6 @@
 		CF8764291DD4A11100D16B6B /* Controller_CanariCharacterView_transparency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller_CanariCharacterView_transparency.swift; sourceTree = "<group>"; };
 		CF87642B1DD4A15A00D16B6B /* Controller_CanariCharacterView_characterGerberCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller_CanariCharacterView_characterGerberCode.swift; sourceTree = "<group>"; };
 		CF87642D1DD4A19400D16B6B /* Controller_CanariCharacterView_advance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller_CanariCharacterView_advance.swift; sourceTree = "<group>"; };
-		CF87B16620DE91AA00EEA976 /* transient-BoardModelViaEntity-viaShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModelViaEntity-viaShape.swift"; sourceTree = "<group>"; };
 		CF87B16820DE938000EEA976 /* transient-BoardModelEntity-viaShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModelEntity-viaShapes.swift"; sourceTree = "<group>"; };
 		CF87B16A20DE983C00EEA976 /* ViaShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViaShape.swift; sourceTree = "<group>"; };
 		CF880FEE1DDB85F400954D4E /* CanariCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariCircle.swift; sourceTree = "<group>"; };
@@ -595,7 +593,6 @@
 				CF07742620DD852900C5DAE1 /* transient-BoardModelEntity-viaCount.swift */,
 				CF87B16820DE938000EEA976 /* transient-BoardModelEntity-viaShapes.swift */,
 				CFBAB0AF20DE70D700476FB7 /* transient-BoardModelPackageEntity-padCount.swift */,
-				CF87B16620DE91AA00EEA976 /* transient-BoardModelViaEntity-viaShape.swift */,
 				CF87B16A20DE983C00EEA976 /* ViaShape.swift */,
 				CFBAB0B120DE744500476FB7 /* view-CanariBoardModelView.swift */,
 			);
@@ -1176,7 +1173,6 @@
 				CF2BE38D20DD98510094A3E9 /* BoardModelComponentNameSegmentEntity.swift in Sources */,
 				CF4634451BEE10890064C49B /* ApplicationDelegate+new-document.swift in Sources */,
 				CFEDE5B71B4677C500036ACF /* EBManagedDocument.swift in Sources */,
-				CF87B16720DE91AA00EEA976 /* transient-BoardModelViaEntity-viaShape.swift in Sources */,
 				CF3DEFB91BFF92B5002ECBDE /* action-PMFontDocument-addSegmentAction.swift in Sources */,
 				CF302AEF1B498982003D4347 /* DrillDataFormatEnum.swift in Sources */,
 				CF215B001BFB61AE007CA9BE /* CurrentCharacterController.swift in Sources */,

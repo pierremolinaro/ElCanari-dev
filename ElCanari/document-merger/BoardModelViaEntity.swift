@@ -391,7 +391,7 @@ protocol BoardModelViaEntity_padDiameter : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelViaEntity_viaShape : class {
-  var viaShape : EBTransientProperty_ViaShape { get }
+  var viaShape : EBTransientProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -494,7 +494,7 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
   //    Transient properties
   //····················································································································
 
-  var viaShape = EBTransientProperty_ViaShape ()
+  var viaShape = EBTransientProperty_Int ()
 
   //····················································································································
   //    Relationships
@@ -511,18 +511,16 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
   //--- Install compute functions for transients
     viaShape.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x.prop.kind ()
-        kind &= unwSelf.y.prop.kind ()
-        kind &= unwSelf.padDiameter.prop.kind ()
+        let kind = unwSelf.x.prop.kind ()
         switch kind {
         case .noSelectionKind :
           return .noSelection
         case .multipleSelectionKind :
           return .multipleSelection
         case .singleSelectionKind :
-          switch (unwSelf.x.prop, unwSelf.y.prop, unwSelf.padDiameter.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
-            return .singleSelection (compute_BoardModelViaEntity_viaShape (v0, v1, v2))
+          switch (unwSelf.x.prop) {
+          case (.singleSelection (let v0)) :
+            return .singleSelection (v0) // §
           default :
             return .noSelection
           }
@@ -533,8 +531,6 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
     }
   //--- Install property observers for transients
     x.addEBObserver (viaShape)
-    y.addEBObserver (viaShape)
-    padDiameter.addEBObserver (viaShape)
   //--- Install undoers for properties
     self.x.undoManager = undoManager ()
     self.y.undoManager = undoManager ()
@@ -550,8 +546,6 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
   deinit {
   //--- Remove observers
     x.removeEBObserver (viaShape)
-    y.removeEBObserver (viaShape)
-    padDiameter.removeEBObserver (viaShape)
   }
 
   //····················································································································

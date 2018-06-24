@@ -86,10 +86,10 @@ entity BoardModelPackageEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ViaShape {
-  property Int x default 0 ;
-  property Int y default 0 ;
-  property Int padDiameter default 0 ;
+atomic class ViaShape {
+  Int x ;
+  Int y ;
+  Int padDiameter ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -102,7 +102,7 @@ entity BoardModelViaEntity {
   property Int holeDiameter default 0 ;
   property Int padDiameter default 0 ;
   
-  transient ViaShape viaShape dependsFrom self.x, self.y, self.padDiameter ;
+  copy transient Int viaShape : self.x ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
