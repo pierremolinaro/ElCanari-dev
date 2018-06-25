@@ -57,6 +57,68 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
+  //    vias
+  //····················································································································
+
+  private var mViasController : Controller_CanariBoardModelView_vias?
+
+  func bind_vias (_ vias:EBReadOnlyProperty_ViaShapes, file:String, line:Int) {
+    mViasController = Controller_CanariBoardModelView_vias (vias:vias, outlet:self, file:file, line:line)
+  }
+
+  func unbind_vias () {
+    mViasController?.unregister ()
+    mViasController = nil
+  }
+
+  //····················································································································
+
+  func setVias (_ vias : [CAShapeLayer]) {
+    mViaLayer.sublayers = vias
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariViewWithZoomAndFlip_verticalFlip
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariBoardModelView_vias : EBSimpleController {
+
+  private let mVias : EBReadOnlyProperty_ViaShapes
+  private let mOutlet : CanariBoardModelView
+
+  //····················································································································
+
+  init (vias : EBReadOnlyProperty_ViaShapes, outlet : CanariBoardModelView, file : String, line : Int) {
+    mVias = vias
+    mOutlet = outlet
+    super.init (objects:[vias], outlet:outlet)
+    mVias.addEBObserver (self)
+  }
+
+  //····················································································································
+  
+  func unregister () {
+    mVias.removeEBObserver (self)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mVias.prop {
+    case .noSelection :
+      mOutlet.setVias ([])
+    case .singleSelection (let v) :
+      mOutlet.setVias (v.shapeArray)
+    case .multipleSelection :
+      mOutlet.setVias ([])
+    }
+  }
+
+  //····················································································································
 
 }
 

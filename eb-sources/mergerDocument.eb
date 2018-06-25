@@ -35,6 +35,7 @@ binding CanariBoardModelView $size : transient Int, transient Int ;
 binding CanariBoardModelView $zoom : property Int ;
 binding CanariBoardModelView $horizontalFlip : transient Bool ;
 binding CanariBoardModelView $verticalFlip : transient Bool ;
+binding CanariBoardModelView $vias : transient ViaShapes ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -193,6 +194,7 @@ document PMMergerDocument root MergerRootEntity {
     $zoom mBoardModelSelection.zoom
     $horizontalFlip mBoardModelSelection.horizontalFlip
     $verticalFlip mBoardModelSelection.verticalFlip
+    $vias mBoardModelSelection.viaShapes
   ;
   
   outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
