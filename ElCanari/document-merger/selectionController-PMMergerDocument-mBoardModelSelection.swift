@@ -21,12 +21,13 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var boardHeightUnit = EBPropertyProxy_Int () 
   var boardWidth = EBPropertyProxy_Int () 
   var boardWidthUnit = EBPropertyProxy_Int () 
-  var componentCount = EBPropertyProxy_Int () 
+  var componentCount = EBTransientProperty_Int () 
   var horizontalFlip = EBPropertyProxy_Bool () 
   var name = EBPropertyProxy_String () 
-  var trackCount = EBPropertyProxy_Int () 
+  var trackCount = EBTransientProperty_Int () 
   var verticalFlip = EBPropertyProxy_Bool () 
-  var viaCount = EBPropertyProxy_Int () 
+  var viaCount = EBTransientProperty_Int () 
+  var viaShapes = EBTransientProperty_ViaShapes () 
   var zoom = EBPropertyProxy_Int () 
 
   //····················································································································
@@ -46,6 +47,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_trackCount (model: model)
     bind_property_verticalFlip (model: model)
     bind_property_viaCount (model: model)
+    bind_property_viaShapes (model: model)
     bind_property_zoom (model: model)
   }
 
@@ -126,14 +128,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       valueExplorer:&self.boardWidthUnit.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "componentCount",
-      idx:self.componentCount.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.componentCount.mObserverExplorer,
-      valueExplorer:&self.componentCount.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "horizontalFlip",
       idx:self.horizontalFlip.mEasyBindingsObjectIndex,
       y:&y,
@@ -150,28 +144,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       valueExplorer:&self.name.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "trackCount",
-      idx:self.trackCount.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.trackCount.mObserverExplorer,
-      valueExplorer:&self.trackCount.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "verticalFlip",
       idx:self.verticalFlip.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.verticalFlip.mObserverExplorer,
       valueExplorer:&self.verticalFlip.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "viaCount",
-      idx:self.viaCount.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.viaCount.mObserverExplorer,
-      valueExplorer:&self.viaCount.mValueExplorer
     )
     createEntryForPropertyNamed (
       "zoom",
@@ -914,6 +892,46 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_viaShapes (self.viaShapes)
+    self.viaShapes.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<ViaShapes> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.viaShapes.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_zoom (self.zoom)
     self.zoom.readModelFunction = {
@@ -1021,8 +1039,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 //    mModel?.removeEBObserver (self.boardWidthUnit)
   //--- componentCount
     self.componentCount.readModelFunction = nil 
-    self.componentCount.writeModelFunction = nil 
-    self.componentCount.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_componentCount (self.componentCount)
 //    mModel?.removeEBObserver (self.componentCount)
   //--- horizontalFlip
@@ -1039,8 +1055,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 //    mModel?.removeEBObserver (self.name)
   //--- trackCount
     self.trackCount.readModelFunction = nil 
-    self.trackCount.writeModelFunction = nil 
-    self.trackCount.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_trackCount (self.trackCount)
 //    mModel?.removeEBObserver (self.trackCount)
   //--- verticalFlip
@@ -1051,10 +1065,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 //    mModel?.removeEBObserver (self.verticalFlip)
   //--- viaCount
     self.viaCount.readModelFunction = nil 
-    self.viaCount.writeModelFunction = nil 
-    self.viaCount.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_viaCount (self.viaCount)
 //    mModel?.removeEBObserver (self.viaCount)
+  //--- viaShapes
+    self.viaShapes.readModelFunction = nil 
+    mModel?.removeEBObserverOf_viaShapes (self.viaShapes)
+//    mModel?.removeEBObserver (self.viaShapes)
   //--- zoom
     self.zoom.readModelFunction = nil 
     self.zoom.writeModelFunction = nil 

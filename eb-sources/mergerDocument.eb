@@ -26,6 +26,10 @@ enum PadKind {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+transient property class ViaShapes ;
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 extern outlet class CanariBoardModelView ;
 binding CanariBoardModelView $size : transient Int, transient Int ;
 binding CanariBoardModelView $zoom : property Int ;
@@ -80,16 +84,6 @@ entity BoardModelPackageEntity {
 
   property String name default "" ;
   property Int padRotation default 0 ;
-
-  copy transient Int padCount : self.pads.count ; # Inutilisé
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-atomic class ViaShape {
-  Int x ;
-  Int y ;
-  Int padDiameter ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -101,8 +95,6 @@ entity BoardModelViaEntity {
   property Int y default 0 ;
   property Int holeDiameter default 0 ;
   property Int padDiameter default 0 ;
-  
-  copy transient Int viaShape : self.x ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -140,6 +132,8 @@ entity BoardModelEntity {
   copy transient Int trackCount : self.tracks.count ;
   copy transient Int viaCount : self.vias.count ;
   copy transient Int componentCount : self.packages.count ;
+  
+  transient ViaShapes viaShapes dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

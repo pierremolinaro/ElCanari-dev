@@ -125,62 +125,6 @@ class ReadOnlyArrayOf_BoardModelPackageEntity : ReadOnlyAbstractArrayProperty <B
   }
 
   //····················································································································
-  //   Observers of 'padCount' transient property
-  //····················································································································
-
-  private var mObserversOf_padCount = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_padCount (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_padCount.insert (inObserver)
-    switch prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let v) :
-      for managedObject in v {
-        managedObject.padCount.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_padCount (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_padCount.remove (inObserver)
-    switch prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let v) :
-      for managedObject in v {
-        managedObject.padCount.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_padCount_toElementsOfSet (_ inSet : Set<BoardModelPackageEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_padCount {
-        managedObject.padCount.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padCount_fromElementsOfSet (_ inSet : Set<BoardModelPackageEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_padCount {
-        managedObject.padCount.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -256,12 +200,6 @@ protocol BoardModelPackageEntity_name : class {
 
 protocol BoardModelPackageEntity_padRotation : class {
   var padRotation : EBStoredProperty_Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelPackageEntity_padCount : class {
-  var padCount : EBTransientProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1018,7 +956,7 @@ final class ToOneRelationship_BoardModelPackageEntity_myModel : EBAbstractProper
 //    Entity: BoardModelPackageEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, BoardModelPackageEntity_padRotation, BoardModelPackageEntity_padCount
+class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, BoardModelPackageEntity_padRotation
 {
 
   //····················································································································
@@ -1033,7 +971,6 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
   //    Transient properties
   //····················································································································
 
-  var padCount = EBTransientProperty_Int ()
 
   //····················································································································
   //    Relationships
@@ -1051,28 +988,7 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    padCount.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.pads.count.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.pads.count.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (v0)
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
   //--- Install property observers for transients
-    pads.addEBObserver (padCount)
   //--- Install undoers for properties
     self.name.undoManager = undoManager ()
     self.padRotation.undoManager = undoManager ()
@@ -1088,7 +1004,6 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
 
   deinit {
   //--- Remove observers
-    pads.removeEBObserver (padCount)
   }
 
   //····················································································································

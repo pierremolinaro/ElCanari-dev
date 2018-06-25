@@ -692,6 +692,62 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
+  //   Observers of 'viaShapes' transient property
+  //····················································································································
+
+  private var mObserversOf_viaShapes = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_viaShapes (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_viaShapes.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.viaShapes.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viaShapes (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_viaShapes.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.viaShapes.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_viaShapes_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_viaShapes {
+        managedObject.viaShapes.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_viaShapes_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_viaShapes {
+        managedObject.viaShapes.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -841,6 +897,12 @@ protocol BoardModelEntity_viaCount : class {
 
 protocol BoardModelEntity_componentCount : class {
   var componentCount : EBTransientProperty_Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_viaShapes : class {
+  var viaShapes : EBTransientProperty_ViaShapes { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1183,7 +1245,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_vias, EBSignatureObserverProtocol {
         }
         removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_viaShape_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
       //--- Added object set
@@ -1194,7 +1255,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_vias, EBSignatureObserverProtocol {
         }
         addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
         addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_viaShape_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y_toElementsOfSet (addedObjectSet)
       //--- Notify observers
@@ -1405,7 +1465,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_packages, EBSignatureObserverProtoc
           managedObject.myModel.owner = nil ;
         }
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_padCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_padRotation_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
@@ -1414,7 +1473,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_packages, EBSignatureObserverProtoc
           managedObject.myModel.setProp (owner)
         }
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_padCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_padRotation_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
@@ -1591,7 +1649,7 @@ final class ToOneRelationship_BoardModelEntity_myArtwork : EBAbstractProperty {
 //    Entity: BoardModelEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_trackCount, BoardModelEntity_viaCount, BoardModelEntity_componentCount
+class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_trackCount, BoardModelEntity_viaCount, BoardModelEntity_componentCount, BoardModelEntity_viaShapes
 {
 
   //····················································································································
@@ -1623,6 +1681,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   var trackCount = EBTransientProperty_Int ()
   var viaCount = EBTransientProperty_Int ()
   var componentCount = EBTransientProperty_Int ()
+  var viaShapes = EBTransientProperty_ViaShapes ()
 
   //····················································································································
   //    Relationships
@@ -1700,10 +1759,35 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
         return .noSelection
       }
     }
+    viaShapes.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.vias.prop.kind ()
+        kind &= unwSelf.vias.prop.kind ()
+        kind &= unwSelf.vias.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.vias.prop, unwSelf.vias.prop, unwSelf.vias.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
+            return .singleSelection (compute_BoardModelEntity_viaShapes (v0, v1, v2))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
   //--- Install property observers for transients
     tracks.addEBObserver (trackCount)
     vias.addEBObserver (viaCount)
     packages.addEBObserver (componentCount)
+    vias.addEBObserverOf_x (viaShapes)
+    vias.addEBObserverOf_y (viaShapes)
+    vias.addEBObserverOf_padDiameter (viaShapes)
   //--- Install undoers for properties
     self.artworkName.undoManager = undoManager ()
     self.name.undoManager = undoManager ()
@@ -1729,6 +1813,9 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     tracks.removeEBObserver (trackCount)
     vias.removeEBObserver (viaCount)
     packages.removeEBObserver (componentCount)
+    vias.removeEBObserverOf_x (viaShapes)
+    vias.removeEBObserverOf_y (viaShapes)
+    vias.removeEBObserverOf_padDiameter (viaShapes)
   }
 
   //····················································································································

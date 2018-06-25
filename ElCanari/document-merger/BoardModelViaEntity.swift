@@ -239,62 +239,6 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
   }
 
   //····················································································································
-  //   Observers of 'viaShape' transient property
-  //····················································································································
-
-  private var mObserversOf_viaShape = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_viaShape (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_viaShape.insert (inObserver)
-    switch prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let v) :
-      for managedObject in v {
-        managedObject.viaShape.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_viaShape (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_viaShape.remove (inObserver)
-    switch prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let v) :
-      for managedObject in v {
-        managedObject.viaShape.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_viaShape_toElementsOfSet (_ inSet : Set<BoardModelViaEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_viaShape {
-        managedObject.viaShape.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_viaShape_fromElementsOfSet (_ inSet : Set<BoardModelViaEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_viaShape {
-        managedObject.viaShape.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -389,12 +333,6 @@ protocol BoardModelViaEntity_padDiameter : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelViaEntity_viaShape : class {
-  var viaShape : EBTransientProperty_Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: myModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -475,7 +413,7 @@ final class ToOneRelationship_BoardModelViaEntity_myModel : EBAbstractProperty {
 //    Entity: BoardModelViaEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelViaEntity_y, BoardModelViaEntity_holeDiameter, BoardModelViaEntity_padDiameter, BoardModelViaEntity_viaShape
+class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelViaEntity_y, BoardModelViaEntity_holeDiameter, BoardModelViaEntity_padDiameter
 {
 
   //····················································································································
@@ -494,7 +432,6 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
   //    Transient properties
   //····················································································································
 
-  var viaShape = EBTransientProperty_Int ()
 
   //····················································································································
   //    Relationships
@@ -509,28 +446,7 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    viaShape.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.x.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.x.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (v0)
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
   //--- Install property observers for transients
-    x.addEBObserver (viaShape)
   //--- Install undoers for properties
     self.x.undoManager = undoManager ()
     self.y.undoManager = undoManager ()
@@ -545,7 +461,6 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
 
   deinit {
   //--- Remove observers
-    x.removeEBObserver (viaShape)
   }
 
   //····················································································································
