@@ -1651,7 +1651,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
         case .singleSelectionKind :
           switch (unwSelf.tracks.count.prop) {
           case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_trackCount (v0))
+            return .singleSelection (v0)
           default :
             return .noSelection
           }
@@ -1671,7 +1671,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
         case .singleSelectionKind :
           switch (unwSelf.vias.count.prop) {
           case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_viaCount (v0))
+            return .singleSelection (v0)
           default :
             return .noSelection
           }
@@ -1691,7 +1691,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
         case .singleSelectionKind :
           switch (unwSelf.packages.count.prop) {
           case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_componentCount (v0))
+            return .singleSelection (v0)
           default :
             return .noSelection
           }

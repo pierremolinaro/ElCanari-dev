@@ -1062,7 +1062,7 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
         case .singleSelectionKind :
           switch (unwSelf.pads.count.prop) {
           case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelPackageEntity_padCount (v0))
+            return .singleSelection (v0)
           default :
             return .noSelection
           }

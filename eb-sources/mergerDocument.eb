@@ -81,7 +81,7 @@ entity BoardModelPackageEntity {
   property String name default "" ;
   property Int padRotation default 0 ;
 
-  transient Int padCount dependsFrom self.pads.count ; # Inutilisé
+  copy transient Int padCount : self.pads.count ; # Inutilisé
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -137,12 +137,9 @@ entity BoardModelEntity {
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
 
-  transient Int trackCount dependsFrom self.tracks.count ;
-  transient Int viaCount dependsFrom self.vias.count ;
-  transient Int componentCount dependsFrom self.packages.count ;
-#  transient Int padCount dependsFrom self.packages.padCount ;
-
-#  transient CAShapeLayer viaShapes dependsFrom self.vias.count ;
+  copy transient Int trackCount : self.tracks.count ;
+  copy transient Int viaCount : self.vias.count ;
+  copy transient Int componentCount : self.packages.count ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

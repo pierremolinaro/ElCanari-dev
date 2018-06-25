@@ -520,7 +520,7 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
         case .singleSelectionKind :
           switch (unwSelf.x.prop) {
           case (.singleSelection (let v0)) :
-            return .singleSelection (v0) // §
+            return .singleSelection (v0)
           default :
             return .noSelection
           }
