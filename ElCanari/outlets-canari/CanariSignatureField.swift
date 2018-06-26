@@ -68,17 +68,16 @@ final class Controller_CanariSignatureField_signature : EBSimpleController {
   init (object : EBReadOnlyProperty_Int, outlet : CanariSignatureField, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
+    super.init (observedObjects:[object], outlet:outlet)
     if mOutlet.formatter != nil {
       presentErrorWindow (file: file, line: line, errorMessage: "the outlet has a formatter")
     }
-    mObject.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
+    super.unregister ()
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

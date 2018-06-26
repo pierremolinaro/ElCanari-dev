@@ -25,14 +25,7 @@ final class Controller_CanariCharacterView_characterGerberCode : EBSimpleControl
   init (object : EBReadOnlyProperty_CharacterSegmentListClass, outlet : CanariCharacterView) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
-    mObject.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  final func unregister () {
-    mObject.removeEBObserver (self)
+    super.init (observedObjects:[object], outlet:outlet)
   }
 
   //····················································································································

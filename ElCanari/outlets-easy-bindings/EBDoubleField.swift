@@ -99,7 +99,6 @@ import Cocoa
     mValueController = nil
   }
 
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -121,7 +120,7 @@ import Cocoa
         autoFormatter : Bool) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
+    super.init (observedObjects:[object], outlet:outlet)
     mOutlet.target = self
     mOutlet.action = #selector(Controller_EBDoubleField_value.action(_:))
     if autoFormatter {
@@ -132,15 +131,14 @@ import Cocoa
     }else if !(mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file: file, line:line, errorMessage:"the formatter should be an NSNumberFormatter")
     }
-    mObject.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
+  override func unregister () {
+    super.unregister ()
     mOutlet.target = nil
     mOutlet.action = nil
-    mObject.removeEBObserver (self)
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

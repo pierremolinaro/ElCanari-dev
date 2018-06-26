@@ -23,14 +23,7 @@ final class Controller_CanariCharacterView_transparency : EBSimpleController {
   init (object : EBReadOnlyProperty_Double, outlet : CanariCharacterView) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
-    mObject.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  final func unregister () {
-    mObject.removeEBObserver (self)
+    super.init (observedObjects:[object], outlet:outlet)
   }
 
   //····················································································································

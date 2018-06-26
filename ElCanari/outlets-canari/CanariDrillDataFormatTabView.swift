@@ -58,15 +58,14 @@ final class Controller_CanariDrillDataFormatTabView_selectedFormat : EBSimpleCon
   init (object : EBStoredProperty_DrillDataFormatEnum, outlet : CanariDrillDataFormatTabView, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
+    super.init (observedObjects:[object], outlet:outlet)
     outlet.delegate = self
-    mObject.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
+    super.unregister ()
     mOutlet.delegate = nil
   }
 

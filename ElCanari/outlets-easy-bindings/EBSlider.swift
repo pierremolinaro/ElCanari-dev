@@ -88,14 +88,13 @@ final class Controller_EBSlider_doubleValue : EBSimpleController {
   init (object:EBReadWriteProperty_Double, outlet : EBSlider, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
-    object.addEBObserver (self)
+    super.init (observedObjects:[object], outlet:outlet)
   }
 
   //····················································································································
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
+    super.unregister ()
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 
@@ -141,14 +140,13 @@ final class Controller_EBSlider_intValue : EBSimpleController {
   init (object:EBReadWriteProperty_Int, outlet : EBSlider, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
-    object.addEBObserver (self)
+    super.init (observedObjects:[object], outlet:outlet)
   }
 
   //····················································································································
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
+    super.unregister ()
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

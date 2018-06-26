@@ -14,6 +14,7 @@ import Cocoa
 
   @IBOutlet var addBoardModelButton : EBButton?
   @IBOutlet var mArtworkNameTextField : EBTextObserverField?
+  @IBOutlet var mBackComponentNameSegmentCountTextField : EBIntObserverField?
   @IBOutlet var mBoardHeightTextField : CanariDimensionTextField?
   @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardModelComponentCountTextField : EBIntObserverField?
@@ -24,13 +25,14 @@ import Cocoa
   @IBOutlet var mBoardModelView : CanariBoardModelView?
   @IBOutlet var mBoardWidthTextField : CanariDimensionTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mDisplayBackComponentNames : EBCheckedMenuItem?
   @IBOutlet var mDisplayFrontComponentNames : EBCheckedMenuItem?
   @IBOutlet var mDisplayHoles : EBCheckedMenuItem?
   @IBOutlet var mDisplayPads : EBCheckedMenuItem?
+  @IBOutlet var mFrontComponentNameSegmentCountTextField : EBIntObserverField?
   @IBOutlet var mHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mVerticalFlipSwitch : EBSwitch?
-  @IBOutlet var mZoomField : EBIntField?
 
   //····················································································································
   //    Properties
@@ -119,6 +121,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mArtworkNameTextField' outlet is not an instance of 'EBTextObserverField'") ;
+    }
+    if nil == mBackComponentNameSegmentCountTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mBackComponentNameSegmentCountTextField' outlet is nil") ;
+//    }else if !mBackComponentNameSegmentCountTextField!.isKindOfClass (EBIntObserverField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mBackComponentNameSegmentCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
     }
     if nil == mBoardHeightTextField {
       presentErrorWindow (file: #file,
@@ -210,6 +221,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
+    if nil == mDisplayBackComponentNames {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDisplayBackComponentNames' outlet is nil") ;
+//    }else if !mDisplayBackComponentNames!.isKindOfClass (EBCheckedMenuItem) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDisplayBackComponentNames' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
     if nil == mDisplayFrontComponentNames {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -236,6 +256,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mDisplayPads' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
+    if nil == mFrontComponentNameSegmentCountTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mFrontComponentNameSegmentCountTextField' outlet is nil") ;
+//    }else if !mFrontComponentNameSegmentCountTextField!.isKindOfClass (EBIntObserverField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mFrontComponentNameSegmentCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
     }
     if nil == mHorizontalFlipSwitch {
       presentErrorWindow (file: #file,
@@ -264,15 +293,6 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mVerticalFlipSwitch' outlet is not an instance of 'EBSwitch'") ;
     }
-    if nil == mZoomField {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mZoomField' outlet is nil") ;
-//    }else if !mZoomField!.isKindOfClass (EBIntField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mZoomField' outlet is not an instance of 'EBIntField'") ;
-    }
   //--------------------------- Array controllers
     mBoardModelController.bind_modelAndView (
       model: rootObject.boardModels,
@@ -300,6 +320,8 @@ import Cocoa
     mBoardModelTrackCountTextField?.bind_valueObserver (self.mBoardModelSelection.trackCount, file: #file, line: #line, autoFormatter:true)
     mBoardModelViaCountTextField?.bind_valueObserver (self.mBoardModelSelection.viaCount, file: #file, line: #line, autoFormatter:true)
     mBoardModelComponentCountTextField?.bind_valueObserver (self.mBoardModelSelection.componentCount, file: #file, line: #line, autoFormatter:true)
+    mFrontComponentNameSegmentCountTextField?.bind_valueObserver (self.mBoardModelSelection.frontComponentNameSegmentsCount, file: #file, line: #line, autoFormatter:true)
+    mBackComponentNameSegmentCountTextField?.bind_valueObserver (self.mBoardModelSelection.backComponentNameSegmentsCount, file: #file, line: #line, autoFormatter:true)
     mBoardModelView?.bind_size (self.mBoardModelSelection.boardWidth, self.mBoardModelSelection.boardHeight, file: #file, line: #line)
     mBoardModelView?.bind_zoom (self.mBoardModelSelection.zoom, file: #file, line: #line)
     mBoardModelView?.bind_horizontalFlip (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
@@ -309,12 +331,14 @@ import Cocoa
     mBoardModelView?.bind_displayHoles (self.mBoardModelSelection.displayHoles, file: #file, line: #line)
     mBoardModelView?.bind_displayFrontComponentNames (self.mBoardModelSelection.displayFrontComponentNames, file: #file, line: #line)
     mBoardModelView?.bind_frontComponentNameSegments (self.mBoardModelSelection.frontComponentNameSegments, file: #file, line: #line)
+    mBoardModelView?.bind_displayBackComponentNames (self.mBoardModelSelection.displayBackComponentNames, file: #file, line: #line)
+    mBoardModelView?.bind_backComponentNameSegments (self.mBoardModelSelection.backComponentNameSegments, file: #file, line: #line)
     mHorizontalFlipSwitch?.bind_value (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mVerticalFlipSwitch?.bind_value (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
-    mZoomField?.bind_value (self.mBoardModelSelection.zoom, file: #file, line: #line, sendContinously:false, autoFormatter:true)
     mDisplayPads?.bind_checked (self.mBoardModelSelection.displayPads, file: #file, line: #line)
     mDisplayHoles?.bind_checked (self.mBoardModelSelection.displayHoles, file: #file, line: #line)
     mDisplayFrontComponentNames?.bind_checked (self.mBoardModelSelection.displayFrontComponentNames, file: #file, line: #line)
+    mDisplayBackComponentNames?.bind_checked (self.mBoardModelSelection.displayBackComponentNames, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -340,6 +364,8 @@ import Cocoa
     mBoardModelTrackCountTextField?.unbind_valueObserver ()
     mBoardModelViaCountTextField?.unbind_valueObserver ()
     mBoardModelComponentCountTextField?.unbind_valueObserver ()
+    mFrontComponentNameSegmentCountTextField?.unbind_valueObserver ()
+    mBackComponentNameSegmentCountTextField?.unbind_valueObserver ()
     mBoardModelView?.unbind_size ()
     mBoardModelView?.unbind_zoom ()
     mBoardModelView?.unbind_horizontalFlip ()
@@ -349,12 +375,14 @@ import Cocoa
     mBoardModelView?.unbind_displayHoles ()
     mBoardModelView?.unbind_displayFrontComponentNames ()
     mBoardModelView?.unbind_frontComponentNameSegments ()
+    mBoardModelView?.unbind_displayBackComponentNames ()
+    mBoardModelView?.unbind_backComponentNameSegments ()
     mHorizontalFlipSwitch?.unbind_value ()
     mVerticalFlipSwitch?.unbind_value ()
-    mZoomField?.unbind_value ()
     mDisplayPads?.unbind_checked ()
     mDisplayHoles?.unbind_checked ()
     mDisplayFrontComponentNames?.unbind_checked ()
+    mDisplayBackComponentNames?.unbind_checked ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers

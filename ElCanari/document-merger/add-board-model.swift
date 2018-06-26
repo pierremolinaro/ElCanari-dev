@@ -147,6 +147,15 @@ extension PMMergerDocument {
       let package = BoardModelPackageEntity (managedObjectContext:self.managedObjectContext())
       package.name.setProp (string (fromDict: packageDict, key: "NAME", &errorArray))
       package.padRotation.setProp (int (fromDict: packageDict, key: "PAD-ROTATION", &errorArray))
+    //--- Package side
+      let componentSideString = string (fromDict: packageDict, key: "SIDE", &errorArray)
+      if componentSideString == "TOP" {
+        package.side.setProp (.front)
+      }else if componentSideString == "BACK" {
+        package.side.setProp (.back)
+      }else{
+        errorArray.append ("Invalid pad side \"\(componentSideString)\".")
+      }
     //--- Component name segments
       var segmentArray = stringArray (fromDict: packageDict, key: "COMPONENT-NAME-SEGMENTS", &errorArray)
       for str in segmentArray {

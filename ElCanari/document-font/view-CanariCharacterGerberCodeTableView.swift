@@ -69,18 +69,17 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
   init (object:EBReadOnlyProperty_CharacterGerberCodeClass, tableView:CanariCharacterGerberCodeTableView) {
     mTableView = tableView
     mObject = object
-    super.init (objects:[object], outlet:mTableView)
+    super.init (observedObjects:[object], outlet:mTableView)
     tableView.delegate = self
     tableView.dataSource = self
-    object.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
+  override func unregister () {
+    super.unregister ()
     mTableView.delegate = nil
     mTableView.dataSource = nil
-    mObject.removeEBObserver (self)
     mTableView.removeFromEnabledFromValueDictionary ()
   }
 

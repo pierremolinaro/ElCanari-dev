@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TrackSide : Int {
+enum BoardSide : Int {
   case front = 0
   case back = 1
 
@@ -18,9 +18,9 @@ enum TrackSide : Int {
     }
   }
 
-  func enumfromRawValue (rawValue : Int) -> TrackSide {
+  func enumfromRawValue (rawValue : Int) -> BoardSide {
     var result = self
-    let v : TrackSide? = TrackSide (rawValue:rawValue) ;
+    let v : BoardSide? = BoardSide (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -29,20 +29,20 @@ enum TrackSide : Int {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBReadOnlyProperty_TrackSide
+//    EBReadOnlyProperty_BoardSide
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBReadOnlyProperty_TrackSide : EBAbstractProperty, EBReadOnlyEnumPropertyProtocol {
+class EBReadOnlyProperty_BoardSide : EBAbstractProperty, EBReadOnlyEnumPropertyProtocol {
 
-  var prop : EBProperty <TrackSide> { get { return .noSelection } } // Abstract method
+  var prop : EBProperty <BoardSide> { get { return .noSelection } } // Abstract method
 
-  func rawValue () -> Int { return TrackSide.front.rawValue }  // Abstract method
+  func rawValue () -> Int { return BoardSide.front.rawValue }  // Abstract method
 
   func count () -> Int { return 2 }
 
   //····················································································································
 
-  func compare (other : EBReadOnlyProperty_TrackSide) -> ComparisonResult {
+  func compare (other : EBReadOnlyProperty_BoardSide) -> ComparisonResult {
     switch prop {
     case .noSelection :
       switch other.prop {
@@ -80,10 +80,10 @@ class EBReadOnlyProperty_TrackSide : EBAbstractProperty, EBReadOnlyEnumPropertyP
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBStoredProperty_TrackSide
+//    EBStoredProperty_BoardSide
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBStoredProperty_TrackSide : EBReadOnlyProperty_TrackSide, EBEnumPropertyProtocol {
+class EBStoredProperty_BoardSide : EBReadOnlyProperty_BoardSide, EBEnumPropertyProtocol {
   weak var undoManager : UndoManager?
 
   var mValueExplorer : NSTextField? {
@@ -92,12 +92,12 @@ class EBStoredProperty_TrackSide : EBReadOnlyProperty_TrackSide, EBEnumPropertyP
     }
   }
 
-  init (_ inValue : TrackSide) {
+  init (_ inValue : BoardSide) {
     mValue = inValue
     super.init ()
   }
 
-  private var mValue : TrackSide {
+  private var mValue : BoardSide {
     didSet {
       if mValue != oldValue {
         mValueExplorer?.stringValue = mValue.descriptionForExplorer ()
@@ -109,23 +109,23 @@ class EBStoredProperty_TrackSide : EBReadOnlyProperty_TrackSide, EBEnumPropertyP
   }
 
   func performUndo (_ oldValue : NSNumber) {
-    if let v = TrackSide (rawValue:oldValue.intValue) {
+    if let v = BoardSide (rawValue:oldValue.intValue) {
       mValue = v
     }
   }
 
-  override var prop : EBProperty <TrackSide> { get { return .singleSelection (mValue) } }
+  override var prop : EBProperty <BoardSide> { get { return .singleSelection (mValue) } }
 
-  var propval : TrackSide { get { return mValue } }
+  var propval : BoardSide { get { return mValue } }
 
-  func setProp (_ value: TrackSide) { mValue = value }
+  func setProp (_ value: BoardSide) { mValue = value }
 
   override func rawValue () -> Int {
     return mValue.rawValue
   }
 
   func setFromRawValue (_ rawValue : Int) {
-    if let v = TrackSide (rawValue:rawValue) {
+    if let v = BoardSide (rawValue:rawValue) {
       mValue = v
     }
   }
@@ -156,9 +156,9 @@ class EBStoredProperty_TrackSide : EBReadOnlyProperty_TrackSide, EBEnumPropertyP
 
   //····················································································································
  
-  var validationFunction : (TrackSide, TrackSide) -> EBValidationResult <TrackSide> = defaultValidationFunction
+  var validationFunction : (BoardSide, BoardSide) -> EBValidationResult <BoardSide> = defaultValidationFunction
   
-  func validate (proposedValue : TrackSide) -> EBValidationResult <TrackSide> {
+  func validate (proposedValue : BoardSide) -> EBValidationResult <BoardSide> {
     return validationFunction (propval, proposedValue)
   }
 
@@ -202,19 +202,19 @@ class EBStoredProperty_TrackSide : EBReadOnlyProperty_TrackSide, EBEnumPropertyP
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBTransientProperty_TrackSide
+//    EBTransientProperty_BoardSide
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBTransientProperty_TrackSide : EBReadOnlyProperty_TrackSide {
-  private var mValueCache : EBProperty <TrackSide>?
+class EBTransientProperty_BoardSide : EBReadOnlyProperty_BoardSide {
+  private var mValueCache : EBProperty <BoardSide>?
 
-  var computeFunction : Optional<() -> EBProperty <TrackSide> >
+  var computeFunction : Optional<() -> EBProperty <BoardSide> >
   
   override init () {
     super.init ()
   }
 
-  override var prop : EBProperty <TrackSide> {
+  override var prop : EBProperty <BoardSide> {
     get {
       if mValueCache == nil {
         if let unwrappedComputeFunction = computeFunction {

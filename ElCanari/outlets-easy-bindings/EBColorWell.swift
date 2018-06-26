@@ -63,19 +63,18 @@ import Cocoa
     mObject = object
     mOutlet = outlet
     mSendContinously = sendContinously
-    super.init (objects:[object], outlet:outlet)
+    super.init (observedObjects:[object], outlet:outlet)
     mOutlet.target = self
     mOutlet.action = #selector(Controller_EBColorWell_color.action(_:))
     mOutlet.isContinuous = true
-    mObject.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
+  override func unregister () {
+    super.unregister ()
     mOutlet.target = nil
     mOutlet.action = nil
-    mObject.removeEBObserver (self)
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

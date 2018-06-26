@@ -71,14 +71,13 @@ final class Controller_EBStepper_value : EBSimpleController {
   init (object:EBReadWriteProperty_Int, outlet : EBStepper, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
-    object.addEBObserver (self)
+    super.init (observedObjects:[object], outlet:outlet)
   }
 
   //····················································································································
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
+    super.unregister ()
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

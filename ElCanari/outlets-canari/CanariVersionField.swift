@@ -88,17 +88,16 @@ final class Controller_CanariVersionField_version : EBSimpleController {
   init (object : EBReadOnlyProperty_Int, outlet : CanariVersionField, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
+    super.init (observedObjects:[object], outlet:outlet)
     if mOutlet.formatter != nil {
       presentErrorWindow (file: file, line:line, errorMessage:"the outlet has a formatter")
     }
-    mObject.addEBObserver (self)
+//    mObject.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 
@@ -137,17 +136,11 @@ final class Controller_CanariVersionField_versionShouldChange : EBSimpleControll
   init (object : EBReadOnlyProperty_Bool, outlet : CanariVersionField, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
+    super.init (observedObjects:[object], outlet:outlet)
     if mOutlet.formatter != nil {
       presentErrorWindow (file: file, line:line, errorMessage:"the outlet has a formatter")
     }
-    mObject.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mObject.removeEBObserver (self)
+//    mObject.addEBObserver (self)
   }
 
   //····················································································································

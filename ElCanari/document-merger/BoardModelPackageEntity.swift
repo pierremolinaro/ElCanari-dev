@@ -125,6 +125,63 @@ class ReadOnlyArrayOf_BoardModelPackageEntity : ReadOnlyAbstractArrayProperty <B
   }
 
   //····················································································································
+  //   Observers of 'side' stored property
+  //····················································································································
+
+  private var mObserversOf_side = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_side (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_side.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.side.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_side (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_side.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.side.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_side_toElementsOfSet (_ inSet : Set<BoardModelPackageEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_side {
+        managedObject.side.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_side_fromElementsOfSet (_ inSet : Set<BoardModelPackageEntity>) {
+    for observer in mObserversOf_side {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.side.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'frontComponentNameSegments' transient property
   //····················································································································
 
@@ -181,6 +238,62 @@ class ReadOnlyArrayOf_BoardModelPackageEntity : ReadOnlyAbstractArrayProperty <B
   }
 
   //····················································································································
+  //   Observers of 'backComponentNameSegments' transient property
+  //····················································································································
+
+  private var mObserversOf_backComponentNameSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backComponentNameSegments.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.backComponentNameSegments.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backComponentNameSegments.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.backComponentNameSegments.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backComponentNameSegments_toElementsOfSet (_ inSet : Set<BoardModelPackageEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backComponentNameSegments {
+        managedObject.backComponentNameSegments.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (_ inSet : Set<BoardModelPackageEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backComponentNameSegments {
+        managedObject.backComponentNameSegments.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -219,10 +332,12 @@ class TransientArrayOf_BoardModelPackageEntity : ReadOnlyArrayOf_BoardModelPacka
         let removedSet = mSet.subtracting (newSet)
         removeEBObserversOf_name_fromElementsOfSet (removedSet)
         removeEBObserversOf_padRotation_fromElementsOfSet (removedSet)
+        removeEBObserversOf_side_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
         addEBObserversOf_name_toElementsOfSet (addedSet)
         addEBObserversOf_padRotation_toElementsOfSet (addedSet)
+        addEBObserversOf_side_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -260,8 +375,20 @@ protocol BoardModelPackageEntity_padRotation : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardModelPackageEntity_side : class {
+  var side : EBStoredProperty_BoardSide { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardModelPackageEntity_frontComponentNameSegments : class {
   var frontComponentNameSegments : EBTransientProperty_MergerSegmentArray { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelPackageEntity_backComponentNameSegments : class {
+  var backComponentNameSegments : EBTransientProperty_MergerSegmentArray { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1020,7 +1147,7 @@ final class ToOneRelationship_BoardModelPackageEntity_myModel : EBAbstractProper
 //    Entity: BoardModelPackageEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, BoardModelPackageEntity_padRotation, BoardModelPackageEntity_frontComponentNameSegments
+class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, BoardModelPackageEntity_padRotation, BoardModelPackageEntity_side, BoardModelPackageEntity_frontComponentNameSegments, BoardModelPackageEntity_backComponentNameSegments
 {
 
   //····················································································································
@@ -1031,11 +1158,14 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
 
   var padRotation = EBStoredProperty_Int (0)
 
+  var side = EBStoredProperty_BoardSide (BoardSide.front)
+
   //····················································································································
   //    Transient properties
   //····················································································································
 
   var frontComponentNameSegments = EBTransientProperty_MergerSegmentArray ()
+  var backComponentNameSegments = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
   //    Relationships
@@ -1060,15 +1190,41 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
         kind &= unwSelf.componentNameSegments.prop.kind ()
         kind &= unwSelf.componentNameSegments.prop.kind ()
         kind &= unwSelf.componentNameSegments.prop.kind ()
+        kind &= unwSelf.side.prop.kind ()
         switch kind {
         case .noSelectionKind :
           return .noSelection
         case .multipleSelectionKind :
           return .multipleSelection
         case .singleSelectionKind :
-          switch (unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelPackageEntity_frontComponentNameSegments (v0, v1, v2, v3, v4))
+          switch (unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.side.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4), .singleSelection (let v5)) :
+            return .singleSelection (compute_BoardModelPackageEntity_frontComponentNameSegments (v0, v1, v2, v3, v4, v5))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    backComponentNameSegments.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.componentNameSegments.prop.kind ()
+        kind &= unwSelf.componentNameSegments.prop.kind ()
+        kind &= unwSelf.componentNameSegments.prop.kind ()
+        kind &= unwSelf.componentNameSegments.prop.kind ()
+        kind &= unwSelf.componentNameSegments.prop.kind ()
+        kind &= unwSelf.side.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.side.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4), .singleSelection (let v5)) :
+            return .singleSelection (compute_BoardModelPackageEntity_backComponentNameSegments (v0, v1, v2, v3, v4, v5))
           default :
             return .noSelection
           }
@@ -1083,9 +1239,17 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
     componentNameSegments.addEBObserverOf_x2 (frontComponentNameSegments)
     componentNameSegments.addEBObserverOf_y2 (frontComponentNameSegments)
     componentNameSegments.addEBObserverOf_width (frontComponentNameSegments)
+    side.addEBObserver (frontComponentNameSegments)
+    componentNameSegments.addEBObserverOf_x1 (backComponentNameSegments)
+    componentNameSegments.addEBObserverOf_y1 (backComponentNameSegments)
+    componentNameSegments.addEBObserverOf_x2 (backComponentNameSegments)
+    componentNameSegments.addEBObserverOf_y2 (backComponentNameSegments)
+    componentNameSegments.addEBObserverOf_width (backComponentNameSegments)
+    side.addEBObserver (backComponentNameSegments)
   //--- Install undoers for properties
     self.name.undoManager = undoManager ()
     self.padRotation.undoManager = undoManager ()
+    self.side.undoManager = undoManager ()
   //--- Install owner for relationships
     myModel.owner = self
     componentNameSegments.owner = self
@@ -1103,6 +1267,13 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
     componentNameSegments.removeEBObserverOf_x2 (frontComponentNameSegments)
     componentNameSegments.removeEBObserverOf_y2 (frontComponentNameSegments)
     componentNameSegments.removeEBObserverOf_width (frontComponentNameSegments)
+    side.removeEBObserver (frontComponentNameSegments)
+    componentNameSegments.removeEBObserverOf_x1 (backComponentNameSegments)
+    componentNameSegments.removeEBObserverOf_y1 (backComponentNameSegments)
+    componentNameSegments.removeEBObserverOf_x2 (backComponentNameSegments)
+    componentNameSegments.removeEBObserverOf_y2 (backComponentNameSegments)
+    componentNameSegments.removeEBObserverOf_width (backComponentNameSegments)
+    side.removeEBObserver (backComponentNameSegments)
   }
 
   //····················································································································
@@ -1126,6 +1297,14 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
       view:view,
       observerExplorer:&self.padRotation.mObserverExplorer,
       valueExplorer:&self.padRotation.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "side",
+      idx:self.side.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.side.mObserverExplorer,
+      valueExplorer:&self.side.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "componentNameSegments",
@@ -1166,6 +1345,8 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
     self.name.mValueExplorer = nil
     self.padRotation.mObserverExplorer = nil
     self.padRotation.mValueExplorer = nil
+    self.side.mObserverExplorer = nil
+    self.side.mValueExplorer = nil
     myModel.mObserverExplorer = nil
     myModel.mValueExplorer = nil
     // componentNameSegments.mObserverExplorer = nil
@@ -1185,6 +1366,7 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
     super.saveIntoDictionary (ioDictionary)
     self.name.storeIn (dictionary: ioDictionary, forKey: "name")
     self.padRotation.storeIn (dictionary: ioDictionary, forKey: "padRotation")
+    self.side.storeIn (dictionary: ioDictionary, forKey: "side")
     store (managedObjectArray: componentNameSegments.propval as NSArray, relationshipName:"componentNameSegments", intoDictionary: ioDictionary) ;
     store (managedObjectArray: componentValueSegments.propval as NSArray, relationshipName:"componentValueSegments", intoDictionary: ioDictionary) ;
     store (managedObjectArray: pads.propval as NSArray, relationshipName:"pads", intoDictionary: ioDictionary) ;
@@ -1199,6 +1381,7 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
     self.name.readFrom (dictionary: inDictionary, forKey:"name")
     self.padRotation.readFrom (dictionary: inDictionary, forKey:"padRotation")
+    self.side.readFrom (dictionary: inDictionary, forKey:"side")
     componentNameSegments.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "componentNameSegments",
       inDictionary: inDictionary,

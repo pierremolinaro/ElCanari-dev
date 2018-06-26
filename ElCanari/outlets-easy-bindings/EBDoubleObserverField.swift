@@ -74,7 +74,7 @@ import Cocoa
         autoFormatter:Bool) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
+    super.init (observedObjects:[object], outlet:outlet)
     if autoFormatter {
       let formatter = NumberFormatter ()
       mOutlet.formatter = formatter
@@ -83,15 +83,14 @@ import Cocoa
     }else if !(mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file: file, line: line, errorMessage: "the formatter should be an NSNumberFormatter")
     }
-    mObject.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
+  override func unregister () {
+    super.unregister ()
     mOutlet.target = nil
     mOutlet.action = nil
-    mObject.removeEBObserver (self)
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

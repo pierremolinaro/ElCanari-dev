@@ -73,17 +73,16 @@ final class Controller_EBTextObserverField_value : EBSimpleController {
   init (object:EBReadOnlyProperty_String, outlet : EBTextObserverField, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
+    super.init (observedObjects:[object], outlet:outlet)
     if mOutlet.formatter != nil {
       presentErrorWindow (file: file, line:line, errorMessage:"the EBTextObserverField outlet has a formatter")
     }
-    object.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
+    super.unregister ()
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

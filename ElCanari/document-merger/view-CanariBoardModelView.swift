@@ -20,14 +20,17 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mViaPadLayer = CALayer ()
    fileprivate var mViaHoleLayer = CALayer ()
    fileprivate var mFrontComponentNamesLayer = CALayer ()
+   fileprivate var mBackComponentNamesLayer = CALayer ()
 
    fileprivate var mDisplayPads = true
    fileprivate var mDisplayHoles = true
    fileprivate var mDisplayFrontComponentNames = true
+   fileprivate var mDisplayBackComponentNames = true
 
    fileprivate var mViaPadLayerComponents = [CAShapeLayer] ()
    fileprivate var mViaHoleLayerComponents = [CAShapeLayer] ()
    fileprivate var mFrontComponentNamesLayerComponents = [CAShapeLayer] ()
+   fileprivate var mBackComponentNamesLayerComponents = [CAShapeLayer] ()
 
   //····················································································································
   //  awakeFromNib
@@ -38,6 +41,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.addSublayer (mBackgroundLayer)
     self.layer?.addSublayer (mNoModelTextLayer)
     self.layer?.addSublayer (mViaPadLayer)
+    self.layer?.addSublayer (mBackComponentNamesLayer)
     self.layer?.addSublayer (mFrontComponentNamesLayer)
     self.layer?.addSublayer (mViaHoleLayer)
     CATransaction.commit ()
@@ -88,6 +92,14 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
   func updateFrontComponentNamesDisplay () {
     mFrontComponentNamesLayer.sublayers = mDisplayFrontComponentNames ? mFrontComponentNamesLayerComponents : nil
+  }
+
+  //····················································································································
+  //    Update back component name display
+  //····················································································································
+
+  func updateBackComponentNamesDisplay () {
+    mBackComponentNamesLayer.sublayers = mDisplayBackComponentNames ? mBackComponentNamesLayerComponents : nil
   }
 
   //····················································································································
@@ -193,6 +205,32 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
+  //    Back component names
+  //····················································································································
+
+  private var mBackComponentNamesController : Controller_CanariBoardModelView_backComponentNameSegments?
+
+  func bind_backComponentNameSegments (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mBackComponentNamesController = Controller_CanariBoardModelView_backComponentNameSegments (segments:segments, outlet:self, file:file, line:line)
+  }
+
+  func unbind_backComponentNameSegments () {
+    mBackComponentNamesController?.unregister ()
+    mBackComponentNamesController = nil
+  }
+
+  //····················································································································
+
+  func setBackComponentNameSegments (_ inSegments : [MergerSegment]) {
+    mBackComponentNamesLayerComponents = [CAShapeLayer] ()
+    for segment in inSegments {
+      let shape = segment.segmentShape (color:NSColor.black.cgColor)
+      mBackComponentNamesLayerComponents.append (shape)
+    }
+    updateBackComponentNamesDisplay ()
+  }
+
+  //····················································································································
   //    Display front component names
   //····················································································································
 
@@ -215,6 +253,28 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
+  //    Display back component names
+  //····················································································································
+
+  private var mDisplayBackComponentNamesController : Controller_CanariBoardModelView_displayBackComponentNames?
+
+  func bind_displayBackComponentNames (_ display:EBReadOnlyProperty_Bool, file:String, line:Int) {
+    mDisplayBackComponentNamesController = Controller_CanariBoardModelView_displayBackComponentNames (display:display, outlet:self, file:file, line:line)
+  }
+
+  func unbind_displayBackComponentNames () {
+    mDisplayBackComponentNamesController?.unregister ()
+    mDisplayBackComponentNamesController = nil
+  }
+
+  //····················································································································
+
+  func setDisplayBackComponentNames (_ inDisplay : Bool) {
+    mDisplayBackComponentNames = inDisplay
+    updateBackComponentNamesDisplay ()
+  }
+
+  //····················································································································
 
 }
 
@@ -233,14 +293,7 @@ final class Controller_CanariBoardModelView_vias : EBSimpleController {
   init (vias : EBReadOnlyProperty_MergerViaShapeArray, outlet : CanariBoardModelView, file : String, line : Int) {
     mVias = vias
     mOutlet = outlet
-    super.init (objects:[vias], outlet:outlet)
-    mVias.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mVias.removeEBObserver (self)
+    super.init (observedObjects:[vias], outlet:outlet)
   }
 
   //····················································································································
@@ -273,14 +326,7 @@ final class Controller_CanariBoardModelView_displayPads : EBSimpleController {
   init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
     mDisplay = display
     mOutlet = outlet
-    super.init (objects:[display], outlet:outlet)
-    mDisplay.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mDisplay.removeEBObserver (self)
+    super.init (observedObjects:[display], outlet:outlet)
   }
 
   //····················································································································
@@ -314,14 +360,7 @@ final class Controller_CanariBoardModelView_displayHoles : EBSimpleController {
   init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
     mDisplay = display
     mOutlet = outlet
-    super.init (objects:[display], outlet:outlet)
-    mDisplay.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mDisplay.removeEBObserver (self)
+    super.init (observedObjects:[display], outlet:outlet)
   }
 
   //····················································································································
@@ -355,14 +394,7 @@ final class Controller_CanariBoardModelView_frontComponentNameSegments : EBSimpl
   init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, file : String, line : Int) {
     mSegments = segments
     mOutlet = outlet
-    super.init (objects:[segments], outlet:outlet)
-    mSegments.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mSegments.removeEBObserver (self)
+    super.init (observedObjects:[segments], outlet:outlet)
   }
 
   //····················································································································
@@ -375,6 +407,40 @@ final class Controller_CanariBoardModelView_frontComponentNameSegments : EBSimpl
       mOutlet.setFrontComponentNameSegments (v.segmentArray)
     case .multipleSelection :
       mOutlet.setFrontComponentNameSegments ([])
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariBoardModelView_backComponentNameSegments
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariBoardModelView_backComponentNameSegments : EBSimpleController {
+
+  private let mSegments : EBReadOnlyProperty_MergerSegmentArray
+  private let mOutlet : CanariBoardModelView
+
+  //····················································································································
+
+  init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, file : String, line : Int) {
+    mSegments = segments
+    mOutlet = outlet
+    super.init (observedObjects:[segments], outlet:outlet)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mSegments.prop {
+    case .noSelection :
+      mOutlet.setBackComponentNameSegments ([])
+    case .singleSelection (let v) :
+      mOutlet.setBackComponentNameSegments (v.segmentArray)
+    case .multipleSelection :
+      mOutlet.setBackComponentNameSegments ([])
     }
   }
 
@@ -396,14 +462,7 @@ final class Controller_CanariBoardModelView_displayFrontComponentNames : EBSimpl
   init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
     mDisplay = display
     mOutlet = outlet
-    super.init (objects:[display], outlet:outlet)
-    mDisplay.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mDisplay.removeEBObserver (self)
+    super.init (observedObjects:[display], outlet:outlet)
   }
 
   //····················································································································
@@ -422,4 +481,38 @@ final class Controller_CanariBoardModelView_displayFrontComponentNames : EBSimpl
   //····················································································································
 
 }
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariBoardModelView_displayBackComponentNames
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariBoardModelView_displayBackComponentNames : EBSimpleController {
+
+  private let mDisplay : EBReadOnlyProperty_Bool
+  private let mOutlet : CanariBoardModelView
+
+  //····················································································································
+
+  init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
+    mDisplay = display
+    mOutlet = outlet
+    super.init (observedObjects:[display], outlet:outlet)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mDisplay.prop {
+    case .noSelection :
+      mOutlet.setDisplayBackComponentNames (false)
+    case .singleSelection (let v) :
+      mOutlet.setDisplayBackComponentNames (v)
+    case .multipleSelection :
+      mOutlet.setDisplayBackComponentNames (false)
+    }
+  }
+
+  //····················································································································
+
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

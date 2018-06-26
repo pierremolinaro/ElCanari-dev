@@ -73,14 +73,13 @@ import Cocoa
   init (object:EBReadWriteProperty_Bool, outlet : EBSwitch, file : String, line:Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
-    object.addEBObserver (self)
+    super.init (observedObjects:[object], outlet:outlet)
   }
 
   //···················································································································· 
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
+    super.unregister ()
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

@@ -122,14 +122,13 @@ final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleContr
   init (object : EBReadWriteProperty_Int, outlet : CanariFontCharacterSelectButton, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
-    mObject.addEBObserver (self)
+    super.init (observedObjects:[object], outlet:outlet)
   }
 
   //····················································································································
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
+    super.unregister()
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

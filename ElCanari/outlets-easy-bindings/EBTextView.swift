@@ -58,15 +58,15 @@ import Cocoa
   init (object:EBReadWriteProperty_String, outlet : EBTextView, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
+    super.init (observedObjects:[object], outlet:outlet)
     outlet.delegate = self
-    object.addEBObserver (self)
+//    object.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
+    super.unregister ()
     mOutlet.delegate = nil
   }
 

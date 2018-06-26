@@ -10,11 +10,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_frontComponentNameSegments (_ self_2E_packages_0 : [BoardModelPackageEntity_frontComponentNameSegments]) -> MergerSegmentArray {
+func compute_BoardModelEntity_backComponentNameSegments (_ self_2E_packages_0 : [BoardModelPackageEntity_backComponentNameSegments]) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
   var segmentArray = [MergerSegment] ()
   for a in self_2E_packages_0 {
-    switch a.frontComponentNameSegments.prop {
+    switch a.backComponentNameSegments.prop {
     case .noSelection :
       break
     case .singleSelection (let v) :

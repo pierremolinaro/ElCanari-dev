@@ -2,7 +2,7 @@
 #     M E R G E R    D O C U M E N T
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TrackSide {
+enum BoardSide {
   front, back
 }
 
@@ -41,6 +41,8 @@ binding CanariBoardModelView $displayPads : transient Bool ;
 binding CanariBoardModelView $displayHoles : transient Bool ;
 binding CanariBoardModelView $displayFrontComponentNames : transient Bool ;
 binding CanariBoardModelView $frontComponentNameSegments : transient MergerSegmentArray ;
+binding CanariBoardModelView $displayBackComponentNames : transient Bool ;
+binding CanariBoardModelView $backComponentNameSegments : transient MergerSegmentArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -91,11 +93,20 @@ entity BoardModelPackageEntity {
 
   property String name default "" ;
   property Int padRotation default 0 ;
+  property BoardSide side default front ;
   
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
     self.componentNameSegments.all.x1, self.componentNameSegments.all.y1,
     self.componentNameSegments.all.x2, self.componentNameSegments.all.y2,
-    self.componentNameSegments.all.width
+    self.componentNameSegments.all.width,
+    self.side
+  ;
+  
+  transient MergerSegmentArray backComponentNameSegments dependsFrom
+    self.componentNameSegments.all.x1, self.componentNameSegments.all.y1,
+    self.componentNameSegments.all.x2, self.componentNameSegments.all.y2,
+    self.componentNameSegments.all.width,
+    self.side
   ;
 }
 
@@ -120,7 +131,7 @@ entity BoardModelTrackSegmentEntity {
   property Int x2 default 0 ;
   property Int y2 default 0 ;
   property Int width default 0 ;
-  property TrackSide side default front ;
+  property BoardSide side default front ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -145,17 +156,26 @@ entity BoardModelEntity {
   property Bool displayPads default yes ;
   property Bool displayHoles default yes ;
   property Bool displayFrontComponentNames default yes ;
+  property Bool displayBackComponentNames default yes ;
   
   copy transient Int trackCount : self.tracks.count ;
   copy transient Int viaCount : self.vias.count ;
   copy transient Int componentCount : self.packages.count ;
   
   transient MergerViaShapeArray viaShapes
-    dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter , self.vias.all.padDiameter ;
+    dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter, self.vias.all.padDiameter ;
 
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
     self.packages.all.frontComponentNameSegments
   ;
+  
+  transient MergerSegmentArray backComponentNameSegments dependsFrom
+    self.packages.all.backComponentNameSegments
+  ;
+  
+  transient Int frontComponentNameSegmentsCount dependsFrom self.frontComponentNameSegments ;
+  
+  transient Int backComponentNameSegmentsCount dependsFrom self.backComponentNameSegments ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -208,7 +228,13 @@ document PMMergerDocument root MergerRootEntity {
 
 #--- Board model component count
   outlet EBIntObserverField mBoardModelComponentCountTextField $valueObserver mBoardModelSelection.componentCount {autoFormatter : yes} ;
-  
+
+#--- Front component names segment count
+  outlet EBIntObserverField mFrontComponentNameSegmentCountTextField $valueObserver mBoardModelSelection.frontComponentNameSegmentsCount {autoFormatter:yes} ;
+
+#--- Back component names segment count
+  outlet EBIntObserverField mBackComponentNameSegmentCountTextField $valueObserver mBoardModelSelection.backComponentNameSegmentsCount {autoFormatter:yes} ;
+
 #--- Model view
   outlet CanariBoardModelView mBoardModelView
     $size mBoardModelSelection.boardWidth, mBoardModelSelection.boardHeight
@@ -220,15 +246,17 @@ document PMMergerDocument root MergerRootEntity {
     $displayHoles mBoardModelSelection.displayHoles
     $displayFrontComponentNames mBoardModelSelection.displayFrontComponentNames
     $frontComponentNameSegments mBoardModelSelection.frontComponentNameSegments
+    $displayBackComponentNames mBoardModelSelection.displayBackComponentNames
+    $backComponentNameSegments mBoardModelSelection.backComponentNameSegments
   ;
   
   outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
   outlet EBSwitch mVerticalFlipSwitch $value mBoardModelSelection.verticalFlip ;
-  outlet EBIntField mZoomField $value mBoardModelSelection.zoom {sendContinously:no, autoFormatter:yes} ;
   
   outlet EBCheckedMenuItem mDisplayPads $checked mBoardModelSelection.displayPads ;
   outlet EBCheckedMenuItem mDisplayHoles $checked mBoardModelSelection.displayHoles ;
   outlet EBCheckedMenuItem mDisplayFrontComponentNames $checked mBoardModelSelection.displayFrontComponentNames ;
+  outlet EBCheckedMenuItem mDisplayBackComponentNames $checked mBoardModelSelection.displayBackComponentNames ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

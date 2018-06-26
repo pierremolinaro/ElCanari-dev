@@ -77,23 +77,24 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     mDimension = dimension
     mUnit = unit
     mOutlet = outlet
-    super.init (objects:[dimension, unit], outlet:outlet)
+    super.init (observedObjects:[dimension, unit], outlet:outlet)
     mOutlet.target = self
     mOutlet.action = #selector(Controller_CanariDimensionTextField_dimensionAndUnit.action(_:))
     if mOutlet.formatter == nil {
       presentErrorWindow (file: file, line: line, errorMessage: "the CanariDimensionTextField outlet has no formatter")
     }
-    dimension.addEBObserver (self)
-    unit.addEBObserver (self)
+//    dimension.addEBObserver (self)
+//    unit.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
+  override func unregister () {
+    super.unregister ()
     mOutlet.target = nil
     mOutlet.action = nil
-    mDimension.removeEBObserver (self)
-    mUnit.removeEBObserver (self)
+//    mDimension.removeEBObserver (self)
+//    mUnit.removeEBObserver (self)
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

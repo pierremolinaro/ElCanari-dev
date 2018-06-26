@@ -54,16 +54,15 @@ final class Controller_EBCheckedMenuItem_check : EBSimpleController {
   init (checked : EBReadWriteProperty_Bool, outlet : EBCheckedMenuItem, file : String, line : Int) {
     mIsChecked = checked
     mOutlet = outlet
-    super.init (objects:[checked], outlet:outlet)
-    mIsChecked.addEBObserver (self)
+    super.init (observedObjects:[checked], outlet:outlet)
     mOutlet.target = self
     mOutlet.action = #selector (Controller_EBCheckedMenuItem_check.menuItemAction(_:))
   }
 
   //····················································································································
   
-  func unregister () {
-    mIsChecked.removeEBObserver (self)
+  override func unregister () {
+    super.unregister ()
     mOutlet.target = nil
     mOutlet.action = nil
   }
@@ -73,10 +72,13 @@ final class Controller_EBCheckedMenuItem_check : EBSimpleController {
   override func sendUpdateEvent () {
     switch mIsChecked.prop {
     case .noSelection :
+      mOutlet.isEnabled = false
       mOutlet.state = 0
     case .singleSelection (let v) :
+      mOutlet.isEnabled = true
       mOutlet.state = v ? 1 : 0
     case .multipleSelection :
+      mOutlet.isEnabled = false
       mOutlet.state = 0
     }
   }

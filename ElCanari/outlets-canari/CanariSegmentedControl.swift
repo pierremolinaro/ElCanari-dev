@@ -136,14 +136,14 @@ final class Controller_CanariSegmentedControl_selectedPage : EBSimpleController 
   init (object : EBReadWriteProperty_Int, outlet : CanariSegmentedControl, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
-    mObject.addEBObserver (self)
+    super.init (observedObjects:[object], outlet:outlet)
+//    mObject.addEBObserver (self)
   }
 
   //····················································································································
   
-  func unregister () {
-    mObject.removeEBObserver (self)
+  override func unregister () {
+    super.unregister ()
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 

@@ -23,14 +23,8 @@ final class Controller_CanariCharacterView_displayFlow : EBSimpleController {
   init (object : EBReadOnlyProperty_Bool, outlet : CanariCharacterView) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
-    mObject.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  final func unregister () {
-    mObject.removeEBObserver (self)
+    super.init (observedObjects:[object], outlet:outlet)
+//    mObject.addEBObserver (self)
   }
 
   //····················································································································

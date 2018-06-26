@@ -459,7 +459,7 @@ protocol BoardModelTrackSegmentEntity_width : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelTrackSegmentEntity_side : class {
-  var side : EBStoredProperty_TrackSide { get }
+  var side : EBStoredProperty_BoardSide { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -560,7 +560,7 @@ class BoardModelTrackSegmentEntity : EBManagedObject, BoardModelTrackSegmentEnti
 
   var width = EBStoredProperty_Int (0)
 
-  var side = EBStoredProperty_TrackSide (TrackSide.front)
+  var side = EBStoredProperty_BoardSide (BoardSide.front)
 
   //····················································································································
   //    Transient properties

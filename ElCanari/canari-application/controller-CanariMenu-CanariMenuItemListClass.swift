@@ -22,14 +22,8 @@ final class Controller_CanariMenu_CanariMenuItemListClass : EBSimpleController {
   init (object : EBReadOnlyProperty_CanariMenuItemListClass, outlet : CanariMenu) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet: outlet)
-    mObject.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  final func unregister () {
-    mObject.removeEBObserver (self)
+    super.init (observedObjects:[object], outlet: outlet)
+//    mObject.addEBObserver (self)
   }
 
   //····················································································································

@@ -299,16 +299,9 @@ final class Controller_CanariViewWithZoomAndFlip_size : EBSimpleController {
     mWidth = width
     mHeight = height
     mOutlet = outlet
-    super.init (objects:[width, height], outlet:outlet)
-    mWidth.addEBObserver (self)
-    mHeight.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mWidth.removeEBObserver (self)
-    mHeight.removeEBObserver (self)
+    super.init (observedObjects:[width, height], outlet:outlet)
+//    mWidth.addEBObserver (self)
+//    mHeight.addEBObserver (self)
   }
 
   //····················································································································
@@ -354,14 +347,8 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
   init (zoom : EBReadWriteProperty_Int, outlet : CanariViewWithZoomAndFlip, file : String, line : Int) {
     mZoom = zoom
     mOutlet = outlet
-    super.init (objects:[zoom], outlet:outlet)
-    mZoom.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mZoom.removeEBObserver (self)
+    super.init (observedObjects:[zoom], outlet:outlet)
+//    mZoom.addEBObserver (self)
   }
 
   //····················································································································
@@ -401,14 +388,8 @@ final class Controller_CanariViewWithZoomAndFlip_horizontalFlip : EBSimpleContro
   init (flip : EBReadOnlyProperty_Bool, outlet : CanariViewWithZoomAndFlip, file : String, line : Int) {
     mFlip = flip
     mOutlet = outlet
-    super.init (objects:[flip], outlet:outlet)
-    mFlip.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mFlip.removeEBObserver (self)
+    super.init (observedObjects:[flip], outlet:outlet)
+//    mFlip.addEBObserver (self)
   }
 
   //····················································································································
@@ -442,14 +423,8 @@ final class Controller_CanariViewWithZoomAndFlip_verticalFlip : EBSimpleControll
   init (flip : EBReadOnlyProperty_Bool, outlet : CanariViewWithZoomAndFlip, file : String, line : Int) {
     mFlip = flip
     mOutlet = outlet
-    super.init (objects:[flip], outlet:outlet)
-    mFlip.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mFlip.removeEBObserver (self)
+    super.init (observedObjects:[flip], outlet:outlet)
+//    mFlip.addEBObserver (self)
   }
 
   //····················································································································

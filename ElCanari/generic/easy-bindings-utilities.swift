@@ -483,17 +483,29 @@ class EBSimpleClass : EBObject {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBSimpleController : EBOutletEvent {
-  private let mPrivateObjects : [EBAbstractProperty]
+  private let mPrivateObservedObjects : [EBAbstractProperty]
   private let mPrivateOutlet : NSObject
   private var mExplorerWindow : NSWindow?
   
   //····················································································································
 
-  init (objects : [EBAbstractProperty], outlet : NSObject) {
-    mPrivateObjects = objects
+  init (observedObjects : [EBAbstractProperty], outlet : NSObject) {
+    mPrivateObservedObjects = observedObjects
     mPrivateOutlet = outlet
+    super.init ()
+    for object in observedObjects {
+      object.addEBObserver (self)
+    }
   }
   
+  //····················································································································
+  
+  func unregister () {
+    for object in mPrivateObservedObjects {
+      object.removeEBObserver (self)
+    }
+  }
+
   //····················································································································
 
   func showExplorerWindowAction (_ inSender : Any) {
@@ -520,7 +532,7 @@ class EBSimpleController : EBOutletEvent {
   //-------------------------------------------------- Adding properties
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
-    for object in mPrivateObjects {
+    for object in mPrivateObservedObjects {
       createEntryForObjectNamed (
         "object",
         object:object,

@@ -59,14 +59,7 @@ import Cocoa
   init (object:EBReadOnlyProperty_String, outlet : EBTextObserverView, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (objects:[object], outlet:outlet)
-    object.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  func unregister () {
-    mObject.removeEBObserver (self)
+    super.init (observedObjects:[object], outlet:outlet)
   }
 
   //····················································································································
