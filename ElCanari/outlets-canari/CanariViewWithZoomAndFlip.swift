@@ -44,7 +44,7 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
   //  Set size
   //····················································································································
 
-  func setSize (width : Int, height : Int) {
+  func setBoardModelSize (width : Int, height : Int) {
     let noModel = (width == 0) || (height == 0)
     if noModel {
       let newRect = CGRect (x:0.0, y:0.0, width:200.0, height:200.0)
@@ -300,8 +300,6 @@ final class Controller_CanariViewWithZoomAndFlip_size : EBSimpleController {
     mHeight = height
     mOutlet = outlet
     super.init (observedObjects:[width, height], outlet:outlet)
-//    mWidth.addEBObserver (self)
-//    mHeight.addEBObserver (self)
   }
 
   //····················································································································
@@ -326,7 +324,7 @@ final class Controller_CanariViewWithZoomAndFlip_size : EBSimpleController {
       ()
     }
     //NSLog ("width \(newWidth), height \(newHeight)")
-    mOutlet.setSize (width:newWidth, height:newHeight)
+    mOutlet.setBoardModelSize (width:newWidth, height:newHeight)
   }
 
   //····················································································································

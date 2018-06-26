@@ -21,6 +21,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mViaHoleLayer = CALayer ()
    fileprivate var mFrontComponentNamesLayer = CALayer ()
    fileprivate var mFrontTracksLayer = CALayer ()
+   fileprivate var mBackTracksLayer = CALayer ()
    fileprivate var mBackComponentNamesLayer = CALayer ()
 
    fileprivate var mDisplayPads = true
@@ -28,11 +29,13 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mDisplayFrontComponentNames = true
    fileprivate var mDisplayBackComponentNames = true
    fileprivate var mDisplayFrontTracks = true
+   fileprivate var mDisplayBackTracks = true
 
    fileprivate var mViaPadLayerComponents = [CAShapeLayer] ()
    fileprivate var mViaHoleLayerComponents = [CAShapeLayer] ()
    fileprivate var mFrontComponentNamesLayerComponents = [CAShapeLayer] ()
    fileprivate var mFrontTracksLayerComponents = [CAShapeLayer] ()
+   fileprivate var mBackTracksLayerComponents = [CAShapeLayer] ()
    fileprivate var mBackComponentNamesLayerComponents = [CAShapeLayer] ()
 
   //····················································································································
@@ -45,6 +48,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.addSublayer (mNoModelTextLayer)
     self.layer?.addSublayer (mViaPadLayer)
     self.layer?.addSublayer (mBackComponentNamesLayer)
+    self.layer?.addSublayer (mBackTracksLayer)
     self.layer?.addSublayer (mFrontTracksLayer)
     self.layer?.addSublayer (mFrontComponentNamesLayer)
     self.layer?.addSublayer (mViaHoleLayer)
@@ -55,8 +59,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //  Set size
   //····················································································································
 
-  override func setSize (width : Int, height : Int) {
-    super.setSize (width:width, height:height)
+  override func setBoardModelSize (width : Int, height : Int) {
+    super.setBoardModelSize (width:width, height:height)
     let noModel = (width == 0) || (height == 0)
     if noModel {
       mBackgroundLayer.fillColor = nil
@@ -112,6 +116,14 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
   func updateFrontTracksDisplay () {
     mFrontTracksLayer.sublayers = mDisplayFrontTracks ? mFrontTracksLayerComponents : nil
+  }
+
+  //····················································································································
+  //    Update back tracks
+  //····················································································································
+
+  func updateBackTracksDisplay () {
+    mBackTracksLayer.sublayers = mDisplayBackTracks ? mBackTracksLayerComponents : nil
   }
 
   //····················································································································
@@ -335,9 +347,56 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
+  //    Display back tracks
+  //····················································································································
+
+  private var mDisplayBackTracksController : Controller_CanariBoardModelView_displayBackTracks?
+
+  func bind_displayBackTracks (_ display:EBReadOnlyProperty_Bool, file:String, line:Int) {
+    mDisplayBackTracksController = Controller_CanariBoardModelView_displayBackTracks (display:display, outlet:self, file:file, line:line)
+  }
+
+  func unbind_displayBackTracks () {
+    mDisplayBackTracksController?.unregister ()
+    mDisplayBackTracksController = nil
+  }
+
+  //····················································································································
+
+  func setDisplayBackTracks (_ inDisplay : Bool) {
+    mDisplayBackTracks = inDisplay
+    updateBackTracksDisplay ()
+  }
+
+  //····················································································································
+  //    Back tracks
+  //····················································································································
+
+  private var mBackTracksController : Controller_CanariBoardModelView_backTracks?
+
+  func bind_backTracks (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mBackTracksController = Controller_CanariBoardModelView_backTracks (segments:segments, outlet:self, file:file, line:line)
+  }
+
+  func unbind_backTracks () {
+    mBackTracksController?.unregister ()
+    mBackTracksController = nil
+  }
+
+  //····················································································································
+
+  func setBackTracks (_ inSegments : [MergerSegment]) {
+    mBackTracksLayerComponents = [CAShapeLayer] ()
+    for segment in inSegments {
+      let shape = segment.segmentShape (color:NSColor.black.cgColor)
+      mBackTracksLayerComponents.append (shape)
+    }
+    updateBackTracksDisplay ()
+  }
+
+  //····················································································································
 
 }
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Controller_CanariBoardModelView_vias
@@ -576,7 +635,6 @@ final class Controller_CanariBoardModelView_displayBackComponentNames : EBSimple
 
 }
 
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Controller_CanariBoardModelView_displayFrontTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -638,6 +696,74 @@ final class Controller_CanariBoardModelView_frontTracks : EBSimpleController {
       mOutlet.setFrontTracks (v.segmentArray)
     case .multipleSelection :
       mOutlet.setFrontTracks ([])
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariBoardModelView_displayBackTracks
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariBoardModelView_displayBackTracks : EBSimpleController {
+
+  private let mDisplay : EBReadOnlyProperty_Bool
+  private let mOutlet : CanariBoardModelView
+
+  //····················································································································
+
+  init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
+    mDisplay = display
+    mOutlet = outlet
+    super.init (observedObjects:[display], outlet:outlet)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mDisplay.prop {
+    case .noSelection :
+      mOutlet.setDisplayBackTracks (false)
+    case .singleSelection (let v) :
+      mOutlet.setDisplayBackTracks (v)
+    case .multipleSelection :
+      mOutlet.setDisplayBackTracks (false)
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariBoardModelView_backTracks
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariBoardModelView_backTracks : EBSimpleController {
+
+  private let mSegments : EBReadOnlyProperty_MergerSegmentArray
+  private let mOutlet : CanariBoardModelView
+
+  //····················································································································
+
+  init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, file : String, line : Int) {
+    mSegments = segments
+    mOutlet = outlet
+    super.init (observedObjects:[segments], outlet:outlet)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mSegments.prop {
+    case .noSelection :
+      mOutlet.setBackTracks ([])
+    case .singleSelection (let v) :
+      mOutlet.setBackTracks (v.segmentArray)
+    case .multipleSelection :
+      mOutlet.setBackTracks ([])
     }
   }
 
