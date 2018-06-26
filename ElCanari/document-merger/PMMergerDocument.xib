@@ -23,9 +23,11 @@
                 <outlet property="mBoardWidthUnitPopUp" destination="7ZX-iP-2iR" id="rXk-3g-NOM"/>
                 <outlet property="mDisplayBackComponentNames" destination="fQE-rV-9Dh" id="FkK-dO-4Jo"/>
                 <outlet property="mDisplayFrontComponentNames" destination="iJ1-MN-1kW" id="1nE-An-tqE"/>
+                <outlet property="mDisplayFrontTracks" destination="XhH-C3-HYx" id="vow-3J-qDp"/>
                 <outlet property="mDisplayHoles" destination="3hJ-XX-4bH" id="KJu-An-Ty7"/>
                 <outlet property="mDisplayPads" destination="NTM-ak-cm3" id="xR8-h6-a8c"/>
                 <outlet property="mFrontComponentNameSegmentCountTextField" destination="dpz-lh-SJe" id="9VU-ff-Heh"/>
+                <outlet property="mFrontTrackSegmentCountTextField" destination="h7n-fB-G8M" id="C7m-hO-QUe"/>
                 <outlet property="mHorizontalFlipSwitch" destination="QbM-bC-weo" id="zTM-uz-j6h"/>
                 <outlet property="mPageSegmentedControl" destination="g6K-IS-SQg" id="vW2-0C-BuI"/>
                 <outlet property="mVerticalFlipSwitch" destination="UJ0-C6-tQU" id="hSn-98-oDh"/>
@@ -411,6 +413,24 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="h7n-fB-G8M" customClass="EBIntObserverField">
+                                                <rect key="frame" x="243" y="16" width="158" height="14"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Yqe-G6-hrk">
+                                                    <font key="font" metaFont="smallSystemBold"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="QzL-5b-O9L">
+                                                <rect key="frame" x="87" y="16" width="152" height="14"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Front Track Segment Count:" id="eWr-6e-baF">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                         </subviews>
                                     </customView>
                                 </subviews>
@@ -472,6 +492,7 @@
                                                     <menuItem title="Holes" id="3hJ-XX-4bH" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Pads" id="NTM-ak-cm3" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Component Names" id="iJ1-MN-1kW" customClass="EBCheckedMenuItem"/>
+                                                    <menuItem title="Front Tracks" id="XhH-C3-HYx" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Back Component Names" id="fQE-rV-9Dh" customClass="EBCheckedMenuItem"/>
                                                 </items>
                                             </menu>

@@ -26,10 +26,13 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var componentCount = EBTransientProperty_Int () 
   var displayBackComponentNames = EBPropertyProxy_Bool () 
   var displayFrontComponentNames = EBPropertyProxy_Bool () 
+  var displayFrontTracks = EBPropertyProxy_Bool () 
   var displayHoles = EBPropertyProxy_Bool () 
   var displayPads = EBPropertyProxy_Bool () 
   var frontComponentNameSegments = EBTransientProperty_MergerSegmentArray () 
   var frontComponentNameSegmentsCount = EBTransientProperty_Int () 
+  var frontTrackSegments = EBTransientProperty_MergerSegmentArray () 
+  var frontTracksSegmentsCount = EBTransientProperty_Int () 
   var horizontalFlip = EBPropertyProxy_Bool () 
   var name = EBPropertyProxy_String () 
   var trackCount = EBTransientProperty_Int () 
@@ -54,10 +57,13 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_componentCount (model: model)
     bind_property_displayBackComponentNames (model: model)
     bind_property_displayFrontComponentNames (model: model)
+    bind_property_displayFrontTracks (model: model)
     bind_property_displayHoles (model: model)
     bind_property_displayPads (model: model)
     bind_property_frontComponentNameSegments (model: model)
     bind_property_frontComponentNameSegmentsCount (model: model)
+    bind_property_frontTrackSegments (model: model)
+    bind_property_frontTracksSegmentsCount (model: model)
     bind_property_horizontalFlip (model: model)
     bind_property_name (model: model)
     bind_property_trackCount (model: model)
@@ -158,6 +164,14 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       view:view,
       observerExplorer:&self.displayFrontComponentNames.mObserverExplorer,
       valueExplorer:&self.displayFrontComponentNames.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "displayFrontTracks",
+      idx:self.displayFrontTracks.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.displayFrontTracks.mObserverExplorer,
+      valueExplorer:&self.displayFrontTracks.mValueExplorer
     )
     createEntryForPropertyNamed (
       "displayHoles",
@@ -870,6 +884,76 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_displayFrontTracks (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_displayFrontTracks (self.displayFrontTracks)
+    self.displayFrontTracks.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.displayFrontTracks.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    self.displayFrontTracks.writeModelFunction = { (inValue : Bool) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.displayFrontTracks.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.displayFrontTracks.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.displayFrontTracks.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_displayHoles (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_displayHoles (self.displayHoles)
     self.displayHoles.readModelFunction = {
@@ -1064,6 +1148,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.frontComponentNameSegmentsCount.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontTrackSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontTrackSegments (self.frontTrackSegments)
+    self.frontTrackSegments.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontTrackSegments.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontTracksSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontTracksSegmentsCount (self.frontTracksSegmentsCount)
+    self.frontTracksSegmentsCount.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontTracksSegmentsCount.prop {
             case .noSelection :
               return .noSelection
             case .multipleSelection :
@@ -1549,6 +1713,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.displayFrontComponentNames.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayFrontComponentNames (self.displayFrontComponentNames)
 //    mModel?.removeEBObserver (self.displayFrontComponentNames)
+  //--- displayFrontTracks
+    self.displayFrontTracks.readModelFunction = nil 
+    self.displayFrontTracks.writeModelFunction = nil 
+    self.displayFrontTracks.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_displayFrontTracks (self.displayFrontTracks)
+//    mModel?.removeEBObserver (self.displayFrontTracks)
   //--- displayHoles
     self.displayHoles.readModelFunction = nil 
     self.displayHoles.writeModelFunction = nil 
@@ -1569,6 +1739,14 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontComponentNameSegmentsCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontComponentNameSegmentsCount (self.frontComponentNameSegmentsCount)
 //    mModel?.removeEBObserver (self.frontComponentNameSegmentsCount)
+  //--- frontTrackSegments
+    self.frontTrackSegments.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontTrackSegments (self.frontTrackSegments)
+//    mModel?.removeEBObserver (self.frontTrackSegments)
+  //--- frontTracksSegmentsCount
+    self.frontTracksSegmentsCount.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontTracksSegmentsCount (self.frontTracksSegmentsCount)
+//    mModel?.removeEBObserver (self.frontTracksSegmentsCount)
   //--- horizontalFlip
     self.horizontalFlip.readModelFunction = nil 
     self.horizontalFlip.writeModelFunction = nil 
