@@ -26,7 +26,7 @@ enum PadKind {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-transient property class ViaShapes ;
+transient property class MergerViaShapeArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -35,7 +35,9 @@ binding CanariBoardModelView $size : transient Int, transient Int ;
 binding CanariBoardModelView $zoom : property Int ;
 binding CanariBoardModelView $horizontalFlip : transient Bool ;
 binding CanariBoardModelView $verticalFlip : transient Bool ;
-binding CanariBoardModelView $vias : transient ViaShapes ;
+binding CanariBoardModelView $vias : transient MergerViaShapeArray ;
+binding CanariBoardModelView $displayPads : transient Bool ;
+binding CanariBoardModelView $displayHoles : transient Bool ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -130,11 +132,15 @@ entity BoardModelEntity {
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
 
+  property Bool displayPads default yes ;
+  property Bool displayHoles default yes ;
+  
   copy transient Int trackCount : self.tracks.count ;
   copy transient Int viaCount : self.vias.count ;
   copy transient Int componentCount : self.packages.count ;
   
-  transient ViaShapes viaShapes dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
+  transient MergerViaShapeArray viaShapes
+    dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter , self.vias.all.padDiameter ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -195,11 +201,16 @@ document PMMergerDocument root MergerRootEntity {
     $horizontalFlip mBoardModelSelection.horizontalFlip
     $verticalFlip mBoardModelSelection.verticalFlip
     $vias mBoardModelSelection.viaShapes
+    $displayPads mBoardModelSelection.displayPads
+    $displayHoles mBoardModelSelection.displayHoles
   ;
   
   outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
   outlet EBSwitch mVerticalFlipSwitch $value mBoardModelSelection.verticalFlip ;
   outlet EBIntField mZoomField $value mBoardModelSelection.zoom {sendContinously:no, autoFormatter:yes} ;
+  
+  outlet EBCheckedMenuItem mDisplayPads $checked mBoardModelSelection.displayPads ;
+  outlet EBCheckedMenuItem mDisplayHoles $checked mBoardModelSelection.displayHoles ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

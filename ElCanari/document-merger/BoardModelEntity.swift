@@ -524,6 +524,120 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
+  //   Observers of 'displayPads' stored property
+  //····················································································································
+
+  private var mObserversOf_displayPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_displayPads.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.displayPads.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_displayPads.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.displayPads.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayPads_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_displayPads {
+        managedObject.displayPads.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayPads_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_displayPads {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.displayPads.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'displayHoles' stored property
+  //····················································································································
+
+  private var mObserversOf_displayHoles = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayHoles (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_displayHoles.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.displayHoles.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayHoles (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_displayHoles.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.displayHoles.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayHoles_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_displayHoles {
+        managedObject.displayHoles.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayHoles_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_displayHoles {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.displayHoles.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'trackCount' transient property
   //····················································································································
 
@@ -793,6 +907,8 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
         removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedSet)
         removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
+        removeEBObserversOf_displayPads_fromElementsOfSet (removedSet)
+        removeEBObserversOf_displayHoles_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
         addEBObserversOf_artworkName_toElementsOfSet (addedSet)
@@ -804,6 +920,8 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_zoom_toElementsOfSet (addedSet)
         addEBObserversOf_horizontalFlip_toElementsOfSet (addedSet)
         addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
+        addEBObserversOf_displayPads_toElementsOfSet (addedSet)
+        addEBObserversOf_displayHoles_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -883,6 +1001,18 @@ protocol BoardModelEntity_verticalFlip : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardModelEntity_displayPads : class {
+  var displayPads : EBStoredProperty_Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_displayHoles : class {
+  var displayHoles : EBStoredProperty_Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardModelEntity_trackCount : class {
   var trackCount : EBTransientProperty_Int { get }
 }
@@ -902,7 +1032,7 @@ protocol BoardModelEntity_componentCount : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_viaShapes : class {
-  var viaShapes : EBTransientProperty_ViaShapes { get }
+  var viaShapes : EBTransientProperty_MergerViaShapeArray { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1649,7 +1779,7 @@ final class ToOneRelationship_BoardModelEntity_myArtwork : EBAbstractProperty {
 //    Entity: BoardModelEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_trackCount, BoardModelEntity_viaCount, BoardModelEntity_componentCount, BoardModelEntity_viaShapes
+class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_displayPads, BoardModelEntity_displayHoles, BoardModelEntity_trackCount, BoardModelEntity_viaCount, BoardModelEntity_componentCount, BoardModelEntity_viaShapes
 {
 
   //····················································································································
@@ -1674,6 +1804,10 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
 
   var verticalFlip = EBStoredProperty_Bool (false)
 
+  var displayPads = EBStoredProperty_Bool (true)
+
+  var displayHoles = EBStoredProperty_Bool (true)
+
   //····················································································································
   //    Transient properties
   //····················································································································
@@ -1681,7 +1815,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   var trackCount = EBTransientProperty_Int ()
   var viaCount = EBTransientProperty_Int ()
   var componentCount = EBTransientProperty_Int ()
-  var viaShapes = EBTransientProperty_ViaShapes ()
+  var viaShapes = EBTransientProperty_MergerViaShapeArray ()
 
   //····················································································································
   //    Relationships
@@ -1764,15 +1898,16 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
         var kind = unwSelf.vias.prop.kind ()
         kind &= unwSelf.vias.prop.kind ()
         kind &= unwSelf.vias.prop.kind ()
+        kind &= unwSelf.vias.prop.kind ()
         switch kind {
         case .noSelectionKind :
           return .noSelection
         case .multipleSelectionKind :
           return .multipleSelection
         case .singleSelectionKind :
-          switch (unwSelf.vias.prop, unwSelf.vias.prop, unwSelf.vias.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
-            return .singleSelection (compute_BoardModelEntity_viaShapes (v0, v1, v2))
+          switch (unwSelf.vias.prop, unwSelf.vias.prop, unwSelf.vias.prop, unwSelf.vias.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3)) :
+            return .singleSelection (compute_BoardModelEntity_viaShapes (v0, v1, v2, v3))
           default :
             return .noSelection
           }
@@ -1787,6 +1922,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     packages.addEBObserver (componentCount)
     vias.addEBObserverOf_x (viaShapes)
     vias.addEBObserverOf_y (viaShapes)
+    vias.addEBObserverOf_holeDiameter (viaShapes)
     vias.addEBObserverOf_padDiameter (viaShapes)
   //--- Install undoers for properties
     self.artworkName.undoManager = undoManager ()
@@ -1798,6 +1934,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.zoom.undoManager = undoManager ()
     self.horizontalFlip.undoManager = undoManager ()
     self.verticalFlip.undoManager = undoManager ()
+    self.displayPads.undoManager = undoManager ()
+    self.displayHoles.undoManager = undoManager ()
   //--- Install owner for relationships
     myArtwork.owner = self
     tracks.owner = self
@@ -1815,6 +1953,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     packages.removeEBObserver (componentCount)
     vias.removeEBObserverOf_x (viaShapes)
     vias.removeEBObserverOf_y (viaShapes)
+    vias.removeEBObserverOf_holeDiameter (viaShapes)
     vias.removeEBObserverOf_padDiameter (viaShapes)
   }
 
@@ -1896,6 +2035,22 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       observerExplorer:&self.verticalFlip.mObserverExplorer,
       valueExplorer:&self.verticalFlip.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "displayPads",
+      idx:self.displayPads.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.displayPads.mObserverExplorer,
+      valueExplorer:&self.displayPads.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "displayHoles",
+      idx:self.displayHoles.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.displayHoles.mObserverExplorer,
+      valueExplorer:&self.displayHoles.mValueExplorer
+    )
     createEntryForToManyRelationshipNamed (
       "tracks",
       idx:tracks.mEasyBindingsObjectIndex,
@@ -1949,6 +2104,10 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.horizontalFlip.mValueExplorer = nil
     self.verticalFlip.mObserverExplorer = nil
     self.verticalFlip.mValueExplorer = nil
+    self.displayPads.mObserverExplorer = nil
+    self.displayPads.mValueExplorer = nil
+    self.displayHoles.mObserverExplorer = nil
+    self.displayHoles.mValueExplorer = nil
     myArtwork.mObserverExplorer = nil
     myArtwork.mValueExplorer = nil
     // tracks.mObserverExplorer = nil
@@ -1975,6 +2134,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.zoom.storeIn (dictionary: ioDictionary, forKey: "zoom")
     self.horizontalFlip.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
     self.verticalFlip.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
+    self.displayPads.storeIn (dictionary: ioDictionary, forKey: "displayPads")
+    self.displayHoles.storeIn (dictionary: ioDictionary, forKey: "displayHoles")
     store (managedObjectArray: tracks.propval as NSArray, relationshipName:"tracks", intoDictionary: ioDictionary) ;
     store (managedObjectArray: vias.propval as NSArray, relationshipName:"vias", intoDictionary: ioDictionary) ;
     store (managedObjectArray: packages.propval as NSArray, relationshipName:"packages", intoDictionary: ioDictionary) ;
@@ -1996,6 +2157,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.zoom.readFrom (dictionary: inDictionary, forKey:"zoom")
     self.horizontalFlip.readFrom (dictionary: inDictionary, forKey:"horizontalFlip")
     self.verticalFlip.readFrom (dictionary: inDictionary, forKey:"verticalFlip")
+    self.displayPads.readFrom (dictionary: inDictionary, forKey:"displayPads")
+    self.displayHoles.readFrom (dictionary: inDictionary, forKey:"displayHoles")
     tracks.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "tracks",
       inDictionary: inDictionary,

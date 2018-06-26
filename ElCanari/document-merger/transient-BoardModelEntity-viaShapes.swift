@@ -12,9 +12,21 @@ import Cocoa
 
 func compute_BoardModelEntity_viaShapes (_ self_2E_vias_0 : [BoardModelViaEntity_x],
                                          _ self_2E_vias_1 : [BoardModelViaEntity_y],
-                                         _ self_2E_vias_2 : [BoardModelViaEntity_padDiameter]) -> ViaShapes {
+                                         _ self_2E_vias_2 : [BoardModelViaEntity_holeDiameter],
+                                         _ self_2E_vias_3 : [BoardModelViaEntity_padDiameter]) -> MergerViaShapeArray {
 //--- START OF USER ZONE 2
-  return ViaShapes (self_2E_vias_0, self_2E_vias_1, self_2E_vias_2)
+  var array = [MergerViaShape] ()
+  var idx = 0
+  while idx < self_2E_vias_0.count {
+    let x = self_2E_vias_0 [idx].x.propval
+    let y = self_2E_vias_1 [idx].y.propval
+    let holeDiameter = self_2E_vias_2 [idx].holeDiameter.propval
+    let padDiameter  = self_2E_vias_3 [idx].padDiameter.propval
+    let via = MergerViaShape (x:x, y:y, holeDiameter:holeDiameter, padDiameter:padDiameter)
+    array.append (via)
+    idx += 1
+  }
+  return MergerViaShapeArray (array)
 //--- END OF USER ZONE 2
 }
 

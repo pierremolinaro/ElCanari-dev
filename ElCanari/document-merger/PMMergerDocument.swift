@@ -24,6 +24,8 @@ import Cocoa
   @IBOutlet var mBoardModelView : CanariBoardModelView?
   @IBOutlet var mBoardWidthTextField : CanariDimensionTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mDisplayHoles : EBCheckedMenuItem?
+  @IBOutlet var mDisplayPads : EBCheckedMenuItem?
   @IBOutlet var mHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mVerticalFlipSwitch : EBSwitch?
@@ -207,6 +209,24 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
+    if nil == mDisplayHoles {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDisplayHoles' outlet is nil") ;
+//    }else if !mDisplayHoles!.isKindOfClass (EBCheckedMenuItem) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDisplayHoles' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
+    if nil == mDisplayPads {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDisplayPads' outlet is nil") ;
+//    }else if !mDisplayPads!.isKindOfClass (EBCheckedMenuItem) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDisplayPads' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
     if nil == mHorizontalFlipSwitch {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -275,9 +295,13 @@ import Cocoa
     mBoardModelView?.bind_horizontalFlip (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mBoardModelView?.bind_verticalFlip (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
     mBoardModelView?.bind_vias (self.mBoardModelSelection.viaShapes, file: #file, line: #line)
+    mBoardModelView?.bind_displayPads (self.mBoardModelSelection.displayPads, file: #file, line: #line)
+    mBoardModelView?.bind_displayHoles (self.mBoardModelSelection.displayHoles, file: #file, line: #line)
     mHorizontalFlipSwitch?.bind_value (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mVerticalFlipSwitch?.bind_value (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
     mZoomField?.bind_value (self.mBoardModelSelection.zoom, file: #file, line: #line, sendContinously:false, autoFormatter:true)
+    mDisplayPads?.bind_checked (self.mBoardModelSelection.displayPads, file: #file, line: #line)
+    mDisplayHoles?.bind_checked (self.mBoardModelSelection.displayHoles, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -308,9 +332,13 @@ import Cocoa
     mBoardModelView?.unbind_horizontalFlip ()
     mBoardModelView?.unbind_verticalFlip ()
     mBoardModelView?.unbind_vias ()
+    mBoardModelView?.unbind_displayPads ()
+    mBoardModelView?.unbind_displayHoles ()
     mHorizontalFlipSwitch?.unbind_value ()
     mVerticalFlipSwitch?.unbind_value ()
     mZoomField?.unbind_value ()
+    mDisplayPads?.unbind_checked ()
+    mDisplayHoles?.unbind_checked ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers

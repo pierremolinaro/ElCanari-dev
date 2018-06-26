@@ -1141,13 +1141,13 @@ typealias EBReadOnlyPropertyArray_CharacterSegmentListClass  = EBReadOnlyClassPr
 typealias EBTransientPropertyArray_CharacterSegmentListClass = EBTransientClassProperty <[CharacterSegmentListClass]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class ViaShapes
+//   Transient property class MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_ViaShapes  = EBReadOnlyClassProperty <ViaShapes>
-typealias EBTransientProperty_ViaShapes = EBTransientClassProperty <ViaShapes>
-typealias EBReadOnlyPropertyArray_ViaShapes  = EBReadOnlyClassProperty <[ViaShapes]>
-typealias EBTransientPropertyArray_ViaShapes = EBTransientClassProperty <[ViaShapes]>
+typealias EBReadOnlyProperty_MergerViaShapeArray  = EBReadOnlyClassProperty <MergerViaShapeArray>
+typealias EBTransientProperty_MergerViaShapeArray = EBTransientClassProperty <MergerViaShapeArray>
+typealias EBReadOnlyPropertyArray_MergerViaShapeArray  = EBReadOnlyClassProperty <[MergerViaShapeArray]>
+typealias EBTransientPropertyArray_MergerViaShapeArray = EBTransientClassProperty <[MergerViaShapeArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date

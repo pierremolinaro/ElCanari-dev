@@ -22,12 +22,14 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var boardWidth = EBPropertyProxy_Int () 
   var boardWidthUnit = EBPropertyProxy_Int () 
   var componentCount = EBTransientProperty_Int () 
+  var displayHoles = EBPropertyProxy_Bool () 
+  var displayPads = EBPropertyProxy_Bool () 
   var horizontalFlip = EBPropertyProxy_Bool () 
   var name = EBPropertyProxy_String () 
   var trackCount = EBTransientProperty_Int () 
   var verticalFlip = EBPropertyProxy_Bool () 
   var viaCount = EBTransientProperty_Int () 
-  var viaShapes = EBTransientProperty_ViaShapes () 
+  var viaShapes = EBTransientProperty_MergerViaShapeArray () 
   var zoom = EBPropertyProxy_Int () 
 
   //····················································································································
@@ -42,6 +44,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_boardWidth (model: model)
     bind_property_boardWidthUnit (model: model)
     bind_property_componentCount (model: model)
+    bind_property_displayHoles (model: model)
+    bind_property_displayPads (model: model)
     bind_property_horizontalFlip (model: model)
     bind_property_name (model: model)
     bind_property_trackCount (model: model)
@@ -126,6 +130,22 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       view:view,
       observerExplorer:&self.boardWidthUnit.mObserverExplorer,
       valueExplorer:&self.boardWidthUnit.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "displayHoles",
+      idx:self.displayHoles.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.displayHoles.mObserverExplorer,
+      valueExplorer:&self.displayHoles.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "displayPads",
+      idx:self.displayPads.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.displayPads.mObserverExplorer,
+      valueExplorer:&self.displayPads.mValueExplorer
     )
     createEntryForPropertyNamed (
       "horizontalFlip",
@@ -602,6 +622,146 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_displayHoles (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_displayHoles (self.displayHoles)
+    self.displayHoles.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.displayHoles.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    self.displayHoles.writeModelFunction = { (inValue : Bool) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.displayHoles.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.displayHoles.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.displayHoles.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_displayPads (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_displayPads (self.displayPads)
+    self.displayPads.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.displayPads.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    self.displayPads.writeModelFunction = { (inValue : Bool) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.displayPads.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.displayPads.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.displayPads.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_horizontalFlip (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_horizontalFlip (self.horizontalFlip)
     self.horizontalFlip.readModelFunction = {
@@ -902,7 +1062,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         case .multipleSelection :
           return .multipleSelection
         case .singleSelection (let v) :
-          var s = Set<ViaShapes> ()
+          var s = Set<MergerViaShapeArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.viaShapes.prop {
@@ -1041,6 +1201,18 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.componentCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_componentCount (self.componentCount)
 //    mModel?.removeEBObserver (self.componentCount)
+  //--- displayHoles
+    self.displayHoles.readModelFunction = nil 
+    self.displayHoles.writeModelFunction = nil 
+    self.displayHoles.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_displayHoles (self.displayHoles)
+//    mModel?.removeEBObserver (self.displayHoles)
+  //--- displayPads
+    self.displayPads.readModelFunction = nil 
+    self.displayPads.writeModelFunction = nil 
+    self.displayPads.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_displayPads (self.displayPads)
+//    mModel?.removeEBObserver (self.displayPads)
   //--- horizontalFlip
     self.horizontalFlip.readModelFunction = nil 
     self.horizontalFlip.writeModelFunction = nil 
