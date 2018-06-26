@@ -75,20 +75,20 @@ fileprivate func stringArray (fromDict inDictionary : NSDictionary, key inKey : 
 fileprivate func intArray (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
   let strArray : [String] = inString.components(separatedBy: " ")
   var result = [Int] () // Default result
-  if strArray.count != 4 {
-    errorArray.append ("The string is not a four integer array.")
+  if strArray.count != 5 {
+    errorArray.append ("The string is not a five integer array.")
   }else{
     for s in strArray {
       let possibleInt : Int? = Int (s)
       if let n = possibleInt {
         result.append (n)
       }else{
-        errorArray.append ("The string is not a four integer array.")
+        errorArray.append ("The string is not a five integer array.")
       }
     }
   }
-//--- If an error occurs, add fake int to get a four element vector
-  while result.count < 4 {
+//--- If an error occurs, add fake int to get a five element vector
+  while result.count < 5 {
     result.append (0)
   }
 //---
@@ -156,6 +156,7 @@ extension PMMergerDocument {
         segment.y1.setProp (ints [1])
         segment.x2.setProp (ints [2])
         segment.y2.setProp (ints [3])
+        segment.width.setProp (ints [4])
         package.componentNameSegments.add (segment)
       }
     //--- Component value segments

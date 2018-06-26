@@ -24,6 +24,7 @@ import Cocoa
   @IBOutlet var mBoardModelView : CanariBoardModelView?
   @IBOutlet var mBoardWidthTextField : CanariDimensionTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mDisplayFrontComponentNames : EBCheckedMenuItem?
   @IBOutlet var mDisplayHoles : EBCheckedMenuItem?
   @IBOutlet var mDisplayPads : EBCheckedMenuItem?
   @IBOutlet var mHorizontalFlipSwitch : EBSwitch?
@@ -209,6 +210,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
+    if nil == mDisplayFrontComponentNames {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDisplayFrontComponentNames' outlet is nil") ;
+//    }else if !mDisplayFrontComponentNames!.isKindOfClass (EBCheckedMenuItem) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDisplayFrontComponentNames' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
     if nil == mDisplayHoles {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -284,7 +294,7 @@ import Cocoa
     mBoardModelNameTextField?.bind_valueObserver (self.mBoardModelSelection.name, file: #file, line: #line)
     mArtworkNameTextField?.bind_valueObserver (self.mBoardModelSelection.artworkName, file: #file, line: #line)
     mBoardWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.boardWidthUnit, file: #file, line: #line)
-    mBoardWidthTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.boardHeight, self.mBoardModelSelection.boardWidthUnit, file: #file, line: #line)
+    mBoardWidthTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.boardWidth, self.mBoardModelSelection.boardWidthUnit, file: #file, line: #line)
     mBoardHeightUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.boardHeightUnit, file: #file, line: #line)
     mBoardHeightTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.boardHeight, self.mBoardModelSelection.boardHeightUnit, file: #file, line: #line)
     mBoardModelTrackCountTextField?.bind_valueObserver (self.mBoardModelSelection.trackCount, file: #file, line: #line, autoFormatter:true)
@@ -297,11 +307,14 @@ import Cocoa
     mBoardModelView?.bind_vias (self.mBoardModelSelection.viaShapes, file: #file, line: #line)
     mBoardModelView?.bind_displayPads (self.mBoardModelSelection.displayPads, file: #file, line: #line)
     mBoardModelView?.bind_displayHoles (self.mBoardModelSelection.displayHoles, file: #file, line: #line)
+    mBoardModelView?.bind_displayFrontComponentNames (self.mBoardModelSelection.displayFrontComponentNames, file: #file, line: #line)
+    mBoardModelView?.bind_frontComponentNameSegments (self.mBoardModelSelection.frontComponentNameSegments, file: #file, line: #line)
     mHorizontalFlipSwitch?.bind_value (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mVerticalFlipSwitch?.bind_value (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
     mZoomField?.bind_value (self.mBoardModelSelection.zoom, file: #file, line: #line, sendContinously:false, autoFormatter:true)
     mDisplayPads?.bind_checked (self.mBoardModelSelection.displayPads, file: #file, line: #line)
     mDisplayHoles?.bind_checked (self.mBoardModelSelection.displayHoles, file: #file, line: #line)
+    mDisplayFrontComponentNames?.bind_checked (self.mBoardModelSelection.displayFrontComponentNames, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -334,11 +347,14 @@ import Cocoa
     mBoardModelView?.unbind_vias ()
     mBoardModelView?.unbind_displayPads ()
     mBoardModelView?.unbind_displayHoles ()
+    mBoardModelView?.unbind_displayFrontComponentNames ()
+    mBoardModelView?.unbind_frontComponentNameSegments ()
     mHorizontalFlipSwitch?.unbind_value ()
     mVerticalFlipSwitch?.unbind_value ()
     mZoomField?.unbind_value ()
     mDisplayPads?.unbind_checked ()
     mDisplayHoles?.unbind_checked ()
+    mDisplayFrontComponentNames?.unbind_checked ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers

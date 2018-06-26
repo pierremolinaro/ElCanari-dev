@@ -19,11 +19,15 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mNoModelTextLayer = CATextLayer ()
    fileprivate var mViaPadLayer = CALayer ()
    fileprivate var mViaHoleLayer = CALayer ()
+   fileprivate var mFrontComponentNamesLayer = CALayer ()
 
    fileprivate var mDisplayPads = true
    fileprivate var mDisplayHoles = true
-   fileprivate var mViaPadLayerArray = [CAShapeLayer] ()
-   fileprivate var mViaHoleLayerArray = [CAShapeLayer] ()
+   fileprivate var mDisplayFrontComponentNames = true
+
+   fileprivate var mViaPadLayerComponents = [CAShapeLayer] ()
+   fileprivate var mViaHoleLayerComponents = [CAShapeLayer] ()
+   fileprivate var mFrontComponentNamesLayerComponents = [CAShapeLayer] ()
 
   //····················································································································
   //  awakeFromNib
@@ -34,6 +38,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.addSublayer (mBackgroundLayer)
     self.layer?.addSublayer (mNoModelTextLayer)
     self.layer?.addSublayer (mViaPadLayer)
+    self.layer?.addSublayer (mFrontComponentNamesLayer)
     self.layer?.addSublayer (mViaHoleLayer)
     CATransaction.commit ()
   }
@@ -54,11 +59,9 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       mNoModelTextLayer.alignmentMode = kCAAlignmentCenter
       mNoModelTextLayer.string = "No Model"
     }else{
-      mBackgroundLayer.path = CGPath (rect: self.bounds.insetBy (dx: 0.5, dy: 0.5), transform: nil)
+      mBackgroundLayer.path = CGPath (rect: self.bounds, transform: nil)
       mBackgroundLayer.position = CGPoint (x:0.0, y:0.0)
       mBackgroundLayer.fillColor = NSColor.white.cgColor
-      mBackgroundLayer.strokeColor = NSColor.black.cgColor
-      mBackgroundLayer.lineWidth = 1.0
       mNoModelTextLayer.string = ""
     }
   }
@@ -68,7 +71,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func updateViaDisplay () {
-    mViaPadLayer.sublayers = mDisplayPads ? mViaPadLayerArray : nil
+    mViaPadLayer.sublayers = mDisplayPads ? mViaPadLayerComponents : nil
   }
 
   //····················································································································
@@ -76,7 +79,15 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func updateHoleDisplay () {
-    mViaHoleLayer.sublayers = mDisplayHoles ? mViaHoleLayerArray : nil
+    mViaHoleLayer.sublayers = mDisplayHoles ? mViaHoleLayerComponents : nil
+  }
+
+  //····················································································································
+  //    Update front component name display
+  //····················································································································
+
+  func updateFrontComponentNamesDisplay () {
+    mFrontComponentNamesLayer.sublayers = mDisplayFrontComponentNames ? mFrontComponentNamesLayerComponents : nil
   }
 
   //····················································································································
@@ -97,27 +108,15 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setVias (_ inVias : [MergerViaShape]) {
-    mViaPadLayerArray = [CAShapeLayer] ()
-    mViaHoleLayerArray = [CAShapeLayer] ()
+    mViaPadLayerComponents = [CAShapeLayer] ()
+    mViaHoleLayerComponents = [CAShapeLayer] ()
     for via in inVias {
-      let x : CGFloat = canariUnitToCocoa (via.x)
-      let y : CGFloat = canariUnitToCocoa (via.y)
-      let padDiameter : CGFloat = canariUnitToCocoa (via.padDiameter)
-      let holeDiameter : CGFloat = canariUnitToCocoa (via.holeDiameter)
     //--- Pad
-      let rPad = NSRect (x : x - padDiameter / 2.0, y: y - padDiameter / 2.0, width:padDiameter, height:padDiameter)
-      let padShape = CAShapeLayer ()
-      padShape.path = CGPath (ellipseIn: rPad, transform: nil)
-      padShape.position = CGPoint (x:0.0, y:0.0)
-      padShape.fillColor = NSColor.black.cgColor
-      mViaPadLayerArray.append (padShape)
+      let padShape = via.viaPad (color : NSColor.black.cgColor)
+      mViaPadLayerComponents.append (padShape)
     //--- Hole
-      let rHole = NSRect (x : x - holeDiameter / 2.0, y: y - holeDiameter / 2.0, width:holeDiameter, height:holeDiameter)
-      let holeShape = CAShapeLayer ()
-      holeShape.path = CGPath (ellipseIn: rHole, transform: nil)
-      holeShape.position = CGPoint (x:0.0, y:0.0)
-      holeShape.fillColor = NSColor.white.cgColor
-      mViaHoleLayerArray.append (holeShape)
+      let holeShape = via.viaHole (color : NSColor.white.cgColor)
+      mViaHoleLayerComponents.append (holeShape)
     }
     updateViaDisplay ()
     updateHoleDisplay ()
@@ -168,8 +167,57 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
+  //    Front component names
+  //····················································································································
+
+  private var mFrontComponentNamesController : Controller_CanariBoardModelView_frontComponentNameSegments?
+
+  func bind_frontComponentNameSegments (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mFrontComponentNamesController = Controller_CanariBoardModelView_frontComponentNameSegments (segments:segments, outlet:self, file:file, line:line)
+  }
+
+  func unbind_frontComponentNameSegments () {
+    mFrontComponentNamesController?.unregister ()
+    mFrontComponentNamesController = nil
+  }
+
+  //····················································································································
+
+  func setFrontComponentNameSegments (_ inSegments : [MergerSegment]) {
+    mFrontComponentNamesLayerComponents = [CAShapeLayer] ()
+    for segment in inSegments {
+      let shape = segment.segmentShape (color:NSColor.black.cgColor)
+      mFrontComponentNamesLayerComponents.append (shape)
+    }
+    updateFrontComponentNamesDisplay ()
+  }
+
+  //····················································································································
+  //    Display front component names
+  //····················································································································
+
+  private var mDisplayFrontComponentNamesController : Controller_CanariBoardModelView_displayFrontComponentNames?
+
+  func bind_displayFrontComponentNames (_ display:EBReadOnlyProperty_Bool, file:String, line:Int) {
+    mDisplayFrontComponentNamesController = Controller_CanariBoardModelView_displayFrontComponentNames (display:display, outlet:self, file:file, line:line)
+  }
+
+  func unbind_displayFrontComponentNames () {
+    mDisplayFrontComponentNamesController?.unregister ()
+    mDisplayFrontComponentNamesController = nil
+  }
+
+  //····················································································································
+
+  func setDisplayFrontComponentNames (_ inDisplay : Bool) {
+    mDisplayFrontComponentNames = inDisplay
+    updateFrontComponentNamesDisplay ()
+  }
+
+  //····················································································································
 
 }
+
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Controller_CanariBoardModelView_vias
@@ -293,4 +341,85 @@ final class Controller_CanariBoardModelView_displayHoles : EBSimpleController {
 
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariBoardModelView_frontComponentNameSegments
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariBoardModelView_frontComponentNameSegments : EBSimpleController {
+
+  private let mSegments : EBReadOnlyProperty_MergerSegmentArray
+  private let mOutlet : CanariBoardModelView
+
+  //····················································································································
+
+  init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, file : String, line : Int) {
+    mSegments = segments
+    mOutlet = outlet
+    super.init (objects:[segments], outlet:outlet)
+    mSegments.addEBObserver (self)
+  }
+
+  //····················································································································
+  
+  func unregister () {
+    mSegments.removeEBObserver (self)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mSegments.prop {
+    case .noSelection :
+      mOutlet.setFrontComponentNameSegments ([])
+    case .singleSelection (let v) :
+      mOutlet.setFrontComponentNameSegments (v.segmentArray)
+    case .multipleSelection :
+      mOutlet.setFrontComponentNameSegments ([])
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariBoardModelView_displayFrontComponentNames
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariBoardModelView_displayFrontComponentNames : EBSimpleController {
+
+  private let mDisplay : EBReadOnlyProperty_Bool
+  private let mOutlet : CanariBoardModelView
+
+  //····················································································································
+
+  init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
+    mDisplay = display
+    mOutlet = outlet
+    super.init (objects:[display], outlet:outlet)
+    mDisplay.addEBObserver (self)
+  }
+
+  //····················································································································
+  
+  func unregister () {
+    mDisplay.removeEBObserver (self)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mDisplay.prop {
+    case .noSelection :
+      mOutlet.setDisplayFrontComponentNames (false)
+    case .singleSelection (let v) :
+      mOutlet.setDisplayFrontComponentNames (v)
+    case .multipleSelection :
+      mOutlet.setDisplayFrontComponentNames (false)
+    }
+  }
+
+  //····················································································································
+
+}
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

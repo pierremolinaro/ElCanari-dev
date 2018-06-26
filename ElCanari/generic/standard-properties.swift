@@ -1150,6 +1150,15 @@ typealias EBReadOnlyPropertyArray_MergerViaShapeArray  = EBReadOnlyClassProperty
 typealias EBTransientPropertyArray_MergerViaShapeArray = EBTransientClassProperty <[MergerViaShapeArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class MergerSegmentArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_MergerSegmentArray  = EBReadOnlyClassProperty <MergerSegmentArray>
+typealias EBTransientProperty_MergerSegmentArray = EBTransientClassProperty <MergerSegmentArray>
+typealias EBReadOnlyPropertyArray_MergerSegmentArray  = EBReadOnlyClassProperty <[MergerSegmentArray]>
+typealias EBTransientPropertyArray_MergerSegmentArray = EBTransientClassProperty <[MergerSegmentArray]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

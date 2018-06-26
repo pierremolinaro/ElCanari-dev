@@ -239,6 +239,63 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
   }
 
   //····················································································································
+  //   Observers of 'width' stored property
+  //····················································································································
+
+  private var mObserversOf_width = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_width.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.width.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_width.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.width.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_width {
+        managedObject.width.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+    for observer in mObserversOf_width {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.width.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -279,12 +336,14 @@ class TransientArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyArrayOf_Bo
         removeEBObserversOf_y1_fromElementsOfSet (removedSet)
         removeEBObserversOf_x2_fromElementsOfSet (removedSet)
         removeEBObserversOf_y2_fromElementsOfSet (removedSet)
+        removeEBObserversOf_width_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
         addEBObserversOf_x1_toElementsOfSet (addedSet)
         addEBObserversOf_y1_toElementsOfSet (addedSet)
         addEBObserversOf_x2_toElementsOfSet (addedSet)
         addEBObserversOf_y2_toElementsOfSet (addedSet)
+        addEBObserversOf_width_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -330,6 +389,12 @@ protocol BoardModelComponentNameSegmentEntity_x2 : class {
 
 protocol BoardModelComponentNameSegmentEntity_y2 : class {
   var y2 : EBStoredProperty_Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelComponentNameSegmentEntity_width : class {
+  var width : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -413,7 +478,7 @@ final class ToOneRelationship_BoardModelComponentNameSegmentEntity_myPackage : E
 //    Entity: BoardModelComponentNameSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponentNameSegmentEntity_x1, BoardModelComponentNameSegmentEntity_y1, BoardModelComponentNameSegmentEntity_x2, BoardModelComponentNameSegmentEntity_y2
+class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponentNameSegmentEntity_x1, BoardModelComponentNameSegmentEntity_y1, BoardModelComponentNameSegmentEntity_x2, BoardModelComponentNameSegmentEntity_y2, BoardModelComponentNameSegmentEntity_width
 {
 
   //····················································································································
@@ -427,6 +492,8 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
   var x2 = EBStoredProperty_Int (0)
 
   var y2 = EBStoredProperty_Int (0)
+
+  var width = EBStoredProperty_Int (0)
 
   //····················································································································
   //    Transient properties
@@ -452,6 +519,7 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
     self.y1.undoManager = undoManager ()
     self.x2.undoManager = undoManager ()
     self.y2.undoManager = undoManager ()
+    self.width.undoManager = undoManager ()
   //--- Install owner for relationships
     myPackage.owner = self
   //--- register properties for handling signature
@@ -501,6 +569,14 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
       observerExplorer:&self.y2.mObserverExplorer,
       valueExplorer:&self.y2.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "width",
+      idx:self.width.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.width.mObserverExplorer,
+      valueExplorer:&self.width.mValueExplorer
+    )
     createEntryForToOneRelationshipNamed (
       "myPackage",
       idx:myPackage.mEasyBindingsObjectIndex,
@@ -523,6 +599,8 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
     self.x2.mValueExplorer = nil
     self.y2.mObserverExplorer = nil
     self.y2.mValueExplorer = nil
+    self.width.mObserverExplorer = nil
+    self.width.mValueExplorer = nil
     myPackage.mObserverExplorer = nil
     myPackage.mValueExplorer = nil
     super.clearObjectExplorer ()
@@ -538,6 +616,7 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
     self.y1.storeIn (dictionary: ioDictionary, forKey: "y1")
     self.x2.storeIn (dictionary: ioDictionary, forKey: "x2")
     self.y2.storeIn (dictionary: ioDictionary, forKey: "y2")
+    self.width.storeIn (dictionary: ioDictionary, forKey: "width")
   }
 
   //····················································································································
@@ -551,6 +630,7 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
     self.y1.readFrom (dictionary: inDictionary, forKey:"y1")
     self.x2.readFrom (dictionary: inDictionary, forKey:"x2")
     self.y2.readFrom (dictionary: inDictionary, forKey:"y2")
+    self.width.readFrom (dictionary: inDictionary, forKey:"width")
   }
 
   //····················································································································

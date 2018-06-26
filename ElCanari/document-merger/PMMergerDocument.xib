@@ -20,6 +20,7 @@
                 <outlet property="mBoardModelView" destination="RA9-Ej-gEF" id="tQE-lb-V7H"/>
                 <outlet property="mBoardWidthTextField" destination="f0C-K9-iUE" id="LMg-gy-YtT"/>
                 <outlet property="mBoardWidthUnitPopUp" destination="7ZX-iP-2iR" id="rXk-3g-NOM"/>
+                <outlet property="mDisplayFrontComponentNames" destination="iJ1-MN-1kW" id="1nE-An-tqE"/>
                 <outlet property="mDisplayHoles" destination="3hJ-XX-4bH" id="KJu-An-Ty7"/>
                 <outlet property="mDisplayPads" destination="NTM-ak-cm3" id="xR8-h6-a8c"/>
                 <outlet property="mHorizontalFlipSwitch" destination="QbM-bC-weo" id="zTM-uz-j6h"/>
@@ -418,7 +419,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="QLG-wP-sOW">
+                                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="QLG-wP-sOW">
                                             <rect key="frame" x="1" y="377" width="432" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -427,7 +428,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <button misplaced="YES" id="QbM-bC-weo" customClass="EBSwitch">
+                                    <button wantsLayer="YES" misplaced="YES" id="QbM-bC-weo" customClass="EBSwitch">
                                         <rect key="frame" x="15" y="396" width="110" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Horizontal Flip" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9wT-6B-w57">
@@ -435,7 +436,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
-                                    <button misplaced="YES" id="UJ0-C6-tQU" customClass="EBSwitch">
+                                    <button wantsLayer="YES" misplaced="YES" id="UJ0-C6-tQU" customClass="EBSwitch">
                                         <rect key="frame" x="152" y="396" width="94" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="check" title="Vertical Flip" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="drD-Dn-bLa">
@@ -443,17 +444,18 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
-                                    <popUpButton verticalHuggingPriority="750" misplaced="YES" id="unn-qQ-zmh">
+                                    <popUpButton wantsLayer="YES" verticalHuggingPriority="750" misplaced="YES" id="unn-qQ-zmh">
                                         <rect key="frame" x="268" y="391" width="119" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="push" title="Display" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="hc1-1f-Yl9" id="ODd-Ja-xMf">
+                                        <popUpButtonCell key="cell" type="push" title="Display" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="ODd-Ja-xMf">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
                                             <menu key="menu" id="AtO-u0-jBg">
                                                 <items>
                                                     <menuItem title="Display" state="on" hidden="YES" id="hc1-1f-Yl9"/>
-                                                    <menuItem title="Pads" id="NTM-ak-cm3" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Holes" id="3hJ-XX-4bH" customClass="EBCheckedMenuItem"/>
+                                                    <menuItem title="Pads" id="NTM-ak-cm3" customClass="EBCheckedMenuItem"/>
+                                                    <menuItem title="Front Component Names" id="iJ1-MN-1kW" customClass="EBCheckedMenuItem"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>

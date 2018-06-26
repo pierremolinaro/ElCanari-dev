@@ -125,6 +125,62 @@ class ReadOnlyArrayOf_BoardModelPackageEntity : ReadOnlyAbstractArrayProperty <B
   }
 
   //····················································································································
+  //   Observers of 'frontComponentNameSegments' transient property
+  //····················································································································
+
+  private var mObserversOf_frontComponentNameSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontComponentNameSegments.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.frontComponentNameSegments.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontComponentNameSegments.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.frontComponentNameSegments.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontComponentNameSegments_toElementsOfSet (_ inSet : Set<BoardModelPackageEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontComponentNameSegments {
+        managedObject.frontComponentNameSegments.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (_ inSet : Set<BoardModelPackageEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontComponentNameSegments {
+        managedObject.frontComponentNameSegments.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -200,6 +256,12 @@ protocol BoardModelPackageEntity_name : class {
 
 protocol BoardModelPackageEntity_padRotation : class {
   var padRotation : EBStoredProperty_Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelPackageEntity_frontComponentNameSegments : class {
+  var frontComponentNameSegments : EBTransientProperty_MergerSegmentArray { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -315,6 +377,7 @@ ToManyRelationshipReadWrite_BoardModelPackageEntity_componentNameSegments, EBSig
           managedObject.setSignatureObserver (observer: nil)
           managedObject.myPackage.owner = nil ;
         }
+        removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
@@ -325,6 +388,7 @@ ToManyRelationshipReadWrite_BoardModelPackageEntity_componentNameSegments, EBSig
           managedObject.setSignatureObserver (observer: self)
           managedObject.myPackage.setProp (owner)
         }
+        addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
@@ -956,7 +1020,7 @@ final class ToOneRelationship_BoardModelPackageEntity_myModel : EBAbstractProper
 //    Entity: BoardModelPackageEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, BoardModelPackageEntity_padRotation
+class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, BoardModelPackageEntity_padRotation, BoardModelPackageEntity_frontComponentNameSegments
 {
 
   //····················································································································
@@ -971,6 +1035,7 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
   //    Transient properties
   //····················································································································
 
+  var frontComponentNameSegments = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
   //    Relationships
@@ -988,7 +1053,36 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
+    frontComponentNameSegments.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.componentNameSegments.prop.kind ()
+        kind &= unwSelf.componentNameSegments.prop.kind ()
+        kind &= unwSelf.componentNameSegments.prop.kind ()
+        kind &= unwSelf.componentNameSegments.prop.kind ()
+        kind &= unwSelf.componentNameSegments.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop, unwSelf.componentNameSegments.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
+            return .singleSelection (compute_BoardModelPackageEntity_frontComponentNameSegments (v0, v1, v2, v3, v4))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
   //--- Install property observers for transients
+    componentNameSegments.addEBObserverOf_x1 (frontComponentNameSegments)
+    componentNameSegments.addEBObserverOf_y1 (frontComponentNameSegments)
+    componentNameSegments.addEBObserverOf_x2 (frontComponentNameSegments)
+    componentNameSegments.addEBObserverOf_y2 (frontComponentNameSegments)
+    componentNameSegments.addEBObserverOf_width (frontComponentNameSegments)
   //--- Install undoers for properties
     self.name.undoManager = undoManager ()
     self.padRotation.undoManager = undoManager ()
@@ -1004,6 +1098,11 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
 
   deinit {
   //--- Remove observers
+    componentNameSegments.removeEBObserverOf_x1 (frontComponentNameSegments)
+    componentNameSegments.removeEBObserverOf_y1 (frontComponentNameSegments)
+    componentNameSegments.removeEBObserverOf_x2 (frontComponentNameSegments)
+    componentNameSegments.removeEBObserverOf_y2 (frontComponentNameSegments)
+    componentNameSegments.removeEBObserverOf_width (frontComponentNameSegments)
   }
 
   //····················································································································

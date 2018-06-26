@@ -22,8 +22,10 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var boardWidth = EBPropertyProxy_Int () 
   var boardWidthUnit = EBPropertyProxy_Int () 
   var componentCount = EBTransientProperty_Int () 
+  var displayFrontComponentNames = EBPropertyProxy_Bool () 
   var displayHoles = EBPropertyProxy_Bool () 
   var displayPads = EBPropertyProxy_Bool () 
+  var frontComponentNameSegments = EBTransientProperty_MergerSegmentArray () 
   var horizontalFlip = EBPropertyProxy_Bool () 
   var name = EBPropertyProxy_String () 
   var trackCount = EBTransientProperty_Int () 
@@ -44,8 +46,10 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_boardWidth (model: model)
     bind_property_boardWidthUnit (model: model)
     bind_property_componentCount (model: model)
+    bind_property_displayFrontComponentNames (model: model)
     bind_property_displayHoles (model: model)
     bind_property_displayPads (model: model)
+    bind_property_frontComponentNameSegments (model: model)
     bind_property_horizontalFlip (model: model)
     bind_property_name (model: model)
     bind_property_trackCount (model: model)
@@ -130,6 +134,14 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       view:view,
       observerExplorer:&self.boardWidthUnit.mObserverExplorer,
       valueExplorer:&self.boardWidthUnit.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "displayFrontComponentNames",
+      idx:self.displayFrontComponentNames.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.displayFrontComponentNames.mObserverExplorer,
+      valueExplorer:&self.displayFrontComponentNames.mValueExplorer
     )
     createEntryForPropertyNamed (
       "displayHoles",
@@ -622,6 +634,76 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_displayFrontComponentNames (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_displayFrontComponentNames (self.displayFrontComponentNames)
+    self.displayFrontComponentNames.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.displayFrontComponentNames.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    self.displayFrontComponentNames.writeModelFunction = { (inValue : Bool) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.displayFrontComponentNames.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.displayFrontComponentNames.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.displayFrontComponentNames.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_displayHoles (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_displayHoles (self.displayHoles)
     self.displayHoles.readModelFunction = {
@@ -756,6 +838,46 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }else{
         return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontComponentNameSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments)
+    self.frontComponentNameSegments.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontComponentNameSegments.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
       }
     }
   }
@@ -1201,6 +1323,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.componentCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_componentCount (self.componentCount)
 //    mModel?.removeEBObserver (self.componentCount)
+  //--- displayFrontComponentNames
+    self.displayFrontComponentNames.readModelFunction = nil 
+    self.displayFrontComponentNames.writeModelFunction = nil 
+    self.displayFrontComponentNames.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_displayFrontComponentNames (self.displayFrontComponentNames)
+//    mModel?.removeEBObserver (self.displayFrontComponentNames)
   //--- displayHoles
     self.displayHoles.readModelFunction = nil 
     self.displayHoles.writeModelFunction = nil 
@@ -1213,6 +1341,10 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.displayPads.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayPads (self.displayPads)
 //    mModel?.removeEBObserver (self.displayPads)
+  //--- frontComponentNameSegments
+    self.frontComponentNameSegments.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments)
+//    mModel?.removeEBObserver (self.frontComponentNameSegments)
   //--- horizontalFlip
     self.horizontalFlip.readModelFunction = nil 
     self.horizontalFlip.writeModelFunction = nil 
