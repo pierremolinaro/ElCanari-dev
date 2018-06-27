@@ -469,6 +469,8 @@ class MergerRootEntity : EBManagedObject, MergerRootEntity_selectedPageIndex
       observerExplorer:&self.selectedPageIndex.mObserverExplorer,
       valueExplorer:&self.selectedPageIndex.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "boardModels",
       idx:boardModels.mEasyBindingsObjectIndex,
@@ -476,6 +478,8 @@ class MergerRootEntity : EBManagedObject, MergerRootEntity_selectedPageIndex
       view: view,
       valueExplorer:&boardModels.mValueExplorer
     )
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································

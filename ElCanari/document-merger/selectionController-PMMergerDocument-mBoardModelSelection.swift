@@ -1934,6 +1934,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.zoom.writeModelFunction = nil 
     self.zoom.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_zoom (self.zoom)
+  //---
     mModel = nil    
   }
 

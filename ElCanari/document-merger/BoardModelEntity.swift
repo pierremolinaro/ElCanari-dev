@@ -3296,6 +3296,104 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       observerExplorer:&self.displayBackTracks.mObserverExplorer,
       valueExplorer:&self.displayBackTracks.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "viaCount",
+      idx:self.viaCount.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.viaCount.mObserverExplorer,
+      valueExplorer:&self.viaCount.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "componentCount",
+      idx:self.componentCount.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.componentCount.mObserverExplorer,
+      valueExplorer:&self.componentCount.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "viaShapes",
+      idx:self.viaShapes.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.viaShapes.mObserverExplorer,
+      valueExplorer:&self.viaShapes.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontComponentNameSegments",
+      idx:self.frontComponentNameSegments.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontComponentNameSegments.mObserverExplorer,
+      valueExplorer:&self.frontComponentNameSegments.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontComponentNameSegmentsCount",
+      idx:self.frontComponentNameSegmentsCount.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontComponentNameSegmentsCount.mObserverExplorer,
+      valueExplorer:&self.frontComponentNameSegmentsCount.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backComponentNameSegments",
+      idx:self.backComponentNameSegments.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backComponentNameSegments.mObserverExplorer,
+      valueExplorer:&self.backComponentNameSegments.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backComponentNameSegmentsCount",
+      idx:self.backComponentNameSegmentsCount.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backComponentNameSegmentsCount.mObserverExplorer,
+      valueExplorer:&self.backComponentNameSegmentsCount.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backTrackSegments",
+      idx:self.backTrackSegments.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backTrackSegments.mObserverExplorer,
+      valueExplorer:&self.backTrackSegments.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backTracksSegmentsCount",
+      idx:self.backTracksSegmentsCount.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backTracksSegmentsCount.mObserverExplorer,
+      valueExplorer:&self.backTracksSegmentsCount.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontTrackSegments",
+      idx:self.frontTrackSegments.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontTrackSegments.mObserverExplorer,
+      valueExplorer:&self.frontTrackSegments.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontTracksSegmentsCount",
+      idx:self.frontTracksSegmentsCount.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontTracksSegmentsCount.mObserverExplorer,
+      valueExplorer:&self.frontTracksSegmentsCount.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontTrackSegmentsForDisplay",
+      idx:self.frontTrackSegmentsForDisplay.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontTrackSegmentsForDisplay.mObserverExplorer,
+      valueExplorer:&self.frontTrackSegmentsForDisplay.mValueExplorer
+    )
+    createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "frontTracks",
       idx:frontTracks.mEasyBindingsObjectIndex,
@@ -3324,6 +3422,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       view: view,
       valueExplorer:&packages.mValueExplorer
     )
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "myArtwork",
       idx:myArtwork.mEasyBindingsObjectIndex,
@@ -3331,6 +3430,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       view: view,
       valueExplorer:&myArtwork.mValueExplorer
     )
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································

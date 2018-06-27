@@ -928,6 +928,40 @@ class FontRootEntity : EBManagedObject, FontRootEntity_comments, FontRootEntity_
       observerExplorer:&self.selectedInspector.mObserverExplorer,
       valueExplorer:&self.selectedInspector.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "sampleStringBezierPath",
+      idx:self.sampleStringBezierPath.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.sampleStringBezierPath.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPath.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sampleStringBezierPathWidth",
+      idx:self.sampleStringBezierPathWidth.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.sampleStringBezierPathWidth.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPathWidth.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sampleStringBezierPathAscent",
+      idx:self.sampleStringBezierPathAscent.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.sampleStringBezierPathAscent.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPathAscent.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sampleStringBezierPathDescent",
+      idx:self.sampleStringBezierPathDescent.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.sampleStringBezierPathDescent.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPathDescent.mValueExplorer
+    )
+    createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "characters",
       idx:characters.mEasyBindingsObjectIndex,
@@ -935,6 +969,8 @@ class FontRootEntity : EBManagedObject, FontRootEntity_comments, FontRootEntity_
       view: view,
       valueExplorer:&characters.mValueExplorer
     )
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································

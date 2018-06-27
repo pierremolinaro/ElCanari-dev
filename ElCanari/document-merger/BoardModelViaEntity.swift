@@ -506,6 +506,9 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
       observerExplorer:&self.padDiameter.mObserverExplorer,
       valueExplorer:&self.padDiameter.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "myModel",
       idx:myModel.mEasyBindingsObjectIndex,
@@ -513,6 +516,7 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
       view: view,
       valueExplorer:&myModel.mValueExplorer
     )
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································

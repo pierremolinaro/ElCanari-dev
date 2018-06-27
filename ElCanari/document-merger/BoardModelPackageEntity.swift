@@ -1311,6 +1311,24 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
       observerExplorer:&self.side.mObserverExplorer,
       valueExplorer:&self.side.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "frontComponentNameSegments",
+      idx:self.frontComponentNameSegments.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontComponentNameSegments.mObserverExplorer,
+      valueExplorer:&self.frontComponentNameSegments.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backComponentNameSegments",
+      idx:self.backComponentNameSegments.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backComponentNameSegments.mObserverExplorer,
+      valueExplorer:&self.backComponentNameSegments.mValueExplorer
+    )
+    createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "componentNameSegments",
       idx:componentNameSegments.mEasyBindingsObjectIndex,
@@ -1332,6 +1350,7 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
       view: view,
       valueExplorer:&pads.mValueExplorer
     )
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "myModel",
       idx:myModel.mEasyBindingsObjectIndex,
@@ -1339,6 +1358,7 @@ class BoardModelPackageEntity : EBManagedObject, BoardModelPackageEntity_name, B
       view: view,
       valueExplorer:&myModel.mValueExplorer
     )
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································

@@ -848,6 +848,40 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
       observerExplorer:&self.advance.mObserverExplorer,
       valueExplorer:&self.advance.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "characterIsDefined",
+      idx:self.characterIsDefined.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.characterIsDefined.mObserverExplorer,
+      valueExplorer:&self.characterIsDefined.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "segmentArrayForDrawing",
+      idx:self.segmentArrayForDrawing.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.segmentArrayForDrawing.mObserverExplorer,
+      valueExplorer:&self.segmentArrayForDrawing.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "gerberCode",
+      idx:self.gerberCode.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.gerberCode.mObserverExplorer,
+      valueExplorer:&self.gerberCode.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "gerberCodeInstructionCountMessage",
+      idx:self.gerberCodeInstructionCountMessage.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.gerberCodeInstructionCountMessage.mObserverExplorer,
+      valueExplorer:&self.gerberCodeInstructionCountMessage.mValueExplorer
+    )
+    createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "segments",
       idx:segments.mEasyBindingsObjectIndex,
@@ -855,6 +889,7 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
       view: view,
       valueExplorer:&segments.mValueExplorer
     )
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "myFont",
       idx:myFont.mEasyBindingsObjectIndex,
@@ -862,6 +897,7 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
       view: view,
       valueExplorer:&myFont.mValueExplorer
     )
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································

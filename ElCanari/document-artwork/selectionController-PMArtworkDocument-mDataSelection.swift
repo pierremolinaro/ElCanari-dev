@@ -1989,6 +1989,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.padHoleDiameterInPDF.writeModelFunction = nil 
     self.padHoleDiameterInPDF.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF)
+  //---
     mModel = nil    
   }
 

@@ -300,6 +300,14 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
 
   //····················································································································
 
+  var mValueExplorer : NSTextField? {
+    didSet {
+      mValueExplorer?.stringValue = "\(mValueCache)"
+    }
+  }
+
+  //····················································································································
+
   override var prop : EBProperty <T> {
     get {
       if let unwrappedComputeFunction = readModelFunction, mValueCache == nil {
@@ -884,6 +892,14 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 
   override init () {
     super.init ()
+  }
+
+  //····················································································································
+
+  var mValueExplorer : NSTextField? {
+    didSet {
+      mValueExplorer?.stringValue = "\(mValueCache)"
+    }
   }
 
   //····················································································································

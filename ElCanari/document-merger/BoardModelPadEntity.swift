@@ -886,6 +886,9 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
       observerExplorer:&self.kind.mObserverExplorer,
       valueExplorer:&self.kind.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "myPackage",
       idx:myPackage.mEasyBindingsObjectIndex,
@@ -893,6 +896,7 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
       view: view,
       valueExplorer:&myPackage.mValueExplorer
     )
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································

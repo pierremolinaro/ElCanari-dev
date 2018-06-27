@@ -604,6 +604,17 @@ class SegmentForFontCharacterEntity : EBManagedObject, SegmentForFontCharacterEn
       observerExplorer:&self.y2.mObserverExplorer,
       valueExplorer:&self.y2.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "segmentForDrawing",
+      idx:self.segmentForDrawing.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.segmentForDrawing.mObserverExplorer,
+      valueExplorer:&self.segmentForDrawing.mValueExplorer
+    )
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "myCharacter",
       idx:myCharacter.mEasyBindingsObjectIndex,
@@ -611,6 +622,7 @@ class SegmentForFontCharacterEntity : EBManagedObject, SegmentForFontCharacterEn
       view: view,
       valueExplorer:&myCharacter.mValueExplorer
     )
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································

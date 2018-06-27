@@ -590,11 +590,17 @@ class EBSimpleController : EBOutletEvent {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 let EXPLORER_ROW_HEIGHT : CGFloat = 20.0
-private let FIRST_COLUMN_WIDTH : CGFloat = 40.0
-private let SECOND_COLUMN_WIDTH : CGFloat = 300.0
-private let THIRD_COLUMN_WIDTH : CGFloat = 220.0
+private let FIRST_COLUMN_WIDTH  : CGFloat = 60.0
+private let SECOND_COLUMN_WIDTH : CGFloat = 400.0
+private let THIRD_COLUMN_WIDTH  : CGFloat = 300.0
 
 let EXPLORER_ROW_WIDTH : CGFloat = FIRST_COLUMN_WIDTH + SECOND_COLUMN_WIDTH + THIRD_COLUMN_WIDTH
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func titleColumn (_ y : CGFloat) -> NSRect {
+  return NSRect (x:0.0, y:y, width:EXPLORER_ROW_WIDTH, height:EXPLORER_ROW_HEIGHT)
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -662,6 +668,26 @@ func createEntryForPropertyNamed (_ attributeName : String,
   valueExplorer?.isEditable = false
   valueExplorer?.font = font
   view.addSubview (valueExplorer!)
+//--- Update rect origin
+  y += EXPLORER_ROW_HEIGHT
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func createEntryForTitle (_ title : String,
+                          y : inout CGFloat,
+                          view : NSView) {
+  let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
+//--- Title textfield
+  let tf = NSTextField (frame:titleColumn (y))
+  tf.isEnabled = true
+  tf.isEditable = false
+  tf.stringValue = title
+  tf.font = font
+  tf.backgroundColor = NSColor.lightGray
+  tf.drawsBackground = true
+  tf.isBordered = false
+  view.addSubview (tf)
 //--- Update rect origin
   y += EXPLORER_ROW_HEIGHT
 }

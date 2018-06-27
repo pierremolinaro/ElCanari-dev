@@ -582,6 +582,9 @@ class BoardModelFrontTrackSegmentEntity : EBManagedObject, BoardModelFrontTrackS
       observerExplorer:&self.width.mObserverExplorer,
       valueExplorer:&self.width.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "myModel",
       idx:myModel.mEasyBindingsObjectIndex,
@@ -589,6 +592,7 @@ class BoardModelFrontTrackSegmentEntity : EBManagedObject, BoardModelFrontTrackS
       view: view,
       valueExplorer:&myModel.mValueExplorer
     )
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································

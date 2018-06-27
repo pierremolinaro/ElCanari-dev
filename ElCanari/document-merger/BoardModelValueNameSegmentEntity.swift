@@ -506,6 +506,9 @@ class BoardModelValueNameSegmentEntity : EBManagedObject, BoardModelValueNameSeg
       observerExplorer:&self.y2.mObserverExplorer,
       valueExplorer:&self.y2.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "myPackage",
       idx:myPackage.mEasyBindingsObjectIndex,
@@ -513,6 +516,7 @@ class BoardModelValueNameSegmentEntity : EBManagedObject, BoardModelValueNameSeg
       view: view,
       valueExplorer:&myPackage.mValueExplorer
     )
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································
