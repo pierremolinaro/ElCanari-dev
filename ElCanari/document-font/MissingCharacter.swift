@@ -190,7 +190,12 @@ class TransientArrayOf_MissingCharacter : ReadOnlyArrayOf_MissingCharacter {
   override func postEvent () {
     if prop_cache != nil {
       prop_cache = nil
+      if logEvents () {
+        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+      }
       super.postEvent ()
+    }else if logEvents () {
+      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
     }
   }
 
@@ -424,132 +429,6 @@ class MissingCharacter : EBSimpleClass, MissingCharacter_idx, MissingCharacter_c
 
 typealias EBReadOnlyProperty_MissingCharacter = EBReadOnlyClassProperty <MissingCharacter>
 typealias EBTransientProperty_MissingCharacter = EBTransientClassProperty <MissingCharacter>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBReadWriteProperty_MissingCharacter (abstract class)
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* class EBReadWriteProperty_MissingCharacter : EBReadOnlyProperty_MissingCharacter {
-  func setProp (_ value: MissingCharacter) { } // Abstract method
-  func validateAndSetProp (_ candidateValue : MissingCharacter, windowForSheet inWindow:NSWindow?) -> Bool {
-    return false
-  } // Abstract method
-} */
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBPropertyProxy_MissingCharacter
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* class EBPropertyProxy_MissingCharacter : EBReadWriteProperty_MissingCharacter {
-  var readModelFunction : Optional < () -> EBProperty <MissingCharacter> >
-  var writeModelFunction : Optional < (MissingCharacter) -> Void >
-  var validateAndWriteModelFunction : Optional < (MissingCharacter, NSWindow?) -> Bool >
-  
-  private var prop_cache : EBProperty <MissingCharacter>?
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
-  var mValueExplorer : NSTextField? {
-    didSet {
-      mValueExplorer?.stringValue = "<< not handled>>"
-    }
-  }
-
-  //····················································································································
-
-  override func postEvent() {
-    if prop_cache != nil {
-      prop_cache = nil
-      super.postEvent()
-    }
-  }
-
-  //····················································································································
-
-  override var prop : EBProperty <MissingCharacter> {
-    get {
-      if let unReadModelFunction = readModelFunction, prop_cache == nil {
-        prop_cache = unReadModelFunction ()
-      }
-      if prop_cache == nil {
-        prop_cache = .noSelection
-      }
-      return prop_cache!
-    }
-  }
-
-  //····················································································································
-  
-  override func setProp (_ value: MissingCharacter) {
-    if let unWriteModelFunction = writeModelFunction {
-      unWriteModelFunction (value)
-    }
-  }
-
-  //····················································································································
-
-  override func validateAndSetProp (_ candidateValue : MissingCharacter,
-                                    windowForSheet inWindow:NSWindow?) -> Bool {
-    var result = false
-    if let unwValidateAndWriteModelFunction = validateAndWriteModelFunction {
-      result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
-    }
-    return result
-  }
-  
-  //····················································································································
-  
-} */
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBStoredProperty_MissingCharacter
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class EBStoredProperty_MissingCharacter : EBReadWriteProperty_MissingCharacter {
-
-  //····················································································································
-
-  init (_ inValue : MissingCharacter) {
-    mValue = inValue
-    super.init ()
-  }
-
-  //····················································································································
-
-  var mValueExplorer : NSTextField? {
-    didSet {
-      mValueExplorer?.stringValue = "<< not handled>>"
-    }
-  }
-
-  //····················································································································
-
-  private var mValue : MissingCharacter {
-    didSet {
-      if mValue != oldValue {
-        mValueExplorer?.stringValue = "<< not handled>>"
-        postEvent ()
-      }
-    }
-  }
-
-  //····················································································································
-
-  override var prop : EBProperty <MissingCharacter> { get { return .singleSelection (mValue) } }
-
-  var propval : MissingCharacter { get { return mValue } }
-
-  override func setProp (_ value: MissingCharacter) { mValue = value }
-
-  //····················································································································
-
-} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

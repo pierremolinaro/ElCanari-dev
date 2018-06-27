@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_BoardModelTrackSegmentEntity
+//    ReadOnlyArrayOf_BoardModelFrontTrackSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProperty <BoardModelTrackSegmentEntity> {
+class ReadOnlyArrayOf_BoardModelFrontTrackSegmentEntity : ReadOnlyAbstractArrayProperty <BoardModelFrontTrackSegmentEntity> {
 
   //····················································································································
   //   Observers of 'x1' stored property
@@ -48,7 +48,7 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<BoardModelFrontTrackSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x1 {
         managedObject.x1.addEBObserver (observer)
@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<BoardModelFrontTrackSegmentEntity>) {
     for observer in mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<BoardModelFrontTrackSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y1 {
         managedObject.y1.addEBObserver (observer)
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<BoardModelFrontTrackSegmentEntity>) {
     for observer in mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<BoardModelFrontTrackSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x2 {
         managedObject.x2.addEBObserver (observer)
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<BoardModelFrontTrackSegmentEntity>) {
     for observer in mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<BoardModelFrontTrackSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y2 {
         managedObject.y2.addEBObserver (observer)
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<BoardModelFrontTrackSegmentEntity>) {
     for observer in mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<BoardModelFrontTrackSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_width {
         managedObject.width.addEBObserver (observer)
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<BoardModelFrontTrackSegmentEntity>) {
     for observer in mObserversOf_width {
       observer.postEvent ()
       for managedObject in inSet {
@@ -296,75 +296,18 @@ class ReadOnlyArrayOf_BoardModelTrackSegmentEntity : ReadOnlyAbstractArrayProper
   }
 
   //····················································································································
-  //   Observers of 'side' stored property
-  //····················································································································
-
-  private var mObserversOf_side = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_side (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_side.insert (inObserver)
-    switch prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let v) :
-      for managedObject in v {
-        managedObject.side.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_side (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_side.remove (inObserver)
-    switch prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let v) :
-      for managedObject in v {
-        managedObject.side.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_side_toElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_side {
-        managedObject.side.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_side_fromElementsOfSet (_ inSet : Set<BoardModelTrackSegmentEntity>) {
-    for observer in mObserversOf_side {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.side.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_BoardModelTrackSegmentEntity
+//    TransientArrayOf_BoardModelFrontTrackSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_BoardModelTrackSegmentEntity : ReadOnlyArrayOf_BoardModelTrackSegmentEntity {
+class TransientArrayOf_BoardModelFrontTrackSegmentEntity : ReadOnlyArrayOf_BoardModelFrontTrackSegmentEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [BoardModelTrackSegmentEntity] > >
+  var readModelFunction : Optional<() -> EBProperty < [BoardModelFrontTrackSegmentEntity] > >
 
-  private var prop_cache : EBProperty < [BoardModelTrackSegmentEntity] >? 
+  private var prop_cache : EBProperty < [BoardModelFrontTrackSegmentEntity] >? 
 
   //····················································································································
 
@@ -374,16 +317,16 @@ class TransientArrayOf_BoardModelTrackSegmentEntity : ReadOnlyArrayOf_BoardModel
 
   //····················································································································
 
-  private var mSet = Set <BoardModelTrackSegmentEntity> ()
+  private var mSet = Set <BoardModelFrontTrackSegmentEntity> ()
 
-  override var prop : EBProperty < [BoardModelTrackSegmentEntity] > {
+  override var prop : EBProperty < [BoardModelFrontTrackSegmentEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <BoardModelTrackSegmentEntity>
+        let newSet : Set <BoardModelFrontTrackSegmentEntity>
         switch prop_cache! {
         case .multipleSelection, .noSelection :
-          newSet = Set <BoardModelTrackSegmentEntity> ()
+          newSet = Set <BoardModelFrontTrackSegmentEntity> ()
         case .singleSelection (let array) :
           newSet = Set (array)
         }
@@ -394,7 +337,6 @@ class TransientArrayOf_BoardModelTrackSegmentEntity : ReadOnlyArrayOf_BoardModel
         removeEBObserversOf_x2_fromElementsOfSet (removedSet)
         removeEBObserversOf_y2_fromElementsOfSet (removedSet)
         removeEBObserversOf_width_fromElementsOfSet (removedSet)
-        removeEBObserversOf_side_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
         addEBObserversOf_x1_toElementsOfSet (addedSet)
@@ -402,7 +344,6 @@ class TransientArrayOf_BoardModelTrackSegmentEntity : ReadOnlyArrayOf_BoardModel
         addEBObserversOf_x2_toElementsOfSet (addedSet)
         addEBObserversOf_y2_toElementsOfSet (addedSet)
         addEBObserversOf_width_toElementsOfSet (addedSet)
-        addEBObserversOf_side_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -418,7 +359,12 @@ class TransientArrayOf_BoardModelTrackSegmentEntity : ReadOnlyArrayOf_BoardModel
   override func postEvent () {
     if prop_cache != nil {
       prop_cache = nil
+      if logEvents () {
+        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+      }
       super.postEvent ()
+    }else if logEvents () {
+      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
     }
   }
 
@@ -428,45 +374,39 @@ class TransientArrayOf_BoardModelTrackSegmentEntity : ReadOnlyArrayOf_BoardModel
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelTrackSegmentEntity_x1 : class {
+protocol BoardModelFrontTrackSegmentEntity_x1 : class {
   var x1 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelTrackSegmentEntity_y1 : class {
+protocol BoardModelFrontTrackSegmentEntity_y1 : class {
   var y1 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelTrackSegmentEntity_x2 : class {
+protocol BoardModelFrontTrackSegmentEntity_x2 : class {
   var x2 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelTrackSegmentEntity_y2 : class {
+protocol BoardModelFrontTrackSegmentEntity_y2 : class {
   var y2 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelTrackSegmentEntity_width : class {
+protocol BoardModelFrontTrackSegmentEntity_width : class {
   var width : EBStoredProperty_Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelTrackSegmentEntity_side : class {
-  var side : EBStoredProperty_BoardSide { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: myModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToOneRelationship_BoardModelTrackSegmentEntity_myModel : EBAbstractProperty {
+final class ToOneRelationship_BoardModelFrontTrackSegmentEntity_myModel : EBAbstractProperty {
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = mValueExplorer {
@@ -480,7 +420,7 @@ final class ToOneRelationship_BoardModelTrackSegmentEntity_myModel : EBAbstractP
     }
   }
 
-  weak var owner : BoardModelTrackSegmentEntity? {
+  weak var owner : BoardModelFrontTrackSegmentEntity? {
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
@@ -499,11 +439,11 @@ final class ToOneRelationship_BoardModelTrackSegmentEntity_myModel : EBAbstractP
         }
       //--- Reset old opposite relation ship
         if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.tracks.remove (unwrappedOwner)
+          unwrappedOldValue.frontTracks.remove (unwrappedOwner)
         }
       //--- Set new opposite relation ship
         if let unwrappedValue = mValue {
-          unwrappedValue.tracks.add (unwrappedOwner)
+          unwrappedValue.frontTracks.add (unwrappedOwner)
         }
       //--- Notify observers
         postEvent ()
@@ -540,10 +480,10 @@ final class ToOneRelationship_BoardModelTrackSegmentEntity_myModel : EBAbstractP
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: BoardModelTrackSegmentEntity
+//    Entity: BoardModelFrontTrackSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelTrackSegmentEntity : EBManagedObject, BoardModelTrackSegmentEntity_x1, BoardModelTrackSegmentEntity_y1, BoardModelTrackSegmentEntity_x2, BoardModelTrackSegmentEntity_y2, BoardModelTrackSegmentEntity_width, BoardModelTrackSegmentEntity_side
+class BoardModelFrontTrackSegmentEntity : EBManagedObject, BoardModelFrontTrackSegmentEntity_x1, BoardModelFrontTrackSegmentEntity_y1, BoardModelFrontTrackSegmentEntity_x2, BoardModelFrontTrackSegmentEntity_y2, BoardModelFrontTrackSegmentEntity_width
 {
 
   //····················································································································
@@ -560,8 +500,6 @@ class BoardModelTrackSegmentEntity : EBManagedObject, BoardModelTrackSegmentEnti
 
   var width = EBStoredProperty_Int (0)
 
-  var side = EBStoredProperty_BoardSide (BoardSide.front)
-
   //····················································································································
   //    Transient properties
   //····················································································································
@@ -571,7 +509,7 @@ class BoardModelTrackSegmentEntity : EBManagedObject, BoardModelTrackSegmentEnti
   //    Relationships
   //····················································································································
 
-  var myModel = ToOneRelationship_BoardModelTrackSegmentEntity_myModel ()
+  var myModel = ToOneRelationship_BoardModelFrontTrackSegmentEntity_myModel ()
 
   //····················································································································
   //    init
@@ -587,7 +525,6 @@ class BoardModelTrackSegmentEntity : EBManagedObject, BoardModelTrackSegmentEnti
     self.x2.undoManager = undoManager ()
     self.y2.undoManager = undoManager ()
     self.width.undoManager = undoManager ()
-    self.side.undoManager = undoManager ()
   //--- Install owner for relationships
     myModel.owner = self
   //--- register properties for handling signature
@@ -645,14 +582,6 @@ class BoardModelTrackSegmentEntity : EBManagedObject, BoardModelTrackSegmentEnti
       observerExplorer:&self.width.mObserverExplorer,
       valueExplorer:&self.width.mValueExplorer
     )
-    createEntryForPropertyNamed (
-      "side",
-      idx:self.side.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.side.mObserverExplorer,
-      valueExplorer:&self.side.mValueExplorer
-    )
     createEntryForToOneRelationshipNamed (
       "myModel",
       idx:myModel.mEasyBindingsObjectIndex,
@@ -677,8 +606,6 @@ class BoardModelTrackSegmentEntity : EBManagedObject, BoardModelTrackSegmentEnti
     self.y2.mValueExplorer = nil
     self.width.mObserverExplorer = nil
     self.width.mValueExplorer = nil
-    self.side.mObserverExplorer = nil
-    self.side.mValueExplorer = nil
     myModel.mObserverExplorer = nil
     myModel.mValueExplorer = nil
     super.clearObjectExplorer ()
@@ -695,7 +622,6 @@ class BoardModelTrackSegmentEntity : EBManagedObject, BoardModelTrackSegmentEnti
     self.x2.storeIn (dictionary: ioDictionary, forKey: "x2")
     self.y2.storeIn (dictionary: ioDictionary, forKey: "y2")
     self.width.storeIn (dictionary: ioDictionary, forKey: "width")
-    self.side.storeIn (dictionary: ioDictionary, forKey: "side")
   }
 
   //····················································································································
@@ -710,7 +636,6 @@ class BoardModelTrackSegmentEntity : EBManagedObject, BoardModelTrackSegmentEnti
     self.x2.readFrom (dictionary: inDictionary, forKey:"x2")
     self.y2.readFrom (dictionary: inDictionary, forKey:"y2")
     self.width.readFrom (dictionary: inDictionary, forKey:"width")
-    self.side.readFrom (dictionary: inDictionary, forKey:"side")
   }
 
   //····················································································································

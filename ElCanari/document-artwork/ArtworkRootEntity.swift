@@ -772,7 +772,12 @@ class TransientArrayOf_ArtworkRootEntity : ReadOnlyArrayOf_ArtworkRootEntity {
   override func postEvent () {
     if prop_cache != nil {
       prop_cache = nil
+      if logEvents () {
+        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+      }
       super.postEvent ()
+    }else if logEvents () {
+      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
     }
   }
 

@@ -1482,6 +1482,62 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
+  //   Observers of 'frontTrackSegmentsForDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_frontTrackSegmentsForDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontTrackSegmentsForDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontTrackSegmentsForDisplay.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.frontTrackSegmentsForDisplay.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontTrackSegmentsForDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontTrackSegmentsForDisplay.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.frontTrackSegmentsForDisplay.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontTrackSegmentsForDisplay_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontTrackSegmentsForDisplay {
+        managedObject.frontTrackSegmentsForDisplay.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontTrackSegmentsForDisplay_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontTrackSegmentsForDisplay {
+        managedObject.frontTrackSegmentsForDisplay.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1565,7 +1621,12 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
   override func postEvent () {
     if prop_cache != nil {
       prop_cache = nil
+      if logEvents () {
+        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+      }
       super.postEvent ()
+    }else if logEvents () {
+      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
     }
   }
 
@@ -1730,35 +1791,41 @@ protocol BoardModelEntity_frontTracksSegmentsCount : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: tracks
+
+protocol BoardModelEntity_frontTrackSegmentsForDisplay : class {
+  var frontTrackSegmentsForDisplay : EBTransientProperty_MergerSegmentArray { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: frontTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_tracks : ReadOnlyArrayOf_BoardModelTrackSegmentEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_frontTracks : ReadOnlyArrayOf_BoardModelFrontTrackSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelTrackSegmentEntity]) { } // Abstract method
+  func setProp (_ value :  [BoardModelFrontTrackSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship proxy: tracks
+//    To many relationship proxy: frontTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-/* final class ToManyRelationshipProxy_BoardModelEntity_tracks : ToManyRelationshipReadWrite_BoardModelEntity_tracks {
-  private var mModel : ToManyRelationshipReadWrite_BoardModelEntity_tracks?
+/* final class ToManyRelationshipProxy_BoardModelEntity_frontTracks : ToManyRelationshipReadWrite_BoardModelEntity_frontTracks {
+  private var mModel : ToManyRelationshipReadWrite_BoardModelEntity_frontTracks?
 
   //····················································································································
   
-  final func setModel (model : ToManyRelationshipReadWrite_BoardModelEntity_tracks?) {
+  final func setModel (model : ToManyRelationshipReadWrite_BoardModelEntity_frontTracks?) {
     mModel = model
   }
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelTrackSegmentEntity] > {
+  override var prop : EBProperty < [BoardModelFrontTrackSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -1766,7 +1833,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_tracks : ReadOnlyArrayOf_Boar
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelTrackSegmentEntity]) {
+  override func setProp (_ value : [BoardModelFrontTrackSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -1781,11 +1848,11 @@ class ToManyRelationshipReadWrite_BoardModelEntity_tracks : ReadOnlyArrayOf_Boar
 */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: tracks
+//    To many relationship: frontTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModelEntity_tracks :
-ToManyRelationshipReadWrite_BoardModelEntity_tracks, EBSignatureObserverProtocol {
+final class ToManyRelationship_BoardModelEntity_frontTracks :
+ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverProtocol {
   weak var owner : BoardModelEntity?
 
   var mValueExplorer : NSPopUpButton? {
@@ -1823,8 +1890,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_tracks, EBSignatureObserverProtocol
 
   //····················································································································
 
-  private var mSet = Set<BoardModelTrackSegmentEntity> ()
-  private var mValue = [BoardModelTrackSegmentEntity] () {
+  private var mSet = Set<BoardModelFrontTrackSegmentEntity> ()
+  private var mValue = [BoardModelFrontTrackSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -1842,7 +1909,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_tracks, EBSignatureObserverProtocol
           managedObject.setSignatureObserver (observer: nil)
           managedObject.myModel.owner = nil ;
         }
-        removeEBObserversOf_side_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
@@ -1850,11 +1916,10 @@ ToManyRelationshipReadWrite_BoardModelEntity_tracks, EBSignatureObserverProtocol
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelTrackSegmentEntity in addedObjectSet {
+        for managedObject : BoardModelFrontTrackSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           managedObject.myModel.setProp (owner)
         }
-        addEBObserversOf_side_toElementsOfSet (addedObjectSet)
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
@@ -1866,25 +1931,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_tracks, EBSignatureObserverProtocol
     }
   }
 
-  override var prop : EBProperty < [BoardModelTrackSegmentEntity] > {
+  override var prop : EBProperty < [BoardModelFrontTrackSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelTrackSegmentEntity]) { mValue = value }
+  override func setProp (_ value :  [BoardModelFrontTrackSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelTrackSegmentEntity] { get { return mValue } }
+  var propval : [BoardModelFrontTrackSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelTrackSegmentEntity]) {
+  func performUndo (_ oldValue : [BoardModelFrontTrackSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelTrackSegmentEntity) {
+  func remove (_ object : BoardModelFrontTrackSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -1895,7 +1960,230 @@ ToManyRelationshipReadWrite_BoardModelEntity_tracks, EBSignatureObserverProtocol
   
   //····················································································································
 
-  func add (_ object : BoardModelTrackSegmentEntity) {
+  func add (_ object : BoardModelFrontTrackSegmentEntity) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: backTracks
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_BoardModelEntity_backTracks : ReadOnlyArrayOf_BoardModelBackTrackSegmentEntity {
+
+  //····················································································································
+ 
+  func setProp (_ value :  [BoardModelBackTrackSegmentEntity]) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship proxy: backTracks
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+/* final class ToManyRelationshipProxy_BoardModelEntity_backTracks : ToManyRelationshipReadWrite_BoardModelEntity_backTracks {
+  private var mModel : ToManyRelationshipReadWrite_BoardModelEntity_backTracks?
+
+  //····················································································································
+  
+  final func setModel (model : ToManyRelationshipReadWrite_BoardModelEntity_backTracks?) {
+    mModel = model
+  }
+
+  //····················································································································
+  
+  override var prop : EBProperty < [BoardModelBackTrackSegmentEntity] > {
+    get {
+      return mModel?.prop ?? .noSelection
+    }
+  }
+ 
+   //····················································································································
+ 
+  override func setProp (_ value : [BoardModelBackTrackSegmentEntity]) {
+    switch self.prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let array) :
+      mModel?.setProp (array)
+    }
+  }
+ 
+  //····················································································································
+
+}
+*/
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: backTracks
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_BoardModelEntity_backTracks :
+ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProtocol {
+  weak var owner : BoardModelEntity?
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .noSelection, .multipleSelection :
+          break ;
+        case .singleSelection (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    count.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          return .singleSelection (v.count)
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set<BoardModelBackTrackSegmentEntity> ()
+  private var mValue = [BoardModelBackTrackSegmentEntity] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+          managedObject.myModel.owner = nil ;
+        }
+        removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : BoardModelBackTrackSegmentEntity in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+          managedObject.myModel.setProp (owner)
+        }
+        addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBProperty < [BoardModelBackTrackSegmentEntity] > {
+    get {
+      return .singleSelection (mValue)
+    }
+  }
+
+  override func setProp (_ value :  [BoardModelBackTrackSegmentEntity]) { mValue = value }
+
+  var propval : [BoardModelBackTrackSegmentEntity] { get { return mValue } }
+
+  //····················································································································
+
+  func performUndo (_ oldValue : [BoardModelBackTrackSegmentEntity]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : BoardModelBackTrackSegmentEntity) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : BoardModelBackTrackSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -2479,7 +2767,7 @@ final class ToOneRelationship_BoardModelEntity_myArtwork : EBAbstractProperty {
 //    Entity: BoardModelEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_displayPads, BoardModelEntity_displayHoles, BoardModelEntity_displayFrontComponentNames, BoardModelEntity_displayBackComponentNames, BoardModelEntity_displayFrontTracks, BoardModelEntity_displayBackTracks, BoardModelEntity_viaCount, BoardModelEntity_componentCount, BoardModelEntity_viaShapes, BoardModelEntity_frontComponentNameSegments, BoardModelEntity_frontComponentNameSegmentsCount, BoardModelEntity_backComponentNameSegments, BoardModelEntity_backComponentNameSegmentsCount, BoardModelEntity_backTrackSegments, BoardModelEntity_backTracksSegmentsCount, BoardModelEntity_frontTrackSegments, BoardModelEntity_frontTracksSegmentsCount
+class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_displayPads, BoardModelEntity_displayHoles, BoardModelEntity_displayFrontComponentNames, BoardModelEntity_displayBackComponentNames, BoardModelEntity_displayFrontTracks, BoardModelEntity_displayBackTracks, BoardModelEntity_viaCount, BoardModelEntity_componentCount, BoardModelEntity_viaShapes, BoardModelEntity_frontComponentNameSegments, BoardModelEntity_frontComponentNameSegmentsCount, BoardModelEntity_backComponentNameSegments, BoardModelEntity_backComponentNameSegmentsCount, BoardModelEntity_backTrackSegments, BoardModelEntity_backTracksSegmentsCount, BoardModelEntity_frontTrackSegments, BoardModelEntity_frontTracksSegmentsCount, BoardModelEntity_frontTrackSegmentsForDisplay
 {
 
   //····················································································································
@@ -2531,12 +2819,14 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   var backTracksSegmentsCount = EBTransientProperty_Int ()
   var frontTrackSegments = EBTransientProperty_MergerSegmentArray ()
   var frontTracksSegmentsCount = EBTransientProperty_Int ()
+  var frontTrackSegmentsForDisplay = EBTransientProperty_MergerSegmentArray ()
 
   //····················································································································
   //    Relationships
   //····················································································································
 
-  var tracks = ToManyRelationship_BoardModelEntity_tracks ()
+  var frontTracks = ToManyRelationship_BoardModelEntity_frontTracks ()
+  var backTracks = ToManyRelationship_BoardModelEntity_backTracks ()
   var vias = ToManyRelationship_BoardModelEntity_vias ()
   var packages = ToManyRelationship_BoardModelEntity_packages ()
   var myArtwork = ToOneRelationship_BoardModelEntity_myArtwork ()
@@ -2693,21 +2983,20 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     }
     backTrackSegments.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.tracks.prop.kind ()
-        kind &= unwSelf.tracks.prop.kind ()
-        kind &= unwSelf.tracks.prop.kind ()
-        kind &= unwSelf.tracks.prop.kind ()
-        kind &= unwSelf.tracks.prop.kind ()
-        kind &= unwSelf.tracks.prop.kind ()
+        var kind = unwSelf.backTracks.prop.kind ()
+        kind &= unwSelf.backTracks.prop.kind ()
+        kind &= unwSelf.backTracks.prop.kind ()
+        kind &= unwSelf.backTracks.prop.kind ()
+        kind &= unwSelf.backTracks.prop.kind ()
         switch kind {
         case .noSelectionKind :
           return .noSelection
         case .multipleSelectionKind :
           return .multipleSelection
         case .singleSelectionKind :
-          switch (unwSelf.tracks.prop, unwSelf.tracks.prop, unwSelf.tracks.prop, unwSelf.tracks.prop, unwSelf.tracks.prop, unwSelf.tracks.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4), .singleSelection (let v5)) :
-            return .singleSelection (compute_BoardModelEntity_backTrackSegments (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.backTracks.prop, unwSelf.backTracks.prop, unwSelf.backTracks.prop, unwSelf.backTracks.prop, unwSelf.backTracks.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
+            return .singleSelection (compute_BoardModelEntity_backTrackSegments (v0, v1, v2, v3, v4))
           default :
             return .noSelection
           }
@@ -2738,21 +3027,20 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     }
     frontTrackSegments.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.tracks.prop.kind ()
-        kind &= unwSelf.tracks.prop.kind ()
-        kind &= unwSelf.tracks.prop.kind ()
-        kind &= unwSelf.tracks.prop.kind ()
-        kind &= unwSelf.tracks.prop.kind ()
-        kind &= unwSelf.tracks.prop.kind ()
+        var kind = unwSelf.frontTracks.prop.kind ()
+        kind &= unwSelf.frontTracks.prop.kind ()
+        kind &= unwSelf.frontTracks.prop.kind ()
+        kind &= unwSelf.frontTracks.prop.kind ()
+        kind &= unwSelf.frontTracks.prop.kind ()
         switch kind {
         case .noSelectionKind :
           return .noSelection
         case .multipleSelectionKind :
           return .multipleSelection
         case .singleSelectionKind :
-          switch (unwSelf.tracks.prop, unwSelf.tracks.prop, unwSelf.tracks.prop, unwSelf.tracks.prop, unwSelf.tracks.prop, unwSelf.tracks.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4), .singleSelection (let v5)) :
-            return .singleSelection (compute_BoardModelEntity_frontTrackSegments (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.frontTracks.prop, unwSelf.frontTracks.prop, unwSelf.frontTracks.prop, unwSelf.frontTracks.prop, unwSelf.frontTracks.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
+            return .singleSelection (compute_BoardModelEntity_frontTrackSegments (v0, v1, v2, v3, v4))
           default :
             return .noSelection
           }
@@ -2781,6 +3069,27 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
         return .noSelection
       }
     }
+    frontTrackSegmentsForDisplay.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.displayFrontTracks.prop.kind ()
+        kind &= unwSelf.frontTrackSegments.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.displayFrontTracks.prop, unwSelf.frontTrackSegments.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1)) :
+            return .singleSelection (compute_BoardModelEntity_frontTrackSegmentsForDisplay (v0, v1))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
   //--- Install property observers for transients
     vias.addEBObserver (viaCount)
     packages.addEBObserver (componentCount)
@@ -2792,20 +3101,20 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     frontComponentNameSegments.addEBObserver (frontComponentNameSegmentsCount)
     packages.addEBObserverOf_backComponentNameSegments (backComponentNameSegments)
     backComponentNameSegments.addEBObserver (backComponentNameSegmentsCount)
-    tracks.addEBObserverOf_x1 (backTrackSegments)
-    tracks.addEBObserverOf_y1 (backTrackSegments)
-    tracks.addEBObserverOf_x2 (backTrackSegments)
-    tracks.addEBObserverOf_y2 (backTrackSegments)
-    tracks.addEBObserverOf_width (backTrackSegments)
-    tracks.addEBObserverOf_side (backTrackSegments)
+    backTracks.addEBObserverOf_x1 (backTrackSegments)
+    backTracks.addEBObserverOf_y1 (backTrackSegments)
+    backTracks.addEBObserverOf_x2 (backTrackSegments)
+    backTracks.addEBObserverOf_y2 (backTrackSegments)
+    backTracks.addEBObserverOf_width (backTrackSegments)
     backTrackSegments.addEBObserver (backTracksSegmentsCount)
-    tracks.addEBObserverOf_x1 (frontTrackSegments)
-    tracks.addEBObserverOf_y1 (frontTrackSegments)
-    tracks.addEBObserverOf_x2 (frontTrackSegments)
-    tracks.addEBObserverOf_y2 (frontTrackSegments)
-    tracks.addEBObserverOf_width (frontTrackSegments)
-    tracks.addEBObserverOf_side (frontTrackSegments)
+    frontTracks.addEBObserverOf_x1 (frontTrackSegments)
+    frontTracks.addEBObserverOf_y1 (frontTrackSegments)
+    frontTracks.addEBObserverOf_x2 (frontTrackSegments)
+    frontTracks.addEBObserverOf_y2 (frontTrackSegments)
+    frontTracks.addEBObserverOf_width (frontTrackSegments)
     frontTrackSegments.addEBObserver (frontTracksSegmentsCount)
+    displayFrontTracks.addEBObserver (frontTrackSegmentsForDisplay)
+    frontTrackSegments.addEBObserver (frontTrackSegmentsForDisplay)
   //--- Install undoers for properties
     self.artworkName.undoManager = undoManager ()
     self.name.undoManager = undoManager ()
@@ -2824,7 +3133,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.displayBackTracks.undoManager = undoManager ()
   //--- Install owner for relationships
     myArtwork.owner = self
-    tracks.owner = self
+    frontTracks.owner = self
+    backTracks.owner = self
     vias.owner = self
     packages.owner = self
   //--- register properties for handling signature
@@ -2844,20 +3154,20 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     frontComponentNameSegments.removeEBObserver (frontComponentNameSegmentsCount)
     packages.removeEBObserverOf_backComponentNameSegments (backComponentNameSegments)
     backComponentNameSegments.removeEBObserver (backComponentNameSegmentsCount)
-    tracks.removeEBObserverOf_x1 (backTrackSegments)
-    tracks.removeEBObserverOf_y1 (backTrackSegments)
-    tracks.removeEBObserverOf_x2 (backTrackSegments)
-    tracks.removeEBObserverOf_y2 (backTrackSegments)
-    tracks.removeEBObserverOf_width (backTrackSegments)
-    tracks.removeEBObserverOf_side (backTrackSegments)
+    backTracks.removeEBObserverOf_x1 (backTrackSegments)
+    backTracks.removeEBObserverOf_y1 (backTrackSegments)
+    backTracks.removeEBObserverOf_x2 (backTrackSegments)
+    backTracks.removeEBObserverOf_y2 (backTrackSegments)
+    backTracks.removeEBObserverOf_width (backTrackSegments)
     backTrackSegments.removeEBObserver (backTracksSegmentsCount)
-    tracks.removeEBObserverOf_x1 (frontTrackSegments)
-    tracks.removeEBObserverOf_y1 (frontTrackSegments)
-    tracks.removeEBObserverOf_x2 (frontTrackSegments)
-    tracks.removeEBObserverOf_y2 (frontTrackSegments)
-    tracks.removeEBObserverOf_width (frontTrackSegments)
-    tracks.removeEBObserverOf_side (frontTrackSegments)
+    frontTracks.removeEBObserverOf_x1 (frontTrackSegments)
+    frontTracks.removeEBObserverOf_y1 (frontTrackSegments)
+    frontTracks.removeEBObserverOf_x2 (frontTrackSegments)
+    frontTracks.removeEBObserverOf_y2 (frontTrackSegments)
+    frontTracks.removeEBObserverOf_width (frontTrackSegments)
     frontTrackSegments.removeEBObserver (frontTracksSegmentsCount)
+    displayFrontTracks.removeEBObserver (frontTrackSegmentsForDisplay)
+    frontTrackSegments.removeEBObserver (frontTrackSegmentsForDisplay)
   }
 
   //····················································································································
@@ -2987,11 +3297,18 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       valueExplorer:&self.displayBackTracks.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
-      "tracks",
-      idx:tracks.mEasyBindingsObjectIndex,
+      "frontTracks",
+      idx:frontTracks.mEasyBindingsObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&tracks.mValueExplorer
+      valueExplorer:&frontTracks.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backTracks",
+      idx:backTracks.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backTracks.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "vias",
@@ -3053,8 +3370,10 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.displayBackTracks.mValueExplorer = nil
     myArtwork.mObserverExplorer = nil
     myArtwork.mValueExplorer = nil
-    // tracks.mObserverExplorer = nil
-    tracks.mValueExplorer = nil
+    // frontTracks.mObserverExplorer = nil
+    frontTracks.mValueExplorer = nil
+    // backTracks.mObserverExplorer = nil
+    backTracks.mValueExplorer = nil
     // vias.mObserverExplorer = nil
     vias.mValueExplorer = nil
     // packages.mObserverExplorer = nil
@@ -3083,7 +3402,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.displayBackComponentNames.storeIn (dictionary: ioDictionary, forKey: "displayBackComponentNames")
     self.displayFrontTracks.storeIn (dictionary: ioDictionary, forKey: "displayFrontTracks")
     self.displayBackTracks.storeIn (dictionary: ioDictionary, forKey: "displayBackTracks")
-    store (managedObjectArray: tracks.propval as NSArray, relationshipName:"tracks", intoDictionary: ioDictionary) ;
+    store (managedObjectArray: frontTracks.propval as NSArray, relationshipName:"frontTracks", intoDictionary: ioDictionary) ;
+    store (managedObjectArray: backTracks.propval as NSArray, relationshipName:"backTracks", intoDictionary: ioDictionary) ;
     store (managedObjectArray: vias.propval as NSArray, relationshipName:"vias", intoDictionary: ioDictionary) ;
     store (managedObjectArray: packages.propval as NSArray, relationshipName:"packages", intoDictionary: ioDictionary) ;
   }
@@ -3110,11 +3430,16 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.displayBackComponentNames.readFrom (dictionary: inDictionary, forKey:"displayBackComponentNames")
     self.displayFrontTracks.readFrom (dictionary: inDictionary, forKey:"displayFrontTracks")
     self.displayBackTracks.readFrom (dictionary: inDictionary, forKey:"displayBackTracks")
-    tracks.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "tracks",
+    frontTracks.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "frontTracks",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelTrackSegmentEntity])
+    ) as! [BoardModelFrontTrackSegmentEntity])
+    backTracks.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "backTracks",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [BoardModelBackTrackSegmentEntity])
     vias.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "vias",
       inDictionary: inDictionary,
@@ -3133,7 +3458,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
-    tracks.setProp (Array ())
+    frontTracks.setProp (Array ())
+    backTracks.setProp (Array ())
     vias.setProp (Array ())
     packages.setProp (Array ())
   }
@@ -3153,7 +3479,10 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-    for managedObject : EBManagedObject in tracks.propval {
+    for managedObject : EBManagedObject in frontTracks.propval {
+      objects.append (managedObject)
+    }
+    for managedObject : EBManagedObject in backTracks.propval {
       objects.append (managedObject)
     }
     for managedObject : EBManagedObject in vias.propval {

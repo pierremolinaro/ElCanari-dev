@@ -37,15 +37,9 @@ binding CanariBoardModelView $zoom : property Int ;
 binding CanariBoardModelView $horizontalFlip : transient Bool ;
 binding CanariBoardModelView $verticalFlip : transient Bool ;
 binding CanariBoardModelView $vias : transient MergerViaShapeArray ;
-binding CanariBoardModelView $displayPads : transient Bool ;
-binding CanariBoardModelView $displayHoles : transient Bool ;
-binding CanariBoardModelView $displayFrontComponentNames : transient Bool ;
 binding CanariBoardModelView $frontComponentNameSegments : transient MergerSegmentArray ;
-binding CanariBoardModelView $displayBackComponentNames : transient Bool ;
 binding CanariBoardModelView $backComponentNameSegments : transient MergerSegmentArray ;
-binding CanariBoardModelView $displayFrontTracks : transient Bool ;
 binding CanariBoardModelView $frontTracks : transient MergerSegmentArray ;
-binding CanariBoardModelView $displayBackTracks : transient Bool ;
 binding CanariBoardModelView $backTracks : transient MergerSegmentArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -127,22 +121,34 @@ entity BoardModelViaEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BoardModelTrackSegmentEntity {
-  toOne BoardModelEntity myModel inverse toMany tracks ;
+entity BoardModelFrontTrackSegmentEntity {
+  toOne BoardModelEntity myModel inverse toMany frontTracks ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
   property Int x2 default 0 ;
   property Int y2 default 0 ;
   property Int width default 0 ;
-  property BoardSide side default front ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelBackTrackSegmentEntity {
+  toOne BoardModelEntity myModel inverse toMany backTracks ;
+
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+  property Int width default 0 ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelEntity {
   toOne MergerRootEntity myArtwork inverse toMany boardModels ;
-  toMany BoardModelTrackSegmentEntity tracks inverse toOne myModel ;
+  toMany BoardModelFrontTrackSegmentEntity frontTracks inverse toOne myModel ;
+  toMany BoardModelBackTrackSegmentEntity backTracks inverse toOne myModel ;
   toMany BoardModelViaEntity vias inverse toOne myModel ;
   toMany BoardModelPackageEntity packages inverse toOne myModel ;
   
@@ -183,21 +189,25 @@ entity BoardModelEntity {
   transient Int backComponentNameSegmentsCount dependsFrom self.backComponentNameSegments ;
 
   transient MergerSegmentArray backTrackSegments dependsFrom
-    self.tracks.all.x1, self.tracks.all.y1,
-    self.tracks.all.x2, self.tracks.all.y2,
-    self.tracks.all.width, self.tracks.all.side
+    self.backTracks.all.x1, self.backTracks.all.y1,
+    self.backTracks.all.x2, self.backTracks.all.y2,
+    self.backTracks.all.width
   ;
 
   transient Int backTracksSegmentsCount dependsFrom self.backTrackSegments ;
 
+#--- Front tracks
   transient MergerSegmentArray frontTrackSegments dependsFrom
-    self.tracks.all.x1, self.tracks.all.y1,
-    self.tracks.all.x2, self.tracks.all.y2,
-    self.tracks.all.width, self.tracks.all.side
+    self.frontTracks.all.x1, self.frontTracks.all.y1,
+    self.frontTracks.all.x2, self.frontTracks.all.y2,
+    self.frontTracks.all.width
   ;
 
   transient Int frontTracksSegmentsCount dependsFrom self.frontTrackSegments ;
-  
+
+  transient MergerSegmentArray frontTrackSegmentsForDisplay dependsFrom
+     self.displayFrontTracks, self.frontTrackSegments
+  ;  
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -267,15 +277,9 @@ document PMMergerDocument root MergerRootEntity {
     $horizontalFlip mBoardModelSelection.horizontalFlip
     $verticalFlip mBoardModelSelection.verticalFlip
     $vias mBoardModelSelection.viaShapes
-    $displayPads mBoardModelSelection.displayPads
-    $displayHoles mBoardModelSelection.displayHoles
-    $displayFrontComponentNames mBoardModelSelection.displayFrontComponentNames
     $frontComponentNameSegments mBoardModelSelection.frontComponentNameSegments
-    $displayBackComponentNames mBoardModelSelection.displayBackComponentNames
     $backComponentNameSegments mBoardModelSelection.backComponentNameSegments
-    $displayFrontTracks mBoardModelSelection.displayFrontTracks
-    $frontTracks mBoardModelSelection.frontTrackSegments
-    $displayBackTracks mBoardModelSelection.displayBackTracks
+    $frontTracks mBoardModelSelection.frontTrackSegmentsForDisplay
     $backTracks mBoardModelSelection.backTrackSegments
   ;
   

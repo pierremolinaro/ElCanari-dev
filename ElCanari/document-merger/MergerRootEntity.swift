@@ -123,7 +123,12 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
   override func postEvent () {
     if prop_cache != nil {
       prop_cache = nil
+      if logEvents () {
+        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+      }
       super.postEvent ()
+    }else if logEvents () {
+      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
     }
   }
 
@@ -269,6 +274,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontTrackSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontTracksSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
@@ -301,6 +307,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontTrackSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontTrackSegmentsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontTracksSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)

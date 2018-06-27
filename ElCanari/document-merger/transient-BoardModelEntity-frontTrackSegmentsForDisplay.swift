@@ -10,24 +10,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_backTrackSegments (_ self_2E_backTracks_0 : [BoardModelBackTrackSegmentEntity_x1],
-                                                 _ self_2E_backTracks_1 : [BoardModelBackTrackSegmentEntity_y1],
-                                                 _ self_2E_backTracks_2 : [BoardModelBackTrackSegmentEntity_x2],
-                                                 _ self_2E_backTracks_3 : [BoardModelBackTrackSegmentEntity_y2],
-                                                 _ self_2E_backTracks_4 : [BoardModelBackTrackSegmentEntity_width]) -> MergerSegmentArray {
+func compute_BoardModelEntity_frontTrackSegmentsForDisplay (_ self_2E_displayFrontTracks_0 : Bool,
+                                                            _ self_2E_frontTrackSegments_1 : MergerSegmentArray) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
-  var segmentArray = [MergerSegment] ()
-  var idx = 0
-  while idx < self_2E_backTracks_0.count {
-    let x1 = self_2E_backTracks_0 [idx].x1.propval
-    let y1 = self_2E_backTracks_1 [idx].y1.propval
-    let x2 = self_2E_backTracks_2 [idx].x2.propval
-    let y2 = self_2E_backTracks_3 [idx].y2.propval
-    let width = self_2E_backTracks_4 [idx].width.propval
-    segmentArray.append (MergerSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
-    idx += 1
-  }
-  return MergerSegmentArray (segmentArray)
+  NSLog ("DISPLAY \(self_2E_displayFrontTracks_0), \(self_2E_frontTrackSegments_1.segmentArray.count)")
+  return self_2E_displayFrontTracks_0 ? self_2E_frontTrackSegments_1 : MergerSegmentArray ([])
 //--- END OF USER ZONE 2
 }
 

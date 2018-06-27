@@ -35,6 +35,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var frontComponentNameSegments = EBTransientProperty_MergerSegmentArray () 
   var frontComponentNameSegmentsCount = EBTransientProperty_Int () 
   var frontTrackSegments = EBTransientProperty_MergerSegmentArray () 
+  var frontTrackSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
   var frontTracksSegmentsCount = EBTransientProperty_Int () 
   var horizontalFlip = EBPropertyProxy_Bool () 
   var name = EBPropertyProxy_String () 
@@ -68,6 +69,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_frontComponentNameSegments (model: model)
     bind_property_frontComponentNameSegmentsCount (model: model)
     bind_property_frontTrackSegments (model: model)
+    bind_property_frontTrackSegmentsForDisplay (model: model)
     bind_property_frontTracksSegmentsCount (model: model)
     bind_property_horizontalFlip (model: model)
     bind_property_name (model: model)
@@ -1376,6 +1378,46 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_frontTrackSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontTrackSegmentsForDisplay (self.frontTrackSegmentsForDisplay)
+    self.frontTrackSegmentsForDisplay.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontTrackSegmentsForDisplay.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_frontTracksSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_frontTracksSegmentsCount (self.frontTracksSegmentsCount)
     self.frontTracksSegmentsCount.readModelFunction = {
@@ -1786,135 +1828,112 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.artworkName.writeModelFunction = nil 
     self.artworkName.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_artworkName (self.artworkName)
-//    mModel?.removeEBObserver (self.artworkName)
   //--- backComponentNameSegments
     self.backComponentNameSegments.readModelFunction = nil 
     mModel?.removeEBObserverOf_backComponentNameSegments (self.backComponentNameSegments)
-//    mModel?.removeEBObserver (self.backComponentNameSegments)
   //--- backComponentNameSegmentsCount
     self.backComponentNameSegmentsCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_backComponentNameSegmentsCount (self.backComponentNameSegmentsCount)
-//    mModel?.removeEBObserver (self.backComponentNameSegmentsCount)
   //--- backTrackSegments
     self.backTrackSegments.readModelFunction = nil 
     mModel?.removeEBObserverOf_backTrackSegments (self.backTrackSegments)
-//    mModel?.removeEBObserver (self.backTrackSegments)
   //--- backTracksSegmentsCount
     self.backTracksSegmentsCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_backTracksSegmentsCount (self.backTracksSegmentsCount)
-//    mModel?.removeEBObserver (self.backTracksSegmentsCount)
   //--- boardHeight
     self.boardHeight.readModelFunction = nil 
     self.boardHeight.writeModelFunction = nil 
     self.boardHeight.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_boardHeight (self.boardHeight)
-//    mModel?.removeEBObserver (self.boardHeight)
   //--- boardHeightUnit
     self.boardHeightUnit.readModelFunction = nil 
     self.boardHeightUnit.writeModelFunction = nil 
     self.boardHeightUnit.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_boardHeightUnit (self.boardHeightUnit)
-//    mModel?.removeEBObserver (self.boardHeightUnit)
   //--- boardWidth
     self.boardWidth.readModelFunction = nil 
     self.boardWidth.writeModelFunction = nil 
     self.boardWidth.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_boardWidth (self.boardWidth)
-//    mModel?.removeEBObserver (self.boardWidth)
   //--- boardWidthUnit
     self.boardWidthUnit.readModelFunction = nil 
     self.boardWidthUnit.writeModelFunction = nil 
     self.boardWidthUnit.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_boardWidthUnit (self.boardWidthUnit)
-//    mModel?.removeEBObserver (self.boardWidthUnit)
   //--- componentCount
     self.componentCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_componentCount (self.componentCount)
-//    mModel?.removeEBObserver (self.componentCount)
   //--- displayBackComponentNames
     self.displayBackComponentNames.readModelFunction = nil 
     self.displayBackComponentNames.writeModelFunction = nil 
     self.displayBackComponentNames.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayBackComponentNames (self.displayBackComponentNames)
-//    mModel?.removeEBObserver (self.displayBackComponentNames)
   //--- displayBackTracks
     self.displayBackTracks.readModelFunction = nil 
     self.displayBackTracks.writeModelFunction = nil 
     self.displayBackTracks.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayBackTracks (self.displayBackTracks)
-//    mModel?.removeEBObserver (self.displayBackTracks)
   //--- displayFrontComponentNames
     self.displayFrontComponentNames.readModelFunction = nil 
     self.displayFrontComponentNames.writeModelFunction = nil 
     self.displayFrontComponentNames.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayFrontComponentNames (self.displayFrontComponentNames)
-//    mModel?.removeEBObserver (self.displayFrontComponentNames)
   //--- displayFrontTracks
     self.displayFrontTracks.readModelFunction = nil 
     self.displayFrontTracks.writeModelFunction = nil 
     self.displayFrontTracks.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayFrontTracks (self.displayFrontTracks)
-//    mModel?.removeEBObserver (self.displayFrontTracks)
   //--- displayHoles
     self.displayHoles.readModelFunction = nil 
     self.displayHoles.writeModelFunction = nil 
     self.displayHoles.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayHoles (self.displayHoles)
-//    mModel?.removeEBObserver (self.displayHoles)
   //--- displayPads
     self.displayPads.readModelFunction = nil 
     self.displayPads.writeModelFunction = nil 
     self.displayPads.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayPads (self.displayPads)
-//    mModel?.removeEBObserver (self.displayPads)
   //--- frontComponentNameSegments
     self.frontComponentNameSegments.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments)
-//    mModel?.removeEBObserver (self.frontComponentNameSegments)
   //--- frontComponentNameSegmentsCount
     self.frontComponentNameSegmentsCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontComponentNameSegmentsCount (self.frontComponentNameSegmentsCount)
-//    mModel?.removeEBObserver (self.frontComponentNameSegmentsCount)
   //--- frontTrackSegments
     self.frontTrackSegments.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontTrackSegments (self.frontTrackSegments)
-//    mModel?.removeEBObserver (self.frontTrackSegments)
+  //--- frontTrackSegmentsForDisplay
+    self.frontTrackSegmentsForDisplay.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontTrackSegmentsForDisplay (self.frontTrackSegmentsForDisplay)
   //--- frontTracksSegmentsCount
     self.frontTracksSegmentsCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontTracksSegmentsCount (self.frontTracksSegmentsCount)
-//    mModel?.removeEBObserver (self.frontTracksSegmentsCount)
   //--- horizontalFlip
     self.horizontalFlip.readModelFunction = nil 
     self.horizontalFlip.writeModelFunction = nil 
     self.horizontalFlip.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_horizontalFlip (self.horizontalFlip)
-//    mModel?.removeEBObserver (self.horizontalFlip)
   //--- name
     self.name.readModelFunction = nil 
     self.name.writeModelFunction = nil 
     self.name.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_name (self.name)
-//    mModel?.removeEBObserver (self.name)
   //--- verticalFlip
     self.verticalFlip.readModelFunction = nil 
     self.verticalFlip.writeModelFunction = nil 
     self.verticalFlip.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_verticalFlip (self.verticalFlip)
-//    mModel?.removeEBObserver (self.verticalFlip)
   //--- viaCount
     self.viaCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_viaCount (self.viaCount)
-//    mModel?.removeEBObserver (self.viaCount)
   //--- viaShapes
     self.viaShapes.readModelFunction = nil 
     mModel?.removeEBObserverOf_viaShapes (self.viaShapes)
-//    mModel?.removeEBObserver (self.viaShapes)
   //--- zoom
     self.zoom.readModelFunction = nil 
     self.zoom.writeModelFunction = nil 
     self.zoom.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_zoom (self.zoom)
-//    mModel?.removeEBObserver (self.zoom)
     mModel = nil    
   }
 

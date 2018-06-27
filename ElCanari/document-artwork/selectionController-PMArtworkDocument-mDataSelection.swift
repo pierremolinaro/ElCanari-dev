@@ -1884,133 +1884,111 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawBoardLimits.writeModelFunction = nil 
     self.drawBoardLimits.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawBoardLimits (self.drawBoardLimits)
-//    mModel?.removeEBObserver (self.drawBoardLimits)
   //--- drawComponentNamesBottomSide
     self.drawComponentNamesBottomSide.readModelFunction = nil 
     self.drawComponentNamesBottomSide.writeModelFunction = nil 
     self.drawComponentNamesBottomSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide)
-//    mModel?.removeEBObserver (self.drawComponentNamesBottomSide)
   //--- drawComponentNamesTopSide
     self.drawComponentNamesTopSide.readModelFunction = nil 
     self.drawComponentNamesTopSide.writeModelFunction = nil 
     self.drawComponentNamesTopSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide)
-//    mModel?.removeEBObserver (self.drawComponentNamesTopSide)
   //--- drawComponentValuesBottomSide
     self.drawComponentValuesBottomSide.readModelFunction = nil 
     self.drawComponentValuesBottomSide.writeModelFunction = nil 
     self.drawComponentValuesBottomSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide)
-//    mModel?.removeEBObserver (self.drawComponentValuesBottomSide)
   //--- drawComponentValuesTopSide
     self.drawComponentValuesTopSide.readModelFunction = nil 
     self.drawComponentValuesTopSide.writeModelFunction = nil 
     self.drawComponentValuesTopSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide)
-//    mModel?.removeEBObserver (self.drawComponentValuesTopSide)
   //--- drawPackageLegendBottomSide
     self.drawPackageLegendBottomSide.readModelFunction = nil 
     self.drawPackageLegendBottomSide.writeModelFunction = nil 
     self.drawPackageLegendBottomSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide)
-//    mModel?.removeEBObserver (self.drawPackageLegendBottomSide)
   //--- drawPackageLegendTopSide
     self.drawPackageLegendTopSide.readModelFunction = nil 
     self.drawPackageLegendTopSide.writeModelFunction = nil 
     self.drawPackageLegendTopSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide)
-//    mModel?.removeEBObserver (self.drawPackageLegendTopSide)
   //--- drawPadHolesInPDF
     self.drawPadHolesInPDF.readModelFunction = nil 
     self.drawPadHolesInPDF.writeModelFunction = nil 
     self.drawPadHolesInPDF.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF)
-//    mModel?.removeEBObserver (self.drawPadHolesInPDF)
   //--- drawPadsBottomSide
     self.drawPadsBottomSide.readModelFunction = nil 
     self.drawPadsBottomSide.writeModelFunction = nil 
     self.drawPadsBottomSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide)
-//    mModel?.removeEBObserver (self.drawPadsBottomSide)
   //--- drawPadsTopSide
     self.drawPadsTopSide.readModelFunction = nil 
     self.drawPadsTopSide.writeModelFunction = nil 
     self.drawPadsTopSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawPadsTopSide (self.drawPadsTopSide)
-//    mModel?.removeEBObserver (self.drawPadsTopSide)
   //--- drawTextsLayoutBottomSide
     self.drawTextsLayoutBottomSide.readModelFunction = nil 
     self.drawTextsLayoutBottomSide.writeModelFunction = nil 
     self.drawTextsLayoutBottomSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide)
-//    mModel?.removeEBObserver (self.drawTextsLayoutBottomSide)
   //--- drawTextsLayoutTopSide
     self.drawTextsLayoutTopSide.readModelFunction = nil 
     self.drawTextsLayoutTopSide.writeModelFunction = nil 
     self.drawTextsLayoutTopSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide)
-//    mModel?.removeEBObserver (self.drawTextsLayoutTopSide)
   //--- drawTextsLegendBottomSide
     self.drawTextsLegendBottomSide.readModelFunction = nil 
     self.drawTextsLegendBottomSide.writeModelFunction = nil 
     self.drawTextsLegendBottomSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide)
-//    mModel?.removeEBObserver (self.drawTextsLegendBottomSide)
   //--- drawTextsLegendTopSide
     self.drawTextsLegendTopSide.readModelFunction = nil 
     self.drawTextsLegendTopSide.writeModelFunction = nil 
     self.drawTextsLegendTopSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide)
-//    mModel?.removeEBObserver (self.drawTextsLegendTopSide)
   //--- drawTracksBottomSide
     self.drawTracksBottomSide.readModelFunction = nil 
     self.drawTracksBottomSide.writeModelFunction = nil 
     self.drawTracksBottomSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide)
-//    mModel?.removeEBObserver (self.drawTracksBottomSide)
   //--- drawTracksTopSide
     self.drawTracksTopSide.readModelFunction = nil 
     self.drawTracksTopSide.writeModelFunction = nil 
     self.drawTracksTopSide.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawTracksTopSide (self.drawTracksTopSide)
-//    mModel?.removeEBObserver (self.drawTracksTopSide)
   //--- drawVias
     self.drawVias.readModelFunction = nil 
     self.drawVias.writeModelFunction = nil 
     self.drawVias.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_drawVias (self.drawVias)
-//    mModel?.removeEBObserver (self.drawVias)
   //--- fileExtension
     self.fileExtension.readModelFunction = nil 
     self.fileExtension.writeModelFunction = nil 
     self.fileExtension.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_fileExtension (self.fileExtension)
-//    mModel?.removeEBObserver (self.fileExtension)
   //--- horizontalMirror
     self.horizontalMirror.readModelFunction = nil 
     self.horizontalMirror.writeModelFunction = nil 
     self.horizontalMirror.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_horizontalMirror (self.horizontalMirror)
-//    mModel?.removeEBObserver (self.horizontalMirror)
   //--- measurementUnitForPadHoleInPDF
     self.measurementUnitForPadHoleInPDF.readModelFunction = nil 
     self.measurementUnitForPadHoleInPDF.writeModelFunction = nil 
     self.measurementUnitForPadHoleInPDF.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF)
-//    mModel?.removeEBObserver (self.measurementUnitForPadHoleInPDF)
   //--- name
     self.name.readModelFunction = nil 
     self.name.writeModelFunction = nil 
     self.name.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_name (self.name)
-//    mModel?.removeEBObserver (self.name)
   //--- padHoleDiameterInPDF
     self.padHoleDiameterInPDF.readModelFunction = nil 
     self.padHoleDiameterInPDF.writeModelFunction = nil 
     self.padHoleDiameterInPDF.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF)
-//    mModel?.removeEBObserver (self.padHoleDiameterInPDF)
     mModel = nil    
   }
 

@@ -5,235 +5,292 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_BoardModelViaEntity
+//    ReadOnlyArrayOf_BoardModelBackTrackSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <BoardModelViaEntity> {
+class ReadOnlyArrayOf_BoardModelBackTrackSegmentEntity : ReadOnlyAbstractArrayProperty <BoardModelBackTrackSegmentEntity> {
 
   //····················································································································
-  //   Observers of 'x' stored property
+  //   Observers of 'x1' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x.insert (inObserver)
+    mObserversOf_x1.insert (inObserver)
     switch prop {
     case .noSelection, .multipleSelection :
       break
     case .singleSelection (let v) :
       for managedObject in v {
-        managedObject.x.addEBObserver (inObserver)
+        managedObject.x1.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x.remove (inObserver)
+    mObserversOf_x1.remove (inObserver)
     switch prop {
     case .noSelection, .multipleSelection :
       break
     case .singleSelection (let v) :
       for managedObject in v {
-        managedObject.x.removeEBObserver (inObserver)
+        managedObject.x1.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelViaEntity>) {
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<BoardModelBackTrackSegmentEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x {
-        managedObject.x.addEBObserver (observer)
+      for observer in mObserversOf_x1 {
+        managedObject.x1.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelViaEntity>) {
-    for observer in mObserversOf_x {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<BoardModelBackTrackSegmentEntity>) {
+    for observer in mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.x.removeEBObserver (observer)
+        managedObject.x1.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'y' stored property
+  //   Observers of 'y1' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y.insert (inObserver)
+    mObserversOf_y1.insert (inObserver)
     switch prop {
     case .noSelection, .multipleSelection :
       break
     case .singleSelection (let v) :
       for managedObject in v {
-        managedObject.y.addEBObserver (inObserver)
+        managedObject.y1.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y.remove (inObserver)
+    mObserversOf_y1.remove (inObserver)
     switch prop {
     case .noSelection, .multipleSelection :
       break
     case .singleSelection (let v) :
       for managedObject in v {
-        managedObject.y.removeEBObserver (inObserver)
+        managedObject.y1.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<BoardModelViaEntity>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<BoardModelBackTrackSegmentEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y {
-        managedObject.y.addEBObserver (observer)
+      for observer in mObserversOf_y1 {
+        managedObject.y1.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<BoardModelViaEntity>) {
-    for observer in mObserversOf_y {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<BoardModelBackTrackSegmentEntity>) {
+    for observer in mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.y.removeEBObserver (observer)
+        managedObject.y1.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'holeDiameter' stored property
+  //   Observers of 'x2' stored property
   //····················································································································
 
-  private var mObserversOf_holeDiameter = EBWeakEventSet ()
+  private var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_holeDiameter.insert (inObserver)
+    mObserversOf_x2.insert (inObserver)
     switch prop {
     case .noSelection, .multipleSelection :
       break
     case .singleSelection (let v) :
       for managedObject in v {
-        managedObject.holeDiameter.addEBObserver (inObserver)
+        managedObject.x2.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_holeDiameter.remove (inObserver)
+    mObserversOf_x2.remove (inObserver)
     switch prop {
     case .noSelection, .multipleSelection :
       break
     case .singleSelection (let v) :
       for managedObject in v {
-        managedObject.holeDiameter.removeEBObserver (inObserver)
+        managedObject.x2.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_holeDiameter_toElementsOfSet (_ inSet : Set<BoardModelViaEntity>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<BoardModelBackTrackSegmentEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_holeDiameter {
-        managedObject.holeDiameter.addEBObserver (observer)
+      for observer in mObserversOf_x2 {
+        managedObject.x2.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_holeDiameter_fromElementsOfSet (_ inSet : Set<BoardModelViaEntity>) {
-    for observer in mObserversOf_holeDiameter {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<BoardModelBackTrackSegmentEntity>) {
+    for observer in mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.holeDiameter.removeEBObserver (observer)
+        managedObject.x2.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'padDiameter' stored property
+  //   Observers of 'y2' stored property
   //····················································································································
 
-  private var mObserversOf_padDiameter = EBWeakEventSet ()
+  private var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_padDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_padDiameter.insert (inObserver)
+    mObserversOf_y2.insert (inObserver)
     switch prop {
     case .noSelection, .multipleSelection :
       break
     case .singleSelection (let v) :
       for managedObject in v {
-        managedObject.padDiameter.addEBObserver (inObserver)
+        managedObject.y2.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_padDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_padDiameter.remove (inObserver)
+    mObserversOf_y2.remove (inObserver)
     switch prop {
     case .noSelection, .multipleSelection :
       break
     case .singleSelection (let v) :
       for managedObject in v {
-        managedObject.padDiameter.removeEBObserver (inObserver)
+        managedObject.y2.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : Set<BoardModelViaEntity>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<BoardModelBackTrackSegmentEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_padDiameter {
-        managedObject.padDiameter.addEBObserver (observer)
+      for observer in mObserversOf_y2 {
+        managedObject.y2.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : Set<BoardModelViaEntity>) {
-    for observer in mObserversOf_padDiameter {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<BoardModelBackTrackSegmentEntity>) {
+    for observer in mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.padDiameter.removeEBObserver (observer)
+        managedObject.y2.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'width' stored property
+  //····················································································································
+
+  private var mObserversOf_width = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_width.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.width.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_width.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.width.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<BoardModelBackTrackSegmentEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_width {
+        managedObject.width.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<BoardModelBackTrackSegmentEntity>) {
+    for observer in mObserversOf_width {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.width.removeEBObserver (observer)
       }
     }
   }
@@ -243,14 +300,14 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_BoardModelViaEntity
+//    TransientArrayOf_BoardModelBackTrackSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_BoardModelViaEntity : ReadOnlyArrayOf_BoardModelViaEntity {
+class TransientArrayOf_BoardModelBackTrackSegmentEntity : ReadOnlyArrayOf_BoardModelBackTrackSegmentEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [BoardModelViaEntity] > >
+  var readModelFunction : Optional<() -> EBProperty < [BoardModelBackTrackSegmentEntity] > >
 
-  private var prop_cache : EBProperty < [BoardModelViaEntity] >? 
+  private var prop_cache : EBProperty < [BoardModelBackTrackSegmentEntity] >? 
 
   //····················································································································
 
@@ -260,31 +317,33 @@ class TransientArrayOf_BoardModelViaEntity : ReadOnlyArrayOf_BoardModelViaEntity
 
   //····················································································································
 
-  private var mSet = Set <BoardModelViaEntity> ()
+  private var mSet = Set <BoardModelBackTrackSegmentEntity> ()
 
-  override var prop : EBProperty < [BoardModelViaEntity] > {
+  override var prop : EBProperty < [BoardModelBackTrackSegmentEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <BoardModelViaEntity>
+        let newSet : Set <BoardModelBackTrackSegmentEntity>
         switch prop_cache! {
         case .multipleSelection, .noSelection :
-          newSet = Set <BoardModelViaEntity> ()
+          newSet = Set <BoardModelBackTrackSegmentEntity> ()
         case .singleSelection (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
-        removeEBObserversOf_x_fromElementsOfSet (removedSet)
-        removeEBObserversOf_y_fromElementsOfSet (removedSet)
-        removeEBObserversOf_holeDiameter_fromElementsOfSet (removedSet)
-        removeEBObserversOf_padDiameter_fromElementsOfSet (removedSet)
+        removeEBObserversOf_x1_fromElementsOfSet (removedSet)
+        removeEBObserversOf_y1_fromElementsOfSet (removedSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedSet)
+        removeEBObserversOf_y2_fromElementsOfSet (removedSet)
+        removeEBObserversOf_width_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
-        addEBObserversOf_x_toElementsOfSet (addedSet)
-        addEBObserversOf_y_toElementsOfSet (addedSet)
-        addEBObserversOf_holeDiameter_toElementsOfSet (addedSet)
-        addEBObserversOf_padDiameter_toElementsOfSet (addedSet)
+        addEBObserversOf_x1_toElementsOfSet (addedSet)
+        addEBObserversOf_y1_toElementsOfSet (addedSet)
+        addEBObserversOf_x2_toElementsOfSet (addedSet)
+        addEBObserversOf_y2_toElementsOfSet (addedSet)
+        addEBObserversOf_width_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -315,33 +374,39 @@ class TransientArrayOf_BoardModelViaEntity : ReadOnlyArrayOf_BoardModelViaEntity
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelViaEntity_x : class {
-  var x : EBStoredProperty_Int { get }
+protocol BoardModelBackTrackSegmentEntity_x1 : class {
+  var x1 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelViaEntity_y : class {
-  var y : EBStoredProperty_Int { get }
+protocol BoardModelBackTrackSegmentEntity_y1 : class {
+  var y1 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelViaEntity_holeDiameter : class {
-  var holeDiameter : EBStoredProperty_Int { get }
+protocol BoardModelBackTrackSegmentEntity_x2 : class {
+  var x2 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelViaEntity_padDiameter : class {
-  var padDiameter : EBStoredProperty_Int { get }
+protocol BoardModelBackTrackSegmentEntity_y2 : class {
+  var y2 : EBStoredProperty_Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelBackTrackSegmentEntity_width : class {
+  var width : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: myModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToOneRelationship_BoardModelViaEntity_myModel : EBAbstractProperty {
+final class ToOneRelationship_BoardModelBackTrackSegmentEntity_myModel : EBAbstractProperty {
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = mValueExplorer {
@@ -355,7 +420,7 @@ final class ToOneRelationship_BoardModelViaEntity_myModel : EBAbstractProperty {
     }
   }
 
-  weak var owner : BoardModelViaEntity? {
+  weak var owner : BoardModelBackTrackSegmentEntity? {
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
@@ -374,11 +439,11 @@ final class ToOneRelationship_BoardModelViaEntity_myModel : EBAbstractProperty {
         }
       //--- Reset old opposite relation ship
         if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.vias.remove (unwrappedOwner)
+          unwrappedOldValue.backTracks.remove (unwrappedOwner)
         }
       //--- Set new opposite relation ship
         if let unwrappedValue = mValue {
-          unwrappedValue.vias.add (unwrappedOwner)
+          unwrappedValue.backTracks.add (unwrappedOwner)
         }
       //--- Notify observers
         postEvent ()
@@ -415,23 +480,25 @@ final class ToOneRelationship_BoardModelViaEntity_myModel : EBAbstractProperty {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: BoardModelViaEntity
+//    Entity: BoardModelBackTrackSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelViaEntity_y, BoardModelViaEntity_holeDiameter, BoardModelViaEntity_padDiameter
+class BoardModelBackTrackSegmentEntity : EBManagedObject, BoardModelBackTrackSegmentEntity_x1, BoardModelBackTrackSegmentEntity_y1, BoardModelBackTrackSegmentEntity_x2, BoardModelBackTrackSegmentEntity_y2, BoardModelBackTrackSegmentEntity_width
 {
 
   //····················································································································
   //    Properties
   //····················································································································
 
-  var x = EBStoredProperty_Int (0)
+  var x1 = EBStoredProperty_Int (0)
 
-  var y = EBStoredProperty_Int (0)
+  var y1 = EBStoredProperty_Int (0)
 
-  var holeDiameter = EBStoredProperty_Int (0)
+  var x2 = EBStoredProperty_Int (0)
 
-  var padDiameter = EBStoredProperty_Int (0)
+  var y2 = EBStoredProperty_Int (0)
+
+  var width = EBStoredProperty_Int (0)
 
   //····················································································································
   //    Transient properties
@@ -442,7 +509,7 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
   //    Relationships
   //····················································································································
 
-  var myModel = ToOneRelationship_BoardModelViaEntity_myModel ()
+  var myModel = ToOneRelationship_BoardModelBackTrackSegmentEntity_myModel ()
 
   //····················································································································
   //    init
@@ -453,10 +520,11 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
   //--- Install compute functions for transients
   //--- Install property observers for transients
   //--- Install undoers for properties
-    self.x.undoManager = undoManager ()
-    self.y.undoManager = undoManager ()
-    self.holeDiameter.undoManager = undoManager ()
-    self.padDiameter.undoManager = undoManager ()
+    self.x1.undoManager = undoManager ()
+    self.y1.undoManager = undoManager ()
+    self.x2.undoManager = undoManager ()
+    self.y2.undoManager = undoManager ()
+    self.width.undoManager = undoManager ()
   //--- Install owner for relationships
     myModel.owner = self
   //--- register properties for handling signature
@@ -475,36 +543,44 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "x",
-      idx:self.x.mEasyBindingsObjectIndex,
+      "x1",
+      idx:self.x1.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.x.mObserverExplorer,
-      valueExplorer:&self.x.mValueExplorer
+      observerExplorer:&self.x1.mObserverExplorer,
+      valueExplorer:&self.x1.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "y",
-      idx:self.y.mEasyBindingsObjectIndex,
+      "y1",
+      idx:self.y1.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.y.mObserverExplorer,
-      valueExplorer:&self.y.mValueExplorer
+      observerExplorer:&self.y1.mObserverExplorer,
+      valueExplorer:&self.y1.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "holeDiameter",
-      idx:self.holeDiameter.mEasyBindingsObjectIndex,
+      "x2",
+      idx:self.x2.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.holeDiameter.mObserverExplorer,
-      valueExplorer:&self.holeDiameter.mValueExplorer
+      observerExplorer:&self.x2.mObserverExplorer,
+      valueExplorer:&self.x2.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "padDiameter",
-      idx:self.padDiameter.mEasyBindingsObjectIndex,
+      "y2",
+      idx:self.y2.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.padDiameter.mObserverExplorer,
-      valueExplorer:&self.padDiameter.mValueExplorer
+      observerExplorer:&self.y2.mObserverExplorer,
+      valueExplorer:&self.y2.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "width",
+      idx:self.width.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.width.mObserverExplorer,
+      valueExplorer:&self.width.mValueExplorer
     )
     createEntryForToOneRelationshipNamed (
       "myModel",
@@ -520,14 +596,16 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.x.mObserverExplorer = nil
-    self.x.mValueExplorer = nil
-    self.y.mObserverExplorer = nil
-    self.y.mValueExplorer = nil
-    self.holeDiameter.mObserverExplorer = nil
-    self.holeDiameter.mValueExplorer = nil
-    self.padDiameter.mObserverExplorer = nil
-    self.padDiameter.mValueExplorer = nil
+    self.x1.mObserverExplorer = nil
+    self.x1.mValueExplorer = nil
+    self.y1.mObserverExplorer = nil
+    self.y1.mValueExplorer = nil
+    self.x2.mObserverExplorer = nil
+    self.x2.mValueExplorer = nil
+    self.y2.mObserverExplorer = nil
+    self.y2.mValueExplorer = nil
+    self.width.mObserverExplorer = nil
+    self.width.mValueExplorer = nil
     myModel.mObserverExplorer = nil
     myModel.mValueExplorer = nil
     super.clearObjectExplorer ()
@@ -539,10 +617,11 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.x.storeIn (dictionary: ioDictionary, forKey: "x")
-    self.y.storeIn (dictionary: ioDictionary, forKey: "y")
-    self.holeDiameter.storeIn (dictionary: ioDictionary, forKey: "holeDiameter")
-    self.padDiameter.storeIn (dictionary: ioDictionary, forKey: "padDiameter")
+    self.x1.storeIn (dictionary: ioDictionary, forKey: "x1")
+    self.y1.storeIn (dictionary: ioDictionary, forKey: "y1")
+    self.x2.storeIn (dictionary: ioDictionary, forKey: "x2")
+    self.y2.storeIn (dictionary: ioDictionary, forKey: "y2")
+    self.width.storeIn (dictionary: ioDictionary, forKey: "width")
   }
 
   //····················································································································
@@ -552,10 +631,11 @@ class BoardModelViaEntity : EBManagedObject, BoardModelViaEntity_x, BoardModelVi
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.x.readFrom (dictionary: inDictionary, forKey:"x")
-    self.y.readFrom (dictionary: inDictionary, forKey:"y")
-    self.holeDiameter.readFrom (dictionary: inDictionary, forKey:"holeDiameter")
-    self.padDiameter.readFrom (dictionary: inDictionary, forKey:"padDiameter")
+    self.x1.readFrom (dictionary: inDictionary, forKey:"x1")
+    self.y1.readFrom (dictionary: inDictionary, forKey:"y1")
+    self.x2.readFrom (dictionary: inDictionary, forKey:"x2")
+    self.y2.readFrom (dictionary: inDictionary, forKey:"y2")
+    self.width.readFrom (dictionary: inDictionary, forKey:"width")
   }
 
   //····················································································································

@@ -24,20 +24,6 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mBackTracksLayer = CALayer ()
    fileprivate var mBackComponentNamesLayer = CALayer ()
 
-   fileprivate var mDisplayPads = true
-   fileprivate var mDisplayHoles = true
-   fileprivate var mDisplayFrontComponentNames = true
-   fileprivate var mDisplayBackComponentNames = true
-   fileprivate var mDisplayFrontTracks = true
-   fileprivate var mDisplayBackTracks = true
-
-   fileprivate var mViaPadLayerComponents = [CAShapeLayer] ()
-   fileprivate var mViaHoleLayerComponents = [CAShapeLayer] ()
-   fileprivate var mFrontComponentNamesLayerComponents = [CAShapeLayer] ()
-   fileprivate var mFrontTracksLayerComponents = [CAShapeLayer] ()
-   fileprivate var mBackTracksLayerComponents = [CAShapeLayer] ()
-   fileprivate var mBackComponentNamesLayerComponents = [CAShapeLayer] ()
-
   //····················································································································
   //  awakeFromNib
   //····················································································································
@@ -65,7 +51,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     if noModel {
       mBackgroundLayer.fillColor = nil
       mBackgroundLayer.strokeColor = nil
-      mNoModelTextLayer.frame = self.frame
+      mNoModelTextLayer.frame = self.bounds
       mNoModelTextLayer.foregroundColor = NSColor.black.cgColor
       mNoModelTextLayer.contentsScale = NSScreen.main ()!.backingScaleFactor
       mNoModelTextLayer.alignmentMode = kCAAlignmentCenter
@@ -76,54 +62,6 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       mBackgroundLayer.fillColor = NSColor.white.cgColor
       mNoModelTextLayer.string = ""
     }
-  }
-
-  //····················································································································
-  //    Update via display
-  //····················································································································
-
-  func updateViaDisplay () {
-    mViaPadLayer.sublayers = mDisplayPads ? mViaPadLayerComponents : nil
-  }
-
-  //····················································································································
-  //    Update hole display
-  //····················································································································
-
-  func updateHoleDisplay () {
-    mViaHoleLayer.sublayers = mDisplayHoles ? mViaHoleLayerComponents : nil
-  }
-
-  //····················································································································
-  //    Update front component name display
-  //····················································································································
-
-  func updateFrontComponentNamesDisplay () {
-    mFrontComponentNamesLayer.sublayers = mDisplayFrontComponentNames ? mFrontComponentNamesLayerComponents : nil
-  }
-
-  //····················································································································
-  //    Update back component name display
-  //····················································································································
-
-  func updateBackComponentNamesDisplay () {
-    mBackComponentNamesLayer.sublayers = mDisplayBackComponentNames ? mBackComponentNamesLayerComponents : nil
-  }
-
-  //····················································································································
-  //    Update front tracks
-  //····················································································································
-
-  func updateFrontTracksDisplay () {
-    mFrontTracksLayer.sublayers = mDisplayFrontTracks ? mFrontTracksLayerComponents : nil
-  }
-
-  //····················································································································
-  //    Update back tracks
-  //····················································································································
-
-  func updateBackTracksDisplay () {
-    mBackTracksLayer.sublayers = mDisplayBackTracks ? mBackTracksLayerComponents : nil
   }
 
   //····················································································································
@@ -144,62 +82,18 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setVias (_ inVias : [MergerViaShape]) {
-    mViaPadLayerComponents = [CAShapeLayer] ()
-    mViaHoleLayerComponents = [CAShapeLayer] ()
+    var viaPadLayerComponents = [CAShapeLayer] ()
+    var viaHoleLayerComponents = [CAShapeLayer] ()
     for via in inVias {
     //--- Pad
       let padShape = via.viaPad (color : NSColor.black.cgColor)
-      mViaPadLayerComponents.append (padShape)
+      viaPadLayerComponents.append (padShape)
     //--- Hole
       let holeShape = via.viaHole (color : NSColor.white.cgColor)
-      mViaHoleLayerComponents.append (holeShape)
+      viaHoleLayerComponents.append (holeShape)
     }
-    updateViaDisplay ()
-    updateHoleDisplay ()
-  }
-
-  //····················································································································
-  //    Display pads
-  //····················································································································
-
-  private var mDisplayPadsController : Controller_CanariBoardModelView_displayPads?
-
-  func bind_displayPads (_ display:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mDisplayPadsController = Controller_CanariBoardModelView_displayPads (display:display, outlet:self, file:file, line:line)
-  }
-
-  func unbind_displayPads () {
-    mDisplayPadsController?.unregister ()
-    mDisplayPadsController = nil
-  }
-
-  //····················································································································
-
-  func setDisplayPads (_ inDisplay : Bool) {
-    mDisplayPads = inDisplay
-    updateViaDisplay ()
-  }
-
-  //····················································································································
-  //    Display holes
-  //····················································································································
-
-  private var mDisplayHolesController : Controller_CanariBoardModelView_displayHoles?
-
-  func bind_displayHoles (_ display:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mDisplayHolesController = Controller_CanariBoardModelView_displayHoles (display:display, outlet:self, file:file, line:line)
-  }
-
-  func unbind_displayHoles () {
-    mDisplayHolesController?.unregister ()
-    mDisplayHolesController = nil
-  }
-
-  //····················································································································
-
-  func setDisplayHoles (_ inDisplay : Bool) {
-    mDisplayHoles = inDisplay
-    updateHoleDisplay ()
+    mViaPadLayer.sublayers = viaPadLayerComponents
+    mViaHoleLayer.sublayers = viaHoleLayerComponents
   }
 
   //····················································································································
@@ -220,12 +114,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setFrontComponentNameSegments (_ inSegments : [MergerSegment]) {
-    mFrontComponentNamesLayerComponents = [CAShapeLayer] ()
+    var frontComponentNamesLayerComponents = [CAShapeLayer] ()
     for segment in inSegments {
       let shape = segment.segmentShape (color:NSColor.black.cgColor)
-      mFrontComponentNamesLayerComponents.append (shape)
+      frontComponentNamesLayerComponents.append (shape)
     }
-    updateFrontComponentNamesDisplay ()
+    mFrontComponentNamesLayer.sublayers = frontComponentNamesLayerComponents
   }
 
   //····················································································································
@@ -246,78 +140,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setBackComponentNameSegments (_ inSegments : [MergerSegment]) {
-    mBackComponentNamesLayerComponents = [CAShapeLayer] ()
+    var backComponentNamesLayerComponents = [CAShapeLayer] ()
     for segment in inSegments {
       let shape = segment.segmentShape (color:NSColor.black.cgColor)
-      mBackComponentNamesLayerComponents.append (shape)
+      backComponentNamesLayerComponents.append (shape)
     }
-    updateBackComponentNamesDisplay ()
-  }
-
-  //····················································································································
-  //    Display front component names
-  //····················································································································
-
-  private var mDisplayFrontComponentNamesController : Controller_CanariBoardModelView_displayFrontComponentNames?
-
-  func bind_displayFrontComponentNames (_ display:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mDisplayFrontComponentNamesController = Controller_CanariBoardModelView_displayFrontComponentNames (display:display, outlet:self, file:file, line:line)
-  }
-
-  func unbind_displayFrontComponentNames () {
-    mDisplayFrontComponentNamesController?.unregister ()
-    mDisplayFrontComponentNamesController = nil
-  }
-
-  //····················································································································
-
-  func setDisplayFrontComponentNames (_ inDisplay : Bool) {
-    mDisplayFrontComponentNames = inDisplay
-    updateFrontComponentNamesDisplay ()
-  }
-
-  //····················································································································
-  //    Display back component names
-  //····················································································································
-
-  private var mDisplayBackComponentNamesController : Controller_CanariBoardModelView_displayBackComponentNames?
-
-  func bind_displayBackComponentNames (_ display:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mDisplayBackComponentNamesController = Controller_CanariBoardModelView_displayBackComponentNames (display:display, outlet:self, file:file, line:line)
-  }
-
-  func unbind_displayBackComponentNames () {
-    mDisplayBackComponentNamesController?.unregister ()
-    mDisplayBackComponentNamesController = nil
-  }
-
-  //····················································································································
-
-  func setDisplayBackComponentNames (_ inDisplay : Bool) {
-    mDisplayBackComponentNames = inDisplay
-    updateBackComponentNamesDisplay ()
-  }
-
-  //····················································································································
-  //    Display front tracks
-  //····················································································································
-
-  private var mDisplayFrontTracksController : Controller_CanariBoardModelView_displayFrontTracks?
-
-  func bind_displayFrontTracks (_ display:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mDisplayFrontTracksController = Controller_CanariBoardModelView_displayFrontTracks (display:display, outlet:self, file:file, line:line)
-  }
-
-  func unbind_displayFrontTracks () {
-    mDisplayFrontTracksController?.unregister ()
-    mDisplayFrontTracksController = nil
-  }
-
-  //····················································································································
-
-  func setDisplayFrontTracks (_ inDisplay : Bool) {
-    mDisplayFrontTracks = inDisplay
-    updateFrontTracksDisplay ()
+    mBackComponentNamesLayer.sublayers = backComponentNamesLayerComponents
   }
 
   //····················································································································
@@ -338,34 +166,13 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setFrontTracks (_ inSegments : [MergerSegment]) {
-    mFrontTracksLayerComponents = [CAShapeLayer] ()
+    // NSLog ("setFrontTracks \(inSegments.count)")
+    var frontTracksLayerComponents = [CAShapeLayer] ()
     for segment in inSegments {
       let shape = segment.segmentShape (color:NSColor.black.cgColor)
-      mFrontTracksLayerComponents.append (shape)
+      frontTracksLayerComponents.append (shape)
     }
-    updateFrontTracksDisplay ()
-  }
-
-  //····················································································································
-  //    Display back tracks
-  //····················································································································
-
-  private var mDisplayBackTracksController : Controller_CanariBoardModelView_displayBackTracks?
-
-  func bind_displayBackTracks (_ display:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mDisplayBackTracksController = Controller_CanariBoardModelView_displayBackTracks (display:display, outlet:self, file:file, line:line)
-  }
-
-  func unbind_displayBackTracks () {
-    mDisplayBackTracksController?.unregister ()
-    mDisplayBackTracksController = nil
-  }
-
-  //····················································································································
-
-  func setDisplayBackTracks (_ inDisplay : Bool) {
-    mDisplayBackTracks = inDisplay
-    updateBackTracksDisplay ()
+    mFrontTracksLayer.sublayers = frontTracksLayerComponents
   }
 
   //····················································································································
@@ -386,12 +193,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setBackTracks (_ inSegments : [MergerSegment]) {
-    mBackTracksLayerComponents = [CAShapeLayer] ()
+    var backTracksLayerComponents = [CAShapeLayer] ()
     for segment in inSegments {
       let shape = segment.segmentShape (color:NSColor.black.cgColor)
-      mBackTracksLayerComponents.append (shape)
+      backTracksLayerComponents.append (shape)
     }
-    updateBackTracksDisplay ()
+    mBackTracksLayer.sublayers = backTracksLayerComponents
   }
 
   //····················································································································
@@ -429,74 +236,6 @@ final class Controller_CanariBoardModelView_vias : EBSimpleController {
   }
 
   //····················································································································
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_displayPads
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_displayPads : EBSimpleController {
-
-  private let mDisplay : EBReadOnlyProperty_Bool
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
-    mDisplay = display
-    mOutlet = outlet
-    super.init (observedObjects:[display], outlet:outlet)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mDisplay.prop {
-    case .noSelection :
-      mOutlet.setDisplayPads (false)
-    case .singleSelection (let v) :
-      mOutlet.setDisplayPads (v)
-    case .multipleSelection :
-      mOutlet.setDisplayPads (false)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_displayHoles
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_displayHoles : EBSimpleController {
-
-  private let mDisplay : EBReadOnlyProperty_Bool
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
-    mDisplay = display
-    mOutlet = outlet
-    super.init (observedObjects:[display], outlet:outlet)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mDisplay.prop {
-    case .noSelection :
-      mOutlet.setDisplayHoles (false)
-    case .singleSelection (let v) :
-      mOutlet.setDisplayHoles (v)
-    case .multipleSelection :
-      mOutlet.setDisplayHoles (false)
-    }
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -568,108 +307,6 @@ final class Controller_CanariBoardModelView_backComponentNameSegments : EBSimple
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_displayFrontComponentNames
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_displayFrontComponentNames : EBSimpleController {
-
-  private let mDisplay : EBReadOnlyProperty_Bool
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
-    mDisplay = display
-    mOutlet = outlet
-    super.init (observedObjects:[display], outlet:outlet)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mDisplay.prop {
-    case .noSelection :
-      mOutlet.setDisplayFrontComponentNames (false)
-    case .singleSelection (let v) :
-      mOutlet.setDisplayFrontComponentNames (v)
-    case .multipleSelection :
-      mOutlet.setDisplayFrontComponentNames (false)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_displayBackComponentNames
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_displayBackComponentNames : EBSimpleController {
-
-  private let mDisplay : EBReadOnlyProperty_Bool
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
-    mDisplay = display
-    mOutlet = outlet
-    super.init (observedObjects:[display], outlet:outlet)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mDisplay.prop {
-    case .noSelection :
-      mOutlet.setDisplayBackComponentNames (false)
-    case .singleSelection (let v) :
-      mOutlet.setDisplayBackComponentNames (v)
-    case .multipleSelection :
-      mOutlet.setDisplayBackComponentNames (false)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_displayFrontTracks
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_displayFrontTracks : EBSimpleController {
-
-  private let mDisplay : EBReadOnlyProperty_Bool
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
-    mDisplay = display
-    mOutlet = outlet
-    super.init (observedObjects:[display], outlet:outlet)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mDisplay.prop {
-    case .noSelection :
-      mOutlet.setDisplayFrontTracks (false)
-    case .singleSelection (let v) :
-      mOutlet.setDisplayFrontTracks (v)
-    case .multipleSelection :
-      mOutlet.setDisplayFrontTracks (false)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Controller_CanariBoardModelView_frontTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -684,6 +321,7 @@ final class Controller_CanariBoardModelView_frontTracks : EBSimpleController {
     mSegments = segments
     mOutlet = outlet
     super.init (observedObjects:[segments], outlet:outlet)
+    segments.addEBObserver (self)
   }
 
   //····················································································································
@@ -696,40 +334,6 @@ final class Controller_CanariBoardModelView_frontTracks : EBSimpleController {
       mOutlet.setFrontTracks (v.segmentArray)
     case .multipleSelection :
       mOutlet.setFrontTracks ([])
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_displayBackTracks
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_displayBackTracks : EBSimpleController {
-
-  private let mDisplay : EBReadOnlyProperty_Bool
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (display : EBReadOnlyProperty_Bool, outlet : CanariBoardModelView, file : String, line : Int) {
-    mDisplay = display
-    mOutlet = outlet
-    super.init (observedObjects:[display], outlet:outlet)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mDisplay.prop {
-    case .noSelection :
-      mOutlet.setDisplayBackTracks (false)
-    case .singleSelection (let v) :
-      mOutlet.setDisplayBackTracks (v)
-    case .multipleSelection :
-      mOutlet.setDisplayBackTracks (false)
     }
   }
 

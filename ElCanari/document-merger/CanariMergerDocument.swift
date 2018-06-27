@@ -20,12 +20,6 @@ import Cocoa
   override init () {
     super.init ()
     undoManager?.disableUndoRegistration ()
-//    var characterArray = [FontCharacterEntity] ()
-//    for _ in 0 ..< CANARI_FONT_CHARACTER_COUNT {
-//      let newCharacter = FontCharacterEntity (managedObjectContext: managedObjectContext())
-//      characterArray.append (newCharacter)
-//    }
-//    rootObject.characters.setProp (characterArray)
     undoManager?.enableUndoRegistration ()
   }
 

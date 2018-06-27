@@ -200,7 +200,12 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
   override func postEvent () {
     if prop_cache != nil {
       prop_cache = nil
+      if logEvents () {
+        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+      }
       super.postEvent ()
+    }else if logEvents () {
+      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
     }
   }
 
@@ -434,132 +439,6 @@ class CanariLibraryEntry : EBSimpleClass, CanariLibraryEntry_mPath, CanariLibrar
 
 typealias EBReadOnlyProperty_CanariLibraryEntry = EBReadOnlyClassProperty <CanariLibraryEntry>
 typealias EBTransientProperty_CanariLibraryEntry = EBTransientClassProperty <CanariLibraryEntry>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBReadWriteProperty_CanariLibraryEntry (abstract class)
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* class EBReadWriteProperty_CanariLibraryEntry : EBReadOnlyProperty_CanariLibraryEntry {
-  func setProp (_ value: CanariLibraryEntry) { } // Abstract method
-  func validateAndSetProp (_ candidateValue : CanariLibraryEntry, windowForSheet inWindow:NSWindow?) -> Bool {
-    return false
-  } // Abstract method
-} */
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBPropertyProxy_CanariLibraryEntry
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* class EBPropertyProxy_CanariLibraryEntry : EBReadWriteProperty_CanariLibraryEntry {
-  var readModelFunction : Optional < () -> EBProperty <CanariLibraryEntry> >
-  var writeModelFunction : Optional < (CanariLibraryEntry) -> Void >
-  var validateAndWriteModelFunction : Optional < (CanariLibraryEntry, NSWindow?) -> Bool >
-  
-  private var prop_cache : EBProperty <CanariLibraryEntry>?
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-  }
-
-  //····················································································································
-
-  var mValueExplorer : NSTextField? {
-    didSet {
-      mValueExplorer?.stringValue = "<< not handled>>"
-    }
-  }
-
-  //····················································································································
-
-  override func postEvent() {
-    if prop_cache != nil {
-      prop_cache = nil
-      super.postEvent()
-    }
-  }
-
-  //····················································································································
-
-  override var prop : EBProperty <CanariLibraryEntry> {
-    get {
-      if let unReadModelFunction = readModelFunction, prop_cache == nil {
-        prop_cache = unReadModelFunction ()
-      }
-      if prop_cache == nil {
-        prop_cache = .noSelection
-      }
-      return prop_cache!
-    }
-  }
-
-  //····················································································································
-  
-  override func setProp (_ value: CanariLibraryEntry) {
-    if let unWriteModelFunction = writeModelFunction {
-      unWriteModelFunction (value)
-    }
-  }
-
-  //····················································································································
-
-  override func validateAndSetProp (_ candidateValue : CanariLibraryEntry,
-                                    windowForSheet inWindow:NSWindow?) -> Bool {
-    var result = false
-    if let unwValidateAndWriteModelFunction = validateAndWriteModelFunction {
-      result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
-    }
-    return result
-  }
-  
-  //····················································································································
-  
-} */
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBStoredProperty_CanariLibraryEntry
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class EBStoredProperty_CanariLibraryEntry : EBReadWriteProperty_CanariLibraryEntry {
-
-  //····················································································································
-
-  init (_ inValue : CanariLibraryEntry) {
-    mValue = inValue
-    super.init ()
-  }
-
-  //····················································································································
-
-  var mValueExplorer : NSTextField? {
-    didSet {
-      mValueExplorer?.stringValue = "<< not handled>>"
-    }
-  }
-
-  //····················································································································
-
-  private var mValue : CanariLibraryEntry {
-    didSet {
-      if mValue != oldValue {
-        mValueExplorer?.stringValue = "<< not handled>>"
-        postEvent ()
-      }
-    }
-  }
-
-  //····················································································································
-
-  override var prop : EBProperty <CanariLibraryEntry> { get { return .singleSelection (mValue) } }
-
-  var propval : CanariLibraryEntry { get { return mValue } }
-
-  override func setProp (_ value: CanariLibraryEntry) { mValue = value }
-
-  //····················································································································
-
-} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

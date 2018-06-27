@@ -91,7 +91,6 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
     var result : CGFloat = 1.0
     if let clipView = self.superview as? NSClipView {
       let currentScale : NSSize = clipView.convert (NSSize (width:1.0, height:1.0), from:nil)
-//      result = 1.0 / abs (currentScale.width)
       result = 1.0 / currentScale.width
     }
     return result
@@ -346,7 +345,6 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
     mZoom = zoom
     mOutlet = outlet
     super.init (observedObjects:[zoom], outlet:outlet)
-//    mZoom.addEBObserver (self)
   }
 
   //····················································································································
@@ -387,7 +385,6 @@ final class Controller_CanariViewWithZoomAndFlip_horizontalFlip : EBSimpleContro
     mFlip = flip
     mOutlet = outlet
     super.init (observedObjects:[flip], outlet:outlet)
-//    mFlip.addEBObserver (self)
   }
 
   //····················································································································
@@ -422,7 +419,6 @@ final class Controller_CanariViewWithZoomAndFlip_verticalFlip : EBSimpleControll
     mFlip = flip
     mOutlet = outlet
     super.init (observedObjects:[flip], outlet:outlet)
-//    mFlip.addEBObserver (self)
   }
 
   //····················································································································

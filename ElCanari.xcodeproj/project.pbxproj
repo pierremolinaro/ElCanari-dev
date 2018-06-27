@@ -216,6 +216,9 @@
 		CFC9566F20E25F4000B7F94F /* EBMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9566E20E25F4000B7F94F /* EBMenuItem.swift */; };
 		CFCC4AF31BF2732D00EFB30A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC4AF21BF2732D00EFB30A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift */; };
 		CFCE71FB20DD611100AB1DE7 /* BoardModelViaEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCE71FA20DD611100AB1DE7 /* BoardModelViaEntity.swift */; };
+		CFD2E75E20E3F39300F946D2 /* BoardModelBackTrackSegmentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2E75C20E3F39300F946D2 /* BoardModelBackTrackSegmentEntity.swift */; };
+		CFD2E75F20E3F39300F946D2 /* BoardModelFrontTrackSegmentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2E75D20E3F39300F946D2 /* BoardModelFrontTrackSegmentEntity.swift */; };
+		CFD2E76120E3F81900F946D2 /* transient-BoardModelEntity-frontTrackSegmentsForDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2E76020E3F81900F946D2 /* transient-BoardModelEntity-frontTrackSegmentsForDisplay.swift */; };
 		CFD5B94C1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5B94B1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift */; };
 		CFDA579D1BFA524A00EEF3CB /* FontRootEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDA579A1BFA524A00EEF3CB /* FontRootEntity.swift */; };
 		CFDA579E1BFA524A00EEF3CB /* PMFontDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDA579B1BFA524A00EEF3CB /* PMFontDocument.swift */; };
@@ -254,7 +257,6 @@
 		CFEDEDC11DD88B5900782E3F /* Controller_CanariFontSampleStringView_bezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDEDC01DD88B5900782E3F /* Controller_CanariFontSampleStringView_bezierPath.swift */; };
 		CFEE8DEF1BECA15300B6F25B /* CanariArtworkDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEE8DEE1BECA15300B6F25B /* CanariArtworkDocument.swift */; };
 		CFF0416D20DD46BE00FB1C5B /* selectionController-PMMergerDocument-mBoardModelSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF0416C20DD46BE00FB1C5B /* selectionController-PMMergerDocument-mBoardModelSelection.swift */; };
-		CFF0416F20DD4C3E00FB1C5B /* BoardModelTrackSegmentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF0416E20DD4C3E00FB1C5B /* BoardModelTrackSegmentEntity.swift */; };
 		CFF0417720DD568700FB1C5B /* EBIntObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF0417620DD568700FB1C5B /* EBIntObserverField.swift */; };
 		CFF5976B1BDD4E17007EDFF9 /* EBCheckedMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5976A1BDD4E17007EDFF9 /* EBCheckedMenuItem.swift */; };
 		CFF7B4271FDF28C800A5CF44 /* canari_artwork.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */; };
@@ -499,6 +501,9 @@
 		CFC9566E20E25F4000B7F94F /* EBMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBMenuItem.swift; sourceTree = "<group>"; };
 		CFCC4AF21BF2732D00EFB30A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-CanariLibraryEntry-revealLibraryInFinderAction.swift"; sourceTree = "<group>"; };
 		CFCE71FA20DD611100AB1DE7 /* BoardModelViaEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardModelViaEntity.swift; sourceTree = "<group>"; };
+		CFD2E75C20E3F39300F946D2 /* BoardModelBackTrackSegmentEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardModelBackTrackSegmentEntity.swift; sourceTree = "<group>"; };
+		CFD2E75D20E3F39300F946D2 /* BoardModelFrontTrackSegmentEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardModelFrontTrackSegmentEntity.swift; sourceTree = "<group>"; };
+		CFD2E76020E3F81900F946D2 /* transient-BoardModelEntity-frontTrackSegmentsForDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModelEntity-frontTrackSegmentsForDisplay.swift"; sourceTree = "<group>"; };
 		CFD5B94B1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller_CanariFontSampleStringView_sampleStringFontSize.swift; sourceTree = "<group>"; };
 		CFDA579A1BFA524A00EEF3CB /* FontRootEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRootEntity.swift; sourceTree = "<group>"; };
 		CFDA579B1BFA524A00EEF3CB /* PMFontDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMFontDocument.swift; sourceTree = "<group>"; };
@@ -538,7 +543,6 @@
 		CFEDEDC01DD88B5900782E3F /* Controller_CanariFontSampleStringView_bezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller_CanariFontSampleStringView_bezierPath.swift; sourceTree = "<group>"; };
 		CFEE8DEE1BECA15300B6F25B /* CanariArtworkDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariArtworkDocument.swift; sourceTree = "<group>"; };
 		CFF0416C20DD46BE00FB1C5B /* selectionController-PMMergerDocument-mBoardModelSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-PMMergerDocument-mBoardModelSelection.swift"; sourceTree = "<group>"; };
-		CFF0416E20DD4C3E00FB1C5B /* BoardModelTrackSegmentEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardModelTrackSegmentEntity.swift; sourceTree = "<group>"; };
 		CFF0417620DD568700FB1C5B /* EBIntObserverField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBIntObserverField.swift; sourceTree = "<group>"; };
 		CFF5976A1BDD4E17007EDFF9 /* EBCheckedMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBCheckedMenuItem.swift; sourceTree = "<group>"; };
 		CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_artwork.icns; sourceTree = "<group>"; };
@@ -596,11 +600,12 @@
 				CFB4801720DC1B8B00CF9639 /* action-PMMergerDocument-addBoardModelAction.swift */,
 				CFB4801B20DC2BBD00CF9639 /* add-board-model.swift */,
 				CFBEE4DC20DD26E2000743A2 /* arrayController-PMMergerDocument-mBoardModelController.swift */,
+				CFD2E75C20E3F39300F946D2 /* BoardModelBackTrackSegmentEntity.swift */,
 				CF2BE38C20DD98510094A3E9 /* BoardModelComponentNameSegmentEntity.swift */,
 				CFB4801820DC1B8B00CF9639 /* BoardModelEntity.swift */,
+				CFD2E75D20E3F39300F946D2 /* BoardModelFrontTrackSegmentEntity.swift */,
 				CF2BE38A20DD8F0E0094A3E9 /* BoardModelPackageEntity.swift */,
 				CF324D7B20DE54B000ADD025 /* BoardModelPadEntity.swift */,
-				CFF0416E20DD4C3E00FB1C5B /* BoardModelTrackSegmentEntity.swift */,
 				CF324D7920DE53E300ADD025 /* BoardModelValueNameSegmentEntity.swift */,
 				CFCE71FA20DD611100AB1DE7 /* BoardModelViaEntity.swift */,
 				CFDB681520E2A9CC006D4E90 /* BoardSide.swift */,
@@ -620,6 +625,7 @@
 				CFDB680F20E2A2C6006D4E90 /* transient-BoardModelEntity-frontComponentNameSegments.swift */,
 				CFDB681320E2A72B006D4E90 /* transient-BoardModelEntity-frontComponentNameSegmentsCount.swift */,
 				CF323C2420E2D6CC00F8FD8D /* transient-BoardModelEntity-frontTrackSegments.swift */,
+				CFD2E76020E3F81900F946D2 /* transient-BoardModelEntity-frontTrackSegmentsForDisplay.swift */,
 				CF323C2620E2DC8000F8FD8D /* transient-BoardModelEntity-frontTracksSegmentsCount.swift */,
 				CFDEC77620E0CD170065FBCE /* transient-BoardModelEntity-viaShapes.swift */,
 				CFDB681720E2AC1A006D4E90 /* transient-BoardModelPackageEntity-backComponentNameSegments.swift */,
@@ -1129,6 +1135,7 @@
 				CFE652DF1DD4B24D00BAC27A /* transient-CanariLibraryEntry-mStatusImage.swift in Sources */,
 				CF3086531B4008F5005D3BCE /* EBTableView.swift in Sources */,
 				CF5CEFBA1DD8C53100A70419 /* extension-CGMutablePath.swift in Sources */,
+				CFD2E75E20E3F39300F946D2 /* BoardModelBackTrackSegmentEntity.swift in Sources */,
 				CFBAFCE51DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_fonts.swift in Sources */,
 				CF51999A1BF26C2600A63CF0 /* EBTextObserverField.swift in Sources */,
 				CF5199991BF26C2600A63CF0 /* EBImageObserverView.swift in Sources */,
@@ -1136,6 +1143,7 @@
 				CFBEE4DD20DD26E2000743A2 /* arrayController-PMMergerDocument-mBoardModelController.swift in Sources */,
 				CF861AA51B3F06230006BE63 /* EBButton.swift in Sources */,
 				CFEDE5B91B4677C500036ACF /* EBManagedObjectContext.swift in Sources */,
+				CFD2E75F20E3F39300F946D2 /* BoardModelFrontTrackSegmentEntity.swift in Sources */,
 				CF6A65F91B468ACF00BA5135 /* CanariSegmentedControl.swift in Sources */,
 				CF2BE38B20DD8F0E0094A3E9 /* BoardModelPackageEntity.swift in Sources */,
 				CF186B031B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift in Sources */,
@@ -1194,6 +1202,7 @@
 				CFB0F5ED1BDBC9F700939954 /* EBProgressIndicator.swift in Sources */,
 				CF6BC04D1DE1C2BF002D935F /* transient-Preferences-mValueRevealInFinder_artworks.swift in Sources */,
 				CF5CF73A1B46D53D0052AC7A /* ApplicationDelegate.swift in Sources */,
+				CFD2E76120E3F81900F946D2 /* transient-BoardModelEntity-frontTrackSegmentsForDisplay.swift in Sources */,
 				CFDEC77720E0CD170065FBCE /* transient-BoardModelEntity-viaShapes.swift in Sources */,
 				CFDB681A20E2AC66006D4E90 /* transient-BoardModelEntity-backComponentNameSegments.swift in Sources */,
 				CF58A3B71DD7887000146883 /* action-PMArtworkDocument-resetVersionAndSignatureAction.swift in Sources */,
@@ -1274,7 +1283,6 @@
 				CF861AAB1B3F0AEF0006BE63 /* Preferences+setupForLibrary.swift in Sources */,
 				CFBAFCE61DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_packages.swift in Sources */,
 				CF9D58481BFA2B7100E6BA54 /* bz2-uncompress.m in Sources */,
-				CFF0416F20DD4C3E00FB1C5B /* BoardModelTrackSegmentEntity.swift in Sources */,
 				CF323C2720E2DC8000F8FD8D /* transient-BoardModelEntity-frontTracksSegmentsCount.swift in Sources */,
 				CFBAFCE71DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_symbols.swift in Sources */,
 				CF72478C20DE6618005BFE34 /* PadSide.swift in Sources */,
@@ -1467,7 +1475,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

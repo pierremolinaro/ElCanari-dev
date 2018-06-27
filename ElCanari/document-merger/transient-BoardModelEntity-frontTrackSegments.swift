@@ -10,24 +10,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_frontTrackSegments (_ self_2E_tracks_0 : [BoardModelTrackSegmentEntity_x1],
-                                                  _ self_2E_tracks_1 : [BoardModelTrackSegmentEntity_y1],
-                                                  _ self_2E_tracks_2 : [BoardModelTrackSegmentEntity_x2],
-                                                  _ self_2E_tracks_3 : [BoardModelTrackSegmentEntity_y2],
-                                                  _ self_2E_tracks_4 : [BoardModelTrackSegmentEntity_width],
-                                                  _ self_2E_tracks_5 : [BoardModelTrackSegmentEntity_side]) -> MergerSegmentArray {
+func compute_BoardModelEntity_frontTrackSegments (_ self_2E_frontTracks_0 : [BoardModelFrontTrackSegmentEntity_x1],
+                                                  _ self_2E_frontTracks_1 : [BoardModelFrontTrackSegmentEntity_y1],
+                                                  _ self_2E_frontTracks_2 : [BoardModelFrontTrackSegmentEntity_x2],
+                                                  _ self_2E_frontTracks_3 : [BoardModelFrontTrackSegmentEntity_y2],
+                                                  _ self_2E_frontTracks_4 : [BoardModelFrontTrackSegmentEntity_width]) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
   var segmentArray = [MergerSegment] ()
   var idx = 0
-  while idx < self_2E_tracks_0.count {
-    if self_2E_tracks_5 [idx].side.propval == .front {
-      let x1 = self_2E_tracks_0 [idx].x1.propval
-      let y1 = self_2E_tracks_1 [idx].y1.propval
-      let x2 = self_2E_tracks_2 [idx].x2.propval
-      let y2 = self_2E_tracks_3 [idx].y2.propval
-      let width = self_2E_tracks_4 [idx].width.propval
-      segmentArray.append (MergerSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
-    }
+  while idx < self_2E_frontTracks_0.count {
+    let x1 = self_2E_frontTracks_0 [idx].x1.propval
+    let y1 = self_2E_frontTracks_1 [idx].y1.propval
+    let x2 = self_2E_frontTracks_2 [idx].x2.propval
+    let y2 = self_2E_frontTracks_3 [idx].y2.propval
+    let width = self_2E_frontTracks_4 [idx].width.propval
+    segmentArray.append (MergerSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
     idx += 1
   }
   return MergerSegmentArray (segmentArray)
