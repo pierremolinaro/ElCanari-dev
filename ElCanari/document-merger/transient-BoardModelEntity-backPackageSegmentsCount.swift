@@ -12,7 +12,7 @@ import Cocoa
 
 func compute_BoardModelEntity_backPackageSegmentsCount (_ self_2E_backPackagesSegments_0 : MergerSegmentArray) -> Int {
 //--- START OF USER ZONE 2
-
+  return self_2E_backPackagesSegments_0.segmentArray.count
 //--- END OF USER ZONE 2
 }
 

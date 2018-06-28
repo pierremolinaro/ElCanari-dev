@@ -16,7 +16,18 @@ func compute_BoardModelEntity_frontPackagesSegments (_ self_2E_frontPackages_0 :
                                                      _ self_2E_frontPackages_3 : [BoardModelFrontPackageEntity_y2],
                                                      _ self_2E_frontPackages_4 : [BoardModelFrontPackageEntity_width]) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
-
+  var segmentArray = [MergerSegment] ()
+  var idx = 0
+  while idx < self_2E_frontPackages_0.count {
+    let x1 = self_2E_frontPackages_0 [idx].x1.propval
+    let y1 = self_2E_frontPackages_1 [idx].y1.propval
+    let x2 = self_2E_frontPackages_2 [idx].x2.propval
+    let y2 = self_2E_frontPackages_3 [idx].y2.propval
+    let width = self_2E_frontPackages_4 [idx].width.propval
+    segmentArray.append (MergerSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
+    idx += 1
+  }
+  return MergerSegmentArray (segmentArray)
 //--- END OF USER ZONE 2
 }
 

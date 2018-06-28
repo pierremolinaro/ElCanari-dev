@@ -13,7 +13,7 @@ import Cocoa
 func compute_BoardModelEntity_backPackagesSegmentsForDisplay (_ self_2E_displayBackPackages_0 : Bool,
                                                               _ self_2E_backPackagesSegments_1 : MergerSegmentArray) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
-
+  return self_2E_displayBackPackages_0 ? self_2E_backPackagesSegments_1 : MergerSegmentArray ([])
 //--- END OF USER ZONE 2
 }
 
