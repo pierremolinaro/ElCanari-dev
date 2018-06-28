@@ -28,6 +28,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mFrontPackagesLayer = CALayer ()
    fileprivate var mBackPackagesLayer = CALayer ()
    fileprivate var mBoardLimitsLayer = CALayer ()
+   fileprivate var mFrontPadsLayer = CALayer ()
 
   //····················································································································
   //  awakeFromNib
@@ -46,6 +47,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.addSublayer (mFrontPackagesLayer)
     self.layer?.addSublayer (mFrontComponentValuesLayer)
     self.layer?.addSublayer (mFrontComponentNamesLayer)
+    self.layer?.addSublayer (mFrontPadsLayer)
     self.layer?.addSublayer (mBoardLimitsLayer)
     self.layer?.addSublayer (mViaHoleLayer)
  //   CATransaction.commit ()
@@ -294,6 +296,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
   private var mBackPackagesController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
 
+  //····················································································································
+
   func bind_backPackages (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
     mBackPackagesController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
       segments:segments,
@@ -308,6 +312,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       }
     )
   }
+
+  //····················································································································
 
   func unbind_backPackages () {
     mBackPackagesController?.unregister ()
@@ -356,6 +362,52 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       components.append (shape)
     }
     self.mBoardLimitsLayer.sublayers = components
+  }
+
+  //····················································································································
+  //    Front Pads
+  //····················································································································
+
+  private var mFrontPadsController : Controller_CanariBoardModelView_frontPads?
+
+  //····················································································································
+
+  func bind_frontPads (_ pads:EBReadOnlyProperty_MergerPadArray, file:String, line:Int) {
+    mFrontPadsController = Controller_CanariBoardModelView_frontPads (pads:pads, outlet:self)
+  }
+
+  //····················································································································
+
+  func unbind_frontPads () {
+    mFrontPadsController?.unregister ()
+    mFrontPadsController = nil
+  }
+
+  //····················································································································
+
+  func setFrontPads (_ padArray : [MergerPad]) {
+    var components = [CAShapeLayer] ()
+    for pad in padArray {
+      let x = canariUnitToCocoa (pad.x)
+      let y = canariUnitToCocoa (pad.y)
+      let width = canariUnitToCocoa (pad.width)
+      let height = canariUnitToCocoa (pad.height)
+      let r = CGRect (x: x - width / 2.0, y: y - height / 2.0, width:width, height:height)
+      let path : CGPath
+      switch pad.shape {
+      case .rectangular :
+        path = CGPath (rect:r, transform:nil)
+      case .round :
+        path = CGPath (ellipseIn:r, transform:nil)
+      }
+      let shape = CAShapeLayer ()
+      shape.path = path
+      shape.position = CGPoint (x:0.0, y:0.0)
+      shape.strokeColor = nil
+      shape.fillColor = NSColor.brown.cgColor
+      components.append (shape)
+    }
+    self.mFrontPadsLayer.sublayers = components
   }
 
   //····················································································································
@@ -458,6 +510,40 @@ final class Controller_CanariBoardModelView_boardLimits : EBSimpleController {
       mOutlet.setBoardLimits (v)
     case .multipleSelection :
       mOutlet.setBoardLimits (MergerBoardLimits ())
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariBoardModelView_frontPads
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariBoardModelView_frontPads : EBSimpleController {
+
+  private let mPads : EBReadOnlyProperty_MergerPadArray
+  private let mOutlet : CanariBoardModelView
+
+  //····················································································································
+
+  init (pads : EBReadOnlyProperty_MergerPadArray, outlet : CanariBoardModelView) {
+    mPads = pads
+    mOutlet = outlet
+    super.init (observedObjects:[pads], outlet:outlet)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mPads.prop {
+    case .noSelection :
+      mOutlet.setFrontPads ([])
+    case .singleSelection (let v) :
+      mOutlet.setFrontPads (v.padArray)
+    case .multipleSelection :
+      mOutlet.setFrontPads ([])
     }
   }
 

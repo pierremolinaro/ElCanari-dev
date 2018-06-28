@@ -11,63 +11,6 @@ import Cocoa
 class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <BoardModelPadEntity> {
 
   //····················································································································
-  //   Observers of 'name' stored property
-  //····················································································································
-
-  private var mObserversOf_name = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_name (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_name.insert (inObserver)
-    switch prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let v) :
-      for managedObject in v {
-        managedObject.name.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_name (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_name.remove (inObserver)
-    switch prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let v) :
-      for managedObject in v {
-        managedObject.name.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_name_toElementsOfSet (_ inSet : Set<BoardModelPadEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_name {
-        managedObject.name.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : Set<BoardModelPadEntity>) {
-    for observer in mObserversOf_name {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.name.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
@@ -467,63 +410,6 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
   }
 
   //····················································································································
-  //   Observers of 'kind' stored property
-  //····················································································································
-
-  private var mObserversOf_kind = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_kind (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_kind.insert (inObserver)
-    switch prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let v) :
-      for managedObject in v {
-        managedObject.kind.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_kind (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_kind.remove (inObserver)
-    switch prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let v) :
-      for managedObject in v {
-        managedObject.kind.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_kind_toElementsOfSet (_ inSet : Set<BoardModelPadEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_kind {
-        managedObject.kind.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_kind_fromElementsOfSet (_ inSet : Set<BoardModelPadEntity>) {
-    for observer in mObserversOf_kind {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.kind.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -561,7 +447,6 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
-        removeEBObserversOf_name_fromElementsOfSet (removedSet)
         removeEBObserversOf_x_fromElementsOfSet (removedSet)
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
         removeEBObserversOf_width_fromElementsOfSet (removedSet)
@@ -569,12 +454,10 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
         removeEBObserversOf_holeDiameter_fromElementsOfSet (removedSet)
         removeEBObserversOf_shape_fromElementsOfSet (removedSet)
         removeEBObserversOf_side_fromElementsOfSet (removedSet)
-        removeEBObserversOf_kind_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
-        addEBObserversOf_name_toElementsOfSet (addedSet)
         addEBObserversOf_x_toElementsOfSet (addedSet)
         addEBObserversOf_y_toElementsOfSet (addedSet)
         addEBObserversOf_width_toElementsOfSet (addedSet)
@@ -582,7 +465,6 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
         addEBObserversOf_holeDiameter_toElementsOfSet (addedSet)
         addEBObserversOf_shape_toElementsOfSet (addedSet)
         addEBObserversOf_side_toElementsOfSet (addedSet)
-        addEBObserversOf_kind_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
       //--- Update object set
         mSet = newSet
@@ -610,12 +492,6 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelPadEntity_name : class {
-  var name : EBStoredProperty_String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -661,24 +537,92 @@ protocol BoardModelPadEntity_side : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: myBoard
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelPadEntity_kind : class {
-  var kind : EBStoredProperty_PadKind { get }
+final class ToOneRelationship_BoardModelPadEntity_myBoard : EBAbstractProperty {
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .noSelection, .multipleSelection :
+          break ;
+        case .singleSelection (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  weak var owner : BoardModelPadEntity? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  weak private var mValue : BoardModelEntity? {
+    didSet {
+      if let unwrappedOwner = owner, oldValue !== mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.undoManager()?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
+        }
+      //--- Reset old opposite relation ship
+        if let unwrappedOldValue = oldValue {
+          unwrappedOldValue.pads.remove (unwrappedOwner)
+        }
+      //--- Set new opposite relation ship
+        if let unwrappedValue = mValue {
+          unwrappedValue.pads.add (unwrappedOwner)
+        }
+      //--- Notify observers
+        postEvent ()
+      }
+    }
+  }
+
+  var propval : BoardModelEntity? { get { return mValue } }
+
+  var prop : EBProperty <BoardModelEntity?> { get { return .singleSelection (mValue) } }
+
+  func setProp (_ value : BoardModelEntity?) { mValue = value }
+
+  //····················································································································
+
+  func performUndo (_ oldValue : BoardModelEntity?) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : BoardModelEntity) {
+    if mValue === object {
+      mValue = nil
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : BoardModelEntity) {
+    mValue = object
+  }
+
 }
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardModelPadEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardModelPadEntity_x, BoardModelPadEntity_y, BoardModelPadEntity_width, BoardModelPadEntity_height, BoardModelPadEntity_holeDiameter, BoardModelPadEntity_shape, BoardModelPadEntity_side, BoardModelPadEntity_kind
+class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPadEntity_y, BoardModelPadEntity_width, BoardModelPadEntity_height, BoardModelPadEntity_holeDiameter, BoardModelPadEntity_shape, BoardModelPadEntity_side
 {
 
   //····················································································································
   //    Properties
   //····················································································································
-
-  var name = EBStoredProperty_String ("")
 
   var x = EBStoredProperty_Int (0)
 
@@ -694,8 +638,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
 
   var side = EBStoredProperty_PadSide (PadSide.traversing)
 
-  var kind = EBStoredProperty_PadKind (PadKind.master)
-
   //····················································································································
   //    Transient properties
   //····················································································································
@@ -705,6 +647,7 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
   //    Relationships
   //····················································································································
 
+  var myBoard = ToOneRelationship_BoardModelPadEntity_myBoard ()
 
   //····················································································································
   //    init
@@ -715,7 +658,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
   //--- Install compute functions for transients
   //--- Install property observers for transients
   //--- Install undoers for properties
-    self.name.undoManager = undoManager ()
     self.x.undoManager = undoManager ()
     self.y.undoManager = undoManager ()
     self.width.undoManager = undoManager ()
@@ -723,8 +665,8 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
     self.holeDiameter.undoManager = undoManager ()
     self.shape.undoManager = undoManager ()
     self.side.undoManager = undoManager ()
-    self.kind.undoManager = undoManager ()
   //--- Install owner for relationships
+    myBoard.owner = self
   //--- register properties for handling signature
   }
 
@@ -740,14 +682,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "name",
-      idx:self.name.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.name.mObserverExplorer,
-      valueExplorer:&self.name.mValueExplorer
-    )
     createEntryForPropertyNamed (
       "x",
       idx:self.x.mEasyBindingsObjectIndex,
@@ -804,17 +738,16 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
       observerExplorer:&self.side.mObserverExplorer,
       valueExplorer:&self.side.mValueExplorer
     )
-    createEntryForPropertyNamed (
-      "kind",
-      idx:self.kind.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.kind.mObserverExplorer,
-      valueExplorer:&self.kind.mValueExplorer
-    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForToOneRelationshipNamed (
+      "myBoard",
+      idx:myBoard.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&myBoard.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -823,8 +756,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.name.mObserverExplorer = nil
-    self.name.mValueExplorer = nil
     self.x.mObserverExplorer = nil
     self.x.mValueExplorer = nil
     self.y.mObserverExplorer = nil
@@ -839,8 +770,8 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
     self.shape.mValueExplorer = nil
     self.side.mObserverExplorer = nil
     self.side.mValueExplorer = nil
-    self.kind.mObserverExplorer = nil
-    self.kind.mValueExplorer = nil
+    myBoard.mObserverExplorer = nil
+    myBoard.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -850,7 +781,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.name.storeIn (dictionary: ioDictionary, forKey: "name")
     self.x.storeIn (dictionary: ioDictionary, forKey: "x")
     self.y.storeIn (dictionary: ioDictionary, forKey: "y")
     self.width.storeIn (dictionary: ioDictionary, forKey: "width")
@@ -858,7 +788,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
     self.holeDiameter.storeIn (dictionary: ioDictionary, forKey: "holeDiameter")
     self.shape.storeIn (dictionary: ioDictionary, forKey: "shape")
     self.side.storeIn (dictionary: ioDictionary, forKey: "side")
-    self.kind.storeIn (dictionary: ioDictionary, forKey: "kind")
   }
 
   //····················································································································
@@ -868,7 +797,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.name.readFrom (dictionary: inDictionary, forKey:"name")
     self.x.readFrom (dictionary: inDictionary, forKey:"x")
     self.y.readFrom (dictionary: inDictionary, forKey:"y")
     self.width.readFrom (dictionary: inDictionary, forKey:"width")
@@ -876,7 +804,15 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
     self.holeDiameter.readFrom (dictionary: inDictionary, forKey:"holeDiameter")
     self.shape.readFrom (dictionary: inDictionary, forKey:"shape")
     self.side.readFrom (dictionary: inDictionary, forKey:"side")
-    self.kind.readFrom (dictionary: inDictionary, forKey:"kind")
+  }
+
+  //····················································································································
+  //   resetToOneRelationships
+  //····················································································································
+
+  override func resetToOneRelationships () {
+    super.resetToOneRelationships ()
+    myBoard.setProp (nil)
   }
 
   //····················································································································
@@ -885,6 +821,9 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+    if let object = myBoard.propval {
+      objects.append (object)
+    }
   }
 
   //····················································································································

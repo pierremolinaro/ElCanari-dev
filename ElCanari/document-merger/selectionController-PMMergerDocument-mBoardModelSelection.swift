@@ -44,9 +44,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var displayFrontComponentNames = EBPropertyProxy_Bool () 
   var displayFrontComponentValues = EBPropertyProxy_Bool () 
   var displayFrontPackages = EBPropertyProxy_Bool () 
+  var displayFrontPads = EBPropertyProxy_Bool () 
   var displayFrontTracks = EBPropertyProxy_Bool () 
   var displayHoles = EBPropertyProxy_Bool () 
-  var displayPads = EBPropertyProxy_Bool () 
   var frontComponentNameSegments = EBTransientProperty_MergerSegmentArray () 
   var frontComponentNameSegmentsCount = EBTransientProperty_Int () 
   var frontComponentNameSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
@@ -56,6 +56,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var frontPackageSegmentsCount = EBTransientProperty_Int () 
   var frontPackagesSegments = EBTransientProperty_MergerSegmentArray () 
   var frontPackagesSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
+  var frontPads = EBTransientProperty_MergerPadArray () 
+  var frontPadsForDisplay = EBTransientProperty_MergerPadArray () 
   var frontTrackSegments = EBTransientProperty_MergerSegmentArray () 
   var frontTrackSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
   var frontTracksSegmentsCount = EBTransientProperty_Int () 
@@ -100,9 +102,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_displayFrontComponentNames (model: model)
     bind_property_displayFrontComponentValues (model: model)
     bind_property_displayFrontPackages (model: model)
+    bind_property_displayFrontPads (model: model)
     bind_property_displayFrontTracks (model: model)
     bind_property_displayHoles (model: model)
-    bind_property_displayPads (model: model)
     bind_property_frontComponentNameSegments (model: model)
     bind_property_frontComponentNameSegmentsCount (model: model)
     bind_property_frontComponentNameSegmentsForDisplay (model: model)
@@ -112,6 +114,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_frontPackageSegmentsCount (model: model)
     bind_property_frontPackagesSegments (model: model)
     bind_property_frontPackagesSegmentsForDisplay (model: model)
+    bind_property_frontPads (model: model)
+    bind_property_frontPadsForDisplay (model: model)
     bind_property_frontTrackSegments (model: model)
     bind_property_frontTrackSegmentsForDisplay (model: model)
     bind_property_frontTracksSegmentsCount (model: model)
@@ -280,6 +284,14 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       valueExplorer:&self.displayFrontPackages.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "displayFrontPads",
+      idx:self.displayFrontPads.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.displayFrontPads.mObserverExplorer,
+      valueExplorer:&self.displayFrontPads.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "displayFrontTracks",
       idx:self.displayFrontTracks.mEasyBindingsObjectIndex,
       y:&y,
@@ -294,14 +306,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       view:view,
       observerExplorer:&self.displayHoles.mObserverExplorer,
       valueExplorer:&self.displayHoles.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "displayPads",
-      idx:self.displayPads.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.displayPads.mObserverExplorer,
-      valueExplorer:&self.displayPads.mValueExplorer
     )
     createEntryForPropertyNamed (
       "horizontalFlip",
@@ -1958,6 +1962,76 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_displayFrontPads (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_displayFrontPads (self.displayFrontPads)
+    self.displayFrontPads.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.displayFrontPads.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    self.displayFrontPads.writeModelFunction = { (inValue : Bool) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.displayFrontPads.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.displayFrontPads.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.displayFrontPads.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_displayFrontTracks (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_displayFrontTracks (self.displayFrontTracks)
     self.displayFrontTracks.readModelFunction = {
@@ -2084,76 +2158,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         case .singleSelection (let v) :
           for object in v {
             let result = object.displayHoles.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_displayPads (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_displayPads (self.displayPads)
-    self.displayPads.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          var s = Set<Bool> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.displayPads.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
-              isMultipleSelection = true
-            case .singleSelection (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multipleSelection
-          }else if s.count == 0 {
-            return .noSelection
-          }else if s.count == 1 {
-            return .singleSelection (s.first!)
-          }else{
-            return .multipleSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-    self.displayPads.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .noSelection, .multipleSelection :
-          break
-        case .singleSelection (let v) :
-          for object in v {
-            object.displayPads.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.displayPads.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .noSelection, .multipleSelection :
-          return false
-        case .singleSelection (let v) :
-          for object in v {
-            let result = object.displayPads.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -2502,6 +2506,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.frontPackagesSegmentsForDisplay.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontPads (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontPads (self.frontPads)
+    self.frontPads.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerPadArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontPads.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontPadsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontPadsForDisplay (self.frontPadsForDisplay)
+    self.frontPadsForDisplay.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerPadArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontPadsForDisplay.prop {
             case .noSelection :
               return .noSelection
             case .multipleSelection :
@@ -3127,6 +3211,11 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.displayFrontPackages.writeModelFunction = nil 
     self.displayFrontPackages.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayFrontPackages (self.displayFrontPackages)
+  //--- displayFrontPads
+    self.displayFrontPads.readModelFunction = nil 
+    self.displayFrontPads.writeModelFunction = nil 
+    self.displayFrontPads.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_displayFrontPads (self.displayFrontPads)
   //--- displayFrontTracks
     self.displayFrontTracks.readModelFunction = nil 
     self.displayFrontTracks.writeModelFunction = nil 
@@ -3137,11 +3226,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.displayHoles.writeModelFunction = nil 
     self.displayHoles.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayHoles (self.displayHoles)
-  //--- displayPads
-    self.displayPads.readModelFunction = nil 
-    self.displayPads.writeModelFunction = nil 
-    self.displayPads.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_displayPads (self.displayPads)
   //--- frontComponentNameSegments
     self.frontComponentNameSegments.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments)
@@ -3169,6 +3253,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- frontPackagesSegmentsForDisplay
     self.frontPackagesSegmentsForDisplay.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontPackagesSegmentsForDisplay (self.frontPackagesSegmentsForDisplay)
+  //--- frontPads
+    self.frontPads.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontPads (self.frontPads)
+  //--- frontPadsForDisplay
+    self.frontPadsForDisplay.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontPadsForDisplay (self.frontPadsForDisplay)
   //--- frontTrackSegments
     self.frontTrackSegments.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontTrackSegments (self.frontTrackSegments)

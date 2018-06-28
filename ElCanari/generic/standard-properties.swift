@@ -1226,6 +1226,15 @@ typealias EBReadOnlyPropertyArray_MergerBoardLimits  = EBReadOnlyClassProperty <
 typealias EBTransientPropertyArray_MergerBoardLimits = EBTransientClassProperty <[MergerBoardLimits]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class MergerPadArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_MergerPadArray  = EBReadOnlyClassProperty <MergerPadArray>
+typealias EBTransientProperty_MergerPadArray = EBTransientClassProperty <MergerPadArray>
+typealias EBReadOnlyPropertyArray_MergerPadArray  = EBReadOnlyClassProperty <[MergerPadArray]>
+typealias EBTransientPropertyArray_MergerPadArray = EBTransientClassProperty <[MergerPadArray]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

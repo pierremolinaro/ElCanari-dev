@@ -9,13 +9,7 @@ enum PadShape {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum PadSide {
-  traversing, surface
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum PadKind {
-  master, slave
+  traversing, front, back
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -23,6 +17,7 @@ enum PadKind {
 transient property class MergerViaShapeArray ;
 transient property class MergerSegmentArray ;
 transient property class MergerBoardLimits ;
+transient property class MergerPadArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -41,12 +36,14 @@ binding CanariBoardModelView $backComponentValues : transient MergerSegmentArray
 binding CanariBoardModelView $frontPackages : transient MergerSegmentArray ;
 binding CanariBoardModelView $backPackages : transient MergerSegmentArray ;
 binding CanariBoardModelView $boardLimits : transient MergerBoardLimits ;
+binding CanariBoardModelView $frontPads : transient MergerPadArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelPadEntity {
+  toOne BoardModelEntity myBoard inverse toMany pads ;
 
-  property String name default "" ;
+#  property String name default "" ;
   property Int x default 0 ;
   property Int y default 0 ;
   property Int width default 0 ;
@@ -54,7 +51,6 @@ entity BoardModelPadEntity {
   property Int holeDiameter default 0 ;
   property PadShape shape default rectangular ;
   property PadSide side default traversing ;
-  property PadKind kind default master ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -181,13 +177,25 @@ entity BoardModelEntity {
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
 
-  property Bool displayPads default yes ;
   property Bool displayHoles default yes ;
   
   copy transient Int viaCount : self.vias.count ;
   
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter, self.vias.all.padDiameter ;
+
+#--- Pads
+  toMany BoardModelPadEntity pads inverse toOne myBoard ;
+
+#--- Front pads
+  property Bool displayFrontPads default yes ;
+
+  transient MergerPadArray frontPads
+    dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
+                self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side ;
+
+  transient MergerPadArray frontPadsForDisplay dependsFrom self.displayFrontPads, self.frontPads ;
+
 
 #--- Board limits
   property Int boardLimitWidth default 0 ;
@@ -406,12 +414,12 @@ document PMMergerDocument root MergerRootEntity {
     $frontPackages mBoardModelSelection.frontPackagesSegmentsForDisplay
     $backPackages mBoardModelSelection.backPackagesSegmentsForDisplay
     $boardLimits mBoardModelSelection.boardLimits
+    $frontPads mBoardModelSelection.frontPadsForDisplay
   ;
   
   outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
   outlet EBSwitch mVerticalFlipSwitch $value mBoardModelSelection.verticalFlip ;
   
-  outlet EBCheckedMenuItem mDisplayPads $checked mBoardModelSelection.displayPads ;
   outlet EBCheckedMenuItem mDisplayHoles $checked mBoardModelSelection.displayHoles ;
   outlet EBCheckedMenuItem mDisplayFrontComponentNames $checked mBoardModelSelection.displayFrontComponentNames ;
   outlet EBCheckedMenuItem mDisplayBackComponentNames $checked mBoardModelSelection.displayBackComponentNames ;
@@ -422,6 +430,7 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBCheckedMenuItem mDisplayFrontPackages $checked mBoardModelSelection.displayFrontPackages ;
   outlet EBCheckedMenuItem mDisplayBackPackages $checked mBoardModelSelection.displayBackPackages ;
   outlet EBCheckedMenuItem mDisplayBoardLimits $checked mBoardModelSelection.displayBoardLimits ;
+  outlet EBCheckedMenuItem mDisplayFrontPads $checked mBoardModelSelection.displayFrontPads ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

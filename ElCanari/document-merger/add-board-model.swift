@@ -283,45 +283,36 @@ extension PMMergerDocument {
 //        segment.y2.setProp (ints [3])
 //        package.componentValueSegments.add (segment)
 //      }
-//    //--- Pads
-//      let padDictArray = dictArray (fromDict: packageDict, key: "PADS", &errorArray)
-//      for padDict in padDictArray {
-//        let pad = BoardModelPadEntity (managedObjectContext:self.managedObjectContext())
-//        pad.name.setProp (string (fromDict: padDict, key: "QUALIFIED-NAME", &errorArray))
-//        pad.x.setProp (int (fromDict: padDict, key: "X", &errorArray))
-//        pad.y.setProp (int (fromDict: padDict, key: "Y", &errorArray))
-//        pad.width.setProp (int (fromDict: padDict, key: "WIDTH", &errorArray))
-//        pad.height.setProp (int (fromDict: padDict, key: "HEIGHT", &errorArray))
-//        pad.holeDiameter.setProp (int (fromDict: padDict, key: "HOLE-DIAMETER", &errorArray))
-//        let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
-//        if shapeString == "RECT" {
-//          pad.shape.setProp (.rectangular)
-//        }else if shapeString == "ROUND" {
-//          pad.shape.setProp (.round)
-//        }else{
-//          errorArray.append ("Invalid pad shape \"\(shapeString)\".")
-//        }
-//        let sideString = string (fromDict: padDict, key: "SIDE", &errorArray)
-//        if sideString == "TRAVERSING" {
-//          pad.side.setProp (.traversing)
-//        }else if sideString == "SURFACE" {
-//          pad.side.setProp (.surface)
-//        }else{
-//          errorArray.append ("Invalid pad side \"\(sideString)\".")
-//        }
-//        let kindString = string (fromDict: padDict, key: "KIND", &errorArray)
-//        if kindString == "MASTER" {
-//          pad.kind.setProp (.master)
-//        }else if kindString == "SLAVE" {
-//          pad.kind.setProp (.slave)
-//        }else{
-//          errorArray.append ("Invalid pad kind \"\(kindString)\".")
-//        }
-//        package.pads.add (pad)
-//      }
-//    //---
-//      boardModel.packages.add (package)
-//    }
+  //--- Pads
+    let padDictArray = dictArray (fromDict: boardArchiveDict, key: "PADS", &errorArray)
+    for padDict in padDictArray {
+      let pad = BoardModelPadEntity (managedObjectContext:self.managedObjectContext())
+//      pad.name.setProp (string (fromDict: padDict, key: "QUALIFIED-NAME", &errorArray))
+      pad.x.setProp (int (fromDict: padDict, key: "X", &errorArray))
+      pad.y.setProp (int (fromDict: padDict, key: "Y", &errorArray))
+      pad.width.setProp (int (fromDict: padDict, key: "WIDTH", &errorArray))
+      pad.height.setProp (int (fromDict: padDict, key: "HEIGHT", &errorArray))
+      pad.holeDiameter.setProp (int (fromDict: padDict, key: "HOLE-DIAMETER", &errorArray))
+      let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
+      if shapeString == "RECT" {
+        pad.shape.setProp (.rectangular)
+      }else if shapeString == "ROUND" {
+        pad.shape.setProp (.round)
+      }else{
+        errorArray.append ("Invalid pad shape \"\(shapeString)\".")
+      }
+      let sideString = string (fromDict: padDict, key: "SIDE", &errorArray)
+      if sideString == "TRAVERSING" {
+        pad.side.setProp (.traversing)
+      }else if sideString == "FRONT" {
+        pad.side.setProp (.front)
+      }else if sideString == "BACK" {
+        pad.side.setProp (.back)
+      }else{
+        errorArray.append ("Invalid pad side \"\(sideString)\".")
+      }
+      boardModel.pads.add (pad)
+    }
   //--- Dictionary import ok ?
     if errorArray.count == 0 { // Ok
       self.rootObject.boardModels.add (boardModel)

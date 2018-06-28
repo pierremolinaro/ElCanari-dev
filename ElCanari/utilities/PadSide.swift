@@ -8,13 +8,15 @@ import Cocoa
 
 enum PadSide : Int {
   case traversing = 0
-  case surface = 1
+  case front = 1
+  case back = 2
 
 
   func descriptionForExplorer () -> String {
     switch self {
       case .traversing : return "traversing" // 0
-      case .surface : return "surface" // 1
+      case .front : return "front" // 1
+      case .back : return "back" // 2
     }
   }
 
@@ -38,7 +40,7 @@ class EBReadOnlyProperty_PadSide : EBAbstractProperty, EBReadOnlyEnumPropertyPro
 
   func rawValue () -> Int { return PadSide.traversing.rawValue }  // Abstract method
 
-  func count () -> Int { return 2 }
+  func count () -> Int { return 3 }
 
   //····················································································································
 
