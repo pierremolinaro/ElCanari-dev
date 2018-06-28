@@ -15,10 +15,10 @@ import Cocoa
   @IBOutlet var addBoardModelButton : EBButton?
   @IBOutlet var mArtworkNameTextField : EBTextObserverField?
   @IBOutlet var mBackComponentNameSegmentCountTextField : EBIntObserverField?
+  @IBOutlet var mBackPackagesCountTextField : EBIntObserverField?
   @IBOutlet var mBackTrackSegmentCountTextField : EBIntObserverField?
   @IBOutlet var mBoardHeightTextField : CanariDimensionTextField?
   @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton?
-  @IBOutlet var mBoardModelComponentCountTextField : EBIntObserverField?
   @IBOutlet var mBoardModelNameTextField : EBTextObserverField?
   @IBOutlet var mBoardModelTableView : EBTableView?
   @IBOutlet var mBoardModelViaCountTextField : EBIntObserverField?
@@ -27,13 +27,16 @@ import Cocoa
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mDisplayBackComponentNames : EBCheckedMenuItem?
   @IBOutlet var mDisplayBackComponentValues : EBCheckedMenuItem?
+  @IBOutlet var mDisplayBackPackages : EBCheckedMenuItem?
   @IBOutlet var mDisplayBackTracks : EBCheckedMenuItem?
   @IBOutlet var mDisplayFrontComponentNames : EBCheckedMenuItem?
   @IBOutlet var mDisplayFrontComponentValues : EBCheckedMenuItem?
+  @IBOutlet var mDisplayFrontPackages : EBCheckedMenuItem?
   @IBOutlet var mDisplayFrontTracks : EBCheckedMenuItem?
   @IBOutlet var mDisplayHoles : EBCheckedMenuItem?
   @IBOutlet var mDisplayPads : EBCheckedMenuItem?
   @IBOutlet var mFrontComponentNameSegmentCountTextField : EBIntObserverField?
+  @IBOutlet var mFrontPackagesCountTextField : EBIntObserverField?
   @IBOutlet var mFrontTrackSegmentCountTextField : EBIntObserverField?
   @IBOutlet var mHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
@@ -136,6 +139,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mBackComponentNameSegmentCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
     }
+    if nil == mBackPackagesCountTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mBackPackagesCountTextField' outlet is nil") ;
+//    }else if !mBackPackagesCountTextField!.isKindOfClass (EBIntObserverField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mBackPackagesCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
+    }
     if nil == mBackTrackSegmentCountTextField {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -162,15 +174,6 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mBoardHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
-    }
-    if nil == mBoardModelComponentCountTextField {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mBoardModelComponentCountTextField' outlet is nil") ;
-//    }else if !mBoardModelComponentCountTextField!.isKindOfClass (EBIntObserverField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mBoardModelComponentCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
     }
     if nil == mBoardModelNameTextField {
       presentErrorWindow (file: #file,
@@ -244,6 +247,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mDisplayBackComponentValues' outlet is not an instance of 'EBCheckedMenuItem'") ;
     }
+    if nil == mDisplayBackPackages {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDisplayBackPackages' outlet is nil") ;
+//    }else if !mDisplayBackPackages!.isKindOfClass (EBCheckedMenuItem) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDisplayBackPackages' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
     if nil == mDisplayBackTracks {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -270,6 +282,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mDisplayFrontComponentValues' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
+    if nil == mDisplayFrontPackages {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDisplayFrontPackages' outlet is nil") ;
+//    }else if !mDisplayFrontPackages!.isKindOfClass (EBCheckedMenuItem) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDisplayFrontPackages' outlet is not an instance of 'EBCheckedMenuItem'") ;
     }
     if nil == mDisplayFrontTracks {
       presentErrorWindow (file: #file,
@@ -306,6 +327,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mFrontComponentNameSegmentCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
+    }
+    if nil == mFrontPackagesCountTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mFrontPackagesCountTextField' outlet is nil") ;
+//    }else if !mFrontPackagesCountTextField!.isKindOfClass (EBIntObserverField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mFrontPackagesCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
     }
     if nil == mFrontTrackSegmentCountTextField {
       presentErrorWindow (file: #file,
@@ -368,21 +398,25 @@ import Cocoa
     mBoardHeightUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.boardHeightUnit, file: #file, line: #line)
     mBoardHeightTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.boardHeight, self.mBoardModelSelection.boardHeightUnit, file: #file, line: #line)
     mBoardModelViaCountTextField?.bind_valueObserver (self.mBoardModelSelection.viaCount, file: #file, line: #line, autoFormatter:true)
-    mFrontComponentNameSegmentCountTextField?.bind_valueObserver (self.mBoardModelSelection.frontComponentNameSegmentsCount, file: #file, line: #line, autoFormatter:true)
+    mFrontPackagesCountTextField?.bind_valueObserver (self.mBoardModelSelection.frontPackageSegmentsCount, file: #file, line: #line, autoFormatter:true)
+    mBackPackagesCountTextField?.bind_valueObserver (self.mBoardModelSelection.backPackageSegmentsCount, file: #file, line: #line, autoFormatter:true)
     mFrontTrackSegmentCountTextField?.bind_valueObserver (self.mBoardModelSelection.frontTracksSegmentsCount, file: #file, line: #line, autoFormatter:true)
     mBackTrackSegmentCountTextField?.bind_valueObserver (self.mBoardModelSelection.backTracksSegmentsCount, file: #file, line: #line, autoFormatter:true)
     mBackComponentNameSegmentCountTextField?.bind_valueObserver (self.mBoardModelSelection.backComponentNameSegmentsCount, file: #file, line: #line, autoFormatter:true)
+    mFrontComponentNameSegmentCountTextField?.bind_valueObserver (self.mBoardModelSelection.frontComponentNameSegmentsCount, file: #file, line: #line, autoFormatter:true)
     mBoardModelView?.bind_size (self.mBoardModelSelection.boardWidth, self.mBoardModelSelection.boardHeight, file: #file, line: #line)
     mBoardModelView?.bind_zoom (self.mBoardModelSelection.zoom, file: #file, line: #line)
     mBoardModelView?.bind_horizontalFlip (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mBoardModelView?.bind_verticalFlip (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
     mBoardModelView?.bind_vias (self.mBoardModelSelection.viaShapes, file: #file, line: #line)
-    mBoardModelView?.bind_frontComponentNameSegments (self.mBoardModelSelection.frontComponentNameSegmentsForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_frontComponentNames (self.mBoardModelSelection.frontComponentNameSegmentsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_frontComponentValues (self.mBoardModelSelection.frontComponentValuesForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_backComponentNameSegments (self.mBoardModelSelection.backComponentNameSegmentsForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_backComponentNames (self.mBoardModelSelection.backComponentNameSegmentsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_backComponentValues (self.mBoardModelSelection.backComponentValuesForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_frontTracks (self.mBoardModelSelection.frontTrackSegmentsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_backTracks (self.mBoardModelSelection.backTrackSegmentsForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_frontPackages (self.mBoardModelSelection.frontPackagesSegmentsForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_backPackages (self.mBoardModelSelection.backPackagesSegmentsForDisplay, file: #file, line: #line)
     mHorizontalFlipSwitch?.bind_value (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mVerticalFlipSwitch?.bind_value (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
     mDisplayPads?.bind_checked (self.mBoardModelSelection.displayPads, file: #file, line: #line)
@@ -393,6 +427,8 @@ import Cocoa
     mDisplayBackTracks?.bind_checked (self.mBoardModelSelection.displayBackTracks, file: #file, line: #line)
     mDisplayFrontComponentValues?.bind_checked (self.mBoardModelSelection.displayFrontComponentValues, file: #file, line: #line)
     mDisplayBackComponentValues?.bind_checked (self.mBoardModelSelection.displayBackComponentValues, file: #file, line: #line)
+    mDisplayFrontPackages?.bind_checked (self.mBoardModelSelection.displayFrontPackages, file: #file, line: #line)
+    mDisplayBackPackages?.bind_checked (self.mBoardModelSelection.displayBackPackages, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -416,21 +452,25 @@ import Cocoa
     mBoardHeightUnitPopUp?.unbind_selectedTag ()
     mBoardHeightTextField?.unbind_dimensionAndUnit ()
     mBoardModelViaCountTextField?.unbind_valueObserver ()
-    mFrontComponentNameSegmentCountTextField?.unbind_valueObserver ()
+    mFrontPackagesCountTextField?.unbind_valueObserver ()
+    mBackPackagesCountTextField?.unbind_valueObserver ()
     mFrontTrackSegmentCountTextField?.unbind_valueObserver ()
     mBackTrackSegmentCountTextField?.unbind_valueObserver ()
     mBackComponentNameSegmentCountTextField?.unbind_valueObserver ()
+    mFrontComponentNameSegmentCountTextField?.unbind_valueObserver ()
     mBoardModelView?.unbind_size ()
     mBoardModelView?.unbind_zoom ()
     mBoardModelView?.unbind_horizontalFlip ()
     mBoardModelView?.unbind_verticalFlip ()
     mBoardModelView?.unbind_vias ()
-    mBoardModelView?.unbind_frontComponentNameSegments ()
+    mBoardModelView?.unbind_frontComponentNames ()
     mBoardModelView?.unbind_frontComponentValues ()
-    mBoardModelView?.unbind_backComponentNameSegments ()
+    mBoardModelView?.unbind_backComponentNames ()
     mBoardModelView?.unbind_backComponentValues ()
     mBoardModelView?.unbind_frontTracks ()
     mBoardModelView?.unbind_backTracks ()
+    mBoardModelView?.unbind_frontPackages ()
+    mBoardModelView?.unbind_backPackages ()
     mHorizontalFlipSwitch?.unbind_value ()
     mVerticalFlipSwitch?.unbind_value ()
     mDisplayPads?.unbind_checked ()
@@ -441,6 +481,8 @@ import Cocoa
     mDisplayBackTracks?.unbind_checked ()
     mDisplayFrontComponentValues?.unbind_checked ()
     mDisplayBackComponentValues?.unbind_checked ()
+    mDisplayFrontPackages?.unbind_checked ()
+    mDisplayBackPackages?.unbind_checked ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers

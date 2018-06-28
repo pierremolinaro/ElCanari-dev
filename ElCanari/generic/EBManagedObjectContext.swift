@@ -189,6 +189,10 @@ class EBManagedObjectContext : EBObject {
       result = BoardModelViaEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelFrontTrackSegmentEntity" {
       result = BoardModelFrontTrackSegmentEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModelFrontPackageEntity" {
+      result = BoardModelFrontPackageEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModelBackPackageEntity" {
+      result = BoardModelBackPackageEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelBackTrackSegmentEntity" {
       result = BoardModelBackTrackSegmentEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelEntity" {

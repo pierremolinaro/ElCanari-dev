@@ -31,12 +31,14 @@ binding CanariBoardModelView $zoom : property Int ;
 binding CanariBoardModelView $horizontalFlip : transient Bool ;
 binding CanariBoardModelView $verticalFlip : transient Bool ;
 binding CanariBoardModelView $vias : transient MergerViaShapeArray ;
-binding CanariBoardModelView $frontComponentNameSegments : transient MergerSegmentArray ;
-binding CanariBoardModelView $backComponentNameSegments : transient MergerSegmentArray ;
+binding CanariBoardModelView $frontComponentNames : transient MergerSegmentArray ;
+binding CanariBoardModelView $backComponentNames : transient MergerSegmentArray ;
 binding CanariBoardModelView $frontTracks : transient MergerSegmentArray ;
 binding CanariBoardModelView $backTracks : transient MergerSegmentArray ;
 binding CanariBoardModelView $frontComponentValues : transient MergerSegmentArray ;
 binding CanariBoardModelView $backComponentValues : transient MergerSegmentArray ;
+binding CanariBoardModelView $frontPackages : transient MergerSegmentArray ;
+binding CanariBoardModelView $backPackages : transient MergerSegmentArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -117,6 +119,30 @@ entity BoardModelViaEntity {
 
 entity BoardModelFrontTrackSegmentEntity {
   toOne BoardModelEntity myModel inverse toMany frontTracks ;
+
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+  property Int width default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelFrontPackageEntity {
+  toOne BoardModelEntity myModel inverse toMany frontPackages ;
+
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+  property Int width default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelBackPackageEntity {
+  toOne BoardModelEntity myModel inverse toMany backPackages ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -257,6 +283,38 @@ entity BoardModelEntity {
   transient MergerSegmentArray frontTrackSegmentsForDisplay dependsFrom
      self.displayFrontTracks, self.frontTrackSegments
   ;  
+
+#--- Front packages
+  toMany BoardModelFrontPackageEntity frontPackages inverse toOne myModel ;
+  property Bool displayFrontPackages default yes ;
+
+  transient MergerSegmentArray frontPackagesSegments dependsFrom
+    self.frontPackages.all.x1, self.frontPackages.all.y1,
+    self.frontPackages.all.x2, self.frontPackages.all.y2,
+    self.frontPackages.all.width
+  ;
+
+  transient Int frontPackageSegmentsCount dependsFrom self.frontPackagesSegments ;
+
+  transient MergerSegmentArray frontPackagesSegmentsForDisplay dependsFrom
+     self.displayFrontPackages, self.frontPackagesSegments
+  ;  
+
+#--- Back packages
+  toMany BoardModelBackPackageEntity backPackages inverse toOne myModel ;
+  property Bool displayBackPackages default yes ;
+
+  transient MergerSegmentArray backPackagesSegments dependsFrom
+    self.backPackages.all.x1, self.backPackages.all.y1,
+    self.backPackages.all.x2, self.backPackages.all.y2,
+    self.backPackages.all.width
+  ;
+
+  transient Int backPackageSegmentsCount dependsFrom self.backPackagesSegments ;
+
+  transient MergerSegmentArray backPackagesSegmentsForDisplay dependsFrom
+     self.displayBackPackages, self.backPackagesSegments
+  ;  
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -304,11 +362,11 @@ document PMMergerDocument root MergerRootEntity {
 #--- Board model via count
   outlet EBIntObserverField mBoardModelViaCountTextField $valueObserver mBoardModelSelection.viaCount {autoFormatter : yes} ;
 
-#--- Board model component count
-  outlet EBIntObserverField mBoardModelComponentCountTextField ; # $valueObserver mBoardModelSelection.componentCount {autoFormatter : yes} ;
+#--- Front packages segment count
+  outlet EBIntObserverField mFrontPackagesCountTextField $valueObserver mBoardModelSelection.frontPackageSegmentsCount {autoFormatter:yes} ;
 
-#--- Front component names segment count
-  outlet EBIntObserverField mFrontComponentNameSegmentCountTextField $valueObserver mBoardModelSelection.frontComponentNameSegmentsCount {autoFormatter:yes} ;
+#--- Back packages segment count
+  outlet EBIntObserverField mBackPackagesCountTextField $valueObserver mBoardModelSelection.backPackageSegmentsCount {autoFormatter:yes} ;
 
 #--- Front track segment count
   outlet EBIntObserverField mFrontTrackSegmentCountTextField $valueObserver mBoardModelSelection.frontTracksSegmentsCount {autoFormatter:yes} ;
@@ -319,6 +377,9 @@ document PMMergerDocument root MergerRootEntity {
 #--- Back component names segment count
   outlet EBIntObserverField mBackComponentNameSegmentCountTextField $valueObserver mBoardModelSelection.backComponentNameSegmentsCount {autoFormatter:yes} ;
 
+#--- Front component names segment count
+  outlet EBIntObserverField mFrontComponentNameSegmentCountTextField $valueObserver mBoardModelSelection.frontComponentNameSegmentsCount {autoFormatter:yes} ;
+
 #--- Model view
   outlet CanariBoardModelView mBoardModelView
     $size mBoardModelSelection.boardWidth, mBoardModelSelection.boardHeight
@@ -326,12 +387,14 @@ document PMMergerDocument root MergerRootEntity {
     $horizontalFlip mBoardModelSelection.horizontalFlip
     $verticalFlip mBoardModelSelection.verticalFlip
     $vias mBoardModelSelection.viaShapes
-    $frontComponentNameSegments mBoardModelSelection.frontComponentNameSegmentsForDisplay
+    $frontComponentNames mBoardModelSelection.frontComponentNameSegmentsForDisplay
     $frontComponentValues mBoardModelSelection.frontComponentValuesForDisplay
-    $backComponentNameSegments mBoardModelSelection.backComponentNameSegmentsForDisplay
+    $backComponentNames mBoardModelSelection.backComponentNameSegmentsForDisplay
     $backComponentValues mBoardModelSelection.backComponentValuesForDisplay
     $frontTracks mBoardModelSelection.frontTrackSegmentsForDisplay
     $backTracks mBoardModelSelection.backTrackSegmentsForDisplay
+    $frontPackages mBoardModelSelection.frontPackagesSegmentsForDisplay
+    $backPackages mBoardModelSelection.backPackagesSegmentsForDisplay
   ;
   
   outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
@@ -345,6 +408,8 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBCheckedMenuItem mDisplayBackTracks $checked mBoardModelSelection.displayBackTracks ;
   outlet EBCheckedMenuItem mDisplayFrontComponentValues $checked mBoardModelSelection.displayFrontComponentValues ;
   outlet EBCheckedMenuItem mDisplayBackComponentValues $checked mBoardModelSelection.displayBackComponentValues ;
+  outlet EBCheckedMenuItem mDisplayFrontPackages $checked mBoardModelSelection.displayFrontPackages ;
+  outlet EBCheckedMenuItem mDisplayBackPackages $checked mBoardModelSelection.displayBackPackages ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

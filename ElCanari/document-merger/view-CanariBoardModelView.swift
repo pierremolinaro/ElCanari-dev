@@ -25,6 +25,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mBackComponentNamesLayer = CALayer ()
    fileprivate var mFrontComponentValuesLayer = CALayer ()
    fileprivate var mBackComponentValuesLayer = CALayer ()
+   fileprivate var mFrontPackagesLayer = CALayer ()
+   fileprivate var mBackPackagesLayer = CALayer ()
 
   //····················································································································
   //  awakeFromNib
@@ -35,10 +37,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.addSublayer (mBackgroundLayer)
     self.layer?.addSublayer (mNoModelTextLayer)
     self.layer?.addSublayer (mViaPadLayer)
+    self.layer?.addSublayer (mBackPackagesLayer)
     self.layer?.addSublayer (mBackComponentNamesLayer)
     self.layer?.addSublayer (mBackComponentValuesLayer)
     self.layer?.addSublayer (mBackTracksLayer)
     self.layer?.addSublayer (mFrontTracksLayer)
+    self.layer?.addSublayer (mFrontPackagesLayer)
     self.layer?.addSublayer (mFrontComponentValuesLayer)
     self.layer?.addSublayer (mFrontComponentNamesLayer)
     self.layer?.addSublayer (mViaHoleLayer)
@@ -104,62 +108,73 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //    Front component names
   //····················································································································
 
-  private var mFrontComponentNamesController : Controller_CanariBoardModelView_frontComponentNameSegments?
+  private var mFrontComponentNamesController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
 
-  func bind_frontComponentNameSegments (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
-    mFrontComponentNamesController = Controller_CanariBoardModelView_frontComponentNameSegments (segments:segments, outlet:self, file:file, line:line)
+  func bind_frontComponentNames (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mFrontComponentNamesController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.black.cgColor)
+          components.append (shape)
+        }
+        self.mFrontComponentNamesLayer.sublayers = components
+      }
+    )
   }
 
-  func unbind_frontComponentNameSegments () {
+  func unbind_frontComponentNames () {
     mFrontComponentNamesController?.unregister ()
     mFrontComponentNamesController = nil
-  }
-
-  //····················································································································
-
-  func setFrontComponentNameSegments (_ inSegments : [MergerSegment]) {
-    var frontComponentNamesLayerComponents = [CAShapeLayer] ()
-    for segment in inSegments {
-      let shape = segment.segmentShape (color:NSColor.black.cgColor)
-      frontComponentNamesLayerComponents.append (shape)
-    }
-    mFrontComponentNamesLayer.sublayers = frontComponentNamesLayerComponents
   }
 
   //····················································································································
   //    Back component names
   //····················································································································
 
-  private var mBackComponentNamesController : Controller_CanariBoardModelView_backComponentNameSegments?
+  private var mBackComponentNamesController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
 
-  func bind_backComponentNameSegments (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
-    mBackComponentNamesController = Controller_CanariBoardModelView_backComponentNameSegments (segments:segments, outlet:self, file:file, line:line)
+  func bind_backComponentNames (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mBackComponentNamesController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.black.cgColor)
+          components.append (shape)
+        }
+        self.mBackComponentNamesLayer.sublayers = components
+      }
+    )
   }
 
-  func unbind_backComponentNameSegments () {
+  func unbind_backComponentNames () {
     mBackComponentNamesController?.unregister ()
     mBackComponentNamesController = nil
-  }
-
-  //····················································································································
-
-  func setBackComponentNameSegments (_ inSegments : [MergerSegment]) {
-    var backComponentNamesLayerComponents = [CAShapeLayer] ()
-    for segment in inSegments {
-      let shape = segment.segmentShape (color:NSColor.black.cgColor)
-      backComponentNamesLayerComponents.append (shape)
-    }
-    mBackComponentNamesLayer.sublayers = backComponentNamesLayerComponents
   }
 
   //····················································································································
   //    Front tracks
   //····················································································································
 
-  private var mFrontTracksController : Controller_CanariBoardModelView_frontTracks?
+  private var mFrontTracksController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
 
   func bind_frontTracks (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
-    mFrontTracksController = Controller_CanariBoardModelView_frontTracks (segments:segments, outlet:self, file:file, line:line)
+    mFrontTracksController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.black.cgColor)
+          components.append (shape)
+        }
+        self.mFrontTracksLayer.sublayers = components
+      }
+    )
   }
 
   func unbind_frontTracks () {
@@ -168,25 +183,24 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
-
-  func setFrontTracks (_ inSegments : [MergerSegment]) {
-    // NSLog ("setFrontTracks \(inSegments.count)")
-    var frontTracksLayerComponents = [CAShapeLayer] ()
-    for segment in inSegments {
-      let shape = segment.segmentShape (color:NSColor.black.cgColor)
-      frontTracksLayerComponents.append (shape)
-    }
-    mFrontTracksLayer.sublayers = frontTracksLayerComponents
-  }
-
-  //····················································································································
   //    Back tracks
   //····················································································································
 
-  private var mBackTracksController : Controller_CanariBoardModelView_backTracks?
+  private var mBackTracksController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
 
   func bind_backTracks (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
-    mBackTracksController = Controller_CanariBoardModelView_backTracks (segments:segments, outlet:self, file:file, line:line)
+    mBackTracksController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.black.cgColor)
+          components.append (shape)
+        }
+        self.mBackTracksLayer.sublayers = components
+      }
+    )
   }
 
   func unbind_backTracks () {
@@ -195,24 +209,24 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
-
-  func setBackTracks (_ inSegments : [MergerSegment]) {
-    var backTracksLayerComponents = [CAShapeLayer] ()
-    for segment in inSegments {
-      let shape = segment.segmentShape (color:NSColor.black.cgColor)
-      backTracksLayerComponents.append (shape)
-    }
-    mBackTracksLayer.sublayers = backTracksLayerComponents
-  }
-
-  //····················································································································
   //    Front component values
   //····················································································································
 
-  private var mFrontComponentValuesController : Controller_CanariBoardModelView_frontComponentValues?
+  private var mFrontComponentValuesController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
 
   func bind_frontComponentValues (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
-    mFrontComponentValuesController = Controller_CanariBoardModelView_frontComponentValues (segments:segments, outlet:self, file:file, line:line)
+    mFrontComponentValuesController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.black.cgColor)
+          components.append (shape)
+        }
+        self.mFrontComponentValuesLayer.sublayers = components
+      }
+    )
   }
 
   func unbind_frontComponentValues () {
@@ -221,24 +235,24 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
-
-  func setFrontComponentValues (_ inSegments : [MergerSegment]) {
-    var components = [CAShapeLayer] ()
-    for segment in inSegments {
-      let shape = segment.segmentShape (color:NSColor.black.cgColor)
-      components.append (shape)
-    }
-    mFrontComponentValuesLayer.sublayers = components
-  }
-
-  //····················································································································
   //    Back component values
   //····················································································································
 
-  private var mBackComponentValuesController : Controller_CanariBoardModelView_backComponentValues?
+  private var mBackComponentValuesController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
 
   func bind_backComponentValues (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
-    mBackComponentValuesController = Controller_CanariBoardModelView_backComponentValues (segments:segments, outlet:self, file:file, line:line)
+    mBackComponentValuesController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.black.cgColor)
+          components.append (shape)
+        }
+        self.mBackComponentValuesLayer.sublayers = components
+      }
+    )
   }
 
   func unbind_backComponentValues () {
@@ -247,14 +261,55 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
+  //    Front packages
+  //····················································································································
 
-  func setBackComponentValues (_ inSegments : [MergerSegment]) {
-    var components = [CAShapeLayer] ()
-    for segment in inSegments {
-      let shape = segment.segmentShape (color:NSColor.black.cgColor)
-      components.append (shape)
-    }
-    mBackComponentValuesLayer.sublayers = components
+  private var mFrontPackagesController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
+
+  func bind_frontPackages (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mFrontPackagesController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.black.cgColor)
+          components.append (shape)
+        }
+        self.mFrontPackagesLayer.sublayers = components
+      }
+    )
+  }
+
+  func unbind_frontPackages () {
+    mFrontPackagesController?.unregister ()
+    mFrontPackagesController = nil
+  }
+
+  //····················································································································
+  //    Back packages
+  //····················································································································
+
+  private var mBackPackagesController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
+
+  func bind_backPackages (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mBackPackagesController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.black.cgColor)
+          components.append (shape)
+        }
+        self.mBackPackagesLayer.sublayers = components
+      }
+    )
+  }
+
+  func unbind_backPackages () {
+    mBackPackagesController?.unregister ()
+    mBackPackagesController = nil
   }
 
   //····················································································································
@@ -295,19 +350,21 @@ final class Controller_CanariBoardModelView_vias : EBSimpleController {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_frontComponentNameSegments
+//   Controller_CanariBoardModelView_generic_MergerSegmentArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariBoardModelView_frontComponentNameSegments : EBSimpleController {
+final class Controller_CanariBoardModelView_generic_MergerSegmentArray : EBSimpleController {
 
   private let mSegments : EBReadOnlyProperty_MergerSegmentArray
   private let mOutlet : CanariBoardModelView
+  private let mCallBack : ([MergerSegment]) -> Void
 
   //····················································································································
 
-  init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, file : String, line : Int) {
+  init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, callBack inCallBack : @escaping ([MergerSegment]) -> Void) {
     mSegments = segments
     mOutlet = outlet
+    mCallBack = inCallBack
     super.init (observedObjects:[segments], outlet:outlet)
   }
 
@@ -316,182 +373,11 @@ final class Controller_CanariBoardModelView_frontComponentNameSegments : EBSimpl
   override func sendUpdateEvent () {
     switch mSegments.prop {
     case .noSelection :
-      mOutlet.setFrontComponentNameSegments ([])
+      mCallBack ([])
     case .singleSelection (let v) :
-      mOutlet.setFrontComponentNameSegments (v.segmentArray)
+      mCallBack (v.segmentArray)
     case .multipleSelection :
-      mOutlet.setFrontComponentNameSegments ([])
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_backComponentNameSegments
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_backComponentNameSegments : EBSimpleController {
-
-  private let mSegments : EBReadOnlyProperty_MergerSegmentArray
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, file : String, line : Int) {
-    mSegments = segments
-    mOutlet = outlet
-    super.init (observedObjects:[segments], outlet:outlet)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mSegments.prop {
-    case .noSelection :
-      mOutlet.setBackComponentNameSegments ([])
-    case .singleSelection (let v) :
-      mOutlet.setBackComponentNameSegments (v.segmentArray)
-    case .multipleSelection :
-      mOutlet.setBackComponentNameSegments ([])
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_frontTracks
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_frontTracks : EBSimpleController {
-
-  private let mSegments : EBReadOnlyProperty_MergerSegmentArray
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, file : String, line : Int) {
-    mSegments = segments
-    mOutlet = outlet
-    super.init (observedObjects:[segments], outlet:outlet)
-    segments.addEBObserver (self)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mSegments.prop {
-    case .noSelection :
-      mOutlet.setFrontTracks ([])
-    case .singleSelection (let v) :
-      mOutlet.setFrontTracks (v.segmentArray)
-    case .multipleSelection :
-      mOutlet.setFrontTracks ([])
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_backTracks
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_backTracks : EBSimpleController {
-
-  private let mSegments : EBReadOnlyProperty_MergerSegmentArray
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, file : String, line : Int) {
-    mSegments = segments
-    mOutlet = outlet
-    super.init (observedObjects:[segments], outlet:outlet)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mSegments.prop {
-    case .noSelection :
-      mOutlet.setBackTracks ([])
-    case .singleSelection (let v) :
-      mOutlet.setBackTracks (v.segmentArray)
-    case .multipleSelection :
-      mOutlet.setBackTracks ([])
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_frontComponentValues
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_frontComponentValues : EBSimpleController {
-
-  private let mSegments : EBReadOnlyProperty_MergerSegmentArray
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, file : String, line : Int) {
-    mSegments = segments
-    mOutlet = outlet
-    super.init (observedObjects:[segments], outlet:outlet)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mSegments.prop {
-    case .noSelection :
-      mOutlet.setFrontComponentValues ([])
-    case .singleSelection (let v) :
-      mOutlet.setFrontComponentValues (v.segmentArray)
-    case .multipleSelection :
-      mOutlet.setFrontComponentValues ([])
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_backComponentValues
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariBoardModelView_backComponentValues : EBSimpleController {
-
-  private let mSegments : EBReadOnlyProperty_MergerSegmentArray
-  private let mOutlet : CanariBoardModelView
-
-  //····················································································································
-
-  init (segments : EBReadOnlyProperty_MergerSegmentArray, outlet : CanariBoardModelView, file : String, line : Int) {
-    mSegments = segments
-    mOutlet = outlet
-    super.init (observedObjects:[segments], outlet:outlet)
-  }
-
-  //····················································································································
-
-  override func sendUpdateEvent () {
-    switch mSegments.prop {
-    case .noSelection :
-      mOutlet.setBackComponentValues ([])
-    case .singleSelection (let v) :
-      mOutlet.setBackComponentValues (v.segmentArray)
-    case .multipleSelection :
-      mOutlet.setBackComponentValues ([])
+      mCallBack ([])
     }
   }
 

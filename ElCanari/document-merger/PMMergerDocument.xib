@@ -11,10 +11,10 @@
                 <outlet property="addBoardModelButton" destination="2Wu-Dh-CTo" id="Ge9-7X-rm9"/>
                 <outlet property="mArtworkNameTextField" destination="sNV-XY-ihk" id="r4K-hG-ctp"/>
                 <outlet property="mBackComponentNameSegmentCountTextField" destination="b0S-bY-Dax" id="AfN-GZ-7m9"/>
+                <outlet property="mBackPackagesCountTextField" destination="ynz-gZ-sHl" id="1uE-Jb-NtO"/>
                 <outlet property="mBackTrackSegmentCountTextField" destination="rww-0a-nCA" id="4MQ-NF-s2H"/>
                 <outlet property="mBoardHeightTextField" destination="Niu-Df-Kdt" id="uju-ci-Peu"/>
                 <outlet property="mBoardHeightUnitPopUp" destination="8AK-fL-5Og" id="3UW-2z-AG6"/>
-                <outlet property="mBoardModelComponentCountTextField" destination="tmN-ch-vea" id="JST-et-OeC"/>
                 <outlet property="mBoardModelNameTextField" destination="fLN-y6-SSb" id="Uiw-SS-e2d"/>
                 <outlet property="mBoardModelTableView" destination="xkX-ID-Qcd" id="Dth-Vm-y44"/>
                 <outlet property="mBoardModelViaCountTextField" destination="Z0F-iD-sTU" id="n4m-W5-ntw"/>
@@ -23,13 +23,16 @@
                 <outlet property="mBoardWidthUnitPopUp" destination="7ZX-iP-2iR" id="rXk-3g-NOM"/>
                 <outlet property="mDisplayBackComponentNames" destination="fQE-rV-9Dh" id="FkK-dO-4Jo"/>
                 <outlet property="mDisplayBackComponentValues" destination="Sl7-oh-5Ac" id="bwN-mP-oyv"/>
+                <outlet property="mDisplayBackPackages" destination="lyd-kd-91q" id="aCk-cc-xxr"/>
                 <outlet property="mDisplayBackTracks" destination="BOF-iA-8xv" id="1eF-3x-fZv"/>
                 <outlet property="mDisplayFrontComponentNames" destination="iJ1-MN-1kW" id="1nE-An-tqE"/>
                 <outlet property="mDisplayFrontComponentValues" destination="V7f-VR-cUy" id="6uc-ot-Vls"/>
+                <outlet property="mDisplayFrontPackages" destination="if3-8Y-ga1" id="rWt-a5-hbn"/>
                 <outlet property="mDisplayFrontTracks" destination="XhH-C3-HYx" id="vow-3J-qDp"/>
                 <outlet property="mDisplayHoles" destination="3hJ-XX-4bH" id="KJu-An-Ty7"/>
                 <outlet property="mDisplayPads" destination="NTM-ak-cm3" id="xR8-h6-a8c"/>
-                <outlet property="mFrontComponentNameSegmentCountTextField" destination="dpz-lh-SJe" id="9VU-ff-Heh"/>
+                <outlet property="mFrontComponentNameSegmentCountTextField" destination="dpz-lh-SJe" id="jM7-Bq-qAI"/>
+                <outlet property="mFrontPackagesCountTextField" destination="tmN-ch-vea" id="Sub-ka-b9T"/>
                 <outlet property="mFrontTrackSegmentCountTextField" destination="h7n-fB-G8M" id="C7m-hO-QUe"/>
                 <outlet property="mHorizontalFlipSwitch" destination="QbM-bC-weo" id="zTM-uz-j6h"/>
                 <outlet property="mPageSegmentedControl" destination="g6K-IS-SQg" id="vW2-0C-BuI"/>
@@ -354,16 +357,34 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="CZB-pH-bzK">
-                                                <rect key="frame" x="133" y="163" width="108" height="14"/>
+                                                <rect key="frame" x="68" y="163" width="173" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Components:" id="Vax-qT-Rjw">
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Front Packages Segment Count:" id="Vax-qT-Rjw">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="ynz-gZ-sHl" customClass="EBIntObserverField">
+                                                <rect key="frame" x="243" y="141" width="158" height="14"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="dLE-ay-CcM">
+                                                    <font key="font" metaFont="smallSystemBold"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="ppJ-27-Py1">
+                                                <rect key="frame" x="68" y="141" width="171" height="14"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Back Packages Segment Count:" id="3nq-vd-CiJ">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="Ooc-kK-cg1">
-                                                <rect key="frame" x="18" y="139" width="223" height="14"/>
+                                                <rect key="frame" x="16" y="119" width="223" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Front Component Names Segment Count:" id="Ga2-76-7fp">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -372,7 +393,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="dpz-lh-SJe" customClass="EBIntObserverField">
-                                                <rect key="frame" x="245" y="139" width="158" height="14"/>
+                                                <rect key="frame" x="243" y="119" width="158" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="0Xg-B2-iQa">
                                                     <font key="font" metaFont="smallSystemBold"/>
@@ -381,7 +402,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="b0S-bY-Dax" customClass="EBIntObserverField">
-                                                <rect key="frame" x="245" y="117" width="158" height="14"/>
+                                                <rect key="frame" x="243" y="97" width="158" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="gNf-Cv-vZX">
                                                     <font key="font" metaFont="smallSystemBold"/>
@@ -390,7 +411,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="uG6-of-IGl">
-                                                <rect key="frame" x="20" y="117" width="221" height="14"/>
+                                                <rect key="frame" x="18" y="97" width="221" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Back Component Names Segment Count:" id="NOi-yw-pX2">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -399,7 +420,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="h7n-fB-G8M" customClass="EBIntObserverField">
-                                                <rect key="frame" x="243" y="95" width="158" height="14"/>
+                                                <rect key="frame" x="241" y="75" width="158" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Yqe-G6-hrk">
                                                     <font key="font" metaFont="smallSystemBold"/>
@@ -408,7 +429,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="QzL-5b-O9L">
-                                                <rect key="frame" x="87" y="95" width="152" height="14"/>
+                                                <rect key="frame" x="85" y="75" width="152" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Front Track Segment Count:" id="eWr-6e-baF">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -417,7 +438,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="rww-0a-nCA" customClass="EBIntObserverField">
-                                                <rect key="frame" x="243" y="73" width="158" height="14"/>
+                                                <rect key="frame" x="241" y="53" width="158" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Ia6-xb-eUa">
                                                     <font key="font" metaFont="smallSystemBold"/>
@@ -426,7 +447,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="XPu-3x-MFI">
-                                                <rect key="frame" x="89" y="73" width="150" height="14"/>
+                                                <rect key="frame" x="87" y="53" width="150" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Back Track Segment Count:" id="x9p-ak-WKY">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -494,12 +515,14 @@
                                                     <menuItem title="Display" state="on" hidden="YES" id="hc1-1f-Yl9"/>
                                                     <menuItem title="Holes" id="3hJ-XX-4bH" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Pads" id="NTM-ak-cm3" customClass="EBCheckedMenuItem"/>
+                                                    <menuItem title="Front Packages" id="if3-8Y-ga1" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Component Names" id="iJ1-MN-1kW" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Component Values" id="V7f-VR-cUy" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Tracks" id="XhH-C3-HYx" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Back Tracks" id="BOF-iA-8xv" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Back Component Values" id="Sl7-oh-5Ac" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Back Component Names" id="fQE-rV-9Dh" customClass="EBCheckedMenuItem"/>
+                                                    <menuItem title="Back Packages" id="lyd-kd-91q" customClass="EBCheckedMenuItem"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -510,7 +533,7 @@
                     </tabViewItems>
                 </tabView>
             </subviews>
-            <point key="canvasLocation" x="-54" y="-172"/>
+            <point key="canvasLocation" x="-158" y="-179"/>
         </customView>
         <customView id="r18-cj-dWP" userLabel="Page : Board" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="700" height="500"/>
