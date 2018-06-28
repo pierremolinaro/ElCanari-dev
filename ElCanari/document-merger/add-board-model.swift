@@ -195,6 +195,30 @@ extension PMMergerDocument {
       segment.width.setProp (ints [4])
       boardModel.frontComponentNames.add (segment)
     }
+  //--- Front component values
+    let frontComponentValues = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-VALUES-FRONT", &errorArray)
+    for str in frontComponentValues {
+      let segment = BoardModelFrontComponentValueEntity (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1.setProp (ints [0])
+      segment.y1.setProp (ints [1])
+      segment.x2.setProp (ints [2])
+      segment.y2.setProp (ints [3])
+      segment.width.setProp (ints [4])
+      boardModel.frontComponentValues.add (segment)
+    }
+  //--- Back component values
+    let backComponentValues = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-VALUES-BACK", &errorArray)
+    for str in backComponentValues {
+      let segment = BoardModelBackComponentValueEntity (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1.setProp (ints [0])
+      segment.y1.setProp (ints [1])
+      segment.x2.setProp (ints [2])
+      segment.y2.setProp (ints [3])
+      segment.width.setProp (ints [4])
+      boardModel.backComponentValues.add (segment)
+    }
   //--- Packages
 //    let packages = dictArray (fromDict: boardArchiveDict, key: "PACKAGES", &errorArray)
 //    for packageDict in packages {

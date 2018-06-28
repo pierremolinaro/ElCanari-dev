@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="15G18013" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="15G21013" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="101003" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
@@ -102,6 +102,11 @@
                             <menuItem title="New…" id="216">
                                 <menu key="submenu" title="New…" id="217">
                                     <items>
+                                        <menuItem title="New Merger" id="ojD-9l-BBI">
+                                            <connections>
+                                                <action selector="actionNewMergerDocument:" target="212" id="9oe-Ee-HU4"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="New Symbol" id="862">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                         </menuItem>
@@ -115,11 +120,6 @@
                                         <menuItem title="New Artwork" id="866">
                                             <connections>
                                                 <action selector="actionNewArtworkDocument:" target="212" id="6nc-7q-NrO"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="New Merger" id="ojD-9l-BBI">
-                                            <connections>
-                                                <action selector="actionNewMergerDocument:" target="212" id="9oe-Ee-HU4"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -1999,7 +1999,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="3C521B16-5E9D-4EE8-B112-22E3EFB7FAED" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="F6FC1F91-9C40-471C-A5AC-002F7CAEF14D" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2513,7 +2513,7 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="3C521B16-5E9D-4EE8-B112-22E3EFB7FAED" width="20" height="20">
+        <image name="F6FC1F91-9C40-471C-A5AC-002F7CAEF14D" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

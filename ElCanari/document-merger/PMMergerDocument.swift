@@ -26,8 +26,10 @@ import Cocoa
   @IBOutlet var mBoardWidthTextField : CanariDimensionTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mDisplayBackComponentNames : EBCheckedMenuItem?
+  @IBOutlet var mDisplayBackComponentValues : EBCheckedMenuItem?
   @IBOutlet var mDisplayBackTracks : EBCheckedMenuItem?
   @IBOutlet var mDisplayFrontComponentNames : EBCheckedMenuItem?
+  @IBOutlet var mDisplayFrontComponentValues : EBCheckedMenuItem?
   @IBOutlet var mDisplayFrontTracks : EBCheckedMenuItem?
   @IBOutlet var mDisplayHoles : EBCheckedMenuItem?
   @IBOutlet var mDisplayPads : EBCheckedMenuItem?
@@ -233,6 +235,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mDisplayBackComponentNames' outlet is not an instance of 'EBCheckedMenuItem'") ;
     }
+    if nil == mDisplayBackComponentValues {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDisplayBackComponentValues' outlet is nil") ;
+//    }else if !mDisplayBackComponentValues!.isKindOfClass (EBCheckedMenuItem) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDisplayBackComponentValues' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
     if nil == mDisplayBackTracks {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -250,6 +261,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mDisplayFrontComponentNames' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
+    if nil == mDisplayFrontComponentValues {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDisplayFrontComponentValues' outlet is nil") ;
+//    }else if !mDisplayFrontComponentValues!.isKindOfClass (EBCheckedMenuItem) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDisplayFrontComponentValues' outlet is not an instance of 'EBCheckedMenuItem'") ;
     }
     if nil == mDisplayFrontTracks {
       presentErrorWindow (file: #file,
@@ -358,7 +378,9 @@ import Cocoa
     mBoardModelView?.bind_verticalFlip (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
     mBoardModelView?.bind_vias (self.mBoardModelSelection.viaShapes, file: #file, line: #line)
     mBoardModelView?.bind_frontComponentNameSegments (self.mBoardModelSelection.frontComponentNameSegmentsForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_frontComponentValues (self.mBoardModelSelection.frontComponentValuesForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_backComponentNameSegments (self.mBoardModelSelection.backComponentNameSegmentsForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_backComponentValues (self.mBoardModelSelection.backComponentValuesForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_frontTracks (self.mBoardModelSelection.frontTrackSegmentsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_backTracks (self.mBoardModelSelection.backTrackSegmentsForDisplay, file: #file, line: #line)
     mHorizontalFlipSwitch?.bind_value (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
@@ -369,6 +391,8 @@ import Cocoa
     mDisplayBackComponentNames?.bind_checked (self.mBoardModelSelection.displayBackComponentNames, file: #file, line: #line)
     mDisplayFrontTracks?.bind_checked (self.mBoardModelSelection.displayFrontTracks, file: #file, line: #line)
     mDisplayBackTracks?.bind_checked (self.mBoardModelSelection.displayBackTracks, file: #file, line: #line)
+    mDisplayFrontComponentValues?.bind_checked (self.mBoardModelSelection.displayFrontComponentValues, file: #file, line: #line)
+    mDisplayBackComponentValues?.bind_checked (self.mBoardModelSelection.displayBackComponentValues, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -402,7 +426,9 @@ import Cocoa
     mBoardModelView?.unbind_verticalFlip ()
     mBoardModelView?.unbind_vias ()
     mBoardModelView?.unbind_frontComponentNameSegments ()
+    mBoardModelView?.unbind_frontComponentValues ()
     mBoardModelView?.unbind_backComponentNameSegments ()
+    mBoardModelView?.unbind_backComponentValues ()
     mBoardModelView?.unbind_frontTracks ()
     mBoardModelView?.unbind_backTracks ()
     mHorizontalFlipSwitch?.unbind_value ()
@@ -413,6 +439,8 @@ import Cocoa
     mDisplayBackComponentNames?.unbind_checked ()
     mDisplayFrontTracks?.unbind_checked ()
     mDisplayBackTracks?.unbind_checked ()
+    mDisplayFrontComponentValues?.unbind_checked ()
+    mDisplayBackComponentValues?.unbind_checked ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers

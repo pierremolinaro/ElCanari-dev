@@ -2,12 +2,6 @@
 #     M E R G E R    D O C U M E N T
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardSide {
-  front, back
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 enum PadShape {
   rectangular, round
 }
@@ -41,6 +35,8 @@ binding CanariBoardModelView $frontComponentNameSegments : transient MergerSegme
 binding CanariBoardModelView $backComponentNameSegments : transient MergerSegmentArray ;
 binding CanariBoardModelView $frontTracks : transient MergerSegmentArray ;
 binding CanariBoardModelView $backTracks : transient MergerSegmentArray ;
+binding CanariBoardModelView $frontComponentValues : transient MergerSegmentArray ;
+binding CanariBoardModelView $backComponentValues : transient MergerSegmentArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -84,13 +80,26 @@ entity BoardModelBackComponentNameEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BoardModelValueNameSegmentEntity {
-#  toOne BoardModelPackageEntity myPackage inverse toMany componentValueSegments ;
+entity BoardModelFrontComponentValueEntity {
+  toOne BoardModelEntity myBoard inverse toMany frontComponentValues ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
   property Int x2 default 0 ;
   property Int y2 default 0 ;
+  property Int width default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelBackComponentValueEntity {
+  toOne BoardModelEntity myBoard inverse toMany backComponentValues ;
+
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+  property Int width default 0 ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -149,7 +158,6 @@ entity BoardModelEntity {
   property Bool displayHoles default yes ;
   
   copy transient Int viaCount : self.vias.count ;
-#  copy transient Int componentCount : self.packages.count ;
   
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter, self.vias.all.padDiameter ;
@@ -184,6 +192,38 @@ entity BoardModelEntity {
 
   transient MergerSegmentArray frontComponentNameSegmentsForDisplay dependsFrom
      self.displayFrontComponentNames, self.frontComponentNameSegments
+  ;  
+
+#--- Front component values
+  toMany BoardModelFrontComponentValueEntity frontComponentValues inverse toOne myBoard ;
+  property Bool displayFrontComponentValues default yes ;
+
+  transient MergerSegmentArray frontComponentValueSegments dependsFrom
+    self.frontComponentValues.all.x1, self.frontComponentValues.all.y1,
+    self.frontComponentValues.all.x2, self.frontComponentValues.all.y2,
+    self.frontComponentValues.all.width
+  ;
+
+  transient Int frontComponentValueSegmentsCount dependsFrom self.frontComponentValueSegments ;
+
+  transient MergerSegmentArray frontComponentValuesForDisplay dependsFrom
+     self.displayFrontComponentValues, self.frontComponentValueSegments
+  ;  
+
+#--- Back component values
+  toMany BoardModelBackComponentValueEntity backComponentValues inverse toOne myBoard ;
+  property Bool displayBackComponentValues default yes ;
+
+  transient MergerSegmentArray backComponentValueSegments dependsFrom
+    self.backComponentValues.all.x1, self.backComponentValues.all.y1,
+    self.backComponentValues.all.x2, self.backComponentValues.all.y2,
+    self.backComponentValues.all.width
+  ;
+
+  transient Int backComponentValueSegmentsCount dependsFrom self.backComponentValueSegments ;
+
+  transient MergerSegmentArray backComponentValuesForDisplay dependsFrom
+     self.displayBackComponentValues, self.backComponentValueSegments
   ;  
 
 #--- Back tracks
@@ -287,7 +327,9 @@ document PMMergerDocument root MergerRootEntity {
     $verticalFlip mBoardModelSelection.verticalFlip
     $vias mBoardModelSelection.viaShapes
     $frontComponentNameSegments mBoardModelSelection.frontComponentNameSegmentsForDisplay
+    $frontComponentValues mBoardModelSelection.frontComponentValuesForDisplay
     $backComponentNameSegments mBoardModelSelection.backComponentNameSegmentsForDisplay
+    $backComponentValues mBoardModelSelection.backComponentValuesForDisplay
     $frontTracks mBoardModelSelection.frontTrackSegmentsForDisplay
     $backTracks mBoardModelSelection.backTrackSegmentsForDisplay
   ;
@@ -301,6 +343,8 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBCheckedMenuItem mDisplayBackComponentNames $checked mBoardModelSelection.displayBackComponentNames ;
   outlet EBCheckedMenuItem mDisplayFrontTracks $checked mBoardModelSelection.displayFrontTracks ;
   outlet EBCheckedMenuItem mDisplayBackTracks $checked mBoardModelSelection.displayBackTracks ;
+  outlet EBCheckedMenuItem mDisplayFrontComponentValues $checked mBoardModelSelection.displayFrontComponentValues ;
+  outlet EBCheckedMenuItem mDisplayBackComponentValues $checked mBoardModelSelection.displayBackComponentValues ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

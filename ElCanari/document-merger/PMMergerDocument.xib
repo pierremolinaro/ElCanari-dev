@@ -22,8 +22,10 @@
                 <outlet property="mBoardWidthTextField" destination="f0C-K9-iUE" id="LMg-gy-YtT"/>
                 <outlet property="mBoardWidthUnitPopUp" destination="7ZX-iP-2iR" id="rXk-3g-NOM"/>
                 <outlet property="mDisplayBackComponentNames" destination="fQE-rV-9Dh" id="FkK-dO-4Jo"/>
+                <outlet property="mDisplayBackComponentValues" destination="Sl7-oh-5Ac" id="bwN-mP-oyv"/>
                 <outlet property="mDisplayBackTracks" destination="BOF-iA-8xv" id="1eF-3x-fZv"/>
                 <outlet property="mDisplayFrontComponentNames" destination="iJ1-MN-1kW" id="1nE-An-tqE"/>
+                <outlet property="mDisplayFrontComponentValues" destination="V7f-VR-cUy" id="6uc-ot-Vls"/>
                 <outlet property="mDisplayFrontTracks" destination="XhH-C3-HYx" id="vow-3J-qDp"/>
                 <outlet property="mDisplayHoles" destination="3hJ-XX-4bH" id="KJu-An-Ty7"/>
                 <outlet property="mDisplayPads" destination="NTM-ak-cm3" id="xR8-h6-a8c"/>
@@ -493,8 +495,10 @@
                                                     <menuItem title="Holes" id="3hJ-XX-4bH" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Pads" id="NTM-ak-cm3" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Component Names" id="iJ1-MN-1kW" customClass="EBCheckedMenuItem"/>
+                                                    <menuItem title="Front Component Values" id="V7f-VR-cUy" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Tracks" id="XhH-C3-HYx" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Back Tracks" id="BOF-iA-8xv" customClass="EBCheckedMenuItem"/>
+                                                    <menuItem title="Back Component Values" id="Sl7-oh-5Ac" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Back Component Names" id="fQE-rV-9Dh" customClass="EBCheckedMenuItem"/>
                                                 </items>
                                             </menu>
