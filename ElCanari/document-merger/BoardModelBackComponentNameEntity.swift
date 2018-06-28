@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity
+//    ReadOnlyArrayOf_BoardModelBackComponentNameEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArrayProperty <BoardModelComponentNameSegmentEntity> {
+class ReadOnlyArrayOf_BoardModelBackComponentNameEntity : ReadOnlyAbstractArrayProperty <BoardModelBackComponentNameEntity> {
 
   //····················································································································
   //   Observers of 'x1' stored property
@@ -48,7 +48,7 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 
   //····················································································································
 
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<BoardModelBackComponentNameEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x1 {
         managedObject.x1.addEBObserver (observer)
@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 
   //····················································································································
 
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<BoardModelBackComponentNameEntity>) {
     for observer in mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 
   //····················································································································
 
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<BoardModelBackComponentNameEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y1 {
         managedObject.y1.addEBObserver (observer)
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<BoardModelBackComponentNameEntity>) {
     for observer in mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 
   //····················································································································
 
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<BoardModelBackComponentNameEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x2 {
         managedObject.x2.addEBObserver (observer)
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<BoardModelBackComponentNameEntity>) {
     for observer in mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 
   //····················································································································
 
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<BoardModelBackComponentNameEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y2 {
         managedObject.y2.addEBObserver (observer)
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 
   //····················································································································
 
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<BoardModelBackComponentNameEntity>) {
     for observer in mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 
   //····················································································································
 
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<BoardModelBackComponentNameEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_width {
         managedObject.width.addEBObserver (observer)
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 
   //····················································································································
 
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<BoardModelComponentNameSegmentEntity>) {
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<BoardModelBackComponentNameEntity>) {
     for observer in mObserversOf_width {
       observer.postEvent ()
       for managedObject in inSet {
@@ -300,14 +300,14 @@ class ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyAbstractArr
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_BoardModelComponentNameSegmentEntity
+//    TransientArrayOf_BoardModelBackComponentNameEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyArrayOf_BoardModelComponentNameSegmentEntity {
+class TransientArrayOf_BoardModelBackComponentNameEntity : ReadOnlyArrayOf_BoardModelBackComponentNameEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [BoardModelComponentNameSegmentEntity] > >
+  var readModelFunction : Optional<() -> EBProperty < [BoardModelBackComponentNameEntity] > >
 
-  private var prop_cache : EBProperty < [BoardModelComponentNameSegmentEntity] >? 
+  private var prop_cache : EBProperty < [BoardModelBackComponentNameEntity] >? 
 
   //····················································································································
 
@@ -317,16 +317,16 @@ class TransientArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyArrayOf_Bo
 
   //····················································································································
 
-  private var mSet = Set <BoardModelComponentNameSegmentEntity> ()
+  private var mSet = Set <BoardModelBackComponentNameEntity> ()
 
-  override var prop : EBProperty < [BoardModelComponentNameSegmentEntity] > {
+  override var prop : EBProperty < [BoardModelBackComponentNameEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <BoardModelComponentNameSegmentEntity>
+        let newSet : Set <BoardModelBackComponentNameEntity>
         switch prop_cache! {
         case .multipleSelection, .noSelection :
-          newSet = Set <BoardModelComponentNameSegmentEntity> ()
+          newSet = Set <BoardModelBackComponentNameEntity> ()
         case .singleSelection (let array) :
           newSet = Set (array)
         }
@@ -378,39 +378,39 @@ class TransientArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyArrayOf_Bo
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelComponentNameSegmentEntity_x1 : class {
+protocol BoardModelBackComponentNameEntity_x1 : class {
   var x1 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelComponentNameSegmentEntity_y1 : class {
+protocol BoardModelBackComponentNameEntity_y1 : class {
   var y1 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelComponentNameSegmentEntity_x2 : class {
+protocol BoardModelBackComponentNameEntity_x2 : class {
   var x2 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelComponentNameSegmentEntity_y2 : class {
+protocol BoardModelBackComponentNameEntity_y2 : class {
   var y2 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelComponentNameSegmentEntity_width : class {
+protocol BoardModelBackComponentNameEntity_width : class {
   var width : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To one relationship: myPackage
+//    To one relationship: myBoard
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToOneRelationship_BoardModelComponentNameSegmentEntity_myPackage : EBAbstractProperty {
+final class ToOneRelationship_BoardModelBackComponentNameEntity_myBoard : EBAbstractProperty {
   var mValueExplorer : NSButton? {
     didSet {
       if let unwrappedExplorer = mValueExplorer {
@@ -424,7 +424,7 @@ final class ToOneRelationship_BoardModelComponentNameSegmentEntity_myPackage : E
     }
   }
 
-  weak var owner : BoardModelComponentNameSegmentEntity? {
+  weak var owner : BoardModelBackComponentNameEntity? {
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
@@ -432,7 +432,7 @@ final class ToOneRelationship_BoardModelComponentNameSegmentEntity_myPackage : E
     }
   }
  
-  weak private var mValue : BoardModelPackageEntity? {
+  weak private var mValue : BoardModelEntity? {
     didSet {
       if let unwrappedOwner = owner, oldValue !== mValue {
       //--- Register old value in undo manager
@@ -443,11 +443,11 @@ final class ToOneRelationship_BoardModelComponentNameSegmentEntity_myPackage : E
         }
       //--- Reset old opposite relation ship
         if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.componentNameSegments.remove (unwrappedOwner)
+          unwrappedOldValue.backComponentNames.remove (unwrappedOwner)
         }
       //--- Set new opposite relation ship
         if let unwrappedValue = mValue {
-          unwrappedValue.componentNameSegments.add (unwrappedOwner)
+          unwrappedValue.backComponentNames.add (unwrappedOwner)
         }
       //--- Notify observers
         postEvent ()
@@ -455,21 +455,21 @@ final class ToOneRelationship_BoardModelComponentNameSegmentEntity_myPackage : E
     }
   }
 
-  var propval : BoardModelPackageEntity? { get { return mValue } }
+  var propval : BoardModelEntity? { get { return mValue } }
 
-  var prop : EBProperty <BoardModelPackageEntity?> { get { return .singleSelection (mValue) } }
+  var prop : EBProperty <BoardModelEntity?> { get { return .singleSelection (mValue) } }
 
-  func setProp (_ value : BoardModelPackageEntity?) { mValue = value }
+  func setProp (_ value : BoardModelEntity?) { mValue = value }
 
   //····················································································································
 
-  func performUndo (_ oldValue : BoardModelPackageEntity?) {
+  func performUndo (_ oldValue : BoardModelEntity?) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelPackageEntity) {
+  func remove (_ object : BoardModelEntity) {
     if mValue === object {
       mValue = nil
     }
@@ -477,17 +477,17 @@ final class ToOneRelationship_BoardModelComponentNameSegmentEntity_myPackage : E
   
   //····················································································································
 
-  func add (_ object : BoardModelPackageEntity) {
+  func add (_ object : BoardModelEntity) {
     mValue = object
   }
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: BoardModelComponentNameSegmentEntity
+//    Entity: BoardModelBackComponentNameEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponentNameSegmentEntity_x1, BoardModelComponentNameSegmentEntity_y1, BoardModelComponentNameSegmentEntity_x2, BoardModelComponentNameSegmentEntity_y2, BoardModelComponentNameSegmentEntity_width
+class BoardModelBackComponentNameEntity : EBManagedObject, BoardModelBackComponentNameEntity_x1, BoardModelBackComponentNameEntity_y1, BoardModelBackComponentNameEntity_x2, BoardModelBackComponentNameEntity_y2, BoardModelBackComponentNameEntity_width
 {
 
   //····················································································································
@@ -513,7 +513,7 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
   //    Relationships
   //····················································································································
 
-  var myPackage = ToOneRelationship_BoardModelComponentNameSegmentEntity_myPackage ()
+  var myBoard = ToOneRelationship_BoardModelBackComponentNameEntity_myBoard ()
 
   //····················································································································
   //    init
@@ -530,7 +530,7 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
     self.y2.undoManager = undoManager ()
     self.width.undoManager = undoManager ()
   //--- Install owner for relationships
-    myPackage.owner = self
+    myBoard.owner = self
   //--- register properties for handling signature
   }
 
@@ -590,11 +590,11 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
-      "myPackage",
-      idx:myPackage.mEasyBindingsObjectIndex,
+      "myBoard",
+      idx:myBoard.mEasyBindingsObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&myPackage.mValueExplorer
+      valueExplorer:&myBoard.mValueExplorer
     )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -614,8 +614,8 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
     self.y2.mValueExplorer = nil
     self.width.mObserverExplorer = nil
     self.width.mValueExplorer = nil
-    myPackage.mObserverExplorer = nil
-    myPackage.mValueExplorer = nil
+    myBoard.mObserverExplorer = nil
+    myBoard.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -652,7 +652,7 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
 
   override func resetToOneRelationships () {
     super.resetToOneRelationships ()
-    myPackage.setProp (nil)
+    myBoard.setProp (nil)
   }
 
   //····················································································································
@@ -661,7 +661,7 @@ class BoardModelComponentNameSegmentEntity : EBManagedObject, BoardModelComponen
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-    if let object = myPackage.propval {
+    if let object = myBoard.propval {
       objects.append (object)
     }
   }

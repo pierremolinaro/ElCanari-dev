@@ -177,12 +177,12 @@ class EBManagedObjectContext : EBObject {
       result = ArtworkFileGenerationParameters (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelPadEntity" {
       result = BoardModelPadEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelComponentNameSegmentEntity" {
-      result = BoardModelComponentNameSegmentEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModelFrontComponentNameEntity" {
+      result = BoardModelFrontComponentNameEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModelBackComponentNameEntity" {
+      result = BoardModelBackComponentNameEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelValueNameSegmentEntity" {
       result = BoardModelValueNameSegmentEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelPackageEntity" {
-      result = BoardModelPackageEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelViaEntity" {
       result = BoardModelViaEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelFrontTrackSegmentEntity" {

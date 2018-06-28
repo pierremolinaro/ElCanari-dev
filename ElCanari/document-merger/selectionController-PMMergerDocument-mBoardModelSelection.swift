@@ -19,6 +19,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var artworkName = EBPropertyProxy_String () 
   var backComponentNameSegments = EBTransientProperty_MergerSegmentArray () 
   var backComponentNameSegmentsCount = EBTransientProperty_Int () 
+  var backComponentNameSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
   var backTrackSegments = EBTransientProperty_MergerSegmentArray () 
   var backTrackSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
   var backTracksSegmentsCount = EBTransientProperty_Int () 
@@ -26,7 +27,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var boardHeightUnit = EBPropertyProxy_Int () 
   var boardWidth = EBPropertyProxy_Int () 
   var boardWidthUnit = EBPropertyProxy_Int () 
-  var componentCount = EBTransientProperty_Int () 
   var displayBackComponentNames = EBPropertyProxy_Bool () 
   var displayBackTracks = EBPropertyProxy_Bool () 
   var displayFrontComponentNames = EBPropertyProxy_Bool () 
@@ -35,6 +35,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var displayPads = EBPropertyProxy_Bool () 
   var frontComponentNameSegments = EBTransientProperty_MergerSegmentArray () 
   var frontComponentNameSegmentsCount = EBTransientProperty_Int () 
+  var frontComponentNameSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
   var frontTrackSegments = EBTransientProperty_MergerSegmentArray () 
   var frontTrackSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
   var frontTracksSegmentsCount = EBTransientProperty_Int () 
@@ -54,6 +55,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_artworkName (model: model)
     bind_property_backComponentNameSegments (model: model)
     bind_property_backComponentNameSegmentsCount (model: model)
+    bind_property_backComponentNameSegmentsForDisplay (model: model)
     bind_property_backTrackSegments (model: model)
     bind_property_backTrackSegmentsForDisplay (model: model)
     bind_property_backTracksSegmentsCount (model: model)
@@ -61,7 +63,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_boardHeightUnit (model: model)
     bind_property_boardWidth (model: model)
     bind_property_boardWidthUnit (model: model)
-    bind_property_componentCount (model: model)
     bind_property_displayBackComponentNames (model: model)
     bind_property_displayBackTracks (model: model)
     bind_property_displayFrontComponentNames (model: model)
@@ -70,6 +71,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_displayPads (model: model)
     bind_property_frontComponentNameSegments (model: model)
     bind_property_frontComponentNameSegmentsCount (model: model)
+    bind_property_frontComponentNameSegmentsForDisplay (model: model)
     bind_property_frontTrackSegments (model: model)
     bind_property_frontTrackSegmentsForDisplay (model: model)
     bind_property_frontTracksSegmentsCount (model: model)
@@ -414,6 +416,46 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.backComponentNameSegmentsCount.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backComponentNameSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backComponentNameSegmentsForDisplay (self.backComponentNameSegmentsForDisplay)
+    self.backComponentNameSegmentsForDisplay.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backComponentNameSegmentsForDisplay.prop {
             case .noSelection :
               return .noSelection
             case .multipleSelection :
@@ -834,46 +876,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }else{
         return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_componentCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_componentCount (self.componentCount)
-    self.componentCount.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.componentCount.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
-              isMultipleSelection = true
-            case .singleSelection (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multipleSelection
-          }else if s.count == 0 {
-            return .noSelection
-          }else if s.count == 1 {
-            return .singleSelection (s.first!)
-          }else{
-            return .multipleSelection
-          }
-        }
-      }else{
-        return .noSelection
       }
     }
   }
@@ -1354,6 +1356,46 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.frontComponentNameSegmentsCount.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontComponentNameSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontComponentNameSegmentsForDisplay (self.frontComponentNameSegmentsForDisplay)
+    self.frontComponentNameSegmentsForDisplay.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontComponentNameSegmentsForDisplay.prop {
             case .noSelection :
               return .noSelection
             case .multipleSelection :
@@ -1876,6 +1918,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- backComponentNameSegmentsCount
     self.backComponentNameSegmentsCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_backComponentNameSegmentsCount (self.backComponentNameSegmentsCount)
+  //--- backComponentNameSegmentsForDisplay
+    self.backComponentNameSegmentsForDisplay.readModelFunction = nil 
+    mModel?.removeEBObserverOf_backComponentNameSegmentsForDisplay (self.backComponentNameSegmentsForDisplay)
   //--- backTrackSegments
     self.backTrackSegments.readModelFunction = nil 
     mModel?.removeEBObserverOf_backTrackSegments (self.backTrackSegments)
@@ -1905,9 +1950,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardWidthUnit.writeModelFunction = nil 
     self.boardWidthUnit.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_boardWidthUnit (self.boardWidthUnit)
-  //--- componentCount
-    self.componentCount.readModelFunction = nil 
-    mModel?.removeEBObserverOf_componentCount (self.componentCount)
   //--- displayBackComponentNames
     self.displayBackComponentNames.readModelFunction = nil 
     self.displayBackComponentNames.writeModelFunction = nil 
@@ -1944,6 +1986,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- frontComponentNameSegmentsCount
     self.frontComponentNameSegmentsCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontComponentNameSegmentsCount (self.frontComponentNameSegmentsCount)
+  //--- frontComponentNameSegmentsForDisplay
+    self.frontComponentNameSegmentsForDisplay.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontComponentNameSegmentsForDisplay (self.frontComponentNameSegmentsForDisplay)
   //--- frontTrackSegments
     self.frontTrackSegments.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontTrackSegments (self.frontTrackSegments)

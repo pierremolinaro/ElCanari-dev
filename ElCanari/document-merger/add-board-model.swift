@@ -171,6 +171,30 @@ extension PMMergerDocument {
       via.holeDiameter.setProp (ints [3])
       boardModel.vias.add (via)
     }
+  //--- Back component names
+    let backComponentNames = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-NAMES-BACK", &errorArray)
+    for str in backComponentNames {
+      let segment = BoardModelBackComponentNameEntity (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1.setProp (ints [0])
+      segment.y1.setProp (ints [1])
+      segment.x2.setProp (ints [2])
+      segment.y2.setProp (ints [3])
+      segment.width.setProp (ints [4])
+      boardModel.backComponentNames.add (segment)
+    }
+  //--- Front component names
+    let frontComponentNames = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-NAMES-FRONT", &errorArray)
+    for str in frontComponentNames {
+      let segment = BoardModelFrontComponentNameEntity (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1.setProp (ints [0])
+      segment.y1.setProp (ints [1])
+      segment.x2.setProp (ints [2])
+      segment.y2.setProp (ints [3])
+      segment.width.setProp (ints [4])
+      boardModel.frontComponentNames.add (segment)
+    }
   //--- Packages
 //    let packages = dictArray (fromDict: boardArchiveDict, key: "PACKAGES", &errorArray)
 //    for packageDict in packages {

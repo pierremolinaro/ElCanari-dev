@@ -10,18 +10,22 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_frontComponentNameSegments (_ self_2E_packages_0 : [BoardModelPackageEntity_frontComponentNameSegments]) -> MergerSegmentArray {
+func compute_BoardModelEntity_frontComponentNameSegments (_ self_2E_frontComponentNames_0 : [BoardModelFrontComponentNameEntity_x1],
+                                                          _ self_2E_frontComponentNames_1 : [BoardModelFrontComponentNameEntity_y1],
+                                                          _ self_2E_frontComponentNames_2 : [BoardModelFrontComponentNameEntity_x2],
+                                                          _ self_2E_frontComponentNames_3 : [BoardModelFrontComponentNameEntity_y2],
+                                                          _ self_2E_frontComponentNames_4 : [BoardModelFrontComponentNameEntity_width]) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
   var segmentArray = [MergerSegment] ()
-  for a in self_2E_packages_0 {
-    switch a.frontComponentNameSegments.prop {
-    case .noSelection :
-      break
-    case .singleSelection (let v) :
-      segmentArray += v.segmentArray
-    case .multipleSelection :
-      break
-    }
+  var idx = 0
+  while idx < self_2E_frontComponentNames_0.count {
+    let x1 = self_2E_frontComponentNames_0 [idx].x1.propval
+    let y1 = self_2E_frontComponentNames_1 [idx].y1.propval
+    let x2 = self_2E_frontComponentNames_2 [idx].x2.propval
+    let y2 = self_2E_frontComponentNames_3 [idx].y2.propval
+    let width = self_2E_frontComponentNames_4 [idx].width.propval
+    segmentArray.append (MergerSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
+    idx += 1
   }
   return MergerSegmentArray (segmentArray)
 //--- END OF USER ZONE 2

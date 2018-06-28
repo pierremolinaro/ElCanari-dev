@@ -10,28 +10,28 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelPackageEntity_frontComponentNameSegments (_ self_2E_componentNameSegments_0 : [BoardModelComponentNameSegmentEntity_x1],
-                                                                 _ self_2E_componentNameSegments_1 : [BoardModelComponentNameSegmentEntity_y1],
-                                                                 _ self_2E_componentNameSegments_2 : [BoardModelComponentNameSegmentEntity_x2],
-                                                                 _ self_2E_componentNameSegments_3 : [BoardModelComponentNameSegmentEntity_y2],
-                                                                 _ self_2E_componentNameSegments_4 : [BoardModelComponentNameSegmentEntity_width],
-                                                                 _ self_2E_side_5 : BoardSide) -> MergerSegmentArray {
-//--- START OF USER ZONE 2
-  var segmentArray = [MergerSegment] ()
-  if self_2E_side_5 == .front {
-    var idx = 0
-    while idx < self_2E_componentNameSegments_0.count {
-      let x1 = self_2E_componentNameSegments_0 [idx].x1.propval
-      let y1 = self_2E_componentNameSegments_1 [idx].y1.propval
-      let x2 = self_2E_componentNameSegments_2 [idx].x2.propval
-      let y2 = self_2E_componentNameSegments_3 [idx].y2.propval
-      let width = self_2E_componentNameSegments_4 [idx].width.propval
-      segmentArray.append (MergerSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
-      idx += 1
-    }
-  }
-  return MergerSegmentArray (segmentArray)
-//--- END OF USER ZONE 2
-}
+//func compute_BoardModelPackageEntity_frontComponentNameSegments (_ self_2E_componentNameSegments_0 : [BoardModelComponentNameSegmentEntity_x1],
+//                                                                 _ self_2E_componentNameSegments_1 : [BoardModelComponentNameSegmentEntity_y1],
+//                                                                 _ self_2E_componentNameSegments_2 : [BoardModelComponentNameSegmentEntity_x2],
+//                                                                 _ self_2E_componentNameSegments_3 : [BoardModelComponentNameSegmentEntity_y2],
+//                                                                 _ self_2E_componentNameSegments_4 : [BoardModelComponentNameSegmentEntity_width],
+//                                                                 _ self_2E_side_5 : BoardSide) -> MergerSegmentArray {
+////--- START OF USER ZONE 2
+//  var segmentArray = [MergerSegment] ()
+//  if self_2E_side_5 == .front {
+//    var idx = 0
+//    while idx < self_2E_componentNameSegments_0.count {
+//      let x1 = self_2E_componentNameSegments_0 [idx].x1.propval
+//      let y1 = self_2E_componentNameSegments_1 [idx].y1.propval
+//      let x2 = self_2E_componentNameSegments_2 [idx].x2.propval
+//      let y2 = self_2E_componentNameSegments_3 [idx].y2.propval
+//      let width = self_2E_componentNameSegments_4 [idx].width.propval
+//      segmentArray.append (MergerSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
+//      idx += 1
+//    }
+//  }
+//  return MergerSegmentArray (segmentArray)
+////--- END OF USER ZONE 2
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

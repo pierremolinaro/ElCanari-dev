@@ -666,82 +666,6 @@ protocol BoardModelPadEntity_kind : class {
   var kind : EBStoredProperty_PadKind { get }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To one relationship: myPackage
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class ToOneRelationship_BoardModelPadEntity_myPackage : EBAbstractProperty {
-  var mValueExplorer : NSButton? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        switch prop {
-        case .noSelection, .multipleSelection :
-          break ;
-        case .singleSelection (let v) :
-          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
-        }
-      }
-    }
-  }
-
-  weak var owner : BoardModelPadEntity? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
-      }
-    }
-  }
- 
-  weak private var mValue : BoardModelPackageEntity? {
-    didSet {
-      if let unwrappedOwner = owner, oldValue !== mValue {
-      //--- Register old value in undo manager
-        unwrappedOwner.undoManager()?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let unwrappedExplorer = mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
-        }
-      //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.pads.remove (unwrappedOwner)
-        }
-      //--- Set new opposite relation ship
-        if let unwrappedValue = mValue {
-          unwrappedValue.pads.add (unwrappedOwner)
-        }
-      //--- Notify observers
-        postEvent ()
-      }
-    }
-  }
-
-  var propval : BoardModelPackageEntity? { get { return mValue } }
-
-  var prop : EBProperty <BoardModelPackageEntity?> { get { return .singleSelection (mValue) } }
-
-  func setProp (_ value : BoardModelPackageEntity?) { mValue = value }
-
-  //····················································································································
-
-  func performUndo (_ oldValue : BoardModelPackageEntity?) {
-    mValue = oldValue
-  }
-
-  //····················································································································
-
-  func remove (_ object : BoardModelPackageEntity) {
-    if mValue === object {
-      mValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : BoardModelPackageEntity) {
-    mValue = object
-  }
-
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardModelPadEntity
@@ -781,7 +705,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
   //    Relationships
   //····················································································································
 
-  var myPackage = ToOneRelationship_BoardModelPadEntity_myPackage ()
 
   //····················································································································
   //    init
@@ -802,7 +725,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
     self.side.undoManager = undoManager ()
     self.kind.undoManager = undoManager ()
   //--- Install owner for relationships
-    myPackage.owner = self
   //--- register properties for handling signature
   }
 
@@ -893,13 +815,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForToOneRelationshipNamed (
-      "myPackage",
-      idx:myPackage.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&myPackage.mValueExplorer
-    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -926,8 +841,6 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
     self.side.mValueExplorer = nil
     self.kind.mObserverExplorer = nil
     self.kind.mValueExplorer = nil
-    myPackage.mObserverExplorer = nil
-    myPackage.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -967,23 +880,11 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_name, BoardMode
   }
 
   //····················································································································
-  //   resetToOneRelationships
-  //····················································································································
-
-  override func resetToOneRelationships () {
-    super.resetToOneRelationships ()
-    myPackage.setProp (nil)
-  }
-
-  //····················································································································
   //   accessibleObjects
   //····················································································································
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-    if let object = myPackage.propval {
-      objects.append (object)
-    }
   }
 
   //····················································································································

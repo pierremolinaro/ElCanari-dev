@@ -45,7 +45,7 @@ binding CanariBoardModelView $backTracks : transient MergerSegmentArray ;
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelPadEntity {
-  toOne BoardModelPackageEntity myPackage inverse toMany pads ;
+#  toOne BoardModelPackageEntity myPackage inverse toMany pads ;
 
   property String name default "" ;
   property Int x default 0 ;
@@ -60,8 +60,20 @@ entity BoardModelPadEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BoardModelComponentNameSegmentEntity {
-  toOne BoardModelPackageEntity myPackage inverse toMany componentNameSegments ;
+entity BoardModelFrontComponentNameEntity {
+  toOne BoardModelEntity myBoard inverse toMany frontComponentNames ;
+
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+  property Int width default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelBackComponentNameEntity {
+  toOne BoardModelEntity myBoard inverse toMany backComponentNames ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -73,39 +85,12 @@ entity BoardModelComponentNameSegmentEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelValueNameSegmentEntity {
-  toOne BoardModelPackageEntity myPackage inverse toMany componentValueSegments ;
+#  toOne BoardModelPackageEntity myPackage inverse toMany componentValueSegments ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
   property Int x2 default 0 ;
   property Int y2 default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelPackageEntity {
-  toOne BoardModelEntity myModel inverse toMany packages ;
-  toMany BoardModelComponentNameSegmentEntity componentNameSegments inverse toOne myPackage ;
-  toMany BoardModelValueNameSegmentEntity componentValueSegments inverse toOne myPackage ;
-  toMany BoardModelPadEntity pads inverse toOne myPackage ;
-
-  property String name default "" ;
-  property Int padRotation default 0 ;
-  property BoardSide side default front ;
-  
-  transient MergerSegmentArray frontComponentNameSegments dependsFrom
-    self.componentNameSegments.all.x1, self.componentNameSegments.all.y1,
-    self.componentNameSegments.all.x2, self.componentNameSegments.all.y2,
-    self.componentNameSegments.all.width,
-    self.side
-  ;
-  
-  transient MergerSegmentArray backComponentNameSegments dependsFrom
-    self.componentNameSegments.all.x1, self.componentNameSegments.all.y1,
-    self.componentNameSegments.all.x2, self.componentNameSegments.all.y2,
-    self.componentNameSegments.all.width,
-    self.side
-  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -147,10 +132,7 @@ entity BoardModelBackTrackSegmentEntity {
 
 entity BoardModelEntity {
   toOne MergerRootEntity myArtwork inverse toMany boardModels ;
-  toMany BoardModelFrontTrackSegmentEntity frontTracks inverse toOne myModel ;
-  toMany BoardModelBackTrackSegmentEntity backTracks inverse toOne myModel ;
   toMany BoardModelViaEntity vias inverse toOne myModel ;
-  toMany BoardModelPackageEntity packages inverse toOne myModel ;
   
   property String artworkName default "" ;
   property String name default "" ;
@@ -165,30 +147,49 @@ entity BoardModelEntity {
 
   property Bool displayPads default yes ;
   property Bool displayHoles default yes ;
-  property Bool displayFrontComponentNames default yes ;
-  property Bool displayBackComponentNames default yes ;
-  property Bool displayFrontTracks default yes ;
-  property Bool displayBackTracks default yes ;
   
   copy transient Int viaCount : self.vias.count ;
-  copy transient Int componentCount : self.packages.count ;
+#  copy transient Int componentCount : self.packages.count ;
   
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter, self.vias.all.padDiameter ;
 
+#--- Back component names
+  toMany BoardModelBackComponentNameEntity backComponentNames inverse toOne myBoard ;
+  property Bool displayBackComponentNames default yes ;
+
+  transient MergerSegmentArray backComponentNameSegments dependsFrom
+    self.backComponentNames.all.x1, self.backComponentNames.all.y1,
+    self.backComponentNames.all.x2, self.backComponentNames.all.y2,
+    self.backComponentNames.all.width
+  ;
+
+  transient Int backComponentNameSegmentsCount dependsFrom self.backComponentNameSegments ;
+ 
+  transient MergerSegmentArray backComponentNameSegmentsForDisplay dependsFrom
+     self.displayBackComponentNames, self.backComponentNameSegments
+  ;  
+  
+#--- Front component names
+  toMany BoardModelFrontComponentNameEntity frontComponentNames inverse toOne myBoard ;
+  property Bool displayFrontComponentNames default yes ;
+
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
-    self.packages.all.frontComponentNameSegments
+    self.frontComponentNames.all.x1, self.frontComponentNames.all.y1,
+    self.frontComponentNames.all.x2, self.frontComponentNames.all.y2,
+    self.frontComponentNames.all.width
   ;
 
   transient Int frontComponentNameSegmentsCount dependsFrom self.frontComponentNameSegments ;
-  
-  transient MergerSegmentArray backComponentNameSegments dependsFrom
-    self.packages.all.backComponentNameSegments
-  ;
- 
-  transient Int backComponentNameSegmentsCount dependsFrom self.backComponentNameSegments ;
-   
+
+  transient MergerSegmentArray frontComponentNameSegmentsForDisplay dependsFrom
+     self.displayFrontComponentNames, self.frontComponentNameSegments
+  ;  
+
 #--- Back tracks
+  toMany BoardModelBackTrackSegmentEntity backTracks inverse toOne myModel ;
+  property Bool displayBackTracks default yes ;
+
   transient MergerSegmentArray backTrackSegments dependsFrom
     self.backTracks.all.x1, self.backTracks.all.y1,
     self.backTracks.all.x2, self.backTracks.all.y2,
@@ -202,6 +203,9 @@ entity BoardModelEntity {
   ;  
 
 #--- Front tracks
+  toMany BoardModelFrontTrackSegmentEntity frontTracks inverse toOne myModel ;
+  property Bool displayFrontTracks default yes ;
+
   transient MergerSegmentArray frontTrackSegments dependsFrom
     self.frontTracks.all.x1, self.frontTracks.all.y1,
     self.frontTracks.all.x2, self.frontTracks.all.y2,
@@ -261,7 +265,7 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBIntObserverField mBoardModelViaCountTextField $valueObserver mBoardModelSelection.viaCount {autoFormatter : yes} ;
 
 #--- Board model component count
-  outlet EBIntObserverField mBoardModelComponentCountTextField $valueObserver mBoardModelSelection.componentCount {autoFormatter : yes} ;
+  outlet EBIntObserverField mBoardModelComponentCountTextField ; # $valueObserver mBoardModelSelection.componentCount {autoFormatter : yes} ;
 
 #--- Front component names segment count
   outlet EBIntObserverField mFrontComponentNameSegmentCountTextField $valueObserver mBoardModelSelection.frontComponentNameSegmentsCount {autoFormatter:yes} ;
@@ -282,8 +286,8 @@ document PMMergerDocument root MergerRootEntity {
     $horizontalFlip mBoardModelSelection.horizontalFlip
     $verticalFlip mBoardModelSelection.verticalFlip
     $vias mBoardModelSelection.viaShapes
-    $frontComponentNameSegments mBoardModelSelection.frontComponentNameSegments
-    $backComponentNameSegments mBoardModelSelection.backComponentNameSegments
+    $frontComponentNameSegments mBoardModelSelection.frontComponentNameSegmentsForDisplay
+    $backComponentNameSegments mBoardModelSelection.backComponentNameSegmentsForDisplay
     $frontTracks mBoardModelSelection.frontTrackSegmentsForDisplay
     $backTracks mBoardModelSelection.backTrackSegmentsForDisplay
   ;
