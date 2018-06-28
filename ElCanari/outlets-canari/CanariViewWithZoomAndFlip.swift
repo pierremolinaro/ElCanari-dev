@@ -39,23 +39,24 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
   deinit {
     noteObjectDeallocation (self)
   }
-  
+
   //····················································································································
   //  Set size
   //····················································································································
 
   func setBoardModelSize (width : Int, height : Int) {
-    let noModel = (width == 0) || (height == 0)
-    if noModel {
-      let newRect = CGRect (x:0.0, y:0.0, width:200.0, height:200.0)
+//    NSLog ("setBoardModelSize \(width), \(height)")
+    if let clipView = self.superview as? NSClipView {
+      let currentUnitSquareSize : NSSize = clipView.convert (NSSize (width: 1.0, height: 1.0), from:nil)
+      let currentExpansion = currentUnitSquareSize.width ;
+      let noModel = (width == 0) || (height == 0)
+      let newRect = noModel
+        ? CGRect (x:0.0, y:0.0, width:200.0, height:200.0)
+        : CGRect (x:0.0, y:0.0, width:canariUnitToCocoa (width), height:canariUnitToCocoa (height))
+      self.frame.size = newRect.size
       self.bounds = newRect
-      self.frame = newRect
-    }else{
-      let newRect = CGRect (x:0.0, y:0.0, width:canariUnitToCocoa (width), height:canariUnitToCocoa (height))
-      self.bounds = newRect
-      self.frame = newRect
+      clipView.scaleUnitSquare(to: NSSize (width: currentExpansion, height: currentExpansion))
     }
-    scaleToZoom (mZoom, mHorizontalFlip, mVerticalFlip)
   }
 
   //····················································································································
