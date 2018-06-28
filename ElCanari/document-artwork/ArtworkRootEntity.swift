@@ -731,6 +731,7 @@ class TransientArrayOf_ArtworkRootEntity : ReadOnlyArrayOf_ArtworkRootEntity {
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
+      //--- Remove observers of stored properties
         removeEBObserversOf_selectedTab_fromElementsOfSet (removedSet)
         removeEBObserversOf_comments_fromElementsOfSet (removedSet)
         removeEBObserversOf_minPP_TP_TT_TW_displayUnit_fromElementsOfSet (removedSet)
@@ -743,8 +744,10 @@ class TransientArrayOf_ArtworkRootEntity : ReadOnlyArrayOf_ArtworkRootEntity {
         removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedSet)
         removeEBObserversOf_drillListFileExtension_fromElementsOfSet (removedSet)
         removeEBObserversOf_drillToolListFileExtension_fromElementsOfSet (removedSet)
+      //--- Remove observers of transient properties
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
+       //--- Add observers of stored properties
         addEBObserversOf_selectedTab_toElementsOfSet (addedSet)
         addEBObserversOf_comments_toElementsOfSet (addedSet)
         addEBObserversOf_minPP_TP_TT_TW_displayUnit_toElementsOfSet (addedSet)
@@ -757,6 +760,7 @@ class TransientArrayOf_ArtworkRootEntity : ReadOnlyArrayOf_ArtworkRootEntity {
         addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedSet)
         addEBObserversOf_drillListFileExtension_toElementsOfSet (addedSet)
         addEBObserversOf_drillToolListFileExtension_toElementsOfSet (addedSet)
+       //--- Add observers of transient properties
       //--- Update object set
         mSet = newSet
       }

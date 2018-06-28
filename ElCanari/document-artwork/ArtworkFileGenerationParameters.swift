@@ -1301,6 +1301,7 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
+      //--- Remove observers of stored properties
         removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedSet)
         removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedSet)
         removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedSet)
@@ -1323,8 +1324,10 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
         removeEBObserversOf_name_fromElementsOfSet (removedSet)
         removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (removedSet)
         removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (removedSet)
+      //--- Remove observers of transient properties
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
+       //--- Add observers of stored properties
         addEBObserversOf_drawBoardLimits_toElementsOfSet (addedSet)
         addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedSet)
         addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedSet)
@@ -1347,6 +1350,7 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
         addEBObserversOf_name_toElementsOfSet (addedSet)
         addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (addedSet)
         addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (addedSet)
+       //--- Add observers of transient properties
       //--- Update object set
         mSet = newSet
       }

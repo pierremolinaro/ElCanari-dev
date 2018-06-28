@@ -332,18 +332,22 @@ class TransientArrayOf_BoardModelComponentNameSegmentEntity : ReadOnlyArrayOf_Bo
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
+      //--- Remove observers of stored properties
         removeEBObserversOf_x1_fromElementsOfSet (removedSet)
         removeEBObserversOf_y1_fromElementsOfSet (removedSet)
         removeEBObserversOf_x2_fromElementsOfSet (removedSet)
         removeEBObserversOf_y2_fromElementsOfSet (removedSet)
         removeEBObserversOf_width_fromElementsOfSet (removedSet)
+      //--- Remove observers of transient properties
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
+       //--- Add observers of stored properties
         addEBObserversOf_x1_toElementsOfSet (addedSet)
         addEBObserversOf_y1_toElementsOfSet (addedSet)
         addEBObserversOf_x2_toElementsOfSet (addedSet)
         addEBObserversOf_y2_toElementsOfSet (addedSet)
         addEBObserversOf_width_toElementsOfSet (addedSet)
+       //--- Add observers of transient properties
       //--- Update object set
         mSet = newSet
       }

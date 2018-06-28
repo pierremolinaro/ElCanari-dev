@@ -328,10 +328,22 @@ class TransientArrayOf_FontCharacterEntity : ReadOnlyArrayOf_FontCharacterEntity
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
+      //--- Remove observers of stored properties
         removeEBObserversOf_advance_fromElementsOfSet (removedSet)
+      //--- Remove observers of transient properties
+        removeEBObserversOf_characterIsDefined_fromElementsOfSet (removedSet)
+        removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedSet)
+        removeEBObserversOf_gerberCode_fromElementsOfSet (removedSet)
+        removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
+       //--- Add observers of stored properties
         addEBObserversOf_advance_toElementsOfSet (addedSet)
+       //--- Add observers of transient properties
+        addEBObserversOf_characterIsDefined_toElementsOfSet (addedSet)
+        addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedSet)
+        addEBObserversOf_gerberCode_toElementsOfSet (addedSet)
+        addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }

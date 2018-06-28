@@ -1574,6 +1574,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
+      //--- Remove observers of stored properties
         removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
         removeEBObserversOf_name_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
@@ -1589,8 +1590,22 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_displayBackComponentNames_fromElementsOfSet (removedSet)
         removeEBObserversOf_displayFrontTracks_fromElementsOfSet (removedSet)
         removeEBObserversOf_displayBackTracks_fromElementsOfSet (removedSet)
+      //--- Remove observers of transient properties
+        removeEBObserversOf_viaCount_fromElementsOfSet (removedSet)
+        removeEBObserversOf_componentCount_fromElementsOfSet (removedSet)
+        removeEBObserversOf_viaShapes_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontComponentNameSegmentsCount_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backComponentNameSegmentsCount_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backTracksSegmentsCount_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontTracksSegmentsCount_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontTrackSegmentsForDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
+       //--- Add observers of stored properties
         addEBObserversOf_artworkName_toElementsOfSet (addedSet)
         addEBObserversOf_name_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
@@ -1606,6 +1621,19 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_displayBackComponentNames_toElementsOfSet (addedSet)
         addEBObserversOf_displayFrontTracks_toElementsOfSet (addedSet)
         addEBObserversOf_displayBackTracks_toElementsOfSet (addedSet)
+       //--- Add observers of transient properties
+        addEBObserversOf_viaCount_toElementsOfSet (addedSet)
+        addEBObserversOf_componentCount_toElementsOfSet (addedSet)
+        addEBObserversOf_viaShapes_toElementsOfSet (addedSet)
+        addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedSet)
+        addEBObserversOf_frontComponentNameSegmentsCount_toElementsOfSet (addedSet)
+        addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedSet)
+        addEBObserversOf_backComponentNameSegmentsCount_toElementsOfSet (addedSet)
+        addEBObserversOf_backTrackSegments_toElementsOfSet (addedSet)
+        addEBObserversOf_backTracksSegmentsCount_toElementsOfSet (addedSet)
+        addEBObserversOf_frontTrackSegments_toElementsOfSet (addedSet)
+        addEBObserversOf_frontTracksSegmentsCount_toElementsOfSet (addedSet)
+        addEBObserversOf_frontTrackSegmentsForDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }

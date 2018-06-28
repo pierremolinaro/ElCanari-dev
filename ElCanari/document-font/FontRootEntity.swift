@@ -442,14 +442,26 @@ class TransientArrayOf_FontRootEntity : ReadOnlyArrayOf_FontRootEntity {
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
+      //--- Remove observers of stored properties
         removeEBObserversOf_comments_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectedTab_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
+      //--- Remove observers of transient properties
+        removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedSet)
+        removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedSet)
+        removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedSet)
+        removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
+       //--- Add observers of stored properties
         addEBObserversOf_comments_toElementsOfSet (addedSet)
         addEBObserversOf_selectedTab_toElementsOfSet (addedSet)
         addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
+       //--- Add observers of transient properties
+        addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedSet)
+        addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedSet)
+        addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedSet)
+        addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }

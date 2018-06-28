@@ -275,16 +275,20 @@ class TransientArrayOf_BoardModelViaEntity : ReadOnlyArrayOf_BoardModelViaEntity
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
+      //--- Remove observers of stored properties
         removeEBObserversOf_x_fromElementsOfSet (removedSet)
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
         removeEBObserversOf_holeDiameter_fromElementsOfSet (removedSet)
         removeEBObserversOf_padDiameter_fromElementsOfSet (removedSet)
+      //--- Remove observers of transient properties
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
+       //--- Add observers of stored properties
         addEBObserversOf_x_toElementsOfSet (addedSet)
         addEBObserversOf_y_toElementsOfSet (addedSet)
         addEBObserversOf_holeDiameter_toElementsOfSet (addedSet)
         addEBObserversOf_padDiameter_toElementsOfSet (addedSet)
+       //--- Add observers of transient properties
       //--- Update object set
         mSet = newSet
       }

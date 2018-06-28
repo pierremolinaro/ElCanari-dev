@@ -331,16 +331,22 @@ class TransientArrayOf_SegmentForFontCharacterEntity : ReadOnlyArrayOf_SegmentFo
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
+      //--- Remove observers of stored properties
         removeEBObserversOf_x1_fromElementsOfSet (removedSet)
         removeEBObserversOf_y1_fromElementsOfSet (removedSet)
         removeEBObserversOf_x2_fromElementsOfSet (removedSet)
         removeEBObserversOf_y2_fromElementsOfSet (removedSet)
+      //--- Remove observers of transient properties
+        removeEBObserversOf_segmentForDrawing_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
+       //--- Add observers of stored properties
         addEBObserversOf_x1_toElementsOfSet (addedSet)
         addEBObserversOf_y1_toElementsOfSet (addedSet)
         addEBObserversOf_x2_toElementsOfSet (addedSet)
         addEBObserversOf_y2_toElementsOfSet (addedSet)
+       //--- Add observers of transient properties
+        addEBObserversOf_segmentForDrawing_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }

@@ -560,6 +560,7 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
+      //--- Remove observers of stored properties
         removeEBObserversOf_name_fromElementsOfSet (removedSet)
         removeEBObserversOf_x_fromElementsOfSet (removedSet)
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
@@ -569,8 +570,10 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
         removeEBObserversOf_shape_fromElementsOfSet (removedSet)
         removeEBObserversOf_side_fromElementsOfSet (removedSet)
         removeEBObserversOf_kind_fromElementsOfSet (removedSet)
+      //--- Remove observers of transient properties
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
+       //--- Add observers of stored properties
         addEBObserversOf_name_toElementsOfSet (addedSet)
         addEBObserversOf_x_toElementsOfSet (addedSet)
         addEBObserversOf_y_toElementsOfSet (addedSet)
@@ -580,6 +583,7 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
         addEBObserversOf_shape_toElementsOfSet (addedSet)
         addEBObserversOf_side_toElementsOfSet (addedSet)
         addEBObserversOf_kind_toElementsOfSet (addedSet)
+       //--- Add observers of transient properties
       //--- Update object set
         mSet = newSet
       }
