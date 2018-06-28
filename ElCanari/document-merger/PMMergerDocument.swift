@@ -361,7 +361,7 @@ import Cocoa
     mBoardModelView?.bind_frontComponentNameSegments (self.mBoardModelSelection.frontComponentNameSegments, file: #file, line: #line)
     mBoardModelView?.bind_backComponentNameSegments (self.mBoardModelSelection.backComponentNameSegments, file: #file, line: #line)
     mBoardModelView?.bind_frontTracks (self.mBoardModelSelection.frontTrackSegmentsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_backTracks (self.mBoardModelSelection.backTrackSegments, file: #file, line: #line)
+    mBoardModelView?.bind_backTracks (self.mBoardModelSelection.backTrackSegmentsForDisplay, file: #file, line: #line)
     mHorizontalFlipSwitch?.bind_value (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mVerticalFlipSwitch?.bind_value (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
     mDisplayPads?.bind_checked (self.mBoardModelSelection.displayPads, file: #file, line: #line)

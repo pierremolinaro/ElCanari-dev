@@ -185,9 +185,10 @@ entity BoardModelEntity {
   transient MergerSegmentArray backComponentNameSegments dependsFrom
     self.packages.all.backComponentNameSegments
   ;
-    
+ 
   transient Int backComponentNameSegmentsCount dependsFrom self.backComponentNameSegments ;
-
+   
+#--- Back tracks
   transient MergerSegmentArray backTrackSegments dependsFrom
     self.backTracks.all.x1, self.backTracks.all.y1,
     self.backTracks.all.x2, self.backTracks.all.y2,
@@ -195,6 +196,10 @@ entity BoardModelEntity {
   ;
 
   transient Int backTracksSegmentsCount dependsFrom self.backTrackSegments ;
+
+  transient MergerSegmentArray backTrackSegmentsForDisplay dependsFrom
+     self.displayBackTracks, self.backTrackSegments
+  ;  
 
 #--- Front tracks
   transient MergerSegmentArray frontTrackSegments dependsFrom
@@ -280,7 +285,7 @@ document PMMergerDocument root MergerRootEntity {
     $frontComponentNameSegments mBoardModelSelection.frontComponentNameSegments
     $backComponentNameSegments mBoardModelSelection.backComponentNameSegments
     $frontTracks mBoardModelSelection.frontTrackSegmentsForDisplay
-    $backTracks mBoardModelSelection.backTrackSegments
+    $backTracks mBoardModelSelection.backTrackSegmentsForDisplay
   ;
   
   outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;

@@ -1370,6 +1370,62 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
+  //   Observers of 'backTrackSegmentsForDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backTrackSegmentsForDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backTrackSegmentsForDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backTrackSegmentsForDisplay.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.backTrackSegmentsForDisplay.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backTrackSegmentsForDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backTrackSegmentsForDisplay.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.backTrackSegmentsForDisplay.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backTrackSegmentsForDisplay_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backTrackSegmentsForDisplay {
+        managedObject.backTrackSegmentsForDisplay.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backTrackSegmentsForDisplay_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backTrackSegmentsForDisplay {
+        managedObject.backTrackSegmentsForDisplay.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'frontTrackSegments' transient property
   //····················································································································
 
@@ -1600,6 +1656,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_backComponentNameSegmentsCount_fromElementsOfSet (removedSet)
         removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_backTracksSegmentsCount_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backTrackSegmentsForDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontTracksSegmentsCount_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontTrackSegmentsForDisplay_fromElementsOfSet (removedSet)
@@ -1631,6 +1688,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_backComponentNameSegmentsCount_toElementsOfSet (addedSet)
         addEBObserversOf_backTrackSegments_toElementsOfSet (addedSet)
         addEBObserversOf_backTracksSegmentsCount_toElementsOfSet (addedSet)
+        addEBObserversOf_backTrackSegmentsForDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontTrackSegments_toElementsOfSet (addedSet)
         addEBObserversOf_frontTracksSegmentsCount_toElementsOfSet (addedSet)
         addEBObserversOf_frontTrackSegmentsForDisplay_toElementsOfSet (addedSet)
@@ -1804,6 +1862,12 @@ protocol BoardModelEntity_backTrackSegments : class {
 
 protocol BoardModelEntity_backTracksSegmentsCount : class {
   var backTracksSegmentsCount : EBTransientProperty_Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_backTrackSegmentsForDisplay : class {
+  var backTrackSegmentsForDisplay : EBTransientProperty_MergerSegmentArray { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -2795,7 +2859,7 @@ final class ToOneRelationship_BoardModelEntity_myArtwork : EBAbstractProperty {
 //    Entity: BoardModelEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_displayPads, BoardModelEntity_displayHoles, BoardModelEntity_displayFrontComponentNames, BoardModelEntity_displayBackComponentNames, BoardModelEntity_displayFrontTracks, BoardModelEntity_displayBackTracks, BoardModelEntity_viaCount, BoardModelEntity_componentCount, BoardModelEntity_viaShapes, BoardModelEntity_frontComponentNameSegments, BoardModelEntity_frontComponentNameSegmentsCount, BoardModelEntity_backComponentNameSegments, BoardModelEntity_backComponentNameSegmentsCount, BoardModelEntity_backTrackSegments, BoardModelEntity_backTracksSegmentsCount, BoardModelEntity_frontTrackSegments, BoardModelEntity_frontTracksSegmentsCount, BoardModelEntity_frontTrackSegmentsForDisplay
+class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_displayPads, BoardModelEntity_displayHoles, BoardModelEntity_displayFrontComponentNames, BoardModelEntity_displayBackComponentNames, BoardModelEntity_displayFrontTracks, BoardModelEntity_displayBackTracks, BoardModelEntity_viaCount, BoardModelEntity_componentCount, BoardModelEntity_viaShapes, BoardModelEntity_frontComponentNameSegments, BoardModelEntity_frontComponentNameSegmentsCount, BoardModelEntity_backComponentNameSegments, BoardModelEntity_backComponentNameSegmentsCount, BoardModelEntity_backTrackSegments, BoardModelEntity_backTracksSegmentsCount, BoardModelEntity_backTrackSegmentsForDisplay, BoardModelEntity_frontTrackSegments, BoardModelEntity_frontTracksSegmentsCount, BoardModelEntity_frontTrackSegmentsForDisplay
 {
 
   //····················································································································
@@ -2845,6 +2909,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   var backComponentNameSegmentsCount = EBTransientProperty_Int ()
   var backTrackSegments = EBTransientProperty_MergerSegmentArray ()
   var backTracksSegmentsCount = EBTransientProperty_Int ()
+  var backTrackSegmentsForDisplay = EBTransientProperty_MergerSegmentArray ()
   var frontTrackSegments = EBTransientProperty_MergerSegmentArray ()
   var frontTracksSegmentsCount = EBTransientProperty_Int ()
   var frontTrackSegmentsForDisplay = EBTransientProperty_MergerSegmentArray ()
@@ -3053,6 +3118,27 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
         return .noSelection
       }
     }
+    backTrackSegmentsForDisplay.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.displayBackTracks.prop.kind ()
+        kind &= unwSelf.backTrackSegments.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.displayBackTracks.prop, unwSelf.backTrackSegments.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1)) :
+            return .singleSelection (compute_BoardModelEntity_backTrackSegmentsForDisplay (v0, v1))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
     frontTrackSegments.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontTracks.prop.kind ()
@@ -3135,6 +3221,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     backTracks.addEBObserverOf_y2 (backTrackSegments)
     backTracks.addEBObserverOf_width (backTrackSegments)
     backTrackSegments.addEBObserver (backTracksSegmentsCount)
+    displayBackTracks.addEBObserver (backTrackSegmentsForDisplay)
+    backTrackSegments.addEBObserver (backTrackSegmentsForDisplay)
     frontTracks.addEBObserverOf_x1 (frontTrackSegments)
     frontTracks.addEBObserverOf_y1 (frontTrackSegments)
     frontTracks.addEBObserverOf_x2 (frontTrackSegments)
@@ -3188,6 +3276,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     backTracks.removeEBObserverOf_y2 (backTrackSegments)
     backTracks.removeEBObserverOf_width (backTrackSegments)
     backTrackSegments.removeEBObserver (backTracksSegmentsCount)
+    displayBackTracks.removeEBObserver (backTrackSegmentsForDisplay)
+    backTrackSegments.removeEBObserver (backTrackSegmentsForDisplay)
     frontTracks.removeEBObserverOf_x1 (frontTrackSegments)
     frontTracks.removeEBObserverOf_y1 (frontTrackSegments)
     frontTracks.removeEBObserverOf_x2 (frontTrackSegments)
@@ -3396,6 +3486,14 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       view:view,
       observerExplorer:&self.backTracksSegmentsCount.mObserverExplorer,
       valueExplorer:&self.backTracksSegmentsCount.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backTrackSegmentsForDisplay",
+      idx:self.backTrackSegmentsForDisplay.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backTrackSegmentsForDisplay.mObserverExplorer,
+      valueExplorer:&self.backTrackSegmentsForDisplay.mValueExplorer
     )
     createEntryForPropertyNamed (
       "frontTrackSegments",

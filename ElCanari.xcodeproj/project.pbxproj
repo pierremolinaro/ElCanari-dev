@@ -168,6 +168,7 @@
 		CF747FC71B3C419D00140C49 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF747FC61B3C419D00140C49 /* WebKit.framework */; };
 		CF75947D20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75947C20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift */; };
 		CF75947F20DFCE9400FF2FDF /* CanariViewWithZoomAndFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75947E20DFCE9400FF2FDF /* CanariViewWithZoomAndFlip.swift */; };
+		CF791BEA20E4FC3D007B7664 /* transient-BoardModelEntity-backTrackSegmentsForDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF791BE920E4FC3D007B7664 /* transient-BoardModelEntity-backTrackSegmentsForDisplay.swift */; };
 		CF7C5A5D1B46F6BF00213EA8 /* selectionController-PMArtworkDocument-mDataSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C5A5C1B46F6BF00213EA8 /* selectionController-PMArtworkDocument-mDataSelection.swift */; };
 		CF7C5A5F1B46F6DB00213EA8 /* arrayController-PMArtworkDocument-mDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C5A5E1B46F6DB00213EA8 /* arrayController-PMArtworkDocument-mDataController.swift */; };
 		CF80F9F11C0089E900EC64EF /* SegmentForFontCharacterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF80F9EF1C0089E900EC64EF /* SegmentForFontCharacterClass.swift */; };
@@ -453,6 +454,7 @@
 		CF747FC61B3C419D00140C49 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		CF75947C20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariScrollViewWithPlacard.swift; sourceTree = "<group>"; };
 		CF75947E20DFCE9400FF2FDF /* CanariViewWithZoomAndFlip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariViewWithZoomAndFlip.swift; sourceTree = "<group>"; };
+		CF791BE920E4FC3D007B7664 /* transient-BoardModelEntity-backTrackSegmentsForDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModelEntity-backTrackSegmentsForDisplay.swift"; sourceTree = "<group>"; };
 		CF7C5A5C1B46F6BF00213EA8 /* selectionController-PMArtworkDocument-mDataSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-PMArtworkDocument-mDataSelection.swift"; sourceTree = "<group>"; };
 		CF7C5A5E1B46F6DB00213EA8 /* arrayController-PMArtworkDocument-mDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-PMArtworkDocument-mDataController.swift"; sourceTree = "<group>"; };
 		CF80F9EF1C0089E900EC64EF /* SegmentForFontCharacterClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentForFontCharacterClass.swift; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
+				CF791BE920E4FC3D007B7664 /* transient-BoardModelEntity-backTrackSegmentsForDisplay.swift */,
 				CFB4801720DC1B8B00CF9639 /* action-PMMergerDocument-addBoardModelAction.swift */,
 				CFB4801B20DC2BBD00CF9639 /* add-board-model.swift */,
 				CFBEE4DC20DD26E2000743A2 /* arrayController-PMMergerDocument-mBoardModelController.swift */,
@@ -1137,6 +1140,7 @@
 				CF5CEFBA1DD8C53100A70419 /* extension-CGMutablePath.swift in Sources */,
 				CFD2E75E20E3F39300F946D2 /* BoardModelBackTrackSegmentEntity.swift in Sources */,
 				CFBAFCE51DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_fonts.swift in Sources */,
+				CF791BEA20E4FC3D007B7664 /* transient-BoardModelEntity-backTrackSegmentsForDisplay.swift in Sources */,
 				CF51999A1BF26C2600A63CF0 /* EBTextObserverField.swift in Sources */,
 				CF5199991BF26C2600A63CF0 /* EBImageObserverView.swift in Sources */,
 				CFE652D71DD4B22600BAC27A /* transient-FontCharacterEntity-gerberCodeInstructionCountMessage.swift in Sources */,
