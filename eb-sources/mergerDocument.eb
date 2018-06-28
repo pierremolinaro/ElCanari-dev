@@ -22,6 +22,7 @@ enum PadKind {
 
 transient property class MergerViaShapeArray ;
 transient property class MergerSegmentArray ;
+transient property class MergerBoardLimits ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -39,11 +40,11 @@ binding CanariBoardModelView $frontComponentValues : transient MergerSegmentArra
 binding CanariBoardModelView $backComponentValues : transient MergerSegmentArray ;
 binding CanariBoardModelView $frontPackages : transient MergerSegmentArray ;
 binding CanariBoardModelView $backPackages : transient MergerSegmentArray ;
+binding CanariBoardModelView $boardLimits : transient MergerBoardLimits ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelPadEntity {
-#  toOne BoardModelPackageEntity myPackage inverse toMany pads ;
 
   property String name default "" ;
   property Int x default 0 ;
@@ -188,6 +189,15 @@ entity BoardModelEntity {
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter, self.vias.all.padDiameter ;
 
+#--- Board limits
+  property Int boardLimitWidth default 0 ;
+  property Int boardLimitWidthUnit default 0 ;
+  property Bool displayBoardLimits default yes ;
+
+  transient MergerBoardLimits boardLimits
+    dependsFrom self.boardWidth, self.boardHeight, self.boardLimitWidth, self.displayBoardLimits
+  ;
+ 
 #--- Back component names
   toMany BoardModelBackComponentNameEntity backComponentNames inverse toOne myBoard ;
   property Bool displayBackComponentNames default yes ;
@@ -395,6 +405,7 @@ document PMMergerDocument root MergerRootEntity {
     $backTracks mBoardModelSelection.backTrackSegmentsForDisplay
     $frontPackages mBoardModelSelection.frontPackagesSegmentsForDisplay
     $backPackages mBoardModelSelection.backPackagesSegmentsForDisplay
+    $boardLimits mBoardModelSelection.boardLimits
   ;
   
   outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
@@ -410,6 +421,7 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBCheckedMenuItem mDisplayBackComponentValues $checked mBoardModelSelection.displayBackComponentValues ;
   outlet EBCheckedMenuItem mDisplayFrontPackages $checked mBoardModelSelection.displayFrontPackages ;
   outlet EBCheckedMenuItem mDisplayBackPackages $checked mBoardModelSelection.displayBackPackages ;
+  outlet EBCheckedMenuItem mDisplayBoardLimits $checked mBoardModelSelection.displayBoardLimits ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

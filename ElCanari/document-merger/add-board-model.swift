@@ -136,6 +136,8 @@ extension PMMergerDocument {
     boardModel.boardWidthUnit.setProp (int (fromDict: boardArchiveDict, key: "BOARD-WIDTH-UNIT", &errorArray))
     boardModel.boardHeight.setProp (int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT", &errorArray))
     boardModel.boardHeightUnit.setProp (int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT-UNIT", &errorArray))
+    boardModel.boardLimitWidth.setProp (int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH", &errorArray))
+    boardModel.boardLimitWidthUnit.setProp (int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH-UNIT", &errorArray))
   //--- Front tracks
     let frontTracks = stringArray (fromDict: boardArchiveDict, key: "TRACKS-FRONT", &errorArray)
     for str in frontTracks {

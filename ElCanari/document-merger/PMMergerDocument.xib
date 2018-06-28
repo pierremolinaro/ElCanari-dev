@@ -25,6 +25,7 @@
                 <outlet property="mDisplayBackComponentValues" destination="Sl7-oh-5Ac" id="bwN-mP-oyv"/>
                 <outlet property="mDisplayBackPackages" destination="lyd-kd-91q" id="aCk-cc-xxr"/>
                 <outlet property="mDisplayBackTracks" destination="BOF-iA-8xv" id="1eF-3x-fZv"/>
+                <outlet property="mDisplayBoardLimits" destination="IQb-Bn-cCd" id="gX7-tN-KkL"/>
                 <outlet property="mDisplayFrontComponentNames" destination="iJ1-MN-1kW" id="1nE-An-tqE"/>
                 <outlet property="mDisplayFrontComponentValues" destination="V7f-VR-cUy" id="6uc-ot-Vls"/>
                 <outlet property="mDisplayFrontPackages" destination="if3-8Y-ga1" id="rWt-a5-hbn"/>
@@ -513,6 +514,7 @@
                                             <menu key="menu" autoenablesItems="NO" id="AtO-u0-jBg">
                                                 <items>
                                                     <menuItem title="Display" state="on" hidden="YES" id="hc1-1f-Yl9"/>
+                                                    <menuItem title="Board Limits" id="IQb-Bn-cCd" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Holes" id="3hJ-XX-4bH" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Pads" id="NTM-ak-cm3" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Packages" id="if3-8Y-ga1" customClass="EBCheckedMenuItem"/>

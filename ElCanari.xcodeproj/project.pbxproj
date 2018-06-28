@@ -22,6 +22,8 @@
 		CF1FB92620E559A40050391E /* transient-BoardModelEntity-backPackagesSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB92520E559A40050391E /* transient-BoardModelEntity-backPackagesSegments.swift */; };
 		CF1FB92820E559FA0050391E /* transient-BoardModelEntity-backPackageSegmentsCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB92720E559FA0050391E /* transient-BoardModelEntity-backPackageSegmentsCount.swift */; };
 		CF1FB92A20E55A4C0050391E /* transient-BoardModelEntity-backPackagesSegmentsForDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB92920E55A4C0050391E /* transient-BoardModelEntity-backPackagesSegmentsForDisplay.swift */; };
+		CF1FB92C20E5644D0050391E /* MergerBoardLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB92B20E5644D0050391E /* MergerBoardLimits.swift */; };
+		CF1FB92E20E56D290050391E /* transient-BoardModelEntity-boardLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB92D20E56D290050391E /* transient-BoardModelEntity-boardLimits.swift */; };
 		CF215AFA1BFB59A1007CA9BE /* view-CanariFontSampleStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF215AF91BFB59A1007CA9BE /* view-CanariFontSampleStringView.swift */; };
 		CF215B001BFB61AE007CA9BE /* CurrentCharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF215AFF1BFB61AE007CA9BE /* CurrentCharacterController.swift */; };
 		CF2A474E1DD8A5FD009EF897 /* transient-FontRootEntity-sampleStringBezierPathWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A474D1DD8A5FD009EF897 /* transient-FontRootEntity-sampleStringBezierPathWidth.swift */; };
@@ -322,6 +324,8 @@
 		CF1FB92520E559A40050391E /* transient-BoardModelEntity-backPackagesSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModelEntity-backPackagesSegments.swift"; sourceTree = "<group>"; };
 		CF1FB92720E559FA0050391E /* transient-BoardModelEntity-backPackageSegmentsCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModelEntity-backPackageSegmentsCount.swift"; sourceTree = "<group>"; };
 		CF1FB92920E55A4C0050391E /* transient-BoardModelEntity-backPackagesSegmentsForDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModelEntity-backPackagesSegmentsForDisplay.swift"; sourceTree = "<group>"; };
+		CF1FB92B20E5644D0050391E /* MergerBoardLimits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergerBoardLimits.swift; sourceTree = "<group>"; };
+		CF1FB92D20E56D290050391E /* transient-BoardModelEntity-boardLimits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModelEntity-boardLimits.swift"; sourceTree = "<group>"; };
 		CF215AF91BFB59A1007CA9BE /* view-CanariFontSampleStringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-CanariFontSampleStringView.swift"; sourceTree = "<group>"; };
 		CF215AFF1BFB61AE007CA9BE /* CurrentCharacterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCharacterController.swift; sourceTree = "<group>"; };
 		CF2A474D1DD8A5FD009EF897 /* transient-FontRootEntity-sampleStringBezierPathWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontRootEntity-sampleStringBezierPathWidth.swift"; sourceTree = "<group>"; };
@@ -631,6 +635,7 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
+				CF1FB92D20E56D290050391E /* transient-BoardModelEntity-boardLimits.swift */,
 				CFB4801720DC1B8B00CF9639 /* action-PMMergerDocument-addBoardModelAction.swift */,
 				CFB4801B20DC2BBD00CF9639 /* add-board-model.swift */,
 				CFBEE4DC20DD26E2000743A2 /* arrayController-PMMergerDocument-mBoardModelController.swift */,
@@ -646,6 +651,7 @@
 				CF324D7B20DE54B000ADD025 /* BoardModelPadEntity.swift */,
 				CFCE71FA20DD611100AB1DE7 /* BoardModelViaEntity.swift */,
 				CF5599541FDF374600ED5EE6 /* CanariMergerDocument.swift */,
+				CF1FB92B20E5644D0050391E /* MergerBoardLimits.swift */,
 				CF55994E1FDF364400ED5EE6 /* MergerRootEntity.swift */,
 				CF41929220E285190018275C /* MergerSegment.swift */,
 				CF41929420E289510018275C /* MergerSegmentArray.swift */,
@@ -1260,6 +1266,7 @@
 				CF1FB92020E554190050391E /* transient-BoardModelEntity-frontPackageSegmentsCount.swift in Sources */,
 				CF6BC04D1DE1C2BF002D935F /* transient-Preferences-mValueRevealInFinder_artworks.swift in Sources */,
 				CF5CF73A1B46D53D0052AC7A /* ApplicationDelegate.swift in Sources */,
+				CF1FB92C20E5644D0050391E /* MergerBoardLimits.swift in Sources */,
 				CFD2E76120E3F81900F946D2 /* transient-BoardModelEntity-frontTrackSegmentsForDisplay.swift in Sources */,
 				CF1FB92220E5547A0050391E /* transient-BoardModelEntity-frontPackagesSegmentsForDisplay.swift in Sources */,
 				CFDEC77720E0CD170065FBCE /* transient-BoardModelEntity-viaShapes.swift in Sources */,
@@ -1277,6 +1284,7 @@
 				CF3DEFB91BFF92B5002ECBDE /* action-PMFontDocument-addSegmentAction.swift in Sources */,
 				CF302AEF1B498982003D4347 /* DrillDataFormatEnum.swift in Sources */,
 				CF215B001BFB61AE007CA9BE /* CurrentCharacterController.swift in Sources */,
+				CF1FB92E20E56D290050391E /* transient-BoardModelEntity-boardLimits.swift in Sources */,
 				CFEDEDC11DD88B5900782E3F /* Controller_CanariFontSampleStringView_bezierPath.swift in Sources */,
 				CF45B2731BFE8274004AFFC2 /* EBIntField.swift in Sources */,
 				CF7FFAF720E5499400DE60BC /* transient-BoardModelEntity-backComponentValueSegmentsCount.swift in Sources */,

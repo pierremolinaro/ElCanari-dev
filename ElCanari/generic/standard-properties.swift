@@ -1217,6 +1217,15 @@ typealias EBReadOnlyPropertyArray_MergerSegmentArray  = EBReadOnlyClassProperty 
 typealias EBTransientPropertyArray_MergerSegmentArray = EBTransientClassProperty <[MergerSegmentArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class MergerBoardLimits
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_MergerBoardLimits  = EBReadOnlyClassProperty <MergerBoardLimits>
+typealias EBTransientProperty_MergerBoardLimits = EBTransientClassProperty <MergerBoardLimits>
+typealias EBReadOnlyPropertyArray_MergerBoardLimits  = EBReadOnlyClassProperty <[MergerBoardLimits]>
+typealias EBTransientPropertyArray_MergerBoardLimits = EBTransientClassProperty <[MergerBoardLimits]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

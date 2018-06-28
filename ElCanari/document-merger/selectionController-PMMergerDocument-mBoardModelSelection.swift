@@ -31,12 +31,16 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var backTracksSegmentsCount = EBTransientProperty_Int () 
   var boardHeight = EBPropertyProxy_Int () 
   var boardHeightUnit = EBPropertyProxy_Int () 
+  var boardLimitWidth = EBPropertyProxy_Int () 
+  var boardLimitWidthUnit = EBPropertyProxy_Int () 
+  var boardLimits = EBTransientProperty_MergerBoardLimits () 
   var boardWidth = EBPropertyProxy_Int () 
   var boardWidthUnit = EBPropertyProxy_Int () 
   var displayBackComponentNames = EBPropertyProxy_Bool () 
   var displayBackComponentValues = EBPropertyProxy_Bool () 
   var displayBackPackages = EBPropertyProxy_Bool () 
   var displayBackTracks = EBPropertyProxy_Bool () 
+  var displayBoardLimits = EBPropertyProxy_Bool () 
   var displayFrontComponentNames = EBPropertyProxy_Bool () 
   var displayFrontComponentValues = EBPropertyProxy_Bool () 
   var displayFrontPackages = EBPropertyProxy_Bool () 
@@ -83,12 +87,16 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_backTracksSegmentsCount (model: model)
     bind_property_boardHeight (model: model)
     bind_property_boardHeightUnit (model: model)
+    bind_property_boardLimitWidth (model: model)
+    bind_property_boardLimitWidthUnit (model: model)
+    bind_property_boardLimits (model: model)
     bind_property_boardWidth (model: model)
     bind_property_boardWidthUnit (model: model)
     bind_property_displayBackComponentNames (model: model)
     bind_property_displayBackComponentValues (model: model)
     bind_property_displayBackPackages (model: model)
     bind_property_displayBackTracks (model: model)
+    bind_property_displayBoardLimits (model: model)
     bind_property_displayFrontComponentNames (model: model)
     bind_property_displayFrontComponentValues (model: model)
     bind_property_displayFrontPackages (model: model)
@@ -176,6 +184,22 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       valueExplorer:&self.boardHeightUnit.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "boardLimitWidth",
+      idx:self.boardLimitWidth.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardLimitWidth.mObserverExplorer,
+      valueExplorer:&self.boardLimitWidth.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitWidthUnit",
+      idx:self.boardLimitWidthUnit.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardLimitWidthUnit.mObserverExplorer,
+      valueExplorer:&self.boardLimitWidthUnit.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "boardWidth",
       idx:self.boardWidth.mEasyBindingsObjectIndex,
       y:&y,
@@ -222,6 +246,14 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       view:view,
       observerExplorer:&self.displayBackTracks.mObserverExplorer,
       valueExplorer:&self.displayBackTracks.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "displayBoardLimits",
+      idx:self.displayBoardLimits.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.displayBoardLimits.mObserverExplorer,
+      valueExplorer:&self.displayBoardLimits.mValueExplorer
     )
     createEntryForPropertyNamed (
       "displayFrontComponentNames",
@@ -1046,6 +1078,186 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_boardLimitWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_boardLimitWidth (self.boardLimitWidth)
+    self.boardLimitWidth.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.boardLimitWidth.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    self.boardLimitWidth.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.boardLimitWidth.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.boardLimitWidth.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.boardLimitWidth.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_boardLimitWidthUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_boardLimitWidthUnit (self.boardLimitWidthUnit)
+    self.boardLimitWidthUnit.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.boardLimitWidthUnit.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    self.boardLimitWidthUnit.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.boardLimitWidthUnit.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.boardLimitWidthUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.boardLimitWidthUnit.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_boardLimits (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_boardLimits (self.boardLimits)
+    self.boardLimits.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerBoardLimits> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.boardLimits.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_boardWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_boardWidth (self.boardWidth)
     self.boardWidth.readModelFunction = {
@@ -1452,6 +1664,76 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         case .singleSelection (let v) :
           for object in v {
             let result = object.displayBackTracks.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_displayBoardLimits (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_displayBoardLimits (self.displayBoardLimits)
+    self.displayBoardLimits.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.displayBoardLimits.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    self.displayBoardLimits.writeModelFunction = { (inValue : Bool) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          break
+        case .singleSelection (let v) :
+          for object in v {
+            object.displayBoardLimits.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.displayBoardLimits.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection, .multipleSelection :
+          return false
+        case .singleSelection (let v) :
+          for object in v {
+            let result = object.displayBoardLimits.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -2782,6 +3064,19 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardHeightUnit.writeModelFunction = nil 
     self.boardHeightUnit.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_boardHeightUnit (self.boardHeightUnit)
+  //--- boardLimitWidth
+    self.boardLimitWidth.readModelFunction = nil 
+    self.boardLimitWidth.writeModelFunction = nil 
+    self.boardLimitWidth.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_boardLimitWidth (self.boardLimitWidth)
+  //--- boardLimitWidthUnit
+    self.boardLimitWidthUnit.readModelFunction = nil 
+    self.boardLimitWidthUnit.writeModelFunction = nil 
+    self.boardLimitWidthUnit.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_boardLimitWidthUnit (self.boardLimitWidthUnit)
+  //--- boardLimits
+    self.boardLimits.readModelFunction = nil 
+    mModel?.removeEBObserverOf_boardLimits (self.boardLimits)
   //--- boardWidth
     self.boardWidth.readModelFunction = nil 
     self.boardWidth.writeModelFunction = nil 
@@ -2812,6 +3107,11 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.displayBackTracks.writeModelFunction = nil 
     self.displayBackTracks.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_displayBackTracks (self.displayBackTracks)
+  //--- displayBoardLimits
+    self.displayBoardLimits.readModelFunction = nil 
+    self.displayBoardLimits.writeModelFunction = nil 
+    self.displayBoardLimits.validateAndWriteModelFunction = nil 
+    mModel?.removeEBObserverOf_displayBoardLimits (self.displayBoardLimits)
   //--- displayFrontComponentNames
     self.displayFrontComponentNames.readModelFunction = nil 
     self.displayFrontComponentNames.writeModelFunction = nil 
