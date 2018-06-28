@@ -302,7 +302,11 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
 
   var mValueExplorer : NSTextField? {
     didSet {
-      mValueExplorer?.stringValue = "\(mValueCache)"
+      if let valueCache = mValueCache {
+        mValueExplorer?.stringValue = "\(valueCache)"
+      }else{
+        mValueExplorer?.stringValue = "nil"
+      }
     }
   }
 
@@ -310,11 +314,14 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
 
   override var prop : EBProperty <T> {
     get {
-      if let unwrappedComputeFunction = readModelFunction, mValueCache == nil {
-        mValueCache = unwrappedComputeFunction ()
-      }
       if mValueCache == nil {
-        mValueCache = .noSelection
+        if let unwrappedComputeFunction = readModelFunction {
+          mValueCache = unwrappedComputeFunction ()
+        }
+        if mValueCache == nil {
+          mValueCache = .noSelection
+        }
+        mValueExplorer?.stringValue = "\(mValueCache!)"
       }
       return mValueCache!
     }
@@ -325,6 +332,7 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
   override func postEvent () {
     if mValueCache != nil {
       mValueCache = nil
+      mValueExplorer?.stringValue = "nil"
       if logEvents () {
         appendMessageString ("Transient \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
       }
@@ -898,7 +906,11 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 
   var mValueExplorer : NSTextField? {
     didSet {
-      mValueExplorer?.stringValue = "\(mValueCache)"
+      if let valueCache = mValueCache {
+        mValueExplorer?.stringValue = "\(valueCache)"
+      }else{
+        mValueExplorer?.stringValue = "nil"
+      }
     }
   }
 
@@ -906,11 +918,14 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 
   override var prop : EBProperty <T> {
     get {
-      if let unwrappedComputeFunction = readModelFunction, mValueCache == nil {
-        mValueCache = unwrappedComputeFunction ()
-      }
       if mValueCache == nil {
-        mValueCache = .noSelection
+        if let unwrappedComputeFunction = readModelFunction {
+          mValueCache = unwrappedComputeFunction ()
+        }
+        if mValueCache == nil {
+          mValueCache = .noSelection
+        }
+        mValueExplorer?.stringValue = "\(mValueCache!)"
       }
       return mValueCache!
     }
@@ -921,6 +936,7 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
   override func postEvent () {
     if mValueCache != nil {
       mValueCache = nil
+      mValueExplorer?.stringValue = "nil"
       if logEvents () {
         appendMessageString ("Transient \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
       }
