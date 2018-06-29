@@ -10,21 +10,20 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_viaShapes (_ self_2E_vias_0 : [BoardModelViaEntity_x],
+func compute_BoardModelEntity_viasHoles (_ self_2E_vias_0 : [BoardModelViaEntity_x],
                                          _ self_2E_vias_1 : [BoardModelViaEntity_y],
-                                         _ self_2E_vias_2 : [BoardModelViaEntity_padDiameter]) -> MergerViaShapeArray {
+                                         _ self_2E_vias_2 : [BoardModelViaEntity_holeDiameter]) -> MergerHoleArray {
 //--- START OF USER ZONE 2
-  var array = [MergerViaShape] ()
+  var holeArray = [MergerHole] ()
   var idx = 0
   while idx < self_2E_vias_0.count {
+    let holeDiameter = self_2E_vias_2 [idx].holeDiameter.propval
     let x = self_2E_vias_0 [idx].x.propval
     let y = self_2E_vias_1 [idx].y.propval
-    let padDiameter  = self_2E_vias_2 [idx].padDiameter.propval
-    let via = MergerViaShape (x:x, y:y, padDiameter:padDiameter)
-    array.append (via)
+    holeArray.append (MergerHole (x:x, y:y, holeDiameter:holeDiameter))
     idx += 1
   }
-  return MergerViaShapeArray (array)
+  return MergerHoleArray (holeArray)
 //--- END OF USER ZONE 2
 }
 

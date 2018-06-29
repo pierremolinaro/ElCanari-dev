@@ -18,7 +18,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mBackgroundLayer = CAShapeLayer ()
    fileprivate var mNoModelTextLayer = CATextLayer ()
    fileprivate var mViaPadLayer = CALayer ()
-   fileprivate var mViaHoleLayer = CALayer ()
+   fileprivate var mHolesLayer = CALayer ()
    fileprivate var mFrontComponentNamesLayer = CALayer ()
    fileprivate var mFrontTracksLayer = CALayer ()
    fileprivate var mBackTracksLayer = CALayer ()
@@ -51,7 +51,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.addSublayer (mFrontPadsLayer)
     self.layer?.addSublayer (mBoardLimitsLayer)
     self.layer?.addSublayer (mViaPadLayer)
-    self.layer?.addSublayer (mViaHoleLayer)
+    self.layer?.addSublayer (mHolesLayer)
  //   CATransaction.commit ()
   }
 
@@ -97,17 +97,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
   func setVias (_ inVias : [MergerViaShape]) {
     var viaPadLayerComponents = [CAShapeLayer] ()
-    var viaHoleLayerComponents = [CAShapeLayer] ()
     for via in inVias {
     //--- Pad
       let padShape = via.viaPad (color : NSColor.red.cgColor)
       viaPadLayerComponents.append (padShape)
-    //--- Hole
-      let holeShape = via.viaHole (color : NSColor.white.cgColor)
-      viaHoleLayerComponents.append (holeShape)
     }
     mViaPadLayer.sublayers = viaPadLayerComponents
-    mViaHoleLayer.sublayers = viaHoleLayerComponents
   }
 
   //····················································································································
@@ -473,6 +468,45 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
+  //    Holes
+  //····················································································································
+
+  private var mHolesController : Controller_CanariBoardModelView_holes?
+
+  //····················································································································
+
+  func bind_holes (_ holes:EBReadOnlyProperty_MergerHoleArray, file:String, line:Int) {
+    mHolesController = Controller_CanariBoardModelView_holes (holes:holes, outlet:self)
+  }
+
+  //····················································································································
+
+  func unbind_holes () {
+    mHolesController?.unregister ()
+    mHolesController = nil
+  }
+
+  //····················································································································
+
+  func setHoles (_ inHoleArray : [MergerHole]) {
+    var components = [CAShapeLayer] ()
+    for hole in inHoleArray {
+      let x = canariUnitToCocoa (hole.x)
+      let y = canariUnitToCocoa (hole.y)
+      let holeDiameter = canariUnitToCocoa (hole.holeDiameter)
+      let r = CGRect (x: x - holeDiameter / 2.0, y: y - holeDiameter / 2.0, width:holeDiameter, height:holeDiameter)
+      let path = CGPath (ellipseIn:r, transform:nil)
+      let shape = CAShapeLayer ()
+      shape.path = path
+      shape.position = CGPoint (x:0.0, y:0.0)
+      shape.strokeColor = nil
+      shape.fillColor = NSColor.white.cgColor
+      components.append (shape)
+    }
+    self.mHolesLayer.sublayers = components
+  }
+
+  //····················································································································
 
 }
 
@@ -640,6 +674,40 @@ final class Controller_CanariBoardModelView_backPads : EBSimpleController {
       mOutlet.setBackPads (v.padArray)
     case .multipleSelection :
       mOutlet.setBackPads ([])
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariBoardModelView_holes
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariBoardModelView_holes : EBSimpleController {
+
+  private let mHoles : EBReadOnlyProperty_MergerHoleArray
+  private let mOutlet : CanariBoardModelView
+
+  //····················································································································
+
+  init (holes : EBReadOnlyProperty_MergerHoleArray, outlet : CanariBoardModelView) {
+    mHoles = holes
+    mOutlet = outlet
+    super.init (observedObjects:[holes], outlet:outlet)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mHoles.prop {
+    case .noSelection :
+      mOutlet.setHoles ([])
+    case .singleSelection (let v) :
+      mOutlet.setHoles (v.holeArray)
+    case .multipleSelection :
+      mOutlet.setHoles ([])
     }
   }
 

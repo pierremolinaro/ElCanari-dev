@@ -1379,6 +1379,230 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
+  //   Observers of 'padsHoles' transient property
+  //····················································································································
+
+  private var mObserversOf_padsHoles = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padsHoles (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_padsHoles.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.padsHoles.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padsHoles (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_padsHoles.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.padsHoles.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padsHoles_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_padsHoles {
+        managedObject.padsHoles.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padsHoles_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_padsHoles {
+        managedObject.padsHoles.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'viasHoles' transient property
+  //····················································································································
+
+  private var mObserversOf_viasHoles = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_viasHoles (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_viasHoles.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.viasHoles.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viasHoles (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_viasHoles.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.viasHoles.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_viasHoles_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_viasHoles {
+        managedObject.viasHoles.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_viasHoles_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_viasHoles {
+        managedObject.viasHoles.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'holes' transient property
+  //····················································································································
+
+  private var mObserversOf_holes = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_holes (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_holes.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.holes.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_holes (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_holes.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.holes.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_holes_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_holes {
+        managedObject.holes.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_holes_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_holes {
+        managedObject.holes.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'holesForDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_holesForDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_holesForDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_holesForDisplay.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.holesForDisplay.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_holesForDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_holesForDisplay.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.holesForDisplay.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_holesForDisplay_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_holesForDisplay {
+        managedObject.holesForDisplay.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_holesForDisplay_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_holesForDisplay {
+        managedObject.holesForDisplay.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'viaCount' transient property
   //····················································································································
 
@@ -3233,6 +3457,10 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_displayFrontPackages_fromElementsOfSet (removedSet)
         removeEBObserversOf_displayBackPackages_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
+        removeEBObserversOf_padsHoles_fromElementsOfSet (removedSet)
+        removeEBObserversOf_viasHoles_fromElementsOfSet (removedSet)
+        removeEBObserversOf_holes_fromElementsOfSet (removedSet)
+        removeEBObserversOf_holesForDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_viaCount_fromElementsOfSet (removedSet)
         removeEBObserversOf_viaShapes_fromElementsOfSet (removedSet)
         removeEBObserversOf_viaShapesForDisplay_fromElementsOfSet (removedSet)
@@ -3293,6 +3521,10 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_displayFrontPackages_toElementsOfSet (addedSet)
         addEBObserversOf_displayBackPackages_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
+        addEBObserversOf_padsHoles_toElementsOfSet (addedSet)
+        addEBObserversOf_viasHoles_toElementsOfSet (addedSet)
+        addEBObserversOf_holes_toElementsOfSet (addedSet)
+        addEBObserversOf_holesForDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_viaCount_toElementsOfSet (addedSet)
         addEBObserversOf_viaShapes_toElementsOfSet (addedSet)
         addEBObserversOf_viaShapesForDisplay_toElementsOfSet (addedSet)
@@ -3495,6 +3727,30 @@ protocol BoardModelEntity_displayFrontPackages : class {
 
 protocol BoardModelEntity_displayBackPackages : class {
   var displayBackPackages : EBStoredProperty_Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_padsHoles : class {
+  var padsHoles : EBTransientProperty_MergerHoleArray { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_viasHoles : class {
+  var viasHoles : EBTransientProperty_MergerHoleArray { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_holes : class {
+  var holes : EBTransientProperty_MergerHoleArray { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_holesForDisplay : class {
+  var holesForDisplay : EBTransientProperty_MergerHoleArray { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -6004,7 +6260,7 @@ final class ToOneRelationship_BoardModelEntity_myArtwork : EBAbstractProperty {
 //    Entity: BoardModelEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_displayHoles, BoardModelEntity_displayVias, BoardModelEntity_displayFrontPads, BoardModelEntity_displayBackPads, BoardModelEntity_boardLimitWidth, BoardModelEntity_boardLimitWidthUnit, BoardModelEntity_displayBoardLimits, BoardModelEntity_displayBackComponentNames, BoardModelEntity_displayFrontComponentNames, BoardModelEntity_displayFrontComponentValues, BoardModelEntity_displayBackComponentValues, BoardModelEntity_displayBackTracks, BoardModelEntity_displayFrontTracks, BoardModelEntity_displayFrontPackages, BoardModelEntity_displayBackPackages, BoardModelEntity_viaCount, BoardModelEntity_viaShapes, BoardModelEntity_viaShapesForDisplay, BoardModelEntity_frontPads, BoardModelEntity_frontPadsForDisplay, BoardModelEntity_backPads, BoardModelEntity_backPadsForDisplay, BoardModelEntity_boardLimits, BoardModelEntity_backComponentNameSegments, BoardModelEntity_backComponentNameSegmentsCount, BoardModelEntity_backComponentNameSegmentsForDisplay, BoardModelEntity_frontComponentNameSegments, BoardModelEntity_frontComponentNameSegmentsCount, BoardModelEntity_frontComponentNameSegmentsForDisplay, BoardModelEntity_frontComponentValueSegments, BoardModelEntity_frontComponentValueSegmentsCount, BoardModelEntity_frontComponentValuesForDisplay, BoardModelEntity_backComponentValueSegments, BoardModelEntity_backComponentValueSegmentsCount, BoardModelEntity_backComponentValuesForDisplay, BoardModelEntity_backTrackSegments, BoardModelEntity_backTracksSegmentsCount, BoardModelEntity_backTrackSegmentsForDisplay, BoardModelEntity_frontTrackSegments, BoardModelEntity_frontTracksSegmentsCount, BoardModelEntity_frontTrackSegmentsForDisplay, BoardModelEntity_frontPackagesSegments, BoardModelEntity_frontPackageSegmentsCount, BoardModelEntity_frontPackagesSegmentsForDisplay, BoardModelEntity_backPackagesSegments, BoardModelEntity_backPackageSegmentsCount, BoardModelEntity_backPackagesSegmentsForDisplay
+class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_displayHoles, BoardModelEntity_displayVias, BoardModelEntity_displayFrontPads, BoardModelEntity_displayBackPads, BoardModelEntity_boardLimitWidth, BoardModelEntity_boardLimitWidthUnit, BoardModelEntity_displayBoardLimits, BoardModelEntity_displayBackComponentNames, BoardModelEntity_displayFrontComponentNames, BoardModelEntity_displayFrontComponentValues, BoardModelEntity_displayBackComponentValues, BoardModelEntity_displayBackTracks, BoardModelEntity_displayFrontTracks, BoardModelEntity_displayFrontPackages, BoardModelEntity_displayBackPackages, BoardModelEntity_padsHoles, BoardModelEntity_viasHoles, BoardModelEntity_holes, BoardModelEntity_holesForDisplay, BoardModelEntity_viaCount, BoardModelEntity_viaShapes, BoardModelEntity_viaShapesForDisplay, BoardModelEntity_frontPads, BoardModelEntity_frontPadsForDisplay, BoardModelEntity_backPads, BoardModelEntity_backPadsForDisplay, BoardModelEntity_boardLimits, BoardModelEntity_backComponentNameSegments, BoardModelEntity_backComponentNameSegmentsCount, BoardModelEntity_backComponentNameSegmentsForDisplay, BoardModelEntity_frontComponentNameSegments, BoardModelEntity_frontComponentNameSegmentsCount, BoardModelEntity_frontComponentNameSegmentsForDisplay, BoardModelEntity_frontComponentValueSegments, BoardModelEntity_frontComponentValueSegmentsCount, BoardModelEntity_frontComponentValuesForDisplay, BoardModelEntity_backComponentValueSegments, BoardModelEntity_backComponentValueSegmentsCount, BoardModelEntity_backComponentValuesForDisplay, BoardModelEntity_backTrackSegments, BoardModelEntity_backTracksSegmentsCount, BoardModelEntity_backTrackSegmentsForDisplay, BoardModelEntity_frontTrackSegments, BoardModelEntity_frontTracksSegmentsCount, BoardModelEntity_frontTrackSegmentsForDisplay, BoardModelEntity_frontPackagesSegments, BoardModelEntity_frontPackageSegmentsCount, BoardModelEntity_frontPackagesSegmentsForDisplay, BoardModelEntity_backPackagesSegments, BoardModelEntity_backPackageSegmentsCount, BoardModelEntity_backPackagesSegmentsForDisplay
 {
 
   //····················································································································
@@ -6063,6 +6319,10 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   //    Transient properties
   //····················································································································
 
+  var padsHoles = EBTransientProperty_MergerHoleArray ()
+  var viasHoles = EBTransientProperty_MergerHoleArray ()
+  var holes = EBTransientProperty_MergerHoleArray ()
+  var holesForDisplay = EBTransientProperty_MergerHoleArray ()
   var viaCount = EBTransientProperty_Int ()
   var viaShapes = EBTransientProperty_MergerViaShapeArray ()
   var viaShapesForDisplay = EBTransientProperty_MergerViaShapeArray ()
@@ -6119,6 +6379,92 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
+    padsHoles.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.pads.prop.kind ()
+        kind &= unwSelf.pads.prop.kind ()
+        kind &= unwSelf.pads.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
+            return .singleSelection (compute_BoardModelEntity_padsHoles (v0, v1, v2))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    viasHoles.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.vias.prop.kind ()
+        kind &= unwSelf.vias.prop.kind ()
+        kind &= unwSelf.vias.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.vias.prop, unwSelf.vias.prop, unwSelf.vias.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
+            return .singleSelection (compute_BoardModelEntity_viasHoles (v0, v1, v2))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    holes.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.padsHoles.prop.kind ()
+        kind &= unwSelf.viasHoles.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.padsHoles.prop, unwSelf.viasHoles.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1)) :
+            return .singleSelection (compute_BoardModelEntity_holes (v0, v1))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    holesForDisplay.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.displayHoles.prop.kind ()
+        kind &= unwSelf.holes.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.displayHoles.prop, unwSelf.holes.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1)) :
+            return .singleSelection (compute_BoardModelEntity_holesForDisplay (v0, v1))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
     viaCount.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.vias.count.prop.kind ()
@@ -6144,16 +6490,15 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
         var kind = unwSelf.vias.prop.kind ()
         kind &= unwSelf.vias.prop.kind ()
         kind &= unwSelf.vias.prop.kind ()
-        kind &= unwSelf.vias.prop.kind ()
         switch kind {
         case .noSelectionKind :
           return .noSelection
         case .multipleSelectionKind :
           return .multipleSelection
         case .singleSelectionKind :
-          switch (unwSelf.vias.prop, unwSelf.vias.prop, unwSelf.vias.prop, unwSelf.vias.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3)) :
-            return .singleSelection (compute_BoardModelEntity_viaShapes (v0, v1, v2, v3))
+          switch (unwSelf.vias.prop, unwSelf.vias.prop, unwSelf.vias.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
+            return .singleSelection (compute_BoardModelEntity_viaShapes (v0, v1, v2))
           default :
             return .noSelection
           }
@@ -6823,10 +7168,19 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       }
     }
   //--- Install property observers for transients
+    pads.addEBObserverOf_x (padsHoles)
+    pads.addEBObserverOf_y (padsHoles)
+    pads.addEBObserverOf_holeDiameter (padsHoles)
+    vias.addEBObserverOf_x (viasHoles)
+    vias.addEBObserverOf_y (viasHoles)
+    vias.addEBObserverOf_holeDiameter (viasHoles)
+    padsHoles.addEBObserver (holes)
+    viasHoles.addEBObserver (holes)
+    displayHoles.addEBObserver (holesForDisplay)
+    holes.addEBObserver (holesForDisplay)
     vias.addEBObserver (viaCount)
     vias.addEBObserverOf_x (viaShapes)
     vias.addEBObserverOf_y (viaShapes)
-    vias.addEBObserverOf_holeDiameter (viaShapes)
     vias.addEBObserverOf_padDiameter (viaShapes)
     displayVias.addEBObserver (viaShapesForDisplay)
     viaShapes.addEBObserver (viaShapesForDisplay)
@@ -6962,10 +7316,19 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
 
   deinit {
   //--- Remove observers
+    pads.removeEBObserverOf_x (padsHoles)
+    pads.removeEBObserverOf_y (padsHoles)
+    pads.removeEBObserverOf_holeDiameter (padsHoles)
+    vias.removeEBObserverOf_x (viasHoles)
+    vias.removeEBObserverOf_y (viasHoles)
+    vias.removeEBObserverOf_holeDiameter (viasHoles)
+    padsHoles.removeEBObserver (holes)
+    viasHoles.removeEBObserver (holes)
+    displayHoles.removeEBObserver (holesForDisplay)
+    holes.removeEBObserver (holesForDisplay)
     vias.removeEBObserver (viaCount)
     vias.removeEBObserverOf_x (viaShapes)
     vias.removeEBObserverOf_y (viaShapes)
-    vias.removeEBObserverOf_holeDiameter (viaShapes)
     vias.removeEBObserverOf_padDiameter (viaShapes)
     displayVias.removeEBObserver (viaShapesForDisplay)
     viaShapes.removeEBObserver (viaShapesForDisplay)
@@ -7258,6 +7621,38 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       valueExplorer:&self.displayBackPackages.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "padsHoles",
+      idx:self.padsHoles.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.padsHoles.mObserverExplorer,
+      valueExplorer:&self.padsHoles.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "viasHoles",
+      idx:self.viasHoles.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.viasHoles.mObserverExplorer,
+      valueExplorer:&self.viasHoles.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "holes",
+      idx:self.holes.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.holes.mObserverExplorer,
+      valueExplorer:&self.holes.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "holesForDisplay",
+      idx:self.holesForDisplay.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.holesForDisplay.mObserverExplorer,
+      valueExplorer:&self.holesForDisplay.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "viaCount",
       idx:self.viaCount.mEasyBindingsObjectIndex,

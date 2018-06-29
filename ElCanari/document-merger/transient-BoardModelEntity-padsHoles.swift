@@ -10,21 +10,22 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_viaShapes (_ self_2E_vias_0 : [BoardModelViaEntity_x],
-                                         _ self_2E_vias_1 : [BoardModelViaEntity_y],
-                                         _ self_2E_vias_2 : [BoardModelViaEntity_padDiameter]) -> MergerViaShapeArray {
+func compute_BoardModelEntity_padsHoles (_ self_2E_pads_0 : [BoardModelPadEntity_x],
+                                         _ self_2E_pads_1 : [BoardModelPadEntity_y],
+                                         _ self_2E_pads_2 : [BoardModelPadEntity_holeDiameter]) -> MergerHoleArray {
 //--- START OF USER ZONE 2
-  var array = [MergerViaShape] ()
+  var holeArray = [MergerHole] ()
   var idx = 0
-  while idx < self_2E_vias_0.count {
-    let x = self_2E_vias_0 [idx].x.propval
-    let y = self_2E_vias_1 [idx].y.propval
-    let padDiameter  = self_2E_vias_2 [idx].padDiameter.propval
-    let via = MergerViaShape (x:x, y:y, padDiameter:padDiameter)
-    array.append (via)
+  while idx < self_2E_pads_0.count {
+    let holeDiameter = self_2E_pads_2 [idx].holeDiameter.propval
+    if holeDiameter > 0 {
+      let x = self_2E_pads_0 [idx].x.propval
+      let y = self_2E_pads_1 [idx].y.propval
+      holeArray.append (MergerHole (x:x, y:y, holeDiameter:holeDiameter))
+    }
     idx += 1
   }
-  return MergerViaShapeArray (array)
+  return MergerHoleArray (holeArray)
 //--- END OF USER ZONE 2
 }
 

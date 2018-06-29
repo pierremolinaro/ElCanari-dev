@@ -65,12 +65,16 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var frontTrackSegments = EBTransientProperty_MergerSegmentArray () 
   var frontTrackSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
   var frontTracksSegmentsCount = EBTransientProperty_Int () 
+  var holes = EBTransientProperty_MergerHoleArray () 
+  var holesForDisplay = EBTransientProperty_MergerHoleArray () 
   var horizontalFlip = EBPropertyProxy_Bool () 
   var name = EBPropertyProxy_String () 
+  var padsHoles = EBTransientProperty_MergerHoleArray () 
   var verticalFlip = EBPropertyProxy_Bool () 
   var viaCount = EBTransientProperty_Int () 
   var viaShapes = EBTransientProperty_MergerViaShapeArray () 
   var viaShapesForDisplay = EBTransientProperty_MergerViaShapeArray () 
+  var viasHoles = EBTransientProperty_MergerHoleArray () 
   var zoom = EBPropertyProxy_Int () 
 
   //····················································································································
@@ -128,12 +132,16 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_frontTrackSegments (model: model)
     bind_property_frontTrackSegmentsForDisplay (model: model)
     bind_property_frontTracksSegmentsCount (model: model)
+    bind_property_holes (model: model)
+    bind_property_holesForDisplay (model: model)
     bind_property_horizontalFlip (model: model)
     bind_property_name (model: model)
+    bind_property_padsHoles (model: model)
     bind_property_verticalFlip (model: model)
     bind_property_viaCount (model: model)
     bind_property_viaShapes (model: model)
     bind_property_viaShapesForDisplay (model: model)
+    bind_property_viasHoles (model: model)
     bind_property_zoom (model: model)
   }
 
@@ -2978,6 +2986,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_holes (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_holes (self.holes)
+    self.holes.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerHoleArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.holes.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_holesForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_holesForDisplay (self.holesForDisplay)
+    self.holesForDisplay.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerHoleArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.holesForDisplay.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_horizontalFlip (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_horizontalFlip (self.horizontalFlip)
     self.horizontalFlip.readModelFunction = {
@@ -3112,6 +3200,46 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }else{
         return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_padsHoles (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_padsHoles (self.padsHoles)
+    self.padsHoles.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerHoleArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.padsHoles.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
       }
     }
   }
@@ -3282,6 +3410,46 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.viaShapesForDisplay.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_viasHoles (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_viasHoles (self.viasHoles)
+    self.viasHoles.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerHoleArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.viasHoles.prop {
             case .noSelection :
               return .noSelection
             case .multipleSelection :
@@ -3570,6 +3738,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- frontTracksSegmentsCount
     self.frontTracksSegmentsCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontTracksSegmentsCount (self.frontTracksSegmentsCount)
+  //--- holes
+    self.holes.readModelFunction = nil 
+    mModel?.removeEBObserverOf_holes (self.holes)
+  //--- holesForDisplay
+    self.holesForDisplay.readModelFunction = nil 
+    mModel?.removeEBObserverOf_holesForDisplay (self.holesForDisplay)
   //--- horizontalFlip
     self.horizontalFlip.readModelFunction = nil 
     self.horizontalFlip.writeModelFunction = nil 
@@ -3580,6 +3754,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.name.writeModelFunction = nil 
     self.name.validateAndWriteModelFunction = nil 
     mModel?.removeEBObserverOf_name (self.name)
+  //--- padsHoles
+    self.padsHoles.readModelFunction = nil 
+    mModel?.removeEBObserverOf_padsHoles (self.padsHoles)
   //--- verticalFlip
     self.verticalFlip.readModelFunction = nil 
     self.verticalFlip.writeModelFunction = nil 
@@ -3594,6 +3771,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- viaShapesForDisplay
     self.viaShapesForDisplay.readModelFunction = nil 
     mModel?.removeEBObserverOf_viaShapesForDisplay (self.viaShapesForDisplay)
+  //--- viasHoles
+    self.viasHoles.readModelFunction = nil 
+    mModel?.removeEBObserverOf_viasHoles (self.viasHoles)
   //--- zoom
     self.zoom.readModelFunction = nil 
     self.zoom.writeModelFunction = nil 

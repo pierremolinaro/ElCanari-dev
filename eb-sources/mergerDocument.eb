@@ -18,6 +18,7 @@ transient property class MergerViaShapeArray ;
 transient property class MergerSegmentArray ;
 transient property class MergerBoardLimits ;
 transient property class MergerPadArray ;
+transient property class MergerHoleArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -38,6 +39,7 @@ binding CanariBoardModelView $backPackages : transient MergerSegmentArray ;
 binding CanariBoardModelView $boardLimits : transient MergerBoardLimits ;
 binding CanariBoardModelView $frontPads : transient MergerPadArray ;
 binding CanariBoardModelView $backPads : transient MergerPadArray ;
+binding CanariBoardModelView $holes : transient MergerHoleArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -178,7 +180,18 @@ entity BoardModelEntity {
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
 
+#--- Holes
   property Bool displayHoles default yes ;
+
+  transient MergerHoleArray padsHoles
+    dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.holeDiameter ;
+ 
+  transient MergerHoleArray viasHoles
+    dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter ;
+ 
+  transient MergerHoleArray holes dependsFrom self.padsHoles, self.viasHoles ;
+ 
+  transient MergerHoleArray holesForDisplay dependsFrom self.displayHoles, self.holes ;
  
 #--- Vias 
   toMany BoardModelViaEntity vias inverse toOne myModel ;
@@ -187,7 +200,7 @@ entity BoardModelEntity {
   copy transient Int viaCount : self.vias.count ;
   
   transient MergerViaShapeArray viaShapes
-    dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter, self.vias.all.padDiameter ;
+    dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
   
   transient MergerViaShapeArray viaShapesForDisplay dependsFrom self.displayVias, self.viaShapes ;
 
@@ -431,6 +444,7 @@ document PMMergerDocument root MergerRootEntity {
     $boardLimits mBoardModelSelection.boardLimits
     $frontPads mBoardModelSelection.frontPadsForDisplay
     $backPads mBoardModelSelection.backPadsForDisplay
+    $holes mBoardModelSelection.holesForDisplay
   ;
   
   outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
