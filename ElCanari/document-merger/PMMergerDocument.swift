@@ -37,6 +37,7 @@ import Cocoa
   @IBOutlet var mDisplayFrontPads : EBCheckedMenuItem?
   @IBOutlet var mDisplayFrontTracks : EBCheckedMenuItem?
   @IBOutlet var mDisplayHoles : EBCheckedMenuItem?
+  @IBOutlet var mDisplayVias : EBCheckedMenuItem?
   @IBOutlet var mFrontComponentNameSegmentCountTextField : EBIntObserverField?
   @IBOutlet var mFrontPackagesCountTextField : EBIntObserverField?
   @IBOutlet var mFrontTrackSegmentCountTextField : EBIntObserverField?
@@ -339,6 +340,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mDisplayHoles' outlet is not an instance of 'EBCheckedMenuItem'") ;
     }
+    if nil == mDisplayVias {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDisplayVias' outlet is nil") ;
+//    }else if !mDisplayVias!.isKindOfClass (EBCheckedMenuItem) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDisplayVias' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
     if nil == mFrontComponentNameSegmentCountTextField {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -428,7 +438,7 @@ import Cocoa
     mBoardModelView?.bind_zoom (self.mBoardModelSelection.zoom, file: #file, line: #line)
     mBoardModelView?.bind_horizontalFlip (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mBoardModelView?.bind_verticalFlip (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
-    mBoardModelView?.bind_vias (self.mBoardModelSelection.viaShapes, file: #file, line: #line)
+    mBoardModelView?.bind_vias (self.mBoardModelSelection.viaShapesForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_frontComponentNames (self.mBoardModelSelection.frontComponentNameSegmentsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_frontComponentValues (self.mBoardModelSelection.frontComponentValuesForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_backComponentNames (self.mBoardModelSelection.backComponentNameSegmentsForDisplay, file: #file, line: #line)
@@ -454,6 +464,7 @@ import Cocoa
     mDisplayBoardLimits?.bind_checked (self.mBoardModelSelection.displayBoardLimits, file: #file, line: #line)
     mDisplayFrontPads?.bind_checked (self.mBoardModelSelection.displayFrontPads, file: #file, line: #line)
     mDisplayBackPads?.bind_checked (self.mBoardModelSelection.displayBackPads, file: #file, line: #line)
+    mDisplayVias?.bind_checked (self.mBoardModelSelection.displayVias, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -513,6 +524,7 @@ import Cocoa
     mDisplayBoardLimits?.unbind_checked ()
     mDisplayFrontPads?.unbind_checked ()
     mDisplayBackPads?.unbind_checked ()
+    mDisplayVias?.unbind_checked ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers

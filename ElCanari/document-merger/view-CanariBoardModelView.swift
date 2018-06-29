@@ -39,7 +39,6 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    // CATransaction.begin()
     self.layer?.addSublayer (mBackgroundLayer)
     self.layer?.addSublayer (mNoModelTextLayer)
-    self.layer?.addSublayer (mViaPadLayer)
     self.layer?.addSublayer (mBackPackagesLayer)
     self.layer?.addSublayer (mBackComponentNamesLayer)
     self.layer?.addSublayer (mBackComponentValuesLayer)
@@ -51,6 +50,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.addSublayer (mFrontComponentNamesLayer)
     self.layer?.addSublayer (mFrontPadsLayer)
     self.layer?.addSublayer (mBoardLimitsLayer)
+    self.layer?.addSublayer (mViaPadLayer)
     self.layer?.addSublayer (mViaHoleLayer)
  //   CATransaction.commit ()
   }
@@ -73,7 +73,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     }else{
       mBackgroundLayer.path = CGPath (rect: self.bounds, transform: nil)
       mBackgroundLayer.position = CGPoint (x:0.0, y:0.0)
-      mBackgroundLayer.fillColor = NSColor.white.cgColor
+      mBackgroundLayer.fillColor = NSColor.lightGray.blended (withFraction: 0.5, of: .white)!.cgColor
       mNoModelTextLayer.string = ""
     }
   }
@@ -100,7 +100,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     var viaHoleLayerComponents = [CAShapeLayer] ()
     for via in inVias {
     //--- Pad
-      let padShape = via.viaPad (color : NSColor.black.cgColor)
+      let padShape = via.viaPad (color : NSColor.red.cgColor)
       viaPadLayerComponents.append (padShape)
     //--- Hole
       let holeShape = via.viaHole (color : NSColor.white.cgColor)

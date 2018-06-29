@@ -166,7 +166,6 @@ entity BoardModelBackTrackSegmentEntity {
 
 entity BoardModelEntity {
   toOne MergerRootEntity myArtwork inverse toMany boardModels ;
-  toMany BoardModelViaEntity vias inverse toOne myModel ;
   
   property String artworkName default "" ;
   property String name default "" ;
@@ -180,11 +179,17 @@ entity BoardModelEntity {
   property Bool verticalFlip default no ;
 
   property Bool displayHoles default yes ;
-  
+ 
+#--- Vias 
+  toMany BoardModelViaEntity vias inverse toOne myModel ;
+  property Bool displayVias default yes ;
+
   copy transient Int viaCount : self.vias.count ;
   
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter, self.vias.all.padDiameter ;
+  
+  transient MergerViaShapeArray viaShapesForDisplay dependsFrom self.displayVias, self.viaShapes ;
 
 #--- Pads
   toMany BoardModelPadEntity pads inverse toOne myBoard ;
@@ -414,7 +419,7 @@ document PMMergerDocument root MergerRootEntity {
     $zoom mBoardModelSelection.zoom
     $horizontalFlip mBoardModelSelection.horizontalFlip
     $verticalFlip mBoardModelSelection.verticalFlip
-    $vias mBoardModelSelection.viaShapes
+    $vias mBoardModelSelection.viaShapesForDisplay
     $frontComponentNames mBoardModelSelection.frontComponentNameSegmentsForDisplay
     $frontComponentValues mBoardModelSelection.frontComponentValuesForDisplay
     $backComponentNames mBoardModelSelection.backComponentNameSegmentsForDisplay
@@ -443,6 +448,7 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBCheckedMenuItem mDisplayBoardLimits $checked mBoardModelSelection.displayBoardLimits ;
   outlet EBCheckedMenuItem mDisplayFrontPads $checked mBoardModelSelection.displayFrontPads ;
   outlet EBCheckedMenuItem mDisplayBackPads $checked mBoardModelSelection.displayBackPads ;
+  outlet EBCheckedMenuItem mDisplayVias $checked mBoardModelSelection.displayVias ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

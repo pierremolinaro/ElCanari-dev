@@ -293,6 +293,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_displayFrontPads_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_displayFrontTracks_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_displayHoles_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_displayVias_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
@@ -312,6 +313,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viaCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_viaShapesForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
@@ -353,6 +355,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_displayFrontPads_toElementsOfSet (addedObjectSet)
         addEBObserversOf_displayFrontTracks_toElementsOfSet (addedObjectSet)
         addEBObserversOf_displayHoles_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_displayVias_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameSegmentsForDisplay_toElementsOfSet (addedObjectSet)
@@ -372,6 +375,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viaCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_viaShapesForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()

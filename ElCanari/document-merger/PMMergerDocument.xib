@@ -33,6 +33,7 @@
                 <outlet property="mDisplayFrontPads" destination="NTM-ak-cm3" id="Tpy-79-gKe"/>
                 <outlet property="mDisplayFrontTracks" destination="XhH-C3-HYx" id="vow-3J-qDp"/>
                 <outlet property="mDisplayHoles" destination="3hJ-XX-4bH" id="KJu-An-Ty7"/>
+                <outlet property="mDisplayVias" destination="F7n-xU-x8G" id="jNx-FP-QB6"/>
                 <outlet property="mFrontComponentNameSegmentCountTextField" destination="dpz-lh-SJe" id="jM7-Bq-qAI"/>
                 <outlet property="mFrontPackagesCountTextField" destination="tmN-ch-vea" id="Sub-ka-b9T"/>
                 <outlet property="mFrontTrackSegmentCountTextField" destination="h7n-fB-G8M" id="C7m-hO-QUe"/>
@@ -517,6 +518,7 @@
                                                     <menuItem title="Display" state="on" hidden="YES" id="hc1-1f-Yl9"/>
                                                     <menuItem title="Board Limits" id="IQb-Bn-cCd" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Holes" id="3hJ-XX-4bH" customClass="EBCheckedMenuItem"/>
+                                                    <menuItem title="Vias" id="F7n-xU-x8G" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Pads" id="NTM-ak-cm3" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Packages" id="if3-8Y-ga1" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Component Names" id="iJ1-MN-1kW" customClass="EBCheckedMenuItem"/>
