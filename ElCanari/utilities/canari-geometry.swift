@@ -25,9 +25,12 @@ func canariUnitToCocoa (_ inValue : Int) -> CGFloat {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// L'unité de retation utilisée dans canari est le 1/1000° [cru = Canari Rotation Unit]
+// 1_000 cru = 1°
+// 90_000 cru = 90°
 
-func canariRotationToRadians (_ inCanariRotation : Double) -> CGFloat {
-  return CGFloat (inCanariRotation) * CGFloat.pi / 180.0
+func canariRotationToRadians (_ inCanariRotation : Int) -> CGFloat {
+  return CGFloat (inCanariRotation) * CGFloat.pi / 180_000.0
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

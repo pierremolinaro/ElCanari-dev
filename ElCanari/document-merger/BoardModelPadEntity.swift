@@ -598,7 +598,7 @@ protocol BoardModelPadEntity_side : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelPadEntity_rotation : class {
-  var rotation : EBStoredProperty_Double { get }
+  var rotation : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -703,7 +703,7 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPa
 
   var side = EBStoredProperty_PadSide (PadSide.traversing)
 
-  var rotation = EBStoredProperty_Double (0)
+  var rotation = EBStoredProperty_Int (0)
 
   //····················································································································
   //    Transient properties

@@ -72,10 +72,10 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
       let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != mHorizontalFlip) ? -1.0 : 1.0 ;
       let toggleVerticalFlip   : CGFloat = (inVerticalFlip != mVerticalFlip) ? -1.0 : 1.0 ;
       if (0 == inZoom) { // Fit to window
-        let sfr = clipView.frame
-        let fr = self.frame
-        let sx = sfr.size.width / fr.size.width
-        let sy = sfr.size.height / fr.size.height
+        let clipViewSize = clipView.frame.size
+        let currentSize = self.frame.size
+        let sx = clipViewSize.width / currentSize.width
+        let sy = clipViewSize.height / currentSize.height
         let scale = fmin (sx, sy) / currentScale
         clipView.scaleUnitSquare(to: NSSize (width: toggleHorizontalFlip * scale, height: toggleVerticalFlip * scale))
       }else{
@@ -83,9 +83,7 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
         clipView.scaleUnitSquare(to: NSSize (width: toggleHorizontalFlip * scale, height: toggleVerticalFlip * scale))
       }
       let zoomTitle = "\(Int ((self.actualScale () * 100.0).rounded (.toNearestOrEven))) %"
-      mZoomPopUpButton?.menu?.item (at:0)?.title = (0 == inZoom)
-        ? ("(" + zoomTitle + ")")
-        : zoomTitle
+      mZoomPopUpButton?.menu?.item (at:0)?.title = (0 == inZoom) ? ("(" + zoomTitle + ")") : zoomTitle
     }
   }
   
@@ -125,6 +123,13 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
   override func viewDidMoveToSuperview () {
     super.viewDidMoveToSuperview ()
     if mZoomPopUpButton == nil, let clipView = self.superview as? NSClipView {
+      clipView.postsFrameChangedNotifications = true
+      NotificationCenter.default.addObserver (
+        self,
+        selector: #selector (CanariViewWithZoomAndFlip.updateAfterSuperviewResising(_:)),
+        name: NSNotification.Name.NSViewFrameDidChange,
+        object: clipView
+      )
       if let scrollView = clipView.superview as? CanariScrollViewWithPlacard {
         let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
         let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
@@ -173,6 +178,26 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
           }
         }
       }
+    }
+  }
+
+  //····················································································································
+  //  magnifyWithEvent
+  //····················································································································
+
+  override func magnify (with inEvent : NSEvent) {
+    let newZoom = Int ((actualScale () * 100.0 * (inEvent.magnification + 1.0)).rounded (.toNearestOrEven))
+    scaleToZoom (newZoom, mHorizontalFlip, mVerticalFlip)
+    mZoom = newZoom
+  }
+
+  //····················································································································
+  //  Super view has been resized
+  //····················································································································
+
+  func updateAfterSuperviewResising (_ inSender: Any?) {
+    if mZoom == 0 {
+      scaleToZoom (mZoom, mHorizontalFlip, mVerticalFlip)
     }
   }
 

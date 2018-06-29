@@ -23,7 +23,7 @@ final class MergerPad : EBSimpleClass {
   let height : Int
   let holeDiameter : Int
   let shape : PadShape
-  let rotation : Double
+  let rotation : Int
 
   //····················································································································
 
@@ -33,7 +33,7 @@ final class MergerPad : EBSimpleClass {
         height inHeight : Int,
         holeDiameter inHoleDiameter : Int,
         shape inShape : PadShape,
-        rotation inRotation : Double) {
+        rotation inRotation : Int) {
     x = inX
     y = inY
     width = inWidth

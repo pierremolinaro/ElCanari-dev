@@ -41,6 +41,19 @@ fileprivate func int (fromDict inDictionary : NSDictionary, key inKey : String, 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+fileprivate func intOrZero (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Int {
+  let object : Any? = inDictionary.value (forKey: inKey)
+  var result = 0 // Default result
+  if let number = object as? NSNumber {
+    result = number.intValue
+  }else if object != nil {
+    errorArray.append ("The \"\(inKey)\" key value is not an integer.")
+  }
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 fileprivate func string (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> String {
   let object : Any? = inDictionary.value (forKey: inKey)
   var result = "" // Default result
@@ -317,8 +330,8 @@ extension PMMergerDocument {
       pad.y.setProp (int (fromDict: padDict, key: "Y", &errorArray))
       pad.width.setProp (int (fromDict: padDict, key: "WIDTH", &errorArray))
       pad.height.setProp (int (fromDict: padDict, key: "HEIGHT", &errorArray))
-      pad.holeDiameter.setProp (int (fromDict: padDict, key: "HOLE-DIAMETER", &errorArray))
-      pad.rotation.setProp (double (fromDict: padDict, key: "PAD-ROTATION", &errorArray))
+      pad.holeDiameter.setProp (intOrZero (fromDict: padDict, key: "HOLE-DIAMETER", &errorArray))
+      pad.rotation.setProp (int (fromDict: padDict, key: "ROTATION", &errorArray))
       let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
       if shapeString == "RECT" {
         pad.shape.setProp (.rectangular)

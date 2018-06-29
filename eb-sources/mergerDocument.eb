@@ -58,7 +58,7 @@ entity BoardModelPadEntity {
   property Int holeDiameter default 0 ;
   property PadShape shape default rectangular ;
   property PadSide side default traversing ;
-  property Double rotation default 0.0 ;
+  property Int rotation default 0 ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
