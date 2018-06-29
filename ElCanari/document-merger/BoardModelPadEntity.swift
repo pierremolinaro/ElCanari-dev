@@ -410,6 +410,63 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
   }
 
   //····················································································································
+  //   Observers of 'rotation' stored property
+  //····················································································································
+
+  private var mObserversOf_rotation = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_rotation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_rotation.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.rotation.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_rotation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_rotation.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.rotation.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_rotation_toElementsOfSet (_ inSet : Set<BoardModelPadEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_rotation {
+        managedObject.rotation.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_rotation_fromElementsOfSet (_ inSet : Set<BoardModelPadEntity>) {
+    for observer in mObserversOf_rotation {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.rotation.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -454,6 +511,7 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
         removeEBObserversOf_holeDiameter_fromElementsOfSet (removedSet)
         removeEBObserversOf_shape_fromElementsOfSet (removedSet)
         removeEBObserversOf_side_fromElementsOfSet (removedSet)
+        removeEBObserversOf_rotation_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
@@ -465,6 +523,7 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
         addEBObserversOf_holeDiameter_toElementsOfSet (addedSet)
         addEBObserversOf_shape_toElementsOfSet (addedSet)
         addEBObserversOf_side_toElementsOfSet (addedSet)
+        addEBObserversOf_rotation_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
       //--- Update object set
         mSet = newSet
@@ -534,6 +593,12 @@ protocol BoardModelPadEntity_shape : class {
 
 protocol BoardModelPadEntity_side : class {
   var side : EBStoredProperty_PadSide { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelPadEntity_rotation : class {
+  var rotation : EBStoredProperty_Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -617,7 +682,7 @@ final class ToOneRelationship_BoardModelPadEntity_myBoard : EBAbstractProperty {
 //    Entity: BoardModelPadEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPadEntity_y, BoardModelPadEntity_width, BoardModelPadEntity_height, BoardModelPadEntity_holeDiameter, BoardModelPadEntity_shape, BoardModelPadEntity_side
+class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPadEntity_y, BoardModelPadEntity_width, BoardModelPadEntity_height, BoardModelPadEntity_holeDiameter, BoardModelPadEntity_shape, BoardModelPadEntity_side, BoardModelPadEntity_rotation
 {
 
   //····················································································································
@@ -637,6 +702,8 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPa
   var shape = EBStoredProperty_PadShape (PadShape.rectangular)
 
   var side = EBStoredProperty_PadSide (PadSide.traversing)
+
+  var rotation = EBStoredProperty_Double (0)
 
   //····················································································································
   //    Transient properties
@@ -665,6 +732,7 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPa
     self.holeDiameter.undoManager = undoManager ()
     self.shape.undoManager = undoManager ()
     self.side.undoManager = undoManager ()
+    self.rotation.undoManager = undoManager ()
   //--- Install owner for relationships
     myBoard.owner = self
   //--- register properties for handling signature
@@ -738,6 +806,14 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPa
       observerExplorer:&self.side.mObserverExplorer,
       valueExplorer:&self.side.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "rotation",
+      idx:self.rotation.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.rotation.mObserverExplorer,
+      valueExplorer:&self.rotation.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -770,6 +846,8 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPa
     self.shape.mValueExplorer = nil
     self.side.mObserverExplorer = nil
     self.side.mValueExplorer = nil
+    self.rotation.mObserverExplorer = nil
+    self.rotation.mValueExplorer = nil
     myBoard.mObserverExplorer = nil
     myBoard.mValueExplorer = nil
     super.clearObjectExplorer ()
@@ -788,6 +866,7 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPa
     self.holeDiameter.storeIn (dictionary: ioDictionary, forKey: "holeDiameter")
     self.shape.storeIn (dictionary: ioDictionary, forKey: "shape")
     self.side.storeIn (dictionary: ioDictionary, forKey: "side")
+    self.rotation.storeIn (dictionary: ioDictionary, forKey: "rotation")
   }
 
   //····················································································································
@@ -804,6 +883,7 @@ class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPa
     self.holeDiameter.readFrom (dictionary: inDictionary, forKey:"holeDiameter")
     self.shape.readFrom (dictionary: inDictionary, forKey:"shape")
     self.side.readFrom (dictionary: inDictionary, forKey:"side")
+    self.rotation.readFrom (dictionary: inDictionary, forKey:"rotation")
   }
 
   //····················································································································

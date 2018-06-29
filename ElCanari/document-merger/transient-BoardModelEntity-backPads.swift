@@ -10,20 +10,20 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_frontPads (_ self_2E_pads_0 : [BoardModelPadEntity_x],
-                                         _ self_2E_pads_1 : [BoardModelPadEntity_y],
-                                         _ self_2E_pads_2 : [BoardModelPadEntity_width],
-                                         _ self_2E_pads_3 : [BoardModelPadEntity_height],
-                                         _ self_2E_pads_4 : [BoardModelPadEntity_holeDiameter],
-                                         _ self_2E_pads_5 : [BoardModelPadEntity_shape],
-                                         _ self_2E_pads_6 : [BoardModelPadEntity_side],
-                                         _ self_2E_pads_7 : [BoardModelPadEntity_rotation]) -> MergerPadArray {
+func compute_BoardModelEntity_backPads (_ self_2E_pads_0 : [BoardModelPadEntity_x],
+                                        _ self_2E_pads_1 : [BoardModelPadEntity_y],
+                                        _ self_2E_pads_2 : [BoardModelPadEntity_width],
+                                        _ self_2E_pads_3 : [BoardModelPadEntity_height],
+                                        _ self_2E_pads_4 : [BoardModelPadEntity_holeDiameter],
+                                        _ self_2E_pads_5 : [BoardModelPadEntity_shape],
+                                        _ self_2E_pads_6 : [BoardModelPadEntity_side],
+                                        _ self_2E_pads_7 : [BoardModelPadEntity_rotation]) -> MergerPadArray {
 //--- START OF USER ZONE 2
   var padArray = [MergerPad] ()
   var idx = 0
   while idx < self_2E_pads_0.count {
     let side = self_2E_pads_6 [idx].side.propval
-    if (side == .traversing) || (side == .front) {
+    if (side == .traversing) || (side == .back) {
       let x = self_2E_pads_0 [idx].x.propval
       let y = self_2E_pads_1 [idx].y.propval
       let width = self_2E_pads_2 [idx].width.propval

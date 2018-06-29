@@ -25,3 +25,9 @@ func canariUnitToCocoa (_ inValue : Int) -> CGFloat {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func canariRotationToRadians (_ inCanariRotation : Double) -> CGFloat {
+  return CGFloat (inCanariRotation) * CGFloat.pi / 180.0
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

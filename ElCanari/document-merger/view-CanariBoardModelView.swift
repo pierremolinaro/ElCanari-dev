@@ -29,6 +29,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mBackPackagesLayer = CALayer ()
    fileprivate var mBoardLimitsLayer = CALayer ()
    fileprivate var mFrontPadsLayer = CALayer ()
+   fileprivate var mBackPadsLayer = CALayer ()
 
   //····················································································································
   //  awakeFromNib
@@ -43,6 +44,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.addSublayer (mBackComponentNamesLayer)
     self.layer?.addSublayer (mBackComponentValuesLayer)
     self.layer?.addSublayer (mBackTracksLayer)
+    self.layer?.addSublayer (mBackPadsLayer)
     self.layer?.addSublayer (mFrontTracksLayer)
     self.layer?.addSublayer (mFrontPackagesLayer)
     self.layer?.addSublayer (mFrontComponentValuesLayer)
@@ -392,13 +394,20 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       let y = canariUnitToCocoa (pad.y)
       let width = canariUnitToCocoa (pad.width)
       let height = canariUnitToCocoa (pad.height)
-      let r = CGRect (x: x - width / 2.0, y: y - height / 2.0, width:width, height:height)
+      let r = CGRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
+      var transform = CGAffineTransform (translationX:x, y:y).rotated (by:canariRotationToRadians (pad.rotation))
       let path : CGPath
       switch pad.shape {
       case .rectangular :
-        path = CGPath (rect:r, transform:nil)
+        path = CGPath (rect:r, transform:&transform)
       case .round :
-        path = CGPath (ellipseIn:r, transform:nil)
+        if pad.width < pad.height {
+          path = CGPath (roundedRect:r, cornerWidth:width / 2.0, cornerHeight:width / 2.0, transform:&transform)
+        }else if pad.width > pad.height {
+          path = CGPath (roundedRect:r, cornerWidth:height / 2.0, cornerHeight:height / 2.0, transform:&transform)
+        }else{
+          path = CGPath (ellipseIn:r, transform:&transform)
+        }
       }
       let shape = CAShapeLayer ()
       shape.path = path
@@ -408,6 +417,59 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       components.append (shape)
     }
     self.mFrontPadsLayer.sublayers = components
+  }
+
+  //····················································································································
+  //    Back Pads
+  //····················································································································
+
+  private var mBackPadsController : Controller_CanariBoardModelView_backPads?
+
+  //····················································································································
+
+  func bind_backPads (_ pads:EBReadOnlyProperty_MergerPadArray, file:String, line:Int) {
+    mBackPadsController = Controller_CanariBoardModelView_backPads (pads:pads, outlet:self)
+  }
+
+  //····················································································································
+
+  func unbind_backPads () {
+    mBackPadsController?.unregister ()
+    mBackPadsController = nil
+  }
+
+  //····················································································································
+
+  func setBackPads (_ padArray : [MergerPad]) {
+    var components = [CAShapeLayer] ()
+    for pad in padArray {
+      let x = canariUnitToCocoa (pad.x)
+      let y = canariUnitToCocoa (pad.y)
+      let width = canariUnitToCocoa (pad.width)
+      let height = canariUnitToCocoa (pad.height)
+      let r = CGRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
+      var transform = CGAffineTransform (translationX:x, y:y).rotated (by:canariRotationToRadians (pad.rotation))
+      let path : CGPath
+      switch pad.shape {
+      case .rectangular :
+        path = CGPath (rect:r, transform:&transform)
+      case .round :
+        if pad.width < pad.height {
+          path = CGPath (roundedRect:r, cornerWidth:width / 2.0, cornerHeight:width / 2.0, transform:&transform)
+        }else if pad.width > pad.height {
+          path = CGPath (roundedRect:r, cornerWidth:height / 2.0, cornerHeight:height / 2.0, transform:&transform)
+        }else{
+          path = CGPath (ellipseIn:r, transform:&transform)
+        }
+      }
+      let shape = CAShapeLayer ()
+      shape.path = path
+      shape.position = CGPoint (x:0.0, y:0.0)
+      shape.strokeColor = nil
+      shape.fillColor = NSColor.orange.cgColor
+      components.append (shape)
+    }
+    self.mBackPadsLayer.sublayers = components
   }
 
   //····················································································································
@@ -544,6 +606,40 @@ final class Controller_CanariBoardModelView_frontPads : EBSimpleController {
       mOutlet.setFrontPads (v.padArray)
     case .multipleSelection :
       mOutlet.setFrontPads ([])
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariBoardModelView_backPads
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariBoardModelView_backPads : EBSimpleController {
+
+  private let mPads : EBReadOnlyProperty_MergerPadArray
+  private let mOutlet : CanariBoardModelView
+
+  //····················································································································
+
+  init (pads : EBReadOnlyProperty_MergerPadArray, outlet : CanariBoardModelView) {
+    mPads = pads
+    mOutlet = outlet
+    super.init (observedObjects:[pads], outlet:outlet)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mPads.prop {
+    case .noSelection :
+      mOutlet.setBackPads ([])
+    case .singleSelection (let v) :
+      mOutlet.setBackPads (v.padArray)
+    case .multipleSelection :
+      mOutlet.setBackPads ([])
     }
   }
 

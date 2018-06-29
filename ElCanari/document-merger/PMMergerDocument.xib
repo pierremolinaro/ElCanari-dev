@@ -24,6 +24,7 @@
                 <outlet property="mDisplayBackComponentNames" destination="fQE-rV-9Dh" id="FkK-dO-4Jo"/>
                 <outlet property="mDisplayBackComponentValues" destination="Sl7-oh-5Ac" id="bwN-mP-oyv"/>
                 <outlet property="mDisplayBackPackages" destination="lyd-kd-91q" id="aCk-cc-xxr"/>
+                <outlet property="mDisplayBackPads" destination="lMR-5b-0Fz" id="OgN-6X-Hd8"/>
                 <outlet property="mDisplayBackTracks" destination="BOF-iA-8xv" id="1eF-3x-fZv"/>
                 <outlet property="mDisplayBoardLimits" destination="IQb-Bn-cCd" id="gX7-tN-KkL"/>
                 <outlet property="mDisplayFrontComponentNames" destination="iJ1-MN-1kW" id="1nE-An-tqE"/>
@@ -521,6 +522,7 @@
                                                     <menuItem title="Front Component Names" id="iJ1-MN-1kW" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Component Values" id="V7f-VR-cUy" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Front Tracks" id="XhH-C3-HYx" customClass="EBCheckedMenuItem"/>
+                                                    <menuItem title="Back Pads" id="lMR-5b-0Fz" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Back Tracks" id="BOF-iA-8xv" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Back Component Values" id="Sl7-oh-5Ac" customClass="EBCheckedMenuItem"/>
                                                     <menuItem title="Back Component Names" id="fQE-rV-9Dh" customClass="EBCheckedMenuItem"/>

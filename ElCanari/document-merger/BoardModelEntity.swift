@@ -638,6 +638,63 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
+  //   Observers of 'displayBackPads' stored property
+  //····················································································································
+
+  private var mObserversOf_displayBackPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_displayBackPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_displayBackPads.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.displayBackPads.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_displayBackPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_displayBackPads.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.displayBackPads.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_displayBackPads_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_displayBackPads {
+        managedObject.displayBackPads.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_displayBackPads_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_displayBackPads {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.displayBackPads.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'boardLimitWidth' stored property
   //····················································································································
 
@@ -1484,6 +1541,118 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     for managedObject in inSet {
       for observer in mObserversOf_frontPadsForDisplay {
         managedObject.frontPadsForDisplay.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backPads' transient property
+  //····················································································································
+
+  private var mObserversOf_backPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backPads.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.backPads.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backPads.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.backPads.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backPads_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backPads {
+        managedObject.backPads.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backPads_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backPads {
+        managedObject.backPads.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backPadsForDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backPadsForDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backPadsForDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backPadsForDisplay.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.backPadsForDisplay.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backPadsForDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backPadsForDisplay.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.backPadsForDisplay.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backPadsForDisplay_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backPadsForDisplay {
+        managedObject.backPadsForDisplay.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backPadsForDisplay_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backPadsForDisplay {
+        managedObject.backPadsForDisplay.removeEBObserver (observer)
       }
     }
   }
@@ -2937,6 +3106,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
         removeEBObserversOf_displayHoles_fromElementsOfSet (removedSet)
         removeEBObserversOf_displayFrontPads_fromElementsOfSet (removedSet)
+        removeEBObserversOf_displayBackPads_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_displayBoardLimits_fromElementsOfSet (removedSet)
@@ -2953,6 +3123,8 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_viaShapes_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPads_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPadsForDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backPads_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backPadsForDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimits_fromElementsOfSet (removedSet)
         removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_backComponentNameSegmentsCount_fromElementsOfSet (removedSet)
@@ -2992,6 +3164,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
         addEBObserversOf_displayHoles_toElementsOfSet (addedSet)
         addEBObserversOf_displayFrontPads_toElementsOfSet (addedSet)
+        addEBObserversOf_displayBackPads_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedSet)
         addEBObserversOf_displayBoardLimits_toElementsOfSet (addedSet)
@@ -3008,6 +3181,8 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_viaShapes_toElementsOfSet (addedSet)
         addEBObserversOf_frontPads_toElementsOfSet (addedSet)
         addEBObserversOf_frontPadsForDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_backPads_toElementsOfSet (addedSet)
+        addEBObserversOf_backPadsForDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimits_toElementsOfSet (addedSet)
         addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedSet)
         addEBObserversOf_backComponentNameSegmentsCount_toElementsOfSet (addedSet)
@@ -3129,6 +3304,12 @@ protocol BoardModelEntity_displayFrontPads : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardModelEntity_displayBackPads : class {
+  var displayBackPads : EBStoredProperty_Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardModelEntity_boardLimitWidth : class {
   var boardLimitWidth : EBStoredProperty_Int { get }
 }
@@ -3215,6 +3396,18 @@ protocol BoardModelEntity_frontPads : class {
 
 protocol BoardModelEntity_frontPadsForDisplay : class {
   var frontPadsForDisplay : EBTransientProperty_MergerPadArray { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_backPads : class {
+  var backPads : EBTransientProperty_MergerPadArray { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_backPadsForDisplay : class {
+  var backPadsForDisplay : EBTransientProperty_MergerPadArray { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -3703,6 +3896,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_pads, EBSignatureObserverProtocol {
         }
         removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_rotation_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_side_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
@@ -3716,6 +3910,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_pads, EBSignatureObserverProtocol {
         }
         addEBObserversOf_height_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_rotation_toElementsOfSet (addedObjectSet)
         addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
         addEBObserversOf_side_toElementsOfSet (addedObjectSet)
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -5680,7 +5875,7 @@ final class ToOneRelationship_BoardModelEntity_myArtwork : EBAbstractProperty {
 //    Entity: BoardModelEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_displayHoles, BoardModelEntity_displayFrontPads, BoardModelEntity_boardLimitWidth, BoardModelEntity_boardLimitWidthUnit, BoardModelEntity_displayBoardLimits, BoardModelEntity_displayBackComponentNames, BoardModelEntity_displayFrontComponentNames, BoardModelEntity_displayFrontComponentValues, BoardModelEntity_displayBackComponentValues, BoardModelEntity_displayBackTracks, BoardModelEntity_displayFrontTracks, BoardModelEntity_displayFrontPackages, BoardModelEntity_displayBackPackages, BoardModelEntity_viaCount, BoardModelEntity_viaShapes, BoardModelEntity_frontPads, BoardModelEntity_frontPadsForDisplay, BoardModelEntity_boardLimits, BoardModelEntity_backComponentNameSegments, BoardModelEntity_backComponentNameSegmentsCount, BoardModelEntity_backComponentNameSegmentsForDisplay, BoardModelEntity_frontComponentNameSegments, BoardModelEntity_frontComponentNameSegmentsCount, BoardModelEntity_frontComponentNameSegmentsForDisplay, BoardModelEntity_frontComponentValueSegments, BoardModelEntity_frontComponentValueSegmentsCount, BoardModelEntity_frontComponentValuesForDisplay, BoardModelEntity_backComponentValueSegments, BoardModelEntity_backComponentValueSegmentsCount, BoardModelEntity_backComponentValuesForDisplay, BoardModelEntity_backTrackSegments, BoardModelEntity_backTracksSegmentsCount, BoardModelEntity_backTrackSegmentsForDisplay, BoardModelEntity_frontTrackSegments, BoardModelEntity_frontTracksSegmentsCount, BoardModelEntity_frontTrackSegmentsForDisplay, BoardModelEntity_frontPackagesSegments, BoardModelEntity_frontPackageSegmentsCount, BoardModelEntity_frontPackagesSegmentsForDisplay, BoardModelEntity_backPackagesSegments, BoardModelEntity_backPackageSegmentsCount, BoardModelEntity_backPackagesSegmentsForDisplay
+class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardModelEntity_name, BoardModelEntity_boardWidth, BoardModelEntity_boardWidthUnit, BoardModelEntity_boardHeight, BoardModelEntity_boardHeightUnit, BoardModelEntity_zoom, BoardModelEntity_horizontalFlip, BoardModelEntity_verticalFlip, BoardModelEntity_displayHoles, BoardModelEntity_displayFrontPads, BoardModelEntity_displayBackPads, BoardModelEntity_boardLimitWidth, BoardModelEntity_boardLimitWidthUnit, BoardModelEntity_displayBoardLimits, BoardModelEntity_displayBackComponentNames, BoardModelEntity_displayFrontComponentNames, BoardModelEntity_displayFrontComponentValues, BoardModelEntity_displayBackComponentValues, BoardModelEntity_displayBackTracks, BoardModelEntity_displayFrontTracks, BoardModelEntity_displayFrontPackages, BoardModelEntity_displayBackPackages, BoardModelEntity_viaCount, BoardModelEntity_viaShapes, BoardModelEntity_frontPads, BoardModelEntity_frontPadsForDisplay, BoardModelEntity_backPads, BoardModelEntity_backPadsForDisplay, BoardModelEntity_boardLimits, BoardModelEntity_backComponentNameSegments, BoardModelEntity_backComponentNameSegmentsCount, BoardModelEntity_backComponentNameSegmentsForDisplay, BoardModelEntity_frontComponentNameSegments, BoardModelEntity_frontComponentNameSegmentsCount, BoardModelEntity_frontComponentNameSegmentsForDisplay, BoardModelEntity_frontComponentValueSegments, BoardModelEntity_frontComponentValueSegmentsCount, BoardModelEntity_frontComponentValuesForDisplay, BoardModelEntity_backComponentValueSegments, BoardModelEntity_backComponentValueSegmentsCount, BoardModelEntity_backComponentValuesForDisplay, BoardModelEntity_backTrackSegments, BoardModelEntity_backTracksSegmentsCount, BoardModelEntity_backTrackSegmentsForDisplay, BoardModelEntity_frontTrackSegments, BoardModelEntity_frontTracksSegmentsCount, BoardModelEntity_frontTrackSegmentsForDisplay, BoardModelEntity_frontPackagesSegments, BoardModelEntity_frontPackageSegmentsCount, BoardModelEntity_frontPackagesSegmentsForDisplay, BoardModelEntity_backPackagesSegments, BoardModelEntity_backPackageSegmentsCount, BoardModelEntity_backPackagesSegmentsForDisplay
 {
 
   //····················································································································
@@ -5699,7 +5894,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
 
   var boardHeightUnit = EBStoredProperty_Int (0)
 
-  var zoom = EBStoredProperty_Int (100)
+  var zoom = EBStoredProperty_Int (0)
 
   var horizontalFlip = EBStoredProperty_Bool (false)
 
@@ -5708,6 +5903,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   var displayHoles = EBStoredProperty_Bool (true)
 
   var displayFrontPads = EBStoredProperty_Bool (true)
+
+  var displayBackPads = EBStoredProperty_Bool (true)
 
   var boardLimitWidth = EBStoredProperty_Int (0)
 
@@ -5739,6 +5936,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   var viaShapes = EBTransientProperty_MergerViaShapeArray ()
   var frontPads = EBTransientProperty_MergerPadArray ()
   var frontPadsForDisplay = EBTransientProperty_MergerPadArray ()
+  var backPads = EBTransientProperty_MergerPadArray ()
+  var backPadsForDisplay = EBTransientProperty_MergerPadArray ()
   var boardLimits = EBTransientProperty_MergerBoardLimits ()
   var backComponentNameSegments = EBTransientProperty_MergerSegmentArray ()
   var backComponentNameSegmentsCount = EBTransientProperty_Int ()
@@ -5840,15 +6039,16 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
         kind &= unwSelf.pads.prop.kind ()
         kind &= unwSelf.pads.prop.kind ()
         kind &= unwSelf.pads.prop.kind ()
+        kind &= unwSelf.pads.prop.kind ()
         switch kind {
         case .noSelectionKind :
           return .noSelection
         case .multipleSelectionKind :
           return .multipleSelection
         case .singleSelectionKind :
-          switch (unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4), .singleSelection (let v5), .singleSelection (let v6)) :
-            return .singleSelection (compute_BoardModelEntity_frontPads (v0, v1, v2, v3, v4, v5, v6))
+          switch (unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4), .singleSelection (let v5), .singleSelection (let v6), .singleSelection (let v7)) :
+            return .singleSelection (compute_BoardModelEntity_frontPads (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .noSelection
           }
@@ -5870,6 +6070,54 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
           switch (unwSelf.displayFrontPads.prop, unwSelf.frontPads.prop) {
           case (.singleSelection (let v0), .singleSelection (let v1)) :
             return .singleSelection (compute_BoardModelEntity_frontPadsForDisplay (v0, v1))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    backPads.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.pads.prop.kind ()
+        kind &= unwSelf.pads.prop.kind ()
+        kind &= unwSelf.pads.prop.kind ()
+        kind &= unwSelf.pads.prop.kind ()
+        kind &= unwSelf.pads.prop.kind ()
+        kind &= unwSelf.pads.prop.kind ()
+        kind &= unwSelf.pads.prop.kind ()
+        kind &= unwSelf.pads.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4), .singleSelection (let v5), .singleSelection (let v6), .singleSelection (let v7)) :
+            return .singleSelection (compute_BoardModelEntity_backPads (v0, v1, v2, v3, v4, v5, v6, v7))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    backPadsForDisplay.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.displayBackPads.prop.kind ()
+        kind &= unwSelf.backPads.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.displayBackPads.prop, unwSelf.backPads.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1)) :
+            return .singleSelection (compute_BoardModelEntity_backPadsForDisplay (v0, v1))
           default :
             return .noSelection
           }
@@ -6434,8 +6682,19 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     pads.addEBObserverOf_holeDiameter (frontPads)
     pads.addEBObserverOf_shape (frontPads)
     pads.addEBObserverOf_side (frontPads)
+    pads.addEBObserverOf_rotation (frontPads)
     displayFrontPads.addEBObserver (frontPadsForDisplay)
     frontPads.addEBObserver (frontPadsForDisplay)
+    pads.addEBObserverOf_x (backPads)
+    pads.addEBObserverOf_y (backPads)
+    pads.addEBObserverOf_width (backPads)
+    pads.addEBObserverOf_height (backPads)
+    pads.addEBObserverOf_holeDiameter (backPads)
+    pads.addEBObserverOf_shape (backPads)
+    pads.addEBObserverOf_side (backPads)
+    pads.addEBObserverOf_rotation (backPads)
+    displayBackPads.addEBObserver (backPadsForDisplay)
+    backPads.addEBObserver (backPadsForDisplay)
     boardWidth.addEBObserver (boardLimits)
     boardHeight.addEBObserver (boardLimits)
     boardLimitWidth.addEBObserver (boardLimits)
@@ -6516,6 +6775,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.verticalFlip.undoManager = undoManager ()
     self.displayHoles.undoManager = undoManager ()
     self.displayFrontPads.undoManager = undoManager ()
+    self.displayBackPads.undoManager = undoManager ()
     self.boardLimitWidth.undoManager = undoManager ()
     self.boardLimitWidthUnit.undoManager = undoManager ()
     self.displayBoardLimits.undoManager = undoManager ()
@@ -6558,8 +6818,19 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     pads.removeEBObserverOf_holeDiameter (frontPads)
     pads.removeEBObserverOf_shape (frontPads)
     pads.removeEBObserverOf_side (frontPads)
+    pads.removeEBObserverOf_rotation (frontPads)
     displayFrontPads.removeEBObserver (frontPadsForDisplay)
     frontPads.removeEBObserver (frontPadsForDisplay)
+    pads.removeEBObserverOf_x (backPads)
+    pads.removeEBObserverOf_y (backPads)
+    pads.removeEBObserverOf_width (backPads)
+    pads.removeEBObserverOf_height (backPads)
+    pads.removeEBObserverOf_holeDiameter (backPads)
+    pads.removeEBObserverOf_shape (backPads)
+    pads.removeEBObserverOf_side (backPads)
+    pads.removeEBObserverOf_rotation (backPads)
+    displayBackPads.removeEBObserver (backPadsForDisplay)
+    backPads.removeEBObserver (backPadsForDisplay)
     boardWidth.removeEBObserver (boardLimits)
     boardHeight.removeEBObserver (boardLimits)
     boardLimitWidth.removeEBObserver (boardLimits)
@@ -6725,6 +6996,14 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       valueExplorer:&self.displayFrontPads.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "displayBackPads",
+      idx:self.displayBackPads.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.displayBackPads.mObserverExplorer,
+      valueExplorer:&self.displayBackPads.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "boardLimitWidth",
       idx:self.boardLimitWidth.mEasyBindingsObjectIndex,
       y:&y,
@@ -6844,6 +7123,22 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       view:view,
       observerExplorer:&self.frontPadsForDisplay.mObserverExplorer,
       valueExplorer:&self.frontPadsForDisplay.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backPads",
+      idx:self.backPads.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backPads.mObserverExplorer,
+      valueExplorer:&self.backPads.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backPadsForDisplay",
+      idx:self.backPadsForDisplay.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backPadsForDisplay.mObserverExplorer,
+      valueExplorer:&self.backPadsForDisplay.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardLimits",
@@ -7154,6 +7449,8 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.displayHoles.mValueExplorer = nil
     self.displayFrontPads.mObserverExplorer = nil
     self.displayFrontPads.mValueExplorer = nil
+    self.displayBackPads.mObserverExplorer = nil
+    self.displayBackPads.mValueExplorer = nil
     self.boardLimitWidth.mObserverExplorer = nil
     self.boardLimitWidth.mValueExplorer = nil
     self.boardLimitWidthUnit.mObserverExplorer = nil
@@ -7218,6 +7515,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.verticalFlip.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
     self.displayHoles.storeIn (dictionary: ioDictionary, forKey: "displayHoles")
     self.displayFrontPads.storeIn (dictionary: ioDictionary, forKey: "displayFrontPads")
+    self.displayBackPads.storeIn (dictionary: ioDictionary, forKey: "displayBackPads")
     self.boardLimitWidth.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
     self.boardLimitWidthUnit.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
     self.displayBoardLimits.storeIn (dictionary: ioDictionary, forKey: "displayBoardLimits")
@@ -7259,6 +7557,7 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
     self.verticalFlip.readFrom (dictionary: inDictionary, forKey:"verticalFlip")
     self.displayHoles.readFrom (dictionary: inDictionary, forKey:"displayHoles")
     self.displayFrontPads.readFrom (dictionary: inDictionary, forKey:"displayFrontPads")
+    self.displayBackPads.readFrom (dictionary: inDictionary, forKey:"displayBackPads")
     self.boardLimitWidth.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
     self.boardLimitWidthUnit.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
     self.displayBoardLimits.readFrom (dictionary: inDictionary, forKey:"displayBoardLimits")

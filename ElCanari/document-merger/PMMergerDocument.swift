@@ -28,6 +28,7 @@ import Cocoa
   @IBOutlet var mDisplayBackComponentNames : EBCheckedMenuItem?
   @IBOutlet var mDisplayBackComponentValues : EBCheckedMenuItem?
   @IBOutlet var mDisplayBackPackages : EBCheckedMenuItem?
+  @IBOutlet var mDisplayBackPads : EBCheckedMenuItem?
   @IBOutlet var mDisplayBackTracks : EBCheckedMenuItem?
   @IBOutlet var mDisplayBoardLimits : EBCheckedMenuItem?
   @IBOutlet var mDisplayFrontComponentNames : EBCheckedMenuItem?
@@ -257,6 +258,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mDisplayBackPackages' outlet is not an instance of 'EBCheckedMenuItem'") ;
     }
+    if nil == mDisplayBackPads {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDisplayBackPads' outlet is nil") ;
+//    }else if !mDisplayBackPads!.isKindOfClass (EBCheckedMenuItem) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDisplayBackPads' outlet is not an instance of 'EBCheckedMenuItem'") ;
+    }
     if nil == mDisplayBackTracks {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -429,6 +439,7 @@ import Cocoa
     mBoardModelView?.bind_backPackages (self.mBoardModelSelection.backPackagesSegmentsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_boardLimits (self.mBoardModelSelection.boardLimits, file: #file, line: #line)
     mBoardModelView?.bind_frontPads (self.mBoardModelSelection.frontPadsForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_backPads (self.mBoardModelSelection.backPadsForDisplay, file: #file, line: #line)
     mHorizontalFlipSwitch?.bind_value (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
     mVerticalFlipSwitch?.bind_value (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
     mDisplayHoles?.bind_checked (self.mBoardModelSelection.displayHoles, file: #file, line: #line)
@@ -442,6 +453,7 @@ import Cocoa
     mDisplayBackPackages?.bind_checked (self.mBoardModelSelection.displayBackPackages, file: #file, line: #line)
     mDisplayBoardLimits?.bind_checked (self.mBoardModelSelection.displayBoardLimits, file: #file, line: #line)
     mDisplayFrontPads?.bind_checked (self.mBoardModelSelection.displayFrontPads, file: #file, line: #line)
+    mDisplayBackPads?.bind_checked (self.mBoardModelSelection.displayBackPads, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -486,6 +498,7 @@ import Cocoa
     mBoardModelView?.unbind_backPackages ()
     mBoardModelView?.unbind_boardLimits ()
     mBoardModelView?.unbind_frontPads ()
+    mBoardModelView?.unbind_backPads ()
     mHorizontalFlipSwitch?.unbind_value ()
     mVerticalFlipSwitch?.unbind_value ()
     mDisplayHoles?.unbind_checked ()
@@ -499,6 +512,7 @@ import Cocoa
     mDisplayBackPackages?.unbind_checked ()
     mDisplayBoardLimits?.unbind_checked ()
     mDisplayFrontPads?.unbind_checked ()
+    mDisplayBackPads?.unbind_checked ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers

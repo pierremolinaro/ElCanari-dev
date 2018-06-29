@@ -11,6 +11,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+fileprivate func double (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Double {
+  let object : Any? = inDictionary.value (forKey: inKey)
+  var result = 0.0 // Default result
+  if object == nil {
+    errorArray.append ("No \"\(inKey)\" key.")
+  }else if let number = object as? NSNumber {
+    result = number.doubleValue
+  }else{
+    errorArray.append ("The \"\(inKey)\" key value is not a double.")
+  }
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 fileprivate func int (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Int {
   let object : Any? = inDictionary.value (forKey: inKey)
   var result = 0 // Default result
@@ -293,6 +308,7 @@ extension PMMergerDocument {
       pad.width.setProp (int (fromDict: padDict, key: "WIDTH", &errorArray))
       pad.height.setProp (int (fromDict: padDict, key: "HEIGHT", &errorArray))
       pad.holeDiameter.setProp (int (fromDict: padDict, key: "HOLE-DIAMETER", &errorArray))
+      pad.rotation.setProp (double (fromDict: padDict, key: "PAD-ROTATION", &errorArray))
       let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
       if shapeString == "RECT" {
         pad.shape.setProp (.rectangular)

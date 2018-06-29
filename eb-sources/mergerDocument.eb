@@ -37,6 +37,7 @@ binding CanariBoardModelView $frontPackages : transient MergerSegmentArray ;
 binding CanariBoardModelView $backPackages : transient MergerSegmentArray ;
 binding CanariBoardModelView $boardLimits : transient MergerBoardLimits ;
 binding CanariBoardModelView $frontPads : transient MergerPadArray ;
+binding CanariBoardModelView $backPads : transient MergerPadArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -51,6 +52,7 @@ entity BoardModelPadEntity {
   property Int holeDiameter default 0 ;
   property PadShape shape default rectangular ;
   property PadSide side default traversing ;
+  property Double rotation default 0.0 ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -173,7 +175,7 @@ entity BoardModelEntity {
   property Int boardHeight default 0 ;
   property Int boardHeightUnit default 0 ;
 
-  property Int zoom default 100 ;
+  property Int zoom default 0 ; # 0 means "fit to window"
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
 
@@ -192,10 +194,18 @@ entity BoardModelEntity {
 
   transient MergerPadArray frontPads
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
-                self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side ;
+                self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
 
   transient MergerPadArray frontPadsForDisplay dependsFrom self.displayFrontPads, self.frontPads ;
 
+#--- Back pads
+  property Bool displayBackPads default yes ;
+
+  transient MergerPadArray backPads
+    dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
+                self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
+
+  transient MergerPadArray backPadsForDisplay dependsFrom self.displayBackPads, self.backPads ;
 
 #--- Board limits
   property Int boardLimitWidth default 0 ;
@@ -415,6 +425,7 @@ document PMMergerDocument root MergerRootEntity {
     $backPackages mBoardModelSelection.backPackagesSegmentsForDisplay
     $boardLimits mBoardModelSelection.boardLimits
     $frontPads mBoardModelSelection.frontPadsForDisplay
+    $backPads mBoardModelSelection.backPadsForDisplay
   ;
   
   outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
@@ -431,6 +442,7 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBCheckedMenuItem mDisplayBackPackages $checked mBoardModelSelection.displayBackPackages ;
   outlet EBCheckedMenuItem mDisplayBoardLimits $checked mBoardModelSelection.displayBoardLimits ;
   outlet EBCheckedMenuItem mDisplayFrontPads $checked mBoardModelSelection.displayFrontPads ;
+  outlet EBCheckedMenuItem mDisplayBackPads $checked mBoardModelSelection.displayBackPads ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
