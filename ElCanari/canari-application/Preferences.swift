@@ -69,17 +69,17 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mMergerDisplayBackComponentNamesCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayBackLayoutTextsCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayBackLayoutTracksCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayBackLegendTextsCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayBackPackagesCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayBackPadsCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayBackTextsCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayBoardLimitsCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayFrontComponenValuesCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayFrontComponentNamesCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayFrontLayoutTextsCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayFrontLayoutTracksCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayFrontLegendTextsCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayFrontPackagesCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayFrontPadsCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayFrontTextsCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayHolesCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerDisplayViasCheckbox : EBSwitch? = nil
   @IBOutlet var mMergerHorizontalFlipCheckbox : EBSwitch? = nil
@@ -149,13 +149,13 @@ var g_Preferences : Preferences? = nil
   var mergerDisplayFrontComponentNames = EBStoredProperty_Bool (false)
   var mergerDisplayFrontComponentValues = EBStoredProperty_Bool (false)
   var mergerDisplayFrontPackages = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontTexts = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontLegendTexts = EBStoredProperty_Bool (false)
   var mergerDisplayFrontLayoutTracks = EBStoredProperty_Bool (false)
   var mergerDisplayFrontLayoutTexts = EBStoredProperty_Bool (false)
   var mergerDisplayBackPads = EBStoredProperty_Bool (true)
   var mergerDisplayBackComponentNames = EBStoredProperty_Bool (false)
   var mergerDisplayBackComponentValues = EBStoredProperty_Bool (false)
-  var mergerDisplayBackTexts = EBStoredProperty_Bool (false)
+  var mergerDisplayBackLegendTexts = EBStoredProperty_Bool (false)
   var mergerDisplayBackPackages = EBStoredProperty_Bool (false)
   var mergerDisplayBackLayoutTracks = EBStoredProperty_Bool (false)
   var mergerDisplayBackLayoutTexts = EBStoredProperty_Bool (false)
@@ -277,13 +277,13 @@ var g_Preferences : Preferences? = nil
     mergerDisplayFrontComponentNames.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentNames")
     mergerDisplayFrontComponentValues.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentValues")
     mergerDisplayFrontPackages.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPackages")
-    mergerDisplayFrontTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontTexts")
+    mergerDisplayFrontLegendTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLegendTexts")
     mergerDisplayFrontLayoutTracks.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTracks")
     mergerDisplayFrontLayoutTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTexts")
     mergerDisplayBackPads.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPads")
     mergerDisplayBackComponentNames.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentNames")
     mergerDisplayBackComponentValues.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentValues")
-    mergerDisplayBackTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackTexts")
+    mergerDisplayBackLegendTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLegendTexts")
     mergerDisplayBackPackages.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPackages")
     mergerDisplayBackLayoutTracks.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTracks")
     mergerDisplayBackLayoutTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTexts")
@@ -592,6 +592,10 @@ var g_Preferences : Preferences? = nil
     if nil == mMergerDisplayBackLayoutTracksCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackLayoutTracksCheckbox' outlet is nil")
     }
+  //--- Check mMergerDisplayBackLegendTextsCheckbox' outlet not nil
+    if nil == mMergerDisplayBackLegendTextsCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackLegendTextsCheckbox' outlet is nil")
+    }
   //--- Check mMergerDisplayBackPackagesCheckbox' outlet not nil
     if nil == mMergerDisplayBackPackagesCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackPackagesCheckbox' outlet is nil")
@@ -599,10 +603,6 @@ var g_Preferences : Preferences? = nil
   //--- Check mMergerDisplayBackPadsCheckbox' outlet not nil
     if nil == mMergerDisplayBackPadsCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackPadsCheckbox' outlet is nil")
-    }
-  //--- Check mMergerDisplayBackTextsCheckbox' outlet not nil
-    if nil == mMergerDisplayBackTextsCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackTextsCheckbox' outlet is nil")
     }
   //--- Check mMergerDisplayBoardLimitsCheckbox' outlet not nil
     if nil == mMergerDisplayBoardLimitsCheckbox {
@@ -624,6 +624,10 @@ var g_Preferences : Preferences? = nil
     if nil == mMergerDisplayFrontLayoutTracksCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontLayoutTracksCheckbox' outlet is nil")
     }
+  //--- Check mMergerDisplayFrontLegendTextsCheckbox' outlet not nil
+    if nil == mMergerDisplayFrontLegendTextsCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontLegendTextsCheckbox' outlet is nil")
+    }
   //--- Check mMergerDisplayFrontPackagesCheckbox' outlet not nil
     if nil == mMergerDisplayFrontPackagesCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontPackagesCheckbox' outlet is nil")
@@ -631,10 +635,6 @@ var g_Preferences : Preferences? = nil
   //--- Check mMergerDisplayFrontPadsCheckbox' outlet not nil
     if nil == mMergerDisplayFrontPadsCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontPadsCheckbox' outlet is nil")
-    }
-  //--- Check mMergerDisplayFrontTextsCheckbox' outlet not nil
-    if nil == mMergerDisplayFrontTextsCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontTextsCheckbox' outlet is nil")
     }
   //--- Check mMergerDisplayHolesCheckbox' outlet not nil
     if nil == mMergerDisplayHolesCheckbox {
@@ -993,13 +993,13 @@ var g_Preferences : Preferences? = nil
     mMergerDisplayFrontComponentNamesCheckbox?.bind_value (self.mergerDisplayFrontComponentNames, file: #file, line: #line)
     mMergerDisplayFrontComponenValuesCheckbox?.bind_value (self.mergerDisplayFrontComponentValues, file: #file, line: #line)
     mMergerDisplayFrontPackagesCheckbox?.bind_value (self.mergerDisplayFrontPackages, file: #file, line: #line)
-    mMergerDisplayFrontTextsCheckbox?.bind_value (self.mergerDisplayFrontTexts, file: #file, line: #line)
+    mMergerDisplayFrontLegendTextsCheckbox?.bind_value (self.mergerDisplayFrontLegendTexts, file: #file, line: #line)
     mMergerDisplayFrontLayoutTracksCheckbox?.bind_value (self.mergerDisplayFrontLayoutTracks, file: #file, line: #line)
     mMergerDisplayFrontLayoutTextsCheckbox?.bind_value (self.mergerDisplayFrontLayoutTexts, file: #file, line: #line)
     mMergerDisplayBackPadsCheckbox?.bind_value (self.mergerDisplayBackPads, file: #file, line: #line)
     mMergerDisplayBackComponentNamesCheckbox?.bind_value (self.mergerDisplayBackComponentNames, file: #file, line: #line)
     mMergerDisplayBackComponenValuesCheckbox?.bind_value (self.mergerDisplayBackComponentValues, file: #file, line: #line)
-    mMergerDisplayBackTextsCheckbox?.bind_value (self.mergerDisplayBackTexts, file: #file, line: #line)
+    mMergerDisplayBackLegendTextsCheckbox?.bind_value (self.mergerDisplayBackLegendTexts, file: #file, line: #line)
     mMergerDisplayBackPackagesCheckbox?.bind_value (self.mergerDisplayBackPackages, file: #file, line: #line)
     mMergerDisplayBackLayoutTracksCheckbox?.bind_value (self.mergerDisplayBackLayoutTracks, file: #file, line: #line)
     mMergerDisplayBackLayoutTextsCheckbox?.bind_value (self.mergerDisplayBackLayoutTexts, file: #file, line: #line)
@@ -1127,13 +1127,13 @@ var g_Preferences : Preferences? = nil
     mergerDisplayFrontComponentNames.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentNames")
     mergerDisplayFrontComponentValues.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentValues")
     mergerDisplayFrontPackages.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPackages")
-    mergerDisplayFrontTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontTexts")
+    mergerDisplayFrontLegendTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLegendTexts")
     mergerDisplayFrontLayoutTracks.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTracks")
     mergerDisplayFrontLayoutTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTexts")
     mergerDisplayBackPads.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPads")
     mergerDisplayBackComponentNames.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentNames")
     mergerDisplayBackComponentValues.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentValues")
-    mergerDisplayBackTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackTexts")
+    mergerDisplayBackLegendTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLegendTexts")
     mergerDisplayBackPackages.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPackages")
     mergerDisplayBackLayoutTracks.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTracks")
     mergerDisplayBackLayoutTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTexts")

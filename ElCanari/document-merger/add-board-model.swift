@@ -188,6 +188,54 @@ extension PMMergerDocument {
       via.holeDiameter.setProp (ints [3])
       boardModel.vias.add (via)
     }
+  //--- Front Layout texts
+    let frontLayoutTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LAYOUT-FRONT", &errorArray)
+    for str in frontLayoutTexts {
+      let segment = BoardModelFrontLayoutTextEntity (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1.setProp (ints [0])
+      segment.y1.setProp (ints [1])
+      segment.x2.setProp (ints [2])
+      segment.y2.setProp (ints [3])
+      segment.width.setProp (ints [4])
+      boardModel.frontLayoutTexts.add (segment)
+    }
+  //--- Back Layout texts
+    let backLayoutTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LAYOUT-BACK", &errorArray)
+    for str in backLayoutTexts {
+      let segment = BoardModelBackLayoutTextEntity (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1.setProp (ints [0])
+      segment.y1.setProp (ints [1])
+      segment.x2.setProp (ints [2])
+      segment.y2.setProp (ints [3])
+      segment.width.setProp (ints [4])
+      boardModel.backLayoutTexts.add (segment)
+    }
+  //--- Back Legend texts
+    let backLegendTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LEGEND-BACK", &errorArray)
+    for str in backLegendTexts {
+      let segment = BoardModelBackLegendTextEntity (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1.setProp (ints [0])
+      segment.y1.setProp (ints [1])
+      segment.x2.setProp (ints [2])
+      segment.y2.setProp (ints [3])
+      segment.width.setProp (ints [4])
+      boardModel.backLegendTexts.add (segment)
+    }
+  //--- Front Legend texts
+    let frontTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LEGEND-FRONT", &errorArray)
+    for str in frontTexts {
+      let segment = BoardModelFrontLegendTextEntity (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1.setProp (ints [0])
+      segment.y1.setProp (ints [1])
+      segment.x2.setProp (ints [2])
+      segment.y2.setProp (ints [3])
+      segment.width.setProp (ints [4])
+      boardModel.frontLegendTexts.add (segment)
+    }
   //--- Back packages
     let backPackages = stringArray (fromDict: boardArchiveDict, key: "PACKAGES-BACK", &errorArray)
     for str in backPackages {
@@ -260,44 +308,6 @@ extension PMMergerDocument {
       segment.width.setProp (ints [4])
       boardModel.backComponentValues.add (segment)
     }
-  //--- Packages
-//    let packages = dictArray (fromDict: boardArchiveDict, key: "PACKAGES", &errorArray)
-//    for packageDict in packages {
-//      let package = BoardModelPackageEntity (managedObjectContext:self.managedObjectContext())
-//      package.name.setProp (string (fromDict: packageDict, key: "NAME", &errorArray))
-//      package.padRotation.setProp (int (fromDict: packageDict, key: "PAD-ROTATION", &errorArray))
-//    //--- Package side
-//      let componentSideString = string (fromDict: packageDict, key: "SIDE", &errorArray)
-//      if componentSideString == "TOP" {
-//        package.side.setProp (.front)
-//      }else if componentSideString == "BACK" {
-//        package.side.setProp (.back)
-//      }else{
-//        errorArray.append ("Invalid pad side \"\(componentSideString)\".")
-//      }
-//    //--- Component name segments
-//      var segmentArray = stringArray (fromDict: packageDict, key: "COMPONENT-NAME-SEGMENTS", &errorArray)
-//      for str in segmentArray {
-//        let ints = intArray (fromString: str, &errorArray)
-//        let segment = BoardModelComponentNameSegmentEntity (managedObjectContext:self.managedObjectContext())
-//        segment.x1.setProp (ints [0])
-//        segment.y1.setProp (ints [1])
-//        segment.x2.setProp (ints [2])
-//        segment.y2.setProp (ints [3])
-//        segment.width.setProp (ints [4])
-//        package.componentNameSegments.add (segment)
-//      }
-//    //--- Component value segments
-//      segmentArray = stringArray (fromDict: packageDict, key: "COMPONENT-VALUE-SEGMENTS", &errorArray)
-//      for str in segmentArray {
-//        let segment = BoardModelValueNameSegmentEntity (managedObjectContext:self.managedObjectContext())
-//        let ints = intArray (fromString: str, &errorArray)
-//        segment.x1.setProp (ints [0])
-//        segment.y1.setProp (ints [1])
-//        segment.x2.setProp (ints [2])
-//        segment.y2.setProp (ints [3])
-//        package.componentValueSegments.add (segment)
-//      }
   //--- Pads
     let padDictArray = dictArray (fromDict: boardArchiveDict, key: "PADS", &errorArray)
     for padDict in padDictArray {

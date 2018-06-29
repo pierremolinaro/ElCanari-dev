@@ -179,6 +179,14 @@ class EBManagedObjectContext : EBObject {
       result = BoardModelPadEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelFrontComponentNameEntity" {
       result = BoardModelFrontComponentNameEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModelFrontLegendTextEntity" {
+      result = BoardModelFrontLegendTextEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModelFrontLayoutTextEntity" {
+      result = BoardModelFrontLayoutTextEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModelBackLegendTextEntity" {
+      result = BoardModelBackLegendTextEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModelBackLayoutTextEntity" {
+      result = BoardModelBackLayoutTextEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelBackComponentNameEntity" {
       result = BoardModelBackComponentNameEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelFrontComponentValueEntity" {

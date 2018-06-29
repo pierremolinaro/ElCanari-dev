@@ -36,8 +36,8 @@ prefs {
   property Bool mergerDisplayFrontPackages default no ;
   outlet EBSwitch mMergerDisplayFrontPackagesCheckbox $value self.mergerDisplayFrontPackages ;
 
-  property Bool mergerDisplayFrontTexts default no ;
-  outlet EBSwitch mMergerDisplayFrontTextsCheckbox $value self.mergerDisplayFrontTexts ;
+  property Bool mergerDisplayFrontLegendTexts default no ;
+  outlet EBSwitch mMergerDisplayFrontLegendTextsCheckbox $value self.mergerDisplayFrontLegendTexts ;
 
   property Bool mergerDisplayFrontLayoutTracks default no ;
   outlet EBSwitch mMergerDisplayFrontLayoutTracksCheckbox $value self.mergerDisplayFrontLayoutTracks ;
@@ -54,8 +54,8 @@ prefs {
   property Bool mergerDisplayBackComponentValues default no ;
   outlet EBSwitch mMergerDisplayBackComponenValuesCheckbox $value self.mergerDisplayBackComponentValues ;
 
-  property Bool mergerDisplayBackTexts default no ;
-  outlet EBSwitch mMergerDisplayBackTextsCheckbox $value self.mergerDisplayBackTexts ;
+  property Bool mergerDisplayBackLegendTexts default no ;
+  outlet EBSwitch mMergerDisplayBackLegendTextsCheckbox $value self.mergerDisplayBackLegendTexts ;
 
   property Bool mergerDisplayBackPackages default no ;
   outlet EBSwitch mMergerDisplayBackPackagesCheckbox $value self.mergerDisplayBackPackages ;

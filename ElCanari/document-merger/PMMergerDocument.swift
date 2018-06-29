@@ -311,6 +311,10 @@ import Cocoa
     mBoardModelView?.bind_frontPads (self.mBoardModelSelection.frontPadsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_backPads (self.mBoardModelSelection.backPadsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_holes (self.mBoardModelSelection.holesForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_frontLegendTexts (self.mBoardModelSelection.frontLegendTextsSegmentsForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_frontLayoutTexts (self.mBoardModelSelection.frontLayoutTextsSegmentsForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_backLegendTexts (self.mBoardModelSelection.backLegendTextsSegmentsForDisplay, file: #file, line: #line)
+    mBoardModelView?.bind_backLayoutTexts (self.mBoardModelSelection.backLayoutTextsSegmentsForDisplay, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
@@ -359,6 +363,10 @@ import Cocoa
     mBoardModelView?.unbind_frontPads ()
     mBoardModelView?.unbind_backPads ()
     mBoardModelView?.unbind_holes ()
+    mBoardModelView?.unbind_frontLegendTexts ()
+    mBoardModelView?.unbind_frontLayoutTexts ()
+    mBoardModelView?.unbind_backLegendTexts ()
+    mBoardModelView?.unbind_backLayoutTexts ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers

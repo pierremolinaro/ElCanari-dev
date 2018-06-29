@@ -40,6 +40,10 @@ binding CanariBoardModelView $boardLimits : transient MergerBoardLimits ;
 binding CanariBoardModelView $frontPads : transient MergerPadArray ;
 binding CanariBoardModelView $backPads : transient MergerPadArray ;
 binding CanariBoardModelView $holes : transient MergerHoleArray ;
+binding CanariBoardModelView $frontLegendTexts : transient MergerSegmentArray ;
+binding CanariBoardModelView $frontLayoutTexts : transient MergerSegmentArray ;
+binding CanariBoardModelView $backLegendTexts : transient MergerSegmentArray ;
+binding CanariBoardModelView $backLayoutTexts : transient MergerSegmentArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -62,6 +66,54 @@ entity BoardModelPadEntity {
 entity BoardModelFrontComponentNameEntity {
   toOne BoardModelEntity myBoard inverse toMany frontComponentNames ;
 
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+  property Int width default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelFrontLegendTextEntity {
+  toOne BoardModelEntity myBoard inverse toMany frontLegendTexts ;
+  
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+  property Int width default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelFrontLayoutTextEntity {
+  toOne BoardModelEntity myBoard inverse toMany frontLayoutTexts ;
+  
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+  property Int width default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelBackLegendTextEntity {
+  toOne BoardModelEntity myBoard inverse toMany backLegendTexts ;
+  
+  property Int x1 default 0 ;
+  property Int y1 default 0 ;
+  property Int x2 default 0 ;
+  property Int y2 default 0 ;
+  property Int width default 0 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModelBackLayoutTextEntity {
+  toOne BoardModelEntity myBoard inverse toMany backLayoutTexts ;
+  
   property Int x1 default 0 ;
   property Int y1 default 0 ;
   property Int x2 default 0 ;
@@ -177,6 +229,54 @@ entity BoardModelEntity {
   property Int boardHeightUnit default 0 ;
 
   property Int zoom default 0 ; # 0 means "fit to window"
+
+#--- Front Legend Texts
+  toMany BoardModelFrontLegendTextEntity frontLegendTexts inverse toOne myBoard ;
+
+  transient MergerSegmentArray frontLegendTextsSegments dependsFrom
+    self.frontLegendTexts.all.x1, self.frontLegendTexts.all.y1,
+    self.frontLegendTexts.all.x2, self.frontLegendTexts.all.y2,
+    self.frontLegendTexts.all.width
+  ;
+
+  transient MergerSegmentArray frontLegendTextsSegmentsForDisplay
+    dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
+
+#--- Front Layout Texts
+  toMany BoardModelFrontLayoutTextEntity frontLayoutTexts inverse toOne myBoard ;
+
+  transient MergerSegmentArray frontLayoutTextsSegments dependsFrom
+    self.frontLayoutTexts.all.x1, self.frontLayoutTexts.all.y1,
+    self.frontLayoutTexts.all.x2, self.frontLayoutTexts.all.y2,
+    self.frontLayoutTexts.all.width
+  ;
+
+  transient MergerSegmentArray frontLayoutTextsSegmentsForDisplay
+    dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
+
+#--- Back Legend Texts
+  toMany BoardModelBackLegendTextEntity backLegendTexts inverse toOne myBoard ;
+
+  transient MergerSegmentArray backLegendTextsSegments dependsFrom
+    self.backLegendTexts.all.x1, self.backLegendTexts.all.y1,
+    self.backLegendTexts.all.x2, self.backLegendTexts.all.y2,
+    self.backLegendTexts.all.width
+  ;
+
+  transient MergerSegmentArray backLegendTextsSegmentsForDisplay
+    dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsSegments ;
+
+#--- Back Layout Texts
+  toMany BoardModelBackLayoutTextEntity backLayoutTexts inverse toOne myBoard ;
+
+  transient MergerSegmentArray backLayoutTextsSegments dependsFrom
+    self.backLayoutTexts.all.x1, self.backLayoutTexts.all.y1,
+    self.backLayoutTexts.all.x2, self.backLayoutTexts.all.y2,
+    self.backLayoutTexts.all.width
+  ;
+
+  transient MergerSegmentArray backLayoutTextsSegmentsForDisplay
+    dependsFrom prefs.mergerDisplayBackLayoutTexts, self.backLayoutTextsSegments ;
 
 #--- Holes
   transient MergerHoleArray padsHoles
@@ -427,6 +527,10 @@ document PMMergerDocument root MergerRootEntity {
     $frontPads mBoardModelSelection.frontPadsForDisplay
     $backPads mBoardModelSelection.backPadsForDisplay
     $holes mBoardModelSelection.holesForDisplay
+    $frontLegendTexts mBoardModelSelection.frontLegendTextsSegmentsForDisplay
+    $frontLayoutTexts mBoardModelSelection.frontLayoutTextsSegmentsForDisplay
+    $backLegendTexts mBoardModelSelection.backLegendTextsSegmentsForDisplay
+    $backLayoutTexts mBoardModelSelection.backLayoutTextsSegmentsForDisplay
   ;
 
 #--- Show Preferences for setting display

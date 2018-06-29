@@ -30,6 +30,10 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mBoardLimitsLayer = CALayer ()
    fileprivate var mFrontPadsLayer = CALayer ()
    fileprivate var mBackPadsLayer = CALayer ()
+   fileprivate var mFrontLegendTextsLayer = CALayer ()
+   fileprivate var mFrontLayoutTextsLayer = CALayer ()
+   fileprivate var mBackLegendTextsLayer = CALayer ()
+   fileprivate var mBackLayoutTextsLayer = CALayer ()
 
   //····················································································································
   //  awakeFromNib
@@ -40,12 +44,16 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.addSublayer (mBackgroundLayer)
     self.layer?.addSublayer (mNoModelTextLayer)
     self.layer?.addSublayer (mBackPackagesLayer)
+    self.layer?.addSublayer (mBackLegendTextsLayer)
     self.layer?.addSublayer (mBackComponentNamesLayer)
     self.layer?.addSublayer (mBackComponentValuesLayer)
     self.layer?.addSublayer (mBackTracksLayer)
+    self.layer?.addSublayer (mBackLayoutTextsLayer)
     self.layer?.addSublayer (mBackPadsLayer)
     self.layer?.addSublayer (mFrontTracksLayer)
+    self.layer?.addSublayer (mFrontLayoutTextsLayer)
     self.layer?.addSublayer (mFrontPackagesLayer)
+    self.layer?.addSublayer (mFrontLegendTextsLayer)
     self.layer?.addSublayer (mFrontComponentValuesLayer)
     self.layer?.addSublayer (mFrontComponentNamesLayer)
     self.layer?.addSublayer (mFrontPadsLayer)
@@ -315,6 +323,126 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   func unbind_backPackages () {
     mBackPackagesController?.unregister ()
     mBackPackagesController = nil
+  }
+
+  //····················································································································
+  //    Front Legend Texts packages
+  //····················································································································
+
+  private var mFrontLegendTextsController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
+
+  //····················································································································
+
+  func bind_frontLegendTexts (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mFrontLegendTextsController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.blue.cgColor)
+          components.append (shape)
+        }
+        self.mFrontLegendTextsLayer.sublayers = components
+      }
+    )
+  }
+
+  //····················································································································
+
+  func unbind_frontLegendTexts () {
+    mFrontLegendTextsController?.unregister ()
+    mFrontLegendTextsController = nil
+  }
+
+  //····················································································································
+  //    Back Legend Texts packages
+  //····················································································································
+
+  private var mBackLegendTextsController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
+
+  //····················································································································
+
+  func bind_backLegendTexts (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mBackLegendTextsController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.blue.cgColor)
+          components.append (shape)
+        }
+        self.mBackLegendTextsLayer.sublayers = components
+      }
+    )
+  }
+
+  //····················································································································
+
+  func unbind_backLegendTexts () {
+    mBackLegendTextsController?.unregister ()
+    mBackLegendTextsController = nil
+  }
+
+  //····················································································································
+  //    Front Layout Texts packages
+  //····················································································································
+
+  private var mFrontLayoutTextsController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
+
+  //····················································································································
+
+  func bind_frontLayoutTexts (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mFrontLayoutTextsController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.gray.cgColor)
+          components.append (shape)
+        }
+        self.mFrontLayoutTextsLayer.sublayers = components
+      }
+    )
+  }
+
+  //····················································································································
+
+  func unbind_frontLayoutTexts () {
+    mFrontLayoutTextsController?.unregister ()
+    mFrontLayoutTextsController = nil
+  }
+
+  //····················································································································
+  //    Back Layout Texts packages
+  //····················································································································
+
+  private var mBackLayoutTextsController : Controller_CanariBoardModelView_generic_MergerSegmentArray?
+
+  //····················································································································
+
+  func bind_backLayoutTexts (_ segments:EBReadOnlyProperty_MergerSegmentArray, file:String, line:Int) {
+    mBackLayoutTextsController = Controller_CanariBoardModelView_generic_MergerSegmentArray (
+      segments:segments,
+      outlet:self,
+      callBack: { (_ inSegments : [MergerSegment]) in
+        var components = [CAShapeLayer] ()
+        for segment in inSegments {
+          let shape = segment.segmentShape (color:NSColor.gray.cgColor)
+          components.append (shape)
+        }
+        self.mBackLayoutTextsLayer.sublayers = components
+      }
+    )
+  }
+
+  //····················································································································
+
+  func unbind_backLayoutTexts () {
+    mBackLayoutTextsController?.unregister ()
+    mBackLayoutTextsController = nil
   }
 
   //····················································································································

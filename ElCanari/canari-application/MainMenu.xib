@@ -594,7 +594,7 @@
                 <button misplaced="YES" id="Owg-KK-Pvv" customClass="EBSwitch">
                     <rect key="frame" x="79" y="319" width="293" height="24"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Front Texts " bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="XgD-le-fog">
+                    <buttonCell key="cell" type="check" title="Front Legend Texts " bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="XgD-le-fog">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -610,7 +610,7 @@
                 <button misplaced="YES" id="WZ3-9h-F4n" customClass="EBSwitch">
                     <rect key="frame" x="79" y="139" width="293" height="24"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Back Texts " bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Ojj-E7-ThW">
+                    <buttonCell key="cell" type="check" title="Back Legend Texts " bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Ojj-E7-ThW">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -716,7 +716,7 @@
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
             </subviews>
-            <point key="canvasLocation" x="609" y="32"/>
+            <point key="canvasLocation" x="659" y="-120"/>
         </customView>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="743" userLabel="ProgressPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -2262,7 +2262,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="576D1C27-AE9D-4F4F-B517-F03FFAB80456" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="EDBCA756-5CFB-4957-9E65-F0F3CAF02A7F" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2672,17 +2672,17 @@ Gw
                 <outlet property="mMergerDisplayBackComponentNamesCheckbox" destination="nTz-hv-UdE" id="lON-eG-PKo"/>
                 <outlet property="mMergerDisplayBackLayoutTextsCheckbox" destination="odL-hZ-eRP" id="t8C-uP-2dy"/>
                 <outlet property="mMergerDisplayBackLayoutTracksCheckbox" destination="o72-ho-Xzl" id="Oi6-85-GNs"/>
+                <outlet property="mMergerDisplayBackLegendTextsCheckbox" destination="WZ3-9h-F4n" id="TEk-Re-VDz"/>
                 <outlet property="mMergerDisplayBackPackagesCheckbox" destination="rOL-OY-oJt" id="Z5n-3v-6bl"/>
                 <outlet property="mMergerDisplayBackPadsCheckbox" destination="h0k-RN-EWu" id="1C5-kZ-ZTB"/>
-                <outlet property="mMergerDisplayBackTextsCheckbox" destination="WZ3-9h-F4n" id="54j-jw-dRm"/>
                 <outlet property="mMergerDisplayBoardLimitsCheckbox" destination="NaP-ku-0yR" id="cRX-R8-p9R"/>
                 <outlet property="mMergerDisplayFrontComponenValuesCheckbox" destination="pID-oX-mxe" id="Uij-Vu-V25"/>
                 <outlet property="mMergerDisplayFrontComponentNamesCheckbox" destination="LiG-xJ-QwG" id="s98-bc-9tj"/>
                 <outlet property="mMergerDisplayFrontLayoutTextsCheckbox" destination="2Dg-UE-C4j" id="tMD-Qp-yUe"/>
                 <outlet property="mMergerDisplayFrontLayoutTracksCheckbox" destination="oyq-4l-KDy" id="2Mu-nb-iYd"/>
+                <outlet property="mMergerDisplayFrontLegendTextsCheckbox" destination="Owg-KK-Pvv" id="XZH-af-uZX"/>
                 <outlet property="mMergerDisplayFrontPackagesCheckbox" destination="B69-PW-KQP" id="RAZ-aW-idr"/>
                 <outlet property="mMergerDisplayFrontPadsCheckbox" destination="is0-qz-HSN" id="ghN-ej-unt"/>
-                <outlet property="mMergerDisplayFrontTextsCheckbox" destination="Owg-KK-Pvv" id="Mdn-vb-kZ7"/>
                 <outlet property="mMergerDisplayHolesCheckbox" destination="CCZ-ZU-OmM" id="hhu-n6-u0w"/>
                 <outlet property="mMergerDisplayViasCheckbox" destination="X7p-lj-XUJ" id="OSC-hL-w4B"/>
                 <outlet property="mMergerHorizontalFlipCheckbox" destination="GtG-4c-JmR" id="ftD-8O-hNS"/>
@@ -2797,7 +2797,7 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="576D1C27-AE9D-4F4F-B517-F03FFAB80456" width="20" height="20">
+        <image name="EDBCA756-5CFB-4957-9E65-F0F3CAF02A7F" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

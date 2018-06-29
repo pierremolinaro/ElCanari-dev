@@ -23,6 +23,10 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var backComponentValueSegments = EBTransientProperty_MergerSegmentArray () 
   var backComponentValueSegmentsCount = EBTransientProperty_Int () 
   var backComponentValuesForDisplay = EBTransientProperty_MergerSegmentArray () 
+  var backLayoutTextsSegments = EBTransientProperty_MergerSegmentArray () 
+  var backLayoutTextsSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
+  var backLegendTextsSegments = EBTransientProperty_MergerSegmentArray () 
+  var backLegendTextsSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
   var backPackageSegmentsCount = EBTransientProperty_Int () 
   var backPackagesSegments = EBTransientProperty_MergerSegmentArray () 
   var backPackagesSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
@@ -44,6 +48,10 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var frontComponentValueSegments = EBTransientProperty_MergerSegmentArray () 
   var frontComponentValueSegmentsCount = EBTransientProperty_Int () 
   var frontComponentValuesForDisplay = EBTransientProperty_MergerSegmentArray () 
+  var frontLayoutTextsSegments = EBTransientProperty_MergerSegmentArray () 
+  var frontLayoutTextsSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
+  var frontLegendTextsSegments = EBTransientProperty_MergerSegmentArray () 
+  var frontLegendTextsSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
   var frontPackageSegmentsCount = EBTransientProperty_Int () 
   var frontPackagesSegments = EBTransientProperty_MergerSegmentArray () 
   var frontPackagesSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
@@ -75,6 +83,10 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_backComponentValueSegments (model: model)
     bind_property_backComponentValueSegmentsCount (model: model)
     bind_property_backComponentValuesForDisplay (model: model)
+    bind_property_backLayoutTextsSegments (model: model)
+    bind_property_backLayoutTextsSegmentsForDisplay (model: model)
+    bind_property_backLegendTextsSegments (model: model)
+    bind_property_backLegendTextsSegmentsForDisplay (model: model)
     bind_property_backPackageSegmentsCount (model: model)
     bind_property_backPackagesSegments (model: model)
     bind_property_backPackagesSegmentsForDisplay (model: model)
@@ -96,6 +108,10 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_frontComponentValueSegments (model: model)
     bind_property_frontComponentValueSegmentsCount (model: model)
     bind_property_frontComponentValuesForDisplay (model: model)
+    bind_property_frontLayoutTextsSegments (model: model)
+    bind_property_frontLayoutTextsSegmentsForDisplay (model: model)
+    bind_property_frontLegendTextsSegments (model: model)
+    bind_property_frontLegendTextsSegmentsForDisplay (model: model)
     bind_property_frontPackageSegmentsCount (model: model)
     bind_property_frontPackagesSegments (model: model)
     bind_property_frontPackagesSegmentsForDisplay (model: model)
@@ -560,6 +576,166 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.backComponentValuesForDisplay.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments)
+    self.backLayoutTextsSegments.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLayoutTextsSegments.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLayoutTextsSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backLayoutTextsSegmentsForDisplay (self.backLayoutTextsSegmentsForDisplay)
+    self.backLayoutTextsSegmentsForDisplay.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLayoutTextsSegmentsForDisplay.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLegendTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments)
+    self.backLegendTextsSegments.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLegendTextsSegments.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLegendTextsSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backLegendTextsSegmentsForDisplay (self.backLegendTextsSegmentsForDisplay)
+    self.backLegendTextsSegmentsForDisplay.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLegendTextsSegmentsForDisplay.prop {
             case .noSelection :
               return .noSelection
             case .multipleSelection :
@@ -1606,6 +1782,166 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_frontLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments)
+    self.frontLayoutTextsSegments.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLayoutTextsSegments.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLayoutTextsSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontLayoutTextsSegmentsForDisplay (self.frontLayoutTextsSegmentsForDisplay)
+    self.frontLayoutTextsSegmentsForDisplay.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLayoutTextsSegmentsForDisplay.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLegendTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments)
+    self.frontLegendTextsSegments.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLegendTextsSegments.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLegendTextsSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontLegendTextsSegmentsForDisplay (self.frontLegendTextsSegmentsForDisplay)
+    self.frontLegendTextsSegmentsForDisplay.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .noSelection :
+          return .noSelection
+        case .multipleSelection :
+          return .multipleSelection
+        case .singleSelection (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLegendTextsSegmentsForDisplay.prop {
+            case .noSelection :
+              return .noSelection
+            case .multipleSelection :
+              isMultipleSelection = true
+            case .singleSelection (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multipleSelection
+          }else if s.count == 0 {
+            return .noSelection
+          }else if s.count == 1 {
+            return .singleSelection (s.first!)
+          }else{
+            return .multipleSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_frontPackageSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_frontPackageSegmentsCount (self.frontPackageSegmentsCount)
     self.frontPackageSegmentsCount.readModelFunction = {
@@ -2374,6 +2710,18 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- backComponentValuesForDisplay
     self.backComponentValuesForDisplay.readModelFunction = nil 
     mModel?.removeEBObserverOf_backComponentValuesForDisplay (self.backComponentValuesForDisplay)
+  //--- backLayoutTextsSegments
+    self.backLayoutTextsSegments.readModelFunction = nil 
+    mModel?.removeEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments)
+  //--- backLayoutTextsSegmentsForDisplay
+    self.backLayoutTextsSegmentsForDisplay.readModelFunction = nil 
+    mModel?.removeEBObserverOf_backLayoutTextsSegmentsForDisplay (self.backLayoutTextsSegmentsForDisplay)
+  //--- backLegendTextsSegments
+    self.backLegendTextsSegments.readModelFunction = nil 
+    mModel?.removeEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments)
+  //--- backLegendTextsSegmentsForDisplay
+    self.backLegendTextsSegmentsForDisplay.readModelFunction = nil 
+    mModel?.removeEBObserverOf_backLegendTextsSegmentsForDisplay (self.backLegendTextsSegmentsForDisplay)
   //--- backPackageSegmentsCount
     self.backPackageSegmentsCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_backPackageSegmentsCount (self.backPackageSegmentsCount)
@@ -2449,6 +2797,18 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- frontComponentValuesForDisplay
     self.frontComponentValuesForDisplay.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontComponentValuesForDisplay (self.frontComponentValuesForDisplay)
+  //--- frontLayoutTextsSegments
+    self.frontLayoutTextsSegments.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments)
+  //--- frontLayoutTextsSegmentsForDisplay
+    self.frontLayoutTextsSegmentsForDisplay.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontLayoutTextsSegmentsForDisplay (self.frontLayoutTextsSegmentsForDisplay)
+  //--- frontLegendTextsSegments
+    self.frontLegendTextsSegments.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments)
+  //--- frontLegendTextsSegmentsForDisplay
+    self.frontLegendTextsSegmentsForDisplay.readModelFunction = nil 
+    mModel?.removeEBObserverOf_frontLegendTextsSegmentsForDisplay (self.frontLegendTextsSegmentsForDisplay)
   //--- frontPackageSegmentsCount
     self.frontPackageSegmentsCount.readModelFunction = nil 
     mModel?.removeEBObserverOf_frontPackageSegmentsCount (self.frontPackageSegmentsCount)
