@@ -65,6 +65,25 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mMenuRevealInFinder_fonts : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_packages : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_symbols : CanariMenu? = nil
+  @IBOutlet var mMergerDisplayBackComponenValuesCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayBackComponentNamesCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayBackLayoutTextsCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayBackLayoutTracksCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayBackPackagesCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayBackPadsCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayBackTextsCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayBoardLimitsCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayFrontComponenValuesCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayFrontComponentNamesCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayFrontLayoutTextsCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayFrontLayoutTracksCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayFrontPackagesCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayFrontPadsCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayFrontTextsCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayHolesCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerDisplayViasCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerHorizontalFlipCheckbox : EBSwitch? = nil
+  @IBOutlet var mMergerVerticalFlipCheckbox : EBSwitch? = nil
   @IBOutlet var mPackageBackgroundColorColorWell : EBColorWell? = nil
   @IBOutlet var mPackageColorColorWell : EBColorWell? = nil
   @IBOutlet var mPackageColorForDeviceColorWell : EBColorWell? = nil
@@ -84,6 +103,7 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mPinNameFontForSchematicFontButton : EBFontButton? = nil
   @IBOutlet var mPinNumberColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mPinNumberFontForSchematicFontButton : EBFontButton? = nil
+  @IBOutlet var mPrefsWindow : EBWindow? = nil
   @IBOutlet var mProgressIndicatorInLibraryUpdateWindow : EBProgressIndicator? = nil
   @IBOutlet var mRemoveLibraryEntryButton : EBButton? = nil
   @IBOutlet var mRevealInFinderLibraryInUserApplicationSupportButton : EBButton? = nil
@@ -105,6 +125,7 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mSymbolDrawingWidthMultipliedByTenPopupButton : EBPopUpButton? = nil
   @IBOutlet var mSymbolNameFontForDeviceFontButton : EBFontButton? = nil
   @IBOutlet var mTableViewInLibraryUpdateWindow : EBTableView? = nil
+  @IBOutlet var mToolbar : CanariToolbar? = nil
   @IBOutlet var mTopSidePadColorForDeviceColorWell : EBColorWell? = nil
   @IBOutlet var mTopSidePadColorWell : EBColorWell? = nil
   @IBOutlet var mUnplacedComponentsColorForSchematicColorWell : EBColorWell? = nil
@@ -119,6 +140,25 @@ var g_Preferences : Preferences? = nil
   //    Simple Stored Properties
   //····················································································································
 
+  var mergerHorizontalFlip = EBStoredProperty_Bool (false)
+  var mergerVerticalFlip = EBStoredProperty_Bool (false)
+  var mergerDisplayHoles = EBStoredProperty_Bool (true)
+  var mergerDisplayVias = EBStoredProperty_Bool (true)
+  var mergerDisplayFrontPads = EBStoredProperty_Bool (true)
+  var mergerDisplayBoardLimits = EBStoredProperty_Bool (true)
+  var mergerDisplayFrontComponentNames = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontComponentValues = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontPackages = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontTexts = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontLayoutTracks = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontLayoutTexts = EBStoredProperty_Bool (false)
+  var mergerDisplayBackPads = EBStoredProperty_Bool (true)
+  var mergerDisplayBackComponentNames = EBStoredProperty_Bool (false)
+  var mergerDisplayBackComponentValues = EBStoredProperty_Bool (false)
+  var mergerDisplayBackTexts = EBStoredProperty_Bool (false)
+  var mergerDisplayBackPackages = EBStoredProperty_Bool (false)
+  var mergerDisplayBackLayoutTracks = EBStoredProperty_Bool (false)
+  var mergerDisplayBackLayoutTexts = EBStoredProperty_Bool (false)
   var errorMessageColor = EBStoredProperty_NSColor (NSColor.red)
   var warningMessageColor = EBStoredProperty_NSColor (NSColor.orange)
   var successMessageColor = EBStoredProperty_NSColor (NSColor.blue)
@@ -228,6 +268,25 @@ var g_Preferences : Preferences? = nil
     super.init ()
     g_Preferences = self ;
   //--- Read from preferences
+    mergerHorizontalFlip.readInPreferencesWithKey (inKey:"Preferences:mergerHorizontalFlip")
+    mergerVerticalFlip.readInPreferencesWithKey (inKey:"Preferences:mergerVerticalFlip")
+    mergerDisplayHoles.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayHoles")
+    mergerDisplayVias.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayVias")
+    mergerDisplayFrontPads.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPads")
+    mergerDisplayBoardLimits.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBoardLimits")
+    mergerDisplayFrontComponentNames.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentNames")
+    mergerDisplayFrontComponentValues.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentValues")
+    mergerDisplayFrontPackages.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPackages")
+    mergerDisplayFrontTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontTexts")
+    mergerDisplayFrontLayoutTracks.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTracks")
+    mergerDisplayFrontLayoutTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTexts")
+    mergerDisplayBackPads.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPads")
+    mergerDisplayBackComponentNames.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentNames")
+    mergerDisplayBackComponentValues.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentValues")
+    mergerDisplayBackTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackTexts")
+    mergerDisplayBackPackages.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPackages")
+    mergerDisplayBackLayoutTracks.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTracks")
+    mergerDisplayBackLayoutTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTexts")
     errorMessageColor.readInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
     warningMessageColor.readInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
     successMessageColor.readInPreferencesWithKey (inKey:"Preferences:successMessageColor")
@@ -517,6 +576,82 @@ var g_Preferences : Preferences? = nil
     if nil == mMenuRevealInFinder_symbols {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMenuRevealInFinder_symbols' outlet is nil")
     }
+  //--- Check mMergerDisplayBackComponenValuesCheckbox' outlet not nil
+    if nil == mMergerDisplayBackComponenValuesCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackComponenValuesCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayBackComponentNamesCheckbox' outlet not nil
+    if nil == mMergerDisplayBackComponentNamesCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackComponentNamesCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayBackLayoutTextsCheckbox' outlet not nil
+    if nil == mMergerDisplayBackLayoutTextsCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackLayoutTextsCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayBackLayoutTracksCheckbox' outlet not nil
+    if nil == mMergerDisplayBackLayoutTracksCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackLayoutTracksCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayBackPackagesCheckbox' outlet not nil
+    if nil == mMergerDisplayBackPackagesCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackPackagesCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayBackPadsCheckbox' outlet not nil
+    if nil == mMergerDisplayBackPadsCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackPadsCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayBackTextsCheckbox' outlet not nil
+    if nil == mMergerDisplayBackTextsCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackTextsCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayBoardLimitsCheckbox' outlet not nil
+    if nil == mMergerDisplayBoardLimitsCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBoardLimitsCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayFrontComponenValuesCheckbox' outlet not nil
+    if nil == mMergerDisplayFrontComponenValuesCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontComponenValuesCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayFrontComponentNamesCheckbox' outlet not nil
+    if nil == mMergerDisplayFrontComponentNamesCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontComponentNamesCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayFrontLayoutTextsCheckbox' outlet not nil
+    if nil == mMergerDisplayFrontLayoutTextsCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontLayoutTextsCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayFrontLayoutTracksCheckbox' outlet not nil
+    if nil == mMergerDisplayFrontLayoutTracksCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontLayoutTracksCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayFrontPackagesCheckbox' outlet not nil
+    if nil == mMergerDisplayFrontPackagesCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontPackagesCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayFrontPadsCheckbox' outlet not nil
+    if nil == mMergerDisplayFrontPadsCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontPadsCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayFrontTextsCheckbox' outlet not nil
+    if nil == mMergerDisplayFrontTextsCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontTextsCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayHolesCheckbox' outlet not nil
+    if nil == mMergerDisplayHolesCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayHolesCheckbox' outlet is nil")
+    }
+  //--- Check mMergerDisplayViasCheckbox' outlet not nil
+    if nil == mMergerDisplayViasCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayViasCheckbox' outlet is nil")
+    }
+  //--- Check mMergerHorizontalFlipCheckbox' outlet not nil
+    if nil == mMergerHorizontalFlipCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerHorizontalFlipCheckbox' outlet is nil")
+    }
+  //--- Check mMergerVerticalFlipCheckbox' outlet not nil
+    if nil == mMergerVerticalFlipCheckbox {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerVerticalFlipCheckbox' outlet is nil")
+    }
   //--- Check mPackageBackgroundColorColorWell' outlet not nil
     if nil == mPackageBackgroundColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPackageBackgroundColorColorWell' outlet is nil")
@@ -592,6 +727,10 @@ var g_Preferences : Preferences? = nil
   //--- Check mPinNumberFontForSchematicFontButton' outlet not nil
     if nil == mPinNumberFontForSchematicFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPinNumberFontForSchematicFontButton' outlet is nil")
+    }
+  //--- Check mPrefsWindow' outlet not nil
+    if nil == mPrefsWindow {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPrefsWindow' outlet is nil")
     }
   //--- Check mProgressIndicatorInLibraryUpdateWindow' outlet not nil
     if nil == mProgressIndicatorInLibraryUpdateWindow {
@@ -676,6 +815,10 @@ var g_Preferences : Preferences? = nil
   //--- Check mTableViewInLibraryUpdateWindow' outlet not nil
     if nil == mTableViewInLibraryUpdateWindow {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mTableViewInLibraryUpdateWindow' outlet is nil")
+    }
+  //--- Check mToolbar' outlet not nil
+    if nil == mToolbar {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mToolbar' outlet is nil")
     }
   //--- Check mTopSidePadColorForDeviceColorWell' outlet not nil
     if nil == mTopSidePadColorForDeviceColorWell {
@@ -841,6 +984,25 @@ var g_Preferences : Preferences? = nil
     additionnalLibraryArray.addEBObserverOf_mUses (mValueRevealInFinder_artworks)
     additionnalLibraryArray.addEBObserverOf_mPath (mValueRevealInFinder_artworks)
   //--- Install bindings
+    mMergerHorizontalFlipCheckbox?.bind_value (self.mergerHorizontalFlip, file: #file, line: #line)
+    mMergerVerticalFlipCheckbox?.bind_value (self.mergerVerticalFlip, file: #file, line: #line)
+    mMergerDisplayHolesCheckbox?.bind_value (self.mergerDisplayHoles, file: #file, line: #line)
+    mMergerDisplayViasCheckbox?.bind_value (self.mergerDisplayVias, file: #file, line: #line)
+    mMergerDisplayFrontPadsCheckbox?.bind_value (self.mergerDisplayFrontPads, file: #file, line: #line)
+    mMergerDisplayBoardLimitsCheckbox?.bind_value (self.mergerDisplayBoardLimits, file: #file, line: #line)
+    mMergerDisplayFrontComponentNamesCheckbox?.bind_value (self.mergerDisplayFrontComponentNames, file: #file, line: #line)
+    mMergerDisplayFrontComponenValuesCheckbox?.bind_value (self.mergerDisplayFrontComponentValues, file: #file, line: #line)
+    mMergerDisplayFrontPackagesCheckbox?.bind_value (self.mergerDisplayFrontPackages, file: #file, line: #line)
+    mMergerDisplayFrontTextsCheckbox?.bind_value (self.mergerDisplayFrontTexts, file: #file, line: #line)
+    mMergerDisplayFrontLayoutTracksCheckbox?.bind_value (self.mergerDisplayFrontLayoutTracks, file: #file, line: #line)
+    mMergerDisplayFrontLayoutTextsCheckbox?.bind_value (self.mergerDisplayFrontLayoutTexts, file: #file, line: #line)
+    mMergerDisplayBackPadsCheckbox?.bind_value (self.mergerDisplayBackPads, file: #file, line: #line)
+    mMergerDisplayBackComponentNamesCheckbox?.bind_value (self.mergerDisplayBackComponentNames, file: #file, line: #line)
+    mMergerDisplayBackComponenValuesCheckbox?.bind_value (self.mergerDisplayBackComponentValues, file: #file, line: #line)
+    mMergerDisplayBackTextsCheckbox?.bind_value (self.mergerDisplayBackTexts, file: #file, line: #line)
+    mMergerDisplayBackPackagesCheckbox?.bind_value (self.mergerDisplayBackPackages, file: #file, line: #line)
+    mMergerDisplayBackLayoutTracksCheckbox?.bind_value (self.mergerDisplayBackLayoutTracks, file: #file, line: #line)
+    mMergerDisplayBackLayoutTextsCheckbox?.bind_value (self.mergerDisplayBackLayoutTexts, file: #file, line: #line)
     mErrorMessageColorColorWell?.bind_color (self.errorMessageColor, file: #file, line: #line, sendContinously:false)
     mWarningMessageColorColorWell?.bind_color (self.warningMessageColor, file: #file, line: #line, sendContinously:false)
     mSuccessMessageColorColorWell?.bind_color (self.successMessageColor, file: #file, line: #line, sendContinously:false)
@@ -956,6 +1118,25 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   func applicationWillTerminateAction (_ : NSNotification) {
+    mergerHorizontalFlip.storeInPreferencesWithKey (inKey:"Preferences:mergerHorizontalFlip")
+    mergerVerticalFlip.storeInPreferencesWithKey (inKey:"Preferences:mergerVerticalFlip")
+    mergerDisplayHoles.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayHoles")
+    mergerDisplayVias.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayVias")
+    mergerDisplayFrontPads.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPads")
+    mergerDisplayBoardLimits.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBoardLimits")
+    mergerDisplayFrontComponentNames.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentNames")
+    mergerDisplayFrontComponentValues.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentValues")
+    mergerDisplayFrontPackages.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPackages")
+    mergerDisplayFrontTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontTexts")
+    mergerDisplayFrontLayoutTracks.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTracks")
+    mergerDisplayFrontLayoutTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTexts")
+    mergerDisplayBackPads.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPads")
+    mergerDisplayBackComponentNames.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentNames")
+    mergerDisplayBackComponentValues.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentValues")
+    mergerDisplayBackTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackTexts")
+    mergerDisplayBackPackages.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPackages")
+    mergerDisplayBackLayoutTracks.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTracks")
+    mergerDisplayBackLayoutTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTexts")
     errorMessageColor.storeInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
     warningMessageColor.storeInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
     successMessageColor.storeInPreferencesWithKey (inKey:"Preferences:successMessageColor")

@@ -21,25 +21,11 @@
                 <outlet property="mBoardModelView" destination="RA9-Ej-gEF" id="tQE-lb-V7H"/>
                 <outlet property="mBoardWidthTextField" destination="f0C-K9-iUE" id="LMg-gy-YtT"/>
                 <outlet property="mBoardWidthUnitPopUp" destination="7ZX-iP-2iR" id="rXk-3g-NOM"/>
-                <outlet property="mDisplayBackComponentNames" destination="fQE-rV-9Dh" id="FkK-dO-4Jo"/>
-                <outlet property="mDisplayBackComponentValues" destination="Sl7-oh-5Ac" id="bwN-mP-oyv"/>
-                <outlet property="mDisplayBackPackages" destination="lyd-kd-91q" id="aCk-cc-xxr"/>
-                <outlet property="mDisplayBackPads" destination="lMR-5b-0Fz" id="OgN-6X-Hd8"/>
-                <outlet property="mDisplayBackTracks" destination="BOF-iA-8xv" id="1eF-3x-fZv"/>
-                <outlet property="mDisplayBoardLimits" destination="IQb-Bn-cCd" id="gX7-tN-KkL"/>
-                <outlet property="mDisplayFrontComponentNames" destination="iJ1-MN-1kW" id="1nE-An-tqE"/>
-                <outlet property="mDisplayFrontComponentValues" destination="V7f-VR-cUy" id="6uc-ot-Vls"/>
-                <outlet property="mDisplayFrontPackages" destination="if3-8Y-ga1" id="rWt-a5-hbn"/>
-                <outlet property="mDisplayFrontPads" destination="NTM-ak-cm3" id="Tpy-79-gKe"/>
-                <outlet property="mDisplayFrontTracks" destination="XhH-C3-HYx" id="vow-3J-qDp"/>
-                <outlet property="mDisplayHoles" destination="3hJ-XX-4bH" id="KJu-An-Ty7"/>
-                <outlet property="mDisplayVias" destination="F7n-xU-x8G" id="jNx-FP-QB6"/>
                 <outlet property="mFrontComponentNameSegmentCountTextField" destination="dpz-lh-SJe" id="jM7-Bq-qAI"/>
                 <outlet property="mFrontPackagesCountTextField" destination="tmN-ch-vea" id="Sub-ka-b9T"/>
                 <outlet property="mFrontTrackSegmentCountTextField" destination="h7n-fB-G8M" id="C7m-hO-QUe"/>
-                <outlet property="mHorizontalFlipSwitch" destination="QbM-bC-weo" id="zTM-uz-j6h"/>
                 <outlet property="mPageSegmentedControl" destination="g6K-IS-SQg" id="vW2-0C-BuI"/>
-                <outlet property="mVerticalFlipSwitch" destination="UJ0-C6-tQU" id="hSn-98-oDh"/>
+                <outlet property="showPrefsForSettingMergerDisplayButton" destination="Y3w-4l-ytx" id="k7k-t5-8J4"/>
                 <outlet property="window" destination="21" id="252"/>
             </connections>
         </customObject>
@@ -63,36 +49,20 @@
             <toolbar key="toolbar" implicitIdentifier="4555864C-6A4A-4748-9D66-C2855E65CEE2" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="1226">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="1231"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="1232"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="1229"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="1233"/>
-                    <toolbarItem implicitItemIdentifier="22DC9DD6-9119-4C9C-BD1A-5520B60A7C0B" label="Signature" paletteLabel="Signature" id="MRo-Zp-Dsx">
+                    <toolbarItem implicitItemIdentifier="899B6EBE-E95E-4607-880A-A4B14B9189CA" label="for Model and Board views" paletteLabel="for Model and Board views" id="Hkd-jU-U7x">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="38" height="17"/>
-                        <size key="maxSize" width="83" height="19"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6TX-1V-2Fo" customClass="CanariSignatureField">
-                            <rect key="frame" x="0.0" y="14" width="83" height="19"/>
+                        <size key="minSize" width="82" height="32"/>
+                        <size key="maxSize" width="178" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" misplaced="YES" id="Y3w-4l-ytx" customClass="EBButton">
+                            <rect key="frame" x="0.0" y="14" width="175" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="EEEE:EEEE" id="BhN-SJ-d7S">
-                                <font key="font" metaFont="systemBold"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A2FE5BFC-81AB-4637-A50D-F1891F39BA43" label="Version" paletteLabel="Version" id="e7T-JV-7Nm">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="28" height="17"/>
-                        <size key="maxSize" width="42" height="19"/>
-                        <textField key="view" verticalHuggingPriority="750" id="mk6-eZ-sw0" customClass="CanariVersionField">
-                            <rect key="frame" x="3" y="14" width="42" height="19"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="center" title="999" id="PN6-Xd-dSd">
-                                <font key="font" metaFont="systemBold"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
+                            <buttonCell key="cell" type="push" title="Show Display Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cPL-s0-ZlO">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="E4B3EA49-F018-4041-94FD-C2F33ECC75F8" label="Page" paletteLabel="Page" id="VxW-8s-t9m">
                         <nil key="toolTip"/>
@@ -117,11 +87,12 @@
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="1232"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="VxW-8s-t9m"/>
-                    <toolbarItem reference="MRo-Zp-Dsx"/>
-                    <toolbarItem reference="e7T-JV-7Nm"/>
+                    <toolbarItem reference="1232"/>
+                    <toolbarItem reference="Hkd-jU-U7x"/>
                 </defaultToolbarItems>
             </toolbar>
             <point key="canvasLocation" x="1178" y="-133"/>
@@ -469,77 +440,35 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <scrollView wantsLayer="YES" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="tch-UL-HLT" customClass="CanariScrollViewWithPlacard">
-                                        <rect key="frame" x="3" y="-3" width="449" height="393"/>
+                                        <rect key="frame" x="3" y="-3" width="449" height="425"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" wantsLayer="YES" id="PpI-BL-fb0">
-                                            <rect key="frame" x="1" y="1" width="432" height="376"/>
+                                            <rect key="frame" x="1" y="1" width="432" height="408"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <customView wantsLayer="YES" id="RA9-Ej-gEF" customClass="CanariBoardModelView" customModule="ElCanari" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="280" width="163" height="96"/>
+                                                    <rect key="frame" x="0.0" y="312" width="163" height="96"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 </customView>
                                             </subviews>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="QLG-wP-sOW">
-                                            <rect key="frame" x="1" y="377" width="432" height="15"/>
+                                            <rect key="frame" x="1" y="409" width="432" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="DhN-Ed-ipm">
-                                            <rect key="frame" x="433" y="1" width="15" height="376"/>
+                                            <rect key="frame" x="433" y="1" width="15" height="408"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <button wantsLayer="YES" misplaced="YES" id="QbM-bC-weo" customClass="EBSwitch">
-                                        <rect key="frame" x="15" y="396" width="110" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" title="Horizontal Flip" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9wT-6B-w57">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                    <button wantsLayer="YES" misplaced="YES" id="UJ0-C6-tQU" customClass="EBSwitch">
-                                        <rect key="frame" x="152" y="396" width="94" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="check" title="Vertical Flip" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="drD-Dn-bLa">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                    <popUpButton wantsLayer="YES" verticalHuggingPriority="750" misplaced="YES" id="unn-qQ-zmh">
-                                        <rect key="frame" x="268" y="391" width="119" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="push" title="Display" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" autoenablesItems="NO" id="ODd-Ja-xMf">
-                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
-                                            <menu key="menu" autoenablesItems="NO" id="AtO-u0-jBg">
-                                                <items>
-                                                    <menuItem title="Display" state="on" hidden="YES" id="hc1-1f-Yl9"/>
-                                                    <menuItem title="Board Limits" id="IQb-Bn-cCd" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Holes" id="3hJ-XX-4bH" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Vias" id="F7n-xU-x8G" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Front Pads" id="NTM-ak-cm3" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Front Packages" id="if3-8Y-ga1" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Front Component Names" id="iJ1-MN-1kW" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Front Component Values" id="V7f-VR-cUy" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Front Tracks" id="XhH-C3-HYx" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Back Pads" id="lMR-5b-0Fz" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Back Tracks" id="BOF-iA-8xv" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Back Component Values" id="Sl7-oh-5Ac" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Back Component Names" id="fQE-rV-9Dh" customClass="EBCheckedMenuItem"/>
-                                                    <menuItem title="Back Packages" id="lyd-kd-91q" customClass="EBCheckedMenuItem"/>
-                                                </items>
-                                            </menu>
-                                        </popUpButtonCell>
-                                    </popUpButton>
                                 </subviews>
                             </view>
                         </tabViewItem>
                     </tabViewItems>
                 </tabView>
             </subviews>
-            <point key="canvasLocation" x="-158" y="-179"/>
+            <point key="canvasLocation" x="443" y="-194"/>
         </customView>
         <customView id="r18-cj-dWP" userLabel="Page : Board" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="700" height="500"/>

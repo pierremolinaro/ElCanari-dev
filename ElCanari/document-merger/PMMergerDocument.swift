@@ -25,25 +25,11 @@ import Cocoa
   @IBOutlet var mBoardModelView : CanariBoardModelView?
   @IBOutlet var mBoardWidthTextField : CanariDimensionTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
-  @IBOutlet var mDisplayBackComponentNames : EBCheckedMenuItem?
-  @IBOutlet var mDisplayBackComponentValues : EBCheckedMenuItem?
-  @IBOutlet var mDisplayBackPackages : EBCheckedMenuItem?
-  @IBOutlet var mDisplayBackPads : EBCheckedMenuItem?
-  @IBOutlet var mDisplayBackTracks : EBCheckedMenuItem?
-  @IBOutlet var mDisplayBoardLimits : EBCheckedMenuItem?
-  @IBOutlet var mDisplayFrontComponentNames : EBCheckedMenuItem?
-  @IBOutlet var mDisplayFrontComponentValues : EBCheckedMenuItem?
-  @IBOutlet var mDisplayFrontPackages : EBCheckedMenuItem?
-  @IBOutlet var mDisplayFrontPads : EBCheckedMenuItem?
-  @IBOutlet var mDisplayFrontTracks : EBCheckedMenuItem?
-  @IBOutlet var mDisplayHoles : EBCheckedMenuItem?
-  @IBOutlet var mDisplayVias : EBCheckedMenuItem?
   @IBOutlet var mFrontComponentNameSegmentCountTextField : EBIntObserverField?
   @IBOutlet var mFrontPackagesCountTextField : EBIntObserverField?
   @IBOutlet var mFrontTrackSegmentCountTextField : EBIntObserverField?
-  @IBOutlet var mHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mVerticalFlipSwitch : EBSwitch?
+  @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton?
 
   //····················································································································
   //    Properties
@@ -232,123 +218,6 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
-    if nil == mDisplayBackComponentNames {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayBackComponentNames' outlet is nil") ;
-//    }else if !mDisplayBackComponentNames!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayBackComponentNames' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayBackComponentValues {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayBackComponentValues' outlet is nil") ;
-//    }else if !mDisplayBackComponentValues!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayBackComponentValues' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayBackPackages {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayBackPackages' outlet is nil") ;
-//    }else if !mDisplayBackPackages!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayBackPackages' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayBackPads {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayBackPads' outlet is nil") ;
-//    }else if !mDisplayBackPads!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayBackPads' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayBackTracks {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayBackTracks' outlet is nil") ;
-//    }else if !mDisplayBackTracks!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayBackTracks' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayBoardLimits {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayBoardLimits' outlet is nil") ;
-//    }else if !mDisplayBoardLimits!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayBoardLimits' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayFrontComponentNames {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayFrontComponentNames' outlet is nil") ;
-//    }else if !mDisplayFrontComponentNames!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayFrontComponentNames' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayFrontComponentValues {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayFrontComponentValues' outlet is nil") ;
-//    }else if !mDisplayFrontComponentValues!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayFrontComponentValues' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayFrontPackages {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayFrontPackages' outlet is nil") ;
-//    }else if !mDisplayFrontPackages!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayFrontPackages' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayFrontPads {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayFrontPads' outlet is nil") ;
-//    }else if !mDisplayFrontPads!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayFrontPads' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayFrontTracks {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayFrontTracks' outlet is nil") ;
-//    }else if !mDisplayFrontTracks!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayFrontTracks' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayHoles {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayHoles' outlet is nil") ;
-//    }else if !mDisplayHoles!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayHoles' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
-    if nil == mDisplayVias {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDisplayVias' outlet is nil") ;
-//    }else if !mDisplayVias!.isKindOfClass (EBCheckedMenuItem) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDisplayVias' outlet is not an instance of 'EBCheckedMenuItem'") ;
-    }
     if nil == mFrontComponentNameSegmentCountTextField {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -376,15 +245,6 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mFrontTrackSegmentCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
     }
-    if nil == mHorizontalFlipSwitch {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mHorizontalFlipSwitch' outlet is nil") ;
-//    }else if !mHorizontalFlipSwitch!.isKindOfClass (EBSwitch) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mHorizontalFlipSwitch' outlet is not an instance of 'EBSwitch'") ;
-    }
     if nil == mPageSegmentedControl {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -394,14 +254,14 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
     }
-    if nil == mVerticalFlipSwitch {
+    if nil == showPrefsForSettingMergerDisplayButton {
       presentErrorWindow (file: #file,
                               line: #line,
-                              errorMessage: "the 'mVerticalFlipSwitch' outlet is nil") ;
-//    }else if !mVerticalFlipSwitch!.isKindOfClass (EBSwitch) {
+                              errorMessage: "the 'showPrefsForSettingMergerDisplayButton' outlet is nil") ;
+//    }else if !showPrefsForSettingMergerDisplayButton!.isKindOfClass (EBButton) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mVerticalFlipSwitch' outlet is not an instance of 'EBSwitch'") ;
+//                              errorMessage: "the 'showPrefsForSettingMergerDisplayButton' outlet is not an instance of 'EBButton'") ;
     }
   //--------------------------- Array controllers
     mBoardModelController.bind_modelAndView (
@@ -436,8 +296,8 @@ import Cocoa
     mFrontComponentNameSegmentCountTextField?.bind_valueObserver (self.mBoardModelSelection.frontComponentNameSegmentsCount, file: #file, line: #line, autoFormatter:true)
     mBoardModelView?.bind_size (self.mBoardModelSelection.boardWidth, self.mBoardModelSelection.boardHeight, file: #file, line: #line)
     mBoardModelView?.bind_zoom (self.mBoardModelSelection.zoom, file: #file, line: #line)
-    mBoardModelView?.bind_horizontalFlip (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
-    mBoardModelView?.bind_verticalFlip (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
+    mBoardModelView?.bind_horizontalFlip (g_Preferences!.mergerHorizontalFlip, file: #file, line: #line)
+    mBoardModelView?.bind_verticalFlip (g_Preferences!.mergerVerticalFlip, file: #file, line: #line)
     mBoardModelView?.bind_vias (self.mBoardModelSelection.viaShapesForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_frontComponentNames (self.mBoardModelSelection.frontComponentNameSegmentsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_frontComponentValues (self.mBoardModelSelection.frontComponentValuesForDisplay, file: #file, line: #line)
@@ -451,25 +311,12 @@ import Cocoa
     mBoardModelView?.bind_frontPads (self.mBoardModelSelection.frontPadsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_backPads (self.mBoardModelSelection.backPadsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_holes (self.mBoardModelSelection.holesForDisplay, file: #file, line: #line)
-    mHorizontalFlipSwitch?.bind_value (self.mBoardModelSelection.horizontalFlip, file: #file, line: #line)
-    mVerticalFlipSwitch?.bind_value (self.mBoardModelSelection.verticalFlip, file: #file, line: #line)
-    mDisplayHoles?.bind_checked (self.mBoardModelSelection.displayHoles, file: #file, line: #line)
-    mDisplayFrontComponentNames?.bind_checked (self.mBoardModelSelection.displayFrontComponentNames, file: #file, line: #line)
-    mDisplayBackComponentNames?.bind_checked (self.mBoardModelSelection.displayBackComponentNames, file: #file, line: #line)
-    mDisplayFrontTracks?.bind_checked (self.mBoardModelSelection.displayFrontTracks, file: #file, line: #line)
-    mDisplayBackTracks?.bind_checked (self.mBoardModelSelection.displayBackTracks, file: #file, line: #line)
-    mDisplayFrontComponentValues?.bind_checked (self.mBoardModelSelection.displayFrontComponentValues, file: #file, line: #line)
-    mDisplayBackComponentValues?.bind_checked (self.mBoardModelSelection.displayBackComponentValues, file: #file, line: #line)
-    mDisplayFrontPackages?.bind_checked (self.mBoardModelSelection.displayFrontPackages, file: #file, line: #line)
-    mDisplayBackPackages?.bind_checked (self.mBoardModelSelection.displayBackPackages, file: #file, line: #line)
-    mDisplayBoardLimits?.bind_checked (self.mBoardModelSelection.displayBoardLimits, file: #file, line: #line)
-    mDisplayFrontPads?.bind_checked (self.mBoardModelSelection.displayFrontPads, file: #file, line: #line)
-    mDisplayBackPads?.bind_checked (self.mBoardModelSelection.displayBackPads, file: #file, line: #line)
-    mDisplayVias?.bind_checked (self.mBoardModelSelection.displayVias, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
     addBoardModelButton?.action = #selector (PMMergerDocument.addBoardModelAction (_:))
+    showPrefsForSettingMergerDisplayButton?.target = self
+    showPrefsForSettingMergerDisplayButton?.action = #selector (PMMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -512,21 +359,6 @@ import Cocoa
     mBoardModelView?.unbind_frontPads ()
     mBoardModelView?.unbind_backPads ()
     mBoardModelView?.unbind_holes ()
-    mHorizontalFlipSwitch?.unbind_value ()
-    mVerticalFlipSwitch?.unbind_value ()
-    mDisplayHoles?.unbind_checked ()
-    mDisplayFrontComponentNames?.unbind_checked ()
-    mDisplayBackComponentNames?.unbind_checked ()
-    mDisplayFrontTracks?.unbind_checked ()
-    mDisplayBackTracks?.unbind_checked ()
-    mDisplayFrontComponentValues?.unbind_checked ()
-    mDisplayBackComponentValues?.unbind_checked ()
-    mDisplayFrontPackages?.unbind_checked ()
-    mDisplayBackPackages?.unbind_checked ()
-    mDisplayBoardLimits?.unbind_checked ()
-    mDisplayFrontPads?.unbind_checked ()
-    mDisplayBackPads?.unbind_checked ()
-    mDisplayVias?.unbind_checked ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers
@@ -536,6 +368,7 @@ import Cocoa
   //--- Uninstall property observers for transients
   //--------------------------- Remove targets / actions
     addBoardModelButton?.target = nil
+    showPrefsForSettingMergerDisplayButton?.target = nil
   }
 
   //····················································································································

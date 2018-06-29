@@ -10,10 +10,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_backComponentValuesForDisplay (_ self_2E_displayBackComponentValues_0 : Bool,
+func compute_BoardModelEntity_backComponentValuesForDisplay (_ g_5F_Preferences_21__2E_mergerDisplayBackComponentValues_0 : Bool,
                                                              _ self_2E_backComponentValueSegments_1 : MergerSegmentArray) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
-  return self_2E_displayBackComponentValues_0 ? self_2E_backComponentValueSegments_1 : MergerSegmentArray ([])
+  return g_5F_Preferences_21__2E_mergerDisplayBackComponentValues_0 ? self_2E_backComponentValueSegments_1 : MergerSegmentArray ([])
 //--- END OF USER ZONE 2
 }
 

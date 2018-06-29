@@ -1,4 +1,74 @@
 
+extern outlet class CanariToolbar ;
+
+prefs {
+  outlet EBWindow mPrefsWindow ;
+  outlet CanariToolbar mToolbar ;
+}
+
+#! Merger
+
+prefs {
+  property Bool mergerHorizontalFlip default no ;
+  outlet EBSwitch mMergerHorizontalFlipCheckbox $value self.mergerHorizontalFlip ;
+
+  property Bool mergerVerticalFlip default no ;
+  outlet EBSwitch mMergerVerticalFlipCheckbox $value self.mergerVerticalFlip ;
+
+  property Bool mergerDisplayHoles default yes ;
+  outlet EBSwitch mMergerDisplayHolesCheckbox $value self.mergerDisplayHoles ;
+
+  property Bool mergerDisplayVias default yes ;
+  outlet EBSwitch mMergerDisplayViasCheckbox $value self.mergerDisplayVias ;
+
+  property Bool mergerDisplayFrontPads default yes ;
+  outlet EBSwitch mMergerDisplayFrontPadsCheckbox $value self.mergerDisplayFrontPads ;
+
+  property Bool mergerDisplayBoardLimits default yes ;
+  outlet EBSwitch mMergerDisplayBoardLimitsCheckbox $value self.mergerDisplayBoardLimits ;
+
+  property Bool mergerDisplayFrontComponentNames default no ;
+  outlet EBSwitch mMergerDisplayFrontComponentNamesCheckbox $value self.mergerDisplayFrontComponentNames ;
+
+  property Bool mergerDisplayFrontComponentValues default no ;
+  outlet EBSwitch mMergerDisplayFrontComponenValuesCheckbox $value self.mergerDisplayFrontComponentValues ;
+
+  property Bool mergerDisplayFrontPackages default no ;
+  outlet EBSwitch mMergerDisplayFrontPackagesCheckbox $value self.mergerDisplayFrontPackages ;
+
+  property Bool mergerDisplayFrontTexts default no ;
+  outlet EBSwitch mMergerDisplayFrontTextsCheckbox $value self.mergerDisplayFrontTexts ;
+
+  property Bool mergerDisplayFrontLayoutTracks default no ;
+  outlet EBSwitch mMergerDisplayFrontLayoutTracksCheckbox $value self.mergerDisplayFrontLayoutTracks ;
+
+  property Bool mergerDisplayFrontLayoutTexts default no ;
+  outlet EBSwitch mMergerDisplayFrontLayoutTextsCheckbox $value self.mergerDisplayFrontLayoutTexts ;
+
+  property Bool mergerDisplayBackPads default yes ;
+  outlet EBSwitch mMergerDisplayBackPadsCheckbox $value self.mergerDisplayBackPads ;
+
+  property Bool mergerDisplayBackComponentNames default no ;
+  outlet EBSwitch mMergerDisplayBackComponentNamesCheckbox $value self.mergerDisplayBackComponentNames ;
+ 
+  property Bool mergerDisplayBackComponentValues default no ;
+  outlet EBSwitch mMergerDisplayBackComponenValuesCheckbox $value self.mergerDisplayBackComponentValues ;
+
+  property Bool mergerDisplayBackTexts default no ;
+  outlet EBSwitch mMergerDisplayBackTextsCheckbox $value self.mergerDisplayBackTexts ;
+
+  property Bool mergerDisplayBackPackages default no ;
+  outlet EBSwitch mMergerDisplayBackPackagesCheckbox $value self.mergerDisplayBackPackages ;
+
+  property Bool mergerDisplayBackLayoutTracks default no ;
+  outlet EBSwitch mMergerDisplayBackLayoutTracksCheckbox $value self.mergerDisplayBackLayoutTracks ;
+
+  property Bool mergerDisplayBackLayoutTexts default no ;
+  outlet EBSwitch mMergerDisplayBackLayoutTextsCheckbox $value self.mergerDisplayBackLayoutTexts ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 #! Library update 
 
 prefs {

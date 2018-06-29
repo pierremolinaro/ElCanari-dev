@@ -13,12 +13,12 @@ import Cocoa
 func compute_BoardModelEntity_boardLimits (_ self_2E_boardWidth_0 : Int,
                                            _ self_2E_boardHeight_1 : Int,
                                            _ self_2E_boardLimitWidth_2 : Int,
-                                           _ self_2E_displayBoardLimits_3 : Bool) -> MergerBoardLimits {
+                                           _ g_5F_Preferences_21__2E_mergerDisplayBoardLimits_3 : Bool) -> MergerBoardLimits {
 //--- START OF USER ZONE 2
   return MergerBoardLimits (
     boardWidth:self_2E_boardWidth_0,
     boardHeight:self_2E_boardHeight_1,
-    lineWidth:self_2E_displayBoardLimits_3 ? self_2E_boardLimitWidth_2 : 0
+    lineWidth:g_5F_Preferences_21__2E_mergerDisplayBoardLimits_3 ? self_2E_boardLimitWidth_2 : 0
   )
 //--- END OF USER ZONE 2
 }

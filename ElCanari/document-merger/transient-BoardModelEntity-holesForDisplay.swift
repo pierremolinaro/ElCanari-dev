@@ -10,10 +10,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_holesForDisplay (_ self_2E_displayHoles_0 : Bool,
+func compute_BoardModelEntity_holesForDisplay (_ g_5F_Preferences_21__2E_mergerDisplayHoles_0 : Bool,
                                                _ self_2E_holes_1 : MergerHoleArray) -> MergerHoleArray {
 //--- START OF USER ZONE 2
-  return self_2E_displayHoles_0 ? self_2E_holes_1 : MergerHoleArray ([])
+  return g_5F_Preferences_21__2E_mergerDisplayHoles_0 ? self_2E_holes_1 : MergerHoleArray ([])
 //--- END OF USER ZONE 2
 }
 

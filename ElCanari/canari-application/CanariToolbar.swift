@@ -13,6 +13,9 @@ import Cocoa
 
 private let NAME_IN_PREFS = "CanariSelectedPreferences"
 
+
+let MERGER_PREFS_INDEX = 8
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(CanariToolbar) class CanariToolbar : NSToolbar, EBUserClassNameProtocol {
@@ -28,6 +31,7 @@ private let NAME_IN_PREFS = "CanariSelectedPreferences"
   @IBOutlet private var mTab5 : NSToolbarItem? = nil
   @IBOutlet private var mTab6 : NSToolbarItem? = nil
   @IBOutlet private var mTab7 : NSToolbarItem? = nil
+  @IBOutlet private var mTab8 : NSToolbarItem? = nil
 
   @IBOutlet private var mView0 : NSView? = nil
   @IBOutlet private var mView1 : NSView? = nil
@@ -37,6 +41,7 @@ private let NAME_IN_PREFS = "CanariSelectedPreferences"
   @IBOutlet private var mView5 : NSView? = nil
   @IBOutlet private var mView6 : NSView? = nil
   @IBOutlet private var mView7 : NSView? = nil
+  @IBOutlet private var mView8 : NSView? = nil
 
   //····················································································································
 
@@ -73,6 +78,8 @@ private let NAME_IN_PREFS = "CanariSelectedPreferences"
     mTab6?.action = #selector(CanariToolbar.toolbarItemAction(_:))
     mTab7?.target = self
     mTab7?.action = #selector(CanariToolbar.toolbarItemAction(_:))
+    mTab8?.target = self
+    mTab8?.action = #selector(CanariToolbar.toolbarItemAction(_:))
   //--- Get initially selected tab from preferences
     let df = UserDefaults ()
     let idx = df.integer (forKey: NAME_IN_PREFS) 
@@ -85,6 +92,7 @@ private let NAME_IN_PREFS = "CanariSelectedPreferences"
     case 5 : selectProgrammaticallyFromTab (mTab5)
     case 6 : selectProgrammaticallyFromTab (mTab6)
     case 7 : selectProgrammaticallyFromTab (mTab7)
+    case 8 : selectProgrammaticallyFromTab (mTab8)
     default : break
     }
   }
@@ -125,15 +133,18 @@ private let NAME_IN_PREFS = "CanariSelectedPreferences"
     }else if sender == mTab7 {
       idx = 7
       selectViewFromSelectedSegmentIndex (mView7, title:mTab7?.label)
+    }else if sender == mTab8 {
+      idx = 8
+      selectViewFromSelectedSegmentIndex (mView8, title:mTab8?.label)
     }
   //--- Update prefs defaults
     let df = UserDefaults ()
-    df.set(idx, forKey: NAME_IN_PREFS)
+    df.set (idx, forKey: NAME_IN_PREFS)
   }
 
-   //····················································································································
+  //····················································································································
 
-  func selectViewFromSelectedSegmentIndex (_ viewToAttach : NSView?, title : String?) {
+  fileprivate func selectViewFromSelectedSegmentIndex (_ viewToAttach : NSView?, title : String?) {
     if let masterView = mMasterView {
     //--- Remove any view from master view
       let subviews : [NSView] = masterView.subviews
@@ -155,6 +166,36 @@ private let NAME_IN_PREFS = "CanariSelectedPreferences"
         masterView.window!.setFrame (r, display:true, animate:true)
       }
     }
+  }
+
+  //····················································································································
+
+  func selectViewFromIndex (_ inIndex : Int) {
+    switch inIndex {
+    case 0 :
+      selectProgrammaticallyFromTab (mTab0)
+    case 1 :
+      selectProgrammaticallyFromTab (mTab1)
+    case 2 :
+      selectProgrammaticallyFromTab (mTab2)
+    case 3 :
+      selectProgrammaticallyFromTab (mTab3)
+    case 4 :
+      selectProgrammaticallyFromTab (mTab4)
+    case 5 :
+      selectProgrammaticallyFromTab (mTab5)
+    case 6 :
+      selectProgrammaticallyFromTab (mTab6)
+    case 7 :
+      selectProgrammaticallyFromTab (mTab7)
+    case 8 :
+      selectProgrammaticallyFromTab (mTab8)
+    default :
+      break
+    }
+  //--- Update prefs defaults
+    let df = UserDefaults ()
+    df.set (inIndex, forKey: NAME_IN_PREFS)
   }
 
   //····················································································································

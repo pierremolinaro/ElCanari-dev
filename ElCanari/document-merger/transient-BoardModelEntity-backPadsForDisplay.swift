@@ -10,10 +10,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_backPadsForDisplay (_ self_2E_displayBackPads_0 : Bool,
+func compute_BoardModelEntity_backPadsForDisplay (_ g_5F_Preferences_21__2E_mergerDisplayBackPads_0 : Bool,
                                                   _ self_2E_backPads_1 : MergerPadArray) -> MergerPadArray {
 //--- START OF USER ZONE 2
-  return self_2E_displayBackPads_0 ? self_2E_backPads_1 : MergerPadArray ([])
+  return g_5F_Preferences_21__2E_mergerDisplayBackPads_0 ? self_2E_backPads_1 : MergerPadArray ([])
 //--- END OF USER ZONE 2
 }
 

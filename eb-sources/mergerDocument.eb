@@ -177,12 +177,8 @@ entity BoardModelEntity {
   property Int boardHeightUnit default 0 ;
 
   property Int zoom default 0 ; # 0 means "fit to window"
-  property Bool horizontalFlip default no ;
-  property Bool verticalFlip default no ;
 
 #--- Holes
-  property Bool displayHoles default yes ;
-
   transient MergerHoleArray padsHoles
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.holeDiameter ;
  
@@ -191,52 +187,45 @@ entity BoardModelEntity {
  
   transient MergerHoleArray holes dependsFrom self.padsHoles, self.viasHoles ;
  
-  transient MergerHoleArray holesForDisplay dependsFrom self.displayHoles, self.holes ;
+  transient MergerHoleArray holesForDisplay dependsFrom prefs.mergerDisplayHoles, self.holes ;
  
 #--- Vias 
   toMany BoardModelViaEntity vias inverse toOne myModel ;
-  property Bool displayVias default yes ;
 
   copy transient Int viaCount : self.vias.count ;
   
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
   
-  transient MergerViaShapeArray viaShapesForDisplay dependsFrom self.displayVias, self.viaShapes ;
+  transient MergerViaShapeArray viaShapesForDisplay dependsFrom prefs.mergerDisplayVias, self.viaShapes ;
 
 #--- Pads
   toMany BoardModelPadEntity pads inverse toOne myBoard ;
 
 #--- Front pads
-  property Bool displayFrontPads default yes ;
-
   transient MergerPadArray frontPads
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
 
-  transient MergerPadArray frontPadsForDisplay dependsFrom self.displayFrontPads, self.frontPads ;
+  transient MergerPadArray frontPadsForDisplay dependsFrom prefs.mergerDisplayFrontPads, self.frontPads ;
 
 #--- Back pads
-  property Bool displayBackPads default yes ;
-
   transient MergerPadArray backPads
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
 
-  transient MergerPadArray backPadsForDisplay dependsFrom self.displayBackPads, self.backPads ;
+  transient MergerPadArray backPadsForDisplay dependsFrom prefs.mergerDisplayBackPads, self.backPads ;
 
 #--- Board limits
   property Int boardLimitWidth default 0 ;
   property Int boardLimitWidthUnit default 0 ;
-  property Bool displayBoardLimits default yes ;
 
   transient MergerBoardLimits boardLimits
-    dependsFrom self.boardWidth, self.boardHeight, self.boardLimitWidth, self.displayBoardLimits
+    dependsFrom self.boardWidth, self.boardHeight, self.boardLimitWidth, prefs.mergerDisplayBoardLimits
   ;
  
 #--- Back component names
   toMany BoardModelBackComponentNameEntity backComponentNames inverse toOne myBoard ;
-  property Bool displayBackComponentNames default yes ;
 
   transient MergerSegmentArray backComponentNameSegments dependsFrom
     self.backComponentNames.all.x1, self.backComponentNames.all.y1,
@@ -247,12 +236,11 @@ entity BoardModelEntity {
   transient Int backComponentNameSegmentsCount dependsFrom self.backComponentNameSegments ;
  
   transient MergerSegmentArray backComponentNameSegmentsForDisplay dependsFrom
-     self.displayBackComponentNames, self.backComponentNameSegments
+     prefs.mergerDisplayBackComponentNames, self.backComponentNameSegments
   ;  
   
 #--- Front component names
   toMany BoardModelFrontComponentNameEntity frontComponentNames inverse toOne myBoard ;
-  property Bool displayFrontComponentNames default yes ;
 
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
     self.frontComponentNames.all.x1, self.frontComponentNames.all.y1,
@@ -263,12 +251,11 @@ entity BoardModelEntity {
   transient Int frontComponentNameSegmentsCount dependsFrom self.frontComponentNameSegments ;
 
   transient MergerSegmentArray frontComponentNameSegmentsForDisplay dependsFrom
-     self.displayFrontComponentNames, self.frontComponentNameSegments
+     prefs.mergerDisplayFrontComponentNames, self.frontComponentNameSegments
   ;  
 
 #--- Front component values
   toMany BoardModelFrontComponentValueEntity frontComponentValues inverse toOne myBoard ;
-  property Bool displayFrontComponentValues default yes ;
 
   transient MergerSegmentArray frontComponentValueSegments dependsFrom
     self.frontComponentValues.all.x1, self.frontComponentValues.all.y1,
@@ -279,12 +266,11 @@ entity BoardModelEntity {
   transient Int frontComponentValueSegmentsCount dependsFrom self.frontComponentValueSegments ;
 
   transient MergerSegmentArray frontComponentValuesForDisplay dependsFrom
-     self.displayFrontComponentValues, self.frontComponentValueSegments
+     prefs.mergerDisplayFrontComponentValues, self.frontComponentValueSegments
   ;  
 
 #--- Back component values
   toMany BoardModelBackComponentValueEntity backComponentValues inverse toOne myBoard ;
-  property Bool displayBackComponentValues default yes ;
 
   transient MergerSegmentArray backComponentValueSegments dependsFrom
     self.backComponentValues.all.x1, self.backComponentValues.all.y1,
@@ -295,12 +281,11 @@ entity BoardModelEntity {
   transient Int backComponentValueSegmentsCount dependsFrom self.backComponentValueSegments ;
 
   transient MergerSegmentArray backComponentValuesForDisplay dependsFrom
-     self.displayBackComponentValues, self.backComponentValueSegments
+     prefs.mergerDisplayBackComponentValues, self.backComponentValueSegments
   ;  
 
 #--- Back tracks
   toMany BoardModelBackTrackSegmentEntity backTracks inverse toOne myModel ;
-  property Bool displayBackTracks default yes ;
 
   transient MergerSegmentArray backTrackSegments dependsFrom
     self.backTracks.all.x1, self.backTracks.all.y1,
@@ -311,12 +296,11 @@ entity BoardModelEntity {
   transient Int backTracksSegmentsCount dependsFrom self.backTrackSegments ;
 
   transient MergerSegmentArray backTrackSegmentsForDisplay dependsFrom
-     self.displayBackTracks, self.backTrackSegments
+     prefs.mergerDisplayBackLayoutTracks, self.backTrackSegments
   ;  
 
 #--- Front tracks
   toMany BoardModelFrontTrackSegmentEntity frontTracks inverse toOne myModel ;
-  property Bool displayFrontTracks default yes ;
 
   transient MergerSegmentArray frontTrackSegments dependsFrom
     self.frontTracks.all.x1, self.frontTracks.all.y1,
@@ -327,12 +311,11 @@ entity BoardModelEntity {
   transient Int frontTracksSegmentsCount dependsFrom self.frontTrackSegments ;
 
   transient MergerSegmentArray frontTrackSegmentsForDisplay dependsFrom
-     self.displayFrontTracks, self.frontTrackSegments
+     prefs.mergerDisplayFrontLayoutTracks, self.frontTrackSegments
   ;  
 
 #--- Front packages
   toMany BoardModelFrontPackageEntity frontPackages inverse toOne myModel ;
-  property Bool displayFrontPackages default yes ;
 
   transient MergerSegmentArray frontPackagesSegments dependsFrom
     self.frontPackages.all.x1, self.frontPackages.all.y1,
@@ -343,12 +326,11 @@ entity BoardModelEntity {
   transient Int frontPackageSegmentsCount dependsFrom self.frontPackagesSegments ;
 
   transient MergerSegmentArray frontPackagesSegmentsForDisplay dependsFrom
-     self.displayFrontPackages, self.frontPackagesSegments
+     prefs.mergerDisplayFrontPackages, self.frontPackagesSegments
   ;  
 
 #--- Back packages
   toMany BoardModelBackPackageEntity backPackages inverse toOne myModel ;
-  property Bool displayBackPackages default yes ;
 
   transient MergerSegmentArray backPackagesSegments dependsFrom
     self.backPackages.all.x1, self.backPackages.all.y1,
@@ -359,7 +341,7 @@ entity BoardModelEntity {
   transient Int backPackageSegmentsCount dependsFrom self.backPackagesSegments ;
 
   transient MergerSegmentArray backPackagesSegmentsForDisplay dependsFrom
-     self.displayBackPackages, self.backPackagesSegments
+     prefs.mergerDisplayBackPackages, self.backPackagesSegments
   ;  
 }
 
@@ -430,8 +412,8 @@ document PMMergerDocument root MergerRootEntity {
   outlet CanariBoardModelView mBoardModelView
     $size mBoardModelSelection.boardWidth, mBoardModelSelection.boardHeight
     $zoom mBoardModelSelection.zoom
-    $horizontalFlip mBoardModelSelection.horizontalFlip
-    $verticalFlip mBoardModelSelection.verticalFlip
+    $horizontalFlip prefs.mergerHorizontalFlip
+    $verticalFlip prefs.mergerVerticalFlip
     $vias mBoardModelSelection.viaShapesForDisplay
     $frontComponentNames mBoardModelSelection.frontComponentNameSegmentsForDisplay
     $frontComponentValues mBoardModelSelection.frontComponentValuesForDisplay
@@ -446,23 +428,10 @@ document PMMergerDocument root MergerRootEntity {
     $backPads mBoardModelSelection.backPadsForDisplay
     $holes mBoardModelSelection.holesForDisplay
   ;
-  
-  outlet EBSwitch mHorizontalFlipSwitch $value mBoardModelSelection.horizontalFlip ;
-  outlet EBSwitch mVerticalFlipSwitch $value mBoardModelSelection.verticalFlip ;
-  
-  outlet EBCheckedMenuItem mDisplayHoles $checked mBoardModelSelection.displayHoles ;
-  outlet EBCheckedMenuItem mDisplayFrontComponentNames $checked mBoardModelSelection.displayFrontComponentNames ;
-  outlet EBCheckedMenuItem mDisplayBackComponentNames $checked mBoardModelSelection.displayBackComponentNames ;
-  outlet EBCheckedMenuItem mDisplayFrontTracks $checked mBoardModelSelection.displayFrontTracks ;
-  outlet EBCheckedMenuItem mDisplayBackTracks $checked mBoardModelSelection.displayBackTracks ;
-  outlet EBCheckedMenuItem mDisplayFrontComponentValues $checked mBoardModelSelection.displayFrontComponentValues ;
-  outlet EBCheckedMenuItem mDisplayBackComponentValues $checked mBoardModelSelection.displayBackComponentValues ;
-  outlet EBCheckedMenuItem mDisplayFrontPackages $checked mBoardModelSelection.displayFrontPackages ;
-  outlet EBCheckedMenuItem mDisplayBackPackages $checked mBoardModelSelection.displayBackPackages ;
-  outlet EBCheckedMenuItem mDisplayBoardLimits $checked mBoardModelSelection.displayBoardLimits ;
-  outlet EBCheckedMenuItem mDisplayFrontPads $checked mBoardModelSelection.displayFrontPads ;
-  outlet EBCheckedMenuItem mDisplayBackPads $checked mBoardModelSelection.displayBackPads ;
-  outlet EBCheckedMenuItem mDisplayVias $checked mBoardModelSelection.displayVias ;
+
+#--- Show Preferences for setting display
+  action showPrefsForSettingMergerDisplayAction ;
+  outlet EBButton showPrefsForSettingMergerDisplayButton $run self.showPrefsForSettingMergerDisplayAction ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
