@@ -70,7 +70,8 @@ import Cocoa
   //   cascadeObjectRemoving
   //····················································································································
 
-  func cascadeObjectRemoving () {
+  func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    mManagedObjectContext = nil
   }
 
   //····················································································································

@@ -44,14 +44,20 @@ class EBManagedObjectContext : EBObject {
   //    removeManagedObject
   //····················································································································
   
-  func removeManagedObject (_ object : EBManagedObject) {
-    if mManagedObjectSet.contains(object) {
-      object.cascadeObjectRemoving ()
- //     object.resetToManyRelationships ()
-//      object.resetToOneRelationships ()
-      mManagedObjectSet.remove (object)
-      mUndoManager?.registerUndo (withTarget: self, selector: #selector(insertManagedObject(_:)), object: object)
-    }
+  func removeManagedObject (_ inObject : EBManagedObject) {
+    var objectsToRemove = Set <EBManagedObject> ()
+    internalRemoveManagedObject (inObject, &objectsToRemove)
+    mManagedObjectSet.subtract (objectsToRemove)
+  }
+
+  //····················································································································
+
+  final func internalRemoveManagedObject (_ inObject : EBManagedObject, _ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    if inObject.managedObjectContext () != nil && !ioObjectsToRemove.contains(inObject) {
+      ioObjectsToRemove.insert (inObject)
+      mUndoManager?.registerUndo (withTarget: self, selector: #selector(insertManagedObject(_:)), object:inObject)
+      inObject.cascadeObjectRemoving (&ioObjectsToRemove)
+   }
   }
 
   //····················································································································
@@ -59,14 +65,16 @@ class EBManagedObjectContext : EBObject {
   //····················································································································
   
   func removeManagedObjects (_ inObjectArray : [EBManagedObject]) {
+    var objectsToRemove = Set <EBManagedObject> ()
+    internalRemoveManagedObjects (inObjectArray, &objectsToRemove)
+    mManagedObjectSet.subtract (objectsToRemove)
+  }
+  
+  //····················································································································
+  
+  final func internalRemoveManagedObjects (_ inObjectArray : [EBManagedObject], _ ioObjectsToRemove : inout Set <EBManagedObject>) {
     for object in inObjectArray {
-    if mManagedObjectSet.contains(object) {
-        object.cascadeObjectRemoving ()
-   //     object.resetToManyRelationships ()
-  //      object.resetToOneRelationships ()
-        mManagedObjectSet.remove (object)
-        mUndoManager?.registerUndo (withTarget: self, selector: #selector(insertManagedObject(_:)), object: object)
-      }
+      internalRemoveManagedObject (object, &ioObjectsToRemove)
     }
   }
 

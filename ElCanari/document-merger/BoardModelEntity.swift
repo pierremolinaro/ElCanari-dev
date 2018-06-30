@@ -8778,23 +8778,79 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   //   cascadeObjectRemoving
   //····················································································································
 
-  override func cascadeObjectRemoving () {
-    super.cascadeObjectRemoving ()
-    self.managedObjectContext ()?.removeManagedObjects (self.frontLegendTexts.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.frontLayoutTexts.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.backLegendTexts.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.backLayoutTexts.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.vias.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.pads.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.backComponentNames.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.frontComponentNames.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.frontComponentValues.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.backComponentValues.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.backTracks.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.frontTracks.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.frontPackages.propval) // Cascade removing from moc
-    self.managedObjectContext ()?.removeManagedObjects (self.backPackages.propval) // Cascade removing from moc
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    do{
+      let objects = self.frontLegendTexts.propval
+      self.frontLegendTexts.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.frontLayoutTexts.propval
+      self.frontLayoutTexts.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.backLegendTexts.propval
+      self.backLegendTexts.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.backLayoutTexts.propval
+      self.backLayoutTexts.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.vias.propval
+      self.vias.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.pads.propval
+      self.pads.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.backComponentNames.propval
+      self.backComponentNames.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.frontComponentNames.propval
+      self.frontComponentNames.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.frontComponentValues.propval
+      self.frontComponentValues.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.backComponentValues.propval
+      self.backComponentValues.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.backTracks.propval
+      self.backTracks.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.frontTracks.propval
+      self.frontTracks.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.frontPackages.propval
+      self.frontPackages.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.backPackages.propval
+      self.backPackages.setProp (Array ())
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
     self.myArtwork.setProp (nil) // Set relationship to nil
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································

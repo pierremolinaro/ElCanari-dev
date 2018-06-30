@@ -1034,9 +1034,9 @@ class FontRootEntity : EBManagedObject, FontRootEntity_comments, FontRootEntity_
   //   cascadeObjectRemoving
   //····················································································································
 
-  override func cascadeObjectRemoving () {
-    super.cascadeObjectRemoving ()
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     self.characters.setProp (Array ()) // Set relationships to nil
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································

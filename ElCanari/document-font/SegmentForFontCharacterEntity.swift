@@ -678,9 +678,9 @@ class SegmentForFontCharacterEntity : EBManagedObject, SegmentForFontCharacterEn
   //   cascadeObjectRemoving
   //····················································································································
 
-  override func cascadeObjectRemoving () {
-    super.cascadeObjectRemoving ()
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     self.myCharacter.setProp (nil) // Set relationship to nil
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································

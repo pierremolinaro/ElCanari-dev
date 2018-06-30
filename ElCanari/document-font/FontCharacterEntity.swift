@@ -955,10 +955,10 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
   //   cascadeObjectRemoving
   //····················································································································
 
-  override func cascadeObjectRemoving () {
-    super.cascadeObjectRemoving ()
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     self.segments.setProp (Array ()) // Set relationships to nil
     self.myFont.setProp (nil) // Set relationship to nil
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································
