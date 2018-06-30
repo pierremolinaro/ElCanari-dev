@@ -13,9 +13,84 @@ class BoardModelViaEntity : EBManagedObject,
   BoardModelViaEntity_y,
   BoardModelViaEntity_holeDiameter,
   BoardModelViaEntity_padDiameter {
+//····················································································································
+//   Accessing x stored property
+//····················································································································
+
+  var x_value : Int {
+    get {
+      return self.x.propval
+    }
+    set {
+      self.x.setProp (newValue)
+    }
+  }
+
+  var x_prop : EBProperty <Int> {
+    get {
+      return self.x.prop
+    }
+  }
+
+//····················································································································
+//   Accessing y stored property
+//····················································································································
+
+  var y_value : Int {
+    get {
+      return self.y.propval
+    }
+    set {
+      self.y.setProp (newValue)
+    }
+  }
+
+  var y_prop : EBProperty <Int> {
+    get {
+      return self.y.prop
+    }
+  }
+
+//····················································································································
+//   Accessing holeDiameter stored property
+//····················································································································
+
+  var holeDiameter_value : Int {
+    get {
+      return self.holeDiameter.propval
+    }
+    set {
+      self.holeDiameter.setProp (newValue)
+    }
+  }
+
+  var holeDiameter_prop : EBProperty <Int> {
+    get {
+      return self.holeDiameter.prop
+    }
+  }
+
+//····················································································································
+//   Accessing padDiameter stored property
+//····················································································································
+
+  var padDiameter_value : Int {
+    get {
+      return self.padDiameter.propval
+    }
+    set {
+      self.padDiameter.setProp (newValue)
+    }
+  }
+
+  var padDiameter_prop : EBProperty <Int> {
+    get {
+      return self.padDiameter.prop
+    }
+  }
 
   //····················································································································
-  //    Properties
+  //    Stored Properties
   //····················································································································
 
   var x = EBStoredProperty_Int (0)

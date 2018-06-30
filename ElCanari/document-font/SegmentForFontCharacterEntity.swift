@@ -14,9 +14,100 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   SegmentForFontCharacterEntity_x2,
   SegmentForFontCharacterEntity_y2,
   SegmentForFontCharacterEntity_segmentForDrawing {
+//····················································································································
+//   Accessing x1 stored property
+//····················································································································
+
+  var x1_value : Int {
+    get {
+      return self.x1.propval
+    }
+    set {
+      self.x1.setProp (newValue)
+    }
+  }
+
+  var x1_prop : EBProperty <Int> {
+    get {
+      return self.x1.prop
+    }
+  }
+
+//····················································································································
+//   Accessing y1 stored property
+//····················································································································
+
+  var y1_value : Int {
+    get {
+      return self.y1.propval
+    }
+    set {
+      self.y1.setProp (newValue)
+    }
+  }
+
+  var y1_prop : EBProperty <Int> {
+    get {
+      return self.y1.prop
+    }
+  }
+
+//····················································································································
+//   Accessing x2 stored property
+//····················································································································
+
+  var x2_value : Int {
+    get {
+      return self.x2.propval
+    }
+    set {
+      self.x2.setProp (newValue)
+    }
+  }
+
+  var x2_prop : EBProperty <Int> {
+    get {
+      return self.x2.prop
+    }
+  }
+
+//····················································································································
+//   Accessing y2 stored property
+//····················································································································
+
+  var y2_value : Int {
+    get {
+      return self.y2.propval
+    }
+    set {
+      self.y2.setProp (newValue)
+    }
+  }
+
+  var y2_prop : EBProperty <Int> {
+    get {
+      return self.y2.prop
+    }
+  }
+
+//····················································································································
+//   Accessing segmentForDrawing transient property
+//····················································································································
+
+ // var segmentForDrawing_value : SegmentForFontCharacterClass {
+ //   get {
+ //     return self.segmentForDrawing.propval
+ //   }
+//  }
+
+  var segmentForDrawing_prop : EBProperty <SegmentForFontCharacterClass> {
+    get {
+      return self.segmentForDrawing.prop
+    }
+  }
 
   //····················································································································
-  //    Properties
+  //    Stored Properties
   //····················································································································
 
   var x1 = EBStoredProperty_Int (2)

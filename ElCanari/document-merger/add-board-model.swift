@@ -159,7 +159,7 @@ extension PMMergerDocument {
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
     var errorArray = [String] ()
     boardModel.name.setProp (inName)
-    boardModel.artworkName.setProp (string (fromDict: boardArchiveDict, key: "ARTWORK", &errorArray))
+    boardModel.artworkName_value = string (fromDict: boardArchiveDict, key: "ARTWORK", &errorArray)
     boardModel.boardWidth.setProp (int (fromDict: boardArchiveDict, key: "BOARD-WIDTH", &errorArray))
     boardModel.boardWidthUnit.setProp (int (fromDict: boardArchiveDict, key: "BOARD-WIDTH-UNIT", &errorArray))
     boardModel.boardHeight.setProp (int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT", &errorArray))

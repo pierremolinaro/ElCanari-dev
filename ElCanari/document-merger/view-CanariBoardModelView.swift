@@ -112,13 +112,19 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setVias (_ inVias : [MergerViaShape]) {
-    var viaPadLayerComponents = [CAShapeLayer] ()
+    let paths = CGMutablePath ()
     for via in inVias {
-    //--- Pad
-      let padShape = via.viaPad (color : NSColor.red.cgColor)
-      viaPadLayerComponents.append (padShape)
+      let xf : CGFloat = canariUnitToCocoa (via.x)
+      let yf : CGFloat = canariUnitToCocoa (via.y)
+      let pdf : CGFloat = canariUnitToCocoa (via.padDiameter)
+      let rPad = NSRect (x : xf - pdf / 2.0, y: yf - pdf / 2.0, width:pdf, height:pdf)
+      paths.addEllipse (in: rPad)
     }
-    mViaPadLayer.sublayers = viaPadLayerComponents
+    let viaPad = CAShapeLayer ()
+    viaPad.path = paths
+    viaPad.position = CGPoint (x:0.0, y:0.0)
+    viaPad.fillColor = NSColor.red.cgColor
+    mViaPadLayer.sublayers = [viaPad]
   }
 
   //····················································································································
@@ -625,21 +631,19 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setHoles (_ inHoleArray : [MergerHole]) {
-    var components = [CAShapeLayer] ()
+    let paths = CGMutablePath ()
     for hole in inHoleArray {
-      let x = canariUnitToCocoa (hole.x)
-      let y = canariUnitToCocoa (hole.y)
+      let x : CGFloat = canariUnitToCocoa (hole.x)
+      let y : CGFloat = canariUnitToCocoa (hole.y)
       let holeDiameter = canariUnitToCocoa (hole.holeDiameter)
       let r = CGRect (x: x - holeDiameter / 2.0, y: y - holeDiameter / 2.0, width:holeDiameter, height:holeDiameter)
-      let path = CGPath (ellipseIn:r, transform:nil)
-      let shape = CAShapeLayer ()
-      shape.path = path
-      shape.position = CGPoint (x:0.0, y:0.0)
-      shape.strokeColor = nil
-      shape.fillColor = NSColor.white.cgColor
-      components.append (shape)
+      paths.addEllipse (in: r)
     }
-    self.mHolesLayer.sublayers = components
+    let shape = CAShapeLayer ()
+    shape.path = paths
+    shape.position = CGPoint (x:0.0, y:0.0)
+    shape.fillColor = NSColor.white.cgColor
+    self.mHolesLayer.sublayers = [shape]
   }
 
   //····················································································································

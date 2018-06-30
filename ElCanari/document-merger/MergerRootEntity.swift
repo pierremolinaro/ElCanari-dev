@@ -11,9 +11,43 @@ import Cocoa
 class MergerRootEntity : EBManagedObject,
   MergerRootEntity_selectedPageIndex,
   MergerRootEntity_modelNames {
+//····················································································································
+//   Accessing selectedPageIndex stored property
+//····················································································································
+
+  var selectedPageIndex_value : Int {
+    get {
+      return self.selectedPageIndex.propval
+    }
+    set {
+      self.selectedPageIndex.setProp (newValue)
+    }
+  }
+
+  var selectedPageIndex_prop : EBProperty <Int> {
+    get {
+      return self.selectedPageIndex.prop
+    }
+  }
+
+//····················································································································
+//   Accessing modelNames transient property
+//····················································································································
+
+ // var modelNames_value : MergerBoardModelArray {
+ //   get {
+ //     return self.modelNames.propval
+ //   }
+//  }
+
+  var modelNames_prop : EBProperty <MergerBoardModelArray> {
+    get {
+      return self.modelNames.prop
+    }
+  }
 
   //····················································································································
-  //    Properties
+  //    Stored Properties
   //····················································································································
 
   var selectedPageIndex = EBStoredProperty_Int (0)

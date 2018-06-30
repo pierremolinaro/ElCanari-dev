@@ -31,9 +31,426 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   ArtworkFileGenerationParameters_name,
   ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF,
   ArtworkFileGenerationParameters_padHoleDiameterInPDF {
+//····················································································································
+//   Accessing drawBoardLimits stored property
+//····················································································································
+
+  var drawBoardLimits_value : Bool {
+    get {
+      return self.drawBoardLimits.propval
+    }
+    set {
+      self.drawBoardLimits.setProp (newValue)
+    }
+  }
+
+  var drawBoardLimits_prop : EBProperty <Bool> {
+    get {
+      return self.drawBoardLimits.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawComponentNamesTopSide stored property
+//····················································································································
+
+  var drawComponentNamesTopSide_value : Bool {
+    get {
+      return self.drawComponentNamesTopSide.propval
+    }
+    set {
+      self.drawComponentNamesTopSide.setProp (newValue)
+    }
+  }
+
+  var drawComponentNamesTopSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawComponentNamesTopSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawComponentNamesBottomSide stored property
+//····················································································································
+
+  var drawComponentNamesBottomSide_value : Bool {
+    get {
+      return self.drawComponentNamesBottomSide.propval
+    }
+    set {
+      self.drawComponentNamesBottomSide.setProp (newValue)
+    }
+  }
+
+  var drawComponentNamesBottomSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawComponentNamesBottomSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawComponentValuesTopSide stored property
+//····················································································································
+
+  var drawComponentValuesTopSide_value : Bool {
+    get {
+      return self.drawComponentValuesTopSide.propval
+    }
+    set {
+      self.drawComponentValuesTopSide.setProp (newValue)
+    }
+  }
+
+  var drawComponentValuesTopSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawComponentValuesTopSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawComponentValuesBottomSide stored property
+//····················································································································
+
+  var drawComponentValuesBottomSide_value : Bool {
+    get {
+      return self.drawComponentValuesBottomSide.propval
+    }
+    set {
+      self.drawComponentValuesBottomSide.setProp (newValue)
+    }
+  }
+
+  var drawComponentValuesBottomSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawComponentValuesBottomSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawPackageLegendTopSide stored property
+//····················································································································
+
+  var drawPackageLegendTopSide_value : Bool {
+    get {
+      return self.drawPackageLegendTopSide.propval
+    }
+    set {
+      self.drawPackageLegendTopSide.setProp (newValue)
+    }
+  }
+
+  var drawPackageLegendTopSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawPackageLegendTopSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawPackageLegendBottomSide stored property
+//····················································································································
+
+  var drawPackageLegendBottomSide_value : Bool {
+    get {
+      return self.drawPackageLegendBottomSide.propval
+    }
+    set {
+      self.drawPackageLegendBottomSide.setProp (newValue)
+    }
+  }
+
+  var drawPackageLegendBottomSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawPackageLegendBottomSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawPadHolesInPDF stored property
+//····················································································································
+
+  var drawPadHolesInPDF_value : Bool {
+    get {
+      return self.drawPadHolesInPDF.propval
+    }
+    set {
+      self.drawPadHolesInPDF.setProp (newValue)
+    }
+  }
+
+  var drawPadHolesInPDF_prop : EBProperty <Bool> {
+    get {
+      return self.drawPadHolesInPDF.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawPadsTopSide stored property
+//····················································································································
+
+  var drawPadsTopSide_value : Bool {
+    get {
+      return self.drawPadsTopSide.propval
+    }
+    set {
+      self.drawPadsTopSide.setProp (newValue)
+    }
+  }
+
+  var drawPadsTopSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawPadsTopSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawPadsBottomSide stored property
+//····················································································································
+
+  var drawPadsBottomSide_value : Bool {
+    get {
+      return self.drawPadsBottomSide.propval
+    }
+    set {
+      self.drawPadsBottomSide.setProp (newValue)
+    }
+  }
+
+  var drawPadsBottomSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawPadsBottomSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawTextsLayoutTopSide stored property
+//····················································································································
+
+  var drawTextsLayoutTopSide_value : Bool {
+    get {
+      return self.drawTextsLayoutTopSide.propval
+    }
+    set {
+      self.drawTextsLayoutTopSide.setProp (newValue)
+    }
+  }
+
+  var drawTextsLayoutTopSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawTextsLayoutTopSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawTextsLayoutBottomSide stored property
+//····················································································································
+
+  var drawTextsLayoutBottomSide_value : Bool {
+    get {
+      return self.drawTextsLayoutBottomSide.propval
+    }
+    set {
+      self.drawTextsLayoutBottomSide.setProp (newValue)
+    }
+  }
+
+  var drawTextsLayoutBottomSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawTextsLayoutBottomSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawTextsLegendTopSide stored property
+//····················································································································
+
+  var drawTextsLegendTopSide_value : Bool {
+    get {
+      return self.drawTextsLegendTopSide.propval
+    }
+    set {
+      self.drawTextsLegendTopSide.setProp (newValue)
+    }
+  }
+
+  var drawTextsLegendTopSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawTextsLegendTopSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawTextsLegendBottomSide stored property
+//····················································································································
+
+  var drawTextsLegendBottomSide_value : Bool {
+    get {
+      return self.drawTextsLegendBottomSide.propval
+    }
+    set {
+      self.drawTextsLegendBottomSide.setProp (newValue)
+    }
+  }
+
+  var drawTextsLegendBottomSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawTextsLegendBottomSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawTracksTopSide stored property
+//····················································································································
+
+  var drawTracksTopSide_value : Bool {
+    get {
+      return self.drawTracksTopSide.propval
+    }
+    set {
+      self.drawTracksTopSide.setProp (newValue)
+    }
+  }
+
+  var drawTracksTopSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawTracksTopSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawTracksBottomSide stored property
+//····················································································································
+
+  var drawTracksBottomSide_value : Bool {
+    get {
+      return self.drawTracksBottomSide.propval
+    }
+    set {
+      self.drawTracksBottomSide.setProp (newValue)
+    }
+  }
+
+  var drawTracksBottomSide_prop : EBProperty <Bool> {
+    get {
+      return self.drawTracksBottomSide.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drawVias stored property
+//····················································································································
+
+  var drawVias_value : Bool {
+    get {
+      return self.drawVias.propval
+    }
+    set {
+      self.drawVias.setProp (newValue)
+    }
+  }
+
+  var drawVias_prop : EBProperty <Bool> {
+    get {
+      return self.drawVias.prop
+    }
+  }
+
+//····················································································································
+//   Accessing fileExtension stored property
+//····················································································································
+
+  var fileExtension_value : String {
+    get {
+      return self.fileExtension.propval
+    }
+    set {
+      self.fileExtension.setProp (newValue)
+    }
+  }
+
+  var fileExtension_prop : EBProperty <String> {
+    get {
+      return self.fileExtension.prop
+    }
+  }
+
+//····················································································································
+//   Accessing horizontalMirror stored property
+//····················································································································
+
+  var horizontalMirror_value : Bool {
+    get {
+      return self.horizontalMirror.propval
+    }
+    set {
+      self.horizontalMirror.setProp (newValue)
+    }
+  }
+
+  var horizontalMirror_prop : EBProperty <Bool> {
+    get {
+      return self.horizontalMirror.prop
+    }
+  }
+
+//····················································································································
+//   Accessing name stored property
+//····················································································································
+
+  var name_value : String {
+    get {
+      return self.name.propval
+    }
+    set {
+      self.name.setProp (newValue)
+    }
+  }
+
+  var name_prop : EBProperty <String> {
+    get {
+      return self.name.prop
+    }
+  }
+
+//····················································································································
+//   Accessing measurementUnitForPadHoleInPDF stored property
+//····················································································································
+
+  var measurementUnitForPadHoleInPDF_value : Int {
+    get {
+      return self.measurementUnitForPadHoleInPDF.propval
+    }
+    set {
+      self.measurementUnitForPadHoleInPDF.setProp (newValue)
+    }
+  }
+
+  var measurementUnitForPadHoleInPDF_prop : EBProperty <Int> {
+    get {
+      return self.measurementUnitForPadHoleInPDF.prop
+    }
+  }
+
+//····················································································································
+//   Accessing padHoleDiameterInPDF stored property
+//····················································································································
+
+  var padHoleDiameterInPDF_value : Int {
+    get {
+      return self.padHoleDiameterInPDF.propval
+    }
+    set {
+      self.padHoleDiameterInPDF.setProp (newValue)
+    }
+  }
+
+  var padHoleDiameterInPDF_prop : EBProperty <Int> {
+    get {
+      return self.padHoleDiameterInPDF.prop
+    }
+  }
 
   //····················································································································
-  //    Properties
+  //    Stored Properties
   //····················································································································
 
   var drawBoardLimits = EBStoredProperty_Bool (false)

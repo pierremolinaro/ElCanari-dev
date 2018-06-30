@@ -61,9 +61,867 @@ class BoardModelEntity : EBManagedObject,
   BoardModelEntity_backPackagesSegments,
   BoardModelEntity_backPackageSegmentsCount,
   BoardModelEntity_backPackagesSegmentsForDisplay {
+//····················································································································
+//   Accessing artworkName stored property
+//····················································································································
+
+  var artworkName_value : String {
+    get {
+      return self.artworkName.propval
+    }
+    set {
+      self.artworkName.setProp (newValue)
+    }
+  }
+
+  var artworkName_prop : EBProperty <String> {
+    get {
+      return self.artworkName.prop
+    }
+  }
+
+//····················································································································
+//   Accessing name stored property
+//····················································································································
+
+  var name_value : String {
+    get {
+      return self.name.propval
+    }
+    set {
+      self.name.setProp (newValue)
+    }
+  }
+
+  var name_prop : EBProperty <String> {
+    get {
+      return self.name.prop
+    }
+  }
+
+//····················································································································
+//   Accessing boardWidth stored property
+//····················································································································
+
+  var boardWidth_value : Int {
+    get {
+      return self.boardWidth.propval
+    }
+    set {
+      self.boardWidth.setProp (newValue)
+    }
+  }
+
+  var boardWidth_prop : EBProperty <Int> {
+    get {
+      return self.boardWidth.prop
+    }
+  }
+
+//····················································································································
+//   Accessing boardWidthUnit stored property
+//····················································································································
+
+  var boardWidthUnit_value : Int {
+    get {
+      return self.boardWidthUnit.propval
+    }
+    set {
+      self.boardWidthUnit.setProp (newValue)
+    }
+  }
+
+  var boardWidthUnit_prop : EBProperty <Int> {
+    get {
+      return self.boardWidthUnit.prop
+    }
+  }
+
+//····················································································································
+//   Accessing boardHeight stored property
+//····················································································································
+
+  var boardHeight_value : Int {
+    get {
+      return self.boardHeight.propval
+    }
+    set {
+      self.boardHeight.setProp (newValue)
+    }
+  }
+
+  var boardHeight_prop : EBProperty <Int> {
+    get {
+      return self.boardHeight.prop
+    }
+  }
+
+//····················································································································
+//   Accessing boardHeightUnit stored property
+//····················································································································
+
+  var boardHeightUnit_value : Int {
+    get {
+      return self.boardHeightUnit.propval
+    }
+    set {
+      self.boardHeightUnit.setProp (newValue)
+    }
+  }
+
+  var boardHeightUnit_prop : EBProperty <Int> {
+    get {
+      return self.boardHeightUnit.prop
+    }
+  }
+
+//····················································································································
+//   Accessing zoom stored property
+//····················································································································
+
+  var zoom_value : Int {
+    get {
+      return self.zoom.propval
+    }
+    set {
+      self.zoom.setProp (newValue)
+    }
+  }
+
+  var zoom_prop : EBProperty <Int> {
+    get {
+      return self.zoom.prop
+    }
+  }
+
+//····················································································································
+//   Accessing boardLimitWidth stored property
+//····················································································································
+
+  var boardLimitWidth_value : Int {
+    get {
+      return self.boardLimitWidth.propval
+    }
+    set {
+      self.boardLimitWidth.setProp (newValue)
+    }
+  }
+
+  var boardLimitWidth_prop : EBProperty <Int> {
+    get {
+      return self.boardLimitWidth.prop
+    }
+  }
+
+//····················································································································
+//   Accessing boardLimitWidthUnit stored property
+//····················································································································
+
+  var boardLimitWidthUnit_value : Int {
+    get {
+      return self.boardLimitWidthUnit.propval
+    }
+    set {
+      self.boardLimitWidthUnit.setProp (newValue)
+    }
+  }
+
+  var boardLimitWidthUnit_prop : EBProperty <Int> {
+    get {
+      return self.boardLimitWidthUnit.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontLegendTextsSegments transient property
+//····················································································································
+
+ // var frontLegendTextsSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontLegendTextsSegments.propval
+ //   }
+//  }
+
+  var frontLegendTextsSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontLegendTextsSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontLegendTextsSegmentsForDisplay transient property
+//····················································································································
+
+ // var frontLegendTextsSegmentsForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontLegendTextsSegmentsForDisplay.propval
+ //   }
+//  }
+
+  var frontLegendTextsSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontLegendTextsSegmentsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontLayoutTextsSegments transient property
+//····················································································································
+
+ // var frontLayoutTextsSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontLayoutTextsSegments.propval
+ //   }
+//  }
+
+  var frontLayoutTextsSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontLayoutTextsSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontLayoutTextsSegmentsForDisplay transient property
+//····················································································································
+
+ // var frontLayoutTextsSegmentsForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontLayoutTextsSegmentsForDisplay.propval
+ //   }
+//  }
+
+  var frontLayoutTextsSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontLayoutTextsSegmentsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backLegendTextsSegments transient property
+//····················································································································
+
+ // var backLegendTextsSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.backLegendTextsSegments.propval
+ //   }
+//  }
+
+  var backLegendTextsSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backLegendTextsSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backLegendTextsSegmentsForDisplay transient property
+//····················································································································
+
+ // var backLegendTextsSegmentsForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.backLegendTextsSegmentsForDisplay.propval
+ //   }
+//  }
+
+  var backLegendTextsSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backLegendTextsSegmentsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backLayoutTextsSegments transient property
+//····················································································································
+
+ // var backLayoutTextsSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.backLayoutTextsSegments.propval
+ //   }
+//  }
+
+  var backLayoutTextsSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backLayoutTextsSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backLayoutTextsSegmentsForDisplay transient property
+//····················································································································
+
+ // var backLayoutTextsSegmentsForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.backLayoutTextsSegmentsForDisplay.propval
+ //   }
+//  }
+
+  var backLayoutTextsSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backLayoutTextsSegmentsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing padsHoles transient property
+//····················································································································
+
+ // var padsHoles_value : MergerHoleArray {
+ //   get {
+ //     return self.padsHoles.propval
+ //   }
+//  }
+
+  var padsHoles_prop : EBProperty <MergerHoleArray> {
+    get {
+      return self.padsHoles.prop
+    }
+  }
+
+//····················································································································
+//   Accessing viasHoles transient property
+//····················································································································
+
+ // var viasHoles_value : MergerHoleArray {
+ //   get {
+ //     return self.viasHoles.propval
+ //   }
+//  }
+
+  var viasHoles_prop : EBProperty <MergerHoleArray> {
+    get {
+      return self.viasHoles.prop
+    }
+  }
+
+//····················································································································
+//   Accessing holes transient property
+//····················································································································
+
+ // var holes_value : MergerHoleArray {
+ //   get {
+ //     return self.holes.propval
+ //   }
+//  }
+
+  var holes_prop : EBProperty <MergerHoleArray> {
+    get {
+      return self.holes.prop
+    }
+  }
+
+//····················································································································
+//   Accessing holesForDisplay transient property
+//····················································································································
+
+ // var holesForDisplay_value : MergerHoleArray {
+ //   get {
+ //     return self.holesForDisplay.propval
+ //   }
+//  }
+
+  var holesForDisplay_prop : EBProperty <MergerHoleArray> {
+    get {
+      return self.holesForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing viaShapes transient property
+//····················································································································
+
+ // var viaShapes_value : MergerViaShapeArray {
+ //   get {
+ //     return self.viaShapes.propval
+ //   }
+//  }
+
+  var viaShapes_prop : EBProperty <MergerViaShapeArray> {
+    get {
+      return self.viaShapes.prop
+    }
+  }
+
+//····················································································································
+//   Accessing viaShapesForDisplay transient property
+//····················································································································
+
+ // var viaShapesForDisplay_value : MergerViaShapeArray {
+ //   get {
+ //     return self.viaShapesForDisplay.propval
+ //   }
+//  }
+
+  var viaShapesForDisplay_prop : EBProperty <MergerViaShapeArray> {
+    get {
+      return self.viaShapesForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontPads transient property
+//····················································································································
+
+ // var frontPads_value : MergerPadArray {
+ //   get {
+ //     return self.frontPads.propval
+ //   }
+//  }
+
+  var frontPads_prop : EBProperty <MergerPadArray> {
+    get {
+      return self.frontPads.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontPadsForDisplay transient property
+//····················································································································
+
+ // var frontPadsForDisplay_value : MergerPadArray {
+ //   get {
+ //     return self.frontPadsForDisplay.propval
+ //   }
+//  }
+
+  var frontPadsForDisplay_prop : EBProperty <MergerPadArray> {
+    get {
+      return self.frontPadsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backPads transient property
+//····················································································································
+
+ // var backPads_value : MergerPadArray {
+ //   get {
+ //     return self.backPads.propval
+ //   }
+//  }
+
+  var backPads_prop : EBProperty <MergerPadArray> {
+    get {
+      return self.backPads.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backPadsForDisplay transient property
+//····················································································································
+
+ // var backPadsForDisplay_value : MergerPadArray {
+ //   get {
+ //     return self.backPadsForDisplay.propval
+ //   }
+//  }
+
+  var backPadsForDisplay_prop : EBProperty <MergerPadArray> {
+    get {
+      return self.backPadsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing boardLimits transient property
+//····················································································································
+
+ // var boardLimits_value : MergerBoardLimits {
+ //   get {
+ //     return self.boardLimits.propval
+ //   }
+//  }
+
+  var boardLimits_prop : EBProperty <MergerBoardLimits> {
+    get {
+      return self.boardLimits.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backComponentNameSegments transient property
+//····················································································································
+
+ // var backComponentNameSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.backComponentNameSegments.propval
+ //   }
+//  }
+
+  var backComponentNameSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backComponentNameSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backComponentNameSegmentsCount transient property
+//····················································································································
+
+ // var backComponentNameSegmentsCount_value : Int {
+ //   get {
+ //     return self.backComponentNameSegmentsCount.propval
+ //   }
+//  }
+
+  var backComponentNameSegmentsCount_prop : EBProperty <Int> {
+    get {
+      return self.backComponentNameSegmentsCount.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backComponentNameSegmentsForDisplay transient property
+//····················································································································
+
+ // var backComponentNameSegmentsForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.backComponentNameSegmentsForDisplay.propval
+ //   }
+//  }
+
+  var backComponentNameSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backComponentNameSegmentsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontComponentNameSegments transient property
+//····················································································································
+
+ // var frontComponentNameSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontComponentNameSegments.propval
+ //   }
+//  }
+
+  var frontComponentNameSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontComponentNameSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontComponentNameSegmentsCount transient property
+//····················································································································
+
+ // var frontComponentNameSegmentsCount_value : Int {
+ //   get {
+ //     return self.frontComponentNameSegmentsCount.propval
+ //   }
+//  }
+
+  var frontComponentNameSegmentsCount_prop : EBProperty <Int> {
+    get {
+      return self.frontComponentNameSegmentsCount.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontComponentNameSegmentsForDisplay transient property
+//····················································································································
+
+ // var frontComponentNameSegmentsForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontComponentNameSegmentsForDisplay.propval
+ //   }
+//  }
+
+  var frontComponentNameSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontComponentNameSegmentsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontComponentValueSegments transient property
+//····················································································································
+
+ // var frontComponentValueSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontComponentValueSegments.propval
+ //   }
+//  }
+
+  var frontComponentValueSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontComponentValueSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontComponentValueSegmentsCount transient property
+//····················································································································
+
+ // var frontComponentValueSegmentsCount_value : Int {
+ //   get {
+ //     return self.frontComponentValueSegmentsCount.propval
+ //   }
+//  }
+
+  var frontComponentValueSegmentsCount_prop : EBProperty <Int> {
+    get {
+      return self.frontComponentValueSegmentsCount.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontComponentValuesForDisplay transient property
+//····················································································································
+
+ // var frontComponentValuesForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontComponentValuesForDisplay.propval
+ //   }
+//  }
+
+  var frontComponentValuesForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontComponentValuesForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backComponentValueSegments transient property
+//····················································································································
+
+ // var backComponentValueSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.backComponentValueSegments.propval
+ //   }
+//  }
+
+  var backComponentValueSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backComponentValueSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backComponentValueSegmentsCount transient property
+//····················································································································
+
+ // var backComponentValueSegmentsCount_value : Int {
+ //   get {
+ //     return self.backComponentValueSegmentsCount.propval
+ //   }
+//  }
+
+  var backComponentValueSegmentsCount_prop : EBProperty <Int> {
+    get {
+      return self.backComponentValueSegmentsCount.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backComponentValuesForDisplay transient property
+//····················································································································
+
+ // var backComponentValuesForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.backComponentValuesForDisplay.propval
+ //   }
+//  }
+
+  var backComponentValuesForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backComponentValuesForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backTrackSegments transient property
+//····················································································································
+
+ // var backTrackSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.backTrackSegments.propval
+ //   }
+//  }
+
+  var backTrackSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backTrackSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backTracksSegmentsCount transient property
+//····················································································································
+
+ // var backTracksSegmentsCount_value : Int {
+ //   get {
+ //     return self.backTracksSegmentsCount.propval
+ //   }
+//  }
+
+  var backTracksSegmentsCount_prop : EBProperty <Int> {
+    get {
+      return self.backTracksSegmentsCount.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backTrackSegmentsForDisplay transient property
+//····················································································································
+
+ // var backTrackSegmentsForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.backTrackSegmentsForDisplay.propval
+ //   }
+//  }
+
+  var backTrackSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backTrackSegmentsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontTrackSegments transient property
+//····················································································································
+
+ // var frontTrackSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontTrackSegments.propval
+ //   }
+//  }
+
+  var frontTrackSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontTrackSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontTracksSegmentsCount transient property
+//····················································································································
+
+ // var frontTracksSegmentsCount_value : Int {
+ //   get {
+ //     return self.frontTracksSegmentsCount.propval
+ //   }
+//  }
+
+  var frontTracksSegmentsCount_prop : EBProperty <Int> {
+    get {
+      return self.frontTracksSegmentsCount.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontTrackSegmentsForDisplay transient property
+//····················································································································
+
+ // var frontTrackSegmentsForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontTrackSegmentsForDisplay.propval
+ //   }
+//  }
+
+  var frontTrackSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontTrackSegmentsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontPackagesSegments transient property
+//····················································································································
+
+ // var frontPackagesSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontPackagesSegments.propval
+ //   }
+//  }
+
+  var frontPackagesSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontPackagesSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontPackageSegmentsCount transient property
+//····················································································································
+
+ // var frontPackageSegmentsCount_value : Int {
+ //   get {
+ //     return self.frontPackageSegmentsCount.propval
+ //   }
+//  }
+
+  var frontPackageSegmentsCount_prop : EBProperty <Int> {
+    get {
+      return self.frontPackageSegmentsCount.prop
+    }
+  }
+
+//····················································································································
+//   Accessing frontPackagesSegmentsForDisplay transient property
+//····················································································································
+
+ // var frontPackagesSegmentsForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.frontPackagesSegmentsForDisplay.propval
+ //   }
+//  }
+
+  var frontPackagesSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.frontPackagesSegmentsForDisplay.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backPackagesSegments transient property
+//····················································································································
+
+ // var backPackagesSegments_value : MergerSegmentArray {
+ //   get {
+ //     return self.backPackagesSegments.propval
+ //   }
+//  }
+
+  var backPackagesSegments_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backPackagesSegments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backPackageSegmentsCount transient property
+//····················································································································
+
+ // var backPackageSegmentsCount_value : Int {
+ //   get {
+ //     return self.backPackageSegmentsCount.propval
+ //   }
+//  }
+
+  var backPackageSegmentsCount_prop : EBProperty <Int> {
+    get {
+      return self.backPackageSegmentsCount.prop
+    }
+  }
+
+//····················································································································
+//   Accessing backPackagesSegmentsForDisplay transient property
+//····················································································································
+
+ // var backPackagesSegmentsForDisplay_value : MergerSegmentArray {
+ //   get {
+ //     return self.backPackagesSegmentsForDisplay.propval
+ //   }
+//  }
+
+  var backPackagesSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+    get {
+      return self.backPackagesSegmentsForDisplay.prop
+    }
+  }
 
   //····················································································································
-  //    Properties
+  //    Stored Properties
   //····················································································································
 
   var artworkName = EBStoredProperty_String ("")

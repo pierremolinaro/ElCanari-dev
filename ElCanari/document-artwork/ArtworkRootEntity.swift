@@ -21,9 +21,236 @@ class ArtworkRootEntity : EBManagedObject,
   ArtworkRootEntity_drillDataFileExtension,
   ArtworkRootEntity_drillListFileExtension,
   ArtworkRootEntity_drillToolListFileExtension {
+//····················································································································
+//   Accessing selectedTab stored property
+//····················································································································
+
+  var selectedTab_value : Int {
+    get {
+      return self.selectedTab.propval
+    }
+    set {
+      self.selectedTab.setProp (newValue)
+    }
+  }
+
+  var selectedTab_prop : EBProperty <Int> {
+    get {
+      return self.selectedTab.prop
+    }
+  }
+
+//····················································································································
+//   Accessing comments stored property
+//····················································································································
+
+  var comments_value : String {
+    get {
+      return self.comments.propval
+    }
+    set {
+      self.comments.setProp (newValue)
+    }
+  }
+
+  var comments_prop : EBProperty <String> {
+    get {
+      return self.comments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing minPP_TP_TT_TW_displayUnit stored property
+//····················································································································
+
+  var minPP_TP_TT_TW_displayUnit_value : Int {
+    get {
+      return self.minPP_TP_TT_TW_displayUnit.propval
+    }
+    set {
+      self.minPP_TP_TT_TW_displayUnit.setProp (newValue)
+    }
+  }
+
+  var minPP_TP_TT_TW_displayUnit_prop : EBProperty <Int> {
+    get {
+      return self.minPP_TP_TT_TW_displayUnit.prop
+    }
+  }
+
+//····················································································································
+//   Accessing minPP_TP_TT_TW_inEBUnit stored property
+//····················································································································
+
+  var minPP_TP_TT_TW_inEBUnit_value : Int {
+    get {
+      return self.minPP_TP_TT_TW_inEBUnit.propval
+    }
+    set {
+      self.minPP_TP_TT_TW_inEBUnit.setProp (newValue)
+    }
+  }
+
+  var minPP_TP_TT_TW_inEBUnit_prop : EBProperty <Int> {
+    get {
+      return self.minPP_TP_TT_TW_inEBUnit.prop
+    }
+  }
+
+//····················································································································
+//   Accessing minValueForOARdisplayUnit stored property
+//····················································································································
+
+  var minValueForOARdisplayUnit_value : Int {
+    get {
+      return self.minValueForOARdisplayUnit.propval
+    }
+    set {
+      self.minValueForOARdisplayUnit.setProp (newValue)
+    }
+  }
+
+  var minValueForOARdisplayUnit_prop : EBProperty <Int> {
+    get {
+      return self.minValueForOARdisplayUnit.prop
+    }
+  }
+
+//····················································································································
+//   Accessing minValueForOARinEBUnit stored property
+//····················································································································
+
+  var minValueForOARinEBUnit_value : Int {
+    get {
+      return self.minValueForOARinEBUnit.propval
+    }
+    set {
+      self.minValueForOARinEBUnit.setProp (newValue)
+    }
+  }
+
+  var minValueForOARinEBUnit_prop : EBProperty <Int> {
+    get {
+      return self.minValueForOARinEBUnit.prop
+    }
+  }
+
+//····················································································································
+//   Accessing minValueForPHDdisplayUnit stored property
+//····················································································································
+
+  var minValueForPHDdisplayUnit_value : Int {
+    get {
+      return self.minValueForPHDdisplayUnit.propval
+    }
+    set {
+      self.minValueForPHDdisplayUnit.setProp (newValue)
+    }
+  }
+
+  var minValueForPHDdisplayUnit_prop : EBProperty <Int> {
+    get {
+      return self.minValueForPHDdisplayUnit.prop
+    }
+  }
+
+//····················································································································
+//   Accessing minValueForPHDinEBUnit stored property
+//····················································································································
+
+  var minValueForPHDinEBUnit_value : Int {
+    get {
+      return self.minValueForPHDinEBUnit.propval
+    }
+    set {
+      self.minValueForPHDinEBUnit.setProp (newValue)
+    }
+  }
+
+  var minValueForPHDinEBUnit_prop : EBProperty <Int> {
+    get {
+      return self.minValueForPHDinEBUnit.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drillDataFormat stored property
+//····················································································································
+
+  var drillDataFormat_value : DrillDataFormatEnum {
+    get {
+      return self.drillDataFormat.propval
+    }
+    set {
+      self.drillDataFormat.setProp (newValue)
+    }
+  }
+
+  var drillDataFormat_prop : EBProperty <DrillDataFormatEnum> {
+    get {
+      return self.drillDataFormat.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drillDataFileExtension stored property
+//····················································································································
+
+  var drillDataFileExtension_value : String {
+    get {
+      return self.drillDataFileExtension.propval
+    }
+    set {
+      self.drillDataFileExtension.setProp (newValue)
+    }
+  }
+
+  var drillDataFileExtension_prop : EBProperty <String> {
+    get {
+      return self.drillDataFileExtension.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drillListFileExtension stored property
+//····················································································································
+
+  var drillListFileExtension_value : String {
+    get {
+      return self.drillListFileExtension.propval
+    }
+    set {
+      self.drillListFileExtension.setProp (newValue)
+    }
+  }
+
+  var drillListFileExtension_prop : EBProperty <String> {
+    get {
+      return self.drillListFileExtension.prop
+    }
+  }
+
+//····················································································································
+//   Accessing drillToolListFileExtension stored property
+//····················································································································
+
+  var drillToolListFileExtension_value : String {
+    get {
+      return self.drillToolListFileExtension.propval
+    }
+    set {
+      self.drillToolListFileExtension.setProp (newValue)
+    }
+  }
+
+  var drillToolListFileExtension_prop : EBProperty <String> {
+    get {
+      return self.drillToolListFileExtension.prop
+    }
+  }
 
   //····················································································································
-  //    Properties
+  //    Stored Properties
   //····················································································································
 
   var selectedTab = EBStoredProperty_Int (0)

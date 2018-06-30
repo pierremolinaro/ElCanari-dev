@@ -14,9 +14,91 @@ class FontCharacterEntity : EBManagedObject,
   FontCharacterEntity_segmentArrayForDrawing,
   FontCharacterEntity_gerberCode,
   FontCharacterEntity_gerberCodeInstructionCountMessage {
+//····················································································································
+//   Accessing advance stored property
+//····················································································································
+
+  var advance_value : Int {
+    get {
+      return self.advance.propval
+    }
+    set {
+      self.advance.setProp (newValue)
+    }
+  }
+
+  var advance_prop : EBProperty <Int> {
+    get {
+      return self.advance.prop
+    }
+  }
+
+//····················································································································
+//   Accessing characterIsDefined transient property
+//····················································································································
+
+ // var characterIsDefined_value : Bool {
+ //   get {
+ //     return self.characterIsDefined.propval
+ //   }
+//  }
+
+  var characterIsDefined_prop : EBProperty <Bool> {
+    get {
+      return self.characterIsDefined.prop
+    }
+  }
+
+//····················································································································
+//   Accessing segmentArrayForDrawing transient property
+//····················································································································
+
+ // var segmentArrayForDrawing_value : CharacterSegmentListClass {
+ //   get {
+ //     return self.segmentArrayForDrawing.propval
+ //   }
+//  }
+
+  var segmentArrayForDrawing_prop : EBProperty <CharacterSegmentListClass> {
+    get {
+      return self.segmentArrayForDrawing.prop
+    }
+  }
+
+//····················································································································
+//   Accessing gerberCode transient property
+//····················································································································
+
+ // var gerberCode_value : CharacterGerberCodeClass {
+ //   get {
+ //     return self.gerberCode.propval
+ //   }
+//  }
+
+  var gerberCode_prop : EBProperty <CharacterGerberCodeClass> {
+    get {
+      return self.gerberCode.prop
+    }
+  }
+
+//····················································································································
+//   Accessing gerberCodeInstructionCountMessage transient property
+//····················································································································
+
+ // var gerberCodeInstructionCountMessage_value : String {
+ //   get {
+ //     return self.gerberCodeInstructionCountMessage.propval
+ //   }
+//  }
+
+  var gerberCodeInstructionCountMessage_prop : EBProperty <String> {
+    get {
+      return self.gerberCodeInstructionCountMessage.prop
+    }
+  }
 
   //····················································································································
-  //    Properties
+  //    Stored Properties
   //····················································································································
 
   var advance = EBStoredProperty_Int (0)

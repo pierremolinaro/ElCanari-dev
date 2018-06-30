@@ -17,9 +17,160 @@ class BoardModelPadEntity : EBManagedObject,
   BoardModelPadEntity_shape,
   BoardModelPadEntity_side,
   BoardModelPadEntity_rotation {
+//····················································································································
+//   Accessing x stored property
+//····················································································································
+
+  var x_value : Int {
+    get {
+      return self.x.propval
+    }
+    set {
+      self.x.setProp (newValue)
+    }
+  }
+
+  var x_prop : EBProperty <Int> {
+    get {
+      return self.x.prop
+    }
+  }
+
+//····················································································································
+//   Accessing y stored property
+//····················································································································
+
+  var y_value : Int {
+    get {
+      return self.y.propval
+    }
+    set {
+      self.y.setProp (newValue)
+    }
+  }
+
+  var y_prop : EBProperty <Int> {
+    get {
+      return self.y.prop
+    }
+  }
+
+//····················································································································
+//   Accessing width stored property
+//····················································································································
+
+  var width_value : Int {
+    get {
+      return self.width.propval
+    }
+    set {
+      self.width.setProp (newValue)
+    }
+  }
+
+  var width_prop : EBProperty <Int> {
+    get {
+      return self.width.prop
+    }
+  }
+
+//····················································································································
+//   Accessing height stored property
+//····················································································································
+
+  var height_value : Int {
+    get {
+      return self.height.propval
+    }
+    set {
+      self.height.setProp (newValue)
+    }
+  }
+
+  var height_prop : EBProperty <Int> {
+    get {
+      return self.height.prop
+    }
+  }
+
+//····················································································································
+//   Accessing holeDiameter stored property
+//····················································································································
+
+  var holeDiameter_value : Int {
+    get {
+      return self.holeDiameter.propval
+    }
+    set {
+      self.holeDiameter.setProp (newValue)
+    }
+  }
+
+  var holeDiameter_prop : EBProperty <Int> {
+    get {
+      return self.holeDiameter.prop
+    }
+  }
+
+//····················································································································
+//   Accessing shape stored property
+//····················································································································
+
+  var shape_value : PadShape {
+    get {
+      return self.shape.propval
+    }
+    set {
+      self.shape.setProp (newValue)
+    }
+  }
+
+  var shape_prop : EBProperty <PadShape> {
+    get {
+      return self.shape.prop
+    }
+  }
+
+//····················································································································
+//   Accessing side stored property
+//····················································································································
+
+  var side_value : PadSide {
+    get {
+      return self.side.propval
+    }
+    set {
+      self.side.setProp (newValue)
+    }
+  }
+
+  var side_prop : EBProperty <PadSide> {
+    get {
+      return self.side.prop
+    }
+  }
+
+//····················································································································
+//   Accessing rotation stored property
+//····················································································································
+
+  var rotation_value : Int {
+    get {
+      return self.rotation.propval
+    }
+    set {
+      self.rotation.setProp (newValue)
+    }
+  }
+
+  var rotation_prop : EBProperty <Int> {
+    get {
+      return self.rotation.prop
+    }
+  }
 
   //····················································································································
-  //    Properties
+  //    Stored Properties
   //····················································································································
 
   var x = EBStoredProperty_Int (0)

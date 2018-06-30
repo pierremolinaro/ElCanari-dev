@@ -16,9 +16,129 @@ class FontRootEntity : EBManagedObject,
   FontRootEntity_sampleStringBezierPathWidth,
   FontRootEntity_sampleStringBezierPathAscent,
   FontRootEntity_sampleStringBezierPathDescent {
+//····················································································································
+//   Accessing comments stored property
+//····················································································································
+
+  var comments_value : String {
+    get {
+      return self.comments.propval
+    }
+    set {
+      self.comments.setProp (newValue)
+    }
+  }
+
+  var comments_prop : EBProperty <String> {
+    get {
+      return self.comments.prop
+    }
+  }
+
+//····················································································································
+//   Accessing selectedTab stored property
+//····················································································································
+
+  var selectedTab_value : Int {
+    get {
+      return self.selectedTab.propval
+    }
+    set {
+      self.selectedTab.setProp (newValue)
+    }
+  }
+
+  var selectedTab_prop : EBProperty <Int> {
+    get {
+      return self.selectedTab.prop
+    }
+  }
+
+//····················································································································
+//   Accessing selectedInspector stored property
+//····················································································································
+
+  var selectedInspector_value : Int {
+    get {
+      return self.selectedInspector.propval
+    }
+    set {
+      self.selectedInspector.setProp (newValue)
+    }
+  }
+
+  var selectedInspector_prop : EBProperty <Int> {
+    get {
+      return self.selectedInspector.prop
+    }
+  }
+
+//····················································································································
+//   Accessing sampleStringBezierPath transient property
+//····················································································································
+
+ // var sampleStringBezierPath_value : CGPath {
+ //   get {
+ //     return self.sampleStringBezierPath.propval
+ //   }
+//  }
+
+  var sampleStringBezierPath_prop : EBProperty <CGPath> {
+    get {
+      return self.sampleStringBezierPath.prop
+    }
+  }
+
+//····················································································································
+//   Accessing sampleStringBezierPathWidth transient property
+//····················································································································
+
+ // var sampleStringBezierPathWidth_value : Double {
+ //   get {
+ //     return self.sampleStringBezierPathWidth.propval
+ //   }
+//  }
+
+  var sampleStringBezierPathWidth_prop : EBProperty <Double> {
+    get {
+      return self.sampleStringBezierPathWidth.prop
+    }
+  }
+
+//····················································································································
+//   Accessing sampleStringBezierPathAscent transient property
+//····················································································································
+
+ // var sampleStringBezierPathAscent_value : Double {
+ //   get {
+ //     return self.sampleStringBezierPathAscent.propval
+ //   }
+//  }
+
+  var sampleStringBezierPathAscent_prop : EBProperty <Double> {
+    get {
+      return self.sampleStringBezierPathAscent.prop
+    }
+  }
+
+//····················································································································
+//   Accessing sampleStringBezierPathDescent transient property
+//····················································································································
+
+ // var sampleStringBezierPathDescent_value : Double {
+ //   get {
+ //     return self.sampleStringBezierPathDescent.propval
+ //   }
+//  }
+
+  var sampleStringBezierPathDescent_prop : EBProperty <Double> {
+    get {
+      return self.sampleStringBezierPathDescent.prop
+    }
+  }
 
   //····················································································································
-  //    Properties
+  //    Stored Properties
   //····················································································································
 
   var comments = EBStoredProperty_String ("")
