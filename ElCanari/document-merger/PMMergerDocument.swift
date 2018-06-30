@@ -19,12 +19,14 @@ import Cocoa
   @IBOutlet var mBackTrackSegmentCountTextField : EBIntObserverField?
   @IBOutlet var mBoardHeightTextField : CanariDimensionTextField?
   @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton?
+  @IBOutlet var mBoardInsertMenu : CanariBoardInsertMenu?
   @IBOutlet var mBoardModelNameTextField : EBTextObserverField?
   @IBOutlet var mBoardModelTableView : EBTableView?
   @IBOutlet var mBoardModelViaCountTextField : EBIntObserverField?
   @IBOutlet var mBoardModelView : CanariBoardModelView?
   @IBOutlet var mBoardWidthTextField : CanariDimensionTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mComposedBoardView : CanariBoardModelView?
   @IBOutlet var mFrontComponentNameSegmentCountTextField : EBIntObserverField?
   @IBOutlet var mFrontPackagesCountTextField : EBIntObserverField?
   @IBOutlet var mFrontTrackSegmentCountTextField : EBIntObserverField?
@@ -165,6 +167,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mBoardHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
+    if nil == mBoardInsertMenu {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mBoardInsertMenu' outlet is nil") ;
+//    }else if !mBoardInsertMenu!.isKindOfClass (CanariBoardInsertMenu) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mBoardInsertMenu' outlet is not an instance of 'CanariBoardInsertMenu'") ;
+    }
     if nil == mBoardModelNameTextField {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -218,6 +229,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+    }
+    if nil == mComposedBoardView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mComposedBoardView' outlet is nil") ;
+//    }else if !mComposedBoardView!.isKindOfClass (CanariBoardModelView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mComposedBoardView' outlet is not an instance of 'CanariBoardModelView'") ;
     }
     if nil == mFrontComponentNameSegmentCountTextField {
       presentErrorWindow (file: #file,
@@ -325,6 +345,7 @@ import Cocoa
     mBoardModelView?.bind_frontLayoutTexts (self.mBoardModelSelection.frontLayoutTextsSegmentsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_backLegendTexts (self.mBoardModelSelection.backLegendTextsSegmentsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_backLayoutTexts (self.mBoardModelSelection.backLayoutTextsSegmentsForDisplay, file: #file, line: #line)
+    mBoardInsertMenu?.bind_names (self.rootObject.modelNames, file: #file, line: #line)
   //--- Install multiple bindings
     removeBoardModelButton?.bind_enabled (
       [self.mBoardModelController.selectedArray.count],
@@ -334,12 +355,12 @@ import Cocoa
       file: #file, line: #line
     )
   //--------------------------- Set targets / actions
+    showPrefsForSettingMergerDisplayButton?.target = self
+    showPrefsForSettingMergerDisplayButton?.action = #selector (PMMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
     addBoardModelButton?.target = self
     addBoardModelButton?.action = #selector (PMMergerDocument.addBoardModelAction (_:))
     removeBoardModelButton?.target = mBoardModelController
     removeBoardModelButton?.action = #selector (ArrayController_PMMergerDocument_mBoardModelController.remove (_:))
-    showPrefsForSettingMergerDisplayButton?.target = self
-    showPrefsForSettingMergerDisplayButton?.action = #selector (PMMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -386,6 +407,7 @@ import Cocoa
     mBoardModelView?.unbind_frontLayoutTexts ()
     mBoardModelView?.unbind_backLegendTexts ()
     mBoardModelView?.unbind_backLayoutTexts ()
+    mBoardInsertMenu?.unbind_names ()
   //--- Unbind multiple bindings
     removeBoardModelButton?.unbind_enabled ()
   //--- Uninstall compute functions for transients
@@ -395,9 +417,9 @@ import Cocoa
     mBoardModelSelection.unbind_selection ()
   //--- Uninstall property observers for transients
   //--------------------------- Remove targets / actions
+    showPrefsForSettingMergerDisplayButton?.target = nil
     addBoardModelButton?.target = nil
     removeBoardModelButton?.target = nil
-    showPrefsForSettingMergerDisplayButton?.target = nil
   }
 
   //····················································································································

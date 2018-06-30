@@ -52,7 +52,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>CanariMergerDocument</string>
+			<string>PMMergerDocument</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
@@ -100,7 +100,7 @@
 	<key>NSPrincipalClass</key>
 	<string>EBApplication</string>
 	<key>PMBuildString</key>
-	<string>1Q64</string>
+	<string>1R2</string>
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>name.pcmolinaro.canari.LibraryUpdater</key>

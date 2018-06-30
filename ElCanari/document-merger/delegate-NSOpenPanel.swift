@@ -1,8 +1,8 @@
 //
-//  CanariFontDocument.swift
+//  delegate-NSOpenPanel.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 16/11/2015.
+//  Created by Pierre Molinaro on 30/06/2018.
 //
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -11,46 +11,46 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariMergerDocument) class CanariMergerDocument : PMMergerDocument {
+fileprivate var gPanel : OpenPanelDelegateForFilteringBoardModels?
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class OpenPanelDelegateForFilteringBoardModels : EBSimpleClass, NSOpenSavePanelDelegate {
 
   //····················································································································
-  //    init
+  //   PROPERTIES
   //····················································································································
 
-  override init () {
+  let mBoardModelNames : [String]
+
+  //····················································································································
+  //   INIT
+  //····················································································································
+
+  init (_ boardModelNames : [String]) {
+    mBoardModelNames = boardModelNames
     super.init ()
-    undoManager?.disableUndoRegistration ()
-    undoManager?.enableUndoRegistration ()
+    gPanel = self // MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
+  }
+
+  //····················································································································
+  //   DELEGATE METHOD
+  //····················································································································
+
+  func panel (_ sender: Any, shouldEnable url: URL) -> Bool {
+    let fileName = url.path.lastPathComponent.deletingPathExtension
+    NSLog ("\(fileName)")
+    return mBoardModelNames.index (of:fileName) == nil
   }
 
   //····················································································································
 
-  override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
-//     metadataDictionary.setObject (NSNumber (value:version), forKey:PMFontVersion as NSCopying)
-//     metadataDictionary.setObject (rootObject.comments.propval, forKey:PMFontComment as NSCopying)
-  }
+}
 
-  //····················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//  override func readVersionFromMetadataDictionary (metadataDictionary : NSDictionary) -> Int {
-//    var result = 0
-//    if let versionNumber = metadataDictionary.object (forKey: PMFontVersion) as? NSNumber {
-//      result = versionNumber.intValue
-//    }
-//    return result
-//  }
-
-  //····················································································································
-  //    windowControllerDidLoadNib
-  //····················································································································
-
-//  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-//    super.windowControllerDidLoadNib (aController)
-//    windowForSheet?.acceptsMouseMovedEvents = true
-//  }
-
-  //····················································································································
-
+func releaseOpenPanelDelegateForFilteringBoardModels () {
+  gPanel = nil
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

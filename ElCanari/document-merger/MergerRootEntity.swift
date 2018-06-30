@@ -68,6 +68,62 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
   }
 
   //····················································································································
+  //   Observers of 'modelNames' transient property
+  //····················································································································
+
+  private var mObserversOf_modelNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_modelNames (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_modelNames.insert (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.modelNames.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_modelNames (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_modelNames.remove (inObserver)
+    switch prop {
+    case .noSelection, .multipleSelection :
+      break
+    case .singleSelection (let v) :
+      for managedObject in v {
+        managedObject.modelNames.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_modelNames_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_modelNames {
+        managedObject.modelNames.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_modelNames_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_modelNames {
+        managedObject.modelNames.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -107,11 +163,13 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
       //--- Remove observers of stored properties
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
+        removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
+        addEBObserversOf_modelNames_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -144,6 +202,12 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
 
 protocol MergerRootEntity_selectedPageIndex : class {
   var selectedPageIndex : EBStoredProperty_Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_modelNames : class {
+  var modelNames : EBTransientProperty_MergerBoardModelArray { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -470,7 +534,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
 //    Entity: MergerRootEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class MergerRootEntity : EBManagedObject, MergerRootEntity_selectedPageIndex
+class MergerRootEntity : EBManagedObject, MergerRootEntity_selectedPageIndex, MergerRootEntity_modelNames
 {
 
   //····················································································································
@@ -483,6 +547,7 @@ class MergerRootEntity : EBManagedObject, MergerRootEntity_selectedPageIndex
   //    Transient properties
   //····················································································································
 
+  var modelNames = EBTransientProperty_MergerBoardModelArray ()
 
   //····················································································································
   //    Relationships
@@ -497,7 +562,28 @@ class MergerRootEntity : EBManagedObject, MergerRootEntity_selectedPageIndex
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
+    modelNames.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardModels.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.boardModels.prop) {
+          case (.singleSelection (let v0)) :
+            return .singleSelection (compute_MergerRootEntity_modelNames (v0))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
   //--- Install property observers for transients
+    boardModels.addEBObserverOf_name (modelNames)
   //--- Install undoers for properties
     self.selectedPageIndex.undoManager = undoManager ()
   //--- Install owner for relationships
@@ -509,6 +595,7 @@ class MergerRootEntity : EBManagedObject, MergerRootEntity_selectedPageIndex
 
   deinit {
   //--- Remove observers
+    boardModels.removeEBObserverOf_name (modelNames)
   }
 
   //····················································································································
@@ -526,6 +613,14 @@ class MergerRootEntity : EBManagedObject, MergerRootEntity_selectedPageIndex
       valueExplorer:&self.selectedPageIndex.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "modelNames",
+      idx:self.modelNames.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelNames.mObserverExplorer,
+      valueExplorer:&self.modelNames.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "boardModels",

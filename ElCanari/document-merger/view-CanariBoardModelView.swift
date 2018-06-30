@@ -15,6 +15,14 @@ import Cocoa
 
 class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
+  //····················································································································
+  //  Outlets
+  //····················································································································
+
+  //····················································································································
+  //  Properties
+  //····················································································································
+
    fileprivate var mBackgroundLayer = CAShapeLayer ()
    fileprivate var mNoModelTextLayer = CATextLayer ()
    fileprivate var mViaPadLayer = CALayer ()
@@ -85,6 +93,21 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       mNoModelTextLayer.string = ""
     }
   }
+
+  //····················································································································
+  //    Mouse down and contextual menu
+  //····················································································································
+
+//  override func mouseDown (with event: NSEvent) {
+//    let modifierFlags = event.modifierFlags
+//    if modifierFlags.contains (.control) && (modifierFlags.contains (.shift) || modifierFlags.contains (.option)) { // Ctrl Key On, no shift
+//      if let contextualMenu = mContextualMenu {
+//        NSMenu.popUpContextMenu (contextualMenu, with:event, for:self)
+//      }
+//    }else{
+//      super.mouseDown (with:event)
+//    }
+//  }
 
   //····················································································································
   //    vias

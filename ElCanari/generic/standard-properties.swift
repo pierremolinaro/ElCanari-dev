@@ -1244,6 +1244,15 @@ typealias EBReadOnlyPropertyArray_MergerHoleArray  = EBReadOnlyClassProperty <[M
 typealias EBTransientPropertyArray_MergerHoleArray = EBTransientClassProperty <[MergerHoleArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class MergerBoardModelArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_MergerBoardModelArray  = EBReadOnlyClassProperty <MergerBoardModelArray>
+typealias EBTransientProperty_MergerBoardModelArray = EBTransientClassProperty <MergerBoardModelArray>
+typealias EBReadOnlyPropertyArray_MergerBoardModelArray  = EBReadOnlyClassProperty <[MergerBoardModelArray]>
+typealias EBTransientPropertyArray_MergerBoardModelArray = EBTransientClassProperty <[MergerBoardModelArray]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

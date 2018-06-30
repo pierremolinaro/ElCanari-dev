@@ -14,13 +14,22 @@ import Cocoa
 extension PMMergerDocument {
   func addBoardModelAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
+  //--- Build list of current board model names
+    var boardModelNames = [String] ()
+    for boardModel in rootObject.boardModels.propval {
+      let name : String = boardModel.name.propval
+      boardModelNames.append (name)
+    }
+  //--- Dialog
     if let window = self.windowForSheet {
       let openPanel = NSOpenPanel ()
       openPanel.canChooseFiles = true
       openPanel.canChooseDirectories = false
       openPanel.allowsMultipleSelection = false
       openPanel.allowedFileTypes = ["ElCanariBoardArchive"]
+      openPanel.delegate = OpenPanelDelegateForFilteringBoardModels (boardModelNames)
       openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : Int) in
+        releaseOpenPanelDelegateForFilteringBoardModels ()
         if returnCode == NSFileHandlingPanelOKButton {
           if let url = openPanel.url, url.isFileURL {
             let filePath = url.path

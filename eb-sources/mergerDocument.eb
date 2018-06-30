@@ -19,6 +19,7 @@ transient property class MergerSegmentArray ;
 transient property class MergerBoardLimits ;
 transient property class MergerPadArray ;
 transient property class MergerHoleArray ;
+transient property class MergerBoardModelArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -44,6 +45,11 @@ binding CanariBoardModelView $frontLegendTexts : transient MergerSegmentArray ;
 binding CanariBoardModelView $frontLayoutTexts : transient MergerSegmentArray ;
 binding CanariBoardModelView $backLegendTexts : transient MergerSegmentArray ;
 binding CanariBoardModelView $backLayoutTexts : transient MergerSegmentArray ;
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extern outlet class CanariBoardInsertMenu ; 
+binding CanariBoardInsertMenu $names : transient MergerBoardModelArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -314,6 +320,9 @@ entity BoardModelEntity {
 entity MergerRootEntity {
   toMany BoardModelEntity boardModels inverse toOne myArtwork ;
   property Int selectedPageIndex default 0 ;
+
+#--- Board model name array
+  transient MergerBoardModelArray modelNames dependsFrom self.boardModels.all.name ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -322,6 +331,11 @@ document PMMergerDocument root MergerRootEntity {
 #--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
 
+#--- Show Preferences for setting display
+  action showPrefsForSettingMergerDisplayAction ;
+  outlet EBButton showPrefsForSettingMergerDisplayButton $run self.showPrefsForSettingMergerDisplayAction ;
+
+#------------------------------------- Model Page
 #--- Add board model
   action addBoardModelAction ;
   outlet EBButton addBoardModelButton $run self.addBoardModelAction ;
@@ -403,9 +417,10 @@ document PMMergerDocument root MergerRootEntity {
     $backLayoutTexts mBoardModelSelection.backLayoutTextsSegmentsForDisplay
   ;
 
-#--- Show Preferences for setting display
-  action showPrefsForSettingMergerDisplayAction ;
-  outlet EBButton showPrefsForSettingMergerDisplayButton $run self.showPrefsForSettingMergerDisplayAction ;
+#------------------------------------- Board Page
+  outlet CanariBoardModelView mComposedBoardView ;
+  outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
+  action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
