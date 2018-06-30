@@ -39,7 +39,7 @@ class OpenPanelDelegateForFilteringBoardModels : EBSimpleClass, NSOpenSavePanelD
 
   func panel (_ sender: Any, shouldEnable url: URL) -> Bool {
     let fileName = url.path.lastPathComponent.deletingPathExtension
-    NSLog ("\(fileName)")
+    // NSLog ("\(fileName)")
     return mBoardModelNames.index (of:fileName) == nil
   }
 

@@ -5,6 +5,184 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: MergerRootEntity
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class MergerRootEntity : EBManagedObject,
+  MergerRootEntity_selectedPageIndex,
+  MergerRootEntity_modelNames {
+
+  //····················································································································
+  //    Properties
+  //····················································································································
+
+  var selectedPageIndex = EBStoredProperty_Int (0)
+
+  //····················································································································
+  //    Transient properties
+  //····················································································································
+
+  var modelNames = EBTransientProperty_MergerBoardModelArray ()
+
+  //····················································································································
+  //    Relationships
+  //····················································································································
+
+  var boardModels = ToManyRelationship_MergerRootEntity_boardModels ()
+
+  //····················································································································
+  //    init
+  //····················································································································
+
+  override init (managedObjectContext : EBManagedObjectContext) {
+    super.init (managedObjectContext:managedObjectContext)
+  //--- Install compute functions for transients
+    modelNames.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardModels.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.boardModels.prop) {
+          case (.singleSelection (let v0)) :
+            return .singleSelection (compute_MergerRootEntity_modelNames (v0))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  //--- Install property observers for transients
+    boardModels.addEBObserverOf_name (modelNames)
+  //--- Install undoers for properties
+    self.selectedPageIndex.undoManager = undoManager ()
+  //--- Install owner for relationships
+    boardModels.owner = self
+  //--- register properties for handling signature
+  }
+
+  //····················································································································
+
+  deinit {
+  //--- Remove observers
+    boardModels.removeEBObserverOf_name (modelNames)
+  }
+
+  //····················································································································
+  //    populateExplorerWindow
+  //····················································································································
+
+  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "selectedPageIndex",
+      idx:self.selectedPageIndex.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectedPageIndex.mObserverExplorer,
+      valueExplorer:&self.selectedPageIndex.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "modelNames",
+      idx:self.modelNames.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelNames.mObserverExplorer,
+      valueExplorer:&self.modelNames.mValueExplorer
+    )
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "boardModels",
+      idx:boardModels.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&boardModels.mValueExplorer
+    )
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+  }
+
+  //····················································································································
+  //    clearObjectExplorer
+  //····················································································································
+
+  override func clearObjectExplorer () {
+    self.selectedPageIndex.mObserverExplorer = nil
+    self.selectedPageIndex.mValueExplorer = nil
+    // boardModels.mObserverExplorer = nil
+    boardModels.mValueExplorer = nil
+    super.clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //    saveIntoDictionary
+  //····················································································································
+
+  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
+    super.saveIntoDictionary (ioDictionary)
+    self.selectedPageIndex.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+    store (managedObjectArray: boardModels.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
+  }
+
+  //····················································································································
+  //    setUpWithDictionary
+  //····················································································································
+
+  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+                                     managedObjectArray : inout [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    self.selectedPageIndex.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+    boardModels.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "boardModels",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [BoardModelEntity])
+  }
+
+  //····················································································································
+  //   cascadeObjectRemoving
+  //····················································································································
+
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    do{
+      let objects = self.boardModels.propval
+      self.boardModels.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetToManyRelationships
+  //····················································································································
+
+  override func resetToManyRelationships () {
+    super.resetToManyRelationships ()
+    boardModels.setProp (Array ())
+  }
+
+  //····················································································································
+  //   accessibleObjects
+  //····················································································································
+
+  override func accessibleObjects (objects : inout [EBManagedObject]) {
+    super.accessibleObjects (objects: &objects)
+    for managedObject : EBManagedObject in boardModels.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_MergerRootEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -225,43 +403,6 @@ class ToManyRelationshipReadWrite_MergerRootEntity_boardModels : ReadOnlyArrayOf
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship proxy: boardModels
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class ToManyRelationshipProxy_MergerRootEntity_boardModels : ToManyRelationshipReadWrite_MergerRootEntity_boardModels {
-  private var mModel : ToManyRelationshipReadWrite_MergerRootEntity_boardModels?
-
-  //····················································································································
-  
-  final func setModel (model : ToManyRelationshipReadWrite_MergerRootEntity_boardModels?) {
-    mModel = model
-  }
-
-  //····················································································································
-  
-  override var prop : EBProperty < [BoardModelEntity] > {
-    get {
-      return mModel?.prop ?? .noSelection
-    }
-  }
- 
-   //····················································································································
- 
-  override func setProp (_ value : [BoardModelEntity]) {
-    switch self.prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let array) :
-      mModel?.setProp (array)
-    }
-  }
- 
-  //····················································································································
-
-}
-*/
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: boardModels
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -321,7 +462,6 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myArtwork.owner = nil ;
         }
         removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet)
@@ -371,7 +511,6 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_holesForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_padsHoles_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_viaCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viaShapesForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viasHoles_fromElementsOfSet (removedObjectSet)
@@ -380,7 +519,6 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myArtwork.setProp (owner)
         }
         addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet)
@@ -430,7 +568,6 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_holesForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)
         addEBObserversOf_padsHoles_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_viaCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viaShapesForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viasHoles_toElementsOfSet (addedObjectSet)
@@ -528,179 +665,6 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
 
   //····················································································································
  
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: MergerRootEntity
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class MergerRootEntity : EBManagedObject, MergerRootEntity_selectedPageIndex, MergerRootEntity_modelNames
-{
-
-  //····················································································································
-  //    Properties
-  //····················································································································
-
-  var selectedPageIndex = EBStoredProperty_Int (0)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var modelNames = EBTransientProperty_MergerBoardModelArray ()
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
-
-  var boardModels = ToManyRelationship_MergerRootEntity_boardModels ()
-
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-    modelNames.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.boardModels.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.boardModels.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_MergerRootEntity_modelNames (v0))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-  //--- Install property observers for transients
-    boardModels.addEBObserverOf_name (modelNames)
-  //--- Install undoers for properties
-    self.selectedPageIndex.undoManager = undoManager ()
-  //--- Install owner for relationships
-    boardModels.owner = self
-  //--- register properties for handling signature
-  }
-
-  //····················································································································
-
-  deinit {
-  //--- Remove observers
-    boardModels.removeEBObserverOf_name (modelNames)
-  }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "selectedPageIndex",
-      idx:self.selectedPageIndex.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedPageIndex.mObserverExplorer,
-      valueExplorer:&self.selectedPageIndex.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "modelNames",
-      idx:self.modelNames.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelNames.mObserverExplorer,
-      valueExplorer:&self.modelNames.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "boardModels",
-      idx:boardModels.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&boardModels.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
-  }
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  override func clearObjectExplorer () {
-    self.selectedPageIndex.mObserverExplorer = nil
-    self.selectedPageIndex.mValueExplorer = nil
-    // boardModels.mObserverExplorer = nil
-    boardModels.mValueExplorer = nil
-    super.clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
-    self.selectedPageIndex.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
-    store (managedObjectArray: boardModels.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
-  }
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.selectedPageIndex.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
-    boardModels.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "boardModels",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardModelEntity])
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.boardModels.setProp (Array ()) // Set relationships to nil
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   resetToManyRelationships
-  //····················································································································
-
-  override func resetToManyRelationships () {
-    super.resetToManyRelationships ()
-    boardModels.setProp (Array ())
-  }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-    for managedObject : EBManagedObject in boardModels.propval {
-      objects.append (managedObject)
-    }
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -5,6 +5,486 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: ArtworkFileGenerationParameters
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ArtworkFileGenerationParameters : EBManagedObject,
+  ArtworkFileGenerationParameters_drawBoardLimits,
+  ArtworkFileGenerationParameters_drawComponentNamesTopSide,
+  ArtworkFileGenerationParameters_drawComponentNamesBottomSide,
+  ArtworkFileGenerationParameters_drawComponentValuesTopSide,
+  ArtworkFileGenerationParameters_drawComponentValuesBottomSide,
+  ArtworkFileGenerationParameters_drawPackageLegendTopSide,
+  ArtworkFileGenerationParameters_drawPackageLegendBottomSide,
+  ArtworkFileGenerationParameters_drawPadHolesInPDF,
+  ArtworkFileGenerationParameters_drawPadsTopSide,
+  ArtworkFileGenerationParameters_drawPadsBottomSide,
+  ArtworkFileGenerationParameters_drawTextsLayoutTopSide,
+  ArtworkFileGenerationParameters_drawTextsLayoutBottomSide,
+  ArtworkFileGenerationParameters_drawTextsLegendTopSide,
+  ArtworkFileGenerationParameters_drawTextsLegendBottomSide,
+  ArtworkFileGenerationParameters_drawTracksTopSide,
+  ArtworkFileGenerationParameters_drawTracksBottomSide,
+  ArtworkFileGenerationParameters_drawVias,
+  ArtworkFileGenerationParameters_fileExtension,
+  ArtworkFileGenerationParameters_horizontalMirror,
+  ArtworkFileGenerationParameters_name,
+  ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF,
+  ArtworkFileGenerationParameters_padHoleDiameterInPDF {
+
+  //····················································································································
+  //    Properties
+  //····················································································································
+
+  var drawBoardLimits = EBStoredProperty_Bool (false)
+  var drawComponentNamesTopSide = EBStoredProperty_Bool (false)
+  var drawComponentNamesBottomSide = EBStoredProperty_Bool (false)
+  var drawComponentValuesTopSide = EBStoredProperty_Bool (false)
+  var drawComponentValuesBottomSide = EBStoredProperty_Bool (false)
+  var drawPackageLegendTopSide = EBStoredProperty_Bool (false)
+  var drawPackageLegendBottomSide = EBStoredProperty_Bool (false)
+  var drawPadHolesInPDF = EBStoredProperty_Bool (false)
+  var drawPadsTopSide = EBStoredProperty_Bool (false)
+  var drawPadsBottomSide = EBStoredProperty_Bool (false)
+  var drawTextsLayoutTopSide = EBStoredProperty_Bool (false)
+  var drawTextsLayoutBottomSide = EBStoredProperty_Bool (false)
+  var drawTextsLegendTopSide = EBStoredProperty_Bool (false)
+  var drawTextsLegendBottomSide = EBStoredProperty_Bool (false)
+  var drawTracksTopSide = EBStoredProperty_Bool (false)
+  var drawTracksBottomSide = EBStoredProperty_Bool (false)
+  var drawVias = EBStoredProperty_Bool (false)
+  var fileExtension = EBStoredProperty_String ("?")
+  var horizontalMirror = EBStoredProperty_Bool (false)
+  var name = EBStoredProperty_String ("Unnamed")
+  var measurementUnitForPadHoleInPDF = EBStoredProperty_Int (90000)
+  var padHoleDiameterInPDF = EBStoredProperty_Int (90000)
+
+  //····················································································································
+  //    Transient properties
+  //····················································································································
+
+
+  //····················································································································
+  //    Relationships
+  //····················································································································
+
+
+  //····················································································································
+  //    init
+  //····················································································································
+
+  override init (managedObjectContext : EBManagedObjectContext) {
+    super.init (managedObjectContext:managedObjectContext)
+  //--- Install compute functions for transients
+  //--- Install property observers for transients
+  //--- Install undoers for properties
+    self.drawBoardLimits.undoManager = undoManager ()
+    self.drawComponentNamesTopSide.undoManager = undoManager ()
+    self.drawComponentNamesBottomSide.undoManager = undoManager ()
+    self.drawComponentValuesTopSide.undoManager = undoManager ()
+    self.drawComponentValuesBottomSide.undoManager = undoManager ()
+    self.drawPackageLegendTopSide.undoManager = undoManager ()
+    self.drawPackageLegendBottomSide.undoManager = undoManager ()
+    self.drawPadHolesInPDF.undoManager = undoManager ()
+    self.drawPadsTopSide.undoManager = undoManager ()
+    self.drawPadsBottomSide.undoManager = undoManager ()
+    self.drawTextsLayoutTopSide.undoManager = undoManager ()
+    self.drawTextsLayoutBottomSide.undoManager = undoManager ()
+    self.drawTextsLegendTopSide.undoManager = undoManager ()
+    self.drawTextsLegendBottomSide.undoManager = undoManager ()
+    self.drawTracksTopSide.undoManager = undoManager ()
+    self.drawTracksBottomSide.undoManager = undoManager ()
+    self.drawVias.undoManager = undoManager ()
+    self.fileExtension.undoManager = undoManager ()
+    self.horizontalMirror.undoManager = undoManager ()
+    self.name.undoManager = undoManager ()
+    self.measurementUnitForPadHoleInPDF.undoManager = undoManager ()
+    self.padHoleDiameterInPDF.undoManager = undoManager ()
+  //--- Install owner for relationships
+  //--- register properties for handling signature
+    drawBoardLimits.setSignatureObserver (observer: self)
+    drawComponentNamesBottomSide.setSignatureObserver (observer: self)
+    drawComponentNamesTopSide.setSignatureObserver (observer: self)
+    drawComponentValuesBottomSide.setSignatureObserver (observer: self)
+    drawComponentValuesTopSide.setSignatureObserver (observer: self)
+    drawPackageLegendBottomSide.setSignatureObserver (observer: self)
+    drawPackageLegendTopSide.setSignatureObserver (observer: self)
+    drawPadHolesInPDF.setSignatureObserver (observer: self)
+    drawPadsBottomSide.setSignatureObserver (observer: self)
+    drawPadsTopSide.setSignatureObserver (observer: self)
+    drawTextsLayoutBottomSide.setSignatureObserver (observer: self)
+    drawTextsLayoutTopSide.setSignatureObserver (observer: self)
+    drawTextsLegendBottomSide.setSignatureObserver (observer: self)
+    drawTextsLegendTopSide.setSignatureObserver (observer: self)
+    drawTracksBottomSide.setSignatureObserver (observer: self)
+    drawTracksTopSide.setSignatureObserver (observer: self)
+    drawVias.setSignatureObserver (observer: self)
+    fileExtension.setSignatureObserver (observer: self)
+    horizontalMirror.setSignatureObserver (observer: self)
+    measurementUnitForPadHoleInPDF.setSignatureObserver (observer: self)
+    name.setSignatureObserver (observer: self)
+    padHoleDiameterInPDF.setSignatureObserver (observer: self)
+  }
+
+  //····················································································································
+
+  deinit {
+  //--- Remove observers
+  }
+
+  //····················································································································
+  //    populateExplorerWindow
+  //····················································································································
+
+  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "drawBoardLimits",
+      idx:self.drawBoardLimits.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawBoardLimits.mObserverExplorer,
+      valueExplorer:&self.drawBoardLimits.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawComponentNamesTopSide",
+      idx:self.drawComponentNamesTopSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawComponentNamesTopSide.mObserverExplorer,
+      valueExplorer:&self.drawComponentNamesTopSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawComponentNamesBottomSide",
+      idx:self.drawComponentNamesBottomSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawComponentNamesBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawComponentNamesBottomSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawComponentValuesTopSide",
+      idx:self.drawComponentValuesTopSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawComponentValuesTopSide.mObserverExplorer,
+      valueExplorer:&self.drawComponentValuesTopSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawComponentValuesBottomSide",
+      idx:self.drawComponentValuesBottomSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawComponentValuesBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawComponentValuesBottomSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawPackageLegendTopSide",
+      idx:self.drawPackageLegendTopSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawPackageLegendTopSide.mObserverExplorer,
+      valueExplorer:&self.drawPackageLegendTopSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawPackageLegendBottomSide",
+      idx:self.drawPackageLegendBottomSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawPackageLegendBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawPackageLegendBottomSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawPadHolesInPDF",
+      idx:self.drawPadHolesInPDF.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawPadHolesInPDF.mObserverExplorer,
+      valueExplorer:&self.drawPadHolesInPDF.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawPadsTopSide",
+      idx:self.drawPadsTopSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawPadsTopSide.mObserverExplorer,
+      valueExplorer:&self.drawPadsTopSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawPadsBottomSide",
+      idx:self.drawPadsBottomSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawPadsBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawPadsBottomSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTextsLayoutTopSide",
+      idx:self.drawTextsLayoutTopSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawTextsLayoutTopSide.mObserverExplorer,
+      valueExplorer:&self.drawTextsLayoutTopSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTextsLayoutBottomSide",
+      idx:self.drawTextsLayoutBottomSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawTextsLayoutBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawTextsLayoutBottomSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTextsLegendTopSide",
+      idx:self.drawTextsLegendTopSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawTextsLegendTopSide.mObserverExplorer,
+      valueExplorer:&self.drawTextsLegendTopSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTextsLegendBottomSide",
+      idx:self.drawTextsLegendBottomSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawTextsLegendBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawTextsLegendBottomSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTracksTopSide",
+      idx:self.drawTracksTopSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawTracksTopSide.mObserverExplorer,
+      valueExplorer:&self.drawTracksTopSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawTracksBottomSide",
+      idx:self.drawTracksBottomSide.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawTracksBottomSide.mObserverExplorer,
+      valueExplorer:&self.drawTracksBottomSide.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawVias",
+      idx:self.drawVias.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawVias.mObserverExplorer,
+      valueExplorer:&self.drawVias.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "fileExtension",
+      idx:self.fileExtension.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.fileExtension.mObserverExplorer,
+      valueExplorer:&self.fileExtension.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "horizontalMirror",
+      idx:self.horizontalMirror.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.horizontalMirror.mObserverExplorer,
+      valueExplorer:&self.horizontalMirror.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "name",
+      idx:self.name.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.name.mObserverExplorer,
+      valueExplorer:&self.name.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "measurementUnitForPadHoleInPDF",
+      idx:self.measurementUnitForPadHoleInPDF.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.measurementUnitForPadHoleInPDF.mObserverExplorer,
+      valueExplorer:&self.measurementUnitForPadHoleInPDF.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "padHoleDiameterInPDF",
+      idx:self.padHoleDiameterInPDF.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.padHoleDiameterInPDF.mObserverExplorer,
+      valueExplorer:&self.padHoleDiameterInPDF.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+  }
+
+  //····················································································································
+  //    clearObjectExplorer
+  //····················································································································
+
+  override func clearObjectExplorer () {
+    self.drawBoardLimits.mObserverExplorer = nil
+    self.drawBoardLimits.mValueExplorer = nil
+    self.drawComponentNamesTopSide.mObserverExplorer = nil
+    self.drawComponentNamesTopSide.mValueExplorer = nil
+    self.drawComponentNamesBottomSide.mObserverExplorer = nil
+    self.drawComponentNamesBottomSide.mValueExplorer = nil
+    self.drawComponentValuesTopSide.mObserverExplorer = nil
+    self.drawComponentValuesTopSide.mValueExplorer = nil
+    self.drawComponentValuesBottomSide.mObserverExplorer = nil
+    self.drawComponentValuesBottomSide.mValueExplorer = nil
+    self.drawPackageLegendTopSide.mObserverExplorer = nil
+    self.drawPackageLegendTopSide.mValueExplorer = nil
+    self.drawPackageLegendBottomSide.mObserverExplorer = nil
+    self.drawPackageLegendBottomSide.mValueExplorer = nil
+    self.drawPadHolesInPDF.mObserverExplorer = nil
+    self.drawPadHolesInPDF.mValueExplorer = nil
+    self.drawPadsTopSide.mObserverExplorer = nil
+    self.drawPadsTopSide.mValueExplorer = nil
+    self.drawPadsBottomSide.mObserverExplorer = nil
+    self.drawPadsBottomSide.mValueExplorer = nil
+    self.drawTextsLayoutTopSide.mObserverExplorer = nil
+    self.drawTextsLayoutTopSide.mValueExplorer = nil
+    self.drawTextsLayoutBottomSide.mObserverExplorer = nil
+    self.drawTextsLayoutBottomSide.mValueExplorer = nil
+    self.drawTextsLegendTopSide.mObserverExplorer = nil
+    self.drawTextsLegendTopSide.mValueExplorer = nil
+    self.drawTextsLegendBottomSide.mObserverExplorer = nil
+    self.drawTextsLegendBottomSide.mValueExplorer = nil
+    self.drawTracksTopSide.mObserverExplorer = nil
+    self.drawTracksTopSide.mValueExplorer = nil
+    self.drawTracksBottomSide.mObserverExplorer = nil
+    self.drawTracksBottomSide.mValueExplorer = nil
+    self.drawVias.mObserverExplorer = nil
+    self.drawVias.mValueExplorer = nil
+    self.fileExtension.mObserverExplorer = nil
+    self.fileExtension.mValueExplorer = nil
+    self.horizontalMirror.mObserverExplorer = nil
+    self.horizontalMirror.mValueExplorer = nil
+    self.name.mObserverExplorer = nil
+    self.name.mValueExplorer = nil
+    self.measurementUnitForPadHoleInPDF.mObserverExplorer = nil
+    self.measurementUnitForPadHoleInPDF.mValueExplorer = nil
+    self.padHoleDiameterInPDF.mObserverExplorer = nil
+    self.padHoleDiameterInPDF.mValueExplorer = nil
+    super.clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //    saveIntoDictionary
+  //····················································································································
+
+  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
+    super.saveIntoDictionary (ioDictionary)
+    self.drawBoardLimits.storeIn (dictionary: ioDictionary, forKey: "drawBoardLimits")
+    self.drawComponentNamesTopSide.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesTopSide")
+    self.drawComponentNamesBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesBottomSide")
+    self.drawComponentValuesTopSide.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesTopSide")
+    self.drawComponentValuesBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesBottomSide")
+    self.drawPackageLegendTopSide.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendTopSide")
+    self.drawPackageLegendBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendBottomSide")
+    self.drawPadHolesInPDF.storeIn (dictionary: ioDictionary, forKey: "drawPadHolesInPDF")
+    self.drawPadsTopSide.storeIn (dictionary: ioDictionary, forKey: "drawPadsTopSide")
+    self.drawPadsBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawPadsBottomSide")
+    self.drawTextsLayoutTopSide.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutTopSide")
+    self.drawTextsLayoutBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutBottomSide")
+    self.drawTextsLegendTopSide.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendTopSide")
+    self.drawTextsLegendBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendBottomSide")
+    self.drawTracksTopSide.storeIn (dictionary: ioDictionary, forKey: "drawTracksTopSide")
+    self.drawTracksBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawTracksBottomSide")
+    self.drawVias.storeIn (dictionary: ioDictionary, forKey: "drawVias")
+    self.fileExtension.storeIn (dictionary: ioDictionary, forKey: "fileExtension")
+    self.horizontalMirror.storeIn (dictionary: ioDictionary, forKey: "horizontalMirror")
+    self.name.storeIn (dictionary: ioDictionary, forKey: "name")
+    self.measurementUnitForPadHoleInPDF.storeIn (dictionary: ioDictionary, forKey: "measurementUnitForPadHoleInPDF")
+    self.padHoleDiameterInPDF.storeIn (dictionary: ioDictionary, forKey: "padHoleDiameterInPDF")
+  }
+
+  //····················································································································
+  //    setUpWithDictionary
+  //····················································································································
+
+  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+                                     managedObjectArray : inout [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    self.drawBoardLimits.readFrom (dictionary: inDictionary, forKey:"drawBoardLimits")
+    self.drawComponentNamesTopSide.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesTopSide")
+    self.drawComponentNamesBottomSide.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesBottomSide")
+    self.drawComponentValuesTopSide.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesTopSide")
+    self.drawComponentValuesBottomSide.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesBottomSide")
+    self.drawPackageLegendTopSide.readFrom (dictionary: inDictionary, forKey:"drawPackageLegendTopSide")
+    self.drawPackageLegendBottomSide.readFrom (dictionary: inDictionary, forKey:"drawPackageLegendBottomSide")
+    self.drawPadHolesInPDF.readFrom (dictionary: inDictionary, forKey:"drawPadHolesInPDF")
+    self.drawPadsTopSide.readFrom (dictionary: inDictionary, forKey:"drawPadsTopSide")
+    self.drawPadsBottomSide.readFrom (dictionary: inDictionary, forKey:"drawPadsBottomSide")
+    self.drawTextsLayoutTopSide.readFrom (dictionary: inDictionary, forKey:"drawTextsLayoutTopSide")
+    self.drawTextsLayoutBottomSide.readFrom (dictionary: inDictionary, forKey:"drawTextsLayoutBottomSide")
+    self.drawTextsLegendTopSide.readFrom (dictionary: inDictionary, forKey:"drawTextsLegendTopSide")
+    self.drawTextsLegendBottomSide.readFrom (dictionary: inDictionary, forKey:"drawTextsLegendBottomSide")
+    self.drawTracksTopSide.readFrom (dictionary: inDictionary, forKey:"drawTracksTopSide")
+    self.drawTracksBottomSide.readFrom (dictionary: inDictionary, forKey:"drawTracksBottomSide")
+    self.drawVias.readFrom (dictionary: inDictionary, forKey:"drawVias")
+    self.fileExtension.readFrom (dictionary: inDictionary, forKey:"fileExtension")
+    self.horizontalMirror.readFrom (dictionary: inDictionary, forKey:"horizontalMirror")
+    self.name.readFrom (dictionary: inDictionary, forKey:"name")
+    self.measurementUnitForPadHoleInPDF.readFrom (dictionary: inDictionary, forKey:"measurementUnitForPadHoleInPDF")
+    self.padHoleDiameterInPDF.readFrom (dictionary: inDictionary, forKey:"padHoleDiameterInPDF")
+  }
+
+  //····················································································································
+  //   cascadeObjectRemoving
+  //····················································································································
+
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   accessibleObjects
+  //····················································································································
+
+  override func accessibleObjects (objects : inout [EBManagedObject]) {
+    super.accessibleObjects (objects: &objects)
+  }
+
+  //····················································································································
+  //   computeSignature
+  //····················································································································
+
+  override func computeSignature () -> UInt32 {
+    var crc = super.computeSignature ()
+    crc.accumulateUInt32 (drawBoardLimits.signature ())
+    crc.accumulateUInt32 (drawComponentNamesBottomSide.signature ())
+    crc.accumulateUInt32 (drawComponentNamesTopSide.signature ())
+    crc.accumulateUInt32 (drawComponentValuesBottomSide.signature ())
+    crc.accumulateUInt32 (drawComponentValuesTopSide.signature ())
+    crc.accumulateUInt32 (drawPackageLegendBottomSide.signature ())
+    crc.accumulateUInt32 (drawPackageLegendTopSide.signature ())
+    crc.accumulateUInt32 (drawPadHolesInPDF.signature ())
+    crc.accumulateUInt32 (drawPadsBottomSide.signature ())
+    crc.accumulateUInt32 (drawPadsTopSide.signature ())
+    crc.accumulateUInt32 (drawTextsLayoutBottomSide.signature ())
+    crc.accumulateUInt32 (drawTextsLayoutTopSide.signature ())
+    crc.accumulateUInt32 (drawTextsLegendBottomSide.signature ())
+    crc.accumulateUInt32 (drawTextsLegendTopSide.signature ())
+    crc.accumulateUInt32 (drawTracksBottomSide.signature ())
+    crc.accumulateUInt32 (drawTracksTopSide.signature ())
+    crc.accumulateUInt32 (drawVias.signature ())
+    crc.accumulateUInt32 (fileExtension.signature ())
+    crc.accumulateUInt32 (horizontalMirror.signature ())
+    crc.accumulateUInt32 (measurementUnitForPadHoleInPDF.signature ())
+    crc.accumulateUInt32 (name.signature ())
+    crc.accumulateUInt32 (padHoleDiameterInPDF.signature ())
+    return crc
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1511,486 +1991,6 @@ protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : class {
   var padHoleDiameterInPDF : EBStoredProperty_Int { get }
 }
 
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ArtworkFileGenerationParameters
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ArtworkFileGenerationParameters : EBManagedObject, ArtworkFileGenerationParameters_drawBoardLimits, ArtworkFileGenerationParameters_drawComponentNamesTopSide, ArtworkFileGenerationParameters_drawComponentNamesBottomSide, ArtworkFileGenerationParameters_drawComponentValuesTopSide, ArtworkFileGenerationParameters_drawComponentValuesBottomSide, ArtworkFileGenerationParameters_drawPackageLegendTopSide, ArtworkFileGenerationParameters_drawPackageLegendBottomSide, ArtworkFileGenerationParameters_drawPadHolesInPDF, ArtworkFileGenerationParameters_drawPadsTopSide, ArtworkFileGenerationParameters_drawPadsBottomSide, ArtworkFileGenerationParameters_drawTextsLayoutTopSide, ArtworkFileGenerationParameters_drawTextsLayoutBottomSide, ArtworkFileGenerationParameters_drawTextsLegendTopSide, ArtworkFileGenerationParameters_drawTextsLegendBottomSide, ArtworkFileGenerationParameters_drawTracksTopSide, ArtworkFileGenerationParameters_drawTracksBottomSide, ArtworkFileGenerationParameters_drawVias, ArtworkFileGenerationParameters_fileExtension, ArtworkFileGenerationParameters_horizontalMirror, ArtworkFileGenerationParameters_name, ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF, ArtworkFileGenerationParameters_padHoleDiameterInPDF
-{
-
-  //····················································································································
-  //    Properties
-  //····················································································································
-
-  var drawBoardLimits = EBStoredProperty_Bool (false)
-
-  var drawComponentNamesTopSide = EBStoredProperty_Bool (false)
-
-  var drawComponentNamesBottomSide = EBStoredProperty_Bool (false)
-
-  var drawComponentValuesTopSide = EBStoredProperty_Bool (false)
-
-  var drawComponentValuesBottomSide = EBStoredProperty_Bool (false)
-
-  var drawPackageLegendTopSide = EBStoredProperty_Bool (false)
-
-  var drawPackageLegendBottomSide = EBStoredProperty_Bool (false)
-
-  var drawPadHolesInPDF = EBStoredProperty_Bool (false)
-
-  var drawPadsTopSide = EBStoredProperty_Bool (false)
-
-  var drawPadsBottomSide = EBStoredProperty_Bool (false)
-
-  var drawTextsLayoutTopSide = EBStoredProperty_Bool (false)
-
-  var drawTextsLayoutBottomSide = EBStoredProperty_Bool (false)
-
-  var drawTextsLegendTopSide = EBStoredProperty_Bool (false)
-
-  var drawTextsLegendBottomSide = EBStoredProperty_Bool (false)
-
-  var drawTracksTopSide = EBStoredProperty_Bool (false)
-
-  var drawTracksBottomSide = EBStoredProperty_Bool (false)
-
-  var drawVias = EBStoredProperty_Bool (false)
-
-  var fileExtension = EBStoredProperty_String ("?")
-
-  var horizontalMirror = EBStoredProperty_Bool (false)
-
-  var name = EBStoredProperty_String ("Unnamed")
-
-  var measurementUnitForPadHoleInPDF = EBStoredProperty_Int (90000)
-
-  var padHoleDiameterInPDF = EBStoredProperty_Int (90000)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
-
-
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-  //--- Install property observers for transients
-  //--- Install undoers for properties
-    self.drawBoardLimits.undoManager = undoManager ()
-    self.drawComponentNamesTopSide.undoManager = undoManager ()
-    self.drawComponentNamesBottomSide.undoManager = undoManager ()
-    self.drawComponentValuesTopSide.undoManager = undoManager ()
-    self.drawComponentValuesBottomSide.undoManager = undoManager ()
-    self.drawPackageLegendTopSide.undoManager = undoManager ()
-    self.drawPackageLegendBottomSide.undoManager = undoManager ()
-    self.drawPadHolesInPDF.undoManager = undoManager ()
-    self.drawPadsTopSide.undoManager = undoManager ()
-    self.drawPadsBottomSide.undoManager = undoManager ()
-    self.drawTextsLayoutTopSide.undoManager = undoManager ()
-    self.drawTextsLayoutBottomSide.undoManager = undoManager ()
-    self.drawTextsLegendTopSide.undoManager = undoManager ()
-    self.drawTextsLegendBottomSide.undoManager = undoManager ()
-    self.drawTracksTopSide.undoManager = undoManager ()
-    self.drawTracksBottomSide.undoManager = undoManager ()
-    self.drawVias.undoManager = undoManager ()
-    self.fileExtension.undoManager = undoManager ()
-    self.horizontalMirror.undoManager = undoManager ()
-    self.name.undoManager = undoManager ()
-    self.measurementUnitForPadHoleInPDF.undoManager = undoManager ()
-    self.padHoleDiameterInPDF.undoManager = undoManager ()
-  //--- Install owner for relationships
-  //--- register properties for handling signature
-    drawBoardLimits.setSignatureObserver (observer: self)
-    drawComponentNamesBottomSide.setSignatureObserver (observer: self)
-    drawComponentNamesTopSide.setSignatureObserver (observer: self)
-    drawComponentValuesBottomSide.setSignatureObserver (observer: self)
-    drawComponentValuesTopSide.setSignatureObserver (observer: self)
-    drawPackageLegendBottomSide.setSignatureObserver (observer: self)
-    drawPackageLegendTopSide.setSignatureObserver (observer: self)
-    drawPadHolesInPDF.setSignatureObserver (observer: self)
-    drawPadsBottomSide.setSignatureObserver (observer: self)
-    drawPadsTopSide.setSignatureObserver (observer: self)
-    drawTextsLayoutBottomSide.setSignatureObserver (observer: self)
-    drawTextsLayoutTopSide.setSignatureObserver (observer: self)
-    drawTextsLegendBottomSide.setSignatureObserver (observer: self)
-    drawTextsLegendTopSide.setSignatureObserver (observer: self)
-    drawTracksBottomSide.setSignatureObserver (observer: self)
-    drawTracksTopSide.setSignatureObserver (observer: self)
-    drawVias.setSignatureObserver (observer: self)
-    fileExtension.setSignatureObserver (observer: self)
-    horizontalMirror.setSignatureObserver (observer: self)
-    measurementUnitForPadHoleInPDF.setSignatureObserver (observer: self)
-    name.setSignatureObserver (observer: self)
-    padHoleDiameterInPDF.setSignatureObserver (observer: self)
-  }
-
-  //····················································································································
-
-  deinit {
-  //--- Remove observers
-  }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "drawBoardLimits",
-      idx:self.drawBoardLimits.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawBoardLimits.mObserverExplorer,
-      valueExplorer:&self.drawBoardLimits.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentNamesTopSide",
-      idx:self.drawComponentNamesTopSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawComponentNamesTopSide.mObserverExplorer,
-      valueExplorer:&self.drawComponentNamesTopSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentNamesBottomSide",
-      idx:self.drawComponentNamesBottomSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawComponentNamesBottomSide.mObserverExplorer,
-      valueExplorer:&self.drawComponentNamesBottomSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentValuesTopSide",
-      idx:self.drawComponentValuesTopSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawComponentValuesTopSide.mObserverExplorer,
-      valueExplorer:&self.drawComponentValuesTopSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawComponentValuesBottomSide",
-      idx:self.drawComponentValuesBottomSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawComponentValuesBottomSide.mObserverExplorer,
-      valueExplorer:&self.drawComponentValuesBottomSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPackageLegendTopSide",
-      idx:self.drawPackageLegendTopSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawPackageLegendTopSide.mObserverExplorer,
-      valueExplorer:&self.drawPackageLegendTopSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPackageLegendBottomSide",
-      idx:self.drawPackageLegendBottomSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawPackageLegendBottomSide.mObserverExplorer,
-      valueExplorer:&self.drawPackageLegendBottomSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPadHolesInPDF",
-      idx:self.drawPadHolesInPDF.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawPadHolesInPDF.mObserverExplorer,
-      valueExplorer:&self.drawPadHolesInPDF.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPadsTopSide",
-      idx:self.drawPadsTopSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawPadsTopSide.mObserverExplorer,
-      valueExplorer:&self.drawPadsTopSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawPadsBottomSide",
-      idx:self.drawPadsBottomSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawPadsBottomSide.mObserverExplorer,
-      valueExplorer:&self.drawPadsBottomSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLayoutTopSide",
-      idx:self.drawTextsLayoutTopSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTextsLayoutTopSide.mObserverExplorer,
-      valueExplorer:&self.drawTextsLayoutTopSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLayoutBottomSide",
-      idx:self.drawTextsLayoutBottomSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTextsLayoutBottomSide.mObserverExplorer,
-      valueExplorer:&self.drawTextsLayoutBottomSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLegendTopSide",
-      idx:self.drawTextsLegendTopSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTextsLegendTopSide.mObserverExplorer,
-      valueExplorer:&self.drawTextsLegendTopSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTextsLegendBottomSide",
-      idx:self.drawTextsLegendBottomSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTextsLegendBottomSide.mObserverExplorer,
-      valueExplorer:&self.drawTextsLegendBottomSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksTopSide",
-      idx:self.drawTracksTopSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTracksTopSide.mObserverExplorer,
-      valueExplorer:&self.drawTracksTopSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawTracksBottomSide",
-      idx:self.drawTracksBottomSide.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawTracksBottomSide.mObserverExplorer,
-      valueExplorer:&self.drawTracksBottomSide.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drawVias",
-      idx:self.drawVias.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drawVias.mObserverExplorer,
-      valueExplorer:&self.drawVias.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "fileExtension",
-      idx:self.fileExtension.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.fileExtension.mObserverExplorer,
-      valueExplorer:&self.fileExtension.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "horizontalMirror",
-      idx:self.horizontalMirror.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.horizontalMirror.mObserverExplorer,
-      valueExplorer:&self.horizontalMirror.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "name",
-      idx:self.name.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.name.mObserverExplorer,
-      valueExplorer:&self.name.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "measurementUnitForPadHoleInPDF",
-      idx:self.measurementUnitForPadHoleInPDF.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.measurementUnitForPadHoleInPDF.mObserverExplorer,
-      valueExplorer:&self.measurementUnitForPadHoleInPDF.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "padHoleDiameterInPDF",
-      idx:self.padHoleDiameterInPDF.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padHoleDiameterInPDF.mObserverExplorer,
-      valueExplorer:&self.padHoleDiameterInPDF.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
-  }
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  override func clearObjectExplorer () {
-    self.drawBoardLimits.mObserverExplorer = nil
-    self.drawBoardLimits.mValueExplorer = nil
-    self.drawComponentNamesTopSide.mObserverExplorer = nil
-    self.drawComponentNamesTopSide.mValueExplorer = nil
-    self.drawComponentNamesBottomSide.mObserverExplorer = nil
-    self.drawComponentNamesBottomSide.mValueExplorer = nil
-    self.drawComponentValuesTopSide.mObserverExplorer = nil
-    self.drawComponentValuesTopSide.mValueExplorer = nil
-    self.drawComponentValuesBottomSide.mObserverExplorer = nil
-    self.drawComponentValuesBottomSide.mValueExplorer = nil
-    self.drawPackageLegendTopSide.mObserverExplorer = nil
-    self.drawPackageLegendTopSide.mValueExplorer = nil
-    self.drawPackageLegendBottomSide.mObserverExplorer = nil
-    self.drawPackageLegendBottomSide.mValueExplorer = nil
-    self.drawPadHolesInPDF.mObserverExplorer = nil
-    self.drawPadHolesInPDF.mValueExplorer = nil
-    self.drawPadsTopSide.mObserverExplorer = nil
-    self.drawPadsTopSide.mValueExplorer = nil
-    self.drawPadsBottomSide.mObserverExplorer = nil
-    self.drawPadsBottomSide.mValueExplorer = nil
-    self.drawTextsLayoutTopSide.mObserverExplorer = nil
-    self.drawTextsLayoutTopSide.mValueExplorer = nil
-    self.drawTextsLayoutBottomSide.mObserverExplorer = nil
-    self.drawTextsLayoutBottomSide.mValueExplorer = nil
-    self.drawTextsLegendTopSide.mObserverExplorer = nil
-    self.drawTextsLegendTopSide.mValueExplorer = nil
-    self.drawTextsLegendBottomSide.mObserverExplorer = nil
-    self.drawTextsLegendBottomSide.mValueExplorer = nil
-    self.drawTracksTopSide.mObserverExplorer = nil
-    self.drawTracksTopSide.mValueExplorer = nil
-    self.drawTracksBottomSide.mObserverExplorer = nil
-    self.drawTracksBottomSide.mValueExplorer = nil
-    self.drawVias.mObserverExplorer = nil
-    self.drawVias.mValueExplorer = nil
-    self.fileExtension.mObserverExplorer = nil
-    self.fileExtension.mValueExplorer = nil
-    self.horizontalMirror.mObserverExplorer = nil
-    self.horizontalMirror.mValueExplorer = nil
-    self.name.mObserverExplorer = nil
-    self.name.mValueExplorer = nil
-    self.measurementUnitForPadHoleInPDF.mObserverExplorer = nil
-    self.measurementUnitForPadHoleInPDF.mValueExplorer = nil
-    self.padHoleDiameterInPDF.mObserverExplorer = nil
-    self.padHoleDiameterInPDF.mValueExplorer = nil
-    super.clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
-    self.drawBoardLimits.storeIn (dictionary: ioDictionary, forKey: "drawBoardLimits")
-    self.drawComponentNamesTopSide.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesTopSide")
-    self.drawComponentNamesBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesBottomSide")
-    self.drawComponentValuesTopSide.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesTopSide")
-    self.drawComponentValuesBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesBottomSide")
-    self.drawPackageLegendTopSide.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendTopSide")
-    self.drawPackageLegendBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendBottomSide")
-    self.drawPadHolesInPDF.storeIn (dictionary: ioDictionary, forKey: "drawPadHolesInPDF")
-    self.drawPadsTopSide.storeIn (dictionary: ioDictionary, forKey: "drawPadsTopSide")
-    self.drawPadsBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawPadsBottomSide")
-    self.drawTextsLayoutTopSide.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutTopSide")
-    self.drawTextsLayoutBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutBottomSide")
-    self.drawTextsLegendTopSide.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendTopSide")
-    self.drawTextsLegendBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendBottomSide")
-    self.drawTracksTopSide.storeIn (dictionary: ioDictionary, forKey: "drawTracksTopSide")
-    self.drawTracksBottomSide.storeIn (dictionary: ioDictionary, forKey: "drawTracksBottomSide")
-    self.drawVias.storeIn (dictionary: ioDictionary, forKey: "drawVias")
-    self.fileExtension.storeIn (dictionary: ioDictionary, forKey: "fileExtension")
-    self.horizontalMirror.storeIn (dictionary: ioDictionary, forKey: "horizontalMirror")
-    self.name.storeIn (dictionary: ioDictionary, forKey: "name")
-    self.measurementUnitForPadHoleInPDF.storeIn (dictionary: ioDictionary, forKey: "measurementUnitForPadHoleInPDF")
-    self.padHoleDiameterInPDF.storeIn (dictionary: ioDictionary, forKey: "padHoleDiameterInPDF")
-  }
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.drawBoardLimits.readFrom (dictionary: inDictionary, forKey:"drawBoardLimits")
-    self.drawComponentNamesTopSide.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesTopSide")
-    self.drawComponentNamesBottomSide.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesBottomSide")
-    self.drawComponentValuesTopSide.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesTopSide")
-    self.drawComponentValuesBottomSide.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesBottomSide")
-    self.drawPackageLegendTopSide.readFrom (dictionary: inDictionary, forKey:"drawPackageLegendTopSide")
-    self.drawPackageLegendBottomSide.readFrom (dictionary: inDictionary, forKey:"drawPackageLegendBottomSide")
-    self.drawPadHolesInPDF.readFrom (dictionary: inDictionary, forKey:"drawPadHolesInPDF")
-    self.drawPadsTopSide.readFrom (dictionary: inDictionary, forKey:"drawPadsTopSide")
-    self.drawPadsBottomSide.readFrom (dictionary: inDictionary, forKey:"drawPadsBottomSide")
-    self.drawTextsLayoutTopSide.readFrom (dictionary: inDictionary, forKey:"drawTextsLayoutTopSide")
-    self.drawTextsLayoutBottomSide.readFrom (dictionary: inDictionary, forKey:"drawTextsLayoutBottomSide")
-    self.drawTextsLegendTopSide.readFrom (dictionary: inDictionary, forKey:"drawTextsLegendTopSide")
-    self.drawTextsLegendBottomSide.readFrom (dictionary: inDictionary, forKey:"drawTextsLegendBottomSide")
-    self.drawTracksTopSide.readFrom (dictionary: inDictionary, forKey:"drawTracksTopSide")
-    self.drawTracksBottomSide.readFrom (dictionary: inDictionary, forKey:"drawTracksBottomSide")
-    self.drawVias.readFrom (dictionary: inDictionary, forKey:"drawVias")
-    self.fileExtension.readFrom (dictionary: inDictionary, forKey:"fileExtension")
-    self.horizontalMirror.readFrom (dictionary: inDictionary, forKey:"horizontalMirror")
-    self.name.readFrom (dictionary: inDictionary, forKey:"name")
-    self.measurementUnitForPadHoleInPDF.readFrom (dictionary: inDictionary, forKey:"measurementUnitForPadHoleInPDF")
-    self.padHoleDiameterInPDF.readFrom (dictionary: inDictionary, forKey:"padHoleDiameterInPDF")
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  }
-
-  //····················································································································
-  //   computeSignature
-  //····················································································································
-
-  override func computeSignature () -> UInt32 {
-    var crc = super.computeSignature ()
-    crc.accumulateUInt32 (drawBoardLimits.signature ())
-    crc.accumulateUInt32 (drawComponentNamesBottomSide.signature ())
-    crc.accumulateUInt32 (drawComponentNamesTopSide.signature ())
-    crc.accumulateUInt32 (drawComponentValuesBottomSide.signature ())
-    crc.accumulateUInt32 (drawComponentValuesTopSide.signature ())
-    crc.accumulateUInt32 (drawPackageLegendBottomSide.signature ())
-    crc.accumulateUInt32 (drawPackageLegendTopSide.signature ())
-    crc.accumulateUInt32 (drawPadHolesInPDF.signature ())
-    crc.accumulateUInt32 (drawPadsBottomSide.signature ())
-    crc.accumulateUInt32 (drawPadsTopSide.signature ())
-    crc.accumulateUInt32 (drawTextsLayoutBottomSide.signature ())
-    crc.accumulateUInt32 (drawTextsLayoutTopSide.signature ())
-    crc.accumulateUInt32 (drawTextsLegendBottomSide.signature ())
-    crc.accumulateUInt32 (drawTextsLegendTopSide.signature ())
-    crc.accumulateUInt32 (drawTracksBottomSide.signature ())
-    crc.accumulateUInt32 (drawTracksTopSide.signature ())
-    crc.accumulateUInt32 (drawVias.signature ())
-    crc.accumulateUInt32 (fileExtension.signature ())
-    crc.accumulateUInt32 (horizontalMirror.signature ())
-    crc.accumulateUInt32 (measurementUnitForPadHoleInPDF.signature ())
-    crc.accumulateUInt32 (name.signature ())
-    crc.accumulateUInt32 (padHoleDiameterInPDF.signature ())
-    return crc
-  }
-
-  //····················································································································
-
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

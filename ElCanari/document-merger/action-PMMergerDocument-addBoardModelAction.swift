@@ -44,7 +44,11 @@ extension PMMergerDocument {
                 )
                 if let boardArchiveDictionary = optionalBoardArchiveDictionary as? NSDictionary {
                   let s = filePath.lastPathComponent.deletingPathExtension
-                  self.addBoardModel (fromDictionary: boardArchiveDictionary, named : s)
+                  let possibleBoardModel = self.parseBoardModel (fromDictionary: boardArchiveDictionary, named : s)
+                  if let boardModel = possibleBoardModel {
+                    self.rootObject.boardModels.add (boardModel)
+                    self.mBoardModelController.select (object:boardModel)
+                  }
                 }else{
                   NSLog ("Invalid dictionary!")
                 }

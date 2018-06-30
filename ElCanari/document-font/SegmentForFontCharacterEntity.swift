@@ -5,6 +5,221 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: SegmentForFontCharacterEntity
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class SegmentForFontCharacterEntity : EBManagedObject,
+  SegmentForFontCharacterEntity_x1,
+  SegmentForFontCharacterEntity_y1,
+  SegmentForFontCharacterEntity_x2,
+  SegmentForFontCharacterEntity_y2,
+  SegmentForFontCharacterEntity_segmentForDrawing {
+
+  //····················································································································
+  //    Properties
+  //····················································································································
+
+  var x1 = EBStoredProperty_Int (2)
+  var y1 = EBStoredProperty_Int (1)
+  var x2 = EBStoredProperty_Int (9)
+  var y2 = EBStoredProperty_Int (8)
+
+  //····················································································································
+  //    Transient properties
+  //····················································································································
+
+  var segmentForDrawing = EBTransientProperty_SegmentForFontCharacterClass ()
+
+  //····················································································································
+  //    Relationships
+  //····················································································································
+
+
+  //····················································································································
+  //    init
+  //····················································································································
+
+  override init (managedObjectContext : EBManagedObjectContext) {
+    super.init (managedObjectContext:managedObjectContext)
+  //--- Install compute functions for transients
+    segmentForDrawing.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x1.prop.kind ()
+        kind &= unwSelf.y1.prop.kind ()
+        kind &= unwSelf.x2.prop.kind ()
+        kind &= unwSelf.y2.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.x1.prop, unwSelf.y1.prop, unwSelf.x2.prop, unwSelf.y2.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3)) :
+            return .singleSelection (compute_SegmentForFontCharacterEntity_segmentForDrawing (v0, v1, v2, v3))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  //--- Install property observers for transients
+    x1.addEBObserver (segmentForDrawing)
+    y1.addEBObserver (segmentForDrawing)
+    x2.addEBObserver (segmentForDrawing)
+    y2.addEBObserver (segmentForDrawing)
+  //--- Install undoers for properties
+    self.x1.undoManager = undoManager ()
+    self.y1.undoManager = undoManager ()
+    self.x2.undoManager = undoManager ()
+    self.y2.undoManager = undoManager ()
+  //--- Install owner for relationships
+  //--- register properties for handling signature
+    x1.setSignatureObserver (observer: self)
+    x2.setSignatureObserver (observer: self)
+    y1.setSignatureObserver (observer: self)
+    y2.setSignatureObserver (observer: self)
+  }
+
+  //····················································································································
+
+  deinit {
+  //--- Remove observers
+    x1.removeEBObserver (segmentForDrawing)
+    y1.removeEBObserver (segmentForDrawing)
+    x2.removeEBObserver (segmentForDrawing)
+    y2.removeEBObserver (segmentForDrawing)
+  }
+
+  //····················································································································
+  //    populateExplorerWindow
+  //····················································································································
+
+  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "x1",
+      idx:self.x1.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x1.mObserverExplorer,
+      valueExplorer:&self.x1.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "y1",
+      idx:self.y1.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y1.mObserverExplorer,
+      valueExplorer:&self.y1.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "x2",
+      idx:self.x2.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x2.mObserverExplorer,
+      valueExplorer:&self.x2.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "y2",
+      idx:self.y2.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y2.mObserverExplorer,
+      valueExplorer:&self.y2.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "segmentForDrawing",
+      idx:self.segmentForDrawing.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.segmentForDrawing.mObserverExplorer,
+      valueExplorer:&self.segmentForDrawing.mValueExplorer
+    )
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+  }
+
+  //····················································································································
+  //    clearObjectExplorer
+  //····················································································································
+
+  override func clearObjectExplorer () {
+    self.x1.mObserverExplorer = nil
+    self.x1.mValueExplorer = nil
+    self.y1.mObserverExplorer = nil
+    self.y1.mValueExplorer = nil
+    self.x2.mObserverExplorer = nil
+    self.x2.mValueExplorer = nil
+    self.y2.mObserverExplorer = nil
+    self.y2.mValueExplorer = nil
+    super.clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //    saveIntoDictionary
+  //····················································································································
+
+  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
+    super.saveIntoDictionary (ioDictionary)
+    self.x1.storeIn (dictionary: ioDictionary, forKey: "x1")
+    self.y1.storeIn (dictionary: ioDictionary, forKey: "y1")
+    self.x2.storeIn (dictionary: ioDictionary, forKey: "x2")
+    self.y2.storeIn (dictionary: ioDictionary, forKey: "y2")
+  }
+
+  //····················································································································
+  //    setUpWithDictionary
+  //····················································································································
+
+  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+                                     managedObjectArray : inout [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    self.x1.readFrom (dictionary: inDictionary, forKey:"x1")
+    self.y1.readFrom (dictionary: inDictionary, forKey:"y1")
+    self.x2.readFrom (dictionary: inDictionary, forKey:"x2")
+    self.y2.readFrom (dictionary: inDictionary, forKey:"y2")
+  }
+
+  //····················································································································
+  //   cascadeObjectRemoving
+  //····················································································································
+
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   accessibleObjects
+  //····················································································································
+
+  override func accessibleObjects (objects : inout [EBManagedObject]) {
+    super.accessibleObjects (objects: &objects)
+  }
+
+  //····················································································································
+  //   computeSignature
+  //····················································································································
+
+  override func computeSignature () -> UInt32 {
+    var crc = super.computeSignature ()
+    crc.accumulateUInt32 (x1.signature ())
+    crc.accumulateUInt32 (x2.signature ())
+    crc.accumulateUInt32 (y1.signature ())
+    crc.accumulateUInt32 (y2.signature ())
+    return crc
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_SegmentForFontCharacterEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -405,220 +620,6 @@ protocol SegmentForFontCharacterEntity_segmentForDrawing : class {
   var segmentForDrawing : EBTransientProperty_SegmentForFontCharacterClass { get }
 }
 
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: SegmentForFontCharacterEntity
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class SegmentForFontCharacterEntity : EBManagedObject, SegmentForFontCharacterEntity_x1, SegmentForFontCharacterEntity_y1, SegmentForFontCharacterEntity_x2, SegmentForFontCharacterEntity_y2, SegmentForFontCharacterEntity_segmentForDrawing
-{
-
-  //····················································································································
-  //    Properties
-  //····················································································································
-
-  var x1 = EBStoredProperty_Int (2)
-
-  var y1 = EBStoredProperty_Int (1)
-
-  var x2 = EBStoredProperty_Int (9)
-
-  var y2 = EBStoredProperty_Int (8)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var segmentForDrawing = EBTransientProperty_SegmentForFontCharacterClass ()
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
-
-
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-    segmentForDrawing.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.x1.prop.kind ()
-        kind &= unwSelf.y1.prop.kind ()
-        kind &= unwSelf.x2.prop.kind ()
-        kind &= unwSelf.y2.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.x1.prop, unwSelf.y1.prop, unwSelf.x2.prop, unwSelf.y2.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3)) :
-            return .singleSelection (compute_SegmentForFontCharacterEntity_segmentForDrawing (v0, v1, v2, v3))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-  //--- Install property observers for transients
-    x1.addEBObserver (segmentForDrawing)
-    y1.addEBObserver (segmentForDrawing)
-    x2.addEBObserver (segmentForDrawing)
-    y2.addEBObserver (segmentForDrawing)
-  //--- Install undoers for properties
-    self.x1.undoManager = undoManager ()
-    self.y1.undoManager = undoManager ()
-    self.x2.undoManager = undoManager ()
-    self.y2.undoManager = undoManager ()
-  //--- Install owner for relationships
-  //--- register properties for handling signature
-    x1.setSignatureObserver (observer: self)
-    x2.setSignatureObserver (observer: self)
-    y1.setSignatureObserver (observer: self)
-    y2.setSignatureObserver (observer: self)
-  }
-
-  //····················································································································
-
-  deinit {
-  //--- Remove observers
-    x1.removeEBObserver (segmentForDrawing)
-    y1.removeEBObserver (segmentForDrawing)
-    x2.removeEBObserver (segmentForDrawing)
-    y2.removeEBObserver (segmentForDrawing)
-  }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "x1",
-      idx:self.x1.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x1.mObserverExplorer,
-      valueExplorer:&self.x1.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y1",
-      idx:self.y1.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y1.mObserverExplorer,
-      valueExplorer:&self.y1.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2",
-      idx:self.x2.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2.mObserverExplorer,
-      valueExplorer:&self.x2.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2",
-      idx:self.y2.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2.mObserverExplorer,
-      valueExplorer:&self.y2.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "segmentForDrawing",
-      idx:self.segmentForDrawing.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.segmentForDrawing.mObserverExplorer,
-      valueExplorer:&self.segmentForDrawing.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
-  }
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  override func clearObjectExplorer () {
-    self.x1.mObserverExplorer = nil
-    self.x1.mValueExplorer = nil
-    self.y1.mObserverExplorer = nil
-    self.y1.mValueExplorer = nil
-    self.x2.mObserverExplorer = nil
-    self.x2.mValueExplorer = nil
-    self.y2.mObserverExplorer = nil
-    self.y2.mValueExplorer = nil
-    super.clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
-    self.x1.storeIn (dictionary: ioDictionary, forKey: "x1")
-    self.y1.storeIn (dictionary: ioDictionary, forKey: "y1")
-    self.x2.storeIn (dictionary: ioDictionary, forKey: "x2")
-    self.y2.storeIn (dictionary: ioDictionary, forKey: "y2")
-  }
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.x1.readFrom (dictionary: inDictionary, forKey:"x1")
-    self.y1.readFrom (dictionary: inDictionary, forKey:"y1")
-    self.x2.readFrom (dictionary: inDictionary, forKey:"x2")
-    self.y2.readFrom (dictionary: inDictionary, forKey:"y2")
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  }
-
-  //····················································································································
-  //   computeSignature
-  //····················································································································
-
-  override func computeSignature () -> UInt32 {
-    var crc = super.computeSignature ()
-    crc.accumulateUInt32 (x1.signature ())
-    crc.accumulateUInt32 (x2.signature ())
-    crc.accumulateUInt32 (y1.signature ())
-    crc.accumulateUInt32 (y2.signature ())
-    return crc
-  }
-
-  //····················································································································
-
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

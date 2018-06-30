@@ -5,6 +5,223 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: BoardModelPadEntity
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class BoardModelPadEntity : EBManagedObject,
+  BoardModelPadEntity_x,
+  BoardModelPadEntity_y,
+  BoardModelPadEntity_width,
+  BoardModelPadEntity_height,
+  BoardModelPadEntity_holeDiameter,
+  BoardModelPadEntity_shape,
+  BoardModelPadEntity_side,
+  BoardModelPadEntity_rotation {
+
+  //····················································································································
+  //    Properties
+  //····················································································································
+
+  var x = EBStoredProperty_Int (0)
+  var y = EBStoredProperty_Int (0)
+  var width = EBStoredProperty_Int (0)
+  var height = EBStoredProperty_Int (0)
+  var holeDiameter = EBStoredProperty_Int (0)
+  var shape = EBStoredProperty_PadShape (PadShape.rectangular)
+  var side = EBStoredProperty_PadSide (PadSide.traversing)
+  var rotation = EBStoredProperty_Int (0)
+
+  //····················································································································
+  //    Transient properties
+  //····················································································································
+
+
+  //····················································································································
+  //    Relationships
+  //····················································································································
+
+
+  //····················································································································
+  //    init
+  //····················································································································
+
+  override init (managedObjectContext : EBManagedObjectContext) {
+    super.init (managedObjectContext:managedObjectContext)
+  //--- Install compute functions for transients
+  //--- Install property observers for transients
+  //--- Install undoers for properties
+    self.x.undoManager = undoManager ()
+    self.y.undoManager = undoManager ()
+    self.width.undoManager = undoManager ()
+    self.height.undoManager = undoManager ()
+    self.holeDiameter.undoManager = undoManager ()
+    self.shape.undoManager = undoManager ()
+    self.side.undoManager = undoManager ()
+    self.rotation.undoManager = undoManager ()
+  //--- Install owner for relationships
+  //--- register properties for handling signature
+  }
+
+  //····················································································································
+
+  deinit {
+  //--- Remove observers
+  }
+
+  //····················································································································
+  //    populateExplorerWindow
+  //····················································································································
+
+  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "x",
+      idx:self.x.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x.mObserverExplorer,
+      valueExplorer:&self.x.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "y",
+      idx:self.y.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y.mObserverExplorer,
+      valueExplorer:&self.y.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "width",
+      idx:self.width.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.width.mObserverExplorer,
+      valueExplorer:&self.width.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "height",
+      idx:self.height.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.height.mObserverExplorer,
+      valueExplorer:&self.height.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "holeDiameter",
+      idx:self.holeDiameter.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.holeDiameter.mObserverExplorer,
+      valueExplorer:&self.holeDiameter.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "shape",
+      idx:self.shape.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.shape.mObserverExplorer,
+      valueExplorer:&self.shape.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "side",
+      idx:self.side.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.side.mObserverExplorer,
+      valueExplorer:&self.side.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "rotation",
+      idx:self.rotation.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.rotation.mObserverExplorer,
+      valueExplorer:&self.rotation.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+  }
+
+  //····················································································································
+  //    clearObjectExplorer
+  //····················································································································
+
+  override func clearObjectExplorer () {
+    self.x.mObserverExplorer = nil
+    self.x.mValueExplorer = nil
+    self.y.mObserverExplorer = nil
+    self.y.mValueExplorer = nil
+    self.width.mObserverExplorer = nil
+    self.width.mValueExplorer = nil
+    self.height.mObserverExplorer = nil
+    self.height.mValueExplorer = nil
+    self.holeDiameter.mObserverExplorer = nil
+    self.holeDiameter.mValueExplorer = nil
+    self.shape.mObserverExplorer = nil
+    self.shape.mValueExplorer = nil
+    self.side.mObserverExplorer = nil
+    self.side.mValueExplorer = nil
+    self.rotation.mObserverExplorer = nil
+    self.rotation.mValueExplorer = nil
+    super.clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //    saveIntoDictionary
+  //····················································································································
+
+  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
+    super.saveIntoDictionary (ioDictionary)
+    self.x.storeIn (dictionary: ioDictionary, forKey: "x")
+    self.y.storeIn (dictionary: ioDictionary, forKey: "y")
+    self.width.storeIn (dictionary: ioDictionary, forKey: "width")
+    self.height.storeIn (dictionary: ioDictionary, forKey: "height")
+    self.holeDiameter.storeIn (dictionary: ioDictionary, forKey: "holeDiameter")
+    self.shape.storeIn (dictionary: ioDictionary, forKey: "shape")
+    self.side.storeIn (dictionary: ioDictionary, forKey: "side")
+    self.rotation.storeIn (dictionary: ioDictionary, forKey: "rotation")
+  }
+
+  //····················································································································
+  //    setUpWithDictionary
+  //····················································································································
+
+  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+                                     managedObjectArray : inout [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    self.x.readFrom (dictionary: inDictionary, forKey:"x")
+    self.y.readFrom (dictionary: inDictionary, forKey:"y")
+    self.width.readFrom (dictionary: inDictionary, forKey:"width")
+    self.height.readFrom (dictionary: inDictionary, forKey:"height")
+    self.holeDiameter.readFrom (dictionary: inDictionary, forKey:"holeDiameter")
+    self.shape.readFrom (dictionary: inDictionary, forKey:"shape")
+    self.side.readFrom (dictionary: inDictionary, forKey:"side")
+    self.rotation.readFrom (dictionary: inDictionary, forKey:"rotation")
+  }
+
+  //····················································································································
+  //   cascadeObjectRemoving
+  //····················································································································
+
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   accessibleObjects
+  //····················································································································
+
+  override func accessibleObjects (objects : inout [EBManagedObject]) {
+    super.accessibleObjects (objects: &objects)
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_BoardModelPadEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -601,223 +818,6 @@ protocol BoardModelPadEntity_rotation : class {
   var rotation : EBStoredProperty_Int { get }
 }
 
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: BoardModelPadEntity
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class BoardModelPadEntity : EBManagedObject, BoardModelPadEntity_x, BoardModelPadEntity_y, BoardModelPadEntity_width, BoardModelPadEntity_height, BoardModelPadEntity_holeDiameter, BoardModelPadEntity_shape, BoardModelPadEntity_side, BoardModelPadEntity_rotation
-{
-
-  //····················································································································
-  //    Properties
-  //····················································································································
-
-  var x = EBStoredProperty_Int (0)
-
-  var y = EBStoredProperty_Int (0)
-
-  var width = EBStoredProperty_Int (0)
-
-  var height = EBStoredProperty_Int (0)
-
-  var holeDiameter = EBStoredProperty_Int (0)
-
-  var shape = EBStoredProperty_PadShape (PadShape.rectangular)
-
-  var side = EBStoredProperty_PadSide (PadSide.traversing)
-
-  var rotation = EBStoredProperty_Int (0)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
-
-
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-  //--- Install property observers for transients
-  //--- Install undoers for properties
-    self.x.undoManager = undoManager ()
-    self.y.undoManager = undoManager ()
-    self.width.undoManager = undoManager ()
-    self.height.undoManager = undoManager ()
-    self.holeDiameter.undoManager = undoManager ()
-    self.shape.undoManager = undoManager ()
-    self.side.undoManager = undoManager ()
-    self.rotation.undoManager = undoManager ()
-  //--- Install owner for relationships
-  //--- register properties for handling signature
-  }
-
-  //····················································································································
-
-  deinit {
-  //--- Remove observers
-  }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "x",
-      idx:self.x.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x.mObserverExplorer,
-      valueExplorer:&self.x.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y",
-      idx:self.y.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y.mObserverExplorer,
-      valueExplorer:&self.y.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "width",
-      idx:self.width.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.width.mObserverExplorer,
-      valueExplorer:&self.width.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "height",
-      idx:self.height.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.height.mObserverExplorer,
-      valueExplorer:&self.height.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "holeDiameter",
-      idx:self.holeDiameter.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.holeDiameter.mObserverExplorer,
-      valueExplorer:&self.holeDiameter.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "shape",
-      idx:self.shape.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.shape.mObserverExplorer,
-      valueExplorer:&self.shape.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "side",
-      idx:self.side.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.side.mObserverExplorer,
-      valueExplorer:&self.side.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "rotation",
-      idx:self.rotation.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.rotation.mObserverExplorer,
-      valueExplorer:&self.rotation.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
-  }
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  override func clearObjectExplorer () {
-    self.x.mObserverExplorer = nil
-    self.x.mValueExplorer = nil
-    self.y.mObserverExplorer = nil
-    self.y.mValueExplorer = nil
-    self.width.mObserverExplorer = nil
-    self.width.mValueExplorer = nil
-    self.height.mObserverExplorer = nil
-    self.height.mValueExplorer = nil
-    self.holeDiameter.mObserverExplorer = nil
-    self.holeDiameter.mValueExplorer = nil
-    self.shape.mObserverExplorer = nil
-    self.shape.mValueExplorer = nil
-    self.side.mObserverExplorer = nil
-    self.side.mValueExplorer = nil
-    self.rotation.mObserverExplorer = nil
-    self.rotation.mValueExplorer = nil
-    super.clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
-    self.x.storeIn (dictionary: ioDictionary, forKey: "x")
-    self.y.storeIn (dictionary: ioDictionary, forKey: "y")
-    self.width.storeIn (dictionary: ioDictionary, forKey: "width")
-    self.height.storeIn (dictionary: ioDictionary, forKey: "height")
-    self.holeDiameter.storeIn (dictionary: ioDictionary, forKey: "holeDiameter")
-    self.shape.storeIn (dictionary: ioDictionary, forKey: "shape")
-    self.side.storeIn (dictionary: ioDictionary, forKey: "side")
-    self.rotation.storeIn (dictionary: ioDictionary, forKey: "rotation")
-  }
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.x.readFrom (dictionary: inDictionary, forKey:"x")
-    self.y.readFrom (dictionary: inDictionary, forKey:"y")
-    self.width.readFrom (dictionary: inDictionary, forKey:"width")
-    self.height.readFrom (dictionary: inDictionary, forKey:"height")
-    self.holeDiameter.readFrom (dictionary: inDictionary, forKey:"holeDiameter")
-    self.shape.readFrom (dictionary: inDictionary, forKey:"shape")
-    self.side.readFrom (dictionary: inDictionary, forKey:"side")
-    self.rotation.readFrom (dictionary: inDictionary, forKey:"rotation")
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  }
-
-  //····················································································································
-
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

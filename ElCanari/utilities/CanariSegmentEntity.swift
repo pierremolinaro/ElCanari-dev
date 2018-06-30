@@ -5,6 +5,178 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: CanariSegmentEntity
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class CanariSegmentEntity : EBManagedObject,
+  CanariSegmentEntity_x1,
+  CanariSegmentEntity_y1,
+  CanariSegmentEntity_x2,
+  CanariSegmentEntity_y2,
+  CanariSegmentEntity_width {
+
+  //····················································································································
+  //    Properties
+  //····················································································································
+
+  var x1 = EBStoredProperty_Int (0)
+  var y1 = EBStoredProperty_Int (0)
+  var x2 = EBStoredProperty_Int (0)
+  var y2 = EBStoredProperty_Int (0)
+  var width = EBStoredProperty_Int (0)
+
+  //····················································································································
+  //    Transient properties
+  //····················································································································
+
+
+  //····················································································································
+  //    Relationships
+  //····················································································································
+
+
+  //····················································································································
+  //    init
+  //····················································································································
+
+  override init (managedObjectContext : EBManagedObjectContext) {
+    super.init (managedObjectContext:managedObjectContext)
+  //--- Install compute functions for transients
+  //--- Install property observers for transients
+  //--- Install undoers for properties
+    self.x1.undoManager = undoManager ()
+    self.y1.undoManager = undoManager ()
+    self.x2.undoManager = undoManager ()
+    self.y2.undoManager = undoManager ()
+    self.width.undoManager = undoManager ()
+  //--- Install owner for relationships
+  //--- register properties for handling signature
+  }
+
+  //····················································································································
+
+  deinit {
+  //--- Remove observers
+  }
+
+  //····················································································································
+  //    populateExplorerWindow
+  //····················································································································
+
+  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "x1",
+      idx:self.x1.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x1.mObserverExplorer,
+      valueExplorer:&self.x1.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "y1",
+      idx:self.y1.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y1.mObserverExplorer,
+      valueExplorer:&self.y1.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "x2",
+      idx:self.x2.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x2.mObserverExplorer,
+      valueExplorer:&self.x2.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "y2",
+      idx:self.y2.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y2.mObserverExplorer,
+      valueExplorer:&self.y2.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "width",
+      idx:self.width.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.width.mObserverExplorer,
+      valueExplorer:&self.width.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+  }
+
+  //····················································································································
+  //    clearObjectExplorer
+  //····················································································································
+
+  override func clearObjectExplorer () {
+    self.x1.mObserverExplorer = nil
+    self.x1.mValueExplorer = nil
+    self.y1.mObserverExplorer = nil
+    self.y1.mValueExplorer = nil
+    self.x2.mObserverExplorer = nil
+    self.x2.mValueExplorer = nil
+    self.y2.mObserverExplorer = nil
+    self.y2.mValueExplorer = nil
+    self.width.mObserverExplorer = nil
+    self.width.mValueExplorer = nil
+    super.clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //    saveIntoDictionary
+  //····················································································································
+
+  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
+    super.saveIntoDictionary (ioDictionary)
+    self.x1.storeIn (dictionary: ioDictionary, forKey: "x1")
+    self.y1.storeIn (dictionary: ioDictionary, forKey: "y1")
+    self.x2.storeIn (dictionary: ioDictionary, forKey: "x2")
+    self.y2.storeIn (dictionary: ioDictionary, forKey: "y2")
+    self.width.storeIn (dictionary: ioDictionary, forKey: "width")
+  }
+
+  //····················································································································
+  //    setUpWithDictionary
+  //····················································································································
+
+  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+                                     managedObjectArray : inout [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    self.x1.readFrom (dictionary: inDictionary, forKey:"x1")
+    self.y1.readFrom (dictionary: inDictionary, forKey:"y1")
+    self.x2.readFrom (dictionary: inDictionary, forKey:"x2")
+    self.y2.readFrom (dictionary: inDictionary, forKey:"y2")
+    self.width.readFrom (dictionary: inDictionary, forKey:"width")
+  }
+
+  //····················································································································
+  //   cascadeObjectRemoving
+  //····················································································································
+
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   accessibleObjects
+  //····················································································································
+
+  override func accessibleObjects (objects : inout [EBManagedObject]) {
+    super.accessibleObjects (objects: &objects)
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_CanariSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -406,178 +578,6 @@ protocol CanariSegmentEntity_width : class {
   var width : EBStoredProperty_Int { get }
 }
 
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: CanariSegmentEntity
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class CanariSegmentEntity : EBManagedObject, CanariSegmentEntity_x1, CanariSegmentEntity_y1, CanariSegmentEntity_x2, CanariSegmentEntity_y2, CanariSegmentEntity_width
-{
-
-  //····················································································································
-  //    Properties
-  //····················································································································
-
-  var x1 = EBStoredProperty_Int (0)
-
-  var y1 = EBStoredProperty_Int (0)
-
-  var x2 = EBStoredProperty_Int (0)
-
-  var y2 = EBStoredProperty_Int (0)
-
-  var width = EBStoredProperty_Int (0)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
-
-
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-  //--- Install property observers for transients
-  //--- Install undoers for properties
-    self.x1.undoManager = undoManager ()
-    self.y1.undoManager = undoManager ()
-    self.x2.undoManager = undoManager ()
-    self.y2.undoManager = undoManager ()
-    self.width.undoManager = undoManager ()
-  //--- Install owner for relationships
-  //--- register properties for handling signature
-  }
-
-  //····················································································································
-
-  deinit {
-  //--- Remove observers
-  }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "x1",
-      idx:self.x1.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x1.mObserverExplorer,
-      valueExplorer:&self.x1.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y1",
-      idx:self.y1.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y1.mObserverExplorer,
-      valueExplorer:&self.y1.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x2",
-      idx:self.x2.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x2.mObserverExplorer,
-      valueExplorer:&self.x2.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "y2",
-      idx:self.y2.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.y2.mObserverExplorer,
-      valueExplorer:&self.y2.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "width",
-      idx:self.width.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.width.mObserverExplorer,
-      valueExplorer:&self.width.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
-  }
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  override func clearObjectExplorer () {
-    self.x1.mObserverExplorer = nil
-    self.x1.mValueExplorer = nil
-    self.y1.mObserverExplorer = nil
-    self.y1.mValueExplorer = nil
-    self.x2.mObserverExplorer = nil
-    self.x2.mValueExplorer = nil
-    self.y2.mObserverExplorer = nil
-    self.y2.mValueExplorer = nil
-    self.width.mObserverExplorer = nil
-    self.width.mValueExplorer = nil
-    super.clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
-    self.x1.storeIn (dictionary: ioDictionary, forKey: "x1")
-    self.y1.storeIn (dictionary: ioDictionary, forKey: "y1")
-    self.x2.storeIn (dictionary: ioDictionary, forKey: "x2")
-    self.y2.storeIn (dictionary: ioDictionary, forKey: "y2")
-    self.width.storeIn (dictionary: ioDictionary, forKey: "width")
-  }
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.x1.readFrom (dictionary: inDictionary, forKey:"x1")
-    self.y1.readFrom (dictionary: inDictionary, forKey:"y1")
-    self.x2.readFrom (dictionary: inDictionary, forKey:"x2")
-    self.y2.readFrom (dictionary: inDictionary, forKey:"y2")
-    self.width.readFrom (dictionary: inDictionary, forKey:"width")
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  }
-
-  //····················································································································
-
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

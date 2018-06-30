@@ -5,6 +5,328 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: FontRootEntity
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class FontRootEntity : EBManagedObject,
+  FontRootEntity_comments,
+  FontRootEntity_selectedTab,
+  FontRootEntity_selectedInspector,
+  FontRootEntity_sampleStringBezierPath,
+  FontRootEntity_sampleStringBezierPathWidth,
+  FontRootEntity_sampleStringBezierPathAscent,
+  FontRootEntity_sampleStringBezierPathDescent {
+
+  //····················································································································
+  //    Properties
+  //····················································································································
+
+  var comments = EBStoredProperty_String ("")
+  var selectedTab = EBStoredProperty_Int (0)
+  var selectedInspector = EBStoredProperty_Int (0)
+
+  //····················································································································
+  //    Transient properties
+  //····················································································································
+
+  var sampleStringBezierPath = EBTransientProperty_CGPath ()
+  var sampleStringBezierPathWidth = EBTransientProperty_Double ()
+  var sampleStringBezierPathAscent = EBTransientProperty_Double ()
+  var sampleStringBezierPathDescent = EBTransientProperty_Double ()
+
+  //····················································································································
+  //    Relationships
+  //····················································································································
+
+  var characters = ToManyRelationship_FontRootEntity_characters ()
+
+  //····················································································································
+  //    init
+  //····················································································································
+
+  override init (managedObjectContext : EBManagedObjectContext) {
+    super.init (managedObjectContext:managedObjectContext)
+  //--- Install compute functions for transients
+    sampleStringBezierPath.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.characters.prop.kind ()
+        kind &= unwSelf.characters.prop.kind ()
+        kind &= g_Preferences!.sampleString.prop.kind ()
+        kind &= g_Preferences!.sampleStringSize.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.characters.prop, unwSelf.characters.prop, g_Preferences!.sampleString.prop, g_Preferences!.sampleStringSize.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3)) :
+            return .singleSelection (compute_FontRootEntity_sampleStringBezierPath (v0, v1, v2, v3))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    sampleStringBezierPathWidth.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.sampleStringBezierPath.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.sampleStringBezierPath.prop) {
+          case (.singleSelection (let v0)) :
+            return .singleSelection (compute_FontRootEntity_sampleStringBezierPathWidth (v0))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    sampleStringBezierPathAscent.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.sampleStringBezierPath.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.sampleStringBezierPath.prop) {
+          case (.singleSelection (let v0)) :
+            return .singleSelection (compute_FontRootEntity_sampleStringBezierPathAscent (v0))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    sampleStringBezierPathDescent.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.sampleStringBezierPath.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.sampleStringBezierPath.prop) {
+          case (.singleSelection (let v0)) :
+            return .singleSelection (compute_FontRootEntity_sampleStringBezierPathDescent (v0))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  //--- Install property observers for transients
+    characters.addEBObserverOf_segmentArrayForDrawing (sampleStringBezierPath)
+    characters.addEBObserverOf_advance (sampleStringBezierPath)
+    g_Preferences?.sampleString.addEBObserver (sampleStringBezierPath)
+    g_Preferences?.sampleStringSize.addEBObserver (sampleStringBezierPath)
+    sampleStringBezierPath.addEBObserver (sampleStringBezierPathWidth)
+    sampleStringBezierPath.addEBObserver (sampleStringBezierPathAscent)
+    sampleStringBezierPath.addEBObserver (sampleStringBezierPathDescent)
+  //--- Install undoers for properties
+    self.comments.undoManager = undoManager ()
+    self.selectedTab.undoManager = undoManager ()
+    self.selectedInspector.undoManager = undoManager ()
+  //--- Install owner for relationships
+    characters.owner = self
+  //--- register properties for handling signature
+    characters.setSignatureObserver (observer: self)
+    comments.setSignatureObserver (observer: self)
+  }
+
+  //····················································································································
+
+  deinit {
+  //--- Remove observers
+    characters.removeEBObserverOf_segmentArrayForDrawing (sampleStringBezierPath)
+    characters.removeEBObserverOf_advance (sampleStringBezierPath)
+    g_Preferences?.sampleString.removeEBObserver (sampleStringBezierPath)
+    g_Preferences?.sampleStringSize.removeEBObserver (sampleStringBezierPath)
+    sampleStringBezierPath.removeEBObserver (sampleStringBezierPathWidth)
+    sampleStringBezierPath.removeEBObserver (sampleStringBezierPathAscent)
+    sampleStringBezierPath.removeEBObserver (sampleStringBezierPathDescent)
+  }
+
+  //····················································································································
+  //    populateExplorerWindow
+  //····················································································································
+
+  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "comments",
+      idx:self.comments.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.comments.mObserverExplorer,
+      valueExplorer:&self.comments.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectedTab",
+      idx:self.selectedTab.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectedTab.mObserverExplorer,
+      valueExplorer:&self.selectedTab.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectedInspector",
+      idx:self.selectedInspector.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectedInspector.mObserverExplorer,
+      valueExplorer:&self.selectedInspector.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "sampleStringBezierPath",
+      idx:self.sampleStringBezierPath.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.sampleStringBezierPath.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPath.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sampleStringBezierPathWidth",
+      idx:self.sampleStringBezierPathWidth.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.sampleStringBezierPathWidth.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPathWidth.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sampleStringBezierPathAscent",
+      idx:self.sampleStringBezierPathAscent.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.sampleStringBezierPathAscent.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPathAscent.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sampleStringBezierPathDescent",
+      idx:self.sampleStringBezierPathDescent.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.sampleStringBezierPathDescent.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPathDescent.mValueExplorer
+    )
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "characters",
+      idx:characters.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&characters.mValueExplorer
+    )
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+  }
+
+  //····················································································································
+  //    clearObjectExplorer
+  //····················································································································
+
+  override func clearObjectExplorer () {
+    self.comments.mObserverExplorer = nil
+    self.comments.mValueExplorer = nil
+    self.selectedTab.mObserverExplorer = nil
+    self.selectedTab.mValueExplorer = nil
+    self.selectedInspector.mObserverExplorer = nil
+    self.selectedInspector.mValueExplorer = nil
+    // characters.mObserverExplorer = nil
+    characters.mValueExplorer = nil
+    super.clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //    saveIntoDictionary
+  //····················································································································
+
+  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
+    super.saveIntoDictionary (ioDictionary)
+    self.comments.storeIn (dictionary: ioDictionary, forKey: "comments")
+    self.selectedTab.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
+    self.selectedInspector.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
+    store (managedObjectArray: characters.propval as NSArray, relationshipName:"characters", intoDictionary: ioDictionary) ;
+  }
+
+  //····················································································································
+  //    setUpWithDictionary
+  //····················································································································
+
+  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+                                     managedObjectArray : inout [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    self.comments.readFrom (dictionary: inDictionary, forKey:"comments")
+    self.selectedTab.readFrom (dictionary: inDictionary, forKey:"selectedTab")
+    self.selectedInspector.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
+    characters.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "characters",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [FontCharacterEntity])
+  }
+
+  //····················································································································
+  //   cascadeObjectRemoving
+  //····················································································································
+
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    self.characters.setProp (Array ()) // Set relationships to nil
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetToManyRelationships
+  //····················································································································
+
+  override func resetToManyRelationships () {
+    super.resetToManyRelationships ()
+    characters.setProp (Array ())
+  }
+
+  //····················································································································
+  //   accessibleObjects
+  //····················································································································
+
+  override func accessibleObjects (objects : inout [EBManagedObject]) {
+    super.accessibleObjects (objects: &objects)
+    for managedObject : EBManagedObject in characters.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   computeSignature
+  //····················································································································
+
+  override func computeSignature () -> UInt32 {
+    var crc = super.computeSignature ()
+    crc.accumulateUInt32 (characters.signature ())
+    crc.accumulateUInt32 (comments.signature ())
+    return crc
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_FontRootEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -547,43 +869,6 @@ class ToManyRelationshipReadWrite_FontRootEntity_characters : ReadOnlyArrayOf_Fo
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship proxy: characters
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class ToManyRelationshipProxy_FontRootEntity_characters : ToManyRelationshipReadWrite_FontRootEntity_characters {
-  private var mModel : ToManyRelationshipReadWrite_FontRootEntity_characters?
-
-  //····················································································································
-  
-  final func setModel (model : ToManyRelationshipReadWrite_FontRootEntity_characters?) {
-    mModel = model
-  }
-
-  //····················································································································
-  
-  override var prop : EBProperty < [FontCharacterEntity] > {
-    get {
-      return mModel?.prop ?? .noSelection
-    }
-  }
- 
-   //····················································································································
- 
-  override func setProp (_ value : [FontCharacterEntity]) {
-    switch self.prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let array) :
-      mModel?.setProp (array)
-    }
-  }
- 
-  //····················································································································
-
-}
-*/
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: characters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -752,324 +1037,6 @@ ToManyRelationshipReadWrite_FontRootEntity_characters, EBSignatureObserverProtoc
 
   //····················································································································
  
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: FontRootEntity
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class FontRootEntity : EBManagedObject, FontRootEntity_comments, FontRootEntity_selectedTab, FontRootEntity_selectedInspector, FontRootEntity_sampleStringBezierPath, FontRootEntity_sampleStringBezierPathWidth, FontRootEntity_sampleStringBezierPathAscent, FontRootEntity_sampleStringBezierPathDescent
-{
-
-  //····················································································································
-  //    Properties
-  //····················································································································
-
-  var comments = EBStoredProperty_String ("")
-
-  var selectedTab = EBStoredProperty_Int (0)
-
-  var selectedInspector = EBStoredProperty_Int (0)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var sampleStringBezierPath = EBTransientProperty_CGPath ()
-  var sampleStringBezierPathWidth = EBTransientProperty_Double ()
-  var sampleStringBezierPathAscent = EBTransientProperty_Double ()
-  var sampleStringBezierPathDescent = EBTransientProperty_Double ()
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
-
-  var characters = ToManyRelationship_FontRootEntity_characters ()
-
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-    sampleStringBezierPath.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.characters.prop.kind ()
-        kind &= unwSelf.characters.prop.kind ()
-        kind &= g_Preferences!.sampleString.prop.kind ()
-        kind &= g_Preferences!.sampleStringSize.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.characters.prop, unwSelf.characters.prop, g_Preferences!.sampleString.prop, g_Preferences!.sampleStringSize.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3)) :
-            return .singleSelection (compute_FontRootEntity_sampleStringBezierPath (v0, v1, v2, v3))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-    sampleStringBezierPathWidth.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.sampleStringBezierPath.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.sampleStringBezierPath.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_FontRootEntity_sampleStringBezierPathWidth (v0))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-    sampleStringBezierPathAscent.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.sampleStringBezierPath.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.sampleStringBezierPath.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_FontRootEntity_sampleStringBezierPathAscent (v0))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-    sampleStringBezierPathDescent.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.sampleStringBezierPath.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.sampleStringBezierPath.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_FontRootEntity_sampleStringBezierPathDescent (v0))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-  //--- Install property observers for transients
-    characters.addEBObserverOf_segmentArrayForDrawing (sampleStringBezierPath)
-    characters.addEBObserverOf_advance (sampleStringBezierPath)
-    g_Preferences?.sampleString.addEBObserver (sampleStringBezierPath)
-    g_Preferences?.sampleStringSize.addEBObserver (sampleStringBezierPath)
-    sampleStringBezierPath.addEBObserver (sampleStringBezierPathWidth)
-    sampleStringBezierPath.addEBObserver (sampleStringBezierPathAscent)
-    sampleStringBezierPath.addEBObserver (sampleStringBezierPathDescent)
-  //--- Install undoers for properties
-    self.comments.undoManager = undoManager ()
-    self.selectedTab.undoManager = undoManager ()
-    self.selectedInspector.undoManager = undoManager ()
-  //--- Install owner for relationships
-    characters.owner = self
-  //--- register properties for handling signature
-    characters.setSignatureObserver (observer: self)
-    comments.setSignatureObserver (observer: self)
-  }
-
-  //····················································································································
-
-  deinit {
-  //--- Remove observers
-    characters.removeEBObserverOf_segmentArrayForDrawing (sampleStringBezierPath)
-    characters.removeEBObserverOf_advance (sampleStringBezierPath)
-    g_Preferences?.sampleString.removeEBObserver (sampleStringBezierPath)
-    g_Preferences?.sampleStringSize.removeEBObserver (sampleStringBezierPath)
-    sampleStringBezierPath.removeEBObserver (sampleStringBezierPathWidth)
-    sampleStringBezierPath.removeEBObserver (sampleStringBezierPathAscent)
-    sampleStringBezierPath.removeEBObserver (sampleStringBezierPathDescent)
-  }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "comments",
-      idx:self.comments.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.comments.mObserverExplorer,
-      valueExplorer:&self.comments.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedTab",
-      idx:self.selectedTab.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedTab.mObserverExplorer,
-      valueExplorer:&self.selectedTab.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedInspector",
-      idx:self.selectedInspector.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedInspector.mObserverExplorer,
-      valueExplorer:&self.selectedInspector.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "sampleStringBezierPath",
-      idx:self.sampleStringBezierPath.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.sampleStringBezierPath.mObserverExplorer,
-      valueExplorer:&self.sampleStringBezierPath.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sampleStringBezierPathWidth",
-      idx:self.sampleStringBezierPathWidth.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.sampleStringBezierPathWidth.mObserverExplorer,
-      valueExplorer:&self.sampleStringBezierPathWidth.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sampleStringBezierPathAscent",
-      idx:self.sampleStringBezierPathAscent.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.sampleStringBezierPathAscent.mObserverExplorer,
-      valueExplorer:&self.sampleStringBezierPathAscent.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "sampleStringBezierPathDescent",
-      idx:self.sampleStringBezierPathDescent.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.sampleStringBezierPathDescent.mObserverExplorer,
-      valueExplorer:&self.sampleStringBezierPathDescent.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "characters",
-      idx:characters.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&characters.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
-  }
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  override func clearObjectExplorer () {
-    self.comments.mObserverExplorer = nil
-    self.comments.mValueExplorer = nil
-    self.selectedTab.mObserverExplorer = nil
-    self.selectedTab.mValueExplorer = nil
-    self.selectedInspector.mObserverExplorer = nil
-    self.selectedInspector.mValueExplorer = nil
-    // characters.mObserverExplorer = nil
-    characters.mValueExplorer = nil
-    super.clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
-    self.comments.storeIn (dictionary: ioDictionary, forKey: "comments")
-    self.selectedTab.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
-    self.selectedInspector.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
-    store (managedObjectArray: characters.propval as NSArray, relationshipName:"characters", intoDictionary: ioDictionary) ;
-  }
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.comments.readFrom (dictionary: inDictionary, forKey:"comments")
-    self.selectedTab.readFrom (dictionary: inDictionary, forKey:"selectedTab")
-    self.selectedInspector.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
-    characters.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "characters",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [FontCharacterEntity])
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.characters.setProp (Array ()) // Set relationships to nil
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   resetToManyRelationships
-  //····················································································································
-
-  override func resetToManyRelationships () {
-    super.resetToManyRelationships ()
-    characters.setProp (Array ())
-  }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-    for managedObject : EBManagedObject in characters.propval {
-      objects.append (managedObject)
-    }
-  }
-
-  //····················································································································
-  //   computeSignature
-  //····················································································································
-
-  override func computeSignature () -> UInt32 {
-    var crc = super.computeSignature ()
-    crc.accumulateUInt32 (characters.signature ())
-    crc.accumulateUInt32 (comments.signature ())
-    return crc
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

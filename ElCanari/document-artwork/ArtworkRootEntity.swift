@@ -5,6 +5,340 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: ArtworkRootEntity
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ArtworkRootEntity : EBManagedObject,
+  ArtworkRootEntity_selectedTab,
+  ArtworkRootEntity_comments,
+  ArtworkRootEntity_minPP_TP_TT_TW_displayUnit,
+  ArtworkRootEntity_minPP_TP_TT_TW_inEBUnit,
+  ArtworkRootEntity_minValueForOARdisplayUnit,
+  ArtworkRootEntity_minValueForOARinEBUnit,
+  ArtworkRootEntity_minValueForPHDdisplayUnit,
+  ArtworkRootEntity_minValueForPHDinEBUnit,
+  ArtworkRootEntity_drillDataFormat,
+  ArtworkRootEntity_drillDataFileExtension,
+  ArtworkRootEntity_drillListFileExtension,
+  ArtworkRootEntity_drillToolListFileExtension {
+
+  //····················································································································
+  //    Properties
+  //····················································································································
+
+  var selectedTab = EBStoredProperty_Int (0)
+  var comments = EBStoredProperty_String ("")
+  var minPP_TP_TT_TW_displayUnit = EBStoredProperty_Int (90)
+  var minPP_TP_TT_TW_inEBUnit = EBStoredProperty_Int (18000)
+  var minValueForOARdisplayUnit = EBStoredProperty_Int (90)
+  var minValueForOARinEBUnit = EBStoredProperty_Int (18000)
+  var minValueForPHDdisplayUnit = EBStoredProperty_Int (90)
+  var minValueForPHDinEBUnit = EBStoredProperty_Int (18000)
+  var drillDataFormat = EBStoredProperty_DrillDataFormatEnum (DrillDataFormatEnum.excellon)
+  var drillDataFileExtension = EBStoredProperty_String ("drf")
+  var drillListFileExtension = EBStoredProperty_String ("drd")
+  var drillToolListFileExtension = EBStoredProperty_String ("drl")
+
+  //····················································································································
+  //    Transient properties
+  //····················································································································
+
+
+  //····················································································································
+  //    Relationships
+  //····················································································································
+
+  var fileGenerationParameterArray = ToManyRelationship_ArtworkRootEntity_fileGenerationParameterArray ()
+
+  //····················································································································
+  //    init
+  //····················································································································
+
+  override init (managedObjectContext : EBManagedObjectContext) {
+    super.init (managedObjectContext:managedObjectContext)
+  //--- Install compute functions for transients
+  //--- Install property observers for transients
+  //--- Install undoers for properties
+    self.selectedTab.undoManager = undoManager ()
+    self.comments.undoManager = undoManager ()
+    self.minPP_TP_TT_TW_displayUnit.undoManager = undoManager ()
+    self.minPP_TP_TT_TW_inEBUnit.undoManager = undoManager ()
+    self.minValueForOARdisplayUnit.undoManager = undoManager ()
+    self.minValueForOARinEBUnit.undoManager = undoManager ()
+    self.minValueForPHDdisplayUnit.undoManager = undoManager ()
+    self.minValueForPHDinEBUnit.undoManager = undoManager ()
+    self.drillDataFormat.undoManager = undoManager ()
+    self.drillDataFileExtension.undoManager = undoManager ()
+    self.drillListFileExtension.undoManager = undoManager ()
+    self.drillToolListFileExtension.undoManager = undoManager ()
+  //--- Install owner for relationships
+    fileGenerationParameterArray.owner = self
+  //--- register properties for handling signature
+    comments.setSignatureObserver (observer: self)
+    drillDataFileExtension.setSignatureObserver (observer: self)
+    drillDataFormat.setSignatureObserver (observer: self)
+    drillListFileExtension.setSignatureObserver (observer: self)
+    drillToolListFileExtension.setSignatureObserver (observer: self)
+    fileGenerationParameterArray.setSignatureObserver (observer: self)
+    minPP_TP_TT_TW_inEBUnit.setSignatureObserver (observer: self)
+    minValueForOARinEBUnit.setSignatureObserver (observer: self)
+    minValueForPHDinEBUnit.setSignatureObserver (observer: self)
+  }
+
+  //····················································································································
+
+  deinit {
+  //--- Remove observers
+  }
+
+  //····················································································································
+  //    populateExplorerWindow
+  //····················································································································
+
+  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "selectedTab",
+      idx:self.selectedTab.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectedTab.mObserverExplorer,
+      valueExplorer:&self.selectedTab.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "comments",
+      idx:self.comments.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.comments.mObserverExplorer,
+      valueExplorer:&self.comments.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "minPP_TP_TT_TW_displayUnit",
+      idx:self.minPP_TP_TT_TW_displayUnit.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.minPP_TP_TT_TW_displayUnit.mObserverExplorer,
+      valueExplorer:&self.minPP_TP_TT_TW_displayUnit.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "minPP_TP_TT_TW_inEBUnit",
+      idx:self.minPP_TP_TT_TW_inEBUnit.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.minPP_TP_TT_TW_inEBUnit.mObserverExplorer,
+      valueExplorer:&self.minPP_TP_TT_TW_inEBUnit.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "minValueForOARdisplayUnit",
+      idx:self.minValueForOARdisplayUnit.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.minValueForOARdisplayUnit.mObserverExplorer,
+      valueExplorer:&self.minValueForOARdisplayUnit.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "minValueForOARinEBUnit",
+      idx:self.minValueForOARinEBUnit.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.minValueForOARinEBUnit.mObserverExplorer,
+      valueExplorer:&self.minValueForOARinEBUnit.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "minValueForPHDdisplayUnit",
+      idx:self.minValueForPHDdisplayUnit.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.minValueForPHDdisplayUnit.mObserverExplorer,
+      valueExplorer:&self.minValueForPHDdisplayUnit.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "minValueForPHDinEBUnit",
+      idx:self.minValueForPHDinEBUnit.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.minValueForPHDinEBUnit.mObserverExplorer,
+      valueExplorer:&self.minValueForPHDinEBUnit.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drillDataFormat",
+      idx:self.drillDataFormat.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drillDataFormat.mObserverExplorer,
+      valueExplorer:&self.drillDataFormat.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drillDataFileExtension",
+      idx:self.drillDataFileExtension.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drillDataFileExtension.mObserverExplorer,
+      valueExplorer:&self.drillDataFileExtension.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drillListFileExtension",
+      idx:self.drillListFileExtension.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drillListFileExtension.mObserverExplorer,
+      valueExplorer:&self.drillListFileExtension.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drillToolListFileExtension",
+      idx:self.drillToolListFileExtension.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drillToolListFileExtension.mObserverExplorer,
+      valueExplorer:&self.drillToolListFileExtension.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "fileGenerationParameterArray",
+      idx:fileGenerationParameterArray.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&fileGenerationParameterArray.mValueExplorer
+    )
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+  }
+
+  //····················································································································
+  //    clearObjectExplorer
+  //····················································································································
+
+  override func clearObjectExplorer () {
+    self.selectedTab.mObserverExplorer = nil
+    self.selectedTab.mValueExplorer = nil
+    self.comments.mObserverExplorer = nil
+    self.comments.mValueExplorer = nil
+    self.minPP_TP_TT_TW_displayUnit.mObserverExplorer = nil
+    self.minPP_TP_TT_TW_displayUnit.mValueExplorer = nil
+    self.minPP_TP_TT_TW_inEBUnit.mObserverExplorer = nil
+    self.minPP_TP_TT_TW_inEBUnit.mValueExplorer = nil
+    self.minValueForOARdisplayUnit.mObserverExplorer = nil
+    self.minValueForOARdisplayUnit.mValueExplorer = nil
+    self.minValueForOARinEBUnit.mObserverExplorer = nil
+    self.minValueForOARinEBUnit.mValueExplorer = nil
+    self.minValueForPHDdisplayUnit.mObserverExplorer = nil
+    self.minValueForPHDdisplayUnit.mValueExplorer = nil
+    self.minValueForPHDinEBUnit.mObserverExplorer = nil
+    self.minValueForPHDinEBUnit.mValueExplorer = nil
+    self.drillDataFormat.mObserverExplorer = nil
+    self.drillDataFormat.mValueExplorer = nil
+    self.drillDataFileExtension.mObserverExplorer = nil
+    self.drillDataFileExtension.mValueExplorer = nil
+    self.drillListFileExtension.mObserverExplorer = nil
+    self.drillListFileExtension.mValueExplorer = nil
+    self.drillToolListFileExtension.mObserverExplorer = nil
+    self.drillToolListFileExtension.mValueExplorer = nil
+    // fileGenerationParameterArray.mObserverExplorer = nil
+    fileGenerationParameterArray.mValueExplorer = nil
+    super.clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //    saveIntoDictionary
+  //····················································································································
+
+  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
+    super.saveIntoDictionary (ioDictionary)
+    self.selectedTab.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
+    self.comments.storeIn (dictionary: ioDictionary, forKey: "comments")
+    self.minPP_TP_TT_TW_displayUnit.storeIn (dictionary: ioDictionary, forKey: "minPP_TP_TT_TW_displayUnit")
+    self.minPP_TP_TT_TW_inEBUnit.storeIn (dictionary: ioDictionary, forKey: "minPP_TP_TT_TW_inEBUnit")
+    self.minValueForOARdisplayUnit.storeIn (dictionary: ioDictionary, forKey: "minValueForOARdisplayUnit")
+    self.minValueForOARinEBUnit.storeIn (dictionary: ioDictionary, forKey: "minValueForOARinEBUnit")
+    self.minValueForPHDdisplayUnit.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDdisplayUnit")
+    self.minValueForPHDinEBUnit.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDinEBUnit")
+    self.drillDataFormat.storeIn (dictionary: ioDictionary, forKey: "drillDataFormat")
+    self.drillDataFileExtension.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
+    self.drillListFileExtension.storeIn (dictionary: ioDictionary, forKey: "drillListFileExtension")
+    self.drillToolListFileExtension.storeIn (dictionary: ioDictionary, forKey: "drillToolListFileExtension")
+    store (managedObjectArray: fileGenerationParameterArray.propval as NSArray, relationshipName:"fileGenerationParameterArray", intoDictionary: ioDictionary) ;
+  }
+
+  //····················································································································
+  //    setUpWithDictionary
+  //····················································································································
+
+  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+                                     managedObjectArray : inout [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    self.selectedTab.readFrom (dictionary: inDictionary, forKey:"selectedTab")
+    self.comments.readFrom (dictionary: inDictionary, forKey:"comments")
+    self.minPP_TP_TT_TW_displayUnit.readFrom (dictionary: inDictionary, forKey:"minPP_TP_TT_TW_displayUnit")
+    self.minPP_TP_TT_TW_inEBUnit.readFrom (dictionary: inDictionary, forKey:"minPP_TP_TT_TW_inEBUnit")
+    self.minValueForOARdisplayUnit.readFrom (dictionary: inDictionary, forKey:"minValueForOARdisplayUnit")
+    self.minValueForOARinEBUnit.readFrom (dictionary: inDictionary, forKey:"minValueForOARinEBUnit")
+    self.minValueForPHDdisplayUnit.readFrom (dictionary: inDictionary, forKey:"minValueForPHDdisplayUnit")
+    self.minValueForPHDinEBUnit.readFrom (dictionary: inDictionary, forKey:"minValueForPHDinEBUnit")
+    self.drillDataFormat.readFrom (dictionary: inDictionary, forKey:"drillDataFormat")
+    self.drillDataFileExtension.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
+    self.drillListFileExtension.readFrom (dictionary: inDictionary, forKey:"drillListFileExtension")
+    self.drillToolListFileExtension.readFrom (dictionary: inDictionary, forKey:"drillToolListFileExtension")
+    fileGenerationParameterArray.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "fileGenerationParameterArray",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ArtworkFileGenerationParameters])
+  }
+
+  //····················································································································
+  //   cascadeObjectRemoving
+  //····················································································································
+
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    self.fileGenerationParameterArray.setProp (Array ()) // Set relationships to nil
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetToManyRelationships
+  //····················································································································
+
+  override func resetToManyRelationships () {
+    super.resetToManyRelationships ()
+    fileGenerationParameterArray.setProp (Array ())
+  }
+
+  //····················································································································
+  //   accessibleObjects
+  //····················································································································
+
+  override func accessibleObjects (objects : inout [EBManagedObject]) {
+    super.accessibleObjects (objects: &objects)
+    for managedObject : EBManagedObject in fileGenerationParameterArray.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   computeSignature
+  //····················································································································
+
+  override func computeSignature () -> UInt32 {
+    var crc = super.computeSignature ()
+    crc.accumulateUInt32 (comments.signature ())
+    crc.accumulateUInt32 (drillDataFileExtension.signature ())
+    crc.accumulateUInt32 (drillDataFormat.signature ())
+    crc.accumulateUInt32 (drillListFileExtension.signature ())
+    crc.accumulateUInt32 (drillToolListFileExtension.signature ())
+    crc.accumulateUInt32 (fileGenerationParameterArray.signature ())
+    crc.accumulateUInt32 (minPP_TP_TT_TW_inEBUnit.signature ())
+    crc.accumulateUInt32 (minValueForOARinEBUnit.signature ())
+    crc.accumulateUInt32 (minValueForPHDinEBUnit.signature ())
+    return crc
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_ArtworkRootEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -876,43 +1210,6 @@ class ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship proxy: fileGenerationParameterArray
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class ToManyRelationshipProxy_ArtworkRootEntity_fileGenerationParameterArray : ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray {
-  private var mModel : ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray?
-
-  //····················································································································
-  
-  final func setModel (model : ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray?) {
-    mModel = model
-  }
-
-  //····················································································································
-  
-  override var prop : EBProperty < [ArtworkFileGenerationParameters] > {
-    get {
-      return mModel?.prop ?? .noSelection
-    }
-  }
- 
-   //····················································································································
- 
-  override func setProp (_ value : [ArtworkFileGenerationParameters]) {
-    switch self.prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let array) :
-      mModel?.setProp (array)
-    }
-  }
- 
-  //····················································································································
-
-}
-*/
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: fileGenerationParameterArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1115,340 +1412,6 @@ ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray, EBSi
 
   //····················································································································
  
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ArtworkRootEntity
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ArtworkRootEntity : EBManagedObject, ArtworkRootEntity_selectedTab, ArtworkRootEntity_comments, ArtworkRootEntity_minPP_TP_TT_TW_displayUnit, ArtworkRootEntity_minPP_TP_TT_TW_inEBUnit, ArtworkRootEntity_minValueForOARdisplayUnit, ArtworkRootEntity_minValueForOARinEBUnit, ArtworkRootEntity_minValueForPHDdisplayUnit, ArtworkRootEntity_minValueForPHDinEBUnit, ArtworkRootEntity_drillDataFormat, ArtworkRootEntity_drillDataFileExtension, ArtworkRootEntity_drillListFileExtension, ArtworkRootEntity_drillToolListFileExtension
-{
-
-  //····················································································································
-  //    Properties
-  //····················································································································
-
-  var selectedTab = EBStoredProperty_Int (0)
-
-  var comments = EBStoredProperty_String ("")
-
-  var minPP_TP_TT_TW_displayUnit = EBStoredProperty_Int (90)
-
-  var minPP_TP_TT_TW_inEBUnit = EBStoredProperty_Int (18000)
-
-  var minValueForOARdisplayUnit = EBStoredProperty_Int (90)
-
-  var minValueForOARinEBUnit = EBStoredProperty_Int (18000)
-
-  var minValueForPHDdisplayUnit = EBStoredProperty_Int (90)
-
-  var minValueForPHDinEBUnit = EBStoredProperty_Int (18000)
-
-  var drillDataFormat = EBStoredProperty_DrillDataFormatEnum (DrillDataFormatEnum.excellon)
-
-  var drillDataFileExtension = EBStoredProperty_String ("drf")
-
-  var drillListFileExtension = EBStoredProperty_String ("drd")
-
-  var drillToolListFileExtension = EBStoredProperty_String ("drl")
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
-
-  var fileGenerationParameterArray = ToManyRelationship_ArtworkRootEntity_fileGenerationParameterArray ()
-
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-  //--- Install property observers for transients
-  //--- Install undoers for properties
-    self.selectedTab.undoManager = undoManager ()
-    self.comments.undoManager = undoManager ()
-    self.minPP_TP_TT_TW_displayUnit.undoManager = undoManager ()
-    self.minPP_TP_TT_TW_inEBUnit.undoManager = undoManager ()
-    self.minValueForOARdisplayUnit.undoManager = undoManager ()
-    self.minValueForOARinEBUnit.undoManager = undoManager ()
-    self.minValueForPHDdisplayUnit.undoManager = undoManager ()
-    self.minValueForPHDinEBUnit.undoManager = undoManager ()
-    self.drillDataFormat.undoManager = undoManager ()
-    self.drillDataFileExtension.undoManager = undoManager ()
-    self.drillListFileExtension.undoManager = undoManager ()
-    self.drillToolListFileExtension.undoManager = undoManager ()
-  //--- Install owner for relationships
-    fileGenerationParameterArray.owner = self
-  //--- register properties for handling signature
-    comments.setSignatureObserver (observer: self)
-    drillDataFileExtension.setSignatureObserver (observer: self)
-    drillDataFormat.setSignatureObserver (observer: self)
-    drillListFileExtension.setSignatureObserver (observer: self)
-    drillToolListFileExtension.setSignatureObserver (observer: self)
-    fileGenerationParameterArray.setSignatureObserver (observer: self)
-    minPP_TP_TT_TW_inEBUnit.setSignatureObserver (observer: self)
-    minValueForOARinEBUnit.setSignatureObserver (observer: self)
-    minValueForPHDinEBUnit.setSignatureObserver (observer: self)
-  }
-
-  //····················································································································
-
-  deinit {
-  //--- Remove observers
-  }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "selectedTab",
-      idx:self.selectedTab.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedTab.mObserverExplorer,
-      valueExplorer:&self.selectedTab.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "comments",
-      idx:self.comments.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.comments.mObserverExplorer,
-      valueExplorer:&self.comments.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "minPP_TP_TT_TW_displayUnit",
-      idx:self.minPP_TP_TT_TW_displayUnit.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minPP_TP_TT_TW_displayUnit.mObserverExplorer,
-      valueExplorer:&self.minPP_TP_TT_TW_displayUnit.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "minPP_TP_TT_TW_inEBUnit",
-      idx:self.minPP_TP_TT_TW_inEBUnit.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minPP_TP_TT_TW_inEBUnit.mObserverExplorer,
-      valueExplorer:&self.minPP_TP_TT_TW_inEBUnit.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "minValueForOARdisplayUnit",
-      idx:self.minValueForOARdisplayUnit.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minValueForOARdisplayUnit.mObserverExplorer,
-      valueExplorer:&self.minValueForOARdisplayUnit.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "minValueForOARinEBUnit",
-      idx:self.minValueForOARinEBUnit.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minValueForOARinEBUnit.mObserverExplorer,
-      valueExplorer:&self.minValueForOARinEBUnit.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "minValueForPHDdisplayUnit",
-      idx:self.minValueForPHDdisplayUnit.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minValueForPHDdisplayUnit.mObserverExplorer,
-      valueExplorer:&self.minValueForPHDdisplayUnit.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "minValueForPHDinEBUnit",
-      idx:self.minValueForPHDinEBUnit.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.minValueForPHDinEBUnit.mObserverExplorer,
-      valueExplorer:&self.minValueForPHDinEBUnit.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drillDataFormat",
-      idx:self.drillDataFormat.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drillDataFormat.mObserverExplorer,
-      valueExplorer:&self.drillDataFormat.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drillDataFileExtension",
-      idx:self.drillDataFileExtension.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drillDataFileExtension.mObserverExplorer,
-      valueExplorer:&self.drillDataFileExtension.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drillListFileExtension",
-      idx:self.drillListFileExtension.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drillListFileExtension.mObserverExplorer,
-      valueExplorer:&self.drillListFileExtension.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drillToolListFileExtension",
-      idx:self.drillToolListFileExtension.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drillToolListFileExtension.mObserverExplorer,
-      valueExplorer:&self.drillToolListFileExtension.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "fileGenerationParameterArray",
-      idx:fileGenerationParameterArray.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&fileGenerationParameterArray.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
-  }
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  override func clearObjectExplorer () {
-    self.selectedTab.mObserverExplorer = nil
-    self.selectedTab.mValueExplorer = nil
-    self.comments.mObserverExplorer = nil
-    self.comments.mValueExplorer = nil
-    self.minPP_TP_TT_TW_displayUnit.mObserverExplorer = nil
-    self.minPP_TP_TT_TW_displayUnit.mValueExplorer = nil
-    self.minPP_TP_TT_TW_inEBUnit.mObserverExplorer = nil
-    self.minPP_TP_TT_TW_inEBUnit.mValueExplorer = nil
-    self.minValueForOARdisplayUnit.mObserverExplorer = nil
-    self.minValueForOARdisplayUnit.mValueExplorer = nil
-    self.minValueForOARinEBUnit.mObserverExplorer = nil
-    self.minValueForOARinEBUnit.mValueExplorer = nil
-    self.minValueForPHDdisplayUnit.mObserverExplorer = nil
-    self.minValueForPHDdisplayUnit.mValueExplorer = nil
-    self.minValueForPHDinEBUnit.mObserverExplorer = nil
-    self.minValueForPHDinEBUnit.mValueExplorer = nil
-    self.drillDataFormat.mObserverExplorer = nil
-    self.drillDataFormat.mValueExplorer = nil
-    self.drillDataFileExtension.mObserverExplorer = nil
-    self.drillDataFileExtension.mValueExplorer = nil
-    self.drillListFileExtension.mObserverExplorer = nil
-    self.drillListFileExtension.mValueExplorer = nil
-    self.drillToolListFileExtension.mObserverExplorer = nil
-    self.drillToolListFileExtension.mValueExplorer = nil
-    // fileGenerationParameterArray.mObserverExplorer = nil
-    fileGenerationParameterArray.mValueExplorer = nil
-    super.clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
-    self.selectedTab.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
-    self.comments.storeIn (dictionary: ioDictionary, forKey: "comments")
-    self.minPP_TP_TT_TW_displayUnit.storeIn (dictionary: ioDictionary, forKey: "minPP_TP_TT_TW_displayUnit")
-    self.minPP_TP_TT_TW_inEBUnit.storeIn (dictionary: ioDictionary, forKey: "minPP_TP_TT_TW_inEBUnit")
-    self.minValueForOARdisplayUnit.storeIn (dictionary: ioDictionary, forKey: "minValueForOARdisplayUnit")
-    self.minValueForOARinEBUnit.storeIn (dictionary: ioDictionary, forKey: "minValueForOARinEBUnit")
-    self.minValueForPHDdisplayUnit.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDdisplayUnit")
-    self.minValueForPHDinEBUnit.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDinEBUnit")
-    self.drillDataFormat.storeIn (dictionary: ioDictionary, forKey: "drillDataFormat")
-    self.drillDataFileExtension.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
-    self.drillListFileExtension.storeIn (dictionary: ioDictionary, forKey: "drillListFileExtension")
-    self.drillToolListFileExtension.storeIn (dictionary: ioDictionary, forKey: "drillToolListFileExtension")
-    store (managedObjectArray: fileGenerationParameterArray.propval as NSArray, relationshipName:"fileGenerationParameterArray", intoDictionary: ioDictionary) ;
-  }
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.selectedTab.readFrom (dictionary: inDictionary, forKey:"selectedTab")
-    self.comments.readFrom (dictionary: inDictionary, forKey:"comments")
-    self.minPP_TP_TT_TW_displayUnit.readFrom (dictionary: inDictionary, forKey:"minPP_TP_TT_TW_displayUnit")
-    self.minPP_TP_TT_TW_inEBUnit.readFrom (dictionary: inDictionary, forKey:"minPP_TP_TT_TW_inEBUnit")
-    self.minValueForOARdisplayUnit.readFrom (dictionary: inDictionary, forKey:"minValueForOARdisplayUnit")
-    self.minValueForOARinEBUnit.readFrom (dictionary: inDictionary, forKey:"minValueForOARinEBUnit")
-    self.minValueForPHDdisplayUnit.readFrom (dictionary: inDictionary, forKey:"minValueForPHDdisplayUnit")
-    self.minValueForPHDinEBUnit.readFrom (dictionary: inDictionary, forKey:"minValueForPHDinEBUnit")
-    self.drillDataFormat.readFrom (dictionary: inDictionary, forKey:"drillDataFormat")
-    self.drillDataFileExtension.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
-    self.drillListFileExtension.readFrom (dictionary: inDictionary, forKey:"drillListFileExtension")
-    self.drillToolListFileExtension.readFrom (dictionary: inDictionary, forKey:"drillToolListFileExtension")
-    fileGenerationParameterArray.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "fileGenerationParameterArray",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ArtworkFileGenerationParameters])
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.fileGenerationParameterArray.setProp (Array ()) // Set relationships to nil
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   resetToManyRelationships
-  //····················································································································
-
-  override func resetToManyRelationships () {
-    super.resetToManyRelationships ()
-    fileGenerationParameterArray.setProp (Array ())
-  }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-    for managedObject : EBManagedObject in fileGenerationParameterArray.propval {
-      objects.append (managedObject)
-    }
-  }
-
-  //····················································································································
-  //   computeSignature
-  //····················································································································
-
-  override func computeSignature () -> UInt32 {
-    var crc = super.computeSignature ()
-    crc.accumulateUInt32 (comments.signature ())
-    crc.accumulateUInt32 (drillDataFileExtension.signature ())
-    crc.accumulateUInt32 (drillDataFormat.signature ())
-    crc.accumulateUInt32 (drillListFileExtension.signature ())
-    crc.accumulateUInt32 (drillToolListFileExtension.signature ())
-    crc.accumulateUInt32 (fileGenerationParameterArray.signature ())
-    crc.accumulateUInt32 (minPP_TP_TT_TW_inEBUnit.signature ())
-    crc.accumulateUInt32 (minValueForOARinEBUnit.signature ())
-    crc.accumulateUInt32 (minValueForPHDinEBUnit.signature ())
-    return crc
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

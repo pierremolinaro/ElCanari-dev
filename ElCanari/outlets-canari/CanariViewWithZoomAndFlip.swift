@@ -175,6 +175,11 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
           if let scrollView = clipView.superview as? CanariScrollViewWithPlacard {
             scrollView.removePlacard (zoomPopUpButton)
             mZoomPopUpButton = nil ;
+            NotificationCenter.default.removeObserver (
+              self,
+              name: NSNotification.Name.NSViewFrameDidChange,
+              object: clipView
+            )
           }
         }
       }

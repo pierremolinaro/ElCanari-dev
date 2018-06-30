@@ -81,8 +81,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     if noModel {
       mBackgroundLayer.fillColor = nil
       mBackgroundLayer.strokeColor = nil
-      mNoModelTextLayer.frame = self.bounds
-      mNoModelTextLayer.foregroundColor = NSColor.black.cgColor
+      mNoModelTextLayer.frame = self.frame
+      mNoModelTextLayer.foregroundColor = NSColor.gray.cgColor
       mNoModelTextLayer.contentsScale = NSScreen.main ()!.backingScaleFactor
       mNoModelTextLayer.alignmentMode = kCAAlignmentCenter
       mNoModelTextLayer.string = "No Model"
@@ -93,21 +93,6 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       mNoModelTextLayer.string = ""
     }
   }
-
-  //····················································································································
-  //    Mouse down and contextual menu
-  //····················································································································
-
-//  override func mouseDown (with event: NSEvent) {
-//    let modifierFlags = event.modifierFlags
-//    if modifierFlags.contains (.control) && (modifierFlags.contains (.shift) || modifierFlags.contains (.option)) { // Ctrl Key On, no shift
-//      if let contextualMenu = mContextualMenu {
-//        NSMenu.popUpContextMenu (contextualMenu, with:event, for:self)
-//      }
-//    }else{
-//      super.mouseDown (with:event)
-//    }
-//  }
 
   //····················································································································
   //    vias

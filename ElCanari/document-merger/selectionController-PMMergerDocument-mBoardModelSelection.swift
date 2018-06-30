@@ -64,7 +64,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var holesForDisplay = EBTransientProperty_MergerHoleArray () 
   var name = EBPropertyProxy_String () 
   var padsHoles = EBTransientProperty_MergerHoleArray () 
-  var viaCount = EBTransientProperty_Int () 
   var viaShapes = EBTransientProperty_MergerViaShapeArray () 
   var viaShapesForDisplay = EBTransientProperty_MergerViaShapeArray () 
   var viasHoles = EBTransientProperty_MergerHoleArray () 
@@ -124,7 +123,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_holesForDisplay (model: model)
     bind_property_name (model: model)
     bind_property_padsHoles (model: model)
-    bind_property_viaCount (model: model)
     bind_property_viaShapes (model: model)
     bind_property_viaShapesForDisplay (model: model)
     bind_property_viasHoles (model: model)
@@ -2452,46 +2450,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_viaCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_viaCount (self.viaCount)
-    self.viaCount.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.viaCount.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
-              isMultipleSelection = true
-            case .singleSelection (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multipleSelection
-          }else if s.count == 0 {
-            return .noSelection
-          }else if s.count == 1 {
-            return .singleSelection (s.first!)
-          }else{
-            return .multipleSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-  }
-
-  //···················································································································*
-
   private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_viaShapes (self.viaShapes)
     self.viaShapes.readModelFunction = {
@@ -2847,9 +2805,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- padsHoles
     self.padsHoles.readModelFunction = nil 
     mModel?.removeEBObserverOf_padsHoles (self.padsHoles)
-  //--- viaCount
-    self.viaCount.readModelFunction = nil 
-    mModel?.removeEBObserverOf_viaCount (self.viaCount)
   //--- viaShapes
     self.viaShapes.readModelFunction = nil 
     mModel?.removeEBObserverOf_viaShapes (self.viaShapes)

@@ -5,6 +5,292 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: FontCharacterEntity
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class FontCharacterEntity : EBManagedObject,
+  FontCharacterEntity_advance,
+  FontCharacterEntity_characterIsDefined,
+  FontCharacterEntity_segmentArrayForDrawing,
+  FontCharacterEntity_gerberCode,
+  FontCharacterEntity_gerberCodeInstructionCountMessage {
+
+  //····················································································································
+  //    Properties
+  //····················································································································
+
+  var advance = EBStoredProperty_Int (0)
+
+  //····················································································································
+  //    Transient properties
+  //····················································································································
+
+  var characterIsDefined = EBTransientProperty_Bool ()
+  var segmentArrayForDrawing = EBTransientProperty_CharacterSegmentListClass ()
+  var gerberCode = EBTransientProperty_CharacterGerberCodeClass ()
+  var gerberCodeInstructionCountMessage = EBTransientProperty_String ()
+
+  //····················································································································
+  //    Relationships
+  //····················································································································
+
+  var segments = ToManyRelationship_FontCharacterEntity_segments ()
+
+  //····················································································································
+  //    init
+  //····················································································································
+
+  override init (managedObjectContext : EBManagedObjectContext) {
+    super.init (managedObjectContext:managedObjectContext)
+  //--- Install compute functions for transients
+    characterIsDefined.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.advance.prop.kind ()
+        kind &= unwSelf.segments.count.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.advance.prop, unwSelf.segments.count.prop) {
+          case (.singleSelection (let v0), .singleSelection (let v1)) :
+            return .singleSelection (compute_FontCharacterEntity_characterIsDefined (v0, v1))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    segmentArrayForDrawing.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.segments.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.segments.prop) {
+          case (.singleSelection (let v0)) :
+            return .singleSelection (compute_FontCharacterEntity_segmentArrayForDrawing (v0))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    gerberCode.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.segmentArrayForDrawing.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.segmentArrayForDrawing.prop) {
+          case (.singleSelection (let v0)) :
+            return .singleSelection (compute_FontCharacterEntity_gerberCode (v0))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+    gerberCodeInstructionCountMessage.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.gerberCode.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.gerberCode.prop) {
+          case (.singleSelection (let v0)) :
+            return .singleSelection (compute_FontCharacterEntity_gerberCodeInstructionCountMessage (v0))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  //--- Install property observers for transients
+    advance.addEBObserver (characterIsDefined)
+    segments.addEBObserver (characterIsDefined)
+    segments.addEBObserverOf_segmentForDrawing (segmentArrayForDrawing)
+    segmentArrayForDrawing.addEBObserver (gerberCode)
+    gerberCode.addEBObserver (gerberCodeInstructionCountMessage)
+  //--- Install undoers for properties
+    self.advance.undoManager = undoManager ()
+  //--- Install owner for relationships
+    segments.owner = self
+  //--- register properties for handling signature
+    advance.setSignatureObserver (observer: self)
+    segments.setSignatureObserver (observer: self)
+  }
+
+  //····················································································································
+
+  deinit {
+  //--- Remove observers
+    advance.removeEBObserver (characterIsDefined)
+    segments.removeEBObserver (characterIsDefined)
+    segments.removeEBObserverOf_segmentForDrawing (segmentArrayForDrawing)
+    segmentArrayForDrawing.removeEBObserver (gerberCode)
+    gerberCode.removeEBObserver (gerberCodeInstructionCountMessage)
+  }
+
+  //····················································································································
+  //    populateExplorerWindow
+  //····················································································································
+
+  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "advance",
+      idx:self.advance.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.advance.mObserverExplorer,
+      valueExplorer:&self.advance.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "characterIsDefined",
+      idx:self.characterIsDefined.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.characterIsDefined.mObserverExplorer,
+      valueExplorer:&self.characterIsDefined.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "segmentArrayForDrawing",
+      idx:self.segmentArrayForDrawing.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.segmentArrayForDrawing.mObserverExplorer,
+      valueExplorer:&self.segmentArrayForDrawing.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "gerberCode",
+      idx:self.gerberCode.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.gerberCode.mObserverExplorer,
+      valueExplorer:&self.gerberCode.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "gerberCodeInstructionCountMessage",
+      idx:self.gerberCodeInstructionCountMessage.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.gerberCodeInstructionCountMessage.mObserverExplorer,
+      valueExplorer:&self.gerberCodeInstructionCountMessage.mValueExplorer
+    )
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "segments",
+      idx:segments.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&segments.mValueExplorer
+    )
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+  }
+
+  //····················································································································
+  //    clearObjectExplorer
+  //····················································································································
+
+  override func clearObjectExplorer () {
+    self.advance.mObserverExplorer = nil
+    self.advance.mValueExplorer = nil
+    // segments.mObserverExplorer = nil
+    segments.mValueExplorer = nil
+    super.clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //    saveIntoDictionary
+  //····················································································································
+
+  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
+    super.saveIntoDictionary (ioDictionary)
+    self.advance.storeIn (dictionary: ioDictionary, forKey: "advance")
+    store (managedObjectArray: segments.propval as NSArray, relationshipName:"segments", intoDictionary: ioDictionary) ;
+  }
+
+  //····················································································································
+  //    setUpWithDictionary
+  //····················································································································
+
+  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+                                     managedObjectArray : inout [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+    self.advance.readFrom (dictionary: inDictionary, forKey:"advance")
+    segments.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "segments",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [SegmentForFontCharacterEntity])
+  }
+
+  //····················································································································
+  //   cascadeObjectRemoving
+  //····················································································································
+
+  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    self.segments.setProp (Array ()) // Set relationships to nil
+    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetToManyRelationships
+  //····················································································································
+
+  override func resetToManyRelationships () {
+    super.resetToManyRelationships ()
+    segments.setProp (Array ())
+  }
+
+  //····················································································································
+  //   accessibleObjects
+  //····················································································································
+
+  override func accessibleObjects (objects : inout [EBManagedObject]) {
+    super.accessibleObjects (objects: &objects)
+    for managedObject : EBManagedObject in segments.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   computeSignature
+  //····················································································································
+
+  override func computeSignature () -> UInt32 {
+    var crc = super.computeSignature ()
+    crc.accumulateUInt32 (advance.signature ())
+    crc.accumulateUInt32 (segments.signature ())
+    return crc
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_FontCharacterEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -417,43 +703,6 @@ class ToManyRelationshipReadWrite_FontCharacterEntity_segments : ReadOnlyArrayOf
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship proxy: segments
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class ToManyRelationshipProxy_FontCharacterEntity_segments : ToManyRelationshipReadWrite_FontCharacterEntity_segments {
-  private var mModel : ToManyRelationshipReadWrite_FontCharacterEntity_segments?
-
-  //····················································································································
-  
-  final func setModel (model : ToManyRelationshipReadWrite_FontCharacterEntity_segments?) {
-    mModel = model
-  }
-
-  //····················································································································
-  
-  override var prop : EBProperty < [SegmentForFontCharacterEntity] > {
-    get {
-      return mModel?.prop ?? .noSelection
-    }
-  }
- 
-   //····················································································································
- 
-  override func setProp (_ value : [SegmentForFontCharacterEntity]) {
-    switch self.prop {
-    case .noSelection, .multipleSelection :
-      break
-    case .singleSelection (let array) :
-      mModel?.setProp (array)
-    }
-  }
- 
-  //····················································································································
-
-}
-*/
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship: segments
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -622,288 +871,6 @@ ToManyRelationshipReadWrite_FontCharacterEntity_segments, EBSignatureObserverPro
 
   //····················································································································
  
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: FontCharacterEntity
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCharacterEntity_characterIsDefined, FontCharacterEntity_segmentArrayForDrawing, FontCharacterEntity_gerberCode, FontCharacterEntity_gerberCodeInstructionCountMessage
-{
-
-  //····················································································································
-  //    Properties
-  //····················································································································
-
-  var advance = EBStoredProperty_Int (0)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var characterIsDefined = EBTransientProperty_Bool ()
-  var segmentArrayForDrawing = EBTransientProperty_CharacterSegmentListClass ()
-  var gerberCode = EBTransientProperty_CharacterGerberCodeClass ()
-  var gerberCodeInstructionCountMessage = EBTransientProperty_String ()
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
-
-  var segments = ToManyRelationship_FontCharacterEntity_segments ()
-
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-    characterIsDefined.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.advance.prop.kind ()
-        kind &= unwSelf.segments.count.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.advance.prop, unwSelf.segments.count.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_FontCharacterEntity_characterIsDefined (v0, v1))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-    segmentArrayForDrawing.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.segments.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.segments.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_FontCharacterEntity_segmentArrayForDrawing (v0))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-    gerberCode.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.segmentArrayForDrawing.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.segmentArrayForDrawing.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_FontCharacterEntity_gerberCode (v0))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-    gerberCodeInstructionCountMessage.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.gerberCode.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.gerberCode.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_FontCharacterEntity_gerberCodeInstructionCountMessage (v0))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-  //--- Install property observers for transients
-    advance.addEBObserver (characterIsDefined)
-    segments.addEBObserver (characterIsDefined)
-    segments.addEBObserverOf_segmentForDrawing (segmentArrayForDrawing)
-    segmentArrayForDrawing.addEBObserver (gerberCode)
-    gerberCode.addEBObserver (gerberCodeInstructionCountMessage)
-  //--- Install undoers for properties
-    self.advance.undoManager = undoManager ()
-  //--- Install owner for relationships
-    segments.owner = self
-  //--- register properties for handling signature
-    advance.setSignatureObserver (observer: self)
-    segments.setSignatureObserver (observer: self)
-  }
-
-  //····················································································································
-
-  deinit {
-  //--- Remove observers
-    advance.removeEBObserver (characterIsDefined)
-    segments.removeEBObserver (characterIsDefined)
-    segments.removeEBObserverOf_segmentForDrawing (segmentArrayForDrawing)
-    segmentArrayForDrawing.removeEBObserver (gerberCode)
-    gerberCode.removeEBObserver (gerberCodeInstructionCountMessage)
-  }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "advance",
-      idx:self.advance.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.advance.mObserverExplorer,
-      valueExplorer:&self.advance.mValueExplorer
-    )
-    createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "characterIsDefined",
-      idx:self.characterIsDefined.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.characterIsDefined.mObserverExplorer,
-      valueExplorer:&self.characterIsDefined.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "segmentArrayForDrawing",
-      idx:self.segmentArrayForDrawing.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.segmentArrayForDrawing.mObserverExplorer,
-      valueExplorer:&self.segmentArrayForDrawing.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gerberCode",
-      idx:self.gerberCode.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gerberCode.mObserverExplorer,
-      valueExplorer:&self.gerberCode.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gerberCodeInstructionCountMessage",
-      idx:self.gerberCodeInstructionCountMessage.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gerberCodeInstructionCountMessage.mObserverExplorer,
-      valueExplorer:&self.gerberCodeInstructionCountMessage.mValueExplorer
-    )
-    createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "segments",
-      idx:segments.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&segments.mValueExplorer
-    )
-    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
-  }
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  override func clearObjectExplorer () {
-    self.advance.mObserverExplorer = nil
-    self.advance.mValueExplorer = nil
-    // segments.mObserverExplorer = nil
-    segments.mValueExplorer = nil
-    super.clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
-    self.advance.storeIn (dictionary: ioDictionary, forKey: "advance")
-    store (managedObjectArray: segments.propval as NSArray, relationshipName:"segments", intoDictionary: ioDictionary) ;
-  }
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.advance.readFrom (dictionary: inDictionary, forKey:"advance")
-    segments.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "segments",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentForFontCharacterEntity])
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.segments.setProp (Array ()) // Set relationships to nil
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   resetToManyRelationships
-  //····················································································································
-
-  override func resetToManyRelationships () {
-    super.resetToManyRelationships ()
-    segments.setProp (Array ())
-  }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-    for managedObject : EBManagedObject in segments.propval {
-      objects.append (managedObject)
-    }
-  }
-
-  //····················································································································
-  //   computeSignature
-  //····················································································································
-
-  override func computeSignature () -> UInt32 {
-    var crc = super.computeSignature ()
-    crc.accumulateUInt32 (advance.signature ())
-    crc.accumulateUInt32 (segments.signature ())
-    return crc
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

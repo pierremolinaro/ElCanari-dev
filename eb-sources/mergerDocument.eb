@@ -89,7 +89,6 @@ entity BoardModelViaEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelEntity {
-  toOne MergerRootEntity myArtwork inverse toMany boardModels ;
   
   property String artworkName default "" ;
   property String name default "" ;
@@ -161,8 +160,6 @@ entity BoardModelEntity {
  
 #--- Vias 
   toMany @cascading BoardModelViaEntity vias ;
-
-  copy transient Int viaCount : self.vias.count ;
   
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
@@ -318,7 +315,7 @@ entity BoardModelEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity MergerRootEntity {
-  toMany BoardModelEntity boardModels inverse toOne myArtwork ;
+  toMany @cascading BoardModelEntity boardModels ;
   property Int selectedPageIndex default 0 ;
 
 #--- Board model name array
@@ -346,15 +343,19 @@ document PMMergerDocument root MergerRootEntity {
     $enabled mBoardModelController.selectedArray.count > 0
   ;
 
+#--- Update board model
+  action updateBoardModelAction ;
+  outlet EBButton updateBoardModelButton
+    $run self.updateBoardModelAction
+    $enabled mBoardModelController.selectedArray.count > 0
+  ;
+
 #--- Model table view 
   outlet EBTableView mBoardModelTableView $tableValue mBoardModelController ;
   arrayController mBoardModelController {allowsEmptySelection:no, allowsMultipleSelection:no} root.boardModels {
      column "name" sort name EBTextField $value self.name {sendContinously:no}
   }
   selectionController mBoardModelSelection : mBoardModelController.selectedArray ;
-
-#--- Board model name
-  outlet EBTextObserverField mBoardModelNameTextField $valueObserver mBoardModelSelection.name ;
 
 #--- Artwork model name
   outlet EBTextObserverField mArtworkNameTextField $valueObserver mBoardModelSelection.artworkName ;
@@ -370,27 +371,6 @@ document PMMergerDocument root MergerRootEntity {
   outlet CanariDimensionTextField mBoardHeightTextField
      $dimensionAndUnit mBoardModelSelection.boardHeight, mBoardModelSelection.boardHeightUnit
   ;
-
-#--- Board model via count
-  outlet EBIntObserverField mBoardModelViaCountTextField $valueObserver mBoardModelSelection.viaCount {autoFormatter : yes} ;
-
-#--- Front packages segment count
-  outlet EBIntObserverField mFrontPackagesCountTextField $valueObserver mBoardModelSelection.frontPackageSegmentsCount {autoFormatter:yes} ;
-
-#--- Back packages segment count
-  outlet EBIntObserverField mBackPackagesCountTextField $valueObserver mBoardModelSelection.backPackageSegmentsCount {autoFormatter:yes} ;
-
-#--- Front track segment count
-  outlet EBIntObserverField mFrontTrackSegmentCountTextField $valueObserver mBoardModelSelection.frontTracksSegmentsCount {autoFormatter:yes} ;
-
-#--- Back track segment count
-  outlet EBIntObserverField mBackTrackSegmentCountTextField $valueObserver mBoardModelSelection.backTracksSegmentsCount {autoFormatter:yes} ;
-
-#--- Back component names segment count
-  outlet EBIntObserverField mBackComponentNameSegmentCountTextField $valueObserver mBoardModelSelection.backComponentNameSegmentsCount {autoFormatter:yes} ;
-
-#--- Front component names segment count
-  outlet EBIntObserverField mFrontComponentNameSegmentCountTextField $valueObserver mBoardModelSelection.frontComponentNameSegmentsCount {autoFormatter:yes} ;
 
 #--- Model view
   outlet CanariBoardModelView mBoardModelView

@@ -153,7 +153,7 @@ extension PMMergerDocument {
 
   //····················································································································
 
-  func addBoardModel (fromDictionary boardArchiveDict : NSDictionary, named inName : String) {
+  func parseBoardModel (fromDictionary boardArchiveDict : NSDictionary, named inName : String) -> BoardModelEntity? {
   //  NSLog ("\(boardArchiveDict)")
     let boardModel = BoardModelEntity (managedObjectContext:self.managedObjectContext())
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
@@ -381,10 +381,7 @@ extension PMMergerDocument {
     }
     boardModel.pads.setProp (padEntities)
   //--- Dictionary import ok ?
-    if errorArray.count == 0 { // Ok
-      self.rootObject.boardModels.add (boardModel)
-      self.mBoardModelController.select (object:boardModel)
-    }else{ // Error
+    if errorArray.count != 0 { // Error
       var s = ""
       for anError in errorArray {
         if s != "" {
@@ -398,6 +395,8 @@ extension PMMergerDocument {
       alert.informativeText = s
       alert.beginSheetModal (for: self.windowForSheet!, completionHandler: {(NSModalResponse) in})
     }
+  //--- Return 
+    return (errorArray.count == 0) ? boardModel : nil
   }
 
   //····················································································································
