@@ -62,85 +62,7 @@ entity BoardModelPadEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BoardModelFrontComponentNameEntity {
-
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelFrontLegendTextEntity {
-  
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelFrontLayoutTextEntity {
-  
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelBackLegendTextEntity {
-  
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelBackLayoutTextEntity {
-  
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelBackComponentNameEntity {
-
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelFrontComponentValueEntity {
-
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelBackComponentValueEntity {
-
+entity CanariSegmentEntity {
   property Int x1 default 0 ;
   property Int y1 default 0 ;
   property Int x2 default 0 ;
@@ -160,50 +82,6 @@ entity BoardModelViaEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BoardModelFrontTrackSegmentEntity {
-
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelFrontPackageEntity {
-
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelBackPackageEntity {
-
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity BoardModelBackTrackSegmentEntity {
-
-  property Int x1 default 0 ;
-  property Int y1 default 0 ;
-  property Int x2 default 0 ;
-  property Int y2 default 0 ;
-  property Int width default 0 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 entity BoardModelEntity {
   toOne MergerRootEntity myArtwork inverse toMany boardModels ;
   
@@ -217,7 +95,7 @@ entity BoardModelEntity {
   property Int zoom default 0 ; # 0 means "fit to window"
 
 #--- Front Legend Texts
-  toMany @cascading BoardModelFrontLegendTextEntity frontLegendTexts ;
+  toMany @cascading CanariSegmentEntity frontLegendTexts ;
 
   transient MergerSegmentArray frontLegendTextsSegments dependsFrom
     self.frontLegendTexts.all.x1, self.frontLegendTexts.all.y1,
@@ -229,7 +107,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
 
 #--- Front Layout Texts
-  toMany @cascading BoardModelFrontLayoutTextEntity frontLayoutTexts ;
+  toMany @cascading CanariSegmentEntity frontLayoutTexts ;
 
   transient MergerSegmentArray frontLayoutTextsSegments dependsFrom
     self.frontLayoutTexts.all.x1, self.frontLayoutTexts.all.y1,
@@ -241,7 +119,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
 
 #--- Back Legend Texts
-  toMany @cascading BoardModelBackLegendTextEntity backLegendTexts ;
+  toMany @cascading CanariSegmentEntity backLegendTexts ;
 
   transient MergerSegmentArray backLegendTextsSegments dependsFrom
     self.backLegendTexts.all.x1, self.backLegendTexts.all.y1,
@@ -253,7 +131,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsSegments ;
 
 #--- Back Layout Texts
-  toMany @cascading BoardModelBackLayoutTextEntity backLayoutTexts ;
+  toMany @cascading CanariSegmentEntity backLayoutTexts ;
 
   transient MergerSegmentArray backLayoutTextsSegments dependsFrom
     self.backLayoutTexts.all.x1, self.backLayoutTexts.all.y1,
@@ -311,7 +189,7 @@ entity BoardModelEntity {
   ;
  
 #--- Back component names
-  toMany @cascading BoardModelBackComponentNameEntity backComponentNames ;
+  toMany @cascading CanariSegmentEntity backComponentNames ;
 
   transient MergerSegmentArray backComponentNameSegments dependsFrom
     self.backComponentNames.all.x1, self.backComponentNames.all.y1,
@@ -326,7 +204,7 @@ entity BoardModelEntity {
   ;  
   
 #--- Front component names
-  toMany @cascading BoardModelFrontComponentNameEntity frontComponentNames ;
+  toMany @cascading CanariSegmentEntity frontComponentNames ;
 
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
     self.frontComponentNames.all.x1, self.frontComponentNames.all.y1,
@@ -341,7 +219,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Front component values
-  toMany @cascading BoardModelFrontComponentValueEntity frontComponentValues ;
+  toMany @cascading CanariSegmentEntity frontComponentValues ;
 
   transient MergerSegmentArray frontComponentValueSegments dependsFrom
     self.frontComponentValues.all.x1, self.frontComponentValues.all.y1,
@@ -356,7 +234,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Back component values
-  toMany @cascading BoardModelBackComponentValueEntity backComponentValues ;
+  toMany @cascading CanariSegmentEntity backComponentValues ;
 
   transient MergerSegmentArray backComponentValueSegments dependsFrom
     self.backComponentValues.all.x1, self.backComponentValues.all.y1,
@@ -371,7 +249,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Back tracks
-  toMany @cascading BoardModelBackTrackSegmentEntity backTracks ;
+  toMany @cascading CanariSegmentEntity backTracks ;
 
   transient MergerSegmentArray backTrackSegments dependsFrom
     self.backTracks.all.x1, self.backTracks.all.y1,
@@ -386,7 +264,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Front tracks
-  toMany @cascading BoardModelFrontTrackSegmentEntity frontTracks ;
+  toMany @cascading CanariSegmentEntity frontTracks ;
 
   transient MergerSegmentArray frontTrackSegments dependsFrom
     self.frontTracks.all.x1, self.frontTracks.all.y1,
@@ -401,7 +279,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Front packages
-  toMany @cascading BoardModelFrontPackageEntity frontPackages ;
+  toMany @cascading CanariSegmentEntity frontPackages ;
 
   transient MergerSegmentArray frontPackagesSegments dependsFrom
     self.frontPackages.all.x1, self.frontPackages.all.y1,
@@ -416,7 +294,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Back packages
-  toMany @cascading BoardModelBackPackageEntity backPackages ;
+  toMany @cascading CanariSegmentEntity backPackages ;
 
   transient MergerSegmentArray backPackagesSegments dependsFrom
     self.backPackages.all.x1, self.backPackages.all.y1,

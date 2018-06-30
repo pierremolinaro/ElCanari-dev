@@ -3486,11 +3486,11 @@ protocol BoardModelEntity_backPackagesSegmentsForDisplay : class {
 //    To many relationship read write: frontLegendTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts : ReadOnlyArrayOf_BoardModelFrontLegendTextEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelFrontLegendTextEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -3511,7 +3511,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts : ReadOnlyAr
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelFrontLegendTextEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -3519,7 +3519,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts : ReadOnlyAr
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelFrontLegendTextEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -3576,8 +3576,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts, EBSignatureObserv
 
   //····················································································································
 
-  private var mSet = Set<BoardModelFrontLegendTextEntity> ()
-  private var mValue = [BoardModelFrontLegendTextEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -3601,7 +3601,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts, EBSignatureObserv
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelFrontLegendTextEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -3615,25 +3615,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts, EBSignatureObserv
     }
   }
 
-  override var prop : EBProperty < [BoardModelFrontLegendTextEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelFrontLegendTextEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelFrontLegendTextEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelFrontLegendTextEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelFrontLegendTextEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -3644,7 +3644,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts, EBSignatureObserv
   
   //····················································································································
 
-  func add (_ object : BoardModelFrontLegendTextEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -3707,11 +3707,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts, EBSignatureObserv
 //    To many relationship read write: frontLayoutTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts : ReadOnlyArrayOf_BoardModelFrontLayoutTextEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelFrontLayoutTextEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -3732,7 +3732,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts : ReadOnlyAr
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelFrontLayoutTextEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -3740,7 +3740,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts : ReadOnlyAr
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelFrontLayoutTextEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -3797,8 +3797,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts, EBSignatureObserv
 
   //····················································································································
 
-  private var mSet = Set<BoardModelFrontLayoutTextEntity> ()
-  private var mValue = [BoardModelFrontLayoutTextEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -3822,7 +3822,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts, EBSignatureObserv
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelFrontLayoutTextEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -3836,25 +3836,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts, EBSignatureObserv
     }
   }
 
-  override var prop : EBProperty < [BoardModelFrontLayoutTextEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelFrontLayoutTextEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelFrontLayoutTextEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelFrontLayoutTextEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelFrontLayoutTextEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -3865,7 +3865,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts, EBSignatureObserv
   
   //····················································································································
 
-  func add (_ object : BoardModelFrontLayoutTextEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -3928,11 +3928,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts, EBSignatureObserv
 //    To many relationship read write: backLegendTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts : ReadOnlyArrayOf_BoardModelBackLegendTextEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelBackLegendTextEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -3953,7 +3953,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts : ReadOnlyArr
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelBackLegendTextEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -3961,7 +3961,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts : ReadOnlyArr
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelBackLegendTextEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -4018,8 +4018,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts, EBSignatureObserve
 
   //····················································································································
 
-  private var mSet = Set<BoardModelBackLegendTextEntity> ()
-  private var mValue = [BoardModelBackLegendTextEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -4043,7 +4043,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts, EBSignatureObserve
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelBackLegendTextEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -4057,25 +4057,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts, EBSignatureObserve
     }
   }
 
-  override var prop : EBProperty < [BoardModelBackLegendTextEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelBackLegendTextEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelBackLegendTextEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelBackLegendTextEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelBackLegendTextEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -4086,7 +4086,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts, EBSignatureObserve
   
   //····················································································································
 
-  func add (_ object : BoardModelBackLegendTextEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -4149,11 +4149,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts, EBSignatureObserve
 //    To many relationship read write: backLayoutTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts : ReadOnlyArrayOf_BoardModelBackLayoutTextEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelBackLayoutTextEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -4174,7 +4174,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts : ReadOnlyArr
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelBackLayoutTextEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -4182,7 +4182,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts : ReadOnlyArr
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelBackLayoutTextEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -4239,8 +4239,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts, EBSignatureObserve
 
   //····················································································································
 
-  private var mSet = Set<BoardModelBackLayoutTextEntity> ()
-  private var mValue = [BoardModelBackLayoutTextEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -4264,7 +4264,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts, EBSignatureObserve
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelBackLayoutTextEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -4278,25 +4278,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts, EBSignatureObserve
     }
   }
 
-  override var prop : EBProperty < [BoardModelBackLayoutTextEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelBackLayoutTextEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelBackLayoutTextEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelBackLayoutTextEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelBackLayoutTextEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -4307,7 +4307,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts, EBSignatureObserve
   
   //····················································································································
 
-  func add (_ object : BoardModelBackLayoutTextEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -4816,11 +4816,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_pads, EBSignatureObserverProtocol {
 //    To many relationship read write: backComponentNames
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames : ReadOnlyArrayOf_BoardModelBackComponentNameEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelBackComponentNameEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -4841,7 +4841,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames : ReadOnly
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelBackComponentNameEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -4849,7 +4849,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames : ReadOnly
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelBackComponentNameEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -4906,8 +4906,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames, EBSignatureObse
 
   //····················································································································
 
-  private var mSet = Set<BoardModelBackComponentNameEntity> ()
-  private var mValue = [BoardModelBackComponentNameEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -4931,7 +4931,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames, EBSignatureObse
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelBackComponentNameEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -4945,25 +4945,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames, EBSignatureObse
     }
   }
 
-  override var prop : EBProperty < [BoardModelBackComponentNameEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelBackComponentNameEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelBackComponentNameEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelBackComponentNameEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelBackComponentNameEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -4974,7 +4974,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames, EBSignatureObse
   
   //····················································································································
 
-  func add (_ object : BoardModelBackComponentNameEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -5037,11 +5037,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames, EBSignatureObse
 //    To many relationship read write: frontComponentNames
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames : ReadOnlyArrayOf_BoardModelFrontComponentNameEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelFrontComponentNameEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -5062,7 +5062,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames : ReadOnl
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelFrontComponentNameEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -5070,7 +5070,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames : ReadOnl
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelFrontComponentNameEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -5127,8 +5127,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames, EBSignatureObs
 
   //····················································································································
 
-  private var mSet = Set<BoardModelFrontComponentNameEntity> ()
-  private var mValue = [BoardModelFrontComponentNameEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -5152,7 +5152,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames, EBSignatureObs
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelFrontComponentNameEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -5166,25 +5166,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames, EBSignatureObs
     }
   }
 
-  override var prop : EBProperty < [BoardModelFrontComponentNameEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelFrontComponentNameEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelFrontComponentNameEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelFrontComponentNameEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelFrontComponentNameEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -5195,7 +5195,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames, EBSignatureObs
   
   //····················································································································
 
-  func add (_ object : BoardModelFrontComponentNameEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -5258,11 +5258,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames, EBSignatureObs
 //    To many relationship read write: frontComponentValues
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues : ReadOnlyArrayOf_BoardModelFrontComponentValueEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelFrontComponentValueEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -5283,7 +5283,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues : ReadOn
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelFrontComponentValueEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -5291,7 +5291,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues : ReadOn
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelFrontComponentValueEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -5348,8 +5348,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues, EBSignatureOb
 
   //····················································································································
 
-  private var mSet = Set<BoardModelFrontComponentValueEntity> ()
-  private var mValue = [BoardModelFrontComponentValueEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -5373,7 +5373,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues, EBSignatureOb
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelFrontComponentValueEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -5387,25 +5387,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues, EBSignatureOb
     }
   }
 
-  override var prop : EBProperty < [BoardModelFrontComponentValueEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelFrontComponentValueEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelFrontComponentValueEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelFrontComponentValueEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelFrontComponentValueEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -5416,7 +5416,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues, EBSignatureOb
   
   //····················································································································
 
-  func add (_ object : BoardModelFrontComponentValueEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -5479,11 +5479,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues, EBSignatureOb
 //    To many relationship read write: backComponentValues
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues : ReadOnlyArrayOf_BoardModelBackComponentValueEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelBackComponentValueEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -5504,7 +5504,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues : ReadOnl
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelBackComponentValueEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -5512,7 +5512,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues : ReadOnl
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelBackComponentValueEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -5569,8 +5569,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues, EBSignatureObs
 
   //····················································································································
 
-  private var mSet = Set<BoardModelBackComponentValueEntity> ()
-  private var mValue = [BoardModelBackComponentValueEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -5594,7 +5594,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues, EBSignatureObs
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelBackComponentValueEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -5608,25 +5608,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues, EBSignatureObs
     }
   }
 
-  override var prop : EBProperty < [BoardModelBackComponentValueEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelBackComponentValueEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelBackComponentValueEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelBackComponentValueEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelBackComponentValueEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -5637,7 +5637,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues, EBSignatureObs
   
   //····················································································································
 
-  func add (_ object : BoardModelBackComponentValueEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -5700,11 +5700,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues, EBSignatureObs
 //    To many relationship read write: backTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_backTracks : ReadOnlyArrayOf_BoardModelBackTrackSegmentEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_backTracks : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelBackTrackSegmentEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -5725,7 +5725,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backTracks : ReadOnlyArrayOf_
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelBackTrackSegmentEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -5733,7 +5733,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backTracks : ReadOnlyArrayOf_
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelBackTrackSegmentEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -5790,8 +5790,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProt
 
   //····················································································································
 
-  private var mSet = Set<BoardModelBackTrackSegmentEntity> ()
-  private var mValue = [BoardModelBackTrackSegmentEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -5815,7 +5815,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProt
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelBackTrackSegmentEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -5829,25 +5829,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProt
     }
   }
 
-  override var prop : EBProperty < [BoardModelBackTrackSegmentEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelBackTrackSegmentEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelBackTrackSegmentEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelBackTrackSegmentEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelBackTrackSegmentEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -5858,7 +5858,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProt
   
   //····················································································································
 
-  func add (_ object : BoardModelBackTrackSegmentEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -5921,11 +5921,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProt
 //    To many relationship read write: frontTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_frontTracks : ReadOnlyArrayOf_BoardModelFrontTrackSegmentEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_frontTracks : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelFrontTrackSegmentEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -5946,7 +5946,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontTracks : ReadOnlyArrayOf
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelFrontTrackSegmentEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -5954,7 +5954,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontTracks : ReadOnlyArrayOf
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelFrontTrackSegmentEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -6011,8 +6011,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverPro
 
   //····················································································································
 
-  private var mSet = Set<BoardModelFrontTrackSegmentEntity> ()
-  private var mValue = [BoardModelFrontTrackSegmentEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -6036,7 +6036,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverPro
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelFrontTrackSegmentEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -6050,25 +6050,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverPro
     }
   }
 
-  override var prop : EBProperty < [BoardModelFrontTrackSegmentEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelFrontTrackSegmentEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelFrontTrackSegmentEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelFrontTrackSegmentEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelFrontTrackSegmentEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -6079,7 +6079,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverPro
   
   //····················································································································
 
-  func add (_ object : BoardModelFrontTrackSegmentEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -6142,11 +6142,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverPro
 //    To many relationship read write: frontPackages
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_frontPackages : ReadOnlyArrayOf_BoardModelFrontPackageEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_frontPackages : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelFrontPackageEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -6167,7 +6167,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontPackages : ReadOnlyArray
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelFrontPackageEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -6175,7 +6175,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_frontPackages : ReadOnlyArray
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelFrontPackageEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -6232,8 +6232,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontPackages, EBSignatureObserverP
 
   //····················································································································
 
-  private var mSet = Set<BoardModelFrontPackageEntity> ()
-  private var mValue = [BoardModelFrontPackageEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -6257,7 +6257,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontPackages, EBSignatureObserverP
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelFrontPackageEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -6271,25 +6271,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontPackages, EBSignatureObserverP
     }
   }
 
-  override var prop : EBProperty < [BoardModelFrontPackageEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelFrontPackageEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelFrontPackageEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelFrontPackageEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelFrontPackageEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -6300,7 +6300,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontPackages, EBSignatureObserverP
   
   //····················································································································
 
-  func add (_ object : BoardModelFrontPackageEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -6363,11 +6363,11 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontPackages, EBSignatureObserverP
 //    To many relationship read write: backPackages
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelEntity_backPackages : ReadOnlyArrayOf_BoardModelBackPackageEntity {
+class ToManyRelationshipReadWrite_BoardModelEntity_backPackages : ReadOnlyArrayOf_CanariSegmentEntity {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelBackPackageEntity]) { } // Abstract method
+  func setProp (_ value :  [CanariSegmentEntity]) { } // Abstract method
   
   //····················································································································
 
@@ -6388,7 +6388,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backPackages : ReadOnlyArrayO
 
   //····················································································································
   
-  override var prop : EBProperty < [BoardModelBackPackageEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return mModel?.prop ?? .noSelection
     }
@@ -6396,7 +6396,7 @@ class ToManyRelationshipReadWrite_BoardModelEntity_backPackages : ReadOnlyArrayO
  
    //····················································································································
  
-  override func setProp (_ value : [BoardModelBackPackageEntity]) {
+  override func setProp (_ value : [CanariSegmentEntity]) {
     switch self.prop {
     case .noSelection, .multipleSelection :
       break
@@ -6453,8 +6453,8 @@ ToManyRelationshipReadWrite_BoardModelEntity_backPackages, EBSignatureObserverPr
 
   //····················································································································
 
-  private var mSet = Set<BoardModelBackPackageEntity> ()
-  private var mValue = [BoardModelBackPackageEntity] () {
+  private var mSet = Set<CanariSegmentEntity> ()
+  private var mValue = [CanariSegmentEntity] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -6478,7 +6478,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backPackages, EBSignatureObserverPr
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelBackPackageEntity in addedObjectSet {
+        for managedObject : CanariSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -6492,25 +6492,25 @@ ToManyRelationshipReadWrite_BoardModelEntity_backPackages, EBSignatureObserverPr
     }
   }
 
-  override var prop : EBProperty < [BoardModelBackPackageEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       return .singleSelection (mValue)
     }
   }
 
-  override func setProp (_ value :  [BoardModelBackPackageEntity]) { mValue = value }
+  override func setProp (_ value :  [CanariSegmentEntity]) { mValue = value }
 
-  var propval : [BoardModelBackPackageEntity] { get { return mValue } }
+  var propval : [CanariSegmentEntity] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelBackPackageEntity]) {
+  func performUndo (_ oldValue : [CanariSegmentEntity]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelBackPackageEntity) {
+  func remove (_ object : CanariSegmentEntity) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -6521,7 +6521,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_backPackages, EBSignatureObserverPr
   
   //····················································································································
 
-  func add (_ object : BoardModelBackPackageEntity) {
+  func add (_ object : CanariSegmentEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)
@@ -8678,22 +8678,22 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       inRelationshipName: "frontLegendTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelFrontLegendTextEntity])
+    ) as! [CanariSegmentEntity])
     frontLayoutTexts.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLayoutTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelFrontLayoutTextEntity])
+    ) as! [CanariSegmentEntity])
     backLegendTexts.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backLegendTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelBackLegendTextEntity])
+    ) as! [CanariSegmentEntity])
     backLayoutTexts.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backLayoutTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelBackLayoutTextEntity])
+    ) as! [CanariSegmentEntity])
     vias.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "vias",
       inDictionary: inDictionary,
@@ -8708,42 +8708,42 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
       inRelationshipName: "backComponentNames",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelBackComponentNameEntity])
+    ) as! [CanariSegmentEntity])
     frontComponentNames.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontComponentNames",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelFrontComponentNameEntity])
+    ) as! [CanariSegmentEntity])
     frontComponentValues.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontComponentValues",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelFrontComponentValueEntity])
+    ) as! [CanariSegmentEntity])
     backComponentValues.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backComponentValues",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelBackComponentValueEntity])
+    ) as! [CanariSegmentEntity])
     backTracks.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backTracks",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelBackTrackSegmentEntity])
+    ) as! [CanariSegmentEntity])
     frontTracks.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontTracks",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelFrontTrackSegmentEntity])
+    ) as! [CanariSegmentEntity])
     frontPackages.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontPackages",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelFrontPackageEntity])
+    ) as! [CanariSegmentEntity])
     backPackages.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backPackages",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [BoardModelBackPackageEntity])
+    ) as! [CanariSegmentEntity])
   }
 
   //····················································································································

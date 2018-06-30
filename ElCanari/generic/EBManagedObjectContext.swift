@@ -202,32 +202,10 @@ class EBManagedObjectContext : EBObject {
       result = ArtworkFileGenerationParameters (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelPadEntity" {
       result = BoardModelPadEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelFrontComponentNameEntity" {
-      result = BoardModelFrontComponentNameEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelFrontLegendTextEntity" {
-      result = BoardModelFrontLegendTextEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelFrontLayoutTextEntity" {
-      result = BoardModelFrontLayoutTextEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelBackLegendTextEntity" {
-      result = BoardModelBackLegendTextEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelBackLayoutTextEntity" {
-      result = BoardModelBackLayoutTextEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelBackComponentNameEntity" {
-      result = BoardModelBackComponentNameEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelFrontComponentValueEntity" {
-      result = BoardModelFrontComponentValueEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelBackComponentValueEntity" {
-      result = BoardModelBackComponentValueEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "CanariSegmentEntity" {
+      result = CanariSegmentEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelViaEntity" {
       result = BoardModelViaEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelFrontTrackSegmentEntity" {
-      result = BoardModelFrontTrackSegmentEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelFrontPackageEntity" {
-      result = BoardModelFrontPackageEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelBackPackageEntity" {
-      result = BoardModelBackPackageEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelBackTrackSegmentEntity" {
-      result = BoardModelBackTrackSegmentEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelEntity" {
       result = BoardModelEntity (managedObjectContext:self)
     }else if inEntityTypeName == "MergerRootEntity" {

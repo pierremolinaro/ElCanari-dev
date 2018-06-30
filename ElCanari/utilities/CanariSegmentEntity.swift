@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_BoardModelBackLegendTextEntity
+//    ReadOnlyArrayOf_CanariSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProperty <BoardModelBackLegendTextEntity> {
+class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <CanariSegmentEntity> {
 
   //····················································································································
   //   Observers of 'x1' stored property
@@ -48,7 +48,7 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<BoardModelBackLegendTextEntity>) {
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x1 {
         managedObject.x1.addEBObserver (observer)
@@ -58,7 +58,7 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<BoardModelBackLegendTextEntity>) {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for observer in mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<BoardModelBackLegendTextEntity>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y1 {
         managedObject.y1.addEBObserver (observer)
@@ -115,7 +115,7 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<BoardModelBackLegendTextEntity>) {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for observer in mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<BoardModelBackLegendTextEntity>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x2 {
         managedObject.x2.addEBObserver (observer)
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<BoardModelBackLegendTextEntity>) {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for observer in mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<BoardModelBackLegendTextEntity>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y2 {
         managedObject.y2.addEBObserver (observer)
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<BoardModelBackLegendTextEntity>) {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for observer in mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -276,7 +276,7 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<BoardModelBackLegendTextEntity>) {
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_width {
         managedObject.width.addEBObserver (observer)
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 
   //····················································································································
 
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<BoardModelBackLegendTextEntity>) {
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for observer in mObserversOf_width {
       observer.postEvent ()
       for managedObject in inSet {
@@ -300,14 +300,14 @@ class ReadOnlyArrayOf_BoardModelBackLegendTextEntity : ReadOnlyAbstractArrayProp
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_BoardModelBackLegendTextEntity
+//    TransientArrayOf_CanariSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_BoardModelBackLegendTextEntity : ReadOnlyArrayOf_BoardModelBackLegendTextEntity {
+class TransientArrayOf_CanariSegmentEntity : ReadOnlyArrayOf_CanariSegmentEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [BoardModelBackLegendTextEntity] > >
+  var readModelFunction : Optional<() -> EBProperty < [CanariSegmentEntity] > >
 
-  private var prop_cache : EBProperty < [BoardModelBackLegendTextEntity] >? 
+  private var prop_cache : EBProperty < [CanariSegmentEntity] >? 
 
   //····················································································································
 
@@ -317,16 +317,16 @@ class TransientArrayOf_BoardModelBackLegendTextEntity : ReadOnlyArrayOf_BoardMod
 
   //····················································································································
 
-  private var mSet = Set <BoardModelBackLegendTextEntity> ()
+  private var mSet = Set <CanariSegmentEntity> ()
 
-  override var prop : EBProperty < [BoardModelBackLegendTextEntity] > {
+  override var prop : EBProperty < [CanariSegmentEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <BoardModelBackLegendTextEntity>
+        let newSet : Set <CanariSegmentEntity>
         switch prop_cache! {
         case .multipleSelection, .noSelection :
-          newSet = Set <BoardModelBackLegendTextEntity> ()
+          newSet = Set <CanariSegmentEntity> ()
         case .singleSelection (let array) :
           newSet = Set (array)
         }
@@ -378,40 +378,40 @@ class TransientArrayOf_BoardModelBackLegendTextEntity : ReadOnlyArrayOf_BoardMod
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelBackLegendTextEntity_x1 : class {
+protocol CanariSegmentEntity_x1 : class {
   var x1 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelBackLegendTextEntity_y1 : class {
+protocol CanariSegmentEntity_y1 : class {
   var y1 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelBackLegendTextEntity_x2 : class {
+protocol CanariSegmentEntity_x2 : class {
   var x2 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelBackLegendTextEntity_y2 : class {
+protocol CanariSegmentEntity_y2 : class {
   var y2 : EBStoredProperty_Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelBackLegendTextEntity_width : class {
+protocol CanariSegmentEntity_width : class {
   var width : EBStoredProperty_Int { get }
 }
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: BoardModelBackLegendTextEntity
+//    Entity: CanariSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelBackLegendTextEntity : EBManagedObject, BoardModelBackLegendTextEntity_x1, BoardModelBackLegendTextEntity_y1, BoardModelBackLegendTextEntity_x2, BoardModelBackLegendTextEntity_y2, BoardModelBackLegendTextEntity_width
+class CanariSegmentEntity : EBManagedObject, CanariSegmentEntity_x1, CanariSegmentEntity_y1, CanariSegmentEntity_x2, CanariSegmentEntity_y2, CanariSegmentEntity_width
 {
 
   //····················································································································

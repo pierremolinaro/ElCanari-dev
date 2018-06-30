@@ -10,11 +10,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_frontLayoutTextsSegments (_ self_2E_frontLayoutTexts_0 : [BoardModelFrontLayoutTextEntity_x1],
-                                                        _ self_2E_frontLayoutTexts_1 : [BoardModelFrontLayoutTextEntity_y1],
-                                                        _ self_2E_frontLayoutTexts_2 : [BoardModelFrontLayoutTextEntity_x2],
-                                                        _ self_2E_frontLayoutTexts_3 : [BoardModelFrontLayoutTextEntity_y2],
-                                                        _ self_2E_frontLayoutTexts_4 : [BoardModelFrontLayoutTextEntity_width]) -> MergerSegmentArray {
+func compute_BoardModelEntity_frontLayoutTextsSegments (_ self_2E_frontLayoutTexts_0 : [CanariSegmentEntity_x1],
+                                                        _ self_2E_frontLayoutTexts_1 : [CanariSegmentEntity_y1],
+                                                        _ self_2E_frontLayoutTexts_2 : [CanariSegmentEntity_x2],
+                                                        _ self_2E_frontLayoutTexts_3 : [CanariSegmentEntity_y2],
+                                                        _ self_2E_frontLayoutTexts_4 : [CanariSegmentEntity_width]) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
   var segmentArray = [MergerSegment] ()
   var idx = 0
