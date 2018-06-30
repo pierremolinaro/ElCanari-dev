@@ -231,7 +231,7 @@ entity BoardModelEntity {
   property Int zoom default 0 ; # 0 means "fit to window"
 
 #--- Front Legend Texts
-  cascade toMany BoardModelFrontLegendTextEntity frontLegendTexts inverse toOne myBoard ;
+  toMany @cascading BoardModelFrontLegendTextEntity frontLegendTexts inverse toOne myBoard ;
 
   transient MergerSegmentArray frontLegendTextsSegments dependsFrom
     self.frontLegendTexts.all.x1, self.frontLegendTexts.all.y1,
@@ -243,7 +243,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
 
 #--- Front Layout Texts
-  cascade toMany BoardModelFrontLayoutTextEntity frontLayoutTexts inverse toOne myBoard ;
+  toMany @cascading BoardModelFrontLayoutTextEntity frontLayoutTexts inverse toOne myBoard ;
 
   transient MergerSegmentArray frontLayoutTextsSegments dependsFrom
     self.frontLayoutTexts.all.x1, self.frontLayoutTexts.all.y1,
@@ -255,7 +255,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
 
 #--- Back Legend Texts
-  cascade toMany BoardModelBackLegendTextEntity backLegendTexts inverse toOne myBoard ;
+  toMany @cascading BoardModelBackLegendTextEntity backLegendTexts inverse toOne myBoard ;
 
   transient MergerSegmentArray backLegendTextsSegments dependsFrom
     self.backLegendTexts.all.x1, self.backLegendTexts.all.y1,
@@ -267,7 +267,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsSegments ;
 
 #--- Back Layout Texts
-  cascade toMany BoardModelBackLayoutTextEntity backLayoutTexts inverse toOne myBoard ;
+  toMany @cascading BoardModelBackLayoutTextEntity backLayoutTexts inverse toOne myBoard ;
 
   transient MergerSegmentArray backLayoutTextsSegments dependsFrom
     self.backLayoutTexts.all.x1, self.backLayoutTexts.all.y1,
@@ -290,7 +290,7 @@ entity BoardModelEntity {
   transient MergerHoleArray holesForDisplay dependsFrom prefs.mergerDisplayHoles, self.holes ;
  
 #--- Vias 
-  cascade toMany BoardModelViaEntity vias inverse toOne myModel ;
+  toMany @cascading BoardModelViaEntity vias inverse toOne myModel ;
 
   copy transient Int viaCount : self.vias.count ;
   
@@ -300,7 +300,7 @@ entity BoardModelEntity {
   transient MergerViaShapeArray viaShapesForDisplay dependsFrom prefs.mergerDisplayVias, self.viaShapes ;
 
 #--- Pads
-  cascade toMany BoardModelPadEntity pads inverse toOne myBoard ;
+  toMany @cascading BoardModelPadEntity pads inverse toOne myBoard ;
 
 #--- Front pads
   transient MergerPadArray frontPads
@@ -325,7 +325,7 @@ entity BoardModelEntity {
   ;
  
 #--- Back component names
-  cascade toMany BoardModelBackComponentNameEntity backComponentNames inverse toOne myBoard ;
+  toMany @cascading BoardModelBackComponentNameEntity backComponentNames inverse toOne myBoard ;
 
   transient MergerSegmentArray backComponentNameSegments dependsFrom
     self.backComponentNames.all.x1, self.backComponentNames.all.y1,
@@ -340,7 +340,7 @@ entity BoardModelEntity {
   ;  
   
 #--- Front component names
-  cascade toMany BoardModelFrontComponentNameEntity frontComponentNames inverse toOne myBoard ;
+  toMany @cascading BoardModelFrontComponentNameEntity frontComponentNames inverse toOne myBoard ;
 
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
     self.frontComponentNames.all.x1, self.frontComponentNames.all.y1,
@@ -355,7 +355,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Front component values
-  cascade toMany BoardModelFrontComponentValueEntity frontComponentValues inverse toOne myBoard ;
+  toMany @cascading BoardModelFrontComponentValueEntity frontComponentValues inverse toOne myBoard ;
 
   transient MergerSegmentArray frontComponentValueSegments dependsFrom
     self.frontComponentValues.all.x1, self.frontComponentValues.all.y1,
@@ -370,7 +370,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Back component values
-  cascade toMany BoardModelBackComponentValueEntity backComponentValues inverse toOne myBoard ;
+  toMany @cascading BoardModelBackComponentValueEntity backComponentValues inverse toOne myBoard ;
 
   transient MergerSegmentArray backComponentValueSegments dependsFrom
     self.backComponentValues.all.x1, self.backComponentValues.all.y1,
@@ -385,7 +385,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Back tracks
-  cascade toMany BoardModelBackTrackSegmentEntity backTracks inverse toOne myModel ;
+  toMany @cascading BoardModelBackTrackSegmentEntity backTracks inverse toOne myModel ;
 
   transient MergerSegmentArray backTrackSegments dependsFrom
     self.backTracks.all.x1, self.backTracks.all.y1,
@@ -400,7 +400,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Front tracks
-  cascade toMany BoardModelFrontTrackSegmentEntity frontTracks inverse toOne myModel ;
+  toMany @cascading BoardModelFrontTrackSegmentEntity frontTracks inverse toOne myModel ;
 
   transient MergerSegmentArray frontTrackSegments dependsFrom
     self.frontTracks.all.x1, self.frontTracks.all.y1,
@@ -415,7 +415,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Front packages
-  cascade toMany BoardModelFrontPackageEntity frontPackages inverse toOne myModel ;
+  toMany @cascading BoardModelFrontPackageEntity frontPackages inverse toOne myModel ;
 
   transient MergerSegmentArray frontPackagesSegments dependsFrom
     self.frontPackages.all.x1, self.frontPackages.all.y1,
@@ -430,7 +430,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Back packages
-  cascade toMany BoardModelBackPackageEntity backPackages inverse toOne myModel ;
+  toMany @cascading BoardModelBackPackageEntity backPackages inverse toOne myModel ;
 
   transient MergerSegmentArray backPackagesSegments dependsFrom
     self.backPackages.all.x1, self.backPackages.all.y1,

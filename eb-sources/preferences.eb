@@ -387,7 +387,7 @@ prefs {
   property Bool showGerberDrawingIndexes default yes ;
   outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value self.showGerberDrawingIndexes ;
 #--- Button for displaying current character
-  property validates Int currentCharacterCodePoint default 65 ; # "A"
+  property @validation Int currentCharacterCodePoint default 65 ; # "A"
   outlet CanariFontCharacterSelectButton mFontCharacterSelectButton $codePoint self.currentCharacterCodePoint ;
 #--- Edition transparency
   property Double fontEditionTransparency default 0.5 ;

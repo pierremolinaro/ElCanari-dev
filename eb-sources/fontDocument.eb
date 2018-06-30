@@ -31,11 +31,11 @@ binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
 entity SegmentForFontCharacterEntity {
   toOne FontCharacterEntity myCharacter inverse toMany segments ;
   
-  signature property Int x1 default 2 ;
-  signature property Int y1 default 1 ;
+  property @signature Int x1 default 2 ;
+  property @signature Int y1 default 1 ;
 
-  signature property Int x2 default 9 ;
-  signature property Int y2 default 8 ;
+  property @signature Int x2 default 9 ;
+  property @signature Int y2 default 8 ;
 
   transient SegmentForFontCharacterClass segmentForDrawing dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
@@ -44,9 +44,9 @@ entity SegmentForFontCharacterEntity {
 
 entity FontCharacterEntity {
   toOne FontRootEntity myFont inverse toMany characters ;
-  signature toMany SegmentForFontCharacterEntity segments inverse toOne myCharacter ;
+  toMany @signature SegmentForFontCharacterEntity segments inverse toOne myCharacter ;
   
-  signature property Int advance default 0 ;
+  property @signature Int advance default 0 ;
 
   transient Bool characterIsDefined dependsFrom self.advance, self.segments.count ;
 
@@ -60,8 +60,8 @@ entity FontCharacterEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity FontRootEntity {
-  signature toMany FontCharacterEntity characters inverse toOne myFont ;
-  signature property String comments default "" ;
+  toMany @signature FontCharacterEntity characters inverse toOne myFont ;
+  property @signature String comments default "" ;
   property Int selectedTab default 0 ;
   property Int selectedInspector default 0 ;
 
