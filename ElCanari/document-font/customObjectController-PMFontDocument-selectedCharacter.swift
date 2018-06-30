@@ -41,7 +41,6 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
         mSelectedObject?.gerberCodeInstructionCountMessage.addEBObserver (mObjectObserver)
         mSelectedObject?.gerberCodeInstructionCountMessage.addEBObserver (self.gerberCodeInstructionCountMessage)
         self.gerberCodeInstructionCountMessage.postEvent ()
-      //--- Relationship myFont
       //--- Property segmentArrayForDrawing
         oldValue?.segmentArrayForDrawing.removeEBObserver (mObjectObserver)
         oldValue?.segmentArrayForDrawing.removeEBObserver (self.segmentArrayForDrawing)
@@ -68,7 +67,6 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //   RELATIONSHIPS
   //····················································································································
 
-  // var myFont = ToOneRelationshipProxy_FontCharacterEntity_myFont () 
   // var segments = ToManyRelationshipProxy_FontCharacterEntity_segments () 
 
   //····················································································································

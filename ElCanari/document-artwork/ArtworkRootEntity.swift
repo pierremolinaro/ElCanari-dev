@@ -972,7 +972,6 @@ ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray, EBSi
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myArtwork.owner = nil ;
         }
         removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedObjectSet)
@@ -1000,7 +999,6 @@ ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray, EBSi
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : ArtworkFileGenerationParameters in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myArtwork.setProp (owner)
         }
         addEBObserversOf_drawBoardLimits_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedObjectSet)

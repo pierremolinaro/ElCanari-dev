@@ -1511,82 +1511,6 @@ protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : class {
   var padHoleDiameterInPDF : EBStoredProperty_Int { get }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To one relationship: myArtwork
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class ToOneRelationship_ArtworkFileGenerationParameters_myArtwork : EBAbstractProperty {
-  var mValueExplorer : NSButton? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        switch prop {
-        case .noSelection, .multipleSelection :
-          break ;
-        case .singleSelection (let v) :
-          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
-        }
-      }
-    }
-  }
-
-  weak var owner : ArtworkFileGenerationParameters? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
-      }
-    }
-  }
- 
-  weak private var mValue : ArtworkRootEntity? {
-    didSet {
-      if let unwrappedOwner = owner, oldValue !== mValue {
-      //--- Register old value in undo manager
-        unwrappedOwner.undoManager()?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let unwrappedExplorer = mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
-        }
-      //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.fileGenerationParameterArray.remove (unwrappedOwner)
-        }
-      //--- Set new opposite relation ship
-        if let unwrappedValue = mValue {
-          unwrappedValue.fileGenerationParameterArray.add (unwrappedOwner)
-        }
-      //--- Notify observers
-        postEvent ()
-      }
-    }
-  }
-
-  var propval : ArtworkRootEntity? { get { return mValue } }
-
-  var prop : EBProperty <ArtworkRootEntity?> { get { return .singleSelection (mValue) } }
-
-  func setProp (_ value : ArtworkRootEntity?) { mValue = value }
-
-  //····················································································································
-
-  func performUndo (_ oldValue : ArtworkRootEntity?) {
-    mValue = oldValue
-  }
-
-  //····················································································································
-
-  func remove (_ object : ArtworkRootEntity) {
-    if mValue === object {
-      mValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : ArtworkRootEntity) {
-    mValue = object
-  }
-
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ArtworkFileGenerationParameters
@@ -1652,7 +1576,6 @@ class ArtworkFileGenerationParameters : EBManagedObject, ArtworkFileGenerationPa
   //    Relationships
   //····················································································································
 
-  var myArtwork = ToOneRelationship_ArtworkFileGenerationParameters_myArtwork ()
 
   //····················································································································
   //    init
@@ -1686,7 +1609,6 @@ class ArtworkFileGenerationParameters : EBManagedObject, ArtworkFileGenerationPa
     self.measurementUnitForPadHoleInPDF.undoManager = undoManager ()
     self.padHoleDiameterInPDF.undoManager = undoManager ()
   //--- Install owner for relationships
-    myArtwork.owner = self
   //--- register properties for handling signature
     drawBoardLimits.setSignatureObserver (observer: self)
     drawComponentNamesBottomSide.setSignatureObserver (observer: self)
@@ -1903,13 +1825,6 @@ class ArtworkFileGenerationParameters : EBManagedObject, ArtworkFileGenerationPa
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForToOneRelationshipNamed (
-      "myArtwork",
-      idx:myArtwork.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&myArtwork.mValueExplorer
-    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -1962,8 +1877,6 @@ class ArtworkFileGenerationParameters : EBManagedObject, ArtworkFileGenerationPa
     self.measurementUnitForPadHoleInPDF.mValueExplorer = nil
     self.padHoleDiameterInPDF.mObserverExplorer = nil
     self.padHoleDiameterInPDF.mValueExplorer = nil
-    myArtwork.mObserverExplorer = nil
-    myArtwork.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -2033,17 +1946,7 @@ class ArtworkFileGenerationParameters : EBManagedObject, ArtworkFileGenerationPa
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.myArtwork.setProp (nil) // Set relationship to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   resetToOneRelationships
-  //····················································································································
-
-  override func resetToOneRelationships () {
-    super.resetToOneRelationships ()
-    myArtwork.setProp (nil)
   }
 
   //····················································································································
@@ -2052,9 +1955,6 @@ class ArtworkFileGenerationParameters : EBManagedObject, ArtworkFileGenerationPa
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-    if let object = myArtwork.propval {
-      objects.append (object)
-    }
   }
 
   //····················································································································

@@ -405,82 +405,6 @@ protocol SegmentForFontCharacterEntity_segmentForDrawing : class {
   var segmentForDrawing : EBTransientProperty_SegmentForFontCharacterClass { get }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To one relationship: myCharacter
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class ToOneRelationship_SegmentForFontCharacterEntity_myCharacter : EBAbstractProperty {
-  var mValueExplorer : NSButton? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        switch prop {
-        case .noSelection, .multipleSelection :
-          break ;
-        case .singleSelection (let v) :
-          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
-        }
-      }
-    }
-  }
-
-  weak var owner : SegmentForFontCharacterEntity? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
-      }
-    }
-  }
- 
-  weak private var mValue : FontCharacterEntity? {
-    didSet {
-      if let unwrappedOwner = owner, oldValue !== mValue {
-      //--- Register old value in undo manager
-        unwrappedOwner.undoManager()?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let unwrappedExplorer = mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
-        }
-      //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.segments.remove (unwrappedOwner)
-        }
-      //--- Set new opposite relation ship
-        if let unwrappedValue = mValue {
-          unwrappedValue.segments.add (unwrappedOwner)
-        }
-      //--- Notify observers
-        postEvent ()
-      }
-    }
-  }
-
-  var propval : FontCharacterEntity? { get { return mValue } }
-
-  var prop : EBProperty <FontCharacterEntity?> { get { return .singleSelection (mValue) } }
-
-  func setProp (_ value : FontCharacterEntity?) { mValue = value }
-
-  //····················································································································
-
-  func performUndo (_ oldValue : FontCharacterEntity?) {
-    mValue = oldValue
-  }
-
-  //····················································································································
-
-  func remove (_ object : FontCharacterEntity) {
-    if mValue === object {
-      mValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : FontCharacterEntity) {
-    mValue = object
-  }
-
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SegmentForFontCharacterEntity
@@ -511,7 +435,6 @@ class SegmentForFontCharacterEntity : EBManagedObject, SegmentForFontCharacterEn
   //    Relationships
   //····················································································································
 
-  var myCharacter = ToOneRelationship_SegmentForFontCharacterEntity_myCharacter ()
 
   //····················································································································
   //    init
@@ -554,7 +477,6 @@ class SegmentForFontCharacterEntity : EBManagedObject, SegmentForFontCharacterEn
     self.x2.undoManager = undoManager ()
     self.y2.undoManager = undoManager ()
   //--- Install owner for relationships
-    myCharacter.owner = self
   //--- register properties for handling signature
     x1.setSignatureObserver (observer: self)
     x2.setSignatureObserver (observer: self)
@@ -621,13 +543,6 @@ class SegmentForFontCharacterEntity : EBManagedObject, SegmentForFontCharacterEn
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForToOneRelationshipNamed (
-      "myCharacter",
-      idx:myCharacter.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&myCharacter.mValueExplorer
-    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -644,8 +559,6 @@ class SegmentForFontCharacterEntity : EBManagedObject, SegmentForFontCharacterEn
     self.x2.mValueExplorer = nil
     self.y2.mObserverExplorer = nil
     self.y2.mValueExplorer = nil
-    myCharacter.mObserverExplorer = nil
-    myCharacter.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -679,17 +592,7 @@ class SegmentForFontCharacterEntity : EBManagedObject, SegmentForFontCharacterEn
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.myCharacter.setProp (nil) // Set relationship to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   resetToOneRelationships
-  //····················································································································
-
-  override func resetToOneRelationships () {
-    super.resetToOneRelationships ()
-    myCharacter.setProp (nil)
   }
 
   //····················································································································
@@ -698,9 +601,6 @@ class SegmentForFontCharacterEntity : EBManagedObject, SegmentForFontCharacterEn
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-    if let object = myCharacter.propval {
-      objects.append (object)
-    }
   }
 
   //····················································································································

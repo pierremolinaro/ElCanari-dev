@@ -29,7 +29,7 @@ binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SegmentForFontCharacterEntity {
-  toOne FontCharacterEntity myCharacter inverse toMany segments ;
+#  toOne FontCharacterEntity myCharacter inverse toMany segments ;
   
   property @signature Int x1 default 2 ;
   property @signature Int y1 default 1 ;
@@ -43,8 +43,8 @@ entity SegmentForFontCharacterEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity FontCharacterEntity {
-  toOne FontRootEntity myFont inverse toMany characters ;
-  toMany @signature SegmentForFontCharacterEntity segments inverse toOne myCharacter ;
+#  toOne FontRootEntity myFont inverse toMany characters ;
+  toMany @signature SegmentForFontCharacterEntity segments ; # inverse toOne myCharacter ;
   
   property @signature Int advance default 0 ;
 
@@ -60,7 +60,7 @@ entity FontCharacterEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity FontRootEntity {
-  toMany @signature FontCharacterEntity characters inverse toOne myFont ;
+  toMany @signature FontCharacterEntity characters ; # inverse toOne myFont ;
   property @signature String comments default "" ;
   property Int selectedTab default 0 ;
   property Int selectedInspector default 0 ;

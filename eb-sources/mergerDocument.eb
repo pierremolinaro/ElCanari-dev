@@ -48,7 +48,6 @@ binding CanariBoardModelView $backLayoutTexts : transient MergerSegmentArray ;
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelPadEntity {
-  toOne BoardModelEntity myBoard inverse toMany pads ;
 
 #  property String name default "" ;
   property Int x default 0 ;
@@ -64,7 +63,6 @@ entity BoardModelPadEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelFrontComponentNameEntity {
-  toOne BoardModelEntity myBoard inverse toMany frontComponentNames ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -76,7 +74,6 @@ entity BoardModelFrontComponentNameEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelFrontLegendTextEntity {
-  toOne BoardModelEntity myBoard inverse toMany frontLegendTexts ;
   
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -88,7 +85,6 @@ entity BoardModelFrontLegendTextEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelFrontLayoutTextEntity {
-  toOne BoardModelEntity myBoard inverse toMany frontLayoutTexts ;
   
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -100,7 +96,6 @@ entity BoardModelFrontLayoutTextEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelBackLegendTextEntity {
-  toOne BoardModelEntity myBoard inverse toMany backLegendTexts ;
   
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -112,7 +107,6 @@ entity BoardModelBackLegendTextEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelBackLayoutTextEntity {
-  toOne BoardModelEntity myBoard inverse toMany backLayoutTexts ;
   
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -124,7 +118,6 @@ entity BoardModelBackLayoutTextEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelBackComponentNameEntity {
-  toOne BoardModelEntity myBoard inverse toMany backComponentNames ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -136,7 +129,6 @@ entity BoardModelBackComponentNameEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelFrontComponentValueEntity {
-  toOne BoardModelEntity myBoard inverse toMany frontComponentValues ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -148,7 +140,6 @@ entity BoardModelFrontComponentValueEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelBackComponentValueEntity {
-  toOne BoardModelEntity myBoard inverse toMany backComponentValues ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -160,7 +151,6 @@ entity BoardModelBackComponentValueEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelViaEntity {
-  toOne BoardModelEntity myModel inverse toMany vias ;
 
   property Int x default 0 ;
   property Int y default 0 ;
@@ -171,7 +161,6 @@ entity BoardModelViaEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelFrontTrackSegmentEntity {
-  toOne BoardModelEntity myModel inverse toMany frontTracks ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -183,7 +172,6 @@ entity BoardModelFrontTrackSegmentEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelFrontPackageEntity {
-  toOne BoardModelEntity myModel inverse toMany frontPackages ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -195,7 +183,6 @@ entity BoardModelFrontPackageEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelBackPackageEntity {
-  toOne BoardModelEntity myModel inverse toMany backPackages ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -207,7 +194,6 @@ entity BoardModelBackPackageEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity BoardModelBackTrackSegmentEntity {
-  toOne BoardModelEntity myModel inverse toMany backTracks ;
 
   property Int x1 default 0 ;
   property Int y1 default 0 ;
@@ -231,7 +217,7 @@ entity BoardModelEntity {
   property Int zoom default 0 ; # 0 means "fit to window"
 
 #--- Front Legend Texts
-  toMany @cascading BoardModelFrontLegendTextEntity frontLegendTexts inverse toOne myBoard ;
+  toMany @cascading BoardModelFrontLegendTextEntity frontLegendTexts ;
 
   transient MergerSegmentArray frontLegendTextsSegments dependsFrom
     self.frontLegendTexts.all.x1, self.frontLegendTexts.all.y1,
@@ -243,7 +229,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
 
 #--- Front Layout Texts
-  toMany @cascading BoardModelFrontLayoutTextEntity frontLayoutTexts inverse toOne myBoard ;
+  toMany @cascading BoardModelFrontLayoutTextEntity frontLayoutTexts ;
 
   transient MergerSegmentArray frontLayoutTextsSegments dependsFrom
     self.frontLayoutTexts.all.x1, self.frontLayoutTexts.all.y1,
@@ -255,7 +241,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
 
 #--- Back Legend Texts
-  toMany @cascading BoardModelBackLegendTextEntity backLegendTexts inverse toOne myBoard ;
+  toMany @cascading BoardModelBackLegendTextEntity backLegendTexts ;
 
   transient MergerSegmentArray backLegendTextsSegments dependsFrom
     self.backLegendTexts.all.x1, self.backLegendTexts.all.y1,
@@ -267,7 +253,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsSegments ;
 
 #--- Back Layout Texts
-  toMany @cascading BoardModelBackLayoutTextEntity backLayoutTexts inverse toOne myBoard ;
+  toMany @cascading BoardModelBackLayoutTextEntity backLayoutTexts ;
 
   transient MergerSegmentArray backLayoutTextsSegments dependsFrom
     self.backLayoutTexts.all.x1, self.backLayoutTexts.all.y1,
@@ -290,7 +276,7 @@ entity BoardModelEntity {
   transient MergerHoleArray holesForDisplay dependsFrom prefs.mergerDisplayHoles, self.holes ;
  
 #--- Vias 
-  toMany @cascading BoardModelViaEntity vias inverse toOne myModel ;
+  toMany @cascading BoardModelViaEntity vias ;
 
   copy transient Int viaCount : self.vias.count ;
   
@@ -300,7 +286,7 @@ entity BoardModelEntity {
   transient MergerViaShapeArray viaShapesForDisplay dependsFrom prefs.mergerDisplayVias, self.viaShapes ;
 
 #--- Pads
-  toMany @cascading BoardModelPadEntity pads inverse toOne myBoard ;
+  toMany @cascading BoardModelPadEntity pads ;
 
 #--- Front pads
   transient MergerPadArray frontPads
@@ -325,7 +311,7 @@ entity BoardModelEntity {
   ;
  
 #--- Back component names
-  toMany @cascading BoardModelBackComponentNameEntity backComponentNames inverse toOne myBoard ;
+  toMany @cascading BoardModelBackComponentNameEntity backComponentNames ;
 
   transient MergerSegmentArray backComponentNameSegments dependsFrom
     self.backComponentNames.all.x1, self.backComponentNames.all.y1,
@@ -340,7 +326,7 @@ entity BoardModelEntity {
   ;  
   
 #--- Front component names
-  toMany @cascading BoardModelFrontComponentNameEntity frontComponentNames inverse toOne myBoard ;
+  toMany @cascading BoardModelFrontComponentNameEntity frontComponentNames ;
 
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
     self.frontComponentNames.all.x1, self.frontComponentNames.all.y1,
@@ -355,7 +341,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Front component values
-  toMany @cascading BoardModelFrontComponentValueEntity frontComponentValues inverse toOne myBoard ;
+  toMany @cascading BoardModelFrontComponentValueEntity frontComponentValues ;
 
   transient MergerSegmentArray frontComponentValueSegments dependsFrom
     self.frontComponentValues.all.x1, self.frontComponentValues.all.y1,
@@ -370,7 +356,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Back component values
-  toMany @cascading BoardModelBackComponentValueEntity backComponentValues inverse toOne myBoard ;
+  toMany @cascading BoardModelBackComponentValueEntity backComponentValues ;
 
   transient MergerSegmentArray backComponentValueSegments dependsFrom
     self.backComponentValues.all.x1, self.backComponentValues.all.y1,
@@ -385,7 +371,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Back tracks
-  toMany @cascading BoardModelBackTrackSegmentEntity backTracks inverse toOne myModel ;
+  toMany @cascading BoardModelBackTrackSegmentEntity backTracks ;
 
   transient MergerSegmentArray backTrackSegments dependsFrom
     self.backTracks.all.x1, self.backTracks.all.y1,
@@ -400,7 +386,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Front tracks
-  toMany @cascading BoardModelFrontTrackSegmentEntity frontTracks inverse toOne myModel ;
+  toMany @cascading BoardModelFrontTrackSegmentEntity frontTracks ;
 
   transient MergerSegmentArray frontTrackSegments dependsFrom
     self.frontTracks.all.x1, self.frontTracks.all.y1,
@@ -415,7 +401,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Front packages
-  toMany @cascading BoardModelFrontPackageEntity frontPackages inverse toOne myModel ;
+  toMany @cascading BoardModelFrontPackageEntity frontPackages ;
 
   transient MergerSegmentArray frontPackagesSegments dependsFrom
     self.frontPackages.all.x1, self.frontPackages.all.y1,
@@ -430,7 +416,7 @@ entity BoardModelEntity {
   ;  
 
 #--- Back packages
-  toMany @cascading BoardModelBackPackageEntity backPackages inverse toOne myModel ;
+  toMany @cascading BoardModelBackPackageEntity backPackages ;
 
   transient MergerSegmentArray backPackagesSegments dependsFrom
     self.backPackages.all.x1, self.backPackages.all.y1,

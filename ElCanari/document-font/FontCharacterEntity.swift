@@ -513,7 +513,6 @@ ToManyRelationshipReadWrite_FontCharacterEntity_segments, EBSignatureObserverPro
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myCharacter.owner = nil ;
         }
         removeEBObserversOf_segmentForDrawing_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -524,7 +523,6 @@ ToManyRelationshipReadWrite_FontCharacterEntity_segments, EBSignatureObserverPro
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentForFontCharacterEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myCharacter.setProp (owner)
         }
         addEBObserversOf_segmentForDrawing_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -625,82 +623,6 @@ ToManyRelationshipReadWrite_FontCharacterEntity_segments, EBSignatureObserverPro
   //····················································································································
  
 }
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To one relationship: myFont
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class ToOneRelationship_FontCharacterEntity_myFont : EBAbstractProperty {
-  var mValueExplorer : NSButton? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        switch prop {
-        case .noSelection, .multipleSelection :
-          break ;
-        case .singleSelection (let v) :
-          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
-        }
-      }
-    }
-  }
-
-  weak var owner : FontCharacterEntity? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
-      }
-    }
-  }
- 
-  weak private var mValue : FontRootEntity? {
-    didSet {
-      if let unwrappedOwner = owner, oldValue !== mValue {
-      //--- Register old value in undo manager
-        unwrappedOwner.undoManager()?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let unwrappedExplorer = mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
-        }
-      //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.characters.remove (unwrappedOwner)
-        }
-      //--- Set new opposite relation ship
-        if let unwrappedValue = mValue {
-          unwrappedValue.characters.add (unwrappedOwner)
-        }
-      //--- Notify observers
-        postEvent ()
-      }
-    }
-  }
-
-  var propval : FontRootEntity? { get { return mValue } }
-
-  var prop : EBProperty <FontRootEntity?> { get { return .singleSelection (mValue) } }
-
-  func setProp (_ value : FontRootEntity?) { mValue = value }
-
-  //····················································································································
-
-  func performUndo (_ oldValue : FontRootEntity?) {
-    mValue = oldValue
-  }
-
-  //····················································································································
-
-  func remove (_ object : FontRootEntity) {
-    if mValue === object {
-      mValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : FontRootEntity) {
-    mValue = object
-  }
-
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: FontCharacterEntity
@@ -729,7 +651,6 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
   //····················································································································
 
   var segments = ToManyRelationship_FontCharacterEntity_segments ()
-  var myFont = ToOneRelationship_FontCharacterEntity_myFont ()
 
   //····················································································································
   //    init
@@ -828,7 +749,6 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
   //--- Install undoers for properties
     self.advance.undoManager = undoManager ()
   //--- Install owner for relationships
-    myFont.owner = self
     segments.owner = self
   //--- register properties for handling signature
     advance.setSignatureObserver (observer: self)
@@ -902,13 +822,6 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
       valueExplorer:&segments.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForToOneRelationshipNamed (
-      "myFont",
-      idx:myFont.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&myFont.mValueExplorer
-    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -919,8 +832,6 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
   override func clearObjectExplorer () {
     self.advance.mObserverExplorer = nil
     self.advance.mValueExplorer = nil
-    myFont.mObserverExplorer = nil
-    myFont.mValueExplorer = nil
     // segments.mObserverExplorer = nil
     segments.mValueExplorer = nil
     super.clearObjectExplorer ()
@@ -957,7 +868,6 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     self.segments.setProp (Array ()) // Set relationships to nil
-    self.myFont.setProp (nil) // Set relationship to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
@@ -971,15 +881,6 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
   }
 
   //····················································································································
-  //   resetToOneRelationships
-  //····················································································································
-
-  override func resetToOneRelationships () {
-    super.resetToOneRelationships ()
-    myFont.setProp (nil)
-  }
-
-  //····················································································································
   //   accessibleObjects
   //····················································································································
 
@@ -987,9 +888,6 @@ class FontCharacterEntity : EBManagedObject, FontCharacterEntity_advance, FontCh
     super.accessibleObjects (objects: &objects)
     for managedObject : EBManagedObject in segments.propval {
       objects.append (managedObject)
-    }
-    if let object = myFont.propval {
-      objects.append (object)
     }
   }
 

@@ -406,82 +406,6 @@ protocol BoardModelFrontComponentNameEntity_width : class {
   var width : EBStoredProperty_Int { get }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To one relationship: myBoard
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class ToOneRelationship_BoardModelFrontComponentNameEntity_myBoard : EBAbstractProperty {
-  var mValueExplorer : NSButton? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        switch prop {
-        case .noSelection, .multipleSelection :
-          break ;
-        case .singleSelection (let v) :
-          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
-        }
-      }
-    }
-  }
-
-  weak var owner : BoardModelFrontComponentNameEntity? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
-      }
-    }
-  }
- 
-  weak private var mValue : BoardModelEntity? {
-    didSet {
-      if let unwrappedOwner = owner, oldValue !== mValue {
-      //--- Register old value in undo manager
-        unwrappedOwner.undoManager()?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let unwrappedExplorer = mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
-        }
-      //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.frontComponentNames.remove (unwrappedOwner)
-        }
-      //--- Set new opposite relation ship
-        if let unwrappedValue = mValue {
-          unwrappedValue.frontComponentNames.add (unwrappedOwner)
-        }
-      //--- Notify observers
-        postEvent ()
-      }
-    }
-  }
-
-  var propval : BoardModelEntity? { get { return mValue } }
-
-  var prop : EBProperty <BoardModelEntity?> { get { return .singleSelection (mValue) } }
-
-  func setProp (_ value : BoardModelEntity?) { mValue = value }
-
-  //····················································································································
-
-  func performUndo (_ oldValue : BoardModelEntity?) {
-    mValue = oldValue
-  }
-
-  //····················································································································
-
-  func remove (_ object : BoardModelEntity) {
-    if mValue === object {
-      mValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : BoardModelEntity) {
-    mValue = object
-  }
-
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardModelFrontComponentNameEntity
@@ -513,7 +437,6 @@ class BoardModelFrontComponentNameEntity : EBManagedObject, BoardModelFrontCompo
   //    Relationships
   //····················································································································
 
-  var myBoard = ToOneRelationship_BoardModelFrontComponentNameEntity_myBoard ()
 
   //····················································································································
   //    init
@@ -530,7 +453,6 @@ class BoardModelFrontComponentNameEntity : EBManagedObject, BoardModelFrontCompo
     self.y2.undoManager = undoManager ()
     self.width.undoManager = undoManager ()
   //--- Install owner for relationships
-    myBoard.owner = self
   //--- register properties for handling signature
   }
 
@@ -589,13 +511,6 @@ class BoardModelFrontComponentNameEntity : EBManagedObject, BoardModelFrontCompo
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
-    createEntryForToOneRelationshipNamed (
-      "myBoard",
-      idx:myBoard.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&myBoard.mValueExplorer
-    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -614,8 +529,6 @@ class BoardModelFrontComponentNameEntity : EBManagedObject, BoardModelFrontCompo
     self.y2.mValueExplorer = nil
     self.width.mObserverExplorer = nil
     self.width.mValueExplorer = nil
-    myBoard.mObserverExplorer = nil
-    myBoard.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -651,17 +564,7 @@ class BoardModelFrontComponentNameEntity : EBManagedObject, BoardModelFrontCompo
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.myBoard.setProp (nil) // Set relationship to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   resetToOneRelationships
-  //····················································································································
-
-  override func resetToOneRelationships () {
-    super.resetToOneRelationships ()
-    myBoard.setProp (nil)
   }
 
   //····················································································································
@@ -670,9 +573,6 @@ class BoardModelFrontComponentNameEntity : EBManagedObject, BoardModelFrontCompo
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-    if let object = myBoard.propval {
-      objects.append (object)
-    }
   }
 
   //····················································································································

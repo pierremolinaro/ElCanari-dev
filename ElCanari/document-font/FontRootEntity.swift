@@ -643,7 +643,6 @@ ToManyRelationshipReadWrite_FontRootEntity_characters, EBSignatureObserverProtoc
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myFont.owner = nil ;
         }
         removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_characterIsDefined_fromElementsOfSet (removedObjectSet)
@@ -654,7 +653,6 @@ ToManyRelationshipReadWrite_FontRootEntity_characters, EBSignatureObserverProtoc
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : FontCharacterEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myFont.setProp (owner)
         }
         addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
         addEBObserversOf_characterIsDefined_toElementsOfSet (addedObjectSet)

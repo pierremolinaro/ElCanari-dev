@@ -3593,7 +3593,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts, EBSignatureObserv
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myBoard.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -3604,7 +3603,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts, EBSignatureObserv
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelFrontLegendTextEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myBoard.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -3816,7 +3814,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts, EBSignatureObserv
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myBoard.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -3827,7 +3824,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts, EBSignatureObserv
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelFrontLayoutTextEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myBoard.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -4039,7 +4035,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts, EBSignatureObserve
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myBoard.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -4050,7 +4045,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts, EBSignatureObserve
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelBackLegendTextEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myBoard.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -4262,7 +4256,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts, EBSignatureObserve
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myBoard.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -4273,7 +4266,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts, EBSignatureObserve
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelBackLayoutTextEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myBoard.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -4485,7 +4477,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_vias, EBSignatureObserverProtocol {
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myModel.owner = nil ;
         }
         removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
@@ -4495,7 +4486,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_vias, EBSignatureObserverProtocol {
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelViaEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myModel.setProp (owner)
         }
         addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
         addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
@@ -4706,7 +4696,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_pads, EBSignatureObserverProtocol {
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myBoard.owner = nil ;
         }
         removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
@@ -4720,7 +4709,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_pads, EBSignatureObserverProtocol {
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelPadEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myBoard.setProp (owner)
         }
         addEBObserversOf_height_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
@@ -4935,7 +4923,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames, EBSignatureObse
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myBoard.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -4946,7 +4933,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames, EBSignatureObse
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelBackComponentNameEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myBoard.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -5158,7 +5144,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames, EBSignatureObs
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myBoard.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -5169,7 +5154,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames, EBSignatureObs
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelFrontComponentNameEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myBoard.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -5381,7 +5365,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues, EBSignatureOb
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myBoard.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -5392,7 +5375,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues, EBSignatureOb
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelFrontComponentValueEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myBoard.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -5604,7 +5586,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues, EBSignatureObs
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myBoard.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -5615,7 +5596,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues, EBSignatureObs
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelBackComponentValueEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myBoard.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -5827,7 +5807,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProt
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myModel.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -5838,7 +5817,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProt
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelBackTrackSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myModel.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -6050,7 +6028,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverPro
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myModel.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -6061,7 +6038,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverPro
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelFrontTrackSegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myModel.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -6273,7 +6249,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontPackages, EBSignatureObserverP
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myModel.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -6284,7 +6259,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontPackages, EBSignatureObserverP
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelFrontPackageEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myModel.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -6496,7 +6470,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backPackages, EBSignatureObserverPr
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
-          managedObject.myModel.owner = nil ;
         }
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
@@ -6507,7 +6480,6 @@ ToManyRelationshipReadWrite_BoardModelEntity_backPackages, EBSignatureObserverPr
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelBackPackageEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myModel.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)

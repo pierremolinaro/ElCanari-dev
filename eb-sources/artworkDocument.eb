@@ -10,7 +10,7 @@ binding CanariDrillDataFormatTabView $selectedFormat : property DrillDataFormatE
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ArtworkRootEntity {
-  toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray inverse toOne myArtwork ;
+  toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
   property Int selectedTab default 0 ;
   property @signature String comments default "" ;
 
@@ -126,7 +126,6 @@ document PMArtworkDocument root ArtworkRootEntity {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ArtworkFileGenerationParameters {
-  toOne ArtworkRootEntity myArtwork inverse toMany fileGenerationParameterArray ;
   property @signature Bool drawBoardLimits default no ;
   property @signature Bool drawComponentNamesTopSide default no ;
   property @signature Bool drawComponentNamesBottomSide default no ;
