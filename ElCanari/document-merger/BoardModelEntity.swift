@@ -8775,6 +8775,29 @@ class BoardModelEntity : EBManagedObject, BoardModelEntity_artworkName, BoardMod
   }
 
   //····················································································································
+  //   cascadeObjectRemoving
+  //····················································································································
+
+  override func cascadeObjectRemoving () {
+    super.cascadeObjectRemoving ()
+    self.managedObjectContext ()?.removeManagedObjects (self.frontLegendTexts.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.frontLayoutTexts.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.backLegendTexts.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.backLayoutTexts.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.vias.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.pads.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.backComponentNames.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.frontComponentNames.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.frontComponentValues.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.backComponentValues.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.backTracks.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.frontTracks.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.frontPackages.propval) // Cascade removing from moc
+    self.managedObjectContext ()?.removeManagedObjects (self.backPackages.propval) // Cascade removing from moc
+    self.myArtwork.setProp (nil) // Set relationship to nil
+  }
+
+  //····················································································································
   //   resetToManyRelationships
   //····················································································································
 

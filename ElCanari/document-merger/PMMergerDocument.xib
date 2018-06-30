@@ -25,6 +25,7 @@
                 <outlet property="mFrontPackagesCountTextField" destination="tmN-ch-vea" id="Sub-ka-b9T"/>
                 <outlet property="mFrontTrackSegmentCountTextField" destination="h7n-fB-G8M" id="C7m-hO-QUe"/>
                 <outlet property="mPageSegmentedControl" destination="g6K-IS-SQg" id="vW2-0C-BuI"/>
+                <outlet property="removeBoardModelButton" destination="9BP-El-GfJ" id="Jfw-Rs-eVE"/>
                 <outlet property="showPrefsForSettingMergerDisplayButton" destination="Y3w-4l-ytx" id="k7k-t5-8J4"/>
                 <outlet property="window" destination="21" id="252"/>
             </connections>
@@ -95,7 +96,7 @@
                     <toolbarItem reference="Hkd-jU-U7x"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="1178" y="-133"/>
+            <point key="canvasLocation" x="1369" y="-158"/>
         </window>
         <customView wantsLayer="YES" id="67F-em-F8g" userLabel="Page : Models" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="700" height="500"/>
@@ -110,14 +111,14 @@
                     </buttonCell>
                 </button>
                 <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="7Kv-FP-h6t">
-                    <rect key="frame" x="20" y="20" width="197" height="419"/>
+                    <rect key="frame" x="20" y="20" width="197" height="385"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="oAS-F8-HR9">
-                        <rect key="frame" x="1" y="0.0" width="195" height="418"/>
+                        <rect key="frame" x="1" y="0.0" width="195" height="384"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="jkD-hJ-5td" viewBased="YES" id="xkX-ID-Qcd" customClass="EBTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="195" height="395"/>
+                                <rect key="frame" x="0.0" y="0.0" width="195" height="361"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -467,6 +468,14 @@
                         </tabViewItem>
                     </tabViewItems>
                 </tabView>
+                <button verticalHuggingPriority="750" misplaced="YES" id="9BP-El-GfJ" customClass="EBButton">
+                    <rect key="frame" x="14" y="419" width="209" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Remove Board Model" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EVf-tb-GGZ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <point key="canvasLocation" x="443" y="-194"/>
         </customView>

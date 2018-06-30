@@ -29,6 +29,7 @@ import Cocoa
   @IBOutlet var mFrontPackagesCountTextField : EBIntObserverField?
   @IBOutlet var mFrontTrackSegmentCountTextField : EBIntObserverField?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var removeBoardModelButton : EBButton?
   @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton?
 
   //····················································································································
@@ -254,6 +255,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
     }
+    if nil == removeBoardModelButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'removeBoardModelButton' outlet is nil") ;
+//    }else if !removeBoardModelButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'removeBoardModelButton' outlet is not an instance of 'EBButton'") ;
+    }
     if nil == showPrefsForSettingMergerDisplayButton {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -316,9 +326,18 @@ import Cocoa
     mBoardModelView?.bind_backLegendTexts (self.mBoardModelSelection.backLegendTextsSegmentsForDisplay, file: #file, line: #line)
     mBoardModelView?.bind_backLayoutTexts (self.mBoardModelSelection.backLayoutTextsSegmentsForDisplay, file: #file, line: #line)
   //--- Install multiple bindings
+    removeBoardModelButton?.bind_enabled (
+      [self.mBoardModelController.selectedArray.count],
+      computeFunction:{
+        return (self.mBoardModelController.selectedArray.count.prop > EBProperty.singleSelection (0))
+      },
+      file: #file, line: #line
+    )
   //--------------------------- Set targets / actions
     addBoardModelButton?.target = self
     addBoardModelButton?.action = #selector (PMMergerDocument.addBoardModelAction (_:))
+    removeBoardModelButton?.target = mBoardModelController
+    removeBoardModelButton?.action = #selector (ArrayController_PMMergerDocument_mBoardModelController.remove (_:))
     showPrefsForSettingMergerDisplayButton?.target = self
     showPrefsForSettingMergerDisplayButton?.action = #selector (PMMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
   //--------------------------- Update display
@@ -368,6 +387,7 @@ import Cocoa
     mBoardModelView?.unbind_backLegendTexts ()
     mBoardModelView?.unbind_backLayoutTexts ()
   //--- Unbind multiple bindings
+    removeBoardModelButton?.unbind_enabled ()
   //--- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers
     mBoardModelController.unbind_modelAndView ()
@@ -376,6 +396,7 @@ import Cocoa
   //--- Uninstall property observers for transients
   //--------------------------- Remove targets / actions
     addBoardModelButton?.target = nil
+    removeBoardModelButton?.target = nil
     showPrefsForSettingMergerDisplayButton?.target = nil
   }
 

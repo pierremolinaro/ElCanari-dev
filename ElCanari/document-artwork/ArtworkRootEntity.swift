@@ -1403,6 +1403,15 @@ class ArtworkRootEntity : EBManagedObject, ArtworkRootEntity_selectedTab, Artwor
   }
 
   //····················································································································
+  //   cascadeObjectRemoving
+  //····················································································································
+
+  override func cascadeObjectRemoving () {
+    super.cascadeObjectRemoving ()
+    self.fileGenerationParameterArray.setProp (Array ()) // Set relationships to nil
+  }
+
+  //····················································································································
   //   resetToManyRelationships
   //····················································································································
 
