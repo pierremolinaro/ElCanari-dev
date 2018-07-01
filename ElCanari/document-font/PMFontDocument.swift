@@ -370,19 +370,19 @@ import Cocoa
         let kind = unwSelf.rootObject.characters.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.rootObject.characters.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_PMFontDocument_missingCharactersCountString (v0))
+          case (.single (let v0)) :
+            return .single (compute_PMFontDocument_missingCharactersCountString (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     missingCharacterDescriptorArray.readModelFunction = { [weak self] in
@@ -390,19 +390,19 @@ import Cocoa
         let kind = unwSelf.rootObject.characters.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.rootObject.characters.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_PMFontDocument_missingCharacterDescriptorArray (v0))
+          case (.single (let v0)) :
+            return .single (compute_PMFontDocument_missingCharacterDescriptorArray (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   //--- Install property observers for transients

@@ -24,16 +24,15 @@ final class Controller_CanariFontSampleStringView_bezierPath : EBSimpleControlle
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)
-//    mObject.addEBObserver (self)
   }
 
   //····················································································································
 
   final override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break ;
-    case .singleSelection (let bezierPath) :
+    case .single (let bezierPath) :
       mOutlet.updateDisplayFromBezierPathController (bezierPath)
     }
   }

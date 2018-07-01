@@ -92,7 +92,6 @@ final class Controller_CanariVersionField_version : EBSimpleController {
     if mOutlet.formatter != nil {
       presentErrorWindow (file: file, line:line, errorMessage:"the outlet has a formatter")
     }
-//    mObject.addEBObserver (self)
   }
 
   //····················································································································
@@ -105,13 +104,13 @@ final class Controller_CanariVersionField_version : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.enableFromValue (false)
       mOutlet.stringValue = "—"
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.enableFromValue (true)
       mOutlet.stringValue = String (v)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.enableFromValue (false)
       mOutlet.stringValue = "—"
     }
@@ -147,9 +146,9 @@ final class Controller_CanariVersionField_versionShouldChange : EBSimpleControll
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.textColor = v ? NSColor.red : NSColor.black
     }
   }

@@ -671,11 +671,11 @@ final class Controller_CanariBoardModelView_vias : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mVias.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.setVias ([])
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.setVias (v.shapeArray)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.setVias ([])
     }
   }
@@ -706,11 +706,11 @@ final class Controller_CanariBoardModelView_generic_MergerSegmentArray : EBSimpl
 
   override func sendUpdateEvent () {
     switch mSegments.prop {
-    case .noSelection :
+    case .empty :
       mCallBack ([])
-    case .singleSelection (let v) :
+    case .single (let v) :
       mCallBack (v.segmentArray)
-    case .multipleSelection :
+    case .multiple :
       mCallBack ([])
     }
   }
@@ -740,11 +740,11 @@ final class Controller_CanariBoardModelView_boardLimits : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mLimits.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.setBoardLimits (MergerBoardLimits ())
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.setBoardLimits (v)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.setBoardLimits (MergerBoardLimits ())
     }
   }
@@ -774,11 +774,11 @@ final class Controller_CanariBoardModelView_frontPads : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mPads.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.setFrontPads ([])
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.setFrontPads (v.padArray)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.setFrontPads ([])
     }
   }
@@ -808,11 +808,11 @@ final class Controller_CanariBoardModelView_backPads : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mPads.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.setBackPads ([])
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.setBackPads (v.padArray)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.setBackPads ([])
     }
   }
@@ -842,11 +842,11 @@ final class Controller_CanariBoardModelView_holes : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mHoles.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.setHoles ([])
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.setHoles (v.holeArray)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.setHoles ([])
     }
   }

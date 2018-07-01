@@ -44,9 +44,9 @@ final class SelectedSet_PMFontDocument_mMissingCharsController : EBAbstractPrope
     set {
       var newSelectedSet = newValue
       switch mSortedArray.prop {
-      case .noSelection, .multipleSelection :
+      case .empty, .multiple :
         break ;
-      case .singleSelection (let sortedArray) :
+      case .single (let sortedArray) :
         if !mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
           newSelectedSet = Set (arrayLiteral: sortedArray [0])
         }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
@@ -125,18 +125,18 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
   private final func setSelectedArrayComputeFunction () {
     selectedArray.readModelFunction = {
       switch self.sortedArray.prop {
-      case .noSelection :
-        return .noSelection
-      case .multipleSelection :
-        return .multipleSelection
-      case .singleSelection (let v) :
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
         var result = [MissingCharacter] ()
         for object in v {
           if self.mSelectedSet.mSet.contains (object) {
             result.append (object)
           }
         }
-        return .singleSelection (result)
+        return .single (result)
       }
     }
   }
@@ -169,16 +169,16 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
     sortedArray.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let modelArray) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let modelArray) :
           let sortedArray = modelArray.sorted (by: {self.isOrderedBefore (left: $0, right: $1)})
-          return .singleSelection (sortedArray)
+          return .single (sortedArray)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -287,9 +287,9 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
 
   func selectedObjectIndexSet () -> NSIndexSet {
     switch sortedArray.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
        return NSIndexSet ()
-    case .singleSelection (let v) :
+    case .single (let v) :
     //--- Dictionary of object indexes
       var objectDictionary = [MissingCharacter : Int] ()
       for (index, object) in v.enumerated () {
@@ -314,9 +314,9 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
       print ("\(#function)")
     }
     switch sortedArray.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return 0
-    case .singleSelection (let v) :
+    case .single (let v) :
       return v.count
     }
   }
@@ -330,9 +330,9 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
       print ("\(#function)")
     }
     switch sortedArray.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       let tableView = notification.object as! EBTableView
       var newSelectedObjectSet = Set <MissingCharacter> ()
       for index in tableView.selectedRowIndexes {
@@ -369,9 +369,9 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
       print ("\(#function)")
     }
     switch sortedArray.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return nil
-    case .singleSelection (let v) :
+    case .single (let v) :
       let columnIdentifier = tableColumn!.identifier
       let result : NSTableCellView = tableView.make (withIdentifier: columnIdentifier, owner:self) as! NSTableCellView
       if !reuseTableViewCells () {

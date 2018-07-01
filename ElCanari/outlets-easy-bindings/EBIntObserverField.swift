@@ -102,13 +102,13 @@ final class Controller_EBIntObserverField_readOnlyValue : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.enableFromValue (false)
       mOutlet.stringValue = "—"
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.enableFromValue (true)
       mOutlet.integerValue = v
-    case .multipleSelection :
+    case .multiple :
       mOutlet.enableFromValue (false)
       mOutlet.stringValue = "—"
     }

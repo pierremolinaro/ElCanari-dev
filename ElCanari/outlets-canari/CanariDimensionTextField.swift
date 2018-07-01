@@ -93,8 +93,6 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     super.unregister ()
     mOutlet.target = nil
     mOutlet.action = nil
-//    mDimension.removeEBObserver (self)
-//    mUnit.removeEBObserver (self)
     mOutlet.removeFromEnabledFromValueDictionary ()
   }
 
@@ -102,13 +100,13 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
 
   override func sendUpdateEvent () {
     switch combine (mDimension.prop, unit:mUnit.prop) {
-    case .noSelection :
+    case .empty :
       mOutlet.stringValue = "—"
       mOutlet.enableFromValue (false)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.stringValue = "—"
       mOutlet.enableFromValue (false)
-    case .singleSelection (let propertyValue) :
+    case .single (let propertyValue) :
       mOutlet.doubleValue = propertyValue
       mOutlet.enableFromValue (true)
     }
@@ -119,9 +117,9 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
 
   func action (_ sender : CanariDimensionTextField) {
     switch mUnit.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let unit) :
+    case .single (let unit) :
       let value : Int = 90 * Int (round (mOutlet.doubleValue * Double (unit) / 90.0))
       _ = mDimension.validateAndSetProp (value, windowForSheet:sender.window)
     }
@@ -130,25 +128,25 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func combine (_ dimension : EBProperty <Int>, unit : EBProperty <Int>) -> EBProperty <Double> {
+private func combine (_ dimension : EBSelection <Int>, unit : EBSelection <Int>) -> EBSelection <Double> {
   switch dimension {
-  case .noSelection :
-    return .noSelection
-  case .multipleSelection :
+  case .empty :
+    return .empty
+  case .multiple :
     switch dimension {
-    case .noSelection :
-      return .noSelection
-    case .multipleSelection, .singleSelection :
-      return .multipleSelection
+    case .empty :
+      return .empty
+    case .multiple, .single :
+      return .multiple
     }
-  case .singleSelection (let dimensionValue) :
+  case .single (let dimensionValue) :
     switch unit {
-    case .noSelection :
-      return .noSelection
-    case .multipleSelection :
-      return .multipleSelection
-    case .singleSelection (let unitValue):
-      return .singleSelection (Double (dimensionValue) / Double (unitValue))
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
+    case .single (let unitValue):
+      return .single (Double (dimensionValue) / Double (unitValue))
     }
   }
 }

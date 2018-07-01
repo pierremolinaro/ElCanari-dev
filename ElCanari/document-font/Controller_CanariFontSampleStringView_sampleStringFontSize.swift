@@ -30,9 +30,9 @@ final class Controller_CanariFontSampleStringView_sampleStringFontSize : EBSimpl
 
   final override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break ;
-    case .singleSelection (let fontSize) :
+    case .single (let fontSize) :
       mOutlet.updateDisplayFromFontSizeController (fontSize)
     }
   }

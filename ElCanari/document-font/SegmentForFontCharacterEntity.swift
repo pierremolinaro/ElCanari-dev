@@ -28,7 +28,7 @@ class SegmentForFontCharacterEntity : EBManagedObject,
     }
   }
 
-  var x1_prop : EBProperty <Int> {
+  var x1_prop : EBSelection <Int> {
     get {
       return self.x1.prop
     }
@@ -47,7 +47,7 @@ class SegmentForFontCharacterEntity : EBManagedObject,
     }
   }
 
-  var y1_prop : EBProperty <Int> {
+  var y1_prop : EBSelection <Int> {
     get {
       return self.y1.prop
     }
@@ -66,7 +66,7 @@ class SegmentForFontCharacterEntity : EBManagedObject,
     }
   }
 
-  var x2_prop : EBProperty <Int> {
+  var x2_prop : EBSelection <Int> {
     get {
       return self.x2.prop
     }
@@ -85,7 +85,7 @@ class SegmentForFontCharacterEntity : EBManagedObject,
     }
   }
 
-  var y2_prop : EBProperty <Int> {
+  var y2_prop : EBSelection <Int> {
     get {
       return self.y2.prop
     }
@@ -95,7 +95,7 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   //   Accessing segmentForDrawing transient property
   //····················································································································
 
-  var segmentForDrawing_prop : EBProperty <SegmentForFontCharacterClass> {
+  var segmentForDrawing_prop : EBSelection <SegmentForFontCharacterClass> {
     get {
       return self.segmentForDrawing.prop
     }
@@ -136,19 +136,19 @@ class SegmentForFontCharacterEntity : EBManagedObject,
         kind &= unwSelf.y2.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.x1.prop, unwSelf.y1.prop, unwSelf.x2.prop, unwSelf.y2.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3)) :
-            return .singleSelection (compute_SegmentForFontCharacterEntity_segmentForDrawing (v0, v1, v2, v3))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_SegmentForFontCharacterEntity_segmentForDrawing (v0, v1, v2, v3))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   //--- Install property observers for transients
@@ -323,9 +323,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     self.addEBObserver (inObserver)
     mObserversOf_x1.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x1.addEBObserver (inObserver)
       }
@@ -338,9 +338,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     self.removeEBObserver (inObserver)
     mObserversOf_x1.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x1.removeEBObserver (inObserver)
       }
@@ -380,9 +380,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     self.addEBObserver (inObserver)
     mObserversOf_y1.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y1.addEBObserver (inObserver)
       }
@@ -395,9 +395,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     self.removeEBObserver (inObserver)
     mObserversOf_y1.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y1.removeEBObserver (inObserver)
       }
@@ -437,9 +437,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     self.addEBObserver (inObserver)
     mObserversOf_x2.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x2.addEBObserver (inObserver)
       }
@@ -452,9 +452,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     self.removeEBObserver (inObserver)
     mObserversOf_x2.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x2.removeEBObserver (inObserver)
       }
@@ -494,9 +494,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     self.addEBObserver (inObserver)
     mObserversOf_y2.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y2.addEBObserver (inObserver)
       }
@@ -509,9 +509,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     self.removeEBObserver (inObserver)
     mObserversOf_y2.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y2.removeEBObserver (inObserver)
       }
@@ -551,9 +551,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     self.addEBObserver (inObserver)
     mObserversOf_segmentForDrawing.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.segmentForDrawing.addEBObserver (inObserver)
       }
@@ -566,9 +566,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     self.removeEBObserver (inObserver)
     mObserversOf_segmentForDrawing.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.segmentForDrawing.removeEBObserver (inObserver)
       }
@@ -605,9 +605,9 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
 class TransientArrayOf_SegmentForFontCharacterEntity : ReadOnlyArrayOf_SegmentForFontCharacterEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [SegmentForFontCharacterEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [SegmentForFontCharacterEntity] > >
 
-  private var prop_cache : EBProperty < [SegmentForFontCharacterEntity] >? 
+  private var prop_cache : EBSelection < [SegmentForFontCharacterEntity] >? 
 
   //····················································································································
 
@@ -619,15 +619,15 @@ class TransientArrayOf_SegmentForFontCharacterEntity : ReadOnlyArrayOf_SegmentFo
 
   private var mSet = Set <SegmentForFontCharacterEntity> ()
 
-  override var prop : EBProperty < [SegmentForFontCharacterEntity] > {
+  override var prop : EBSelection < [SegmentForFontCharacterEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
         let newSet : Set <SegmentForFontCharacterEntity>
         switch prop_cache! {
-        case .multipleSelection, .noSelection :
+        case .multiple, .empty :
           newSet = Set <SegmentForFontCharacterEntity> ()
-        case .singleSelection (let array) :
+        case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
@@ -652,7 +652,7 @@ class TransientArrayOf_SegmentForFontCharacterEntity : ReadOnlyArrayOf_SegmentFo
         mSet = newSet
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }

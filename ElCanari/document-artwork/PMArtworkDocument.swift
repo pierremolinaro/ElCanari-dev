@@ -546,19 +546,19 @@ import Cocoa
         let kind = unwSelf.mDataController.sortedArray.count.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.mDataController.sortedArray.count.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_PMArtworkDocument_mGeneratedFileCountString (v0))
+          case (.single (let v0)) :
+            return .single (compute_PMArtworkDocument_mGeneratedFileCountString (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     mStatusImage.readModelFunction = { [weak self] in
@@ -567,19 +567,19 @@ import Cocoa
         kind &= unwSelf.rootObject.fileGenerationParameterArray.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.rootObject.fileGenerationParameterArray.prop, unwSelf.rootObject.fileGenerationParameterArray.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_PMArtworkDocument_mStatusImage (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_PMArtworkDocument_mStatusImage (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     mStatusMessage.readModelFunction = { [weak self] in
@@ -588,19 +588,19 @@ import Cocoa
         kind &= unwSelf.rootObject.fileGenerationParameterArray.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.rootObject.fileGenerationParameterArray.prop, unwSelf.rootObject.fileGenerationParameterArray.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_PMArtworkDocument_mStatusMessage (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_PMArtworkDocument_mStatusMessage (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   //--- Install property observers for transients
@@ -656,7 +656,7 @@ import Cocoa
     mRemoveGenerationFileButton?.bind_enabled (
       [self.mDataController.selectedArray.count],
       computeFunction:{
-        return (self.mDataController.selectedArray.count.prop > EBProperty.singleSelection (0))
+        return (self.mDataController.selectedArray.count.prop > EBSelection.single (0))
       },
       file: #file, line: #line
     )

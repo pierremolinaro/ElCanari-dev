@@ -34,7 +34,7 @@ enum PadShape : Int {
 
 class EBReadOnlyProperty_PadShape : EBAbstractProperty, EBReadOnlyEnumPropertyProtocol {
 
-  var prop : EBProperty <PadShape> { get { return .noSelection } } // Abstract method
+  var prop : EBSelection <PadShape> { get { return .empty } } // Abstract method
 
   func rawValue () -> Int { return PadShape.rectangular.rawValue }  // Abstract method
 
@@ -44,27 +44,27 @@ class EBReadOnlyProperty_PadShape : EBAbstractProperty, EBReadOnlyEnumPropertyPr
 
   func compare (other : EBReadOnlyProperty_PadShape) -> ComparisonResult {
     switch prop {
-    case .noSelection :
+    case .empty :
       switch other.prop {
-      case .noSelection :
+      case .empty :
         return .orderedSame
       default:
         return .orderedAscending
       }
-    case .multipleSelection :
+    case .multiple :
       switch other.prop {
-      case .noSelection :
+      case .empty :
         return .orderedDescending
-      case .multipleSelection :
+      case .multiple :
         return .orderedSame
-     case .singleSelection (_) :
+     case .single (_) :
         return .orderedAscending
      }
-   case .singleSelection (let currentValue) :
+   case .single (let currentValue) :
       switch other.prop {
-      case .noSelection, .multipleSelection :
+      case .empty, .multiple :
         return .orderedDescending
-      case .singleSelection (let otherValue) :
+      case .single (let otherValue) :
         if currentValue.rawValue < otherValue.rawValue {
           return .orderedAscending
         }else if currentValue.rawValue > otherValue.rawValue {
@@ -114,7 +114,7 @@ class EBStoredProperty_PadShape : EBReadOnlyProperty_PadShape, EBEnumPropertyPro
     }
   }
 
-  override var prop : EBProperty <PadShape> { get { return .singleSelection (mValue) } }
+  override var prop : EBSelection <PadShape> { get { return .single (mValue) } }
 
   var propval : PadShape { get { return mValue } }
 
@@ -206,21 +206,21 @@ class EBStoredProperty_PadShape : EBReadOnlyProperty_PadShape, EBEnumPropertyPro
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTransientProperty_PadShape : EBReadOnlyProperty_PadShape {
-  private var mValueCache : EBProperty <PadShape>?
+  private var mValueCache : EBSelection <PadShape>?
 
-  var computeFunction : Optional<() -> EBProperty <PadShape> >
+  var computeFunction : Optional<() -> EBSelection <PadShape> >
   
   override init () {
     super.init ()
   }
 
-  override var prop : EBProperty <PadShape> {
+  override var prop : EBSelection <PadShape> {
     get {
       if mValueCache == nil {
         if let unwrappedComputeFunction = computeFunction {
           mValueCache = unwrappedComputeFunction ()
         }else{
-          mValueCache = .noSelection
+          mValueCache = .empty
         }
       }
       return mValueCache!

@@ -66,9 +66,9 @@ import Cocoa
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       mOutlet.string = ""
-    case .singleSelection (let propertyValue) :
+    case .single (let propertyValue) :
       mOutlet.string = propertyValue
     }
   }

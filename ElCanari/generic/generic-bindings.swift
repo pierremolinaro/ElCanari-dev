@@ -16,7 +16,7 @@ extension NSView {
 
   //····················································································································
 
-  func bind_hidden (_ object:[EBAbstractProperty], computeFunction: @escaping () -> EBProperty <Bool>, file:String, line:Int) {
+  func bind_hidden (_ object:[EBAbstractProperty], computeFunction: @escaping () -> EBSelection <Bool>, file:String, line:Int) {
     let controller = Controller_NSView_hidden (
       objectArray:object,
       outlet:self,
@@ -47,13 +47,13 @@ extension NSView {
 
   var mObjectArray : [EBAbstractProperty]
   var mOutlet : NSView
-  var mComputeFunction : Optional < () -> EBProperty <Bool> >
+  var mComputeFunction : Optional < () -> EBSelection <Bool> >
 
   //····················································································································
 
   init (objectArray : [EBAbstractProperty],
         outlet : NSView,
-        computeFunction:@escaping () -> EBProperty <Bool>,
+        computeFunction:@escaping () -> EBSelection <Bool>,
         file : String,
         line : Int) {
     mObjectArray = objectArray
@@ -77,16 +77,16 @@ extension NSView {
   //····················································································································
 
   override func sendUpdateEvent () {
-    let result : EBProperty <Bool>
+    let result : EBSelection <Bool>
     if let computeFunction = mComputeFunction {
       result = computeFunction ()
     }else{
-      result = .noSelection
+      result = .empty
     }
     switch result {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.isHidden = v
     }
   }
@@ -107,7 +107,7 @@ extension NSControl {
 
   //····················································································································
 
-  func bind_enabled (_ object:[EBAbstractProperty], computeFunction: @escaping () -> EBProperty <Bool>, file:String, line:Int) {
+  func bind_enabled (_ object:[EBAbstractProperty], computeFunction: @escaping () -> EBSelection <Bool>, file:String, line:Int) {
     let controller = Controller_NSControl_enabled (
       objectArray:object,
       outlet:self,
@@ -177,11 +177,11 @@ extension NSControl {
 
   var mObjectArray : [EBAbstractProperty]
   var mOutlet : NSControl
-  var mComputeFunction : Optional <() -> EBProperty <Bool> >
+  var mComputeFunction : Optional <() -> EBSelection <Bool> >
 
   //····················································································································
 
-  init (objectArray : [EBAbstractProperty], outlet : NSControl, computeFunction: @escaping () -> EBProperty <Bool>, file : String, line : Int) {
+  init (objectArray : [EBAbstractProperty], outlet : NSControl, computeFunction: @escaping () -> EBSelection <Bool>, file : String, line : Int) {
     mObjectArray = objectArray
     mOutlet = outlet
     mComputeFunction = computeFunction
@@ -203,18 +203,18 @@ extension NSControl {
   //····················································································································
 
   override func sendUpdateEvent () {
-    let result : EBProperty <Bool>
+    let result : EBSelection <Bool>
     if let computeFunction = mComputeFunction {
       result = computeFunction ()
     }else{
-      result = .noSelection
+      result = .empty
     }
     switch result {
-    case .noSelection :
+    case .empty :
       gEnabledBindingValueDictionary [mOutlet] = false
-    case .multipleSelection :
+    case .multiple :
       gEnabledBindingValueDictionary [mOutlet] = false
-    case .singleSelection (let v) :
+    case .single (let v) :
       gEnabledBindingValueDictionary [mOutlet] = v
     }
     mOutlet.updateEnabledState ()

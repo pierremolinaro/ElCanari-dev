@@ -85,9 +85,9 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Update document version
     var version = mVersion.propval
     switch mVersionShouldChangeObserver.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let shouldChange) :
+    case .single (let shouldChange) :
       if shouldChange {
         version += 1
         mVersion.setProp (version)
@@ -774,9 +774,9 @@ class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObser
     super.init ()
     self.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        return .singleSelection (unwSelf.mSignatureAtStartUp != unwSelf.signature ())
+        return .single (unwSelf.mSignatureAtStartUp != unwSelf.signature ())
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -849,9 +849,9 @@ class EBSignatureObserverEvent : EBTransientProperty_Int, EBSignatureObserverPro
     super.init ()
     self.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        return .singleSelection (Int (unwSelf.signature ()))
+        return .single (Int (unwSelf.signature ()))
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }

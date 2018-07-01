@@ -16,9 +16,9 @@ func compute_FontCharacterEntity_segmentArrayForDrawing (_ self_2E_segments_0 : 
   var result = [SegmentForFontCharacterClass] ()
   for object in self_2E_segments_0 {
     switch object.segmentForDrawing.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection(let v) :
+    case .single (let v) :
       result.append (v)
     }
   }

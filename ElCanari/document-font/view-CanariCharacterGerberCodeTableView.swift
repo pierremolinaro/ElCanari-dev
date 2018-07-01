@@ -102,9 +102,9 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
       print ("\(#function)")
     }
     switch mObject.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return 0
-    case .singleSelection (let v) :
+    case .single (let v) :
       return v.code.count
     }
   }
@@ -120,9 +120,9 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
       print ("\(#function)")
     }
     switch mObject.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return nil
-    case .singleSelection (let v) :
+    case .single (let v) :
       let columnIdentifier = inTableColumn!.identifier
       let result : NSTableCellView = tableView.make (withIdentifier: columnIdentifier, owner:self) as! NSTableCellView
       if !reuseTableViewCells () {

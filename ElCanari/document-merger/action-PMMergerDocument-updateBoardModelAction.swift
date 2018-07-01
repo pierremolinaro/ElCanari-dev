@@ -14,9 +14,9 @@ import Cocoa
 extension PMMergerDocument {
   func updateBoardModelAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-    let selectedModels : EBProperty < [BoardModelEntity] > = mBoardModelController.selectedArray.prop
+    let selectedModels : EBSelection < [BoardModelEntity] > = mBoardModelController.selectedArray.prop
     switch selectedModels {
-    case .singleSelection (let models) :
+    case .single (let models) :
       if models.count == 1 {
         let updatedBoardModel = models [0]
         let boardModelName : String = updatedBoardModel.name.propval

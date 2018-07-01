@@ -71,13 +71,13 @@ final class Controller_EBCheckedMenuItem_check : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mIsChecked.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.isEnabled = false
       mOutlet.state = 0
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.isEnabled = true
       mOutlet.state = v ? 1 : 0
-    case .multipleSelection :
+    case .multiple :
       mOutlet.isEnabled = false
       mOutlet.state = 0
     }

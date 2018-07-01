@@ -25,7 +25,7 @@ class MergerRootEntity : EBManagedObject,
     }
   }
 
-  var selectedPageIndex_prop : EBProperty <Int> {
+  var selectedPageIndex_prop : EBSelection <Int> {
     get {
       return self.selectedPageIndex.prop
     }
@@ -35,7 +35,7 @@ class MergerRootEntity : EBManagedObject,
   //   Accessing modelNames transient property
   //····················································································································
 
-  var modelNames_prop : EBProperty <MergerBoardModelArray> {
+  var modelNames_prop : EBSelection <MergerBoardModelArray> {
     get {
       return self.modelNames.prop
     }
@@ -71,19 +71,19 @@ class MergerRootEntity : EBManagedObject,
         let kind = unwSelf.boardModels.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.boardModels.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_MergerRootEntity_modelNames (v0))
+          case (.single (let v0)) :
+            return .single (compute_MergerRootEntity_modelNames (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   //--- Install property observers for transients
@@ -229,9 +229,9 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
     self.addEBObserver (inObserver)
     mObserversOf_selectedPageIndex.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.selectedPageIndex.addEBObserver (inObserver)
       }
@@ -244,9 +244,9 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
     self.removeEBObserver (inObserver)
     mObserversOf_selectedPageIndex.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.selectedPageIndex.removeEBObserver (inObserver)
       }
@@ -286,9 +286,9 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
     self.addEBObserver (inObserver)
     mObserversOf_modelNames.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.modelNames.addEBObserver (inObserver)
       }
@@ -301,9 +301,9 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
     self.removeEBObserver (inObserver)
     mObserversOf_modelNames.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.modelNames.removeEBObserver (inObserver)
       }
@@ -340,9 +340,9 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
 
 class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [MergerRootEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [MergerRootEntity] > >
 
-  private var prop_cache : EBProperty < [MergerRootEntity] >? 
+  private var prop_cache : EBSelection < [MergerRootEntity] >? 
 
   //····················································································································
 
@@ -354,15 +354,15 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
 
   private var mSet = Set <MergerRootEntity> ()
 
-  override var prop : EBProperty < [MergerRootEntity] > {
+  override var prop : EBSelection < [MergerRootEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
         let newSet : Set <MergerRootEntity>
         switch prop_cache! {
-        case .multipleSelection, .noSelection :
+        case .multiple, .empty :
           newSet = Set <MergerRootEntity> ()
-        case .singleSelection (let array) :
+        case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
@@ -381,7 +381,7 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
         mSet = newSet
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }
@@ -443,9 +443,9 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -459,15 +459,15 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -607,9 +607,9 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
     }
   }
 
-  override var prop : EBProperty < [BoardModelEntity] > {
+  override var prop : EBSelection < [BoardModelEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 

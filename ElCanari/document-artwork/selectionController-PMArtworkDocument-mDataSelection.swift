@@ -339,43 +339,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawBoardLimits.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawBoardLimits.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawBoardLimits.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawBoardLimits.setProp (inValue)
           }
@@ -385,9 +385,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawBoardLimits.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawBoardLimits.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -409,43 +409,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawComponentNamesBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawComponentNamesBottomSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawComponentNamesBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawComponentNamesBottomSide.setProp (inValue)
           }
@@ -455,9 +455,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawComponentNamesBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawComponentNamesBottomSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -479,43 +479,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawComponentNamesTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawComponentNamesTopSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawComponentNamesTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawComponentNamesTopSide.setProp (inValue)
           }
@@ -525,9 +525,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawComponentNamesTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawComponentNamesTopSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -549,43 +549,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawComponentValuesBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawComponentValuesBottomSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawComponentValuesBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawComponentValuesBottomSide.setProp (inValue)
           }
@@ -595,9 +595,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawComponentValuesBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawComponentValuesBottomSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -619,43 +619,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawComponentValuesTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawComponentValuesTopSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawComponentValuesTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawComponentValuesTopSide.setProp (inValue)
           }
@@ -665,9 +665,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawComponentValuesTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawComponentValuesTopSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -689,43 +689,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawPackageLegendBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawPackageLegendBottomSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawPackageLegendBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawPackageLegendBottomSide.setProp (inValue)
           }
@@ -735,9 +735,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawPackageLegendBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawPackageLegendBottomSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -759,43 +759,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawPackageLegendTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawPackageLegendTopSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawPackageLegendTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawPackageLegendTopSide.setProp (inValue)
           }
@@ -805,9 +805,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawPackageLegendTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawPackageLegendTopSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -829,43 +829,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawPadHolesInPDF.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawPadHolesInPDF.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawPadHolesInPDF.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawPadHolesInPDF.setProp (inValue)
           }
@@ -875,9 +875,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawPadHolesInPDF.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawPadHolesInPDF.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -899,43 +899,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawPadsBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawPadsBottomSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawPadsBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawPadsBottomSide.setProp (inValue)
           }
@@ -945,9 +945,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawPadsBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawPadsBottomSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -969,43 +969,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawPadsTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawPadsTopSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawPadsTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawPadsTopSide.setProp (inValue)
           }
@@ -1015,9 +1015,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawPadsTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawPadsTopSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1039,43 +1039,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTextsLayoutBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawTextsLayoutBottomSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawTextsLayoutBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawTextsLayoutBottomSide.setProp (inValue)
           }
@@ -1085,9 +1085,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTextsLayoutBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawTextsLayoutBottomSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1109,43 +1109,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTextsLayoutTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawTextsLayoutTopSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawTextsLayoutTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawTextsLayoutTopSide.setProp (inValue)
           }
@@ -1155,9 +1155,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTextsLayoutTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawTextsLayoutTopSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1179,43 +1179,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTextsLegendBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawTextsLegendBottomSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawTextsLegendBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawTextsLegendBottomSide.setProp (inValue)
           }
@@ -1225,9 +1225,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTextsLegendBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawTextsLegendBottomSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1249,43 +1249,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTextsLegendTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawTextsLegendTopSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawTextsLegendTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawTextsLegendTopSide.setProp (inValue)
           }
@@ -1295,9 +1295,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTextsLegendTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawTextsLegendTopSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1319,43 +1319,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTracksBottomSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawTracksBottomSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawTracksBottomSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawTracksBottomSide.setProp (inValue)
           }
@@ -1365,9 +1365,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTracksBottomSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawTracksBottomSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1389,43 +1389,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTracksTopSide.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawTracksTopSide.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawTracksTopSide.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawTracksTopSide.setProp (inValue)
           }
@@ -1435,9 +1435,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawTracksTopSide.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawTracksTopSide.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1459,43 +1459,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawVias.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.drawVias.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.drawVias.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.drawVias.setProp (inValue)
           }
@@ -1505,9 +1505,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawVias.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.drawVias.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1529,43 +1529,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.fileExtension.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<String> ()
           var isMultipleSelection = false
           for object in v {
             switch object.fileExtension.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.fileExtension.writeModelFunction = { (inValue : String) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.fileExtension.setProp (inValue)
           }
@@ -1575,9 +1575,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.fileExtension.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.fileExtension.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1599,43 +1599,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.horizontalMirror.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Bool> ()
           var isMultipleSelection = false
           for object in v {
             switch object.horizontalMirror.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.horizontalMirror.writeModelFunction = { (inValue : Bool) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.horizontalMirror.setProp (inValue)
           }
@@ -1645,9 +1645,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.horizontalMirror.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.horizontalMirror.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1669,43 +1669,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.measurementUnitForPadHoleInPDF.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.measurementUnitForPadHoleInPDF.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.measurementUnitForPadHoleInPDF.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.measurementUnitForPadHoleInPDF.setProp (inValue)
           }
@@ -1715,9 +1715,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.measurementUnitForPadHoleInPDF.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.measurementUnitForPadHoleInPDF.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1739,43 +1739,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.name.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<String> ()
           var isMultipleSelection = false
           for object in v {
             switch object.name.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.name.writeModelFunction = { (inValue : String) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.name.setProp (inValue)
           }
@@ -1785,9 +1785,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.name.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.name.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1809,43 +1809,43 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.padHoleDiameterInPDF.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.padHoleDiameterInPDF.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.padHoleDiameterInPDF.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.padHoleDiameterInPDF.setProp (inValue)
           }
@@ -1855,9 +1855,9 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.padHoleDiameterInPDF.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.padHoleDiameterInPDF.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {

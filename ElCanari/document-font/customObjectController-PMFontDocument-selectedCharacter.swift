@@ -181,7 +181,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
       if let model = self?.mSelectedObject {
         return model.advance.prop
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.advance.writeModelFunction = { [weak self] (inValue : Int) in
@@ -199,7 +199,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
       if let model = self?.mSelectedObject {
         return model.characterIsDefined.prop
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -211,7 +211,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
       if let model = self?.mSelectedObject {
         return model.gerberCode.prop
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -223,7 +223,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
       if let model = self?.mSelectedObject {
         return model.gerberCodeInstructionCountMessage.prop
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -235,7 +235,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
       if let model = self?.mSelectedObject {
         return model.segmentArrayForDrawing.prop
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }

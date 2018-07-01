@@ -23,16 +23,15 @@ final class Controller_CanariMenu_CanariMenuItemListClass : EBSimpleController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet: outlet)
-//    mObject.addEBObserver (self)
   }
 
   //····················································································································
 
   final override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       mOutlet.removeAllItems ()
-    case .singleSelection (let itemList) :
+    case .single (let itemList) :
       mOutlet.removeAllItems ()
       for title in itemList.items {
         let item = mOutlet.addItem (withTitle: title, action: #selector (Controller_CanariMenu_CanariMenuItemListClass.revealInFinder(_:)), keyEquivalent: "")

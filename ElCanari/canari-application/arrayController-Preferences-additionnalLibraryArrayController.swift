@@ -44,9 +44,9 @@ final class SelectedSet_Preferences_additionnalLibraryArrayController : EBAbstra
     set {
       var newSelectedSet = newValue
       switch mSortedArray.prop {
-      case .noSelection, .multipleSelection :
+      case .empty, .multiple :
         break ;
-      case .singleSelection (let sortedArray) :
+      case .single (let sortedArray) :
         if !mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
           newSelectedSet = Set (arrayLiteral: sortedArray [0])
         }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
@@ -125,18 +125,18 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   private final func setSelectedArrayComputeFunction () {
     selectedArray.readModelFunction = {
       switch self.sortedArray.prop {
-      case .noSelection :
-        return .noSelection
-      case .multipleSelection :
-        return .multipleSelection
-      case .singleSelection (let v) :
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
         var result = [CanariLibraryEntry] ()
         for object in v {
           if self.mSelectedSet.mSet.contains (object) {
             result.append (object)
           }
         }
-        return .singleSelection (result)
+        return .single (result)
       }
     }
   }
@@ -147,15 +147,15 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     sortedArray.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let modelArray) :
-          return .singleSelection (modelArray)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let modelArray) :
+          return .single (modelArray)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -274,9 +274,9 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 
   func selectedObjectIndexSet () -> NSIndexSet {
     switch sortedArray.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
        return NSIndexSet ()
-    case .singleSelection (let v) :
+    case .single (let v) :
     //--- Dictionary of object indexes
       var objectDictionary = [CanariLibraryEntry : Int] ()
       for (index, object) in v.enumerated () {
@@ -301,9 +301,9 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       print ("\(#function)")
     }
     switch sortedArray.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return 0
-    case .singleSelection (let v) :
+    case .single (let v) :
       return v.count
     }
   }
@@ -317,9 +317,9 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       print ("\(#function)")
     }
     switch sortedArray.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       let tableView = notification.object as! EBTableView
       var newSelectedObjectSet = Set <CanariLibraryEntry> ()
       for index in tableView.selectedRowIndexes {
@@ -356,9 +356,9 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       print ("\(#function)")
     }
     switch sortedArray.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return nil
-    case .singleSelection (let v) :
+    case .single (let v) :
       let columnIdentifier = tableColumn!.identifier
       let result : NSTableCellView = tableView.make (withIdentifier: columnIdentifier, owner:self) as! NSTableCellView
       if !reuseTableViewCells () {
@@ -413,9 +413,9 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   func select (object inObject: CanariLibraryEntry) {
     if let model = mModel {
       switch model.prop {
-      case .noSelection, .multipleSelection :
+      case .empty, .multiple :
         break
-      case .singleSelection (let objectArray) :
+      case .single (let objectArray) :
         if objectArray.contains (inObject) {
           var newSelectedObjectSet = Set <CanariLibraryEntry> ()
           newSelectedObjectSet.insert (inObject)
@@ -435,9 +435,9 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     }
     if let model = mModel {
       switch model.prop {
-      case .noSelection, .multipleSelection :
+      case .empty, .multiple :
         break
-      case .singleSelection (let v) :
+      case .single (let v) :
         let newObject : CanariLibraryEntry = CanariLibraryEntry ()
         var array = v
         array.append (newObject)
@@ -460,13 +460,13 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     }
     if let model = mModel {
       switch model.prop {
-      case .noSelection, .multipleSelection :
+      case .empty, .multiple :
         break
-      case .singleSelection (let model_prop) :
+      case .single (let model_prop) :
         switch sortedArray.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let sortedArray_prop) :
+        case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
           var sortedObjectDictionary = [CanariLibraryEntry : Int] ()

@@ -25,15 +25,12 @@ func compute_FontRootEntity_sampleStringBezierPath (_ self_2E_characters_0 : [Fo
   let path = CGMutablePath ()
   for unicodeCharacter in sampleStringAsMacRomanData { // sampleStringASUnicodeArray {
     let characterIndex = Int (unicodeCharacter) - 32
-//    if characterIndex > (0x7F - 32) {
-//      characterIndex -= 32
-//    }
     if characterIndex < self_2E_characters_0.count {
       let segmentArrayDescriptor : FontCharacterEntity_segmentArrayForDrawing = self_2E_characters_0 [characterIndex]
       switch segmentArrayDescriptor.segmentArrayForDrawing.prop {
-      case .noSelection, .multipleSelection :
+      case .empty, .multiple :
         break
-      case .singleSelection (let segmentArray) :
+      case .single (let segmentArray) :
         for segment in segmentArray.code {
           path.move    (to: CGPoint (x: currentX + toCocoa (segment.x1), y: toCocoa (segment.y1)))
           path.addLine (to: CGPoint (x: currentX + toCocoa (segment.x2), y: toCocoa (segment.y2)))

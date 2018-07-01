@@ -45,9 +45,9 @@ import Cocoa
     let possibleIndex : Int? = g_Preferences?.currentCharacterCodePoint.propval
     if let index = possibleIndex, let characterArray = mCharacterArray {
       switch characterArray.prop {
-      case .noSelection, .multipleSelection :
+      case .empty, .multiple :
         mSelectedObject = nil
-      case .singleSelection (let array) :
+      case .single (let array) :
         mSelectedObject = array [index - 32]
       }
     }else{

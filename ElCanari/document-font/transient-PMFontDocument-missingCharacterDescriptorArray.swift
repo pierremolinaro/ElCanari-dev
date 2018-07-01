@@ -16,13 +16,10 @@ func compute_PMFontDocument_missingCharacterDescriptorArray (_ self_2E_rootObjec
   var idx = 0x1F
   for c in self_2E_rootObject_2E_characters_0 {
     idx += 1
-//    if idx == 0x80 {
-//      idx += 32
-//    }
     switch c.characterIsDefined.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let isDefined) :
+    case .single (let isDefined) :
       if !isDefined {
         let missingChar = MissingCharacter ()
         missingChar.idx.setProp (idx)

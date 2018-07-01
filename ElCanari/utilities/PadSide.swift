@@ -36,7 +36,7 @@ enum PadSide : Int {
 
 class EBReadOnlyProperty_PadSide : EBAbstractProperty, EBReadOnlyEnumPropertyProtocol {
 
-  var prop : EBProperty <PadSide> { get { return .noSelection } } // Abstract method
+  var prop : EBSelection <PadSide> { get { return .empty } } // Abstract method
 
   func rawValue () -> Int { return PadSide.traversing.rawValue }  // Abstract method
 
@@ -46,27 +46,27 @@ class EBReadOnlyProperty_PadSide : EBAbstractProperty, EBReadOnlyEnumPropertyPro
 
   func compare (other : EBReadOnlyProperty_PadSide) -> ComparisonResult {
     switch prop {
-    case .noSelection :
+    case .empty :
       switch other.prop {
-      case .noSelection :
+      case .empty :
         return .orderedSame
       default:
         return .orderedAscending
       }
-    case .multipleSelection :
+    case .multiple :
       switch other.prop {
-      case .noSelection :
+      case .empty :
         return .orderedDescending
-      case .multipleSelection :
+      case .multiple :
         return .orderedSame
-     case .singleSelection (_) :
+     case .single (_) :
         return .orderedAscending
      }
-   case .singleSelection (let currentValue) :
+   case .single (let currentValue) :
       switch other.prop {
-      case .noSelection, .multipleSelection :
+      case .empty, .multiple :
         return .orderedDescending
-      case .singleSelection (let otherValue) :
+      case .single (let otherValue) :
         if currentValue.rawValue < otherValue.rawValue {
           return .orderedAscending
         }else if currentValue.rawValue > otherValue.rawValue {
@@ -116,7 +116,7 @@ class EBStoredProperty_PadSide : EBReadOnlyProperty_PadSide, EBEnumPropertyProto
     }
   }
 
-  override var prop : EBProperty <PadSide> { get { return .singleSelection (mValue) } }
+  override var prop : EBSelection <PadSide> { get { return .single (mValue) } }
 
   var propval : PadSide { get { return mValue } }
 
@@ -208,21 +208,21 @@ class EBStoredProperty_PadSide : EBReadOnlyProperty_PadSide, EBEnumPropertyProto
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTransientProperty_PadSide : EBReadOnlyProperty_PadSide {
-  private var mValueCache : EBProperty <PadSide>?
+  private var mValueCache : EBSelection <PadSide>?
 
-  var computeFunction : Optional<() -> EBProperty <PadSide> >
+  var computeFunction : Optional<() -> EBSelection <PadSide> >
   
   override init () {
     super.init ()
   }
 
-  override var prop : EBProperty <PadSide> {
+  override var prop : EBSelection <PadSide> {
     get {
       if mValueCache == nil {
         if let unwrappedComputeFunction = computeFunction {
           mValueCache = unwrappedComputeFunction ()
         }else{
-          mValueCache = .noSelection
+          mValueCache = .empty
         }
       }
       return mValueCache!

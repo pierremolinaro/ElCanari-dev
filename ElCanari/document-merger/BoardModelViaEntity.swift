@@ -27,7 +27,7 @@ class BoardModelViaEntity : EBManagedObject,
     }
   }
 
-  var x_prop : EBProperty <Int> {
+  var x_prop : EBSelection <Int> {
     get {
       return self.x.prop
     }
@@ -46,7 +46,7 @@ class BoardModelViaEntity : EBManagedObject,
     }
   }
 
-  var y_prop : EBProperty <Int> {
+  var y_prop : EBSelection <Int> {
     get {
       return self.y.prop
     }
@@ -65,7 +65,7 @@ class BoardModelViaEntity : EBManagedObject,
     }
   }
 
-  var holeDiameter_prop : EBProperty <Int> {
+  var holeDiameter_prop : EBSelection <Int> {
     get {
       return self.holeDiameter.prop
     }
@@ -84,7 +84,7 @@ class BoardModelViaEntity : EBManagedObject,
     }
   }
 
-  var padDiameter_prop : EBProperty <Int> {
+  var padDiameter_prop : EBSelection <Int> {
     get {
       return self.padDiameter.prop
     }
@@ -255,9 +255,9 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_x.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x.addEBObserver (inObserver)
       }
@@ -270,9 +270,9 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_x.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x.removeEBObserver (inObserver)
       }
@@ -312,9 +312,9 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_y.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y.addEBObserver (inObserver)
       }
@@ -327,9 +327,9 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_y.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y.removeEBObserver (inObserver)
       }
@@ -369,9 +369,9 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_holeDiameter.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.holeDiameter.addEBObserver (inObserver)
       }
@@ -384,9 +384,9 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_holeDiameter.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.holeDiameter.removeEBObserver (inObserver)
       }
@@ -426,9 +426,9 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_padDiameter.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.padDiameter.addEBObserver (inObserver)
       }
@@ -441,9 +441,9 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_padDiameter.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.padDiameter.removeEBObserver (inObserver)
       }
@@ -481,9 +481,9 @@ class ReadOnlyArrayOf_BoardModelViaEntity : ReadOnlyAbstractArrayProperty <Board
 
 class TransientArrayOf_BoardModelViaEntity : ReadOnlyArrayOf_BoardModelViaEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [BoardModelViaEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [BoardModelViaEntity] > >
 
-  private var prop_cache : EBProperty < [BoardModelViaEntity] >? 
+  private var prop_cache : EBSelection < [BoardModelViaEntity] >? 
 
   //····················································································································
 
@@ -495,15 +495,15 @@ class TransientArrayOf_BoardModelViaEntity : ReadOnlyArrayOf_BoardModelViaEntity
 
   private var mSet = Set <BoardModelViaEntity> ()
 
-  override var prop : EBProperty < [BoardModelViaEntity] > {
+  override var prop : EBSelection < [BoardModelViaEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
         let newSet : Set <BoardModelViaEntity>
         switch prop_cache! {
-        case .multipleSelection, .noSelection :
+        case .multiple, .empty :
           newSet = Set <BoardModelViaEntity> ()
-        case .singleSelection (let array) :
+        case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
@@ -526,7 +526,7 @@ class TransientArrayOf_BoardModelViaEntity : ReadOnlyArrayOf_BoardModelViaEntity
         mSet = newSet
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }

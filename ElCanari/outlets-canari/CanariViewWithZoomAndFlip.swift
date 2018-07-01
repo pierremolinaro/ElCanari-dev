@@ -340,20 +340,20 @@ final class Controller_CanariViewWithZoomAndFlip_size : EBSimpleController {
   override func sendUpdateEvent () {
     var newWidth = 0
     switch mWidth.prop {
-    case .noSelection :
+    case .empty :
       ()
-    case .singleSelection (let v) :
+    case .single (let v) :
       newWidth = v
-    case .multipleSelection :
+    case .multiple :
       ()
     }
     var newHeight = 0
     switch mHeight.prop {
-    case .noSelection :
+    case .empty :
       ()
-    case .singleSelection (let v) :
+    case .single (let v) :
       newHeight = v
-    case .multipleSelection :
+    case .multiple :
       ()
     }
     //NSLog ("width \(newWidth), height \(newHeight)")
@@ -385,11 +385,11 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mZoom.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.setZoomFromController (100, false)
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.setZoomFromController (v, true)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.setZoomFromController (100, false)
     }
   }
@@ -425,11 +425,11 @@ final class Controller_CanariViewWithZoomAndFlip_horizontalFlip : EBSimpleContro
 
   override func sendUpdateEvent () {
     switch mFlip.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.setHorizontalFlipFromController (false)
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.setHorizontalFlipFromController (v)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.setHorizontalFlipFromController (false)
     }
   }
@@ -459,11 +459,11 @@ final class Controller_CanariViewWithZoomAndFlip_verticalFlip : EBSimpleControll
 
   override func sendUpdateEvent () {
     switch mFlip.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.setVerticalFlipFromController (false)
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.setVerticalFlipFromController (v)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.setVerticalFlipFromController (false)
     }
   }

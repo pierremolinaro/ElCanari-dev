@@ -82,13 +82,13 @@ import Cocoa
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.enableFromValue (false)
       mOutlet.stringValue = "—"
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.enableFromValue (true)
       mOutlet.color = v
-    case .multipleSelection :
+    case .multiple :
       mOutlet.enableFromValue (false)
       mOutlet.stringValue = "—"
     }

@@ -25,7 +25,7 @@ class MissingCharacter : EBSimpleClass,
     }
   }
 
-  var idx_prop : EBProperty <Int> {
+  var idx_prop : EBSelection <Int> {
     get {
       return self.idx.prop
     }
@@ -44,7 +44,7 @@ class MissingCharacter : EBSimpleClass,
     }
   }
 
-  var code_prop : EBProperty <String> {
+  var code_prop : EBSelection <String> {
     get {
       return self.code.prop
     }
@@ -63,7 +63,7 @@ class MissingCharacter : EBSimpleClass,
     }
   }
 
-  var char_prop : EBProperty <String> {
+  var char_prop : EBSelection <String> {
     get {
       return self.char.prop
     }
@@ -199,9 +199,9 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
   final func addEBObserverOf_idx (_ inObserver : EBEvent) {
     mObserversOf_idx.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.idx.addEBObserver (inObserver)
       }
@@ -211,9 +211,9 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
   final func removeEBObserverOf_idx (_ inObserver : EBEvent) {
     mObserversOf_idx.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.idx.removeEBObserver (inObserver)
       }
@@ -246,9 +246,9 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
   final func addEBObserverOf_code (_ inObserver : EBEvent) {
     mObserversOf_code.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.code.addEBObserver (inObserver)
       }
@@ -258,9 +258,9 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
   final func removeEBObserverOf_code (_ inObserver : EBEvent) {
     mObserversOf_code.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.code.removeEBObserver (inObserver)
       }
@@ -293,9 +293,9 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
   final func addEBObserverOf_char (_ inObserver : EBEvent) {
     mObserversOf_char.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.char.addEBObserver (inObserver)
       }
@@ -305,9 +305,9 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
   final func removeEBObserverOf_char (_ inObserver : EBEvent) {
     mObserversOf_char.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.char.removeEBObserver (inObserver)
       }
@@ -341,9 +341,9 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
 
 class TransientArrayOf_MissingCharacter : ReadOnlyArrayOf_MissingCharacter {
 
-  var readModelFunction : Optional<() -> EBProperty < [MissingCharacter] > >
+  var readModelFunction : Optional<() -> EBSelection < [MissingCharacter] > >
  
-  private var prop_cache : EBProperty < [MissingCharacter] >? 
+  private var prop_cache : EBSelection < [MissingCharacter] >? 
 
   //····················································································································
 
@@ -353,13 +353,13 @@ class TransientArrayOf_MissingCharacter : ReadOnlyArrayOf_MissingCharacter {
 
   //····················································································································
 
-  override var prop : EBProperty < [MissingCharacter] > {
+  override var prop : EBSelection < [MissingCharacter] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }
@@ -470,9 +470,9 @@ class EBClassArray_MissingCharacter : ReadOnlyArrayOf_MissingCharacter {
 
   //····················································································································
 
-  override var prop : EBProperty < [MissingCharacter] > {
+  override var prop : EBSelection < [MissingCharacter] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 

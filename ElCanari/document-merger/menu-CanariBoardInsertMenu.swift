@@ -106,11 +106,11 @@ final class Controller_CanariBoardInsertMenu_names : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mNames.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.setNames ([])
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.setNames (v.modelNameArray)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.setNames ([])
     }
   }

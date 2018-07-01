@@ -85,14 +85,14 @@ final class Controller_CanariSignatureField_signature : EBSimpleController {
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.enableFromValue (false)
       mOutlet.stringValue = "—"
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.enableFromValue (true)
       let uv = UInt32 (v)
       mOutlet.stringValue = String (format: "%04X:%04X", arguments: [uv >> 16, uv & 0xFFFF])
-    case .multipleSelection :
+    case .multiple :
       mOutlet.enableFromValue (false)
       mOutlet.stringValue = "—"
     }

@@ -73,9 +73,9 @@ final class Controller_CanariDrillDataFormatTabView_selectedFormat : EBSimpleCon
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.selectTabViewItem(at: v.rawValue)
     }
   }

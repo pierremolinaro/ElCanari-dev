@@ -864,19 +864,19 @@ var g_Preferences : Preferences? = nil
         kind &= unwSelf.additionnalLibraryArray.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.usesUserLibrary.prop, unwSelf.additionnalLibraryArray.prop, unwSelf.additionnalLibraryArray.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
-            return .singleSelection (compute_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     mValueRevealInFinder_packages.readModelFunction = { [weak self] in
@@ -886,19 +886,19 @@ var g_Preferences : Preferences? = nil
         kind &= unwSelf.additionnalLibraryArray.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.usesUserLibrary.prop, unwSelf.additionnalLibraryArray.prop, unwSelf.additionnalLibraryArray.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
-            return .singleSelection (compute_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     mValueRevealInFinder_devices.readModelFunction = { [weak self] in
@@ -908,19 +908,19 @@ var g_Preferences : Preferences? = nil
         kind &= unwSelf.additionnalLibraryArray.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.usesUserLibrary.prop, unwSelf.additionnalLibraryArray.prop, unwSelf.additionnalLibraryArray.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
-            return .singleSelection (compute_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     mValueRevealInFinder_fonts.readModelFunction = { [weak self] in
@@ -930,19 +930,19 @@ var g_Preferences : Preferences? = nil
         kind &= unwSelf.additionnalLibraryArray.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.usesUserLibrary.prop, unwSelf.additionnalLibraryArray.prop, unwSelf.additionnalLibraryArray.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
-            return .singleSelection (compute_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     mValueRevealInFinder_artworks.readModelFunction = { [weak self] in
@@ -952,19 +952,19 @@ var g_Preferences : Preferences? = nil
         kind &= unwSelf.additionnalLibraryArray.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.usesUserLibrary.prop, unwSelf.additionnalLibraryArray.prop, unwSelf.additionnalLibraryArray.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
-            return .singleSelection (compute_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   //--- Install property observers for transients
@@ -1089,7 +1089,7 @@ var g_Preferences : Preferences? = nil
     mRemoveLibraryEntryButton?.bind_enabled (
       [self.additionnalLibraryArrayController.selectedArray.count],
       computeFunction:{
-        return (self.additionnalLibraryArrayController.selectedArray.count.prop > EBProperty.singleSelection (0))
+        return (self.additionnalLibraryArrayController.selectedArray.count.prop > EBSelection.single (0))
       },
       file: #file, line: #line
     )

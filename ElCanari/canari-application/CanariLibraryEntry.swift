@@ -24,7 +24,7 @@ class CanariLibraryEntry : EBSimpleClass,
     }
   }
 
-  var mPath_prop : EBProperty <String> {
+  var mPath_prop : EBSelection <String> {
     get {
       return self.mPath.prop
     }
@@ -43,7 +43,7 @@ class CanariLibraryEntry : EBSimpleClass,
     }
   }
 
-  var mUses_prop : EBProperty <Bool> {
+  var mUses_prop : EBSelection <Bool> {
     get {
       return self.mUses.prop
     }
@@ -53,7 +53,7 @@ class CanariLibraryEntry : EBSimpleClass,
   //   Accessing mStatusImage transient property
   //····················································································································
 
-  var mStatusImage_prop : EBProperty <NSImage> {
+  var mStatusImage_prop : EBSelection <NSImage> {
     get {
       return self.mStatusImage.prop
     }
@@ -93,19 +93,19 @@ class CanariLibraryEntry : EBSimpleClass,
         let kind = unwSelf.mPath.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.mPath.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_CanariLibraryEntry_mStatusImage (v0))
+          case (.single (let v0)) :
+            return .single (compute_CanariLibraryEntry_mStatusImage (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   //--- Install property observers for transients
@@ -197,9 +197,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserverOf_mPath (_ inObserver : EBEvent) {
     mObserversOf_mPath.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.mPath.addEBObserver (inObserver)
       }
@@ -209,9 +209,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func removeEBObserverOf_mPath (_ inObserver : EBEvent) {
     mObserversOf_mPath.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.mPath.removeEBObserver (inObserver)
       }
@@ -244,9 +244,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserverOf_mUses (_ inObserver : EBEvent) {
     mObserversOf_mUses.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.mUses.addEBObserver (inObserver)
       }
@@ -256,9 +256,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func removeEBObserverOf_mUses (_ inObserver : EBEvent) {
     mObserversOf_mUses.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.mUses.removeEBObserver (inObserver)
       }
@@ -291,9 +291,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
     mObserversOf_mStatusImage.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.mStatusImage.addEBObserver (inObserver)
       }
@@ -303,9 +303,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func removeEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
     mObserversOf_mStatusImage.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.mStatusImage.removeEBObserver (inObserver)
       }
@@ -314,9 +314,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func postEventTo_mStatusImage () {
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.mStatusImage.postEvent ()
       }
@@ -349,9 +349,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
 class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
-  var readModelFunction : Optional<() -> EBProperty < [CanariLibraryEntry] > >
+  var readModelFunction : Optional<() -> EBSelection < [CanariLibraryEntry] > >
  
-  private var prop_cache : EBProperty < [CanariLibraryEntry] >? 
+  private var prop_cache : EBSelection < [CanariLibraryEntry] >? 
 
   //····················································································································
 
@@ -361,13 +361,13 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   //····················································································································
 
-  override var prop : EBProperty < [CanariLibraryEntry] > {
+  override var prop : EBSelection < [CanariLibraryEntry] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }
@@ -470,9 +470,9 @@ class EBClassArray_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   //····················································································································
 
-  override var prop : EBProperty < [CanariLibraryEntry] > {
+  override var prop : EBSelection < [CanariLibraryEntry] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 

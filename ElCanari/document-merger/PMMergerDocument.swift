@@ -272,14 +272,14 @@ import Cocoa
     removeBoardModelButton?.bind_enabled (
       [self.mBoardModelController.selectedArray.count],
       computeFunction:{
-        return (self.mBoardModelController.selectedArray.count.prop > EBProperty.singleSelection (0))
+        return (self.mBoardModelController.selectedArray.count.prop > EBSelection.single (0))
       },
       file: #file, line: #line
     )
     updateBoardModelButton?.bind_enabled (
       [self.mBoardModelController.selectedArray.count],
       computeFunction:{
-        return (self.mBoardModelController.selectedArray.count.prop > EBProperty.singleSelection (0))
+        return (self.mBoardModelController.selectedArray.count.prop > EBSelection.single (0))
       },
       file: #file, line: #line
     )

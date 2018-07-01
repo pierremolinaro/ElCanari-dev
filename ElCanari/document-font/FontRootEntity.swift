@@ -30,7 +30,7 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
-  var comments_prop : EBProperty <String> {
+  var comments_prop : EBSelection <String> {
     get {
       return self.comments.prop
     }
@@ -49,7 +49,7 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
-  var selectedTab_prop : EBProperty <Int> {
+  var selectedTab_prop : EBSelection <Int> {
     get {
       return self.selectedTab.prop
     }
@@ -68,7 +68,7 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
-  var selectedInspector_prop : EBProperty <Int> {
+  var selectedInspector_prop : EBSelection <Int> {
     get {
       return self.selectedInspector.prop
     }
@@ -78,7 +78,7 @@ class FontRootEntity : EBManagedObject,
   //   Accessing sampleStringBezierPath transient property
   //····················································································································
 
-  var sampleStringBezierPath_prop : EBProperty <CGPath> {
+  var sampleStringBezierPath_prop : EBSelection <CGPath> {
     get {
       return self.sampleStringBezierPath.prop
     }
@@ -88,7 +88,7 @@ class FontRootEntity : EBManagedObject,
   //   Accessing sampleStringBezierPathWidth transient property
   //····················································································································
 
-  var sampleStringBezierPathWidth_prop : EBProperty <Double> {
+  var sampleStringBezierPathWidth_prop : EBSelection <Double> {
     get {
       return self.sampleStringBezierPathWidth.prop
     }
@@ -98,7 +98,7 @@ class FontRootEntity : EBManagedObject,
   //   Accessing sampleStringBezierPathAscent transient property
   //····················································································································
 
-  var sampleStringBezierPathAscent_prop : EBProperty <Double> {
+  var sampleStringBezierPathAscent_prop : EBSelection <Double> {
     get {
       return self.sampleStringBezierPathAscent.prop
     }
@@ -108,7 +108,7 @@ class FontRootEntity : EBManagedObject,
   //   Accessing sampleStringBezierPathDescent transient property
   //····················································································································
 
-  var sampleStringBezierPathDescent_prop : EBProperty <Double> {
+  var sampleStringBezierPathDescent_prop : EBSelection <Double> {
     get {
       return self.sampleStringBezierPathDescent.prop
     }
@@ -152,19 +152,19 @@ class FontRootEntity : EBManagedObject,
         kind &= g_Preferences!.sampleStringSize.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.characters.prop, unwSelf.characters.prop, g_Preferences!.sampleString.prop, g_Preferences!.sampleStringSize.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3)) :
-            return .singleSelection (compute_FontRootEntity_sampleStringBezierPath (v0, v1, v2, v3))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_FontRootEntity_sampleStringBezierPath (v0, v1, v2, v3))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     sampleStringBezierPathWidth.readModelFunction = { [weak self] in
@@ -172,19 +172,19 @@ class FontRootEntity : EBManagedObject,
         let kind = unwSelf.sampleStringBezierPath.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.sampleStringBezierPath.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_FontRootEntity_sampleStringBezierPathWidth (v0))
+          case (.single (let v0)) :
+            return .single (compute_FontRootEntity_sampleStringBezierPathWidth (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     sampleStringBezierPathAscent.readModelFunction = { [weak self] in
@@ -192,19 +192,19 @@ class FontRootEntity : EBManagedObject,
         let kind = unwSelf.sampleStringBezierPath.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.sampleStringBezierPath.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_FontRootEntity_sampleStringBezierPathAscent (v0))
+          case (.single (let v0)) :
+            return .single (compute_FontRootEntity_sampleStringBezierPathAscent (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     sampleStringBezierPathDescent.readModelFunction = { [weak self] in
@@ -212,19 +212,19 @@ class FontRootEntity : EBManagedObject,
         let kind = unwSelf.sampleStringBezierPath.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.sampleStringBezierPath.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_FontRootEntity_sampleStringBezierPathDescent (v0))
+          case (.single (let v0)) :
+            return .single (compute_FontRootEntity_sampleStringBezierPathDescent (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   //--- Install property observers for transients
@@ -441,9 +441,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.addEBObserver (inObserver)
     mObserversOf_comments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.comments.addEBObserver (inObserver)
       }
@@ -456,9 +456,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.removeEBObserver (inObserver)
     mObserversOf_comments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.comments.removeEBObserver (inObserver)
       }
@@ -498,9 +498,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.addEBObserver (inObserver)
     mObserversOf_selectedTab.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.selectedTab.addEBObserver (inObserver)
       }
@@ -513,9 +513,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.removeEBObserver (inObserver)
     mObserversOf_selectedTab.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.selectedTab.removeEBObserver (inObserver)
       }
@@ -555,9 +555,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.addEBObserver (inObserver)
     mObserversOf_selectedInspector.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.selectedInspector.addEBObserver (inObserver)
       }
@@ -570,9 +570,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.removeEBObserver (inObserver)
     mObserversOf_selectedInspector.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.selectedInspector.removeEBObserver (inObserver)
       }
@@ -612,9 +612,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.addEBObserver (inObserver)
     mObserversOf_sampleStringBezierPath.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.sampleStringBezierPath.addEBObserver (inObserver)
       }
@@ -627,9 +627,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.removeEBObserver (inObserver)
     mObserversOf_sampleStringBezierPath.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.sampleStringBezierPath.removeEBObserver (inObserver)
       }
@@ -668,9 +668,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.addEBObserver (inObserver)
     mObserversOf_sampleStringBezierPathWidth.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.sampleStringBezierPathWidth.addEBObserver (inObserver)
       }
@@ -683,9 +683,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.removeEBObserver (inObserver)
     mObserversOf_sampleStringBezierPathWidth.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.sampleStringBezierPathWidth.removeEBObserver (inObserver)
       }
@@ -724,9 +724,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.addEBObserver (inObserver)
     mObserversOf_sampleStringBezierPathAscent.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.sampleStringBezierPathAscent.addEBObserver (inObserver)
       }
@@ -739,9 +739,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.removeEBObserver (inObserver)
     mObserversOf_sampleStringBezierPathAscent.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.sampleStringBezierPathAscent.removeEBObserver (inObserver)
       }
@@ -780,9 +780,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.addEBObserver (inObserver)
     mObserversOf_sampleStringBezierPathDescent.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.sampleStringBezierPathDescent.addEBObserver (inObserver)
       }
@@ -795,9 +795,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
     self.removeEBObserver (inObserver)
     mObserversOf_sampleStringBezierPathDescent.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.sampleStringBezierPathDescent.removeEBObserver (inObserver)
       }
@@ -834,9 +834,9 @@ class ReadOnlyArrayOf_FontRootEntity : ReadOnlyAbstractArrayProperty <FontRootEn
 
 class TransientArrayOf_FontRootEntity : ReadOnlyArrayOf_FontRootEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [FontRootEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [FontRootEntity] > >
 
-  private var prop_cache : EBProperty < [FontRootEntity] >? 
+  private var prop_cache : EBSelection < [FontRootEntity] >? 
 
   //····················································································································
 
@@ -848,15 +848,15 @@ class TransientArrayOf_FontRootEntity : ReadOnlyArrayOf_FontRootEntity {
 
   private var mSet = Set <FontRootEntity> ()
 
-  override var prop : EBProperty < [FontRootEntity] > {
+  override var prop : EBSelection < [FontRootEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
         let newSet : Set <FontRootEntity>
         switch prop_cache! {
-        case .multipleSelection, .noSelection :
+        case .multiple, .empty :
           newSet = Set <FontRootEntity> ()
-        case .singleSelection (let array) :
+        case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
@@ -885,7 +885,7 @@ class TransientArrayOf_FontRootEntity : ReadOnlyArrayOf_FontRootEntity {
         mSet = newSet
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }
@@ -977,9 +977,9 @@ ToManyRelationshipReadWrite_FontRootEntity_characters, EBSignatureObserverProtoc
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -993,15 +993,15 @@ ToManyRelationshipReadWrite_FontRootEntity_characters, EBSignatureObserverProtoc
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1047,9 +1047,9 @@ ToManyRelationshipReadWrite_FontRootEntity_characters, EBSignatureObserverProtoc
     }
   }
 
-  override var prop : EBProperty < [FontCharacterEntity] > {
+  override var prop : EBSelection < [FontCharacterEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 

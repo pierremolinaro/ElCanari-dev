@@ -15,9 +15,9 @@ func compute_PMFontDocument_missingCharactersCountString (_ self_2E_rootObject_2
   var n = 0
   for c in self_2E_rootObject_2E_characters_0 {
     switch c.characterIsDefined.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       n += 1
-    case .singleSelection (let isDefined) :
+    case .single (let isDefined) :
       if !isDefined {
         n += 1
       }

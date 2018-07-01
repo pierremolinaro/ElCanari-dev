@@ -890,19 +890,19 @@ func defaultValidationFunction <T> (_ currentValue : T, proposedValue : T) -> EB
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBProperty
+//   EBSelection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum EBProperty<T> {
-  case noSelection
-  case multipleSelection
-  case singleSelection (T)
+enum EBSelection <T> {
+  case empty
+  case multiple
+  case single (T)
   
   func kind () -> EBPropertyKind {
     switch self {
-    case .noSelection : return .noSelectionKind
-    case .multipleSelection : return .multipleSelectionKind
-    case .singleSelection : return .singleSelectionKind
+    case .empty : return .noSelectionKind
+    case .multiple : return .multipleSelectionKind
+    case .single : return .singleSelectionKind
     }
   }
 }
@@ -938,122 +938,122 @@ func &= ( left:inout EBPropertyKind, right:EBPropertyKind) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func compareIntProperties (_ left:EBProperty<Int>,
-                                   right:EBProperty<Int>,
-                                   function : (Int, Int) -> Bool) -> EBProperty<Bool> {
+private func compareIntProperties (_ left:EBSelection <Int>,
+                                   right:EBSelection <Int>,
+                                   function : (Int, Int) -> Bool) -> EBSelection <Bool> {
   switch left {
-  case .noSelection :
-    return .noSelection
-  case .multipleSelection :
+  case .empty :
+    return .empty
+  case .multiple :
     switch right {
-    case .noSelection :
-      return .noSelection
-    case .multipleSelection, .singleSelection :
-      return .multipleSelection
+    case .empty :
+      return .empty
+    case .multiple, .single :
+      return .multiple
     }
-  case .singleSelection (let vg) :
+  case .single (let vg) :
     switch right {
-    case .noSelection :
-      return .noSelection
-    case .multipleSelection :
-      return .multipleSelection
-    case .singleSelection (let vd) :
-      return .singleSelection (function (vg, vd))
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
+    case .single (let vd) :
+      return .single (function (vg, vd))
     }
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func > (left:EBProperty<Int>, right:EBProperty<Int>) -> EBProperty<Bool> {
+func > (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
   return compareIntProperties (left, right: right, function: {$0 > $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func >= (left:EBProperty<Int>, right:EBProperty<Int>) -> EBProperty<Bool> {
+func >= (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
   return compareIntProperties (left, right: right, function: {$0 >= $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func < (left:EBProperty<Int>, right:EBProperty<Int>) -> EBProperty<Bool> {
+func < (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
   return compareIntProperties (left, right: right, function: {$0 < $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func <= (left:EBProperty<Int>, right:EBProperty<Int>) -> EBProperty<Bool> {
+func <= (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
   return compareIntProperties (left, right: right, function: {$0 <= $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func == (left:EBProperty<Int>, right:EBProperty<Int>) -> EBProperty<Bool> {
+func == (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
   return compareIntProperties (left, right: right, function: {$0 == $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func != (left:EBProperty<Int>, right:EBProperty<Int>) -> EBProperty<Bool> {
+func != (left:EBSelection<Int>, right:EBSelection<Int>) -> EBSelection<Bool> {
   return compareIntProperties (left, right: right, function: {$0 != $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func combineBoolProperties (_ left:EBProperty<Bool>,
-                                     right:EBProperty<Bool>,
-                                     function : (Bool, Bool) -> Bool) -> EBProperty<Bool> {
+private func combineBoolProperties (_ left:EBSelection<Bool>,
+                                     right:EBSelection<Bool>,
+                                     function : (Bool, Bool) -> Bool) -> EBSelection<Bool> {
   switch left {
-  case .noSelection :
-    return .noSelection
-  case .multipleSelection :
+  case .empty :
+    return .empty
+  case .multiple :
     switch right {
-    case .noSelection :
-      return .noSelection
-    case .multipleSelection, .singleSelection :
-      return .multipleSelection
+    case .empty :
+      return .empty
+    case .multiple, .single :
+      return .multiple
     }
-  case .singleSelection (let vg) :
+  case .single (let vg) :
     switch right {
-    case .noSelection :
-      return .noSelection
-    case .multipleSelection :
-      return .multipleSelection
-    case .singleSelection (let vd) :
-      return .singleSelection (function (vg, vd))
+    case .empty :
+      return .empty
+    case .multiple :
+      return .multiple
+    case .single (let vd) :
+      return .single (function (vg, vd))
     }
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func && (left:EBProperty<Bool>, right:EBProperty<Bool>) -> EBProperty<Bool> {
+func && (left:EBSelection<Bool>, right:EBSelection<Bool>) -> EBSelection<Bool> {
   return combineBoolProperties (left, right: right, function: {$0 && $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func || (left:EBProperty<Bool>, right:EBProperty<Bool>) -> EBProperty<Bool> {
+func || (left:EBSelection<Bool>, right:EBSelection<Bool>) -> EBSelection<Bool> {
   return combineBoolProperties (left, right: right, function: {$0 || $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func ^ (left:EBProperty<Bool>, right:EBProperty<Bool>) -> EBProperty<Bool> {
+func ^ (left:EBSelection<Bool>, right:EBSelection<Bool>) -> EBSelection<Bool> {
   return combineBoolProperties (left, right: right, function: {$0 != $1})
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-prefix func ! (operand:EBProperty<Bool>) -> EBProperty<Bool> {
+prefix func ! (operand:EBSelection<Bool>) -> EBSelection<Bool> {
   switch operand {
-  case .noSelection :
-    return .noSelection
-  case .multipleSelection :
-    return .multipleSelection
-  case .singleSelection (let v) :
-    return .singleSelection (!v)
+  case .empty :
+    return .empty
+  case .multiple :
+    return .multiple
+  case .single (let v) :
+    return .single (!v)
   }
 }
 
@@ -1081,26 +1081,12 @@ prefix func ! (operand:EBProperty<Bool>) -> EBProperty<Bool> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   NSDate operators
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//func < (left:Date, right:Date) -> Bool {
-//  return left.compare (right as Date) == .orderedAscending
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//func > (left:Date, right:Date) -> Bool {
-//  return left.compare (right as Date) == .orderedDescending
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyAbstractArrayProperty <T> : EBAbstractProperty {
 
-  var prop : EBProperty < [T] > { get { return .noSelection } }
+  var prop : EBSelection < [T] > { get { return .empty } }
 
   //····················································································································
 
@@ -1113,15 +1099,15 @@ class ReadOnlyAbstractArrayProperty <T> : EBAbstractProperty {
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }

@@ -31,7 +31,7 @@ class BoardModelPadEntity : EBManagedObject,
     }
   }
 
-  var x_prop : EBProperty <Int> {
+  var x_prop : EBSelection <Int> {
     get {
       return self.x.prop
     }
@@ -50,7 +50,7 @@ class BoardModelPadEntity : EBManagedObject,
     }
   }
 
-  var y_prop : EBProperty <Int> {
+  var y_prop : EBSelection <Int> {
     get {
       return self.y.prop
     }
@@ -69,7 +69,7 @@ class BoardModelPadEntity : EBManagedObject,
     }
   }
 
-  var width_prop : EBProperty <Int> {
+  var width_prop : EBSelection <Int> {
     get {
       return self.width.prop
     }
@@ -88,7 +88,7 @@ class BoardModelPadEntity : EBManagedObject,
     }
   }
 
-  var height_prop : EBProperty <Int> {
+  var height_prop : EBSelection <Int> {
     get {
       return self.height.prop
     }
@@ -107,7 +107,7 @@ class BoardModelPadEntity : EBManagedObject,
     }
   }
 
-  var holeDiameter_prop : EBProperty <Int> {
+  var holeDiameter_prop : EBSelection <Int> {
     get {
       return self.holeDiameter.prop
     }
@@ -126,7 +126,7 @@ class BoardModelPadEntity : EBManagedObject,
     }
   }
 
-  var shape_prop : EBProperty <PadShape> {
+  var shape_prop : EBSelection <PadShape> {
     get {
       return self.shape.prop
     }
@@ -145,7 +145,7 @@ class BoardModelPadEntity : EBManagedObject,
     }
   }
 
-  var side_prop : EBProperty <PadSide> {
+  var side_prop : EBSelection <PadSide> {
     get {
       return self.side.prop
     }
@@ -164,7 +164,7 @@ class BoardModelPadEntity : EBManagedObject,
     }
   }
 
-  var rotation_prop : EBProperty <Int> {
+  var rotation_prop : EBSelection <Int> {
     get {
       return self.rotation.prop
     }
@@ -391,9 +391,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_x.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x.addEBObserver (inObserver)
       }
@@ -406,9 +406,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_x.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x.removeEBObserver (inObserver)
       }
@@ -448,9 +448,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_y.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y.addEBObserver (inObserver)
       }
@@ -463,9 +463,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_y.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y.removeEBObserver (inObserver)
       }
@@ -505,9 +505,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_width.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.width.addEBObserver (inObserver)
       }
@@ -520,9 +520,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_width.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.width.removeEBObserver (inObserver)
       }
@@ -562,9 +562,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_height.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.height.addEBObserver (inObserver)
       }
@@ -577,9 +577,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_height.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.height.removeEBObserver (inObserver)
       }
@@ -619,9 +619,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_holeDiameter.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.holeDiameter.addEBObserver (inObserver)
       }
@@ -634,9 +634,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_holeDiameter.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.holeDiameter.removeEBObserver (inObserver)
       }
@@ -676,9 +676,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_shape.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.shape.addEBObserver (inObserver)
       }
@@ -691,9 +691,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_shape.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.shape.removeEBObserver (inObserver)
       }
@@ -733,9 +733,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_side.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.side.addEBObserver (inObserver)
       }
@@ -748,9 +748,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_side.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.side.removeEBObserver (inObserver)
       }
@@ -790,9 +790,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.addEBObserver (inObserver)
     mObserversOf_rotation.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.rotation.addEBObserver (inObserver)
       }
@@ -805,9 +805,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
     self.removeEBObserver (inObserver)
     mObserversOf_rotation.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.rotation.removeEBObserver (inObserver)
       }
@@ -845,9 +845,9 @@ class ReadOnlyArrayOf_BoardModelPadEntity : ReadOnlyAbstractArrayProperty <Board
 
 class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [BoardModelPadEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [BoardModelPadEntity] > >
 
-  private var prop_cache : EBProperty < [BoardModelPadEntity] >? 
+  private var prop_cache : EBSelection < [BoardModelPadEntity] >? 
 
   //····················································································································
 
@@ -859,15 +859,15 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
 
   private var mSet = Set <BoardModelPadEntity> ()
 
-  override var prop : EBProperty < [BoardModelPadEntity] > {
+  override var prop : EBSelection < [BoardModelPadEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
         let newSet : Set <BoardModelPadEntity>
         switch prop_cache! {
-        case .multipleSelection, .noSelection :
+        case .multiple, .empty :
           newSet = Set <BoardModelPadEntity> ()
-        case .singleSelection (let array) :
+        case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
@@ -898,7 +898,7 @@ class TransientArrayOf_BoardModelPadEntity : ReadOnlyArrayOf_BoardModelPadEntity
         mSet = newSet
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }

@@ -45,7 +45,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawBoardLimits_prop : EBProperty <Bool> {
+  var drawBoardLimits_prop : EBSelection <Bool> {
     get {
       return self.drawBoardLimits.prop
     }
@@ -64,7 +64,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawComponentNamesTopSide_prop : EBProperty <Bool> {
+  var drawComponentNamesTopSide_prop : EBSelection <Bool> {
     get {
       return self.drawComponentNamesTopSide.prop
     }
@@ -83,7 +83,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawComponentNamesBottomSide_prop : EBProperty <Bool> {
+  var drawComponentNamesBottomSide_prop : EBSelection <Bool> {
     get {
       return self.drawComponentNamesBottomSide.prop
     }
@@ -102,7 +102,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawComponentValuesTopSide_prop : EBProperty <Bool> {
+  var drawComponentValuesTopSide_prop : EBSelection <Bool> {
     get {
       return self.drawComponentValuesTopSide.prop
     }
@@ -121,7 +121,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawComponentValuesBottomSide_prop : EBProperty <Bool> {
+  var drawComponentValuesBottomSide_prop : EBSelection <Bool> {
     get {
       return self.drawComponentValuesBottomSide.prop
     }
@@ -140,7 +140,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawPackageLegendTopSide_prop : EBProperty <Bool> {
+  var drawPackageLegendTopSide_prop : EBSelection <Bool> {
     get {
       return self.drawPackageLegendTopSide.prop
     }
@@ -159,7 +159,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawPackageLegendBottomSide_prop : EBProperty <Bool> {
+  var drawPackageLegendBottomSide_prop : EBSelection <Bool> {
     get {
       return self.drawPackageLegendBottomSide.prop
     }
@@ -178,7 +178,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawPadHolesInPDF_prop : EBProperty <Bool> {
+  var drawPadHolesInPDF_prop : EBSelection <Bool> {
     get {
       return self.drawPadHolesInPDF.prop
     }
@@ -197,7 +197,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawPadsTopSide_prop : EBProperty <Bool> {
+  var drawPadsTopSide_prop : EBSelection <Bool> {
     get {
       return self.drawPadsTopSide.prop
     }
@@ -216,7 +216,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawPadsBottomSide_prop : EBProperty <Bool> {
+  var drawPadsBottomSide_prop : EBSelection <Bool> {
     get {
       return self.drawPadsBottomSide.prop
     }
@@ -235,7 +235,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawTextsLayoutTopSide_prop : EBProperty <Bool> {
+  var drawTextsLayoutTopSide_prop : EBSelection <Bool> {
     get {
       return self.drawTextsLayoutTopSide.prop
     }
@@ -254,7 +254,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawTextsLayoutBottomSide_prop : EBProperty <Bool> {
+  var drawTextsLayoutBottomSide_prop : EBSelection <Bool> {
     get {
       return self.drawTextsLayoutBottomSide.prop
     }
@@ -273,7 +273,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawTextsLegendTopSide_prop : EBProperty <Bool> {
+  var drawTextsLegendTopSide_prop : EBSelection <Bool> {
     get {
       return self.drawTextsLegendTopSide.prop
     }
@@ -292,7 +292,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawTextsLegendBottomSide_prop : EBProperty <Bool> {
+  var drawTextsLegendBottomSide_prop : EBSelection <Bool> {
     get {
       return self.drawTextsLegendBottomSide.prop
     }
@@ -311,7 +311,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawTracksTopSide_prop : EBProperty <Bool> {
+  var drawTracksTopSide_prop : EBSelection <Bool> {
     get {
       return self.drawTracksTopSide.prop
     }
@@ -330,7 +330,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawTracksBottomSide_prop : EBProperty <Bool> {
+  var drawTracksBottomSide_prop : EBSelection <Bool> {
     get {
       return self.drawTracksBottomSide.prop
     }
@@ -349,7 +349,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var drawVias_prop : EBProperty <Bool> {
+  var drawVias_prop : EBSelection <Bool> {
     get {
       return self.drawVias.prop
     }
@@ -368,7 +368,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var fileExtension_prop : EBProperty <String> {
+  var fileExtension_prop : EBSelection <String> {
     get {
       return self.fileExtension.prop
     }
@@ -387,7 +387,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var horizontalMirror_prop : EBProperty <Bool> {
+  var horizontalMirror_prop : EBSelection <Bool> {
     get {
       return self.horizontalMirror.prop
     }
@@ -406,7 +406,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var name_prop : EBProperty <String> {
+  var name_prop : EBSelection <String> {
     get {
       return self.name.prop
     }
@@ -425,7 +425,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var measurementUnitForPadHoleInPDF_prop : EBProperty <Int> {
+  var measurementUnitForPadHoleInPDF_prop : EBSelection <Int> {
     get {
       return self.measurementUnitForPadHoleInPDF.prop
     }
@@ -444,7 +444,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
-  var padHoleDiameterInPDF_prop : EBProperty <Int> {
+  var padHoleDiameterInPDF_prop : EBSelection <Int> {
     get {
       return self.padHoleDiameterInPDF.prop
     }
@@ -920,9 +920,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawBoardLimits.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawBoardLimits.addEBObserver (inObserver)
       }
@@ -935,9 +935,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawBoardLimits.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawBoardLimits.removeEBObserver (inObserver)
       }
@@ -977,9 +977,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawComponentNamesTopSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawComponentNamesTopSide.addEBObserver (inObserver)
       }
@@ -992,9 +992,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawComponentNamesTopSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawComponentNamesTopSide.removeEBObserver (inObserver)
       }
@@ -1034,9 +1034,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawComponentNamesBottomSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawComponentNamesBottomSide.addEBObserver (inObserver)
       }
@@ -1049,9 +1049,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawComponentNamesBottomSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawComponentNamesBottomSide.removeEBObserver (inObserver)
       }
@@ -1091,9 +1091,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawComponentValuesTopSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawComponentValuesTopSide.addEBObserver (inObserver)
       }
@@ -1106,9 +1106,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawComponentValuesTopSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawComponentValuesTopSide.removeEBObserver (inObserver)
       }
@@ -1148,9 +1148,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawComponentValuesBottomSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawComponentValuesBottomSide.addEBObserver (inObserver)
       }
@@ -1163,9 +1163,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawComponentValuesBottomSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawComponentValuesBottomSide.removeEBObserver (inObserver)
       }
@@ -1205,9 +1205,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawPackageLegendTopSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawPackageLegendTopSide.addEBObserver (inObserver)
       }
@@ -1220,9 +1220,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawPackageLegendTopSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawPackageLegendTopSide.removeEBObserver (inObserver)
       }
@@ -1262,9 +1262,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawPackageLegendBottomSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawPackageLegendBottomSide.addEBObserver (inObserver)
       }
@@ -1277,9 +1277,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawPackageLegendBottomSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawPackageLegendBottomSide.removeEBObserver (inObserver)
       }
@@ -1319,9 +1319,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawPadHolesInPDF.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawPadHolesInPDF.addEBObserver (inObserver)
       }
@@ -1334,9 +1334,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawPadHolesInPDF.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawPadHolesInPDF.removeEBObserver (inObserver)
       }
@@ -1376,9 +1376,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawPadsTopSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawPadsTopSide.addEBObserver (inObserver)
       }
@@ -1391,9 +1391,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawPadsTopSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawPadsTopSide.removeEBObserver (inObserver)
       }
@@ -1433,9 +1433,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawPadsBottomSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawPadsBottomSide.addEBObserver (inObserver)
       }
@@ -1448,9 +1448,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawPadsBottomSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawPadsBottomSide.removeEBObserver (inObserver)
       }
@@ -1490,9 +1490,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawTextsLayoutTopSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTextsLayoutTopSide.addEBObserver (inObserver)
       }
@@ -1505,9 +1505,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawTextsLayoutTopSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTextsLayoutTopSide.removeEBObserver (inObserver)
       }
@@ -1547,9 +1547,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawTextsLayoutBottomSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTextsLayoutBottomSide.addEBObserver (inObserver)
       }
@@ -1562,9 +1562,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawTextsLayoutBottomSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTextsLayoutBottomSide.removeEBObserver (inObserver)
       }
@@ -1604,9 +1604,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawTextsLegendTopSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTextsLegendTopSide.addEBObserver (inObserver)
       }
@@ -1619,9 +1619,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawTextsLegendTopSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTextsLegendTopSide.removeEBObserver (inObserver)
       }
@@ -1661,9 +1661,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawTextsLegendBottomSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTextsLegendBottomSide.addEBObserver (inObserver)
       }
@@ -1676,9 +1676,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawTextsLegendBottomSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTextsLegendBottomSide.removeEBObserver (inObserver)
       }
@@ -1718,9 +1718,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawTracksTopSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTracksTopSide.addEBObserver (inObserver)
       }
@@ -1733,9 +1733,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawTracksTopSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTracksTopSide.removeEBObserver (inObserver)
       }
@@ -1775,9 +1775,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawTracksBottomSide.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTracksBottomSide.addEBObserver (inObserver)
       }
@@ -1790,9 +1790,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawTracksBottomSide.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawTracksBottomSide.removeEBObserver (inObserver)
       }
@@ -1832,9 +1832,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_drawVias.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawVias.addEBObserver (inObserver)
       }
@@ -1847,9 +1847,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_drawVias.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drawVias.removeEBObserver (inObserver)
       }
@@ -1889,9 +1889,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_fileExtension.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.fileExtension.addEBObserver (inObserver)
       }
@@ -1904,9 +1904,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_fileExtension.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.fileExtension.removeEBObserver (inObserver)
       }
@@ -1946,9 +1946,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_horizontalMirror.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.horizontalMirror.addEBObserver (inObserver)
       }
@@ -1961,9 +1961,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_horizontalMirror.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.horizontalMirror.removeEBObserver (inObserver)
       }
@@ -2003,9 +2003,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_name.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.name.addEBObserver (inObserver)
       }
@@ -2018,9 +2018,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_name.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.name.removeEBObserver (inObserver)
       }
@@ -2060,9 +2060,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_measurementUnitForPadHoleInPDF.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.measurementUnitForPadHoleInPDF.addEBObserver (inObserver)
       }
@@ -2075,9 +2075,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_measurementUnitForPadHoleInPDF.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.measurementUnitForPadHoleInPDF.removeEBObserver (inObserver)
       }
@@ -2117,9 +2117,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.addEBObserver (inObserver)
     mObserversOf_padHoleDiameterInPDF.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.padHoleDiameterInPDF.addEBObserver (inObserver)
       }
@@ -2132,9 +2132,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     self.removeEBObserver (inObserver)
     mObserversOf_padHoleDiameterInPDF.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.padHoleDiameterInPDF.removeEBObserver (inObserver)
       }
@@ -2172,9 +2172,9 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
 class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
 
-  var readModelFunction : Optional<() -> EBProperty < [ArtworkFileGenerationParameters] > >
+  var readModelFunction : Optional<() -> EBSelection < [ArtworkFileGenerationParameters] > >
 
-  private var prop_cache : EBProperty < [ArtworkFileGenerationParameters] >? 
+  private var prop_cache : EBSelection < [ArtworkFileGenerationParameters] >? 
 
   //····················································································································
 
@@ -2186,15 +2186,15 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 
   private var mSet = Set <ArtworkFileGenerationParameters> ()
 
-  override var prop : EBProperty < [ArtworkFileGenerationParameters] > {
+  override var prop : EBSelection < [ArtworkFileGenerationParameters] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
         let newSet : Set <ArtworkFileGenerationParameters>
         switch prop_cache! {
-        case .multipleSelection, .noSelection :
+        case .multiple, .empty :
           newSet = Set <ArtworkFileGenerationParameters> ()
-        case .singleSelection (let array) :
+        case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
@@ -2253,7 +2253,7 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
         mSet = newSet
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }

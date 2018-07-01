@@ -96,13 +96,13 @@ import Cocoa
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.image = nil
       mOutlet.enableFromValue (false)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.image = nil
       mOutlet.enableFromValue (false)
-    case .singleSelection (let propertyValue) :
+    case .single (let propertyValue) :
       mOutlet.image = propertyValue
       mOutlet.enableFromValue (true)
     }
@@ -141,13 +141,13 @@ import Cocoa
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.toolTip = nil
       mOutlet.enableFromValue (false)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.toolTip = nil
       mOutlet.enableFromValue (false)
-    case .singleSelection (let propertyValue) :
+    case .single (let propertyValue) :
       mOutlet.toolTip = propertyValue
       mOutlet.enableFromValue (true)
     }

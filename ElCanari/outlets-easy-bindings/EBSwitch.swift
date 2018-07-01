@@ -87,13 +87,13 @@ import Cocoa
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection :
+    case .empty :
       mOutlet.state = NSOffState
       mOutlet.enableFromValue (false)
-    case .multipleSelection :
+    case .multiple :
       mOutlet.state = NSMixedState
       mOutlet.enableFromValue (false)
-    case .singleSelection (let v) :
+    case .single (let v) :
       mOutlet.state = v ? NSOnState : NSOffState
       mOutlet.enableFromValue (true)
     }

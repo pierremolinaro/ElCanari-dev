@@ -35,7 +35,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var selectedTab_prop : EBProperty <Int> {
+  var selectedTab_prop : EBSelection <Int> {
     get {
       return self.selectedTab.prop
     }
@@ -54,7 +54,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var comments_prop : EBProperty <String> {
+  var comments_prop : EBSelection <String> {
     get {
       return self.comments.prop
     }
@@ -73,7 +73,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var minPP_TP_TT_TW_displayUnit_prop : EBProperty <Int> {
+  var minPP_TP_TT_TW_displayUnit_prop : EBSelection <Int> {
     get {
       return self.minPP_TP_TT_TW_displayUnit.prop
     }
@@ -92,7 +92,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var minPP_TP_TT_TW_inEBUnit_prop : EBProperty <Int> {
+  var minPP_TP_TT_TW_inEBUnit_prop : EBSelection <Int> {
     get {
       return self.minPP_TP_TT_TW_inEBUnit.prop
     }
@@ -111,7 +111,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var minValueForOARdisplayUnit_prop : EBProperty <Int> {
+  var minValueForOARdisplayUnit_prop : EBSelection <Int> {
     get {
       return self.minValueForOARdisplayUnit.prop
     }
@@ -130,7 +130,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var minValueForOARinEBUnit_prop : EBProperty <Int> {
+  var minValueForOARinEBUnit_prop : EBSelection <Int> {
     get {
       return self.minValueForOARinEBUnit.prop
     }
@@ -149,7 +149,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var minValueForPHDdisplayUnit_prop : EBProperty <Int> {
+  var minValueForPHDdisplayUnit_prop : EBSelection <Int> {
     get {
       return self.minValueForPHDdisplayUnit.prop
     }
@@ -168,7 +168,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var minValueForPHDinEBUnit_prop : EBProperty <Int> {
+  var minValueForPHDinEBUnit_prop : EBSelection <Int> {
     get {
       return self.minValueForPHDinEBUnit.prop
     }
@@ -187,7 +187,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var drillDataFormat_prop : EBProperty <DrillDataFormatEnum> {
+  var drillDataFormat_prop : EBSelection <DrillDataFormatEnum> {
     get {
       return self.drillDataFormat.prop
     }
@@ -206,7 +206,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var drillDataFileExtension_prop : EBProperty <String> {
+  var drillDataFileExtension_prop : EBSelection <String> {
     get {
       return self.drillDataFileExtension.prop
     }
@@ -225,7 +225,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var drillListFileExtension_prop : EBProperty <String> {
+  var drillListFileExtension_prop : EBSelection <String> {
     get {
       return self.drillListFileExtension.prop
     }
@@ -244,7 +244,7 @@ class ArtworkRootEntity : EBManagedObject,
     }
   }
 
-  var drillToolListFileExtension_prop : EBProperty <String> {
+  var drillToolListFileExtension_prop : EBSelection <String> {
     get {
       return self.drillToolListFileExtension.prop
     }
@@ -584,9 +584,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_selectedTab.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.selectedTab.addEBObserver (inObserver)
       }
@@ -599,9 +599,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_selectedTab.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.selectedTab.removeEBObserver (inObserver)
       }
@@ -641,9 +641,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_comments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.comments.addEBObserver (inObserver)
       }
@@ -656,9 +656,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_comments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.comments.removeEBObserver (inObserver)
       }
@@ -698,9 +698,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_minPP_TP_TT_TW_displayUnit.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minPP_TP_TT_TW_displayUnit.addEBObserver (inObserver)
       }
@@ -713,9 +713,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_minPP_TP_TT_TW_displayUnit.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minPP_TP_TT_TW_displayUnit.removeEBObserver (inObserver)
       }
@@ -755,9 +755,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_minPP_TP_TT_TW_inEBUnit.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minPP_TP_TT_TW_inEBUnit.addEBObserver (inObserver)
       }
@@ -770,9 +770,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_minPP_TP_TT_TW_inEBUnit.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minPP_TP_TT_TW_inEBUnit.removeEBObserver (inObserver)
       }
@@ -812,9 +812,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minValueForOARdisplayUnit.addEBObserver (inObserver)
       }
@@ -827,9 +827,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minValueForOARdisplayUnit.removeEBObserver (inObserver)
       }
@@ -869,9 +869,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_minValueForOARinEBUnit.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minValueForOARinEBUnit.addEBObserver (inObserver)
       }
@@ -884,9 +884,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_minValueForOARinEBUnit.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minValueForOARinEBUnit.removeEBObserver (inObserver)
       }
@@ -926,9 +926,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minValueForPHDdisplayUnit.addEBObserver (inObserver)
       }
@@ -941,9 +941,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minValueForPHDdisplayUnit.removeEBObserver (inObserver)
       }
@@ -983,9 +983,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minValueForPHDinEBUnit.addEBObserver (inObserver)
       }
@@ -998,9 +998,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.minValueForPHDinEBUnit.removeEBObserver (inObserver)
       }
@@ -1040,9 +1040,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_drillDataFormat.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drillDataFormat.addEBObserver (inObserver)
       }
@@ -1055,9 +1055,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_drillDataFormat.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drillDataFormat.removeEBObserver (inObserver)
       }
@@ -1097,9 +1097,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_drillDataFileExtension.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drillDataFileExtension.addEBObserver (inObserver)
       }
@@ -1112,9 +1112,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_drillDataFileExtension.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drillDataFileExtension.removeEBObserver (inObserver)
       }
@@ -1154,9 +1154,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_drillListFileExtension.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drillListFileExtension.addEBObserver (inObserver)
       }
@@ -1169,9 +1169,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_drillListFileExtension.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drillListFileExtension.removeEBObserver (inObserver)
       }
@@ -1211,9 +1211,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.addEBObserver (inObserver)
     mObserversOf_drillToolListFileExtension.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drillToolListFileExtension.addEBObserver (inObserver)
       }
@@ -1226,9 +1226,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
     self.removeEBObserver (inObserver)
     mObserversOf_drillToolListFileExtension.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.drillToolListFileExtension.removeEBObserver (inObserver)
       }
@@ -1266,9 +1266,9 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
 class TransientArrayOf_ArtworkRootEntity : ReadOnlyArrayOf_ArtworkRootEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [ArtworkRootEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [ArtworkRootEntity] > >
 
-  private var prop_cache : EBProperty < [ArtworkRootEntity] >? 
+  private var prop_cache : EBSelection < [ArtworkRootEntity] >? 
 
   //····················································································································
 
@@ -1280,15 +1280,15 @@ class TransientArrayOf_ArtworkRootEntity : ReadOnlyArrayOf_ArtworkRootEntity {
 
   private var mSet = Set <ArtworkRootEntity> ()
 
-  override var prop : EBProperty < [ArtworkRootEntity] > {
+  override var prop : EBSelection < [ArtworkRootEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
         let newSet : Set <ArtworkRootEntity>
         switch prop_cache! {
-        case .multipleSelection, .noSelection :
+        case .multiple, .empty :
           newSet = Set <ArtworkRootEntity> ()
-        case .singleSelection (let array) :
+        case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
@@ -1327,7 +1327,7 @@ class TransientArrayOf_ArtworkRootEntity : ReadOnlyArrayOf_ArtworkRootEntity {
         mSet = newSet
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }
@@ -1449,9 +1449,9 @@ ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray, EBSi
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -1465,15 +1465,15 @@ ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray, EBSi
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1553,9 +1553,9 @@ ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray, EBSi
     }
   }
 
-  override var prop : EBProperty < [ArtworkFileGenerationParameters] > {
+  override var prop : EBSelection < [ArtworkFileGenerationParameters] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 

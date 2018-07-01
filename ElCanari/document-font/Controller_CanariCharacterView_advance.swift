@@ -30,9 +30,9 @@ final class Controller_CanariCharacterView_advance : EBSimpleController {
 
   final override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break ;
-    case .singleSelection (let value) :
+    case .single (let value) :
       mOutlet.setAdvance (value)
     }
   }

@@ -20,7 +20,7 @@ protocol ValuePropertyProtocol : Equatable {
 
 class EBReadOnlyValueProperty <T> : EBAbstractProperty {
 
-  var prop : EBProperty <T> { get { return .noSelection } } // Abstract method
+  var prop : EBSelection <T> { get { return .empty } } // Abstract method
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -39,11 +39,11 @@ class EBReadWriteValueProperty <T> : EBReadOnlyValueProperty <T> {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueProperty <T> {
-  var readModelFunction : Optional < () -> EBProperty <T> >
+  var readModelFunction : Optional < () -> EBSelection <T> >
   var writeModelFunction : Optional < (T) -> Void >
   var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool >
   
-  private var prop_cache : EBProperty <T>?
+  private var prop_cache : EBSelection <T>?
   
   //····················································································································
 
@@ -61,14 +61,14 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
 
   //····················································································································
 
-  private func updateValueExplorer (possibleValue : EBProperty <T>?) {
+  private func updateValueExplorer (possibleValue : EBSelection <T>?) {
     if let valueExplorer = mValueExplorer, let unwProp = possibleValue {
       switch unwProp {
-      case .noSelection :
+      case .empty :
         valueExplorer.stringValue = "—"
-      case .multipleSelection :
+      case .multiple :
         valueExplorer.stringValue = "—"
-      case .singleSelection (let value) :
+      case .single (let value) :
         valueExplorer.stringValue = "\(value)"
       }
     }else{
@@ -92,14 +92,14 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
 
   //····················································································································
 
-  override var prop : EBProperty <T> {
+  override var prop : EBSelection <T> {
     get {
       if let unReadModelFunction = readModelFunction, prop_cache == nil {
         prop_cache = unReadModelFunction ()
         updateValueExplorer (possibleValue:prop_cache)
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }
@@ -174,7 +174,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   //····················································································································
 
-  override var prop : EBProperty<T> { get { return .singleSelection (mValue) } }
+  override var prop : EBSelection<T> { get { return .single (mValue) } }
 
   var propval : T { get { return mValue } }
 
@@ -289,8 +289,8 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
-  private var mValueCache : EBProperty <T>? = nil
-  var readModelFunction : Optional<() -> EBProperty <T> >
+  private var mValueCache : EBSelection <T>? = nil
+  var readModelFunction : Optional<() -> EBSelection <T> >
   
   //····················································································································
 
@@ -312,14 +312,14 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
 
   //····················································································································
 
-  override var prop : EBProperty <T> {
+  override var prop : EBSelection <T> {
     get {
       if mValueCache == nil {
         if let unwrappedComputeFunction = readModelFunction {
           mValueCache = unwrappedComputeFunction ()
         }
         if mValueCache == nil {
-          mValueCache = .noSelection
+          mValueCache = .empty
         }
         mValueExplorer?.stringValue = "\(mValueCache!)"
       }
@@ -623,7 +623,7 @@ protocol ClassPropertyProtocol : class, Equatable {
 
 class EBReadOnlyClassProperty <T> : EBAbstractProperty {
 
-  var prop : EBProperty <T> { get { return .noSelection } } // Abstract method
+  var prop : EBSelection <T> { get { return .empty } } // Abstract method
 
 }
 
@@ -643,11 +643,11 @@ class EBReadWriteClassProperty <T> : EBReadOnlyClassProperty <T> {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
-  var readModelFunction : Optional < () -> EBProperty <T> >
+  var readModelFunction : Optional < () -> EBSelection <T> >
   var writeModelFunction : Optional < (T) -> Void >
   var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool >
   
-  private var prop_cache : EBProperty <T>?
+  private var prop_cache : EBSelection <T>?
   
   //····················································································································
 
@@ -665,14 +665,14 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
 
   //····················································································································
 
-  private func updateValueExplorer (possibleValue : EBProperty <T>?) {
+  private func updateValueExplorer (possibleValue : EBSelection <T>?) {
     if let valueExplorer = mValueExplorer, let unwProp = possibleValue {
       switch unwProp {
-      case .noSelection :
+      case .empty :
         valueExplorer.stringValue = "—"
-      case .multipleSelection :
+      case .multiple :
         valueExplorer.stringValue = "—"
-      case .singleSelection (let value) :
+      case .single (let value) :
         valueExplorer.stringValue = "\(value)"
       }
     }else{
@@ -696,14 +696,14 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
 
   //····················································································································
 
-  override var prop : EBProperty <T> {
+  override var prop : EBSelection <T> {
     get {
       if let unReadModelFunction = readModelFunction, prop_cache == nil {
         prop_cache = unReadModelFunction ()
         updateValueExplorer (possibleValue:prop_cache)
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }
@@ -778,7 +778,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
-  override var prop : EBProperty<T> { get { return .singleSelection (mValue) } }
+  override var prop : EBSelection<T> { get { return .single (mValue) } }
 
   var propval : T { get { return mValue } }
 
@@ -893,8 +893,8 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
-  private var mValueCache : EBProperty <T>? = nil
-  var readModelFunction : Optional<() -> EBProperty <T> >
+  private var mValueCache : EBSelection <T>? = nil
+  var readModelFunction : Optional<() -> EBSelection <T> >
   
   //····················································································································
 
@@ -916,14 +916,14 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 
   //····················································································································
 
-  override var prop : EBProperty <T> {
+  override var prop : EBSelection <T> {
     get {
       if mValueCache == nil {
         if let unwrappedComputeFunction = readModelFunction {
           mValueCache = unwrappedComputeFunction ()
         }
         if mValueCache == nil {
-          mValueCache = .noSelection
+          mValueCache = .empty
         }
         mValueExplorer?.stringValue = "\(mValueCache!)"
       }
@@ -964,27 +964,27 @@ typealias EBTransientProperty_Int = EBTransientValueProperty <Int>
 
 func compare_Int (left : EBReadOnlyProperty_Int, right : EBReadOnlyProperty_Int) -> ComparisonResult {
   switch left.prop {
-  case .noSelection :
+  case .empty :
     switch right.prop {
-    case .noSelection :
+    case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
-  case .multipleSelection :
+  case .multiple :
     switch right.prop {
-    case .noSelection :
+    case .empty :
       return .orderedDescending
-    case .multipleSelection :
+    case .multiple :
       return .orderedSame
-   case .singleSelection (_) :
+   case .single (_) :
       return .orderedAscending
    }
- case .singleSelection (let currentValue) :
+ case .single (let currentValue) :
     switch right.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return .orderedDescending
-    case .singleSelection (let otherValue) :
+    case .single (let otherValue) :
       if currentValue < otherValue {
         return .orderedAscending
       }else if currentValue > otherValue {
@@ -1010,27 +1010,27 @@ typealias EBTransientProperty_Bool = EBTransientValueProperty <Bool>
 
 func compare_Bool (left : EBReadOnlyProperty_Bool, right : EBReadOnlyProperty_Bool) -> ComparisonResult {
   switch left.prop {
-  case .noSelection :
+  case .empty :
     switch right.prop {
-    case .noSelection :
+    case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
-  case .multipleSelection :
+  case .multiple :
     switch right.prop {
-    case .noSelection :
+    case .empty :
       return .orderedDescending
-    case .multipleSelection :
+    case .multiple :
       return .orderedSame
-   case .singleSelection (_) :
+   case .single (_) :
       return .orderedAscending
    }
- case .singleSelection (let currentValue) :
+ case .single (let currentValue) :
     switch right.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return .orderedDescending
-    case .singleSelection (let otherValue) :
+    case .single (let otherValue) :
       if currentValue < otherValue {
         return .orderedAscending
       }else if currentValue > otherValue {
@@ -1056,27 +1056,27 @@ typealias EBTransientProperty_Double = EBTransientValueProperty <Double>
 
 func compare_Double (left : EBReadOnlyProperty_Double, right : EBReadOnlyProperty_Double) -> ComparisonResult {
   switch left.prop {
-  case .noSelection :
+  case .empty :
     switch right.prop {
-    case .noSelection :
+    case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
-  case .multipleSelection :
+  case .multiple :
     switch right.prop {
-    case .noSelection :
+    case .empty :
       return .orderedDescending
-    case .multipleSelection :
+    case .multiple :
       return .orderedSame
-   case .singleSelection (_) :
+   case .single (_) :
       return .orderedAscending
    }
- case .singleSelection (let currentValue) :
+ case .single (let currentValue) :
     switch right.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return .orderedDescending
-    case .singleSelection (let otherValue) :
+    case .single (let otherValue) :
       if currentValue < otherValue {
         return .orderedAscending
       }else if currentValue > otherValue {
@@ -1102,27 +1102,27 @@ typealias EBTransientProperty_String = EBTransientValueProperty <String>
 
 func compare_String (left : EBReadOnlyProperty_String, right : EBReadOnlyProperty_String) -> ComparisonResult {
   switch left.prop {
-  case .noSelection :
+  case .empty :
     switch right.prop {
-    case .noSelection :
+    case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
-  case .multipleSelection :
+  case .multiple :
     switch right.prop {
-    case .noSelection :
+    case .empty :
       return .orderedDescending
-    case .multipleSelection :
+    case .multiple :
       return .orderedSame
-   case .singleSelection (_) :
+   case .single (_) :
       return .orderedAscending
    }
- case .singleSelection (let currentValue) :
+ case .single (let currentValue) :
     switch right.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return .orderedDescending
-    case .singleSelection (let otherValue) :
+    case .single (let otherValue) :
       if currentValue < otherValue {
         return .orderedAscending
       }else if currentValue > otherValue {
@@ -1266,27 +1266,27 @@ typealias EBTransientProperty_Date = EBTransientValueProperty <Date>
 
 func compare_Date (left : EBReadOnlyProperty_Date, right : EBReadOnlyProperty_Date) -> ComparisonResult {
   switch left.prop {
-  case .noSelection :
+  case .empty :
     switch right.prop {
-    case .noSelection :
+    case .empty :
       return .orderedSame
     default:
       return .orderedAscending
     }
-  case .multipleSelection :
+  case .multiple :
     switch right.prop {
-    case .noSelection :
+    case .empty :
       return .orderedDescending
-    case .multipleSelection :
+    case .multiple :
       return .orderedSame
-   case .singleSelection (_) :
+   case .single (_) :
       return .orderedAscending
    }
- case .singleSelection (let currentValue) :
+ case .single (let currentValue) :
     switch right.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       return .orderedDescending
-    case .singleSelection (let otherValue) :
+    case .single (let otherValue) :
       if currentValue < otherValue {
         return .orderedAscending
       }else if currentValue > otherValue {

@@ -344,9 +344,9 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     let possibleSegments = mFontDocument?.selectedCharacter.mSelectedObject?.segments
     if let segments = possibleSegments {
       switch segments.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let array) :
+        case .single (let array) :
           result = array
       }
     }

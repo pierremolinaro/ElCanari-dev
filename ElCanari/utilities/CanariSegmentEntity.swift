@@ -28,7 +28,7 @@ class CanariSegmentEntity : EBManagedObject,
     }
   }
 
-  var x1_prop : EBProperty <Int> {
+  var x1_prop : EBSelection <Int> {
     get {
       return self.x1.prop
     }
@@ -47,7 +47,7 @@ class CanariSegmentEntity : EBManagedObject,
     }
   }
 
-  var y1_prop : EBProperty <Int> {
+  var y1_prop : EBSelection <Int> {
     get {
       return self.y1.prop
     }
@@ -66,7 +66,7 @@ class CanariSegmentEntity : EBManagedObject,
     }
   }
 
-  var x2_prop : EBProperty <Int> {
+  var x2_prop : EBSelection <Int> {
     get {
       return self.x2.prop
     }
@@ -85,7 +85,7 @@ class CanariSegmentEntity : EBManagedObject,
     }
   }
 
-  var y2_prop : EBProperty <Int> {
+  var y2_prop : EBSelection <Int> {
     get {
       return self.y2.prop
     }
@@ -104,7 +104,7 @@ class CanariSegmentEntity : EBManagedObject,
     }
   }
 
-  var width_prop : EBProperty <Int> {
+  var width_prop : EBSelection <Int> {
     get {
       return self.width.prop
     }
@@ -289,9 +289,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     self.addEBObserver (inObserver)
     mObserversOf_x1.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x1.addEBObserver (inObserver)
       }
@@ -304,9 +304,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     self.removeEBObserver (inObserver)
     mObserversOf_x1.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x1.removeEBObserver (inObserver)
       }
@@ -346,9 +346,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     self.addEBObserver (inObserver)
     mObserversOf_y1.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y1.addEBObserver (inObserver)
       }
@@ -361,9 +361,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     self.removeEBObserver (inObserver)
     mObserversOf_y1.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y1.removeEBObserver (inObserver)
       }
@@ -403,9 +403,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     self.addEBObserver (inObserver)
     mObserversOf_x2.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x2.addEBObserver (inObserver)
       }
@@ -418,9 +418,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     self.removeEBObserver (inObserver)
     mObserversOf_x2.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.x2.removeEBObserver (inObserver)
       }
@@ -460,9 +460,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     self.addEBObserver (inObserver)
     mObserversOf_y2.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y2.addEBObserver (inObserver)
       }
@@ -475,9 +475,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     self.removeEBObserver (inObserver)
     mObserversOf_y2.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.y2.removeEBObserver (inObserver)
       }
@@ -517,9 +517,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     self.addEBObserver (inObserver)
     mObserversOf_width.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.width.addEBObserver (inObserver)
       }
@@ -532,9 +532,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     self.removeEBObserver (inObserver)
     mObserversOf_width.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.width.removeEBObserver (inObserver)
       }
@@ -572,9 +572,9 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
 
 class TransientArrayOf_CanariSegmentEntity : ReadOnlyArrayOf_CanariSegmentEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [CanariSegmentEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [CanariSegmentEntity] > >
 
-  private var prop_cache : EBProperty < [CanariSegmentEntity] >? 
+  private var prop_cache : EBSelection < [CanariSegmentEntity] >? 
 
   //····················································································································
 
@@ -586,15 +586,15 @@ class TransientArrayOf_CanariSegmentEntity : ReadOnlyArrayOf_CanariSegmentEntity
 
   private var mSet = Set <CanariSegmentEntity> ()
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
         let newSet : Set <CanariSegmentEntity>
         switch prop_cache! {
-        case .multipleSelection, .noSelection :
+        case .multiple, .empty :
           newSet = Set <CanariSegmentEntity> ()
-        case .singleSelection (let array) :
+        case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
@@ -619,7 +619,7 @@ class TransientArrayOf_CanariSegmentEntity : ReadOnlyArrayOf_CanariSegmentEntity
         mSet = newSet
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }

@@ -75,7 +75,7 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
-  var artworkName_prop : EBProperty <String> {
+  var artworkName_prop : EBSelection <String> {
     get {
       return self.artworkName.prop
     }
@@ -94,7 +94,7 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
-  var name_prop : EBProperty <String> {
+  var name_prop : EBSelection <String> {
     get {
       return self.name.prop
     }
@@ -113,7 +113,7 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
-  var boardWidth_prop : EBProperty <Int> {
+  var boardWidth_prop : EBSelection <Int> {
     get {
       return self.boardWidth.prop
     }
@@ -132,7 +132,7 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
-  var boardWidthUnit_prop : EBProperty <Int> {
+  var boardWidthUnit_prop : EBSelection <Int> {
     get {
       return self.boardWidthUnit.prop
     }
@@ -151,7 +151,7 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
-  var boardHeight_prop : EBProperty <Int> {
+  var boardHeight_prop : EBSelection <Int> {
     get {
       return self.boardHeight.prop
     }
@@ -170,7 +170,7 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
-  var boardHeightUnit_prop : EBProperty <Int> {
+  var boardHeightUnit_prop : EBSelection <Int> {
     get {
       return self.boardHeightUnit.prop
     }
@@ -189,7 +189,7 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
-  var zoom_prop : EBProperty <Int> {
+  var zoom_prop : EBSelection <Int> {
     get {
       return self.zoom.prop
     }
@@ -208,7 +208,7 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
-  var boardLimitWidth_prop : EBProperty <Int> {
+  var boardLimitWidth_prop : EBSelection <Int> {
     get {
       return self.boardLimitWidth.prop
     }
@@ -227,7 +227,7 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
-  var boardLimitWidthUnit_prop : EBProperty <Int> {
+  var boardLimitWidthUnit_prop : EBSelection <Int> {
     get {
       return self.boardLimitWidthUnit.prop
     }
@@ -237,7 +237,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontLegendTextsSegments transient property
   //····················································································································
 
-  var frontLegendTextsSegments_prop : EBProperty <MergerSegmentArray> {
+  var frontLegendTextsSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontLegendTextsSegments.prop
     }
@@ -247,7 +247,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontLegendTextsSegmentsForDisplay transient property
   //····················································································································
 
-  var frontLegendTextsSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var frontLegendTextsSegmentsForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontLegendTextsSegmentsForDisplay.prop
     }
@@ -257,7 +257,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontLayoutTextsSegments transient property
   //····················································································································
 
-  var frontLayoutTextsSegments_prop : EBProperty <MergerSegmentArray> {
+  var frontLayoutTextsSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontLayoutTextsSegments.prop
     }
@@ -267,7 +267,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontLayoutTextsSegmentsForDisplay transient property
   //····················································································································
 
-  var frontLayoutTextsSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var frontLayoutTextsSegmentsForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontLayoutTextsSegmentsForDisplay.prop
     }
@@ -277,7 +277,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backLegendTextsSegments transient property
   //····················································································································
 
-  var backLegendTextsSegments_prop : EBProperty <MergerSegmentArray> {
+  var backLegendTextsSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backLegendTextsSegments.prop
     }
@@ -287,7 +287,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backLegendTextsSegmentsForDisplay transient property
   //····················································································································
 
-  var backLegendTextsSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var backLegendTextsSegmentsForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backLegendTextsSegmentsForDisplay.prop
     }
@@ -297,7 +297,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backLayoutTextsSegments transient property
   //····················································································································
 
-  var backLayoutTextsSegments_prop : EBProperty <MergerSegmentArray> {
+  var backLayoutTextsSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backLayoutTextsSegments.prop
     }
@@ -307,7 +307,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backLayoutTextsSegmentsForDisplay transient property
   //····················································································································
 
-  var backLayoutTextsSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var backLayoutTextsSegmentsForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backLayoutTextsSegmentsForDisplay.prop
     }
@@ -317,7 +317,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing padsHoles transient property
   //····················································································································
 
-  var padsHoles_prop : EBProperty <MergerHoleArray> {
+  var padsHoles_prop : EBSelection <MergerHoleArray> {
     get {
       return self.padsHoles.prop
     }
@@ -327,7 +327,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing viasHoles transient property
   //····················································································································
 
-  var viasHoles_prop : EBProperty <MergerHoleArray> {
+  var viasHoles_prop : EBSelection <MergerHoleArray> {
     get {
       return self.viasHoles.prop
     }
@@ -337,7 +337,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing holes transient property
   //····················································································································
 
-  var holes_prop : EBProperty <MergerHoleArray> {
+  var holes_prop : EBSelection <MergerHoleArray> {
     get {
       return self.holes.prop
     }
@@ -347,7 +347,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing holesForDisplay transient property
   //····················································································································
 
-  var holesForDisplay_prop : EBProperty <MergerHoleArray> {
+  var holesForDisplay_prop : EBSelection <MergerHoleArray> {
     get {
       return self.holesForDisplay.prop
     }
@@ -357,7 +357,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing viaShapes transient property
   //····················································································································
 
-  var viaShapes_prop : EBProperty <MergerViaShapeArray> {
+  var viaShapes_prop : EBSelection <MergerViaShapeArray> {
     get {
       return self.viaShapes.prop
     }
@@ -367,7 +367,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing viaShapesForDisplay transient property
   //····················································································································
 
-  var viaShapesForDisplay_prop : EBProperty <MergerViaShapeArray> {
+  var viaShapesForDisplay_prop : EBSelection <MergerViaShapeArray> {
     get {
       return self.viaShapesForDisplay.prop
     }
@@ -377,7 +377,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontPads transient property
   //····················································································································
 
-  var frontPads_prop : EBProperty <MergerPadArray> {
+  var frontPads_prop : EBSelection <MergerPadArray> {
     get {
       return self.frontPads.prop
     }
@@ -387,7 +387,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontPadsForDisplay transient property
   //····················································································································
 
-  var frontPadsForDisplay_prop : EBProperty <MergerPadArray> {
+  var frontPadsForDisplay_prop : EBSelection <MergerPadArray> {
     get {
       return self.frontPadsForDisplay.prop
     }
@@ -397,7 +397,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backPads transient property
   //····················································································································
 
-  var backPads_prop : EBProperty <MergerPadArray> {
+  var backPads_prop : EBSelection <MergerPadArray> {
     get {
       return self.backPads.prop
     }
@@ -407,7 +407,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backPadsForDisplay transient property
   //····················································································································
 
-  var backPadsForDisplay_prop : EBProperty <MergerPadArray> {
+  var backPadsForDisplay_prop : EBSelection <MergerPadArray> {
     get {
       return self.backPadsForDisplay.prop
     }
@@ -417,7 +417,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing boardLimits transient property
   //····················································································································
 
-  var boardLimits_prop : EBProperty <MergerBoardLimits> {
+  var boardLimits_prop : EBSelection <MergerBoardLimits> {
     get {
       return self.boardLimits.prop
     }
@@ -427,7 +427,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backComponentNameSegments transient property
   //····················································································································
 
-  var backComponentNameSegments_prop : EBProperty <MergerSegmentArray> {
+  var backComponentNameSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backComponentNameSegments.prop
     }
@@ -437,7 +437,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backComponentNameSegmentsCount transient property
   //····················································································································
 
-  var backComponentNameSegmentsCount_prop : EBProperty <Int> {
+  var backComponentNameSegmentsCount_prop : EBSelection <Int> {
     get {
       return self.backComponentNameSegmentsCount.prop
     }
@@ -447,7 +447,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backComponentNameSegmentsForDisplay transient property
   //····················································································································
 
-  var backComponentNameSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var backComponentNameSegmentsForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backComponentNameSegmentsForDisplay.prop
     }
@@ -457,7 +457,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontComponentNameSegments transient property
   //····················································································································
 
-  var frontComponentNameSegments_prop : EBProperty <MergerSegmentArray> {
+  var frontComponentNameSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontComponentNameSegments.prop
     }
@@ -467,7 +467,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontComponentNameSegmentsCount transient property
   //····················································································································
 
-  var frontComponentNameSegmentsCount_prop : EBProperty <Int> {
+  var frontComponentNameSegmentsCount_prop : EBSelection <Int> {
     get {
       return self.frontComponentNameSegmentsCount.prop
     }
@@ -477,7 +477,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontComponentNameSegmentsForDisplay transient property
   //····················································································································
 
-  var frontComponentNameSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var frontComponentNameSegmentsForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontComponentNameSegmentsForDisplay.prop
     }
@@ -487,7 +487,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontComponentValueSegments transient property
   //····················································································································
 
-  var frontComponentValueSegments_prop : EBProperty <MergerSegmentArray> {
+  var frontComponentValueSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontComponentValueSegments.prop
     }
@@ -497,7 +497,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontComponentValueSegmentsCount transient property
   //····················································································································
 
-  var frontComponentValueSegmentsCount_prop : EBProperty <Int> {
+  var frontComponentValueSegmentsCount_prop : EBSelection <Int> {
     get {
       return self.frontComponentValueSegmentsCount.prop
     }
@@ -507,7 +507,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontComponentValuesForDisplay transient property
   //····················································································································
 
-  var frontComponentValuesForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var frontComponentValuesForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontComponentValuesForDisplay.prop
     }
@@ -517,7 +517,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backComponentValueSegments transient property
   //····················································································································
 
-  var backComponentValueSegments_prop : EBProperty <MergerSegmentArray> {
+  var backComponentValueSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backComponentValueSegments.prop
     }
@@ -527,7 +527,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backComponentValueSegmentsCount transient property
   //····················································································································
 
-  var backComponentValueSegmentsCount_prop : EBProperty <Int> {
+  var backComponentValueSegmentsCount_prop : EBSelection <Int> {
     get {
       return self.backComponentValueSegmentsCount.prop
     }
@@ -537,7 +537,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backComponentValuesForDisplay transient property
   //····················································································································
 
-  var backComponentValuesForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var backComponentValuesForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backComponentValuesForDisplay.prop
     }
@@ -547,7 +547,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backTrackSegments transient property
   //····················································································································
 
-  var backTrackSegments_prop : EBProperty <MergerSegmentArray> {
+  var backTrackSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backTrackSegments.prop
     }
@@ -557,7 +557,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backTracksSegmentsCount transient property
   //····················································································································
 
-  var backTracksSegmentsCount_prop : EBProperty <Int> {
+  var backTracksSegmentsCount_prop : EBSelection <Int> {
     get {
       return self.backTracksSegmentsCount.prop
     }
@@ -567,7 +567,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backTrackSegmentsForDisplay transient property
   //····················································································································
 
-  var backTrackSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var backTrackSegmentsForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backTrackSegmentsForDisplay.prop
     }
@@ -577,7 +577,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontTrackSegments transient property
   //····················································································································
 
-  var frontTrackSegments_prop : EBProperty <MergerSegmentArray> {
+  var frontTrackSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontTrackSegments.prop
     }
@@ -587,7 +587,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontTracksSegmentsCount transient property
   //····················································································································
 
-  var frontTracksSegmentsCount_prop : EBProperty <Int> {
+  var frontTracksSegmentsCount_prop : EBSelection <Int> {
     get {
       return self.frontTracksSegmentsCount.prop
     }
@@ -597,7 +597,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontTrackSegmentsForDisplay transient property
   //····················································································································
 
-  var frontTrackSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var frontTrackSegmentsForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontTrackSegmentsForDisplay.prop
     }
@@ -607,7 +607,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontPackagesSegments transient property
   //····················································································································
 
-  var frontPackagesSegments_prop : EBProperty <MergerSegmentArray> {
+  var frontPackagesSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontPackagesSegments.prop
     }
@@ -617,7 +617,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontPackageSegmentsCount transient property
   //····················································································································
 
-  var frontPackageSegmentsCount_prop : EBProperty <Int> {
+  var frontPackageSegmentsCount_prop : EBSelection <Int> {
     get {
       return self.frontPackageSegmentsCount.prop
     }
@@ -627,7 +627,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing frontPackagesSegmentsForDisplay transient property
   //····················································································································
 
-  var frontPackagesSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var frontPackagesSegmentsForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.frontPackagesSegmentsForDisplay.prop
     }
@@ -637,7 +637,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backPackagesSegments transient property
   //····················································································································
 
-  var backPackagesSegments_prop : EBProperty <MergerSegmentArray> {
+  var backPackagesSegments_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backPackagesSegments.prop
     }
@@ -647,7 +647,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backPackageSegmentsCount transient property
   //····················································································································
 
-  var backPackageSegmentsCount_prop : EBProperty <Int> {
+  var backPackageSegmentsCount_prop : EBSelection <Int> {
     get {
       return self.backPackageSegmentsCount.prop
     }
@@ -657,7 +657,7 @@ class BoardModelEntity : EBManagedObject,
   //   Accessing backPackagesSegmentsForDisplay transient property
   //····················································································································
 
-  var backPackagesSegmentsForDisplay_prop : EBProperty <MergerSegmentArray> {
+  var backPackagesSegmentsForDisplay_prop : EBSelection <MergerSegmentArray> {
     get {
       return self.backPackagesSegmentsForDisplay.prop
     }
@@ -760,19 +760,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontLegendTexts.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.frontLegendTexts.prop, unwSelf.frontLegendTexts.prop, unwSelf.frontLegendTexts.prop, unwSelf.frontLegendTexts.prop, unwSelf.frontLegendTexts.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_frontLegendTextsSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_frontLegendTextsSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontLegendTextsSegmentsForDisplay.readModelFunction = { [weak self] in
@@ -781,19 +781,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontLegendTextsSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayFrontLegendTexts.prop, unwSelf.frontLegendTextsSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_frontLegendTextsSegmentsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_frontLegendTextsSegmentsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontLayoutTextsSegments.readModelFunction = { [weak self] in
@@ -805,19 +805,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontLayoutTexts.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.frontLayoutTexts.prop, unwSelf.frontLayoutTexts.prop, unwSelf.frontLayoutTexts.prop, unwSelf.frontLayoutTexts.prop, unwSelf.frontLayoutTexts.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_frontLayoutTextsSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_frontLayoutTextsSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontLayoutTextsSegmentsForDisplay.readModelFunction = { [weak self] in
@@ -826,19 +826,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontLayoutTextsSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayFrontLayoutTexts.prop, unwSelf.frontLayoutTextsSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_frontLayoutTextsSegmentsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_frontLayoutTextsSegmentsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backLegendTextsSegments.readModelFunction = { [weak self] in
@@ -850,19 +850,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backLegendTexts.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backLegendTexts.prop, unwSelf.backLegendTexts.prop, unwSelf.backLegendTexts.prop, unwSelf.backLegendTexts.prop, unwSelf.backLegendTexts.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_backLegendTextsSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_backLegendTextsSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backLegendTextsSegmentsForDisplay.readModelFunction = { [weak self] in
@@ -871,19 +871,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backLegendTextsSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayBackLegendTexts.prop, unwSelf.backLegendTextsSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_backLegendTextsSegmentsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_backLegendTextsSegmentsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backLayoutTextsSegments.readModelFunction = { [weak self] in
@@ -895,19 +895,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backLayoutTexts.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backLayoutTexts.prop, unwSelf.backLayoutTexts.prop, unwSelf.backLayoutTexts.prop, unwSelf.backLayoutTexts.prop, unwSelf.backLayoutTexts.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_backLayoutTextsSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_backLayoutTextsSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backLayoutTextsSegmentsForDisplay.readModelFunction = { [weak self] in
@@ -916,19 +916,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backLayoutTextsSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayBackLayoutTexts.prop, unwSelf.backLayoutTextsSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_backLayoutTextsSegmentsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_backLayoutTextsSegmentsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     padsHoles.readModelFunction = { [weak self] in
@@ -938,19 +938,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.pads.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
-            return .singleSelection (compute_BoardModelEntity_padsHoles (v0, v1, v2))
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_padsHoles (v0, v1, v2))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     viasHoles.readModelFunction = { [weak self] in
@@ -960,19 +960,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.vias.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.vias.prop, unwSelf.vias.prop, unwSelf.vias.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
-            return .singleSelection (compute_BoardModelEntity_viasHoles (v0, v1, v2))
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_viasHoles (v0, v1, v2))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     holes.readModelFunction = { [weak self] in
@@ -981,19 +981,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.viasHoles.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.padsHoles.prop, unwSelf.viasHoles.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_holes (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_holes (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     holesForDisplay.readModelFunction = { [weak self] in
@@ -1002,19 +1002,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.holes.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayHoles.prop, unwSelf.holes.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_holesForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_holesForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     viaShapes.readModelFunction = { [weak self] in
@@ -1024,19 +1024,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.vias.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.vias.prop, unwSelf.vias.prop, unwSelf.vias.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2)) :
-            return .singleSelection (compute_BoardModelEntity_viaShapes (v0, v1, v2))
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_viaShapes (v0, v1, v2))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     viaShapesForDisplay.readModelFunction = { [weak self] in
@@ -1045,19 +1045,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.viaShapes.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayVias.prop, unwSelf.viaShapes.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_viaShapesForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_viaShapesForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontPads.readModelFunction = { [weak self] in
@@ -1072,19 +1072,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.pads.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4), .singleSelection (let v5), .singleSelection (let v6), .singleSelection (let v7)) :
-            return .singleSelection (compute_BoardModelEntity_frontPads (v0, v1, v2, v3, v4, v5, v6, v7))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (compute_BoardModelEntity_frontPads (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontPadsForDisplay.readModelFunction = { [weak self] in
@@ -1093,19 +1093,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontPads.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayFrontPads.prop, unwSelf.frontPads.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_frontPadsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_frontPadsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backPads.readModelFunction = { [weak self] in
@@ -1120,19 +1120,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.pads.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop, unwSelf.pads.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4), .singleSelection (let v5), .singleSelection (let v6), .singleSelection (let v7)) :
-            return .singleSelection (compute_BoardModelEntity_backPads (v0, v1, v2, v3, v4, v5, v6, v7))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (compute_BoardModelEntity_backPads (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backPadsForDisplay.readModelFunction = { [weak self] in
@@ -1141,19 +1141,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backPads.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayBackPads.prop, unwSelf.backPads.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_backPadsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_backPadsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     boardLimits.readModelFunction = { [weak self] in
@@ -1164,19 +1164,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= g_Preferences!.mergerDisplayBoardLimits.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.boardWidth.prop, unwSelf.boardHeight.prop, unwSelf.boardLimitWidth.prop, g_Preferences!.mergerDisplayBoardLimits.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3)) :
-            return .singleSelection (compute_BoardModelEntity_boardLimits (v0, v1, v2, v3))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_BoardModelEntity_boardLimits (v0, v1, v2, v3))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backComponentNameSegments.readModelFunction = { [weak self] in
@@ -1188,19 +1188,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backComponentNames.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backComponentNames.prop, unwSelf.backComponentNames.prop, unwSelf.backComponentNames.prop, unwSelf.backComponentNames.prop, unwSelf.backComponentNames.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_backComponentNameSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_backComponentNameSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backComponentNameSegmentsCount.readModelFunction = { [weak self] in
@@ -1208,19 +1208,19 @@ class BoardModelEntity : EBManagedObject,
         let kind = unwSelf.backComponentNameSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backComponentNameSegments.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_backComponentNameSegmentsCount (v0))
+          case (.single (let v0)) :
+            return .single (compute_BoardModelEntity_backComponentNameSegmentsCount (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backComponentNameSegmentsForDisplay.readModelFunction = { [weak self] in
@@ -1229,19 +1229,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backComponentNameSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayBackComponentNames.prop, unwSelf.backComponentNameSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_backComponentNameSegmentsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_backComponentNameSegmentsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontComponentNameSegments.readModelFunction = { [weak self] in
@@ -1253,19 +1253,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontComponentNames.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.frontComponentNames.prop, unwSelf.frontComponentNames.prop, unwSelf.frontComponentNames.prop, unwSelf.frontComponentNames.prop, unwSelf.frontComponentNames.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_frontComponentNameSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_frontComponentNameSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontComponentNameSegmentsCount.readModelFunction = { [weak self] in
@@ -1273,19 +1273,19 @@ class BoardModelEntity : EBManagedObject,
         let kind = unwSelf.frontComponentNameSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.frontComponentNameSegments.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_frontComponentNameSegmentsCount (v0))
+          case (.single (let v0)) :
+            return .single (compute_BoardModelEntity_frontComponentNameSegmentsCount (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontComponentNameSegmentsForDisplay.readModelFunction = { [weak self] in
@@ -1294,19 +1294,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontComponentNameSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayFrontComponentNames.prop, unwSelf.frontComponentNameSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_frontComponentNameSegmentsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_frontComponentNameSegmentsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontComponentValueSegments.readModelFunction = { [weak self] in
@@ -1318,19 +1318,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontComponentValues.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.frontComponentValues.prop, unwSelf.frontComponentValues.prop, unwSelf.frontComponentValues.prop, unwSelf.frontComponentValues.prop, unwSelf.frontComponentValues.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_frontComponentValueSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_frontComponentValueSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontComponentValueSegmentsCount.readModelFunction = { [weak self] in
@@ -1338,19 +1338,19 @@ class BoardModelEntity : EBManagedObject,
         let kind = unwSelf.frontComponentValueSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.frontComponentValueSegments.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_frontComponentValueSegmentsCount (v0))
+          case (.single (let v0)) :
+            return .single (compute_BoardModelEntity_frontComponentValueSegmentsCount (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontComponentValuesForDisplay.readModelFunction = { [weak self] in
@@ -1359,19 +1359,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontComponentValueSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayFrontComponentValues.prop, unwSelf.frontComponentValueSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_frontComponentValuesForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_frontComponentValuesForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backComponentValueSegments.readModelFunction = { [weak self] in
@@ -1383,19 +1383,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backComponentValues.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backComponentValues.prop, unwSelf.backComponentValues.prop, unwSelf.backComponentValues.prop, unwSelf.backComponentValues.prop, unwSelf.backComponentValues.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_backComponentValueSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_backComponentValueSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backComponentValueSegmentsCount.readModelFunction = { [weak self] in
@@ -1403,19 +1403,19 @@ class BoardModelEntity : EBManagedObject,
         let kind = unwSelf.backComponentValueSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backComponentValueSegments.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_backComponentValueSegmentsCount (v0))
+          case (.single (let v0)) :
+            return .single (compute_BoardModelEntity_backComponentValueSegmentsCount (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backComponentValuesForDisplay.readModelFunction = { [weak self] in
@@ -1424,19 +1424,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backComponentValueSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayBackComponentValues.prop, unwSelf.backComponentValueSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_backComponentValuesForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_backComponentValuesForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backTrackSegments.readModelFunction = { [weak self] in
@@ -1448,19 +1448,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backTracks.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backTracks.prop, unwSelf.backTracks.prop, unwSelf.backTracks.prop, unwSelf.backTracks.prop, unwSelf.backTracks.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_backTrackSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_backTrackSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backTracksSegmentsCount.readModelFunction = { [weak self] in
@@ -1468,19 +1468,19 @@ class BoardModelEntity : EBManagedObject,
         let kind = unwSelf.backTrackSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backTrackSegments.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_backTracksSegmentsCount (v0))
+          case (.single (let v0)) :
+            return .single (compute_BoardModelEntity_backTracksSegmentsCount (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backTrackSegmentsForDisplay.readModelFunction = { [weak self] in
@@ -1489,19 +1489,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backTrackSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayBackLayoutTracks.prop, unwSelf.backTrackSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_backTrackSegmentsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_backTrackSegmentsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontTrackSegments.readModelFunction = { [weak self] in
@@ -1513,19 +1513,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontTracks.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.frontTracks.prop, unwSelf.frontTracks.prop, unwSelf.frontTracks.prop, unwSelf.frontTracks.prop, unwSelf.frontTracks.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_frontTrackSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_frontTrackSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontTracksSegmentsCount.readModelFunction = { [weak self] in
@@ -1533,19 +1533,19 @@ class BoardModelEntity : EBManagedObject,
         let kind = unwSelf.frontTrackSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.frontTrackSegments.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_frontTracksSegmentsCount (v0))
+          case (.single (let v0)) :
+            return .single (compute_BoardModelEntity_frontTracksSegmentsCount (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontTrackSegmentsForDisplay.readModelFunction = { [weak self] in
@@ -1554,19 +1554,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontTrackSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayFrontLayoutTracks.prop, unwSelf.frontTrackSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_frontTrackSegmentsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_frontTrackSegmentsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontPackagesSegments.readModelFunction = { [weak self] in
@@ -1578,19 +1578,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontPackages.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.frontPackages.prop, unwSelf.frontPackages.prop, unwSelf.frontPackages.prop, unwSelf.frontPackages.prop, unwSelf.frontPackages.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_frontPackagesSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_frontPackagesSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontPackageSegmentsCount.readModelFunction = { [weak self] in
@@ -1598,19 +1598,19 @@ class BoardModelEntity : EBManagedObject,
         let kind = unwSelf.frontPackagesSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.frontPackagesSegments.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_frontPackageSegmentsCount (v0))
+          case (.single (let v0)) :
+            return .single (compute_BoardModelEntity_frontPackageSegmentsCount (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     frontPackagesSegmentsForDisplay.readModelFunction = { [weak self] in
@@ -1619,19 +1619,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.frontPackagesSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayFrontPackages.prop, unwSelf.frontPackagesSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_frontPackagesSegmentsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_frontPackagesSegmentsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backPackagesSegments.readModelFunction = { [weak self] in
@@ -1643,19 +1643,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backPackages.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backPackages.prop, unwSelf.backPackages.prop, unwSelf.backPackages.prop, unwSelf.backPackages.prop, unwSelf.backPackages.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1), .singleSelection (let v2), .singleSelection (let v3), .singleSelection (let v4)) :
-            return .singleSelection (compute_BoardModelEntity_backPackagesSegments (v0, v1, v2, v3, v4))
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModelEntity_backPackagesSegments (v0, v1, v2, v3, v4))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backPackageSegmentsCount.readModelFunction = { [weak self] in
@@ -1663,19 +1663,19 @@ class BoardModelEntity : EBManagedObject,
         let kind = unwSelf.backPackagesSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backPackagesSegments.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_BoardModelEntity_backPackageSegmentsCount (v0))
+          case (.single (let v0)) :
+            return .single (compute_BoardModelEntity_backPackageSegmentsCount (v0))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     backPackagesSegmentsForDisplay.readModelFunction = { [weak self] in
@@ -1684,19 +1684,19 @@ class BoardModelEntity : EBManagedObject,
         kind &= unwSelf.backPackagesSegments.prop.kind ()
         switch kind {
         case .noSelectionKind :
-          return .noSelection
+          return .empty
         case .multipleSelectionKind :
-          return .multipleSelection
+          return .multiple
         case .singleSelectionKind :
           switch (g_Preferences!.mergerDisplayBackPackages.prop, unwSelf.backPackagesSegments.prop) {
-          case (.singleSelection (let v0), .singleSelection (let v1)) :
-            return .singleSelection (compute_BoardModelEntity_backPackagesSegmentsForDisplay (v0, v1))
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_BoardModelEntity_backPackagesSegmentsForDisplay (v0, v1))
           default :
-            return .noSelection
+            return .empty
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   //--- Install property observers for transients
@@ -2867,9 +2867,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_artworkName.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.artworkName.addEBObserver (inObserver)
       }
@@ -2882,9 +2882,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_artworkName.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.artworkName.removeEBObserver (inObserver)
       }
@@ -2924,9 +2924,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_name.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.name.addEBObserver (inObserver)
       }
@@ -2939,9 +2939,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_name.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.name.removeEBObserver (inObserver)
       }
@@ -2981,9 +2981,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_boardWidth.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardWidth.addEBObserver (inObserver)
       }
@@ -2996,9 +2996,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_boardWidth.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardWidth.removeEBObserver (inObserver)
       }
@@ -3038,9 +3038,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_boardWidthUnit.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardWidthUnit.addEBObserver (inObserver)
       }
@@ -3053,9 +3053,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_boardWidthUnit.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardWidthUnit.removeEBObserver (inObserver)
       }
@@ -3095,9 +3095,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_boardHeight.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardHeight.addEBObserver (inObserver)
       }
@@ -3110,9 +3110,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_boardHeight.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardHeight.removeEBObserver (inObserver)
       }
@@ -3152,9 +3152,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_boardHeightUnit.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardHeightUnit.addEBObserver (inObserver)
       }
@@ -3167,9 +3167,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_boardHeightUnit.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardHeightUnit.removeEBObserver (inObserver)
       }
@@ -3209,9 +3209,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_zoom.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.zoom.addEBObserver (inObserver)
       }
@@ -3224,9 +3224,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_zoom.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.zoom.removeEBObserver (inObserver)
       }
@@ -3266,9 +3266,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_boardLimitWidth.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardLimitWidth.addEBObserver (inObserver)
       }
@@ -3281,9 +3281,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_boardLimitWidth.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardLimitWidth.removeEBObserver (inObserver)
       }
@@ -3323,9 +3323,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_boardLimitWidthUnit.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardLimitWidthUnit.addEBObserver (inObserver)
       }
@@ -3338,9 +3338,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_boardLimitWidthUnit.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardLimitWidthUnit.removeEBObserver (inObserver)
       }
@@ -3380,9 +3380,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontLegendTextsSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontLegendTextsSegments.addEBObserver (inObserver)
       }
@@ -3395,9 +3395,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontLegendTextsSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontLegendTextsSegments.removeEBObserver (inObserver)
       }
@@ -3436,9 +3436,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontLegendTextsSegmentsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontLegendTextsSegmentsForDisplay.addEBObserver (inObserver)
       }
@@ -3451,9 +3451,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontLegendTextsSegmentsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontLegendTextsSegmentsForDisplay.removeEBObserver (inObserver)
       }
@@ -3492,9 +3492,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontLayoutTextsSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontLayoutTextsSegments.addEBObserver (inObserver)
       }
@@ -3507,9 +3507,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontLayoutTextsSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontLayoutTextsSegments.removeEBObserver (inObserver)
       }
@@ -3548,9 +3548,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontLayoutTextsSegmentsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontLayoutTextsSegmentsForDisplay.addEBObserver (inObserver)
       }
@@ -3563,9 +3563,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontLayoutTextsSegmentsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontLayoutTextsSegmentsForDisplay.removeEBObserver (inObserver)
       }
@@ -3604,9 +3604,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backLegendTextsSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backLegendTextsSegments.addEBObserver (inObserver)
       }
@@ -3619,9 +3619,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backLegendTextsSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backLegendTextsSegments.removeEBObserver (inObserver)
       }
@@ -3660,9 +3660,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backLegendTextsSegmentsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backLegendTextsSegmentsForDisplay.addEBObserver (inObserver)
       }
@@ -3675,9 +3675,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backLegendTextsSegmentsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backLegendTextsSegmentsForDisplay.removeEBObserver (inObserver)
       }
@@ -3716,9 +3716,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backLayoutTextsSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backLayoutTextsSegments.addEBObserver (inObserver)
       }
@@ -3731,9 +3731,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backLayoutTextsSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backLayoutTextsSegments.removeEBObserver (inObserver)
       }
@@ -3772,9 +3772,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backLayoutTextsSegmentsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backLayoutTextsSegmentsForDisplay.addEBObserver (inObserver)
       }
@@ -3787,9 +3787,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backLayoutTextsSegmentsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backLayoutTextsSegmentsForDisplay.removeEBObserver (inObserver)
       }
@@ -3828,9 +3828,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_padsHoles.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.padsHoles.addEBObserver (inObserver)
       }
@@ -3843,9 +3843,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_padsHoles.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.padsHoles.removeEBObserver (inObserver)
       }
@@ -3884,9 +3884,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_viasHoles.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.viasHoles.addEBObserver (inObserver)
       }
@@ -3899,9 +3899,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_viasHoles.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.viasHoles.removeEBObserver (inObserver)
       }
@@ -3940,9 +3940,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_holes.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.holes.addEBObserver (inObserver)
       }
@@ -3955,9 +3955,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_holes.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.holes.removeEBObserver (inObserver)
       }
@@ -3996,9 +3996,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_holesForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.holesForDisplay.addEBObserver (inObserver)
       }
@@ -4011,9 +4011,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_holesForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.holesForDisplay.removeEBObserver (inObserver)
       }
@@ -4052,9 +4052,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_viaShapes.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.viaShapes.addEBObserver (inObserver)
       }
@@ -4067,9 +4067,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_viaShapes.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.viaShapes.removeEBObserver (inObserver)
       }
@@ -4108,9 +4108,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_viaShapesForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.viaShapesForDisplay.addEBObserver (inObserver)
       }
@@ -4123,9 +4123,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_viaShapesForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.viaShapesForDisplay.removeEBObserver (inObserver)
       }
@@ -4164,9 +4164,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontPads.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontPads.addEBObserver (inObserver)
       }
@@ -4179,9 +4179,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontPads.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontPads.removeEBObserver (inObserver)
       }
@@ -4220,9 +4220,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontPadsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontPadsForDisplay.addEBObserver (inObserver)
       }
@@ -4235,9 +4235,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontPadsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontPadsForDisplay.removeEBObserver (inObserver)
       }
@@ -4276,9 +4276,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backPads.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backPads.addEBObserver (inObserver)
       }
@@ -4291,9 +4291,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backPads.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backPads.removeEBObserver (inObserver)
       }
@@ -4332,9 +4332,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backPadsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backPadsForDisplay.addEBObserver (inObserver)
       }
@@ -4347,9 +4347,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backPadsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backPadsForDisplay.removeEBObserver (inObserver)
       }
@@ -4388,9 +4388,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_boardLimits.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardLimits.addEBObserver (inObserver)
       }
@@ -4403,9 +4403,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_boardLimits.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.boardLimits.removeEBObserver (inObserver)
       }
@@ -4444,9 +4444,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backComponentNameSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentNameSegments.addEBObserver (inObserver)
       }
@@ -4459,9 +4459,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backComponentNameSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentNameSegments.removeEBObserver (inObserver)
       }
@@ -4500,9 +4500,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backComponentNameSegmentsCount.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentNameSegmentsCount.addEBObserver (inObserver)
       }
@@ -4515,9 +4515,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backComponentNameSegmentsCount.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentNameSegmentsCount.removeEBObserver (inObserver)
       }
@@ -4556,9 +4556,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backComponentNameSegmentsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentNameSegmentsForDisplay.addEBObserver (inObserver)
       }
@@ -4571,9 +4571,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backComponentNameSegmentsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentNameSegmentsForDisplay.removeEBObserver (inObserver)
       }
@@ -4612,9 +4612,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontComponentNameSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentNameSegments.addEBObserver (inObserver)
       }
@@ -4627,9 +4627,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontComponentNameSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentNameSegments.removeEBObserver (inObserver)
       }
@@ -4668,9 +4668,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontComponentNameSegmentsCount.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentNameSegmentsCount.addEBObserver (inObserver)
       }
@@ -4683,9 +4683,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontComponentNameSegmentsCount.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentNameSegmentsCount.removeEBObserver (inObserver)
       }
@@ -4724,9 +4724,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontComponentNameSegmentsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentNameSegmentsForDisplay.addEBObserver (inObserver)
       }
@@ -4739,9 +4739,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontComponentNameSegmentsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentNameSegmentsForDisplay.removeEBObserver (inObserver)
       }
@@ -4780,9 +4780,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontComponentValueSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentValueSegments.addEBObserver (inObserver)
       }
@@ -4795,9 +4795,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontComponentValueSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentValueSegments.removeEBObserver (inObserver)
       }
@@ -4836,9 +4836,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontComponentValueSegmentsCount.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentValueSegmentsCount.addEBObserver (inObserver)
       }
@@ -4851,9 +4851,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontComponentValueSegmentsCount.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentValueSegmentsCount.removeEBObserver (inObserver)
       }
@@ -4892,9 +4892,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontComponentValuesForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentValuesForDisplay.addEBObserver (inObserver)
       }
@@ -4907,9 +4907,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontComponentValuesForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontComponentValuesForDisplay.removeEBObserver (inObserver)
       }
@@ -4948,9 +4948,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backComponentValueSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentValueSegments.addEBObserver (inObserver)
       }
@@ -4963,9 +4963,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backComponentValueSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentValueSegments.removeEBObserver (inObserver)
       }
@@ -5004,9 +5004,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backComponentValueSegmentsCount.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentValueSegmentsCount.addEBObserver (inObserver)
       }
@@ -5019,9 +5019,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backComponentValueSegmentsCount.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentValueSegmentsCount.removeEBObserver (inObserver)
       }
@@ -5060,9 +5060,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backComponentValuesForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentValuesForDisplay.addEBObserver (inObserver)
       }
@@ -5075,9 +5075,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backComponentValuesForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backComponentValuesForDisplay.removeEBObserver (inObserver)
       }
@@ -5116,9 +5116,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backTrackSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backTrackSegments.addEBObserver (inObserver)
       }
@@ -5131,9 +5131,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backTrackSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backTrackSegments.removeEBObserver (inObserver)
       }
@@ -5172,9 +5172,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backTracksSegmentsCount.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backTracksSegmentsCount.addEBObserver (inObserver)
       }
@@ -5187,9 +5187,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backTracksSegmentsCount.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backTracksSegmentsCount.removeEBObserver (inObserver)
       }
@@ -5228,9 +5228,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backTrackSegmentsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backTrackSegmentsForDisplay.addEBObserver (inObserver)
       }
@@ -5243,9 +5243,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backTrackSegmentsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backTrackSegmentsForDisplay.removeEBObserver (inObserver)
       }
@@ -5284,9 +5284,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontTrackSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontTrackSegments.addEBObserver (inObserver)
       }
@@ -5299,9 +5299,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontTrackSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontTrackSegments.removeEBObserver (inObserver)
       }
@@ -5340,9 +5340,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontTracksSegmentsCount.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontTracksSegmentsCount.addEBObserver (inObserver)
       }
@@ -5355,9 +5355,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontTracksSegmentsCount.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontTracksSegmentsCount.removeEBObserver (inObserver)
       }
@@ -5396,9 +5396,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontTrackSegmentsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontTrackSegmentsForDisplay.addEBObserver (inObserver)
       }
@@ -5411,9 +5411,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontTrackSegmentsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontTrackSegmentsForDisplay.removeEBObserver (inObserver)
       }
@@ -5452,9 +5452,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontPackagesSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontPackagesSegments.addEBObserver (inObserver)
       }
@@ -5467,9 +5467,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontPackagesSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontPackagesSegments.removeEBObserver (inObserver)
       }
@@ -5508,9 +5508,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontPackageSegmentsCount.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontPackageSegmentsCount.addEBObserver (inObserver)
       }
@@ -5523,9 +5523,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontPackageSegmentsCount.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontPackageSegmentsCount.removeEBObserver (inObserver)
       }
@@ -5564,9 +5564,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_frontPackagesSegmentsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontPackagesSegmentsForDisplay.addEBObserver (inObserver)
       }
@@ -5579,9 +5579,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_frontPackagesSegmentsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.frontPackagesSegmentsForDisplay.removeEBObserver (inObserver)
       }
@@ -5620,9 +5620,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backPackagesSegments.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backPackagesSegments.addEBObserver (inObserver)
       }
@@ -5635,9 +5635,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backPackagesSegments.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backPackagesSegments.removeEBObserver (inObserver)
       }
@@ -5676,9 +5676,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backPackageSegmentsCount.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backPackageSegmentsCount.addEBObserver (inObserver)
       }
@@ -5691,9 +5691,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backPackageSegmentsCount.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backPackageSegmentsCount.removeEBObserver (inObserver)
       }
@@ -5732,9 +5732,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.addEBObserver (inObserver)
     mObserversOf_backPackagesSegmentsForDisplay.insert (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backPackagesSegmentsForDisplay.addEBObserver (inObserver)
       }
@@ -5747,9 +5747,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     self.removeEBObserver (inObserver)
     mObserversOf_backPackagesSegmentsForDisplay.remove (inObserver)
     switch prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       break
-    case .singleSelection (let v) :
+    case .single (let v) :
       for managedObject in v {
         managedObject.backPackagesSegmentsForDisplay.removeEBObserver (inObserver)
       }
@@ -5786,9 +5786,9 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
 
 class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
 
-  var readModelFunction : Optional<() -> EBProperty < [BoardModelEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [BoardModelEntity] > >
 
-  private var prop_cache : EBProperty < [BoardModelEntity] >? 
+  private var prop_cache : EBSelection < [BoardModelEntity] >? 
 
   //····················································································································
 
@@ -5800,15 +5800,15 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
 
   private var mSet = Set <BoardModelEntity> ()
 
-  override var prop : EBProperty < [BoardModelEntity] > {
+  override var prop : EBSelection < [BoardModelEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
         let newSet : Set <BoardModelEntity>
         switch prop_cache! {
-        case .multipleSelection, .noSelection :
+        case .multiple, .empty :
           newSet = Set <BoardModelEntity> ()
-        case .singleSelection (let array) :
+        case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
@@ -5927,7 +5927,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         mSet = newSet
       }
       if prop_cache == nil {
-        prop_cache = .noSelection
+        prop_cache = .empty
       }
       return prop_cache!
     }
@@ -6289,9 +6289,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts, EBSignatureObserv
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -6305,15 +6305,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts, EBSignatureObserv
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -6359,9 +6359,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLegendTexts, EBSignatureObserv
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -6473,9 +6473,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts, EBSignatureObserv
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -6489,15 +6489,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts, EBSignatureObserv
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -6543,9 +6543,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontLayoutTexts, EBSignatureObserv
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -6657,9 +6657,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts, EBSignatureObserve
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -6673,15 +6673,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts, EBSignatureObserve
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -6727,9 +6727,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLegendTexts, EBSignatureObserve
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -6841,9 +6841,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts, EBSignatureObserve
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -6857,15 +6857,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts, EBSignatureObserve
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -6911,9 +6911,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backLayoutTexts, EBSignatureObserve
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -7025,9 +7025,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_vias, EBSignatureObserverProtocol {
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -7041,15 +7041,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_vias, EBSignatureObserverProtocol {
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -7093,9 +7093,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_vias, EBSignatureObserverProtocol {
     }
   }
 
-  override var prop : EBProperty < [BoardModelViaEntity] > {
+  override var prop : EBSelection < [BoardModelViaEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -7207,9 +7207,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_pads, EBSignatureObserverProtocol {
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -7223,15 +7223,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_pads, EBSignatureObserverProtocol {
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -7283,9 +7283,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_pads, EBSignatureObserverProtocol {
     }
   }
 
-  override var prop : EBProperty < [BoardModelPadEntity] > {
+  override var prop : EBSelection < [BoardModelPadEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -7397,9 +7397,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames, EBSignatureObse
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -7413,15 +7413,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames, EBSignatureObse
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -7467,9 +7467,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentNames, EBSignatureObse
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -7581,9 +7581,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames, EBSignatureObs
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -7597,15 +7597,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames, EBSignatureObs
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -7651,9 +7651,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentNames, EBSignatureObs
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -7765,9 +7765,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues, EBSignatureOb
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -7781,15 +7781,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues, EBSignatureOb
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -7835,9 +7835,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontComponentValues, EBSignatureOb
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -7949,9 +7949,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues, EBSignatureObs
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -7965,15 +7965,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues, EBSignatureObs
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -8019,9 +8019,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backComponentValues, EBSignatureObs
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -8133,9 +8133,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProt
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -8149,15 +8149,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProt
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -8203,9 +8203,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backTracks, EBSignatureObserverProt
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -8317,9 +8317,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverPro
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -8333,15 +8333,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverPro
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -8387,9 +8387,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontTracks, EBSignatureObserverPro
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -8501,9 +8501,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontPackages, EBSignatureObserverP
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -8517,15 +8517,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontPackages, EBSignatureObserverP
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -8571,9 +8571,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_frontPackages, EBSignatureObserverP
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 
@@ -8685,9 +8685,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backPackages, EBSignatureObserverPr
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         switch prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break ;
-        case .singleSelection (let v) :
+        case .single (let v) :
           updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
@@ -8701,15 +8701,15 @@ ToManyRelationshipReadWrite_BoardModelEntity_backPackages, EBSignatureObserverPr
     count.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
-          return .singleSelection (v.count)
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -8755,9 +8755,9 @@ ToManyRelationshipReadWrite_BoardModelEntity_backPackages, EBSignatureObserverPr
     }
   }
 
-  override var prop : EBProperty < [CanariSegmentEntity] > {
+  override var prop : EBSelection < [CanariSegmentEntity] > {
     get {
-      return .singleSelection (mValue)
+      return .single (mValue)
     }
   }
 

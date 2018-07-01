@@ -60,7 +60,6 @@ import Cocoa
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)
     outlet.delegate = self
-//    object.addEBObserver (self)
   }
 
   //····················································································································
@@ -81,10 +80,10 @@ import Cocoa
 
   override func sendUpdateEvent () {
     switch mObject.prop {
-    case .noSelection, .multipleSelection :
+    case .empty, .multiple :
       mOutlet.string = ""
       mOutlet.isEditable = false
-    case .singleSelection (let propertyValue) :
+    case .single (let propertyValue) :
       mOutlet.string = propertyValue
       mOutlet.isEditable = true
     }

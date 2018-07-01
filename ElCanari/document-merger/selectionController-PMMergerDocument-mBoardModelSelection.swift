@@ -295,43 +295,43 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.artworkName.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<String> ()
           var isMultipleSelection = false
           for object in v {
             switch object.artworkName.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.artworkName.writeModelFunction = { (inValue : String) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.artworkName.setProp (inValue)
           }
@@ -341,9 +341,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.artworkName.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.artworkName.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -365,35 +365,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backComponentNameSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backComponentNameSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -405,35 +405,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backComponentNameSegmentsCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backComponentNameSegmentsCount.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -445,35 +445,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backComponentNameSegmentsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backComponentNameSegmentsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -485,35 +485,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backComponentValueSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backComponentValueSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -525,35 +525,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backComponentValueSegmentsCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backComponentValueSegmentsCount.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -565,35 +565,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backComponentValuesForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backComponentValuesForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -605,35 +605,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backLayoutTextsSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backLayoutTextsSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -645,35 +645,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backLayoutTextsSegmentsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backLayoutTextsSegmentsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -685,35 +685,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backLegendTextsSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backLegendTextsSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -725,35 +725,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backLegendTextsSegmentsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backLegendTextsSegmentsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -765,35 +765,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backPackageSegmentsCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backPackageSegmentsCount.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -805,35 +805,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backPackagesSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backPackagesSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -845,35 +845,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backPackagesSegmentsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backPackagesSegmentsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -885,35 +885,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backPads.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backPads.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -925,35 +925,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backPadsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backPadsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -965,35 +965,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backTrackSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backTrackSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1005,35 +1005,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backTrackSegmentsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backTrackSegmentsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1045,35 +1045,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.backTracksSegmentsCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.backTracksSegmentsCount.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1085,43 +1085,43 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardHeight.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.boardHeight.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.boardHeight.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.boardHeight.setProp (inValue)
           }
@@ -1131,9 +1131,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardHeight.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.boardHeight.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1155,43 +1155,43 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardHeightUnit.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.boardHeightUnit.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.boardHeightUnit.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.boardHeightUnit.setProp (inValue)
           }
@@ -1201,9 +1201,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardHeightUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.boardHeightUnit.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1225,43 +1225,43 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardLimitWidth.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.boardLimitWidth.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.boardLimitWidth.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.boardLimitWidth.setProp (inValue)
           }
@@ -1271,9 +1271,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardLimitWidth.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.boardLimitWidth.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1295,43 +1295,43 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardLimitWidthUnit.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.boardLimitWidthUnit.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.boardLimitWidthUnit.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.boardLimitWidthUnit.setProp (inValue)
           }
@@ -1341,9 +1341,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardLimitWidthUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.boardLimitWidthUnit.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1365,35 +1365,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardLimits.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerBoardLimits> ()
           var isMultipleSelection = false
           for object in v {
             switch object.boardLimits.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1405,43 +1405,43 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardWidth.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.boardWidth.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.boardWidth.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.boardWidth.setProp (inValue)
           }
@@ -1451,9 +1451,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardWidth.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.boardWidth.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1475,43 +1475,43 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardWidthUnit.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.boardWidthUnit.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.boardWidthUnit.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.boardWidthUnit.setProp (inValue)
           }
@@ -1521,9 +1521,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.boardWidthUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.boardWidthUnit.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -1545,35 +1545,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontComponentNameSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontComponentNameSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1585,35 +1585,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontComponentNameSegmentsCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontComponentNameSegmentsCount.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1625,35 +1625,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontComponentNameSegmentsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontComponentNameSegmentsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1665,35 +1665,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontComponentValueSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontComponentValueSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1705,35 +1705,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontComponentValueSegmentsCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontComponentValueSegmentsCount.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1745,35 +1745,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontComponentValuesForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontComponentValuesForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1785,35 +1785,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontLayoutTextsSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontLayoutTextsSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1825,35 +1825,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontLayoutTextsSegmentsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontLayoutTextsSegmentsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1865,35 +1865,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontLegendTextsSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontLegendTextsSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1905,35 +1905,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontLegendTextsSegmentsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontLegendTextsSegmentsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1945,35 +1945,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontPackageSegmentsCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontPackageSegmentsCount.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -1985,35 +1985,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontPackagesSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontPackagesSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2025,35 +2025,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontPackagesSegmentsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontPackagesSegmentsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2065,35 +2065,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontPads.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontPads.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2105,35 +2105,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontPadsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontPadsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2145,35 +2145,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontTrackSegments.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontTrackSegments.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2185,35 +2185,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontTrackSegmentsForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontTrackSegmentsForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2225,35 +2225,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.frontTracksSegmentsCount.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.frontTracksSegmentsCount.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2265,35 +2265,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.holes.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerHoleArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.holes.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2305,35 +2305,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.holesForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerHoleArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.holesForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2345,43 +2345,43 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.name.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<String> ()
           var isMultipleSelection = false
           for object in v {
             switch object.name.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.name.writeModelFunction = { (inValue : String) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.name.setProp (inValue)
           }
@@ -2391,9 +2391,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.name.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.name.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
@@ -2415,35 +2415,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.padsHoles.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerHoleArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.padsHoles.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2455,35 +2455,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.viaShapes.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerViaShapeArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.viaShapes.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2495,35 +2495,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.viaShapesForDisplay.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerViaShapeArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.viaShapesForDisplay.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2535,35 +2535,35 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.viasHoles.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<MergerHoleArray> ()
           var isMultipleSelection = false
           for object in v {
             switch object.viasHoles.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
   }
@@ -2575,43 +2575,43 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.zoom.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection :
-          return .noSelection
-        case .multipleSelection :
-          return .multipleSelection
-        case .singleSelection (let v) :
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
             switch object.zoom.prop {
-            case .noSelection :
-              return .noSelection
-            case .multipleSelection :
+            case .empty :
+              return .empty
+            case .multiple :
               isMultipleSelection = true
-            case .singleSelection (let vProp) :
+            case .single (let vProp) :
               s.insert (vProp)
             }
           }
           if isMultipleSelection {
-            return .multipleSelection
+            return .multiple
           }else if s.count == 0 {
-            return .noSelection
+            return .empty
           }else if s.count == 1 {
-            return .singleSelection (s.first!)
+            return .single (s.first!)
           }else{
-            return .multipleSelection
+            return .multiple
           }
         }
       }else{
-        return .noSelection
+        return .empty
       }
     }
     self.zoom.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           break
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             object.zoom.setProp (inValue)
           }
@@ -2621,9 +2621,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.zoom.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
-        case .noSelection, .multipleSelection :
+        case .empty, .multiple :
           return false
-        case .singleSelection (let v) :
+        case .single (let v) :
           for object in v {
             let result = object.zoom.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
