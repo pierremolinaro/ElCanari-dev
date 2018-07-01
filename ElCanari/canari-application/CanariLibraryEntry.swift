@@ -5,6 +5,184 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Class: CanariLibraryEntry
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class CanariLibraryEntry : EBSimpleClass,
+  CanariLibraryEntry_mPath,
+  CanariLibraryEntry_mUses {
+  //····················································································································
+  //   Accessing mPath stored property
+  //····················································································································
+
+  var mPath_value : String {
+    get {
+      return self.mPath.propval
+    }
+    set {
+      self.mPath.setProp (newValue)
+    }
+  }
+
+  var mPath_prop : EBProperty <String> {
+    get {
+      return self.mPath.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mUses stored property
+  //····················································································································
+
+  var mUses_value : Bool {
+    get {
+      return self.mUses.propval
+    }
+    set {
+      self.mUses.setProp (newValue)
+    }
+  }
+
+  var mUses_prop : EBProperty <Bool> {
+    get {
+      return self.mUses.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mStatusImage transient property
+  //····················································································································
+
+  var mStatusImage_prop : EBProperty <NSImage> {
+    get {
+      return self.mStatusImage.prop
+    }
+  }
+
+  //····················································································································
+  //    Stored Properties
+  //····················································································································
+
+  var mPath = EBStoredProperty_String ("Hello")
+
+  //····················································································································
+
+  var mUses = EBStoredProperty_Bool (true)
+
+  //····················································································································
+  //    Transient properties
+  //····················································································································
+
+  var mStatusImage = EBTransientProperty_NSImage ()
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
+  var mExternDelegate0 : CanariLibraryEntryDelegate? = nil
+
+  //····················································································································
+  //    init
+  //····················································································································
+
+  override init () {
+    super.init ()
+  //--- Install compute functions for transients
+    mStatusImage.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPath.prop.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .noSelection
+        case .multipleSelectionKind :
+          return .multipleSelection
+        case .singleSelectionKind :
+          switch (unwSelf.mPath.prop) {
+          case (.singleSelection (let v0)) :
+            return .singleSelection (compute_CanariLibraryEntry_mStatusImage (v0))
+          default :
+            return .noSelection
+          }
+        }
+      }else{
+        return .noSelection
+      }
+    }
+  //--- Install property observers for transients
+    mPath.addEBObserver (mStatusImage)
+  //--- Extern functions
+  //--- Extern delegates
+    mExternDelegate0 = CanariLibraryEntryDelegate (object:self)
+  }
+
+  //····················································································································
+  //    populateExplorerWindow
+  //····················································································································
+
+  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "mPath",
+      idx:self.mPath.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mPath.mObserverExplorer,
+      valueExplorer:&self.mPath.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mUses",
+      idx:self.mUses.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mUses.mObserverExplorer,
+      valueExplorer:&self.mUses.mValueExplorer
+    )
+  }
+
+  //····················································································································
+  //    clearObjectExplorer
+  //····················································································································
+
+  override func clearObjectExplorer () {
+    self.mPath.mObserverExplorer = nil
+    self.mPath.mValueExplorer = nil
+    self.mUses.mObserverExplorer = nil
+    self.mUses.mValueExplorer = nil
+    super.clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //    saveIntoDictionary
+  //····················································································································
+
+  override func saveInto (dictionary : NSMutableDictionary) {
+    super.saveInto (dictionary: dictionary)
+    self.mPath.storeIn (dictionary: dictionary, forKey: "mPath")
+    self.mUses.storeIn (dictionary: dictionary, forKey: "mUses")
+  }
+
+  //····················································································································
+  //    setUpWithDictionary
+  //····················································································································
+
+  override func setUp (withDictionary dictionary : NSDictionary) {
+    super.setUp (withDictionary: dictionary)
+    self.mPath.readFrom (dictionary: dictionary, forKey:"mPath")
+    self.mUses.readFrom (dictionary: dictionary, forKey:"mUses")
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Class as transient property
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CanariLibraryEntry = EBReadOnlyClassProperty <CanariLibraryEntry>
+typealias EBTransientProperty_CanariLibraryEntry = EBTransientClassProperty <CanariLibraryEntry>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -311,134 +489,3 @@ class EBClassArray_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Class: CanariLibraryEntry
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class CanariLibraryEntry : EBSimpleClass, CanariLibraryEntry_mPath, CanariLibraryEntry_mUses
- {
-
-  //····················································································································
-  //    Properties
-  //····················································································································
-
-  var mPath = EBStoredProperty_String ("Hello")
-
-  //····················································································································
-
-  var mUses = EBStoredProperty_Bool (true)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var mStatusImage = EBTransientProperty_NSImage ()
-
-  //····················································································································
-  //    Extern delegates
-  //····················································································································
-
-  var mExternDelegate0 : CanariLibraryEntryDelegate? = nil
-
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init () {
-    super.init ()
-  //--- Install compute functions for transients
-    mStatusImage.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.mPath.prop.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .noSelection
-        case .multipleSelectionKind :
-          return .multipleSelection
-        case .singleSelectionKind :
-          switch (unwSelf.mPath.prop) {
-          case (.singleSelection (let v0)) :
-            return .singleSelection (compute_CanariLibraryEntry_mStatusImage (v0))
-          default :
-            return .noSelection
-          }
-        }
-      }else{
-        return .noSelection
-      }
-    }
-  //--- Install property observers for transients
-    mPath.addEBObserver (mStatusImage)
-  //--- Extern functions
-  //--- Extern delegates
-    mExternDelegate0 = CanariLibraryEntryDelegate (object:self)
-  }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "mPath",
-      idx:self.mPath.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mPath.mObserverExplorer,
-      valueExplorer:&self.mPath.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "mUses",
-      idx:self.mUses.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.mUses.mObserverExplorer,
-      valueExplorer:&self.mUses.mValueExplorer
-    )
-  }
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  override func clearObjectExplorer () {
-    self.mPath.mObserverExplorer = nil
-    self.mPath.mValueExplorer = nil
-    self.mUses.mObserverExplorer = nil
-    self.mUses.mValueExplorer = nil
-    super.clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-  override func saveInto (dictionary : NSMutableDictionary) {
-    super.saveInto (dictionary: dictionary)
-    self.mPath.storeIn (dictionary: dictionary, forKey: "mPath")
-    self.mUses.storeIn (dictionary: dictionary, forKey: "mUses")
-  }
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-  override func setUp (withDictionary dictionary : NSDictionary) {
-    super.setUp (withDictionary: dictionary)
-    self.mPath.readFrom (dictionary: dictionary, forKey:"mPath")
-    self.mUses.readFrom (dictionary: dictionary, forKey:"mUses")
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Class as transient property
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CanariLibraryEntry = EBReadOnlyClassProperty <CanariLibraryEntry>
-typealias EBTransientProperty_CanariLibraryEntry = EBTransientClassProperty <CanariLibraryEntry>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

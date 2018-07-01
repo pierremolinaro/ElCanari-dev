@@ -16,9 +16,10 @@ class FontRootEntity : EBManagedObject,
   FontRootEntity_sampleStringBezierPathWidth,
   FontRootEntity_sampleStringBezierPathAscent,
   FontRootEntity_sampleStringBezierPathDescent {
-//····················································································································
-//   Accessing comments stored property
-//····················································································································
+
+  //····················································································································
+  //   Accessing comments stored property
+  //····················································································································
 
   var comments_value : String {
     get {
@@ -35,9 +36,9 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
-//····················································································································
-//   Accessing selectedTab stored property
-//····················································································································
+  //····················································································································
+  //   Accessing selectedTab stored property
+  //····················································································································
 
   var selectedTab_value : Int {
     get {
@@ -54,9 +55,9 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
-//····················································································································
-//   Accessing selectedInspector stored property
-//····················································································································
+  //····················································································································
+  //   Accessing selectedInspector stored property
+  //····················································································································
 
   var selectedInspector_value : Int {
     get {
@@ -73,15 +74,9 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
-//····················································································································
-//   Accessing sampleStringBezierPath transient property
-//····················································································································
-
- // var sampleStringBezierPath_value : CGPath {
- //   get {
- //     return self.sampleStringBezierPath.propval
- //   }
-//  }
+  //····················································································································
+  //   Accessing sampleStringBezierPath transient property
+  //····················································································································
 
   var sampleStringBezierPath_prop : EBProperty <CGPath> {
     get {
@@ -89,15 +84,9 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
-//····················································································································
-//   Accessing sampleStringBezierPathWidth transient property
-//····················································································································
-
- // var sampleStringBezierPathWidth_value : Double {
- //   get {
- //     return self.sampleStringBezierPathWidth.propval
- //   }
-//  }
+  //····················································································································
+  //   Accessing sampleStringBezierPathWidth transient property
+  //····················································································································
 
   var sampleStringBezierPathWidth_prop : EBProperty <Double> {
     get {
@@ -105,15 +94,9 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
-//····················································································································
-//   Accessing sampleStringBezierPathAscent transient property
-//····················································································································
-
- // var sampleStringBezierPathAscent_value : Double {
- //   get {
- //     return self.sampleStringBezierPathAscent.propval
- //   }
-//  }
+  //····················································································································
+  //   Accessing sampleStringBezierPathAscent transient property
+  //····················································································································
 
   var sampleStringBezierPathAscent_prop : EBProperty <Double> {
     get {
@@ -121,15 +104,9 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
-//····················································································································
-//   Accessing sampleStringBezierPathDescent transient property
-//····················································································································
-
- // var sampleStringBezierPathDescent_value : Double {
- //   get {
- //     return self.sampleStringBezierPathDescent.propval
- //   }
-//  }
+  //····················································································································
+  //   Accessing sampleStringBezierPathDescent transient property
+  //····················································································································
 
   var sampleStringBezierPathDescent_prop : EBProperty <Double> {
     get {

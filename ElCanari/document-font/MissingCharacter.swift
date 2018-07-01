@@ -5,6 +5,186 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Class: MissingCharacter
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class MissingCharacter : EBSimpleClass,
+  MissingCharacter_idx,
+  MissingCharacter_code,
+  MissingCharacter_char {
+  //····················································································································
+  //   Accessing idx stored property
+  //····················································································································
+
+  var idx_value : Int {
+    get {
+      return self.idx.propval
+    }
+    set {
+      self.idx.setProp (newValue)
+    }
+  }
+
+  var idx_prop : EBProperty <Int> {
+    get {
+      return self.idx.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing code stored property
+  //····················································································································
+
+  var code_value : String {
+    get {
+      return self.code.propval
+    }
+    set {
+      self.code.setProp (newValue)
+    }
+  }
+
+  var code_prop : EBProperty <String> {
+    get {
+      return self.code.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing char stored property
+  //····················································································································
+
+  var char_value : String {
+    get {
+      return self.char.propval
+    }
+    set {
+      self.char.setProp (newValue)
+    }
+  }
+
+  var char_prop : EBProperty <String> {
+    get {
+      return self.char.prop
+    }
+  }
+
+  //····················································································································
+  //    Stored Properties
+  //····················································································································
+
+  var idx = EBStoredProperty_Int (0)
+
+  //····················································································································
+
+  var code = EBStoredProperty_String ("??")
+
+  //····················································································································
+
+  var char = EBStoredProperty_String ("?")
+
+  //····················································································································
+  //    Transient properties
+  //····················································································································
+
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
+
+  //····················································································································
+  //    init
+  //····················································································································
+
+  override init () {
+    super.init ()
+  //--- Install compute functions for transients
+  //--- Install property observers for transients
+  //--- Extern functions
+  //--- Extern delegates
+  }
+
+  //····················································································································
+  //    populateExplorerWindow
+  //····················································································································
+
+  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "idx",
+      idx:self.idx.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.idx.mObserverExplorer,
+      valueExplorer:&self.idx.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "code",
+      idx:self.code.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.code.mObserverExplorer,
+      valueExplorer:&self.code.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "char",
+      idx:self.char.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.char.mObserverExplorer,
+      valueExplorer:&self.char.mValueExplorer
+    )
+  }
+
+  //····················································································································
+  //    clearObjectExplorer
+  //····················································································································
+
+  override func clearObjectExplorer () {
+    self.idx.mObserverExplorer = nil
+    self.idx.mValueExplorer = nil
+    self.code.mObserverExplorer = nil
+    self.code.mValueExplorer = nil
+    self.char.mObserverExplorer = nil
+    self.char.mValueExplorer = nil
+    super.clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //    saveIntoDictionary
+  //····················································································································
+
+  override func saveInto (dictionary : NSMutableDictionary) {
+    super.saveInto (dictionary: dictionary)
+    self.idx.storeIn (dictionary: dictionary, forKey: "idx")
+    self.code.storeIn (dictionary: dictionary, forKey: "code")
+    self.char.storeIn (dictionary: dictionary, forKey: "char")
+  }
+
+  //····················································································································
+  //    setUpWithDictionary
+  //····················································································································
+
+  override func setUp (withDictionary dictionary : NSDictionary) {
+    super.setUp (withDictionary: dictionary)
+    self.idx.readFrom (dictionary: dictionary, forKey:"idx")
+    self.code.readFrom (dictionary: dictionary, forKey:"code")
+    self.char.readFrom (dictionary: dictionary, forKey:"char")
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Class as transient property
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_MissingCharacter = EBReadOnlyClassProperty <MissingCharacter>
+typealias EBTransientProperty_MissingCharacter = EBTransientClassProperty <MissingCharacter>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_MissingCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -309,126 +489,3 @@ class EBClassArray_MissingCharacter : ReadOnlyArrayOf_MissingCharacter {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Class: MissingCharacter
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class MissingCharacter : EBSimpleClass, MissingCharacter_idx, MissingCharacter_code, MissingCharacter_char
- {
-
-  //····················································································································
-  //    Properties
-  //····················································································································
-
-  var idx = EBStoredProperty_Int (0)
-
-  //····················································································································
-
-  var code = EBStoredProperty_String ("??")
-
-  //····················································································································
-
-  var char = EBStoredProperty_String ("?")
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-
-  //····················································································································
-  //    Extern delegates
-  //····················································································································
-
-
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init () {
-    super.init ()
-  //--- Install compute functions for transients
-  //--- Install property observers for transients
-  //--- Extern functions
-  //--- Extern delegates
-  }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "idx",
-      idx:self.idx.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.idx.mObserverExplorer,
-      valueExplorer:&self.idx.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "code",
-      idx:self.code.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.code.mObserverExplorer,
-      valueExplorer:&self.code.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "char",
-      idx:self.char.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.char.mObserverExplorer,
-      valueExplorer:&self.char.mValueExplorer
-    )
-  }
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  override func clearObjectExplorer () {
-    self.idx.mObserverExplorer = nil
-    self.idx.mValueExplorer = nil
-    self.code.mObserverExplorer = nil
-    self.code.mValueExplorer = nil
-    self.char.mObserverExplorer = nil
-    self.char.mValueExplorer = nil
-    super.clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-  override func saveInto (dictionary : NSMutableDictionary) {
-    super.saveInto (dictionary: dictionary)
-    self.idx.storeIn (dictionary: dictionary, forKey: "idx")
-    self.code.storeIn (dictionary: dictionary, forKey: "code")
-    self.char.storeIn (dictionary: dictionary, forKey: "char")
-  }
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-  override func setUp (withDictionary dictionary : NSDictionary) {
-    super.setUp (withDictionary: dictionary)
-    self.idx.readFrom (dictionary: dictionary, forKey:"idx")
-    self.code.readFrom (dictionary: dictionary, forKey:"code")
-    self.char.readFrom (dictionary: dictionary, forKey:"char")
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Class as transient property
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_MissingCharacter = EBReadOnlyClassProperty <MissingCharacter>
-typealias EBTransientProperty_MissingCharacter = EBTransientClassProperty <MissingCharacter>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
