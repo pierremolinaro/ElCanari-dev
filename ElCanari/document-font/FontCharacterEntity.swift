@@ -44,6 +44,12 @@ class FontCharacterEntity : EBManagedObject,
     }
   }
 
+  var characterIsDefined : EBSelection <Bool> {
+    get {
+      return characterIsDefined_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing segmentArrayForDrawing transient property
   //····················································································································
@@ -51,6 +57,12 @@ class FontCharacterEntity : EBManagedObject,
   var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
     get {
       return self.segmentArrayForDrawing_property.prop
+    }
+  }
+
+  var segmentArrayForDrawing : EBSelection <CharacterSegmentListClass> {
+    get {
+      return segmentArrayForDrawing_property_selection
     }
   }
 
@@ -64,6 +76,12 @@ class FontCharacterEntity : EBManagedObject,
     }
   }
 
+  var gerberCode : EBSelection <CharacterGerberCodeClass> {
+    get {
+      return gerberCode_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing gerberCodeInstructionCountMessage transient property
   //····················································································································
@@ -71,6 +89,12 @@ class FontCharacterEntity : EBManagedObject,
   var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
     get {
       return self.gerberCodeInstructionCountMessage_property.prop
+    }
+  }
+
+  var gerberCodeInstructionCountMessage : EBSelection <String> {
+    get {
+      return gerberCodeInstructionCountMessage_property_selection
     }
   }
 
@@ -112,7 +136,7 @@ class FontCharacterEntity : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    characterIsDefined_property.readModelFunction = { [weak self] in
+    self.characterIsDefined_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.advance_property_selection.kind ()
         kind &= unwSelf.segments_property.count_property_selection.kind ()
@@ -133,7 +157,7 @@ class FontCharacterEntity : EBManagedObject,
         return .empty
       }
     }
-    segmentArrayForDrawing_property.readModelFunction = { [weak self] in
+    self.segmentArrayForDrawing_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.segments_property_selection.kind ()
         switch kind {
@@ -153,7 +177,7 @@ class FontCharacterEntity : EBManagedObject,
         return .empty
       }
     }
-    gerberCode_property.readModelFunction = { [weak self] in
+    self.gerberCode_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.segmentArrayForDrawing_property_selection.kind ()
         switch kind {
@@ -173,7 +197,7 @@ class FontCharacterEntity : EBManagedObject,
         return .empty
       }
     }
-    gerberCodeInstructionCountMessage_property.readModelFunction = { [weak self] in
+    self.gerberCodeInstructionCountMessage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.gerberCode_property_selection.kind ()
         switch kind {
@@ -319,7 +343,7 @@ class FontCharacterEntity : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.segments_property.setProp (Array ()) // Set relationships to nil
+    self.segments_property.setProp ([]) // Set relationships to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
@@ -735,25 +759,29 @@ protocol FontCharacterEntity_advance : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacterEntity_characterIsDefined : class {
-  var characterIsDefined_property_selection : EBSelection < Bool > { get }
+//  var characterIsDefined_property_selection : EBSelection < Bool > { get }
+  var characterIsDefined : EBSelection < Bool > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacterEntity_segmentArrayForDrawing : class {
-  var segmentArrayForDrawing_property_selection : EBSelection < CharacterSegmentListClass > { get }
+//  var segmentArrayForDrawing_property_selection : EBSelection < CharacterSegmentListClass > { get }
+  var segmentArrayForDrawing : EBSelection < CharacterSegmentListClass > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacterEntity_gerberCode : class {
-  var gerberCode_property_selection : EBSelection < CharacterGerberCodeClass > { get }
+//  var gerberCode_property_selection : EBSelection < CharacterGerberCodeClass > { get }
+  var gerberCode : EBSelection < CharacterGerberCodeClass > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacterEntity_gerberCodeInstructionCountMessage : class {
-  var gerberCodeInstructionCountMessage_property_selection : EBSelection < String > { get }
+//  var gerberCodeInstructionCountMessage_property_selection : EBSelection < String > { get }
+  var gerberCodeInstructionCountMessage : EBSelection < String > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

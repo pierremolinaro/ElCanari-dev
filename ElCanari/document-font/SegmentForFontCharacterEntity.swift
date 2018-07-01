@@ -101,6 +101,12 @@ class SegmentForFontCharacterEntity : EBManagedObject,
     }
   }
 
+  var segmentForDrawing : EBSelection <SegmentForFontCharacterClass> {
+    get {
+      return segmentForDrawing_property_selection
+    }
+  }
+
   //····················································································································
   //    Stored Properties
   //····················································································································
@@ -128,7 +134,7 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    segmentForDrawing_property.readModelFunction = { [weak self] in
+    self.segmentForDrawing_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -703,7 +709,8 @@ protocol SegmentForFontCharacterEntity_y2 : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SegmentForFontCharacterEntity_segmentForDrawing : class {
-  var segmentForDrawing_property_selection : EBSelection < SegmentForFontCharacterClass > { get }
+//  var segmentForDrawing_property_selection : EBSelection < SegmentForFontCharacterClass > { get }
+  var segmentForDrawing : EBSelection < SegmentForFontCharacterClass > { get }
 }
 
 

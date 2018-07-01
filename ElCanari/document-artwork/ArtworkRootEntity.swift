@@ -529,7 +529,7 @@ class ArtworkRootEntity : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.fileGenerationParameterArray_property.setProp (Array ()) // Set relationships to nil
+    self.fileGenerationParameterArray_property.setProp ([]) // Set relationships to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 

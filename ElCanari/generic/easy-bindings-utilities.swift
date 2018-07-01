@@ -199,9 +199,6 @@ class EBAbstractProperty : EBEvent {
       for object : EBEvent in mObservers {
         let stringValue = explorerIndexString (object.mEasyBindingsObjectIndex) + object.className
         observerExplorer.addItem (withTitle: stringValue)
-        let item = observerExplorer.lastItem
-        item?.target = object
-        item?.action = #selector(EBSimpleController.showExplorerWindowAction(_:))
       }
     }
   }
@@ -485,8 +482,7 @@ class EBSimpleClass : EBObject {
 class EBSimpleController : EBOutletEvent {
   private let mPrivateObservedObjects : [EBAbstractProperty]
   private let mPrivateOutlet : NSObject
-  private var mExplorerWindow : NSWindow?
-  
+
   //····················································································································
 
   init (observedObjects : [EBAbstractProperty], outlet : NSObject) {
@@ -504,81 +500,6 @@ class EBSimpleController : EBOutletEvent {
     for object in mPrivateObservedObjects {
       object.removeEBObserver (self)
     }
-  }
-
-  //····················································································································
-
-  func showExplorerWindowAction (_ inSender : Any) {
-    if mExplorerWindow == nil {
-      createAndPopulateObjectExplorerWindow ()
-    }
-    mExplorerWindow?.makeKeyAndOrderFront (inSender)
-  }
-
-  //····················································································································
-  //   createAndPopulateObjectExplorerWindow
-  //····················································································································
-
-  func createAndPopulateObjectExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
-    mExplorerWindow = NSWindow (
-      contentRect:r,
-      styleMask:[.titled, .closable],
-      backing:NSBackingStoreType.buffered,
-      defer:true,
-      screen:nil
-    )
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame:r)
-    var y : CGFloat = 0.0
-    for object in mPrivateObservedObjects {
-      createEntryForObjectNamed (
-        "object",
-        object:object,
-        y:&y,
-        view:view
-      )
-    }
-    createEntryForOutletNamed ("Outlet", outlet: mPrivateOutlet, y: &y, view: view)
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    view.frame = viewFrame
-  //--- Set content size
-    mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (NSWindowButton.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(EBSimpleController.deleteSimpleControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
-    mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    mExplorerWindow!.contentView = sw
-  }
-
-  //····················································································································
-  //   deleteSimpleControllerWindowAction
-  //····················································································································
-
-  final func deleteSimpleControllerWindowAction (_: Any) {
-    clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //   clearObjectExplorer
-  //····················································································································
-
-  final func clearObjectExplorer () {
-    let closeButton = mExplorerWindow?.standardWindowButton (NSWindowButton.closeButton)
-    closeButton!.target = nil
-    mExplorerWindow?.orderOut (nil)
-    mExplorerWindow = nil
   }
 
   //····················································································································
@@ -617,7 +538,7 @@ func secondColumn (_ y : CGFloat) -> NSRect {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func thirdColumn (_ y : CGFloat) -> NSRect {
-  return NSRect (x:FIRST_COLUMN_WIDTH + SECOND_COLUMN_WIDTH, y:y, width:SECOND_COLUMN_WIDTH, height:EXPLORER_ROW_HEIGHT)
+  return NSRect (x:FIRST_COLUMN_WIDTH + SECOND_COLUMN_WIDTH, y:y, width:THIRD_COLUMN_WIDTH, height:EXPLORER_ROW_HEIGHT)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -688,33 +609,6 @@ func createEntryForTitle (_ title : String,
   tf.drawsBackground = true
   tf.isBordered = false
   view.addSubview (tf)
-//--- Update rect origin
-  y += EXPLORER_ROW_HEIGHT
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    createEntryForOutletNamed
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func createEntryForOutletNamed (_ name : String,
-                                outlet : NSObject,
-                                y : inout CGFloat,
-                                view : NSView) {
-  let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
-//--- Property textfield
-  let tf = NSTextField (frame:secondColumn (y))
-  tf.isEnabled = true
-  tf.isEditable = false
-  tf.stringValue = name
-  tf.font = font
-  view.addSubview (tf)
-//--- Value textfield
-  let vtf = NSTextField (frame:thirdColumn (y))
-  vtf.isEnabled = true
-  vtf.isEditable = false
-  vtf.stringValue = outlet.className
-  vtf.font = font
-  view.addSubview (vtf)
 //--- Update rect origin
   y += EXPLORER_ROW_HEIGHT
 }

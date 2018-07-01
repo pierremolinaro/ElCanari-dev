@@ -84,6 +84,12 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
+  var sampleStringBezierPath : EBSelection <CGPath> {
+    get {
+      return sampleStringBezierPath_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing sampleStringBezierPathWidth transient property
   //····················································································································
@@ -91,6 +97,12 @@ class FontRootEntity : EBManagedObject,
   var sampleStringBezierPathWidth_property_selection : EBSelection <Double> {
     get {
       return self.sampleStringBezierPathWidth_property.prop
+    }
+  }
+
+  var sampleStringBezierPathWidth : EBSelection <Double> {
+    get {
+      return sampleStringBezierPathWidth_property_selection
     }
   }
 
@@ -104,6 +116,12 @@ class FontRootEntity : EBManagedObject,
     }
   }
 
+  var sampleStringBezierPathAscent : EBSelection <Double> {
+    get {
+      return sampleStringBezierPathAscent_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing sampleStringBezierPathDescent transient property
   //····················································································································
@@ -111,6 +129,12 @@ class FontRootEntity : EBManagedObject,
   var sampleStringBezierPathDescent_property_selection : EBSelection <Double> {
     get {
       return self.sampleStringBezierPathDescent_property.prop
+    }
+  }
+
+  var sampleStringBezierPathDescent : EBSelection <Double> {
+    get {
+      return sampleStringBezierPathDescent_property_selection
     }
   }
 
@@ -154,7 +178,7 @@ class FontRootEntity : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    sampleStringBezierPath_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPath_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.characters_property_selection.kind ()
         kind &= unwSelf.characters_property_selection.kind ()
@@ -177,7 +201,7 @@ class FontRootEntity : EBManagedObject,
         return .empty
       }
     }
-    sampleStringBezierPathWidth_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPathWidth_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
         switch kind {
@@ -197,7 +221,7 @@ class FontRootEntity : EBManagedObject,
         return .empty
       }
     }
-    sampleStringBezierPathAscent_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPathAscent_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
         switch kind {
@@ -217,7 +241,7 @@ class FontRootEntity : EBManagedObject,
         return .empty
       }
     }
-    sampleStringBezierPathDescent_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPathDescent_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
         switch kind {
@@ -393,7 +417,7 @@ class FontRootEntity : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.characters_property.setProp (Array ()) // Set relationships to nil
+    self.characters_property.setProp ([]) // Set relationships to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
@@ -939,25 +963,29 @@ protocol FontRootEntity_selectedInspector : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRootEntity_sampleStringBezierPath : class {
-  var sampleStringBezierPath_property_selection : EBSelection < CGPath > { get }
+//  var sampleStringBezierPath_property_selection : EBSelection < CGPath > { get }
+  var sampleStringBezierPath : EBSelection < CGPath > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRootEntity_sampleStringBezierPathWidth : class {
-  var sampleStringBezierPathWidth_property_selection : EBSelection < Double > { get }
+//  var sampleStringBezierPathWidth_property_selection : EBSelection < Double > { get }
+  var sampleStringBezierPathWidth : EBSelection < Double > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRootEntity_sampleStringBezierPathAscent : class {
-  var sampleStringBezierPathAscent_property_selection : EBSelection < Double > { get }
+//  var sampleStringBezierPathAscent_property_selection : EBSelection < Double > { get }
+  var sampleStringBezierPathAscent : EBSelection < Double > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRootEntity_sampleStringBezierPathDescent : class {
-  var sampleStringBezierPathDescent_property_selection : EBSelection < Double > { get }
+//  var sampleStringBezierPathDescent_property_selection : EBSelection < Double > { get }
+  var sampleStringBezierPathDescent : EBSelection < Double > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

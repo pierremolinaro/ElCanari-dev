@@ -16,7 +16,7 @@ func compute_PMFontDocument_missingCharacterDescriptorArray (_ inArg0 : [FontCha
   var idx = 0x1F
   for c in inArg0 {
     idx += 1
-    switch c.characterIsDefined_property_selection {
+    switch c.characterIsDefined {
     case .empty, .multiple :
       break
     case .single (let isDefined) :

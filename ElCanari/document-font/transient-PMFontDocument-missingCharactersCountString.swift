@@ -14,7 +14,7 @@ func compute_PMFontDocument_missingCharactersCountString (_ inArg0 : [FontCharac
 //--- START OF USER ZONE 2
   var n = 0
   for c in inArg0 {
-    switch c.characterIsDefined_property_selection {
+    switch c.characterIsDefined {
     case .empty, .multiple :
       n += 1
     case .single (let isDefined) :

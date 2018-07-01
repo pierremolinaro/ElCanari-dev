@@ -235,6 +235,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var frontLegendTextsSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return frontLegendTextsSegments_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing frontLegendTextsSegmentsForDisplay transient property
   //····················································································································
@@ -242,6 +248,12 @@ class BoardModelEntity : EBManagedObject,
   var frontLegendTextsSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.frontLegendTextsSegmentsForDisplay_property.prop
+    }
+  }
+
+  var frontLegendTextsSegmentsForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return frontLegendTextsSegmentsForDisplay_property_selection
     }
   }
 
@@ -255,6 +267,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var frontLayoutTextsSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return frontLayoutTextsSegments_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing frontLayoutTextsSegmentsForDisplay transient property
   //····················································································································
@@ -262,6 +280,12 @@ class BoardModelEntity : EBManagedObject,
   var frontLayoutTextsSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.frontLayoutTextsSegmentsForDisplay_property.prop
+    }
+  }
+
+  var frontLayoutTextsSegmentsForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return frontLayoutTextsSegmentsForDisplay_property_selection
     }
   }
 
@@ -275,6 +299,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var backLegendTextsSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return backLegendTextsSegments_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing backLegendTextsSegmentsForDisplay transient property
   //····················································································································
@@ -282,6 +312,12 @@ class BoardModelEntity : EBManagedObject,
   var backLegendTextsSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.backLegendTextsSegmentsForDisplay_property.prop
+    }
+  }
+
+  var backLegendTextsSegmentsForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return backLegendTextsSegmentsForDisplay_property_selection
     }
   }
 
@@ -295,6 +331,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var backLayoutTextsSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return backLayoutTextsSegments_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing backLayoutTextsSegmentsForDisplay transient property
   //····················································································································
@@ -302,6 +344,12 @@ class BoardModelEntity : EBManagedObject,
   var backLayoutTextsSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.backLayoutTextsSegmentsForDisplay_property.prop
+    }
+  }
+
+  var backLayoutTextsSegmentsForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return backLayoutTextsSegmentsForDisplay_property_selection
     }
   }
 
@@ -315,6 +363,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var padsHoles : EBSelection <MergerHoleArray> {
+    get {
+      return padsHoles_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing viasHoles transient property
   //····················································································································
@@ -322,6 +376,12 @@ class BoardModelEntity : EBManagedObject,
   var viasHoles_property_selection : EBSelection <MergerHoleArray> {
     get {
       return self.viasHoles_property.prop
+    }
+  }
+
+  var viasHoles : EBSelection <MergerHoleArray> {
+    get {
+      return viasHoles_property_selection
     }
   }
 
@@ -335,6 +395,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var holes : EBSelection <MergerHoleArray> {
+    get {
+      return holes_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing holesForDisplay transient property
   //····················································································································
@@ -342,6 +408,12 @@ class BoardModelEntity : EBManagedObject,
   var holesForDisplay_property_selection : EBSelection <MergerHoleArray> {
     get {
       return self.holesForDisplay_property.prop
+    }
+  }
+
+  var holesForDisplay : EBSelection <MergerHoleArray> {
+    get {
+      return holesForDisplay_property_selection
     }
   }
 
@@ -355,6 +427,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var viaShapes : EBSelection <MergerViaShapeArray> {
+    get {
+      return viaShapes_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing viaShapesForDisplay transient property
   //····················································································································
@@ -362,6 +440,12 @@ class BoardModelEntity : EBManagedObject,
   var viaShapesForDisplay_property_selection : EBSelection <MergerViaShapeArray> {
     get {
       return self.viaShapesForDisplay_property.prop
+    }
+  }
+
+  var viaShapesForDisplay : EBSelection <MergerViaShapeArray> {
+    get {
+      return viaShapesForDisplay_property_selection
     }
   }
 
@@ -375,6 +459,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var frontPads : EBSelection <MergerPadArray> {
+    get {
+      return frontPads_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing frontPadsForDisplay transient property
   //····················································································································
@@ -382,6 +472,12 @@ class BoardModelEntity : EBManagedObject,
   var frontPadsForDisplay_property_selection : EBSelection <MergerPadArray> {
     get {
       return self.frontPadsForDisplay_property.prop
+    }
+  }
+
+  var frontPadsForDisplay : EBSelection <MergerPadArray> {
+    get {
+      return frontPadsForDisplay_property_selection
     }
   }
 
@@ -395,6 +491,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var backPads : EBSelection <MergerPadArray> {
+    get {
+      return backPads_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing backPadsForDisplay transient property
   //····················································································································
@@ -402,6 +504,12 @@ class BoardModelEntity : EBManagedObject,
   var backPadsForDisplay_property_selection : EBSelection <MergerPadArray> {
     get {
       return self.backPadsForDisplay_property.prop
+    }
+  }
+
+  var backPadsForDisplay : EBSelection <MergerPadArray> {
+    get {
+      return backPadsForDisplay_property_selection
     }
   }
 
@@ -415,6 +523,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var boardLimits : EBSelection <MergerBoardLimits> {
+    get {
+      return boardLimits_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing backComponentNameSegments transient property
   //····················································································································
@@ -422,6 +536,12 @@ class BoardModelEntity : EBManagedObject,
   var backComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.backComponentNameSegments_property.prop
+    }
+  }
+
+  var backComponentNameSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return backComponentNameSegments_property_selection
     }
   }
 
@@ -435,6 +555,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var backComponentNameSegmentsForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return backComponentNameSegmentsForDisplay_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing frontComponentNameSegments transient property
   //····················································································································
@@ -442,6 +568,12 @@ class BoardModelEntity : EBManagedObject,
   var frontComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.frontComponentNameSegments_property.prop
+    }
+  }
+
+  var frontComponentNameSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return frontComponentNameSegments_property_selection
     }
   }
 
@@ -455,6 +587,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var frontComponentNameSegmentsForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return frontComponentNameSegmentsForDisplay_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing frontComponentValueSegments transient property
   //····················································································································
@@ -462,6 +600,12 @@ class BoardModelEntity : EBManagedObject,
   var frontComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.frontComponentValueSegments_property.prop
+    }
+  }
+
+  var frontComponentValueSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return frontComponentValueSegments_property_selection
     }
   }
 
@@ -475,6 +619,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var frontComponentValuesForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return frontComponentValuesForDisplay_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing backComponentValueSegments transient property
   //····················································································································
@@ -482,6 +632,12 @@ class BoardModelEntity : EBManagedObject,
   var backComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.backComponentValueSegments_property.prop
+    }
+  }
+
+  var backComponentValueSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return backComponentValueSegments_property_selection
     }
   }
 
@@ -495,6 +651,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var backComponentValuesForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return backComponentValuesForDisplay_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing backTrackSegments transient property
   //····················································································································
@@ -502,6 +664,12 @@ class BoardModelEntity : EBManagedObject,
   var backTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.backTrackSegments_property.prop
+    }
+  }
+
+  var backTrackSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return backTrackSegments_property_selection
     }
   }
 
@@ -515,6 +683,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var backTrackSegmentsForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return backTrackSegmentsForDisplay_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing frontTrackSegments transient property
   //····················································································································
@@ -522,6 +696,12 @@ class BoardModelEntity : EBManagedObject,
   var frontTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.frontTrackSegments_property.prop
+    }
+  }
+
+  var frontTrackSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return frontTrackSegments_property_selection
     }
   }
 
@@ -535,6 +715,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var frontTrackSegmentsForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return frontTrackSegmentsForDisplay_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing frontPackagesSegments transient property
   //····················································································································
@@ -542,6 +728,12 @@ class BoardModelEntity : EBManagedObject,
   var frontPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.frontPackagesSegments_property.prop
+    }
+  }
+
+  var frontPackagesSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return frontPackagesSegments_property_selection
     }
   }
 
@@ -555,6 +747,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var frontPackagesSegmentsForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return frontPackagesSegmentsForDisplay_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing backPackagesSegments transient property
   //····················································································································
@@ -565,6 +763,12 @@ class BoardModelEntity : EBManagedObject,
     }
   }
 
+  var backPackagesSegments : EBSelection <MergerSegmentArray> {
+    get {
+      return backPackagesSegments_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing backPackagesSegmentsForDisplay transient property
   //····················································································································
@@ -572,6 +776,12 @@ class BoardModelEntity : EBManagedObject,
   var backPackagesSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.backPackagesSegmentsForDisplay_property.prop
+    }
+  }
+
+  var backPackagesSegmentsForDisplay : EBSelection <MergerSegmentArray> {
+    get {
+      return backPackagesSegmentsForDisplay_property_selection
     }
   }
 
@@ -795,7 +1005,7 @@ class BoardModelEntity : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    frontLegendTextsSegments_property.readModelFunction = { [weak self] in
+    self.frontLegendTextsSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLegendTexts_property_selection.kind ()
         kind &= unwSelf.frontLegendTexts_property_selection.kind ()
@@ -819,7 +1029,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontLegendTextsSegmentsForDisplay_property.readModelFunction = { [weak self] in
+    self.frontLegendTextsSegmentsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontLegendTexts_property_selection.kind ()
         kind &= unwSelf.frontLegendTextsSegments_property_selection.kind ()
@@ -840,7 +1050,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontLayoutTextsSegments_property.readModelFunction = { [weak self] in
+    self.frontLayoutTextsSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLayoutTexts_property_selection.kind ()
         kind &= unwSelf.frontLayoutTexts_property_selection.kind ()
@@ -864,7 +1074,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontLayoutTextsSegmentsForDisplay_property.readModelFunction = { [weak self] in
+    self.frontLayoutTextsSegmentsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontLayoutTexts_property_selection.kind ()
         kind &= unwSelf.frontLayoutTextsSegments_property_selection.kind ()
@@ -885,7 +1095,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backLegendTextsSegments_property.readModelFunction = { [weak self] in
+    self.backLegendTextsSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLegendTexts_property_selection.kind ()
         kind &= unwSelf.backLegendTexts_property_selection.kind ()
@@ -909,7 +1119,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backLegendTextsSegmentsForDisplay_property.readModelFunction = { [weak self] in
+    self.backLegendTextsSegmentsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackLegendTexts_property_selection.kind ()
         kind &= unwSelf.backLegendTextsSegments_property_selection.kind ()
@@ -930,7 +1140,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backLayoutTextsSegments_property.readModelFunction = { [weak self] in
+    self.backLayoutTextsSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLayoutTexts_property_selection.kind ()
         kind &= unwSelf.backLayoutTexts_property_selection.kind ()
@@ -954,7 +1164,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backLayoutTextsSegmentsForDisplay_property.readModelFunction = { [weak self] in
+    self.backLayoutTextsSegmentsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackLayoutTexts_property_selection.kind ()
         kind &= unwSelf.backLayoutTextsSegments_property_selection.kind ()
@@ -975,7 +1185,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    padsHoles_property.readModelFunction = { [weak self] in
+    self.padsHoles_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.pads_property_selection.kind ()
         kind &= unwSelf.pads_property_selection.kind ()
@@ -997,7 +1207,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    viasHoles_property.readModelFunction = { [weak self] in
+    self.viasHoles_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.vias_property_selection.kind ()
         kind &= unwSelf.vias_property_selection.kind ()
@@ -1019,7 +1229,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    holes_property.readModelFunction = { [weak self] in
+    self.holes_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.padsHoles_property_selection.kind ()
         kind &= unwSelf.viasHoles_property_selection.kind ()
@@ -1040,7 +1250,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    holesForDisplay_property.readModelFunction = { [weak self] in
+    self.holesForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayHoles_property_selection.kind ()
         kind &= unwSelf.holes_property_selection.kind ()
@@ -1061,7 +1271,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    viaShapes_property.readModelFunction = { [weak self] in
+    self.viaShapes_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.vias_property_selection.kind ()
         kind &= unwSelf.vias_property_selection.kind ()
@@ -1083,7 +1293,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    viaShapesForDisplay_property.readModelFunction = { [weak self] in
+    self.viaShapesForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayVias_property_selection.kind ()
         kind &= unwSelf.viaShapes_property_selection.kind ()
@@ -1104,7 +1314,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontPads_property.readModelFunction = { [weak self] in
+    self.frontPads_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.pads_property_selection.kind ()
         kind &= unwSelf.pads_property_selection.kind ()
@@ -1131,7 +1341,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontPadsForDisplay_property.readModelFunction = { [weak self] in
+    self.frontPadsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontPads_property_selection.kind ()
         kind &= unwSelf.frontPads_property_selection.kind ()
@@ -1152,7 +1362,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backPads_property.readModelFunction = { [weak self] in
+    self.backPads_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.pads_property_selection.kind ()
         kind &= unwSelf.pads_property_selection.kind ()
@@ -1179,7 +1389,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backPadsForDisplay_property.readModelFunction = { [weak self] in
+    self.backPadsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackPads_property_selection.kind ()
         kind &= unwSelf.backPads_property_selection.kind ()
@@ -1200,7 +1410,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    boardLimits_property.readModelFunction = { [weak self] in
+    self.boardLimits_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardWidth_property_selection.kind ()
         kind &= unwSelf.boardHeight_property_selection.kind ()
@@ -1223,7 +1433,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backComponentNameSegments_property.readModelFunction = { [weak self] in
+    self.backComponentNameSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backComponentNames_property_selection.kind ()
         kind &= unwSelf.backComponentNames_property_selection.kind ()
@@ -1247,7 +1457,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backComponentNameSegmentsForDisplay_property.readModelFunction = { [weak self] in
+    self.backComponentNameSegmentsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackComponentNames_property_selection.kind ()
         kind &= unwSelf.backComponentNameSegments_property_selection.kind ()
@@ -1268,7 +1478,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontComponentNameSegments_property.readModelFunction = { [weak self] in
+    self.frontComponentNameSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontComponentNames_property_selection.kind ()
         kind &= unwSelf.frontComponentNames_property_selection.kind ()
@@ -1292,7 +1502,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontComponentNameSegmentsForDisplay_property.readModelFunction = { [weak self] in
+    self.frontComponentNameSegmentsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontComponentNames_property_selection.kind ()
         kind &= unwSelf.frontComponentNameSegments_property_selection.kind ()
@@ -1313,7 +1523,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontComponentValueSegments_property.readModelFunction = { [weak self] in
+    self.frontComponentValueSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontComponentValues_property_selection.kind ()
         kind &= unwSelf.frontComponentValues_property_selection.kind ()
@@ -1337,7 +1547,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontComponentValuesForDisplay_property.readModelFunction = { [weak self] in
+    self.frontComponentValuesForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontComponentValues_property_selection.kind ()
         kind &= unwSelf.frontComponentValueSegments_property_selection.kind ()
@@ -1358,7 +1568,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backComponentValueSegments_property.readModelFunction = { [weak self] in
+    self.backComponentValueSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backComponentValues_property_selection.kind ()
         kind &= unwSelf.backComponentValues_property_selection.kind ()
@@ -1382,7 +1592,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backComponentValuesForDisplay_property.readModelFunction = { [weak self] in
+    self.backComponentValuesForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackComponentValues_property_selection.kind ()
         kind &= unwSelf.backComponentValueSegments_property_selection.kind ()
@@ -1403,7 +1613,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backTrackSegments_property.readModelFunction = { [weak self] in
+    self.backTrackSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backTracks_property_selection.kind ()
         kind &= unwSelf.backTracks_property_selection.kind ()
@@ -1427,7 +1637,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backTrackSegmentsForDisplay_property.readModelFunction = { [weak self] in
+    self.backTrackSegmentsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackLayoutTracks_property_selection.kind ()
         kind &= unwSelf.backTrackSegments_property_selection.kind ()
@@ -1448,7 +1658,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontTrackSegments_property.readModelFunction = { [weak self] in
+    self.frontTrackSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontTracks_property_selection.kind ()
         kind &= unwSelf.frontTracks_property_selection.kind ()
@@ -1472,7 +1682,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontTrackSegmentsForDisplay_property.readModelFunction = { [weak self] in
+    self.frontTrackSegmentsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontLayoutTracks_property_selection.kind ()
         kind &= unwSelf.frontTrackSegments_property_selection.kind ()
@@ -1493,7 +1703,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontPackagesSegments_property.readModelFunction = { [weak self] in
+    self.frontPackagesSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontPackages_property_selection.kind ()
         kind &= unwSelf.frontPackages_property_selection.kind ()
@@ -1517,7 +1727,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    frontPackagesSegmentsForDisplay_property.readModelFunction = { [weak self] in
+    self.frontPackagesSegmentsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontPackages_property_selection.kind ()
         kind &= unwSelf.frontPackagesSegments_property_selection.kind ()
@@ -1538,7 +1748,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backPackagesSegments_property.readModelFunction = { [weak self] in
+    self.backPackagesSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backPackages_property_selection.kind ()
         kind &= unwSelf.backPackages_property_selection.kind ()
@@ -1562,7 +1772,7 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    backPackagesSegmentsForDisplay_property.readModelFunction = { [weak self] in
+    self.backPackagesSegmentsForDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackPackages_property_selection.kind ()
         kind &= unwSelf.backPackagesSegments_property_selection.kind ()
@@ -5334,211 +5544,246 @@ protocol BoardModelEntity_boardLimitWidthUnit : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontLegendTextsSegments : class {
-  var frontLegendTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontLegendTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontLegendTextsSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontLegendTextsSegmentsForDisplay : class {
-  var frontLegendTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontLegendTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontLegendTextsSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontLayoutTextsSegments : class {
-  var frontLayoutTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontLayoutTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontLayoutTextsSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontLayoutTextsSegmentsForDisplay : class {
-  var frontLayoutTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontLayoutTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontLayoutTextsSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backLegendTextsSegments : class {
-  var backLegendTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backLegendTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backLegendTextsSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backLegendTextsSegmentsForDisplay : class {
-  var backLegendTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backLegendTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backLegendTextsSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backLayoutTextsSegments : class {
-  var backLayoutTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backLayoutTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backLayoutTextsSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backLayoutTextsSegmentsForDisplay : class {
-  var backLayoutTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backLayoutTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backLayoutTextsSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_padsHoles : class {
-  var padsHoles_property_selection : EBSelection < MergerHoleArray > { get }
+//  var padsHoles_property_selection : EBSelection < MergerHoleArray > { get }
+  var padsHoles : EBSelection < MergerHoleArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_viasHoles : class {
-  var viasHoles_property_selection : EBSelection < MergerHoleArray > { get }
+//  var viasHoles_property_selection : EBSelection < MergerHoleArray > { get }
+  var viasHoles : EBSelection < MergerHoleArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_holes : class {
-  var holes_property_selection : EBSelection < MergerHoleArray > { get }
+//  var holes_property_selection : EBSelection < MergerHoleArray > { get }
+  var holes : EBSelection < MergerHoleArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_holesForDisplay : class {
-  var holesForDisplay_property_selection : EBSelection < MergerHoleArray > { get }
+//  var holesForDisplay_property_selection : EBSelection < MergerHoleArray > { get }
+  var holesForDisplay : EBSelection < MergerHoleArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_viaShapes : class {
-  var viaShapes_property_selection : EBSelection < MergerViaShapeArray > { get }
+//  var viaShapes_property_selection : EBSelection < MergerViaShapeArray > { get }
+  var viaShapes : EBSelection < MergerViaShapeArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_viaShapesForDisplay : class {
-  var viaShapesForDisplay_property_selection : EBSelection < MergerViaShapeArray > { get }
+//  var viaShapesForDisplay_property_selection : EBSelection < MergerViaShapeArray > { get }
+  var viaShapesForDisplay : EBSelection < MergerViaShapeArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontPads : class {
-  var frontPads_property_selection : EBSelection < MergerPadArray > { get }
+//  var frontPads_property_selection : EBSelection < MergerPadArray > { get }
+  var frontPads : EBSelection < MergerPadArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontPadsForDisplay : class {
-  var frontPadsForDisplay_property_selection : EBSelection < MergerPadArray > { get }
+//  var frontPadsForDisplay_property_selection : EBSelection < MergerPadArray > { get }
+  var frontPadsForDisplay : EBSelection < MergerPadArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backPads : class {
-  var backPads_property_selection : EBSelection < MergerPadArray > { get }
+//  var backPads_property_selection : EBSelection < MergerPadArray > { get }
+  var backPads : EBSelection < MergerPadArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backPadsForDisplay : class {
-  var backPadsForDisplay_property_selection : EBSelection < MergerPadArray > { get }
+//  var backPadsForDisplay_property_selection : EBSelection < MergerPadArray > { get }
+  var backPadsForDisplay : EBSelection < MergerPadArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_boardLimits : class {
-  var boardLimits_property_selection : EBSelection < MergerBoardLimits > { get }
+//  var boardLimits_property_selection : EBSelection < MergerBoardLimits > { get }
+  var boardLimits : EBSelection < MergerBoardLimits > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backComponentNameSegments : class {
-  var backComponentNameSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backComponentNameSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backComponentNameSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backComponentNameSegmentsForDisplay : class {
-  var backComponentNameSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backComponentNameSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backComponentNameSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontComponentNameSegments : class {
-  var frontComponentNameSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontComponentNameSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontComponentNameSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontComponentNameSegmentsForDisplay : class {
-  var frontComponentNameSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontComponentNameSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontComponentNameSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontComponentValueSegments : class {
-  var frontComponentValueSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontComponentValueSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontComponentValueSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontComponentValuesForDisplay : class {
-  var frontComponentValuesForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontComponentValuesForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontComponentValuesForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backComponentValueSegments : class {
-  var backComponentValueSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backComponentValueSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backComponentValueSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backComponentValuesForDisplay : class {
-  var backComponentValuesForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backComponentValuesForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backComponentValuesForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backTrackSegments : class {
-  var backTrackSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backTrackSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backTrackSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backTrackSegmentsForDisplay : class {
-  var backTrackSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backTrackSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backTrackSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontTrackSegments : class {
-  var frontTrackSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontTrackSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontTrackSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontTrackSegmentsForDisplay : class {
-  var frontTrackSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontTrackSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontTrackSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontPackagesSegments : class {
-  var frontPackagesSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontPackagesSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontPackagesSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontPackagesSegmentsForDisplay : class {
-  var frontPackagesSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var frontPackagesSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var frontPackagesSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backPackagesSegments : class {
-  var backPackagesSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backPackagesSegments_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backPackagesSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backPackagesSegmentsForDisplay : class {
-  var backPackagesSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+//  var backPackagesSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
+  var backPackagesSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

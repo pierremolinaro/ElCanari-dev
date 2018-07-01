@@ -27,7 +27,7 @@ func compute_FontRootEntity_sampleStringBezierPath (_ inArg0 : [FontCharacterEnt
     let characterIndex = Int (unicodeCharacter) - 32
     if characterIndex < inArg0.count {
       let segmentArrayDescriptor : FontCharacterEntity_segmentArrayForDrawing = inArg0 [characterIndex]
-      switch segmentArrayDescriptor.segmentArrayForDrawing_property_selection {
+      switch segmentArrayDescriptor.segmentArrayForDrawing {
       case .empty, .multiple :
         break
       case .single (let segmentArray) :

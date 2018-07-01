@@ -856,3 +856,32 @@ final class Controller_CanariBoardModelView_holes : EBSimpleController {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   GenericController
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class GenericController <TYPE> : EBOutletEvent {
+
+  private let mActionCallBack : (EBSelection <TYPE>) -> Void
+  private let mGetPropertyValueCallBack : () -> EBSelection <TYPE>
+
+  //····················································································································
+
+  init (getPropertyValueCallBack inGetPropertyValueCallBack : @escaping () -> EBSelection <TYPE>,
+        callBack inActionCallBack : @escaping (EBSelection <TYPE>) -> Void) {
+    mGetPropertyValueCallBack = inGetPropertyValueCallBack
+    mActionCallBack = inActionCallBack
+    super.init ()
+  }
+
+  //····················································································································
+
+   override func sendUpdateEvent () {
+    mActionCallBack (mGetPropertyValueCallBack ())
+  }
+
+  //····················································································································
+
+}
+
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -15,7 +15,7 @@ func compute_FontCharacterEntity_segmentArrayForDrawing (_ inArg0 : [SegmentForF
 //--- START OF USER ZONE 2
   var result = [SegmentForFontCharacterClass] ()
   for object in inArg0 {
-    switch object.segmentForDrawing_property_selection {
+    switch object.segmentForDrawing {
     case .empty, .multiple :
       break
     case .single (let v) :

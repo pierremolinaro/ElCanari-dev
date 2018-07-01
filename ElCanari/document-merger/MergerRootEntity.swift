@@ -41,6 +41,12 @@ class MergerRootEntity : EBManagedObject,
     }
   }
 
+  var modelNames : EBSelection <MergerBoardModelArray> {
+    get {
+      return modelNames_property_selection
+    }
+  }
+
   //····················································································································
   //   Accessing boardModels toMany relationship
   //····················································································································
@@ -76,7 +82,7 @@ class MergerRootEntity : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    modelNames_property.readModelFunction = { [weak self] in
+    self.modelNames_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.boardModels_property_selection.kind ()
         switch kind {
@@ -423,7 +429,8 @@ protocol MergerRootEntity_selectedPageIndex : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRootEntity_modelNames : class {
-  var modelNames_property_selection : EBSelection < MergerBoardModelArray > { get }
+//  var modelNames_property_selection : EBSelection < MergerBoardModelArray > { get }
+  var modelNames : EBSelection < MergerBoardModelArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
