@@ -21,28 +21,27 @@ import Cocoa
 
   override init () {
     super.init ()
-    g_Preferences?.currentCharacterCodePoint.addEBObserver (mObjectObserver)
+    g_Preferences?.currentCharacterCodePoint_property.addEBObserver (mObjectObserver)
     mObjectObserver.setPostEventFunction ({[weak self] in self?.selectedCharacterDidChange () })
   }
   
   //····················································································································
 
   deinit {
-    g_Preferences?.currentCharacterCodePoint.removeEBObserver (mObjectObserver)
+    g_Preferences?.currentCharacterCodePoint_property.removeEBObserver (mObjectObserver)
   }
 
   //····················································································································
 
   final func setModel (_ object : FontRootEntity) {
-    mCharacterArray = object.characters
+    mCharacterArray = object.characters_property
     mObjectObserver.postEvent ()
   }
   
   //····················································································································
 
   final func selectedCharacterDidChange () {
-//    let possibleIndex : Int? = unicodePointToIndex (g_Preferences?.currentCharacterCodePoint.propval)
-    let possibleIndex : Int? = g_Preferences?.currentCharacterCodePoint.propval
+    let possibleIndex : Int? = g_Preferences?.currentCharacterCodePoint
     if let index = possibleIndex, let characterArray = mCharacterArray {
       switch characterArray.prop {
       case .empty, .multiple :

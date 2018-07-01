@@ -520,8 +520,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func signatureObserver () -> EBSignatureObserverEvent {
-    return mSignatureObserver
+  var signatureObserver_property : EBSignatureObserverEvent {
+    get {
+      return mSignatureObserver
+    }
   }
 
   //····················································································································
@@ -538,8 +540,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func versionObserver () -> EBStoredProperty_Int {
-    return mVersion
+  var versionObserver_property : EBStoredProperty_Int {
+    get {
+      return mVersion
+    }
   }
 
   //····················································································································
@@ -550,8 +554,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func versionShouldChangeObserver () -> EBVersionShouldChangeObserver {
-    return mVersionShouldChangeObserver
+  var versionShouldChangeObserver_property : EBVersionShouldChangeObserver {
+    get {
+      return mVersionShouldChangeObserver
+    }
   }
 
   //····················································································································

@@ -199,8 +199,6 @@ entity BoardModelEntity {
     self.backComponentNames.all.x2, self.backComponentNames.all.y2,
     self.backComponentNames.all.width
   ;
-
-  transient Int backComponentNameSegmentsCount dependsFrom self.backComponentNameSegments ;
  
   transient MergerSegmentArray backComponentNameSegmentsForDisplay dependsFrom
      prefs.mergerDisplayBackComponentNames, self.backComponentNameSegments
@@ -215,8 +213,6 @@ entity BoardModelEntity {
     self.frontComponentNames.all.width
   ;
 
-  transient Int frontComponentNameSegmentsCount dependsFrom self.frontComponentNameSegments ;
-
   transient MergerSegmentArray frontComponentNameSegmentsForDisplay dependsFrom
      prefs.mergerDisplayFrontComponentNames, self.frontComponentNameSegments
   ;  
@@ -229,8 +225,6 @@ entity BoardModelEntity {
     self.frontComponentValues.all.x2, self.frontComponentValues.all.y2,
     self.frontComponentValues.all.width
   ;
-
-  transient Int frontComponentValueSegmentsCount dependsFrom self.frontComponentValueSegments ;
 
   transient MergerSegmentArray frontComponentValuesForDisplay dependsFrom
      prefs.mergerDisplayFrontComponentValues, self.frontComponentValueSegments
@@ -245,8 +239,6 @@ entity BoardModelEntity {
     self.backComponentValues.all.width
   ;
 
-  transient Int backComponentValueSegmentsCount dependsFrom self.backComponentValueSegments ;
-
   transient MergerSegmentArray backComponentValuesForDisplay dependsFrom
      prefs.mergerDisplayBackComponentValues, self.backComponentValueSegments
   ;  
@@ -259,8 +251,6 @@ entity BoardModelEntity {
     self.backTracks.all.x2, self.backTracks.all.y2,
     self.backTracks.all.width
   ;
-
-  transient Int backTracksSegmentsCount dependsFrom self.backTrackSegments ;
 
   transient MergerSegmentArray backTrackSegmentsForDisplay dependsFrom
      prefs.mergerDisplayBackLayoutTracks, self.backTrackSegments
@@ -275,8 +265,6 @@ entity BoardModelEntity {
     self.frontTracks.all.width
   ;
 
-  transient Int frontTracksSegmentsCount dependsFrom self.frontTrackSegments ;
-
   transient MergerSegmentArray frontTrackSegmentsForDisplay dependsFrom
      prefs.mergerDisplayFrontLayoutTracks, self.frontTrackSegments
   ;  
@@ -290,8 +278,6 @@ entity BoardModelEntity {
     self.frontPackages.all.width
   ;
 
-  transient Int frontPackageSegmentsCount dependsFrom self.frontPackagesSegments ;
-
   transient MergerSegmentArray frontPackagesSegmentsForDisplay dependsFrom
      prefs.mergerDisplayFrontPackages, self.frontPackagesSegments
   ;  
@@ -304,8 +290,6 @@ entity BoardModelEntity {
     self.backPackages.all.x2, self.backPackages.all.y2,
     self.backPackages.all.width
   ;
-
-  transient Int backPackageSegmentsCount dependsFrom self.backPackagesSegments ;
 
   transient MergerSegmentArray backPackagesSegmentsForDisplay dependsFrom
      prefs.mergerDisplayBackPackages, self.backPackagesSegments

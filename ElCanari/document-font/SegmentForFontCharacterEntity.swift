@@ -19,18 +19,18 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   //   Accessing x1 stored property
   //····················································································································
 
-  var x1_value : Int {
+  var x1 : Int {
     get {
-      return self.x1.propval
+      return self.x1_property.propval
     }
     set {
-      self.x1.setProp (newValue)
+      self.x1_property.setProp (newValue)
     }
   }
 
-  var x1_prop : EBSelection <Int> {
+  var x1_property_selection : EBSelection <Int> {
     get {
-      return self.x1.prop
+      return self.x1_property.prop
     }
   }
 
@@ -38,18 +38,18 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   //   Accessing y1 stored property
   //····················································································································
 
-  var y1_value : Int {
+  var y1 : Int {
     get {
-      return self.y1.propval
+      return self.y1_property.propval
     }
     set {
-      self.y1.setProp (newValue)
+      self.y1_property.setProp (newValue)
     }
   }
 
-  var y1_prop : EBSelection <Int> {
+  var y1_property_selection : EBSelection <Int> {
     get {
-      return self.y1.prop
+      return self.y1_property.prop
     }
   }
 
@@ -57,18 +57,18 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   //   Accessing x2 stored property
   //····················································································································
 
-  var x2_value : Int {
+  var x2 : Int {
     get {
-      return self.x2.propval
+      return self.x2_property.propval
     }
     set {
-      self.x2.setProp (newValue)
+      self.x2_property.setProp (newValue)
     }
   }
 
-  var x2_prop : EBSelection <Int> {
+  var x2_property_selection : EBSelection <Int> {
     get {
-      return self.x2.prop
+      return self.x2_property.prop
     }
   }
 
@@ -76,18 +76,18 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   //   Accessing y2 stored property
   //····················································································································
 
-  var y2_value : Int {
+  var y2 : Int {
     get {
-      return self.y2.propval
+      return self.y2_property.propval
     }
     set {
-      self.y2.setProp (newValue)
+      self.y2_property.setProp (newValue)
     }
   }
 
-  var y2_prop : EBSelection <Int> {
+  var y2_property_selection : EBSelection <Int> {
     get {
-      return self.y2.prop
+      return self.y2_property.prop
     }
   }
 
@@ -95,9 +95,9 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   //   Accessing segmentForDrawing transient property
   //····················································································································
 
-  var segmentForDrawing_prop : EBSelection <SegmentForFontCharacterClass> {
+  var segmentForDrawing_property_selection : EBSelection <SegmentForFontCharacterClass> {
     get {
-      return self.segmentForDrawing.prop
+      return self.segmentForDrawing_property.prop
     }
   }
 
@@ -105,16 +105,16 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   //    Stored Properties
   //····················································································································
 
-  var x1 = EBStoredProperty_Int (2)
-  var y1 = EBStoredProperty_Int (1)
-  var x2 = EBStoredProperty_Int (9)
-  var y2 = EBStoredProperty_Int (8)
+  var x1_property = EBStoredProperty_Int (2)
+  var y1_property = EBStoredProperty_Int (1)
+  var x2_property = EBStoredProperty_Int (9)
+  var y2_property = EBStoredProperty_Int (8)
 
   //····················································································································
   //    Transient properties
   //····················································································································
 
-  var segmentForDrawing = EBTransientProperty_SegmentForFontCharacterClass ()
+  var segmentForDrawing_property = EBTransientProperty_SegmentForFontCharacterClass ()
 
   //····················································································································
   //    Relationships
@@ -128,19 +128,19 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    segmentForDrawing.readModelFunction = { [weak self] in
+    segmentForDrawing_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x1.prop.kind ()
-        kind &= unwSelf.y1.prop.kind ()
-        kind &= unwSelf.x2.prop.kind ()
-        kind &= unwSelf.y2.prop.kind ()
+        var kind = unwSelf.x1_property_selection.kind ()
+        kind &= unwSelf.y1_property_selection.kind ()
+        kind &= unwSelf.x2_property_selection.kind ()
+        kind &= unwSelf.y2_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x1.prop, unwSelf.y1.prop, unwSelf.x2.prop, unwSelf.y2.prop) {
+          switch (unwSelf.x1_property.prop, unwSelf.y1_property.prop, unwSelf.x2_property.prop, unwSelf.y2_property.prop) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (compute_SegmentForFontCharacterEntity_segmentForDrawing (v0, v1, v2, v3))
           default :
@@ -152,31 +152,31 @@ class SegmentForFontCharacterEntity : EBManagedObject,
       }
     }
   //--- Install property observers for transients
-    x1.addEBObserver (segmentForDrawing)
-    y1.addEBObserver (segmentForDrawing)
-    x2.addEBObserver (segmentForDrawing)
-    y2.addEBObserver (segmentForDrawing)
+    self.x1_property.addEBObserver (self.segmentForDrawing_property)
+    self.y1_property.addEBObserver (self.segmentForDrawing_property)
+    self.x2_property.addEBObserver (self.segmentForDrawing_property)
+    self.y2_property.addEBObserver (self.segmentForDrawing_property)
   //--- Install undoers for properties
-    self.x1.undoManager = undoManager ()
-    self.y1.undoManager = undoManager ()
-    self.x2.undoManager = undoManager ()
-    self.y2.undoManager = undoManager ()
+    self.x1_property.undoManager = undoManager ()
+    self.y1_property.undoManager = undoManager ()
+    self.x2_property.undoManager = undoManager ()
+    self.y2_property.undoManager = undoManager ()
   //--- Install owner for relationships
   //--- register properties for handling signature
-    x1.setSignatureObserver (observer: self)
-    x2.setSignatureObserver (observer: self)
-    y1.setSignatureObserver (observer: self)
-    y2.setSignatureObserver (observer: self)
+    self.x1_property.setSignatureObserver (observer:self)
+    self.x2_property.setSignatureObserver (observer:self)
+    self.y1_property.setSignatureObserver (observer:self)
+    self.y2_property.setSignatureObserver (observer:self)
   }
 
   //····················································································································
 
   deinit {
   //--- Remove observers
-    x1.removeEBObserver (segmentForDrawing)
-    y1.removeEBObserver (segmentForDrawing)
-    x2.removeEBObserver (segmentForDrawing)
-    y2.removeEBObserver (segmentForDrawing)
+    self.x1_property.removeEBObserver (self.segmentForDrawing_property)
+    self.y1_property.removeEBObserver (self.segmentForDrawing_property)
+    self.x2_property.removeEBObserver (self.segmentForDrawing_property)
+    self.y2_property.removeEBObserver (self.segmentForDrawing_property)
   }
 
   //····················································································································
@@ -187,44 +187,44 @@ class SegmentForFontCharacterEntity : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1.mEasyBindingsObjectIndex,
+      idx:self.x1_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.x1.mObserverExplorer,
-      valueExplorer:&self.x1.mValueExplorer
+      observerExplorer:&self.x1_property.mObserverExplorer,
+      valueExplorer:&self.x1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1.mEasyBindingsObjectIndex,
+      idx:self.y1_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.y1.mObserverExplorer,
-      valueExplorer:&self.y1.mValueExplorer
+      observerExplorer:&self.y1_property.mObserverExplorer,
+      valueExplorer:&self.y1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2.mEasyBindingsObjectIndex,
+      idx:self.x2_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.x2.mObserverExplorer,
-      valueExplorer:&self.x2.mValueExplorer
+      observerExplorer:&self.x2_property.mObserverExplorer,
+      valueExplorer:&self.x2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2.mEasyBindingsObjectIndex,
+      idx:self.y2_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.y2.mObserverExplorer,
-      valueExplorer:&self.y2.mValueExplorer
+      observerExplorer:&self.y2_property.mObserverExplorer,
+      valueExplorer:&self.y2_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "segmentForDrawing",
-      idx:self.segmentForDrawing.mEasyBindingsObjectIndex,
+      idx:self.segmentForDrawing_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.segmentForDrawing.mObserverExplorer,
-      valueExplorer:&self.segmentForDrawing.mValueExplorer
+      observerExplorer:&self.segmentForDrawing_property.mObserverExplorer,
+      valueExplorer:&self.segmentForDrawing_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -236,14 +236,14 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.x1.mObserverExplorer = nil
-    self.x1.mValueExplorer = nil
-    self.y1.mObserverExplorer = nil
-    self.y1.mValueExplorer = nil
-    self.x2.mObserverExplorer = nil
-    self.x2.mValueExplorer = nil
-    self.y2.mObserverExplorer = nil
-    self.y2.mValueExplorer = nil
+    self.x1_property.mObserverExplorer = nil
+    self.x1_property.mValueExplorer = nil
+    self.y1_property.mObserverExplorer = nil
+    self.y1_property.mValueExplorer = nil
+    self.x2_property.mObserverExplorer = nil
+    self.x2_property.mValueExplorer = nil
+    self.y2_property.mObserverExplorer = nil
+    self.y2_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -253,10 +253,10 @@ class SegmentForFontCharacterEntity : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.x1.storeIn (dictionary: ioDictionary, forKey: "x1")
-    self.y1.storeIn (dictionary: ioDictionary, forKey: "y1")
-    self.x2.storeIn (dictionary: ioDictionary, forKey: "x2")
-    self.y2.storeIn (dictionary: ioDictionary, forKey: "y2")
+    self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
+    self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+    self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+    self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
   }
 
   //····················································································································
@@ -266,10 +266,10 @@ class SegmentForFontCharacterEntity : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.x1.readFrom (dictionary: inDictionary, forKey:"x1")
-    self.y1.readFrom (dictionary: inDictionary, forKey:"y1")
-    self.x2.readFrom (dictionary: inDictionary, forKey:"x2")
-    self.y2.readFrom (dictionary: inDictionary, forKey:"y2")
+    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
+    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
+    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
+    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
   }
 
   //····················································································································
@@ -294,10 +294,10 @@ class SegmentForFontCharacterEntity : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (x1.signature ())
-    crc.accumulateUInt32 (x2.signature ())
-    crc.accumulateUInt32 (y1.signature ())
-    crc.accumulateUInt32 (y2.signature ())
+    crc.accumulateUInt32 (self.x1_property.signature ())
+    crc.accumulateUInt32 (self.x2_property.signature ())
+    crc.accumulateUInt32 (self.y1_property.signature ())
+    crc.accumulateUInt32 (self.y2_property.signature ())
     return crc
   }
 
@@ -327,7 +327,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x1.addEBObserver (inObserver)
+        managedObject.x1_property.addEBObserver (inObserver)
       }
     }
   }
@@ -342,7 +342,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x1.removeEBObserver (inObserver)
+        managedObject.x1_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -352,7 +352,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
   final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x1 {
-        managedObject.x1.addEBObserver (observer)
+        managedObject.x1_property.addEBObserver (observer)
       }
     }
   }
@@ -363,7 +363,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     for observer in mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.x1.removeEBObserver (observer)
+        managedObject.x1_property.removeEBObserver (observer)
       }
     }
   }
@@ -384,7 +384,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y1.addEBObserver (inObserver)
+        managedObject.y1_property.addEBObserver (inObserver)
       }
     }
   }
@@ -399,7 +399,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y1.removeEBObserver (inObserver)
+        managedObject.y1_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -409,7 +409,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
   final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y1 {
-        managedObject.y1.addEBObserver (observer)
+        managedObject.y1_property.addEBObserver (observer)
       }
     }
   }
@@ -420,7 +420,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     for observer in mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.y1.removeEBObserver (observer)
+        managedObject.y1_property.removeEBObserver (observer)
       }
     }
   }
@@ -441,7 +441,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x2.addEBObserver (inObserver)
+        managedObject.x2_property.addEBObserver (inObserver)
       }
     }
   }
@@ -456,7 +456,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x2.removeEBObserver (inObserver)
+        managedObject.x2_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -466,7 +466,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
   final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x2 {
-        managedObject.x2.addEBObserver (observer)
+        managedObject.x2_property.addEBObserver (observer)
       }
     }
   }
@@ -477,7 +477,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     for observer in mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.x2.removeEBObserver (observer)
+        managedObject.x2_property.removeEBObserver (observer)
       }
     }
   }
@@ -498,7 +498,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y2.addEBObserver (inObserver)
+        managedObject.y2_property.addEBObserver (inObserver)
       }
     }
   }
@@ -513,7 +513,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y2.removeEBObserver (inObserver)
+        managedObject.y2_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -523,7 +523,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
   final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y2 {
-        managedObject.y2.addEBObserver (observer)
+        managedObject.y2_property.addEBObserver (observer)
       }
     }
   }
@@ -534,7 +534,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
     for observer in mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.y2.removeEBObserver (observer)
+        managedObject.y2_property.removeEBObserver (observer)
       }
     }
   }
@@ -555,7 +555,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.segmentForDrawing.addEBObserver (inObserver)
+        managedObject.segmentForDrawing_property.addEBObserver (inObserver)
       }
     }
   }
@@ -570,7 +570,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.segmentForDrawing.removeEBObserver (inObserver)
+        managedObject.segmentForDrawing_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -580,7 +580,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
   final func addEBObserversOf_segmentForDrawing_toElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_segmentForDrawing {
-        managedObject.segmentForDrawing.addEBObserver (observer)
+        managedObject.segmentForDrawing_property.addEBObserver (observer)
       }
     }
   }
@@ -590,7 +590,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
   final func removeEBObserversOf_segmentForDrawing_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_segmentForDrawing {
-        managedObject.segmentForDrawing.removeEBObserver (observer)
+        managedObject.segmentForDrawing_property.removeEBObserver (observer)
       }
     }
   }
@@ -679,31 +679,31 @@ class TransientArrayOf_SegmentForFontCharacterEntity : ReadOnlyArrayOf_SegmentFo
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SegmentForFontCharacterEntity_x1 : class {
-  var x1 : EBStoredProperty_Int { get }
+  var x1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SegmentForFontCharacterEntity_y1 : class {
-  var y1 : EBStoredProperty_Int { get }
+  var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SegmentForFontCharacterEntity_x2 : class {
-  var x2 : EBStoredProperty_Int { get }
+  var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SegmentForFontCharacterEntity_y2 : class {
-  var y2 : EBStoredProperty_Int { get }
+  var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SegmentForFontCharacterEntity_segmentForDrawing : class {
-  var segmentForDrawing : EBTransientProperty_SegmentForFontCharacterClass { get }
+  var segmentForDrawing_property_selection : EBSelection < SegmentForFontCharacterClass > { get }
 }
 
 

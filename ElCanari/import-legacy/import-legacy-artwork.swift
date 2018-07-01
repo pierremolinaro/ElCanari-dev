@@ -47,26 +47,26 @@ extension ArtworkFileGenerationParameters {
     // NSLog ("\(#function)")
     // NSLog ("objectPropertyDictionary \(objectPropertyDictionary)")
 
-    drawComponentNamesTopSide.setProp ((objectPropertyDictionary ["drawComponentNames"] as! NSNumber).boolValue)
-    drawComponentNamesBottomSide.setProp ((objectPropertyDictionary ["drawComponentNamesSolderSide"] as! NSNumber).boolValue)
+    drawComponentNamesTopSide = (objectPropertyDictionary ["drawComponentNames"] as! NSNumber).boolValue
+    drawComponentNamesBottomSide = ((objectPropertyDictionary ["drawComponentNamesSolderSide"] as! NSNumber).boolValue)
 
-    drawComponentValuesTopSide.setProp ((objectPropertyDictionary ["drawComponentValues"] as! NSNumber).boolValue)
-    drawComponentValuesBottomSide.setProp ((objectPropertyDictionary ["drawComponentValuesSolderSide"] as! NSNumber).boolValue)
+    drawComponentValuesTopSide = ((objectPropertyDictionary ["drawComponentValues"] as! NSNumber).boolValue)
+    drawComponentValuesBottomSide = ((objectPropertyDictionary ["drawComponentValuesSolderSide"] as! NSNumber).boolValue)
 
-    drawPackageLegendTopSide.setProp ((objectPropertyDictionary ["drawPackageLegends"] as! NSNumber).boolValue)
-    drawPackageLegendBottomSide.setProp ((objectPropertyDictionary ["drawPackageLegendsSolderSide"] as! NSNumber).boolValue)
+    drawPackageLegendTopSide = ((objectPropertyDictionary ["drawPackageLegends"] as! NSNumber).boolValue)
+    drawPackageLegendBottomSide = ((objectPropertyDictionary ["drawPackageLegendsSolderSide"] as! NSNumber).boolValue)
 
-    drawPadsTopSide.setProp ((objectPropertyDictionary ["drawPadsComponentSide"] as! NSNumber).boolValue)
-    drawPadsBottomSide.setProp ((objectPropertyDictionary ["drawPadsSolderSide"] as! NSNumber).boolValue)
+    drawPadsTopSide = ((objectPropertyDictionary ["drawPadsComponentSide"] as! NSNumber).boolValue)
+    drawPadsBottomSide = ((objectPropertyDictionary ["drawPadsSolderSide"] as! NSNumber).boolValue)
 
-    drawTextsLayoutTopSide.setProp ((objectPropertyDictionary ["drawTextsLayoutComponentSide"] as! NSNumber).boolValue)
-    drawTextsLayoutBottomSide.setProp ((objectPropertyDictionary ["drawTextsLayoutSolderSide"] as! NSNumber).boolValue)
+    drawTextsLayoutTopSide = ((objectPropertyDictionary ["drawTextsLayoutComponentSide"] as! NSNumber).boolValue)
+    drawTextsLayoutBottomSide = ((objectPropertyDictionary ["drawTextsLayoutSolderSide"] as! NSNumber).boolValue)
 
-    drawTextsLegendTopSide.setProp ((objectPropertyDictionary ["drawTextsLegendComponentSide"] as! NSNumber).boolValue)
-    drawTextsLegendBottomSide.setProp ((objectPropertyDictionary ["drawTextsLegendSolderSide"] as! NSNumber).boolValue)
+    drawTextsLegendTopSide = ((objectPropertyDictionary ["drawTextsLegendComponentSide"] as! NSNumber).boolValue)
+    drawTextsLegendBottomSide = ((objectPropertyDictionary ["drawTextsLegendSolderSide"] as! NSNumber).boolValue)
 
-    drawTracksTopSide.setProp ((objectPropertyDictionary ["drawTracksComponentSide"] as! NSNumber).boolValue)
-    drawTracksBottomSide.setProp ((objectPropertyDictionary ["drawTracksSolderSide"] as! NSNumber).boolValue)
+    drawTracksTopSide = ((objectPropertyDictionary ["drawTracksComponentSide"] as! NSNumber).boolValue)
+    drawTracksBottomSide = ((objectPropertyDictionary ["drawTracksSolderSide"] as! NSNumber).boolValue)
   }
 
   //····················································································································

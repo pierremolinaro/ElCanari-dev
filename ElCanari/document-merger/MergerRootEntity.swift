@@ -16,18 +16,18 @@ class MergerRootEntity : EBManagedObject,
   //   Accessing selectedPageIndex stored property
   //····················································································································
 
-  var selectedPageIndex_value : Int {
+  var selectedPageIndex : Int {
     get {
-      return self.selectedPageIndex.propval
+      return self.selectedPageIndex_property.propval
     }
     set {
-      self.selectedPageIndex.setProp (newValue)
+      self.selectedPageIndex_property.setProp (newValue)
     }
   }
 
-  var selectedPageIndex_prop : EBSelection <Int> {
+  var selectedPageIndex_property_selection : EBSelection <Int> {
     get {
-      return self.selectedPageIndex.prop
+      return self.selectedPageIndex_property.prop
     }
   }
 
@@ -35,9 +35,19 @@ class MergerRootEntity : EBManagedObject,
   //   Accessing modelNames transient property
   //····················································································································
 
-  var modelNames_prop : EBSelection <MergerBoardModelArray> {
+  var modelNames_property_selection : EBSelection <MergerBoardModelArray> {
     get {
-      return self.modelNames.prop
+      return self.modelNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardModels toMany relationship
+  //····················································································································
+
+  var boardModels_property_selection : EBSelection < [BoardModelEntity] > {
+    get {
+      return self.boardModels_property.prop
     }
   }
 
@@ -45,19 +55,19 @@ class MergerRootEntity : EBManagedObject,
   //    Stored Properties
   //····················································································································
 
-  var selectedPageIndex = EBStoredProperty_Int (0)
+  var selectedPageIndex_property = EBStoredProperty_Int (0)
 
   //····················································································································
   //    Transient properties
   //····················································································································
 
-  var modelNames = EBTransientProperty_MergerBoardModelArray ()
+  var modelNames_property = EBTransientProperty_MergerBoardModelArray ()
 
   //····················································································································
   //    Relationships
   //····················································································································
 
-  var boardModels = ToManyRelationship_MergerRootEntity_boardModels ()
+  var boardModels_property = ToManyRelationship_MergerRootEntity_boardModels ()
 
   //····················································································································
   //    init
@@ -66,16 +76,16 @@ class MergerRootEntity : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    modelNames.readModelFunction = { [weak self] in
+    modelNames_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardModels.prop.kind ()
+        let kind = unwSelf.boardModels_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardModels.prop) {
+          switch (unwSelf.boardModels_property.prop) {
           case (.single (let v0)) :
             return .single (compute_MergerRootEntity_modelNames (v0))
           default :
@@ -87,11 +97,11 @@ class MergerRootEntity : EBManagedObject,
       }
     }
   //--- Install property observers for transients
-    boardModels.addEBObserverOf_name (modelNames)
+    self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
   //--- Install undoers for properties
-    self.selectedPageIndex.undoManager = undoManager ()
+    self.selectedPageIndex_property.undoManager = undoManager ()
   //--- Install owner for relationships
-    boardModels.owner = self
+    self.boardModels_property.owner = self
   //--- register properties for handling signature
   }
 
@@ -99,7 +109,7 @@ class MergerRootEntity : EBManagedObject,
 
   deinit {
   //--- Remove observers
-    boardModels.removeEBObserverOf_name (modelNames)
+    self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
   }
 
   //····················································································································
@@ -110,28 +120,28 @@ class MergerRootEntity : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "selectedPageIndex",
-      idx:self.selectedPageIndex.mEasyBindingsObjectIndex,
+      idx:self.selectedPageIndex_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.selectedPageIndex.mObserverExplorer,
-      valueExplorer:&self.selectedPageIndex.mValueExplorer
+      observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
+      valueExplorer:&self.selectedPageIndex_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "modelNames",
-      idx:self.modelNames.mEasyBindingsObjectIndex,
+      idx:self.modelNames_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.modelNames.mObserverExplorer,
-      valueExplorer:&self.modelNames.mValueExplorer
+      observerExplorer:&self.modelNames_property.mObserverExplorer,
+      valueExplorer:&self.modelNames_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "boardModels",
-      idx:boardModels.mEasyBindingsObjectIndex,
+      idx:boardModels_property.mEasyBindingsObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&boardModels.mValueExplorer
+      valueExplorer:&boardModels_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -142,10 +152,9 @@ class MergerRootEntity : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.selectedPageIndex.mObserverExplorer = nil
-    self.selectedPageIndex.mValueExplorer = nil
-    // boardModels.mObserverExplorer = nil
-    boardModels.mValueExplorer = nil
+    self.selectedPageIndex_property.mObserverExplorer = nil
+    self.selectedPageIndex_property.mValueExplorer = nil
+    self.boardModels_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -155,8 +164,8 @@ class MergerRootEntity : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.selectedPageIndex.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
-    store (managedObjectArray: boardModels.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
+    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+    store (managedObjectArray: boardModels_property.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
   }
 
   //····················································································································
@@ -166,8 +175,8 @@ class MergerRootEntity : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.selectedPageIndex.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
-    boardModels.setProp (readEntityArrayFromDictionary (
+    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+    self.boardModels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "boardModels",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
@@ -180,8 +189,8 @@ class MergerRootEntity : EBManagedObject,
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     do{
-      let objects = self.boardModels.propval
-      self.boardModels.setProp ([])
+      let objects = self.boardModels_property.propval
+      self.boardModels_property.setProp ([])
       self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
     super.cascadeObjectRemoving (&ioObjectsToRemove)
@@ -193,7 +202,7 @@ class MergerRootEntity : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
-    boardModels.setProp (Array ())
+    self.boardModels_property.setProp ([])
   }
 
   //····················································································································
@@ -202,7 +211,7 @@ class MergerRootEntity : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-    for managedObject : EBManagedObject in boardModels.propval {
+    for managedObject : EBManagedObject in self.boardModels_property.propval {
       objects.append (managedObject)
     }
   }
@@ -233,7 +242,7 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex.addEBObserver (inObserver)
+        managedObject.selectedPageIndex_property.addEBObserver (inObserver)
       }
     }
   }
@@ -248,7 +257,7 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex.removeEBObserver (inObserver)
+        managedObject.selectedPageIndex_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -258,7 +267,7 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
   final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_selectedPageIndex {
-        managedObject.selectedPageIndex.addEBObserver (observer)
+        managedObject.selectedPageIndex_property.addEBObserver (observer)
       }
     }
   }
@@ -269,7 +278,7 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
     for observer in mObserversOf_selectedPageIndex {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.selectedPageIndex.removeEBObserver (observer)
+        managedObject.selectedPageIndex_property.removeEBObserver (observer)
       }
     }
   }
@@ -290,7 +299,7 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.modelNames.addEBObserver (inObserver)
+        managedObject.modelNames_property.addEBObserver (inObserver)
       }
     }
   }
@@ -305,7 +314,7 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.modelNames.removeEBObserver (inObserver)
+        managedObject.modelNames_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -315,7 +324,7 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
   final func addEBObserversOf_modelNames_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_modelNames {
-        managedObject.modelNames.addEBObserver (observer)
+        managedObject.modelNames_property.addEBObserver (observer)
       }
     }
   }
@@ -325,7 +334,7 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
   final func removeEBObserversOf_modelNames_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_modelNames {
-        managedObject.modelNames.removeEBObserver (observer)
+        managedObject.modelNames_property.removeEBObserver (observer)
       }
     }
   }
@@ -408,13 +417,13 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRootEntity_selectedPageIndex : class {
-  var selectedPageIndex : EBStoredProperty_Int { get }
+  var selectedPageIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRootEntity_modelNames : class {
-  var modelNames : EBTransientProperty_MergerBoardModelArray { get }
+  var modelNames_property_selection : EBSelection < MergerBoardModelArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -456,7 +465,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
 
   override init () {
     super.init ()
-    count.readModelFunction = { [weak self] in
+    self.count_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :
@@ -494,23 +503,19 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         }
         removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentNameSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentNameSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentValueSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentValuesForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLayoutTextsSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLegendTextsSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPackageSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPackagesSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPads_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPadsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backTrackSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backTracksSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
@@ -519,23 +524,19 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontComponentNameSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontComponentValueSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentValuesForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLayoutTextsSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLegendTextsSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPackageSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontPackagesSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontPads_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontPadsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontTrackSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontTracksSegmentsCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holes_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holesForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
@@ -551,23 +552,19 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         }
         addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentNameSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentNameSegmentsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentValueSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentValuesForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLayoutTextsSegmentsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLegendTextsSegmentsForDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPackageSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPackagesSegmentsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPads_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPadsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backTrackSegmentsForDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backTracksSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
@@ -576,23 +573,19 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontComponentNameSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameSegmentsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontComponentValueSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentValuesForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLayoutTextsSegmentsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLegendTextsSegmentsForDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPackageSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontPackagesSegmentsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontPads_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontPadsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontTrackSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontTrackSegmentsForDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontTracksSegmentsCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holes_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holesForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)

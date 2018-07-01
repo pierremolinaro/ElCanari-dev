@@ -1090,13 +1090,19 @@ class ReadOnlyAbstractArrayProperty <T> : EBAbstractProperty {
 
   //····················································································································
 
-  final var count = EBTransientProperty_Int ()
+  final var count_property = EBTransientProperty_Int ()
+
+  var count_property_selection : EBSelection <Int> {
+    get {
+      return self.count_property.prop
+    }
+  }
 
   //····················································································································
 
   override init () {
     super.init ()
-    count.readModelFunction = { [weak self] in
+    self.count_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :
@@ -1115,7 +1121,7 @@ class ReadOnlyAbstractArrayProperty <T> : EBAbstractProperty {
   //····················································································································
 
   override func postEvent () {
-    count.postEvent ()
+    self.count_property.postEvent ()
     super.postEvent ()
   }
 

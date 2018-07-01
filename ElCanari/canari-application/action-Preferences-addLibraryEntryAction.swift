@@ -25,10 +25,10 @@ extension Preferences {
           let pathToAdd : String? = URLToAdd.path
           if let unwPathToAdd = pathToAdd {
             let newEntry = CanariLibraryEntry ()
-            newEntry.mPath.setProp (unwPathToAdd)
-            var array = self.additionnalLibraryArray.propval
+            newEntry.mPath = unwPathToAdd
+            var array = self.additionnalLibraryArray_property.propval
             array.append (newEntry)
-            self.additionnalLibraryArray.setProp (array)
+            self.additionnalLibraryArray_property.setProp (array)
           }
         }
       }

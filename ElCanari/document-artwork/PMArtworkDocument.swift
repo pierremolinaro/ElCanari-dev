@@ -66,9 +66,9 @@ import Cocoa
   //    Transient properties
   //····················································································································
 
-  var mGeneratedFileCountString = EBTransientProperty_String ()
-  var mStatusImage = EBTransientProperty_NSImage ()
-  var mStatusMessage = EBTransientProperty_String ()
+  var mGeneratedFileCountString_property = EBTransientProperty_String ()
+  var mStatusImage_property = EBTransientProperty_NSImage ()
+  var mStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
   //    Transient arraies
@@ -527,30 +527,30 @@ import Cocoa
 //                              errorMessage: "the 'resetVersionAndSignatureButton' outlet is not an instance of 'EBButton'") ;
     }
   //--------------------------- Array controllers
-    mDataController.bind_modelAndView (
-      model: rootObject.fileGenerationParameterArray,
+    self.mDataController.bind_modelAndView (
+      model: self.rootObject.fileGenerationParameterArray_property,
       tableViewArray: [mDataTableView!],
       file: #file,
       line: #line
     )
   //--------------------------- Selection controllers
     mDataSelection.bind_selection (
-      model: mDataController.selectedArray,
+      model: mDataController.selectedArray_property,
       file: #file,
       line: #line
     )
   //--------------------------- Custom object controllers
   //--- Transient compute functions
-    mGeneratedFileCountString.readModelFunction = { [weak self] in
+    self.mGeneratedFileCountString_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mDataController.sortedArray.count.prop.kind ()
+        let kind = unwSelf.mDataController.sortedArray_property.count_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mDataController.sortedArray.count.prop) {
+          switch (unwSelf.mDataController.sortedArray_property.count_property.prop) {
           case (.single (let v0)) :
             return .single (compute_PMArtworkDocument_mGeneratedFileCountString (v0))
           default :
@@ -561,17 +561,17 @@ import Cocoa
         return .empty
       }
     }
-    mStatusImage.readModelFunction = { [weak self] in
+    self.mStatusImage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.rootObject.fileGenerationParameterArray.prop.kind ()
-        kind &= unwSelf.rootObject.fileGenerationParameterArray.prop.kind ()
+        var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
+        kind &= unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.rootObject.fileGenerationParameterArray.prop, unwSelf.rootObject.fileGenerationParameterArray.prop) {
+          switch (unwSelf.rootObject.fileGenerationParameterArray_property.prop, unwSelf.rootObject.fileGenerationParameterArray_property.prop) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_PMArtworkDocument_mStatusImage (v0, v1))
           default :
@@ -582,17 +582,17 @@ import Cocoa
         return .empty
       }
     }
-    mStatusMessage.readModelFunction = { [weak self] in
+    self.mStatusMessage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.rootObject.fileGenerationParameterArray.prop.kind ()
-        kind &= unwSelf.rootObject.fileGenerationParameterArray.prop.kind ()
+        var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
+        kind &= unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.rootObject.fileGenerationParameterArray.prop, unwSelf.rootObject.fileGenerationParameterArray.prop) {
+          switch (unwSelf.rootObject.fileGenerationParameterArray_property.prop, unwSelf.rootObject.fileGenerationParameterArray_property.prop) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_PMArtworkDocument_mStatusMessage (v0, v1))
           default :
@@ -604,66 +604,66 @@ import Cocoa
       }
     }
   //--- Install property observers for transients
-    mDataController.sortedArray.count.addEBObserver (mGeneratedFileCountString)
-    self.rootObject.fileGenerationParameterArray.addEBObserverOf_fileExtension (mStatusImage)
-    self.rootObject.fileGenerationParameterArray.addEBObserverOf_name (mStatusImage)
-    self.rootObject.fileGenerationParameterArray.addEBObserverOf_fileExtension (mStatusMessage)
-    self.rootObject.fileGenerationParameterArray.addEBObserverOf_name (mStatusMessage)
+    self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusMessage_property)
   //--- Install regular bindings
-    mSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab, file: #file, line: #line)
-    mMinPP_TP_TT_TW_inEBUnitPopUp?.bind_selectedTag (self.rootObject.minPP_TP_TT_TW_displayUnit, file: #file, line: #line)
-    mMinPP_TP_TT_TW_displayUnit_TextField?.bind_dimensionAndUnit (self.rootObject.minPP_TP_TT_TW_inEBUnit, self.rootObject.minPP_TP_TT_TW_displayUnit, file: #file, line: #line)
-    mOARUnitPopUp?.bind_selectedTag (self.rootObject.minValueForOARdisplayUnit, file: #file, line: #line)
-    mOARValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit, self.rootObject.minValueForOARdisplayUnit, file: #file, line: #line)
-    mPHDUnitPopUp?.bind_selectedTag (self.rootObject.minValueForPHDdisplayUnit, file: #file, line: #line)
-    mPHDValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit, self.rootObject.minValueForPHDdisplayUnit, file: #file, line: #line)
-    mDrillDataFormatTabView?.bind_selectedFormat (self.rootObject.drillDataFormat, file: #file, line: #line)
-    mDrillDataFileExtensionTextField?.bind_value (self.rootObject.drillDataFileExtension, file: #file, line: #line, sendContinously:false)
-    mDrillListFileExtensionTextField?.bind_value (self.rootObject.drillListFileExtension, file: #file, line: #line, sendContinously:false)
-    mDrillToolListFileExtensionTextField?.bind_value (self.rootObject.drillToolListFileExtension, file: #file, line: #line, sendContinously:false)
-    mExtensionTextField?.bind_value (self.mDataSelection.fileExtension, file: #file, line: #line, sendContinously:false)
-    mDrawBoardLimitsSwitch?.bind_value (self.mDataSelection.drawBoardLimits, file: #file, line: #line)
-    mDrawComponentValuesTopSideSwitch?.bind_value (self.mDataSelection.drawComponentValuesTopSide, file: #file, line: #line)
-    mDrawComponentValuesBottomSideSwitch?.bind_value (self.mDataSelection.drawComponentValuesBottomSide, file: #file, line: #line)
-    mDrawComponentNamesTopSideSwitch?.bind_value (self.mDataSelection.drawComponentNamesTopSide, file: #file, line: #line)
-    mDrawComponentNamesBottomSideSwitch?.bind_value (self.mDataSelection.drawComponentNamesBottomSide, file: #file, line: #line)
-    mDrawPackageLegendTopSideSwitch?.bind_value (self.mDataSelection.drawPackageLegendTopSide, file: #file, line: #line)
-    mDrawPackageLegendBottomSideSwitch?.bind_value (self.mDataSelection.drawPackageLegendBottomSide, file: #file, line: #line)
-    mDrawPadHolesInPDFSwitch?.bind_value (self.mDataSelection.drawPadHolesInPDF, file: #file, line: #line)
-    mDrawPadsTopSideSwitch?.bind_value (self.mDataSelection.drawPadsTopSide, file: #file, line: #line)
-    mDrawPadsBottomSideSwitch?.bind_value (self.mDataSelection.drawPadsBottomSide, file: #file, line: #line)
-    mDrawTextsLayoutTopSideSwitch?.bind_value (self.mDataSelection.drawTextsLayoutTopSide, file: #file, line: #line)
-    mDrawTextsLayoutBottomSideSwitch?.bind_value (self.mDataSelection.drawTextsLayoutBottomSide, file: #file, line: #line)
-    mDrawTextsLegendTopSideSwitch?.bind_value (self.mDataSelection.drawTextsLegendTopSide, file: #file, line: #line)
-    mDrawTextsLegendBottomSideSwitch?.bind_value (self.mDataSelection.drawTextsLegendBottomSide, file: #file, line: #line)
-    mDrawTracksTopSideSwitch?.bind_value (self.mDataSelection.drawTracksTopSide, file: #file, line: #line)
-    mDrawTracksBottomSidSwitche?.bind_value (self.mDataSelection.drawTracksBottomSide, file: #file, line: #line)
-    mDrawViasSwitch?.bind_value (self.mDataSelection.drawVias, file: #file, line: #line)
-    mHorizontalMirrorSwitch?.bind_value (self.mDataSelection.horizontalMirror, file: #file, line: #line)
-    mMeasurementUnitForPadHoleInPDFPopUp?.bind_selectedTag (self.mDataSelection.measurementUnitForPadHoleInPDF, file: #file, line: #line)
-    mDimensionForPadHoleInPDFTextField?.bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF, self.mDataSelection.measurementUnitForPadHoleInPDF, file: #file, line: #line)
-    mGeneratedFileCountTextField?.bind_valueObserver (self.mGeneratedFileCountString, file: #file, line: #line)
-    mCommentTextView?.bind_value (self.rootObject.comments, file: #file, line: #line)
-    mSignatureTextField?.bind_signature (self.signatureObserver (), file: #file, line: #line)
-    mOtherSignatureTextField?.bind_signature (self.signatureObserver (), file: #file, line: #line)
-    mVersionField?.bind_version (self.versionObserver (), file: #file, line: #line)
-    mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver (), file: #file, line: #line)
-    mVersionFieldInToolbar?.bind_version (self.versionObserver (), file: #file, line: #line)
-    mVersionFieldInToolbar?.bind_versionShouldChange (self.versionShouldChangeObserver (), file: #file, line: #line)
-    mStatusImageViewInToolbar?.bind_image (self.mStatusImage, file: #file, line: #line)
-    mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage, file: #file, line: #line)
+    mSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
+    mMinPP_TP_TT_TW_inEBUnitPopUp?.bind_selectedTag (self.rootObject.minPP_TP_TT_TW_displayUnit_property, file: #file, line: #line)
+    mMinPP_TP_TT_TW_displayUnit_TextField?.bind_dimensionAndUnit (self.rootObject.minPP_TP_TT_TW_inEBUnit_property, self.rootObject.minPP_TP_TT_TW_displayUnit_property, file: #file, line: #line)
+    mOARUnitPopUp?.bind_selectedTag (self.rootObject.minValueForOARdisplayUnit_property, file: #file, line: #line)
+    mOARValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property, file: #file, line: #line)
+    mPHDUnitPopUp?.bind_selectedTag (self.rootObject.minValueForPHDdisplayUnit_property, file: #file, line: #line)
+    mPHDValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property, file: #file, line: #line)
+    mDrillDataFormatTabView?.bind_selectedFormat (self.rootObject.drillDataFormat_property, file: #file, line: #line)
+    mDrillDataFileExtensionTextField?.bind_value (self.rootObject.drillDataFileExtension_property, file: #file, line: #line, sendContinously:false)
+    mDrillListFileExtensionTextField?.bind_value (self.rootObject.drillListFileExtension_property, file: #file, line: #line, sendContinously:false)
+    mDrillToolListFileExtensionTextField?.bind_value (self.rootObject.drillToolListFileExtension_property, file: #file, line: #line, sendContinously:false)
+    mExtensionTextField?.bind_value (self.mDataSelection.fileExtension_property, file: #file, line: #line, sendContinously:false)
+    mDrawBoardLimitsSwitch?.bind_value (self.mDataSelection.drawBoardLimits_property, file: #file, line: #line)
+    mDrawComponentValuesTopSideSwitch?.bind_value (self.mDataSelection.drawComponentValuesTopSide_property, file: #file, line: #line)
+    mDrawComponentValuesBottomSideSwitch?.bind_value (self.mDataSelection.drawComponentValuesBottomSide_property, file: #file, line: #line)
+    mDrawComponentNamesTopSideSwitch?.bind_value (self.mDataSelection.drawComponentNamesTopSide_property, file: #file, line: #line)
+    mDrawComponentNamesBottomSideSwitch?.bind_value (self.mDataSelection.drawComponentNamesBottomSide_property, file: #file, line: #line)
+    mDrawPackageLegendTopSideSwitch?.bind_value (self.mDataSelection.drawPackageLegendTopSide_property, file: #file, line: #line)
+    mDrawPackageLegendBottomSideSwitch?.bind_value (self.mDataSelection.drawPackageLegendBottomSide_property, file: #file, line: #line)
+    mDrawPadHolesInPDFSwitch?.bind_value (self.mDataSelection.drawPadHolesInPDF_property, file: #file, line: #line)
+    mDrawPadsTopSideSwitch?.bind_value (self.mDataSelection.drawPadsTopSide_property, file: #file, line: #line)
+    mDrawPadsBottomSideSwitch?.bind_value (self.mDataSelection.drawPadsBottomSide_property, file: #file, line: #line)
+    mDrawTextsLayoutTopSideSwitch?.bind_value (self.mDataSelection.drawTextsLayoutTopSide_property, file: #file, line: #line)
+    mDrawTextsLayoutBottomSideSwitch?.bind_value (self.mDataSelection.drawTextsLayoutBottomSide_property, file: #file, line: #line)
+    mDrawTextsLegendTopSideSwitch?.bind_value (self.mDataSelection.drawTextsLegendTopSide_property, file: #file, line: #line)
+    mDrawTextsLegendBottomSideSwitch?.bind_value (self.mDataSelection.drawTextsLegendBottomSide_property, file: #file, line: #line)
+    mDrawTracksTopSideSwitch?.bind_value (self.mDataSelection.drawTracksTopSide_property, file: #file, line: #line)
+    mDrawTracksBottomSidSwitche?.bind_value (self.mDataSelection.drawTracksBottomSide_property, file: #file, line: #line)
+    mDrawViasSwitch?.bind_value (self.mDataSelection.drawVias_property, file: #file, line: #line)
+    mHorizontalMirrorSwitch?.bind_value (self.mDataSelection.horizontalMirror_property, file: #file, line: #line)
+    mMeasurementUnitForPadHoleInPDFPopUp?.bind_selectedTag (self.mDataSelection.measurementUnitForPadHoleInPDF_property, file: #file, line: #line)
+    mDimensionForPadHoleInPDFTextField?.bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF_property, self.mDataSelection.measurementUnitForPadHoleInPDF_property, file: #file, line: #line)
+    mGeneratedFileCountTextField?.bind_valueObserver (self.mGeneratedFileCountString_property, file: #file, line: #line)
+    mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
+    mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
+    mOtherSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
+    mVersionField?.bind_version (self.versionObserver_property, file: #file, line: #line)
+    mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
+    mVersionFieldInToolbar?.bind_version (self.versionObserver_property, file: #file, line: #line)
+    mVersionFieldInToolbar?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
+    mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
+    mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
   //--- Install multiple bindings
     mRemoveGenerationFileButton?.bind_enabled (
-      [self.mDataController.selectedArray.count],
+      [self.mDataController.selectedArray_property.count_property],
       computeFunction:{
-        return (self.mDataController.selectedArray.count.prop > EBSelection.single (0))
+        return (self.mDataController.selectedArray_property.count_property.prop > EBSelection.single (0))
       },
       file: #file, line: #line
     )
     mPadHoleDefinitionView?.bind_hidden (
-      [self.mDataSelection.drawPadHolesInPDF],
+      [self.mDataSelection.drawPadHolesInPDF_property],
       computeFunction:{
-        return !self.mDataSelection.drawPadHolesInPDF.prop
+        return !self.mDataSelection.drawPadHolesInPDF_property.prop
       },
       file: #file, line: #line
     )
@@ -731,19 +731,19 @@ import Cocoa
     mRemoveGenerationFileButton?.unbind_enabled ()
     mPadHoleDefinitionView?.unbind_hidden ()
   //--- Uninstall compute functions for transients
-    mGeneratedFileCountString.readModelFunction = nil
-    mStatusImage.readModelFunction = nil
-    mStatusMessage.readModelFunction = nil
+    self.mGeneratedFileCountString_property.readModelFunction = nil
+    self.mStatusImage_property.readModelFunction = nil
+    self.mStatusMessage_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     mDataController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers
     mDataSelection.unbind_selection ()
   //--- Uninstall property observers for transients
-    mDataController.sortedArray.count.removeEBObserver (mGeneratedFileCountString)
-    self.rootObject.fileGenerationParameterArray.removeEBObserverOf_fileExtension (mStatusImage)
-    self.rootObject.fileGenerationParameterArray.removeEBObserverOf_name (mStatusImage)
-    self.rootObject.fileGenerationParameterArray.removeEBObserverOf_fileExtension (mStatusMessage)
-    self.rootObject.fileGenerationParameterArray.removeEBObserverOf_name (mStatusMessage)
+    self.mDataController.sortedArray_property.count_property.removeEBObserver (self.mGeneratedFileCountString_property)
+    self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusMessage_property)
   //--------------------------- Remove targets / actions
     mAddGenerationFileButton?.target = nil
     mRemoveGenerationFileButton?.target = nil

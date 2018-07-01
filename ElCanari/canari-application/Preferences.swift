@@ -135,122 +135,1989 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mUseLibraryInUserApplicationSupportPathCheckBox : EBSwitch? = nil
   @IBOutlet var mWarningMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var selectionHilitePopupButton : EBPopUpButton? = nil
- 
+  //····················································································································
+  //   Accessing mergerHorizontalFlip stored property
+  //····················································································································
+
+  var mergerHorizontalFlip : Bool {
+    get {
+      return self.mergerHorizontalFlip_property.propval
+    }
+    set {
+      self.mergerHorizontalFlip_property.setProp (newValue)
+    }
+  }
+
+  var mergerHorizontalFlip_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerHorizontalFlip_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerVerticalFlip stored property
+  //····················································································································
+
+  var mergerVerticalFlip : Bool {
+    get {
+      return self.mergerVerticalFlip_property.propval
+    }
+    set {
+      self.mergerVerticalFlip_property.setProp (newValue)
+    }
+  }
+
+  var mergerVerticalFlip_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerVerticalFlip_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayHoles stored property
+  //····················································································································
+
+  var mergerDisplayHoles : Bool {
+    get {
+      return self.mergerDisplayHoles_property.propval
+    }
+    set {
+      self.mergerDisplayHoles_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayHoles_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayHoles_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayVias stored property
+  //····················································································································
+
+  var mergerDisplayVias : Bool {
+    get {
+      return self.mergerDisplayVias_property.propval
+    }
+    set {
+      self.mergerDisplayVias_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayVias_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayVias_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayFrontPads stored property
+  //····················································································································
+
+  var mergerDisplayFrontPads : Bool {
+    get {
+      return self.mergerDisplayFrontPads_property.propval
+    }
+    set {
+      self.mergerDisplayFrontPads_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayFrontPads_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayFrontPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayBoardLimits stored property
+  //····················································································································
+
+  var mergerDisplayBoardLimits : Bool {
+    get {
+      return self.mergerDisplayBoardLimits_property.propval
+    }
+    set {
+      self.mergerDisplayBoardLimits_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayBoardLimits_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayBoardLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayFrontComponentNames stored property
+  //····················································································································
+
+  var mergerDisplayFrontComponentNames : Bool {
+    get {
+      return self.mergerDisplayFrontComponentNames_property.propval
+    }
+    set {
+      self.mergerDisplayFrontComponentNames_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayFrontComponentNames_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayFrontComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayFrontComponentValues stored property
+  //····················································································································
+
+  var mergerDisplayFrontComponentValues : Bool {
+    get {
+      return self.mergerDisplayFrontComponentValues_property.propval
+    }
+    set {
+      self.mergerDisplayFrontComponentValues_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayFrontComponentValues_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayFrontComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayFrontPackages stored property
+  //····················································································································
+
+  var mergerDisplayFrontPackages : Bool {
+    get {
+      return self.mergerDisplayFrontPackages_property.propval
+    }
+    set {
+      self.mergerDisplayFrontPackages_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayFrontPackages_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayFrontPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayFrontLegendTexts stored property
+  //····················································································································
+
+  var mergerDisplayFrontLegendTexts : Bool {
+    get {
+      return self.mergerDisplayFrontLegendTexts_property.propval
+    }
+    set {
+      self.mergerDisplayFrontLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayFrontLegendTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayFrontLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayFrontLayoutTracks stored property
+  //····················································································································
+
+  var mergerDisplayFrontLayoutTracks : Bool {
+    get {
+      return self.mergerDisplayFrontLayoutTracks_property.propval
+    }
+    set {
+      self.mergerDisplayFrontLayoutTracks_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayFrontLayoutTracks_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayFrontLayoutTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayFrontLayoutTexts stored property
+  //····················································································································
+
+  var mergerDisplayFrontLayoutTexts : Bool {
+    get {
+      return self.mergerDisplayFrontLayoutTexts_property.propval
+    }
+    set {
+      self.mergerDisplayFrontLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayFrontLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayBackPads stored property
+  //····················································································································
+
+  var mergerDisplayBackPads : Bool {
+    get {
+      return self.mergerDisplayBackPads_property.propval
+    }
+    set {
+      self.mergerDisplayBackPads_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayBackPads_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayBackPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayBackComponentNames stored property
+  //····················································································································
+
+  var mergerDisplayBackComponentNames : Bool {
+    get {
+      return self.mergerDisplayBackComponentNames_property.propval
+    }
+    set {
+      self.mergerDisplayBackComponentNames_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayBackComponentNames_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayBackComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayBackComponentValues stored property
+  //····················································································································
+
+  var mergerDisplayBackComponentValues : Bool {
+    get {
+      return self.mergerDisplayBackComponentValues_property.propval
+    }
+    set {
+      self.mergerDisplayBackComponentValues_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayBackComponentValues_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayBackComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayBackLegendTexts stored property
+  //····················································································································
+
+  var mergerDisplayBackLegendTexts : Bool {
+    get {
+      return self.mergerDisplayBackLegendTexts_property.propval
+    }
+    set {
+      self.mergerDisplayBackLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayBackLegendTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayBackLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayBackPackages stored property
+  //····················································································································
+
+  var mergerDisplayBackPackages : Bool {
+    get {
+      return self.mergerDisplayBackPackages_property.propval
+    }
+    set {
+      self.mergerDisplayBackPackages_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayBackPackages_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayBackPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayBackLayoutTracks stored property
+  //····················································································································
+
+  var mergerDisplayBackLayoutTracks : Bool {
+    get {
+      return self.mergerDisplayBackLayoutTracks_property.propval
+    }
+    set {
+      self.mergerDisplayBackLayoutTracks_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayBackLayoutTracks_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayBackLayoutTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerDisplayBackLayoutTexts stored property
+  //····················································································································
+
+  var mergerDisplayBackLayoutTexts : Bool {
+    get {
+      return self.mergerDisplayBackLayoutTexts_property.propval
+    }
+    set {
+      self.mergerDisplayBackLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerDisplayBackLayoutTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerDisplayBackLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing errorMessageColor stored property
+  //····················································································································
+
+  var errorMessageColor : NSColor {
+    get {
+      return self.errorMessageColor_property.propval
+    }
+    set {
+      self.errorMessageColor_property.setProp (newValue)
+    }
+  }
+
+  var errorMessageColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.errorMessageColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing warningMessageColor stored property
+  //····················································································································
+
+  var warningMessageColor : NSColor {
+    get {
+      return self.warningMessageColor_property.propval
+    }
+    set {
+      self.warningMessageColor_property.setProp (newValue)
+    }
+  }
+
+  var warningMessageColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.warningMessageColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing successMessageColor stored property
+  //····················································································································
+
+  var successMessageColor : NSColor {
+    get {
+      return self.successMessageColor_property.propval
+    }
+    set {
+      self.successMessageColor_property.setProp (newValue)
+    }
+  }
+
+  var successMessageColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.successMessageColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing selectionHiliteColor stored property
+  //····················································································································
+
+  var selectionHiliteColor : NSColor {
+    get {
+      return self.selectionHiliteColor_property.propval
+    }
+    set {
+      self.selectionHiliteColor_property.setProp (newValue)
+    }
+  }
+
+  var selectionHiliteColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.selectionHiliteColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing hiliteWidthMultipliedByTen stored property
+  //····················································································································
+
+  var hiliteWidthMultipliedByTen : Int {
+    get {
+      return self.hiliteWidthMultipliedByTen_property.propval
+    }
+    set {
+      self.hiliteWidthMultipliedByTen_property.setProp (newValue)
+    }
+  }
+
+  var hiliteWidthMultipliedByTen_property_selection : EBSelection <Int> {
+    get {
+      return self.hiliteWidthMultipliedByTen_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing symbolColor stored property
+  //····················································································································
+
+  var symbolColor : NSColor {
+    get {
+      return self.symbolColor_property.propval
+    }
+    set {
+      self.symbolColor_property.setProp (newValue)
+    }
+  }
+
+  var symbolColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.symbolColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing dotColorOfSymbolGrid stored property
+  //····················································································································
+
+  var dotColorOfSymbolGrid : NSColor {
+    get {
+      return self.dotColorOfSymbolGrid_property.propval
+    }
+    set {
+      self.dotColorOfSymbolGrid_property.setProp (newValue)
+    }
+  }
+
+  var dotColorOfSymbolGrid_property_selection : EBSelection <NSColor> {
+    get {
+      return self.dotColorOfSymbolGrid_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing lineColorOfSymbolGrid stored property
+  //····················································································································
+
+  var lineColorOfSymbolGrid : NSColor {
+    get {
+      return self.lineColorOfSymbolGrid_property.propval
+    }
+    set {
+      self.lineColorOfSymbolGrid_property.setProp (newValue)
+    }
+  }
+
+  var lineColorOfSymbolGrid_property_selection : EBSelection <NSColor> {
+    get {
+      return self.lineColorOfSymbolGrid_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing symbolBackgroundColor stored property
+  //····················································································································
+
+  var symbolBackgroundColor : NSColor {
+    get {
+      return self.symbolBackgroundColor_property.propval
+    }
+    set {
+      self.symbolBackgroundColor_property.setProp (newValue)
+    }
+  }
+
+  var symbolBackgroundColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.symbolBackgroundColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing symbolDrawingWidthMultipliedByTen stored property
+  //····················································································································
+
+  var symbolDrawingWidthMultipliedByTen : Int {
+    get {
+      return self.symbolDrawingWidthMultipliedByTen_property.propval
+    }
+    set {
+      self.symbolDrawingWidthMultipliedByTen_property.setProp (newValue)
+    }
+  }
+
+  var symbolDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> {
+    get {
+      return self.symbolDrawingWidthMultipliedByTen_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing pinNameFont stored property
+  //····················································································································
+
+  var pinNameFont : NSFont {
+    get {
+      return self.pinNameFont_property.propval
+    }
+    set {
+      self.pinNameFont_property.setProp (newValue)
+    }
+  }
+
+  var pinNameFont_property_selection : EBSelection <NSFont> {
+    get {
+      return self.pinNameFont_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing dotColorOfPackageGrid stored property
+  //····················································································································
+
+  var dotColorOfPackageGrid : NSColor {
+    get {
+      return self.dotColorOfPackageGrid_property.propval
+    }
+    set {
+      self.dotColorOfPackageGrid_property.setProp (newValue)
+    }
+  }
+
+  var dotColorOfPackageGrid_property_selection : EBSelection <NSColor> {
+    get {
+      return self.dotColorOfPackageGrid_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing lineColorOfPackageGrid stored property
+  //····················································································································
+
+  var lineColorOfPackageGrid : NSColor {
+    get {
+      return self.lineColorOfPackageGrid_property.propval
+    }
+    set {
+      self.lineColorOfPackageGrid_property.setProp (newValue)
+    }
+  }
+
+  var lineColorOfPackageGrid_property_selection : EBSelection <NSColor> {
+    get {
+      return self.lineColorOfPackageGrid_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing packageBackgroundColor stored property
+  //····················································································································
+
+  var packageBackgroundColor : NSColor {
+    get {
+      return self.packageBackgroundColor_property.propval
+    }
+    set {
+      self.packageBackgroundColor_property.setProp (newValue)
+    }
+  }
+
+  var packageBackgroundColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.packageBackgroundColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing packageColor stored property
+  //····················································································································
+
+  var packageColor : NSColor {
+    get {
+      return self.packageColor_property.propval
+    }
+    set {
+      self.packageColor_property.setProp (newValue)
+    }
+  }
+
+  var packageColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.packageColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing topSidePadColor stored property
+  //····················································································································
+
+  var topSidePadColor : NSColor {
+    get {
+      return self.topSidePadColor_property.propval
+    }
+    set {
+      self.topSidePadColor_property.setProp (newValue)
+    }
+  }
+
+  var topSidePadColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.topSidePadColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing bottomSidePadColor stored property
+  //····················································································································
+
+  var bottomSidePadColor : NSColor {
+    get {
+      return self.bottomSidePadColor_property.propval
+    }
+    set {
+      self.bottomSidePadColor_property.setProp (newValue)
+    }
+  }
+
+  var bottomSidePadColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.bottomSidePadColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing padNumberColor stored property
+  //····················································································································
+
+  var padNumberColor : NSColor {
+    get {
+      return self.padNumberColor_property.propval
+    }
+    set {
+      self.padNumberColor_property.setProp (newValue)
+    }
+  }
+
+  var padNumberColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.padNumberColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing padNumberFont stored property
+  //····················································································································
+
+  var padNumberFont : NSFont {
+    get {
+      return self.padNumberFont_property.propval
+    }
+    set {
+      self.padNumberFont_property.setProp (newValue)
+    }
+  }
+
+  var padNumberFont_property_selection : EBSelection <NSFont> {
+    get {
+      return self.padNumberFont_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing packageGuideColor stored property
+  //····················································································································
+
+  var packageGuideColor : NSColor {
+    get {
+      return self.packageGuideColor_property.propval
+    }
+    set {
+      self.packageGuideColor_property.setProp (newValue)
+    }
+  }
+
+  var packageGuideColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.packageGuideColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing packageDimensionColor stored property
+  //····················································································································
+
+  var packageDimensionColor : NSColor {
+    get {
+      return self.packageDimensionColor_property.propval
+    }
+    set {
+      self.packageDimensionColor_property.setProp (newValue)
+    }
+  }
+
+  var packageDimensionColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.packageDimensionColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing dimensionFont stored property
+  //····················································································································
+
+  var dimensionFont : NSFont {
+    get {
+      return self.dimensionFont_property.propval
+    }
+    set {
+      self.dimensionFont_property.setProp (newValue)
+    }
+  }
+
+  var dimensionFont_property_selection : EBSelection <NSFont> {
+    get {
+      return self.dimensionFont_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing padZoneColor stored property
+  //····················································································································
+
+  var padZoneColor : NSColor {
+    get {
+      return self.padZoneColor_property.propval
+    }
+    set {
+      self.padZoneColor_property.setProp (newValue)
+    }
+  }
+
+  var padZoneColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.padZoneColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing packageDrawingWidthMultipliedByTen stored property
+  //····················································································································
+
+  var packageDrawingWidthMultipliedByTen : Int {
+    get {
+      return self.packageDrawingWidthMultipliedByTen_property.propval
+    }
+    set {
+      self.packageDrawingWidthMultipliedByTen_property.setProp (newValue)
+    }
+  }
+
+  var packageDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> {
+    get {
+      return self.packageDrawingWidthMultipliedByTen_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mSymbolAndPackageGridDotColorForDevice stored property
+  //····················································································································
+
+  var mSymbolAndPackageGridDotColorForDevice : NSColor {
+    get {
+      return self.mSymbolAndPackageGridDotColorForDevice_property.propval
+    }
+    set {
+      self.mSymbolAndPackageGridDotColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mSymbolAndPackageGridDotColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mSymbolAndPackageGridDotColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mSymbolAndPackageGridLineColorForDevice stored property
+  //····················································································································
+
+  var mSymbolAndPackageGridLineColorForDevice : NSColor {
+    get {
+      return self.mSymbolAndPackageGridLineColorForDevice_property.propval
+    }
+    set {
+      self.mSymbolAndPackageGridLineColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mSymbolAndPackageGridLineColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mSymbolAndPackageGridLineColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mSymbolAndPackageBackgroundColorForDevice stored property
+  //····················································································································
+
+  var mSymbolAndPackageBackgroundColorForDevice : NSColor {
+    get {
+      return self.mSymbolAndPackageBackgroundColorForDevice_property.propval
+    }
+    set {
+      self.mSymbolAndPackageBackgroundColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mSymbolAndPackageBackgroundColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mSymbolAndPackageBackgroundColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mPackageColorForDevice stored property
+  //····················································································································
+
+  var mPackageColorForDevice : NSColor {
+    get {
+      return self.mPackageColorForDevice_property.propval
+    }
+    set {
+      self.mPackageColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mPackageColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mPackageColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mTopSidePadColorForDevice stored property
+  //····················································································································
+
+  var mTopSidePadColorForDevice : NSColor {
+    get {
+      return self.mTopSidePadColorForDevice_property.propval
+    }
+    set {
+      self.mTopSidePadColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mTopSidePadColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mTopSidePadColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mBottomSidePadColorForDevice stored property
+  //····················································································································
+
+  var mBottomSidePadColorForDevice : NSColor {
+    get {
+      return self.mBottomSidePadColorForDevice_property.propval
+    }
+    set {
+      self.mBottomSidePadColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mBottomSidePadColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mBottomSidePadColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mPadNumberColorForDevice stored property
+  //····················································································································
+
+  var mPadNumberColorForDevice : NSColor {
+    get {
+      return self.mPadNumberColorForDevice_property.propval
+    }
+    set {
+      self.mPadNumberColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mPadNumberColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mPadNumberColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mPackageNameFontForDevice stored property
+  //····················································································································
+
+  var mPackageNameFontForDevice : NSFont {
+    get {
+      return self.mPackageNameFontForDevice_property.propval
+    }
+    set {
+      self.mPackageNameFontForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mPackageNameFontForDevice_property_selection : EBSelection <NSFont> {
+    get {
+      return self.mPackageNameFontForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mPadNumberFontForDevice stored property
+  //····················································································································
+
+  var mPadNumberFontForDevice : NSFont {
+    get {
+      return self.mPadNumberFontForDevice_property.propval
+    }
+    set {
+      self.mPadNumberFontForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mPadNumberFontForDevice_property_selection : EBSelection <NSFont> {
+    get {
+      return self.mPadNumberFontForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mSymbolColorForDevice stored property
+  //····················································································································
+
+  var mSymbolColorForDevice : NSColor {
+    get {
+      return self.mSymbolColorForDevice_property.propval
+    }
+    set {
+      self.mSymbolColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mSymbolColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mSymbolColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mSymbolNameFontForDevice stored property
+  //····················································································································
+
+  var mSymbolNameFontForDevice : NSFont {
+    get {
+      return self.mSymbolNameFontForDevice_property.propval
+    }
+    set {
+      self.mSymbolNameFontForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mSymbolNameFontForDevice_property_selection : EBSelection <NSFont> {
+    get {
+      return self.mSymbolNameFontForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mPinNameFontForDevice stored property
+  //····················································································································
+
+  var mPinNameFontForDevice : NSFont {
+    get {
+      return self.mPinNameFontForDevice_property.propval
+    }
+    set {
+      self.mPinNameFontForDevice_property.setProp (newValue)
+    }
+  }
+
+  var mPinNameFontForDevice_property_selection : EBSelection <NSFont> {
+    get {
+      return self.mPinNameFontForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing symbolDrawingWidthForDeviceMultipliedByTen stored property
+  //····················································································································
+
+  var symbolDrawingWidthForDeviceMultipliedByTen : Int {
+    get {
+      return self.symbolDrawingWidthForDeviceMultipliedByTen_property.propval
+    }
+    set {
+      self.symbolDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue)
+    }
+  }
+
+  var symbolDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> {
+    get {
+      return self.symbolDrawingWidthForDeviceMultipliedByTen_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing packageDrawingWidthForDeviceMultipliedByTen stored property
+  //····················································································································
+
+  var packageDrawingWidthForDeviceMultipliedByTen : Int {
+    get {
+      return self.packageDrawingWidthForDeviceMultipliedByTen_property.propval
+    }
+    set {
+      self.packageDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue)
+    }
+  }
+
+  var packageDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> {
+    get {
+      return self.packageDrawingWidthForDeviceMultipliedByTen_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing dotColorGridForSchematic stored property
+  //····················································································································
+
+  var dotColorGridForSchematic : NSColor {
+    get {
+      return self.dotColorGridForSchematic_property.propval
+    }
+    set {
+      self.dotColorGridForSchematic_property.setProp (newValue)
+    }
+  }
+
+  var dotColorGridForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.dotColorGridForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing lineColorGridForSchematic stored property
+  //····················································································································
+
+  var lineColorGridForSchematic : NSColor {
+    get {
+      return self.lineColorGridForSchematic_property.propval
+    }
+    set {
+      self.lineColorGridForSchematic_property.setProp (newValue)
+    }
+  }
+
+  var lineColorGridForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.lineColorGridForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing symbolColorForUnplacedComponentsForSchematic stored property
+  //····················································································································
+
+  var symbolColorForUnplacedComponentsForSchematic : NSColor {
+    get {
+      return self.symbolColorForUnplacedComponentsForSchematic_property.propval
+    }
+    set {
+      self.symbolColorForUnplacedComponentsForSchematic_property.setProp (newValue)
+    }
+  }
+
+  var symbolColorForUnplacedComponentsForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.symbolColorForUnplacedComponentsForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing symbolColorForSchematic stored property
+  //····················································································································
+
+  var symbolColorForSchematic : NSColor {
+    get {
+      return self.symbolColorForSchematic_property.propval
+    }
+    set {
+      self.symbolColorForSchematic_property.setProp (newValue)
+    }
+  }
+
+  var symbolColorForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.symbolColorForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing pinNameFontForSchematic stored property
+  //····················································································································
+
+  var pinNameFontForSchematic : NSFont {
+    get {
+      return self.pinNameFontForSchematic_property.propval
+    }
+    set {
+      self.pinNameFontForSchematic_property.setProp (newValue)
+    }
+  }
+
+  var pinNameFontForSchematic_property_selection : EBSelection <NSFont> {
+    get {
+      return self.pinNameFontForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing pinNameColorForSchematic stored property
+  //····················································································································
+
+  var pinNameColorForSchematic : NSColor {
+    get {
+      return self.pinNameColorForSchematic_property.propval
+    }
+    set {
+      self.pinNameColorForSchematic_property.setProp (newValue)
+    }
+  }
+
+  var pinNameColorForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.pinNameColorForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing pinNumberFontForSchematic stored property
+  //····················································································································
+
+  var pinNumberFontForSchematic : NSFont {
+    get {
+      return self.pinNumberFontForSchematic_property.propval
+    }
+    set {
+      self.pinNumberFontForSchematic_property.setProp (newValue)
+    }
+  }
+
+  var pinNumberFontForSchematic_property_selection : EBSelection <NSFont> {
+    get {
+      return self.pinNumberFontForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing pinNumberColorForSchematic stored property
+  //····················································································································
+
+  var pinNumberColorForSchematic : NSColor {
+    get {
+      return self.pinNumberColorForSchematic_property.propval
+    }
+    set {
+      self.pinNumberColorForSchematic_property.setProp (newValue)
+    }
+  }
+
+  var pinNumberColorForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.pinNumberColorForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing connectionColorForSchematic stored property
+  //····················································································································
+
+  var connectionColorForSchematic : NSColor {
+    get {
+      return self.connectionColorForSchematic_property.propval
+    }
+    set {
+      self.connectionColorForSchematic_property.setProp (newValue)
+    }
+  }
+
+  var connectionColorForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.connectionColorForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing symbolDrawingWidthMultipliedByTenForSchematic stored property
+  //····················································································································
+
+  var symbolDrawingWidthMultipliedByTenForSchematic : Int {
+    get {
+      return self.symbolDrawingWidthMultipliedByTenForSchematic_property.propval
+    }
+    set {
+      self.symbolDrawingWidthMultipliedByTenForSchematic_property.setProp (newValue)
+    }
+  }
+
+  var symbolDrawingWidthMultipliedByTenForSchematic_property_selection : EBSelection <Int> {
+    get {
+      return self.symbolDrawingWidthMultipliedByTenForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing dotColorGridForBoard stored property
+  //····················································································································
+
+  var dotColorGridForBoard : NSColor {
+    get {
+      return self.dotColorGridForBoard_property.propval
+    }
+    set {
+      self.dotColorGridForBoard_property.setProp (newValue)
+    }
+  }
+
+  var dotColorGridForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.dotColorGridForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing lineColorGridForBoard stored property
+  //····················································································································
+
+  var lineColorGridForBoard : NSColor {
+    get {
+      return self.lineColorGridForBoard_property.propval
+    }
+    set {
+      self.lineColorGridForBoard_property.setProp (newValue)
+    }
+  }
+
+  var lineColorGridForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.lineColorGridForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardBackgroundColorForBoard stored property
+  //····················································································································
+
+  var boardBackgroundColorForBoard : NSColor {
+    get {
+      return self.boardBackgroundColorForBoard_property.propval
+    }
+    set {
+      self.boardBackgroundColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var boardBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.boardBackgroundColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing errorBackgroundColorForBoard stored property
+  //····················································································································
+
+  var errorBackgroundColorForBoard : NSColor {
+    get {
+      return self.errorBackgroundColorForBoard_property.propval
+    }
+    set {
+      self.errorBackgroundColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var errorBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.errorBackgroundColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing drawErrorBackgroundForBoard stored property
+  //····················································································································
+
+  var drawErrorBackgroundForBoard : Bool {
+    get {
+      return self.drawErrorBackgroundForBoard_property.propval
+    }
+    set {
+      self.drawErrorBackgroundForBoard_property.setProp (newValue)
+    }
+  }
+
+  var drawErrorBackgroundForBoard_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawErrorBackgroundForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing warningBackgroundColorForBoard stored property
+  //····················································································································
+
+  var warningBackgroundColorForBoard : NSColor {
+    get {
+      return self.warningBackgroundColorForBoard_property.propval
+    }
+    set {
+      self.warningBackgroundColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var warningBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.warningBackgroundColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing drawEWarningBackgroundForBoard stored property
+  //····················································································································
+
+  var drawEWarningBackgroundForBoard : Bool {
+    get {
+      return self.drawEWarningBackgroundForBoard_property.propval
+    }
+    set {
+      self.drawEWarningBackgroundForBoard_property.setProp (newValue)
+    }
+  }
+
+  var drawEWarningBackgroundForBoard_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawEWarningBackgroundForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardLimitsColorForBoard stored property
+  //····················································································································
+
+  var boardLimitsColorForBoard : NSColor {
+    get {
+      return self.boardLimitsColorForBoard_property.propval
+    }
+    set {
+      self.boardLimitsColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var boardLimitsColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.boardLimitsColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardClearanceColorForBoard stored property
+  //····················································································································
+
+  var boardClearanceColorForBoard : NSColor {
+    get {
+      return self.boardClearanceColorForBoard_property.propval
+    }
+    set {
+      self.boardClearanceColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var boardClearanceColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.boardClearanceColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing topSideRestrictRectangleColorForBoard stored property
+  //····················································································································
+
+  var topSideRestrictRectangleColorForBoard : NSColor {
+    get {
+      return self.topSideRestrictRectangleColorForBoard_property.propval
+    }
+    set {
+      self.topSideRestrictRectangleColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var topSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.topSideRestrictRectangleColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing bottomSideRestrictRectangleColorForBoard stored property
+  //····················································································································
+
+  var bottomSideRestrictRectangleColorForBoard : NSColor {
+    get {
+      return self.bottomSideRestrictRectangleColorForBoard_property.propval
+    }
+    set {
+      self.bottomSideRestrictRectangleColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var bottomSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.bottomSideRestrictRectangleColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing topSideLegendColorForBoard stored property
+  //····················································································································
+
+  var topSideLegendColorForBoard : NSColor {
+    get {
+      return self.topSideLegendColorForBoard_property.propval
+    }
+    set {
+      self.topSideLegendColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var topSideLegendColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.topSideLegendColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing topSideLayoutColorForBoard stored property
+  //····················································································································
+
+  var topSideLayoutColorForBoard : NSColor {
+    get {
+      return self.topSideLayoutColorForBoard_property.propval
+    }
+    set {
+      self.topSideLayoutColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var topSideLayoutColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.topSideLayoutColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing bottomSideLayoutColorForBoard stored property
+  //····················································································································
+
+  var bottomSideLayoutColorForBoard : NSColor {
+    get {
+      return self.bottomSideLayoutColorForBoard_property.propval
+    }
+    set {
+      self.bottomSideLayoutColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var bottomSideLayoutColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.bottomSideLayoutColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing bottomSideLegendColorForBoard stored property
+  //····················································································································
+
+  var bottomSideLegendColorForBoard : NSColor {
+    get {
+      return self.bottomSideLegendColorForBoard_property.propval
+    }
+    set {
+      self.bottomSideLegendColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var bottomSideLegendColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.bottomSideLegendColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing topSidePadColorForBoard stored property
+  //····················································································································
+
+  var topSidePadColorForBoard : NSColor {
+    get {
+      return self.topSidePadColorForBoard_property.propval
+    }
+    set {
+      self.topSidePadColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var topSidePadColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.topSidePadColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing bottomSidePadColorForBoard stored property
+  //····················································································································
+
+  var bottomSidePadColorForBoard : NSColor {
+    get {
+      return self.bottomSidePadColorForBoard_property.propval
+    }
+    set {
+      self.bottomSidePadColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var bottomSidePadColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.bottomSidePadColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing padNumberFontForBoard stored property
+  //····················································································································
+
+  var padNumberFontForBoard : NSFont {
+    get {
+      return self.padNumberFontForBoard_property.propval
+    }
+    set {
+      self.padNumberFontForBoard_property.setProp (newValue)
+    }
+  }
+
+  var padNumberFontForBoard_property_selection : EBSelection <NSFont> {
+    get {
+      return self.padNumberFontForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing padNumberColorForBoard stored property
+  //····················································································································
+
+  var padNumberColorForBoard : NSColor {
+    get {
+      return self.padNumberColorForBoard_property.propval
+    }
+    set {
+      self.padNumberColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  var padNumberColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.padNumberColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing packageDrawingWidthMultpliedByTenForBoard stored property
+  //····················································································································
+
+  var packageDrawingWidthMultpliedByTenForBoard : Int {
+    get {
+      return self.packageDrawingWidthMultpliedByTenForBoard_property.propval
+    }
+    set {
+      self.packageDrawingWidthMultpliedByTenForBoard_property.setProp (newValue)
+    }
+  }
+
+  var packageDrawingWidthMultpliedByTenForBoard_property_selection : EBSelection <Int> {
+    get {
+      return self.packageDrawingWidthMultpliedByTenForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing sampleString stored property
+  //····················································································································
+
+  var sampleString : String {
+    get {
+      return self.sampleString_property.propval
+    }
+    set {
+      self.sampleString_property.setProp (newValue)
+    }
+  }
+
+  var sampleString_property_selection : EBSelection <String> {
+    get {
+      return self.sampleString_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing sampleStringSize stored property
+  //····················································································································
+
+  var sampleStringSize : Double {
+    get {
+      return self.sampleStringSize_property.propval
+    }
+    set {
+      self.sampleStringSize_property.setProp (newValue)
+    }
+  }
+
+  var sampleStringSize_property_selection : EBSelection <Double> {
+    get {
+      return self.sampleStringSize_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing showGerberDrawingFlow stored property
+  //····················································································································
+
+  var showGerberDrawingFlow : Bool {
+    get {
+      return self.showGerberDrawingFlow_property.propval
+    }
+    set {
+      self.showGerberDrawingFlow_property.setProp (newValue)
+    }
+  }
+
+  var showGerberDrawingFlow_property_selection : EBSelection <Bool> {
+    get {
+      return self.showGerberDrawingFlow_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing showGerberDrawingIndexes stored property
+  //····················································································································
+
+  var showGerberDrawingIndexes : Bool {
+    get {
+      return self.showGerberDrawingIndexes_property.propval
+    }
+    set {
+      self.showGerberDrawingIndexes_property.setProp (newValue)
+    }
+  }
+
+  var showGerberDrawingIndexes_property_selection : EBSelection <Bool> {
+    get {
+      return self.showGerberDrawingIndexes_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing currentCharacterCodePoint stored property
+  //····················································································································
+
+  var currentCharacterCodePoint : Int {
+    get {
+      return self.currentCharacterCodePoint_property.propval
+    }
+    set {
+      self.currentCharacterCodePoint_property.setProp (newValue)
+    }
+  }
+
+  var currentCharacterCodePoint_property_selection : EBSelection <Int> {
+    get {
+      return self.currentCharacterCodePoint_property.prop
+    }
+  }
+  func currentCharacterCodePoint_validateAndSetProp (_ inCandidateValue : Int, windowForSheet inWindow:NSWindow?) -> Bool {
+    return self.currentCharacterCodePoint_property.validateAndSetProp (inCandidateValue, windowForSheet:inWindow)
+  }
+
+  //····················································································································
+  //   Accessing fontEditionTransparency stored property
+  //····················································································································
+
+  var fontEditionTransparency : Double {
+    get {
+      return self.fontEditionTransparency_property.propval
+    }
+    set {
+      self.fontEditionTransparency_property.setProp (newValue)
+    }
+  }
+
+  var fontEditionTransparency_property_selection : EBSelection <Double> {
+    get {
+      return self.fontEditionTransparency_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing usesUserLibrary stored property
+  //····················································································································
+
+  var usesUserLibrary : Bool {
+    get {
+      return self.usesUserLibrary_property.propval
+    }
+    set {
+      self.usesUserLibrary_property.setProp (newValue)
+    }
+  }
+
+  var usesUserLibrary_property_selection : EBSelection <Bool> {
+    get {
+      return self.usesUserLibrary_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing checkForSystemLibraryAtStartUp stored property
+  //····················································································································
+
+  var checkForSystemLibraryAtStartUp : Bool {
+    get {
+      return self.checkForSystemLibraryAtStartUp_property.propval
+    }
+    set {
+      self.checkForSystemLibraryAtStartUp_property.setProp (newValue)
+    }
+  }
+
+  var checkForSystemLibraryAtStartUp_property_selection : EBSelection <Bool> {
+    get {
+      return self.checkForSystemLibraryAtStartUp_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mValueRevealInFinder_symbols transient property
+  //····················································································································
+
+  var mValueRevealInFinder_symbols_property_selection : EBSelection <CanariMenuItemListClass> {
+    get {
+      return self.mValueRevealInFinder_symbols_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mValueRevealInFinder_packages transient property
+  //····················································································································
+
+  var mValueRevealInFinder_packages_property_selection : EBSelection <CanariMenuItemListClass> {
+    get {
+      return self.mValueRevealInFinder_packages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mValueRevealInFinder_devices transient property
+  //····················································································································
+
+  var mValueRevealInFinder_devices_property_selection : EBSelection <CanariMenuItemListClass> {
+    get {
+      return self.mValueRevealInFinder_devices_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mValueRevealInFinder_fonts transient property
+  //····················································································································
+
+  var mValueRevealInFinder_fonts_property_selection : EBSelection <CanariMenuItemListClass> {
+    get {
+      return self.mValueRevealInFinder_fonts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mValueRevealInFinder_artworks transient property
+  //····················································································································
+
+  var mValueRevealInFinder_artworks_property_selection : EBSelection <CanariMenuItemListClass> {
+    get {
+      return self.mValueRevealInFinder_artworks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing additionnalLibraryArray stored array properties
+  //····················································································································
+
+  var additionnalLibraryArray_property_selection : EBSelection < [CanariLibraryEntry] > {
+    get {
+      return self.additionnalLibraryArray_property.prop
+    }
+  }
+
   //····················································································································
   //    Simple Stored Properties
   //····················································································································
 
-  var mergerHorizontalFlip = EBStoredProperty_Bool (false)
-  var mergerVerticalFlip = EBStoredProperty_Bool (false)
-  var mergerDisplayHoles = EBStoredProperty_Bool (true)
-  var mergerDisplayVias = EBStoredProperty_Bool (true)
-  var mergerDisplayFrontPads = EBStoredProperty_Bool (true)
-  var mergerDisplayBoardLimits = EBStoredProperty_Bool (true)
-  var mergerDisplayFrontComponentNames = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontComponentValues = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontPackages = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontLegendTexts = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontLayoutTracks = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontLayoutTexts = EBStoredProperty_Bool (false)
-  var mergerDisplayBackPads = EBStoredProperty_Bool (true)
-  var mergerDisplayBackComponentNames = EBStoredProperty_Bool (false)
-  var mergerDisplayBackComponentValues = EBStoredProperty_Bool (false)
-  var mergerDisplayBackLegendTexts = EBStoredProperty_Bool (false)
-  var mergerDisplayBackPackages = EBStoredProperty_Bool (false)
-  var mergerDisplayBackLayoutTracks = EBStoredProperty_Bool (false)
-  var mergerDisplayBackLayoutTexts = EBStoredProperty_Bool (false)
-  var errorMessageColor = EBStoredProperty_NSColor (NSColor.red)
-  var warningMessageColor = EBStoredProperty_NSColor (NSColor.orange)
-  var successMessageColor = EBStoredProperty_NSColor (NSColor.blue)
-  var selectionHiliteColor = EBStoredProperty_NSColor (NSColor.cyan)
-  var hiliteWidthMultipliedByTen = EBStoredProperty_Int (15)
-  var symbolColor = EBStoredProperty_NSColor (NSColor.brown)
-  var dotColorOfSymbolGrid = EBStoredProperty_NSColor (NSColor.black)
-  var lineColorOfSymbolGrid = EBStoredProperty_NSColor (NSColor.gray)
-  var symbolBackgroundColor = EBStoredProperty_NSColor (NSColor.white)
-  var symbolDrawingWidthMultipliedByTen = EBStoredProperty_Int (5)
-  var pinNameFont = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0))
-  var dotColorOfPackageGrid = EBStoredProperty_NSColor (NSColor.white)
-  var lineColorOfPackageGrid = EBStoredProperty_NSColor (NSColor.gray)
-  var packageBackgroundColor = EBStoredProperty_NSColor (NSColor.black)
-  var packageColor = EBStoredProperty_NSColor (NSColor.brown)
-  var topSidePadColor = EBStoredProperty_NSColor (NSColor.blue)
-  var bottomSidePadColor = EBStoredProperty_NSColor (NSColor.green)
-  var padNumberColor = EBStoredProperty_NSColor (NSColor.red)
-  var padNumberFont = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 3.0))
-  var packageGuideColor = EBStoredProperty_NSColor (NSColor.yellow)
-  var packageDimensionColor = EBStoredProperty_NSColor (NSColor.orange)
-  var dimensionFont = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 2.0))
-  var padZoneColor = EBStoredProperty_NSColor (NSColor.magenta)
-  var packageDrawingWidthMultipliedByTen = EBStoredProperty_Int (15)
-  var mSymbolAndPackageGridDotColorForDevice = EBStoredProperty_NSColor (NSColor.black)
-  var mSymbolAndPackageGridLineColorForDevice = EBStoredProperty_NSColor (NSColor.gray)
-  var mSymbolAndPackageBackgroundColorForDevice = EBStoredProperty_NSColor (NSColor.white)
-  var mPackageColorForDevice = EBStoredProperty_NSColor (NSColor.brown)
-  var mTopSidePadColorForDevice = EBStoredProperty_NSColor (NSColor.blue)
-  var mBottomSidePadColorForDevice = EBStoredProperty_NSColor (NSColor.green)
-  var mPadNumberColorForDevice = EBStoredProperty_NSColor (NSColor.red)
-  var mPackageNameFontForDevice = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 9.0))
-  var mPadNumberFontForDevice = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 5.0))
-  var mSymbolColorForDevice = EBStoredProperty_NSColor (NSColor.brown)
-  var mSymbolNameFontForDevice = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 9.0))
-  var mPinNameFontForDevice = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0))
-  var symbolDrawingWidthForDeviceMultipliedByTen = EBStoredProperty_Int (15)
-  var packageDrawingWidthForDeviceMultipliedByTen = EBStoredProperty_Int (15)
-  var dotColorGridForSchematic = EBStoredProperty_NSColor (NSColor.black)
-  var lineColorGridForSchematic = EBStoredProperty_NSColor (NSColor.gray)
-  var symbolColorForUnplacedComponentsForSchematic = EBStoredProperty_NSColor (NSColor.darkGray)
-  var symbolColorForSchematic = EBStoredProperty_NSColor (NSColor.brown)
-  var pinNameFontForSchematic = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0))
-  var pinNameColorForSchematic = EBStoredProperty_NSColor (NSColor.brown)
-  var pinNumberFontForSchematic = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0))
-  var pinNumberColorForSchematic = EBStoredProperty_NSColor (NSColor.darkGray)
-  var connectionColorForSchematic = EBStoredProperty_NSColor (NSColor.black)
-  var symbolDrawingWidthMultipliedByTenForSchematic = EBStoredProperty_Int (5)
-  var dotColorGridForBoard = EBStoredProperty_NSColor (NSColor.black)
-  var lineColorGridForBoard = EBStoredProperty_NSColor (NSColor.gray)
-  var boardBackgroundColorForBoard = EBStoredProperty_NSColor (NSColor.black)
-  var errorBackgroundColorForBoard = EBStoredProperty_NSColor (NSColor.red)
-  var drawErrorBackgroundForBoard = EBStoredProperty_Bool (true)
-  var warningBackgroundColorForBoard = EBStoredProperty_NSColor (NSColor.orange)
-  var drawEWarningBackgroundForBoard = EBStoredProperty_Bool (true)
-  var boardLimitsColorForBoard = EBStoredProperty_NSColor (NSColor.brown)
-  var boardClearanceColorForBoard = EBStoredProperty_NSColor (NSColor.yellow)
-  var topSideRestrictRectangleColorForBoard = EBStoredProperty_NSColor (NSColor.blue)
-  var bottomSideRestrictRectangleColorForBoard = EBStoredProperty_NSColor (NSColor.green)
-  var topSideLegendColorForBoard = EBStoredProperty_NSColor (NSColor.brown)
-  var topSideLayoutColorForBoard = EBStoredProperty_NSColor (NSColor.blue)
-  var bottomSideLayoutColorForBoard = EBStoredProperty_NSColor (NSColor.green)
-  var bottomSideLegendColorForBoard = EBStoredProperty_NSColor (NSColor.white)
-  var topSidePadColorForBoard = EBStoredProperty_NSColor (NSColor.blue)
-  var bottomSidePadColorForBoard = EBStoredProperty_NSColor (NSColor.green)
-  var padNumberFontForBoard = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 3.0))
-  var padNumberColorForBoard = EBStoredProperty_NSColor (NSColor.red)
-  var packageDrawingWidthMultpliedByTenForBoard = EBStoredProperty_Int (5)
-  var sampleString = EBStoredProperty_String ("The quick brown fox jumps over the lazy dog")
-  var sampleStringSize = EBStoredProperty_Double (24)
-  var showGerberDrawingFlow = EBStoredProperty_Bool (true)
-  var showGerberDrawingIndexes = EBStoredProperty_Bool (true)
-  var currentCharacterCodePoint = EBStoredProperty_Int (65)
-  var fontEditionTransparency = EBStoredProperty_Double (0.5)
-  var usesUserLibrary = EBStoredProperty_Bool (true)
-  var checkForSystemLibraryAtStartUp = EBStoredProperty_Bool (true)
+  var mergerHorizontalFlip_property = EBStoredProperty_Bool (false)
+  var mergerVerticalFlip_property = EBStoredProperty_Bool (false)
+  var mergerDisplayHoles_property = EBStoredProperty_Bool (true)
+  var mergerDisplayVias_property = EBStoredProperty_Bool (true)
+  var mergerDisplayFrontPads_property = EBStoredProperty_Bool (true)
+  var mergerDisplayBoardLimits_property = EBStoredProperty_Bool (true)
+  var mergerDisplayFrontComponentNames_property = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontComponentValues_property = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontPackages_property = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontLegendTexts_property = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontLayoutTracks_property = EBStoredProperty_Bool (false)
+  var mergerDisplayFrontLayoutTexts_property = EBStoredProperty_Bool (false)
+  var mergerDisplayBackPads_property = EBStoredProperty_Bool (true)
+  var mergerDisplayBackComponentNames_property = EBStoredProperty_Bool (false)
+  var mergerDisplayBackComponentValues_property = EBStoredProperty_Bool (false)
+  var mergerDisplayBackLegendTexts_property = EBStoredProperty_Bool (false)
+  var mergerDisplayBackPackages_property = EBStoredProperty_Bool (false)
+  var mergerDisplayBackLayoutTracks_property = EBStoredProperty_Bool (false)
+  var mergerDisplayBackLayoutTexts_property = EBStoredProperty_Bool (false)
+  var errorMessageColor_property = EBStoredProperty_NSColor (NSColor.red)
+  var warningMessageColor_property = EBStoredProperty_NSColor (NSColor.orange)
+  var successMessageColor_property = EBStoredProperty_NSColor (NSColor.blue)
+  var selectionHiliteColor_property = EBStoredProperty_NSColor (NSColor.cyan)
+  var hiliteWidthMultipliedByTen_property = EBStoredProperty_Int (15)
+  var symbolColor_property = EBStoredProperty_NSColor (NSColor.brown)
+  var dotColorOfSymbolGrid_property = EBStoredProperty_NSColor (NSColor.black)
+  var lineColorOfSymbolGrid_property = EBStoredProperty_NSColor (NSColor.gray)
+  var symbolBackgroundColor_property = EBStoredProperty_NSColor (NSColor.white)
+  var symbolDrawingWidthMultipliedByTen_property = EBStoredProperty_Int (5)
+  var pinNameFont_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0))
+  var dotColorOfPackageGrid_property = EBStoredProperty_NSColor (NSColor.white)
+  var lineColorOfPackageGrid_property = EBStoredProperty_NSColor (NSColor.gray)
+  var packageBackgroundColor_property = EBStoredProperty_NSColor (NSColor.black)
+  var packageColor_property = EBStoredProperty_NSColor (NSColor.brown)
+  var topSidePadColor_property = EBStoredProperty_NSColor (NSColor.blue)
+  var bottomSidePadColor_property = EBStoredProperty_NSColor (NSColor.green)
+  var padNumberColor_property = EBStoredProperty_NSColor (NSColor.red)
+  var padNumberFont_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 3.0))
+  var packageGuideColor_property = EBStoredProperty_NSColor (NSColor.yellow)
+  var packageDimensionColor_property = EBStoredProperty_NSColor (NSColor.orange)
+  var dimensionFont_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 2.0))
+  var padZoneColor_property = EBStoredProperty_NSColor (NSColor.magenta)
+  var packageDrawingWidthMultipliedByTen_property = EBStoredProperty_Int (15)
+  var mSymbolAndPackageGridDotColorForDevice_property = EBStoredProperty_NSColor (NSColor.black)
+  var mSymbolAndPackageGridLineColorForDevice_property = EBStoredProperty_NSColor (NSColor.gray)
+  var mSymbolAndPackageBackgroundColorForDevice_property = EBStoredProperty_NSColor (NSColor.white)
+  var mPackageColorForDevice_property = EBStoredProperty_NSColor (NSColor.brown)
+  var mTopSidePadColorForDevice_property = EBStoredProperty_NSColor (NSColor.blue)
+  var mBottomSidePadColorForDevice_property = EBStoredProperty_NSColor (NSColor.green)
+  var mPadNumberColorForDevice_property = EBStoredProperty_NSColor (NSColor.red)
+  var mPackageNameFontForDevice_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 9.0))
+  var mPadNumberFontForDevice_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 5.0))
+  var mSymbolColorForDevice_property = EBStoredProperty_NSColor (NSColor.brown)
+  var mSymbolNameFontForDevice_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 9.0))
+  var mPinNameFontForDevice_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0))
+  var symbolDrawingWidthForDeviceMultipliedByTen_property = EBStoredProperty_Int (15)
+  var packageDrawingWidthForDeviceMultipliedByTen_property = EBStoredProperty_Int (15)
+  var dotColorGridForSchematic_property = EBStoredProperty_NSColor (NSColor.black)
+  var lineColorGridForSchematic_property = EBStoredProperty_NSColor (NSColor.gray)
+  var symbolColorForUnplacedComponentsForSchematic_property = EBStoredProperty_NSColor (NSColor.darkGray)
+  var symbolColorForSchematic_property = EBStoredProperty_NSColor (NSColor.brown)
+  var pinNameFontForSchematic_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0))
+  var pinNameColorForSchematic_property = EBStoredProperty_NSColor (NSColor.brown)
+  var pinNumberFontForSchematic_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0))
+  var pinNumberColorForSchematic_property = EBStoredProperty_NSColor (NSColor.darkGray)
+  var connectionColorForSchematic_property = EBStoredProperty_NSColor (NSColor.black)
+  var symbolDrawingWidthMultipliedByTenForSchematic_property = EBStoredProperty_Int (5)
+  var dotColorGridForBoard_property = EBStoredProperty_NSColor (NSColor.black)
+  var lineColorGridForBoard_property = EBStoredProperty_NSColor (NSColor.gray)
+  var boardBackgroundColorForBoard_property = EBStoredProperty_NSColor (NSColor.black)
+  var errorBackgroundColorForBoard_property = EBStoredProperty_NSColor (NSColor.red)
+  var drawErrorBackgroundForBoard_property = EBStoredProperty_Bool (true)
+  var warningBackgroundColorForBoard_property = EBStoredProperty_NSColor (NSColor.orange)
+  var drawEWarningBackgroundForBoard_property = EBStoredProperty_Bool (true)
+  var boardLimitsColorForBoard_property = EBStoredProperty_NSColor (NSColor.brown)
+  var boardClearanceColorForBoard_property = EBStoredProperty_NSColor (NSColor.yellow)
+  var topSideRestrictRectangleColorForBoard_property = EBStoredProperty_NSColor (NSColor.blue)
+  var bottomSideRestrictRectangleColorForBoard_property = EBStoredProperty_NSColor (NSColor.green)
+  var topSideLegendColorForBoard_property = EBStoredProperty_NSColor (NSColor.brown)
+  var topSideLayoutColorForBoard_property = EBStoredProperty_NSColor (NSColor.blue)
+  var bottomSideLayoutColorForBoard_property = EBStoredProperty_NSColor (NSColor.green)
+  var bottomSideLegendColorForBoard_property = EBStoredProperty_NSColor (NSColor.white)
+  var topSidePadColorForBoard_property = EBStoredProperty_NSColor (NSColor.blue)
+  var bottomSidePadColorForBoard_property = EBStoredProperty_NSColor (NSColor.green)
+  var padNumberFontForBoard_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 3.0))
+  var padNumberColorForBoard_property = EBStoredProperty_NSColor (NSColor.red)
+  var packageDrawingWidthMultpliedByTenForBoard_property = EBStoredProperty_Int (5)
+  var sampleString_property = EBStoredProperty_String ("The quick brown fox jumps over the lazy dog")
+  var sampleStringSize_property = EBStoredProperty_Double (24)
+  var showGerberDrawingFlow_property = EBStoredProperty_Bool (true)
+  var showGerberDrawingIndexes_property = EBStoredProperty_Bool (true)
+  var currentCharacterCodePoint_property = EBStoredProperty_Int (65)
+  var fontEditionTransparency_property = EBStoredProperty_Double (0.5)
+  var usesUserLibrary_property = EBStoredProperty_Bool (true)
+  var checkForSystemLibraryAtStartUp_property = EBStoredProperty_Bool (true)
 
   //····················································································································
   //    Stored Array Properties
   //····················································································································
 
-  var additionnalLibraryArray = EBClassArray_CanariLibraryEntry ()
+  var additionnalLibraryArray_property = EBClassArray_CanariLibraryEntry ()
 
   //····················································································································
   //    Transient properties
   //····················································································································
 
-  var mValueRevealInFinder_symbols = EBTransientProperty_CanariMenuItemListClass ()
-  var mValueRevealInFinder_packages = EBTransientProperty_CanariMenuItemListClass ()
-  var mValueRevealInFinder_devices = EBTransientProperty_CanariMenuItemListClass ()
-  var mValueRevealInFinder_fonts = EBTransientProperty_CanariMenuItemListClass ()
-  var mValueRevealInFinder_artworks = EBTransientProperty_CanariMenuItemListClass ()
+  var mValueRevealInFinder_symbols_property = EBTransientProperty_CanariMenuItemListClass ()
+  var mValueRevealInFinder_packages_property = EBTransientProperty_CanariMenuItemListClass ()
+  var mValueRevealInFinder_devices_property = EBTransientProperty_CanariMenuItemListClass ()
+  var mValueRevealInFinder_fonts_property = EBTransientProperty_CanariMenuItemListClass ()
+  var mValueRevealInFinder_artworks_property = EBTransientProperty_CanariMenuItemListClass ()
 
 
   //····················································································································
@@ -268,104 +2135,104 @@ var g_Preferences : Preferences? = nil
     super.init ()
     g_Preferences = self ;
   //--- Read from preferences
-    mergerHorizontalFlip.readInPreferencesWithKey (inKey:"Preferences:mergerHorizontalFlip")
-    mergerVerticalFlip.readInPreferencesWithKey (inKey:"Preferences:mergerVerticalFlip")
-    mergerDisplayHoles.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayHoles")
-    mergerDisplayVias.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayVias")
-    mergerDisplayFrontPads.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPads")
-    mergerDisplayBoardLimits.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBoardLimits")
-    mergerDisplayFrontComponentNames.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentNames")
-    mergerDisplayFrontComponentValues.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentValues")
-    mergerDisplayFrontPackages.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPackages")
-    mergerDisplayFrontLegendTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLegendTexts")
-    mergerDisplayFrontLayoutTracks.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTracks")
-    mergerDisplayFrontLayoutTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTexts")
-    mergerDisplayBackPads.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPads")
-    mergerDisplayBackComponentNames.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentNames")
-    mergerDisplayBackComponentValues.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentValues")
-    mergerDisplayBackLegendTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLegendTexts")
-    mergerDisplayBackPackages.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPackages")
-    mergerDisplayBackLayoutTracks.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTracks")
-    mergerDisplayBackLayoutTexts.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTexts")
-    errorMessageColor.readInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
-    warningMessageColor.readInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
-    successMessageColor.readInPreferencesWithKey (inKey:"Preferences:successMessageColor")
-    selectionHiliteColor.readInPreferencesWithKey (inKey:"Preferences:selectionHiliteColor")
-    hiliteWidthMultipliedByTen.readInPreferencesWithKey (inKey:"Preferences:hiliteWidthMultipliedByTen")
-    symbolColor.readInPreferencesWithKey (inKey:"Preferences:symbolColor")
-    dotColorOfSymbolGrid.readInPreferencesWithKey (inKey:"Preferences:dotColorOfSymbolGrid")
-    lineColorOfSymbolGrid.readInPreferencesWithKey (inKey:"Preferences:lineColorOfSymbolGrid")
-    symbolBackgroundColor.readInPreferencesWithKey (inKey:"Preferences:symbolBackgroundColor")
-    symbolDrawingWidthMultipliedByTen.readInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthMultipliedByTen")
-    pinNameFont.readInPreferencesWithKey (inKey:"Preferences:pinNameFont")
-    dotColorOfPackageGrid.readInPreferencesWithKey (inKey:"Preferences:dotColorOfPackageGrid")
-    lineColorOfPackageGrid.readInPreferencesWithKey (inKey:"Preferences:lineColorOfPackageGrid")
-    packageBackgroundColor.readInPreferencesWithKey (inKey:"Preferences:packageBackgroundColor")
-    packageColor.readInPreferencesWithKey (inKey:"Preferences:packageColor")
-    topSidePadColor.readInPreferencesWithKey (inKey:"Preferences:topSidePadColor")
-    bottomSidePadColor.readInPreferencesWithKey (inKey:"Preferences:bottomSidePadColor")
-    padNumberColor.readInPreferencesWithKey (inKey:"Preferences:padNumberColor")
-    padNumberFont.readInPreferencesWithKey (inKey:"Preferences:padNumberFont")
-    packageGuideColor.readInPreferencesWithKey (inKey:"Preferences:packageGuideColor")
-    packageDimensionColor.readInPreferencesWithKey (inKey:"Preferences:packageDimensionColor")
-    dimensionFont.readInPreferencesWithKey (inKey:"Preferences:dimensionFont")
-    padZoneColor.readInPreferencesWithKey (inKey:"Preferences:padZoneColor")
-    packageDrawingWidthMultipliedByTen.readInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthMultipliedByTen")
-    mSymbolAndPackageGridDotColorForDevice.readInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageGridDotColorForDevice")
-    mSymbolAndPackageGridLineColorForDevice.readInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageGridLineColorForDevice")
-    mSymbolAndPackageBackgroundColorForDevice.readInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageBackgroundColorForDevice")
-    mPackageColorForDevice.readInPreferencesWithKey (inKey:"Preferences:mPackageColorForDevice")
-    mTopSidePadColorForDevice.readInPreferencesWithKey (inKey:"Preferences:mTopSidePadColorForDevice")
-    mBottomSidePadColorForDevice.readInPreferencesWithKey (inKey:"Preferences:mBottomSidePadColorForDevice")
-    mPadNumberColorForDevice.readInPreferencesWithKey (inKey:"Preferences:mPadNumberColorForDevice")
-    mPackageNameFontForDevice.readInPreferencesWithKey (inKey:"Preferences:mPackageNameFontForDevice")
-    mPadNumberFontForDevice.readInPreferencesWithKey (inKey:"Preferences:mPadNumberFontForDevice")
-    mSymbolColorForDevice.readInPreferencesWithKey (inKey:"Preferences:mSymbolColorForDevice")
-    mSymbolNameFontForDevice.readInPreferencesWithKey (inKey:"Preferences:mSymbolNameFontForDevice")
-    mPinNameFontForDevice.readInPreferencesWithKey (inKey:"Preferences:mPinNameFontForDevice")
-    symbolDrawingWidthForDeviceMultipliedByTen.readInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthForDeviceMultipliedByTen")
-    packageDrawingWidthForDeviceMultipliedByTen.readInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthForDeviceMultipliedByTen")
-    dotColorGridForSchematic.readInPreferencesWithKey (inKey:"Preferences:dotColorGridForSchematic")
-    lineColorGridForSchematic.readInPreferencesWithKey (inKey:"Preferences:lineColorGridForSchematic")
-    symbolColorForUnplacedComponentsForSchematic.readInPreferencesWithKey (inKey:"Preferences:symbolColorForUnplacedComponentsForSchematic")
-    symbolColorForSchematic.readInPreferencesWithKey (inKey:"Preferences:symbolColorForSchematic")
-    pinNameFontForSchematic.readInPreferencesWithKey (inKey:"Preferences:pinNameFontForSchematic")
-    pinNameColorForSchematic.readInPreferencesWithKey (inKey:"Preferences:pinNameColorForSchematic")
-    pinNumberFontForSchematic.readInPreferencesWithKey (inKey:"Preferences:pinNumberFontForSchematic")
-    pinNumberColorForSchematic.readInPreferencesWithKey (inKey:"Preferences:pinNumberColorForSchematic")
-    connectionColorForSchematic.readInPreferencesWithKey (inKey:"Preferences:connectionColorForSchematic")
-    symbolDrawingWidthMultipliedByTenForSchematic.readInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthMultipliedByTenForSchematic")
-    dotColorGridForBoard.readInPreferencesWithKey (inKey:"Preferences:dotColorGridForBoard")
-    lineColorGridForBoard.readInPreferencesWithKey (inKey:"Preferences:lineColorGridForBoard")
-    boardBackgroundColorForBoard.readInPreferencesWithKey (inKey:"Preferences:boardBackgroundColorForBoard")
-    errorBackgroundColorForBoard.readInPreferencesWithKey (inKey:"Preferences:errorBackgroundColorForBoard")
-    drawErrorBackgroundForBoard.readInPreferencesWithKey (inKey:"Preferences:drawErrorBackgroundForBoard")
-    warningBackgroundColorForBoard.readInPreferencesWithKey (inKey:"Preferences:warningBackgroundColorForBoard")
-    drawEWarningBackgroundForBoard.readInPreferencesWithKey (inKey:"Preferences:drawEWarningBackgroundForBoard")
-    boardLimitsColorForBoard.readInPreferencesWithKey (inKey:"Preferences:boardLimitsColorForBoard")
-    boardClearanceColorForBoard.readInPreferencesWithKey (inKey:"Preferences:boardClearanceColorForBoard")
-    topSideRestrictRectangleColorForBoard.readInPreferencesWithKey (inKey:"Preferences:topSideRestrictRectangleColorForBoard")
-    bottomSideRestrictRectangleColorForBoard.readInPreferencesWithKey (inKey:"Preferences:bottomSideRestrictRectangleColorForBoard")
-    topSideLegendColorForBoard.readInPreferencesWithKey (inKey:"Preferences:topSideLegendColorForBoard")
-    topSideLayoutColorForBoard.readInPreferencesWithKey (inKey:"Preferences:topSideLayoutColorForBoard")
-    bottomSideLayoutColorForBoard.readInPreferencesWithKey (inKey:"Preferences:bottomSideLayoutColorForBoard")
-    bottomSideLegendColorForBoard.readInPreferencesWithKey (inKey:"Preferences:bottomSideLegendColorForBoard")
-    topSidePadColorForBoard.readInPreferencesWithKey (inKey:"Preferences:topSidePadColorForBoard")
-    bottomSidePadColorForBoard.readInPreferencesWithKey (inKey:"Preferences:bottomSidePadColorForBoard")
-    padNumberFontForBoard.readInPreferencesWithKey (inKey:"Preferences:padNumberFontForBoard")
-    padNumberColorForBoard.readInPreferencesWithKey (inKey:"Preferences:padNumberColorForBoard")
-    packageDrawingWidthMultpliedByTenForBoard.readInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthMultpliedByTenForBoard")
-    sampleString.readInPreferencesWithKey (inKey:"Preferences:sampleString")
-    sampleStringSize.readInPreferencesWithKey (inKey:"Preferences:sampleStringSize")
-    showGerberDrawingFlow.readInPreferencesWithKey (inKey:"Preferences:showGerberDrawingFlow")
-    showGerberDrawingIndexes.readInPreferencesWithKey (inKey:"Preferences:showGerberDrawingIndexes")
-    currentCharacterCodePoint.readInPreferencesWithKey (inKey:"Preferences:currentCharacterCodePoint")
-    fontEditionTransparency.readInPreferencesWithKey (inKey:"Preferences:fontEditionTransparency")
-    usesUserLibrary.readInPreferencesWithKey (inKey:"Preferences:usesUserLibrary")
-    checkForSystemLibraryAtStartUp.readInPreferencesWithKey (inKey:"Preferences:checkForSystemLibraryAtStartUp")
-    additionnalLibraryArray.readInPreferencesWithKey (inKey:"Preferences:additionnalLibraryArray")
+    self.mergerHorizontalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerHorizontalFlip")
+    self.mergerVerticalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerVerticalFlip")
+    self.mergerDisplayHoles_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayHoles")
+    self.mergerDisplayVias_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayVias")
+    self.mergerDisplayFrontPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPads")
+    self.mergerDisplayBoardLimits_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBoardLimits")
+    self.mergerDisplayFrontComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentNames")
+    self.mergerDisplayFrontComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentValues")
+    self.mergerDisplayFrontPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPackages")
+    self.mergerDisplayFrontLegendTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLegendTexts")
+    self.mergerDisplayFrontLayoutTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTracks")
+    self.mergerDisplayFrontLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTexts")
+    self.mergerDisplayBackPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPads")
+    self.mergerDisplayBackComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentNames")
+    self.mergerDisplayBackComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentValues")
+    self.mergerDisplayBackLegendTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLegendTexts")
+    self.mergerDisplayBackPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPackages")
+    self.mergerDisplayBackLayoutTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTracks")
+    self.mergerDisplayBackLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTexts")
+    self.errorMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
+    self.warningMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
+    self.successMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:successMessageColor")
+    self.selectionHiliteColor_property.readInPreferencesWithKey (inKey:"Preferences:selectionHiliteColor")
+    self.hiliteWidthMultipliedByTen_property.readInPreferencesWithKey (inKey:"Preferences:hiliteWidthMultipliedByTen")
+    self.symbolColor_property.readInPreferencesWithKey (inKey:"Preferences:symbolColor")
+    self.dotColorOfSymbolGrid_property.readInPreferencesWithKey (inKey:"Preferences:dotColorOfSymbolGrid")
+    self.lineColorOfSymbolGrid_property.readInPreferencesWithKey (inKey:"Preferences:lineColorOfSymbolGrid")
+    self.symbolBackgroundColor_property.readInPreferencesWithKey (inKey:"Preferences:symbolBackgroundColor")
+    self.symbolDrawingWidthMultipliedByTen_property.readInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthMultipliedByTen")
+    self.pinNameFont_property.readInPreferencesWithKey (inKey:"Preferences:pinNameFont")
+    self.dotColorOfPackageGrid_property.readInPreferencesWithKey (inKey:"Preferences:dotColorOfPackageGrid")
+    self.lineColorOfPackageGrid_property.readInPreferencesWithKey (inKey:"Preferences:lineColorOfPackageGrid")
+    self.packageBackgroundColor_property.readInPreferencesWithKey (inKey:"Preferences:packageBackgroundColor")
+    self.packageColor_property.readInPreferencesWithKey (inKey:"Preferences:packageColor")
+    self.topSidePadColor_property.readInPreferencesWithKey (inKey:"Preferences:topSidePadColor")
+    self.bottomSidePadColor_property.readInPreferencesWithKey (inKey:"Preferences:bottomSidePadColor")
+    self.padNumberColor_property.readInPreferencesWithKey (inKey:"Preferences:padNumberColor")
+    self.padNumberFont_property.readInPreferencesWithKey (inKey:"Preferences:padNumberFont")
+    self.packageGuideColor_property.readInPreferencesWithKey (inKey:"Preferences:packageGuideColor")
+    self.packageDimensionColor_property.readInPreferencesWithKey (inKey:"Preferences:packageDimensionColor")
+    self.dimensionFont_property.readInPreferencesWithKey (inKey:"Preferences:dimensionFont")
+    self.padZoneColor_property.readInPreferencesWithKey (inKey:"Preferences:padZoneColor")
+    self.packageDrawingWidthMultipliedByTen_property.readInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthMultipliedByTen")
+    self.mSymbolAndPackageGridDotColorForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageGridDotColorForDevice")
+    self.mSymbolAndPackageGridLineColorForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageGridLineColorForDevice")
+    self.mSymbolAndPackageBackgroundColorForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageBackgroundColorForDevice")
+    self.mPackageColorForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mPackageColorForDevice")
+    self.mTopSidePadColorForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mTopSidePadColorForDevice")
+    self.mBottomSidePadColorForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mBottomSidePadColorForDevice")
+    self.mPadNumberColorForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mPadNumberColorForDevice")
+    self.mPackageNameFontForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mPackageNameFontForDevice")
+    self.mPadNumberFontForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mPadNumberFontForDevice")
+    self.mSymbolColorForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mSymbolColorForDevice")
+    self.mSymbolNameFontForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mSymbolNameFontForDevice")
+    self.mPinNameFontForDevice_property.readInPreferencesWithKey (inKey:"Preferences:mPinNameFontForDevice")
+    self.symbolDrawingWidthForDeviceMultipliedByTen_property.readInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthForDeviceMultipliedByTen")
+    self.packageDrawingWidthForDeviceMultipliedByTen_property.readInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthForDeviceMultipliedByTen")
+    self.dotColorGridForSchematic_property.readInPreferencesWithKey (inKey:"Preferences:dotColorGridForSchematic")
+    self.lineColorGridForSchematic_property.readInPreferencesWithKey (inKey:"Preferences:lineColorGridForSchematic")
+    self.symbolColorForUnplacedComponentsForSchematic_property.readInPreferencesWithKey (inKey:"Preferences:symbolColorForUnplacedComponentsForSchematic")
+    self.symbolColorForSchematic_property.readInPreferencesWithKey (inKey:"Preferences:symbolColorForSchematic")
+    self.pinNameFontForSchematic_property.readInPreferencesWithKey (inKey:"Preferences:pinNameFontForSchematic")
+    self.pinNameColorForSchematic_property.readInPreferencesWithKey (inKey:"Preferences:pinNameColorForSchematic")
+    self.pinNumberFontForSchematic_property.readInPreferencesWithKey (inKey:"Preferences:pinNumberFontForSchematic")
+    self.pinNumberColorForSchematic_property.readInPreferencesWithKey (inKey:"Preferences:pinNumberColorForSchematic")
+    self.connectionColorForSchematic_property.readInPreferencesWithKey (inKey:"Preferences:connectionColorForSchematic")
+    self.symbolDrawingWidthMultipliedByTenForSchematic_property.readInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthMultipliedByTenForSchematic")
+    self.dotColorGridForBoard_property.readInPreferencesWithKey (inKey:"Preferences:dotColorGridForBoard")
+    self.lineColorGridForBoard_property.readInPreferencesWithKey (inKey:"Preferences:lineColorGridForBoard")
+    self.boardBackgroundColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:boardBackgroundColorForBoard")
+    self.errorBackgroundColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:errorBackgroundColorForBoard")
+    self.drawErrorBackgroundForBoard_property.readInPreferencesWithKey (inKey:"Preferences:drawErrorBackgroundForBoard")
+    self.warningBackgroundColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:warningBackgroundColorForBoard")
+    self.drawEWarningBackgroundForBoard_property.readInPreferencesWithKey (inKey:"Preferences:drawEWarningBackgroundForBoard")
+    self.boardLimitsColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:boardLimitsColorForBoard")
+    self.boardClearanceColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:boardClearanceColorForBoard")
+    self.topSideRestrictRectangleColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:topSideRestrictRectangleColorForBoard")
+    self.bottomSideRestrictRectangleColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:bottomSideRestrictRectangleColorForBoard")
+    self.topSideLegendColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:topSideLegendColorForBoard")
+    self.topSideLayoutColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:topSideLayoutColorForBoard")
+    self.bottomSideLayoutColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:bottomSideLayoutColorForBoard")
+    self.bottomSideLegendColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:bottomSideLegendColorForBoard")
+    self.topSidePadColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:topSidePadColorForBoard")
+    self.bottomSidePadColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:bottomSidePadColorForBoard")
+    self.padNumberFontForBoard_property.readInPreferencesWithKey (inKey:"Preferences:padNumberFontForBoard")
+    self.padNumberColorForBoard_property.readInPreferencesWithKey (inKey:"Preferences:padNumberColorForBoard")
+    self.packageDrawingWidthMultpliedByTenForBoard_property.readInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthMultpliedByTenForBoard")
+    self.sampleString_property.readInPreferencesWithKey (inKey:"Preferences:sampleString")
+    self.sampleStringSize_property.readInPreferencesWithKey (inKey:"Preferences:sampleStringSize")
+    self.showGerberDrawingFlow_property.readInPreferencesWithKey (inKey:"Preferences:showGerberDrawingFlow")
+    self.showGerberDrawingIndexes_property.readInPreferencesWithKey (inKey:"Preferences:showGerberDrawingIndexes")
+    self.currentCharacterCodePoint_property.readInPreferencesWithKey (inKey:"Preferences:currentCharacterCodePoint")
+    self.fontEditionTransparency_property.readInPreferencesWithKey (inKey:"Preferences:fontEditionTransparency")
+    self.usesUserLibrary_property.readInPreferencesWithKey (inKey:"Preferences:usesUserLibrary")
+    self.checkForSystemLibraryAtStartUp_property.readInPreferencesWithKey (inKey:"Preferences:checkForSystemLibraryAtStartUp")
+    self.additionnalLibraryArray_property.readInPreferencesWithKey (inKey:"Preferences:additionnalLibraryArray")
   //--- Property validation function
-    currentCharacterCodePoint.validationFunction = self.validate_currentCharacterCodePoint
+    self.currentCharacterCodePoint_property.validationFunction = self.validate_currentCharacterCodePoint
   //---
     NotificationCenter.default.addObserver (self,
      selector:#selector(Preferences.applicationWillTerminateAction(_:)),
@@ -857,18 +2724,18 @@ var g_Preferences : Preferences? = nil
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'selectionHilitePopupButton' outlet is nil")
     }
   //--- Install compute functions for transients
-    mValueRevealInFinder_symbols.readModelFunction = { [weak self] in
+    self.mValueRevealInFinder_symbols_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.usesUserLibrary.prop.kind ()
-        kind &= unwSelf.additionnalLibraryArray.prop.kind ()
-        kind &= unwSelf.additionnalLibraryArray.prop.kind ()
+        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary.prop, unwSelf.additionnalLibraryArray.prop, unwSelf.additionnalLibraryArray.prop) {
+          switch (unwSelf.usesUserLibrary_property.prop, unwSelf.additionnalLibraryArray_property.prop, unwSelf.additionnalLibraryArray_property.prop) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
           default :
@@ -879,18 +2746,18 @@ var g_Preferences : Preferences? = nil
         return .empty
       }
     }
-    mValueRevealInFinder_packages.readModelFunction = { [weak self] in
+    self.mValueRevealInFinder_packages_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.usesUserLibrary.prop.kind ()
-        kind &= unwSelf.additionnalLibraryArray.prop.kind ()
-        kind &= unwSelf.additionnalLibraryArray.prop.kind ()
+        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary.prop, unwSelf.additionnalLibraryArray.prop, unwSelf.additionnalLibraryArray.prop) {
+          switch (unwSelf.usesUserLibrary_property.prop, unwSelf.additionnalLibraryArray_property.prop, unwSelf.additionnalLibraryArray_property.prop) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
           default :
@@ -901,18 +2768,18 @@ var g_Preferences : Preferences? = nil
         return .empty
       }
     }
-    mValueRevealInFinder_devices.readModelFunction = { [weak self] in
+    self.mValueRevealInFinder_devices_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.usesUserLibrary.prop.kind ()
-        kind &= unwSelf.additionnalLibraryArray.prop.kind ()
-        kind &= unwSelf.additionnalLibraryArray.prop.kind ()
+        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary.prop, unwSelf.additionnalLibraryArray.prop, unwSelf.additionnalLibraryArray.prop) {
+          switch (unwSelf.usesUserLibrary_property.prop, unwSelf.additionnalLibraryArray_property.prop, unwSelf.additionnalLibraryArray_property.prop) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
           default :
@@ -923,18 +2790,18 @@ var g_Preferences : Preferences? = nil
         return .empty
       }
     }
-    mValueRevealInFinder_fonts.readModelFunction = { [weak self] in
+    self.mValueRevealInFinder_fonts_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.usesUserLibrary.prop.kind ()
-        kind &= unwSelf.additionnalLibraryArray.prop.kind ()
-        kind &= unwSelf.additionnalLibraryArray.prop.kind ()
+        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary.prop, unwSelf.additionnalLibraryArray.prop, unwSelf.additionnalLibraryArray.prop) {
+          switch (unwSelf.usesUserLibrary_property.prop, unwSelf.additionnalLibraryArray_property.prop, unwSelf.additionnalLibraryArray_property.prop) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
           default :
@@ -945,18 +2812,18 @@ var g_Preferences : Preferences? = nil
         return .empty
       }
     }
-    mValueRevealInFinder_artworks.readModelFunction = { [weak self] in
+    self.mValueRevealInFinder_artworks_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.usesUserLibrary.prop.kind ()
-        kind &= unwSelf.additionnalLibraryArray.prop.kind ()
-        kind &= unwSelf.additionnalLibraryArray.prop.kind ()
+        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary.prop, unwSelf.additionnalLibraryArray.prop, unwSelf.additionnalLibraryArray.prop) {
+          switch (unwSelf.usesUserLibrary_property.prop, unwSelf.additionnalLibraryArray_property.prop, unwSelf.additionnalLibraryArray_property.prop) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
           default :
@@ -968,147 +2835,147 @@ var g_Preferences : Preferences? = nil
       }
     }
   //--- Install property observers for transients
-    usesUserLibrary.addEBObserver (mValueRevealInFinder_symbols)
-    additionnalLibraryArray.addEBObserverOf_mUses (mValueRevealInFinder_symbols)
-    additionnalLibraryArray.addEBObserverOf_mPath (mValueRevealInFinder_symbols)
-    usesUserLibrary.addEBObserver (mValueRevealInFinder_packages)
-    additionnalLibraryArray.addEBObserverOf_mUses (mValueRevealInFinder_packages)
-    additionnalLibraryArray.addEBObserverOf_mPath (mValueRevealInFinder_packages)
-    usesUserLibrary.addEBObserver (mValueRevealInFinder_devices)
-    additionnalLibraryArray.addEBObserverOf_mUses (mValueRevealInFinder_devices)
-    additionnalLibraryArray.addEBObserverOf_mPath (mValueRevealInFinder_devices)
-    usesUserLibrary.addEBObserver (mValueRevealInFinder_fonts)
-    additionnalLibraryArray.addEBObserverOf_mUses (mValueRevealInFinder_fonts)
-    additionnalLibraryArray.addEBObserverOf_mPath (mValueRevealInFinder_fonts)
-    usesUserLibrary.addEBObserver (mValueRevealInFinder_artworks)
-    additionnalLibraryArray.addEBObserverOf_mUses (mValueRevealInFinder_artworks)
-    additionnalLibraryArray.addEBObserverOf_mPath (mValueRevealInFinder_artworks)
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_symbols_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_symbols_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_symbols_property)
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_packages_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_devices_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_devices_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_devices_property)
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_fonts_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property)
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_artworks_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
   //--- Install bindings
-    mMergerHorizontalFlipCheckbox?.bind_value (self.mergerHorizontalFlip, file: #file, line: #line)
-    mMergerVerticalFlipCheckbox?.bind_value (self.mergerVerticalFlip, file: #file, line: #line)
-    mMergerDisplayHolesCheckbox?.bind_value (self.mergerDisplayHoles, file: #file, line: #line)
-    mMergerDisplayViasCheckbox?.bind_value (self.mergerDisplayVias, file: #file, line: #line)
-    mMergerDisplayFrontPadsCheckbox?.bind_value (self.mergerDisplayFrontPads, file: #file, line: #line)
-    mMergerDisplayBoardLimitsCheckbox?.bind_value (self.mergerDisplayBoardLimits, file: #file, line: #line)
-    mMergerDisplayFrontComponentNamesCheckbox?.bind_value (self.mergerDisplayFrontComponentNames, file: #file, line: #line)
-    mMergerDisplayFrontComponenValuesCheckbox?.bind_value (self.mergerDisplayFrontComponentValues, file: #file, line: #line)
-    mMergerDisplayFrontPackagesCheckbox?.bind_value (self.mergerDisplayFrontPackages, file: #file, line: #line)
-    mMergerDisplayFrontLegendTextsCheckbox?.bind_value (self.mergerDisplayFrontLegendTexts, file: #file, line: #line)
-    mMergerDisplayFrontLayoutTracksCheckbox?.bind_value (self.mergerDisplayFrontLayoutTracks, file: #file, line: #line)
-    mMergerDisplayFrontLayoutTextsCheckbox?.bind_value (self.mergerDisplayFrontLayoutTexts, file: #file, line: #line)
-    mMergerDisplayBackPadsCheckbox?.bind_value (self.mergerDisplayBackPads, file: #file, line: #line)
-    mMergerDisplayBackComponentNamesCheckbox?.bind_value (self.mergerDisplayBackComponentNames, file: #file, line: #line)
-    mMergerDisplayBackComponenValuesCheckbox?.bind_value (self.mergerDisplayBackComponentValues, file: #file, line: #line)
-    mMergerDisplayBackLegendTextsCheckbox?.bind_value (self.mergerDisplayBackLegendTexts, file: #file, line: #line)
-    mMergerDisplayBackPackagesCheckbox?.bind_value (self.mergerDisplayBackPackages, file: #file, line: #line)
-    mMergerDisplayBackLayoutTracksCheckbox?.bind_value (self.mergerDisplayBackLayoutTracks, file: #file, line: #line)
-    mMergerDisplayBackLayoutTextsCheckbox?.bind_value (self.mergerDisplayBackLayoutTexts, file: #file, line: #line)
-    mErrorMessageColorColorWell?.bind_color (self.errorMessageColor, file: #file, line: #line, sendContinously:false)
-    mWarningMessageColorColorWell?.bind_color (self.warningMessageColor, file: #file, line: #line, sendContinously:false)
-    mSuccessMessageColorColorWell?.bind_color (self.successMessageColor, file: #file, line: #line, sendContinously:false)
-    mSelectionHiliteColorColorWell?.bind_color (self.selectionHiliteColor, file: #file, line: #line, sendContinously:false)
-    selectionHilitePopupButton?.bind_selectedTag (self.hiliteWidthMultipliedByTen, file: #file, line: #line)
-    mMenuRevealInFinder_symbols?.bind_populateSubmenus (self.mValueRevealInFinder_symbols, file: #file, line: #line)
-    mMenuRevealInFinder_packages?.bind_populateSubmenus (self.mValueRevealInFinder_packages, file: #file, line: #line)
-    mMenuRevealInFinder_devices?.bind_populateSubmenus (self.mValueRevealInFinder_devices, file: #file, line: #line)
-    mMenuRevealInFinder_fonts?.bind_populateSubmenus (self.mValueRevealInFinder_fonts, file: #file, line: #line)
-    mMenuRevealInFinder_artworks?.bind_populateSubmenus (self.mValueRevealInFinder_artworks, file: #file, line: #line)
-    mSymbolColorColorWell?.bind_color (self.symbolColor, file: #file, line: #line, sendContinously:false)
-    mDotColorOfSymbolGridColorWell?.bind_color (self.dotColorOfSymbolGrid, file: #file, line: #line, sendContinously:false)
-    mLineColorOfSymbolGridColorWell?.bind_color (self.lineColorOfSymbolGrid, file: #file, line: #line, sendContinously:false)
-    mSymbolBackgroundColorColorWell?.bind_color (self.symbolBackgroundColor, file: #file, line: #line, sendContinously:false)
-    mSymbolDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (self.symbolDrawingWidthMultipliedByTen, file: #file, line: #line)
-    mPinNameFontButton?.bind_fontValue (self.pinNameFont, file: #file, line: #line)
-    mDotColorOfPackageGridColorWell?.bind_color (self.dotColorOfPackageGrid, file: #file, line: #line, sendContinously:false)
-    mLineColorOfPackageGridColorWell?.bind_color (self.lineColorOfPackageGrid, file: #file, line: #line, sendContinously:false)
-    mPackageBackgroundColorColorWell?.bind_color (self.packageBackgroundColor, file: #file, line: #line, sendContinously:false)
-    mPackageColorColorWell?.bind_color (self.packageColor, file: #file, line: #line, sendContinously:false)
-    mTopSidePadColorWell?.bind_color (self.topSidePadColor, file: #file, line: #line, sendContinously:false)
-    mBottomSidePadColorWell?.bind_color (self.bottomSidePadColor, file: #file, line: #line, sendContinously:false)
-    mPadNumberColorColorWell?.bind_color (self.padNumberColor, file: #file, line: #line, sendContinously:false)
-    mPadFontButton?.bind_fontValue (self.padNumberFont, file: #file, line: #line)
-    mPackageGuideColorWell?.bind_color (self.packageGuideColor, file: #file, line: #line, sendContinously:false)
-    mPackageDimensionColorWell?.bind_color (self.packageDimensionColor, file: #file, line: #line, sendContinously:false)
-    mDimensionFontButton?.bind_fontValue (self.dimensionFont, file: #file, line: #line)
-    mPadZoneColorColorWell?.bind_color (self.padZoneColor, file: #file, line: #line, sendContinously:false)
-    mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (self.packageDrawingWidthMultipliedByTen, file: #file, line: #line)
-    mSymbolAndPackageGridDotColorForDeviceColorWell?.bind_color (self.mSymbolAndPackageGridDotColorForDevice, file: #file, line: #line, sendContinously:false)
-    mSymbolAndPackageLineDotColorForDeviceColorWell?.bind_color (self.mSymbolAndPackageGridLineColorForDevice, file: #file, line: #line, sendContinously:false)
-    mSymbolAndPackageBackgroundColorForDeviceColorWell?.bind_color (self.mSymbolAndPackageBackgroundColorForDevice, file: #file, line: #line, sendContinously:false)
-    mPackageColorForDeviceColorWell?.bind_color (self.mPackageColorForDevice, file: #file, line: #line, sendContinously:false)
-    mTopSidePadColorForDeviceColorWell?.bind_color (self.mTopSidePadColorForDevice, file: #file, line: #line, sendContinously:false)
-    mBottomSidePadColorDorDeviveColorWell?.bind_color (self.mBottomSidePadColorForDevice, file: #file, line: #line, sendContinously:false)
-    mPadNumberColorForDeviceColorWell?.bind_color (self.mPadNumberColorForDevice, file: #file, line: #line, sendContinously:false)
-    mPackageNameFontForDeviceFontButton?.bind_fontValue (self.mPadNumberFontForDevice, file: #file, line: #line)
-    mPadNumberFontForDeviceFontButton?.bind_fontValue (self.mPadNumberFontForDevice, file: #file, line: #line)
-    mSymbolColorForDeviceColorWell?.bind_color (self.mSymbolColorForDevice, file: #file, line: #line, sendContinously:false)
-    mSymbolNameFontForDeviceFontButton?.bind_fontValue (self.mSymbolNameFontForDevice, file: #file, line: #line)
-    mPinNameFontForDeviceFontButton?.bind_fontValue (self.mPinNameFontForDevice, file: #file, line: #line)
-    mSymbolDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (self.symbolDrawingWidthForDeviceMultipliedByTen, file: #file, line: #line)
-    mPackageDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (self.packageDrawingWidthForDeviceMultipliedByTen, file: #file, line: #line)
-    mDotColorGridForSchematicColorWell?.bind_color (self.dotColorGridForSchematic, file: #file, line: #line, sendContinously:false)
-    mLineColorGridForSchematicColorWell?.bind_color (self.lineColorGridForSchematic, file: #file, line: #line, sendContinously:false)
-    mUnplacedComponentsColorForSchematicColorWell?.bind_color (self.symbolColorForUnplacedComponentsForSchematic, file: #file, line: #line, sendContinously:false)
-    mSymbolColorForSchematicColorWell?.bind_color (self.symbolColorForSchematic, file: #file, line: #line, sendContinously:false)
-    mPinNameFontForSchematicFontButton?.bind_fontValue (self.pinNameFontForSchematic, file: #file, line: #line)
-    mPinNameColorForSchematicColorWell?.bind_color (self.pinNameColorForSchematic, file: #file, line: #line, sendContinously:false)
-    mPinNumberFontForSchematicFontButton?.bind_fontValue (self.pinNumberFontForSchematic, file: #file, line: #line)
-    mPinNumberColorForSchematicColorWell?.bind_color (self.pinNumberColorForSchematic, file: #file, line: #line, sendContinously:false)
-    mConnectionColorForSchematicColorWell?.bind_color (self.connectionColorForSchematic, file: #file, line: #line, sendContinously:false)
-    mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton?.bind_selectedTag (self.symbolDrawingWidthMultipliedByTenForSchematic, file: #file, line: #line)
-    mBoardDotColorGridColorWell?.bind_color (self.dotColorGridForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardLineColorGridColorWell?.bind_color (self.lineColorGridForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardBackgroundColorWell?.bind_color (self.boardBackgroundColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardErrorBackgroundColorWell?.bind_color (self.errorBackgroundColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardDrawErrorBackgroundCheckbox?.bind_value (self.drawErrorBackgroundForBoard, file: #file, line: #line)
-    mBoardWarningBackgroundColorWell?.bind_color (self.warningBackgroundColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardDrawWarningBackgroundCheckbox?.bind_value (self.drawEWarningBackgroundForBoard, file: #file, line: #line)
-    mBoardLimitsColorWell?.bind_color (self.boardLimitsColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardClearanceColorWell?.bind_color (self.boardClearanceColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardTopSideRestrictRectangleColorWell?.bind_color (self.topSideRestrictRectangleColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardBottomSideRestrictRectangleColorWell?.bind_color (self.bottomSideRestrictRectangleColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardTopSideLegendColorWell?.bind_color (self.topSideLegendColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardTopSideLayoutColorWell?.bind_color (self.topSideLayoutColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardBottomSideLayoutColorWell?.bind_color (self.bottomSideLayoutColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardBottomSideLegendColorWell?.bind_color (self.bottomSideLegendColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardTopSidePadColorWell?.bind_color (self.topSidePadColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardBottomSidePadColorWell?.bind_color (self.bottomSidePadColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardPadFontButton?.bind_fontValue (self.padNumberFontForBoard, file: #file, line: #line)
-    mBoardPadNumberColorWell?.bind_color (self.padNumberColorForBoard, file: #file, line: #line, sendContinously:false)
-    mBoardPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (self.packageDrawingWidthMultpliedByTenForBoard, file: #file, line: #line)
-    mSampleStringField?.bind_value (self.sampleString, file: #file, line: #line, sendContinously:true)
-    mSampleStringSizeField?.bind_value (self.sampleStringSize, file: #file, line: #line, sendContinously:false, autoFormatter:false)
-    mShowGerberDrawingFlowCheckbox?.bind_value (self.showGerberDrawingFlow, file: #file, line: #line)
-    mShowGerberDrawingIndexesCheckbox?.bind_value (self.showGerberDrawingIndexes, file: #file, line: #line)
-    mFontCharacterSelectButton?.bind_codePoint (self.currentCharacterCodePoint, file: #file, line: #line)
-    mEditionTransparencySlider?.bind_doubleValue (self.fontEditionTransparency, file: #file, line: #line, sendContinously:true)
-    mEditionTransparencyTextField?.bind_value (self.fontEditionTransparency, file: #file, line: #line, sendContinously:false, autoFormatter:false)
-    mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (self.usesUserLibrary, file: #file, line: #line)
-    mCheckForSystemLibraryAtStartUpSwitch?.bind_value (self.checkForSystemLibraryAtStartUp, file: #file, line: #line)
+    mMergerHorizontalFlipCheckbox?.bind_value (self.mergerHorizontalFlip_property, file: #file, line: #line)
+    mMergerVerticalFlipCheckbox?.bind_value (self.mergerVerticalFlip_property, file: #file, line: #line)
+    mMergerDisplayHolesCheckbox?.bind_value (self.mergerDisplayHoles_property, file: #file, line: #line)
+    mMergerDisplayViasCheckbox?.bind_value (self.mergerDisplayVias_property, file: #file, line: #line)
+    mMergerDisplayFrontPadsCheckbox?.bind_value (self.mergerDisplayFrontPads_property, file: #file, line: #line)
+    mMergerDisplayBoardLimitsCheckbox?.bind_value (self.mergerDisplayBoardLimits_property, file: #file, line: #line)
+    mMergerDisplayFrontComponentNamesCheckbox?.bind_value (self.mergerDisplayFrontComponentNames_property, file: #file, line: #line)
+    mMergerDisplayFrontComponenValuesCheckbox?.bind_value (self.mergerDisplayFrontComponentValues_property, file: #file, line: #line)
+    mMergerDisplayFrontPackagesCheckbox?.bind_value (self.mergerDisplayFrontPackages_property, file: #file, line: #line)
+    mMergerDisplayFrontLegendTextsCheckbox?.bind_value (self.mergerDisplayFrontLegendTexts_property, file: #file, line: #line)
+    mMergerDisplayFrontLayoutTracksCheckbox?.bind_value (self.mergerDisplayFrontLayoutTracks_property, file: #file, line: #line)
+    mMergerDisplayFrontLayoutTextsCheckbox?.bind_value (self.mergerDisplayFrontLayoutTexts_property, file: #file, line: #line)
+    mMergerDisplayBackPadsCheckbox?.bind_value (self.mergerDisplayBackPads_property, file: #file, line: #line)
+    mMergerDisplayBackComponentNamesCheckbox?.bind_value (self.mergerDisplayBackComponentNames_property, file: #file, line: #line)
+    mMergerDisplayBackComponenValuesCheckbox?.bind_value (self.mergerDisplayBackComponentValues_property, file: #file, line: #line)
+    mMergerDisplayBackLegendTextsCheckbox?.bind_value (self.mergerDisplayBackLegendTexts_property, file: #file, line: #line)
+    mMergerDisplayBackPackagesCheckbox?.bind_value (self.mergerDisplayBackPackages_property, file: #file, line: #line)
+    mMergerDisplayBackLayoutTracksCheckbox?.bind_value (self.mergerDisplayBackLayoutTracks_property, file: #file, line: #line)
+    mMergerDisplayBackLayoutTextsCheckbox?.bind_value (self.mergerDisplayBackLayoutTexts_property, file: #file, line: #line)
+    mErrorMessageColorColorWell?.bind_color (self.errorMessageColor_property, file: #file, line: #line, sendContinously:false)
+    mWarningMessageColorColorWell?.bind_color (self.warningMessageColor_property, file: #file, line: #line, sendContinously:false)
+    mSuccessMessageColorColorWell?.bind_color (self.successMessageColor_property, file: #file, line: #line, sendContinously:false)
+    mSelectionHiliteColorColorWell?.bind_color (self.selectionHiliteColor_property, file: #file, line: #line, sendContinously:false)
+    selectionHilitePopupButton?.bind_selectedTag (self.hiliteWidthMultipliedByTen_property, file: #file, line: #line)
+    mMenuRevealInFinder_symbols?.bind_populateSubmenus (self.mValueRevealInFinder_symbols_property, file: #file, line: #line)
+    mMenuRevealInFinder_packages?.bind_populateSubmenus (self.mValueRevealInFinder_packages_property, file: #file, line: #line)
+    mMenuRevealInFinder_devices?.bind_populateSubmenus (self.mValueRevealInFinder_devices_property, file: #file, line: #line)
+    mMenuRevealInFinder_fonts?.bind_populateSubmenus (self.mValueRevealInFinder_fonts_property, file: #file, line: #line)
+    mMenuRevealInFinder_artworks?.bind_populateSubmenus (self.mValueRevealInFinder_artworks_property, file: #file, line: #line)
+    mSymbolColorColorWell?.bind_color (self.symbolColor_property, file: #file, line: #line, sendContinously:false)
+    mDotColorOfSymbolGridColorWell?.bind_color (self.dotColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
+    mLineColorOfSymbolGridColorWell?.bind_color (self.lineColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
+    mSymbolBackgroundColorColorWell?.bind_color (self.symbolBackgroundColor_property, file: #file, line: #line, sendContinously:false)
+    mSymbolDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (self.symbolDrawingWidthMultipliedByTen_property, file: #file, line: #line)
+    mPinNameFontButton?.bind_fontValue (self.pinNameFont_property, file: #file, line: #line)
+    mDotColorOfPackageGridColorWell?.bind_color (self.dotColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
+    mLineColorOfPackageGridColorWell?.bind_color (self.lineColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
+    mPackageBackgroundColorColorWell?.bind_color (self.packageBackgroundColor_property, file: #file, line: #line, sendContinously:false)
+    mPackageColorColorWell?.bind_color (self.packageColor_property, file: #file, line: #line, sendContinously:false)
+    mTopSidePadColorWell?.bind_color (self.topSidePadColor_property, file: #file, line: #line, sendContinously:false)
+    mBottomSidePadColorWell?.bind_color (self.bottomSidePadColor_property, file: #file, line: #line, sendContinously:false)
+    mPadNumberColorColorWell?.bind_color (self.padNumberColor_property, file: #file, line: #line, sendContinously:false)
+    mPadFontButton?.bind_fontValue (self.padNumberFont_property, file: #file, line: #line)
+    mPackageGuideColorWell?.bind_color (self.packageGuideColor_property, file: #file, line: #line, sendContinously:false)
+    mPackageDimensionColorWell?.bind_color (self.packageDimensionColor_property, file: #file, line: #line, sendContinously:false)
+    mDimensionFontButton?.bind_fontValue (self.dimensionFont_property, file: #file, line: #line)
+    mPadZoneColorColorWell?.bind_color (self.padZoneColor_property, file: #file, line: #line, sendContinously:false)
+    mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (self.packageDrawingWidthMultipliedByTen_property, file: #file, line: #line)
+    mSymbolAndPackageGridDotColorForDeviceColorWell?.bind_color (self.mSymbolAndPackageGridDotColorForDevice_property, file: #file, line: #line, sendContinously:false)
+    mSymbolAndPackageLineDotColorForDeviceColorWell?.bind_color (self.mSymbolAndPackageGridLineColorForDevice_property, file: #file, line: #line, sendContinously:false)
+    mSymbolAndPackageBackgroundColorForDeviceColorWell?.bind_color (self.mSymbolAndPackageBackgroundColorForDevice_property, file: #file, line: #line, sendContinously:false)
+    mPackageColorForDeviceColorWell?.bind_color (self.mPackageColorForDevice_property, file: #file, line: #line, sendContinously:false)
+    mTopSidePadColorForDeviceColorWell?.bind_color (self.mTopSidePadColorForDevice_property, file: #file, line: #line, sendContinously:false)
+    mBottomSidePadColorDorDeviveColorWell?.bind_color (self.mBottomSidePadColorForDevice_property, file: #file, line: #line, sendContinously:false)
+    mPadNumberColorForDeviceColorWell?.bind_color (self.mPadNumberColorForDevice_property, file: #file, line: #line, sendContinously:false)
+    mPackageNameFontForDeviceFontButton?.bind_fontValue (self.mPadNumberFontForDevice_property, file: #file, line: #line)
+    mPadNumberFontForDeviceFontButton?.bind_fontValue (self.mPadNumberFontForDevice_property, file: #file, line: #line)
+    mSymbolColorForDeviceColorWell?.bind_color (self.mSymbolColorForDevice_property, file: #file, line: #line, sendContinously:false)
+    mSymbolNameFontForDeviceFontButton?.bind_fontValue (self.mSymbolNameFontForDevice_property, file: #file, line: #line)
+    mPinNameFontForDeviceFontButton?.bind_fontValue (self.mPinNameFontForDevice_property, file: #file, line: #line)
+    mSymbolDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (self.symbolDrawingWidthForDeviceMultipliedByTen_property, file: #file, line: #line)
+    mPackageDrawingWidthMultipliedByTenForDevicePopupButton?.bind_selectedTag (self.packageDrawingWidthForDeviceMultipliedByTen_property, file: #file, line: #line)
+    mDotColorGridForSchematicColorWell?.bind_color (self.dotColorGridForSchematic_property, file: #file, line: #line, sendContinously:false)
+    mLineColorGridForSchematicColorWell?.bind_color (self.lineColorGridForSchematic_property, file: #file, line: #line, sendContinously:false)
+    mUnplacedComponentsColorForSchematicColorWell?.bind_color (self.symbolColorForUnplacedComponentsForSchematic_property, file: #file, line: #line, sendContinously:false)
+    mSymbolColorForSchematicColorWell?.bind_color (self.symbolColorForSchematic_property, file: #file, line: #line, sendContinously:false)
+    mPinNameFontForSchematicFontButton?.bind_fontValue (self.pinNameFontForSchematic_property, file: #file, line: #line)
+    mPinNameColorForSchematicColorWell?.bind_color (self.pinNameColorForSchematic_property, file: #file, line: #line, sendContinously:false)
+    mPinNumberFontForSchematicFontButton?.bind_fontValue (self.pinNumberFontForSchematic_property, file: #file, line: #line)
+    mPinNumberColorForSchematicColorWell?.bind_color (self.pinNumberColorForSchematic_property, file: #file, line: #line, sendContinously:false)
+    mConnectionColorForSchematicColorWell?.bind_color (self.connectionColorForSchematic_property, file: #file, line: #line, sendContinously:false)
+    mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton?.bind_selectedTag (self.symbolDrawingWidthMultipliedByTenForSchematic_property, file: #file, line: #line)
+    mBoardDotColorGridColorWell?.bind_color (self.dotColorGridForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardLineColorGridColorWell?.bind_color (self.lineColorGridForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardBackgroundColorWell?.bind_color (self.boardBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardErrorBackgroundColorWell?.bind_color (self.errorBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardDrawErrorBackgroundCheckbox?.bind_value (self.drawErrorBackgroundForBoard_property, file: #file, line: #line)
+    mBoardWarningBackgroundColorWell?.bind_color (self.warningBackgroundColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardDrawWarningBackgroundCheckbox?.bind_value (self.drawEWarningBackgroundForBoard_property, file: #file, line: #line)
+    mBoardLimitsColorWell?.bind_color (self.boardLimitsColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardClearanceColorWell?.bind_color (self.boardClearanceColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardTopSideRestrictRectangleColorWell?.bind_color (self.topSideRestrictRectangleColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardBottomSideRestrictRectangleColorWell?.bind_color (self.bottomSideRestrictRectangleColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardTopSideLegendColorWell?.bind_color (self.topSideLegendColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardTopSideLayoutColorWell?.bind_color (self.topSideLayoutColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardBottomSideLayoutColorWell?.bind_color (self.bottomSideLayoutColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardBottomSideLegendColorWell?.bind_color (self.bottomSideLegendColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardTopSidePadColorWell?.bind_color (self.topSidePadColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardBottomSidePadColorWell?.bind_color (self.bottomSidePadColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardPadFontButton?.bind_fontValue (self.padNumberFontForBoard_property, file: #file, line: #line)
+    mBoardPadNumberColorWell?.bind_color (self.padNumberColorForBoard_property, file: #file, line: #line, sendContinously:false)
+    mBoardPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (self.packageDrawingWidthMultpliedByTenForBoard_property, file: #file, line: #line)
+    mSampleStringField?.bind_value (self.sampleString_property, file: #file, line: #line, sendContinously:true)
+    mSampleStringSizeField?.bind_value (self.sampleStringSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
+    mShowGerberDrawingFlowCheckbox?.bind_value (self.showGerberDrawingFlow_property, file: #file, line: #line)
+    mShowGerberDrawingIndexesCheckbox?.bind_value (self.showGerberDrawingIndexes_property, file: #file, line: #line)
+    mFontCharacterSelectButton?.bind_codePoint (self.currentCharacterCodePoint_property, file: #file, line: #line)
+    mEditionTransparencySlider?.bind_doubleValue (self.fontEditionTransparency_property, file: #file, line: #line, sendContinously:true)
+    mEditionTransparencyTextField?.bind_value (self.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
+    mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (self.usesUserLibrary_property, file: #file, line: #line)
+    mCheckForSystemLibraryAtStartUpSwitch?.bind_value (self.checkForSystemLibraryAtStartUp_property, file: #file, line: #line)
   //--- Install multiple bindings
-    mRemoveLibraryEntryButton?.bind_enabled (
-      [self.additionnalLibraryArrayController.selectedArray.count],
+    self.mRemoveLibraryEntryButton?.bind_enabled (
+      [self.additionnalLibraryArrayController.selectedArray_property.count_property],
       computeFunction:{
-        return (self.additionnalLibraryArrayController.selectedArray.count.prop > EBSelection.single (0))
+        return (self.additionnalLibraryArrayController.selectedArray_property.count_property.prop > EBSelection.single (0))
       },
       file: #file, line: #line
     )
   //--------------------------- Array controller
-    additionnalLibraryArrayController.bind_modelAndView (
-      model: self.additionnalLibraryArray,
+    self.additionnalLibraryArrayController.bind_modelAndView (
+      model: self.additionnalLibraryArray_property,
       tableViewArray: [mAdditionnalLibraryArrayTableView!],
       file: #file,
       line: #line
     )
   //--------------------------- Set targets / actions
-    mRevealInFinderLibraryInUserApplicationSupportButton?.target = self
-    mRevealInFinderLibraryInUserApplicationSupportButton?.action = #selector (Preferences.revealUserLibraryInFinderAction (_:))
-    mAddLibraryEntryButton?.target = self
-    mAddLibraryEntryButton?.action = #selector (Preferences.addLibraryEntryAction (_:))
-    mRemoveLibraryEntryButton?.target = additionnalLibraryArrayController
-    mRemoveLibraryEntryButton?.action = #selector (ArrayController_Preferences_additionnalLibraryArrayController.remove (_:))
-    mCheckLibraryAction?.target = self
-    mCheckLibraryAction?.action = #selector (Preferences.checkLibraryAction (_:))
+    self.mRevealInFinderLibraryInUserApplicationSupportButton?.target = self
+    self.mRevealInFinderLibraryInUserApplicationSupportButton?.action = #selector (Preferences.revealUserLibraryInFinderAction (_:))
+    self.mAddLibraryEntryButton?.target = self
+    self.mAddLibraryEntryButton?.action = #selector (Preferences.addLibraryEntryAction (_:))
+    self.mRemoveLibraryEntryButton?.target = additionnalLibraryArrayController
+    self.mRemoveLibraryEntryButton?.action = #selector (ArrayController_Preferences_additionnalLibraryArrayController.remove (_:))
+    self.mCheckLibraryAction?.target = self
+    self.mCheckLibraryAction?.action = #selector (Preferences.checkLibraryAction (_:))
   //--- Extern functions
     self.setupForLibrary ()
   }
@@ -1118,102 +2985,102 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   func applicationWillTerminateAction (_ : NSNotification) {
-    mergerHorizontalFlip.storeInPreferencesWithKey (inKey:"Preferences:mergerHorizontalFlip")
-    mergerVerticalFlip.storeInPreferencesWithKey (inKey:"Preferences:mergerVerticalFlip")
-    mergerDisplayHoles.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayHoles")
-    mergerDisplayVias.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayVias")
-    mergerDisplayFrontPads.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPads")
-    mergerDisplayBoardLimits.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBoardLimits")
-    mergerDisplayFrontComponentNames.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentNames")
-    mergerDisplayFrontComponentValues.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentValues")
-    mergerDisplayFrontPackages.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPackages")
-    mergerDisplayFrontLegendTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLegendTexts")
-    mergerDisplayFrontLayoutTracks.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTracks")
-    mergerDisplayFrontLayoutTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTexts")
-    mergerDisplayBackPads.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPads")
-    mergerDisplayBackComponentNames.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentNames")
-    mergerDisplayBackComponentValues.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentValues")
-    mergerDisplayBackLegendTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLegendTexts")
-    mergerDisplayBackPackages.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPackages")
-    mergerDisplayBackLayoutTracks.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTracks")
-    mergerDisplayBackLayoutTexts.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTexts")
-    errorMessageColor.storeInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
-    warningMessageColor.storeInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
-    successMessageColor.storeInPreferencesWithKey (inKey:"Preferences:successMessageColor")
-    selectionHiliteColor.storeInPreferencesWithKey (inKey:"Preferences:selectionHiliteColor")
-    hiliteWidthMultipliedByTen.storeInPreferencesWithKey (inKey:"Preferences:hiliteWidthMultipliedByTen")
-    symbolColor.storeInPreferencesWithKey (inKey:"Preferences:symbolColor")
-    dotColorOfSymbolGrid.storeInPreferencesWithKey (inKey:"Preferences:dotColorOfSymbolGrid")
-    lineColorOfSymbolGrid.storeInPreferencesWithKey (inKey:"Preferences:lineColorOfSymbolGrid")
-    symbolBackgroundColor.storeInPreferencesWithKey (inKey:"Preferences:symbolBackgroundColor")
-    symbolDrawingWidthMultipliedByTen.storeInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthMultipliedByTen")
-    pinNameFont.storeInPreferencesWithKey (inKey:"Preferences:pinNameFont")
-    dotColorOfPackageGrid.storeInPreferencesWithKey (inKey:"Preferences:dotColorOfPackageGrid")
-    lineColorOfPackageGrid.storeInPreferencesWithKey (inKey:"Preferences:lineColorOfPackageGrid")
-    packageBackgroundColor.storeInPreferencesWithKey (inKey:"Preferences:packageBackgroundColor")
-    packageColor.storeInPreferencesWithKey (inKey:"Preferences:packageColor")
-    topSidePadColor.storeInPreferencesWithKey (inKey:"Preferences:topSidePadColor")
-    bottomSidePadColor.storeInPreferencesWithKey (inKey:"Preferences:bottomSidePadColor")
-    padNumberColor.storeInPreferencesWithKey (inKey:"Preferences:padNumberColor")
-    padNumberFont.storeInPreferencesWithKey (inKey:"Preferences:padNumberFont")
-    packageGuideColor.storeInPreferencesWithKey (inKey:"Preferences:packageGuideColor")
-    packageDimensionColor.storeInPreferencesWithKey (inKey:"Preferences:packageDimensionColor")
-    dimensionFont.storeInPreferencesWithKey (inKey:"Preferences:dimensionFont")
-    padZoneColor.storeInPreferencesWithKey (inKey:"Preferences:padZoneColor")
-    packageDrawingWidthMultipliedByTen.storeInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthMultipliedByTen")
-    mSymbolAndPackageGridDotColorForDevice.storeInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageGridDotColorForDevice")
-    mSymbolAndPackageGridLineColorForDevice.storeInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageGridLineColorForDevice")
-    mSymbolAndPackageBackgroundColorForDevice.storeInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageBackgroundColorForDevice")
-    mPackageColorForDevice.storeInPreferencesWithKey (inKey:"Preferences:mPackageColorForDevice")
-    mTopSidePadColorForDevice.storeInPreferencesWithKey (inKey:"Preferences:mTopSidePadColorForDevice")
-    mBottomSidePadColorForDevice.storeInPreferencesWithKey (inKey:"Preferences:mBottomSidePadColorForDevice")
-    mPadNumberColorForDevice.storeInPreferencesWithKey (inKey:"Preferences:mPadNumberColorForDevice")
-    mPackageNameFontForDevice.storeInPreferencesWithKey (inKey:"Preferences:mPackageNameFontForDevice")
-    mPadNumberFontForDevice.storeInPreferencesWithKey (inKey:"Preferences:mPadNumberFontForDevice")
-    mSymbolColorForDevice.storeInPreferencesWithKey (inKey:"Preferences:mSymbolColorForDevice")
-    mSymbolNameFontForDevice.storeInPreferencesWithKey (inKey:"Preferences:mSymbolNameFontForDevice")
-    mPinNameFontForDevice.storeInPreferencesWithKey (inKey:"Preferences:mPinNameFontForDevice")
-    symbolDrawingWidthForDeviceMultipliedByTen.storeInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthForDeviceMultipliedByTen")
-    packageDrawingWidthForDeviceMultipliedByTen.storeInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthForDeviceMultipliedByTen")
-    dotColorGridForSchematic.storeInPreferencesWithKey (inKey:"Preferences:dotColorGridForSchematic")
-    lineColorGridForSchematic.storeInPreferencesWithKey (inKey:"Preferences:lineColorGridForSchematic")
-    symbolColorForUnplacedComponentsForSchematic.storeInPreferencesWithKey (inKey:"Preferences:symbolColorForUnplacedComponentsForSchematic")
-    symbolColorForSchematic.storeInPreferencesWithKey (inKey:"Preferences:symbolColorForSchematic")
-    pinNameFontForSchematic.storeInPreferencesWithKey (inKey:"Preferences:pinNameFontForSchematic")
-    pinNameColorForSchematic.storeInPreferencesWithKey (inKey:"Preferences:pinNameColorForSchematic")
-    pinNumberFontForSchematic.storeInPreferencesWithKey (inKey:"Preferences:pinNumberFontForSchematic")
-    pinNumberColorForSchematic.storeInPreferencesWithKey (inKey:"Preferences:pinNumberColorForSchematic")
-    connectionColorForSchematic.storeInPreferencesWithKey (inKey:"Preferences:connectionColorForSchematic")
-    symbolDrawingWidthMultipliedByTenForSchematic.storeInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthMultipliedByTenForSchematic")
-    dotColorGridForBoard.storeInPreferencesWithKey (inKey:"Preferences:dotColorGridForBoard")
-    lineColorGridForBoard.storeInPreferencesWithKey (inKey:"Preferences:lineColorGridForBoard")
-    boardBackgroundColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:boardBackgroundColorForBoard")
-    errorBackgroundColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:errorBackgroundColorForBoard")
-    drawErrorBackgroundForBoard.storeInPreferencesWithKey (inKey:"Preferences:drawErrorBackgroundForBoard")
-    warningBackgroundColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:warningBackgroundColorForBoard")
-    drawEWarningBackgroundForBoard.storeInPreferencesWithKey (inKey:"Preferences:drawEWarningBackgroundForBoard")
-    boardLimitsColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:boardLimitsColorForBoard")
-    boardClearanceColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:boardClearanceColorForBoard")
-    topSideRestrictRectangleColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:topSideRestrictRectangleColorForBoard")
-    bottomSideRestrictRectangleColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:bottomSideRestrictRectangleColorForBoard")
-    topSideLegendColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:topSideLegendColorForBoard")
-    topSideLayoutColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:topSideLayoutColorForBoard")
-    bottomSideLayoutColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:bottomSideLayoutColorForBoard")
-    bottomSideLegendColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:bottomSideLegendColorForBoard")
-    topSidePadColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:topSidePadColorForBoard")
-    bottomSidePadColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:bottomSidePadColorForBoard")
-    padNumberFontForBoard.storeInPreferencesWithKey (inKey:"Preferences:padNumberFontForBoard")
-    padNumberColorForBoard.storeInPreferencesWithKey (inKey:"Preferences:padNumberColorForBoard")
-    packageDrawingWidthMultpliedByTenForBoard.storeInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthMultpliedByTenForBoard")
-    sampleString.storeInPreferencesWithKey (inKey:"Preferences:sampleString")
-    sampleStringSize.storeInPreferencesWithKey (inKey:"Preferences:sampleStringSize")
-    showGerberDrawingFlow.storeInPreferencesWithKey (inKey:"Preferences:showGerberDrawingFlow")
-    showGerberDrawingIndexes.storeInPreferencesWithKey (inKey:"Preferences:showGerberDrawingIndexes")
-    currentCharacterCodePoint.storeInPreferencesWithKey (inKey:"Preferences:currentCharacterCodePoint")
-    fontEditionTransparency.storeInPreferencesWithKey (inKey:"Preferences:fontEditionTransparency")
-    usesUserLibrary.storeInPreferencesWithKey (inKey:"Preferences:usesUserLibrary")
-    checkForSystemLibraryAtStartUp.storeInPreferencesWithKey (inKey:"Preferences:checkForSystemLibraryAtStartUp")
-    additionnalLibraryArray.storeInPreferencesWithKey (inKey:"Preferences:additionnalLibraryArray")
+    self.mergerHorizontalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerHorizontalFlip")
+    self.mergerVerticalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerVerticalFlip")
+    self.mergerDisplayHoles_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayHoles")
+    self.mergerDisplayVias_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayVias")
+    self.mergerDisplayFrontPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPads")
+    self.mergerDisplayBoardLimits_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBoardLimits")
+    self.mergerDisplayFrontComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentNames")
+    self.mergerDisplayFrontComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentValues")
+    self.mergerDisplayFrontPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPackages")
+    self.mergerDisplayFrontLegendTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLegendTexts")
+    self.mergerDisplayFrontLayoutTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTracks")
+    self.mergerDisplayFrontLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTexts")
+    self.mergerDisplayBackPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPads")
+    self.mergerDisplayBackComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentNames")
+    self.mergerDisplayBackComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentValues")
+    self.mergerDisplayBackLegendTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLegendTexts")
+    self.mergerDisplayBackPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPackages")
+    self.mergerDisplayBackLayoutTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTracks")
+    self.mergerDisplayBackLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTexts")
+    self.errorMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
+    self.warningMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
+    self.successMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:successMessageColor")
+    self.selectionHiliteColor_property.storeInPreferencesWithKey (inKey:"Preferences:selectionHiliteColor")
+    self.hiliteWidthMultipliedByTen_property.storeInPreferencesWithKey (inKey:"Preferences:hiliteWidthMultipliedByTen")
+    self.symbolColor_property.storeInPreferencesWithKey (inKey:"Preferences:symbolColor")
+    self.dotColorOfSymbolGrid_property.storeInPreferencesWithKey (inKey:"Preferences:dotColorOfSymbolGrid")
+    self.lineColorOfSymbolGrid_property.storeInPreferencesWithKey (inKey:"Preferences:lineColorOfSymbolGrid")
+    self.symbolBackgroundColor_property.storeInPreferencesWithKey (inKey:"Preferences:symbolBackgroundColor")
+    self.symbolDrawingWidthMultipliedByTen_property.storeInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthMultipliedByTen")
+    self.pinNameFont_property.storeInPreferencesWithKey (inKey:"Preferences:pinNameFont")
+    self.dotColorOfPackageGrid_property.storeInPreferencesWithKey (inKey:"Preferences:dotColorOfPackageGrid")
+    self.lineColorOfPackageGrid_property.storeInPreferencesWithKey (inKey:"Preferences:lineColorOfPackageGrid")
+    self.packageBackgroundColor_property.storeInPreferencesWithKey (inKey:"Preferences:packageBackgroundColor")
+    self.packageColor_property.storeInPreferencesWithKey (inKey:"Preferences:packageColor")
+    self.topSidePadColor_property.storeInPreferencesWithKey (inKey:"Preferences:topSidePadColor")
+    self.bottomSidePadColor_property.storeInPreferencesWithKey (inKey:"Preferences:bottomSidePadColor")
+    self.padNumberColor_property.storeInPreferencesWithKey (inKey:"Preferences:padNumberColor")
+    self.padNumberFont_property.storeInPreferencesWithKey (inKey:"Preferences:padNumberFont")
+    self.packageGuideColor_property.storeInPreferencesWithKey (inKey:"Preferences:packageGuideColor")
+    self.packageDimensionColor_property.storeInPreferencesWithKey (inKey:"Preferences:packageDimensionColor")
+    self.dimensionFont_property.storeInPreferencesWithKey (inKey:"Preferences:dimensionFont")
+    self.padZoneColor_property.storeInPreferencesWithKey (inKey:"Preferences:padZoneColor")
+    self.packageDrawingWidthMultipliedByTen_property.storeInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthMultipliedByTen")
+    self.mSymbolAndPackageGridDotColorForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageGridDotColorForDevice")
+    self.mSymbolAndPackageGridLineColorForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageGridLineColorForDevice")
+    self.mSymbolAndPackageBackgroundColorForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mSymbolAndPackageBackgroundColorForDevice")
+    self.mPackageColorForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mPackageColorForDevice")
+    self.mTopSidePadColorForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mTopSidePadColorForDevice")
+    self.mBottomSidePadColorForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mBottomSidePadColorForDevice")
+    self.mPadNumberColorForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mPadNumberColorForDevice")
+    self.mPackageNameFontForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mPackageNameFontForDevice")
+    self.mPadNumberFontForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mPadNumberFontForDevice")
+    self.mSymbolColorForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mSymbolColorForDevice")
+    self.mSymbolNameFontForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mSymbolNameFontForDevice")
+    self.mPinNameFontForDevice_property.storeInPreferencesWithKey (inKey:"Preferences:mPinNameFontForDevice")
+    self.symbolDrawingWidthForDeviceMultipliedByTen_property.storeInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthForDeviceMultipliedByTen")
+    self.packageDrawingWidthForDeviceMultipliedByTen_property.storeInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthForDeviceMultipliedByTen")
+    self.dotColorGridForSchematic_property.storeInPreferencesWithKey (inKey:"Preferences:dotColorGridForSchematic")
+    self.lineColorGridForSchematic_property.storeInPreferencesWithKey (inKey:"Preferences:lineColorGridForSchematic")
+    self.symbolColorForUnplacedComponentsForSchematic_property.storeInPreferencesWithKey (inKey:"Preferences:symbolColorForUnplacedComponentsForSchematic")
+    self.symbolColorForSchematic_property.storeInPreferencesWithKey (inKey:"Preferences:symbolColorForSchematic")
+    self.pinNameFontForSchematic_property.storeInPreferencesWithKey (inKey:"Preferences:pinNameFontForSchematic")
+    self.pinNameColorForSchematic_property.storeInPreferencesWithKey (inKey:"Preferences:pinNameColorForSchematic")
+    self.pinNumberFontForSchematic_property.storeInPreferencesWithKey (inKey:"Preferences:pinNumberFontForSchematic")
+    self.pinNumberColorForSchematic_property.storeInPreferencesWithKey (inKey:"Preferences:pinNumberColorForSchematic")
+    self.connectionColorForSchematic_property.storeInPreferencesWithKey (inKey:"Preferences:connectionColorForSchematic")
+    self.symbolDrawingWidthMultipliedByTenForSchematic_property.storeInPreferencesWithKey (inKey:"Preferences:symbolDrawingWidthMultipliedByTenForSchematic")
+    self.dotColorGridForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:dotColorGridForBoard")
+    self.lineColorGridForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:lineColorGridForBoard")
+    self.boardBackgroundColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:boardBackgroundColorForBoard")
+    self.errorBackgroundColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:errorBackgroundColorForBoard")
+    self.drawErrorBackgroundForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:drawErrorBackgroundForBoard")
+    self.warningBackgroundColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:warningBackgroundColorForBoard")
+    self.drawEWarningBackgroundForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:drawEWarningBackgroundForBoard")
+    self.boardLimitsColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:boardLimitsColorForBoard")
+    self.boardClearanceColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:boardClearanceColorForBoard")
+    self.topSideRestrictRectangleColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:topSideRestrictRectangleColorForBoard")
+    self.bottomSideRestrictRectangleColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:bottomSideRestrictRectangleColorForBoard")
+    self.topSideLegendColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:topSideLegendColorForBoard")
+    self.topSideLayoutColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:topSideLayoutColorForBoard")
+    self.bottomSideLayoutColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:bottomSideLayoutColorForBoard")
+    self.bottomSideLegendColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:bottomSideLegendColorForBoard")
+    self.topSidePadColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:topSidePadColorForBoard")
+    self.bottomSidePadColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:bottomSidePadColorForBoard")
+    self.padNumberFontForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:padNumberFontForBoard")
+    self.padNumberColorForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:padNumberColorForBoard")
+    self.packageDrawingWidthMultpliedByTenForBoard_property.storeInPreferencesWithKey (inKey:"Preferences:packageDrawingWidthMultpliedByTenForBoard")
+    self.sampleString_property.storeInPreferencesWithKey (inKey:"Preferences:sampleString")
+    self.sampleStringSize_property.storeInPreferencesWithKey (inKey:"Preferences:sampleStringSize")
+    self.showGerberDrawingFlow_property.storeInPreferencesWithKey (inKey:"Preferences:showGerberDrawingFlow")
+    self.showGerberDrawingIndexes_property.storeInPreferencesWithKey (inKey:"Preferences:showGerberDrawingIndexes")
+    self.currentCharacterCodePoint_property.storeInPreferencesWithKey (inKey:"Preferences:currentCharacterCodePoint")
+    self.fontEditionTransparency_property.storeInPreferencesWithKey (inKey:"Preferences:fontEditionTransparency")
+    self.usesUserLibrary_property.storeInPreferencesWithKey (inKey:"Preferences:usesUserLibrary")
+    self.checkForSystemLibraryAtStartUp_property.storeInPreferencesWithKey (inKey:"Preferences:checkForSystemLibraryAtStartUp")
+    self.additionnalLibraryArray_property.storeInPreferencesWithKey (inKey:"Preferences:additionnalLibraryArray")
   }
 
   //····················································································································

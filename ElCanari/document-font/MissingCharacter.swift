@@ -16,18 +16,18 @@ class MissingCharacter : EBSimpleClass,
   //   Accessing idx stored property
   //····················································································································
 
-  var idx_value : Int {
+  var idx : Int {
     get {
-      return self.idx.propval
+      return self.idx_property.propval
     }
     set {
-      self.idx.setProp (newValue)
+      self.idx_property.setProp (newValue)
     }
   }
 
-  var idx_prop : EBSelection <Int> {
+  var idx_property_selection : EBSelection <Int> {
     get {
-      return self.idx.prop
+      return self.idx_property.prop
     }
   }
 
@@ -35,18 +35,18 @@ class MissingCharacter : EBSimpleClass,
   //   Accessing code stored property
   //····················································································································
 
-  var code_value : String {
+  var code : String {
     get {
-      return self.code.propval
+      return self.code_property.propval
     }
     set {
-      self.code.setProp (newValue)
+      self.code_property.setProp (newValue)
     }
   }
 
-  var code_prop : EBSelection <String> {
+  var code_property_selection : EBSelection <String> {
     get {
-      return self.code.prop
+      return self.code_property.prop
     }
   }
 
@@ -54,18 +54,18 @@ class MissingCharacter : EBSimpleClass,
   //   Accessing char stored property
   //····················································································································
 
-  var char_value : String {
+  var char : String {
     get {
-      return self.char.propval
+      return self.char_property.propval
     }
     set {
-      self.char.setProp (newValue)
+      self.char_property.setProp (newValue)
     }
   }
 
-  var char_prop : EBSelection <String> {
+  var char_property_selection : EBSelection <String> {
     get {
-      return self.char.prop
+      return self.char_property.prop
     }
   }
 
@@ -73,15 +73,15 @@ class MissingCharacter : EBSimpleClass,
   //    Stored Properties
   //····················································································································
 
-  var idx = EBStoredProperty_Int (0)
+  var idx_property = EBStoredProperty_Int (0)
 
   //····················································································································
 
-  var code = EBStoredProperty_String ("??")
+  var code_property = EBStoredProperty_String ("??")
 
   //····················································································································
 
-  var char = EBStoredProperty_String ("?")
+  var char_property = EBStoredProperty_String ("?")
 
   //····················································································································
   //    Transient properties
@@ -113,27 +113,27 @@ class MissingCharacter : EBSimpleClass,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "idx",
-      idx:self.idx.mEasyBindingsObjectIndex,
+      idx:self.idx_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.idx.mObserverExplorer,
-      valueExplorer:&self.idx.mValueExplorer
+      observerExplorer:&self.idx_property.mObserverExplorer,
+      valueExplorer:&self.idx_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "code",
-      idx:self.code.mEasyBindingsObjectIndex,
+      idx:self.code_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.code.mObserverExplorer,
-      valueExplorer:&self.code.mValueExplorer
+      observerExplorer:&self.code_property.mObserverExplorer,
+      valueExplorer:&self.code_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "char",
-      idx:self.char.mEasyBindingsObjectIndex,
+      idx:self.char_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.char.mObserverExplorer,
-      valueExplorer:&self.char.mValueExplorer
+      observerExplorer:&self.char_property.mObserverExplorer,
+      valueExplorer:&self.char_property.mValueExplorer
     )
   }
 
@@ -142,12 +142,12 @@ class MissingCharacter : EBSimpleClass,
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.idx.mObserverExplorer = nil
-    self.idx.mValueExplorer = nil
-    self.code.mObserverExplorer = nil
-    self.code.mValueExplorer = nil
-    self.char.mObserverExplorer = nil
-    self.char.mValueExplorer = nil
+    self.idx_property.mObserverExplorer = nil
+    self.idx_property.mValueExplorer = nil
+    self.code_property.mObserverExplorer = nil
+    self.code_property.mValueExplorer = nil
+    self.char_property.mObserverExplorer = nil
+    self.char_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -157,9 +157,9 @@ class MissingCharacter : EBSimpleClass,
 
   override func saveInto (dictionary : NSMutableDictionary) {
     super.saveInto (dictionary: dictionary)
-    self.idx.storeIn (dictionary: dictionary, forKey: "idx")
-    self.code.storeIn (dictionary: dictionary, forKey: "code")
-    self.char.storeIn (dictionary: dictionary, forKey: "char")
+    self.idx_property.storeIn (dictionary: dictionary, forKey: "idx")
+    self.code_property.storeIn (dictionary: dictionary, forKey: "code")
+    self.char_property.storeIn (dictionary: dictionary, forKey: "char")
   }
 
   //····················································································································
@@ -168,9 +168,9 @@ class MissingCharacter : EBSimpleClass,
 
   override func setUp (withDictionary dictionary : NSDictionary) {
     super.setUp (withDictionary: dictionary)
-    self.idx.readFrom (dictionary: dictionary, forKey:"idx")
-    self.code.readFrom (dictionary: dictionary, forKey:"code")
-    self.char.readFrom (dictionary: dictionary, forKey:"char")
+    self.idx_property.readFrom (dictionary: dictionary, forKey:"idx")
+    self.code_property.readFrom (dictionary: dictionary, forKey:"code")
+    self.char_property.readFrom (dictionary: dictionary, forKey:"char")
   }
 
   //····················································································································
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.idx.addEBObserver (inObserver)
+        managedObject.idx_property.addEBObserver (inObserver)
       }
     }
   }
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.idx.removeEBObserver (inObserver)
+        managedObject.idx_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
   final func addEBObserversOf_idx_toElementsOfSet (_ inSet : Set<MissingCharacter>) {
     for managedObject in inSet {
       for observer in mObserversOf_idx {
-        managedObject.idx.addEBObserver (observer)
+        managedObject.idx_property.addEBObserver (observer)
       }
     }
   }
@@ -232,7 +232,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
     for observer in mObserversOf_idx {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.idx.removeEBObserver (observer)
+        managedObject.idx_property.removeEBObserver (observer)
       }
     }
   }
@@ -250,7 +250,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.code.addEBObserver (inObserver)
+        managedObject.code_property.addEBObserver (inObserver)
       }
     }
   }
@@ -262,7 +262,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.code.removeEBObserver (inObserver)
+        managedObject.code_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
   final func addEBObserversOf_code_toElementsOfSet (_ inSet : Set<MissingCharacter>) {
     for managedObject in inSet {
       for observer in mObserversOf_code {
-        managedObject.code.addEBObserver (observer)
+        managedObject.code_property.addEBObserver (observer)
       }
     }
   }
@@ -279,7 +279,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
     for observer in mObserversOf_code {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.code.removeEBObserver (observer)
+        managedObject.code_property.removeEBObserver (observer)
       }
     }
   }
@@ -297,7 +297,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.char.addEBObserver (inObserver)
+        managedObject.char_property.addEBObserver (inObserver)
       }
     }
   }
@@ -309,7 +309,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.char.removeEBObserver (inObserver)
+        managedObject.char_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -317,7 +317,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
   final func addEBObserversOf_char_toElementsOfSet (_ inSet : Set<MissingCharacter>) {
     for managedObject in inSet {
       for observer in mObserversOf_char {
-        managedObject.char.addEBObserver (observer)
+        managedObject.char_property.addEBObserver (observer)
       }
     }
   }
@@ -326,7 +326,7 @@ class ReadOnlyArrayOf_MissingCharacter : ReadOnlyAbstractArrayProperty <MissingC
     for observer in mObserversOf_char {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.char.removeEBObserver (observer)
+        managedObject.char_property.removeEBObserver (observer)
       }
     }
   }
@@ -386,19 +386,19 @@ class TransientArrayOf_MissingCharacter : ReadOnlyArrayOf_MissingCharacter {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MissingCharacter_idx : class {
-  var idx : EBStoredProperty_Int { get }
+  var idx : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MissingCharacter_code : class {
-  var code : EBStoredProperty_String { get }
+  var code : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MissingCharacter_char : class {
-  var char : EBStoredProperty_String { get }
+  var char : String { get }
 }
 
 

@@ -22,7 +22,7 @@ let PMArtworkComment = "PMArtworkComment"
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
      metadataDictionary.setObject (NSNumber (value:version), forKey:PMArtworkVersion as NSCopying)
-     metadataDictionary.setObject (rootObject.comments.propval, forKey:PMArtworkComment as NSCopying)
+     metadataDictionary.setObject (rootObject.comments, forKey:PMArtworkComment as NSCopying)
   }
 
   //····················································································································

@@ -9,62 +9,6 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_PMArtworkDocument_mDataController
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class SelectedSet_PMArtworkDocument_mDataController : EBAbstractProperty {
-  private let mAllowsEmptySelection : Bool
-  private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_ArtworkFileGenerationParameters
-
-  //····················································································································
-
-  init (allowsEmptySelection : Bool,
-        allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_ArtworkFileGenerationParameters) {
-    mAllowsMultipleSelection = allowsMultipleSelection
-    mAllowsEmptySelection = allowsEmptySelection
-    mSortedArray = sortedArray
-    super.init ()
-  }
-
-  //····················································································································
-
-  private var mPrivateSet = Set<ArtworkFileGenerationParameters> () {
-    didSet {
-      if mPrivateSet != oldValue {
-        postEvent ()
-      }
-    }
-  }
-
-  //····················································································································
-
-  var mSet : Set<ArtworkFileGenerationParameters> {
-    set {
-      var newSelectedSet = newValue
-      switch mSortedArray.prop {
-      case .empty, .multiple :
-        break ;
-      case .single (let sortedArray) :
-        if !mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
-          newSelectedSet = Set (arrayLiteral: sortedArray [0])
-        }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
-          newSelectedSet = Set (arrayLiteral: newSelectedSet.first!)
-        }
-      }
-      mPrivateSet = newSelectedSet
-    }
-    get {
-      return mPrivateSet
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ArrayController_PMArtworkDocument_mDataController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -72,9 +16,9 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
 
   private var mModel : ToManyRelationship_ArtworkRootEntity_fileGenerationParameterArray? = nil
 
-  let sortedArray = TransientArrayOf_ArtworkFileGenerationParameters ()
+  let sortedArray_property = TransientArrayOf_ArtworkFileGenerationParameters ()
 
-  let selectedArray = TransientArrayOf_ArtworkFileGenerationParameters ()
+  let selectedArray_property = TransientArrayOf_ArtworkFileGenerationParameters ()
 
   private let mSelectedSet : SelectedSet_PMArtworkDocument_mDataController
 
@@ -84,7 +28,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
 
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
     didSet {
-      sortedArray.postEvent ()
+      self.sortedArray_property.postEvent ()
       for tableView in mTableViewArray {
         var first = true
         for (key, ascending) in mSortDescriptorArray {
@@ -111,7 +55,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     mSelectedSet = SelectedSet_PMArtworkDocument_mDataController (
       allowsEmptySelection:allowsEmptySelection,
       allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:sortedArray
+      sortedArray:self.sortedArray_property
     )
     super.init ()
   //--- Set selected array compute function
@@ -123,8 +67,8 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
   //····················································································································
 
   private final func setSelectedArrayComputeFunction () {
-    selectedArray.readModelFunction = {
-      switch self.sortedArray.prop {
+    self.selectedArray_property.readModelFunction = {
+      switch self.sortedArray_property.prop {
       case .empty :
         return .empty
       case .multiple :
@@ -147,7 +91,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     var order = ComparisonResult.orderedSame
     for (column, ascending) in mSortDescriptorArray {
       if column == "name" {
-        order = compare_String (left: left.name, right:right.name)
+        order = compare_String (left: left.name_property, right:right.name_property)
       }
       if !ascending {
         switch order {
@@ -166,7 +110,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
   //····················································································································
 
   private final func setFilterAndSortFunction () {
-    sortedArray.readModelFunction = {
+    self.sortedArray_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -200,11 +144,11 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     }
   //--- Add observers
     mModel = model
-    model.addEBObserver (sortedArray)
-    sortedArray.addEBObserver (mSelectedSet)
-    mSelectedSet.addEBObserver (selectedArray)
+    model.addEBObserver (self.sortedArray_property)
+    self.sortedArray_property.addEBObserver (mSelectedSet)
+    mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
-    model.addEBObserverOf_name (sortedArray)
+    model.addEBObserverOf_name (self.sortedArray_property)
   //--- Bind table views
     mTableViewArray = tableViewArray
     for tableView in tableViewArray {
@@ -220,21 +164,21 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    mModel?.removeEBObserver (sortedArray)
-    sortedArray.removeEBObserver (mSelectedSet)
-    mSelectedSet.removeEBObserver (selectedArray)
+    mModel?.removeEBObserver (self.sortedArray_property)
+    self.sortedArray_property.removeEBObserver (mSelectedSet)
+    mSelectedSet.removeEBObserver (self.selectedArray_property)
   //--- Remove observed properties (for filtering and sorting)
-    mModel?.removeEBObserverOf_name (sortedArray)
+    mModel?.removeEBObserverOf_name (self.sortedArray_property)
     for tvc in mTableViewDataSourceControllerArray {
-      sortedArray.removeEBObserver (tvc)
+      self.sortedArray_property.removeEBObserver (tvc)
     }
     for tvc in mTableViewSelectionControllerArray {
       mSelectedSet.removeEBObserver (tvc)
     }
   //---
     mTableViewArray = [EBTableView] ()
-    selectedArray.readModelFunction = nil
-    sortedArray.readModelFunction = nil
+    self.selectedArray_property.readModelFunction = nil
+    self.sortedArray_property.readModelFunction = nil
     mSelectedSet.mSet = Set ()
     mTableViewDataSourceControllerArray = []
     mTableViewSelectionControllerArray = []
@@ -257,7 +201,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     tableView.delegate = self
   //--- Set table view data source controller
     let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
-    sortedArray.addEBObserver (dataSourceTableViewController)
+    self.sortedArray_property.addEBObserver (dataSourceTableViewController)
     mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
   //--- Set table view selection controller
     let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
@@ -280,7 +224,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
  //····················································································································
 
   func selectedObjectIndexSet () -> NSIndexSet {
-    switch sortedArray.prop {
+    switch self.sortedArray_property.prop {
     case .empty, .multiple :
        return NSIndexSet ()
     case .single (let v) :
@@ -307,7 +251,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    switch sortedArray.prop {
+    switch self.sortedArray_property.prop {
     case .empty, .multiple :
       return 0
     case .single (let v) :
@@ -323,7 +267,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    switch sortedArray.prop {
+    switch self.sortedArray_property.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -362,7 +306,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    switch sortedArray.prop {
+    switch self.sortedArray_property.prop {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -378,7 +322,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
             cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.name, file: #file, line: #line, sendContinously:false)
+          cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
         }
       }else{
         NSLog ("Unknown column '\(columnIdentifier)'")
@@ -444,7 +388,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
       case .empty, .multiple :
         break
       case .single (let model_prop) :
-        switch sortedArray.prop {
+        switch self.sortedArray_property.prop {
         case .empty, .multiple :
           break
         case .single (let sortedArray_prop) :
@@ -508,6 +452,62 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
           model.setProp (newObjectArray)
         }
       }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    SelectedSet_PMArtworkDocument_mDataController
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class SelectedSet_PMArtworkDocument_mDataController : EBAbstractProperty {
+  private let mAllowsEmptySelection : Bool
+  private let mAllowsMultipleSelection : Bool
+  private let mSortedArray : TransientArrayOf_ArtworkFileGenerationParameters
+
+  //····················································································································
+
+  init (allowsEmptySelection : Bool,
+        allowsMultipleSelection : Bool,
+        sortedArray : TransientArrayOf_ArtworkFileGenerationParameters) {
+    mAllowsMultipleSelection = allowsMultipleSelection
+    mAllowsEmptySelection = allowsEmptySelection
+    mSortedArray = sortedArray
+    super.init ()
+  }
+
+  //····················································································································
+
+  private var mPrivateSet = Set<ArtworkFileGenerationParameters> () {
+    didSet {
+      if mPrivateSet != oldValue {
+        postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mSet : Set<ArtworkFileGenerationParameters> {
+    set {
+      var newSelectedSet = newValue
+      switch mSortedArray.prop {
+      case .empty, .multiple :
+        break ;
+      case .single (let sortedArray) :
+        if !mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
+          newSelectedSet = Set (arrayLiteral: sortedArray [0])
+        }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
+          newSelectedSet = Set (arrayLiteral: newSelectedSet.first!)
+        }
+      }
+      mPrivateSet = newSelectedSet
+    }
+    get {
+      return mPrivateSet
     }
   }
 

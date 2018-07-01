@@ -30,7 +30,7 @@ let PMFontComment = "PMFontComment"
       let newCharacter = FontCharacterEntity (managedObjectContext: managedObjectContext())
       characterArray.append (newCharacter)
     }
-    rootObject.characters.setProp (characterArray)
+    rootObject.characters_property.setProp (characterArray)
     undoManager?.enableUndoRegistration ()
   }
 
@@ -38,7 +38,7 @@ let PMFontComment = "PMFontComment"
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
      metadataDictionary.setObject (NSNumber (value:version), forKey:PMFontVersion as NSCopying)
-     metadataDictionary.setObject (rootObject.comments.propval, forKey:PMFontComment as NSCopying)
+     metadataDictionary.setObject (rootObject.comments, forKey:PMFontComment as NSCopying)
   }
 
   //····················································································································

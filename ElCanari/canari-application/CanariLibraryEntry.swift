@@ -15,18 +15,18 @@ class CanariLibraryEntry : EBSimpleClass,
   //   Accessing mPath stored property
   //····················································································································
 
-  var mPath_value : String {
+  var mPath : String {
     get {
-      return self.mPath.propval
+      return self.mPath_property.propval
     }
     set {
-      self.mPath.setProp (newValue)
+      self.mPath_property.setProp (newValue)
     }
   }
 
-  var mPath_prop : EBSelection <String> {
+  var mPath_property_selection : EBSelection <String> {
     get {
-      return self.mPath.prop
+      return self.mPath_property.prop
     }
   }
 
@@ -34,18 +34,18 @@ class CanariLibraryEntry : EBSimpleClass,
   //   Accessing mUses stored property
   //····················································································································
 
-  var mUses_value : Bool {
+  var mUses : Bool {
     get {
-      return self.mUses.propval
+      return self.mUses_property.propval
     }
     set {
-      self.mUses.setProp (newValue)
+      self.mUses_property.setProp (newValue)
     }
   }
 
-  var mUses_prop : EBSelection <Bool> {
+  var mUses_property_selection : EBSelection <Bool> {
     get {
-      return self.mUses.prop
+      return self.mUses_property.prop
     }
   }
 
@@ -53,9 +53,9 @@ class CanariLibraryEntry : EBSimpleClass,
   //   Accessing mStatusImage transient property
   //····················································································································
 
-  var mStatusImage_prop : EBSelection <NSImage> {
+  var mStatusImage_property_selection : EBSelection <NSImage> {
     get {
-      return self.mStatusImage.prop
+      return self.mStatusImage_property.prop
     }
   }
 
@@ -63,17 +63,17 @@ class CanariLibraryEntry : EBSimpleClass,
   //    Stored Properties
   //····················································································································
 
-  var mPath = EBStoredProperty_String ("Hello")
+  var mPath_property = EBStoredProperty_String ("Hello")
 
   //····················································································································
 
-  var mUses = EBStoredProperty_Bool (true)
+  var mUses_property = EBStoredProperty_Bool (true)
 
   //····················································································································
   //    Transient properties
   //····················································································································
 
-  var mStatusImage = EBTransientProperty_NSImage ()
+  var mStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
   //    Extern delegates
@@ -88,16 +88,16 @@ class CanariLibraryEntry : EBSimpleClass,
   override init () {
     super.init ()
   //--- Install compute functions for transients
-    mStatusImage.readModelFunction = { [weak self] in
+    mStatusImage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPath.prop.kind ()
+        let kind = unwSelf.mPath_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mPath.prop) {
+          switch (unwSelf.mPath_property.prop) {
           case (.single (let v0)) :
             return .single (compute_CanariLibraryEntry_mStatusImage (v0))
           default :
@@ -109,7 +109,7 @@ class CanariLibraryEntry : EBSimpleClass,
       }
     }
   //--- Install property observers for transients
-    mPath.addEBObserver (mStatusImage)
+    self.mPath_property.addEBObserver (mStatusImage_property)
   //--- Extern functions
   //--- Extern delegates
     mExternDelegate0 = CanariLibraryEntryDelegate (object:self)
@@ -123,19 +123,19 @@ class CanariLibraryEntry : EBSimpleClass,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mPath",
-      idx:self.mPath.mEasyBindingsObjectIndex,
+      idx:self.mPath_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mPath.mObserverExplorer,
-      valueExplorer:&self.mPath.mValueExplorer
+      observerExplorer:&self.mPath_property.mObserverExplorer,
+      valueExplorer:&self.mPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mUses",
-      idx:self.mUses.mEasyBindingsObjectIndex,
+      idx:self.mUses_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mUses.mObserverExplorer,
-      valueExplorer:&self.mUses.mValueExplorer
+      observerExplorer:&self.mUses_property.mObserverExplorer,
+      valueExplorer:&self.mUses_property.mValueExplorer
     )
   }
 
@@ -144,10 +144,10 @@ class CanariLibraryEntry : EBSimpleClass,
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.mPath.mObserverExplorer = nil
-    self.mPath.mValueExplorer = nil
-    self.mUses.mObserverExplorer = nil
-    self.mUses.mValueExplorer = nil
+    self.mPath_property.mObserverExplorer = nil
+    self.mPath_property.mValueExplorer = nil
+    self.mUses_property.mObserverExplorer = nil
+    self.mUses_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -157,8 +157,8 @@ class CanariLibraryEntry : EBSimpleClass,
 
   override func saveInto (dictionary : NSMutableDictionary) {
     super.saveInto (dictionary: dictionary)
-    self.mPath.storeIn (dictionary: dictionary, forKey: "mPath")
-    self.mUses.storeIn (dictionary: dictionary, forKey: "mUses")
+    self.mPath_property.storeIn (dictionary: dictionary, forKey: "mPath")
+    self.mUses_property.storeIn (dictionary: dictionary, forKey: "mUses")
   }
 
   //····················································································································
@@ -167,8 +167,8 @@ class CanariLibraryEntry : EBSimpleClass,
 
   override func setUp (withDictionary dictionary : NSDictionary) {
     super.setUp (withDictionary: dictionary)
-    self.mPath.readFrom (dictionary: dictionary, forKey:"mPath")
-    self.mUses.readFrom (dictionary: dictionary, forKey:"mUses")
+    self.mPath_property.readFrom (dictionary: dictionary, forKey:"mPath")
+    self.mUses_property.readFrom (dictionary: dictionary, forKey:"mUses")
   }
 
   //····················································································································
@@ -201,7 +201,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPath.addEBObserver (inObserver)
+        managedObject.mPath_property.addEBObserver (inObserver)
       }
     }
   }
@@ -213,7 +213,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPath.removeEBObserver (inObserver)
+        managedObject.mPath_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserversOf_mPath_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
       for observer in mObserversOf_mPath {
-        managedObject.mPath.addEBObserver (observer)
+        managedObject.mPath_property.addEBObserver (observer)
       }
     }
   }
@@ -230,7 +230,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     for observer in mObserversOf_mPath {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mPath.removeEBObserver (observer)
+        managedObject.mPath_property.removeEBObserver (observer)
       }
     }
   }
@@ -248,7 +248,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mUses.addEBObserver (inObserver)
+        managedObject.mUses_property.addEBObserver (inObserver)
       }
     }
   }
@@ -260,7 +260,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mUses.removeEBObserver (inObserver)
+        managedObject.mUses_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -268,7 +268,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserversOf_mUses_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
       for observer in mObserversOf_mUses {
-        managedObject.mUses.addEBObserver (observer)
+        managedObject.mUses_property.addEBObserver (observer)
       }
     }
   }
@@ -277,7 +277,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     for observer in mObserversOf_mUses {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mUses.removeEBObserver (observer)
+        managedObject.mUses_property.removeEBObserver (observer)
       }
     }
   }
@@ -295,7 +295,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStatusImage.addEBObserver (inObserver)
+        managedObject.mStatusImage_property.addEBObserver (inObserver)
       }
     }
   }
@@ -307,7 +307,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStatusImage.removeEBObserver (inObserver)
+        managedObject.mStatusImage_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -318,7 +318,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStatusImage.postEvent ()
+        managedObject.mStatusImage_property.postEvent ()
       }
     }
   }
@@ -326,7 +326,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserversOf_mStatusImage_toElementsOfSet (inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
       for observer in mObserversOf_mStatusImage {
-        managedObject.mStatusImage.addEBObserver (observer)
+        managedObject.mStatusImage_property.addEBObserver (observer)
       }
     }
   }
@@ -334,7 +334,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func removeEBObserversOf_mStatusImage_fromElementsOfSet (inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
       for observer in mObserversOf_mStatusImage {
-        managedObject.mStatusImage.removeEBObserver (observer)
+        managedObject.mStatusImage_property.removeEBObserver (observer)
       }
     }
   }
@@ -394,13 +394,13 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol CanariLibraryEntry_mPath : class {
-  var mPath : EBStoredProperty_String { get }
+  var mPath : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol CanariLibraryEntry_mUses : class {
-  var mUses : EBStoredProperty_Bool { get }
+  var mUses : Bool { get }
 }
 
 

@@ -49,13 +49,13 @@ import Cocoa
   //    Transient properties
   //····················································································································
 
-  var missingCharactersCountString = EBTransientProperty_String ()
+  var missingCharactersCountString_property = EBTransientProperty_String ()
 
   //····················································································································
   //    Transient arraies
   //····················································································································
 
-  var missingCharacterDescriptorArray = TransientArrayOf_MissingCharacter ()
+  var missingCharacterDescriptorArray_property = TransientArrayOf_MissingCharacter ()
 
   //····················································································································
   //    Array Controllers
@@ -355,8 +355,8 @@ import Cocoa
 //                              errorMessage: "the 'transparencyTextField' outlet is not an instance of 'EBDoubleField'") ;
     }
   //--------------------------- Array controllers
-    mMissingCharsController.bind_modelAndView (
-      model: self.missingCharacterDescriptorArray,
+    self.mMissingCharsController.bind_modelAndView (
+      model: self.missingCharacterDescriptorArray_property,
       tableViewArray: [mMissingCharsTableView!],
       file: #file,
       line: #line
@@ -365,16 +365,16 @@ import Cocoa
   //--------------------------- Custom object controllers
     selectedCharacter.setModel (self.rootObject)
   //--- Transient compute functions
-    missingCharactersCountString.readModelFunction = { [weak self] in
+    self.missingCharactersCountString_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.characters.prop.kind ()
+        let kind = unwSelf.rootObject.characters_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.rootObject.characters.prop) {
+          switch (unwSelf.rootObject.characters_property.prop) {
           case (.single (let v0)) :
             return .single (compute_PMFontDocument_missingCharactersCountString (v0))
           default :
@@ -385,16 +385,16 @@ import Cocoa
         return .empty
       }
     }
-    missingCharacterDescriptorArray.readModelFunction = { [weak self] in
+    self.missingCharacterDescriptorArray_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.rootObject.characters.prop.kind ()
+        let kind = unwSelf.rootObject.characters_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.rootObject.characters.prop) {
+          switch (unwSelf.rootObject.characters_property.prop) {
           case (.single (let v0)) :
             return .single (compute_PMFontDocument_missingCharacterDescriptorArray (v0))
           default :
@@ -406,39 +406,39 @@ import Cocoa
       }
     }
   //--- Install property observers for transients
-    self.rootObject.characters.addEBObserverOf_characterIsDefined (missingCharactersCountString)
-    self.rootObject.characters.addEBObserverOf_characterIsDefined (missingCharacterDescriptorArray)
+    self.rootObject.characters_property.addEBObserverOf_characterIsDefined (self.missingCharactersCountString_property)
+    self.rootObject.characters_property.addEBObserverOf_characterIsDefined (self.missingCharacterDescriptorArray_property)
   //--- Install regular bindings
-    mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector, file: #file, line: #line)
-    mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab, file: #file, line: #line)
-    mSignatureTextField?.bind_signature (self.signatureObserver (), file: #file, line: #line)
-    mVersionField?.bind_version (self.versionObserver (), file: #file, line: #line)
-    mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver (), file: #file, line: #line)
-    advancementTextField?.bind_value (self.selectedCharacter.advance, file: #file, line: #line, sendContinously:true, autoFormatter:true)
-    advancementSlider?.bind_intValue (self.selectedCharacter.advance, file: #file, line: #line, sendContinously:true)
-    transparencyTextField?.bind_value (g_Preferences!.fontEditionTransparency, file: #file, line: #line, sendContinously:false, autoFormatter:false)
-    transparencySlider?.bind_doubleValue (g_Preferences!.fontEditionTransparency, file: #file, line: #line, sendContinously:true)
-    mFontCharacterSelectButton?.bind_codePoint (g_Preferences!.currentCharacterCodePoint, file: #file, line: #line)
-    currentCharacterTextField?.bind_value (g_Preferences!.currentCharacterCodePoint, file: #file, line: #line, sendContinously:false, autoFormatter:true)
-    currentCharacterStepper?.bind_value (g_Preferences!.currentCharacterCodePoint, file: #file, line: #line, sendContinously:true)
-    mShowGerberDrawingFlowCheckbox?.bind_value (g_Preferences!.showGerberDrawingFlow, file: #file, line: #line)
-    mShowGerberDrawingIndexesCheckbox?.bind_value (g_Preferences!.showGerberDrawingIndexes, file: #file, line: #line)
-    gerberCodeInstructionCountMessageTextField?.bind_valueObserver (self.selectedCharacter.gerberCodeInstructionCountMessage, file: #file, line: #line)
-    mGerberCodeTableView?.bind_characterGerberCode (self.selectedCharacter.gerberCode, file: #file, line: #line)
-    mSampleStringField?.bind_value (g_Preferences!.sampleString, file: #file, line: #line, sendContinously:true)
-    mFontSampleStringView?.bind_bezierPath (self.rootObject.sampleStringBezierPath, file: #file, line: #line)
-    mFontSampleStringView?.bind_sampleStringFontSize (g_Preferences!.sampleStringSize, file: #file, line: #line)
-    missingCharactersCountTextField?.bind_valueObserver (self.missingCharactersCountString, file: #file, line: #line)
-    mSampleStringSizeField?.bind_value (g_Preferences!.sampleStringSize, file: #file, line: #line, sendContinously:false, autoFormatter:false)
-    mSampleStringWidthTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathWidth, file: #file, line: #line, autoFormatter:false)
-    mSampleStringAscentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathAscent, file: #file, line: #line, autoFormatter:false)
-    mSampleStringDescentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathDescent, file: #file, line: #line, autoFormatter:false)
-    currentCharacterView?.bind_advance (self.selectedCharacter.advance, file: #file, line: #line)
-    currentCharacterView?.bind_characterSegmentList (self.selectedCharacter.segmentArrayForDrawing, file: #file, line: #line)
-    currentCharacterView?.bind_transparency (g_Preferences!.fontEditionTransparency, file: #file, line: #line)
-    currentCharacterView?.bind_displayFlow (g_Preferences!.showGerberDrawingFlow, file: #file, line: #line)
-    currentCharacterView?.bind_displayDrawingIndexes (g_Preferences!.showGerberDrawingIndexes, file: #file, line: #line)
-    commentTextView?.bind_value (self.rootObject.comments, file: #file, line: #line)
+    mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
+    mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
+    mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
+    mVersionField?.bind_version (self.versionObserver_property, file: #file, line: #line)
+    mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
+    advancementTextField?.bind_value (self.selectedCharacter.advance_property, file: #file, line: #line, sendContinously:true, autoFormatter:true)
+    advancementSlider?.bind_intValue (self.selectedCharacter.advance_property, file: #file, line: #line, sendContinously:true)
+    transparencyTextField?.bind_value (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
+    transparencySlider?.bind_doubleValue (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:true)
+    mFontCharacterSelectButton?.bind_codePoint (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line)
+    currentCharacterTextField?.bind_value (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line, sendContinously:false, autoFormatter:true)
+    currentCharacterStepper?.bind_value (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line, sendContinously:true)
+    mShowGerberDrawingFlowCheckbox?.bind_value (g_Preferences!.showGerberDrawingFlow_property, file: #file, line: #line)
+    mShowGerberDrawingIndexesCheckbox?.bind_value (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
+    gerberCodeInstructionCountMessageTextField?.bind_valueObserver (self.selectedCharacter.gerberCodeInstructionCountMessage_property, file: #file, line: #line)
+    mGerberCodeTableView?.bind_characterGerberCode (self.selectedCharacter.gerberCode_property, file: #file, line: #line)
+    mSampleStringField?.bind_value (g_Preferences!.sampleString_property, file: #file, line: #line, sendContinously:true)
+    mFontSampleStringView?.bind_bezierPath (self.rootObject.sampleStringBezierPath_property, file: #file, line: #line)
+    mFontSampleStringView?.bind_sampleStringFontSize (g_Preferences!.sampleStringSize_property, file: #file, line: #line)
+    missingCharactersCountTextField?.bind_valueObserver (self.missingCharactersCountString_property, file: #file, line: #line)
+    mSampleStringSizeField?.bind_value (g_Preferences!.sampleStringSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
+    mSampleStringWidthTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathWidth_property, file: #file, line: #line, autoFormatter:false)
+    mSampleStringAscentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathAscent_property, file: #file, line: #line, autoFormatter:false)
+    mSampleStringDescentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathDescent_property, file: #file, line: #line, autoFormatter:false)
+    currentCharacterView?.bind_advance (self.selectedCharacter.advance_property, file: #file, line: #line)
+    currentCharacterView?.bind_characterSegmentList (self.selectedCharacter.segmentArrayForDrawing_property, file: #file, line: #line)
+    currentCharacterView?.bind_transparency (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line)
+    currentCharacterView?.bind_displayFlow (g_Preferences!.showGerberDrawingFlow_property, file: #file, line: #line)
+    currentCharacterView?.bind_displayDrawingIndexes (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
+    commentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--- Install multiple bindings
   //--------------------------- Set targets / actions
     mAddSegmentButton?.target = self
@@ -488,14 +488,14 @@ import Cocoa
     commentTextView?.unbind_value ()
   //--- Unbind multiple bindings
   //--- Uninstall compute functions for transients
-    missingCharactersCountString.readModelFunction = nil
-    missingCharacterDescriptorArray.readModelFunction = nil
+    self.missingCharactersCountString_property.readModelFunction = nil
+    self.missingCharacterDescriptorArray_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     mMissingCharsController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers
   //--- Uninstall property observers for transients
-    self.rootObject.characters.removeEBObserverOf_characterIsDefined (missingCharactersCountString)
-    self.rootObject.characters.removeEBObserverOf_characterIsDefined (missingCharacterDescriptorArray)
+    self.rootObject.characters_property.removeEBObserverOf_characterIsDefined (self.missingCharactersCountString_property)
+    self.rootObject.characters_property.removeEBObserverOf_characterIsDefined (self.missingCharacterDescriptorArray_property)
   //--------------------------- Remove targets / actions
     mAddSegmentButton?.target = nil
     resetVersionAndSignatureButton?.target = nil

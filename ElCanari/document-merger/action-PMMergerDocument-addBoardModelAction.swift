@@ -16,8 +16,8 @@ extension PMMergerDocument {
 //--- START OF USER ZONE 2
   //--- Build list of current board model names
     var boardModelNames = [String] ()
-    for boardModel in rootObject.boardModels.propval {
-      let name : String = boardModel.name.propval
+    for boardModel in rootObject.boardModels_property.propval {
+      let name : String = boardModel.name
       boardModelNames.append (name)
     }
   //--- Dialog
@@ -46,7 +46,7 @@ extension PMMergerDocument {
                   let s = filePath.lastPathComponent.deletingPathExtension
                   let possibleBoardModel = self.parseBoardModel (fromDictionary: boardArchiveDictionary, named : s)
                   if let boardModel = possibleBoardModel {
-                    self.rootObject.boardModels.add (boardModel)
+                    self.rootObject.boardModels_property.add (boardModel)
                     self.mBoardModelController.select (object:boardModel)
                   }
                 }else{

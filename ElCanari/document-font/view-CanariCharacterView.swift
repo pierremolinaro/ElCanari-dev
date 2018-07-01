@@ -323,7 +323,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       let newSegment = SegmentForFontCharacterEntity (managedObjectContext: document.managedObjectContext())
       var newSegmentEntityArray = self.segmentEntityArray ()
       newSegmentEntityArray.append (newSegment)
-      mFontDocument?.selectedCharacter.mSelectedObject?.segments.setProp (newSegmentEntityArray)
+      mFontDocument?.selectedCharacter.mSelectedObject?.segments_property.setProp (newSegmentEntityArray)
       mSelection.removeAll ()
       mSelection.insert (newSegment)
     }
@@ -341,7 +341,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   final func segmentEntityArray () -> [SegmentForFontCharacterEntity] {
     var result = [SegmentForFontCharacterEntity] ()
-    let possibleSegments = mFontDocument?.selectedCharacter.mSelectedObject?.segments
+    let possibleSegments = mFontDocument?.selectedCharacter.mSelectedObject?.segments_property
     if let segments = possibleSegments {
       switch segments.prop {
         case .empty, .multiple :
@@ -411,7 +411,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentEntityArray.insert (segment, at:idx + 1)
         }
       }
-      mFontDocument?.selectedCharacter.mSelectedObject?.segments.setProp(newSegmentEntityArray)
+      mFontDocument?.selectedCharacter.mSelectedObject?.segments_property.setProp(newSegmentEntityArray)
       updateSegmentDrawings ()
     }
   }
@@ -431,7 +431,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentEntityArray.append (segment)
         }
       }
-      mFontDocument?.selectedCharacter.mSelectedObject?.segments.setProp(newSegmentEntityArray)
+      mFontDocument?.selectedCharacter.mSelectedObject?.segments_property.setProp(newSegmentEntityArray)
       updateSegmentDrawings ()
     }
   }
@@ -451,7 +451,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentEntityArray.insert (segment, at:idx - 1)
         }
       }
-      mFontDocument?.selectedCharacter.mSelectedObject?.segments.setProp(newSegmentEntityArray)
+      mFontDocument?.selectedCharacter.mSelectedObject?.segments_property.setProp(newSegmentEntityArray)
       updateSegmentDrawings ()
     }
   }
@@ -471,7 +471,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
           newSegmentEntityArray.insert (segment, at:0)
         }
       }
-      mFontDocument?.selectedCharacter.mSelectedObject?.segments.setProp(newSegmentEntityArray)
+      mFontDocument?.selectedCharacter.mSelectedObject?.segments_property.setProp(newSegmentEntityArray)
       updateSegmentDrawings ()
     }
   }
@@ -491,7 +491,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
           segmentEntityArray.remove (at: idx)
         }
       }
-      mFontDocument?.selectedCharacter.mSelectedObject?.segments.setProp(segmentEntityArray)
+      mFontDocument?.selectedCharacter.mSelectedObject?.segments_property.setProp(segmentEntityArray)
       mSelection.removeAll ()
     }
   }
@@ -504,10 +504,10 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     var canMove = mSelection.count > 0
     if knob == 0 {
       for object in mSelection {
-        let newX = object.x1.propval + byX
+        let newX = object.x1 + byX
         canMove = (newX >= 0) && (newX <= MAX_X)
         if canMove {
-          let newY = object.y1.propval + byY
+          let newY = object.y1 + byY
           canMove = (newY >= MIN_Y) && (newY <= MAX_Y)
         }
         if !canMove {
@@ -516,10 +516,10 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       }
     }else{
       for object in mSelection {
-        let newX = object.x2.propval + byX
+        let newX = object.x2 + byX
         canMove = (newX >= 0) && (newX <= MAX_X)
         if canMove {
-          let newY = object.y2.propval + byY
+          let newY = object.y2 + byY
           canMove = (newY >= MIN_Y) && (newY <= MAX_Y)
         }
         if !canMove {
@@ -544,13 +544,13 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     if canMoveSelectionFrom (knob: knob, byX: byX, byY: byY) {
       if knob == 0 {
         for object in mSelection {
-          object.x1.setProp (object.x1.propval + byX)
-          object.y1.setProp (object.y1.propval + byY)
+          object.x1 = object.x1 + byX
+          object.y1 = object.y1 + byY
         }
       }else{
         for object in mSelection {
-          object.x2.setProp (object.x2.propval + byX)
-          object.y2.setProp (object.y2.propval + byY)
+          object.x2 = object.x2 + byX
+          object.y2 = object.y2 + byY
         }
       }
     }else{
@@ -563,10 +563,10 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   final func moveSelection (byX : Int, byY : Int) {
     if canMoveSelection (byX: byX, byY: byY) {
       for object in mSelection {
-        object.x1.setProp (object.x1.propval + byX)
-        object.y1.setProp (object.y1.propval + byY)
-        object.x2.setProp (object.x2.propval + byX)
-        object.y2.setProp (object.y2.propval + byY)
+        object.x1 = object.x1 + byX
+        object.y1 = object.y1 + byY
+        object.x2 = object.x2 + byX
+        object.y2 = object.y2 + byY
       }
     }else{
       NSBeep ()
@@ -602,13 +602,13 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
           var segmentEntityArray = self.segmentEntityArray ()
           for archivedSegment : [NSNumber] in segmentListObject {
             let newSegment = SegmentForFontCharacterEntity (managedObjectContext: fontDocument.managedObjectContext())
-            newSegment.x1.setProp (archivedSegment [0].intValue)
-            newSegment.y1.setProp (archivedSegment [1].intValue)
-            newSegment.x2.setProp (archivedSegment [2].intValue)
-            newSegment.y2.setProp (archivedSegment [3].intValue)
+            newSegment.x1 = archivedSegment [0].intValue
+            newSegment.y1 = archivedSegment [1].intValue
+            newSegment.x2 = archivedSegment [2].intValue
+            newSegment.y2 = archivedSegment [3].intValue
             segmentEntityArray.append (newSegment)
           }
-          mFontDocument?.selectedCharacter.mSelectedObject?.segments.setProp (segmentEntityArray)
+          mFontDocument?.selectedCharacter.mSelectedObject?.segments_property.setProp (segmentEntityArray)
         }
       }
     }
@@ -625,10 +625,10 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     for segment in segmentEntityArray () {
       if mSelection.contains (segment) {
         let s : [NSNumber] = [
-          NSNumber (value: segment.x1.propval),
-          NSNumber (value: segment.y1.propval),
-          NSNumber (value: segment.x2.propval),
-          NSNumber (value: segment.y2.propval)
+          NSNumber (value: segment.x1),
+          NSNumber (value: segment.y1),
+          NSNumber (value: segment.x2),
+          NSNumber (value: segment.y2)
         ]
         segmentArray.append (s)
       }
@@ -847,7 +847,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //--- Remove non existing object from selection
     mSelection.formIntersection (segmentEntityArray)
   //--- Draw segments
-    let alpha = CGFloat (g_Preferences?.fontEditionTransparency.propval ?? 1.0)
+    let alpha = CGFloat (g_Preferences?.fontEditionTransparency ?? 1.0)
     var segmentLayers = [CALayer] ()
     for segment in segmentEntityArray {
       segmentLayers.append (segment.getDrawLayer (alpha: alpha))
@@ -856,7 +856,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //--- Draw display flow
     let strokePath = CGMutablePath ()
     let fillPath = CGMutablePath ()
-    if g_Preferences?.showGerberDrawingFlow.propval ?? false {
+    if g_Preferences?.showGerberDrawingFlow ?? false {
       var currentX = 0
       var currentY = 0
       strokePath.move (to: CGPoint (x: xForX (0), y: yForY (0)))
@@ -868,7 +868,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     mFillGerberCodeFlowLayer.path = fillPath
   //--- Draw display flow indexes
     var indexLayers = [CALayer] ()
-    if g_Preferences?.showGerberDrawingIndexes.propval ?? false {
+    if g_Preferences?.showGerberDrawingIndexes ?? false {
       var idx = 1
       for segment in segmentEntityArray {
         indexLayers.append (segment.buildGerberIndex (idx))
@@ -901,8 +901,8 @@ extension SegmentForFontCharacterEntity {
 
   final func getDrawLayer (alpha : CGFloat) -> CALayer {
     let oblong = CanariOblong (
-      from: CGPoint (x: xForX (self.x1.propval), y: yForY (self.y1.propval)),
-      to:   CGPoint (x: xForX (self.x2.propval), y: yForY (self.y2.propval)),
+      from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
+      to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
       height: PLACEMENT_GRID * 2.0
     )
     let shapeLayer = oblong.shape ()
@@ -914,8 +914,8 @@ extension SegmentForFontCharacterEntity {
 
   final func contains (point p : CGPoint) -> Bool {
     let oblong = CanariOblong (
-      from: CGPoint (x: xForX (self.x1.propval), y: yForY (self.y1.propval)),
-      to:   CGPoint (x: xForX (self.x2.propval), y: yForY (self.y2.propval)),
+      from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
+      to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
       height: PLACEMENT_GRID * 2.0
     )
     return oblong.contains (point: p)
@@ -925,8 +925,8 @@ extension SegmentForFontCharacterEntity {
 
   final func intersects (rect r : CanariRect) -> Bool {
     let oblong = CanariOblong (
-      from: CGPoint (x: xForX (self.x1.propval), y: yForY (self.y1.propval)),
-      to:   CGPoint (x: xForX (self.x2.propval), y: yForY (self.y2.propval)),
+      from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
+      to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
       height: PLACEMENT_GRID * 2.0
     )
     return oblong.intersects (rect: r)
@@ -937,16 +937,16 @@ extension SegmentForFontCharacterEntity {
   final func knobIndexFor (point p : CGPoint) -> Int? { // Return nil if point is outside a knob
     var result : Int? = nil
     do{
-      let x = xForX (self.x1.propval)
-      let y = yForY (self.y1.propval)
+      let x = xForX (self.x1)
+      let y = yForY (self.y1)
       let r = CGRect (x: x - SELECTION_HOOK_SIZE / 2.0, y: y - SELECTION_HOOK_SIZE / 2.0, width: SELECTION_HOOK_SIZE, height: SELECTION_HOOK_SIZE)
       if r.contains (p) {
         result = 0
       }
     }
     if result == nil {
-      let x = xForX (self.x2.propval)
-      let y = yForY (self.y2.propval)
+      let x = xForX (self.x2)
+      let y = yForY (self.y2)
       let r = CGRect (x: x - SELECTION_HOOK_SIZE / 2.0, y: y - SELECTION_HOOK_SIZE / 2.0, width: SELECTION_HOOK_SIZE, height: SELECTION_HOOK_SIZE)
       if r.contains (p) {
         result = 1
@@ -958,8 +958,8 @@ extension SegmentForFontCharacterEntity {
   //····················································································································
 
   final func buildGerberIndex (_ index : Int) -> CALayer {
-    let x = (xForX (self.x1.propval) + xForX (self.x2.propval)) / 2.0
-    let y = (yForY (self.y1.propval) + yForY (self.y2.propval)) / 2.0
+    let x = (xForX (self.x1) + xForX (self.x2)) / 2.0
+    let y = (yForY (self.y1) + yForY (self.y2)) / 2.0
     let textAttributes : [String : AnyObject] = [
       NSFontAttributeName : NSFont.userFixedPitchFont (ofSize: 18.0)!,
       NSForegroundColorAttributeName : NSColor.yellow.cgColor
@@ -980,14 +980,14 @@ extension SegmentForFontCharacterEntity {
   //····················································································································
   
   final func buildGerberFlow (strokePath : CGMutablePath, fillPath : CGMutablePath, x: inout Int, y: inout Int) {
-    if (self.x1.propval != x) || (self.y1.propval != y) {
-      x = self.x1.propval
-      y = self.y1.propval
+    if (self.x1 != x) || (self.y1 != y) {
+      x = self.x1
+      y = self.y1
       strokePath.addArrow (fillPath: fillPath, to: CGPoint (x: xForX (x), y: yForY (y)), arrowSize: GERBER_FLOW_ARROW_SIZE)
     }
-    if (self.x2.propval != x) || (self.y2.propval != y) {
-      x = self.x2.propval
-      y = self.y2.propval
+    if (self.x2 != x) || (self.y2 != y) {
+      x = self.x2
+      y = self.y2
       strokePath.addArrow (fillPath: fillPath, to: CGPoint (x: xForX (x), y: yForY (y)), arrowSize: GERBER_FLOW_ARROW_SIZE)
     }
   }
@@ -999,10 +999,10 @@ extension SegmentForFontCharacterEntity {
     if let mouseDownLocation = inMouseDownLocation {
       underMouse = contains (point: mouseDownLocation)
     }
-    let x1 = xForX (self.x1.propval)
-    let y1 = yForY (self.y1.propval)
-    let x2 = xForX (self.x2.propval)
-    let y2 = yForY (self.y2.propval)
+    let x1 = xForX (self.x1)
+    let y1 = yForY (self.y1)
+    let x2 = xForX (self.x2)
+    let y2 = yForY (self.y2)
     let mutablePath = CGMutablePath ()
     let r1 = CGRect (x: x1 - SELECTION_HOOK_SIZE / 2.0, y: y1 - SELECTION_HOOK_SIZE / 2.0, width: SELECTION_HOOK_SIZE, height: SELECTION_HOOK_SIZE)
     mutablePath.addRect (r1, transform: CGAffineTransform.identity)

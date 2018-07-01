@@ -18,35 +18,35 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
     didSet {
       if mSelectedObject !== oldValue {
       //--- Property advance
-        oldValue?.advance.removeEBObserver (mObjectObserver)
-        oldValue?.advance.removeEBObserver (self.advance)
-        mSelectedObject?.advance.addEBObserver (mObjectObserver)
-        mSelectedObject?.advance.addEBObserver (self.advance)
-        self.advance.postEvent ()
+        oldValue?.advance_property.removeEBObserver (mObjectObserver)
+        oldValue?.advance_property.removeEBObserver (self.advance_property)
+        mSelectedObject?.advance_property.addEBObserver (mObjectObserver)
+        mSelectedObject?.advance_property.addEBObserver (self.advance_property)
+        self.advance_property.postEvent ()
       //--- Property characterIsDefined
-        oldValue?.characterIsDefined.removeEBObserver (mObjectObserver)
-        oldValue?.characterIsDefined.removeEBObserver (self.characterIsDefined)
-        mSelectedObject?.characterIsDefined.addEBObserver (mObjectObserver)
-        mSelectedObject?.characterIsDefined.addEBObserver (self.characterIsDefined)
-        self.characterIsDefined.postEvent ()
+        oldValue?.characterIsDefined_property.removeEBObserver (mObjectObserver)
+        oldValue?.characterIsDefined_property.removeEBObserver (self.characterIsDefined_property)
+        mSelectedObject?.characterIsDefined_property.addEBObserver (mObjectObserver)
+        mSelectedObject?.characterIsDefined_property.addEBObserver (self.characterIsDefined_property)
+        self.characterIsDefined_property.postEvent ()
       //--- Property gerberCode
-        oldValue?.gerberCode.removeEBObserver (mObjectObserver)
-        oldValue?.gerberCode.removeEBObserver (self.gerberCode)
-        mSelectedObject?.gerberCode.addEBObserver (mObjectObserver)
-        mSelectedObject?.gerberCode.addEBObserver (self.gerberCode)
-        self.gerberCode.postEvent ()
+        oldValue?.gerberCode_property.removeEBObserver (mObjectObserver)
+        oldValue?.gerberCode_property.removeEBObserver (self.gerberCode_property)
+        mSelectedObject?.gerberCode_property.addEBObserver (mObjectObserver)
+        mSelectedObject?.gerberCode_property.addEBObserver (self.gerberCode_property)
+        self.gerberCode_property.postEvent ()
       //--- Property gerberCodeInstructionCountMessage
-        oldValue?.gerberCodeInstructionCountMessage.removeEBObserver (mObjectObserver)
-        oldValue?.gerberCodeInstructionCountMessage.removeEBObserver (self.gerberCodeInstructionCountMessage)
-        mSelectedObject?.gerberCodeInstructionCountMessage.addEBObserver (mObjectObserver)
-        mSelectedObject?.gerberCodeInstructionCountMessage.addEBObserver (self.gerberCodeInstructionCountMessage)
-        self.gerberCodeInstructionCountMessage.postEvent ()
+        oldValue?.gerberCodeInstructionCountMessage_property.removeEBObserver (mObjectObserver)
+        oldValue?.gerberCodeInstructionCountMessage_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property)
+        mSelectedObject?.gerberCodeInstructionCountMessage_property.addEBObserver (mObjectObserver)
+        mSelectedObject?.gerberCodeInstructionCountMessage_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
+        self.gerberCodeInstructionCountMessage_property.postEvent ()
       //--- Property segmentArrayForDrawing
-        oldValue?.segmentArrayForDrawing.removeEBObserver (mObjectObserver)
-        oldValue?.segmentArrayForDrawing.removeEBObserver (self.segmentArrayForDrawing)
-        mSelectedObject?.segmentArrayForDrawing.addEBObserver (mObjectObserver)
-        mSelectedObject?.segmentArrayForDrawing.addEBObserver (self.segmentArrayForDrawing)
-        self.segmentArrayForDrawing.postEvent ()
+        oldValue?.segmentArrayForDrawing_property.removeEBObserver (mObjectObserver)
+        oldValue?.segmentArrayForDrawing_property.removeEBObserver (self.segmentArrayForDrawing_property)
+        mSelectedObject?.segmentArrayForDrawing_property.addEBObserver (mObjectObserver)
+        mSelectedObject?.segmentArrayForDrawing_property.addEBObserver (self.segmentArrayForDrawing_property)
+        self.segmentArrayForDrawing_property.postEvent ()
       //--- Relationship segments
       }
     }
@@ -73,11 +73,11 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //   OBJECT OBSERVABLE PROPERTIES
   //····················································································································
 
-  var advance = EBPropertyProxy_Int () 
-  var characterIsDefined = EBTransientProperty_Bool () 
-  var gerberCode = EBTransientProperty_CharacterGerberCodeClass () 
-  var gerberCodeInstructionCountMessage = EBTransientProperty_String () 
-  var segmentArrayForDrawing = EBTransientProperty_CharacterSegmentListClass () 
+  var advance_property = EBPropertyProxy_Int () 
+  var characterIsDefined_property = EBTransientProperty_Bool () 
+  var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass () 
+  var gerberCodeInstructionCountMessage_property = EBTransientProperty_String () 
+  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass () 
 
   //····················································································································
   //    Explorer
@@ -117,11 +117,11 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "advance",
-      idx:self.advance.mEasyBindingsObjectIndex,
+      idx:self.advance_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.advance.mObserverExplorer,
-      valueExplorer:&self.advance.mValueExplorer
+      observerExplorer:&self.advance_property.mObserverExplorer,
+      valueExplorer:&self.advance_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -177,27 +177,27 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //···················································································································*
 
   private final func bind_property_advance () {
-    advance.readModelFunction = { [weak self] in
+    self.advance_property.readModelFunction = { [weak self] in
       if let model = self?.mSelectedObject {
-        return model.advance.prop
+        return model.advance_property_selection
       }else{
         return .empty
       }
     }
-    self.advance.writeModelFunction = { [weak self] (inValue : Int) in
-      self?.mSelectedObject?.advance.setProp (inValue)
+    self.advance_property.writeModelFunction = { [weak self] (inValue : Int) in
+      self?.mSelectedObject?.advance = inValue
     }
-    self.advance.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      self?.mSelectedObject?.advance.validateAndSetProp (candidateValue, windowForSheet:windowForSheet) ?? false
+    self.advance_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      self?.mSelectedObject?.advance_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet) ?? false
     }
   }
 
   //···················································································································*
 
   private final func bind_property_characterIsDefined () {
-    characterIsDefined.readModelFunction = { [weak self] in
+    self.characterIsDefined_property.readModelFunction = { [weak self] in
       if let model = self?.mSelectedObject {
-        return model.characterIsDefined.prop
+        return model.characterIsDefined_property_selection
       }else{
         return .empty
       }
@@ -207,9 +207,9 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //···················································································································*
 
   private final func bind_property_gerberCode () {
-    gerberCode.readModelFunction = { [weak self] in
+    self.gerberCode_property.readModelFunction = { [weak self] in
       if let model = self?.mSelectedObject {
-        return model.gerberCode.prop
+        return model.gerberCode_property_selection
       }else{
         return .empty
       }
@@ -219,9 +219,9 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //···················································································································*
 
   private final func bind_property_gerberCodeInstructionCountMessage () {
-    gerberCodeInstructionCountMessage.readModelFunction = { [weak self] in
+    self.gerberCodeInstructionCountMessage_property.readModelFunction = { [weak self] in
       if let model = self?.mSelectedObject {
-        return model.gerberCodeInstructionCountMessage.prop
+        return model.gerberCodeInstructionCountMessage_property_selection
       }else{
         return .empty
       }
@@ -231,9 +231,9 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //···················································································································*
 
   private final func bind_property_segmentArrayForDrawing () {
-    segmentArrayForDrawing.readModelFunction = { [weak self] in
+    self.segmentArrayForDrawing_property.readModelFunction = { [weak self] in
       if let model = self?.mSelectedObject {
-        return model.segmentArrayForDrawing.prop
+        return model.segmentArrayForDrawing_property_selection
       }else{
         return .empty
       }

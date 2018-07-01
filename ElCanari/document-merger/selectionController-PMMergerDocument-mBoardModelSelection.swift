@@ -16,58 +16,50 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //   SELECTION OBSERVABLE PROPERTIES
   //····················································································································
 
-  var artworkName = EBPropertyProxy_String () 
-  var backComponentNameSegments = EBTransientProperty_MergerSegmentArray () 
-  var backComponentNameSegmentsCount = EBTransientProperty_Int () 
-  var backComponentNameSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var backComponentValueSegments = EBTransientProperty_MergerSegmentArray () 
-  var backComponentValueSegmentsCount = EBTransientProperty_Int () 
-  var backComponentValuesForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var backLayoutTextsSegments = EBTransientProperty_MergerSegmentArray () 
-  var backLayoutTextsSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var backLegendTextsSegments = EBTransientProperty_MergerSegmentArray () 
-  var backLegendTextsSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var backPackageSegmentsCount = EBTransientProperty_Int () 
-  var backPackagesSegments = EBTransientProperty_MergerSegmentArray () 
-  var backPackagesSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var backPads = EBTransientProperty_MergerPadArray () 
-  var backPadsForDisplay = EBTransientProperty_MergerPadArray () 
-  var backTrackSegments = EBTransientProperty_MergerSegmentArray () 
-  var backTrackSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var backTracksSegmentsCount = EBTransientProperty_Int () 
-  var boardHeight = EBPropertyProxy_Int () 
-  var boardHeightUnit = EBPropertyProxy_Int () 
-  var boardLimitWidth = EBPropertyProxy_Int () 
-  var boardLimitWidthUnit = EBPropertyProxy_Int () 
-  var boardLimits = EBTransientProperty_MergerBoardLimits () 
-  var boardWidth = EBPropertyProxy_Int () 
-  var boardWidthUnit = EBPropertyProxy_Int () 
-  var frontComponentNameSegments = EBTransientProperty_MergerSegmentArray () 
-  var frontComponentNameSegmentsCount = EBTransientProperty_Int () 
-  var frontComponentNameSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var frontComponentValueSegments = EBTransientProperty_MergerSegmentArray () 
-  var frontComponentValueSegmentsCount = EBTransientProperty_Int () 
-  var frontComponentValuesForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var frontLayoutTextsSegments = EBTransientProperty_MergerSegmentArray () 
-  var frontLayoutTextsSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var frontLegendTextsSegments = EBTransientProperty_MergerSegmentArray () 
-  var frontLegendTextsSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var frontPackageSegmentsCount = EBTransientProperty_Int () 
-  var frontPackagesSegments = EBTransientProperty_MergerSegmentArray () 
-  var frontPackagesSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var frontPads = EBTransientProperty_MergerPadArray () 
-  var frontPadsForDisplay = EBTransientProperty_MergerPadArray () 
-  var frontTrackSegments = EBTransientProperty_MergerSegmentArray () 
-  var frontTrackSegmentsForDisplay = EBTransientProperty_MergerSegmentArray () 
-  var frontTracksSegmentsCount = EBTransientProperty_Int () 
-  var holes = EBTransientProperty_MergerHoleArray () 
-  var holesForDisplay = EBTransientProperty_MergerHoleArray () 
-  var name = EBPropertyProxy_String () 
-  var padsHoles = EBTransientProperty_MergerHoleArray () 
-  var viaShapes = EBTransientProperty_MergerViaShapeArray () 
-  var viaShapesForDisplay = EBTransientProperty_MergerViaShapeArray () 
-  var viasHoles = EBTransientProperty_MergerHoleArray () 
-  var zoom = EBPropertyProxy_Int () 
+  var artworkName_property = EBPropertyProxy_String () 
+  var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var backComponentNameSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var backComponentValuesForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var backLayoutTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var backLegendTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var backPackagesSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var backPads_property = EBTransientProperty_MergerPadArray () 
+  var backPadsForDisplay_property = EBTransientProperty_MergerPadArray () 
+  var backTrackSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var backTrackSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var boardHeight_property = EBPropertyProxy_Int () 
+  var boardHeightUnit_property = EBPropertyProxy_Int () 
+  var boardLimitWidth_property = EBPropertyProxy_Int () 
+  var boardLimitWidthUnit_property = EBPropertyProxy_Int () 
+  var boardLimits_property = EBTransientProperty_MergerBoardLimits () 
+  var boardWidth_property = EBPropertyProxy_Int () 
+  var boardWidthUnit_property = EBPropertyProxy_Int () 
+  var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var frontComponentNameSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var frontComponentValuesForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var frontLayoutTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var frontLegendTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var frontPackagesSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var frontPads_property = EBTransientProperty_MergerPadArray () 
+  var frontPadsForDisplay_property = EBTransientProperty_MergerPadArray () 
+  var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray () 
+  var frontTrackSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
+  var holes_property = EBTransientProperty_MergerHoleArray () 
+  var holesForDisplay_property = EBTransientProperty_MergerHoleArray () 
+  var name_property = EBPropertyProxy_String () 
+  var padsHoles_property = EBTransientProperty_MergerHoleArray () 
+  var viaShapes_property = EBTransientProperty_MergerViaShapeArray () 
+  var viaShapesForDisplay_property = EBTransientProperty_MergerViaShapeArray () 
+  var viasHoles_property = EBTransientProperty_MergerHoleArray () 
+  var zoom_property = EBPropertyProxy_Int () 
 
   //····················································································································
   //   BIND SELECTION
@@ -77,23 +69,19 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     mModel = model
     bind_property_artworkName (model: model)
     bind_property_backComponentNameSegments (model: model)
-    bind_property_backComponentNameSegmentsCount (model: model)
     bind_property_backComponentNameSegmentsForDisplay (model: model)
     bind_property_backComponentValueSegments (model: model)
-    bind_property_backComponentValueSegmentsCount (model: model)
     bind_property_backComponentValuesForDisplay (model: model)
     bind_property_backLayoutTextsSegments (model: model)
     bind_property_backLayoutTextsSegmentsForDisplay (model: model)
     bind_property_backLegendTextsSegments (model: model)
     bind_property_backLegendTextsSegmentsForDisplay (model: model)
-    bind_property_backPackageSegmentsCount (model: model)
     bind_property_backPackagesSegments (model: model)
     bind_property_backPackagesSegmentsForDisplay (model: model)
     bind_property_backPads (model: model)
     bind_property_backPadsForDisplay (model: model)
     bind_property_backTrackSegments (model: model)
     bind_property_backTrackSegmentsForDisplay (model: model)
-    bind_property_backTracksSegmentsCount (model: model)
     bind_property_boardHeight (model: model)
     bind_property_boardHeightUnit (model: model)
     bind_property_boardLimitWidth (model: model)
@@ -102,23 +90,19 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_boardWidth (model: model)
     bind_property_boardWidthUnit (model: model)
     bind_property_frontComponentNameSegments (model: model)
-    bind_property_frontComponentNameSegmentsCount (model: model)
     bind_property_frontComponentNameSegmentsForDisplay (model: model)
     bind_property_frontComponentValueSegments (model: model)
-    bind_property_frontComponentValueSegmentsCount (model: model)
     bind_property_frontComponentValuesForDisplay (model: model)
     bind_property_frontLayoutTextsSegments (model: model)
     bind_property_frontLayoutTextsSegmentsForDisplay (model: model)
     bind_property_frontLegendTextsSegments (model: model)
     bind_property_frontLegendTextsSegmentsForDisplay (model: model)
-    bind_property_frontPackageSegmentsCount (model: model)
     bind_property_frontPackagesSegments (model: model)
     bind_property_frontPackagesSegmentsForDisplay (model: model)
     bind_property_frontPads (model: model)
     bind_property_frontPadsForDisplay (model: model)
     bind_property_frontTrackSegments (model: model)
     bind_property_frontTrackSegmentsForDisplay (model: model)
-    bind_property_frontTracksSegmentsCount (model: model)
     bind_property_holes (model: model)
     bind_property_holesForDisplay (model: model)
     bind_property_name (model: model)
@@ -167,75 +151,75 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "artworkName",
-      idx:self.artworkName.mEasyBindingsObjectIndex,
+      idx:self.artworkName_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.artworkName.mObserverExplorer,
-      valueExplorer:&self.artworkName.mValueExplorer
+      observerExplorer:&self.artworkName_property.mObserverExplorer,
+      valueExplorer:&self.artworkName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardHeight",
-      idx:self.boardHeight.mEasyBindingsObjectIndex,
+      idx:self.boardHeight_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardHeight.mObserverExplorer,
-      valueExplorer:&self.boardHeight.mValueExplorer
+      observerExplorer:&self.boardHeight_property.mObserverExplorer,
+      valueExplorer:&self.boardHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardHeightUnit",
-      idx:self.boardHeightUnit.mEasyBindingsObjectIndex,
+      idx:self.boardHeightUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardHeightUnit.mObserverExplorer,
-      valueExplorer:&self.boardHeightUnit.mValueExplorer
+      observerExplorer:&self.boardHeightUnit_property.mObserverExplorer,
+      valueExplorer:&self.boardHeightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardLimitWidth",
-      idx:self.boardLimitWidth.mEasyBindingsObjectIndex,
+      idx:self.boardLimitWidth_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardLimitWidth.mObserverExplorer,
-      valueExplorer:&self.boardLimitWidth.mValueExplorer
+      observerExplorer:&self.boardLimitWidth_property.mObserverExplorer,
+      valueExplorer:&self.boardLimitWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardLimitWidthUnit",
-      idx:self.boardLimitWidthUnit.mEasyBindingsObjectIndex,
+      idx:self.boardLimitWidthUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardLimitWidthUnit.mObserverExplorer,
-      valueExplorer:&self.boardLimitWidthUnit.mValueExplorer
+      observerExplorer:&self.boardLimitWidthUnit_property.mObserverExplorer,
+      valueExplorer:&self.boardLimitWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardWidth",
-      idx:self.boardWidth.mEasyBindingsObjectIndex,
+      idx:self.boardWidth_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardWidth.mObserverExplorer,
-      valueExplorer:&self.boardWidth.mValueExplorer
+      observerExplorer:&self.boardWidth_property.mObserverExplorer,
+      valueExplorer:&self.boardWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardWidthUnit",
-      idx:self.boardWidthUnit.mEasyBindingsObjectIndex,
+      idx:self.boardWidthUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardWidthUnit.mObserverExplorer,
-      valueExplorer:&self.boardWidthUnit.mValueExplorer
+      observerExplorer:&self.boardWidthUnit_property.mObserverExplorer,
+      valueExplorer:&self.boardWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "name",
-      idx:self.name.mEasyBindingsObjectIndex,
+      idx:self.name_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.name.mObserverExplorer,
-      valueExplorer:&self.name.mValueExplorer
+      observerExplorer:&self.name_property.mObserverExplorer,
+      valueExplorer:&self.name_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "zoom",
-      idx:self.zoom.mEasyBindingsObjectIndex,
+      idx:self.zoom_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.zoom.mObserverExplorer,
-      valueExplorer:&self.zoom.mValueExplorer
+      observerExplorer:&self.zoom_property.mObserverExplorer,
+      valueExplorer:&self.zoom_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -291,8 +275,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_artworkName (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_artworkName (self.artworkName)
-    self.artworkName.readModelFunction = {
+    model.addEBObserverOf_artworkName (self.artworkName_property)
+    self.artworkName_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -303,7 +287,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.artworkName.prop {
+            switch object.artworkName_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -326,26 +310,26 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .empty
       }
     }
-    self.artworkName.writeModelFunction = { (inValue : String) in
+    self.artworkName_property.writeModelFunction = { (inValue : String) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.artworkName.setProp (inValue)
+            object.artworkName_property.setProp (inValue)
           }
         }
       }
     }
-    self.artworkName.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
+    self.artworkName_property.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.artworkName.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.artworkName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -361,8 +345,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backComponentNameSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backComponentNameSegments (self.backComponentNameSegments)
-    self.backComponentNameSegments.readModelFunction = {
+    model.addEBObserverOf_backComponentNameSegments (self.backComponentNameSegments_property)
+    self.backComponentNameSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -373,47 +357,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backComponentNameSegments.prop {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backComponentNameSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backComponentNameSegmentsCount (self.backComponentNameSegmentsCount)
-    self.backComponentNameSegmentsCount.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.backComponentNameSegmentsCount.prop {
+            switch object.backComponentNameSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -441,8 +385,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backComponentNameSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backComponentNameSegmentsForDisplay (self.backComponentNameSegmentsForDisplay)
-    self.backComponentNameSegmentsForDisplay.readModelFunction = {
+    model.addEBObserverOf_backComponentNameSegmentsForDisplay (self.backComponentNameSegmentsForDisplay_property)
+    self.backComponentNameSegmentsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -453,7 +397,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backComponentNameSegmentsForDisplay.prop {
+            switch object.backComponentNameSegmentsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -481,8 +425,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backComponentValueSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backComponentValueSegments (self.backComponentValueSegments)
-    self.backComponentValueSegments.readModelFunction = {
+    model.addEBObserverOf_backComponentValueSegments (self.backComponentValueSegments_property)
+    self.backComponentValueSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -493,47 +437,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backComponentValueSegments.prop {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backComponentValueSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backComponentValueSegmentsCount (self.backComponentValueSegmentsCount)
-    self.backComponentValueSegmentsCount.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.backComponentValueSegmentsCount.prop {
+            switch object.backComponentValueSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -561,8 +465,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backComponentValuesForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backComponentValuesForDisplay (self.backComponentValuesForDisplay)
-    self.backComponentValuesForDisplay.readModelFunction = {
+    model.addEBObserverOf_backComponentValuesForDisplay (self.backComponentValuesForDisplay_property)
+    self.backComponentValuesForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -573,7 +477,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backComponentValuesForDisplay.prop {
+            switch object.backComponentValuesForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -601,8 +505,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments)
-    self.backLayoutTextsSegments.readModelFunction = {
+    model.addEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments_property)
+    self.backLayoutTextsSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -613,7 +517,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backLayoutTextsSegments.prop {
+            switch object.backLayoutTextsSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -641,8 +545,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backLayoutTextsSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backLayoutTextsSegmentsForDisplay (self.backLayoutTextsSegmentsForDisplay)
-    self.backLayoutTextsSegmentsForDisplay.readModelFunction = {
+    model.addEBObserverOf_backLayoutTextsSegmentsForDisplay (self.backLayoutTextsSegmentsForDisplay_property)
+    self.backLayoutTextsSegmentsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -653,7 +557,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backLayoutTextsSegmentsForDisplay.prop {
+            switch object.backLayoutTextsSegmentsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -681,8 +585,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backLegendTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments)
-    self.backLegendTextsSegments.readModelFunction = {
+    model.addEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments_property)
+    self.backLegendTextsSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -693,7 +597,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backLegendTextsSegments.prop {
+            switch object.backLegendTextsSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -721,8 +625,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backLegendTextsSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backLegendTextsSegmentsForDisplay (self.backLegendTextsSegmentsForDisplay)
-    self.backLegendTextsSegmentsForDisplay.readModelFunction = {
+    model.addEBObserverOf_backLegendTextsSegmentsForDisplay (self.backLegendTextsSegmentsForDisplay_property)
+    self.backLegendTextsSegmentsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -733,47 +637,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backLegendTextsSegmentsForDisplay.prop {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backPackageSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backPackageSegmentsCount (self.backPackageSegmentsCount)
-    self.backPackageSegmentsCount.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.backPackageSegmentsCount.prop {
+            switch object.backLegendTextsSegmentsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -801,8 +665,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backPackagesSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backPackagesSegments (self.backPackagesSegments)
-    self.backPackagesSegments.readModelFunction = {
+    model.addEBObserverOf_backPackagesSegments (self.backPackagesSegments_property)
+    self.backPackagesSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -813,7 +677,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backPackagesSegments.prop {
+            switch object.backPackagesSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -841,8 +705,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backPackagesSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backPackagesSegmentsForDisplay (self.backPackagesSegmentsForDisplay)
-    self.backPackagesSegmentsForDisplay.readModelFunction = {
+    model.addEBObserverOf_backPackagesSegmentsForDisplay (self.backPackagesSegmentsForDisplay_property)
+    self.backPackagesSegmentsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -853,7 +717,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backPackagesSegmentsForDisplay.prop {
+            switch object.backPackagesSegmentsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -881,8 +745,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backPads (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backPads (self.backPads)
-    self.backPads.readModelFunction = {
+    model.addEBObserverOf_backPads (self.backPads_property)
+    self.backPads_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -893,7 +757,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backPads.prop {
+            switch object.backPads_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -921,8 +785,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backPadsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backPadsForDisplay (self.backPadsForDisplay)
-    self.backPadsForDisplay.readModelFunction = {
+    model.addEBObserverOf_backPadsForDisplay (self.backPadsForDisplay_property)
+    self.backPadsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -933,7 +797,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backPadsForDisplay.prop {
+            switch object.backPadsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -961,8 +825,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backTrackSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backTrackSegments (self.backTrackSegments)
-    self.backTrackSegments.readModelFunction = {
+    model.addEBObserverOf_backTrackSegments (self.backTrackSegments_property)
+    self.backTrackSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -973,7 +837,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backTrackSegments.prop {
+            switch object.backTrackSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1001,8 +865,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_backTrackSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backTrackSegmentsForDisplay (self.backTrackSegmentsForDisplay)
-    self.backTrackSegmentsForDisplay.readModelFunction = {
+    model.addEBObserverOf_backTrackSegmentsForDisplay (self.backTrackSegmentsForDisplay_property)
+    self.backTrackSegmentsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1013,47 +877,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backTrackSegmentsForDisplay.prop {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backTracksSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_backTracksSegmentsCount (self.backTracksSegmentsCount)
-    self.backTracksSegmentsCount.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.backTracksSegmentsCount.prop {
+            switch object.backTrackSegmentsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1081,8 +905,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardHeight (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardHeight (self.boardHeight)
-    self.boardHeight.readModelFunction = {
+    model.addEBObserverOf_boardHeight (self.boardHeight_property)
+    self.boardHeight_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1093,7 +917,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.boardHeight.prop {
+            switch object.boardHeight_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1116,26 +940,26 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .empty
       }
     }
-    self.boardHeight.writeModelFunction = { (inValue : Int) in
+    self.boardHeight_property.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.boardHeight.setProp (inValue)
+            object.boardHeight_property.setProp (inValue)
           }
         }
       }
     }
-    self.boardHeight.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.boardHeight_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.boardHeight.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.boardHeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1151,8 +975,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardHeightUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardHeightUnit (self.boardHeightUnit)
-    self.boardHeightUnit.readModelFunction = {
+    model.addEBObserverOf_boardHeightUnit (self.boardHeightUnit_property)
+    self.boardHeightUnit_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1163,7 +987,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.boardHeightUnit.prop {
+            switch object.boardHeightUnit_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1186,26 +1010,26 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .empty
       }
     }
-    self.boardHeightUnit.writeModelFunction = { (inValue : Int) in
+    self.boardHeightUnit_property.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.boardHeightUnit.setProp (inValue)
+            object.boardHeightUnit_property.setProp (inValue)
           }
         }
       }
     }
-    self.boardHeightUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.boardHeightUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.boardHeightUnit.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.boardHeightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1221,8 +1045,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardLimitWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardLimitWidth (self.boardLimitWidth)
-    self.boardLimitWidth.readModelFunction = {
+    model.addEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
+    self.boardLimitWidth_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1233,7 +1057,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.boardLimitWidth.prop {
+            switch object.boardLimitWidth_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1256,26 +1080,26 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .empty
       }
     }
-    self.boardLimitWidth.writeModelFunction = { (inValue : Int) in
+    self.boardLimitWidth_property.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.boardLimitWidth.setProp (inValue)
+            object.boardLimitWidth_property.setProp (inValue)
           }
         }
       }
     }
-    self.boardLimitWidth.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.boardLimitWidth_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.boardLimitWidth.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.boardLimitWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1291,8 +1115,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardLimitWidthUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardLimitWidthUnit (self.boardLimitWidthUnit)
-    self.boardLimitWidthUnit.readModelFunction = {
+    model.addEBObserverOf_boardLimitWidthUnit (self.boardLimitWidthUnit_property)
+    self.boardLimitWidthUnit_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1303,7 +1127,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.boardLimitWidthUnit.prop {
+            switch object.boardLimitWidthUnit_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1326,26 +1150,26 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .empty
       }
     }
-    self.boardLimitWidthUnit.writeModelFunction = { (inValue : Int) in
+    self.boardLimitWidthUnit_property.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.boardLimitWidthUnit.setProp (inValue)
+            object.boardLimitWidthUnit_property.setProp (inValue)
           }
         }
       }
     }
-    self.boardLimitWidthUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.boardLimitWidthUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.boardLimitWidthUnit.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.boardLimitWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1361,8 +1185,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardLimits (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardLimits (self.boardLimits)
-    self.boardLimits.readModelFunction = {
+    model.addEBObserverOf_boardLimits (self.boardLimits_property)
+    self.boardLimits_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1373,7 +1197,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerBoardLimits> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.boardLimits.prop {
+            switch object.boardLimits_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1401,8 +1225,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardWidth (self.boardWidth)
-    self.boardWidth.readModelFunction = {
+    model.addEBObserverOf_boardWidth (self.boardWidth_property)
+    self.boardWidth_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1413,7 +1237,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.boardWidth.prop {
+            switch object.boardWidth_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1436,26 +1260,26 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .empty
       }
     }
-    self.boardWidth.writeModelFunction = { (inValue : Int) in
+    self.boardWidth_property.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.boardWidth.setProp (inValue)
+            object.boardWidth_property.setProp (inValue)
           }
         }
       }
     }
-    self.boardWidth.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.boardWidth_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.boardWidth.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.boardWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1471,8 +1295,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_boardWidthUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardWidthUnit (self.boardWidthUnit)
-    self.boardWidthUnit.readModelFunction = {
+    model.addEBObserverOf_boardWidthUnit (self.boardWidthUnit_property)
+    self.boardWidthUnit_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1483,7 +1307,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.boardWidthUnit.prop {
+            switch object.boardWidthUnit_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1506,26 +1330,26 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .empty
       }
     }
-    self.boardWidthUnit.writeModelFunction = { (inValue : Int) in
+    self.boardWidthUnit_property.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.boardWidthUnit.setProp (inValue)
+            object.boardWidthUnit_property.setProp (inValue)
           }
         }
       }
     }
-    self.boardWidthUnit.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.boardWidthUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.boardWidthUnit.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.boardWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1541,8 +1365,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontComponentNameSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments)
-    self.frontComponentNameSegments.readModelFunction = {
+    model.addEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments_property)
+    self.frontComponentNameSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1553,47 +1377,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontComponentNameSegments.prop {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontComponentNameSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontComponentNameSegmentsCount (self.frontComponentNameSegmentsCount)
-    self.frontComponentNameSegmentsCount.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.frontComponentNameSegmentsCount.prop {
+            switch object.frontComponentNameSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1621,8 +1405,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontComponentNameSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontComponentNameSegmentsForDisplay (self.frontComponentNameSegmentsForDisplay)
-    self.frontComponentNameSegmentsForDisplay.readModelFunction = {
+    model.addEBObserverOf_frontComponentNameSegmentsForDisplay (self.frontComponentNameSegmentsForDisplay_property)
+    self.frontComponentNameSegmentsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1633,7 +1417,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontComponentNameSegmentsForDisplay.prop {
+            switch object.frontComponentNameSegmentsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1661,8 +1445,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontComponentValueSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontComponentValueSegments (self.frontComponentValueSegments)
-    self.frontComponentValueSegments.readModelFunction = {
+    model.addEBObserverOf_frontComponentValueSegments (self.frontComponentValueSegments_property)
+    self.frontComponentValueSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1673,47 +1457,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontComponentValueSegments.prop {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontComponentValueSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontComponentValueSegmentsCount (self.frontComponentValueSegmentsCount)
-    self.frontComponentValueSegmentsCount.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.frontComponentValueSegmentsCount.prop {
+            switch object.frontComponentValueSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1741,8 +1485,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontComponentValuesForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontComponentValuesForDisplay (self.frontComponentValuesForDisplay)
-    self.frontComponentValuesForDisplay.readModelFunction = {
+    model.addEBObserverOf_frontComponentValuesForDisplay (self.frontComponentValuesForDisplay_property)
+    self.frontComponentValuesForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1753,7 +1497,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontComponentValuesForDisplay.prop {
+            switch object.frontComponentValuesForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1781,8 +1525,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments)
-    self.frontLayoutTextsSegments.readModelFunction = {
+    model.addEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments_property)
+    self.frontLayoutTextsSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1793,7 +1537,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontLayoutTextsSegments.prop {
+            switch object.frontLayoutTextsSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1821,8 +1565,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontLayoutTextsSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontLayoutTextsSegmentsForDisplay (self.frontLayoutTextsSegmentsForDisplay)
-    self.frontLayoutTextsSegmentsForDisplay.readModelFunction = {
+    model.addEBObserverOf_frontLayoutTextsSegmentsForDisplay (self.frontLayoutTextsSegmentsForDisplay_property)
+    self.frontLayoutTextsSegmentsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1833,7 +1577,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontLayoutTextsSegmentsForDisplay.prop {
+            switch object.frontLayoutTextsSegmentsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1861,8 +1605,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontLegendTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments)
-    self.frontLegendTextsSegments.readModelFunction = {
+    model.addEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments_property)
+    self.frontLegendTextsSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1873,7 +1617,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontLegendTextsSegments.prop {
+            switch object.frontLegendTextsSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1901,8 +1645,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontLegendTextsSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontLegendTextsSegmentsForDisplay (self.frontLegendTextsSegmentsForDisplay)
-    self.frontLegendTextsSegmentsForDisplay.readModelFunction = {
+    model.addEBObserverOf_frontLegendTextsSegmentsForDisplay (self.frontLegendTextsSegmentsForDisplay_property)
+    self.frontLegendTextsSegmentsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1913,47 +1657,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontLegendTextsSegmentsForDisplay.prop {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontPackageSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontPackageSegmentsCount (self.frontPackageSegmentsCount)
-    self.frontPackageSegmentsCount.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.frontPackageSegmentsCount.prop {
+            switch object.frontLegendTextsSegmentsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1981,8 +1685,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontPackagesSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontPackagesSegments (self.frontPackagesSegments)
-    self.frontPackagesSegments.readModelFunction = {
+    model.addEBObserverOf_frontPackagesSegments (self.frontPackagesSegments_property)
+    self.frontPackagesSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1993,7 +1697,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontPackagesSegments.prop {
+            switch object.frontPackagesSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2021,8 +1725,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontPackagesSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontPackagesSegmentsForDisplay (self.frontPackagesSegmentsForDisplay)
-    self.frontPackagesSegmentsForDisplay.readModelFunction = {
+    model.addEBObserverOf_frontPackagesSegmentsForDisplay (self.frontPackagesSegmentsForDisplay_property)
+    self.frontPackagesSegmentsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2033,7 +1737,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontPackagesSegmentsForDisplay.prop {
+            switch object.frontPackagesSegmentsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2061,8 +1765,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontPads (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontPads (self.frontPads)
-    self.frontPads.readModelFunction = {
+    model.addEBObserverOf_frontPads (self.frontPads_property)
+    self.frontPads_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2073,7 +1777,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontPads.prop {
+            switch object.frontPads_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2101,8 +1805,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontPadsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontPadsForDisplay (self.frontPadsForDisplay)
-    self.frontPadsForDisplay.readModelFunction = {
+    model.addEBObserverOf_frontPadsForDisplay (self.frontPadsForDisplay_property)
+    self.frontPadsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2113,7 +1817,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontPadsForDisplay.prop {
+            switch object.frontPadsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2141,8 +1845,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontTrackSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontTrackSegments (self.frontTrackSegments)
-    self.frontTrackSegments.readModelFunction = {
+    model.addEBObserverOf_frontTrackSegments (self.frontTrackSegments_property)
+    self.frontTrackSegments_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2153,7 +1857,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontTrackSegments.prop {
+            switch object.frontTrackSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2181,8 +1885,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_frontTrackSegmentsForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontTrackSegmentsForDisplay (self.frontTrackSegmentsForDisplay)
-    self.frontTrackSegmentsForDisplay.readModelFunction = {
+    model.addEBObserverOf_frontTrackSegmentsForDisplay (self.frontTrackSegmentsForDisplay_property)
+    self.frontTrackSegmentsForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2193,47 +1897,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerSegmentArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontTrackSegmentsForDisplay.prop {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontTracksSegmentsCount (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_frontTracksSegmentsCount (self.frontTracksSegmentsCount)
-    self.frontTracksSegmentsCount.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.frontTracksSegmentsCount.prop {
+            switch object.frontTrackSegmentsForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2261,8 +1925,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_holes (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_holes (self.holes)
-    self.holes.readModelFunction = {
+    model.addEBObserverOf_holes (self.holes_property)
+    self.holes_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2273,7 +1937,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerHoleArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.holes.prop {
+            switch object.holes_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2301,8 +1965,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_holesForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_holesForDisplay (self.holesForDisplay)
-    self.holesForDisplay.readModelFunction = {
+    model.addEBObserverOf_holesForDisplay (self.holesForDisplay_property)
+    self.holesForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2313,7 +1977,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerHoleArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.holesForDisplay.prop {
+            switch object.holesForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2341,8 +2005,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_name (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_name (self.name)
-    self.name.readModelFunction = {
+    model.addEBObserverOf_name (self.name_property)
+    self.name_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2353,7 +2017,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.name.prop {
+            switch object.name_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2376,26 +2040,26 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .empty
       }
     }
-    self.name.writeModelFunction = { (inValue : String) in
+    self.name_property.writeModelFunction = { (inValue : String) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.name.setProp (inValue)
+            object.name_property.setProp (inValue)
           }
         }
       }
     }
-    self.name.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
+    self.name_property.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.name.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.name_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -2411,8 +2075,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_padsHoles (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_padsHoles (self.padsHoles)
-    self.padsHoles.readModelFunction = {
+    model.addEBObserverOf_padsHoles (self.padsHoles_property)
+    self.padsHoles_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2423,7 +2087,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerHoleArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.padsHoles.prop {
+            switch object.padsHoles_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2451,8 +2115,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_viaShapes (self.viaShapes)
-    self.viaShapes.readModelFunction = {
+    model.addEBObserverOf_viaShapes (self.viaShapes_property)
+    self.viaShapes_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2463,7 +2127,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerViaShapeArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.viaShapes.prop {
+            switch object.viaShapes_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2491,8 +2155,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_viaShapesForDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_viaShapesForDisplay (self.viaShapesForDisplay)
-    self.viaShapesForDisplay.readModelFunction = {
+    model.addEBObserverOf_viaShapesForDisplay (self.viaShapesForDisplay_property)
+    self.viaShapesForDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2503,7 +2167,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerViaShapeArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.viaShapesForDisplay.prop {
+            switch object.viaShapesForDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2531,8 +2195,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_viasHoles (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_viasHoles (self.viasHoles)
-    self.viasHoles.readModelFunction = {
+    model.addEBObserverOf_viasHoles (self.viasHoles_property)
+    self.viasHoles_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2543,7 +2207,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<MergerHoleArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.viasHoles.prop {
+            switch object.viasHoles_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2571,8 +2235,8 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //···················································································································*
 
   private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_zoom (self.zoom)
-    self.zoom.readModelFunction = {
+    model.addEBObserverOf_zoom (self.zoom_property)
+    self.zoom_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -2583,7 +2247,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var s = Set<Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.zoom.prop {
+            switch object.zoom_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2606,26 +2270,26 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         return .empty
       }
     }
-    self.zoom.writeModelFunction = { (inValue : Int) in
+    self.zoom_property.writeModelFunction = { (inValue : Int) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.zoom.setProp (inValue)
+            object.zoom_property.setProp (inValue)
           }
         }
       }
     }
-    self.zoom.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.zoom_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.zoom.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.zoom_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -2646,179 +2310,155 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   func unbind_selection () {
   //--- artworkName
-    self.artworkName.readModelFunction = nil 
-    self.artworkName.writeModelFunction = nil 
-    self.artworkName.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_artworkName (self.artworkName)
+    self.artworkName_property.readModelFunction = nil 
+    self.artworkName_property.writeModelFunction = nil 
+    self.artworkName_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_artworkName (self.artworkName_property)
   //--- backComponentNameSegments
-    self.backComponentNameSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backComponentNameSegments (self.backComponentNameSegments)
-  //--- backComponentNameSegmentsCount
-    self.backComponentNameSegmentsCount.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backComponentNameSegmentsCount (self.backComponentNameSegmentsCount)
+    self.backComponentNameSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backComponentNameSegments (self.backComponentNameSegments_property)
   //--- backComponentNameSegmentsForDisplay
-    self.backComponentNameSegmentsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backComponentNameSegmentsForDisplay (self.backComponentNameSegmentsForDisplay)
+    self.backComponentNameSegmentsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backComponentNameSegmentsForDisplay (self.backComponentNameSegmentsForDisplay_property)
   //--- backComponentValueSegments
-    self.backComponentValueSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backComponentValueSegments (self.backComponentValueSegments)
-  //--- backComponentValueSegmentsCount
-    self.backComponentValueSegmentsCount.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backComponentValueSegmentsCount (self.backComponentValueSegmentsCount)
+    self.backComponentValueSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backComponentValueSegments (self.backComponentValueSegments_property)
   //--- backComponentValuesForDisplay
-    self.backComponentValuesForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backComponentValuesForDisplay (self.backComponentValuesForDisplay)
+    self.backComponentValuesForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backComponentValuesForDisplay (self.backComponentValuesForDisplay_property)
   //--- backLayoutTextsSegments
-    self.backLayoutTextsSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments)
+    self.backLayoutTextsSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments_property)
   //--- backLayoutTextsSegmentsForDisplay
-    self.backLayoutTextsSegmentsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backLayoutTextsSegmentsForDisplay (self.backLayoutTextsSegmentsForDisplay)
+    self.backLayoutTextsSegmentsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backLayoutTextsSegmentsForDisplay (self.backLayoutTextsSegmentsForDisplay_property)
   //--- backLegendTextsSegments
-    self.backLegendTextsSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments)
+    self.backLegendTextsSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments_property)
   //--- backLegendTextsSegmentsForDisplay
-    self.backLegendTextsSegmentsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backLegendTextsSegmentsForDisplay (self.backLegendTextsSegmentsForDisplay)
-  //--- backPackageSegmentsCount
-    self.backPackageSegmentsCount.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backPackageSegmentsCount (self.backPackageSegmentsCount)
+    self.backLegendTextsSegmentsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backLegendTextsSegmentsForDisplay (self.backLegendTextsSegmentsForDisplay_property)
   //--- backPackagesSegments
-    self.backPackagesSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backPackagesSegments (self.backPackagesSegments)
+    self.backPackagesSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backPackagesSegments (self.backPackagesSegments_property)
   //--- backPackagesSegmentsForDisplay
-    self.backPackagesSegmentsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backPackagesSegmentsForDisplay (self.backPackagesSegmentsForDisplay)
+    self.backPackagesSegmentsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backPackagesSegmentsForDisplay (self.backPackagesSegmentsForDisplay_property)
   //--- backPads
-    self.backPads.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backPads (self.backPads)
+    self.backPads_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backPads (self.backPads_property)
   //--- backPadsForDisplay
-    self.backPadsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backPadsForDisplay (self.backPadsForDisplay)
+    self.backPadsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backPadsForDisplay (self.backPadsForDisplay_property)
   //--- backTrackSegments
-    self.backTrackSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backTrackSegments (self.backTrackSegments)
+    self.backTrackSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backTrackSegments (self.backTrackSegments_property)
   //--- backTrackSegmentsForDisplay
-    self.backTrackSegmentsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backTrackSegmentsForDisplay (self.backTrackSegmentsForDisplay)
-  //--- backTracksSegmentsCount
-    self.backTracksSegmentsCount.readModelFunction = nil 
-    mModel?.removeEBObserverOf_backTracksSegmentsCount (self.backTracksSegmentsCount)
+    self.backTrackSegmentsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backTrackSegmentsForDisplay (self.backTrackSegmentsForDisplay_property)
   //--- boardHeight
-    self.boardHeight.readModelFunction = nil 
-    self.boardHeight.writeModelFunction = nil 
-    self.boardHeight.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_boardHeight (self.boardHeight)
+    self.boardHeight_property.readModelFunction = nil 
+    self.boardHeight_property.writeModelFunction = nil 
+    self.boardHeight_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_boardHeight (self.boardHeight_property)
   //--- boardHeightUnit
-    self.boardHeightUnit.readModelFunction = nil 
-    self.boardHeightUnit.writeModelFunction = nil 
-    self.boardHeightUnit.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_boardHeightUnit (self.boardHeightUnit)
+    self.boardHeightUnit_property.readModelFunction = nil 
+    self.boardHeightUnit_property.writeModelFunction = nil 
+    self.boardHeightUnit_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_boardHeightUnit (self.boardHeightUnit_property)
   //--- boardLimitWidth
-    self.boardLimitWidth.readModelFunction = nil 
-    self.boardLimitWidth.writeModelFunction = nil 
-    self.boardLimitWidth.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_boardLimitWidth (self.boardLimitWidth)
+    self.boardLimitWidth_property.readModelFunction = nil 
+    self.boardLimitWidth_property.writeModelFunction = nil 
+    self.boardLimitWidth_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
   //--- boardLimitWidthUnit
-    self.boardLimitWidthUnit.readModelFunction = nil 
-    self.boardLimitWidthUnit.writeModelFunction = nil 
-    self.boardLimitWidthUnit.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_boardLimitWidthUnit (self.boardLimitWidthUnit)
+    self.boardLimitWidthUnit_property.readModelFunction = nil 
+    self.boardLimitWidthUnit_property.writeModelFunction = nil 
+    self.boardLimitWidthUnit_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_boardLimitWidthUnit (self.boardLimitWidthUnit_property)
   //--- boardLimits
-    self.boardLimits.readModelFunction = nil 
-    mModel?.removeEBObserverOf_boardLimits (self.boardLimits)
+    self.boardLimits_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_boardLimits (self.boardLimits_property)
   //--- boardWidth
-    self.boardWidth.readModelFunction = nil 
-    self.boardWidth.writeModelFunction = nil 
-    self.boardWidth.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_boardWidth (self.boardWidth)
+    self.boardWidth_property.readModelFunction = nil 
+    self.boardWidth_property.writeModelFunction = nil 
+    self.boardWidth_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_boardWidth (self.boardWidth_property)
   //--- boardWidthUnit
-    self.boardWidthUnit.readModelFunction = nil 
-    self.boardWidthUnit.writeModelFunction = nil 
-    self.boardWidthUnit.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_boardWidthUnit (self.boardWidthUnit)
+    self.boardWidthUnit_property.readModelFunction = nil 
+    self.boardWidthUnit_property.writeModelFunction = nil 
+    self.boardWidthUnit_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_boardWidthUnit (self.boardWidthUnit_property)
   //--- frontComponentNameSegments
-    self.frontComponentNameSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments)
-  //--- frontComponentNameSegmentsCount
-    self.frontComponentNameSegmentsCount.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontComponentNameSegmentsCount (self.frontComponentNameSegmentsCount)
+    self.frontComponentNameSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments_property)
   //--- frontComponentNameSegmentsForDisplay
-    self.frontComponentNameSegmentsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontComponentNameSegmentsForDisplay (self.frontComponentNameSegmentsForDisplay)
+    self.frontComponentNameSegmentsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontComponentNameSegmentsForDisplay (self.frontComponentNameSegmentsForDisplay_property)
   //--- frontComponentValueSegments
-    self.frontComponentValueSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontComponentValueSegments (self.frontComponentValueSegments)
-  //--- frontComponentValueSegmentsCount
-    self.frontComponentValueSegmentsCount.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontComponentValueSegmentsCount (self.frontComponentValueSegmentsCount)
+    self.frontComponentValueSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontComponentValueSegments (self.frontComponentValueSegments_property)
   //--- frontComponentValuesForDisplay
-    self.frontComponentValuesForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontComponentValuesForDisplay (self.frontComponentValuesForDisplay)
+    self.frontComponentValuesForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontComponentValuesForDisplay (self.frontComponentValuesForDisplay_property)
   //--- frontLayoutTextsSegments
-    self.frontLayoutTextsSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments)
+    self.frontLayoutTextsSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments_property)
   //--- frontLayoutTextsSegmentsForDisplay
-    self.frontLayoutTextsSegmentsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontLayoutTextsSegmentsForDisplay (self.frontLayoutTextsSegmentsForDisplay)
+    self.frontLayoutTextsSegmentsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontLayoutTextsSegmentsForDisplay (self.frontLayoutTextsSegmentsForDisplay_property)
   //--- frontLegendTextsSegments
-    self.frontLegendTextsSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments)
+    self.frontLegendTextsSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments_property)
   //--- frontLegendTextsSegmentsForDisplay
-    self.frontLegendTextsSegmentsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontLegendTextsSegmentsForDisplay (self.frontLegendTextsSegmentsForDisplay)
-  //--- frontPackageSegmentsCount
-    self.frontPackageSegmentsCount.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontPackageSegmentsCount (self.frontPackageSegmentsCount)
+    self.frontLegendTextsSegmentsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontLegendTextsSegmentsForDisplay (self.frontLegendTextsSegmentsForDisplay_property)
   //--- frontPackagesSegments
-    self.frontPackagesSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontPackagesSegments (self.frontPackagesSegments)
+    self.frontPackagesSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontPackagesSegments (self.frontPackagesSegments_property)
   //--- frontPackagesSegmentsForDisplay
-    self.frontPackagesSegmentsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontPackagesSegmentsForDisplay (self.frontPackagesSegmentsForDisplay)
+    self.frontPackagesSegmentsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontPackagesSegmentsForDisplay (self.frontPackagesSegmentsForDisplay_property)
   //--- frontPads
-    self.frontPads.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontPads (self.frontPads)
+    self.frontPads_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontPads (self.frontPads_property)
   //--- frontPadsForDisplay
-    self.frontPadsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontPadsForDisplay (self.frontPadsForDisplay)
+    self.frontPadsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontPadsForDisplay (self.frontPadsForDisplay_property)
   //--- frontTrackSegments
-    self.frontTrackSegments.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontTrackSegments (self.frontTrackSegments)
+    self.frontTrackSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontTrackSegments (self.frontTrackSegments_property)
   //--- frontTrackSegmentsForDisplay
-    self.frontTrackSegmentsForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontTrackSegmentsForDisplay (self.frontTrackSegmentsForDisplay)
-  //--- frontTracksSegmentsCount
-    self.frontTracksSegmentsCount.readModelFunction = nil 
-    mModel?.removeEBObserverOf_frontTracksSegmentsCount (self.frontTracksSegmentsCount)
+    self.frontTrackSegmentsForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontTrackSegmentsForDisplay (self.frontTrackSegmentsForDisplay_property)
   //--- holes
-    self.holes.readModelFunction = nil 
-    mModel?.removeEBObserverOf_holes (self.holes)
+    self.holes_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_holes (self.holes_property)
   //--- holesForDisplay
-    self.holesForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_holesForDisplay (self.holesForDisplay)
+    self.holesForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_holesForDisplay (self.holesForDisplay_property)
   //--- name
-    self.name.readModelFunction = nil 
-    self.name.writeModelFunction = nil 
-    self.name.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_name (self.name)
+    self.name_property.readModelFunction = nil 
+    self.name_property.writeModelFunction = nil 
+    self.name_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_name (self.name_property)
   //--- padsHoles
-    self.padsHoles.readModelFunction = nil 
-    mModel?.removeEBObserverOf_padsHoles (self.padsHoles)
+    self.padsHoles_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_padsHoles (self.padsHoles_property)
   //--- viaShapes
-    self.viaShapes.readModelFunction = nil 
-    mModel?.removeEBObserverOf_viaShapes (self.viaShapes)
+    self.viaShapes_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_viaShapes (self.viaShapes_property)
   //--- viaShapesForDisplay
-    self.viaShapesForDisplay.readModelFunction = nil 
-    mModel?.removeEBObserverOf_viaShapesForDisplay (self.viaShapesForDisplay)
+    self.viaShapesForDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_viaShapesForDisplay (self.viaShapesForDisplay_property)
   //--- viasHoles
-    self.viasHoles.readModelFunction = nil 
-    mModel?.removeEBObserverOf_viasHoles (self.viasHoles)
+    self.viasHoles_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_viasHoles (self.viasHoles_property)
   //--- zoom
-    self.zoom.readModelFunction = nil 
-    self.zoom.writeModelFunction = nil 
-    self.zoom.validateAndWriteModelFunction = nil 
-    mModel?.removeEBObserverOf_zoom (self.zoom)
+    self.zoom_property.readModelFunction = nil 
+    self.zoom_property.writeModelFunction = nil 
+    self.zoom_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_zoom (self.zoom_property)
   //---
     mModel = nil    
   }

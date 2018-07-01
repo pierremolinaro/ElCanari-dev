@@ -27,13 +27,13 @@ private let DEBUG = false
   init (object : CanariLibraryEntry) {
     mObject = object
     super.init ()
-    object.mPath.addEBObserver (self)
+    object.mPath_property.addEBObserver (self)
   }
 
   //····················································································································
 
   final override func postEvent () {
-    let possiblePath = mObject?.mPath.propval
+    let possiblePath = mObject?.mPath
     if DEBUG {
       NSLog ("\(#function), path '\(String(describing: possiblePath))'")
     }
@@ -82,7 +82,7 @@ private let DEBUG = false
     if DEBUG {
       NSLog ("\(#function)")
     }
-    mObject?.mStatusImage.postEvent ()
+    mObject?.mStatusImage_property.postEvent ()
   }
   
   //····················································································································
@@ -102,7 +102,7 @@ private let DEBUG = false
   //····················································································································
 
   deinit {
-    mObject?.mPath.removeEBObserver (self)
+    mObject?.mPath_property.removeEBObserver (self)
     removeFileSystemMonitoring ()
   }
   

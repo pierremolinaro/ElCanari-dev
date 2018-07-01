@@ -20,7 +20,7 @@ import Cocoa
   //····················································································································
 
   func applicationDidFinishLaunching (_ notification: Notification) {
-    if g_Preferences?.checkForSystemLibraryAtStartUp.propval ?? false {
+    if g_Preferences?.checkForSystemLibraryAtStartUp ?? false {
       performLibraryUpdate (nil)
     }
   }

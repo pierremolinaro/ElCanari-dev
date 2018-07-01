@@ -69,7 +69,7 @@ extension FontRootEntity {
       }
     }
   //--- Set property
-    characters.setProp (newCharacterArray)
+    characters_property.setProp (newCharacterArray)
   }
 
   //····················································································································
@@ -87,7 +87,7 @@ extension FontCharacterEntity {
     // NSLog ("\(self.className).\(#function)")
     // NSLog ("objectPropertyDictionary \(objectPropertyDictionary)")
   //--- "advancement" in Canari 1 is renamed "advance"
-    advance.setProp ((objectPropertyDictionary ["advancement"] as! NSNumber).intValue)
+    self.advance = (objectPropertyDictionary ["advancement"] as! NSNumber).intValue
   //--- "glyph" in Canari 1 is renamed "segments
   // objectPropertyDictionary ["glyph"] is an array of object indexes
   // But this array is not ordered: so we need to use the "layer" property to build the new ordered segment array
@@ -108,7 +108,7 @@ extension FontCharacterEntity {
       for idx in 0 ..< (glyph as! [NSNumber]).count {
          newSegmentArray.append(newSegmentDictionary [idx]!)
       }
-      segments.setProp (newSegmentArray)
+      segments_property.setProp (newSegmentArray)
     }
   }
 
@@ -135,16 +135,16 @@ extension SegmentForFontCharacterEntity {
     var x : Int = Int (array [0])! // --> 2857500
     var y : Int = Int (array [1])! // --> 5715000
     // Swift.print ("x1 \(x) --> \(x / DIVISOR - 2), y1 \(y) --> \(y / DIVISOR - 6)")
-    x1.setProp (x / DIVISOR - 2)
-    y1.setProp (y / DIVISOR - 6)
+    x1 = x / DIVISOR - 2
+    y1 = y / DIVISOR - 6
   //--- P2
     s = objectPropertyDictionary ["stringForP2"] as! String // For example: "2857500 5715000"
     array = s.components(separatedBy: " ") // --> ["2857500", "5715000"]
     x = Int (array [0])! // --> 2857500
     y = Int (array [1])! // --> 5715000
     // Swift.print ("x2 \(x), y2 \(y)")
-    x2.setProp (x / DIVISOR - 2)
-    y2.setProp (y / DIVISOR - 6)
+    x2 = x / DIVISOR - 2
+    y2 = y / DIVISOR - 6
   }
 
   //····················································································································

@@ -224,15 +224,15 @@ import Cocoa
 //                              errorMessage: "the 'updateBoardModelButton' outlet is not an instance of 'EBButton'") ;
     }
   //--------------------------- Array controllers
-    mBoardModelController.bind_modelAndView (
-      model: rootObject.boardModels,
+    self.mBoardModelController.bind_modelAndView (
+      model: self.rootObject.boardModels_property,
       tableViewArray: [mBoardModelTableView!],
       file: #file,
       line: #line
     )
   //--------------------------- Selection controllers
     mBoardModelSelection.bind_selection (
-      model: mBoardModelController.selectedArray,
+      model: mBoardModelController.selectedArray_property,
       file: #file,
       line: #line
     )
@@ -240,46 +240,46 @@ import Cocoa
   //--- Transient compute functions
   //--- Install property observers for transients
   //--- Install regular bindings
-    mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex, file: #file, line: #line)
-    mArtworkNameTextField?.bind_valueObserver (self.mBoardModelSelection.artworkName, file: #file, line: #line)
-    mBoardWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.boardWidthUnit, file: #file, line: #line)
-    mBoardWidthTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.boardWidth, self.mBoardModelSelection.boardWidthUnit, file: #file, line: #line)
-    mBoardHeightUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.boardHeightUnit, file: #file, line: #line)
-    mBoardHeightTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.boardHeight, self.mBoardModelSelection.boardHeightUnit, file: #file, line: #line)
-    mBoardModelView?.bind_size (self.mBoardModelSelection.boardWidth, self.mBoardModelSelection.boardHeight, file: #file, line: #line)
-    mBoardModelView?.bind_zoom (self.mBoardModelSelection.zoom, file: #file, line: #line)
-    mBoardModelView?.bind_horizontalFlip (g_Preferences!.mergerHorizontalFlip, file: #file, line: #line)
-    mBoardModelView?.bind_verticalFlip (g_Preferences!.mergerVerticalFlip, file: #file, line: #line)
-    mBoardModelView?.bind_vias (self.mBoardModelSelection.viaShapesForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_frontComponentNames (self.mBoardModelSelection.frontComponentNameSegmentsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_frontComponentValues (self.mBoardModelSelection.frontComponentValuesForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_backComponentNames (self.mBoardModelSelection.backComponentNameSegmentsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_backComponentValues (self.mBoardModelSelection.backComponentValuesForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_frontTracks (self.mBoardModelSelection.frontTrackSegmentsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_backTracks (self.mBoardModelSelection.backTrackSegmentsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_frontPackages (self.mBoardModelSelection.frontPackagesSegmentsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_backPackages (self.mBoardModelSelection.backPackagesSegmentsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_boardLimits (self.mBoardModelSelection.boardLimits, file: #file, line: #line)
-    mBoardModelView?.bind_frontPads (self.mBoardModelSelection.frontPadsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_backPads (self.mBoardModelSelection.backPadsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_holes (self.mBoardModelSelection.holesForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_frontLegendTexts (self.mBoardModelSelection.frontLegendTextsSegmentsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_frontLayoutTexts (self.mBoardModelSelection.frontLayoutTextsSegmentsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_backLegendTexts (self.mBoardModelSelection.backLegendTextsSegmentsForDisplay, file: #file, line: #line)
-    mBoardModelView?.bind_backLayoutTexts (self.mBoardModelSelection.backLayoutTextsSegmentsForDisplay, file: #file, line: #line)
-    mBoardInsertMenu?.bind_names (self.rootObject.modelNames, file: #file, line: #line)
+    mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
+    mArtworkNameTextField?.bind_valueObserver (self.mBoardModelSelection.artworkName_property, file: #file, line: #line)
+    mBoardWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.boardWidthUnit_property, file: #file, line: #line)
+    mBoardWidthTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.boardWidth_property, self.mBoardModelSelection.boardWidthUnit_property, file: #file, line: #line)
+    mBoardHeightUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.boardHeightUnit_property, file: #file, line: #line)
+    mBoardHeightTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.boardHeight_property, self.mBoardModelSelection.boardHeightUnit_property, file: #file, line: #line)
+    mBoardModelView?.bind_size (self.mBoardModelSelection.boardWidth_property, self.mBoardModelSelection.boardHeight_property, file: #file, line: #line)
+    mBoardModelView?.bind_zoom (self.mBoardModelSelection.zoom_property, file: #file, line: #line)
+    mBoardModelView?.bind_horizontalFlip (g_Preferences!.mergerHorizontalFlip_property, file: #file, line: #line)
+    mBoardModelView?.bind_verticalFlip (g_Preferences!.mergerVerticalFlip_property, file: #file, line: #line)
+    mBoardModelView?.bind_vias (self.mBoardModelSelection.viaShapesForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_frontComponentNames (self.mBoardModelSelection.frontComponentNameSegmentsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_frontComponentValues (self.mBoardModelSelection.frontComponentValuesForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_backComponentNames (self.mBoardModelSelection.backComponentNameSegmentsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_backComponentValues (self.mBoardModelSelection.backComponentValuesForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_frontTracks (self.mBoardModelSelection.frontTrackSegmentsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_backTracks (self.mBoardModelSelection.backTrackSegmentsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_frontPackages (self.mBoardModelSelection.frontPackagesSegmentsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_backPackages (self.mBoardModelSelection.backPackagesSegmentsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_boardLimits (self.mBoardModelSelection.boardLimits_property, file: #file, line: #line)
+    mBoardModelView?.bind_frontPads (self.mBoardModelSelection.frontPadsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_backPads (self.mBoardModelSelection.backPadsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_holes (self.mBoardModelSelection.holesForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_frontLegendTexts (self.mBoardModelSelection.frontLegendTextsSegmentsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_frontLayoutTexts (self.mBoardModelSelection.frontLayoutTextsSegmentsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_backLegendTexts (self.mBoardModelSelection.backLegendTextsSegmentsForDisplay_property, file: #file, line: #line)
+    mBoardModelView?.bind_backLayoutTexts (self.mBoardModelSelection.backLayoutTextsSegmentsForDisplay_property, file: #file, line: #line)
+    mBoardInsertMenu?.bind_names (self.rootObject.modelNames_property, file: #file, line: #line)
   //--- Install multiple bindings
     removeBoardModelButton?.bind_enabled (
-      [self.mBoardModelController.selectedArray.count],
+      [self.mBoardModelController.selectedArray_property.count_property],
       computeFunction:{
-        return (self.mBoardModelController.selectedArray.count.prop > EBSelection.single (0))
+        return (self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0))
       },
       file: #file, line: #line
     )
     updateBoardModelButton?.bind_enabled (
-      [self.mBoardModelController.selectedArray.count],
+      [self.mBoardModelController.selectedArray_property.count_property],
       computeFunction:{
-        return (self.mBoardModelController.selectedArray.count.prop > EBSelection.single (0))
+        return (self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0))
       },
       file: #file, line: #line
     )

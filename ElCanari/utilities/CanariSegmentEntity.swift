@@ -19,18 +19,18 @@ class CanariSegmentEntity : EBManagedObject,
   //   Accessing x1 stored property
   //····················································································································
 
-  var x1_value : Int {
+  var x1 : Int {
     get {
-      return self.x1.propval
+      return self.x1_property.propval
     }
     set {
-      self.x1.setProp (newValue)
+      self.x1_property.setProp (newValue)
     }
   }
 
-  var x1_prop : EBSelection <Int> {
+  var x1_property_selection : EBSelection <Int> {
     get {
-      return self.x1.prop
+      return self.x1_property.prop
     }
   }
 
@@ -38,18 +38,18 @@ class CanariSegmentEntity : EBManagedObject,
   //   Accessing y1 stored property
   //····················································································································
 
-  var y1_value : Int {
+  var y1 : Int {
     get {
-      return self.y1.propval
+      return self.y1_property.propval
     }
     set {
-      self.y1.setProp (newValue)
+      self.y1_property.setProp (newValue)
     }
   }
 
-  var y1_prop : EBSelection <Int> {
+  var y1_property_selection : EBSelection <Int> {
     get {
-      return self.y1.prop
+      return self.y1_property.prop
     }
   }
 
@@ -57,18 +57,18 @@ class CanariSegmentEntity : EBManagedObject,
   //   Accessing x2 stored property
   //····················································································································
 
-  var x2_value : Int {
+  var x2 : Int {
     get {
-      return self.x2.propval
+      return self.x2_property.propval
     }
     set {
-      self.x2.setProp (newValue)
+      self.x2_property.setProp (newValue)
     }
   }
 
-  var x2_prop : EBSelection <Int> {
+  var x2_property_selection : EBSelection <Int> {
     get {
-      return self.x2.prop
+      return self.x2_property.prop
     }
   }
 
@@ -76,18 +76,18 @@ class CanariSegmentEntity : EBManagedObject,
   //   Accessing y2 stored property
   //····················································································································
 
-  var y2_value : Int {
+  var y2 : Int {
     get {
-      return self.y2.propval
+      return self.y2_property.propval
     }
     set {
-      self.y2.setProp (newValue)
+      self.y2_property.setProp (newValue)
     }
   }
 
-  var y2_prop : EBSelection <Int> {
+  var y2_property_selection : EBSelection <Int> {
     get {
-      return self.y2.prop
+      return self.y2_property.prop
     }
   }
 
@@ -95,18 +95,18 @@ class CanariSegmentEntity : EBManagedObject,
   //   Accessing width stored property
   //····················································································································
 
-  var width_value : Int {
+  var width : Int {
     get {
-      return self.width.propval
+      return self.width_property.propval
     }
     set {
-      self.width.setProp (newValue)
+      self.width_property.setProp (newValue)
     }
   }
 
-  var width_prop : EBSelection <Int> {
+  var width_property_selection : EBSelection <Int> {
     get {
-      return self.width.prop
+      return self.width_property.prop
     }
   }
 
@@ -114,11 +114,11 @@ class CanariSegmentEntity : EBManagedObject,
   //    Stored Properties
   //····················································································································
 
-  var x1 = EBStoredProperty_Int (0)
-  var y1 = EBStoredProperty_Int (0)
-  var x2 = EBStoredProperty_Int (0)
-  var y2 = EBStoredProperty_Int (0)
-  var width = EBStoredProperty_Int (0)
+  var x1_property = EBStoredProperty_Int (0)
+  var y1_property = EBStoredProperty_Int (0)
+  var x2_property = EBStoredProperty_Int (0)
+  var y2_property = EBStoredProperty_Int (0)
+  var width_property = EBStoredProperty_Int (0)
 
   //····················································································································
   //    Transient properties
@@ -139,11 +139,11 @@ class CanariSegmentEntity : EBManagedObject,
   //--- Install compute functions for transients
   //--- Install property observers for transients
   //--- Install undoers for properties
-    self.x1.undoManager = undoManager ()
-    self.y1.undoManager = undoManager ()
-    self.x2.undoManager = undoManager ()
-    self.y2.undoManager = undoManager ()
-    self.width.undoManager = undoManager ()
+    self.x1_property.undoManager = undoManager ()
+    self.y1_property.undoManager = undoManager ()
+    self.x2_property.undoManager = undoManager ()
+    self.y2_property.undoManager = undoManager ()
+    self.width_property.undoManager = undoManager ()
   //--- Install owner for relationships
   //--- register properties for handling signature
   }
@@ -162,43 +162,43 @@ class CanariSegmentEntity : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1.mEasyBindingsObjectIndex,
+      idx:self.x1_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.x1.mObserverExplorer,
-      valueExplorer:&self.x1.mValueExplorer
+      observerExplorer:&self.x1_property.mObserverExplorer,
+      valueExplorer:&self.x1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1.mEasyBindingsObjectIndex,
+      idx:self.y1_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.y1.mObserverExplorer,
-      valueExplorer:&self.y1.mValueExplorer
+      observerExplorer:&self.y1_property.mObserverExplorer,
+      valueExplorer:&self.y1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2.mEasyBindingsObjectIndex,
+      idx:self.x2_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.x2.mObserverExplorer,
-      valueExplorer:&self.x2.mValueExplorer
+      observerExplorer:&self.x2_property.mObserverExplorer,
+      valueExplorer:&self.x2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2.mEasyBindingsObjectIndex,
+      idx:self.y2_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.y2.mObserverExplorer,
-      valueExplorer:&self.y2.mValueExplorer
+      observerExplorer:&self.y2_property.mObserverExplorer,
+      valueExplorer:&self.y2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "width",
-      idx:self.width.mEasyBindingsObjectIndex,
+      idx:self.width_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.width.mObserverExplorer,
-      valueExplorer:&self.width.mValueExplorer
+      observerExplorer:&self.width_property.mObserverExplorer,
+      valueExplorer:&self.width_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
@@ -211,16 +211,16 @@ class CanariSegmentEntity : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.x1.mObserverExplorer = nil
-    self.x1.mValueExplorer = nil
-    self.y1.mObserverExplorer = nil
-    self.y1.mValueExplorer = nil
-    self.x2.mObserverExplorer = nil
-    self.x2.mValueExplorer = nil
-    self.y2.mObserverExplorer = nil
-    self.y2.mValueExplorer = nil
-    self.width.mObserverExplorer = nil
-    self.width.mValueExplorer = nil
+    self.x1_property.mObserverExplorer = nil
+    self.x1_property.mValueExplorer = nil
+    self.y1_property.mObserverExplorer = nil
+    self.y1_property.mValueExplorer = nil
+    self.x2_property.mObserverExplorer = nil
+    self.x2_property.mValueExplorer = nil
+    self.y2_property.mObserverExplorer = nil
+    self.y2_property.mValueExplorer = nil
+    self.width_property.mObserverExplorer = nil
+    self.width_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -230,11 +230,11 @@ class CanariSegmentEntity : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.x1.storeIn (dictionary: ioDictionary, forKey: "x1")
-    self.y1.storeIn (dictionary: ioDictionary, forKey: "y1")
-    self.x2.storeIn (dictionary: ioDictionary, forKey: "x2")
-    self.y2.storeIn (dictionary: ioDictionary, forKey: "y2")
-    self.width.storeIn (dictionary: ioDictionary, forKey: "width")
+    self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
+    self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+    self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+    self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
+    self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
   }
 
   //····················································································································
@@ -244,11 +244,11 @@ class CanariSegmentEntity : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.x1.readFrom (dictionary: inDictionary, forKey:"x1")
-    self.y1.readFrom (dictionary: inDictionary, forKey:"y1")
-    self.x2.readFrom (dictionary: inDictionary, forKey:"x2")
-    self.y2.readFrom (dictionary: inDictionary, forKey:"y2")
-    self.width.readFrom (dictionary: inDictionary, forKey:"width")
+    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
+    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
+    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
+    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
+    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
   }
 
   //····················································································································
@@ -293,7 +293,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x1.addEBObserver (inObserver)
+        managedObject.x1_property.addEBObserver (inObserver)
       }
     }
   }
@@ -308,7 +308,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x1.removeEBObserver (inObserver)
+        managedObject.x1_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -318,7 +318,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
   final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x1 {
-        managedObject.x1.addEBObserver (observer)
+        managedObject.x1_property.addEBObserver (observer)
       }
     }
   }
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     for observer in mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.x1.removeEBObserver (observer)
+        managedObject.x1_property.removeEBObserver (observer)
       }
     }
   }
@@ -350,7 +350,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y1.addEBObserver (inObserver)
+        managedObject.y1_property.addEBObserver (inObserver)
       }
     }
   }
@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y1.removeEBObserver (inObserver)
+        managedObject.y1_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -375,7 +375,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
   final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y1 {
-        managedObject.y1.addEBObserver (observer)
+        managedObject.y1_property.addEBObserver (observer)
       }
     }
   }
@@ -386,7 +386,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     for observer in mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.y1.removeEBObserver (observer)
+        managedObject.y1_property.removeEBObserver (observer)
       }
     }
   }
@@ -407,7 +407,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x2.addEBObserver (inObserver)
+        managedObject.x2_property.addEBObserver (inObserver)
       }
     }
   }
@@ -422,7 +422,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x2.removeEBObserver (inObserver)
+        managedObject.x2_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -432,7 +432,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
   final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x2 {
-        managedObject.x2.addEBObserver (observer)
+        managedObject.x2_property.addEBObserver (observer)
       }
     }
   }
@@ -443,7 +443,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     for observer in mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.x2.removeEBObserver (observer)
+        managedObject.x2_property.removeEBObserver (observer)
       }
     }
   }
@@ -464,7 +464,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y2.addEBObserver (inObserver)
+        managedObject.y2_property.addEBObserver (inObserver)
       }
     }
   }
@@ -479,7 +479,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y2.removeEBObserver (inObserver)
+        managedObject.y2_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -489,7 +489,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
   final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y2 {
-        managedObject.y2.addEBObserver (observer)
+        managedObject.y2_property.addEBObserver (observer)
       }
     }
   }
@@ -500,7 +500,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     for observer in mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.y2.removeEBObserver (observer)
+        managedObject.y2_property.removeEBObserver (observer)
       }
     }
   }
@@ -521,7 +521,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.width.addEBObserver (inObserver)
+        managedObject.width_property.addEBObserver (inObserver)
       }
     }
   }
@@ -536,7 +536,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.width.removeEBObserver (inObserver)
+        managedObject.width_property.removeEBObserver (inObserver)
       }
     }
   }
@@ -546,7 +546,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<CanariSegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_width {
-        managedObject.width.addEBObserver (observer)
+        managedObject.width_property.addEBObserver (observer)
       }
     }
   }
@@ -557,7 +557,7 @@ class ReadOnlyArrayOf_CanariSegmentEntity : ReadOnlyAbstractArrayProperty <Canar
     for observer in mObserversOf_width {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.width.removeEBObserver (observer)
+        managedObject.width_property.removeEBObserver (observer)
       }
     }
   }
@@ -646,31 +646,31 @@ class TransientArrayOf_CanariSegmentEntity : ReadOnlyArrayOf_CanariSegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol CanariSegmentEntity_x1 : class {
-  var x1 : EBStoredProperty_Int { get }
+  var x1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol CanariSegmentEntity_y1 : class {
-  var y1 : EBStoredProperty_Int { get }
+  var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol CanariSegmentEntity_x2 : class {
-  var x2 : EBStoredProperty_Int { get }
+  var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol CanariSegmentEntity_y2 : class {
-  var y2 : EBStoredProperty_Int { get }
+  var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol CanariSegmentEntity_width : class {
-  var width : EBStoredProperty_Int { get }
+  var width : Int { get }
 }
 
 

@@ -9,62 +9,6 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_Preferences_additionnalLibraryArrayController
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class SelectedSet_Preferences_additionnalLibraryArrayController : EBAbstractProperty {
-  private let mAllowsEmptySelection : Bool
-  private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_CanariLibraryEntry
-
-  //····················································································································
-
-  init (allowsEmptySelection : Bool,
-        allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_CanariLibraryEntry) {
-    mAllowsMultipleSelection = allowsMultipleSelection
-    mAllowsEmptySelection = allowsEmptySelection
-    mSortedArray = sortedArray
-    super.init ()
-  }
-
-  //····················································································································
-
-  private var mPrivateSet = Set<CanariLibraryEntry> () {
-    didSet {
-      if mPrivateSet != oldValue {
-        postEvent ()
-      }
-    }
-  }
-
-  //····················································································································
-
-  var mSet : Set<CanariLibraryEntry> {
-    set {
-      var newSelectedSet = newValue
-      switch mSortedArray.prop {
-      case .empty, .multiple :
-        break ;
-      case .single (let sortedArray) :
-        if !mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
-          newSelectedSet = Set (arrayLiteral: sortedArray [0])
-        }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
-          newSelectedSet = Set (arrayLiteral: newSelectedSet.first!)
-        }
-      }
-      mPrivateSet = newSelectedSet
-    }
-    get {
-      return mPrivateSet
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ArrayController_Preferences_additionnalLibraryArrayController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -72,9 +16,9 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 
   private var mModel : EBClassArray_CanariLibraryEntry? = nil
 
-  let sortedArray = TransientArrayOf_CanariLibraryEntry ()
+  let sortedArray_property = TransientArrayOf_CanariLibraryEntry ()
 
-  let selectedArray = TransientArrayOf_CanariLibraryEntry ()
+  let selectedArray_property = TransientArrayOf_CanariLibraryEntry ()
 
   private let mSelectedSet : SelectedSet_Preferences_additionnalLibraryArrayController
 
@@ -84,7 +28,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
     didSet {
-      sortedArray.postEvent ()
+      self.sortedArray_property.postEvent ()
       for tableView in mTableViewArray {
         var first = true
         for (key, ascending) in mSortDescriptorArray {
@@ -111,7 +55,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     mSelectedSet = SelectedSet_Preferences_additionnalLibraryArrayController (
       allowsEmptySelection:allowsEmptySelection,
       allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:sortedArray
+      sortedArray:self.sortedArray_property
     )
     super.init ()
   //--- Set selected array compute function
@@ -123,8 +67,8 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //····················································································································
 
   private final func setSelectedArrayComputeFunction () {
-    selectedArray.readModelFunction = {
-      switch self.sortedArray.prop {
+    self.selectedArray_property.readModelFunction = {
+      switch self.sortedArray_property.prop {
       case .empty :
         return .empty
       case .multiple :
@@ -144,7 +88,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //····················································································································
 
   private final func setFilterAndSortFunction () {
-    sortedArray.readModelFunction = {
+    self.sortedArray_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -177,9 +121,9 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     }
   //--- Add observers
     mModel = model
-    model.addEBObserver (sortedArray)
-    sortedArray.addEBObserver (mSelectedSet)
-    mSelectedSet.addEBObserver (selectedArray)
+    model.addEBObserver (self.sortedArray_property)
+    self.sortedArray_property.addEBObserver (mSelectedSet)
+    mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
   //--- Bind table views
     mTableViewArray = tableViewArray
@@ -196,20 +140,20 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    mModel?.removeEBObserver (sortedArray)
-    sortedArray.removeEBObserver (mSelectedSet)
-    mSelectedSet.removeEBObserver (selectedArray)
+    mModel?.removeEBObserver (self.sortedArray_property)
+    self.sortedArray_property.removeEBObserver (mSelectedSet)
+    mSelectedSet.removeEBObserver (self.selectedArray_property)
   //--- Remove observed properties (for filtering and sorting)
     for tvc in mTableViewDataSourceControllerArray {
-      sortedArray.removeEBObserver (tvc)
+      self.sortedArray_property.removeEBObserver (tvc)
     }
     for tvc in mTableViewSelectionControllerArray {
       mSelectedSet.removeEBObserver (tvc)
     }
   //---
     mTableViewArray = [EBTableView] ()
-    selectedArray.readModelFunction = nil
-    sortedArray.readModelFunction = nil
+    self.selectedArray_property.readModelFunction = nil
+    self.sortedArray_property.readModelFunction = nil
     mSelectedSet.mSet = Set ()
     mTableViewDataSourceControllerArray = []
     mTableViewSelectionControllerArray = []
@@ -232,7 +176,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     tableView.delegate = self
   //--- Set table view data source controller
     let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
-    sortedArray.addEBObserver (dataSourceTableViewController)
+    self.sortedArray_property.addEBObserver (dataSourceTableViewController)
     mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
   //--- Set table view selection controller
     let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
@@ -273,7 +217,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
  //····················································································································
 
   func selectedObjectIndexSet () -> NSIndexSet {
-    switch sortedArray.prop {
+    switch self.sortedArray_property.prop {
     case .empty, .multiple :
        return NSIndexSet ()
     case .single (let v) :
@@ -300,7 +244,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    switch sortedArray.prop {
+    switch self.sortedArray_property.prop {
     case .empty, .multiple :
       return 0
     case .single (let v) :
@@ -316,7 +260,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    switch sortedArray.prop {
+    switch self.sortedArray_property.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
@@ -355,7 +299,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    switch sortedArray.prop {
+    switch self.sortedArray_property.prop {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -371,7 +315,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_valueObserver (object.mPath, file: #file, line: #line)
+          cell.mCellOutlet?.bind_valueObserver (object.mPath_property, file: #file, line: #line)
         }
       }else if columnIdentifier == "uses" {
         if let cell : EBSwitch_TableViewCell = result as? EBSwitch_TableViewCell {
@@ -379,7 +323,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
             cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.mUses, file: #file, line: #line)
+          cell.mCellOutlet?.bind_value (object.mUses_property, file: #file, line: #line)
         }
       }else if columnIdentifier == "status" {
         if let cell : EBImageObserverView_TableViewCell = result as? EBImageObserverView_TableViewCell {
@@ -387,7 +331,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
             cell?.mCellOutlet?.unbind_image ()
           }
           cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_image (object.mStatusImage, file: #file, line: #line)
+          cell.mCellOutlet?.bind_image (object.mStatusImage_property, file: #file, line: #line)
         }
       }else if columnIdentifier == "reveal" {
         if let cell : EBButton_TableViewCell = result as? EBButton_TableViewCell {
@@ -463,7 +407,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       case .empty, .multiple :
         break
       case .single (let model_prop) :
-        switch sortedArray.prop {
+        switch self.sortedArray_property.prop {
         case .empty, .multiple :
           break
         case .single (let sortedArray_prop) :
@@ -526,6 +470,62 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
           model.setProp (newObjectArray)
         }
       }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    SelectedSet_Preferences_additionnalLibraryArrayController
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class SelectedSet_Preferences_additionnalLibraryArrayController : EBAbstractProperty {
+  private let mAllowsEmptySelection : Bool
+  private let mAllowsMultipleSelection : Bool
+  private let mSortedArray : TransientArrayOf_CanariLibraryEntry
+
+  //····················································································································
+
+  init (allowsEmptySelection : Bool,
+        allowsMultipleSelection : Bool,
+        sortedArray : TransientArrayOf_CanariLibraryEntry) {
+    mAllowsMultipleSelection = allowsMultipleSelection
+    mAllowsEmptySelection = allowsEmptySelection
+    mSortedArray = sortedArray
+    super.init ()
+  }
+
+  //····················································································································
+
+  private var mPrivateSet = Set<CanariLibraryEntry> () {
+    didSet {
+      if mPrivateSet != oldValue {
+        postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var mSet : Set<CanariLibraryEntry> {
+    set {
+      var newSelectedSet = newValue
+      switch mSortedArray.prop {
+      case .empty, .multiple :
+        break ;
+      case .single (let sortedArray) :
+        if !mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
+          newSelectedSet = Set (arrayLiteral: sortedArray [0])
+        }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
+          newSelectedSet = Set (arrayLiteral: newSelectedSet.first!)
+        }
+      }
+      mPrivateSet = newSelectedSet
+    }
+    get {
+      return mPrivateSet
     }
   }
 
