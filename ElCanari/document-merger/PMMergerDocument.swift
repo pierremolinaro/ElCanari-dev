@@ -262,7 +262,15 @@ import Cocoa
     mBoardModelView?.bind_boardLimits (self.mBoardModelSelection.boardLimits_property, file: #file, line: #line)
     mBoardModelView?.bind_frontPads (self.mBoardModelSelection.frontPadsForDisplay_property, file: #file, line: #line)
     mBoardModelView?.bind_backPads (self.mBoardModelSelection.backPadsForDisplay_property, file: #file, line: #line)
-    mBoardModelView?.bind_holes (self.mBoardModelSelection.holesForDisplay_property, file: #file, line: #line)
+
+    // mBoardModelView?.bind_holes (self.mBoardModelSelection.holesForDisplay_property, file: #file, line: #line)
+
+    mController_hole_MergerHoleArray = GenericController_MergerHoleArray (
+      getPropertyValueCallBack: { return self.mBoardModelSelection.holesForDisplay_property_selection },
+      modelDidChange: { (v : EBSelection <MergerHoleArray>) in self.mBoardModelView?.hole_modelDidChange (v) }
+    )
+    self.mBoardModelSelection.holesForDisplay_property.addEBObserver (self.mController_hole_MergerHoleArray!)
+
     mBoardModelView?.bind_frontLegendTexts (self.mBoardModelSelection.frontLegendTextsSegmentsForDisplay_property, file: #file, line: #line)
     mBoardModelView?.bind_frontLayoutTexts (self.mBoardModelSelection.frontLayoutTextsSegmentsForDisplay_property, file: #file, line: #line)
     mBoardModelView?.bind_backLegendTexts (self.mBoardModelSelection.backLegendTextsSegmentsForDisplay_property, file: #file, line: #line)
@@ -325,7 +333,12 @@ import Cocoa
     mBoardModelView?.unbind_boardLimits ()
     mBoardModelView?.unbind_frontPads ()
     mBoardModelView?.unbind_backPads ()
-    mBoardModelView?.unbind_holes ()
+
+  //  mBoardModelView?.unbind_holes ()
+    self.mBoardModelSelection.holesForDisplay_property.removeEBObserver (self.mController_hole_MergerHoleArray!)
+    self.mController_hole_MergerHoleArray = nil
+
+
     mBoardModelView?.unbind_frontLegendTexts ()
     mBoardModelView?.unbind_frontLayoutTexts ()
     mBoardModelView?.unbind_backLegendTexts ()
@@ -349,6 +362,7 @@ import Cocoa
 
   //····················································································································
 
+  fileprivate var mController_hole_MergerHoleArray : GenericController_MergerHoleArray?
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

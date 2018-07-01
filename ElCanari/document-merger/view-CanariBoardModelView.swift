@@ -15,6 +15,27 @@ import Cocoa
 
 class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
+  func hole_modelDidChange (_ inHoles : EBSelection <MergerHoleArray>) {
+    let paths = CGMutablePath ()
+    switch inHoles {
+    case .single (let v) :
+      for hole in v.holeArray {
+        let x : CGFloat = canariUnitToCocoa (hole.x)
+        let y : CGFloat = canariUnitToCocoa (hole.y)
+        let holeDiameter = canariUnitToCocoa (hole.holeDiameter)
+        let r = CGRect (x: x - holeDiameter / 2.0, y: y - holeDiameter / 2.0, width:holeDiameter, height:holeDiameter)
+        paths.addEllipse (in: r)
+      }
+    default :
+      break
+    }
+    let shape = CAShapeLayer ()
+    shape.path = paths
+    shape.position = CGPoint (x:0.0, y:0.0)
+    shape.fillColor = NSColor.white.cgColor
+    self.mHolesLayer.sublayers = [shape]
+  }
+
   //····················································································································
   //  Outlets
   //····················································································································
@@ -859,15 +880,15 @@ final class Controller_CanariBoardModelView_holes : EBSimpleController {
 //   GenericController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class GenericController <TYPE> : EBOutletEvent {
+class GenericController_MergerHoleArray : EBOutletEvent {
 
-  private let mActionCallBack : (EBSelection <TYPE>) -> Void
-  private let mGetPropertyValueCallBack : () -> EBSelection <TYPE>
+  private let mActionCallBack : (EBSelection <MergerHoleArray>) -> Void
+  private let mGetPropertyValueCallBack : () -> EBSelection <MergerHoleArray>
 
   //····················································································································
 
-  init (getPropertyValueCallBack inGetPropertyValueCallBack : @escaping () -> EBSelection <TYPE>,
-        callBack inActionCallBack : @escaping (EBSelection <TYPE>) -> Void) {
+  init (getPropertyValueCallBack inGetPropertyValueCallBack : @escaping () -> EBSelection <MergerHoleArray>,
+        modelDidChange inActionCallBack : @escaping (EBSelection <MergerHoleArray>) -> Void) {
     mGetPropertyValueCallBack = inGetPropertyValueCallBack
     mActionCallBack = inActionCallBack
     super.init ()

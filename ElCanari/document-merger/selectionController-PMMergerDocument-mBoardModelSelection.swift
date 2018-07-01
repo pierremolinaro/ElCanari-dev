@@ -16,50 +16,314 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //   SELECTION OBSERVABLE PROPERTIES
   //····················································································································
 
-  var artworkName_property = EBPropertyProxy_String () 
-  var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var backComponentNameSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var backComponentValuesForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var backLayoutTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var backLegendTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var backPackagesSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var backPads_property = EBTransientProperty_MergerPadArray () 
-  var backPadsForDisplay_property = EBTransientProperty_MergerPadArray () 
-  var backTrackSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var backTrackSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var boardHeight_property = EBPropertyProxy_Int () 
-  var boardHeightUnit_property = EBPropertyProxy_Int () 
-  var boardLimitWidth_property = EBPropertyProxy_Int () 
-  var boardLimitWidthUnit_property = EBPropertyProxy_Int () 
-  var boardLimits_property = EBTransientProperty_MergerBoardLimits () 
-  var boardWidth_property = EBPropertyProxy_Int () 
-  var boardWidthUnit_property = EBPropertyProxy_Int () 
-  var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var frontComponentNameSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var frontComponentValuesForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var frontLayoutTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var frontLegendTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var frontPackagesSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var frontPads_property = EBTransientProperty_MergerPadArray () 
-  var frontPadsForDisplay_property = EBTransientProperty_MergerPadArray () 
-  var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray () 
-  var frontTrackSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray () 
-  var holes_property = EBTransientProperty_MergerHoleArray () 
-  var holesForDisplay_property = EBTransientProperty_MergerHoleArray () 
-  var name_property = EBPropertyProxy_String () 
-  var padsHoles_property = EBTransientProperty_MergerHoleArray () 
-  var viaShapes_property = EBTransientProperty_MergerViaShapeArray () 
-  var viaShapesForDisplay_property = EBTransientProperty_MergerViaShapeArray () 
-  var viasHoles_property = EBTransientProperty_MergerHoleArray () 
-  var zoom_property = EBPropertyProxy_Int () 
+  var artworkName_property = EBPropertyProxy_String ()
+
+  var artworkName_property_selection : EBSelection <String> {
+    get {
+      return self.artworkName_property.prop
+    }
+  }
+  var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backComponentNameSegments_property.prop
+    }
+  }
+  var backComponentNameSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backComponentNameSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backComponentNameSegmentsForDisplay_property.prop
+    }
+  }
+  var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backComponentValueSegments_property.prop
+    }
+  }
+  var backComponentValuesForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backComponentValuesForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backComponentValuesForDisplay_property.prop
+    }
+  }
+  var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backLayoutTextsSegments_property.prop
+    }
+  }
+  var backLayoutTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backLayoutTextsSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backLayoutTextsSegmentsForDisplay_property.prop
+    }
+  }
+  var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backLegendTextsSegments_property.prop
+    }
+  }
+  var backLegendTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backLegendTextsSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backLegendTextsSegmentsForDisplay_property.prop
+    }
+  }
+  var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backPackagesSegments_property.prop
+    }
+  }
+  var backPackagesSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backPackagesSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backPackagesSegmentsForDisplay_property.prop
+    }
+  }
+  var backPads_property = EBTransientProperty_MergerPadArray ()
+
+  var backPads_property_selection : EBSelection <MergerPadArray> {
+    get {
+      return self.backPads_property.prop
+    }
+  }
+  var backPadsForDisplay_property = EBTransientProperty_MergerPadArray ()
+
+  var backPadsForDisplay_property_selection : EBSelection <MergerPadArray> {
+    get {
+      return self.backPadsForDisplay_property.prop
+    }
+  }
+  var backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backTrackSegments_property.prop
+    }
+  }
+  var backTrackSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var backTrackSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backTrackSegmentsForDisplay_property.prop
+    }
+  }
+  var boardHeight_property = EBPropertyProxy_Int ()
+
+  var boardHeight_property_selection : EBSelection <Int> {
+    get {
+      return self.boardHeight_property.prop
+    }
+  }
+  var boardHeightUnit_property = EBPropertyProxy_Int ()
+
+  var boardHeightUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.boardHeightUnit_property.prop
+    }
+  }
+  var boardLimitWidth_property = EBPropertyProxy_Int ()
+
+  var boardLimitWidth_property_selection : EBSelection <Int> {
+    get {
+      return self.boardLimitWidth_property.prop
+    }
+  }
+  var boardLimitWidthUnit_property = EBPropertyProxy_Int ()
+
+  var boardLimitWidthUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.boardLimitWidthUnit_property.prop
+    }
+  }
+  var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
+
+  var boardLimits_property_selection : EBSelection <MergerBoardLimits> {
+    get {
+      return self.boardLimits_property.prop
+    }
+  }
+  var boardWidth_property = EBPropertyProxy_Int ()
+
+  var boardWidth_property_selection : EBSelection <Int> {
+    get {
+      return self.boardWidth_property.prop
+    }
+  }
+  var boardWidthUnit_property = EBPropertyProxy_Int ()
+
+  var boardWidthUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.boardWidthUnit_property.prop
+    }
+  }
+  var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontComponentNameSegments_property.prop
+    }
+  }
+  var frontComponentNameSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontComponentNameSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontComponentNameSegmentsForDisplay_property.prop
+    }
+  }
+  var frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontComponentValueSegments_property.prop
+    }
+  }
+  var frontComponentValuesForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontComponentValuesForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontComponentValuesForDisplay_property.prop
+    }
+  }
+  var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontLayoutTextsSegments_property.prop
+    }
+  }
+  var frontLayoutTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontLayoutTextsSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontLayoutTextsSegmentsForDisplay_property.prop
+    }
+  }
+  var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontLegendTextsSegments_property.prop
+    }
+  }
+  var frontLegendTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontLegendTextsSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontLegendTextsSegmentsForDisplay_property.prop
+    }
+  }
+  var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontPackagesSegments_property.prop
+    }
+  }
+  var frontPackagesSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontPackagesSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontPackagesSegmentsForDisplay_property.prop
+    }
+  }
+  var frontPads_property = EBTransientProperty_MergerPadArray ()
+
+  var frontPads_property_selection : EBSelection <MergerPadArray> {
+    get {
+      return self.frontPads_property.prop
+    }
+  }
+  var frontPadsForDisplay_property = EBTransientProperty_MergerPadArray ()
+
+  var frontPadsForDisplay_property_selection : EBSelection <MergerPadArray> {
+    get {
+      return self.frontPadsForDisplay_property.prop
+    }
+  }
+  var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontTrackSegments_property.prop
+    }
+  }
+  var frontTrackSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
+
+  var frontTrackSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontTrackSegmentsForDisplay_property.prop
+    }
+  }
+  var holes_property = EBTransientProperty_MergerHoleArray ()
+
+  var holes_property_selection : EBSelection <MergerHoleArray> {
+    get {
+      return self.holes_property.prop
+    }
+  }
+  var holesForDisplay_property = EBTransientProperty_MergerHoleArray ()
+
+  var holesForDisplay_property_selection : EBSelection <MergerHoleArray> {
+    get {
+      return self.holesForDisplay_property.prop
+    }
+  }
+  var name_property = EBPropertyProxy_String ()
+
+  var name_property_selection : EBSelection <String> {
+    get {
+      return self.name_property.prop
+    }
+  }
+  var padsHoles_property = EBTransientProperty_MergerHoleArray ()
+
+  var padsHoles_property_selection : EBSelection <MergerHoleArray> {
+    get {
+      return self.padsHoles_property.prop
+    }
+  }
+  var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
+
+  var viaShapes_property_selection : EBSelection <MergerViaShapeArray> {
+    get {
+      return self.viaShapes_property.prop
+    }
+  }
+  var viaShapesForDisplay_property = EBTransientProperty_MergerViaShapeArray ()
+
+  var viaShapesForDisplay_property_selection : EBSelection <MergerViaShapeArray> {
+    get {
+      return self.viaShapesForDisplay_property.prop
+    }
+  }
+  var viasHoles_property = EBTransientProperty_MergerHoleArray ()
+
+  var viasHoles_property_selection : EBSelection <MergerHoleArray> {
+    get {
+      return self.viasHoles_property.prop
+    }
+  }
+  var zoom_property = EBPropertyProxy_Int ()
+
+  var zoom_property_selection : EBSelection <Int> {
+    get {
+      return self.zoom_property.prop
+    }
+  }
 
   //····················································································································
   //   BIND SELECTION

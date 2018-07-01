@@ -16,28 +16,160 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //   SELECTION OBSERVABLE PROPERTIES
   //····················································································································
 
-  var drawBoardLimits_property = EBPropertyProxy_Bool () 
-  var drawComponentNamesBottomSide_property = EBPropertyProxy_Bool () 
-  var drawComponentNamesTopSide_property = EBPropertyProxy_Bool () 
-  var drawComponentValuesBottomSide_property = EBPropertyProxy_Bool () 
-  var drawComponentValuesTopSide_property = EBPropertyProxy_Bool () 
-  var drawPackageLegendBottomSide_property = EBPropertyProxy_Bool () 
-  var drawPackageLegendTopSide_property = EBPropertyProxy_Bool () 
-  var drawPadHolesInPDF_property = EBPropertyProxy_Bool () 
-  var drawPadsBottomSide_property = EBPropertyProxy_Bool () 
-  var drawPadsTopSide_property = EBPropertyProxy_Bool () 
-  var drawTextsLayoutBottomSide_property = EBPropertyProxy_Bool () 
-  var drawTextsLayoutTopSide_property = EBPropertyProxy_Bool () 
-  var drawTextsLegendBottomSide_property = EBPropertyProxy_Bool () 
-  var drawTextsLegendTopSide_property = EBPropertyProxy_Bool () 
-  var drawTracksBottomSide_property = EBPropertyProxy_Bool () 
-  var drawTracksTopSide_property = EBPropertyProxy_Bool () 
-  var drawVias_property = EBPropertyProxy_Bool () 
-  var fileExtension_property = EBPropertyProxy_String () 
-  var horizontalMirror_property = EBPropertyProxy_Bool () 
-  var measurementUnitForPadHoleInPDF_property = EBPropertyProxy_Int () 
-  var name_property = EBPropertyProxy_String () 
-  var padHoleDiameterInPDF_property = EBPropertyProxy_Int () 
+  var drawBoardLimits_property = EBPropertyProxy_Bool ()
+
+  var drawBoardLimits_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawBoardLimits_property.prop
+    }
+  }
+  var drawComponentNamesBottomSide_property = EBPropertyProxy_Bool ()
+
+  var drawComponentNamesBottomSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawComponentNamesBottomSide_property.prop
+    }
+  }
+  var drawComponentNamesTopSide_property = EBPropertyProxy_Bool ()
+
+  var drawComponentNamesTopSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawComponentNamesTopSide_property.prop
+    }
+  }
+  var drawComponentValuesBottomSide_property = EBPropertyProxy_Bool ()
+
+  var drawComponentValuesBottomSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawComponentValuesBottomSide_property.prop
+    }
+  }
+  var drawComponentValuesTopSide_property = EBPropertyProxy_Bool ()
+
+  var drawComponentValuesTopSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawComponentValuesTopSide_property.prop
+    }
+  }
+  var drawPackageLegendBottomSide_property = EBPropertyProxy_Bool ()
+
+  var drawPackageLegendBottomSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawPackageLegendBottomSide_property.prop
+    }
+  }
+  var drawPackageLegendTopSide_property = EBPropertyProxy_Bool ()
+
+  var drawPackageLegendTopSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawPackageLegendTopSide_property.prop
+    }
+  }
+  var drawPadHolesInPDF_property = EBPropertyProxy_Bool ()
+
+  var drawPadHolesInPDF_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawPadHolesInPDF_property.prop
+    }
+  }
+  var drawPadsBottomSide_property = EBPropertyProxy_Bool ()
+
+  var drawPadsBottomSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawPadsBottomSide_property.prop
+    }
+  }
+  var drawPadsTopSide_property = EBPropertyProxy_Bool ()
+
+  var drawPadsTopSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawPadsTopSide_property.prop
+    }
+  }
+  var drawTextsLayoutBottomSide_property = EBPropertyProxy_Bool ()
+
+  var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawTextsLayoutBottomSide_property.prop
+    }
+  }
+  var drawTextsLayoutTopSide_property = EBPropertyProxy_Bool ()
+
+  var drawTextsLayoutTopSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawTextsLayoutTopSide_property.prop
+    }
+  }
+  var drawTextsLegendBottomSide_property = EBPropertyProxy_Bool ()
+
+  var drawTextsLegendBottomSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawTextsLegendBottomSide_property.prop
+    }
+  }
+  var drawTextsLegendTopSide_property = EBPropertyProxy_Bool ()
+
+  var drawTextsLegendTopSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawTextsLegendTopSide_property.prop
+    }
+  }
+  var drawTracksBottomSide_property = EBPropertyProxy_Bool ()
+
+  var drawTracksBottomSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawTracksBottomSide_property.prop
+    }
+  }
+  var drawTracksTopSide_property = EBPropertyProxy_Bool ()
+
+  var drawTracksTopSide_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawTracksTopSide_property.prop
+    }
+  }
+  var drawVias_property = EBPropertyProxy_Bool ()
+
+  var drawVias_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawVias_property.prop
+    }
+  }
+  var fileExtension_property = EBPropertyProxy_String ()
+
+  var fileExtension_property_selection : EBSelection <String> {
+    get {
+      return self.fileExtension_property.prop
+    }
+  }
+  var horizontalMirror_property = EBPropertyProxy_Bool ()
+
+  var horizontalMirror_property_selection : EBSelection <Bool> {
+    get {
+      return self.horizontalMirror_property.prop
+    }
+  }
+  var measurementUnitForPadHoleInPDF_property = EBPropertyProxy_Int ()
+
+  var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int> {
+    get {
+      return self.measurementUnitForPadHoleInPDF_property.prop
+    }
+  }
+  var name_property = EBPropertyProxy_String ()
+
+  var name_property_selection : EBSelection <String> {
+    get {
+      return self.name_property.prop
+    }
+  }
+  var padHoleDiameterInPDF_property = EBPropertyProxy_Int ()
+
+  var padHoleDiameterInPDF_property_selection : EBSelection <Int> {
+    get {
+      return self.padHoleDiameterInPDF_property.prop
+    }
+  }
 
   //····················································································································
   //   BIND SELECTION
