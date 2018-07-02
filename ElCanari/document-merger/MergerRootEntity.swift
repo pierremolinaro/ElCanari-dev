@@ -58,6 +58,16 @@ class MergerRootEntity : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing boardInstances toMany relationship
+  //····················································································································
+
+  var boardInstances_property_selection : EBSelection < [MergerBoardInstanceEntity] > {
+    get {
+      return self.boardInstances_property.prop
+    }
+  }
+
+  //····················································································································
   //    Stored Properties
   //····················································································································
 
@@ -74,6 +84,7 @@ class MergerRootEntity : EBManagedObject,
   //····················································································································
 
   var boardModels_property = ToManyRelationship_MergerRootEntity_boardModels ()
+  var boardInstances_property = ToManyRelationship_MergerRootEntity_boardInstances ()
 
   //····················································································································
   //    init
@@ -108,6 +119,7 @@ class MergerRootEntity : EBManagedObject,
     self.selectedPageIndex_property.undoManager = undoManager ()
   //--- Install owner for relationships
     self.boardModels_property.owner = self
+    self.boardInstances_property.owner = self
   //--- register properties for handling signature
   }
 
@@ -149,6 +161,13 @@ class MergerRootEntity : EBManagedObject,
       view: view,
       valueExplorer:&boardModels_property.mValueExplorer
     )
+    createEntryForToManyRelationshipNamed (
+      "boardInstances",
+      idx:boardInstances_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&boardInstances_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -161,6 +180,7 @@ class MergerRootEntity : EBManagedObject,
     self.selectedPageIndex_property.mObserverExplorer = nil
     self.selectedPageIndex_property.mValueExplorer = nil
     self.boardModels_property.mValueExplorer = nil
+    self.boardInstances_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -172,6 +192,7 @@ class MergerRootEntity : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
     self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
     store (managedObjectArray: boardModels_property.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
+    store (managedObjectArray: boardInstances_property.propval as NSArray, relationshipName:"boardInstances", intoDictionary: ioDictionary) ;
   }
 
   //····················································································································
@@ -187,6 +208,11 @@ class MergerRootEntity : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [BoardModelEntity])
+    self.boardInstances_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "boardInstances",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [MergerBoardInstanceEntity])
   }
 
   //····················································································································
@@ -199,6 +225,11 @@ class MergerRootEntity : EBManagedObject,
       self.boardModels_property.setProp ([])
       self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
+    do{
+      let objects = self.boardInstances_property.propval
+      self.boardInstances_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
@@ -209,6 +240,7 @@ class MergerRootEntity : EBManagedObject,
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
     self.boardModels_property.setProp ([])
+    self.boardInstances_property.setProp ([])
   }
 
   //····················································································································
@@ -218,6 +250,9 @@ class MergerRootEntity : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
     for managedObject : EBManagedObject in self.boardModels_property.propval {
+      objects.append (managedObject)
+    }
+    for managedObject : EBManagedObject in self.boardInstances_property.propval {
       objects.append (managedObject)
     }
   }
@@ -546,6 +581,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_frontTrackSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holes_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holesForDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_padsHoles_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
@@ -595,6 +631,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_frontTrackSegmentsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holes_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holesForDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)
         addEBObserversOf_padsHoles_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
@@ -637,6 +674,186 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
   //····················································································································
 
   func add (_ object : BoardModelEntity) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: boardInstances
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_MergerRootEntity_boardInstances : ReadOnlyArrayOf_MergerBoardInstanceEntity {
+
+  //····················································································································
+ 
+  func setProp (_ value :  [MergerBoardInstanceEntity]) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: boardInstances
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_MergerRootEntity_boardInstances :
+ToManyRelationshipReadWrite_MergerRootEntity_boardInstances, EBSignatureObserverProtocol {
+  weak var owner : MergerRootEntity?
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set<MergerBoardInstanceEntity> ()
+  private var mValue = [MergerBoardInstanceEntity] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+        }
+        removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : MergerBoardInstanceEntity in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+        }
+        addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBSelection < [MergerBoardInstanceEntity] > {
+    get {
+      return .single (mValue)
+    }
+  }
+
+  override func setProp (_ value :  [MergerBoardInstanceEntity]) { mValue = value }
+
+  var propval : [MergerBoardInstanceEntity] { get { return mValue } }
+
+  //····················································································································
+
+  func performUndo (_ oldValue : [MergerBoardInstanceEntity]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : MergerBoardInstanceEntity) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : MergerBoardInstanceEntity) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)

@@ -10,6 +10,11 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate let OPAQUE_LAYERS = true ;
+fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   CanariBoardModelView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -69,27 +74,104 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   final override func awakeFromNib () {
-   // CATransaction.begin()
+    self.layer?.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.layer?.isOpaque = OPAQUE_LAYERS
+   // NSLog ("\(self.mBackgroundLayer.isOpaque)")
+ //   self.mBackgroundLayer.isOpaque = OPAQUE_LAYERS
+    self.mBackgroundLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.layer?.addSublayer (mBackgroundLayer)
+
+//    self.mNoModelTextLayer.isOpaque = OPAQUE_LAYERS
+    self.mNoModelTextLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.layer?.addSublayer (mNoModelTextLayer)
+
+    self.mBackPackagesLayer.isOpaque = OPAQUE_LAYERS
+    self.mBackPackagesLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.layer?.addSublayer (mBackPackagesLayer)
+
+    self.mBackLegendTextsLayer.isOpaque = OPAQUE_LAYERS
+    self.mBackLegendTextsLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.layer?.addSublayer (mBackLegendTextsLayer)
+
+    self.mBackComponentNamesLayer.isOpaque = OPAQUE_LAYERS
+    self.mBackComponentNamesLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.layer?.addSublayer (mBackComponentNamesLayer)
+
+    self.mBackComponentValuesLayer.isOpaque = OPAQUE_LAYERS
+    self.mBackComponentValuesLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.layer?.addSublayer (mBackComponentValuesLayer)
+
+    self.mBackTracksLayer.isOpaque = OPAQUE_LAYERS
+    self.mBackTracksLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.layer?.addSublayer (mBackTracksLayer)
+
+    self.mBackLayoutTextsLayer.isOpaque = OPAQUE_LAYERS
+    self.mBackLayoutTextsLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.layer?.addSublayer (mBackLayoutTextsLayer)
+
+    self.mBackgroundLayer.isOpaque = OPAQUE_LAYERS
+    self.mBackgroundLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.layer?.addSublayer (mBackPadsLayer)
+
+    self.mFrontTracksLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mFrontTracksLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mFrontTracksLayer)
+
+    self.mFrontLayoutTextsLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mFrontLayoutTextsLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mFrontLayoutTextsLayer)
+
+    self.mFrontPackagesLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mFrontPackagesLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mFrontPackagesLayer)
+
+    self.mFrontLegendTextsLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mFrontLegendTextsLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mFrontLegendTextsLayer)
+
+    self.mFrontComponentValuesLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mFrontComponentValuesLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mFrontComponentValuesLayer)
+
+    self.mFrontComponentNamesLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mFrontComponentNamesLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mFrontComponentNamesLayer)
+
+    self.mFrontPadsLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mFrontPadsLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mFrontPadsLayer)
+
+    self.mBoardLimitsLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mBoardLimitsLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mBoardLimitsLayer)
+
+    self.mViaPadLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mViaPadLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mViaPadLayer)
+
+    self.mHolesLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mHolesLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mHolesLayer)
- //   CATransaction.commit ()
+  }
+
+  //····················································································································
+  //  CATransaction begin / commit
+  //····················································································································
+
+  fileprivate var mTransactionNotified = false
+
+  fileprivate func notifyTransaction () {
+    if !mTransactionNotified {
+      mTransactionNotified = true
+      CATransaction.setAnimationDuration (0.5)
+      CATransaction.begin ()
+      DispatchQueue.main.asyncAfter (deadline: DispatchTime.now()) { self.commitTransaction () }
+    }
+  }
+
+  fileprivate func commitTransaction () {
+    mTransactionNotified = false
+    CATransaction.commit ()
   }
 
   //····················································································································
@@ -98,20 +180,23 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
   override func setBoardModelSize (width : Int, height : Int) {
     super.setBoardModelSize (width:width, height:height)
+    self.notifyTransaction ()
     let noModel = (width == 0) || (height == 0)
     if noModel {
-      mBackgroundLayer.fillColor = nil
-      mBackgroundLayer.strokeColor = nil
-      mNoModelTextLayer.frame = self.frame
-      mNoModelTextLayer.foregroundColor = NSColor.gray.cgColor
-      mNoModelTextLayer.contentsScale = NSScreen.main ()!.backingScaleFactor
-      mNoModelTextLayer.alignmentMode = kCAAlignmentCenter
-      mNoModelTextLayer.string = "No Model"
+      self.mBackgroundLayer.fillColor = nil
+      self.mBackgroundLayer.strokeColor = nil
+      self.mBackgroundLayer.isOpaque = false
+      self.mNoModelTextLayer.frame = self.frame
+      self.mNoModelTextLayer.foregroundColor = NSColor.gray.cgColor
+      self.mNoModelTextLayer.contentsScale = NSScreen.main ()!.backingScaleFactor
+      self.mNoModelTextLayer.alignmentMode = kCAAlignmentCenter
+      self.mNoModelTextLayer.string = "No Model"
     }else{
-      mBackgroundLayer.path = CGPath (rect: self.bounds, transform: nil)
-      mBackgroundLayer.position = CGPoint (x:0.0, y:0.0)
-      mBackgroundLayer.fillColor = NSColor.lightGray.blended (withFraction: 0.5, of: .white)!.cgColor
-      mNoModelTextLayer.string = ""
+      self.mBackgroundLayer.path = CGPath (rect: self.bounds, transform: nil)
+      self.mBackgroundLayer.position = CGPoint (x:0.0, y:0.0)
+      self.mBackgroundLayer.fillColor = NSColor.lightGray.blended (withFraction: 0.5, of: .white)!.cgColor
+      self.mBackgroundLayer.isOpaque = OPAQUE_LAYERS
+      self.mNoModelTextLayer.string = ""
     }
   }
 
@@ -133,6 +218,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setVias (_ inVias : [MergerViaShape]) {
+    self.notifyTransaction ()
     let paths = CGMutablePath ()
     for via in inVias {
       let xf : CGFloat = canariUnitToCocoa (via.x)
@@ -159,9 +245,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.orange.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mFrontComponentNamesLayer.sublayers = components
@@ -185,9 +274,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.gray.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mBackComponentNamesLayer.sublayers = components
@@ -211,9 +303,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.blue.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mFrontTracksLayer.sublayers = components
@@ -237,9 +332,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.green.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mBackTracksLayer.sublayers = components
@@ -263,9 +361,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.brown.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mFrontComponentValuesLayer.sublayers = components
@@ -289,9 +390,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.gray.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mBackComponentValuesLayer.sublayers = components
@@ -315,9 +419,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.brown.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mFrontPackagesLayer.sublayers = components
@@ -343,9 +450,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.gray.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mBackPackagesLayer.sublayers = components
@@ -373,9 +483,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.blue.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mFrontLegendTextsLayer.sublayers = components
@@ -403,9 +516,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.blue.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mBackLegendTextsLayer.sublayers = components
@@ -433,9 +549,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.gray.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mFrontLayoutTextsLayer.sublayers = components
@@ -463,9 +582,12 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       segments:segments,
       outlet:self,
       callBack: { (_ inSegments : [MergerSegment]) in
+        self.notifyTransaction ()
         var components = [CAShapeLayer] ()
         for segment in inSegments {
           let shape = segment.segmentShape (color:NSColor.gray.cgColor)
+          shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+          shape.isOpaque = OPAQUE_LAYERS
           components.append (shape)
         }
         self.mBackLayoutTextsLayer.sublayers = components
@@ -500,7 +622,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setBoardLimits (_ inLimits : MergerBoardLimits) {
-   var components = [CAShapeLayer] ()
+    self.notifyTransaction ()
+    var components = [CAShapeLayer] ()
     if inLimits.lineWidth > 0 {
       let boardWith = canariUnitToCocoa (inLimits.boardWidth)
       let boardHeight = canariUnitToCocoa (inLimits.boardHeight)
@@ -519,6 +642,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       shape.lineWidth = lineWidth
       shape.lineCap = kCALineCapSquare
       shape.lineJoin = kCALineJoinMiter
+      shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+      shape.isOpaque = OPAQUE_LAYERS
       components.append (shape)
     }
     self.mBoardLimitsLayer.sublayers = components
@@ -546,6 +671,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setFrontPads (_ padArray : [MergerPad]) {
+    self.notifyTransaction ()
     var components = [CAShapeLayer] ()
     for pad in padArray {
       let x = canariUnitToCocoa (pad.x)
@@ -572,6 +698,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       shape.position = CGPoint (x:0.0, y:0.0)
       shape.strokeColor = nil
       shape.fillColor = NSColor.brown.cgColor
+      shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+      shape.isOpaque = OPAQUE_LAYERS
       components.append (shape)
     }
     self.mFrontPadsLayer.sublayers = components
@@ -599,6 +727,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setBackPads (_ padArray : [MergerPad]) {
+    self.notifyTransaction ()
     var components = [CAShapeLayer] ()
     for pad in padArray {
       let x = canariUnitToCocoa (pad.x)
@@ -625,6 +754,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       shape.position = CGPoint (x:0.0, y:0.0)
       shape.strokeColor = nil
       shape.fillColor = NSColor.orange.cgColor
+      shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+      shape.isOpaque = OPAQUE_LAYERS
       components.append (shape)
     }
     self.mBackPadsLayer.sublayers = components
@@ -652,6 +783,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func setHoles (_ inHoleArray : [MergerHole]) {
+    self.notifyTransaction ()
     let paths = CGMutablePath ()
     for hole in inHoleArray {
       let x : CGFloat = canariUnitToCocoa (hole.x)
@@ -664,6 +796,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     shape.path = paths
     shape.position = CGPoint (x:0.0, y:0.0)
     shape.fillColor = NSColor.white.cgColor
+    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    shape.isOpaque = OPAQUE_LAYERS
     self.mHolesLayer.sublayers = [shape]
   }
 

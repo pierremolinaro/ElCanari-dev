@@ -18,6 +18,7 @@ class BoardModelEntity : EBManagedObject,
   BoardModelEntity_zoom,
   BoardModelEntity_boardLimitWidth,
   BoardModelEntity_boardLimitWidthUnit,
+  BoardModelEntity_instanceCount,
   BoardModelEntity_frontLegendTextsSegments,
   BoardModelEntity_frontLegendTextsSegmentsForDisplay,
   BoardModelEntity_frontLayoutTextsSegments,
@@ -222,6 +223,22 @@ class BoardModelEntity : EBManagedObject,
   var boardLimitWidthUnit_property_selection : EBSelection <Int> {
     get {
       return self.boardLimitWidthUnit_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing instanceCount transient property
+  //····················································································································
+
+  var instanceCount_property_selection : EBSelection <Int> {
+    get {
+      return self.instanceCount_property.prop
+    }
+  }
+
+  var instanceCount : EBSelection <Int> {
+    get {
+      return instanceCount_property_selection
     }
   }
 
@@ -786,6 +803,16 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing myInstances toMany relationship
+  //····················································································································
+
+  var myInstances_property_selection : EBSelection < [MergerBoardInstanceEntity] > {
+    get {
+      return self.myInstances_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing frontLegendTexts toMany relationship
   //····················································································································
 
@@ -943,6 +970,7 @@ class BoardModelEntity : EBManagedObject,
   //    Transient properties
   //····················································································································
 
+  var instanceCount_property = EBTransientProperty_Int ()
   var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
   var frontLegendTextsSegmentsForDisplay_property = EBTransientProperty_MergerSegmentArray ()
   var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
@@ -983,6 +1011,7 @@ class BoardModelEntity : EBManagedObject,
   //    Relationships
   //····················································································································
 
+  var myInstances_property = ToManyRelationship_BoardModelEntity_myInstances ()
   var frontLegendTexts_property = ToManyRelationship_BoardModelEntity_frontLegendTexts ()
   var frontLayoutTexts_property = ToManyRelationship_BoardModelEntity_frontLayoutTexts ()
   var backLegendTexts_property = ToManyRelationship_BoardModelEntity_backLegendTexts ()
@@ -1005,6 +1034,26 @@ class BoardModelEntity : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
+    self.instanceCount_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.myInstances_property.count_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.myInstances_property.count_property.prop) {
+          case (.single (let v0)) :
+            return .single (v0)
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.frontLegendTextsSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLegendTexts_property_selection.kind ()
@@ -1794,6 +1843,7 @@ class BoardModelEntity : EBManagedObject,
       }
     }
   //--- Install property observers for transients
+    self.myInstances_property.addEBObserver (self.instanceCount_property)
     self.frontLegendTexts_property.addEBObserverOf_x1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_y1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_x2 (self.frontLegendTextsSegments_property)
@@ -1928,6 +1978,7 @@ class BoardModelEntity : EBManagedObject,
     self.boardLimitWidth_property.undoManager = undoManager ()
     self.boardLimitWidthUnit_property.undoManager = undoManager ()
   //--- Install owner for relationships
+    self.myInstances_property.owner = self
     self.frontLegendTexts_property.owner = self
     self.frontLayoutTexts_property.owner = self
     self.backLegendTexts_property.owner = self
@@ -1949,6 +2000,7 @@ class BoardModelEntity : EBManagedObject,
 
   deinit {
   //--- Remove observers
+    self.myInstances_property.removeEBObserver (self.instanceCount_property)
     self.frontLegendTexts_property.removeEBObserverOf_x1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.removeEBObserverOf_y1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.removeEBObserverOf_x2 (self.frontLegendTextsSegments_property)
@@ -2153,6 +2205,14 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.boardLimitWidthUnit_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "instanceCount",
+      idx:self.instanceCount_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.instanceCount_property.mObserverExplorer,
+      valueExplorer:&self.instanceCount_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "frontLegendTextsSegments",
       idx:self.frontLegendTextsSegments_property.mEasyBindingsObjectIndex,
@@ -2435,6 +2495,13 @@ class BoardModelEntity : EBManagedObject,
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
+      "myInstances",
+      idx:myInstances_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&myInstances_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
       "frontLegendTexts",
       idx:frontLegendTexts_property.mEasyBindingsObjectIndex,
       y: &y,
@@ -2559,6 +2626,7 @@ class BoardModelEntity : EBManagedObject,
     self.boardLimitWidth_property.mValueExplorer = nil
     self.boardLimitWidthUnit_property.mObserverExplorer = nil
     self.boardLimitWidthUnit_property.mValueExplorer = nil
+    self.myInstances_property.mValueExplorer = nil
     self.frontLegendTexts_property.mValueExplorer = nil
     self.frontLayoutTexts_property.mValueExplorer = nil
     self.backLegendTexts_property.mValueExplorer = nil
@@ -2591,6 +2659,7 @@ class BoardModelEntity : EBManagedObject,
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
     self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
     self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
+    store (managedObjectArray: myInstances_property.propval as NSArray, relationshipName:"myInstances", intoDictionary: ioDictionary) ;
     store (managedObjectArray: frontLegendTexts_property.propval as NSArray, relationshipName:"frontLegendTexts", intoDictionary: ioDictionary) ;
     store (managedObjectArray: frontLayoutTexts_property.propval as NSArray, relationshipName:"frontLayoutTexts", intoDictionary: ioDictionary) ;
     store (managedObjectArray: backLegendTexts_property.propval as NSArray, relationshipName:"backLegendTexts", intoDictionary: ioDictionary) ;
@@ -2623,6 +2692,11 @@ class BoardModelEntity : EBManagedObject,
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
     self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
     self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
+    self.myInstances_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "myInstances",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [MergerBoardInstanceEntity])
     self.frontLegendTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLegendTexts",
       inDictionary: inDictionary,
@@ -2700,6 +2774,7 @@ class BoardModelEntity : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+    self.myInstances_property.setProp ([]) // Set relationships to nil
     do{
       let objects = self.frontLegendTexts_property.propval
       self.frontLegendTexts_property.setProp ([])
@@ -2779,6 +2854,7 @@ class BoardModelEntity : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
+    self.myInstances_property.setProp ([])
     self.frontLegendTexts_property.setProp ([])
     self.frontLayoutTexts_property.setProp ([])
     self.backLegendTexts_property.setProp ([])
@@ -2801,6 +2877,9 @@ class BoardModelEntity : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+    for managedObject : EBManagedObject in self.myInstances_property.propval {
+      objects.append (managedObject)
+    }
     for managedObject : EBManagedObject in self.frontLegendTexts_property.propval {
       objects.append (managedObject)
     }
@@ -3364,6 +3443,62 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.boardLimitWidthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'instanceCount' transient property
+  //····················································································································
+
+  private var mObserversOf_instanceCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_instanceCount.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instanceCount_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_instanceCount.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instanceCount_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_instanceCount {
+        managedObject.instanceCount_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_instanceCount {
+        managedObject.instanceCount_property.removeEBObserver (observer)
       }
     }
   }
@@ -5376,6 +5511,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
+        removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendTextsSegmentsForDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedSet)
@@ -5424,6 +5560,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
+        addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendTextsSegmentsForDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedSet)
@@ -5539,6 +5676,13 @@ protocol BoardModelEntity_boardLimitWidth : class {
 
 protocol BoardModelEntity_boardLimitWidthUnit : class {
   var boardLimitWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_instanceCount : class {
+//  var instanceCount_property_selection : EBSelection < Int > { get }
+  var instanceCount : EBSelection < Int > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -5786,6 +5930,188 @@ protocol BoardModelEntity_backPackagesSegmentsForDisplay : class {
   var backPackagesSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: myInstances
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_BoardModelEntity_myInstances : ReadOnlyArrayOf_MergerBoardInstanceEntity {
+
+  //····················································································································
+ 
+  func setProp (_ value :  [MergerBoardInstanceEntity]) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: myInstances
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_BoardModelEntity_myInstances :
+ToManyRelationshipReadWrite_BoardModelEntity_myInstances, EBSignatureObserverProtocol {
+  weak var owner : BoardModelEntity?
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set<MergerBoardInstanceEntity> ()
+  private var mValue = [MergerBoardInstanceEntity] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+          managedObject.myModel_property.owner = nil ;
+        }
+        removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : MergerBoardInstanceEntity in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+          managedObject.myModel_property.setProp (owner)
+        }
+        addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBSelection < [MergerBoardInstanceEntity] > {
+    get {
+      return .single (mValue)
+    }
+  }
+
+  override func setProp (_ value :  [MergerBoardInstanceEntity]) { mValue = value }
+
+  var propval : [MergerBoardInstanceEntity] { get { return mValue } }
+
+  //····················································································································
+
+  func performUndo (_ oldValue : [MergerBoardInstanceEntity]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : MergerBoardInstanceEntity) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : MergerBoardInstanceEntity) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship read write: frontLegendTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

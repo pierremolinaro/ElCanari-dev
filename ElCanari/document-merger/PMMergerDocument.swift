@@ -22,6 +22,7 @@ import Cocoa
   @IBOutlet var mBoardWidthTextField : CanariDimensionTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardView : CanariBoardModelView?
+  @IBOutlet var mInstanceCountTextField : EBIntObserverField?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var removeBoardModelButton : EBButton?
   @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton?
@@ -187,6 +188,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mComposedBoardView' outlet is not an instance of 'CanariBoardModelView'") ;
     }
+    if nil == mInstanceCountTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInstanceCountTextField' outlet is nil") ;
+//    }else if !mInstanceCountTextField!.isKindOfClass (EBIntObserverField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInstanceCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
+    }
     if nil == mPageSegmentedControl {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -242,6 +252,7 @@ import Cocoa
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
     mArtworkNameTextField?.bind_valueObserver (self.mBoardModelSelection.artworkName_property, file: #file, line: #line)
+    mInstanceCountTextField?.bind_valueObserver (self.mBoardModelSelection.instanceCount_property, file: #file, line: #line, autoFormatter:true)
     mBoardWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.boardWidthUnit_property, file: #file, line: #line)
     mBoardWidthTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.boardWidth_property, self.mBoardModelSelection.boardWidthUnit_property, file: #file, line: #line)
     mBoardHeightUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.boardHeightUnit_property, file: #file, line: #line)
@@ -311,6 +322,7 @@ import Cocoa
   //--------------------------- Unbind regular bindings
     mPageSegmentedControl?.unbind_selectedPage ()
     mArtworkNameTextField?.unbind_valueObserver ()
+    mInstanceCountTextField?.unbind_valueObserver ()
     mBoardWidthUnitPopUp?.unbind_selectedTag ()
     mBoardWidthTextField?.unbind_dimensionAndUnit ()
     mBoardHeightUnitPopUp?.unbind_selectedTag ()
@@ -364,6 +376,7 @@ import Cocoa
     self.mBoardWidthTextField?.ebCleanUp ()
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
+    self.mInstanceCountTextField?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.removeBoardModelButton?.ebCleanUp ()
     self.showPrefsForSettingMergerDisplayButton?.ebCleanUp ()

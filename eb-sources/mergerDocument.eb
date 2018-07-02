@@ -20,6 +20,7 @@ transient property class MergerBoardLimits ;
 transient property class MergerPadArray ;
 transient property class MergerHoleArray ;
 transient property class MergerBoardModelArray ;
+transient property struct CanariBoardRect ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -98,6 +99,11 @@ entity BoardModelEntity {
   property Int boardHeightUnit default 0 ;
 
   property Int zoom default 0 ; # 0 means "fit to window"
+
+#--- Instances
+  toMany MergerBoardInstanceEntity myInstances inverse toOne myModel ;
+
+  copy transient Int instanceCount : self.myInstances.count ;
 
 #--- Front Legend Texts
   toMany @cascading CanariSegmentEntity frontLegendTexts ;
@@ -298,12 +304,28 @@ entity BoardModelEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+entity MergerBoardInstanceEntity {
+  toOne BoardModelEntity myModel inverse toMany myInstances ;
+  property Int x default 0 ;
+  property Int y default 0 ;
+
+#--- Instance rect
+  transient CanariBoardRect instanceRect  dependsFrom self.x, self.y ; # , self.myModel.object.width ;
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 entity MergerRootEntity {
   toMany @cascading BoardModelEntity boardModels ;
+  toMany @cascading MergerBoardInstanceEntity boardInstances ;
+
   property Int selectedPageIndex default 0 ;
 
 #--- Board model name array
   transient MergerBoardModelArray modelNames dependsFrom self.boardModels.all.name ;
+  
+#--- Board rect
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -343,6 +365,9 @@ document PMMergerDocument root MergerRootEntity {
 
 #--- Artwork model name
   outlet EBTextObserverField mArtworkNameTextField $valueObserver mBoardModelSelection.artworkName ;
+
+#--- Model Instance count
+  outlet EBIntObserverField mInstanceCountTextField $valueObserver mBoardModelSelection.instanceCount {autoFormatter:yes} ;
 
 #--- Model width display
   outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag mBoardModelSelection.boardWidthUnit ;

@@ -41,6 +41,22 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  //  Mouse down
+  //····················································································································
+
+//  override func mouseDown (with inEvent: NSEvent) {
+//    let modifierFlags = inEvent.modifierFlags
+//    if modifierFlags.contains (.control) && !(modifierFlags.contains (.shift) || modifierFlags.contains (.option)) { // Ctrl Key On, no shift
+//      NSLog ("\(self.menu)")
+//      if let theMenu = self.menu {
+//        NSMenu.popUpContextMenu (theMenu, with: inEvent, for: self)
+//      }
+//    }else{
+//      super.mouseDown (with:inEvent)
+//    }
+//  }
+
+  //····················································································································
   //  Set size
   //····················································································································
 

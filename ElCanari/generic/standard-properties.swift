@@ -955,10 +955,10 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_Int  = EBReadOnlyValueProperty <Int>
+typealias EBTransientProperty_Int = EBTransientValueProperty <Int>
 typealias EBReadWriteProperty_Int = EBReadWriteValueProperty <Int>
 typealias EBPropertyProxy_Int     = EBPropertyValueProxy <Int>
 typealias EBStoredProperty_Int    = EBStoredValueProperty <Int>
-typealias EBTransientProperty_Int = EBTransientValueProperty <Int>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1001,10 +1001,10 @@ func compare_Int (left : EBReadOnlyProperty_Int, right : EBReadOnlyProperty_Int)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_Bool  = EBReadOnlyValueProperty <Bool>
+typealias EBTransientProperty_Bool = EBTransientValueProperty <Bool>
 typealias EBReadWriteProperty_Bool = EBReadWriteValueProperty <Bool>
 typealias EBPropertyProxy_Bool     = EBPropertyValueProxy <Bool>
 typealias EBStoredProperty_Bool    = EBStoredValueProperty <Bool>
-typealias EBTransientProperty_Bool = EBTransientValueProperty <Bool>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1047,10 +1047,10 @@ func compare_Bool (left : EBReadOnlyProperty_Bool, right : EBReadOnlyProperty_Bo
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_Double  = EBReadOnlyValueProperty <Double>
+typealias EBTransientProperty_Double = EBTransientValueProperty <Double>
 typealias EBReadWriteProperty_Double = EBReadWriteValueProperty <Double>
 typealias EBPropertyProxy_Double     = EBPropertyValueProxy <Double>
 typealias EBStoredProperty_Double    = EBStoredValueProperty <Double>
-typealias EBTransientProperty_Double = EBTransientValueProperty <Double>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1093,10 +1093,10 @@ func compare_Double (left : EBReadOnlyProperty_Double, right : EBReadOnlyPropert
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_String  = EBReadOnlyValueProperty <String>
+typealias EBTransientProperty_String = EBTransientValueProperty <String>
 typealias EBReadWriteProperty_String = EBReadWriteValueProperty <String>
 typealias EBPropertyProxy_String     = EBPropertyValueProxy <String>
 typealias EBStoredProperty_String    = EBStoredValueProperty <String>
-typealias EBTransientProperty_String = EBTransientValueProperty <String>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1253,14 +1253,20 @@ typealias EBReadOnlyPropertyArray_MergerBoardModelArray  = EBReadOnlyClassProper
 typealias EBTransientPropertyArray_MergerBoardModelArray = EBTransientClassProperty <[MergerBoardModelArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property CanariBoardRect
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CanariBoardRect  = EBReadOnlyValueProperty <CanariBoardRect>
+typealias EBTransientProperty_CanariBoardRect = EBTransientValueProperty <CanariBoardRect>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyProperty_Date  = EBReadOnlyValueProperty <Date>
+typealias EBTransientProperty_Date = EBTransientValueProperty <Date>
 typealias EBReadWriteProperty_Date = EBReadWriteValueProperty <Date>
 typealias EBPropertyProxy_Date     = EBPropertyValueProxy <Date>
 typealias EBStoredProperty_Date    = EBStoredValueProperty <Date>
-typealias EBTransientProperty_Date = EBTransientValueProperty <Date>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

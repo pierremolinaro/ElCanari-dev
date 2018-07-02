@@ -14,7 +14,29 @@ import Cocoa
 extension PMMergerDocument {
   func insertBoardAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-    NSBeep ()
+    if let menuItem = sender as? NSMenuItem {
+      if let representedObject = menuItem.representedObject as? InsertBoardMenuRepresentedObject {
+        let boardModelName = representedObject.boardModelName
+        var possibleBoardModel : BoardModelEntity? = nil
+        for boardModel in self.rootObject.boardModels_property.propval {
+          if boardModel.name == boardModelName {
+            possibleBoardModel = boardModel
+            break
+          }
+        }
+        if let boardModel = possibleBoardModel {
+          let newBoard = MergerBoardInstanceEntity (managedObjectContext: self.managedObjectContext())
+          newBoard.myModel_property.setProp (boardModel)
+          self.rootObject.boardInstances_property.add (newBoard)
+        }else{
+          NSLog ("Cannot find '\(boardModelName)' board model")
+        }
+      }else{
+        NSLog ("Invalid representedObject")
+      }
+    }else{
+      NSLog ("Invalid sender")
+    }
 //--- END OF USER ZONE 2
   }
 }

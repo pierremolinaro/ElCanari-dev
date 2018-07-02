@@ -69,12 +69,14 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
   //····················································································································
 
   func setNames (_ inNameArray : [String]) {
+    // NSLog ("\(inNameArray)")
     self.removeAllItems ()
     if inNameArray.count == 0 {
       self.addItem (withTitle: "No Board Model to Insert", action: nil, keyEquivalent: "")
     }else{
       for name in inNameArray {
         self.addItem (withTitle: "Insert \"\(name)\"", action: #selector (PMMergerDocument.insertBoardAction (_:)), keyEquivalent: "")
+        self.items.last?.representedObject = InsertBoardMenuRepresentedObject (boardModelName:name)
         self.items.last?.target = mDocument
         self.items.last?.isEnabled = true
       }
@@ -118,5 +120,17 @@ final class Controller_CanariBoardInsertMenu_names : EBSimpleController {
   //····················································································································
 
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class InsertBoardMenuRepresentedObject : EBSimpleClass {
+  let boardModelName : String
+
+  init (boardModelName inName : String) {
+    boardModelName = inName
+    super.init ()
+  }
+}
+
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

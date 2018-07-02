@@ -282,6 +282,13 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       return self.holesForDisplay_property.prop
     }
   }
+  var instanceCount_property = EBTransientProperty_Int ()
+
+  var instanceCount_property_selection : EBSelection <Int> {
+    get {
+      return self.instanceCount_property.prop
+    }
+  }
   var name_property = EBPropertyProxy_String ()
 
   var name_property_selection : EBSelection <String> {
@@ -369,6 +376,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_frontTrackSegmentsForDisplay (model: model)
     bind_property_holes (model: model)
     bind_property_holesForDisplay (model: model)
+    bind_property_instanceCount (model: model)
     bind_property_name (model: model)
     bind_property_padsHoles (model: model)
     bind_property_viaShapes (model: model)
@@ -2268,6 +2276,46 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_instanceCount (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_instanceCount (self.instanceCount_property)
+    self.instanceCount_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.instanceCount_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_name (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_name (self.name_property)
     self.name_property.readModelFunction = {
@@ -2701,6 +2749,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- holesForDisplay
     self.holesForDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_holesForDisplay (self.holesForDisplay_property)
+  //--- instanceCount
+    self.instanceCount_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_instanceCount (self.instanceCount_property)
   //--- name
     self.name_property.readModelFunction = nil 
     self.name_property.writeModelFunction = nil 

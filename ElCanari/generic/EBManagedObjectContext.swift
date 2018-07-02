@@ -208,6 +208,8 @@ class EBManagedObjectContext : EBObject {
       result = BoardModelViaEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelEntity" {
       result = BoardModelEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "MergerBoardInstanceEntity" {
+      result = MergerBoardInstanceEntity (managedObjectContext:self)
     }else if inEntityTypeName == "MergerRootEntity" {
       result = MergerRootEntity (managedObjectContext:self)
     }else{
