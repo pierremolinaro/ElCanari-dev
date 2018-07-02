@@ -364,7 +364,7 @@ import Cocoa
   //--------------------------- Selection controllers
   //--------------------------- Custom object controllers
     selectedCharacter.setModel (self.rootObject)
-  //--- Transient compute functions
+  //--------------------------- Transient compute functions
     self.missingCharactersCountString_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.characters_property_selection.kind ()
@@ -405,10 +405,10 @@ import Cocoa
         return .empty
       }
     }
-  //--- Install property observers for transients
+  //--------------------------- Install property observers for transients
     self.rootObject.characters_property.addEBObserverOf_characterIsDefined (self.missingCharactersCountString_property)
     self.rootObject.characters_property.addEBObserverOf_characterIsDefined (self.missingCharacterDescriptorArray_property)
-  //--- Install regular bindings
+  //--------------------------- Install regular bindings
     mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
     mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
@@ -439,7 +439,7 @@ import Cocoa
     currentCharacterView?.bind_displayFlow (g_Preferences!.showGerberDrawingFlow_property, file: #file, line: #line)
     currentCharacterView?.bind_displayDrawingIndexes (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
     commentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
-  //--- Install multiple bindings
+  //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
     mAddSegmentButton?.target = self
     mAddSegmentButton?.action = #selector (PMFontDocument.addSegmentAction (_:))
@@ -455,7 +455,7 @@ import Cocoa
   //····················································································································
 
   override func removeUserInterface () {
-  //--- Unbind regular bindings
+  //--------------------------- Unbind regular bindings
     mInspectorSegmentedControl?.unbind_selectedPage ()
     mPageSegmentedControl?.unbind_selectedPage ()
     mSignatureTextField?.unbind_signature ()
@@ -486,20 +486,53 @@ import Cocoa
     currentCharacterView?.unbind_displayFlow ()
     currentCharacterView?.unbind_displayDrawingIndexes ()
     commentTextView?.unbind_value ()
-  //--- Unbind multiple bindings
-  //--- Uninstall compute functions for transients
+  //--------------------------- Unbind multiple bindings
+  //--------------------------- Uninstall compute functions for transients
     self.missingCharactersCountString_property.readModelFunction = nil
     self.missingCharacterDescriptorArray_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     mMissingCharsController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers
-  //--- Uninstall property observers for transients
+  //--------------------------- Uninstall property observers for transients
     self.rootObject.characters_property.removeEBObserverOf_characterIsDefined (self.missingCharactersCountString_property)
     self.rootObject.characters_property.removeEBObserverOf_characterIsDefined (self.missingCharacterDescriptorArray_property)
   //--------------------------- Remove targets / actions
     mAddSegmentButton?.target = nil
     resetVersionAndSignatureButton?.target = nil
+  //--------------------------- Clean up outlets
+    self.advancementSlider?.ebCleanUp ()
+    self.advancementTextField?.ebCleanUp ()
+    self.commentTextView?.ebCleanUp ()
+    self.currentCharacterStepper?.ebCleanUp ()
+    self.currentCharacterTextField?.ebCleanUp ()
+    self.currentCharacterView?.ebCleanUp ()
+    self.gerberCodeInstructionCountMessageTextField?.ebCleanUp ()
+    self.mAddSegmentButton?.ebCleanUp ()
+    self.mFontCharacterSelectButton?.ebCleanUp ()
+    self.mFontSampleStringView?.ebCleanUp ()
+    self.mGerberCodeTableView?.ebCleanUp ()
+    self.mInspectorSegmentedControl?.ebCleanUp ()
+    self.mMissingCharsTableView?.ebCleanUp ()
+    self.mPageSegmentedControl?.ebCleanUp ()
+    self.mSampleStringAscentTextField?.ebCleanUp ()
+    self.mSampleStringDescentTextField?.ebCleanUp ()
+    self.mSampleStringField?.ebCleanUp ()
+    self.mSampleStringSizeField?.ebCleanUp ()
+    self.mSampleStringWidthTextField?.ebCleanUp ()
+    self.mShowGerberDrawingFlowCheckbox?.ebCleanUp ()
+    self.mShowGerberDrawingIndexesCheckbox?.ebCleanUp ()
+    self.mSignatureTextField?.ebCleanUp ()
+    self.mVersionField?.ebCleanUp ()
+    self.missingCharactersCountTextField?.ebCleanUp ()
+    self.resetVersionAndSignatureButton?.ebCleanUp ()
+    self.transparencySlider?.ebCleanUp ()
+    self.transparencyTextField?.ebCleanUp ()
   }
+
+  //····················································································································
+  //    Multiple bindings controller
+  //····················································································································
+
 
   //····················································································································
 

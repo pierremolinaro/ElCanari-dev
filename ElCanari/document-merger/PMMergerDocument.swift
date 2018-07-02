@@ -237,9 +237,9 @@ import Cocoa
       line: #line
     )
   //--------------------------- Custom object controllers
-  //--- Transient compute functions
-  //--- Install property observers for transients
-  //--- Install regular bindings
+  //--------------------------- Transient compute functions
+  //--------------------------- Install property observers for transients
+  //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
     mArtworkNameTextField?.bind_valueObserver (self.mBoardModelSelection.artworkName_property, file: #file, line: #line)
     mBoardWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.boardWidthUnit_property, file: #file, line: #line)
@@ -262,35 +262,33 @@ import Cocoa
     mBoardModelView?.bind_boardLimits (self.mBoardModelSelection.boardLimits_property, file: #file, line: #line)
     mBoardModelView?.bind_frontPads (self.mBoardModelSelection.frontPadsForDisplay_property, file: #file, line: #line)
     mBoardModelView?.bind_backPads (self.mBoardModelSelection.backPadsForDisplay_property, file: #file, line: #line)
-
-    // mBoardModelView?.bind_holes (self.mBoardModelSelection.holesForDisplay_property, file: #file, line: #line)
-
-    mController_hole_MergerHoleArray = GenericController_MergerHoleArray (
-      getPropertyValueCallBack: { return self.mBoardModelSelection.holesForDisplay_property_selection },
-      modelDidChange: { (v : EBSelection <MergerHoleArray>) in self.mBoardModelView?.hole_modelDidChange (v) }
-    )
-    self.mBoardModelSelection.holesForDisplay_property.addEBObserver (self.mController_hole_MergerHoleArray!)
-
+    mBoardModelView?.bind_holes (self.mBoardModelSelection.holesForDisplay_property, file: #file, line: #line)
     mBoardModelView?.bind_frontLegendTexts (self.mBoardModelSelection.frontLegendTextsSegmentsForDisplay_property, file: #file, line: #line)
     mBoardModelView?.bind_frontLayoutTexts (self.mBoardModelSelection.frontLayoutTextsSegmentsForDisplay_property, file: #file, line: #line)
     mBoardModelView?.bind_backLegendTexts (self.mBoardModelSelection.backLegendTextsSegmentsForDisplay_property, file: #file, line: #line)
     mBoardModelView?.bind_backLayoutTexts (self.mBoardModelSelection.backLayoutTextsSegmentsForDisplay_property, file: #file, line: #line)
     mBoardInsertMenu?.bind_names (self.rootObject.modelNames_property, file: #file, line: #line)
-  //--- Install multiple bindings
-    removeBoardModelButton?.bind_enabled (
-      [self.mBoardModelController.selectedArray_property.count_property],
-      computeFunction:{
-        return (self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0))
-      },
-      file: #file, line: #line
-    )
-    updateBoardModelButton?.bind_enabled (
-      [self.mBoardModelController.selectedArray_property.count_property],
-      computeFunction:{
-        return (self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0))
-      },
-      file: #file, line: #line
-    )
+  //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0))
+        },
+        outlet:self.removeBoardModelButton
+      )
+      self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
+      mController_removeBoardModelButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0))
+        },
+        outlet:self.updateBoardModelButton
+      )
+      self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
+      mController_updateBoardModelButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     showPrefsForSettingMergerDisplayButton?.target = self
     showPrefsForSettingMergerDisplayButton?.action = #selector (PMMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
@@ -310,7 +308,7 @@ import Cocoa
   //····················································································································
 
   override func removeUserInterface () {
-  //--- Unbind regular bindings
+  //--------------------------- Unbind regular bindings
     mPageSegmentedControl?.unbind_selectedPage ()
     mArtworkNameTextField?.unbind_valueObserver ()
     mBoardWidthUnitPopUp?.unbind_selectedTag ()
@@ -333,36 +331,54 @@ import Cocoa
     mBoardModelView?.unbind_boardLimits ()
     mBoardModelView?.unbind_frontPads ()
     mBoardModelView?.unbind_backPads ()
-
-  //  mBoardModelView?.unbind_holes ()
-    self.mBoardModelSelection.holesForDisplay_property.removeEBObserver (self.mController_hole_MergerHoleArray!)
-    self.mController_hole_MergerHoleArray = nil
-
-
+    mBoardModelView?.unbind_holes ()
     mBoardModelView?.unbind_frontLegendTexts ()
     mBoardModelView?.unbind_frontLayoutTexts ()
     mBoardModelView?.unbind_backLegendTexts ()
     mBoardModelView?.unbind_backLayoutTexts ()
     mBoardInsertMenu?.unbind_names ()
-  //--- Unbind multiple bindings
-    removeBoardModelButton?.unbind_enabled ()
-    updateBoardModelButton?.unbind_enabled ()
-  //--- Uninstall compute functions for transients
+  //--------------------------- Unbind multiple bindings
+    self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_removeBoardModelButton_enabled!)
+    mController_removeBoardModelButton_enabled = nil
+    self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_updateBoardModelButton_enabled!)
+    mController_updateBoardModelButton_enabled = nil
+  //--------------------------- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers
     mBoardModelController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers
     mBoardModelSelection.unbind_selection ()
-  //--- Uninstall property observers for transients
+  //--------------------------- Uninstall property observers for transients
   //--------------------------- Remove targets / actions
     showPrefsForSettingMergerDisplayButton?.target = nil
     addBoardModelButton?.target = nil
     removeBoardModelButton?.target = nil
     updateBoardModelButton?.target = nil
+  //--------------------------- Clean up outlets
+    self.addBoardModelButton?.ebCleanUp ()
+    self.mArtworkNameTextField?.ebCleanUp ()
+    self.mBoardHeightTextField?.ebCleanUp ()
+    self.mBoardHeightUnitPopUp?.ebCleanUp ()
+    self.mBoardInsertMenu?.ebCleanUp ()
+    self.mBoardModelTableView?.ebCleanUp ()
+    self.mBoardModelView?.ebCleanUp ()
+    self.mBoardWidthTextField?.ebCleanUp ()
+    self.mBoardWidthUnitPopUp?.ebCleanUp ()
+    self.mComposedBoardView?.ebCleanUp ()
+    self.mPageSegmentedControl?.ebCleanUp ()
+    self.removeBoardModelButton?.ebCleanUp ()
+    self.showPrefsForSettingMergerDisplayButton?.ebCleanUp ()
+    self.updateBoardModelButton?.ebCleanUp ()
   }
 
   //····················································································································
+  //    Multiple bindings controller
+  //····················································································································
 
-  fileprivate var mController_hole_MergerHoleArray : GenericController_MergerHoleArray?
+  fileprivate var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled?
+  fileprivate var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled?
+
+  //····················································································································
+
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

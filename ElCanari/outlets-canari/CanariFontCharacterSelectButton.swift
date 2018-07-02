@@ -126,27 +126,19 @@ final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleContr
   }
 
   //····················································································································
-  
-  override func unregister () {
-    super.unregister()
-    mOutlet.removeFromEnabledFromValueDictionary ()
-  }
-
-  //····················································································································
 
   override func sendUpdateEvent () {
     switch mObject.prop {
     case .empty :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
       mOutlet.title = ""
     case .single (let v) :
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
       mOutlet.mSelectedCharacterCode = UInt (v)
     case .multiple :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
       mOutlet.title = ""
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································

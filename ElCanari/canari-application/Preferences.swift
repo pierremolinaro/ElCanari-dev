@@ -135,6 +135,7 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mUseLibraryInUserApplicationSupportPathCheckBox : EBSwitch? = nil
   @IBOutlet var mWarningMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var selectionHilitePopupButton : EBPopUpButton? = nil
+
   //····················································································································
   //   Accessing mergerHorizontalFlip stored property
   //····················································································································
@@ -2247,483 +2248,483 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   override func awakeFromNib () {
-  //--- Check mAddLibraryEntryButton' outlet not nil
+  //--------------------------- Check mAddLibraryEntryButton' outlet not nil
     if nil == mAddLibraryEntryButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mAddLibraryEntryButton' outlet is nil")
     }
-  //--- Check mAdditionnalLibraryArrayTableView' outlet not nil
+  //--------------------------- Check mAdditionnalLibraryArrayTableView' outlet not nil
     if nil == mAdditionnalLibraryArrayTableView {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mAdditionnalLibraryArrayTableView' outlet is nil")
     }
-  //--- Check mBoardBackgroundColorWell' outlet not nil
+  //--------------------------- Check mBoardBackgroundColorWell' outlet not nil
     if nil == mBoardBackgroundColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardBackgroundColorWell' outlet is nil")
     }
-  //--- Check mBoardBottomSideLayoutColorWell' outlet not nil
+  //--------------------------- Check mBoardBottomSideLayoutColorWell' outlet not nil
     if nil == mBoardBottomSideLayoutColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardBottomSideLayoutColorWell' outlet is nil")
     }
-  //--- Check mBoardBottomSideLegendColorWell' outlet not nil
+  //--------------------------- Check mBoardBottomSideLegendColorWell' outlet not nil
     if nil == mBoardBottomSideLegendColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardBottomSideLegendColorWell' outlet is nil")
     }
-  //--- Check mBoardBottomSidePadColorWell' outlet not nil
+  //--------------------------- Check mBoardBottomSidePadColorWell' outlet not nil
     if nil == mBoardBottomSidePadColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardBottomSidePadColorWell' outlet is nil")
     }
-  //--- Check mBoardBottomSideRestrictRectangleColorWell' outlet not nil
+  //--------------------------- Check mBoardBottomSideRestrictRectangleColorWell' outlet not nil
     if nil == mBoardBottomSideRestrictRectangleColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardBottomSideRestrictRectangleColorWell' outlet is nil")
     }
-  //--- Check mBoardClearanceColorWell' outlet not nil
+  //--------------------------- Check mBoardClearanceColorWell' outlet not nil
     if nil == mBoardClearanceColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardClearanceColorWell' outlet is nil")
     }
-  //--- Check mBoardDotColorGridColorWell' outlet not nil
+  //--------------------------- Check mBoardDotColorGridColorWell' outlet not nil
     if nil == mBoardDotColorGridColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardDotColorGridColorWell' outlet is nil")
     }
-  //--- Check mBoardDrawErrorBackgroundCheckbox' outlet not nil
+  //--------------------------- Check mBoardDrawErrorBackgroundCheckbox' outlet not nil
     if nil == mBoardDrawErrorBackgroundCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardDrawErrorBackgroundCheckbox' outlet is nil")
     }
-  //--- Check mBoardDrawWarningBackgroundCheckbox' outlet not nil
+  //--------------------------- Check mBoardDrawWarningBackgroundCheckbox' outlet not nil
     if nil == mBoardDrawWarningBackgroundCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardDrawWarningBackgroundCheckbox' outlet is nil")
     }
-  //--- Check mBoardErrorBackgroundColorWell' outlet not nil
+  //--------------------------- Check mBoardErrorBackgroundColorWell' outlet not nil
     if nil == mBoardErrorBackgroundColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardErrorBackgroundColorWell' outlet is nil")
     }
-  //--- Check mBoardLimitsColorWell' outlet not nil
+  //--------------------------- Check mBoardLimitsColorWell' outlet not nil
     if nil == mBoardLimitsColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardLimitsColorWell' outlet is nil")
     }
-  //--- Check mBoardLineColorGridColorWell' outlet not nil
+  //--------------------------- Check mBoardLineColorGridColorWell' outlet not nil
     if nil == mBoardLineColorGridColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardLineColorGridColorWell' outlet is nil")
     }
-  //--- Check mBoardPackageDrawingWidthMultipliedByTenPopupButton' outlet not nil
+  //--------------------------- Check mBoardPackageDrawingWidthMultipliedByTenPopupButton' outlet not nil
     if nil == mBoardPackageDrawingWidthMultipliedByTenPopupButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardPackageDrawingWidthMultipliedByTenPopupButton' outlet is nil")
     }
-  //--- Check mBoardPadFontButton' outlet not nil
+  //--------------------------- Check mBoardPadFontButton' outlet not nil
     if nil == mBoardPadFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardPadFontButton' outlet is nil")
     }
-  //--- Check mBoardPadNumberColorWell' outlet not nil
+  //--------------------------- Check mBoardPadNumberColorWell' outlet not nil
     if nil == mBoardPadNumberColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardPadNumberColorWell' outlet is nil")
     }
-  //--- Check mBoardTopSideLayoutColorWell' outlet not nil
+  //--------------------------- Check mBoardTopSideLayoutColorWell' outlet not nil
     if nil == mBoardTopSideLayoutColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardTopSideLayoutColorWell' outlet is nil")
     }
-  //--- Check mBoardTopSideLegendColorWell' outlet not nil
+  //--------------------------- Check mBoardTopSideLegendColorWell' outlet not nil
     if nil == mBoardTopSideLegendColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardTopSideLegendColorWell' outlet is nil")
     }
-  //--- Check mBoardTopSidePadColorWell' outlet not nil
+  //--------------------------- Check mBoardTopSidePadColorWell' outlet not nil
     if nil == mBoardTopSidePadColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardTopSidePadColorWell' outlet is nil")
     }
-  //--- Check mBoardTopSideRestrictRectangleColorWell' outlet not nil
+  //--------------------------- Check mBoardTopSideRestrictRectangleColorWell' outlet not nil
     if nil == mBoardTopSideRestrictRectangleColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardTopSideRestrictRectangleColorWell' outlet is nil")
     }
-  //--- Check mBoardWarningBackgroundColorWell' outlet not nil
+  //--------------------------- Check mBoardWarningBackgroundColorWell' outlet not nil
     if nil == mBoardWarningBackgroundColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBoardWarningBackgroundColorWell' outlet is nil")
     }
-  //--- Check mBottomSidePadColorDorDeviveColorWell' outlet not nil
+  //--------------------------- Check mBottomSidePadColorDorDeviveColorWell' outlet not nil
     if nil == mBottomSidePadColorDorDeviveColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBottomSidePadColorDorDeviveColorWell' outlet is nil")
     }
-  //--- Check mBottomSidePadColorWell' outlet not nil
+  //--------------------------- Check mBottomSidePadColorWell' outlet not nil
     if nil == mBottomSidePadColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mBottomSidePadColorWell' outlet is nil")
     }
-  //--- Check mCheckForLibraryUpdatesButton' outlet not nil
+  //--------------------------- Check mCheckForLibraryUpdatesButton' outlet not nil
     if nil == mCheckForLibraryUpdatesButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mCheckForLibraryUpdatesButton' outlet is nil")
     }
-  //--- Check mCheckForSystemLibraryAtStartUpSwitch' outlet not nil
+  //--------------------------- Check mCheckForSystemLibraryAtStartUpSwitch' outlet not nil
     if nil == mCheckForSystemLibraryAtStartUpSwitch {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mCheckForSystemLibraryAtStartUpSwitch' outlet is nil")
     }
-  //--- Check mCheckLibraryAction' outlet not nil
+  //--------------------------- Check mCheckLibraryAction' outlet not nil
     if nil == mCheckLibraryAction {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mCheckLibraryAction' outlet is nil")
     }
-  //--- Check mCheckLibraryResultTextView' outlet not nil
+  //--------------------------- Check mCheckLibraryResultTextView' outlet not nil
     if nil == mCheckLibraryResultTextView {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mCheckLibraryResultTextView' outlet is nil")
     }
-  //--- Check mCheckingForLibraryUpdateProgressIndicator' outlet not nil
+  //--------------------------- Check mCheckingForLibraryUpdateProgressIndicator' outlet not nil
     if nil == mCheckingForLibraryUpdateProgressIndicator {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mCheckingForLibraryUpdateProgressIndicator' outlet is nil")
     }
-  //--- Check mCheckingForLibraryUpdateWindow' outlet not nil
+  //--------------------------- Check mCheckingForLibraryUpdateWindow' outlet not nil
     if nil == mCheckingForLibraryUpdateWindow {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mCheckingForLibraryUpdateWindow' outlet is nil")
     }
-  //--- Check mConnectionColorForSchematicColorWell' outlet not nil
+  //--------------------------- Check mConnectionColorForSchematicColorWell' outlet not nil
     if nil == mConnectionColorForSchematicColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mConnectionColorForSchematicColorWell' outlet is nil")
     }
-  //--- Check mDimensionFontButton' outlet not nil
+  //--------------------------- Check mDimensionFontButton' outlet not nil
     if nil == mDimensionFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mDimensionFontButton' outlet is nil")
     }
-  //--- Check mDotColorGridForSchematicColorWell' outlet not nil
+  //--------------------------- Check mDotColorGridForSchematicColorWell' outlet not nil
     if nil == mDotColorGridForSchematicColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mDotColorGridForSchematicColorWell' outlet is nil")
     }
-  //--- Check mDotColorOfPackageGridColorWell' outlet not nil
+  //--------------------------- Check mDotColorOfPackageGridColorWell' outlet not nil
     if nil == mDotColorOfPackageGridColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mDotColorOfPackageGridColorWell' outlet is nil")
     }
-  //--- Check mDotColorOfSymbolGridColorWell' outlet not nil
+  //--------------------------- Check mDotColorOfSymbolGridColorWell' outlet not nil
     if nil == mDotColorOfSymbolGridColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mDotColorOfSymbolGridColorWell' outlet is nil")
     }
-  //--- Check mEditionTransparencySlider' outlet not nil
+  //--------------------------- Check mEditionTransparencySlider' outlet not nil
     if nil == mEditionTransparencySlider {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mEditionTransparencySlider' outlet is nil")
     }
-  //--- Check mEditionTransparencyTextField' outlet not nil
+  //--------------------------- Check mEditionTransparencyTextField' outlet not nil
     if nil == mEditionTransparencyTextField {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mEditionTransparencyTextField' outlet is nil")
     }
-  //--- Check mErrorMessageColorColorWell' outlet not nil
+  //--------------------------- Check mErrorMessageColorColorWell' outlet not nil
     if nil == mErrorMessageColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mErrorMessageColorColorWell' outlet is nil")
     }
-  //--- Check mFontCharacterSelectButton' outlet not nil
+  //--------------------------- Check mFontCharacterSelectButton' outlet not nil
     if nil == mFontCharacterSelectButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mFontCharacterSelectButton' outlet is nil")
     }
-  //--- Check mInformativeTextInLibraryUpdateWindow' outlet not nil
+  //--------------------------- Check mInformativeTextInLibraryUpdateWindow' outlet not nil
     if nil == mInformativeTextInLibraryUpdateWindow {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mInformativeTextInLibraryUpdateWindow' outlet is nil")
     }
-  //--- Check mLibraryUpdateWindow' outlet not nil
+  //--------------------------- Check mLibraryUpdateWindow' outlet not nil
     if nil == mLibraryUpdateWindow {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mLibraryUpdateWindow' outlet is nil")
     }
-  //--- Check mLineColorGridForSchematicColorWell' outlet not nil
+  //--------------------------- Check mLineColorGridForSchematicColorWell' outlet not nil
     if nil == mLineColorGridForSchematicColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mLineColorGridForSchematicColorWell' outlet is nil")
     }
-  //--- Check mLineColorOfPackageGridColorWell' outlet not nil
+  //--------------------------- Check mLineColorOfPackageGridColorWell' outlet not nil
     if nil == mLineColorOfPackageGridColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mLineColorOfPackageGridColorWell' outlet is nil")
     }
-  //--- Check mLineColorOfSymbolGridColorWell' outlet not nil
+  //--------------------------- Check mLineColorOfSymbolGridColorWell' outlet not nil
     if nil == mLineColorOfSymbolGridColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mLineColorOfSymbolGridColorWell' outlet is nil")
     }
-  //--- Check mMenuRevealInFinder_artworks' outlet not nil
+  //--------------------------- Check mMenuRevealInFinder_artworks' outlet not nil
     if nil == mMenuRevealInFinder_artworks {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMenuRevealInFinder_artworks' outlet is nil")
     }
-  //--- Check mMenuRevealInFinder_devices' outlet not nil
+  //--------------------------- Check mMenuRevealInFinder_devices' outlet not nil
     if nil == mMenuRevealInFinder_devices {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMenuRevealInFinder_devices' outlet is nil")
     }
-  //--- Check mMenuRevealInFinder_fonts' outlet not nil
+  //--------------------------- Check mMenuRevealInFinder_fonts' outlet not nil
     if nil == mMenuRevealInFinder_fonts {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMenuRevealInFinder_fonts' outlet is nil")
     }
-  //--- Check mMenuRevealInFinder_packages' outlet not nil
+  //--------------------------- Check mMenuRevealInFinder_packages' outlet not nil
     if nil == mMenuRevealInFinder_packages {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMenuRevealInFinder_packages' outlet is nil")
     }
-  //--- Check mMenuRevealInFinder_symbols' outlet not nil
+  //--------------------------- Check mMenuRevealInFinder_symbols' outlet not nil
     if nil == mMenuRevealInFinder_symbols {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMenuRevealInFinder_symbols' outlet is nil")
     }
-  //--- Check mMergerDisplayBackComponenValuesCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayBackComponenValuesCheckbox' outlet not nil
     if nil == mMergerDisplayBackComponenValuesCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackComponenValuesCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayBackComponentNamesCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayBackComponentNamesCheckbox' outlet not nil
     if nil == mMergerDisplayBackComponentNamesCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackComponentNamesCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayBackLayoutTextsCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayBackLayoutTextsCheckbox' outlet not nil
     if nil == mMergerDisplayBackLayoutTextsCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackLayoutTextsCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayBackLayoutTracksCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayBackLayoutTracksCheckbox' outlet not nil
     if nil == mMergerDisplayBackLayoutTracksCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackLayoutTracksCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayBackLegendTextsCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayBackLegendTextsCheckbox' outlet not nil
     if nil == mMergerDisplayBackLegendTextsCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackLegendTextsCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayBackPackagesCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayBackPackagesCheckbox' outlet not nil
     if nil == mMergerDisplayBackPackagesCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackPackagesCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayBackPadsCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayBackPadsCheckbox' outlet not nil
     if nil == mMergerDisplayBackPadsCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackPadsCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayBoardLimitsCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayBoardLimitsCheckbox' outlet not nil
     if nil == mMergerDisplayBoardLimitsCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBoardLimitsCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayFrontComponenValuesCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayFrontComponenValuesCheckbox' outlet not nil
     if nil == mMergerDisplayFrontComponenValuesCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontComponenValuesCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayFrontComponentNamesCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayFrontComponentNamesCheckbox' outlet not nil
     if nil == mMergerDisplayFrontComponentNamesCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontComponentNamesCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayFrontLayoutTextsCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayFrontLayoutTextsCheckbox' outlet not nil
     if nil == mMergerDisplayFrontLayoutTextsCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontLayoutTextsCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayFrontLayoutTracksCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayFrontLayoutTracksCheckbox' outlet not nil
     if nil == mMergerDisplayFrontLayoutTracksCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontLayoutTracksCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayFrontLegendTextsCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayFrontLegendTextsCheckbox' outlet not nil
     if nil == mMergerDisplayFrontLegendTextsCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontLegendTextsCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayFrontPackagesCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayFrontPackagesCheckbox' outlet not nil
     if nil == mMergerDisplayFrontPackagesCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontPackagesCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayFrontPadsCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayFrontPadsCheckbox' outlet not nil
     if nil == mMergerDisplayFrontPadsCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontPadsCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayHolesCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayHolesCheckbox' outlet not nil
     if nil == mMergerDisplayHolesCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayHolesCheckbox' outlet is nil")
     }
-  //--- Check mMergerDisplayViasCheckbox' outlet not nil
+  //--------------------------- Check mMergerDisplayViasCheckbox' outlet not nil
     if nil == mMergerDisplayViasCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayViasCheckbox' outlet is nil")
     }
-  //--- Check mMergerHorizontalFlipCheckbox' outlet not nil
+  //--------------------------- Check mMergerHorizontalFlipCheckbox' outlet not nil
     if nil == mMergerHorizontalFlipCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerHorizontalFlipCheckbox' outlet is nil")
     }
-  //--- Check mMergerVerticalFlipCheckbox' outlet not nil
+  //--------------------------- Check mMergerVerticalFlipCheckbox' outlet not nil
     if nil == mMergerVerticalFlipCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerVerticalFlipCheckbox' outlet is nil")
     }
-  //--- Check mPackageBackgroundColorColorWell' outlet not nil
+  //--------------------------- Check mPackageBackgroundColorColorWell' outlet not nil
     if nil == mPackageBackgroundColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPackageBackgroundColorColorWell' outlet is nil")
     }
-  //--- Check mPackageColorColorWell' outlet not nil
+  //--------------------------- Check mPackageColorColorWell' outlet not nil
     if nil == mPackageColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPackageColorColorWell' outlet is nil")
     }
-  //--- Check mPackageColorForDeviceColorWell' outlet not nil
+  //--------------------------- Check mPackageColorForDeviceColorWell' outlet not nil
     if nil == mPackageColorForDeviceColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPackageColorForDeviceColorWell' outlet is nil")
     }
-  //--- Check mPackageDimensionColorWell' outlet not nil
+  //--------------------------- Check mPackageDimensionColorWell' outlet not nil
     if nil == mPackageDimensionColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPackageDimensionColorWell' outlet is nil")
     }
-  //--- Check mPackageDrawingWidthMultipliedByTenForDevicePopupButton' outlet not nil
+  //--------------------------- Check mPackageDrawingWidthMultipliedByTenForDevicePopupButton' outlet not nil
     if nil == mPackageDrawingWidthMultipliedByTenForDevicePopupButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPackageDrawingWidthMultipliedByTenForDevicePopupButton' outlet is nil")
     }
-  //--- Check mPackageDrawingWidthMultipliedByTenPopupButton' outlet not nil
+  //--------------------------- Check mPackageDrawingWidthMultipliedByTenPopupButton' outlet not nil
     if nil == mPackageDrawingWidthMultipliedByTenPopupButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPackageDrawingWidthMultipliedByTenPopupButton' outlet is nil")
     }
-  //--- Check mPackageGuideColorWell' outlet not nil
+  //--------------------------- Check mPackageGuideColorWell' outlet not nil
     if nil == mPackageGuideColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPackageGuideColorWell' outlet is nil")
     }
-  //--- Check mPackageNameFontForDeviceFontButton' outlet not nil
+  //--------------------------- Check mPackageNameFontForDeviceFontButton' outlet not nil
     if nil == mPackageNameFontForDeviceFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPackageNameFontForDeviceFontButton' outlet is nil")
     }
-  //--- Check mPadFontButton' outlet not nil
+  //--------------------------- Check mPadFontButton' outlet not nil
     if nil == mPadFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPadFontButton' outlet is nil")
     }
-  //--- Check mPadNumberColorColorWell' outlet not nil
+  //--------------------------- Check mPadNumberColorColorWell' outlet not nil
     if nil == mPadNumberColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPadNumberColorColorWell' outlet is nil")
     }
-  //--- Check mPadNumberColorForDeviceColorWell' outlet not nil
+  //--------------------------- Check mPadNumberColorForDeviceColorWell' outlet not nil
     if nil == mPadNumberColorForDeviceColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPadNumberColorForDeviceColorWell' outlet is nil")
     }
-  //--- Check mPadNumberFontForDeviceFontButton' outlet not nil
+  //--------------------------- Check mPadNumberFontForDeviceFontButton' outlet not nil
     if nil == mPadNumberFontForDeviceFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPadNumberFontForDeviceFontButton' outlet is nil")
     }
-  //--- Check mPadZoneColorColorWell' outlet not nil
+  //--------------------------- Check mPadZoneColorColorWell' outlet not nil
     if nil == mPadZoneColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPadZoneColorColorWell' outlet is nil")
     }
-  //--- Check mPinNameColorForSchematicColorWell' outlet not nil
+  //--------------------------- Check mPinNameColorForSchematicColorWell' outlet not nil
     if nil == mPinNameColorForSchematicColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPinNameColorForSchematicColorWell' outlet is nil")
     }
-  //--- Check mPinNameFontButton' outlet not nil
+  //--------------------------- Check mPinNameFontButton' outlet not nil
     if nil == mPinNameFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPinNameFontButton' outlet is nil")
     }
-  //--- Check mPinNameFontForDeviceFontButton' outlet not nil
+  //--------------------------- Check mPinNameFontForDeviceFontButton' outlet not nil
     if nil == mPinNameFontForDeviceFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPinNameFontForDeviceFontButton' outlet is nil")
     }
-  //--- Check mPinNameFontForSchematicFontButton' outlet not nil
+  //--------------------------- Check mPinNameFontForSchematicFontButton' outlet not nil
     if nil == mPinNameFontForSchematicFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPinNameFontForSchematicFontButton' outlet is nil")
     }
-  //--- Check mPinNumberColorForSchematicColorWell' outlet not nil
+  //--------------------------- Check mPinNumberColorForSchematicColorWell' outlet not nil
     if nil == mPinNumberColorForSchematicColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPinNumberColorForSchematicColorWell' outlet is nil")
     }
-  //--- Check mPinNumberFontForSchematicFontButton' outlet not nil
+  //--------------------------- Check mPinNumberFontForSchematicFontButton' outlet not nil
     if nil == mPinNumberFontForSchematicFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPinNumberFontForSchematicFontButton' outlet is nil")
     }
-  //--- Check mPrefsWindow' outlet not nil
+  //--------------------------- Check mPrefsWindow' outlet not nil
     if nil == mPrefsWindow {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mPrefsWindow' outlet is nil")
     }
-  //--- Check mProgressIndicatorInLibraryUpdateWindow' outlet not nil
+  //--------------------------- Check mProgressIndicatorInLibraryUpdateWindow' outlet not nil
     if nil == mProgressIndicatorInLibraryUpdateWindow {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mProgressIndicatorInLibraryUpdateWindow' outlet is nil")
     }
-  //--- Check mRemoveLibraryEntryButton' outlet not nil
+  //--------------------------- Check mRemoveLibraryEntryButton' outlet not nil
     if nil == mRemoveLibraryEntryButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mRemoveLibraryEntryButton' outlet is nil")
     }
-  //--- Check mRevealInFinderLibraryInUserApplicationSupportButton' outlet not nil
+  //--------------------------- Check mRevealInFinderLibraryInUserApplicationSupportButton' outlet not nil
     if nil == mRevealInFinderLibraryInUserApplicationSupportButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mRevealInFinderLibraryInUserApplicationSupportButton' outlet is nil")
     }
-  //--- Check mSampleStringField' outlet not nil
+  //--------------------------- Check mSampleStringField' outlet not nil
     if nil == mSampleStringField {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSampleStringField' outlet is nil")
     }
-  //--- Check mSampleStringSizeField' outlet not nil
+  //--------------------------- Check mSampleStringSizeField' outlet not nil
     if nil == mSampleStringSizeField {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSampleStringSizeField' outlet is nil")
     }
-  //--- Check mSelectionHiliteColorColorWell' outlet not nil
+  //--------------------------- Check mSelectionHiliteColorColorWell' outlet not nil
     if nil == mSelectionHiliteColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSelectionHiliteColorColorWell' outlet is nil")
     }
-  //--- Check mShowGerberDrawingFlowCheckbox' outlet not nil
+  //--------------------------- Check mShowGerberDrawingFlowCheckbox' outlet not nil
     if nil == mShowGerberDrawingFlowCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mShowGerberDrawingFlowCheckbox' outlet is nil")
     }
-  //--- Check mShowGerberDrawingIndexesCheckbox' outlet not nil
+  //--------------------------- Check mShowGerberDrawingIndexesCheckbox' outlet not nil
     if nil == mShowGerberDrawingIndexesCheckbox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mShowGerberDrawingIndexesCheckbox' outlet is nil")
     }
-  //--- Check mSuccessMessageColorColorWell' outlet not nil
+  //--------------------------- Check mSuccessMessageColorColorWell' outlet not nil
     if nil == mSuccessMessageColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSuccessMessageColorColorWell' outlet is nil")
     }
-  //--- Check mSymbolAndPackageBackgroundColorForDeviceColorWell' outlet not nil
+  //--------------------------- Check mSymbolAndPackageBackgroundColorForDeviceColorWell' outlet not nil
     if nil == mSymbolAndPackageBackgroundColorForDeviceColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolAndPackageBackgroundColorForDeviceColorWell' outlet is nil")
     }
-  //--- Check mSymbolAndPackageGridDotColorForDeviceColorWell' outlet not nil
+  //--------------------------- Check mSymbolAndPackageGridDotColorForDeviceColorWell' outlet not nil
     if nil == mSymbolAndPackageGridDotColorForDeviceColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolAndPackageGridDotColorForDeviceColorWell' outlet is nil")
     }
-  //--- Check mSymbolAndPackageLineDotColorForDeviceColorWell' outlet not nil
+  //--------------------------- Check mSymbolAndPackageLineDotColorForDeviceColorWell' outlet not nil
     if nil == mSymbolAndPackageLineDotColorForDeviceColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolAndPackageLineDotColorForDeviceColorWell' outlet is nil")
     }
-  //--- Check mSymbolBackgroundColorColorWell' outlet not nil
+  //--------------------------- Check mSymbolBackgroundColorColorWell' outlet not nil
     if nil == mSymbolBackgroundColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolBackgroundColorColorWell' outlet is nil")
     }
-  //--- Check mSymbolColorColorWell' outlet not nil
+  //--------------------------- Check mSymbolColorColorWell' outlet not nil
     if nil == mSymbolColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolColorColorWell' outlet is nil")
     }
-  //--- Check mSymbolColorForDeviceColorWell' outlet not nil
+  //--------------------------- Check mSymbolColorForDeviceColorWell' outlet not nil
     if nil == mSymbolColorForDeviceColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolColorForDeviceColorWell' outlet is nil")
     }
-  //--- Check mSymbolColorForSchematicColorWell' outlet not nil
+  //--------------------------- Check mSymbolColorForSchematicColorWell' outlet not nil
     if nil == mSymbolColorForSchematicColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolColorForSchematicColorWell' outlet is nil")
     }
-  //--- Check mSymbolDrawingWidthMultipliedByTenForDevicePopupButton' outlet not nil
+  //--------------------------- Check mSymbolDrawingWidthMultipliedByTenForDevicePopupButton' outlet not nil
     if nil == mSymbolDrawingWidthMultipliedByTenForDevicePopupButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolDrawingWidthMultipliedByTenForDevicePopupButton' outlet is nil")
     }
-  //--- Check mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton' outlet not nil
+  //--------------------------- Check mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton' outlet not nil
     if nil == mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton' outlet is nil")
     }
-  //--- Check mSymbolDrawingWidthMultipliedByTenPopupButton' outlet not nil
+  //--------------------------- Check mSymbolDrawingWidthMultipliedByTenPopupButton' outlet not nil
     if nil == mSymbolDrawingWidthMultipliedByTenPopupButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolDrawingWidthMultipliedByTenPopupButton' outlet is nil")
     }
-  //--- Check mSymbolNameFontForDeviceFontButton' outlet not nil
+  //--------------------------- Check mSymbolNameFontForDeviceFontButton' outlet not nil
     if nil == mSymbolNameFontForDeviceFontButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSymbolNameFontForDeviceFontButton' outlet is nil")
     }
-  //--- Check mTableViewInLibraryUpdateWindow' outlet not nil
+  //--------------------------- Check mTableViewInLibraryUpdateWindow' outlet not nil
     if nil == mTableViewInLibraryUpdateWindow {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mTableViewInLibraryUpdateWindow' outlet is nil")
     }
-  //--- Check mToolbar' outlet not nil
+  //--------------------------- Check mToolbar' outlet not nil
     if nil == mToolbar {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mToolbar' outlet is nil")
     }
-  //--- Check mTopSidePadColorForDeviceColorWell' outlet not nil
+  //--------------------------- Check mTopSidePadColorForDeviceColorWell' outlet not nil
     if nil == mTopSidePadColorForDeviceColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mTopSidePadColorForDeviceColorWell' outlet is nil")
     }
-  //--- Check mTopSidePadColorWell' outlet not nil
+  //--------------------------- Check mTopSidePadColorWell' outlet not nil
     if nil == mTopSidePadColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mTopSidePadColorWell' outlet is nil")
     }
-  //--- Check mUnplacedComponentsColorForSchematicColorWell' outlet not nil
+  //--------------------------- Check mUnplacedComponentsColorForSchematicColorWell' outlet not nil
     if nil == mUnplacedComponentsColorForSchematicColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mUnplacedComponentsColorForSchematicColorWell' outlet is nil")
     }
-  //--- Check mUpDateButtonInLibraryUpdateWindow' outlet not nil
+  //--------------------------- Check mUpDateButtonInLibraryUpdateWindow' outlet not nil
     if nil == mUpDateButtonInLibraryUpdateWindow {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mUpDateButtonInLibraryUpdateWindow' outlet is nil")
     }
-  //--- Check mUpDateLibraryMenuItemInCanariMenu' outlet not nil
+  //--------------------------- Check mUpDateLibraryMenuItemInCanariMenu' outlet not nil
     if nil == mUpDateLibraryMenuItemInCanariMenu {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mUpDateLibraryMenuItemInCanariMenu' outlet is nil")
     }
-  //--- Check mUpdateSystemLibraryBox' outlet not nil
+  //--------------------------- Check mUpdateSystemLibraryBox' outlet not nil
     if nil == mUpdateSystemLibraryBox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mUpdateSystemLibraryBox' outlet is nil")
     }
-  //--- Check mUseLibraryInUserApplicationSupportPathCheckBox' outlet not nil
+  //--------------------------- Check mUseLibraryInUserApplicationSupportPathCheckBox' outlet not nil
     if nil == mUseLibraryInUserApplicationSupportPathCheckBox {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mUseLibraryInUserApplicationSupportPathCheckBox' outlet is nil")
     }
-  //--- Check mWarningMessageColorColorWell' outlet not nil
+  //--------------------------- Check mWarningMessageColorColorWell' outlet not nil
     if nil == mWarningMessageColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mWarningMessageColorColorWell' outlet is nil")
     }
-  //--- Check selectionHilitePopupButton' outlet not nil
+  //--------------------------- Check selectionHilitePopupButton' outlet not nil
     if nil == selectionHilitePopupButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'selectionHilitePopupButton' outlet is nil")
     }
-  //--- Install compute functions for transients
+  //--------------------------- Install compute functions for transients
     self.mValueRevealInFinder_symbols_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
@@ -2834,7 +2835,7 @@ var g_Preferences : Preferences? = nil
         return .empty
       }
     }
-  //--- Install property observers for transients
+  //--------------------------- Install property observers for transients
     self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_symbols_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_symbols_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_symbols_property)
@@ -2850,7 +2851,7 @@ var g_Preferences : Preferences? = nil
     self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_artworks_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
-  //--- Install bindings
+  //--------------------------- Install bindings
     mMergerHorizontalFlipCheckbox?.bind_value (self.mergerHorizontalFlip_property, file: #file, line: #line)
     mMergerVerticalFlipCheckbox?.bind_value (self.mergerVerticalFlip_property, file: #file, line: #line)
     mMergerDisplayHolesCheckbox?.bind_value (self.mergerDisplayHoles_property, file: #file, line: #line)
@@ -2952,14 +2953,17 @@ var g_Preferences : Preferences? = nil
     mEditionTransparencyTextField?.bind_value (self.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (self.usesUserLibrary_property, file: #file, line: #line)
     mCheckForSystemLibraryAtStartUpSwitch?.bind_value (self.checkForSystemLibraryAtStartUp_property, file: #file, line: #line)
-  //--- Install multiple bindings
-    self.mRemoveLibraryEntryButton?.bind_enabled (
-      [self.additionnalLibraryArrayController.selectedArray_property.count_property],
-      computeFunction:{
-        return (self.additionnalLibraryArrayController.selectedArray_property.count_property.prop > EBSelection.single (0))
-      },
-      file: #file, line: #line
-    )
+  //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.additionnalLibraryArrayController.selectedArray_property.count_property.prop > EBSelection.single (0))
+        },
+        outlet:self.mRemoveLibraryEntryButton
+      )
+      self.additionnalLibraryArrayController.selectedArray_property.count_property.addEBObserver (controller)
+      mController_mRemoveLibraryEntryButton_enabled = controller
+    }
   //--------------------------- Array controller
     self.additionnalLibraryArrayController.bind_modelAndView (
       model: self.additionnalLibraryArray_property,
@@ -2976,10 +2980,16 @@ var g_Preferences : Preferences? = nil
     self.mRemoveLibraryEntryButton?.action = #selector (ArrayController_Preferences_additionnalLibraryArrayController.remove (_:))
     self.mCheckLibraryAction?.target = self
     self.mCheckLibraryAction?.action = #selector (Preferences.checkLibraryAction (_:))
-  //--- Extern functions
+  //--------------------------- Extern functions
     self.setupForLibrary ()
   }
-  
+
+  //····················································································································
+  //    Multiple bindings controller
+  //····················································································································
+
+  fileprivate var mController_mRemoveLibraryEntryButton_enabled : MultipleBindingController_enabled?
+
   //····················································································································
   //    applicationWillTerminateAction
   //····················································································································

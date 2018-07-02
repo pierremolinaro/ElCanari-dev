@@ -93,7 +93,6 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     super.unregister ()
     mOutlet.target = nil
     mOutlet.action = nil
-    mOutlet.removeFromEnabledFromValueDictionary ()
   }
 
   //····················································································································
@@ -102,15 +101,14 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     switch combine (mDimension.prop, unit:mUnit.prop) {
     case .empty :
       mOutlet.stringValue = "—"
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .multiple :
       mOutlet.stringValue = "—"
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .single (let propertyValue) :
       mOutlet.doubleValue = propertyValue
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································

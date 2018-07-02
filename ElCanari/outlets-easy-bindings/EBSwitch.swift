@@ -80,7 +80,6 @@ import Cocoa
   
   override func unregister () {
     super.unregister ()
-    mOutlet.removeFromEnabledFromValueDictionary ()
   }
 
   //···················································································································· 
@@ -89,15 +88,14 @@ import Cocoa
     switch mObject.prop {
     case .empty :
       mOutlet.state = NSOffState
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .multiple :
       mOutlet.state = NSMixedState
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .single (let v) :
       mOutlet.state = v ? NSOnState : NSOffState
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
     }
-    mOutlet.updateEnabledState ()
   }
 
   //···················································································································· 

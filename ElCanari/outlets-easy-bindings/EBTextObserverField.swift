@@ -80,27 +80,19 @@ final class Controller_EBTextObserverField_value : EBSimpleController {
   }
 
   //····················································································································
-  
-  override func unregister () {
-    super.unregister ()
-    mOutlet.removeFromEnabledFromValueDictionary ()
-  }
-
-  //····················································································································
 
   override func sendUpdateEvent () {
     switch mObject.prop {
     case .empty :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
       mOutlet.stringValue = "—"
     case .single (let v):
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
       mOutlet.stringValue = v
     case .multiple :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
       mOutlet.stringValue = "—"
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································

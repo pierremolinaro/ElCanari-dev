@@ -80,7 +80,6 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
     super.unregister ()
     mTableView.delegate = nil
     mTableView.dataSource = nil
-    mTableView.removeFromEnabledFromValueDictionary ()
   }
 
 

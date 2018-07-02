@@ -91,7 +91,6 @@ import Cocoa
     super.unregister ()
     mOutlet.target = nil
     mOutlet.action = nil
-    mOutlet.removeFromEnabledFromValueDictionary ()
   }
 
   //····················································································································
@@ -99,16 +98,15 @@ import Cocoa
   override func sendUpdateEvent () {
     switch mObject.prop {
     case .empty :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
       mOutlet.stringValue = "—"
     case .single (let v) :
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
       mOutlet.doubleValue = v
     case .multiple :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
       mOutlet.stringValue = "—"
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································

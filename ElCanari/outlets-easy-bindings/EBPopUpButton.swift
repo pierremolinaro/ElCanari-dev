@@ -71,28 +71,20 @@ final class Controller_EBPopUpButton_selectedTag : EBSimpleController {
   }
 
   //····················································································································
-  
-  override func unregister () {
-    super.unregister ()
-    mOutlet.removeFromEnabledFromValueDictionary ()
-  }
-
-  //····················································································································
 
   override func sendUpdateEvent () {
     switch mObject.prop {
     case .empty :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .single (let v) :
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
       let result = mOutlet.selectItem (withTag: v)
       if !result {
         presentErrorWindow (file: #file, line:#line, errorMessage:"no item with tag: " + String (v))
       }
     case .multiple :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································

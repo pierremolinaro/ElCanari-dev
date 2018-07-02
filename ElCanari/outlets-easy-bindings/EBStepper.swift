@@ -75,27 +75,19 @@ final class Controller_EBStepper_value : EBSimpleController {
   }
 
   //····················································································································
-  
-  override func unregister () {
-    super.unregister ()
-    mOutlet.removeFromEnabledFromValueDictionary ()
-  }
-
-  //····················································································································
 
   override func sendUpdateEvent () {
     switch mObject.prop {
     case .empty :
       mOutlet.stringValue = "—"
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .multiple :
       mOutlet.stringValue = "—"
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .single (let propertyValue) :
       mOutlet.doubleValue = Double (propertyValue)
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································

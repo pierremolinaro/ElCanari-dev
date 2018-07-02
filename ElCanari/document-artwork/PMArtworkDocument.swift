@@ -540,7 +540,7 @@ import Cocoa
       line: #line
     )
   //--------------------------- Custom object controllers
-  //--- Transient compute functions
+  //--------------------------- Transient compute functions
     self.mGeneratedFileCountString_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDataController.sortedArray_property.count_property_selection.kind ()
@@ -603,13 +603,13 @@ import Cocoa
         return .empty
       }
     }
-  //--- Install property observers for transients
+  //--------------------------- Install property observers for transients
     self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusImage_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusMessage_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusMessage_property)
-  //--- Install regular bindings
+  //--------------------------- Install regular bindings
     mSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
     mMinPP_TP_TT_TW_inEBUnitPopUp?.bind_selectedTag (self.rootObject.minPP_TP_TT_TW_displayUnit_property, file: #file, line: #line)
     mMinPP_TP_TT_TW_displayUnit_TextField?.bind_dimensionAndUnit (self.rootObject.minPP_TP_TT_TW_inEBUnit_property, self.rootObject.minPP_TP_TT_TW_displayUnit_property, file: #file, line: #line)
@@ -652,21 +652,27 @@ import Cocoa
     mVersionFieldInToolbar?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
     mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
-  //--- Install multiple bindings
-    mRemoveGenerationFileButton?.bind_enabled (
-      [self.mDataController.selectedArray_property.count_property],
-      computeFunction:{
-        return (self.mDataController.selectedArray_property.count_property.prop > EBSelection.single (0))
-      },
-      file: #file, line: #line
-    )
-    mPadHoleDefinitionView?.bind_hidden (
-      [self.mDataSelection.drawPadHolesInPDF_property],
-      computeFunction:{
-        return !self.mDataSelection.drawPadHolesInPDF_property.prop
-      },
-      file: #file, line: #line
-    )
+  //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.mDataController.selectedArray_property.count_property.prop > EBSelection.single (0))
+        },
+        outlet:self.mRemoveGenerationFileButton
+      )
+      self.mDataController.selectedArray_property.count_property.addEBObserver (controller)
+      mController_mRemoveGenerationFileButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return !self.mDataSelection.drawPadHolesInPDF_property.prop
+        },
+        outlet:self.mPadHoleDefinitionView
+      )
+      self.mDataSelection.drawPadHolesInPDF_property.addEBObserver (controller)
+      mController_mPadHoleDefinitionView_hidden = controller
+    }
   //--------------------------- Set targets / actions
     mAddGenerationFileButton?.target = mDataController
     mAddGenerationFileButton?.action = #selector (ArrayController_PMArtworkDocument_mDataController.add (_:))
@@ -684,7 +690,7 @@ import Cocoa
   //····················································································································
 
   override func removeUserInterface () {
-  //--- Unbind regular bindings
+  //--------------------------- Unbind regular bindings
     mSegmentedControl?.unbind_selectedPage ()
     mMinPP_TP_TT_TW_inEBUnitPopUp?.unbind_selectedTag ()
     mMinPP_TP_TT_TW_displayUnit_TextField?.unbind_dimensionAndUnit ()
@@ -727,10 +733,12 @@ import Cocoa
     mVersionFieldInToolbar?.unbind_versionShouldChange ()
     mStatusImageViewInToolbar?.unbind_image ()
     mStatusImageViewInToolbar?.unbind_tooltip ()
-  //--- Unbind multiple bindings
-    mRemoveGenerationFileButton?.unbind_enabled ()
-    mPadHoleDefinitionView?.unbind_hidden ()
-  //--- Uninstall compute functions for transients
+  //--------------------------- Unbind multiple bindings
+    self.mDataController.selectedArray_property.count_property.removeEBObserver (mController_mRemoveGenerationFileButton_enabled!)
+    mController_mRemoveGenerationFileButton_enabled = nil
+    self.mDataSelection.drawPadHolesInPDF_property.removeEBObserver (mController_mPadHoleDefinitionView_hidden!)
+    mController_mPadHoleDefinitionView_hidden = nil
+  //--------------------------- Uninstall compute functions for transients
     self.mGeneratedFileCountString_property.readModelFunction = nil
     self.mStatusImage_property.readModelFunction = nil
     self.mStatusMessage_property.readModelFunction = nil
@@ -738,7 +746,7 @@ import Cocoa
     mDataController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers
     mDataSelection.unbind_selection ()
-  //--- Uninstall property observers for transients
+  //--------------------------- Uninstall property observers for transients
     self.mDataController.sortedArray_property.count_property.removeEBObserver (self.mGeneratedFileCountString_property)
     self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusImage_property)
     self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusImage_property)
@@ -748,7 +756,59 @@ import Cocoa
     mAddGenerationFileButton?.target = nil
     mRemoveGenerationFileButton?.target = nil
     resetVersionAndSignatureButton?.target = nil
+  //--------------------------- Clean up outlets
+    self.mAddGenerationFileButton?.ebCleanUp ()
+    self.mCommentTextView?.ebCleanUp ()
+    self.mDataTableView?.ebCleanUp ()
+    self.mDimensionForPadHoleInPDFTextField?.ebCleanUp ()
+    self.mDrawBoardLimitsSwitch?.ebCleanUp ()
+    self.mDrawComponentNamesBottomSideSwitch?.ebCleanUp ()
+    self.mDrawComponentNamesTopSideSwitch?.ebCleanUp ()
+    self.mDrawComponentValuesBottomSideSwitch?.ebCleanUp ()
+    self.mDrawComponentValuesTopSideSwitch?.ebCleanUp ()
+    self.mDrawPackageLegendBottomSideSwitch?.ebCleanUp ()
+    self.mDrawPackageLegendTopSideSwitch?.ebCleanUp ()
+    self.mDrawPadHolesInPDFSwitch?.ebCleanUp ()
+    self.mDrawPadsBottomSideSwitch?.ebCleanUp ()
+    self.mDrawPadsTopSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLayoutBottomSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLayoutTopSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLegendBottomSideSwitch?.ebCleanUp ()
+    self.mDrawTextsLegendTopSideSwitch?.ebCleanUp ()
+    self.mDrawTracksBottomSidSwitche?.ebCleanUp ()
+    self.mDrawTracksTopSideSwitch?.ebCleanUp ()
+    self.mDrawViasSwitch?.ebCleanUp ()
+    self.mDrillDataFileExtensionTextField?.ebCleanUp ()
+    self.mDrillDataFormatTabView?.ebCleanUp ()
+    self.mDrillListFileExtensionTextField?.ebCleanUp ()
+    self.mDrillToolListFileExtensionTextField?.ebCleanUp ()
+    self.mExtensionTextField?.ebCleanUp ()
+    self.mGeneratedFileCountTextField?.ebCleanUp ()
+    self.mHorizontalMirrorSwitch?.ebCleanUp ()
+    self.mMeasurementUnitForPadHoleInPDFPopUp?.ebCleanUp ()
+    self.mMinPP_TP_TT_TW_displayUnit_TextField?.ebCleanUp ()
+    self.mMinPP_TP_TT_TW_inEBUnitPopUp?.ebCleanUp ()
+    self.mOARUnitPopUp?.ebCleanUp ()
+    self.mOARValueTextField?.ebCleanUp ()
+    self.mOtherSignatureTextField?.ebCleanUp ()
+    self.mPHDUnitPopUp?.ebCleanUp ()
+    self.mPHDValueTextField?.ebCleanUp ()
+    self.mPadHoleDefinitionView?.ebCleanUp ()
+    self.mRemoveGenerationFileButton?.ebCleanUp ()
+    self.mSegmentedControl?.ebCleanUp ()
+    self.mSignatureTextField?.ebCleanUp ()
+    self.mStatusImageViewInToolbar?.ebCleanUp ()
+    self.mVersionField?.ebCleanUp ()
+    self.mVersionFieldInToolbar?.ebCleanUp ()
+    self.resetVersionAndSignatureButton?.ebCleanUp ()
   }
+
+  //····················································································································
+  //    Multiple bindings controller
+  //····················································································································
+
+  fileprivate var mController_mRemoveGenerationFileButton_enabled : MultipleBindingController_enabled?
+  fileprivate var mController_mPadHoleDefinitionView_hidden : MultipleBindingController_hidden?
 
   //····················································································································
 

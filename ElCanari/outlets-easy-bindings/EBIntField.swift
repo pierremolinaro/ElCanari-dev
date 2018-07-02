@@ -146,7 +146,6 @@ final class Controller_EBIntField_value : EBSimpleController {
     super.unregister ()
     mOutlet.target = nil
     mOutlet.action = nil
-    mOutlet.removeFromEnabledFromValueDictionary ()
   }
 
   //····················································································································
@@ -154,16 +153,15 @@ final class Controller_EBIntField_value : EBSimpleController {
   override func sendUpdateEvent () {
     switch mObject.prop {
     case .empty :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
       mOutlet.stringValue = "—"
     case .single (let v) :
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
       mOutlet.integerValue = v
     case .multiple :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
       mOutlet.stringValue = "—"
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································

@@ -86,27 +86,19 @@ import Cocoa
   }
 
   //····················································································································
-  
-  override func unregister () {
-    super.unregister ()
-    mOutlet.removeFromEnabledFromValueDictionary ()
-  }
-
-  //····················································································································
 
   override func sendUpdateEvent () {
     switch mObject.prop {
     case .empty :
       mOutlet.image = nil
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .multiple :
       mOutlet.image = nil
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .single (let propertyValue) :
       mOutlet.image = propertyValue
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································
@@ -131,27 +123,19 @@ import Cocoa
   }
 
   //····················································································································
-  
-  override func unregister () {
-    super.unregister ()
-    mOutlet.removeFromEnabledFromValueDictionary ()
-  }
-
-  //····················································································································
 
   override func sendUpdateEvent () {
     switch mObject.prop {
     case .empty :
       mOutlet.toolTip = nil
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .multiple :
       mOutlet.toolTip = nil
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .single (let propertyValue) :
       mOutlet.toolTip = propertyValue
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································

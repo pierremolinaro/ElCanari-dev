@@ -906,3 +906,32 @@ class GenericController_MergerHoleArray : EBOutletEvent {
 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   GenericController
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class GenericController_w_Int : EBOutletEvent {
+
+  private let mActionCallBack : (EBSelection <Int>) -> Void
+  private let mGetPropertyValueCallBack : () -> EBSelection <Int>
+
+  //····················································································································
+
+  init (getPropertyValueCallBack inGetPropertyValueCallBack : @escaping () -> EBSelection <Int>,
+        modelDidChange inActionCallBack : @escaping (EBSelection <Int>) -> Void) {
+    mGetPropertyValueCallBack = inGetPropertyValueCallBack
+    mActionCallBack = inActionCallBack
+    super.init ()
+
+  }
+
+  //····················································································································
+
+   override func sendUpdateEvent () {
+    mActionCallBack (mGetPropertyValueCallBack ())
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

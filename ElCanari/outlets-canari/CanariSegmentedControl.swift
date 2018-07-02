@@ -137,14 +137,6 @@ final class Controller_CanariSegmentedControl_selectedPage : EBSimpleController 
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)
-//    mObject.addEBObserver (self)
-  }
-
-  //····················································································································
-  
-  override func unregister () {
-    super.unregister ()
-    mOutlet.removeFromEnabledFromValueDictionary ()
   }
 
   //····················································································································
@@ -152,14 +144,13 @@ final class Controller_CanariSegmentedControl_selectedPage : EBSimpleController 
   override func sendUpdateEvent () {
     switch mObject.prop {
     case .empty :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     case .single (let v) :
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
       mOutlet.selectedSegment = v
     case .multiple :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································

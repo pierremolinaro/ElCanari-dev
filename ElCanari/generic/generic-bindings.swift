@@ -5,100 +5,57 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Hidden binding
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gHiddenBindingControllerDictionary = [NSView : Controller_NSView_hidden] ()
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSView {
+extension NSObject {
 
   //····················································································································
 
-  func bind_hidden (_ object:[EBAbstractProperty], computeFunction: @escaping () -> EBSelection <Bool>, file:String, line:Int) {
-    let controller = Controller_NSView_hidden (
-      objectArray:object,
-      outlet:self,
-      computeFunction:computeFunction,
-      file:file,
-      line:line
-    )
-    gHiddenBindingControllerDictionary [self] = controller
+  func ebCleanUp () {
   }
 
   //····················································································································
 
-  func unbind_hidden () {
-    if let controller = gHiddenBindingControllerDictionary [self] {
-      controller.unregister ()
-      gHiddenBindingControllerDictionary [self] = nil
-    }
-  }
-
-  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_NSView_hidden
+//   MultipleBindingController_hidden
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_NSView_hidden) class Controller_NSView_hidden : EBOutletEvent {
+class MultipleBindingController_hidden : EBOutletEvent {
 
-  var mObjectArray : [EBAbstractProperty]
-  var mOutlet : NSView
-  var mComputeFunction : Optional < () -> EBSelection <Bool> >
-
-  //····················································································································
-
-  init (objectArray : [EBAbstractProperty],
-        outlet : NSView,
-        computeFunction:@escaping () -> EBSelection <Bool>,
-        file : String,
-        line : Int) {
-    mObjectArray = objectArray
-    mOutlet = outlet
-    mComputeFunction = computeFunction
-    super.init ()
-    for object in mObjectArray {
-      object.addEBObserver (self)
-    }
-  }
-
-  //····················································································································
+  private let mGetPropertyValueCallBack : () -> EBSelection <Bool>
+  private let mOutlet : NSView?
   
-  func unregister () {
-    mComputeFunction = nil
-    for object in mObjectArray {
-      object.removeEBObserver (self)
+  //····················································································································
+
+  init (computeFunction inGetPropertyValueCallBack : @escaping () -> EBSelection <Bool>,
+        outlet inOutlet : NSView?) {
+    mGetPropertyValueCallBack = inGetPropertyValueCallBack
+    mOutlet = inOutlet
+    super.init ()
+  }
+
+  //····················································································································
+
+   override func sendUpdateEvent () {
+    let model = mGetPropertyValueCallBack ()
+    switch model {
+    case .single (let b) :
+      mOutlet?.isHidden = b
+    default :
+      mOutlet?.isHidden = false
     }
   }
 
   //····················································································································
 
-  override func sendUpdateEvent () {
-    let result : EBSelection <Bool>
-    if let computeFunction = mComputeFunction {
-      result = computeFunction ()
-    }else{
-      result = .empty
-    }
-    switch result {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      mOutlet.isHidden = v
-    }
-  }
-
-  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Enabled binding
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gEnabledBindingControllerDictionary = [NSControl : Controller_NSControl_enabled] ()
+private var gEnabledFromValueBindingDictionary = [NSControl : Bool] ()
 private var gEnabledBindingValueDictionary = [NSControl : Bool] ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -107,118 +64,67 @@ extension NSControl {
 
   //····················································································································
 
-  func bind_enabled (_ object:[EBAbstractProperty], computeFunction: @escaping () -> EBSelection <Bool>, file:String, line:Int) {
-    let controller = Controller_NSControl_enabled (
-      objectArray:object,
-      outlet:self,
-      computeFunction:computeFunction,
-      file:file,
-      line:line
-    )
-    gEnabledBindingControllerDictionary [self] = controller
-  }
-
-  //····················································································································
-
-  func unbind_enabled () {
-    if let controller = gEnabledBindingControllerDictionary [self] {
-      controller.unregister ()
-      gEnabledBindingControllerDictionary [self] = nil
-      gEnabledBindingValueDictionary [self] = nil
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Enable control
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private var gEnabledFromValueBindingDictionary = [NSControl : Bool] ()
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSControl {
-
-  //····················································································································
-
-  func enableFromValue (_ inValue : Bool) {
+  func enableFromValueBinding (_ inValue : Bool) {
     gEnabledFromValueBindingDictionary [self] = inValue
-  }
-
-  //····················································································································
-
-  func removeFromEnabledFromValueDictionary () {
-    gEnabledFromValueBindingDictionary [self] = nil
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   updateEnabledState
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSControl {
-
-  func updateEnabledState () {
     self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
   }
+
+  //····················································································································
+
+  func enableFromEnableBinding (_ inValue : Bool) {
+    gEnabledBindingValueDictionary [self] = inValue
+    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
+  }
+
+  //····················································································································
+
+  override func ebCleanUp () {
+    super.ebCleanUp ()
+    gEnabledFromValueBindingDictionary [self] = nil
+    gEnabledBindingValueDictionary [self] = nil
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_NSControl_enabled
+//   MultipleBindingController_enabled
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_NSControl_enabled) class Controller_NSControl_enabled : EBOutletEvent {
+class MultipleBindingController_enabled : EBOutletEvent {
 
-  var mObjectArray : [EBAbstractProperty]
-  var mOutlet : NSControl
-  var mComputeFunction : Optional <() -> EBSelection <Bool> >
-
-  //····················································································································
-
-  init (objectArray : [EBAbstractProperty], outlet : NSControl, computeFunction: @escaping () -> EBSelection <Bool>, file : String, line : Int) {
-    mObjectArray = objectArray
-    mOutlet = outlet
-    mComputeFunction = computeFunction
-    super.init ()
-    for object in mObjectArray {
-      object.addEBObserver (self)
-    }
-  }
-
-  //····················································································································
+  private let mGetPropertyValueCallBack : () -> EBSelection <Bool>
+  private let mOutlet : NSControl?
   
-  func unregister () {
-    mComputeFunction = nil
-    for object in mObjectArray {
-      object.removeEBObserver (self)
+  //····················································································································
+
+  init (computeFunction inGetPropertyValueCallBack : @escaping () -> EBSelection <Bool>,
+        outlet inOutlet : NSControl?) {
+    mGetPropertyValueCallBack = inGetPropertyValueCallBack
+    mOutlet = inOutlet
+    super.init ()
+  }
+
+  //····················································································································
+
+   override func sendUpdateEvent () {
+    let model = mGetPropertyValueCallBack ()
+    switch model {
+    case .single (let b) :
+      mOutlet?.enableFromEnableBinding (b)
+    default :
+      mOutlet?.enableFromEnableBinding (false)
     }
   }
 
   //····················································································································
 
-  override func sendUpdateEvent () {
-    let result : EBSelection <Bool>
-    if let computeFunction = mComputeFunction {
-      result = computeFunction ()
-    }else{
-      result = .empty
-    }
-    switch result {
-    case .empty :
-      gEnabledBindingValueDictionary [mOutlet] = false
-    case .multiple :
-      gEnabledBindingValueDictionary [mOutlet] = false
-    case .single (let v) :
-      gEnabledBindingValueDictionary [mOutlet] = v
-    }
-    mOutlet.updateEnabledState ()
-  }
+//  deinit {
+//    if let outlet = mOutlet {
+//      gEnabledBindingValueDictionary [outlet] = nil
+//    }
+//  }
 
   //····················································································································
 

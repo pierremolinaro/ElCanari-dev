@@ -75,28 +75,20 @@ final class Controller_CanariSignatureField_signature : EBSimpleController {
   }
 
   //····················································································································
-  
-  override func unregister () {
-    super.unregister ()
-    mOutlet.removeFromEnabledFromValueDictionary ()
-  }
-
-  //····················································································································
 
   override func sendUpdateEvent () {
     switch mObject.prop {
     case .empty :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
       mOutlet.stringValue = "—"
     case .single (let v) :
-      mOutlet.enableFromValue (true)
+      mOutlet.enableFromValueBinding (true)
       let uv = UInt32 (v)
       mOutlet.stringValue = String (format: "%04X:%04X", arguments: [uv >> 16, uv & 0xFFFF])
     case .multiple :
-      mOutlet.enableFromValue (false)
+      mOutlet.enableFromValueBinding (false)
       mOutlet.stringValue = "—"
     }
-    mOutlet.updateEnabledState ()
   }
 
   //····················································································································
