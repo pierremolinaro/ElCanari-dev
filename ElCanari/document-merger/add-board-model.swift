@@ -160,10 +160,10 @@ extension PMMergerDocument {
     var errorArray = [String] ()
     boardModel.name = inName
     boardModel.artworkName = string (fromDict: boardArchiveDict, key: "ARTWORK", &errorArray)
-    boardModel.boardWidth = int (fromDict: boardArchiveDict, key: "BOARD-WIDTH", &errorArray)
-    boardModel.boardWidthUnit = int (fromDict: boardArchiveDict, key: "BOARD-WIDTH-UNIT", &errorArray)
-    boardModel.boardHeight = int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT", &errorArray)
-    boardModel.boardHeightUnit = int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT-UNIT", &errorArray)
+    boardModel.modelWidth = int (fromDict: boardArchiveDict, key: "BOARD-WIDTH", &errorArray)
+    boardModel.modelWidthUnit = int (fromDict: boardArchiveDict, key: "BOARD-WIDTH-UNIT", &errorArray)
+    boardModel.modelHeight = int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT", &errorArray)
+    boardModel.modelHeightUnit = int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT-UNIT", &errorArray)
     boardModel.boardLimitWidth = int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH", &errorArray)
     boardModel.boardLimitWidthUnit = int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH-UNIT", &errorArray)
   //--- Front tracks

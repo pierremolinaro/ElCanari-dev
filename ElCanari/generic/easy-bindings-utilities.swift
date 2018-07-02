@@ -168,9 +168,31 @@ class EBAbstractProperty : EBEvent {
  
   //····················································································································
 
+  final func addEBObserversFrom (_ inObserverSet : EBWeakEventSet) {
+    if inObserverSet.count > 0 {
+      for observer in inObserverSet {
+        mObservers.insert (observer)
+      }
+      updateObserverExplorer ()
+    }
+  }
+
+  //····················································································································
+
   final func removeEBObserver (_ inObserver : EBEvent) {
     mObservers.remove (inObserver)
     updateObserverExplorer ()
+  }
+
+  //····················································································································
+
+  final func removeEBObserversFrom (_ inObserverSet : EBWeakEventSet) {
+    if inObserverSet.count > 0 {
+      for observer in inObserverSet {
+        mObservers.remove (observer)
+      }
+      updateObserverExplorer ()
+    }
   }
 
   //····················································································································

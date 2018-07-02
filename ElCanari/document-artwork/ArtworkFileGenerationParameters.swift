@@ -2410,5 +2410,3 @@ protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : class {
 }
 
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

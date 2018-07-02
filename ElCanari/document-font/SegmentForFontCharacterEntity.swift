@@ -146,7 +146,7 @@ class SegmentForFontCharacterEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x1_property.prop, unwSelf.y1_property.prop, unwSelf.x2_property.prop, unwSelf.y2_property.prop) {
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (compute_SegmentForFontCharacterEntity_segmentForDrawing (v0, v1, v2, v3))
           default :
@@ -709,10 +709,7 @@ protocol SegmentForFontCharacterEntity_y2 : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SegmentForFontCharacterEntity_segmentForDrawing : class {
-//  var segmentForDrawing_property_selection : EBSelection < SegmentForFontCharacterClass > { get }
   var segmentForDrawing : EBSelection < SegmentForFontCharacterClass > { get }
 }
 
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

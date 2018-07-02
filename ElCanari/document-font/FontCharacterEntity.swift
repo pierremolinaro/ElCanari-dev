@@ -146,7 +146,7 @@ class FontCharacterEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.advance_property.prop, unwSelf.segments_property.count_property.prop) {
+          switch (unwSelf.advance_property_selection, unwSelf.segments_property.count_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_FontCharacterEntity_characterIsDefined (v0, v1))
           default :
@@ -166,7 +166,7 @@ class FontCharacterEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.segments_property.prop) {
+          switch (unwSelf.segments_property_selection) {
           case (.single (let v0)) :
             return .single (compute_FontCharacterEntity_segmentArrayForDrawing (v0))
           default :
@@ -186,7 +186,7 @@ class FontCharacterEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.segmentArrayForDrawing_property.prop) {
+          switch (unwSelf.segmentArrayForDrawing_property_selection) {
           case (.single (let v0)) :
             return .single (compute_FontCharacterEntity_gerberCode (v0))
           default :
@@ -206,7 +206,7 @@ class FontCharacterEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.gerberCode_property.prop) {
+          switch (unwSelf.gerberCode_property_selection) {
           case (.single (let v0)) :
             return .single (compute_FontCharacterEntity_gerberCodeInstructionCountMessage (v0))
           default :
@@ -759,28 +759,24 @@ protocol FontCharacterEntity_advance : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacterEntity_characterIsDefined : class {
-//  var characterIsDefined_property_selection : EBSelection < Bool > { get }
   var characterIsDefined : EBSelection < Bool > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacterEntity_segmentArrayForDrawing : class {
-//  var segmentArrayForDrawing_property_selection : EBSelection < CharacterSegmentListClass > { get }
   var segmentArrayForDrawing : EBSelection < CharacterSegmentListClass > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacterEntity_gerberCode : class {
-//  var gerberCode_property_selection : EBSelection < CharacterGerberCodeClass > { get }
   var gerberCode : EBSelection < CharacterGerberCodeClass > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacterEntity_gerberCodeInstructionCountMessage : class {
-//  var gerberCodeInstructionCountMessage_property_selection : EBSelection < String > { get }
   var gerberCodeInstructionCountMessage : EBSelection < String > { get }
 }
 
@@ -968,6 +964,4 @@ ToManyRelationshipReadWrite_FontCharacterEntity_segments, EBSignatureObserverPro
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

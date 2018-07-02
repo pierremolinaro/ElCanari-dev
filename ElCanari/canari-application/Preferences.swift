@@ -2736,7 +2736,7 @@ var g_Preferences : Preferences? = nil
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary_property.prop, unwSelf.additionnalLibraryArray_property.prop, unwSelf.additionnalLibraryArray_property.prop) {
+          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
           default :
@@ -2758,7 +2758,7 @@ var g_Preferences : Preferences? = nil
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary_property.prop, unwSelf.additionnalLibraryArray_property.prop, unwSelf.additionnalLibraryArray_property.prop) {
+          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
           default :
@@ -2780,7 +2780,7 @@ var g_Preferences : Preferences? = nil
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary_property.prop, unwSelf.additionnalLibraryArray_property.prop, unwSelf.additionnalLibraryArray_property.prop) {
+          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
           default :
@@ -2802,7 +2802,7 @@ var g_Preferences : Preferences? = nil
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary_property.prop, unwSelf.additionnalLibraryArray_property.prop, unwSelf.additionnalLibraryArray_property.prop) {
+          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
           default :
@@ -2824,7 +2824,7 @@ var g_Preferences : Preferences? = nil
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary_property.prop, unwSelf.additionnalLibraryArray_property.prop, unwSelf.additionnalLibraryArray_property.prop) {
+          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
           default :

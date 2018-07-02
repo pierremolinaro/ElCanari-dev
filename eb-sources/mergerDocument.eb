@@ -93,10 +93,10 @@ entity BoardModelEntity {
   
   property String artworkName default "" ;
   property String name default "" ;
-  property Int boardWidth default 0 ;
-  property Int boardWidthUnit default 0 ;
-  property Int boardHeight default 0 ;
-  property Int boardHeightUnit default 0 ;
+  property Int modelWidth default 0 ;
+  property Int modelWidthUnit default 0 ;
+  property Int modelHeight default 0 ;
+  property Int modelHeightUnit default 0 ;
 
   property Int zoom default 0 ; # 0 means "fit to window"
 
@@ -194,7 +194,7 @@ entity BoardModelEntity {
   property Int boardLimitWidthUnit default 0 ;
 
   transient MergerBoardLimits boardLimits
-    dependsFrom self.boardWidth, self.boardHeight, self.boardLimitWidth, prefs.mergerDisplayBoardLimits
+    dependsFrom self.modelWidth, self.modelHeight, self.boardLimitWidth, prefs.mergerDisplayBoardLimits
   ;
  
 #--- Back component names
@@ -310,7 +310,9 @@ entity MergerBoardInstanceEntity {
   property Int y default 0 ;
 
 #--- Instance rect
-  transient CanariBoardRect instanceRect  dependsFrom self.x, self.y ; # , self.myModel.object.width ;
+  transient CanariBoardRect instanceRect
+    dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight
+  ;
 
 }
 
@@ -370,20 +372,20 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBIntObserverField mInstanceCountTextField $valueObserver mBoardModelSelection.instanceCount {autoFormatter:yes} ;
 
 #--- Model width display
-  outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag mBoardModelSelection.boardWidthUnit ;
+  outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag mBoardModelSelection.modelWidthUnit ;
   outlet CanariDimensionTextField mBoardWidthTextField
-     $dimensionAndUnit mBoardModelSelection.boardWidth, mBoardModelSelection.boardWidthUnit
+     $dimensionAndUnit mBoardModelSelection.modelWidth, mBoardModelSelection.modelWidthUnit
   ;
 
 #--- Model Height display
-  outlet EBPopUpButton mBoardHeightUnitPopUp $selectedTag mBoardModelSelection.boardHeightUnit ;
+  outlet EBPopUpButton mBoardHeightUnitPopUp $selectedTag mBoardModelSelection.modelHeightUnit ;
   outlet CanariDimensionTextField mBoardHeightTextField
-     $dimensionAndUnit mBoardModelSelection.boardHeight, mBoardModelSelection.boardHeightUnit
+     $dimensionAndUnit mBoardModelSelection.modelHeight, mBoardModelSelection.modelHeightUnit
   ;
 
 #--- Model view
   outlet CanariBoardModelView mBoardModelView
-    $size mBoardModelSelection.boardWidth, mBoardModelSelection.boardHeight
+    $size mBoardModelSelection.modelWidth, mBoardModelSelection.modelHeight
     $zoom mBoardModelSelection.zoom
     $horizontalFlip prefs.mergerHorizontalFlip
     $verticalFlip prefs.mergerVerticalFlip

@@ -190,7 +190,7 @@ class FontRootEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.characters_property.prop, unwSelf.characters_property.prop, g_Preferences!.sampleString_property.prop, g_Preferences!.sampleStringSize_property.prop) {
+          switch (unwSelf.characters_property_selection, unwSelf.characters_property_selection, g_Preferences!.sampleString_property_selection, g_Preferences!.sampleStringSize_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (compute_FontRootEntity_sampleStringBezierPath (v0, v1, v2, v3))
           default :
@@ -210,7 +210,7 @@ class FontRootEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.sampleStringBezierPath_property.prop) {
+          switch (unwSelf.sampleStringBezierPath_property_selection) {
           case (.single (let v0)) :
             return .single (compute_FontRootEntity_sampleStringBezierPathWidth (v0))
           default :
@@ -230,7 +230,7 @@ class FontRootEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.sampleStringBezierPath_property.prop) {
+          switch (unwSelf.sampleStringBezierPath_property_selection) {
           case (.single (let v0)) :
             return .single (compute_FontRootEntity_sampleStringBezierPathAscent (v0))
           default :
@@ -250,7 +250,7 @@ class FontRootEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.sampleStringBezierPath_property.prop) {
+          switch (unwSelf.sampleStringBezierPath_property_selection) {
           case (.single (let v0)) :
             return .single (compute_FontRootEntity_sampleStringBezierPathDescent (v0))
           default :
@@ -963,28 +963,24 @@ protocol FontRootEntity_selectedInspector : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRootEntity_sampleStringBezierPath : class {
-//  var sampleStringBezierPath_property_selection : EBSelection < CGPath > { get }
   var sampleStringBezierPath : EBSelection < CGPath > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRootEntity_sampleStringBezierPathWidth : class {
-//  var sampleStringBezierPathWidth_property_selection : EBSelection < Double > { get }
   var sampleStringBezierPathWidth : EBSelection < Double > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRootEntity_sampleStringBezierPathAscent : class {
-//  var sampleStringBezierPathAscent_property_selection : EBSelection < Double > { get }
   var sampleStringBezierPathAscent : EBSelection < Double > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRootEntity_sampleStringBezierPathDescent : class {
-//  var sampleStringBezierPathDescent_property_selection : EBSelection < Double > { get }
   var sampleStringBezierPathDescent : EBSelection < Double > { get }
 }
 
@@ -1172,6 +1168,4 @@ ToManyRelationshipReadWrite_FontRootEntity_characters, EBSignatureObserverProtoc
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

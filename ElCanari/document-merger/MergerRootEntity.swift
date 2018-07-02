@@ -102,7 +102,7 @@ class MergerRootEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardModels_property.prop) {
+          switch (unwSelf.boardModels_property_selection) {
           case (.single (let v0)) :
             return .single (compute_MergerRootEntity_modelNames (v0))
           default :
@@ -464,7 +464,6 @@ protocol MergerRootEntity_selectedPageIndex : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRootEntity_modelNames : class {
-//  var modelNames_property_selection : EBSelection < MergerBoardModelArray > { get }
   var modelNames : EBSelection < MergerBoardModelArray > { get }
 }
 
@@ -558,13 +557,9 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_backPadsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backTrackSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimits_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameSegmentsForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedObjectSet)
@@ -582,6 +577,10 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_holes_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holesForDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_padsHoles_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
@@ -608,13 +607,9 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_backPadsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backTrackSegmentsForDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimits_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameSegmentsForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedObjectSet)
@@ -632,6 +627,10 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_holes_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holesForDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)
         addEBObserversOf_padsHoles_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
@@ -912,6 +911,4 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardInstances, EBSignatureObserver
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

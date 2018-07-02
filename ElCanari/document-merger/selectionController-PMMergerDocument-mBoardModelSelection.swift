@@ -121,20 +121,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       return self.backTrackSegmentsForDisplay_property.prop
     }
   }
-  var boardHeight_property = EBPropertyProxy_Int ()
-
-  var boardHeight_property_selection : EBSelection <Int> {
-    get {
-      return self.boardHeight_property.prop
-    }
-  }
-  var boardHeightUnit_property = EBPropertyProxy_Int ()
-
-  var boardHeightUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.boardHeightUnit_property.prop
-    }
-  }
   var boardLimitWidth_property = EBPropertyProxy_Int ()
 
   var boardLimitWidth_property_selection : EBSelection <Int> {
@@ -154,20 +140,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var boardLimits_property_selection : EBSelection <MergerBoardLimits> {
     get {
       return self.boardLimits_property.prop
-    }
-  }
-  var boardWidth_property = EBPropertyProxy_Int ()
-
-  var boardWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.boardWidth_property.prop
-    }
-  }
-  var boardWidthUnit_property = EBPropertyProxy_Int ()
-
-  var boardWidthUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.boardWidthUnit_property.prop
     }
   }
   var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
@@ -289,6 +261,34 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       return self.instanceCount_property.prop
     }
   }
+  var modelHeight_property = EBPropertyProxy_Int ()
+
+  var modelHeight_property_selection : EBSelection <Int> {
+    get {
+      return self.modelHeight_property.prop
+    }
+  }
+  var modelHeightUnit_property = EBPropertyProxy_Int ()
+
+  var modelHeightUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.modelHeightUnit_property.prop
+    }
+  }
+  var modelWidth_property = EBPropertyProxy_Int ()
+
+  var modelWidth_property_selection : EBSelection <Int> {
+    get {
+      return self.modelWidth_property.prop
+    }
+  }
+  var modelWidthUnit_property = EBPropertyProxy_Int ()
+
+  var modelWidthUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.modelWidthUnit_property.prop
+    }
+  }
   var name_property = EBPropertyProxy_String ()
 
   var name_property_selection : EBSelection <String> {
@@ -353,13 +353,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_backPadsForDisplay (model: model)
     bind_property_backTrackSegments (model: model)
     bind_property_backTrackSegmentsForDisplay (model: model)
-    bind_property_boardHeight (model: model)
-    bind_property_boardHeightUnit (model: model)
     bind_property_boardLimitWidth (model: model)
     bind_property_boardLimitWidthUnit (model: model)
     bind_property_boardLimits (model: model)
-    bind_property_boardWidth (model: model)
-    bind_property_boardWidthUnit (model: model)
     bind_property_frontComponentNameSegments (model: model)
     bind_property_frontComponentNameSegmentsForDisplay (model: model)
     bind_property_frontComponentValueSegments (model: model)
@@ -377,6 +373,10 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_holes (model: model)
     bind_property_holesForDisplay (model: model)
     bind_property_instanceCount (model: model)
+    bind_property_modelHeight (model: model)
+    bind_property_modelHeightUnit (model: model)
+    bind_property_modelWidth (model: model)
+    bind_property_modelWidthUnit (model: model)
     bind_property_name (model: model)
     bind_property_padsHoles (model: model)
     bind_property_viaShapes (model: model)
@@ -430,22 +430,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       valueExplorer:&self.artworkName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardHeight",
-      idx:self.boardHeight_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardHeight_property.mObserverExplorer,
-      valueExplorer:&self.boardHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardHeightUnit",
-      idx:self.boardHeightUnit_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardHeightUnit_property.mObserverExplorer,
-      valueExplorer:&self.boardHeightUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "boardLimitWidth",
       idx:self.boardLimitWidth_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -462,20 +446,36 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       valueExplorer:&self.boardLimitWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardWidth",
-      idx:self.boardWidth_property.mEasyBindingsObjectIndex,
+      "modelHeight",
+      idx:self.modelHeight_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardWidth_property.mObserverExplorer,
-      valueExplorer:&self.boardWidth_property.mValueExplorer
+      observerExplorer:&self.modelHeight_property.mObserverExplorer,
+      valueExplorer:&self.modelHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardWidthUnit",
-      idx:self.boardWidthUnit_property.mEasyBindingsObjectIndex,
+      "modelHeightUnit",
+      idx:self.modelHeightUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardWidthUnit_property.mObserverExplorer,
-      valueExplorer:&self.boardWidthUnit_property.mValueExplorer
+      observerExplorer:&self.modelHeightUnit_property.mObserverExplorer,
+      valueExplorer:&self.modelHeightUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "modelWidth",
+      idx:self.modelWidth_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelWidth_property.mObserverExplorer,
+      valueExplorer:&self.modelWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "modelWidthUnit",
+      idx:self.modelWidthUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelWidthUnit_property.mObserverExplorer,
+      valueExplorer:&self.modelWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "name",
@@ -1176,146 +1176,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_boardHeight (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardHeight (self.boardHeight_property)
-    self.boardHeight_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.boardHeight_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardHeight_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.boardHeight_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.boardHeight_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.boardHeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_boardHeightUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardHeightUnit (self.boardHeightUnit_property)
-    self.boardHeightUnit_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.boardHeightUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardHeightUnit_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.boardHeightUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.boardHeightUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.boardHeightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
   private final func bind_property_boardLimitWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
     self.boardLimitWidth_property.readModelFunction = {
@@ -1490,146 +1350,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
         }
       }else{
         return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_boardWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardWidth (self.boardWidth_property)
-    self.boardWidth_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.boardWidth_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardWidth_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.boardWidth_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.boardWidth_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.boardWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_boardWidthUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
-    model.addEBObserverOf_boardWidthUnit (self.boardWidthUnit_property)
-    self.boardWidthUnit_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.boardWidthUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardWidthUnit_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.boardWidthUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.boardWidthUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.boardWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
       }
     }
   }
@@ -2316,6 +2036,286 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_modelHeight (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_modelHeight (self.modelHeight_property)
+    self.modelHeight_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelHeight_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelHeight_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelHeight_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.modelHeight_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.modelHeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelHeightUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_modelHeightUnit (self.modelHeightUnit_property)
+    self.modelHeightUnit_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelHeightUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelHeightUnit_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelHeightUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.modelHeightUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.modelHeightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_modelWidth (self.modelWidth_property)
+    self.modelWidth_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelWidth_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelWidth_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelWidth_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.modelWidth_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.modelWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelWidthUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_modelWidthUnit (self.modelWidthUnit_property)
+    self.modelWidthUnit_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelWidthUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelWidthUnit_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelWidthUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.modelWidthUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.modelWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_name (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_name (self.name_property)
     self.name_property.readModelFunction = {
@@ -2668,16 +2668,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- backTrackSegmentsForDisplay
     self.backTrackSegmentsForDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backTrackSegmentsForDisplay (self.backTrackSegmentsForDisplay_property)
-  //--- boardHeight
-    self.boardHeight_property.readModelFunction = nil 
-    self.boardHeight_property.writeModelFunction = nil 
-    self.boardHeight_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_boardHeight (self.boardHeight_property)
-  //--- boardHeightUnit
-    self.boardHeightUnit_property.readModelFunction = nil 
-    self.boardHeightUnit_property.writeModelFunction = nil 
-    self.boardHeightUnit_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_boardHeightUnit (self.boardHeightUnit_property)
   //--- boardLimitWidth
     self.boardLimitWidth_property.readModelFunction = nil 
     self.boardLimitWidth_property.writeModelFunction = nil 
@@ -2691,16 +2681,6 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- boardLimits
     self.boardLimits_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_boardLimits (self.boardLimits_property)
-  //--- boardWidth
-    self.boardWidth_property.readModelFunction = nil 
-    self.boardWidth_property.writeModelFunction = nil 
-    self.boardWidth_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_boardWidth (self.boardWidth_property)
-  //--- boardWidthUnit
-    self.boardWidthUnit_property.readModelFunction = nil 
-    self.boardWidthUnit_property.writeModelFunction = nil 
-    self.boardWidthUnit_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_boardWidthUnit (self.boardWidthUnit_property)
   //--- frontComponentNameSegments
     self.frontComponentNameSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments_property)
@@ -2752,6 +2732,26 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- instanceCount
     self.instanceCount_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceCount (self.instanceCount_property)
+  //--- modelHeight
+    self.modelHeight_property.readModelFunction = nil 
+    self.modelHeight_property.writeModelFunction = nil 
+    self.modelHeight_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_modelHeight (self.modelHeight_property)
+  //--- modelHeightUnit
+    self.modelHeightUnit_property.readModelFunction = nil 
+    self.modelHeightUnit_property.writeModelFunction = nil 
+    self.modelHeightUnit_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_modelHeightUnit (self.modelHeightUnit_property)
+  //--- modelWidth
+    self.modelWidth_property.readModelFunction = nil 
+    self.modelWidth_property.writeModelFunction = nil 
+    self.modelWidth_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_modelWidth (self.modelWidth_property)
+  //--- modelWidthUnit
+    self.modelWidthUnit_property.readModelFunction = nil 
+    self.modelWidthUnit_property.writeModelFunction = nil 
+    self.modelWidthUnit_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_modelWidthUnit (self.modelWidthUnit_property)
   //--- name
     self.name_property.readModelFunction = nil 
     self.name_property.writeModelFunction = nil 

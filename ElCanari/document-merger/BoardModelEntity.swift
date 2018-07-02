@@ -11,10 +11,10 @@ import Cocoa
 class BoardModelEntity : EBManagedObject,
   BoardModelEntity_artworkName,
   BoardModelEntity_name,
-  BoardModelEntity_boardWidth,
-  BoardModelEntity_boardWidthUnit,
-  BoardModelEntity_boardHeight,
-  BoardModelEntity_boardHeightUnit,
+  BoardModelEntity_modelWidth,
+  BoardModelEntity_modelWidthUnit,
+  BoardModelEntity_modelHeight,
+  BoardModelEntity_modelHeightUnit,
   BoardModelEntity_zoom,
   BoardModelEntity_boardLimitWidth,
   BoardModelEntity_boardLimitWidthUnit,
@@ -94,78 +94,78 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing boardWidth stored property
+  //   Accessing modelWidth stored property
   //····················································································································
 
-  var boardWidth : Int {
+  var modelWidth : Int {
     get {
-      return self.boardWidth_property.propval
+      return self.modelWidth_property.propval
     }
     set {
-      self.boardWidth_property.setProp (newValue)
+      self.modelWidth_property.setProp (newValue)
     }
   }
 
-  var boardWidth_property_selection : EBSelection <Int> {
+  var modelWidth_property_selection : EBSelection <Int> {
     get {
-      return self.boardWidth_property.prop
+      return self.modelWidth_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing boardWidthUnit stored property
+  //   Accessing modelWidthUnit stored property
   //····················································································································
 
-  var boardWidthUnit : Int {
+  var modelWidthUnit : Int {
     get {
-      return self.boardWidthUnit_property.propval
+      return self.modelWidthUnit_property.propval
     }
     set {
-      self.boardWidthUnit_property.setProp (newValue)
+      self.modelWidthUnit_property.setProp (newValue)
     }
   }
 
-  var boardWidthUnit_property_selection : EBSelection <Int> {
+  var modelWidthUnit_property_selection : EBSelection <Int> {
     get {
-      return self.boardWidthUnit_property.prop
+      return self.modelWidthUnit_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing boardHeight stored property
+  //   Accessing modelHeight stored property
   //····················································································································
 
-  var boardHeight : Int {
+  var modelHeight : Int {
     get {
-      return self.boardHeight_property.propval
+      return self.modelHeight_property.propval
     }
     set {
-      self.boardHeight_property.setProp (newValue)
+      self.modelHeight_property.setProp (newValue)
     }
   }
 
-  var boardHeight_property_selection : EBSelection <Int> {
+  var modelHeight_property_selection : EBSelection <Int> {
     get {
-      return self.boardHeight_property.prop
+      return self.modelHeight_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing boardHeightUnit stored property
+  //   Accessing modelHeightUnit stored property
   //····················································································································
 
-  var boardHeightUnit : Int {
+  var modelHeightUnit : Int {
     get {
-      return self.boardHeightUnit_property.propval
+      return self.modelHeightUnit_property.propval
     }
     set {
-      self.boardHeightUnit_property.setProp (newValue)
+      self.modelHeightUnit_property.setProp (newValue)
     }
   }
 
-  var boardHeightUnit_property_selection : EBSelection <Int> {
+  var modelHeightUnit_property_selection : EBSelection <Int> {
     get {
-      return self.boardHeightUnit_property.prop
+      return self.modelHeightUnit_property.prop
     }
   }
 
@@ -958,10 +958,10 @@ class BoardModelEntity : EBManagedObject,
 
   var artworkName_property = EBStoredProperty_String ("")
   var name_property = EBStoredProperty_String ("")
-  var boardWidth_property = EBStoredProperty_Int (0)
-  var boardWidthUnit_property = EBStoredProperty_Int (0)
-  var boardHeight_property = EBStoredProperty_Int (0)
-  var boardHeightUnit_property = EBStoredProperty_Int (0)
+  var modelWidth_property = EBStoredProperty_Int (0)
+  var modelWidthUnit_property = EBStoredProperty_Int (0)
+  var modelHeight_property = EBStoredProperty_Int (0)
+  var modelHeightUnit_property = EBStoredProperty_Int (0)
   var zoom_property = EBStoredProperty_Int (0)
   var boardLimitWidth_property = EBStoredProperty_Int (0)
   var boardLimitWidthUnit_property = EBStoredProperty_Int (0)
@@ -1043,7 +1043,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.myInstances_property.count_property.prop) {
+          switch (unwSelf.myInstances_property.count_property_selection) {
           case (.single (let v0)) :
             return .single (v0)
           default :
@@ -1067,7 +1067,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.frontLegendTexts_property.prop, unwSelf.frontLegendTexts_property.prop, unwSelf.frontLegendTexts_property.prop, unwSelf.frontLegendTexts_property.prop, unwSelf.frontLegendTexts_property.prop) {
+          switch (unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_frontLegendTextsSegments (v0, v1, v2, v3, v4))
           default :
@@ -1088,7 +1088,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontLegendTexts_property.prop, unwSelf.frontLegendTextsSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayFrontLegendTexts_property_selection, unwSelf.frontLegendTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontLegendTextsSegmentsForDisplay (v0, v1))
           default :
@@ -1112,7 +1112,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.frontLayoutTexts_property.prop, unwSelf.frontLayoutTexts_property.prop, unwSelf.frontLayoutTexts_property.prop, unwSelf.frontLayoutTexts_property.prop, unwSelf.frontLayoutTexts_property.prop) {
+          switch (unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_frontLayoutTextsSegments (v0, v1, v2, v3, v4))
           default :
@@ -1133,7 +1133,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontLayoutTexts_property.prop, unwSelf.frontLayoutTextsSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayFrontLayoutTexts_property_selection, unwSelf.frontLayoutTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontLayoutTextsSegmentsForDisplay (v0, v1))
           default :
@@ -1157,7 +1157,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.backLegendTexts_property.prop, unwSelf.backLegendTexts_property.prop, unwSelf.backLegendTexts_property.prop, unwSelf.backLegendTexts_property.prop, unwSelf.backLegendTexts_property.prop) {
+          switch (unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_backLegendTextsSegments (v0, v1, v2, v3, v4))
           default :
@@ -1178,7 +1178,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackLegendTexts_property.prop, unwSelf.backLegendTextsSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayBackLegendTexts_property_selection, unwSelf.backLegendTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backLegendTextsSegmentsForDisplay (v0, v1))
           default :
@@ -1202,7 +1202,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.backLayoutTexts_property.prop, unwSelf.backLayoutTexts_property.prop, unwSelf.backLayoutTexts_property.prop, unwSelf.backLayoutTexts_property.prop, unwSelf.backLayoutTexts_property.prop) {
+          switch (unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_backLayoutTextsSegments (v0, v1, v2, v3, v4))
           default :
@@ -1223,7 +1223,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackLayoutTexts_property.prop, unwSelf.backLayoutTextsSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayBackLayoutTexts_property_selection, unwSelf.backLayoutTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backLayoutTextsSegmentsForDisplay (v0, v1))
           default :
@@ -1245,7 +1245,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop) {
+          switch (unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_BoardModelEntity_padsHoles (v0, v1, v2))
           default :
@@ -1267,7 +1267,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.vias_property.prop, unwSelf.vias_property.prop, unwSelf.vias_property.prop) {
+          switch (unwSelf.vias_property_selection, unwSelf.vias_property_selection, unwSelf.vias_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_BoardModelEntity_viasHoles (v0, v1, v2))
           default :
@@ -1288,7 +1288,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.padsHoles_property.prop, unwSelf.viasHoles_property.prop) {
+          switch (unwSelf.padsHoles_property_selection, unwSelf.viasHoles_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_holes (v0, v1))
           default :
@@ -1309,7 +1309,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayHoles_property.prop, unwSelf.holes_property.prop) {
+          switch (g_Preferences!.mergerDisplayHoles_property_selection, unwSelf.holes_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_holesForDisplay (v0, v1))
           default :
@@ -1331,7 +1331,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.vias_property.prop, unwSelf.vias_property.prop, unwSelf.vias_property.prop) {
+          switch (unwSelf.vias_property_selection, unwSelf.vias_property_selection, unwSelf.vias_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_BoardModelEntity_viaShapes (v0, v1, v2))
           default :
@@ -1352,7 +1352,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayVias_property.prop, unwSelf.viaShapes_property.prop) {
+          switch (g_Preferences!.mergerDisplayVias_property_selection, unwSelf.viaShapes_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_viaShapesForDisplay (v0, v1))
           default :
@@ -1379,7 +1379,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop) {
+          switch (unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (compute_BoardModelEntity_frontPads (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
@@ -1400,7 +1400,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontPads_property.prop, unwSelf.frontPads_property.prop) {
+          switch (g_Preferences!.mergerDisplayFrontPads_property_selection, unwSelf.frontPads_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontPadsForDisplay (v0, v1))
           default :
@@ -1427,7 +1427,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop, unwSelf.pads_property.prop) {
+          switch (unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (compute_BoardModelEntity_backPads (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
@@ -1448,7 +1448,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackPads_property.prop, unwSelf.backPads_property.prop) {
+          switch (g_Preferences!.mergerDisplayBackPads_property_selection, unwSelf.backPads_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backPadsForDisplay (v0, v1))
           default :
@@ -1461,8 +1461,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.boardLimits_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.boardWidth_property_selection.kind ()
-        kind &= unwSelf.boardHeight_property_selection.kind ()
+        var kind = unwSelf.modelWidth_property_selection.kind ()
+        kind &= unwSelf.modelHeight_property_selection.kind ()
         kind &= unwSelf.boardLimitWidth_property_selection.kind ()
         kind &= g_Preferences!.mergerDisplayBoardLimits_property_selection.kind ()
         switch kind {
@@ -1471,7 +1471,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardWidth_property.prop, unwSelf.boardHeight_property.prop, unwSelf.boardLimitWidth_property.prop, g_Preferences!.mergerDisplayBoardLimits_property.prop) {
+          switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.boardLimitWidth_property_selection, g_Preferences!.mergerDisplayBoardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (compute_BoardModelEntity_boardLimits (v0, v1, v2, v3))
           default :
@@ -1495,7 +1495,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.backComponentNames_property.prop, unwSelf.backComponentNames_property.prop, unwSelf.backComponentNames_property.prop, unwSelf.backComponentNames_property.prop, unwSelf.backComponentNames_property.prop) {
+          switch (unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_backComponentNameSegments (v0, v1, v2, v3, v4))
           default :
@@ -1516,7 +1516,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackComponentNames_property.prop, unwSelf.backComponentNameSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayBackComponentNames_property_selection, unwSelf.backComponentNameSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backComponentNameSegmentsForDisplay (v0, v1))
           default :
@@ -1540,7 +1540,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.frontComponentNames_property.prop, unwSelf.frontComponentNames_property.prop, unwSelf.frontComponentNames_property.prop, unwSelf.frontComponentNames_property.prop, unwSelf.frontComponentNames_property.prop) {
+          switch (unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_frontComponentNameSegments (v0, v1, v2, v3, v4))
           default :
@@ -1561,7 +1561,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontComponentNames_property.prop, unwSelf.frontComponentNameSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayFrontComponentNames_property_selection, unwSelf.frontComponentNameSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontComponentNameSegmentsForDisplay (v0, v1))
           default :
@@ -1585,7 +1585,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.frontComponentValues_property.prop, unwSelf.frontComponentValues_property.prop, unwSelf.frontComponentValues_property.prop, unwSelf.frontComponentValues_property.prop, unwSelf.frontComponentValues_property.prop) {
+          switch (unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_frontComponentValueSegments (v0, v1, v2, v3, v4))
           default :
@@ -1606,7 +1606,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontComponentValues_property.prop, unwSelf.frontComponentValueSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayFrontComponentValues_property_selection, unwSelf.frontComponentValueSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontComponentValuesForDisplay (v0, v1))
           default :
@@ -1630,7 +1630,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.backComponentValues_property.prop, unwSelf.backComponentValues_property.prop, unwSelf.backComponentValues_property.prop, unwSelf.backComponentValues_property.prop, unwSelf.backComponentValues_property.prop) {
+          switch (unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_backComponentValueSegments (v0, v1, v2, v3, v4))
           default :
@@ -1651,7 +1651,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackComponentValues_property.prop, unwSelf.backComponentValueSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayBackComponentValues_property_selection, unwSelf.backComponentValueSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backComponentValuesForDisplay (v0, v1))
           default :
@@ -1675,7 +1675,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.backTracks_property.prop, unwSelf.backTracks_property.prop, unwSelf.backTracks_property.prop, unwSelf.backTracks_property.prop, unwSelf.backTracks_property.prop) {
+          switch (unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_backTrackSegments (v0, v1, v2, v3, v4))
           default :
@@ -1696,7 +1696,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackLayoutTracks_property.prop, unwSelf.backTrackSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayBackLayoutTracks_property_selection, unwSelf.backTrackSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backTrackSegmentsForDisplay (v0, v1))
           default :
@@ -1720,7 +1720,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.frontTracks_property.prop, unwSelf.frontTracks_property.prop, unwSelf.frontTracks_property.prop, unwSelf.frontTracks_property.prop, unwSelf.frontTracks_property.prop) {
+          switch (unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_frontTrackSegments (v0, v1, v2, v3, v4))
           default :
@@ -1741,7 +1741,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontLayoutTracks_property.prop, unwSelf.frontTrackSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayFrontLayoutTracks_property_selection, unwSelf.frontTrackSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontTrackSegmentsForDisplay (v0, v1))
           default :
@@ -1765,7 +1765,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.frontPackages_property.prop, unwSelf.frontPackages_property.prop, unwSelf.frontPackages_property.prop, unwSelf.frontPackages_property.prop, unwSelf.frontPackages_property.prop) {
+          switch (unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_frontPackagesSegments (v0, v1, v2, v3, v4))
           default :
@@ -1786,7 +1786,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontPackages_property.prop, unwSelf.frontPackagesSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayFrontPackages_property_selection, unwSelf.frontPackagesSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontPackagesSegmentsForDisplay (v0, v1))
           default :
@@ -1810,7 +1810,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.backPackages_property.prop, unwSelf.backPackages_property.prop, unwSelf.backPackages_property.prop, unwSelf.backPackages_property.prop, unwSelf.backPackages_property.prop) {
+          switch (unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModelEntity_backPackagesSegments (v0, v1, v2, v3, v4))
           default :
@@ -1831,7 +1831,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackPackages_property.prop, unwSelf.backPackagesSegments_property.prop) {
+          switch (g_Preferences!.mergerDisplayBackPackages_property_selection, unwSelf.backPackagesSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backPackagesSegmentsForDisplay (v0, v1))
           default :
@@ -1907,8 +1907,8 @@ class BoardModelEntity : EBManagedObject,
     self.pads_property.addEBObserverOf_rotation (self.backPads_property)
     g_Preferences?.mergerDisplayBackPads_property.addEBObserver (self.backPadsForDisplay_property)
     self.backPads_property.addEBObserver (self.backPadsForDisplay_property)
-    self.boardWidth_property.addEBObserver (self.boardLimits_property)
-    self.boardHeight_property.addEBObserver (self.boardLimits_property)
+    self.modelWidth_property.addEBObserver (self.boardLimits_property)
+    self.modelHeight_property.addEBObserver (self.boardLimits_property)
     self.boardLimitWidth_property.addEBObserver (self.boardLimits_property)
     g_Preferences?.mergerDisplayBoardLimits_property.addEBObserver (self.boardLimits_property)
     self.backComponentNames_property.addEBObserverOf_x1 (self.backComponentNameSegments_property)
@@ -1970,10 +1970,10 @@ class BoardModelEntity : EBManagedObject,
   //--- Install undoers for properties
     self.artworkName_property.undoManager = undoManager ()
     self.name_property.undoManager = undoManager ()
-    self.boardWidth_property.undoManager = undoManager ()
-    self.boardWidthUnit_property.undoManager = undoManager ()
-    self.boardHeight_property.undoManager = undoManager ()
-    self.boardHeightUnit_property.undoManager = undoManager ()
+    self.modelWidth_property.undoManager = undoManager ()
+    self.modelWidthUnit_property.undoManager = undoManager ()
+    self.modelHeight_property.undoManager = undoManager ()
+    self.modelHeightUnit_property.undoManager = undoManager ()
     self.zoom_property.undoManager = undoManager ()
     self.boardLimitWidth_property.undoManager = undoManager ()
     self.boardLimitWidthUnit_property.undoManager = undoManager ()
@@ -2064,8 +2064,8 @@ class BoardModelEntity : EBManagedObject,
     self.pads_property.removeEBObserverOf_rotation (self.backPads_property)
     g_Preferences?.mergerDisplayBackPads_property.removeEBObserver (self.backPadsForDisplay_property)
     self.backPads_property.removeEBObserver (self.backPadsForDisplay_property)
-    self.boardWidth_property.removeEBObserver (self.boardLimits_property)
-    self.boardHeight_property.removeEBObserver (self.boardLimits_property)
+    self.modelWidth_property.removeEBObserver (self.boardLimits_property)
+    self.modelHeight_property.removeEBObserver (self.boardLimits_property)
     self.boardLimitWidth_property.removeEBObserver (self.boardLimits_property)
     g_Preferences?.mergerDisplayBoardLimits_property.removeEBObserver (self.boardLimits_property)
     self.backComponentNames_property.removeEBObserverOf_x1 (self.backComponentNameSegments_property)
@@ -2149,36 +2149,36 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.name_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardWidth",
-      idx:self.boardWidth_property.mEasyBindingsObjectIndex,
+      "modelWidth",
+      idx:self.modelWidth_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardWidth_property.mObserverExplorer,
-      valueExplorer:&self.boardWidth_property.mValueExplorer
+      observerExplorer:&self.modelWidth_property.mObserverExplorer,
+      valueExplorer:&self.modelWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardWidthUnit",
-      idx:self.boardWidthUnit_property.mEasyBindingsObjectIndex,
+      "modelWidthUnit",
+      idx:self.modelWidthUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardWidthUnit_property.mObserverExplorer,
-      valueExplorer:&self.boardWidthUnit_property.mValueExplorer
+      observerExplorer:&self.modelWidthUnit_property.mObserverExplorer,
+      valueExplorer:&self.modelWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardHeight",
-      idx:self.boardHeight_property.mEasyBindingsObjectIndex,
+      "modelHeight",
+      idx:self.modelHeight_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardHeight_property.mObserverExplorer,
-      valueExplorer:&self.boardHeight_property.mValueExplorer
+      observerExplorer:&self.modelHeight_property.mObserverExplorer,
+      valueExplorer:&self.modelHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardHeightUnit",
-      idx:self.boardHeightUnit_property.mEasyBindingsObjectIndex,
+      "modelHeightUnit",
+      idx:self.modelHeightUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardHeightUnit_property.mObserverExplorer,
-      valueExplorer:&self.boardHeightUnit_property.mValueExplorer
+      observerExplorer:&self.modelHeightUnit_property.mObserverExplorer,
+      valueExplorer:&self.modelHeightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "zoom",
@@ -2612,14 +2612,14 @@ class BoardModelEntity : EBManagedObject,
     self.artworkName_property.mValueExplorer = nil
     self.name_property.mObserverExplorer = nil
     self.name_property.mValueExplorer = nil
-    self.boardWidth_property.mObserverExplorer = nil
-    self.boardWidth_property.mValueExplorer = nil
-    self.boardWidthUnit_property.mObserverExplorer = nil
-    self.boardWidthUnit_property.mValueExplorer = nil
-    self.boardHeight_property.mObserverExplorer = nil
-    self.boardHeight_property.mValueExplorer = nil
-    self.boardHeightUnit_property.mObserverExplorer = nil
-    self.boardHeightUnit_property.mValueExplorer = nil
+    self.modelWidth_property.mObserverExplorer = nil
+    self.modelWidth_property.mValueExplorer = nil
+    self.modelWidthUnit_property.mObserverExplorer = nil
+    self.modelWidthUnit_property.mValueExplorer = nil
+    self.modelHeight_property.mObserverExplorer = nil
+    self.modelHeight_property.mValueExplorer = nil
+    self.modelHeightUnit_property.mObserverExplorer = nil
+    self.modelHeightUnit_property.mValueExplorer = nil
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
     self.boardLimitWidth_property.mObserverExplorer = nil
@@ -2652,10 +2652,10 @@ class BoardModelEntity : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
     self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
     self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
-    self.boardWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardWidth")
-    self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
-    self.boardHeight_property.storeIn (dictionary: ioDictionary, forKey: "boardHeight")
-    self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
+    self.modelWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelWidth")
+    self.modelWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelWidthUnit")
+    self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey: "modelHeight")
+    self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelHeightUnit")
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
     self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
     self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
@@ -2685,10 +2685,10 @@ class BoardModelEntity : EBManagedObject,
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
     self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
     self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
-    self.boardWidth_property.readFrom (dictionary: inDictionary, forKey:"boardWidth")
-    self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
-    self.boardHeight_property.readFrom (dictionary: inDictionary, forKey:"boardHeight")
-    self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
+    self.modelWidth_property.readFrom (dictionary: inDictionary, forKey:"modelWidth")
+    self.modelWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelWidthUnit")
+    self.modelHeight_property.readFrom (dictionary: inDictionary, forKey:"modelHeight")
+    self.modelHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"modelHeightUnit")
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
     self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
     self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
@@ -3049,229 +3049,229 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'boardWidth' stored property
+  //   Observers of 'modelWidth' stored property
   //····················································································································
 
-  private var mObserversOf_boardWidth = EBWeakEventSet ()
+  private var mObserversOf_modelWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_boardWidth.insert (inObserver)
+    mObserversOf_modelWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardWidth_property.addEBObserver (inObserver)
+        managedObject.modelWidth_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardWidth (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_boardWidth.remove (inObserver)
+    mObserversOf_modelWidth.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardWidth_property.removeEBObserver (inObserver)
+        managedObject.modelWidth_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardWidth_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+  final func addEBObserversOf_modelWidth_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardWidth {
-        managedObject.boardWidth_property.addEBObserver (observer)
+      for observer in mObserversOf_modelWidth {
+        managedObject.modelWidth_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardWidth_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for observer in mObserversOf_boardWidth {
+  final func removeEBObserversOf_modelWidth_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_modelWidth {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.boardWidth_property.removeEBObserver (observer)
+        managedObject.modelWidth_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'boardWidthUnit' stored property
+  //   Observers of 'modelWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_boardWidthUnit = EBWeakEventSet ()
+  private var mObserversOf_modelWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_boardWidthUnit.insert (inObserver)
+    mObserversOf_modelWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardWidthUnit_property.addEBObserver (inObserver)
+        managedObject.modelWidthUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_boardWidthUnit.remove (inObserver)
+    mObserversOf_modelWidthUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardWidthUnit_property.removeEBObserver (inObserver)
+        managedObject.modelWidthUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardWidthUnit_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+  final func addEBObserversOf_modelWidthUnit_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardWidthUnit {
-        managedObject.boardWidthUnit_property.addEBObserver (observer)
+      for observer in mObserversOf_modelWidthUnit {
+        managedObject.modelWidthUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardWidthUnit_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for observer in mObserversOf_boardWidthUnit {
+  final func removeEBObserversOf_modelWidthUnit_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_modelWidthUnit {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.boardWidthUnit_property.removeEBObserver (observer)
+        managedObject.modelWidthUnit_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'boardHeight' stored property
+  //   Observers of 'modelHeight' stored property
   //····················································································································
 
-  private var mObserversOf_boardHeight = EBWeakEventSet ()
+  private var mObserversOf_modelHeight = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardHeight (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_boardHeight.insert (inObserver)
+    mObserversOf_modelHeight.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardHeight_property.addEBObserver (inObserver)
+        managedObject.modelHeight_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardHeight (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelHeight (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_boardHeight.remove (inObserver)
+    mObserversOf_modelHeight.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardHeight_property.removeEBObserver (inObserver)
+        managedObject.modelHeight_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardHeight_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+  final func addEBObserversOf_modelHeight_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardHeight {
-        managedObject.boardHeight_property.addEBObserver (observer)
+      for observer in mObserversOf_modelHeight {
+        managedObject.modelHeight_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardHeight_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for observer in mObserversOf_boardHeight {
+  final func removeEBObserversOf_modelHeight_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_modelHeight {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.boardHeight_property.removeEBObserver (observer)
+        managedObject.modelHeight_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'boardHeightUnit' stored property
+  //   Observers of 'modelHeightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_boardHeightUnit = EBWeakEventSet ()
+  private var mObserversOf_modelHeightUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_boardHeightUnit.insert (inObserver)
+    mObserversOf_modelHeightUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardHeightUnit_property.addEBObserver (inObserver)
+        managedObject.modelHeightUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_boardHeightUnit.remove (inObserver)
+    mObserversOf_modelHeightUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardHeightUnit_property.removeEBObserver (inObserver)
+        managedObject.modelHeightUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardHeightUnit_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+  final func addEBObserversOf_modelHeightUnit_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardHeightUnit {
-        managedObject.boardHeightUnit_property.addEBObserver (observer)
+      for observer in mObserversOf_modelHeightUnit {
+        managedObject.modelHeightUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardHeightUnit_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for observer in mObserversOf_boardHeightUnit {
+  final func removeEBObserversOf_modelHeightUnit_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_modelHeightUnit {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.boardHeightUnit_property.removeEBObserver (observer)
+        managedObject.modelHeightUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -5503,10 +5503,10 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
       //--- Remove observers of stored properties
         removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
         removeEBObserversOf_name_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_modelWidth_fromElementsOfSet (removedSet)
+        removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_modelHeight_fromElementsOfSet (removedSet)
+        removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedSet)
@@ -5552,10 +5552,10 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
        //--- Add observers of stored properties
         addEBObserversOf_artworkName_toElementsOfSet (addedSet)
         addEBObserversOf_name_toElementsOfSet (addedSet)
-        addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
-        addEBObserversOf_boardWidthUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
-        addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_modelWidth_toElementsOfSet (addedSet)
+        addEBObserversOf_modelWidthUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_modelHeight_toElementsOfSet (addedSet)
+        addEBObserversOf_modelHeightUnit_toElementsOfSet (addedSet)
         addEBObserversOf_zoom_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedSet)
@@ -5638,26 +5638,26 @@ protocol BoardModelEntity_name : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_boardWidth : class {
-  var boardWidth : Int { get }
+protocol BoardModelEntity_modelWidth : class {
+  var modelWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_boardWidthUnit : class {
-  var boardWidthUnit : Int { get }
+protocol BoardModelEntity_modelWidthUnit : class {
+  var modelWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_boardHeight : class {
-  var boardHeight : Int { get }
+protocol BoardModelEntity_modelHeight : class {
+  var modelHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_boardHeightUnit : class {
-  var boardHeightUnit : Int { get }
+protocol BoardModelEntity_modelHeightUnit : class {
+  var modelHeightUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -5681,252 +5681,216 @@ protocol BoardModelEntity_boardLimitWidthUnit : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_instanceCount : class {
-//  var instanceCount_property_selection : EBSelection < Int > { get }
   var instanceCount : EBSelection < Int > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontLegendTextsSegments : class {
-//  var frontLegendTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontLegendTextsSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontLegendTextsSegmentsForDisplay : class {
-//  var frontLegendTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontLegendTextsSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontLayoutTextsSegments : class {
-//  var frontLayoutTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontLayoutTextsSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontLayoutTextsSegmentsForDisplay : class {
-//  var frontLayoutTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontLayoutTextsSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backLegendTextsSegments : class {
-//  var backLegendTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var backLegendTextsSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backLegendTextsSegmentsForDisplay : class {
-//  var backLegendTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var backLegendTextsSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backLayoutTextsSegments : class {
-//  var backLayoutTextsSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var backLayoutTextsSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backLayoutTextsSegmentsForDisplay : class {
-//  var backLayoutTextsSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var backLayoutTextsSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_padsHoles : class {
-//  var padsHoles_property_selection : EBSelection < MergerHoleArray > { get }
   var padsHoles : EBSelection < MergerHoleArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_viasHoles : class {
-//  var viasHoles_property_selection : EBSelection < MergerHoleArray > { get }
   var viasHoles : EBSelection < MergerHoleArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_holes : class {
-//  var holes_property_selection : EBSelection < MergerHoleArray > { get }
   var holes : EBSelection < MergerHoleArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_holesForDisplay : class {
-//  var holesForDisplay_property_selection : EBSelection < MergerHoleArray > { get }
   var holesForDisplay : EBSelection < MergerHoleArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_viaShapes : class {
-//  var viaShapes_property_selection : EBSelection < MergerViaShapeArray > { get }
   var viaShapes : EBSelection < MergerViaShapeArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_viaShapesForDisplay : class {
-//  var viaShapesForDisplay_property_selection : EBSelection < MergerViaShapeArray > { get }
   var viaShapesForDisplay : EBSelection < MergerViaShapeArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontPads : class {
-//  var frontPads_property_selection : EBSelection < MergerPadArray > { get }
   var frontPads : EBSelection < MergerPadArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontPadsForDisplay : class {
-//  var frontPadsForDisplay_property_selection : EBSelection < MergerPadArray > { get }
   var frontPadsForDisplay : EBSelection < MergerPadArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backPads : class {
-//  var backPads_property_selection : EBSelection < MergerPadArray > { get }
   var backPads : EBSelection < MergerPadArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backPadsForDisplay : class {
-//  var backPadsForDisplay_property_selection : EBSelection < MergerPadArray > { get }
   var backPadsForDisplay : EBSelection < MergerPadArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_boardLimits : class {
-//  var boardLimits_property_selection : EBSelection < MergerBoardLimits > { get }
   var boardLimits : EBSelection < MergerBoardLimits > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backComponentNameSegments : class {
-//  var backComponentNameSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var backComponentNameSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backComponentNameSegmentsForDisplay : class {
-//  var backComponentNameSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var backComponentNameSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontComponentNameSegments : class {
-//  var frontComponentNameSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontComponentNameSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontComponentNameSegmentsForDisplay : class {
-//  var frontComponentNameSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontComponentNameSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontComponentValueSegments : class {
-//  var frontComponentValueSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontComponentValueSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontComponentValuesForDisplay : class {
-//  var frontComponentValuesForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontComponentValuesForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backComponentValueSegments : class {
-//  var backComponentValueSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var backComponentValueSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backComponentValuesForDisplay : class {
-//  var backComponentValuesForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var backComponentValuesForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backTrackSegments : class {
-//  var backTrackSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var backTrackSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backTrackSegmentsForDisplay : class {
-//  var backTrackSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var backTrackSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontTrackSegments : class {
-//  var frontTrackSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontTrackSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontTrackSegmentsForDisplay : class {
-//  var frontTrackSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontTrackSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontPackagesSegments : class {
-//  var frontPackagesSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontPackagesSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_frontPackagesSegmentsForDisplay : class {
-//  var frontPackagesSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var frontPackagesSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backPackagesSegments : class {
-//  var backPackagesSegments_property_selection : EBSelection < MergerSegmentArray > { get }
   var backPackagesSegments : EBSelection < MergerSegmentArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModelEntity_backPackagesSegmentsForDisplay : class {
-//  var backPackagesSegmentsForDisplay_property_selection : EBSelection < MergerSegmentArray > { get }
   var backPackagesSegmentsForDisplay : EBSelection < MergerSegmentArray > { get }
 }
 
@@ -8692,6 +8656,4 @@ ToManyRelationshipReadWrite_BoardModelEntity_backPackages, EBSignatureObserverPr
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -47,10 +47,10 @@ extension PMMergerDocument {
                       let possibleBoardModel = self.parseBoardModel (fromDictionary: boardArchiveDictionary, named : s)
                       if let newBoardModel = possibleBoardModel {
                         updatedBoardModel.artworkName = newBoardModel.artworkName
-                        updatedBoardModel.boardWidth = newBoardModel.boardWidth
-                        updatedBoardModel.boardWidthUnit = newBoardModel.boardWidthUnit
-                        updatedBoardModel.boardHeight = newBoardModel.boardHeight
-                        updatedBoardModel.boardHeightUnit = newBoardModel.boardHeightUnit
+                        updatedBoardModel.modelWidth = newBoardModel.modelWidth
+                        updatedBoardModel.modelWidthUnit = newBoardModel.modelWidthUnit
+                        updatedBoardModel.modelHeight = newBoardModel.modelHeight
+                        updatedBoardModel.modelHeightUnit = newBoardModel.modelHeightUnit
                         updatedBoardModel.zoom = newBoardModel.zoom
 
                         let moc = self.managedObjectContext ()

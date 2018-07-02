@@ -11,9 +11,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_MergerBoardInstanceEntity_instanceRect (_ inArg0 : Int,
-                                                     _ inArg1 : Int) -> CanariBoardRect {
+                                                     _ inArg1 : Int,
+                                                     _ inArg2 : Int?,
+                                                     _ inArg3 : Int?) -> CanariBoardRect {
 //--- START OF USER ZONE 2
-  return CanariBoardRect (x:inArg0, y:inArg1, width: 0, height:0)
+  return CanariBoardRect (x:inArg0, y:inArg1, width: inArg2 ?? 0, height:inArg3 ?? 0)
 //--- END OF USER ZONE 2
 }
 
