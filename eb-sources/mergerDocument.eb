@@ -263,6 +263,10 @@ entity BoardModelEntity {
     self.backTracks.all.width
   ;
 
+  transient CALayer backTracksLayer dependsFrom self.backTrackSegments ;
+
+  transient CALayer backTracksDisplay dependsFrom prefs.mergerDisplayBackLayoutTracks, self.backTracksLayer ;
+
 #--- Front tracks
   toMany @cascading CanariSegmentEntity frontTracks ;
 
@@ -271,6 +275,10 @@ entity BoardModelEntity {
     self.frontTracks.all.x2, self.frontTracks.all.y2,
     self.frontTracks.all.width
   ;
+
+  transient CALayer frontTracksLayer dependsFrom self.frontTrackSegments ;
+
+  transient CALayer frontTracksDisplay dependsFrom prefs.mergerDisplayFrontLayoutTracks, self.frontTracksLayer ;
 
 #--- Front packages
   toMany @cascading CanariSegmentEntity frontPackages ;
@@ -281,6 +289,10 @@ entity BoardModelEntity {
     self.frontPackages.all.width
   ;
 
+  transient CALayer frontPackagesLayer dependsFrom self.frontPackagesSegments ;
+
+  transient CALayer frontPackagesDisplay dependsFrom prefs.mergerDisplayFrontPackages, self.frontPackagesLayer ;
+
 #--- Back packages
   toMany @cascading CanariSegmentEntity backPackages ;
 
@@ -289,6 +301,10 @@ entity BoardModelEntity {
     self.backPackages.all.x2, self.backPackages.all.y2,
     self.backPackages.all.width
   ;
+
+  transient CALayer backPackagesLayer dependsFrom self.backPackagesSegments ;
+
+  transient CALayer backPackagesDisplay dependsFrom prefs.mergerDisplayBackPackages, self.backPackagesLayer ;
 
 #----
   transient CALayer modelLayerDisplay dependsFrom
@@ -304,7 +320,11 @@ entity BoardModelEntity {
     self.backComponentNameDisplay,
     self.frontComponentNameDisplay,
     self.frontComponentValueDisplay,
-    self.backComponentValueDisplay
+    self.backComponentValueDisplay,
+    self.backTracksDisplay,
+    self.frontTracksDisplay,
+    self.frontPackagesDisplay,
+    self.backPackagesDisplay
   ;
 }
 

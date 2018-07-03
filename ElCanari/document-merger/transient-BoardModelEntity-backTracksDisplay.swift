@@ -11,34 +11,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_boardLimitsLayer (
-       _ self_boardLimits : MergerBoardLimits
+func compute_BoardModelEntity_backTracksDisplay (
+       _ prefs_mergerDisplayBackLayoutTracks : Bool,
+       _ self_backTracksLayer : CALayer
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  let result = CAShapeLayer ()
-  if self_boardLimits.lineWidth > 0 {
-    let boardWith = canariUnitToCocoa (self_boardLimits.boardWidth)
-    let boardHeight = canariUnitToCocoa (self_boardLimits.boardHeight)
-    let lineWidth = canariUnitToCocoa (self_boardLimits.lineWidth)
-    let path = CGMutablePath ()
-    path.move    (to:CGPoint (x:lineWidth / 2.0,             y:lineWidth / 2.0))
-    path.addLine (to:CGPoint (x:lineWidth / 2.0,             y:boardHeight - lineWidth / 2.0))
-    path.addLine (to:CGPoint (x:boardWith - lineWidth / 2.0, y:boardHeight - lineWidth / 2.0))
-    path.addLine (to:CGPoint (x:boardWith - lineWidth / 2.0, y:lineWidth / 2.0))
-    path.addLine (to:CGPoint (x:lineWidth / 2.0,             y:lineWidth / 2.0))
-    let shape = CAShapeLayer ()
-    shape.path = path
-    shape.position = CGPoint (x:0.0, y:0.0)
-    shape.strokeColor = NSColor.brown.cgColor
-    shape.fillColor = nil // NSColor.yellow.cgColor
-    shape.lineWidth = lineWidth
-    shape.lineCap = kCALineCapSquare
-    shape.lineJoin = kCALineJoinMiter
-//    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
-//    shape.isOpaque = false
-    result.sublayers = [shape]
-  }
-  return result
+  self_backTracksLayer.isHidden = !prefs_mergerDisplayBackLayoutTracks
+  return self_backTracksLayer
 //--- END OF USER ZONE 2
 }
 

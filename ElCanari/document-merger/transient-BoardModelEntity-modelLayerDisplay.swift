@@ -24,20 +24,29 @@ func compute_BoardModelEntity_modelLayerDisplay (
        _ self_backComponentNameDisplay : CALayer,
        _ self_frontComponentNameDisplay : CALayer,
        _ self_frontComponentValueDisplay : CALayer,
-       _ self_backComponentValueDisplay : CALayer
+       _ self_backComponentValueDisplay : CALayer,
+       _ self_backTracksDisplay : CALayer,       
+       _ self_frontTracksDisplay : CALayer,      
+       _ self_frontPackagesDisplay : CALayer,    
+       _ self_backPackagesDisplay : CALayer
 ) -> CALayer {
 //--- START OF USER ZONE 2
   let result = CALayer ()
   result.sublayers = [
+    self_backTracksDisplay,
     self_backLayoutTextsLayerDisplay,
+    self_backPackagesDisplay,
     self_backLegendTextsLayerDisplay,
     self_backComponentNameDisplay,
     self_backComponentValueDisplay,
     self_backPadsDisplay,
     self_frontLayoutTextsLayerDisplay,
+    self_frontTracksDisplay,
     self_frontLegendTextsLayerDisplay,
     self_frontComponentNameDisplay,
     self_frontComponentValueDisplay,
+    self_frontPackagesDisplay,
+    self_viaLayerDisplay,
     self_boardLimitsDisplay,
     self_frontPadsDisplay,
     self_holeLayerDisplay

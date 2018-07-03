@@ -21,6 +21,8 @@ func compute_MergerBoardInstanceEntity_instanceLayerDisplay (
   if let modelLayerDisplay = self_myModel_modelLayerDisplay {
     let data = NSKeyedArchiver.archivedData (withRootObject: modelLayerDisplay)
     duplicatedLayer = NSKeyedUnarchiver.unarchiveObject(with: data) as! CALayer
+//    let data = NSArchiver.archivedData (withRootObject: modelLayerDisplay)
+//    duplicatedLayer = NSUnarchiver.unarchiveObject(with: data) as! CALayer
   }else{
     duplicatedLayer = CALayer ()
   }

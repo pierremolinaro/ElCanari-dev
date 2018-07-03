@@ -107,6 +107,20 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       return self.backLegendTextsSegments_property.prop
     }
   }
+  var backPackagesDisplay_property = EBTransientProperty_CALayer ()
+
+  var backPackagesDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backPackagesDisplay_property.prop
+    }
+  }
+  var backPackagesLayer_property = EBTransientProperty_CALayer ()
+
+  var backPackagesLayer_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backPackagesLayer_property.prop
+    }
+  }
   var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -140,6 +154,20 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var backTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.backTrackSegments_property.prop
+    }
+  }
+  var backTracksDisplay_property = EBTransientProperty_CALayer ()
+
+  var backTracksDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backTracksDisplay_property.prop
+    }
+  }
+  var backTracksLayer_property = EBTransientProperty_CALayer ()
+
+  var backTracksLayer_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backTracksLayer_property.prop
     }
   }
   var boardLimitWidth_property = EBPropertyProxy_Int ()
@@ -261,6 +289,20 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       return self.frontLegendTextsSegments_property.prop
     }
   }
+  var frontPackagesDisplay_property = EBTransientProperty_CALayer ()
+
+  var frontPackagesDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontPackagesDisplay_property.prop
+    }
+  }
+  var frontPackagesLayer_property = EBTransientProperty_CALayer ()
+
+  var frontPackagesLayer_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontPackagesLayer_property.prop
+    }
+  }
   var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -294,6 +336,20 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var frontTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.frontTrackSegments_property.prop
+    }
+  }
+  var frontTracksDisplay_property = EBTransientProperty_CALayer ()
+
+  var frontTracksDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontTracksDisplay_property.prop
+    }
+  }
+  var frontTracksLayer_property = EBTransientProperty_CALayer ()
+
+  var frontTracksLayer_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontTracksLayer_property.prop
     }
   }
   var holeLayer_property = EBTransientProperty_CALayer ()
@@ -428,11 +484,15 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_backLegendTextsLayer (model: model)
     bind_property_backLegendTextsLayerDisplay (model: model)
     bind_property_backLegendTextsSegments (model: model)
+    bind_property_backPackagesDisplay (model: model)
+    bind_property_backPackagesLayer (model: model)
     bind_property_backPackagesSegments (model: model)
     bind_property_backPads (model: model)
     bind_property_backPadsDisplay (model: model)
     bind_property_backPadsLayer (model: model)
     bind_property_backTrackSegments (model: model)
+    bind_property_backTracksDisplay (model: model)
+    bind_property_backTracksLayer (model: model)
     bind_property_boardLimitWidth (model: model)
     bind_property_boardLimitWidthUnit (model: model)
     bind_property_boardLimits (model: model)
@@ -450,11 +510,15 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_frontLegendTextsLayer (model: model)
     bind_property_frontLegendTextsLayerDisplay (model: model)
     bind_property_frontLegendTextsSegments (model: model)
+    bind_property_frontPackagesDisplay (model: model)
+    bind_property_frontPackagesLayer (model: model)
     bind_property_frontPackagesSegments (model: model)
     bind_property_frontPads (model: model)
     bind_property_frontPadsDisplay (model: model)
     bind_property_frontPadsLayer (model: model)
     bind_property_frontTrackSegments (model: model)
+    bind_property_frontTracksDisplay (model: model)
+    bind_property_frontTracksLayer (model: model)
     bind_property_holeLayer (model: model)
     bind_property_holeLayerDisplay (model: model)
     bind_property_holes (model: model)
@@ -1184,6 +1248,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_backPackagesDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backPackagesDisplay (self.backPackagesDisplay_property)
+    self.backPackagesDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backPackagesDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backPackagesLayer (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backPackagesLayer (self.backPackagesLayer_property)
+    self.backPackagesLayer_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backPackagesLayer_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_backPackagesSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_backPackagesSegments (self.backPackagesSegments_property)
     self.backPackagesSegments_property.readModelFunction = {
@@ -1358,6 +1502,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.backTrackSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backTracksDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backTracksDisplay (self.backTracksDisplay_property)
+    self.backTracksDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backTracksDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backTracksLayer (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backTracksLayer (self.backTracksLayer_property)
+    self.backTracksLayer_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backTracksLayer_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2124,6 +2348,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_frontPackagesDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontPackagesDisplay (self.frontPackagesDisplay_property)
+    self.frontPackagesDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontPackagesDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontPackagesLayer (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontPackagesLayer (self.frontPackagesLayer_property)
+    self.frontPackagesLayer_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontPackagesLayer_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_frontPackagesSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_frontPackagesSegments (self.frontPackagesSegments_property)
     self.frontPackagesSegments_property.readModelFunction = {
@@ -2298,6 +2602,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.frontTrackSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontTracksDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontTracksDisplay (self.frontTracksDisplay_property)
+    self.frontTracksDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontTracksDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontTracksLayer (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontTracksLayer (self.frontTracksLayer_property)
+    self.frontTracksLayer_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontTracksLayer_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3190,6 +3574,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- backLegendTextsSegments
     self.backLegendTextsSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments_property)
+  //--- backPackagesDisplay
+    self.backPackagesDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backPackagesDisplay (self.backPackagesDisplay_property)
+  //--- backPackagesLayer
+    self.backPackagesLayer_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backPackagesLayer (self.backPackagesLayer_property)
   //--- backPackagesSegments
     self.backPackagesSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backPackagesSegments (self.backPackagesSegments_property)
@@ -3205,6 +3595,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- backTrackSegments
     self.backTrackSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backTrackSegments (self.backTrackSegments_property)
+  //--- backTracksDisplay
+    self.backTracksDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backTracksDisplay (self.backTracksDisplay_property)
+  //--- backTracksLayer
+    self.backTracksLayer_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backTracksLayer (self.backTracksLayer_property)
   //--- boardLimitWidth
     self.boardLimitWidth_property.readModelFunction = nil 
     self.boardLimitWidth_property.writeModelFunction = nil 
@@ -3260,6 +3656,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- frontLegendTextsSegments
     self.frontLegendTextsSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments_property)
+  //--- frontPackagesDisplay
+    self.frontPackagesDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontPackagesDisplay (self.frontPackagesDisplay_property)
+  //--- frontPackagesLayer
+    self.frontPackagesLayer_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontPackagesLayer (self.frontPackagesLayer_property)
   //--- frontPackagesSegments
     self.frontPackagesSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontPackagesSegments (self.frontPackagesSegments_property)
@@ -3275,6 +3677,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- frontTrackSegments
     self.frontTrackSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontTrackSegments (self.frontTrackSegments_property)
+  //--- frontTracksDisplay
+    self.frontTracksDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontTracksDisplay (self.frontTracksDisplay_property)
+  //--- frontTracksLayer
+    self.frontTracksLayer_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontTracksLayer (self.frontTracksLayer_property)
   //--- holeLayer
     self.holeLayer_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_holeLayer (self.holeLayer_property)
