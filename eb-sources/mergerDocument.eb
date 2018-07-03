@@ -490,11 +490,18 @@ document PMMergerDocument root MergerRootEntity {
      $dimensionAndUnit root.boardHeight, root.boardHeightUnit
   ;
 
+#--- Composed view
   outlet CanariBoardModelView mComposedBoardView
     $size root.boardWidth, root.boardHeight
     $zoom root.zoom
     $objectLayer root.instancesLayerDisplay
   ;
+  
+#--- Magnetization
+  action magnetizationLeftAction ;
+  outlet EBButton mMagnetizationLeftButton $enabled root.boardInstances.count > 0 $run self.magnetizationLeftAction ;
+  action magnetizationBottomAction ;
+  outlet EBButton mMagnetizationBottomButton $enabled root.boardInstances.count > 0 $run self.magnetizationBottomAction ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

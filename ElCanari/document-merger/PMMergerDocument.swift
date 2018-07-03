@@ -24,6 +24,8 @@ import Cocoa
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardView : CanariBoardModelView?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
+  @IBOutlet var mMagnetizationBottomButton : EBButton?
+  @IBOutlet var mMagnetizationLeftButton : EBButton?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mModelWidthTextField : CanariDimensionObserverTextField?
@@ -211,6 +213,24 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mInstanceCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
     }
+    if nil == mMagnetizationBottomButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mMagnetizationBottomButton' outlet is nil") ;
+//    }else if !mMagnetizationBottomButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mMagnetizationBottomButton' outlet is not an instance of 'EBButton'") ;
+    }
+    if nil == mMagnetizationLeftButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mMagnetizationLeftButton' outlet is nil") ;
+//    }else if !mMagnetizationLeftButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mMagnetizationLeftButton' outlet is not an instance of 'EBButton'") ;
+    }
     if nil == mModelHeightTextField {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -341,6 +361,26 @@ import Cocoa
       self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
       mController_updateBoardModelButton_enabled = controller
     }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0))
+        },
+        outlet:self.mMagnetizationLeftButton
+      )
+      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
+      mController_mMagnetizationLeftButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0))
+        },
+        outlet:self.mMagnetizationBottomButton
+      )
+      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
+      mController_mMagnetizationBottomButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     showPrefsForSettingMergerDisplayButton?.target = self
     showPrefsForSettingMergerDisplayButton?.action = #selector (PMMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
@@ -350,6 +390,10 @@ import Cocoa
     removeBoardModelButton?.action = #selector (ArrayController_PMMergerDocument_mBoardModelController.remove (_:))
     updateBoardModelButton?.target = self
     updateBoardModelButton?.action = #selector (PMMergerDocument.updateBoardModelAction (_:))
+    mMagnetizationLeftButton?.target = self
+    mMagnetizationLeftButton?.action = #selector (PMMergerDocument.magnetizationLeftAction (_:))
+    mMagnetizationBottomButton?.target = self
+    mMagnetizationBottomButton?.action = #selector (PMMergerDocument.magnetizationBottomAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -386,6 +430,10 @@ import Cocoa
     mController_removeBoardModelButton_enabled = nil
     self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_updateBoardModelButton_enabled!)
     mController_updateBoardModelButton_enabled = nil
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mMagnetizationLeftButton_enabled!)
+    mController_mMagnetizationLeftButton_enabled = nil
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mMagnetizationBottomButton_enabled!)
+    mController_mMagnetizationBottomButton_enabled = nil
   //--------------------------- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers
     mBoardModelController.unbind_modelAndView ()
@@ -397,6 +445,8 @@ import Cocoa
     addBoardModelButton?.target = nil
     removeBoardModelButton?.target = nil
     updateBoardModelButton?.target = nil
+    mMagnetizationLeftButton?.target = nil
+    mMagnetizationBottomButton?.target = nil
   //--------------------------- Clean up outlets
     self.addBoardModelButton?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
@@ -410,6 +460,8 @@ import Cocoa
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
+    self.mMagnetizationBottomButton?.ebCleanUp ()
+    self.mMagnetizationLeftButton?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
     self.mModelHeightUnitPopUp?.ebCleanUp ()
     self.mModelWidthTextField?.ebCleanUp ()
@@ -426,6 +478,8 @@ import Cocoa
 
   fileprivate var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled?
   fileprivate var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled?
+  fileprivate var mController_mMagnetizationLeftButton_enabled : MultipleBindingController_enabled?
+  fileprivate var mController_mMagnetizationBottomButton_enabled : MultipleBindingController_enabled?
 
   //····················································································································
 

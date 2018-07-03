@@ -20,6 +20,8 @@
                 <outlet property="mBoardWidthUnitPopUp" destination="q7P-l7-CAx" id="egY-a6-hbR"/>
                 <outlet property="mComposedBoardView" destination="nao-E9-sci" id="Yej-gD-6Hg"/>
                 <outlet property="mInstanceCountTextField" destination="Ti9-vf-Dz4" id="wgt-zC-2Td"/>
+                <outlet property="mMagnetizationBottomButton" destination="K4l-4X-Ldt" id="kKb-42-lgI"/>
+                <outlet property="mMagnetizationLeftButton" destination="1p8-Aw-BkL" id="nEC-fV-u1F"/>
                 <outlet property="mModelHeightTextField" destination="Niu-Df-Kdt" id="yXB-NS-pv3"/>
                 <outlet property="mModelHeightUnitPopUp" destination="7ZX-iP-2iR" id="HhL-zI-K4Y"/>
                 <outlet property="mModelWidthTextField" destination="f0C-K9-iUE" id="qF9-wW-JAo"/>
@@ -441,9 +443,34 @@
                     </popUpButtonCell>
                 </popUpButton>
                 <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="wm3-vR-4mr">
-                    <rect key="frame" x="20" y="412" width="196" height="5"/>
+                    <rect key="frame" x="20" y="382" width="196" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
+                <button verticalHuggingPriority="750" misplaced="YES" id="K4l-4X-Ldt" customClass="EBButton">
+                    <rect key="frame" x="178" y="385" width="44" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="⇊" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="heZ-xm-xeD">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" misplaced="YES" id="1p8-Aw-BkL" customClass="EBButton">
+                    <rect key="frame" x="148" y="385" width="44" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="⇇" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dl4-P8-JRL">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="eDS-uL-bpZ">
+                    <rect key="frame" x="18" y="396" width="130" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Magnetization:" id="vlf-zD-56J">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="425" y="329"/>
         </customView>
