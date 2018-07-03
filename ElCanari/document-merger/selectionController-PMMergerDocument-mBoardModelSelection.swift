@@ -51,6 +51,20 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       return self.backComponentValuesForDisplay_property.prop
     }
   }
+  var backLayoutTextsLayer_property = EBTransientProperty_CALayer ()
+
+  var backLayoutTextsLayer_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backLayoutTextsLayer_property.prop
+    }
+  }
+  var backLayoutTextsLayerDisplay_property = EBTransientProperty_CALayer ()
+
+  var backLayoutTextsLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backLayoutTextsLayerDisplay_property.prop
+    }
+  }
   var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -63,6 +77,20 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var backLayoutTextsSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.backLayoutTextsSegmentsForDisplay_property.prop
+    }
+  }
+  var backLegendTextsLayer_property = EBTransientProperty_CALayer ()
+
+  var backLegendTextsLayer_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backLegendTextsLayer_property.prop
+    }
+  }
+  var backLegendTextsLayerDisplay_property = EBTransientProperty_CALayer ()
+
+  var backLegendTextsLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backLegendTextsLayerDisplay_property.prop
     }
   }
   var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
@@ -170,6 +198,20 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       return self.frontComponentValuesForDisplay_property.prop
     }
   }
+  var frontLayoutTextsLayer_property = EBTransientProperty_CALayer ()
+
+  var frontLayoutTextsLayer_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontLayoutTextsLayer_property.prop
+    }
+  }
+  var frontLayoutTextsLayerDisplay_property = EBTransientProperty_CALayer ()
+
+  var frontLayoutTextsLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontLayoutTextsLayerDisplay_property.prop
+    }
+  }
   var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -182,6 +224,20 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   var frontLayoutTextsSegmentsForDisplay_property_selection : EBSelection <MergerSegmentArray> {
     get {
       return self.frontLayoutTextsSegmentsForDisplay_property.prop
+    }
+  }
+  var frontLegendTextsLayer_property = EBTransientProperty_CALayer ()
+
+  var frontLegendTextsLayer_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontLegendTextsLayer_property.prop
+    }
+  }
+  var frontLegendTextsLayerDisplay_property = EBTransientProperty_CALayer ()
+
+  var frontLegendTextsLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontLegendTextsLayerDisplay_property.prop
     }
   }
   var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
@@ -275,6 +331,13 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       return self.modelHeightUnit_property.prop
     }
   }
+  var modelLayerDisplay_property = EBTransientProperty_CALayer ()
+
+  var modelLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.modelLayerDisplay_property.prop
+    }
+  }
   var modelWidth_property = EBPropertyProxy_Int ()
 
   var modelWidth_property_selection : EBSelection <Int> {
@@ -343,8 +406,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_backComponentNameSegmentsForDisplay (model: model)
     bind_property_backComponentValueSegments (model: model)
     bind_property_backComponentValuesForDisplay (model: model)
+    bind_property_backLayoutTextsLayer (model: model)
+    bind_property_backLayoutTextsLayerDisplay (model: model)
     bind_property_backLayoutTextsSegments (model: model)
     bind_property_backLayoutTextsSegmentsForDisplay (model: model)
+    bind_property_backLegendTextsLayer (model: model)
+    bind_property_backLegendTextsLayerDisplay (model: model)
     bind_property_backLegendTextsSegments (model: model)
     bind_property_backLegendTextsSegmentsForDisplay (model: model)
     bind_property_backPackagesSegments (model: model)
@@ -360,8 +427,12 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_frontComponentNameSegmentsForDisplay (model: model)
     bind_property_frontComponentValueSegments (model: model)
     bind_property_frontComponentValuesForDisplay (model: model)
+    bind_property_frontLayoutTextsLayer (model: model)
+    bind_property_frontLayoutTextsLayerDisplay (model: model)
     bind_property_frontLayoutTextsSegments (model: model)
     bind_property_frontLayoutTextsSegmentsForDisplay (model: model)
+    bind_property_frontLegendTextsLayer (model: model)
+    bind_property_frontLegendTextsLayerDisplay (model: model)
     bind_property_frontLegendTextsSegments (model: model)
     bind_property_frontLegendTextsSegmentsForDisplay (model: model)
     bind_property_frontPackagesSegments (model: model)
@@ -375,6 +446,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_instanceCount (model: model)
     bind_property_modelHeight (model: model)
     bind_property_modelHeightUnit (model: model)
+    bind_property_modelLayerDisplay (model: model)
     bind_property_modelWidth (model: model)
     bind_property_modelWidthUnit (model: model)
     bind_property_name (model: model)
@@ -776,6 +848,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_backLayoutTextsLayer (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backLayoutTextsLayer (self.backLayoutTextsLayer_property)
+    self.backLayoutTextsLayer_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLayoutTextsLayer_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLayoutTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backLayoutTextsLayerDisplay (self.backLayoutTextsLayerDisplay_property)
+    self.backLayoutTextsLayerDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLayoutTextsLayerDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_backLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments_property)
     self.backLayoutTextsSegments_property.readModelFunction = {
@@ -830,6 +982,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.backLayoutTextsSegmentsForDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLegendTextsLayer (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backLegendTextsLayer (self.backLegendTextsLayer_property)
+    self.backLegendTextsLayer_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLegendTextsLayer_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLegendTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backLegendTextsLayerDisplay (self.backLegendTextsLayerDisplay_property)
+    self.backLegendTextsLayerDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLegendTextsLayerDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1516,6 +1748,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_frontLayoutTextsLayer (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontLayoutTextsLayer (self.frontLayoutTextsLayer_property)
+    self.frontLayoutTextsLayer_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLayoutTextsLayer_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLayoutTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontLayoutTextsLayerDisplay (self.frontLayoutTextsLayerDisplay_property)
+    self.frontLayoutTextsLayerDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLayoutTextsLayerDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_frontLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments_property)
     self.frontLayoutTextsSegments_property.readModelFunction = {
@@ -1570,6 +1882,86 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.frontLayoutTextsSegmentsForDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLegendTextsLayer (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontLegendTextsLayer (self.frontLegendTextsLayer_property)
+    self.frontLegendTextsLayer_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLegendTextsLayer_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLegendTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_frontLegendTextsLayerDisplay (self.frontLegendTextsLayerDisplay_property)
+    self.frontLegendTextsLayerDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLegendTextsLayerDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2176,6 +2568,46 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
+  private final func bind_property_modelLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_modelLayerDisplay (self.modelLayerDisplay_property)
+    self.modelLayerDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelLayerDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_modelWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
     model.addEBObserverOf_modelWidth (self.modelWidth_property)
     self.modelWidth_property.readModelFunction = {
@@ -2638,12 +3070,24 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- backComponentValuesForDisplay
     self.backComponentValuesForDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backComponentValuesForDisplay (self.backComponentValuesForDisplay_property)
+  //--- backLayoutTextsLayer
+    self.backLayoutTextsLayer_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backLayoutTextsLayer (self.backLayoutTextsLayer_property)
+  //--- backLayoutTextsLayerDisplay
+    self.backLayoutTextsLayerDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backLayoutTextsLayerDisplay (self.backLayoutTextsLayerDisplay_property)
   //--- backLayoutTextsSegments
     self.backLayoutTextsSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments_property)
   //--- backLayoutTextsSegmentsForDisplay
     self.backLayoutTextsSegmentsForDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backLayoutTextsSegmentsForDisplay (self.backLayoutTextsSegmentsForDisplay_property)
+  //--- backLegendTextsLayer
+    self.backLegendTextsLayer_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backLegendTextsLayer (self.backLegendTextsLayer_property)
+  //--- backLegendTextsLayerDisplay
+    self.backLegendTextsLayerDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backLegendTextsLayerDisplay (self.backLegendTextsLayerDisplay_property)
   //--- backLegendTextsSegments
     self.backLegendTextsSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments_property)
@@ -2693,12 +3137,24 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- frontComponentValuesForDisplay
     self.frontComponentValuesForDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontComponentValuesForDisplay (self.frontComponentValuesForDisplay_property)
+  //--- frontLayoutTextsLayer
+    self.frontLayoutTextsLayer_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontLayoutTextsLayer (self.frontLayoutTextsLayer_property)
+  //--- frontLayoutTextsLayerDisplay
+    self.frontLayoutTextsLayerDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontLayoutTextsLayerDisplay (self.frontLayoutTextsLayerDisplay_property)
   //--- frontLayoutTextsSegments
     self.frontLayoutTextsSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments_property)
   //--- frontLayoutTextsSegmentsForDisplay
     self.frontLayoutTextsSegmentsForDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontLayoutTextsSegmentsForDisplay (self.frontLayoutTextsSegmentsForDisplay_property)
+  //--- frontLegendTextsLayer
+    self.frontLegendTextsLayer_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontLegendTextsLayer (self.frontLegendTextsLayer_property)
+  //--- frontLegendTextsLayerDisplay
+    self.frontLegendTextsLayerDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontLegendTextsLayerDisplay (self.frontLegendTextsLayerDisplay_property)
   //--- frontLegendTextsSegments
     self.frontLegendTextsSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments_property)
@@ -2742,6 +3198,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     self.modelHeightUnit_property.writeModelFunction = nil 
     self.modelHeightUnit_property.validateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_modelHeightUnit (self.modelHeightUnit_property)
+  //--- modelLayerDisplay
+    self.modelLayerDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_modelLayerDisplay (self.modelLayerDisplay_property)
   //--- modelWidth
     self.modelWidth_property.readModelFunction = nil 
     self.modelWidth_property.writeModelFunction = nil 

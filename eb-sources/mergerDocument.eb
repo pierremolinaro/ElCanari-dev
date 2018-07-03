@@ -21,6 +21,7 @@ transient property class MergerPadArray ;
 transient property class MergerHoleArray ;
 transient property class MergerBoardModelArray ;
 transient property struct CanariBoardRect ;
+transient property class CALayer ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -46,6 +47,7 @@ binding CanariBoardModelView $frontLegendTexts : transient MergerSegmentArray ;
 binding CanariBoardModelView $frontLayoutTexts : transient MergerSegmentArray ;
 binding CanariBoardModelView $backLegendTexts : transient MergerSegmentArray ;
 binding CanariBoardModelView $backLayoutTexts : transient MergerSegmentArray ;
+binding CanariBoardModelView $objectLayer : transient CALayer ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -114,7 +116,12 @@ entity BoardModelEntity {
     self.frontLegendTexts.all.width
   ;
 
-  transient MergerSegmentArray frontLegendTextsSegmentsForDisplay
+  transient CALayer frontLegendTextsLayer dependsFrom self.frontLegendTextsSegments ;
+
+  transient CALayer frontLegendTextsLayerDisplay
+     dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsLayer ;
+
+  transient MergerSegmentArray frontLegendTextsSegmentsForDisplay # EX
     dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
 
 #--- Front Layout Texts
@@ -126,7 +133,12 @@ entity BoardModelEntity {
     self.frontLayoutTexts.all.width
   ;
 
-  transient MergerSegmentArray frontLayoutTextsSegmentsForDisplay
+  transient CALayer frontLayoutTextsLayer dependsFrom self.frontLayoutTextsSegments ;
+
+  transient CALayer frontLayoutTextsLayerDisplay
+     dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsLayer ;
+
+  transient MergerSegmentArray frontLayoutTextsSegmentsForDisplay # EX
     dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
 
 #--- Back Legend Texts
@@ -138,7 +150,12 @@ entity BoardModelEntity {
     self.backLegendTexts.all.width
   ;
 
-  transient MergerSegmentArray backLegendTextsSegmentsForDisplay
+  transient CALayer backLegendTextsLayer dependsFrom self.backLegendTextsSegments ;
+
+  transient CALayer backLegendTextsLayerDisplay
+     dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsLayer ;
+
+  transient MergerSegmentArray backLegendTextsSegmentsForDisplay # EX
     dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsSegments ;
 
 #--- Back Layout Texts
@@ -150,7 +167,12 @@ entity BoardModelEntity {
     self.backLayoutTexts.all.width
   ;
 
-  transient MergerSegmentArray backLayoutTextsSegmentsForDisplay
+  transient CALayer backLayoutTextsLayer dependsFrom self.backLayoutTextsSegments ;
+
+  transient CALayer backLayoutTextsLayerDisplay
+     dependsFrom prefs.mergerDisplayBackLayoutTexts, self.backLayoutTextsLayer ;
+
+  transient MergerSegmentArray backLayoutTextsSegmentsForDisplay # EX
     dependsFrom prefs.mergerDisplayBackLayoutTexts, self.backLayoutTextsSegments ;
 
 #--- Holes
@@ -299,7 +321,15 @@ entity BoardModelEntity {
 
   transient MergerSegmentArray backPackagesSegmentsForDisplay dependsFrom
      prefs.mergerDisplayBackPackages, self.backPackagesSegments
-  ;  
+  ;
+
+#----
+  transient CALayer modelLayerDisplay dependsFrom
+    self.backLegendTextsLayerDisplay,
+    self.backLayoutTextsLayerDisplay,
+    self.frontLegendTextsLayerDisplay,
+    self.frontLayoutTextsLayerDisplay
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -318,6 +348,7 @@ entity MergerBoardInstanceEntity {
     dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight
   ;
 
+  transient CALayer instanceLayerDisplay dependsFrom self.x, self.y, self.myModel.one.modelLayerDisplay ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -334,6 +365,8 @@ entity MergerRootEntity {
 #--- Board model name array
   transient MergerBoardModelArray modelNames dependsFrom self.boardModels.all.name ;
 
+#--- Instance display
+  transient CALayer instancesLayerDisplay dependsFrom self.boardInstances.all.instanceLayerDisplay ;
 
 #--- Front pads
   transient MergerPadArray frontPads dependsFrom self.boardInstances.all.frontPads ;
@@ -405,23 +438,24 @@ document PMMergerDocument root MergerRootEntity {
     $zoom mBoardModelSelection.zoom
     $horizontalFlip prefs.mergerHorizontalFlip
     $verticalFlip prefs.mergerVerticalFlip
-    $vias mBoardModelSelection.viaShapesForDisplay
-    $frontComponentNames mBoardModelSelection.frontComponentNameSegmentsForDisplay
-    $frontComponentValues mBoardModelSelection.frontComponentValuesForDisplay
-    $backComponentNames mBoardModelSelection.backComponentNameSegmentsForDisplay
-    $backComponentValues mBoardModelSelection.backComponentValuesForDisplay
-    $frontTracks mBoardModelSelection.frontTrackSegmentsForDisplay
-    $backTracks mBoardModelSelection.backTrackSegmentsForDisplay
-    $frontPackages mBoardModelSelection.frontPackagesSegmentsForDisplay
-    $backPackages mBoardModelSelection.backPackagesSegmentsForDisplay
-    $boardLimits mBoardModelSelection.boardLimits
-    $frontPads mBoardModelSelection.frontPadsForDisplay
-    $backPads mBoardModelSelection.backPadsForDisplay
-    $holes mBoardModelSelection.holesForDisplay
-    $frontLegendTexts mBoardModelSelection.frontLegendTextsSegmentsForDisplay
-    $frontLayoutTexts mBoardModelSelection.frontLayoutTextsSegmentsForDisplay
-    $backLegendTexts mBoardModelSelection.backLegendTextsSegmentsForDisplay
-    $backLayoutTexts mBoardModelSelection.backLayoutTextsSegmentsForDisplay
+#    $vias mBoardModelSelection.viaShapesForDisplay
+#    $frontComponentNames mBoardModelSelection.frontComponentNameSegmentsForDisplay
+#    $frontComponentValues mBoardModelSelection.frontComponentValuesForDisplay
+#    $backComponentNames mBoardModelSelection.backComponentNameSegmentsForDisplay
+#    $backComponentValues mBoardModelSelection.backComponentValuesForDisplay
+#    $frontTracks mBoardModelSelection.frontTrackSegmentsForDisplay
+#    $backTracks mBoardModelSelection.backTrackSegmentsForDisplay
+#    $frontPackages mBoardModelSelection.frontPackagesSegmentsForDisplay
+#    $backPackages mBoardModelSelection.backPackagesSegmentsForDisplay
+#    $boardLimits mBoardModelSelection.boardLimits
+#    $frontPads mBoardModelSelection.frontPadsForDisplay
+#    $backPads mBoardModelSelection.backPadsForDisplay
+#    $holes mBoardModelSelection.holesForDisplay
+#    $frontLegendTexts mBoardModelSelection.frontLegendTextsSegmentsForDisplay
+#    $frontLayoutTexts mBoardModelSelection.frontLayoutTextsSegmentsForDisplay
+#    $backLegendTexts mBoardModelSelection.backLegendTextsSegmentsForDisplay
+#    $backLayoutTexts mBoardModelSelection.backLayoutTextsSegmentsForDisplay
+    $objectLayer mBoardModelSelection.modelLayerDisplay
   ;
 
 #------------------------------------- Board Page
@@ -443,7 +477,8 @@ document PMMergerDocument root MergerRootEntity {
   outlet CanariBoardModelView mComposedBoardView
     $size root.boardWidth, root.boardHeight
     $zoom root.zoom
-    $frontPads root.frontPadsForDisplay
+#    $frontPads root.frontPadsForDisplay
+    $objectLayer root.instancesLayerDisplay
   ;
 }
 

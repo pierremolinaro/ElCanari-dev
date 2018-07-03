@@ -69,6 +69,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
    fileprivate var mBackLegendTextsLayer = CALayer ()
    fileprivate var mBackLayoutTextsLayer = CALayer ()
 
+   fileprivate var mObjectLayer = CALayer ()
+
   //····················································································································
   //  awakeFromNib
   //····················································································································
@@ -170,6 +172,10 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.mHolesLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.mHolesLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mHolesLayer)
+
+    self.mObjectLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    self.mObjectLayer.isOpaque = OPAQUE_LAYERS
+    self.layer?.addSublayer (mObjectLayer)
   }
 
   //····················································································································
@@ -250,6 +256,23 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     viaPad.position = CGPoint (x:0.0, y:0.0)
     viaPad.fillColor = NSColor.red.cgColor
     mViaPadLayer.sublayers = [viaPad]
+  }
+
+  //····················································································································
+  //    Object Layer
+  //····················································································································
+
+  private var mObjectLayerController : Controller_CanariBoardModelView_objectLayer?
+
+  func bind_objectLayer (_ layer:EBReadOnlyProperty_CALayer, file:String, line:Int) {
+    mObjectLayerController = Controller_CanariBoardModelView_objectLayer (layer:layer, outlet:self)
+  }
+
+  //····················································································································
+
+  func unbind_objectLayer () {
+    mObjectLayerController?.unregister ()
+    mObjectLayerController = nil
   }
 
   //····················································································································
@@ -1050,61 +1073,38 @@ final class Controller_CanariBoardModelView_holes : EBSimpleController {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   GenericController
+//   Controller_CanariBoardModelView_objectLayer
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class GenericController_MergerHoleArray : EBOutletEvent {
+class Controller_CanariBoardModelView_objectLayer : EBSimpleController {
 
-  private let mActionCallBack : (EBSelection <MergerHoleArray>) -> Void
-  private let mGetPropertyValueCallBack : () -> EBSelection <MergerHoleArray>
+  private let mLayer : EBReadOnlyProperty_CALayer
+  private let mOutlet : CanariBoardModelView
 
   //····················································································································
 
-  init (getPropertyValueCallBack inGetPropertyValueCallBack : @escaping () -> EBSelection <MergerHoleArray>,
-        modelDidChange inActionCallBack : @escaping (EBSelection <MergerHoleArray>) -> Void) {
-    mGetPropertyValueCallBack = inGetPropertyValueCallBack
-    mActionCallBack = inActionCallBack
-    super.init ()
+  init (layer : EBReadOnlyProperty_CALayer, outlet : CanariBoardModelView) {
+    mLayer = layer
+    mOutlet = outlet
+    super.init (observedObjects:[layer], outlet:outlet)
   }
 
   //····················································································································
 
-   override func sendUpdateEvent () {
-    mActionCallBack (mGetPropertyValueCallBack ())
+  override func sendUpdateEvent () {
+    switch mLayer.prop {
+    case .empty :
+      mOutlet.mObjectLayer.sublayers = nil
+    case .single (let v) :
+      mOutlet.mObjectLayer.sublayers = [v]
+    case .multiple :
+      mOutlet.mObjectLayer.sublayers = nil
+    }
   }
 
   //····················································································································
 
 }
 
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   GenericController
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class GenericController_w_Int : EBOutletEvent {
-
-  private let mActionCallBack : (EBSelection <Int>) -> Void
-  private let mGetPropertyValueCallBack : () -> EBSelection <Int>
-
-  //····················································································································
-
-  init (getPropertyValueCallBack inGetPropertyValueCallBack : @escaping () -> EBSelection <Int>,
-        modelDidChange inActionCallBack : @escaping (EBSelection <Int>) -> Void) {
-    mGetPropertyValueCallBack = inGetPropertyValueCallBack
-    mActionCallBack = inActionCallBack
-    super.init ()
-
-  }
-
-  //····················································································································
-
-   override func sendUpdateEvent () {
-    mActionCallBack (mGetPropertyValueCallBack ())
-  }
-
-  //····················································································································
-
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

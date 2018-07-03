@@ -938,11 +938,13 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
       mValueCache = nil
       mValueExplorer?.stringValue = "nil"
       if logEvents () {
-        appendMessageString ("Transient \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        let className = String (describing:type(of: self))
+        appendMessageString ("Transient \(className) \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Transient  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      let className = String (describing:type(of: self))
+      appendMessageString ("Transient \(className) \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
     }
   }
 
@@ -1258,6 +1260,15 @@ typealias EBTransientPropertyArray_MergerBoardModelArray = EBTransientClassPrope
 
 typealias EBReadOnlyProperty_CanariBoardRect  = EBReadOnlyValueProperty <CanariBoardRect>
 typealias EBTransientProperty_CanariBoardRect = EBTransientValueProperty <CanariBoardRect>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class CALayer
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CALayer  = EBReadOnlyClassProperty <CALayer>
+typealias EBTransientProperty_CALayer = EBTransientClassProperty <CALayer>
+typealias EBReadOnlyPropertyArray_CALayer  = EBReadOnlyClassProperty <[CALayer]>
+typealias EBTransientPropertyArray_CALayer = EBTransientClassProperty <[CALayer]>
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
