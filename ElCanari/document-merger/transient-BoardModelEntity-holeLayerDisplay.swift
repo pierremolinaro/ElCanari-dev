@@ -11,38 +11,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_modelLayerDisplay (
-       _ self_backLegendTextsLayerDisplay : CALayer,
-       _ self_backLayoutTextsLayerDisplay : CALayer,
-       _ self_frontLegendTextsLayerDisplay : CALayer,
-       _ self_frontLayoutTextsLayerDisplay : CALayer,
-       _ self_holeLayerDisplay : CALayer,        
-       _ self_viaLayerDisplay : CALayer,         
-       _ self_frontPadsDisplay : CALayer,        
-       _ self_backPadsDisplay : CALayer,         
-       _ self_boardLimitsDisplay : CALayer,      
-       _ self_backComponentNameDisplay : CALayer,
-       _ self_frontComponentNameDisplay : CALayer,
-       _ self_frontComponentValueDisplay : CALayer,
-       _ self_backComponentValueDisplay : CALayer
+func compute_BoardModelEntity_holeLayerDisplay (
+       _ prefs_mergerDisplayHoles : Bool,       
+       _ self_holeLayer : CALayer
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  let result = CALayer ()
-  result.sublayers = [
-    self_backLayoutTextsLayerDisplay,
-    self_backLegendTextsLayerDisplay,
-    self_backComponentNameDisplay,
-    self_backComponentValueDisplay,
-    self_backPadsDisplay,
-    self_frontLayoutTextsLayerDisplay,
-    self_frontLegendTextsLayerDisplay,
-    self_frontComponentNameDisplay,
-    self_frontComponentValueDisplay,
-    self_boardLimitsDisplay,
-    self_frontPadsDisplay,
-    self_holeLayerDisplay
-  ]
-  return result
+  self_holeLayer.isHidden = !prefs_mergerDisplayHoles
+  return self_holeLayer
 //--- END OF USER ZONE 2
 }
 

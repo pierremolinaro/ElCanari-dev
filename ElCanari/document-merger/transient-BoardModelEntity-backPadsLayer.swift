@@ -11,37 +11,42 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_modelLayerDisplay (
-       _ self_backLegendTextsLayerDisplay : CALayer,
-       _ self_backLayoutTextsLayerDisplay : CALayer,
-       _ self_frontLegendTextsLayerDisplay : CALayer,
-       _ self_frontLayoutTextsLayerDisplay : CALayer,
-       _ self_holeLayerDisplay : CALayer,        
-       _ self_viaLayerDisplay : CALayer,         
-       _ self_frontPadsDisplay : CALayer,        
-       _ self_backPadsDisplay : CALayer,         
-       _ self_boardLimitsDisplay : CALayer,      
-       _ self_backComponentNameDisplay : CALayer,
-       _ self_frontComponentNameDisplay : CALayer,
-       _ self_frontComponentValueDisplay : CALayer,
-       _ self_backComponentValueDisplay : CALayer
+func compute_BoardModelEntity_backPadsLayer (
+       _ self_backPads : MergerPadArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
+  var components = [CAShapeLayer] ()
+  for pad in self_backPads.padArray {
+    let x = canariUnitToCocoa (pad.x)
+    let y = canariUnitToCocoa (pad.y)
+    let width = canariUnitToCocoa (pad.width)
+    let height = canariUnitToCocoa (pad.height)
+    let r = CGRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
+    var transform = CGAffineTransform (translationX:x, y:y).rotated (by:canariRotationToRadians (pad.rotation))
+    let path : CGPath
+    switch pad.shape {
+    case .rectangular :
+      path = CGPath (rect:r, transform:&transform)
+    case .round :
+      if pad.width < pad.height {
+        path = CGPath (roundedRect:r, cornerWidth:width / 2.0, cornerHeight:width / 2.0, transform:&transform)
+      }else if pad.width > pad.height {
+        path = CGPath (roundedRect:r, cornerWidth:height / 2.0, cornerHeight:height / 2.0, transform:&transform)
+      }else{
+        path = CGPath (ellipseIn:r, transform:&transform)
+      }
+    }
+    let shape = CAShapeLayer ()
+    shape.path = path
+    shape.position = CGPoint (x:0.0, y:0.0)
+    shape.strokeColor = nil
+    shape.fillColor = NSColor.orange.cgColor
+//    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    shape.isOpaque = true
+    components.append (shape)
+  }
   let result = CALayer ()
-  result.sublayers = [
-    self_backLayoutTextsLayerDisplay,
-    self_backLegendTextsLayerDisplay,
-    self_backComponentNameDisplay,
-    self_backComponentValueDisplay,
-    self_backPadsDisplay,
-    self_frontLayoutTextsLayerDisplay,
-    self_frontLegendTextsLayerDisplay,
-    self_frontComponentNameDisplay,
-    self_frontComponentValueDisplay,
-    self_boardLimitsDisplay,
-    self_frontPadsDisplay,
-    self_holeLayerDisplay
-  ]
+  result.sublayers = components
   return result
 //--- END OF USER ZONE 2
 }

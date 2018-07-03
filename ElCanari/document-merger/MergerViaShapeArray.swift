@@ -17,12 +17,12 @@ final class MergerViaShapeArray : EBSimpleClass {
 
   //····················································································································
 
-  let shapeArray : [MergerViaShape]
+  let viaArray : [MergerViaShape]
 
   //····················································································································
 
   init (_ inArray : [MergerViaShape]) {
-    shapeArray = inArray
+    viaArray = inArray
     super.init ()
   }
 
@@ -30,7 +30,7 @@ final class MergerViaShapeArray : EBSimpleClass {
 
   override var description : String {
     get {
-      return "MergerViaShapeArray " + String (shapeArray.count)
+      return "MergerViaShapeArray " + String (viaArray.count)
     }
   }
 

@@ -11,37 +11,25 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_modelLayerDisplay (
-       _ self_backLegendTextsLayerDisplay : CALayer,
-       _ self_backLayoutTextsLayerDisplay : CALayer,
-       _ self_frontLegendTextsLayerDisplay : CALayer,
-       _ self_frontLayoutTextsLayerDisplay : CALayer,
-       _ self_holeLayerDisplay : CALayer,        
-       _ self_viaLayerDisplay : CALayer,         
-       _ self_frontPadsDisplay : CALayer,        
-       _ self_backPadsDisplay : CALayer,         
-       _ self_boardLimitsDisplay : CALayer,      
-       _ self_backComponentNameDisplay : CALayer,
-       _ self_frontComponentNameDisplay : CALayer,
-       _ self_frontComponentValueDisplay : CALayer,
-       _ self_backComponentValueDisplay : CALayer
+func compute_BoardModelEntity_holeLayer (
+       _ self_holes : MergerHoleArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
+  var components = [CAShapeLayer] ()
+  for hole in self_holes.holeArray {
+    let x = canariUnitToCocoa (hole.x)
+    let y = canariUnitToCocoa (hole.y)
+    let diameter = canariUnitToCocoa (hole.holeDiameter)
+    let r = CGRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
+    let shape = CAShapeLayer ()
+    shape.path = CGPath (ellipseIn: r, transform: nil)
+    shape.fillColor = NSColor.white.cgColor
+//    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    shape.isOpaque = true
+    components.append (shape)
+  }
   let result = CALayer ()
-  result.sublayers = [
-    self_backLayoutTextsLayerDisplay,
-    self_backLegendTextsLayerDisplay,
-    self_backComponentNameDisplay,
-    self_backComponentValueDisplay,
-    self_backPadsDisplay,
-    self_frontLayoutTextsLayerDisplay,
-    self_frontLegendTextsLayerDisplay,
-    self_frontComponentNameDisplay,
-    self_frontComponentValueDisplay,
-    self_boardLimitsDisplay,
-    self_frontPadsDisplay,
-    self_holeLayerDisplay
-  ]
+  result.sublayers = components
   return result
 //--- END OF USER ZONE 2
 }

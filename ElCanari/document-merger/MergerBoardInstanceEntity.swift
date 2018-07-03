@@ -688,7 +688,11 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
         }
       //--- Remove property observers of old object
         oldValue?.artworkName_property.removeEBObserversFrom (mObserversOf_artworkName)
+        oldValue?.backComponentNameDisplay_property.removeEBObserversFrom (mObserversOf_backComponentNameDisplay)
+        oldValue?.backComponentNameLayer_property.removeEBObserversFrom (mObserversOf_backComponentNameLayer)
         oldValue?.backComponentNameSegments_property.removeEBObserversFrom (mObserversOf_backComponentNameSegments)
+        oldValue?.backComponentValueDisplay_property.removeEBObserversFrom (mObserversOf_backComponentValueDisplay)
+        oldValue?.backComponentValueLayer_property.removeEBObserversFrom (mObserversOf_backComponentValueLayer)
         oldValue?.backComponentValueSegments_property.removeEBObserversFrom (mObserversOf_backComponentValueSegments)
         oldValue?.backLayoutTextsLayer_property.removeEBObserversFrom (mObserversOf_backLayoutTextsLayer)
         oldValue?.backLayoutTextsLayerDisplay_property.removeEBObserversFrom (mObserversOf_backLayoutTextsLayerDisplay)
@@ -698,11 +702,19 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
         oldValue?.backLegendTextsSegments_property.removeEBObserversFrom (mObserversOf_backLegendTextsSegments)
         oldValue?.backPackagesSegments_property.removeEBObserversFrom (mObserversOf_backPackagesSegments)
         oldValue?.backPads_property.removeEBObserversFrom (mObserversOf_backPads)
+        oldValue?.backPadsDisplay_property.removeEBObserversFrom (mObserversOf_backPadsDisplay)
+        oldValue?.backPadsLayer_property.removeEBObserversFrom (mObserversOf_backPadsLayer)
         oldValue?.backTrackSegments_property.removeEBObserversFrom (mObserversOf_backTrackSegments)
         oldValue?.boardLimitWidth_property.removeEBObserversFrom (mObserversOf_boardLimitWidth)
         oldValue?.boardLimitWidthUnit_property.removeEBObserversFrom (mObserversOf_boardLimitWidthUnit)
         oldValue?.boardLimits_property.removeEBObserversFrom (mObserversOf_boardLimits)
+        oldValue?.boardLimitsDisplay_property.removeEBObserversFrom (mObserversOf_boardLimitsDisplay)
+        oldValue?.boardLimitsLayer_property.removeEBObserversFrom (mObserversOf_boardLimitsLayer)
+        oldValue?.frontComponentNameDisplay_property.removeEBObserversFrom (mObserversOf_frontComponentNameDisplay)
+        oldValue?.frontComponentNameLayer_property.removeEBObserversFrom (mObserversOf_frontComponentNameLayer)
         oldValue?.frontComponentNameSegments_property.removeEBObserversFrom (mObserversOf_frontComponentNameSegments)
+        oldValue?.frontComponentValueDisplay_property.removeEBObserversFrom (mObserversOf_frontComponentValueDisplay)
+        oldValue?.frontComponentValueLayer_property.removeEBObserversFrom (mObserversOf_frontComponentValueLayer)
         oldValue?.frontComponentValueSegments_property.removeEBObserversFrom (mObserversOf_frontComponentValueSegments)
         oldValue?.frontLayoutTextsLayer_property.removeEBObserversFrom (mObserversOf_frontLayoutTextsLayer)
         oldValue?.frontLayoutTextsLayerDisplay_property.removeEBObserversFrom (mObserversOf_frontLayoutTextsLayerDisplay)
@@ -712,7 +724,11 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
         oldValue?.frontLegendTextsSegments_property.removeEBObserversFrom (mObserversOf_frontLegendTextsSegments)
         oldValue?.frontPackagesSegments_property.removeEBObserversFrom (mObserversOf_frontPackagesSegments)
         oldValue?.frontPads_property.removeEBObserversFrom (mObserversOf_frontPads)
+        oldValue?.frontPadsDisplay_property.removeEBObserversFrom (mObserversOf_frontPadsDisplay)
+        oldValue?.frontPadsLayer_property.removeEBObserversFrom (mObserversOf_frontPadsLayer)
         oldValue?.frontTrackSegments_property.removeEBObserversFrom (mObserversOf_frontTrackSegments)
+        oldValue?.holeLayer_property.removeEBObserversFrom (mObserversOf_holeLayer)
+        oldValue?.holeLayerDisplay_property.removeEBObserversFrom (mObserversOf_holeLayerDisplay)
         oldValue?.holes_property.removeEBObserversFrom (mObserversOf_holes)
         oldValue?.instanceCount_property.removeEBObserversFrom (mObserversOf_instanceCount)
         oldValue?.modelHeight_property.removeEBObserversFrom (mObserversOf_modelHeight)
@@ -722,12 +738,18 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
         oldValue?.modelWidthUnit_property.removeEBObserversFrom (mObserversOf_modelWidthUnit)
         oldValue?.name_property.removeEBObserversFrom (mObserversOf_name)
         oldValue?.padsHoles_property.removeEBObserversFrom (mObserversOf_padsHoles)
+        oldValue?.viaLayer_property.removeEBObserversFrom (mObserversOf_viaLayer)
+        oldValue?.viaLayerDisplay_property.removeEBObserversFrom (mObserversOf_viaLayerDisplay)
         oldValue?.viaShapes_property.removeEBObserversFrom (mObserversOf_viaShapes)
         oldValue?.viasHoles_property.removeEBObserversFrom (mObserversOf_viasHoles)
         oldValue?.zoom_property.removeEBObserversFrom (mObserversOf_zoom)
       //--- Add property observers to new object
         mValue?.artworkName_property.addEBObserversFrom (mObserversOf_artworkName)
+        mValue?.backComponentNameDisplay_property.addEBObserversFrom (mObserversOf_backComponentNameDisplay)
+        mValue?.backComponentNameLayer_property.addEBObserversFrom (mObserversOf_backComponentNameLayer)
         mValue?.backComponentNameSegments_property.addEBObserversFrom (mObserversOf_backComponentNameSegments)
+        mValue?.backComponentValueDisplay_property.addEBObserversFrom (mObserversOf_backComponentValueDisplay)
+        mValue?.backComponentValueLayer_property.addEBObserversFrom (mObserversOf_backComponentValueLayer)
         mValue?.backComponentValueSegments_property.addEBObserversFrom (mObserversOf_backComponentValueSegments)
         mValue?.backLayoutTextsLayer_property.addEBObserversFrom (mObserversOf_backLayoutTextsLayer)
         mValue?.backLayoutTextsLayerDisplay_property.addEBObserversFrom (mObserversOf_backLayoutTextsLayerDisplay)
@@ -737,11 +759,19 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
         mValue?.backLegendTextsSegments_property.addEBObserversFrom (mObserversOf_backLegendTextsSegments)
         mValue?.backPackagesSegments_property.addEBObserversFrom (mObserversOf_backPackagesSegments)
         mValue?.backPads_property.addEBObserversFrom (mObserversOf_backPads)
+        mValue?.backPadsDisplay_property.addEBObserversFrom (mObserversOf_backPadsDisplay)
+        mValue?.backPadsLayer_property.addEBObserversFrom (mObserversOf_backPadsLayer)
         mValue?.backTrackSegments_property.addEBObserversFrom (mObserversOf_backTrackSegments)
         mValue?.boardLimitWidth_property.addEBObserversFrom (mObserversOf_boardLimitWidth)
         mValue?.boardLimitWidthUnit_property.addEBObserversFrom (mObserversOf_boardLimitWidthUnit)
         mValue?.boardLimits_property.addEBObserversFrom (mObserversOf_boardLimits)
+        mValue?.boardLimitsDisplay_property.addEBObserversFrom (mObserversOf_boardLimitsDisplay)
+        mValue?.boardLimitsLayer_property.addEBObserversFrom (mObserversOf_boardLimitsLayer)
+        mValue?.frontComponentNameDisplay_property.addEBObserversFrom (mObserversOf_frontComponentNameDisplay)
+        mValue?.frontComponentNameLayer_property.addEBObserversFrom (mObserversOf_frontComponentNameLayer)
         mValue?.frontComponentNameSegments_property.addEBObserversFrom (mObserversOf_frontComponentNameSegments)
+        mValue?.frontComponentValueDisplay_property.addEBObserversFrom (mObserversOf_frontComponentValueDisplay)
+        mValue?.frontComponentValueLayer_property.addEBObserversFrom (mObserversOf_frontComponentValueLayer)
         mValue?.frontComponentValueSegments_property.addEBObserversFrom (mObserversOf_frontComponentValueSegments)
         mValue?.frontLayoutTextsLayer_property.addEBObserversFrom (mObserversOf_frontLayoutTextsLayer)
         mValue?.frontLayoutTextsLayerDisplay_property.addEBObserversFrom (mObserversOf_frontLayoutTextsLayerDisplay)
@@ -751,7 +781,11 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
         mValue?.frontLegendTextsSegments_property.addEBObserversFrom (mObserversOf_frontLegendTextsSegments)
         mValue?.frontPackagesSegments_property.addEBObserversFrom (mObserversOf_frontPackagesSegments)
         mValue?.frontPads_property.addEBObserversFrom (mObserversOf_frontPads)
+        mValue?.frontPadsDisplay_property.addEBObserversFrom (mObserversOf_frontPadsDisplay)
+        mValue?.frontPadsLayer_property.addEBObserversFrom (mObserversOf_frontPadsLayer)
         mValue?.frontTrackSegments_property.addEBObserversFrom (mObserversOf_frontTrackSegments)
+        mValue?.holeLayer_property.addEBObserversFrom (mObserversOf_holeLayer)
+        mValue?.holeLayerDisplay_property.addEBObserversFrom (mObserversOf_holeLayerDisplay)
         mValue?.holes_property.addEBObserversFrom (mObserversOf_holes)
         mValue?.instanceCount_property.addEBObserversFrom (mObserversOf_instanceCount)
         mValue?.modelHeight_property.addEBObserversFrom (mObserversOf_modelHeight)
@@ -761,6 +795,8 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
         mValue?.modelWidthUnit_property.addEBObserversFrom (mObserversOf_modelWidthUnit)
         mValue?.name_property.addEBObserversFrom (mObserversOf_name)
         mValue?.padsHoles_property.addEBObserversFrom (mObserversOf_padsHoles)
+        mValue?.viaLayer_property.addEBObserversFrom (mObserversOf_viaLayer)
+        mValue?.viaLayerDisplay_property.addEBObserversFrom (mObserversOf_viaLayerDisplay)
         mValue?.viaShapes_property.addEBObserversFrom (mObserversOf_viaShapes)
         mValue?.viasHoles_property.addEBObserversFrom (mObserversOf_viasHoles)
         mValue?.zoom_property.addEBObserversFrom (mObserversOf_zoom)
@@ -840,6 +876,92 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
   }
 
   //····················································································································
+  //   Observable property: backComponentNameDisplay
+  //····················································································································
+
+  private var mObserversOf_backComponentNameDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var backComponentNameDisplay_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.backComponentNameDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_backComponentNameDisplay (_ inObserver : EBEvent) {
+    mObserversOf_backComponentNameDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.backComponentNameDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backComponentNameDisplay (_ inObserver : EBEvent) {
+    mObserversOf_backComponentNameDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.backComponentNameDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: backComponentNameLayer
+  //····················································································································
+
+  private var mObserversOf_backComponentNameLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var backComponentNameLayer_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.backComponentNameLayer_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_backComponentNameLayer (_ inObserver : EBEvent) {
+    mObserversOf_backComponentNameLayer.insert (inObserver)
+    if let object = self.propval {
+      object.backComponentNameLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backComponentNameLayer (_ inObserver : EBEvent) {
+    mObserversOf_backComponentNameLayer.remove (inObserver)
+    if let object = self.propval {
+      object.backComponentNameLayer_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: backComponentNameSegments
   //····················································································································
 
@@ -879,6 +1001,92 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
     mObserversOf_backComponentNameSegments.remove (inObserver)
     if let object = self.propval {
       object.backComponentNameSegments_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: backComponentValueDisplay
+  //····················································································································
+
+  private var mObserversOf_backComponentValueDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var backComponentValueDisplay_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.backComponentValueDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_backComponentValueDisplay (_ inObserver : EBEvent) {
+    mObserversOf_backComponentValueDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.backComponentValueDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backComponentValueDisplay (_ inObserver : EBEvent) {
+    mObserversOf_backComponentValueDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.backComponentValueDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: backComponentValueLayer
+  //····················································································································
+
+  private var mObserversOf_backComponentValueLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var backComponentValueLayer_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.backComponentValueLayer_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_backComponentValueLayer (_ inObserver : EBEvent) {
+    mObserversOf_backComponentValueLayer.insert (inObserver)
+    if let object = self.propval {
+      object.backComponentValueLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backComponentValueLayer (_ inObserver : EBEvent) {
+    mObserversOf_backComponentValueLayer.remove (inObserver)
+    if let object = self.propval {
+      object.backComponentValueLayer_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1270,6 +1478,92 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
   }
 
   //····················································································································
+  //   Observable property: backPadsDisplay
+  //····················································································································
+
+  private var mObserversOf_backPadsDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var backPadsDisplay_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.backPadsDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_backPadsDisplay (_ inObserver : EBEvent) {
+    mObserversOf_backPadsDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.backPadsDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backPadsDisplay (_ inObserver : EBEvent) {
+    mObserversOf_backPadsDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.backPadsDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: backPadsLayer
+  //····················································································································
+
+  private var mObserversOf_backPadsLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var backPadsLayer_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.backPadsLayer_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_backPadsLayer (_ inObserver : EBEvent) {
+    mObserversOf_backPadsLayer.insert (inObserver)
+    if let object = self.propval {
+      object.backPadsLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backPadsLayer (_ inObserver : EBEvent) {
+    mObserversOf_backPadsLayer.remove (inObserver)
+    if let object = self.propval {
+      object.backPadsLayer_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: backTrackSegments
   //····················································································································
 
@@ -1442,6 +1736,178 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
   }
 
   //····················································································································
+  //   Observable property: boardLimitsDisplay
+  //····················································································································
+
+  private var mObserversOf_boardLimitsDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardLimitsDisplay_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardLimitsDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardLimitsDisplay (_ inObserver : EBEvent) {
+    mObserversOf_boardLimitsDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.boardLimitsDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardLimitsDisplay (_ inObserver : EBEvent) {
+    mObserversOf_boardLimitsDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.boardLimitsDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardLimitsLayer
+  //····················································································································
+
+  private var mObserversOf_boardLimitsLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardLimitsLayer_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardLimitsLayer_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardLimitsLayer (_ inObserver : EBEvent) {
+    mObserversOf_boardLimitsLayer.insert (inObserver)
+    if let object = self.propval {
+      object.boardLimitsLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardLimitsLayer (_ inObserver : EBEvent) {
+    mObserversOf_boardLimitsLayer.remove (inObserver)
+    if let object = self.propval {
+      object.boardLimitsLayer_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: frontComponentNameDisplay
+  //····················································································································
+
+  private var mObserversOf_frontComponentNameDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var frontComponentNameDisplay_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.frontComponentNameDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_frontComponentNameDisplay (_ inObserver : EBEvent) {
+    mObserversOf_frontComponentNameDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.frontComponentNameDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontComponentNameDisplay (_ inObserver : EBEvent) {
+    mObserversOf_frontComponentNameDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.frontComponentNameDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: frontComponentNameLayer
+  //····················································································································
+
+  private var mObserversOf_frontComponentNameLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var frontComponentNameLayer_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.frontComponentNameLayer_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_frontComponentNameLayer (_ inObserver : EBEvent) {
+    mObserversOf_frontComponentNameLayer.insert (inObserver)
+    if let object = self.propval {
+      object.frontComponentNameLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontComponentNameLayer (_ inObserver : EBEvent) {
+    mObserversOf_frontComponentNameLayer.remove (inObserver)
+    if let object = self.propval {
+      object.frontComponentNameLayer_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: frontComponentNameSegments
   //····················································································································
 
@@ -1481,6 +1947,92 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
     mObserversOf_frontComponentNameSegments.remove (inObserver)
     if let object = self.propval {
       object.frontComponentNameSegments_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: frontComponentValueDisplay
+  //····················································································································
+
+  private var mObserversOf_frontComponentValueDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var frontComponentValueDisplay_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.frontComponentValueDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_frontComponentValueDisplay (_ inObserver : EBEvent) {
+    mObserversOf_frontComponentValueDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.frontComponentValueDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontComponentValueDisplay (_ inObserver : EBEvent) {
+    mObserversOf_frontComponentValueDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.frontComponentValueDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: frontComponentValueLayer
+  //····················································································································
+
+  private var mObserversOf_frontComponentValueLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var frontComponentValueLayer_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.frontComponentValueLayer_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_frontComponentValueLayer (_ inObserver : EBEvent) {
+    mObserversOf_frontComponentValueLayer.insert (inObserver)
+    if let object = self.propval {
+      object.frontComponentValueLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontComponentValueLayer (_ inObserver : EBEvent) {
+    mObserversOf_frontComponentValueLayer.remove (inObserver)
+    if let object = self.propval {
+      object.frontComponentValueLayer_property.removeEBObserver (inObserver)
     }
   }
 
@@ -1872,6 +2424,92 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
   }
 
   //····················································································································
+  //   Observable property: frontPadsDisplay
+  //····················································································································
+
+  private var mObserversOf_frontPadsDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var frontPadsDisplay_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.frontPadsDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_frontPadsDisplay (_ inObserver : EBEvent) {
+    mObserversOf_frontPadsDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.frontPadsDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontPadsDisplay (_ inObserver : EBEvent) {
+    mObserversOf_frontPadsDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.frontPadsDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: frontPadsLayer
+  //····················································································································
+
+  private var mObserversOf_frontPadsLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var frontPadsLayer_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.frontPadsLayer_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_frontPadsLayer (_ inObserver : EBEvent) {
+    mObserversOf_frontPadsLayer.insert (inObserver)
+    if let object = self.propval {
+      object.frontPadsLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontPadsLayer (_ inObserver : EBEvent) {
+    mObserversOf_frontPadsLayer.remove (inObserver)
+    if let object = self.propval {
+      object.frontPadsLayer_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: frontTrackSegments
   //····················································································································
 
@@ -1911,6 +2549,92 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
     mObserversOf_frontTrackSegments.remove (inObserver)
     if let object = self.propval {
       object.frontTrackSegments_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: holeLayer
+  //····················································································································
+
+  private var mObserversOf_holeLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var holeLayer_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.holeLayer_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_holeLayer (_ inObserver : EBEvent) {
+    mObserversOf_holeLayer.insert (inObserver)
+    if let object = self.propval {
+      object.holeLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_holeLayer (_ inObserver : EBEvent) {
+    mObserversOf_holeLayer.remove (inObserver)
+    if let object = self.propval {
+      object.holeLayer_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: holeLayerDisplay
+  //····················································································································
+
+  private var mObserversOf_holeLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var holeLayerDisplay_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.holeLayerDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_holeLayerDisplay (_ inObserver : EBEvent) {
+    mObserversOf_holeLayerDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.holeLayerDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_holeLayerDisplay (_ inObserver : EBEvent) {
+    mObserversOf_holeLayerDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.holeLayerDisplay_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2298,6 +3022,92 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
     mObserversOf_padsHoles.remove (inObserver)
     if let object = self.propval {
       object.padsHoles_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: viaLayer
+  //····················································································································
+
+  private var mObserversOf_viaLayer = EBWeakEventSet ()
+
+  //····················································································································
+
+  var viaLayer_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.viaLayer_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_viaLayer (_ inObserver : EBEvent) {
+    mObserversOf_viaLayer.insert (inObserver)
+    if let object = self.propval {
+      object.viaLayer_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viaLayer (_ inObserver : EBEvent) {
+    mObserversOf_viaLayer.remove (inObserver)
+    if let object = self.propval {
+      object.viaLayer_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: viaLayerDisplay
+  //····················································································································
+
+  private var mObserversOf_viaLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var viaLayerDisplay_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.viaLayerDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_viaLayerDisplay (_ inObserver : EBEvent) {
+    mObserversOf_viaLayerDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.viaLayerDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viaLayerDisplay (_ inObserver : EBEvent) {
+    mObserversOf_viaLayerDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.viaLayerDisplay_property.removeEBObserver (inObserver)
     }
   }
 

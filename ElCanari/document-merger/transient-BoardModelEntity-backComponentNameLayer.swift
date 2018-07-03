@@ -11,37 +11,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_modelLayerDisplay (
-       _ self_backLegendTextsLayerDisplay : CALayer,
-       _ self_backLayoutTextsLayerDisplay : CALayer,
-       _ self_frontLegendTextsLayerDisplay : CALayer,
-       _ self_frontLayoutTextsLayerDisplay : CALayer,
-       _ self_holeLayerDisplay : CALayer,        
-       _ self_viaLayerDisplay : CALayer,         
-       _ self_frontPadsDisplay : CALayer,        
-       _ self_backPadsDisplay : CALayer,         
-       _ self_boardLimitsDisplay : CALayer,      
-       _ self_backComponentNameDisplay : CALayer,
-       _ self_frontComponentNameDisplay : CALayer,
-       _ self_frontComponentValueDisplay : CALayer,
-       _ self_backComponentValueDisplay : CALayer
+func compute_BoardModelEntity_backComponentNameLayer (
+       _ self_backComponentNameSegments : MergerSegmentArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
+  var components = [CAShapeLayer] ()
+  for segment in self_backComponentNameSegments.segmentArray {
+    let shape = segment.segmentShape (color:NSColor.gray.cgColor)
+//    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+    shape.isOpaque = true
+    components.append (shape)
+  }
   let result = CALayer ()
-  result.sublayers = [
-    self_backLayoutTextsLayerDisplay,
-    self_backLegendTextsLayerDisplay,
-    self_backComponentNameDisplay,
-    self_backComponentValueDisplay,
-    self_backPadsDisplay,
-    self_frontLayoutTextsLayerDisplay,
-    self_frontLegendTextsLayerDisplay,
-    self_frontComponentNameDisplay,
-    self_frontComponentValueDisplay,
-    self_boardLimitsDisplay,
-    self_frontPadsDisplay,
-    self_holeLayerDisplay
-  ]
+  result.sublayers = components
   return result
 //--- END OF USER ZONE 2
 }

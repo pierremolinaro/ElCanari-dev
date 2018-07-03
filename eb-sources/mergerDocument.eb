@@ -154,12 +154,20 @@ entity BoardModelEntity {
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter ;
  
   transient MergerHoleArray holes dependsFrom self.padsHoles, self.viasHoles ;
-  
+
+  transient CALayer holeLayer dependsFrom self.holes ;
+
+  transient CALayer holeLayerDisplay dependsFrom prefs.mergerDisplayHoles, self.holeLayer ;
+
 #--- Vias 
   toMany @cascading BoardModelViaEntity vias ;
   
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
+
+  transient CALayer viaLayer dependsFrom self.viaShapes ;
+
+  transient CALayer viaLayerDisplay dependsFrom prefs.mergerDisplayVias, self.viaLayer ;
 
 #--- Pads
   toMany @cascading BoardModelPadEntity pads ;
@@ -169,10 +177,18 @@ entity BoardModelEntity {
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
 
+  transient CALayer frontPadsLayer dependsFrom self.frontPads ;
+
+  transient CALayer frontPadsDisplay dependsFrom prefs.mergerDisplayFrontPads, self.frontPadsLayer ;
+
 #--- Back pads
   transient MergerPadArray backPads
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
+
+  transient CALayer backPadsLayer dependsFrom self.backPads ;
+
+  transient CALayer backPadsDisplay dependsFrom prefs.mergerDisplayBackPads, self.backPadsLayer ;
 
 #--- Board limits
   property Int boardLimitWidth default 0 ;
@@ -181,6 +197,10 @@ entity BoardModelEntity {
   transient MergerBoardLimits boardLimits
     dependsFrom self.modelWidth, self.modelHeight, self.boardLimitWidth, prefs.mergerDisplayBoardLimits
   ;
+
+  transient CALayer boardLimitsLayer dependsFrom self.boardLimits ;
+
+  transient CALayer boardLimitsDisplay dependsFrom prefs.mergerDisplayBoardLimits, self.boardLimitsLayer ;
  
 #--- Back component names
   toMany @cascading CanariSegmentEntity backComponentNames ;
@@ -190,7 +210,11 @@ entity BoardModelEntity {
     self.backComponentNames.all.x2, self.backComponentNames.all.y2,
     self.backComponentNames.all.width
   ;
- 
+
+  transient CALayer backComponentNameLayer dependsFrom self.backComponentNameSegments ;
+
+  transient CALayer backComponentNameDisplay dependsFrom prefs.mergerDisplayBackComponentNames, self.backComponentNameLayer ;
+
 #--- Front component names
   toMany @cascading CanariSegmentEntity frontComponentNames ;
 
@@ -199,6 +223,10 @@ entity BoardModelEntity {
     self.frontComponentNames.all.x2, self.frontComponentNames.all.y2,
     self.frontComponentNames.all.width
   ;
+
+  transient CALayer frontComponentNameLayer dependsFrom self.frontComponentNameSegments ;
+
+  transient CALayer frontComponentNameDisplay dependsFrom prefs.mergerDisplayFrontComponentNames, self.frontComponentNameLayer ;
 
 #--- Front component values
   toMany @cascading CanariSegmentEntity frontComponentValues ;
@@ -209,6 +237,10 @@ entity BoardModelEntity {
     self.frontComponentValues.all.width
   ;
 
+  transient CALayer frontComponentValueLayer dependsFrom self.frontComponentValueSegments ;
+
+  transient CALayer frontComponentValueDisplay dependsFrom prefs.mergerDisplayFrontComponentValues, self.frontComponentValueLayer ;
+
 #--- Back component values
   toMany @cascading CanariSegmentEntity backComponentValues ;
 
@@ -217,6 +249,10 @@ entity BoardModelEntity {
     self.backComponentValues.all.x2, self.backComponentValues.all.y2,
     self.backComponentValues.all.width
   ;
+
+  transient CALayer backComponentValueLayer dependsFrom self.backComponentValueSegments ;
+
+  transient CALayer backComponentValueDisplay dependsFrom prefs.mergerDisplayBackComponentValues, self.backComponentValueLayer ;
 
 #--- Back tracks
   toMany @cascading CanariSegmentEntity backTracks ;
@@ -259,7 +295,16 @@ entity BoardModelEntity {
     self.backLegendTextsLayerDisplay,
     self.backLayoutTextsLayerDisplay,
     self.frontLegendTextsLayerDisplay,
-    self.frontLayoutTextsLayerDisplay
+    self.frontLayoutTextsLayerDisplay,
+    self.holeLayerDisplay,
+    self.viaLayerDisplay,
+    self.frontPadsDisplay,
+    self.backPadsDisplay,
+    self.boardLimitsDisplay,
+    self.backComponentNameDisplay,
+    self.frontComponentNameDisplay,
+    self.frontComponentValueDisplay,
+    self.backComponentValueDisplay
   ;
 }
 
