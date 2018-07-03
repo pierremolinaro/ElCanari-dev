@@ -12,9 +12,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension PMMergerDocument {
-  func magnetizationLeftAction (_ sender : NSObject) {
+  func arrangeVerticalyAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-
+    self.arrangeVerticaly ()
 //--- END OF USER ZONE 2
   }
 }

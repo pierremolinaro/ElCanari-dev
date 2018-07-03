@@ -68,6 +68,24 @@ struct CanariBoardRect {
   }
 
   //····················································································································
+  //   Intersection
+  //····················································································································
+
+  func intersection (_ inOtherRect : CanariBoardRect) -> CanariBoardRect {
+    let result : CanariBoardRect
+    if self.isEmpty () ||  inOtherRect.isEmpty () {
+      result = CanariBoardRect () // Empty Rect
+    }else{
+      let right = max (self.x, inOtherRect.x)
+      let bottom = max (self.y, inOtherRect.y)
+      let left = min (self.x + self.width, inOtherRect.x + inOtherRect.width)
+      let top = min (self.y + self.height, inOtherRect.y + inOtherRect.height)
+      result = CanariBoardRect (x:right, y:bottom, width:left - right, height:top - bottom)
+    }
+    return result
+  }
+
+  //····················································································································
 
 }
 

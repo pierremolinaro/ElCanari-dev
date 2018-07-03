@@ -13,6 +13,8 @@ import Cocoa
   //····················································································································
 
   @IBOutlet var addBoardModelButton : EBButton?
+  @IBOutlet var mArrangeHorizontallyButton : EBButton?
+  @IBOutlet var mArrangeVerticalyButton : EBButton?
   @IBOutlet var mArtworkNameTextField : EBTextObserverField?
   @IBOutlet var mBoardClipView : NSClipView?
   @IBOutlet var mBoardHeightTextField : CanariDimensionObserverTextField?
@@ -24,8 +26,6 @@ import Cocoa
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardView : CanariBoardModelView?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
-  @IBOutlet var mMagnetizationBottomButton : EBButton?
-  @IBOutlet var mMagnetizationLeftButton : EBButton?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mModelWidthTextField : CanariDimensionObserverTextField?
@@ -113,6 +113,24 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'addBoardModelButton' outlet is not an instance of 'EBButton'") ;
+    }
+    if nil == mArrangeHorizontallyButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mArrangeHorizontallyButton' outlet is nil") ;
+//    }else if !mArrangeHorizontallyButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mArrangeHorizontallyButton' outlet is not an instance of 'EBButton'") ;
+    }
+    if nil == mArrangeVerticalyButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mArrangeVerticalyButton' outlet is nil") ;
+//    }else if !mArrangeVerticalyButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mArrangeVerticalyButton' outlet is not an instance of 'EBButton'") ;
     }
     if nil == mArtworkNameTextField {
       presentErrorWindow (file: #file,
@@ -212,24 +230,6 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mInstanceCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
-    }
-    if nil == mMagnetizationBottomButton {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mMagnetizationBottomButton' outlet is nil") ;
-//    }else if !mMagnetizationBottomButton!.isKindOfClass (EBButton) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mMagnetizationBottomButton' outlet is not an instance of 'EBButton'") ;
-    }
-    if nil == mMagnetizationLeftButton {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mMagnetizationLeftButton' outlet is nil") ;
-//    }else if !mMagnetizationLeftButton!.isKindOfClass (EBButton) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mMagnetizationLeftButton' outlet is not an instance of 'EBButton'") ;
     }
     if nil == mModelHeightTextField {
       presentErrorWindow (file: #file,
@@ -366,20 +366,20 @@ import Cocoa
         computeFunction:{
           return (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0))
         },
-        outlet:self.mMagnetizationLeftButton
+        outlet:self.mArrangeHorizontallyButton
       )
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
-      mController_mMagnetizationLeftButton_enabled = controller
+      mController_mArrangeHorizontallyButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
           return (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0))
         },
-        outlet:self.mMagnetizationBottomButton
+        outlet:self.mArrangeVerticalyButton
       )
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
-      mController_mMagnetizationBottomButton_enabled = controller
+      mController_mArrangeVerticalyButton_enabled = controller
     }
   //--------------------------- Set targets / actions
     showPrefsForSettingMergerDisplayButton?.target = self
@@ -390,10 +390,10 @@ import Cocoa
     removeBoardModelButton?.action = #selector (ArrayController_PMMergerDocument_mBoardModelController.remove (_:))
     updateBoardModelButton?.target = self
     updateBoardModelButton?.action = #selector (PMMergerDocument.updateBoardModelAction (_:))
-    mMagnetizationLeftButton?.target = self
-    mMagnetizationLeftButton?.action = #selector (PMMergerDocument.magnetizationLeftAction (_:))
-    mMagnetizationBottomButton?.target = self
-    mMagnetizationBottomButton?.action = #selector (PMMergerDocument.magnetizationBottomAction (_:))
+    mArrangeHorizontallyButton?.target = self
+    mArrangeHorizontallyButton?.action = #selector (PMMergerDocument.arrangeHorizontallyAction (_:))
+    mArrangeVerticalyButton?.target = self
+    mArrangeVerticalyButton?.action = #selector (PMMergerDocument.arrangeVerticalyAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -430,10 +430,10 @@ import Cocoa
     mController_removeBoardModelButton_enabled = nil
     self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_updateBoardModelButton_enabled!)
     mController_updateBoardModelButton_enabled = nil
-    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mMagnetizationLeftButton_enabled!)
-    mController_mMagnetizationLeftButton_enabled = nil
-    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mMagnetizationBottomButton_enabled!)
-    mController_mMagnetizationBottomButton_enabled = nil
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mArrangeHorizontallyButton_enabled!)
+    mController_mArrangeHorizontallyButton_enabled = nil
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mArrangeVerticalyButton_enabled!)
+    mController_mArrangeVerticalyButton_enabled = nil
   //--------------------------- Uninstall compute functions for transients
   //--------------------------- Unbind array controllers
     mBoardModelController.unbind_modelAndView ()
@@ -445,10 +445,12 @@ import Cocoa
     addBoardModelButton?.target = nil
     removeBoardModelButton?.target = nil
     updateBoardModelButton?.target = nil
-    mMagnetizationLeftButton?.target = nil
-    mMagnetizationBottomButton?.target = nil
+    mArrangeHorizontallyButton?.target = nil
+    mArrangeVerticalyButton?.target = nil
   //--------------------------- Clean up outlets
     self.addBoardModelButton?.ebCleanUp ()
+    self.mArrangeHorizontallyButton?.ebCleanUp ()
+    self.mArrangeVerticalyButton?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
     self.mBoardClipView?.ebCleanUp ()
     self.mBoardHeightTextField?.ebCleanUp ()
@@ -460,8 +462,6 @@ import Cocoa
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
-    self.mMagnetizationBottomButton?.ebCleanUp ()
-    self.mMagnetizationLeftButton?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
     self.mModelHeightUnitPopUp?.ebCleanUp ()
     self.mModelWidthTextField?.ebCleanUp ()
@@ -478,8 +478,8 @@ import Cocoa
 
   fileprivate var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled?
   fileprivate var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled?
-  fileprivate var mController_mMagnetizationLeftButton_enabled : MultipleBindingController_enabled?
-  fileprivate var mController_mMagnetizationBottomButton_enabled : MultipleBindingController_enabled?
+  fileprivate var mController_mArrangeHorizontallyButton_enabled : MultipleBindingController_enabled?
+  fileprivate var mController_mArrangeVerticalyButton_enabled : MultipleBindingController_enabled?
 
   //····················································································································
 

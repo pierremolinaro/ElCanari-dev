@@ -497,11 +497,11 @@ document PMMergerDocument root MergerRootEntity {
     $objectLayer root.instancesLayerDisplay
   ;
   
-#--- Magnetization
-  action magnetizationLeftAction ;
-  outlet EBButton mMagnetizationLeftButton $enabled root.boardInstances.count > 0 $run self.magnetizationLeftAction ;
-  action magnetizationBottomAction ;
-  outlet EBButton mMagnetizationBottomButton $enabled root.boardInstances.count > 0 $run self.magnetizationBottomAction ;
+#--- Arrange
+  action arrangeHorizontallyAction ;
+  outlet EBButton mArrangeHorizontallyButton $enabled root.boardInstances.count > 0 $run self.arrangeHorizontallyAction ;
+  action arrangeVerticalyAction ;
+  outlet EBButton mArrangeVerticalyButton $enabled root.boardInstances.count > 0 $run self.arrangeVerticalyAction ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
