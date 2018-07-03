@@ -49,6 +49,36 @@ final class MergerBoardLimits : EBSimpleClass {
 
   //····················································································································
 
+  func buildShape (dx inDx : Int, dy inDy : Int, color inColor : NSColor, display inDisplay : Bool) -> CALayer {
+    let result = CAShapeLayer ()
+    if inDisplay && (self.lineWidth > 0) {
+      let boardWith = canariUnitToCocoa (self.boardWidth)
+      let boardHeight = canariUnitToCocoa (self.boardHeight)
+      let lineWidth = canariUnitToCocoa (self.lineWidth)
+      let path = CGMutablePath ()
+      path.move    (to:CGPoint (x:lineWidth / 2.0,             y:lineWidth / 2.0))
+      path.addLine (to:CGPoint (x:lineWidth / 2.0,             y:boardHeight - lineWidth / 2.0))
+      path.addLine (to:CGPoint (x:boardWith - lineWidth / 2.0, y:boardHeight - lineWidth / 2.0))
+      path.addLine (to:CGPoint (x:boardWith - lineWidth / 2.0, y:lineWidth / 2.0))
+      path.addLine (to:CGPoint (x:lineWidth / 2.0,             y:lineWidth / 2.0))
+      let shape = CAShapeLayer ()
+      shape.path = path
+      shape.position = CGPoint (x:0.0, y:0.0)
+      shape.strokeColor = inColor.cgColor
+      shape.fillColor = nil // NSColor.yellow.cgColor
+      shape.lineWidth = lineWidth
+      shape.lineCap = kCALineCapSquare
+      shape.lineJoin = kCALineJoinMiter
+  //    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+  //    shape.isOpaque = false
+      result.sublayers = [shape]
+    }
+    result.position = CGPoint (x:canariUnitToCocoa (inDx), y:canariUnitToCocoa (inDy))
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

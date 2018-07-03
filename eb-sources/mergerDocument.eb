@@ -312,7 +312,77 @@ entity MergerBoardInstanceEntity {
     dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight
   ;
 
-  transient CALayer instanceLayerDisplay dependsFrom self.x, self.y, self.myModel.one.modelLayerDisplay ;
+#--- Layer
+  transient CALayer frontLegendTextsLayerDisplay
+     dependsFrom self.x, self.y, prefs.mergerDisplayFrontLegendTexts, self.myModel.one.frontLegendTextsSegments ;
+
+  transient CALayer frontLayoutTextsLayerDisplay
+     dependsFrom self.x, self.y, prefs.mergerDisplayFrontLayoutTexts, self.myModel.one.frontLayoutTextsSegments ;
+
+  transient CALayer backLegendTextsLayerDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayBackLegendTexts, self.myModel.one.backLegendTextsSegments ;
+
+  transient CALayer backLayoutTextsLayerDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayBackLayoutTexts, self.myModel.one.backLayoutTextsSegments ;
+
+  transient CALayer holeLayerDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayHoles, self.myModel.one.holes ;
+
+  transient CALayer viaLayerDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayVias, self.myModel.one.viaShapes ;
+
+  transient CALayer frontPadsDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayFrontPads, self.myModel.one.frontPads ;
+
+  transient CALayer backPadsDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayBackPads, self.myModel.one.backPads ;
+
+  transient CALayer boardLimitsDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayBoardLimits, self.myModel.one.boardLimits ;
+
+  transient CALayer backComponentNameDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayBackComponentNames, self.myModel.one.backComponentNameSegments ;
+
+  transient CALayer frontComponentNameDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayFrontComponentNames, self.myModel.one.frontComponentNameSegments ;
+
+  transient CALayer frontComponentValueDisplay
+     dependsFrom self.x, self.y, prefs.mergerDisplayFrontComponentValues, self.myModel.one.frontComponentValueSegments ;
+
+  transient CALayer backComponentValueDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayBackComponentValues, self.myModel.one.backComponentValueSegments ;
+
+  transient CALayer backTracksDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayBackLayoutTracks, self.myModel.one.backTrackSegments ;
+
+  transient CALayer frontTracksDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayFrontLayoutTracks, self.myModel.one.frontTrackSegments ;
+
+  transient CALayer frontPackagesDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayFrontPackages, self.myModel.one.frontPackagesSegments ;
+
+  transient CALayer backPackagesDisplay
+    dependsFrom self.x, self.y, prefs.mergerDisplayBackPackages, self.myModel.one.backPackagesSegments ;
+
+  transient CALayer instanceLayerDisplay dependsFrom
+    self.backLegendTextsLayerDisplay,
+    self.backLayoutTextsLayerDisplay,
+    self.frontLegendTextsLayerDisplay,
+    self.frontLayoutTextsLayerDisplay,
+    self.holeLayerDisplay,
+    self.viaLayerDisplay,
+    self.frontPadsDisplay,
+    self.backPadsDisplay,
+    self.boardLimitsDisplay,
+    self.backComponentNameDisplay,
+    self.frontComponentNameDisplay,
+    self.frontComponentValueDisplay,
+    self.backComponentValueDisplay,
+    self.backTracksDisplay,
+    self.frontTracksDisplay,
+    self.frontPackagesDisplay,
+    self.backPackagesDisplay
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

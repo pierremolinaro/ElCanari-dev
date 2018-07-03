@@ -16,24 +16,25 @@ func compute_BoardModelEntity_holeLayerDisplay (
        _ self_holes : MergerHoleArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  var components = [CAShapeLayer] ()
-  if prefs_mergerDisplayHoles {
-    for hole in self_holes.holeArray {
-      let x = canariUnitToCocoa (hole.x)
-      let y = canariUnitToCocoa (hole.y)
-      let diameter = canariUnitToCocoa (hole.holeDiameter)
-      let r = CGRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
-      let shape = CAShapeLayer ()
-      shape.path = CGPath (ellipseIn: r, transform: nil)
-      shape.fillColor = NSColor.white.cgColor
-  //    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
-      shape.isOpaque = true
-      components.append (shape)
-    }
-  }
-  let result = CALayer ()
-  result.sublayers = components
-  return result
+  return self_holes.buildShape (dx:0, dy:0, color:NSColor.white, display:prefs_mergerDisplayHoles)
+//  var components = [CAShapeLayer] ()
+//  if prefs_mergerDisplayHoles {
+//    for hole in self_holes.holeArray {
+//      let x = canariUnitToCocoa (hole.x)
+//      let y = canariUnitToCocoa (hole.y)
+//      let diameter = canariUnitToCocoa (hole.holeDiameter)
+//      let r = CGRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
+//      let shape = CAShapeLayer ()
+//      shape.path = CGPath (ellipseIn: r, transform: nil)
+//      shape.fillColor = NSColor.white.cgColor
+//  //    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+//      shape.isOpaque = true
+//      components.append (shape)
+//    }
+//  }
+//  let result = CALayer ()
+//  result.sublayers = components
+//  return result
 //--- END OF USER ZONE 2
 }
 

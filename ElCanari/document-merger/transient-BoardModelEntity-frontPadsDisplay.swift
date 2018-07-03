@@ -16,41 +16,12 @@ func compute_BoardModelEntity_frontPadsDisplay (
        _ self_frontPads : MergerPadArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  var components = [CAShapeLayer] ()
-  if prefs_mergerDisplayFrontPads {
-    for pad in self_frontPads.padArray {
-      let x = canariUnitToCocoa (pad.x)
-      let y = canariUnitToCocoa (pad.y)
-      let width = canariUnitToCocoa (pad.width)
-      let height = canariUnitToCocoa (pad.height)
-      let r = CGRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
-      var transform = CGAffineTransform (translationX:x, y:y).rotated (by:canariRotationToRadians (pad.rotation))
-      let path : CGPath
-      switch pad.shape {
-      case .rectangular :
-        path = CGPath (rect:r, transform:&transform)
-      case .round :
-        if pad.width < pad.height {
-          path = CGPath (roundedRect:r, cornerWidth:width / 2.0, cornerHeight:width / 2.0, transform:&transform)
-        }else if pad.width > pad.height {
-          path = CGPath (roundedRect:r, cornerWidth:height / 2.0, cornerHeight:height / 2.0, transform:&transform)
-        }else{
-          path = CGPath (ellipseIn:r, transform:&transform)
-        }
-      }
-      let shape = CAShapeLayer ()
-      shape.path = path
-      shape.position = CGPoint (x:0.0, y:0.0)
-      shape.strokeColor = nil
-      shape.fillColor = NSColor.brown.cgColor
-  //    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
-      shape.isOpaque = true
-      components.append (shape)
-    }
-  }
-  let result = CALayer ()
-  result.sublayers = components
-  return result
+  return self_frontPads.buildShape (
+    dx: 0,
+    dy: 0,
+    color: NSColor.brown,
+    display: prefs_mergerDisplayFrontPads
+  )
 //--- END OF USER ZONE 2
 }
 

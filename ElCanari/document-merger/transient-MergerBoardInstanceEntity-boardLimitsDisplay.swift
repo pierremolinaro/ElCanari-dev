@@ -11,30 +11,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_viaLayerDisplay (
-       _ prefs_mergerDisplayVias : Bool,       
-       _ self_viaShapes : MergerViaShapeArray
+func compute_MergerBoardInstanceEntity_boardLimitsDisplay (
+       _ self_x : Int,                                     
+       _ self_y : Int,                                     
+       _ prefs_mergerDisplayBoardLimits : Bool,            
+       _ self_myModel_boardLimits : MergerBoardLimits?
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  return self_viaShapes.buildPadShape (dx:0, dy:0, color:NSColor.red, display:prefs_mergerDisplayVias)
-//  var components = [CAShapeLayer] ()
-//  if prefs_mergerDisplayVias {
-//    for via in self_viaShapes.viaArray {
-//      let x = canariUnitToCocoa (via.x)
-//      let y = canariUnitToCocoa (via.y)
-//      let diameter = canariUnitToCocoa (via.padDiameter)
-//      let r = CGRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
-//      let shape = CAShapeLayer ()
-//      shape.path = CGPath (ellipseIn: r, transform: nil)
-//      shape.fillColor = NSColor.red.cgColor
-//  //    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
-//      shape.isOpaque = true
-//      components.append (shape)
-//    }
-//  }
-//  let result = CALayer ()
-//  result.sublayers = components
-//  return result
+  return self_myModel_boardLimits!.buildShape (dx:self_x, dy:self_y, color:NSColor.brown, display:prefs_mergerDisplayBoardLimits)
 //--- END OF USER ZONE 2
 }
 

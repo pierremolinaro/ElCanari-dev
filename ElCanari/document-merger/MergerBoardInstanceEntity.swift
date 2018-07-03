@@ -12,6 +12,23 @@ class MergerBoardInstanceEntity : EBManagedObject,
   MergerBoardInstanceEntity_x,
   MergerBoardInstanceEntity_y,
   MergerBoardInstanceEntity_instanceRect,
+  MergerBoardInstanceEntity_frontLegendTextsLayerDisplay,
+  MergerBoardInstanceEntity_frontLayoutTextsLayerDisplay,
+  MergerBoardInstanceEntity_backLegendTextsLayerDisplay,
+  MergerBoardInstanceEntity_backLayoutTextsLayerDisplay,
+  MergerBoardInstanceEntity_holeLayerDisplay,
+  MergerBoardInstanceEntity_viaLayerDisplay,
+  MergerBoardInstanceEntity_frontPadsDisplay,
+  MergerBoardInstanceEntity_backPadsDisplay,
+  MergerBoardInstanceEntity_boardLimitsDisplay,
+  MergerBoardInstanceEntity_backComponentNameDisplay,
+  MergerBoardInstanceEntity_frontComponentNameDisplay,
+  MergerBoardInstanceEntity_frontComponentValueDisplay,
+  MergerBoardInstanceEntity_backComponentValueDisplay,
+  MergerBoardInstanceEntity_backTracksDisplay,
+  MergerBoardInstanceEntity_frontTracksDisplay,
+  MergerBoardInstanceEntity_frontPackagesDisplay,
+  MergerBoardInstanceEntity_backPackagesDisplay,
   MergerBoardInstanceEntity_instanceLayerDisplay {
 
   //····················································································································
@@ -69,6 +86,278 @@ class MergerBoardInstanceEntity : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing frontLegendTextsLayerDisplay transient property
+  //····················································································································
+
+  var frontLegendTextsLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontLegendTextsLayerDisplay_property.prop
+    }
+  }
+
+  var frontLegendTextsLayerDisplay : EBSelection <CALayer> {
+    get {
+      return frontLegendTextsLayerDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontLayoutTextsLayerDisplay transient property
+  //····················································································································
+
+  var frontLayoutTextsLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontLayoutTextsLayerDisplay_property.prop
+    }
+  }
+
+  var frontLayoutTextsLayerDisplay : EBSelection <CALayer> {
+    get {
+      return frontLayoutTextsLayerDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing backLegendTextsLayerDisplay transient property
+  //····················································································································
+
+  var backLegendTextsLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backLegendTextsLayerDisplay_property.prop
+    }
+  }
+
+  var backLegendTextsLayerDisplay : EBSelection <CALayer> {
+    get {
+      return backLegendTextsLayerDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing backLayoutTextsLayerDisplay transient property
+  //····················································································································
+
+  var backLayoutTextsLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backLayoutTextsLayerDisplay_property.prop
+    }
+  }
+
+  var backLayoutTextsLayerDisplay : EBSelection <CALayer> {
+    get {
+      return backLayoutTextsLayerDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing holeLayerDisplay transient property
+  //····················································································································
+
+  var holeLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.holeLayerDisplay_property.prop
+    }
+  }
+
+  var holeLayerDisplay : EBSelection <CALayer> {
+    get {
+      return holeLayerDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing viaLayerDisplay transient property
+  //····················································································································
+
+  var viaLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.viaLayerDisplay_property.prop
+    }
+  }
+
+  var viaLayerDisplay : EBSelection <CALayer> {
+    get {
+      return viaLayerDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontPadsDisplay transient property
+  //····················································································································
+
+  var frontPadsDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontPadsDisplay_property.prop
+    }
+  }
+
+  var frontPadsDisplay : EBSelection <CALayer> {
+    get {
+      return frontPadsDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing backPadsDisplay transient property
+  //····················································································································
+
+  var backPadsDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backPadsDisplay_property.prop
+    }
+  }
+
+  var backPadsDisplay : EBSelection <CALayer> {
+    get {
+      return backPadsDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardLimitsDisplay transient property
+  //····················································································································
+
+  var boardLimitsDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.boardLimitsDisplay_property.prop
+    }
+  }
+
+  var boardLimitsDisplay : EBSelection <CALayer> {
+    get {
+      return boardLimitsDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing backComponentNameDisplay transient property
+  //····················································································································
+
+  var backComponentNameDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backComponentNameDisplay_property.prop
+    }
+  }
+
+  var backComponentNameDisplay : EBSelection <CALayer> {
+    get {
+      return backComponentNameDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontComponentNameDisplay transient property
+  //····················································································································
+
+  var frontComponentNameDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontComponentNameDisplay_property.prop
+    }
+  }
+
+  var frontComponentNameDisplay : EBSelection <CALayer> {
+    get {
+      return frontComponentNameDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontComponentValueDisplay transient property
+  //····················································································································
+
+  var frontComponentValueDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontComponentValueDisplay_property.prop
+    }
+  }
+
+  var frontComponentValueDisplay : EBSelection <CALayer> {
+    get {
+      return frontComponentValueDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing backComponentValueDisplay transient property
+  //····················································································································
+
+  var backComponentValueDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backComponentValueDisplay_property.prop
+    }
+  }
+
+  var backComponentValueDisplay : EBSelection <CALayer> {
+    get {
+      return backComponentValueDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing backTracksDisplay transient property
+  //····················································································································
+
+  var backTracksDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backTracksDisplay_property.prop
+    }
+  }
+
+  var backTracksDisplay : EBSelection <CALayer> {
+    get {
+      return backTracksDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontTracksDisplay transient property
+  //····················································································································
+
+  var frontTracksDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontTracksDisplay_property.prop
+    }
+  }
+
+  var frontTracksDisplay : EBSelection <CALayer> {
+    get {
+      return frontTracksDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontPackagesDisplay transient property
+  //····················································································································
+
+  var frontPackagesDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontPackagesDisplay_property.prop
+    }
+  }
+
+  var frontPackagesDisplay : EBSelection <CALayer> {
+    get {
+      return frontPackagesDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing backPackagesDisplay transient property
+  //····················································································································
+
+  var backPackagesDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backPackagesDisplay_property.prop
+    }
+  }
+
+  var backPackagesDisplay : EBSelection <CALayer> {
+    get {
+      return backPackagesDisplay_property_selection
+    }
+  }
+
+  //····················································································································
   //   Accessing instanceLayerDisplay transient property
   //····················································································································
 
@@ -96,6 +385,23 @@ class MergerBoardInstanceEntity : EBManagedObject,
   //····················································································································
 
   var instanceRect_property = EBTransientProperty_CanariBoardRect ()
+  var frontLegendTextsLayerDisplay_property = EBTransientProperty_CALayer ()
+  var frontLayoutTextsLayerDisplay_property = EBTransientProperty_CALayer ()
+  var backLegendTextsLayerDisplay_property = EBTransientProperty_CALayer ()
+  var backLayoutTextsLayerDisplay_property = EBTransientProperty_CALayer ()
+  var holeLayerDisplay_property = EBTransientProperty_CALayer ()
+  var viaLayerDisplay_property = EBTransientProperty_CALayer ()
+  var frontPadsDisplay_property = EBTransientProperty_CALayer ()
+  var backPadsDisplay_property = EBTransientProperty_CALayer ()
+  var boardLimitsDisplay_property = EBTransientProperty_CALayer ()
+  var backComponentNameDisplay_property = EBTransientProperty_CALayer ()
+  var frontComponentNameDisplay_property = EBTransientProperty_CALayer ()
+  var frontComponentValueDisplay_property = EBTransientProperty_CALayer ()
+  var backComponentValueDisplay_property = EBTransientProperty_CALayer ()
+  var backTracksDisplay_property = EBTransientProperty_CALayer ()
+  var frontTracksDisplay_property = EBTransientProperty_CALayer ()
+  var frontPackagesDisplay_property = EBTransientProperty_CALayer ()
+  var backPackagesDisplay_property = EBTransientProperty_CALayer ()
   var instanceLayerDisplay_property = EBTransientProperty_CALayer ()
 
   //····················································································································
@@ -134,20 +440,425 @@ class MergerBoardInstanceEntity : EBManagedObject,
         return .empty
       }
     }
-    self.instanceLayerDisplay_property.readModelFunction = { [weak self] in
+    self.frontLegendTextsLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.myModel_property.modelLayerDisplay_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayFrontLegendTexts_property_selection.kind ()
+        kind &= unwSelf.myModel_property.frontLegendTextsSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.modelLayerDisplay_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_MergerBoardInstanceEntity_instanceLayerDisplay (v0, v1, v2))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayFrontLegendTexts_property_selection, unwSelf.myModel_property.frontLegendTextsSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_frontLegendTextsLayerDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontLayoutTextsLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayFrontLayoutTexts_property_selection.kind ()
+        kind &= unwSelf.myModel_property.frontLayoutTextsSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayFrontLayoutTexts_property_selection, unwSelf.myModel_property.frontLayoutTextsSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_frontLayoutTextsLayerDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backLegendTextsLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayBackLegendTexts_property_selection.kind ()
+        kind &= unwSelf.myModel_property.backLegendTextsSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayBackLegendTexts_property_selection, unwSelf.myModel_property.backLegendTextsSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_backLegendTextsLayerDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backLayoutTextsLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayBackLayoutTexts_property_selection.kind ()
+        kind &= unwSelf.myModel_property.backLayoutTextsSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayBackLayoutTexts_property_selection, unwSelf.myModel_property.backLayoutTextsSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_backLayoutTextsLayerDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.holeLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayHoles_property_selection.kind ()
+        kind &= unwSelf.myModel_property.holes_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayHoles_property_selection, unwSelf.myModel_property.holes_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_holeLayerDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.viaLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayVias_property_selection.kind ()
+        kind &= unwSelf.myModel_property.viaShapes_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayVias_property_selection, unwSelf.myModel_property.viaShapes_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_viaLayerDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontPadsDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayFrontPads_property_selection.kind ()
+        kind &= unwSelf.myModel_property.frontPads_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayFrontPads_property_selection, unwSelf.myModel_property.frontPads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_frontPadsDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backPadsDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayBackPads_property_selection.kind ()
+        kind &= unwSelf.myModel_property.backPads_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayBackPads_property_selection, unwSelf.myModel_property.backPads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_backPadsDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardLimitsDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayBoardLimits_property_selection.kind ()
+        kind &= unwSelf.myModel_property.boardLimits_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayBoardLimits_property_selection, unwSelf.myModel_property.boardLimits_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_boardLimitsDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backComponentNameDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayBackComponentNames_property_selection.kind ()
+        kind &= unwSelf.myModel_property.backComponentNameSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayBackComponentNames_property_selection, unwSelf.myModel_property.backComponentNameSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_backComponentNameDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontComponentNameDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayFrontComponentNames_property_selection.kind ()
+        kind &= unwSelf.myModel_property.frontComponentNameSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayFrontComponentNames_property_selection, unwSelf.myModel_property.frontComponentNameSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_frontComponentNameDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontComponentValueDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayFrontComponentValues_property_selection.kind ()
+        kind &= unwSelf.myModel_property.frontComponentValueSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayFrontComponentValues_property_selection, unwSelf.myModel_property.frontComponentValueSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_frontComponentValueDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backComponentValueDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayBackComponentValues_property_selection.kind ()
+        kind &= unwSelf.myModel_property.backComponentValueSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayBackComponentValues_property_selection, unwSelf.myModel_property.backComponentValueSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_backComponentValueDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backTracksDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayBackLayoutTracks_property_selection.kind ()
+        kind &= unwSelf.myModel_property.backTrackSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayBackLayoutTracks_property_selection, unwSelf.myModel_property.backTrackSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_backTracksDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontTracksDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayFrontLayoutTracks_property_selection.kind ()
+        kind &= unwSelf.myModel_property.frontTrackSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayFrontLayoutTracks_property_selection, unwSelf.myModel_property.frontTrackSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_frontTracksDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontPackagesDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayFrontPackages_property_selection.kind ()
+        kind &= unwSelf.myModel_property.frontPackagesSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayFrontPackages_property_selection, unwSelf.myModel_property.frontPackagesSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_frontPackagesDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backPackagesDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= g_Preferences!.mergerDisplayBackPackages_property_selection.kind ()
+        kind &= unwSelf.myModel_property.backPackagesSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerDisplayBackPackages_property_selection, unwSelf.myModel_property.backPackagesSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_MergerBoardInstanceEntity_backPackagesDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.instanceLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.backLegendTextsLayerDisplay_property_selection.kind ()
+        kind &= unwSelf.backLayoutTextsLayerDisplay_property_selection.kind ()
+        kind &= unwSelf.frontLegendTextsLayerDisplay_property_selection.kind ()
+        kind &= unwSelf.frontLayoutTextsLayerDisplay_property_selection.kind ()
+        kind &= unwSelf.holeLayerDisplay_property_selection.kind ()
+        kind &= unwSelf.viaLayerDisplay_property_selection.kind ()
+        kind &= unwSelf.frontPadsDisplay_property_selection.kind ()
+        kind &= unwSelf.backPadsDisplay_property_selection.kind ()
+        kind &= unwSelf.boardLimitsDisplay_property_selection.kind ()
+        kind &= unwSelf.backComponentNameDisplay_property_selection.kind ()
+        kind &= unwSelf.frontComponentNameDisplay_property_selection.kind ()
+        kind &= unwSelf.frontComponentValueDisplay_property_selection.kind ()
+        kind &= unwSelf.backComponentValueDisplay_property_selection.kind ()
+        kind &= unwSelf.backTracksDisplay_property_selection.kind ()
+        kind &= unwSelf.frontTracksDisplay_property_selection.kind ()
+        kind &= unwSelf.frontPackagesDisplay_property_selection.kind ()
+        kind &= unwSelf.backPackagesDisplay_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.backLegendTextsLayerDisplay_property_selection, unwSelf.backLayoutTextsLayerDisplay_property_selection, unwSelf.frontLegendTextsLayerDisplay_property_selection, unwSelf.frontLayoutTextsLayerDisplay_property_selection, unwSelf.holeLayerDisplay_property_selection, unwSelf.viaLayerDisplay_property_selection, unwSelf.frontPadsDisplay_property_selection, unwSelf.backPadsDisplay_property_selection, unwSelf.boardLimitsDisplay_property_selection, unwSelf.backComponentNameDisplay_property_selection, unwSelf.frontComponentNameDisplay_property_selection, unwSelf.frontComponentValueDisplay_property_selection, unwSelf.backComponentValueDisplay_property_selection, unwSelf.backTracksDisplay_property_selection, unwSelf.frontTracksDisplay_property_selection, unwSelf.frontPackagesDisplay_property_selection, unwSelf.backPackagesDisplay_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16)) :
+            return .single (compute_MergerBoardInstanceEntity_instanceLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16))
           default :
             return .empty
           }
@@ -161,9 +872,91 @@ class MergerBoardInstanceEntity : EBManagedObject,
     self.y_property.addEBObserver (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_modelWidth (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_modelHeight (self.instanceRect_property)
-    self.x_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.y_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.myModel_property.addEBObserverOf_modelLayerDisplay (self.instanceLayerDisplay_property)
+    self.x_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
+    self.y_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerDisplayFrontLegendTexts_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
+    self.myModel_property.addEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsLayerDisplay_property)
+    self.x_property.addEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    self.y_property.addEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerDisplayFrontLayoutTexts_property.addEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    self.myModel_property.addEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsLayerDisplay_property)
+    self.x_property.addEBObserver (self.backLegendTextsLayerDisplay_property)
+    self.y_property.addEBObserver (self.backLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerDisplayBackLegendTexts_property.addEBObserver (self.backLegendTextsLayerDisplay_property)
+    self.myModel_property.addEBObserverOf_backLegendTextsSegments (self.backLegendTextsLayerDisplay_property)
+    self.x_property.addEBObserver (self.backLayoutTextsLayerDisplay_property)
+    self.y_property.addEBObserver (self.backLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerDisplayBackLayoutTexts_property.addEBObserver (self.backLayoutTextsLayerDisplay_property)
+    self.myModel_property.addEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsLayerDisplay_property)
+    self.x_property.addEBObserver (self.holeLayerDisplay_property)
+    self.y_property.addEBObserver (self.holeLayerDisplay_property)
+    g_Preferences?.mergerDisplayHoles_property.addEBObserver (self.holeLayerDisplay_property)
+    self.myModel_property.addEBObserverOf_holes (self.holeLayerDisplay_property)
+    self.x_property.addEBObserver (self.viaLayerDisplay_property)
+    self.y_property.addEBObserver (self.viaLayerDisplay_property)
+    g_Preferences?.mergerDisplayVias_property.addEBObserver (self.viaLayerDisplay_property)
+    self.myModel_property.addEBObserverOf_viaShapes (self.viaLayerDisplay_property)
+    self.x_property.addEBObserver (self.frontPadsDisplay_property)
+    self.y_property.addEBObserver (self.frontPadsDisplay_property)
+    g_Preferences?.mergerDisplayFrontPads_property.addEBObserver (self.frontPadsDisplay_property)
+    self.myModel_property.addEBObserverOf_frontPads (self.frontPadsDisplay_property)
+    self.x_property.addEBObserver (self.backPadsDisplay_property)
+    self.y_property.addEBObserver (self.backPadsDisplay_property)
+    g_Preferences?.mergerDisplayBackPads_property.addEBObserver (self.backPadsDisplay_property)
+    self.myModel_property.addEBObserverOf_backPads (self.backPadsDisplay_property)
+    self.x_property.addEBObserver (self.boardLimitsDisplay_property)
+    self.y_property.addEBObserver (self.boardLimitsDisplay_property)
+    g_Preferences?.mergerDisplayBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
+    self.myModel_property.addEBObserverOf_boardLimits (self.boardLimitsDisplay_property)
+    self.x_property.addEBObserver (self.backComponentNameDisplay_property)
+    self.y_property.addEBObserver (self.backComponentNameDisplay_property)
+    g_Preferences?.mergerDisplayBackComponentNames_property.addEBObserver (self.backComponentNameDisplay_property)
+    self.myModel_property.addEBObserverOf_backComponentNameSegments (self.backComponentNameDisplay_property)
+    self.x_property.addEBObserver (self.frontComponentNameDisplay_property)
+    self.y_property.addEBObserver (self.frontComponentNameDisplay_property)
+    g_Preferences?.mergerDisplayFrontComponentNames_property.addEBObserver (self.frontComponentNameDisplay_property)
+    self.myModel_property.addEBObserverOf_frontComponentNameSegments (self.frontComponentNameDisplay_property)
+    self.x_property.addEBObserver (self.frontComponentValueDisplay_property)
+    self.y_property.addEBObserver (self.frontComponentValueDisplay_property)
+    g_Preferences?.mergerDisplayFrontComponentValues_property.addEBObserver (self.frontComponentValueDisplay_property)
+    self.myModel_property.addEBObserverOf_frontComponentValueSegments (self.frontComponentValueDisplay_property)
+    self.x_property.addEBObserver (self.backComponentValueDisplay_property)
+    self.y_property.addEBObserver (self.backComponentValueDisplay_property)
+    g_Preferences?.mergerDisplayBackComponentValues_property.addEBObserver (self.backComponentValueDisplay_property)
+    self.myModel_property.addEBObserverOf_backComponentValueSegments (self.backComponentValueDisplay_property)
+    self.x_property.addEBObserver (self.backTracksDisplay_property)
+    self.y_property.addEBObserver (self.backTracksDisplay_property)
+    g_Preferences?.mergerDisplayBackLayoutTracks_property.addEBObserver (self.backTracksDisplay_property)
+    self.myModel_property.addEBObserverOf_backTrackSegments (self.backTracksDisplay_property)
+    self.x_property.addEBObserver (self.frontTracksDisplay_property)
+    self.y_property.addEBObserver (self.frontTracksDisplay_property)
+    g_Preferences?.mergerDisplayFrontLayoutTracks_property.addEBObserver (self.frontTracksDisplay_property)
+    self.myModel_property.addEBObserverOf_frontTrackSegments (self.frontTracksDisplay_property)
+    self.x_property.addEBObserver (self.frontPackagesDisplay_property)
+    self.y_property.addEBObserver (self.frontPackagesDisplay_property)
+    g_Preferences?.mergerDisplayFrontPackages_property.addEBObserver (self.frontPackagesDisplay_property)
+    self.myModel_property.addEBObserverOf_frontPackagesSegments (self.frontPackagesDisplay_property)
+    self.x_property.addEBObserver (self.backPackagesDisplay_property)
+    self.y_property.addEBObserver (self.backPackagesDisplay_property)
+    g_Preferences?.mergerDisplayBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
+    self.myModel_property.addEBObserverOf_backPackagesSegments (self.backPackagesDisplay_property)
+    self.backLegendTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.backLayoutTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.frontLegendTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.frontLayoutTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.holeLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.viaLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.frontPadsDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.backPadsDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.boardLimitsDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.backComponentNameDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.frontComponentNameDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.frontComponentValueDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.backComponentValueDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.backTracksDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.frontTracksDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.frontPackagesDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.backPackagesDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
   //--- Install undoers for properties
     self.x_property.undoManager = undoManager ()
     self.y_property.undoManager = undoManager ()
@@ -180,9 +973,91 @@ class MergerBoardInstanceEntity : EBManagedObject,
     self.y_property.removeEBObserver (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_modelWidth (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_modelHeight (self.instanceRect_property)
-    self.x_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.y_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.myModel_property.removeEBObserverOf_modelLayerDisplay (self.instanceLayerDisplay_property)
+    self.x_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
+    self.y_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerDisplayFrontLegendTexts_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
+    self.myModel_property.removeEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsLayerDisplay_property)
+    self.x_property.removeEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    self.y_property.removeEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerDisplayFrontLayoutTexts_property.removeEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    self.myModel_property.removeEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsLayerDisplay_property)
+    self.x_property.removeEBObserver (self.backLegendTextsLayerDisplay_property)
+    self.y_property.removeEBObserver (self.backLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerDisplayBackLegendTexts_property.removeEBObserver (self.backLegendTextsLayerDisplay_property)
+    self.myModel_property.removeEBObserverOf_backLegendTextsSegments (self.backLegendTextsLayerDisplay_property)
+    self.x_property.removeEBObserver (self.backLayoutTextsLayerDisplay_property)
+    self.y_property.removeEBObserver (self.backLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerDisplayBackLayoutTexts_property.removeEBObserver (self.backLayoutTextsLayerDisplay_property)
+    self.myModel_property.removeEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsLayerDisplay_property)
+    self.x_property.removeEBObserver (self.holeLayerDisplay_property)
+    self.y_property.removeEBObserver (self.holeLayerDisplay_property)
+    g_Preferences?.mergerDisplayHoles_property.removeEBObserver (self.holeLayerDisplay_property)
+    self.myModel_property.removeEBObserverOf_holes (self.holeLayerDisplay_property)
+    self.x_property.removeEBObserver (self.viaLayerDisplay_property)
+    self.y_property.removeEBObserver (self.viaLayerDisplay_property)
+    g_Preferences?.mergerDisplayVias_property.removeEBObserver (self.viaLayerDisplay_property)
+    self.myModel_property.removeEBObserverOf_viaShapes (self.viaLayerDisplay_property)
+    self.x_property.removeEBObserver (self.frontPadsDisplay_property)
+    self.y_property.removeEBObserver (self.frontPadsDisplay_property)
+    g_Preferences?.mergerDisplayFrontPads_property.removeEBObserver (self.frontPadsDisplay_property)
+    self.myModel_property.removeEBObserverOf_frontPads (self.frontPadsDisplay_property)
+    self.x_property.removeEBObserver (self.backPadsDisplay_property)
+    self.y_property.removeEBObserver (self.backPadsDisplay_property)
+    g_Preferences?.mergerDisplayBackPads_property.removeEBObserver (self.backPadsDisplay_property)
+    self.myModel_property.removeEBObserverOf_backPads (self.backPadsDisplay_property)
+    self.x_property.removeEBObserver (self.boardLimitsDisplay_property)
+    self.y_property.removeEBObserver (self.boardLimitsDisplay_property)
+    g_Preferences?.mergerDisplayBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
+    self.myModel_property.removeEBObserverOf_boardLimits (self.boardLimitsDisplay_property)
+    self.x_property.removeEBObserver (self.backComponentNameDisplay_property)
+    self.y_property.removeEBObserver (self.backComponentNameDisplay_property)
+    g_Preferences?.mergerDisplayBackComponentNames_property.removeEBObserver (self.backComponentNameDisplay_property)
+    self.myModel_property.removeEBObserverOf_backComponentNameSegments (self.backComponentNameDisplay_property)
+    self.x_property.removeEBObserver (self.frontComponentNameDisplay_property)
+    self.y_property.removeEBObserver (self.frontComponentNameDisplay_property)
+    g_Preferences?.mergerDisplayFrontComponentNames_property.removeEBObserver (self.frontComponentNameDisplay_property)
+    self.myModel_property.removeEBObserverOf_frontComponentNameSegments (self.frontComponentNameDisplay_property)
+    self.x_property.removeEBObserver (self.frontComponentValueDisplay_property)
+    self.y_property.removeEBObserver (self.frontComponentValueDisplay_property)
+    g_Preferences?.mergerDisplayFrontComponentValues_property.removeEBObserver (self.frontComponentValueDisplay_property)
+    self.myModel_property.removeEBObserverOf_frontComponentValueSegments (self.frontComponentValueDisplay_property)
+    self.x_property.removeEBObserver (self.backComponentValueDisplay_property)
+    self.y_property.removeEBObserver (self.backComponentValueDisplay_property)
+    g_Preferences?.mergerDisplayBackComponentValues_property.removeEBObserver (self.backComponentValueDisplay_property)
+    self.myModel_property.removeEBObserverOf_backComponentValueSegments (self.backComponentValueDisplay_property)
+    self.x_property.removeEBObserver (self.backTracksDisplay_property)
+    self.y_property.removeEBObserver (self.backTracksDisplay_property)
+    g_Preferences?.mergerDisplayBackLayoutTracks_property.removeEBObserver (self.backTracksDisplay_property)
+    self.myModel_property.removeEBObserverOf_backTrackSegments (self.backTracksDisplay_property)
+    self.x_property.removeEBObserver (self.frontTracksDisplay_property)
+    self.y_property.removeEBObserver (self.frontTracksDisplay_property)
+    g_Preferences?.mergerDisplayFrontLayoutTracks_property.removeEBObserver (self.frontTracksDisplay_property)
+    self.myModel_property.removeEBObserverOf_frontTrackSegments (self.frontTracksDisplay_property)
+    self.x_property.removeEBObserver (self.frontPackagesDisplay_property)
+    self.y_property.removeEBObserver (self.frontPackagesDisplay_property)
+    g_Preferences?.mergerDisplayFrontPackages_property.removeEBObserver (self.frontPackagesDisplay_property)
+    self.myModel_property.removeEBObserverOf_frontPackagesSegments (self.frontPackagesDisplay_property)
+    self.x_property.removeEBObserver (self.backPackagesDisplay_property)
+    self.y_property.removeEBObserver (self.backPackagesDisplay_property)
+    g_Preferences?.mergerDisplayBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
+    self.myModel_property.removeEBObserverOf_backPackagesSegments (self.backPackagesDisplay_property)
+    self.backLegendTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.backLayoutTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.frontLegendTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.frontLayoutTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.holeLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.viaLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.frontPadsDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.backPadsDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.boardLimitsDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.backComponentNameDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.frontComponentNameDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.frontComponentValueDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.backComponentValueDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.backTracksDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.frontTracksDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.frontPackagesDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.backPackagesDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
   }
 
   //····················································································································
@@ -215,6 +1090,142 @@ class MergerBoardInstanceEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.instanceRect_property.mObserverExplorer,
       valueExplorer:&self.instanceRect_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontLegendTextsLayerDisplay",
+      idx:self.frontLegendTextsLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontLegendTextsLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.frontLegendTextsLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontLayoutTextsLayerDisplay",
+      idx:self.frontLayoutTextsLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontLayoutTextsLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.frontLayoutTextsLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backLegendTextsLayerDisplay",
+      idx:self.backLegendTextsLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backLegendTextsLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.backLegendTextsLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backLayoutTextsLayerDisplay",
+      idx:self.backLayoutTextsLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backLayoutTextsLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.backLayoutTextsLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "holeLayerDisplay",
+      idx:self.holeLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.holeLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.holeLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "viaLayerDisplay",
+      idx:self.viaLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.viaLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.viaLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontPadsDisplay",
+      idx:self.frontPadsDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontPadsDisplay_property.mObserverExplorer,
+      valueExplorer:&self.frontPadsDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backPadsDisplay",
+      idx:self.backPadsDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backPadsDisplay_property.mObserverExplorer,
+      valueExplorer:&self.backPadsDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitsDisplay",
+      idx:self.boardLimitsDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardLimitsDisplay_property.mObserverExplorer,
+      valueExplorer:&self.boardLimitsDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backComponentNameDisplay",
+      idx:self.backComponentNameDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backComponentNameDisplay_property.mObserverExplorer,
+      valueExplorer:&self.backComponentNameDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontComponentNameDisplay",
+      idx:self.frontComponentNameDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontComponentNameDisplay_property.mObserverExplorer,
+      valueExplorer:&self.frontComponentNameDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontComponentValueDisplay",
+      idx:self.frontComponentValueDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontComponentValueDisplay_property.mObserverExplorer,
+      valueExplorer:&self.frontComponentValueDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backComponentValueDisplay",
+      idx:self.backComponentValueDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backComponentValueDisplay_property.mObserverExplorer,
+      valueExplorer:&self.backComponentValueDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backTracksDisplay",
+      idx:self.backTracksDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backTracksDisplay_property.mObserverExplorer,
+      valueExplorer:&self.backTracksDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontTracksDisplay",
+      idx:self.frontTracksDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontTracksDisplay_property.mObserverExplorer,
+      valueExplorer:&self.frontTracksDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontPackagesDisplay",
+      idx:self.frontPackagesDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontPackagesDisplay_property.mObserverExplorer,
+      valueExplorer:&self.frontPackagesDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backPackagesDisplay",
+      idx:self.backPackagesDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backPackagesDisplay_property.mObserverExplorer,
+      valueExplorer:&self.backPackagesDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "instanceLayerDisplay",
@@ -481,6 +1492,958 @@ class ReadOnlyArrayOf_MergerBoardInstanceEntity : ReadOnlyAbstractArrayProperty 
   }
 
   //····················································································································
+  //   Observers of 'frontLegendTextsLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_frontLegendTextsLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontLegendTextsLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontLegendTextsLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontLegendTextsLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontLegendTextsLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontLegendTextsLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontLegendTextsLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontLegendTextsLayerDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontLegendTextsLayerDisplay {
+        managedObject.frontLegendTextsLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontLegendTextsLayerDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontLegendTextsLayerDisplay {
+        managedObject.frontLegendTextsLayerDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontLayoutTextsLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_frontLayoutTextsLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontLayoutTextsLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontLayoutTextsLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontLayoutTextsLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontLayoutTextsLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontLayoutTextsLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontLayoutTextsLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontLayoutTextsLayerDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontLayoutTextsLayerDisplay {
+        managedObject.frontLayoutTextsLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontLayoutTextsLayerDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontLayoutTextsLayerDisplay {
+        managedObject.frontLayoutTextsLayerDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backLegendTextsLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backLegendTextsLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backLegendTextsLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backLegendTextsLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backLegendTextsLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backLegendTextsLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backLegendTextsLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backLegendTextsLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backLegendTextsLayerDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backLegendTextsLayerDisplay {
+        managedObject.backLegendTextsLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backLegendTextsLayerDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backLegendTextsLayerDisplay {
+        managedObject.backLegendTextsLayerDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backLayoutTextsLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backLayoutTextsLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backLayoutTextsLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backLayoutTextsLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backLayoutTextsLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backLayoutTextsLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backLayoutTextsLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backLayoutTextsLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backLayoutTextsLayerDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backLayoutTextsLayerDisplay {
+        managedObject.backLayoutTextsLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backLayoutTextsLayerDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backLayoutTextsLayerDisplay {
+        managedObject.backLayoutTextsLayerDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'holeLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_holeLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_holeLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_holeLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.holeLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_holeLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_holeLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.holeLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_holeLayerDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_holeLayerDisplay {
+        managedObject.holeLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_holeLayerDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_holeLayerDisplay {
+        managedObject.holeLayerDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'viaLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_viaLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_viaLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_viaLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.viaLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viaLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_viaLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.viaLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_viaLayerDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_viaLayerDisplay {
+        managedObject.viaLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_viaLayerDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_viaLayerDisplay {
+        managedObject.viaLayerDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontPadsDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_frontPadsDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontPadsDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontPadsDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPadsDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontPadsDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontPadsDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPadsDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontPadsDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPadsDisplay {
+        managedObject.frontPadsDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontPadsDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPadsDisplay {
+        managedObject.frontPadsDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backPadsDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backPadsDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backPadsDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backPadsDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backPadsDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backPadsDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backPadsDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backPadsDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backPadsDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backPadsDisplay {
+        managedObject.backPadsDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backPadsDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backPadsDisplay {
+        managedObject.backPadsDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardLimitsDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_boardLimitsDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardLimitsDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardLimitsDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardLimitsDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardLimitsDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardLimitsDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardLimitsDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardLimitsDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardLimitsDisplay {
+        managedObject.boardLimitsDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardLimitsDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardLimitsDisplay {
+        managedObject.boardLimitsDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backComponentNameDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backComponentNameDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backComponentNameDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backComponentNameDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backComponentNameDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backComponentNameDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backComponentNameDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backComponentNameDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backComponentNameDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backComponentNameDisplay {
+        managedObject.backComponentNameDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backComponentNameDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backComponentNameDisplay {
+        managedObject.backComponentNameDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontComponentNameDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_frontComponentNameDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontComponentNameDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontComponentNameDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontComponentNameDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontComponentNameDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontComponentNameDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontComponentNameDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontComponentNameDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontComponentNameDisplay {
+        managedObject.frontComponentNameDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontComponentNameDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontComponentNameDisplay {
+        managedObject.frontComponentNameDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontComponentValueDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_frontComponentValueDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontComponentValueDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontComponentValueDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontComponentValueDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontComponentValueDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontComponentValueDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontComponentValueDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontComponentValueDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontComponentValueDisplay {
+        managedObject.frontComponentValueDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontComponentValueDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontComponentValueDisplay {
+        managedObject.frontComponentValueDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backComponentValueDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backComponentValueDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backComponentValueDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backComponentValueDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backComponentValueDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backComponentValueDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backComponentValueDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backComponentValueDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backComponentValueDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backComponentValueDisplay {
+        managedObject.backComponentValueDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backComponentValueDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backComponentValueDisplay {
+        managedObject.backComponentValueDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backTracksDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backTracksDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backTracksDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backTracksDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backTracksDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backTracksDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backTracksDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backTracksDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backTracksDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backTracksDisplay {
+        managedObject.backTracksDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backTracksDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backTracksDisplay {
+        managedObject.backTracksDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontTracksDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_frontTracksDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontTracksDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontTracksDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontTracksDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontTracksDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontTracksDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontTracksDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontTracksDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontTracksDisplay {
+        managedObject.frontTracksDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontTracksDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontTracksDisplay {
+        managedObject.frontTracksDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontPackagesDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_frontPackagesDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontPackagesDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontPackagesDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPackagesDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontPackagesDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontPackagesDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPackagesDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontPackagesDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPackagesDisplay {
+        managedObject.frontPackagesDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontPackagesDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPackagesDisplay {
+        managedObject.frontPackagesDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backPackagesDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backPackagesDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backPackagesDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backPackagesDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backPackagesDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backPackagesDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backPackagesDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backPackagesDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backPackagesDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backPackagesDisplay {
+        managedObject.backPackagesDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backPackagesDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backPackagesDisplay {
+        managedObject.backPackagesDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'instanceLayerDisplay' transient property
   //····················································································································
 
@@ -578,6 +2541,23 @@ class TransientArrayOf_MergerBoardInstanceEntity : ReadOnlyArrayOf_MergerBoardIn
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontLegendTextsLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontLayoutTextsLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backLegendTextsLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backLayoutTextsLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_holeLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_viaLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontPadsDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backPadsDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardLimitsDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backComponentNameDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontComponentNameDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontComponentValueDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backComponentValueDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backTracksDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontTracksDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontPackagesDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backPackagesDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_instanceLayerDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
@@ -586,6 +2566,23 @@ class TransientArrayOf_MergerBoardInstanceEntity : ReadOnlyArrayOf_MergerBoardIn
         addEBObserversOf_y_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_instanceRect_toElementsOfSet (addedSet)
+        addEBObserversOf_frontLegendTextsLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_frontLayoutTextsLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_backLegendTextsLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_backLayoutTextsLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_holeLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_viaLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_frontPadsDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_backPadsDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_boardLimitsDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_backComponentNameDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_frontComponentNameDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_frontComponentValueDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_backComponentValueDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_backTracksDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_frontTracksDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_frontPackagesDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_backPackagesDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_instanceLayerDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
@@ -631,6 +2628,108 @@ protocol MergerBoardInstanceEntity_y : class {
 
 protocol MergerBoardInstanceEntity_instanceRect : class {
   var instanceRect : EBSelection < CanariBoardRect > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_frontLegendTextsLayerDisplay : class {
+  var frontLegendTextsLayerDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_frontLayoutTextsLayerDisplay : class {
+  var frontLayoutTextsLayerDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_backLegendTextsLayerDisplay : class {
+  var backLegendTextsLayerDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_backLayoutTextsLayerDisplay : class {
+  var backLayoutTextsLayerDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_holeLayerDisplay : class {
+  var holeLayerDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_viaLayerDisplay : class {
+  var viaLayerDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_frontPadsDisplay : class {
+  var frontPadsDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_backPadsDisplay : class {
+  var backPadsDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_boardLimitsDisplay : class {
+  var boardLimitsDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_backComponentNameDisplay : class {
+  var backComponentNameDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_frontComponentNameDisplay : class {
+  var frontComponentNameDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_frontComponentValueDisplay : class {
+  var frontComponentValueDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_backComponentValueDisplay : class {
+  var backComponentValueDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_backTracksDisplay : class {
+  var backTracksDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_frontTracksDisplay : class {
+  var frontTracksDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_frontPackagesDisplay : class {
+  var frontPackagesDisplay : EBSelection < CALayer > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_backPackagesDisplay : class {
+  var backPackagesDisplay : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
