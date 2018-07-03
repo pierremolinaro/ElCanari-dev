@@ -94,7 +94,7 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
   override func setBoardModelSize (width : Int, height : Int) {
     super.setBoardModelSize (width:width, height:height)
-    self.notifyTransaction ()
+ //   self.notifyTransaction ()
     let noModel = (width == 0) || (height == 0)
     if noModel {
       self.mBackgroundLayer.fillColor = nil

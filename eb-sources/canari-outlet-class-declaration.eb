@@ -2,6 +2,8 @@
 #   Canari Outlets
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+extern outlet class NSClipView ;
+
 extern outlet class CanariDimensionTextField ;
 binding CanariDimensionTextField $dimensionAndUnit : property Int, property Int ;
 

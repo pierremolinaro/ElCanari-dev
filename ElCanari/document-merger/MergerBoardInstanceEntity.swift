@@ -12,6 +12,7 @@ class MergerBoardInstanceEntity : EBManagedObject,
   MergerBoardInstanceEntity_x,
   MergerBoardInstanceEntity_y,
   MergerBoardInstanceEntity_instanceRect,
+  MergerBoardInstanceEntity_backgroundLayerDisplay,
   MergerBoardInstanceEntity_frontLegendTextsLayerDisplay,
   MergerBoardInstanceEntity_frontLayoutTextsLayerDisplay,
   MergerBoardInstanceEntity_backLegendTextsLayerDisplay,
@@ -82,6 +83,22 @@ class MergerBoardInstanceEntity : EBManagedObject,
   var instanceRect : EBSelection <CanariBoardRect> {
     get {
       return instanceRect_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing backgroundLayerDisplay transient property
+  //····················································································································
+
+  var backgroundLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backgroundLayerDisplay_property.prop
+    }
+  }
+
+  var backgroundLayerDisplay : EBSelection <CALayer> {
+    get {
+      return backgroundLayerDisplay_property_selection
     }
   }
 
@@ -385,6 +402,7 @@ class MergerBoardInstanceEntity : EBManagedObject,
   //····················································································································
 
   var instanceRect_property = EBTransientProperty_CanariBoardRect ()
+  var backgroundLayerDisplay_property = EBTransientProperty_CALayer ()
   var frontLegendTextsLayerDisplay_property = EBTransientProperty_CALayer ()
   var frontLayoutTextsLayerDisplay_property = EBTransientProperty_CALayer ()
   var backLegendTextsLayerDisplay_property = EBTransientProperty_CALayer ()
@@ -432,6 +450,26 @@ class MergerBoardInstanceEntity : EBManagedObject,
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.modelWidth_property_selection, unwSelf.myModel_property.modelHeight_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (compute_MergerBoardInstanceEntity_instanceRect (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backgroundLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.instanceRect_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.instanceRect_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_MergerBoardInstanceEntity_backgroundLayerDisplay (v0))
           default :
             return .empty
           }
@@ -833,7 +871,8 @@ class MergerBoardInstanceEntity : EBManagedObject,
     }
     self.instanceLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.backLegendTextsLayerDisplay_property_selection.kind ()
+        var kind = unwSelf.backgroundLayerDisplay_property_selection.kind ()
+        kind &= unwSelf.backLegendTextsLayerDisplay_property_selection.kind ()
         kind &= unwSelf.backLayoutTextsLayerDisplay_property_selection.kind ()
         kind &= unwSelf.frontLegendTextsLayerDisplay_property_selection.kind ()
         kind &= unwSelf.frontLayoutTextsLayerDisplay_property_selection.kind ()
@@ -856,9 +895,9 @@ class MergerBoardInstanceEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.backLegendTextsLayerDisplay_property_selection, unwSelf.backLayoutTextsLayerDisplay_property_selection, unwSelf.frontLegendTextsLayerDisplay_property_selection, unwSelf.frontLayoutTextsLayerDisplay_property_selection, unwSelf.holeLayerDisplay_property_selection, unwSelf.viaLayerDisplay_property_selection, unwSelf.frontPadsDisplay_property_selection, unwSelf.backPadsDisplay_property_selection, unwSelf.boardLimitsDisplay_property_selection, unwSelf.backComponentNameDisplay_property_selection, unwSelf.frontComponentNameDisplay_property_selection, unwSelf.frontComponentValueDisplay_property_selection, unwSelf.backComponentValueDisplay_property_selection, unwSelf.backTracksDisplay_property_selection, unwSelf.frontTracksDisplay_property_selection, unwSelf.frontPackagesDisplay_property_selection, unwSelf.backPackagesDisplay_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16)) :
-            return .single (compute_MergerBoardInstanceEntity_instanceLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16))
+          switch (unwSelf.backgroundLayerDisplay_property_selection, unwSelf.backLegendTextsLayerDisplay_property_selection, unwSelf.backLayoutTextsLayerDisplay_property_selection, unwSelf.frontLegendTextsLayerDisplay_property_selection, unwSelf.frontLayoutTextsLayerDisplay_property_selection, unwSelf.holeLayerDisplay_property_selection, unwSelf.viaLayerDisplay_property_selection, unwSelf.frontPadsDisplay_property_selection, unwSelf.backPadsDisplay_property_selection, unwSelf.boardLimitsDisplay_property_selection, unwSelf.backComponentNameDisplay_property_selection, unwSelf.frontComponentNameDisplay_property_selection, unwSelf.frontComponentValueDisplay_property_selection, unwSelf.backComponentValueDisplay_property_selection, unwSelf.backTracksDisplay_property_selection, unwSelf.frontTracksDisplay_property_selection, unwSelf.frontPackagesDisplay_property_selection, unwSelf.backPackagesDisplay_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17)) :
+            return .single (compute_MergerBoardInstanceEntity_instanceLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17))
           default :
             return .empty
           }
@@ -872,6 +911,7 @@ class MergerBoardInstanceEntity : EBManagedObject,
     self.y_property.addEBObserver (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_modelWidth (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_modelHeight (self.instanceRect_property)
+    self.instanceRect_property.addEBObserver (self.backgroundLayerDisplay_property)
     self.x_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
     self.y_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
     g_Preferences?.mergerDisplayFrontLegendTexts_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
@@ -940,6 +980,7 @@ class MergerBoardInstanceEntity : EBManagedObject,
     self.y_property.addEBObserver (self.backPackagesDisplay_property)
     g_Preferences?.mergerDisplayBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
     self.myModel_property.addEBObserverOf_backPackagesSegments (self.backPackagesDisplay_property)
+    self.backgroundLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
     self.backLegendTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
     self.frontLegendTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
@@ -973,6 +1014,7 @@ class MergerBoardInstanceEntity : EBManagedObject,
     self.y_property.removeEBObserver (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_modelWidth (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_modelHeight (self.instanceRect_property)
+    self.instanceRect_property.removeEBObserver (self.backgroundLayerDisplay_property)
     self.x_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
     self.y_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
     g_Preferences?.mergerDisplayFrontLegendTexts_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
@@ -1041,6 +1083,7 @@ class MergerBoardInstanceEntity : EBManagedObject,
     self.y_property.removeEBObserver (self.backPackagesDisplay_property)
     g_Preferences?.mergerDisplayBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
     self.myModel_property.removeEBObserverOf_backPackagesSegments (self.backPackagesDisplay_property)
+    self.backgroundLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
     self.backLegendTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
     self.frontLegendTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
@@ -1090,6 +1133,14 @@ class MergerBoardInstanceEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.instanceRect_property.mObserverExplorer,
       valueExplorer:&self.instanceRect_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backgroundLayerDisplay",
+      idx:self.backgroundLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backgroundLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.backgroundLayerDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "frontLegendTextsLayerDisplay",
@@ -1487,6 +1538,62 @@ class ReadOnlyArrayOf_MergerBoardInstanceEntity : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet {
       for observer in mObserversOf_instanceRect {
         managedObject.instanceRect_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backgroundLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backgroundLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backgroundLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backgroundLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backgroundLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backgroundLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backgroundLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backgroundLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backgroundLayerDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backgroundLayerDisplay {
+        managedObject.backgroundLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backgroundLayerDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backgroundLayerDisplay {
+        managedObject.backgroundLayerDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -2541,6 +2648,7 @@ class TransientArrayOf_MergerBoardInstanceEntity : ReadOnlyArrayOf_MergerBoardIn
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backgroundLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendTextsLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLayoutTextsLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backLegendTextsLayerDisplay_fromElementsOfSet (removedSet)
@@ -2566,6 +2674,7 @@ class TransientArrayOf_MergerBoardInstanceEntity : ReadOnlyArrayOf_MergerBoardIn
         addEBObserversOf_y_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_instanceRect_toElementsOfSet (addedSet)
+        addEBObserversOf_backgroundLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendTextsLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontLayoutTextsLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backLegendTextsLayerDisplay_toElementsOfSet (addedSet)
@@ -2628,6 +2737,12 @@ protocol MergerBoardInstanceEntity_y : class {
 
 protocol MergerBoardInstanceEntity_instanceRect : class {
   var instanceRect : EBSelection < CanariBoardRect > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_backgroundLayerDisplay : class {
+  var backgroundLayerDisplay : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

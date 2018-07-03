@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="addBoardModelButton" destination="2Wu-Dh-CTo" id="Ge9-7X-rm9"/>
                 <outlet property="mArtworkNameTextField" destination="sNV-XY-ihk" id="r4K-hG-ctp"/>
+                <outlet property="mBoardClipView" destination="nFP-mw-Omh" id="VEQ-jL-583"/>
                 <outlet property="mBoardHeightTextField" destination="7dt-7v-ArC" id="779-cB-9W3"/>
                 <outlet property="mBoardHeightUnitPopUp" destination="wB7-F3-Dvt" id="SaL-Vz-UJE"/>
                 <outlet property="mBoardInsertMenu" destination="3Qt-fi-qrc" id="eEB-l8-4Bg"/>
@@ -92,7 +93,6 @@
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="VxW-8s-t9m"/>
-                    <toolbarItem reference="1232"/>
                     <toolbarItem reference="Hkd-jU-U7x"/>
                 </defaultToolbarItems>
             </toolbar>
@@ -347,7 +347,7 @@
                                 <rect key="frame" x="0.0" y="387" width="452" height="417"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <outlet property="menu" destination="3Qt-fi-qrc" id="LtX-Yo-NUW"/>
+                                    <outlet property="menu" destination="3Qt-fi-qrc" id="Bin-ca-Mez"/>
                                 </connections>
                             </customView>
                         </subviews>
@@ -361,9 +361,6 @@
                         <rect key="frame" x="453" y="1" width="15" height="483"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <connections>
-                        <outlet property="menu" destination="3Qt-fi-qrc" id="rCZ-sh-oze"/>
-                    </connections>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="s7Q-cO-PSS">
                     <rect key="frame" x="18" y="463" width="83" height="14"/>

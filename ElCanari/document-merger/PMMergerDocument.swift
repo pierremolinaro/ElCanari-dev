@@ -14,6 +14,7 @@ import Cocoa
 
   @IBOutlet var addBoardModelButton : EBButton?
   @IBOutlet var mArtworkNameTextField : EBTextObserverField?
+  @IBOutlet var mBoardClipView : NSClipView?
   @IBOutlet var mBoardHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardInsertMenu : CanariBoardInsertMenu?
@@ -119,6 +120,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mArtworkNameTextField' outlet is not an instance of 'EBTextObserverField'") ;
+    }
+    if nil == mBoardClipView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mBoardClipView' outlet is nil") ;
+//    }else if !mBoardClipView!.isKindOfClass (NSClipView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mBoardClipView' outlet is not an instance of 'NSClipView'") ;
     }
     if nil == mBoardHeightTextField {
       presentErrorWindow (file: #file,
@@ -390,6 +400,7 @@ import Cocoa
   //--------------------------- Clean up outlets
     self.addBoardModelButton?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
+    self.mBoardClipView?.ebCleanUp ()
     self.mBoardHeightTextField?.ebCleanUp ()
     self.mBoardHeightUnitPopUp?.ebCleanUp ()
     self.mBoardInsertMenu?.ebCleanUp ()

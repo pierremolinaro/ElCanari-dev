@@ -11,20 +11,20 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerRootEntity_boardRect (
-       _ self_boardInstances_instanceRect : [MergerBoardInstanceEntity_instanceRect]
-) -> CanariBoardRect {
+func compute_MergerBoardInstanceEntity_backgroundLayerDisplay (
+       _ self_instanceRect : CanariBoardRect
+) -> CALayer {
 //--- START OF USER ZONE 2
-  var r = CanariBoardRect () // Empty rect
-  for board in self_boardInstances_instanceRect {
-    switch board.instanceRect {
-    case .single (let re) :
-      r = r.union (re)
-    default :
-      break
-    }
-  }
-  return CanariBoardRect (x:0, y:0, width: r.x + r.width, height: r.y + r.height)
+  let result = CAShapeLayer ()
+  let x = canariUnitToCocoa (self_instanceRect.x)
+  let y = canariUnitToCocoa (self_instanceRect.y)
+  let width = canariUnitToCocoa (self_instanceRect.width)
+  let height = canariUnitToCocoa (self_instanceRect.height)
+  let r = CGRect (x:x, y:y, width:width, height:height)
+  result.path = CGPath (rect: r, transform: nil)
+  result.fillColor = NSColor.gray.cgColor
+  result.isOpaque = true
+  return result
 //--- END OF USER ZONE 2
 }
 

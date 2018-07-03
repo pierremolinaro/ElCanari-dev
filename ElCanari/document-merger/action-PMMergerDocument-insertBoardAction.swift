@@ -24,10 +24,16 @@ extension PMMergerDocument {
             break
           }
         }
-        if let boardModel = possibleBoardModel {
-          let newBoard = MergerBoardInstanceEntity (managedObjectContext: self.managedObjectContext())
-          newBoard.myModel_property.setProp (boardModel)
-          self.rootObject.boardInstances_property.add (newBoard)
+        if let boardModel = possibleBoardModel, let currentEvent = self.windowForSheet?.currentEvent {
+          let mouseLocationInWindow : NSPoint = currentEvent.locationInWindow
+          if let mouseLocation = self.mComposedBoardView?.convert (mouseLocationInWindow, from:nil) {
+            // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
+            let newBoard = MergerBoardInstanceEntity (managedObjectContext: self.managedObjectContext())
+            newBoard.myModel_property.setProp (boardModel)
+            newBoard.x = cocoaToCanariUnit (mouseLocation.x)
+            newBoard.y = cocoaToCanariUnit (mouseLocation.y)
+            self.rootObject.boardInstances_property.add (newBoard)
+          }
         }else{
           NSLog ("Cannot find '\(boardModelName)' board model")
         }
