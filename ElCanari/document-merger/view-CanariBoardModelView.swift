@@ -73,7 +73,25 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //  awakeFromNib
   //····················································································································
 
+//    // Leave the layer's contents alone. Never mark the layer as needing display, or draw the view's contents to the layer
+//    case never
+//
+//    // Map view -setNeedsDisplay...: activity to the layer, and redraw affected layer parts by invoking the view's -drawRect:, but don't mark the view or layer as needing display when the view's size changes.
+//    case onSetNeedsDisplay
+//
+//    // Resize the layer and redraw the view to the layer when the view's size changes. If the resize is animated, AppKit will drive the resize animation itself and will do this resize+redraw at each step of the animation. Affected parts of the layer will also be redrawn when the view is marked as needing display. (This mode is a superset of NSViewLayerContentsRedrawOnSetNeedsDisplay.) 
+//    case duringViewResize
+//
+//    // Resize the layer and redraw the view to the layer when the view's size changes. This will be done just once at the beginning of a resize animation, not at each frame of the animation. Affected parts of the layer will also be redrawn when the view is marked as needing display. (This mode is a superset of NSViewLayerContentsRedrawOnSetNeedsDisplay.)
+//    case beforeViewResize
+//
+//    // When a view is resized, the layer contents will be redrawn once and the contents will crossfade from the old value to the new value. Use this in conjunction with the layerContentsPlacement to get a nice crossfade animation for complex layer-backed views that can't correctly update on each step of the animation
+//    @available(OSX 10.9, *)
+//    case crossfade
+
   final override func awakeFromNib () {
+//    self.layerContentsRedrawPolicy = .crossfade // .beforeViewResize
+
     self.layer?.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.layer?.isOpaque = OPAQUE_LAYERS
    // NSLog ("\(self.mBackgroundLayer.isOpaque)")
@@ -702,6 +720,19 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       shape.isOpaque = OPAQUE_LAYERS
       components.append (shape)
     }
+//    let aLayer = CALayer ()
+//    aLayer.sublayers = components
+//    let duplicatedLayer = NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: aLayer)) as! CALayer
+//    duplicatedLayer.position = CGPoint (x:10.0, y:10.0)
+//    self.mFrontPadsLayer.sublayers = [aLayer, duplicatedLayer]
+
+//   CALayer *layer = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:layer]];
+//    let replicatorLayer = CAReplicatorLayer ()
+//    replicatorLayer.instanceCount = 3
+//    replicatorLayer.instanceTransform = CATransform3DMakeTranslation (10.0, 10.0, 0.0)
+//    replicatorLayer.sublayers = components
+//    self.mFrontPadsLayer.sublayers = [replicatorLayer]
+
     self.mFrontPadsLayer.sublayers = components
   }
 
@@ -784,21 +815,29 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
   func setHoles (_ inHoleArray : [MergerHole]) {
     self.notifyTransaction ()
-    let paths = CGMutablePath ()
+//    let paths = CGMutablePath ()
+    var array = [CALayer] ()
     for hole in inHoleArray {
       let x : CGFloat = canariUnitToCocoa (hole.x)
       let y : CGFloat = canariUnitToCocoa (hole.y)
       let holeDiameter = canariUnitToCocoa (hole.holeDiameter)
       let r = CGRect (x: x - holeDiameter / 2.0, y: y - holeDiameter / 2.0, width:holeDiameter, height:holeDiameter)
-      paths.addEllipse (in: r)
+      let shape = CAShapeLayer ()
+      shape.path = CGPath (ellipseIn:r, transform: nil)
+      shape.position = CGPoint (x:0.0, y:0.0)
+      shape.fillColor = NSColor.white.cgColor
+      shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+      shape.isOpaque = OPAQUE_LAYERS
+      array.append (shape)
+    //  paths.addEllipse (in: r)
     }
-    let shape = CAShapeLayer ()
-    shape.path = paths
-    shape.position = CGPoint (x:0.0, y:0.0)
-    shape.fillColor = NSColor.white.cgColor
-    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
-    shape.isOpaque = OPAQUE_LAYERS
-    self.mHolesLayer.sublayers = [shape]
+//    let shape = CAShapeLayer ()
+//    shape.path = paths
+//    shape.position = CGPoint (x:0.0, y:0.0)
+//    shape.fillColor = NSColor.white.cgColor
+//    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+//    shape.isOpaque = OPAQUE_LAYERS
+    self.mHolesLayer.sublayers = array // [shape]
   }
 
   //····················································································································

@@ -309,6 +309,10 @@ entity MergerBoardInstanceEntity {
   property Int x default 0 ;
   property Int y default 0 ;
 
+#--- Front pads
+  transient MergerPadArray frontPads
+    dependsFrom self.x, self.y, self.myModel.one.frontPads ;
+
 #--- Instance rect
   transient CanariBoardRect instanceRect
     dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight
@@ -323,11 +327,23 @@ entity MergerRootEntity {
   toMany @cascading MergerBoardInstanceEntity boardInstances ;
 
   property Int selectedPageIndex default 0 ;
+  property Int zoom default 0 ;
+  property Int boardWidthUnit default 90_000 ;
+  property Int boardHeightUnit default 90_000 ;
 
 #--- Board model name array
   transient MergerBoardModelArray modelNames dependsFrom self.boardModels.all.name ;
-  
+
+
+#--- Front pads
+  transient MergerPadArray frontPads dependsFrom self.boardInstances.all.frontPads ;
+
+  transient MergerPadArray frontPadsForDisplay dependsFrom prefs.mergerDisplayFrontPads, self.frontPads ;
+
 #--- Board rect
+  transient CanariBoardRect boardRect dependsFrom self.boardInstances.all.instanceRect ;
+  transient Int boardWidth dependsFrom self.boardRect ;
+  transient Int boardHeight dependsFrom self.boardRect ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -372,14 +388,14 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBIntObserverField mInstanceCountTextField $valueObserver mBoardModelSelection.instanceCount {autoFormatter:yes} ;
 
 #--- Model width display
-  outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag mBoardModelSelection.modelWidthUnit ;
-  outlet CanariDimensionTextField mBoardWidthTextField
+  outlet EBPopUpButton mModelWidthUnitPopUp $selectedTag mBoardModelSelection.modelWidthUnit ;
+  outlet CanariDimensionObserverTextField mModelWidthTextField
      $dimensionAndUnit mBoardModelSelection.modelWidth, mBoardModelSelection.modelWidthUnit
   ;
 
 #--- Model Height display
-  outlet EBPopUpButton mBoardHeightUnitPopUp $selectedTag mBoardModelSelection.modelHeightUnit ;
-  outlet CanariDimensionTextField mBoardHeightTextField
+  outlet EBPopUpButton mModelHeightUnitPopUp $selectedTag mBoardModelSelection.modelHeightUnit ;
+  outlet CanariDimensionObserverTextField mModelHeightTextField
      $dimensionAndUnit mBoardModelSelection.modelHeight, mBoardModelSelection.modelHeightUnit
   ;
 
@@ -409,9 +425,26 @@ document PMMergerDocument root MergerRootEntity {
   ;
 
 #------------------------------------- Board Page
-  outlet CanariBoardModelView mComposedBoardView ;
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
+
+#--- Board width display
+  outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag root.boardWidthUnit ;
+  outlet CanariDimensionObserverTextField mBoardWidthTextField
+     $dimensionAndUnit root.boardWidth, root.boardWidthUnit
+  ;
+
+#--- Board Height display
+  outlet EBPopUpButton mBoardHeightUnitPopUp $selectedTag root.boardHeightUnit ;
+  outlet CanariDimensionObserverTextField mBoardHeightTextField
+     $dimensionAndUnit root.boardHeight, root.boardHeightUnit
+  ;
+
+  outlet CanariBoardModelView mComposedBoardView
+    $size root.boardWidth, root.boardHeight
+    $zoom root.zoom
+    $frontPads root.frontPadsForDisplay
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

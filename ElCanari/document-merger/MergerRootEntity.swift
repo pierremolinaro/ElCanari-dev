@@ -10,7 +10,15 @@ import Cocoa
 
 class MergerRootEntity : EBManagedObject,
   MergerRootEntity_selectedPageIndex,
-  MergerRootEntity_modelNames {
+  MergerRootEntity_zoom,
+  MergerRootEntity_boardWidthUnit,
+  MergerRootEntity_boardHeightUnit,
+  MergerRootEntity_modelNames,
+  MergerRootEntity_frontPads,
+  MergerRootEntity_frontPadsForDisplay,
+  MergerRootEntity_boardRect,
+  MergerRootEntity_boardWidth,
+  MergerRootEntity_boardHeight {
 
   //····················································································································
   //   Accessing selectedPageIndex stored property
@@ -32,6 +40,63 @@ class MergerRootEntity : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing zoom stored property
+  //····················································································································
+
+  var zoom : Int {
+    get {
+      return self.zoom_property.propval
+    }
+    set {
+      self.zoom_property.setProp (newValue)
+    }
+  }
+
+  var zoom_property_selection : EBSelection <Int> {
+    get {
+      return self.zoom_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardWidthUnit stored property
+  //····················································································································
+
+  var boardWidthUnit : Int {
+    get {
+      return self.boardWidthUnit_property.propval
+    }
+    set {
+      self.boardWidthUnit_property.setProp (newValue)
+    }
+  }
+
+  var boardWidthUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.boardWidthUnit_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardHeightUnit stored property
+  //····················································································································
+
+  var boardHeightUnit : Int {
+    get {
+      return self.boardHeightUnit_property.propval
+    }
+    set {
+      self.boardHeightUnit_property.setProp (newValue)
+    }
+  }
+
+  var boardHeightUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.boardHeightUnit_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing modelNames transient property
   //····················································································································
 
@@ -44,6 +109,86 @@ class MergerRootEntity : EBManagedObject,
   var modelNames : EBSelection <MergerBoardModelArray> {
     get {
       return modelNames_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontPads transient property
+  //····················································································································
+
+  var frontPads_property_selection : EBSelection <MergerPadArray> {
+    get {
+      return self.frontPads_property.prop
+    }
+  }
+
+  var frontPads : EBSelection <MergerPadArray> {
+    get {
+      return frontPads_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontPadsForDisplay transient property
+  //····················································································································
+
+  var frontPadsForDisplay_property_selection : EBSelection <MergerPadArray> {
+    get {
+      return self.frontPadsForDisplay_property.prop
+    }
+  }
+
+  var frontPadsForDisplay : EBSelection <MergerPadArray> {
+    get {
+      return frontPadsForDisplay_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardRect transient property
+  //····················································································································
+
+  var boardRect_property_selection : EBSelection <CanariBoardRect> {
+    get {
+      return self.boardRect_property.prop
+    }
+  }
+
+  var boardRect : EBSelection <CanariBoardRect> {
+    get {
+      return boardRect_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardWidth transient property
+  //····················································································································
+
+  var boardWidth_property_selection : EBSelection <Int> {
+    get {
+      return self.boardWidth_property.prop
+    }
+  }
+
+  var boardWidth : EBSelection <Int> {
+    get {
+      return boardWidth_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardHeight transient property
+  //····················································································································
+
+  var boardHeight_property_selection : EBSelection <Int> {
+    get {
+      return self.boardHeight_property.prop
+    }
+  }
+
+  var boardHeight : EBSelection <Int> {
+    get {
+      return boardHeight_property_selection
     }
   }
 
@@ -72,12 +217,20 @@ class MergerRootEntity : EBManagedObject,
   //····················································································································
 
   var selectedPageIndex_property = EBStoredProperty_Int (0)
+  var zoom_property = EBStoredProperty_Int (0)
+  var boardWidthUnit_property = EBStoredProperty_Int (90000)
+  var boardHeightUnit_property = EBStoredProperty_Int (90000)
 
   //····················································································································
   //    Transient properties
   //····················································································································
 
   var modelNames_property = EBTransientProperty_MergerBoardModelArray ()
+  var frontPads_property = EBTransientProperty_MergerPadArray ()
+  var frontPadsForDisplay_property = EBTransientProperty_MergerPadArray ()
+  var boardRect_property = EBTransientProperty_CanariBoardRect ()
+  var boardWidth_property = EBTransientProperty_Int ()
+  var boardHeight_property = EBTransientProperty_Int ()
 
   //····················································································································
   //    Relationships
@@ -113,10 +266,120 @@ class MergerRootEntity : EBManagedObject,
         return .empty
       }
     }
+    self.frontPads_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardInstances_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.boardInstances_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_MergerRootEntity_frontPads (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontPadsForDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = g_Preferences!.mergerDisplayFrontPads_property_selection.kind ()
+        kind &= unwSelf.frontPads_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (g_Preferences!.mergerDisplayFrontPads_property_selection, unwSelf.frontPads_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_MergerRootEntity_frontPadsForDisplay (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardRect_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardInstances_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.boardInstances_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_MergerRootEntity_boardRect (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardWidth_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardRect_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.boardRect_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_MergerRootEntity_boardWidth (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardHeight_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardRect_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.boardRect_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_MergerRootEntity_boardHeight (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
   //--- Install property observers for transients
     self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
+    self.boardInstances_property.addEBObserverOf_frontPads (self.frontPads_property)
+    g_Preferences?.mergerDisplayFrontPads_property.addEBObserver (self.frontPadsForDisplay_property)
+    self.frontPads_property.addEBObserver (self.frontPadsForDisplay_property)
+    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
+    self.boardRect_property.addEBObserver (self.boardWidth_property)
+    self.boardRect_property.addEBObserver (self.boardHeight_property)
   //--- Install undoers for properties
     self.selectedPageIndex_property.undoManager = undoManager ()
+    self.zoom_property.undoManager = undoManager ()
+    self.boardWidthUnit_property.undoManager = undoManager ()
+    self.boardHeightUnit_property.undoManager = undoManager ()
   //--- Install owner for relationships
     self.boardModels_property.owner = self
     self.boardInstances_property.owner = self
@@ -128,6 +391,12 @@ class MergerRootEntity : EBManagedObject,
   deinit {
   //--- Remove observers
     self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
+    self.boardInstances_property.removeEBObserverOf_frontPads (self.frontPads_property)
+    g_Preferences?.mergerDisplayFrontPads_property.removeEBObserver (self.frontPadsForDisplay_property)
+    self.frontPads_property.removeEBObserver (self.frontPadsForDisplay_property)
+    self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
+    self.boardRect_property.removeEBObserver (self.boardWidth_property)
+    self.boardRect_property.removeEBObserver (self.boardHeight_property)
   }
 
   //····················································································································
@@ -144,6 +413,30 @@ class MergerRootEntity : EBManagedObject,
       observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
       valueExplorer:&self.selectedPageIndex_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "zoom",
+      idx:self.zoom_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.zoom_property.mObserverExplorer,
+      valueExplorer:&self.zoom_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardWidthUnit",
+      idx:self.boardWidthUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardWidthUnit_property.mObserverExplorer,
+      valueExplorer:&self.boardWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardHeightUnit",
+      idx:self.boardHeightUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardHeightUnit_property.mObserverExplorer,
+      valueExplorer:&self.boardHeightUnit_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "modelNames",
@@ -152,6 +445,46 @@ class MergerRootEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.modelNames_property.mObserverExplorer,
       valueExplorer:&self.modelNames_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontPads",
+      idx:self.frontPads_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontPads_property.mObserverExplorer,
+      valueExplorer:&self.frontPads_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontPadsForDisplay",
+      idx:self.frontPadsForDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontPadsForDisplay_property.mObserverExplorer,
+      valueExplorer:&self.frontPadsForDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardRect",
+      idx:self.boardRect_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardRect_property.mObserverExplorer,
+      valueExplorer:&self.boardRect_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardWidth",
+      idx:self.boardWidth_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardWidth_property.mObserverExplorer,
+      valueExplorer:&self.boardWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardHeight",
+      idx:self.boardHeight_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardHeight_property.mObserverExplorer,
+      valueExplorer:&self.boardHeight_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -179,6 +512,12 @@ class MergerRootEntity : EBManagedObject,
   override func clearObjectExplorer () {
     self.selectedPageIndex_property.mObserverExplorer = nil
     self.selectedPageIndex_property.mValueExplorer = nil
+    self.zoom_property.mObserverExplorer = nil
+    self.zoom_property.mValueExplorer = nil
+    self.boardWidthUnit_property.mObserverExplorer = nil
+    self.boardWidthUnit_property.mValueExplorer = nil
+    self.boardHeightUnit_property.mObserverExplorer = nil
+    self.boardHeightUnit_property.mValueExplorer = nil
     self.boardModels_property.mValueExplorer = nil
     self.boardInstances_property.mValueExplorer = nil
     super.clearObjectExplorer ()
@@ -191,6 +530,9 @@ class MergerRootEntity : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
     self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+    self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
+    self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
     store (managedObjectArray: boardModels_property.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
     store (managedObjectArray: boardInstances_property.propval as NSArray, relationshipName:"boardInstances", intoDictionary: ioDictionary) ;
   }
@@ -203,6 +545,9 @@ class MergerRootEntity : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+    self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
+    self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
     self.boardModels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "boardModels",
       inDictionary: inDictionary,
@@ -325,6 +670,177 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
   }
 
   //····················································································································
+  //   Observers of 'zoom' stored property
+  //····················································································································
+
+  private var mObserversOf_zoom = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_zoom.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.zoom_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_zoom.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.zoom_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_zoom_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_zoom {
+        managedObject.zoom_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for observer in mObserversOf_zoom {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.zoom_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardWidthUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_boardWidthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardWidthUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardWidthUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardWidthUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardWidthUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardWidthUnit_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardWidthUnit {
+        managedObject.boardWidthUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardWidthUnit_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for observer in mObserversOf_boardWidthUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.boardWidthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardHeightUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_boardHeightUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardHeightUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardHeightUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardHeightUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardHeightUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardHeightUnit_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardHeightUnit {
+        managedObject.boardHeightUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardHeightUnit_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for observer in mObserversOf_boardHeightUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.boardHeightUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'modelNames' transient property
   //····················································································································
 
@@ -381,6 +897,286 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
   }
 
   //····················································································································
+  //   Observers of 'frontPads' transient property
+  //····················································································································
+
+  private var mObserversOf_frontPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontPads.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPads_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontPads.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPads_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontPads_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPads {
+        managedObject.frontPads_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontPads_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPads {
+        managedObject.frontPads_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontPadsForDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_frontPadsForDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontPadsForDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontPadsForDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPadsForDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontPadsForDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontPadsForDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPadsForDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontPadsForDisplay_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPadsForDisplay {
+        managedObject.frontPadsForDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontPadsForDisplay_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPadsForDisplay {
+        managedObject.frontPadsForDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardRect' transient property
+  //····················································································································
+
+  private var mObserversOf_boardRect = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardRect (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardRect.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardRect_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardRect (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardRect.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardRect_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardRect_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardRect {
+        managedObject.boardRect_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardRect_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardRect {
+        managedObject.boardRect_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardWidth' transient property
+  //····················································································································
+
+  private var mObserversOf_boardWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardWidth_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardWidth_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardWidth_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardWidth {
+        managedObject.boardWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardWidth_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardWidth {
+        managedObject.boardWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardHeight' transient property
+  //····················································································································
+
+  private var mObserversOf_boardHeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardHeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardHeight.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardHeight_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardHeight (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardHeight.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardHeight_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardHeight_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardHeight {
+        managedObject.boardHeight_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardHeight_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardHeight {
+        managedObject.boardHeight_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -419,14 +1215,30 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
+        removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontPads_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontPadsForDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
+        addEBObserversOf_zoom_toElementsOfSet (addedSet)
+        addEBObserversOf_boardWidthUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_modelNames_toElementsOfSet (addedSet)
+        addEBObserversOf_frontPads_toElementsOfSet (addedSet)
+        addEBObserversOf_frontPadsForDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_boardRect_toElementsOfSet (addedSet)
+        addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
+        addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -463,8 +1275,56 @@ protocol MergerRootEntity_selectedPageIndex : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol MergerRootEntity_zoom : class {
+  var zoom : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_boardWidthUnit : class {
+  var boardWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_boardHeightUnit : class {
+  var boardHeightUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol MergerRootEntity_modelNames : class {
   var modelNames : EBSelection < MergerBoardModelArray > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_frontPads : class {
+  var frontPads : EBSelection < MergerPadArray > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_frontPadsForDisplay : class {
+  var frontPadsForDisplay : EBSelection < MergerPadArray > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_boardRect : class {
+  var boardRect : EBSelection < CanariBoardRect > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_boardWidth : class {
+  var boardWidth : EBSelection < Int > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_boardHeight : class {
+  var boardHeight : EBSelection < Int > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -806,6 +1666,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardInstances, EBSignatureObserver
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
         }
+        removeEBObserversOf_frontPads_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
@@ -814,6 +1675,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardInstances, EBSignatureObserver
         for managedObject : MergerBoardInstanceEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
+        addEBObserversOf_frontPads_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y_toElementsOfSet (addedObjectSet)

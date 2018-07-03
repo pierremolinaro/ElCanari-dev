@@ -46,6 +46,18 @@ final class MergerPad : EBSimpleClass {
 
   //····················································································································
 
+  func translatedBy (x inX : Int, y inY : Int) -> MergerPad {
+    return MergerPad (x: self.x + inX,
+                      y: self.y + inY,
+                      width: self.width,
+                      height: self.height,
+                      holeDiameter: self.holeDiameter,
+                      shape: self.shape,
+                      rotation: self.rotation)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

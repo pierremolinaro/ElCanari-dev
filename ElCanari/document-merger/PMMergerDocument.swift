@@ -14,15 +14,19 @@ import Cocoa
 
   @IBOutlet var addBoardModelButton : EBButton?
   @IBOutlet var mArtworkNameTextField : EBTextObserverField?
-  @IBOutlet var mBoardHeightTextField : CanariDimensionTextField?
+  @IBOutlet var mBoardHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardInsertMenu : CanariBoardInsertMenu?
   @IBOutlet var mBoardModelTableView : EBTableView?
   @IBOutlet var mBoardModelView : CanariBoardModelView?
-  @IBOutlet var mBoardWidthTextField : CanariDimensionTextField?
+  @IBOutlet var mBoardWidthTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardView : CanariBoardModelView?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
+  @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
+  @IBOutlet var mModelHeightUnitPopUp : EBPopUpButton?
+  @IBOutlet var mModelWidthTextField : CanariDimensionObserverTextField?
+  @IBOutlet var mModelWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var removeBoardModelButton : EBButton?
   @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton?
@@ -120,10 +124,10 @@ import Cocoa
       presentErrorWindow (file: #file,
                               line: #line,
                               errorMessage: "the 'mBoardHeightTextField' outlet is nil") ;
-//    }else if !mBoardHeightTextField!.isKindOfClass (CanariDimensionTextField) {
+//    }else if !mBoardHeightTextField!.isKindOfClass (CanariDimensionObserverTextField) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mBoardHeightTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+//                              errorMessage: "the 'mBoardHeightTextField' outlet is not an instance of 'CanariDimensionObserverTextField'") ;
     }
     if nil == mBoardHeightUnitPopUp {
       presentErrorWindow (file: #file,
@@ -165,10 +169,10 @@ import Cocoa
       presentErrorWindow (file: #file,
                               line: #line,
                               errorMessage: "the 'mBoardWidthTextField' outlet is nil") ;
-//    }else if !mBoardWidthTextField!.isKindOfClass (CanariDimensionTextField) {
+//    }else if !mBoardWidthTextField!.isKindOfClass (CanariDimensionObserverTextField) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mBoardWidthTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+//                              errorMessage: "the 'mBoardWidthTextField' outlet is not an instance of 'CanariDimensionObserverTextField'") ;
     }
     if nil == mBoardWidthUnitPopUp {
       presentErrorWindow (file: #file,
@@ -196,6 +200,42 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mInstanceCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
+    }
+    if nil == mModelHeightTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mModelHeightTextField' outlet is nil") ;
+//    }else if !mModelHeightTextField!.isKindOfClass (CanariDimensionObserverTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mModelHeightTextField' outlet is not an instance of 'CanariDimensionObserverTextField'") ;
+    }
+    if nil == mModelHeightUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mModelHeightUnitPopUp' outlet is nil") ;
+//    }else if !mModelHeightUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mModelHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+    }
+    if nil == mModelWidthTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mModelWidthTextField' outlet is nil") ;
+//    }else if !mModelWidthTextField!.isKindOfClass (CanariDimensionObserverTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mModelWidthTextField' outlet is not an instance of 'CanariDimensionObserverTextField'") ;
+    }
+    if nil == mModelWidthUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mModelWidthUnitPopUp' outlet is nil") ;
+//    }else if !mModelWidthUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mModelWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
     if nil == mPageSegmentedControl {
       presentErrorWindow (file: #file,
@@ -253,10 +293,10 @@ import Cocoa
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
     mArtworkNameTextField?.bind_valueObserver (self.mBoardModelSelection.artworkName_property, file: #file, line: #line)
     mInstanceCountTextField?.bind_valueObserver (self.mBoardModelSelection.instanceCount_property, file: #file, line: #line, autoFormatter:true)
-    mBoardWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.modelWidthUnit_property, file: #file, line: #line)
-    mBoardWidthTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelWidthUnit_property, file: #file, line: #line)
-    mBoardHeightUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.modelHeightUnit_property, file: #file, line: #line)
-    mBoardHeightTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.modelHeight_property, self.mBoardModelSelection.modelHeightUnit_property, file: #file, line: #line)
+    mModelWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.modelWidthUnit_property, file: #file, line: #line)
+    mModelWidthTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelWidthUnit_property, file: #file, line: #line)
+    mModelHeightUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.modelHeightUnit_property, file: #file, line: #line)
+    mModelHeightTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.modelHeight_property, self.mBoardModelSelection.modelHeightUnit_property, file: #file, line: #line)
     mBoardModelView?.bind_size (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelHeight_property, file: #file, line: #line)
     mBoardModelView?.bind_zoom (self.mBoardModelSelection.zoom_property, file: #file, line: #line)
     mBoardModelView?.bind_horizontalFlip (g_Preferences!.mergerHorizontalFlip_property, file: #file, line: #line)
@@ -279,6 +319,13 @@ import Cocoa
     mBoardModelView?.bind_backLegendTexts (self.mBoardModelSelection.backLegendTextsSegmentsForDisplay_property, file: #file, line: #line)
     mBoardModelView?.bind_backLayoutTexts (self.mBoardModelSelection.backLayoutTextsSegmentsForDisplay_property, file: #file, line: #line)
     mBoardInsertMenu?.bind_names (self.rootObject.modelNames_property, file: #file, line: #line)
+    mBoardWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardWidthUnit_property, file: #file, line: #line)
+    mBoardWidthTextField?.bind_dimensionAndUnit (self.rootObject.boardWidth_property, self.rootObject.boardWidthUnit_property, file: #file, line: #line)
+    mBoardHeightUnitPopUp?.bind_selectedTag (self.rootObject.boardHeightUnit_property, file: #file, line: #line)
+    mBoardHeightTextField?.bind_dimensionAndUnit (self.rootObject.boardHeight_property, self.rootObject.boardHeightUnit_property, file: #file, line: #line)
+    mComposedBoardView?.bind_size (self.rootObject.boardWidth_property, self.rootObject.boardHeight_property, file: #file, line: #line)
+    mComposedBoardView?.bind_zoom (self.rootObject.zoom_property, file: #file, line: #line)
+    mComposedBoardView?.bind_frontPads (self.rootObject.frontPadsForDisplay_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -323,10 +370,10 @@ import Cocoa
     mPageSegmentedControl?.unbind_selectedPage ()
     mArtworkNameTextField?.unbind_valueObserver ()
     mInstanceCountTextField?.unbind_valueObserver ()
-    mBoardWidthUnitPopUp?.unbind_selectedTag ()
-    mBoardWidthTextField?.unbind_dimensionAndUnit ()
-    mBoardHeightUnitPopUp?.unbind_selectedTag ()
-    mBoardHeightTextField?.unbind_dimensionAndUnit ()
+    mModelWidthUnitPopUp?.unbind_selectedTag ()
+    mModelWidthTextField?.unbind_dimensionAndUnit ()
+    mModelHeightUnitPopUp?.unbind_selectedTag ()
+    mModelHeightTextField?.unbind_dimensionAndUnit ()
     mBoardModelView?.unbind_size ()
     mBoardModelView?.unbind_zoom ()
     mBoardModelView?.unbind_horizontalFlip ()
@@ -349,6 +396,13 @@ import Cocoa
     mBoardModelView?.unbind_backLegendTexts ()
     mBoardModelView?.unbind_backLayoutTexts ()
     mBoardInsertMenu?.unbind_names ()
+    mBoardWidthUnitPopUp?.unbind_selectedTag ()
+    mBoardWidthTextField?.unbind_dimensionAndUnit ()
+    mBoardHeightUnitPopUp?.unbind_selectedTag ()
+    mBoardHeightTextField?.unbind_dimensionAndUnit ()
+    mComposedBoardView?.unbind_size ()
+    mComposedBoardView?.unbind_zoom ()
+    mComposedBoardView?.unbind_frontPads ()
   //--------------------------- Unbind multiple bindings
     self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_removeBoardModelButton_enabled!)
     mController_removeBoardModelButton_enabled = nil
@@ -377,6 +431,10 @@ import Cocoa
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
+    self.mModelHeightTextField?.ebCleanUp ()
+    self.mModelHeightUnitPopUp?.ebCleanUp ()
+    self.mModelWidthTextField?.ebCleanUp ()
+    self.mModelWidthUnitPopUp?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.removeBoardModelButton?.ebCleanUp ()
     self.showPrefsForSettingMergerDisplayButton?.ebCleanUp ()

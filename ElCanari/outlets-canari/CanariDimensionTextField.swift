@@ -1,10 +1,11 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariDimensionTextField                                                                                          *
+//   CanariDimensionTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariDimensionTextField) class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+@objc(CanariDimensionTextField) // Required for an outlet
+class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
@@ -29,7 +30,7 @@ import Cocoa
   }
 
   //····················································································································
-  //  value binding                                                                                                    *
+  //  value binding
   //····················································································································
 
   private var mController : Controller_CanariDimensionTextField_dimensionAndUnit?
@@ -58,7 +59,7 @@ import Cocoa
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller Controller_CanariDimensionTextField_dimensionAndUnit                                                   *
+//   Controller Controller_CanariDimensionTextField_dimensionAndUnit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(Controller_CanariDimensionTextField_dimensionAndUnit)
@@ -83,8 +84,6 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     if mOutlet.formatter == nil {
       presentErrorWindow (file: file, line: line, errorMessage: "the CanariDimensionTextField outlet has no formatter")
     }
-//    dimension.addEBObserver (self)
-//    unit.addEBObserver (self)
   }
 
   //····················································································································
@@ -122,6 +121,9 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
       _ = mDimension.validateAndSetProp (value, windowForSheet:sender.window)
     }
   }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

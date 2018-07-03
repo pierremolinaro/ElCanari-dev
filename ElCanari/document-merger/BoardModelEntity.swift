@@ -5970,6 +5970,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_myInstances, EBSignatureObserverPro
           managedObject.setSignatureObserver (observer: nil)
           managedObject.myModel_property.owner = nil ;
         }
+        removeEBObserversOf_frontPads_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
@@ -5979,6 +5980,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_myInstances, EBSignatureObserverPro
           managedObject.setSignatureObserver (observer: self)
           managedObject.myModel_property.setProp (owner)
         }
+        addEBObserversOf_frontPads_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y_toElementsOfSet (addedObjectSet)

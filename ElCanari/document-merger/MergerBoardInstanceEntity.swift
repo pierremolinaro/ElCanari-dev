@@ -11,6 +11,7 @@ import Cocoa
 class MergerBoardInstanceEntity : EBManagedObject,
   MergerBoardInstanceEntity_x,
   MergerBoardInstanceEntity_y,
+  MergerBoardInstanceEntity_frontPads,
   MergerBoardInstanceEntity_instanceRect {
 
   //····················································································································
@@ -52,6 +53,22 @@ class MergerBoardInstanceEntity : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing frontPads transient property
+  //····················································································································
+
+  var frontPads_property_selection : EBSelection <MergerPadArray> {
+    get {
+      return self.frontPads_property.prop
+    }
+  }
+
+  var frontPads : EBSelection <MergerPadArray> {
+    get {
+      return frontPads_property_selection
+    }
+  }
+
+  //····················································································································
   //   Accessing instanceRect transient property
   //····················································································································
 
@@ -78,6 +95,7 @@ class MergerBoardInstanceEntity : EBManagedObject,
   //    Transient properties
   //····················································································································
 
+  var frontPads_property = EBTransientProperty_MergerPadArray ()
   var instanceRect_property = EBTransientProperty_CanariBoardRect ()
 
   //····················································································································
@@ -93,6 +111,28 @@ class MergerBoardInstanceEntity : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
+    self.frontPads_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.myModel_property.frontPads_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.frontPads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_MergerBoardInstanceEntity_frontPads (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.instanceRect_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -117,6 +157,9 @@ class MergerBoardInstanceEntity : EBManagedObject,
       }
     }
   //--- Install property observers for transients
+    self.x_property.addEBObserver (self.frontPads_property)
+    self.y_property.addEBObserver (self.frontPads_property)
+    self.myModel_property.addEBObserverOf_frontPads (self.frontPads_property)
     self.x_property.addEBObserver (self.instanceRect_property)
     self.y_property.addEBObserver (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_modelWidth (self.instanceRect_property)
@@ -133,6 +176,9 @@ class MergerBoardInstanceEntity : EBManagedObject,
 
   deinit {
   //--- Remove observers
+    self.x_property.removeEBObserver (self.frontPads_property)
+    self.y_property.removeEBObserver (self.frontPads_property)
+    self.myModel_property.removeEBObserverOf_frontPads (self.frontPads_property)
     self.x_property.removeEBObserver (self.instanceRect_property)
     self.y_property.removeEBObserver (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_modelWidth (self.instanceRect_property)
@@ -162,6 +208,14 @@ class MergerBoardInstanceEntity : EBManagedObject,
       valueExplorer:&self.y_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "frontPads",
+      idx:self.frontPads_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontPads_property.mObserverExplorer,
+      valueExplorer:&self.frontPads_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "instanceRect",
       idx:self.instanceRect_property.mEasyBindingsObjectIndex,
@@ -371,6 +425,62 @@ class ReadOnlyArrayOf_MergerBoardInstanceEntity : ReadOnlyAbstractArrayProperty 
   }
 
   //····················································································································
+  //   Observers of 'frontPads' transient property
+  //····················································································································
+
+  private var mObserversOf_frontPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontPads.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPads_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontPads.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPads_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontPads_toElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPads {
+        managedObject.frontPads_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontPads_fromElementsOfSet (_ inSet : Set<MergerBoardInstanceEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPads {
+        managedObject.frontPads_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'instanceRect' transient property
   //····················································································································
 
@@ -467,6 +577,7 @@ class TransientArrayOf_MergerBoardInstanceEntity : ReadOnlyArrayOf_MergerBoardIn
         removeEBObserversOf_x_fromElementsOfSet (removedSet)
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
+        removeEBObserversOf_frontPads_fromElementsOfSet (removedSet)
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
@@ -474,6 +585,7 @@ class TransientArrayOf_MergerBoardInstanceEntity : ReadOnlyArrayOf_MergerBoardIn
         addEBObserversOf_x_toElementsOfSet (addedSet)
         addEBObserversOf_y_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
+        addEBObserversOf_frontPads_toElementsOfSet (addedSet)
         addEBObserversOf_instanceRect_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
@@ -513,6 +625,12 @@ protocol MergerBoardInstanceEntity_x : class {
 
 protocol MergerBoardInstanceEntity_y : class {
   var y : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstanceEntity_frontPads : class {
+  var frontPads : EBSelection < MergerPadArray > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
