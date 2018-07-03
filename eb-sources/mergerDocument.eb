@@ -30,23 +30,6 @@ binding CanariBoardModelView $size : transient Int, transient Int ;
 binding CanariBoardModelView $zoom : property Int ;
 binding CanariBoardModelView $horizontalFlip : transient Bool ;
 binding CanariBoardModelView $verticalFlip : transient Bool ;
-binding CanariBoardModelView $vias : transient MergerViaShapeArray ;
-binding CanariBoardModelView $frontComponentNames : transient MergerSegmentArray ;
-binding CanariBoardModelView $backComponentNames : transient MergerSegmentArray ;
-binding CanariBoardModelView $frontTracks : transient MergerSegmentArray ;
-binding CanariBoardModelView $backTracks : transient MergerSegmentArray ;
-binding CanariBoardModelView $frontComponentValues : transient MergerSegmentArray ;
-binding CanariBoardModelView $backComponentValues : transient MergerSegmentArray ;
-binding CanariBoardModelView $frontPackages : transient MergerSegmentArray ;
-binding CanariBoardModelView $backPackages : transient MergerSegmentArray ;
-binding CanariBoardModelView $boardLimits : transient MergerBoardLimits ;
-binding CanariBoardModelView $frontPads : transient MergerPadArray ;
-binding CanariBoardModelView $backPads : transient MergerPadArray ;
-binding CanariBoardModelView $holes : transient MergerHoleArray ;
-binding CanariBoardModelView $frontLegendTexts : transient MergerSegmentArray ;
-binding CanariBoardModelView $frontLayoutTexts : transient MergerSegmentArray ;
-binding CanariBoardModelView $backLegendTexts : transient MergerSegmentArray ;
-binding CanariBoardModelView $backLayoutTexts : transient MergerSegmentArray ;
 binding CanariBoardModelView $objectLayer : transient CALayer ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -121,9 +104,6 @@ entity BoardModelEntity {
   transient CALayer frontLegendTextsLayerDisplay
      dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsLayer ;
 
-  transient MergerSegmentArray frontLegendTextsSegmentsForDisplay # EX
-    dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
-
 #--- Front Layout Texts
   toMany @cascading CanariSegmentEntity frontLayoutTexts ;
 
@@ -137,9 +117,6 @@ entity BoardModelEntity {
 
   transient CALayer frontLayoutTextsLayerDisplay
      dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsLayer ;
-
-  transient MergerSegmentArray frontLayoutTextsSegmentsForDisplay # EX
-    dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
 
 #--- Back Legend Texts
   toMany @cascading CanariSegmentEntity backLegendTexts ;
@@ -155,9 +132,6 @@ entity BoardModelEntity {
   transient CALayer backLegendTextsLayerDisplay
      dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsLayer ;
 
-  transient MergerSegmentArray backLegendTextsSegmentsForDisplay # EX
-    dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsSegments ;
-
 #--- Back Layout Texts
   toMany @cascading CanariSegmentEntity backLayoutTexts ;
 
@@ -172,9 +146,6 @@ entity BoardModelEntity {
   transient CALayer backLayoutTextsLayerDisplay
      dependsFrom prefs.mergerDisplayBackLayoutTexts, self.backLayoutTextsLayer ;
 
-  transient MergerSegmentArray backLayoutTextsSegmentsForDisplay # EX
-    dependsFrom prefs.mergerDisplayBackLayoutTexts, self.backLayoutTextsSegments ;
-
 #--- Holes
   transient MergerHoleArray padsHoles
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.holeDiameter ;
@@ -183,16 +154,12 @@ entity BoardModelEntity {
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter ;
  
   transient MergerHoleArray holes dependsFrom self.padsHoles, self.viasHoles ;
- 
-  transient MergerHoleArray holesForDisplay dependsFrom prefs.mergerDisplayHoles, self.holes ;
- 
+  
 #--- Vias 
   toMany @cascading BoardModelViaEntity vias ;
   
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
-  
-  transient MergerViaShapeArray viaShapesForDisplay dependsFrom prefs.mergerDisplayVias, self.viaShapes ;
 
 #--- Pads
   toMany @cascading BoardModelPadEntity pads ;
@@ -202,14 +169,10 @@ entity BoardModelEntity {
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
 
-  transient MergerPadArray frontPadsForDisplay dependsFrom prefs.mergerDisplayFrontPads, self.frontPads ;
-
 #--- Back pads
   transient MergerPadArray backPads
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
-
-  transient MergerPadArray backPadsForDisplay dependsFrom prefs.mergerDisplayBackPads, self.backPads ;
 
 #--- Board limits
   property Int boardLimitWidth default 0 ;
@@ -228,10 +191,6 @@ entity BoardModelEntity {
     self.backComponentNames.all.width
   ;
  
-  transient MergerSegmentArray backComponentNameSegmentsForDisplay dependsFrom
-     prefs.mergerDisplayBackComponentNames, self.backComponentNameSegments
-  ;  
-  
 #--- Front component names
   toMany @cascading CanariSegmentEntity frontComponentNames ;
 
@@ -240,10 +199,6 @@ entity BoardModelEntity {
     self.frontComponentNames.all.x2, self.frontComponentNames.all.y2,
     self.frontComponentNames.all.width
   ;
-
-  transient MergerSegmentArray frontComponentNameSegmentsForDisplay dependsFrom
-     prefs.mergerDisplayFrontComponentNames, self.frontComponentNameSegments
-  ;  
 
 #--- Front component values
   toMany @cascading CanariSegmentEntity frontComponentValues ;
@@ -254,10 +209,6 @@ entity BoardModelEntity {
     self.frontComponentValues.all.width
   ;
 
-  transient MergerSegmentArray frontComponentValuesForDisplay dependsFrom
-     prefs.mergerDisplayFrontComponentValues, self.frontComponentValueSegments
-  ;  
-
 #--- Back component values
   toMany @cascading CanariSegmentEntity backComponentValues ;
 
@@ -266,10 +217,6 @@ entity BoardModelEntity {
     self.backComponentValues.all.x2, self.backComponentValues.all.y2,
     self.backComponentValues.all.width
   ;
-
-  transient MergerSegmentArray backComponentValuesForDisplay dependsFrom
-     prefs.mergerDisplayBackComponentValues, self.backComponentValueSegments
-  ;  
 
 #--- Back tracks
   toMany @cascading CanariSegmentEntity backTracks ;
@@ -280,10 +227,6 @@ entity BoardModelEntity {
     self.backTracks.all.width
   ;
 
-  transient MergerSegmentArray backTrackSegmentsForDisplay dependsFrom
-     prefs.mergerDisplayBackLayoutTracks, self.backTrackSegments
-  ;  
-
 #--- Front tracks
   toMany @cascading CanariSegmentEntity frontTracks ;
 
@@ -292,10 +235,6 @@ entity BoardModelEntity {
     self.frontTracks.all.x2, self.frontTracks.all.y2,
     self.frontTracks.all.width
   ;
-
-  transient MergerSegmentArray frontTrackSegmentsForDisplay dependsFrom
-     prefs.mergerDisplayFrontLayoutTracks, self.frontTrackSegments
-  ;  
 
 #--- Front packages
   toMany @cascading CanariSegmentEntity frontPackages ;
@@ -306,10 +245,6 @@ entity BoardModelEntity {
     self.frontPackages.all.width
   ;
 
-  transient MergerSegmentArray frontPackagesSegmentsForDisplay dependsFrom
-     prefs.mergerDisplayFrontPackages, self.frontPackagesSegments
-  ;  
-
 #--- Back packages
   toMany @cascading CanariSegmentEntity backPackages ;
 
@@ -317,10 +252,6 @@ entity BoardModelEntity {
     self.backPackages.all.x1, self.backPackages.all.y1,
     self.backPackages.all.x2, self.backPackages.all.y2,
     self.backPackages.all.width
-  ;
-
-  transient MergerSegmentArray backPackagesSegmentsForDisplay dependsFrom
-     prefs.mergerDisplayBackPackages, self.backPackagesSegments
   ;
 
 #----
@@ -338,10 +269,6 @@ entity MergerBoardInstanceEntity {
   toOne BoardModelEntity myModel inverse toMany myInstances ;
   property Int x default 0 ;
   property Int y default 0 ;
-
-#--- Front pads
-  transient MergerPadArray frontPads
-    dependsFrom self.x, self.y, self.myModel.one.frontPads ;
 
 #--- Instance rect
   transient CanariBoardRect instanceRect
@@ -367,11 +294,6 @@ entity MergerRootEntity {
 
 #--- Instance display
   transient CALayer instancesLayerDisplay dependsFrom self.boardInstances.all.instanceLayerDisplay ;
-
-#--- Front pads
-  transient MergerPadArray frontPads dependsFrom self.boardInstances.all.frontPads ;
-
-  transient MergerPadArray frontPadsForDisplay dependsFrom prefs.mergerDisplayFrontPads, self.frontPads ;
 
 #--- Board rect
   transient CanariBoardRect boardRect dependsFrom self.boardInstances.all.instanceRect ;
@@ -438,23 +360,6 @@ document PMMergerDocument root MergerRootEntity {
     $zoom mBoardModelSelection.zoom
     $horizontalFlip prefs.mergerHorizontalFlip
     $verticalFlip prefs.mergerVerticalFlip
-#    $vias mBoardModelSelection.viaShapesForDisplay
-#    $frontComponentNames mBoardModelSelection.frontComponentNameSegmentsForDisplay
-#    $frontComponentValues mBoardModelSelection.frontComponentValuesForDisplay
-#    $backComponentNames mBoardModelSelection.backComponentNameSegmentsForDisplay
-#    $backComponentValues mBoardModelSelection.backComponentValuesForDisplay
-#    $frontTracks mBoardModelSelection.frontTrackSegmentsForDisplay
-#    $backTracks mBoardModelSelection.backTrackSegmentsForDisplay
-#    $frontPackages mBoardModelSelection.frontPackagesSegmentsForDisplay
-#    $backPackages mBoardModelSelection.backPackagesSegmentsForDisplay
-#    $boardLimits mBoardModelSelection.boardLimits
-#    $frontPads mBoardModelSelection.frontPadsForDisplay
-#    $backPads mBoardModelSelection.backPadsForDisplay
-#    $holes mBoardModelSelection.holesForDisplay
-#    $frontLegendTexts mBoardModelSelection.frontLegendTextsSegmentsForDisplay
-#    $frontLayoutTexts mBoardModelSelection.frontLayoutTextsSegmentsForDisplay
-#    $backLegendTexts mBoardModelSelection.backLegendTextsSegmentsForDisplay
-#    $backLayoutTexts mBoardModelSelection.backLayoutTextsSegmentsForDisplay
     $objectLayer mBoardModelSelection.modelLayerDisplay
   ;
 
@@ -477,7 +382,6 @@ document PMMergerDocument root MergerRootEntity {
   outlet CanariBoardModelView mComposedBoardView
     $size root.boardWidth, root.boardHeight
     $zoom root.zoom
-#    $frontPads root.frontPadsForDisplay
     $objectLayer root.instancesLayerDisplay
   ;
 }
