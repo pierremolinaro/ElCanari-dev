@@ -13,11 +13,10 @@ import Cocoa
 
 func compute_BoardModelEntity_backTracksDisplay (
        _ prefs_mergerDisplayBackLayoutTracks : Bool,
-       _ self_backTracksLayer : CALayer
+       _ self_backTrackSegments : MergerSegmentArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  self_backTracksLayer.isHidden = !prefs_mergerDisplayBackLayoutTracks
-  return self_backTracksLayer
+  return self_backTrackSegments.buildLayer (color:NSColor.green, display:prefs_mergerDisplayBackLayoutTracks)
 //--- END OF USER ZONE 2
 }
 

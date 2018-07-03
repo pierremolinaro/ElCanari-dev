@@ -36,6 +36,20 @@ final class MergerSegmentArray : EBSimpleClass {
 
   //····················································································································
 
+  func buildLayer (color inColor : NSColor, display inDisplay : Bool) -> CALayer {
+    var components = [CAShapeLayer] ()
+    if inDisplay {
+      for segment in self.segmentArray {
+        let shape = segment.segmentShape (color:inColor.cgColor)
+    //    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+        shape.isOpaque = true
+        components.append (shape)
+      }
+    }
+    let result = CALayer ()
+    result.sublayers = components
+    return result
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

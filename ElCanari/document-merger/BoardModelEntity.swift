@@ -20,57 +20,40 @@ class BoardModelEntity : EBManagedObject,
   BoardModelEntity_boardLimitWidthUnit,
   BoardModelEntity_instanceCount,
   BoardModelEntity_frontLegendTextsSegments,
-  BoardModelEntity_frontLegendTextsLayer,
   BoardModelEntity_frontLegendTextsLayerDisplay,
   BoardModelEntity_frontLayoutTextsSegments,
-  BoardModelEntity_frontLayoutTextsLayer,
   BoardModelEntity_frontLayoutTextsLayerDisplay,
   BoardModelEntity_backLegendTextsSegments,
-  BoardModelEntity_backLegendTextsLayer,
   BoardModelEntity_backLegendTextsLayerDisplay,
   BoardModelEntity_backLayoutTextsSegments,
-  BoardModelEntity_backLayoutTextsLayer,
   BoardModelEntity_backLayoutTextsLayerDisplay,
   BoardModelEntity_padsHoles,
   BoardModelEntity_viasHoles,
   BoardModelEntity_holes,
-  BoardModelEntity_holeLayer,
   BoardModelEntity_holeLayerDisplay,
   BoardModelEntity_viaShapes,
-  BoardModelEntity_viaLayer,
   BoardModelEntity_viaLayerDisplay,
   BoardModelEntity_frontPads,
-  BoardModelEntity_frontPadsLayer,
   BoardModelEntity_frontPadsDisplay,
   BoardModelEntity_backPads,
-  BoardModelEntity_backPadsLayer,
   BoardModelEntity_backPadsDisplay,
   BoardModelEntity_boardLimits,
-  BoardModelEntity_boardLimitsLayer,
   BoardModelEntity_boardLimitsDisplay,
   BoardModelEntity_backComponentNameSegments,
-  BoardModelEntity_backComponentNameLayer,
   BoardModelEntity_backComponentNameDisplay,
   BoardModelEntity_frontComponentNameSegments,
-  BoardModelEntity_frontComponentNameLayer,
   BoardModelEntity_frontComponentNameDisplay,
   BoardModelEntity_frontComponentValueSegments,
-  BoardModelEntity_frontComponentValueLayer,
   BoardModelEntity_frontComponentValueDisplay,
   BoardModelEntity_backComponentValueSegments,
-  BoardModelEntity_backComponentValueLayer,
   BoardModelEntity_backComponentValueDisplay,
   BoardModelEntity_backTrackSegments,
-  BoardModelEntity_backTracksLayer,
   BoardModelEntity_backTracksDisplay,
   BoardModelEntity_frontTrackSegments,
-  BoardModelEntity_frontTracksLayer,
   BoardModelEntity_frontTracksDisplay,
   BoardModelEntity_frontPackagesSegments,
-  BoardModelEntity_frontPackagesLayer,
   BoardModelEntity_frontPackagesDisplay,
   BoardModelEntity_backPackagesSegments,
-  BoardModelEntity_backPackagesLayer,
   BoardModelEntity_backPackagesDisplay,
   BoardModelEntity_modelLayerDisplay {
 
@@ -278,22 +261,6 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing frontLegendTextsLayer transient property
-  //····················································································································
-
-  var frontLegendTextsLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.frontLegendTextsLayer_property.prop
-    }
-  }
-
-  var frontLegendTextsLayer : EBSelection <CALayer> {
-    get {
-      return frontLegendTextsLayer_property_selection
-    }
-  }
-
-  //····················································································································
   //   Accessing frontLegendTextsLayerDisplay transient property
   //····················································································································
 
@@ -322,22 +289,6 @@ class BoardModelEntity : EBManagedObject,
   var frontLayoutTextsSegments : EBSelection <MergerSegmentArray> {
     get {
       return frontLayoutTextsSegments_property_selection
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontLayoutTextsLayer transient property
-  //····················································································································
-
-  var frontLayoutTextsLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.frontLayoutTextsLayer_property.prop
-    }
-  }
-
-  var frontLayoutTextsLayer : EBSelection <CALayer> {
-    get {
-      return frontLayoutTextsLayer_property_selection
     }
   }
 
@@ -374,22 +325,6 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing backLegendTextsLayer transient property
-  //····················································································································
-
-  var backLegendTextsLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.backLegendTextsLayer_property.prop
-    }
-  }
-
-  var backLegendTextsLayer : EBSelection <CALayer> {
-    get {
-      return backLegendTextsLayer_property_selection
-    }
-  }
-
-  //····················································································································
   //   Accessing backLegendTextsLayerDisplay transient property
   //····················································································································
 
@@ -418,22 +353,6 @@ class BoardModelEntity : EBManagedObject,
   var backLayoutTextsSegments : EBSelection <MergerSegmentArray> {
     get {
       return backLayoutTextsSegments_property_selection
-    }
-  }
-
-  //····················································································································
-  //   Accessing backLayoutTextsLayer transient property
-  //····················································································································
-
-  var backLayoutTextsLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.backLayoutTextsLayer_property.prop
-    }
-  }
-
-  var backLayoutTextsLayer : EBSelection <CALayer> {
-    get {
-      return backLayoutTextsLayer_property_selection
     }
   }
 
@@ -502,22 +421,6 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing holeLayer transient property
-  //····················································································································
-
-  var holeLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.holeLayer_property.prop
-    }
-  }
-
-  var holeLayer : EBSelection <CALayer> {
-    get {
-      return holeLayer_property_selection
-    }
-  }
-
-  //····················································································································
   //   Accessing holeLayerDisplay transient property
   //····················································································································
 
@@ -546,22 +449,6 @@ class BoardModelEntity : EBManagedObject,
   var viaShapes : EBSelection <MergerViaShapeArray> {
     get {
       return viaShapes_property_selection
-    }
-  }
-
-  //····················································································································
-  //   Accessing viaLayer transient property
-  //····················································································································
-
-  var viaLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.viaLayer_property.prop
-    }
-  }
-
-  var viaLayer : EBSelection <CALayer> {
-    get {
-      return viaLayer_property_selection
     }
   }
 
@@ -598,22 +485,6 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing frontPadsLayer transient property
-  //····················································································································
-
-  var frontPadsLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.frontPadsLayer_property.prop
-    }
-  }
-
-  var frontPadsLayer : EBSelection <CALayer> {
-    get {
-      return frontPadsLayer_property_selection
-    }
-  }
-
-  //····················································································································
   //   Accessing frontPadsDisplay transient property
   //····················································································································
 
@@ -642,22 +513,6 @@ class BoardModelEntity : EBManagedObject,
   var backPads : EBSelection <MergerPadArray> {
     get {
       return backPads_property_selection
-    }
-  }
-
-  //····················································································································
-  //   Accessing backPadsLayer transient property
-  //····················································································································
-
-  var backPadsLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.backPadsLayer_property.prop
-    }
-  }
-
-  var backPadsLayer : EBSelection <CALayer> {
-    get {
-      return backPadsLayer_property_selection
     }
   }
 
@@ -694,22 +549,6 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing boardLimitsLayer transient property
-  //····················································································································
-
-  var boardLimitsLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.boardLimitsLayer_property.prop
-    }
-  }
-
-  var boardLimitsLayer : EBSelection <CALayer> {
-    get {
-      return boardLimitsLayer_property_selection
-    }
-  }
-
-  //····················································································································
   //   Accessing boardLimitsDisplay transient property
   //····················································································································
 
@@ -738,22 +577,6 @@ class BoardModelEntity : EBManagedObject,
   var backComponentNameSegments : EBSelection <MergerSegmentArray> {
     get {
       return backComponentNameSegments_property_selection
-    }
-  }
-
-  //····················································································································
-  //   Accessing backComponentNameLayer transient property
-  //····················································································································
-
-  var backComponentNameLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.backComponentNameLayer_property.prop
-    }
-  }
-
-  var backComponentNameLayer : EBSelection <CALayer> {
-    get {
-      return backComponentNameLayer_property_selection
     }
   }
 
@@ -790,22 +613,6 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing frontComponentNameLayer transient property
-  //····················································································································
-
-  var frontComponentNameLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.frontComponentNameLayer_property.prop
-    }
-  }
-
-  var frontComponentNameLayer : EBSelection <CALayer> {
-    get {
-      return frontComponentNameLayer_property_selection
-    }
-  }
-
-  //····················································································································
   //   Accessing frontComponentNameDisplay transient property
   //····················································································································
 
@@ -834,22 +641,6 @@ class BoardModelEntity : EBManagedObject,
   var frontComponentValueSegments : EBSelection <MergerSegmentArray> {
     get {
       return frontComponentValueSegments_property_selection
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontComponentValueLayer transient property
-  //····················································································································
-
-  var frontComponentValueLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.frontComponentValueLayer_property.prop
-    }
-  }
-
-  var frontComponentValueLayer : EBSelection <CALayer> {
-    get {
-      return frontComponentValueLayer_property_selection
     }
   }
 
@@ -886,22 +677,6 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing backComponentValueLayer transient property
-  //····················································································································
-
-  var backComponentValueLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.backComponentValueLayer_property.prop
-    }
-  }
-
-  var backComponentValueLayer : EBSelection <CALayer> {
-    get {
-      return backComponentValueLayer_property_selection
-    }
-  }
-
-  //····················································································································
   //   Accessing backComponentValueDisplay transient property
   //····················································································································
 
@@ -930,22 +705,6 @@ class BoardModelEntity : EBManagedObject,
   var backTrackSegments : EBSelection <MergerSegmentArray> {
     get {
       return backTrackSegments_property_selection
-    }
-  }
-
-  //····················································································································
-  //   Accessing backTracksLayer transient property
-  //····················································································································
-
-  var backTracksLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.backTracksLayer_property.prop
-    }
-  }
-
-  var backTracksLayer : EBSelection <CALayer> {
-    get {
-      return backTracksLayer_property_selection
     }
   }
 
@@ -982,22 +741,6 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing frontTracksLayer transient property
-  //····················································································································
-
-  var frontTracksLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.frontTracksLayer_property.prop
-    }
-  }
-
-  var frontTracksLayer : EBSelection <CALayer> {
-    get {
-      return frontTracksLayer_property_selection
-    }
-  }
-
-  //····················································································································
   //   Accessing frontTracksDisplay transient property
   //····················································································································
 
@@ -1030,22 +773,6 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing frontPackagesLayer transient property
-  //····················································································································
-
-  var frontPackagesLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.frontPackagesLayer_property.prop
-    }
-  }
-
-  var frontPackagesLayer : EBSelection <CALayer> {
-    get {
-      return frontPackagesLayer_property_selection
-    }
-  }
-
-  //····················································································································
   //   Accessing frontPackagesDisplay transient property
   //····················································································································
 
@@ -1074,22 +801,6 @@ class BoardModelEntity : EBManagedObject,
   var backPackagesSegments : EBSelection <MergerSegmentArray> {
     get {
       return backPackagesSegments_property_selection
-    }
-  }
-
-  //····················································································································
-  //   Accessing backPackagesLayer transient property
-  //····················································································································
-
-  var backPackagesLayer_property_selection : EBSelection <CALayer> {
-    get {
-      return self.backPackagesLayer_property.prop
-    }
-  }
-
-  var backPackagesLayer : EBSelection <CALayer> {
-    get {
-      return backPackagesLayer_property_selection
     }
   }
 
@@ -1295,57 +1006,40 @@ class BoardModelEntity : EBManagedObject,
 
   var instanceCount_property = EBTransientProperty_Int ()
   var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontLegendTextsLayer_property = EBTransientProperty_CALayer ()
   var frontLegendTextsLayerDisplay_property = EBTransientProperty_CALayer ()
   var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontLayoutTextsLayer_property = EBTransientProperty_CALayer ()
   var frontLayoutTextsLayerDisplay_property = EBTransientProperty_CALayer ()
   var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backLegendTextsLayer_property = EBTransientProperty_CALayer ()
   var backLegendTextsLayerDisplay_property = EBTransientProperty_CALayer ()
   var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backLayoutTextsLayer_property = EBTransientProperty_CALayer ()
   var backLayoutTextsLayerDisplay_property = EBTransientProperty_CALayer ()
   var padsHoles_property = EBTransientProperty_MergerHoleArray ()
   var viasHoles_property = EBTransientProperty_MergerHoleArray ()
   var holes_property = EBTransientProperty_MergerHoleArray ()
-  var holeLayer_property = EBTransientProperty_CALayer ()
   var holeLayerDisplay_property = EBTransientProperty_CALayer ()
   var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
-  var viaLayer_property = EBTransientProperty_CALayer ()
   var viaLayerDisplay_property = EBTransientProperty_CALayer ()
   var frontPads_property = EBTransientProperty_MergerPadArray ()
-  var frontPadsLayer_property = EBTransientProperty_CALayer ()
   var frontPadsDisplay_property = EBTransientProperty_CALayer ()
   var backPads_property = EBTransientProperty_MergerPadArray ()
-  var backPadsLayer_property = EBTransientProperty_CALayer ()
   var backPadsDisplay_property = EBTransientProperty_CALayer ()
   var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
-  var boardLimitsLayer_property = EBTransientProperty_CALayer ()
   var boardLimitsDisplay_property = EBTransientProperty_CALayer ()
   var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backComponentNameLayer_property = EBTransientProperty_CALayer ()
   var backComponentNameDisplay_property = EBTransientProperty_CALayer ()
   var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontComponentNameLayer_property = EBTransientProperty_CALayer ()
   var frontComponentNameDisplay_property = EBTransientProperty_CALayer ()
   var frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontComponentValueLayer_property = EBTransientProperty_CALayer ()
   var frontComponentValueDisplay_property = EBTransientProperty_CALayer ()
   var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backComponentValueLayer_property = EBTransientProperty_CALayer ()
   var backComponentValueDisplay_property = EBTransientProperty_CALayer ()
   var backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backTracksLayer_property = EBTransientProperty_CALayer ()
   var backTracksDisplay_property = EBTransientProperty_CALayer ()
   var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontTracksLayer_property = EBTransientProperty_CALayer ()
   var frontTracksDisplay_property = EBTransientProperty_CALayer ()
   var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontPackagesLayer_property = EBTransientProperty_CALayer ()
   var frontPackagesDisplay_property = EBTransientProperty_CALayer ()
   var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backPackagesLayer_property = EBTransientProperty_CALayer ()
   var backPackagesDisplay_property = EBTransientProperty_CALayer ()
   var modelLayerDisplay_property = EBTransientProperty_CALayer ()
 
@@ -1420,37 +1114,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.frontLegendTextsLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.frontLegendTextsSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.frontLegendTextsSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_frontLegendTextsLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.frontLegendTextsLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontLegendTexts_property_selection.kind ()
-        kind &= unwSelf.frontLegendTextsLayer_property_selection.kind ()
+        kind &= unwSelf.frontLegendTextsSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontLegendTexts_property_selection, unwSelf.frontLegendTextsLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayFrontLegendTexts_property_selection, unwSelf.frontLegendTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontLegendTextsLayerDisplay (v0, v1))
           default :
@@ -1485,37 +1159,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.frontLayoutTextsLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.frontLayoutTextsSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.frontLayoutTextsSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_frontLayoutTextsLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.frontLayoutTextsLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontLayoutTexts_property_selection.kind ()
-        kind &= unwSelf.frontLayoutTextsLayer_property_selection.kind ()
+        kind &= unwSelf.frontLayoutTextsSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontLayoutTexts_property_selection, unwSelf.frontLayoutTextsLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayFrontLayoutTexts_property_selection, unwSelf.frontLayoutTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontLayoutTextsLayerDisplay (v0, v1))
           default :
@@ -1550,37 +1204,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.backLegendTextsLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.backLegendTextsSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.backLegendTextsSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_backLegendTextsLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.backLegendTextsLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackLegendTexts_property_selection.kind ()
-        kind &= unwSelf.backLegendTextsLayer_property_selection.kind ()
+        kind &= unwSelf.backLegendTextsSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackLegendTexts_property_selection, unwSelf.backLegendTextsLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayBackLegendTexts_property_selection, unwSelf.backLegendTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backLegendTextsLayerDisplay (v0, v1))
           default :
@@ -1615,37 +1249,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.backLayoutTextsLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.backLayoutTextsSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.backLayoutTextsSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_backLayoutTextsLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.backLayoutTextsLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackLayoutTexts_property_selection.kind ()
-        kind &= unwSelf.backLayoutTextsLayer_property_selection.kind ()
+        kind &= unwSelf.backLayoutTextsSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackLayoutTexts_property_selection, unwSelf.backLayoutTextsLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayBackLayoutTexts_property_selection, unwSelf.backLayoutTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backLayoutTextsLayerDisplay (v0, v1))
           default :
@@ -1721,37 +1335,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.holeLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.holes_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.holes_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_holeLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.holeLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayHoles_property_selection.kind ()
-        kind &= unwSelf.holeLayer_property_selection.kind ()
+        kind &= unwSelf.holes_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayHoles_property_selection, unwSelf.holeLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayHoles_property_selection, unwSelf.holes_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_holeLayerDisplay (v0, v1))
           default :
@@ -1784,37 +1378,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.viaLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.viaShapes_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.viaShapes_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_viaLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.viaLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayVias_property_selection.kind ()
-        kind &= unwSelf.viaLayer_property_selection.kind ()
+        kind &= unwSelf.viaShapes_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayVias_property_selection, unwSelf.viaLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayVias_property_selection, unwSelf.viaShapes_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_viaLayerDisplay (v0, v1))
           default :
@@ -1852,37 +1426,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.frontPadsLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.frontPads_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.frontPads_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_frontPadsLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.frontPadsDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontPads_property_selection.kind ()
-        kind &= unwSelf.frontPadsLayer_property_selection.kind ()
+        kind &= unwSelf.frontPads_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontPads_property_selection, unwSelf.frontPadsLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayFrontPads_property_selection, unwSelf.frontPads_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontPadsDisplay (v0, v1))
           default :
@@ -1920,37 +1474,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.backPadsLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.backPads_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.backPads_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_backPadsLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.backPadsDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackPads_property_selection.kind ()
-        kind &= unwSelf.backPadsLayer_property_selection.kind ()
+        kind &= unwSelf.backPads_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackPads_property_selection, unwSelf.backPadsLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayBackPads_property_selection, unwSelf.backPads_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backPadsDisplay (v0, v1))
           default :
@@ -1984,37 +1518,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.boardLimitsLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.boardLimits_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.boardLimits_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_boardLimitsLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.boardLimitsDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBoardLimits_property_selection.kind ()
-        kind &= unwSelf.boardLimitsLayer_property_selection.kind ()
+        kind &= unwSelf.boardLimits_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBoardLimits_property_selection, unwSelf.boardLimitsLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayBoardLimits_property_selection, unwSelf.boardLimits_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_boardLimitsDisplay (v0, v1))
           default :
@@ -2049,37 +1563,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.backComponentNameLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.backComponentNameSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.backComponentNameSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_backComponentNameLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.backComponentNameDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackComponentNames_property_selection.kind ()
-        kind &= unwSelf.backComponentNameLayer_property_selection.kind ()
+        kind &= unwSelf.backComponentNameSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackComponentNames_property_selection, unwSelf.backComponentNameLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayBackComponentNames_property_selection, unwSelf.backComponentNameSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backComponentNameDisplay (v0, v1))
           default :
@@ -2114,37 +1608,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.frontComponentNameLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.frontComponentNameSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.frontComponentNameSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_frontComponentNameLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.frontComponentNameDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontComponentNames_property_selection.kind ()
-        kind &= unwSelf.frontComponentNameLayer_property_selection.kind ()
+        kind &= unwSelf.frontComponentNameSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontComponentNames_property_selection, unwSelf.frontComponentNameLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayFrontComponentNames_property_selection, unwSelf.frontComponentNameSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontComponentNameDisplay (v0, v1))
           default :
@@ -2179,37 +1653,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.frontComponentValueLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.frontComponentValueSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.frontComponentValueSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_frontComponentValueLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.frontComponentValueDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontComponentValues_property_selection.kind ()
-        kind &= unwSelf.frontComponentValueLayer_property_selection.kind ()
+        kind &= unwSelf.frontComponentValueSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontComponentValues_property_selection, unwSelf.frontComponentValueLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayFrontComponentValues_property_selection, unwSelf.frontComponentValueSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontComponentValueDisplay (v0, v1))
           default :
@@ -2244,37 +1698,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.backComponentValueLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.backComponentValueSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.backComponentValueSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_backComponentValueLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.backComponentValueDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackComponentValues_property_selection.kind ()
-        kind &= unwSelf.backComponentValueLayer_property_selection.kind ()
+        kind &= unwSelf.backComponentValueSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackComponentValues_property_selection, unwSelf.backComponentValueLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayBackComponentValues_property_selection, unwSelf.backComponentValueSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backComponentValueDisplay (v0, v1))
           default :
@@ -2309,37 +1743,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.backTracksLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.backTrackSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.backTrackSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_backTracksLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.backTracksDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackLayoutTracks_property_selection.kind ()
-        kind &= unwSelf.backTracksLayer_property_selection.kind ()
+        kind &= unwSelf.backTrackSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackLayoutTracks_property_selection, unwSelf.backTracksLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayBackLayoutTracks_property_selection, unwSelf.backTrackSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backTracksDisplay (v0, v1))
           default :
@@ -2374,37 +1788,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.frontTracksLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.frontTrackSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.frontTrackSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_frontTracksLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.frontTracksDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontLayoutTracks_property_selection.kind ()
-        kind &= unwSelf.frontTracksLayer_property_selection.kind ()
+        kind &= unwSelf.frontTrackSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontLayoutTracks_property_selection, unwSelf.frontTracksLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayFrontLayoutTracks_property_selection, unwSelf.frontTrackSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontTracksDisplay (v0, v1))
           default :
@@ -2439,37 +1833,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.frontPackagesLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.frontPackagesSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.frontPackagesSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_frontPackagesLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.frontPackagesDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayFrontPackages_property_selection.kind ()
-        kind &= unwSelf.frontPackagesLayer_property_selection.kind ()
+        kind &= unwSelf.frontPackagesSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontPackages_property_selection, unwSelf.frontPackagesLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayFrontPackages_property_selection, unwSelf.frontPackagesSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_frontPackagesDisplay (v0, v1))
           default :
@@ -2504,37 +1878,17 @@ class BoardModelEntity : EBManagedObject,
         return .empty
       }
     }
-    self.backPackagesLayer_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.backPackagesSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.backPackagesSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_BoardModelEntity_backPackagesLayer (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.backPackagesDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerDisplayBackPackages_property_selection.kind ()
-        kind &= unwSelf.backPackagesLayer_property_selection.kind ()
+        kind &= unwSelf.backPackagesSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackPackages_property_selection, unwSelf.backPackagesLayer_property_selection) {
+          switch (g_Preferences!.mergerDisplayBackPackages_property_selection, unwSelf.backPackagesSegments_property_selection) {
           case (.single (let v0), .single (let v1)) :
             return .single (compute_BoardModelEntity_backPackagesDisplay (v0, v1))
           default :
@@ -2588,33 +1942,29 @@ class BoardModelEntity : EBManagedObject,
     self.frontLegendTexts_property.addEBObserverOf_x2 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_y2 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_width (self.frontLegendTextsSegments_property)
-    self.frontLegendTextsSegments_property.addEBObserver (self.frontLegendTextsLayer_property)
     g_Preferences?.mergerDisplayFrontLegendTexts_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
-    self.frontLegendTextsLayer_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
+    self.frontLegendTextsSegments_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
     self.frontLayoutTexts_property.addEBObserverOf_x1 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.addEBObserverOf_y1 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.addEBObserverOf_x2 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.addEBObserverOf_y2 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.addEBObserverOf_width (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTextsSegments_property.addEBObserver (self.frontLayoutTextsLayer_property)
     g_Preferences?.mergerDisplayFrontLayoutTexts_property.addEBObserver (self.frontLayoutTextsLayerDisplay_property)
-    self.frontLayoutTextsLayer_property.addEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    self.frontLayoutTextsSegments_property.addEBObserver (self.frontLayoutTextsLayerDisplay_property)
     self.backLegendTexts_property.addEBObserverOf_x1 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.addEBObserverOf_y1 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.addEBObserverOf_x2 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.addEBObserverOf_y2 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.addEBObserverOf_width (self.backLegendTextsSegments_property)
-    self.backLegendTextsSegments_property.addEBObserver (self.backLegendTextsLayer_property)
     g_Preferences?.mergerDisplayBackLegendTexts_property.addEBObserver (self.backLegendTextsLayerDisplay_property)
-    self.backLegendTextsLayer_property.addEBObserver (self.backLegendTextsLayerDisplay_property)
+    self.backLegendTextsSegments_property.addEBObserver (self.backLegendTextsLayerDisplay_property)
     self.backLayoutTexts_property.addEBObserverOf_x1 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_y1 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_x2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_y2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_width (self.backLayoutTextsSegments_property)
-    self.backLayoutTextsSegments_property.addEBObserver (self.backLayoutTextsLayer_property)
     g_Preferences?.mergerDisplayBackLayoutTexts_property.addEBObserver (self.backLayoutTextsLayerDisplay_property)
-    self.backLayoutTextsLayer_property.addEBObserver (self.backLayoutTextsLayerDisplay_property)
+    self.backLayoutTextsSegments_property.addEBObserver (self.backLayoutTextsLayerDisplay_property)
     self.pads_property.addEBObserverOf_x (self.padsHoles_property)
     self.pads_property.addEBObserverOf_y (self.padsHoles_property)
     self.pads_property.addEBObserverOf_holeDiameter (self.padsHoles_property)
@@ -2623,15 +1973,13 @@ class BoardModelEntity : EBManagedObject,
     self.vias_property.addEBObserverOf_holeDiameter (self.viasHoles_property)
     self.padsHoles_property.addEBObserver (self.holes_property)
     self.viasHoles_property.addEBObserver (self.holes_property)
-    self.holes_property.addEBObserver (self.holeLayer_property)
     g_Preferences?.mergerDisplayHoles_property.addEBObserver (self.holeLayerDisplay_property)
-    self.holeLayer_property.addEBObserver (self.holeLayerDisplay_property)
+    self.holes_property.addEBObserver (self.holeLayerDisplay_property)
     self.vias_property.addEBObserverOf_x (self.viaShapes_property)
     self.vias_property.addEBObserverOf_y (self.viaShapes_property)
     self.vias_property.addEBObserverOf_padDiameter (self.viaShapes_property)
-    self.viaShapes_property.addEBObserver (self.viaLayer_property)
     g_Preferences?.mergerDisplayVias_property.addEBObserver (self.viaLayerDisplay_property)
-    self.viaLayer_property.addEBObserver (self.viaLayerDisplay_property)
+    self.viaShapes_property.addEBObserver (self.viaLayerDisplay_property)
     self.pads_property.addEBObserverOf_x (self.frontPads_property)
     self.pads_property.addEBObserverOf_y (self.frontPads_property)
     self.pads_property.addEBObserverOf_width (self.frontPads_property)
@@ -2640,9 +1988,8 @@ class BoardModelEntity : EBManagedObject,
     self.pads_property.addEBObserverOf_shape (self.frontPads_property)
     self.pads_property.addEBObserverOf_side (self.frontPads_property)
     self.pads_property.addEBObserverOf_rotation (self.frontPads_property)
-    self.frontPads_property.addEBObserver (self.frontPadsLayer_property)
     g_Preferences?.mergerDisplayFrontPads_property.addEBObserver (self.frontPadsDisplay_property)
-    self.frontPadsLayer_property.addEBObserver (self.frontPadsDisplay_property)
+    self.frontPads_property.addEBObserver (self.frontPadsDisplay_property)
     self.pads_property.addEBObserverOf_x (self.backPads_property)
     self.pads_property.addEBObserverOf_y (self.backPads_property)
     self.pads_property.addEBObserverOf_width (self.backPads_property)
@@ -2651,80 +1998,70 @@ class BoardModelEntity : EBManagedObject,
     self.pads_property.addEBObserverOf_shape (self.backPads_property)
     self.pads_property.addEBObserverOf_side (self.backPads_property)
     self.pads_property.addEBObserverOf_rotation (self.backPads_property)
-    self.backPads_property.addEBObserver (self.backPadsLayer_property)
     g_Preferences?.mergerDisplayBackPads_property.addEBObserver (self.backPadsDisplay_property)
-    self.backPadsLayer_property.addEBObserver (self.backPadsDisplay_property)
+    self.backPads_property.addEBObserver (self.backPadsDisplay_property)
     self.modelWidth_property.addEBObserver (self.boardLimits_property)
     self.modelHeight_property.addEBObserver (self.boardLimits_property)
     self.boardLimitWidth_property.addEBObserver (self.boardLimits_property)
     g_Preferences?.mergerDisplayBoardLimits_property.addEBObserver (self.boardLimits_property)
-    self.boardLimits_property.addEBObserver (self.boardLimitsLayer_property)
     g_Preferences?.mergerDisplayBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
-    self.boardLimitsLayer_property.addEBObserver (self.boardLimitsDisplay_property)
+    self.boardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
     self.backComponentNames_property.addEBObserverOf_x1 (self.backComponentNameSegments_property)
     self.backComponentNames_property.addEBObserverOf_y1 (self.backComponentNameSegments_property)
     self.backComponentNames_property.addEBObserverOf_x2 (self.backComponentNameSegments_property)
     self.backComponentNames_property.addEBObserverOf_y2 (self.backComponentNameSegments_property)
     self.backComponentNames_property.addEBObserverOf_width (self.backComponentNameSegments_property)
-    self.backComponentNameSegments_property.addEBObserver (self.backComponentNameLayer_property)
     g_Preferences?.mergerDisplayBackComponentNames_property.addEBObserver (self.backComponentNameDisplay_property)
-    self.backComponentNameLayer_property.addEBObserver (self.backComponentNameDisplay_property)
+    self.backComponentNameSegments_property.addEBObserver (self.backComponentNameDisplay_property)
     self.frontComponentNames_property.addEBObserverOf_x1 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.addEBObserverOf_y1 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.addEBObserverOf_x2 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.addEBObserverOf_y2 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.addEBObserverOf_width (self.frontComponentNameSegments_property)
-    self.frontComponentNameSegments_property.addEBObserver (self.frontComponentNameLayer_property)
     g_Preferences?.mergerDisplayFrontComponentNames_property.addEBObserver (self.frontComponentNameDisplay_property)
-    self.frontComponentNameLayer_property.addEBObserver (self.frontComponentNameDisplay_property)
+    self.frontComponentNameSegments_property.addEBObserver (self.frontComponentNameDisplay_property)
     self.frontComponentValues_property.addEBObserverOf_x1 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.addEBObserverOf_y1 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.addEBObserverOf_x2 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.addEBObserverOf_y2 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.addEBObserverOf_width (self.frontComponentValueSegments_property)
-    self.frontComponentValueSegments_property.addEBObserver (self.frontComponentValueLayer_property)
     g_Preferences?.mergerDisplayFrontComponentValues_property.addEBObserver (self.frontComponentValueDisplay_property)
-    self.frontComponentValueLayer_property.addEBObserver (self.frontComponentValueDisplay_property)
+    self.frontComponentValueSegments_property.addEBObserver (self.frontComponentValueDisplay_property)
     self.backComponentValues_property.addEBObserverOf_x1 (self.backComponentValueSegments_property)
     self.backComponentValues_property.addEBObserverOf_y1 (self.backComponentValueSegments_property)
     self.backComponentValues_property.addEBObserverOf_x2 (self.backComponentValueSegments_property)
     self.backComponentValues_property.addEBObserverOf_y2 (self.backComponentValueSegments_property)
     self.backComponentValues_property.addEBObserverOf_width (self.backComponentValueSegments_property)
-    self.backComponentValueSegments_property.addEBObserver (self.backComponentValueLayer_property)
     g_Preferences?.mergerDisplayBackComponentValues_property.addEBObserver (self.backComponentValueDisplay_property)
-    self.backComponentValueLayer_property.addEBObserver (self.backComponentValueDisplay_property)
+    self.backComponentValueSegments_property.addEBObserver (self.backComponentValueDisplay_property)
     self.backTracks_property.addEBObserverOf_x1 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_y1 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_x2 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_y2 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_width (self.backTrackSegments_property)
-    self.backTrackSegments_property.addEBObserver (self.backTracksLayer_property)
     g_Preferences?.mergerDisplayBackLayoutTracks_property.addEBObserver (self.backTracksDisplay_property)
-    self.backTracksLayer_property.addEBObserver (self.backTracksDisplay_property)
+    self.backTrackSegments_property.addEBObserver (self.backTracksDisplay_property)
     self.frontTracks_property.addEBObserverOf_x1 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_y1 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_x2 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_y2 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_width (self.frontTrackSegments_property)
-    self.frontTrackSegments_property.addEBObserver (self.frontTracksLayer_property)
     g_Preferences?.mergerDisplayFrontLayoutTracks_property.addEBObserver (self.frontTracksDisplay_property)
-    self.frontTracksLayer_property.addEBObserver (self.frontTracksDisplay_property)
+    self.frontTrackSegments_property.addEBObserver (self.frontTracksDisplay_property)
     self.frontPackages_property.addEBObserverOf_x1 (self.frontPackagesSegments_property)
     self.frontPackages_property.addEBObserverOf_y1 (self.frontPackagesSegments_property)
     self.frontPackages_property.addEBObserverOf_x2 (self.frontPackagesSegments_property)
     self.frontPackages_property.addEBObserverOf_y2 (self.frontPackagesSegments_property)
     self.frontPackages_property.addEBObserverOf_width (self.frontPackagesSegments_property)
-    self.frontPackagesSegments_property.addEBObserver (self.frontPackagesLayer_property)
     g_Preferences?.mergerDisplayFrontPackages_property.addEBObserver (self.frontPackagesDisplay_property)
-    self.frontPackagesLayer_property.addEBObserver (self.frontPackagesDisplay_property)
+    self.frontPackagesSegments_property.addEBObserver (self.frontPackagesDisplay_property)
     self.backPackages_property.addEBObserverOf_x1 (self.backPackagesSegments_property)
     self.backPackages_property.addEBObserverOf_y1 (self.backPackagesSegments_property)
     self.backPackages_property.addEBObserverOf_x2 (self.backPackagesSegments_property)
     self.backPackages_property.addEBObserverOf_y2 (self.backPackagesSegments_property)
     self.backPackages_property.addEBObserverOf_width (self.backPackagesSegments_property)
-    self.backPackagesSegments_property.addEBObserver (self.backPackagesLayer_property)
     g_Preferences?.mergerDisplayBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
-    self.backPackagesLayer_property.addEBObserver (self.backPackagesDisplay_property)
+    self.backPackagesSegments_property.addEBObserver (self.backPackagesDisplay_property)
     self.backLegendTextsLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.frontLegendTextsLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
@@ -2781,33 +2118,29 @@ class BoardModelEntity : EBManagedObject,
     self.frontLegendTexts_property.removeEBObserverOf_x2 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.removeEBObserverOf_y2 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.removeEBObserverOf_width (self.frontLegendTextsSegments_property)
-    self.frontLegendTextsSegments_property.removeEBObserver (self.frontLegendTextsLayer_property)
     g_Preferences?.mergerDisplayFrontLegendTexts_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
-    self.frontLegendTextsLayer_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
+    self.frontLegendTextsSegments_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
     self.frontLayoutTexts_property.removeEBObserverOf_x1 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.removeEBObserverOf_y1 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.removeEBObserverOf_x2 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.removeEBObserverOf_y2 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.removeEBObserverOf_width (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTextsSegments_property.removeEBObserver (self.frontLayoutTextsLayer_property)
     g_Preferences?.mergerDisplayFrontLayoutTexts_property.removeEBObserver (self.frontLayoutTextsLayerDisplay_property)
-    self.frontLayoutTextsLayer_property.removeEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    self.frontLayoutTextsSegments_property.removeEBObserver (self.frontLayoutTextsLayerDisplay_property)
     self.backLegendTexts_property.removeEBObserverOf_x1 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.removeEBObserverOf_y1 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.removeEBObserverOf_x2 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.removeEBObserverOf_y2 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.removeEBObserverOf_width (self.backLegendTextsSegments_property)
-    self.backLegendTextsSegments_property.removeEBObserver (self.backLegendTextsLayer_property)
     g_Preferences?.mergerDisplayBackLegendTexts_property.removeEBObserver (self.backLegendTextsLayerDisplay_property)
-    self.backLegendTextsLayer_property.removeEBObserver (self.backLegendTextsLayerDisplay_property)
+    self.backLegendTextsSegments_property.removeEBObserver (self.backLegendTextsLayerDisplay_property)
     self.backLayoutTexts_property.removeEBObserverOf_x1 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.removeEBObserverOf_y1 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.removeEBObserverOf_x2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.removeEBObserverOf_y2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.removeEBObserverOf_width (self.backLayoutTextsSegments_property)
-    self.backLayoutTextsSegments_property.removeEBObserver (self.backLayoutTextsLayer_property)
     g_Preferences?.mergerDisplayBackLayoutTexts_property.removeEBObserver (self.backLayoutTextsLayerDisplay_property)
-    self.backLayoutTextsLayer_property.removeEBObserver (self.backLayoutTextsLayerDisplay_property)
+    self.backLayoutTextsSegments_property.removeEBObserver (self.backLayoutTextsLayerDisplay_property)
     self.pads_property.removeEBObserverOf_x (self.padsHoles_property)
     self.pads_property.removeEBObserverOf_y (self.padsHoles_property)
     self.pads_property.removeEBObserverOf_holeDiameter (self.padsHoles_property)
@@ -2816,15 +2149,13 @@ class BoardModelEntity : EBManagedObject,
     self.vias_property.removeEBObserverOf_holeDiameter (self.viasHoles_property)
     self.padsHoles_property.removeEBObserver (self.holes_property)
     self.viasHoles_property.removeEBObserver (self.holes_property)
-    self.holes_property.removeEBObserver (self.holeLayer_property)
     g_Preferences?.mergerDisplayHoles_property.removeEBObserver (self.holeLayerDisplay_property)
-    self.holeLayer_property.removeEBObserver (self.holeLayerDisplay_property)
+    self.holes_property.removeEBObserver (self.holeLayerDisplay_property)
     self.vias_property.removeEBObserverOf_x (self.viaShapes_property)
     self.vias_property.removeEBObserverOf_y (self.viaShapes_property)
     self.vias_property.removeEBObserverOf_padDiameter (self.viaShapes_property)
-    self.viaShapes_property.removeEBObserver (self.viaLayer_property)
     g_Preferences?.mergerDisplayVias_property.removeEBObserver (self.viaLayerDisplay_property)
-    self.viaLayer_property.removeEBObserver (self.viaLayerDisplay_property)
+    self.viaShapes_property.removeEBObserver (self.viaLayerDisplay_property)
     self.pads_property.removeEBObserverOf_x (self.frontPads_property)
     self.pads_property.removeEBObserverOf_y (self.frontPads_property)
     self.pads_property.removeEBObserverOf_width (self.frontPads_property)
@@ -2833,9 +2164,8 @@ class BoardModelEntity : EBManagedObject,
     self.pads_property.removeEBObserverOf_shape (self.frontPads_property)
     self.pads_property.removeEBObserverOf_side (self.frontPads_property)
     self.pads_property.removeEBObserverOf_rotation (self.frontPads_property)
-    self.frontPads_property.removeEBObserver (self.frontPadsLayer_property)
     g_Preferences?.mergerDisplayFrontPads_property.removeEBObserver (self.frontPadsDisplay_property)
-    self.frontPadsLayer_property.removeEBObserver (self.frontPadsDisplay_property)
+    self.frontPads_property.removeEBObserver (self.frontPadsDisplay_property)
     self.pads_property.removeEBObserverOf_x (self.backPads_property)
     self.pads_property.removeEBObserverOf_y (self.backPads_property)
     self.pads_property.removeEBObserverOf_width (self.backPads_property)
@@ -2844,80 +2174,70 @@ class BoardModelEntity : EBManagedObject,
     self.pads_property.removeEBObserverOf_shape (self.backPads_property)
     self.pads_property.removeEBObserverOf_side (self.backPads_property)
     self.pads_property.removeEBObserverOf_rotation (self.backPads_property)
-    self.backPads_property.removeEBObserver (self.backPadsLayer_property)
     g_Preferences?.mergerDisplayBackPads_property.removeEBObserver (self.backPadsDisplay_property)
-    self.backPadsLayer_property.removeEBObserver (self.backPadsDisplay_property)
+    self.backPads_property.removeEBObserver (self.backPadsDisplay_property)
     self.modelWidth_property.removeEBObserver (self.boardLimits_property)
     self.modelHeight_property.removeEBObserver (self.boardLimits_property)
     self.boardLimitWidth_property.removeEBObserver (self.boardLimits_property)
     g_Preferences?.mergerDisplayBoardLimits_property.removeEBObserver (self.boardLimits_property)
-    self.boardLimits_property.removeEBObserver (self.boardLimitsLayer_property)
     g_Preferences?.mergerDisplayBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
-    self.boardLimitsLayer_property.removeEBObserver (self.boardLimitsDisplay_property)
+    self.boardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
     self.backComponentNames_property.removeEBObserverOf_x1 (self.backComponentNameSegments_property)
     self.backComponentNames_property.removeEBObserverOf_y1 (self.backComponentNameSegments_property)
     self.backComponentNames_property.removeEBObserverOf_x2 (self.backComponentNameSegments_property)
     self.backComponentNames_property.removeEBObserverOf_y2 (self.backComponentNameSegments_property)
     self.backComponentNames_property.removeEBObserverOf_width (self.backComponentNameSegments_property)
-    self.backComponentNameSegments_property.removeEBObserver (self.backComponentNameLayer_property)
     g_Preferences?.mergerDisplayBackComponentNames_property.removeEBObserver (self.backComponentNameDisplay_property)
-    self.backComponentNameLayer_property.removeEBObserver (self.backComponentNameDisplay_property)
+    self.backComponentNameSegments_property.removeEBObserver (self.backComponentNameDisplay_property)
     self.frontComponentNames_property.removeEBObserverOf_x1 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.removeEBObserverOf_y1 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.removeEBObserverOf_x2 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.removeEBObserverOf_y2 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.removeEBObserverOf_width (self.frontComponentNameSegments_property)
-    self.frontComponentNameSegments_property.removeEBObserver (self.frontComponentNameLayer_property)
     g_Preferences?.mergerDisplayFrontComponentNames_property.removeEBObserver (self.frontComponentNameDisplay_property)
-    self.frontComponentNameLayer_property.removeEBObserver (self.frontComponentNameDisplay_property)
+    self.frontComponentNameSegments_property.removeEBObserver (self.frontComponentNameDisplay_property)
     self.frontComponentValues_property.removeEBObserverOf_x1 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.removeEBObserverOf_y1 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.removeEBObserverOf_x2 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.removeEBObserverOf_y2 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.removeEBObserverOf_width (self.frontComponentValueSegments_property)
-    self.frontComponentValueSegments_property.removeEBObserver (self.frontComponentValueLayer_property)
     g_Preferences?.mergerDisplayFrontComponentValues_property.removeEBObserver (self.frontComponentValueDisplay_property)
-    self.frontComponentValueLayer_property.removeEBObserver (self.frontComponentValueDisplay_property)
+    self.frontComponentValueSegments_property.removeEBObserver (self.frontComponentValueDisplay_property)
     self.backComponentValues_property.removeEBObserverOf_x1 (self.backComponentValueSegments_property)
     self.backComponentValues_property.removeEBObserverOf_y1 (self.backComponentValueSegments_property)
     self.backComponentValues_property.removeEBObserverOf_x2 (self.backComponentValueSegments_property)
     self.backComponentValues_property.removeEBObserverOf_y2 (self.backComponentValueSegments_property)
     self.backComponentValues_property.removeEBObserverOf_width (self.backComponentValueSegments_property)
-    self.backComponentValueSegments_property.removeEBObserver (self.backComponentValueLayer_property)
     g_Preferences?.mergerDisplayBackComponentValues_property.removeEBObserver (self.backComponentValueDisplay_property)
-    self.backComponentValueLayer_property.removeEBObserver (self.backComponentValueDisplay_property)
+    self.backComponentValueSegments_property.removeEBObserver (self.backComponentValueDisplay_property)
     self.backTracks_property.removeEBObserverOf_x1 (self.backTrackSegments_property)
     self.backTracks_property.removeEBObserverOf_y1 (self.backTrackSegments_property)
     self.backTracks_property.removeEBObserverOf_x2 (self.backTrackSegments_property)
     self.backTracks_property.removeEBObserverOf_y2 (self.backTrackSegments_property)
     self.backTracks_property.removeEBObserverOf_width (self.backTrackSegments_property)
-    self.backTrackSegments_property.removeEBObserver (self.backTracksLayer_property)
     g_Preferences?.mergerDisplayBackLayoutTracks_property.removeEBObserver (self.backTracksDisplay_property)
-    self.backTracksLayer_property.removeEBObserver (self.backTracksDisplay_property)
+    self.backTrackSegments_property.removeEBObserver (self.backTracksDisplay_property)
     self.frontTracks_property.removeEBObserverOf_x1 (self.frontTrackSegments_property)
     self.frontTracks_property.removeEBObserverOf_y1 (self.frontTrackSegments_property)
     self.frontTracks_property.removeEBObserverOf_x2 (self.frontTrackSegments_property)
     self.frontTracks_property.removeEBObserverOf_y2 (self.frontTrackSegments_property)
     self.frontTracks_property.removeEBObserverOf_width (self.frontTrackSegments_property)
-    self.frontTrackSegments_property.removeEBObserver (self.frontTracksLayer_property)
     g_Preferences?.mergerDisplayFrontLayoutTracks_property.removeEBObserver (self.frontTracksDisplay_property)
-    self.frontTracksLayer_property.removeEBObserver (self.frontTracksDisplay_property)
+    self.frontTrackSegments_property.removeEBObserver (self.frontTracksDisplay_property)
     self.frontPackages_property.removeEBObserverOf_x1 (self.frontPackagesSegments_property)
     self.frontPackages_property.removeEBObserverOf_y1 (self.frontPackagesSegments_property)
     self.frontPackages_property.removeEBObserverOf_x2 (self.frontPackagesSegments_property)
     self.frontPackages_property.removeEBObserverOf_y2 (self.frontPackagesSegments_property)
     self.frontPackages_property.removeEBObserverOf_width (self.frontPackagesSegments_property)
-    self.frontPackagesSegments_property.removeEBObserver (self.frontPackagesLayer_property)
     g_Preferences?.mergerDisplayFrontPackages_property.removeEBObserver (self.frontPackagesDisplay_property)
-    self.frontPackagesLayer_property.removeEBObserver (self.frontPackagesDisplay_property)
+    self.frontPackagesSegments_property.removeEBObserver (self.frontPackagesDisplay_property)
     self.backPackages_property.removeEBObserverOf_x1 (self.backPackagesSegments_property)
     self.backPackages_property.removeEBObserverOf_y1 (self.backPackagesSegments_property)
     self.backPackages_property.removeEBObserverOf_x2 (self.backPackagesSegments_property)
     self.backPackages_property.removeEBObserverOf_y2 (self.backPackagesSegments_property)
     self.backPackages_property.removeEBObserverOf_width (self.backPackagesSegments_property)
-    self.backPackagesSegments_property.removeEBObserver (self.backPackagesLayer_property)
     g_Preferences?.mergerDisplayBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
-    self.backPackagesLayer_property.removeEBObserver (self.backPackagesDisplay_property)
+    self.backPackagesSegments_property.removeEBObserver (self.backPackagesDisplay_property)
     self.backLegendTextsLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.frontLegendTextsLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
@@ -3033,14 +2353,6 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.frontLegendTextsSegments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "frontLegendTextsLayer",
-      idx:self.frontLegendTextsLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.frontLegendTextsLayer_property.mObserverExplorer,
-      valueExplorer:&self.frontLegendTextsLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "frontLegendTextsLayerDisplay",
       idx:self.frontLegendTextsLayerDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -3055,14 +2367,6 @@ class BoardModelEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.frontLayoutTextsSegments_property.mObserverExplorer,
       valueExplorer:&self.frontLayoutTextsSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontLayoutTextsLayer",
-      idx:self.frontLayoutTextsLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.frontLayoutTextsLayer_property.mObserverExplorer,
-      valueExplorer:&self.frontLayoutTextsLayer_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "frontLayoutTextsLayerDisplay",
@@ -3081,14 +2385,6 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.backLegendTextsSegments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "backLegendTextsLayer",
-      idx:self.backLegendTextsLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.backLegendTextsLayer_property.mObserverExplorer,
-      valueExplorer:&self.backLegendTextsLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "backLegendTextsLayerDisplay",
       idx:self.backLegendTextsLayerDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -3103,14 +2399,6 @@ class BoardModelEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.backLayoutTextsSegments_property.mObserverExplorer,
       valueExplorer:&self.backLayoutTextsSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backLayoutTextsLayer",
-      idx:self.backLayoutTextsLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.backLayoutTextsLayer_property.mObserverExplorer,
-      valueExplorer:&self.backLayoutTextsLayer_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "backLayoutTextsLayerDisplay",
@@ -3145,14 +2433,6 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.holes_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "holeLayer",
-      idx:self.holeLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.holeLayer_property.mObserverExplorer,
-      valueExplorer:&self.holeLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "holeLayerDisplay",
       idx:self.holeLayerDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -3167,14 +2447,6 @@ class BoardModelEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.viaShapes_property.mObserverExplorer,
       valueExplorer:&self.viaShapes_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "viaLayer",
-      idx:self.viaLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.viaLayer_property.mObserverExplorer,
-      valueExplorer:&self.viaLayer_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "viaLayerDisplay",
@@ -3193,14 +2465,6 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.frontPads_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "frontPadsLayer",
-      idx:self.frontPadsLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.frontPadsLayer_property.mObserverExplorer,
-      valueExplorer:&self.frontPadsLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "frontPadsDisplay",
       idx:self.frontPadsDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -3215,14 +2479,6 @@ class BoardModelEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.backPads_property.mObserverExplorer,
       valueExplorer:&self.backPads_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backPadsLayer",
-      idx:self.backPadsLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.backPadsLayer_property.mObserverExplorer,
-      valueExplorer:&self.backPadsLayer_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "backPadsDisplay",
@@ -3241,14 +2497,6 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.boardLimits_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardLimitsLayer",
-      idx:self.boardLimitsLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardLimitsLayer_property.mObserverExplorer,
-      valueExplorer:&self.boardLimitsLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "boardLimitsDisplay",
       idx:self.boardLimitsDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -3263,14 +2511,6 @@ class BoardModelEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.backComponentNameSegments_property.mObserverExplorer,
       valueExplorer:&self.backComponentNameSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backComponentNameLayer",
-      idx:self.backComponentNameLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.backComponentNameLayer_property.mObserverExplorer,
-      valueExplorer:&self.backComponentNameLayer_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "backComponentNameDisplay",
@@ -3289,14 +2529,6 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.frontComponentNameSegments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "frontComponentNameLayer",
-      idx:self.frontComponentNameLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.frontComponentNameLayer_property.mObserverExplorer,
-      valueExplorer:&self.frontComponentNameLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "frontComponentNameDisplay",
       idx:self.frontComponentNameDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -3311,14 +2543,6 @@ class BoardModelEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.frontComponentValueSegments_property.mObserverExplorer,
       valueExplorer:&self.frontComponentValueSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontComponentValueLayer",
-      idx:self.frontComponentValueLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.frontComponentValueLayer_property.mObserverExplorer,
-      valueExplorer:&self.frontComponentValueLayer_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "frontComponentValueDisplay",
@@ -3337,14 +2561,6 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.backComponentValueSegments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "backComponentValueLayer",
-      idx:self.backComponentValueLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.backComponentValueLayer_property.mObserverExplorer,
-      valueExplorer:&self.backComponentValueLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "backComponentValueDisplay",
       idx:self.backComponentValueDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -3359,14 +2575,6 @@ class BoardModelEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.backTrackSegments_property.mObserverExplorer,
       valueExplorer:&self.backTrackSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backTracksLayer",
-      idx:self.backTracksLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.backTracksLayer_property.mObserverExplorer,
-      valueExplorer:&self.backTracksLayer_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "backTracksDisplay",
@@ -3385,14 +2593,6 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.frontTrackSegments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "frontTracksLayer",
-      idx:self.frontTracksLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.frontTracksLayer_property.mObserverExplorer,
-      valueExplorer:&self.frontTracksLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "frontTracksDisplay",
       idx:self.frontTracksDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -3409,14 +2609,6 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.frontPackagesSegments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "frontPackagesLayer",
-      idx:self.frontPackagesLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.frontPackagesLayer_property.mObserverExplorer,
-      valueExplorer:&self.frontPackagesLayer_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "frontPackagesDisplay",
       idx:self.frontPackagesDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -3431,14 +2623,6 @@ class BoardModelEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.backPackagesSegments_property.mObserverExplorer,
       valueExplorer:&self.backPackagesSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "backPackagesLayer",
-      idx:self.backPackagesLayer_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.backPackagesLayer_property.mObserverExplorer,
-      valueExplorer:&self.backPackagesLayer_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "backPackagesDisplay",
@@ -4523,62 +3707,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'frontLegendTextsLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_frontLegendTextsLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_frontLegendTextsLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_frontLegendTextsLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontLegendTextsLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_frontLegendTextsLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_frontLegendTextsLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontLegendTextsLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontLegendTextsLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontLegendTextsLayer {
-        managedObject.frontLegendTextsLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontLegendTextsLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontLegendTextsLayer {
-        managedObject.frontLegendTextsLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontLegendTextsLayerDisplay' transient property
   //····················································································································
 
@@ -4686,62 +3814,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     for managedObject in inSet {
       for observer in mObserversOf_frontLayoutTextsSegments {
         managedObject.frontLayoutTextsSegments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'frontLayoutTextsLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_frontLayoutTextsLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_frontLayoutTextsLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_frontLayoutTextsLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontLayoutTextsLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_frontLayoutTextsLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_frontLayoutTextsLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontLayoutTextsLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontLayoutTextsLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontLayoutTextsLayer {
-        managedObject.frontLayoutTextsLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontLayoutTextsLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontLayoutTextsLayer {
-        managedObject.frontLayoutTextsLayer_property.removeEBObserver (observer)
       }
     }
   }
@@ -4859,62 +3931,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'backLegendTextsLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_backLegendTextsLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_backLegendTextsLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_backLegendTextsLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backLegendTextsLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_backLegendTextsLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_backLegendTextsLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backLegendTextsLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backLegendTextsLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backLegendTextsLayer {
-        managedObject.backLegendTextsLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backLegendTextsLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backLegendTextsLayer {
-        managedObject.backLegendTextsLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backLegendTextsLayerDisplay' transient property
   //····················································································································
 
@@ -5022,62 +4038,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     for managedObject in inSet {
       for observer in mObserversOf_backLayoutTextsSegments {
         managedObject.backLayoutTextsSegments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'backLayoutTextsLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_backLayoutTextsLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_backLayoutTextsLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_backLayoutTextsLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backLayoutTextsLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_backLayoutTextsLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_backLayoutTextsLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backLayoutTextsLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backLayoutTextsLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backLayoutTextsLayer {
-        managedObject.backLayoutTextsLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backLayoutTextsLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backLayoutTextsLayer {
-        managedObject.backLayoutTextsLayer_property.removeEBObserver (observer)
       }
     }
   }
@@ -5307,62 +4267,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'holeLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_holeLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_holeLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_holeLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.holeLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_holeLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_holeLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.holeLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_holeLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_holeLayer {
-        managedObject.holeLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_holeLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_holeLayer {
-        managedObject.holeLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'holeLayerDisplay' transient property
   //····················································································································
 
@@ -5470,62 +4374,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     for managedObject in inSet {
       for observer in mObserversOf_viaShapes {
         managedObject.viaShapes_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'viaLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_viaLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_viaLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_viaLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.viaLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_viaLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_viaLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.viaLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_viaLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_viaLayer {
-        managedObject.viaLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_viaLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_viaLayer {
-        managedObject.viaLayer_property.removeEBObserver (observer)
       }
     }
   }
@@ -5643,62 +4491,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'frontPadsLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_frontPadsLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_frontPadsLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_frontPadsLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontPadsLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_frontPadsLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_frontPadsLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontPadsLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontPadsLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontPadsLayer {
-        managedObject.frontPadsLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontPadsLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontPadsLayer {
-        managedObject.frontPadsLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontPadsDisplay' transient property
   //····················································································································
 
@@ -5806,62 +4598,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     for managedObject in inSet {
       for observer in mObserversOf_backPads {
         managedObject.backPads_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'backPadsLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_backPadsLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_backPadsLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_backPadsLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backPadsLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_backPadsLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_backPadsLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backPadsLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backPadsLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backPadsLayer {
-        managedObject.backPadsLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backPadsLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backPadsLayer {
-        managedObject.backPadsLayer_property.removeEBObserver (observer)
       }
     }
   }
@@ -5979,62 +4715,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'boardLimitsLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_boardLimitsLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardLimitsLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_boardLimitsLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.boardLimitsLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardLimitsLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_boardLimitsLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.boardLimitsLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardLimitsLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_boardLimitsLayer {
-        managedObject.boardLimitsLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardLimitsLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_boardLimitsLayer {
-        managedObject.boardLimitsLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardLimitsDisplay' transient property
   //····················································································································
 
@@ -6142,62 +4822,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     for managedObject in inSet {
       for observer in mObserversOf_backComponentNameSegments {
         managedObject.backComponentNameSegments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'backComponentNameLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_backComponentNameLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_backComponentNameLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_backComponentNameLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backComponentNameLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_backComponentNameLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_backComponentNameLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backComponentNameLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backComponentNameLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backComponentNameLayer {
-        managedObject.backComponentNameLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backComponentNameLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backComponentNameLayer {
-        managedObject.backComponentNameLayer_property.removeEBObserver (observer)
       }
     }
   }
@@ -6315,62 +4939,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'frontComponentNameLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_frontComponentNameLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_frontComponentNameLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_frontComponentNameLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontComponentNameLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_frontComponentNameLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_frontComponentNameLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontComponentNameLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontComponentNameLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontComponentNameLayer {
-        managedObject.frontComponentNameLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontComponentNameLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontComponentNameLayer {
-        managedObject.frontComponentNameLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontComponentNameDisplay' transient property
   //····················································································································
 
@@ -6478,62 +5046,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     for managedObject in inSet {
       for observer in mObserversOf_frontComponentValueSegments {
         managedObject.frontComponentValueSegments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'frontComponentValueLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_frontComponentValueLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_frontComponentValueLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_frontComponentValueLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontComponentValueLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_frontComponentValueLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_frontComponentValueLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontComponentValueLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontComponentValueLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontComponentValueLayer {
-        managedObject.frontComponentValueLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontComponentValueLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontComponentValueLayer {
-        managedObject.frontComponentValueLayer_property.removeEBObserver (observer)
       }
     }
   }
@@ -6651,62 +5163,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'backComponentValueLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_backComponentValueLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_backComponentValueLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_backComponentValueLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backComponentValueLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_backComponentValueLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_backComponentValueLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backComponentValueLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backComponentValueLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backComponentValueLayer {
-        managedObject.backComponentValueLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backComponentValueLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backComponentValueLayer {
-        managedObject.backComponentValueLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'backComponentValueDisplay' transient property
   //····················································································································
 
@@ -6814,62 +5270,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     for managedObject in inSet {
       for observer in mObserversOf_backTrackSegments {
         managedObject.backTrackSegments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'backTracksLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_backTracksLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_backTracksLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_backTracksLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backTracksLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_backTracksLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_backTracksLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backTracksLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backTracksLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backTracksLayer {
-        managedObject.backTracksLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backTracksLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backTracksLayer {
-        managedObject.backTracksLayer_property.removeEBObserver (observer)
       }
     }
   }
@@ -6987,62 +5387,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'frontTracksLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_frontTracksLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_frontTracksLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_frontTracksLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontTracksLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_frontTracksLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_frontTracksLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontTracksLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontTracksLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontTracksLayer {
-        managedObject.frontTracksLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontTracksLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontTracksLayer {
-        managedObject.frontTracksLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontTracksDisplay' transient property
   //····················································································································
 
@@ -7155,62 +5499,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'frontPackagesLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_frontPackagesLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_frontPackagesLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_frontPackagesLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontPackagesLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_frontPackagesLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_frontPackagesLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontPackagesLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontPackagesLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontPackagesLayer {
-        managedObject.frontPackagesLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontPackagesLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_frontPackagesLayer {
-        managedObject.frontPackagesLayer_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'frontPackagesDisplay' transient property
   //····················································································································
 
@@ -7318,62 +5606,6 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     for managedObject in inSet {
       for observer in mObserversOf_backPackagesSegments {
         managedObject.backPackagesSegments_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'backPackagesLayer' transient property
-  //····················································································································
-
-  private var mObserversOf_backPackagesLayer = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_backPackagesLayer (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_backPackagesLayer.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backPackagesLayer_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_backPackagesLayer (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_backPackagesLayer.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.backPackagesLayer_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_backPackagesLayer_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backPackagesLayer {
-        managedObject.backPackagesLayer_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_backPackagesLayer_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_backPackagesLayer {
-        managedObject.backPackagesLayer_property.removeEBObserver (observer)
       }
     }
   }
@@ -7540,57 +5772,40 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
       //--- Remove observers of transient properties
         removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_frontLegendTextsLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendTextsLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_frontLayoutTextsLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLayoutTextsLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_backLegendTextsLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_backLegendTextsLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_backLayoutTextsLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_backLayoutTextsLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_padsHoles_fromElementsOfSet (removedSet)
         removeEBObserversOf_viasHoles_fromElementsOfSet (removedSet)
         removeEBObserversOf_holes_fromElementsOfSet (removedSet)
-        removeEBObserversOf_holeLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_holeLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_viaShapes_fromElementsOfSet (removedSet)
-        removeEBObserversOf_viaLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_viaLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPads_fromElementsOfSet (removedSet)
-        removeEBObserversOf_frontPadsLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPadsDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPads_fromElementsOfSet (removedSet)
-        removeEBObserversOf_backPadsLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPadsDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimits_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardLimitsLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitsDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_backComponentNameLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_backComponentNameDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_frontComponentNameLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontComponentNameDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_frontComponentValueLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontComponentValueDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_backComponentValueLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_backComponentValueDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_backTracksLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_backTracksDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_frontTracksLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontTracksDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_frontPackagesLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPackagesDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_backPackagesLayer_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPackagesDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelLayerDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
@@ -7608,57 +5823,40 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
        //--- Add observers of transient properties
         addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_frontLegendTextsLayer_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendTextsLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_frontLayoutTextsLayer_toElementsOfSet (addedSet)
         addEBObserversOf_frontLayoutTextsLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_backLegendTextsLayer_toElementsOfSet (addedSet)
         addEBObserversOf_backLegendTextsLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_backLayoutTextsLayer_toElementsOfSet (addedSet)
         addEBObserversOf_backLayoutTextsLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_padsHoles_toElementsOfSet (addedSet)
         addEBObserversOf_viasHoles_toElementsOfSet (addedSet)
         addEBObserversOf_holes_toElementsOfSet (addedSet)
-        addEBObserversOf_holeLayer_toElementsOfSet (addedSet)
         addEBObserversOf_holeLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_viaShapes_toElementsOfSet (addedSet)
-        addEBObserversOf_viaLayer_toElementsOfSet (addedSet)
         addEBObserversOf_viaLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontPads_toElementsOfSet (addedSet)
-        addEBObserversOf_frontPadsLayer_toElementsOfSet (addedSet)
         addEBObserversOf_frontPadsDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backPads_toElementsOfSet (addedSet)
-        addEBObserversOf_backPadsLayer_toElementsOfSet (addedSet)
         addEBObserversOf_backPadsDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimits_toElementsOfSet (addedSet)
-        addEBObserversOf_boardLimitsLayer_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitsDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_backComponentNameLayer_toElementsOfSet (addedSet)
         addEBObserversOf_backComponentNameDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_frontComponentNameLayer_toElementsOfSet (addedSet)
         addEBObserversOf_frontComponentNameDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_frontComponentValueLayer_toElementsOfSet (addedSet)
         addEBObserversOf_frontComponentValueDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_backComponentValueLayer_toElementsOfSet (addedSet)
         addEBObserversOf_backComponentValueDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backTrackSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_backTracksLayer_toElementsOfSet (addedSet)
         addEBObserversOf_backTracksDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontTrackSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_frontTracksLayer_toElementsOfSet (addedSet)
         addEBObserversOf_frontTracksDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_frontPackagesLayer_toElementsOfSet (addedSet)
         addEBObserversOf_frontPackagesDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backPackagesSegments_toElementsOfSet (addedSet)
-        addEBObserversOf_backPackagesLayer_toElementsOfSet (addedSet)
         addEBObserversOf_backPackagesDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_modelLayerDisplay_toElementsOfSet (addedSet)
       //--- Update object set
@@ -7757,12 +5955,6 @@ protocol BoardModelEntity_frontLegendTextsSegments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_frontLegendTextsLayer : class {
-  var frontLegendTextsLayer : EBSelection < CALayer > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModelEntity_frontLegendTextsLayerDisplay : class {
   var frontLegendTextsLayerDisplay : EBSelection < CALayer > { get }
 }
@@ -7771,12 +5963,6 @@ protocol BoardModelEntity_frontLegendTextsLayerDisplay : class {
 
 protocol BoardModelEntity_frontLayoutTextsSegments : class {
   var frontLayoutTextsSegments : EBSelection < MergerSegmentArray > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelEntity_frontLayoutTextsLayer : class {
-  var frontLayoutTextsLayer : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7793,12 +5979,6 @@ protocol BoardModelEntity_backLegendTextsSegments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_backLegendTextsLayer : class {
-  var backLegendTextsLayer : EBSelection < CALayer > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModelEntity_backLegendTextsLayerDisplay : class {
   var backLegendTextsLayerDisplay : EBSelection < CALayer > { get }
 }
@@ -7807,12 +5987,6 @@ protocol BoardModelEntity_backLegendTextsLayerDisplay : class {
 
 protocol BoardModelEntity_backLayoutTextsSegments : class {
   var backLayoutTextsSegments : EBSelection < MergerSegmentArray > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelEntity_backLayoutTextsLayer : class {
-  var backLayoutTextsLayer : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7841,12 +6015,6 @@ protocol BoardModelEntity_holes : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_holeLayer : class {
-  var holeLayer : EBSelection < CALayer > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModelEntity_holeLayerDisplay : class {
   var holeLayerDisplay : EBSelection < CALayer > { get }
 }
@@ -7855,12 +6023,6 @@ protocol BoardModelEntity_holeLayerDisplay : class {
 
 protocol BoardModelEntity_viaShapes : class {
   var viaShapes : EBSelection < MergerViaShapeArray > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelEntity_viaLayer : class {
-  var viaLayer : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7877,12 +6039,6 @@ protocol BoardModelEntity_frontPads : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_frontPadsLayer : class {
-  var frontPadsLayer : EBSelection < CALayer > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModelEntity_frontPadsDisplay : class {
   var frontPadsDisplay : EBSelection < CALayer > { get }
 }
@@ -7891,12 +6047,6 @@ protocol BoardModelEntity_frontPadsDisplay : class {
 
 protocol BoardModelEntity_backPads : class {
   var backPads : EBSelection < MergerPadArray > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelEntity_backPadsLayer : class {
-  var backPadsLayer : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7913,12 +6063,6 @@ protocol BoardModelEntity_boardLimits : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_boardLimitsLayer : class {
-  var boardLimitsLayer : EBSelection < CALayer > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModelEntity_boardLimitsDisplay : class {
   var boardLimitsDisplay : EBSelection < CALayer > { get }
 }
@@ -7927,12 +6071,6 @@ protocol BoardModelEntity_boardLimitsDisplay : class {
 
 protocol BoardModelEntity_backComponentNameSegments : class {
   var backComponentNameSegments : EBSelection < MergerSegmentArray > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelEntity_backComponentNameLayer : class {
-  var backComponentNameLayer : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7949,12 +6087,6 @@ protocol BoardModelEntity_frontComponentNameSegments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_frontComponentNameLayer : class {
-  var frontComponentNameLayer : EBSelection < CALayer > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModelEntity_frontComponentNameDisplay : class {
   var frontComponentNameDisplay : EBSelection < CALayer > { get }
 }
@@ -7963,12 +6095,6 @@ protocol BoardModelEntity_frontComponentNameDisplay : class {
 
 protocol BoardModelEntity_frontComponentValueSegments : class {
   var frontComponentValueSegments : EBSelection < MergerSegmentArray > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelEntity_frontComponentValueLayer : class {
-  var frontComponentValueLayer : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7985,12 +6111,6 @@ protocol BoardModelEntity_backComponentValueSegments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_backComponentValueLayer : class {
-  var backComponentValueLayer : EBSelection < CALayer > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModelEntity_backComponentValueDisplay : class {
   var backComponentValueDisplay : EBSelection < CALayer > { get }
 }
@@ -7999,12 +6119,6 @@ protocol BoardModelEntity_backComponentValueDisplay : class {
 
 protocol BoardModelEntity_backTrackSegments : class {
   var backTrackSegments : EBSelection < MergerSegmentArray > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelEntity_backTracksLayer : class {
-  var backTracksLayer : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -8021,12 +6135,6 @@ protocol BoardModelEntity_frontTrackSegments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_frontTracksLayer : class {
-  var frontTracksLayer : EBSelection < CALayer > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModelEntity_frontTracksDisplay : class {
   var frontTracksDisplay : EBSelection < CALayer > { get }
 }
@@ -8039,12 +6147,6 @@ protocol BoardModelEntity_frontPackagesSegments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_frontPackagesLayer : class {
-  var frontPackagesLayer : EBSelection < CALayer > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModelEntity_frontPackagesDisplay : class {
   var frontPackagesDisplay : EBSelection < CALayer > { get }
 }
@@ -8053,12 +6155,6 @@ protocol BoardModelEntity_frontPackagesDisplay : class {
 
 protocol BoardModelEntity_backPackagesSegments : class {
   var backPackagesSegments : EBSelection < MergerSegmentArray > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelEntity_backPackagesLayer : class {
-  var backPackagesLayer : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

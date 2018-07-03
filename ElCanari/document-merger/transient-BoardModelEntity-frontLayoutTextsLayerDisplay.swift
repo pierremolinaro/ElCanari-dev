@@ -13,11 +13,10 @@ import Cocoa
 
 func compute_BoardModelEntity_frontLayoutTextsLayerDisplay (
        _ prefs_mergerDisplayFrontLayoutTexts : Bool,        
-       _ self_frontLayoutTextsLayer : CALayer
+       _ self_frontLayoutTextsSegments : MergerSegmentArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  self_frontLayoutTextsLayer.isHidden = !prefs_mergerDisplayFrontLayoutTexts
-  return self_frontLayoutTextsLayer
+  return self_frontLayoutTextsSegments.buildLayer (color:NSColor.gray, display:prefs_mergerDisplayFrontLayoutTexts)
 //--- END OF USER ZONE 2
 }
 

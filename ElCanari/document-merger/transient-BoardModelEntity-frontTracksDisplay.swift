@@ -13,11 +13,10 @@ import Cocoa
 
 func compute_BoardModelEntity_frontTracksDisplay (
        _ prefs_mergerDisplayFrontLayoutTracks : Bool,
-       _ self_frontTracksLayer : CALayer
+       _ self_frontTrackSegments : MergerSegmentArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  self_frontTracksLayer.isHidden = !prefs_mergerDisplayFrontLayoutTracks
-  return self_frontTracksLayer
+  return self_frontTrackSegments.buildLayer (color:NSColor.blue, display:prefs_mergerDisplayFrontLayoutTracks)
 //--- END OF USER ZONE 2
 }
 

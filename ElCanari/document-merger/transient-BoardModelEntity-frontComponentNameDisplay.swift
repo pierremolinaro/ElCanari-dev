@@ -13,11 +13,10 @@ import Cocoa
 
 func compute_BoardModelEntity_frontComponentNameDisplay (
        _ prefs_mergerDisplayFrontComponentNames : Bool,  
-       _ self_frontComponentNameLayer : CALayer
+       _ self_frontComponentNameSegments : MergerSegmentArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  self_frontComponentNameLayer.isHidden = !prefs_mergerDisplayFrontComponentNames
-  return self_frontComponentNameLayer
+  return self_frontComponentNameSegments.buildLayer (color:NSColor.black, display:prefs_mergerDisplayFrontComponentNames)
 //--- END OF USER ZONE 2
 }
 

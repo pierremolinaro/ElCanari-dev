@@ -13,11 +13,33 @@ import Cocoa
 
 func compute_BoardModelEntity_boardLimitsDisplay (
        _ prefs_mergerDisplayBoardLimits : Bool,   
-       _ self_boardLimitsLayer : CALayer
+       _ self_boardLimits : MergerBoardLimits
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  self_boardLimitsLayer.isHidden = !prefs_mergerDisplayBoardLimits
-  return self_boardLimitsLayer
+  let result = CAShapeLayer ()
+  if prefs_mergerDisplayBoardLimits && (self_boardLimits.lineWidth > 0) {
+    let boardWith = canariUnitToCocoa (self_boardLimits.boardWidth)
+    let boardHeight = canariUnitToCocoa (self_boardLimits.boardHeight)
+    let lineWidth = canariUnitToCocoa (self_boardLimits.lineWidth)
+    let path = CGMutablePath ()
+    path.move    (to:CGPoint (x:lineWidth / 2.0,             y:lineWidth / 2.0))
+    path.addLine (to:CGPoint (x:lineWidth / 2.0,             y:boardHeight - lineWidth / 2.0))
+    path.addLine (to:CGPoint (x:boardWith - lineWidth / 2.0, y:boardHeight - lineWidth / 2.0))
+    path.addLine (to:CGPoint (x:boardWith - lineWidth / 2.0, y:lineWidth / 2.0))
+    path.addLine (to:CGPoint (x:lineWidth / 2.0,             y:lineWidth / 2.0))
+    let shape = CAShapeLayer ()
+    shape.path = path
+    shape.position = CGPoint (x:0.0, y:0.0)
+    shape.strokeColor = NSColor.brown.cgColor
+    shape.fillColor = nil // NSColor.yellow.cgColor
+    shape.lineWidth = lineWidth
+    shape.lineCap = kCALineCapSquare
+    shape.lineJoin = kCALineJoinMiter
+//    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+//    shape.isOpaque = false
+    result.sublayers = [shape]
+  }
+  return result
 //--- END OF USER ZONE 2
 }
 

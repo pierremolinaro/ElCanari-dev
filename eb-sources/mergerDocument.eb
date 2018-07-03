@@ -99,10 +99,8 @@ entity BoardModelEntity {
     self.frontLegendTexts.all.width
   ;
 
-  transient CALayer frontLegendTextsLayer dependsFrom self.frontLegendTextsSegments ;
-
   transient CALayer frontLegendTextsLayerDisplay
-     dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsLayer ;
+     dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
 
 #--- Front Layout Texts
   toMany @cascading CanariSegmentEntity frontLayoutTexts ;
@@ -113,10 +111,8 @@ entity BoardModelEntity {
     self.frontLayoutTexts.all.width
   ;
 
-  transient CALayer frontLayoutTextsLayer dependsFrom self.frontLayoutTextsSegments ;
-
   transient CALayer frontLayoutTextsLayerDisplay
-     dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsLayer ;
+     dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
 
 #--- Back Legend Texts
   toMany @cascading CanariSegmentEntity backLegendTexts ;
@@ -127,10 +123,8 @@ entity BoardModelEntity {
     self.backLegendTexts.all.width
   ;
 
-  transient CALayer backLegendTextsLayer dependsFrom self.backLegendTextsSegments ;
-
   transient CALayer backLegendTextsLayerDisplay
-     dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsLayer ;
+    dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsSegments ;
 
 #--- Back Layout Texts
   toMany @cascading CanariSegmentEntity backLayoutTexts ;
@@ -141,10 +135,8 @@ entity BoardModelEntity {
     self.backLayoutTexts.all.width
   ;
 
-  transient CALayer backLayoutTextsLayer dependsFrom self.backLayoutTextsSegments ;
-
   transient CALayer backLayoutTextsLayerDisplay
-     dependsFrom prefs.mergerDisplayBackLayoutTexts, self.backLayoutTextsLayer ;
+    dependsFrom prefs.mergerDisplayBackLayoutTexts, self.backLayoutTextsSegments ;
 
 #--- Holes
   transient MergerHoleArray padsHoles
@@ -155,9 +147,7 @@ entity BoardModelEntity {
  
   transient MergerHoleArray holes dependsFrom self.padsHoles, self.viasHoles ;
 
-  transient CALayer holeLayer dependsFrom self.holes ;
-
-  transient CALayer holeLayerDisplay dependsFrom prefs.mergerDisplayHoles, self.holeLayer ;
+  transient CALayer holeLayerDisplay dependsFrom prefs.mergerDisplayHoles, self.holes ;
 
 #--- Vias 
   toMany @cascading BoardModelViaEntity vias ;
@@ -165,9 +155,7 @@ entity BoardModelEntity {
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
 
-  transient CALayer viaLayer dependsFrom self.viaShapes ;
-
-  transient CALayer viaLayerDisplay dependsFrom prefs.mergerDisplayVias, self.viaLayer ;
+  transient CALayer viaLayerDisplay dependsFrom prefs.mergerDisplayVias, self.viaShapes ;
 
 #--- Pads
   toMany @cascading BoardModelPadEntity pads ;
@@ -177,18 +165,14 @@ entity BoardModelEntity {
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
 
-  transient CALayer frontPadsLayer dependsFrom self.frontPads ;
-
-  transient CALayer frontPadsDisplay dependsFrom prefs.mergerDisplayFrontPads, self.frontPadsLayer ;
+  transient CALayer frontPadsDisplay dependsFrom prefs.mergerDisplayFrontPads, self.frontPads ;
 
 #--- Back pads
   transient MergerPadArray backPads
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
 
-  transient CALayer backPadsLayer dependsFrom self.backPads ;
-
-  transient CALayer backPadsDisplay dependsFrom prefs.mergerDisplayBackPads, self.backPadsLayer ;
+  transient CALayer backPadsDisplay dependsFrom prefs.mergerDisplayBackPads, self.backPads ;
 
 #--- Board limits
   property Int boardLimitWidth default 0 ;
@@ -198,9 +182,7 @@ entity BoardModelEntity {
     dependsFrom self.modelWidth, self.modelHeight, self.boardLimitWidth, prefs.mergerDisplayBoardLimits
   ;
 
-  transient CALayer boardLimitsLayer dependsFrom self.boardLimits ;
-
-  transient CALayer boardLimitsDisplay dependsFrom prefs.mergerDisplayBoardLimits, self.boardLimitsLayer ;
+  transient CALayer boardLimitsDisplay dependsFrom prefs.mergerDisplayBoardLimits, self.boardLimits ;
  
 #--- Back component names
   toMany @cascading CanariSegmentEntity backComponentNames ;
@@ -211,9 +193,8 @@ entity BoardModelEntity {
     self.backComponentNames.all.width
   ;
 
-  transient CALayer backComponentNameLayer dependsFrom self.backComponentNameSegments ;
-
-  transient CALayer backComponentNameDisplay dependsFrom prefs.mergerDisplayBackComponentNames, self.backComponentNameLayer ;
+  transient CALayer backComponentNameDisplay
+    dependsFrom prefs.mergerDisplayBackComponentNames, self.backComponentNameSegments ;
 
 #--- Front component names
   toMany @cascading CanariSegmentEntity frontComponentNames ;
@@ -224,9 +205,8 @@ entity BoardModelEntity {
     self.frontComponentNames.all.width
   ;
 
-  transient CALayer frontComponentNameLayer dependsFrom self.frontComponentNameSegments ;
-
-  transient CALayer frontComponentNameDisplay dependsFrom prefs.mergerDisplayFrontComponentNames, self.frontComponentNameLayer ;
+  transient CALayer frontComponentNameDisplay
+    dependsFrom prefs.mergerDisplayFrontComponentNames, self.frontComponentNameSegments ;
 
 #--- Front component values
   toMany @cascading CanariSegmentEntity frontComponentValues ;
@@ -237,9 +217,8 @@ entity BoardModelEntity {
     self.frontComponentValues.all.width
   ;
 
-  transient CALayer frontComponentValueLayer dependsFrom self.frontComponentValueSegments ;
-
-  transient CALayer frontComponentValueDisplay dependsFrom prefs.mergerDisplayFrontComponentValues, self.frontComponentValueLayer ;
+  transient CALayer frontComponentValueDisplay
+     dependsFrom prefs.mergerDisplayFrontComponentValues, self.frontComponentValueSegments ;
 
 #--- Back component values
   toMany @cascading CanariSegmentEntity backComponentValues ;
@@ -250,9 +229,8 @@ entity BoardModelEntity {
     self.backComponentValues.all.width
   ;
 
-  transient CALayer backComponentValueLayer dependsFrom self.backComponentValueSegments ;
-
-  transient CALayer backComponentValueDisplay dependsFrom prefs.mergerDisplayBackComponentValues, self.backComponentValueLayer ;
+  transient CALayer backComponentValueDisplay
+    dependsFrom prefs.mergerDisplayBackComponentValues, self.backComponentValueSegments ;
 
 #--- Back tracks
   toMany @cascading CanariSegmentEntity backTracks ;
@@ -263,9 +241,7 @@ entity BoardModelEntity {
     self.backTracks.all.width
   ;
 
-  transient CALayer backTracksLayer dependsFrom self.backTrackSegments ;
-
-  transient CALayer backTracksDisplay dependsFrom prefs.mergerDisplayBackLayoutTracks, self.backTracksLayer ;
+  transient CALayer backTracksDisplay dependsFrom prefs.mergerDisplayBackLayoutTracks, self.backTrackSegments ;
 
 #--- Front tracks
   toMany @cascading CanariSegmentEntity frontTracks ;
@@ -276,9 +252,8 @@ entity BoardModelEntity {
     self.frontTracks.all.width
   ;
 
-  transient CALayer frontTracksLayer dependsFrom self.frontTrackSegments ;
-
-  transient CALayer frontTracksDisplay dependsFrom prefs.mergerDisplayFrontLayoutTracks, self.frontTracksLayer ;
+  transient CALayer frontTracksDisplay
+    dependsFrom prefs.mergerDisplayFrontLayoutTracks, self.frontTrackSegments ;
 
 #--- Front packages
   toMany @cascading CanariSegmentEntity frontPackages ;
@@ -289,9 +264,8 @@ entity BoardModelEntity {
     self.frontPackages.all.width
   ;
 
-  transient CALayer frontPackagesLayer dependsFrom self.frontPackagesSegments ;
-
-  transient CALayer frontPackagesDisplay dependsFrom prefs.mergerDisplayFrontPackages, self.frontPackagesLayer ;
+  transient CALayer frontPackagesDisplay
+    dependsFrom prefs.mergerDisplayFrontPackages, self.frontPackagesSegments ;
 
 #--- Back packages
   toMany @cascading CanariSegmentEntity backPackages ;
@@ -302,9 +276,7 @@ entity BoardModelEntity {
     self.backPackages.all.width
   ;
 
-  transient CALayer backPackagesLayer dependsFrom self.backPackagesSegments ;
-
-  transient CALayer backPackagesDisplay dependsFrom prefs.mergerDisplayBackPackages, self.backPackagesLayer ;
+  transient CALayer backPackagesDisplay dependsFrom prefs.mergerDisplayBackPackages, self.backPackagesSegments ;
 
 #----
   transient CALayer modelLayerDisplay dependsFrom

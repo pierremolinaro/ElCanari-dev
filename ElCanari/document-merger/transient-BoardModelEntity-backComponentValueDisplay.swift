@@ -13,11 +13,10 @@ import Cocoa
 
 func compute_BoardModelEntity_backComponentValueDisplay (
        _ prefs_mergerDisplayBackComponentValues : Bool,  
-       _ self_backComponentValueLayer : CALayer
+       _ self_backComponentValueSegments : MergerSegmentArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  self_backComponentValueLayer.isHidden = !prefs_mergerDisplayBackComponentValues
-  return self_backComponentValueLayer
+  return self_backComponentValueSegments.buildLayer (color:NSColor.purple, display:prefs_mergerDisplayBackComponentValues)
 //--- END OF USER ZONE 2
 }
 

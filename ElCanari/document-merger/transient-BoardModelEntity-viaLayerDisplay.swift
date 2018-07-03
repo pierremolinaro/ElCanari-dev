@@ -13,11 +13,27 @@ import Cocoa
 
 func compute_BoardModelEntity_viaLayerDisplay (
        _ prefs_mergerDisplayVias : Bool,       
-       _ self_viaLayer : CALayer
+       _ self_viaShapes : MergerViaShapeArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  self_viaLayer.isHidden = !prefs_mergerDisplayVias
-  return self_viaLayer
+  var components = [CAShapeLayer] ()
+  if prefs_mergerDisplayVias {
+    for via in self_viaShapes.viaArray {
+      let x = canariUnitToCocoa (via.x)
+      let y = canariUnitToCocoa (via.y)
+      let diameter = canariUnitToCocoa (via.padDiameter)
+      let r = CGRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
+      let shape = CAShapeLayer ()
+      shape.path = CGPath (ellipseIn: r, transform: nil)
+      shape.fillColor = NSColor.red.cgColor
+  //    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+      shape.isOpaque = true
+      components.append (shape)
+    }
+  }
+  let result = CALayer ()
+  result.sublayers = components
+  return result
 //--- END OF USER ZONE 2
 }
 

@@ -13,11 +13,10 @@ import Cocoa
 
 func compute_BoardModelEntity_backLayoutTextsLayerDisplay (
        _ prefs_mergerDisplayBackLayoutTexts : Bool,        
-       _ self_backLayoutTextsLayer : CALayer
+       _ self_backLayoutTextsSegments : MergerSegmentArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  self_backLayoutTextsLayer.isHidden = !prefs_mergerDisplayBackLayoutTexts
-  return self_backLayoutTextsLayer
+  return self_backLayoutTextsSegments.buildLayer (color:NSColor.gray, display:prefs_mergerDisplayBackLayoutTexts)
 //--- END OF USER ZONE 2
 }
 
