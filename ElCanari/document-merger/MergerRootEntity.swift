@@ -220,7 +220,7 @@ class MergerRootEntity : EBManagedObject,
   //····················································································································
 
   var selectedPageIndex_property = EBStoredProperty_Int (0)
-  var zoom_property = EBStoredProperty_Int (0)
+  var zoom_property = EBStoredProperty_Int (100)
   var boardWidthUnit_property = EBStoredProperty_Int (90000)
   var boardHeightUnit_property = EBStoredProperty_Int (90000)
   var overlapingArrangment_property = EBStoredProperty_Bool (false)

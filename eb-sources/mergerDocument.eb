@@ -88,7 +88,7 @@ entity BoardModelEntity {
 #--- Instances
   toMany MergerBoardInstanceEntity myInstances inverse toOne myModel ;
 
-  copy transient Int instanceCount : self.myInstances.count ;
+  transient Int instanceCount dependsFrom self.myInstances.count ;
 
 #--- Front Legend Texts
   toMany @cascading CanariSegmentEntity frontLegendTexts ;
@@ -398,7 +398,7 @@ entity MergerRootEntity {
   toMany @cascading MergerBoardInstanceEntity boardInstances ;
 
   property Int selectedPageIndex default 0 ;
-  property Int zoom default 0 ;
+  property Int zoom default 100 ;
   property Int boardWidthUnit default 90_000 ;
   property Int boardHeightUnit default 90_000 ;
   property Bool overlapingArrangment default no ;

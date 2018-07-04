@@ -1081,7 +1081,7 @@ class BoardModelEntity : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.myInstances_property.count_property_selection) {
           case (.single (let v0)) :
-            return .single (v0)
+            return .single (compute_BoardModelEntity_instanceCount (v0))
           default :
             return .empty
           }
