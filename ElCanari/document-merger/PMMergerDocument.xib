@@ -69,6 +69,7 @@
                 <outlet property="mModelWidthUnitPopUp" destination="8AK-fL-5Og" id="1sh-Of-gx2"/>
                 <outlet property="mOverlapSwitch" destination="GAQ-bH-PUU" id="da2-qI-nAN"/>
                 <outlet property="mPageSegmentedControl" destination="g6K-IS-SQg" id="vW2-0C-BuI"/>
+                <outlet property="mergerViewBackgroundColorWell" destination="eKL-AZ-hB1" id="Q2m-Sy-d3a"/>
                 <outlet property="mergerViewDisplayBackComponentNamesColorWell" destination="fGN-hx-PDV" id="gSK-yy-GHO"/>
                 <outlet property="mergerViewDisplayBackComponentValuesColorWell" destination="v3p-m5-8RF" id="mU2-LL-0lg"/>
                 <outlet property="mergerViewDisplayBackLayoutTextsColorWell" destination="SwI-f7-6Q4" id="PIw-xB-5fJ"/>
@@ -789,22 +790,6 @@ AAAAAAEGA
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="uAp-fI-h1e" customClass="EBSwitch">
-                                                <rect key="frame" x="190" y="417" width="24" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="MLj-vR-p5E">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                </buttonCell>
-                                            </button>
-                                            <button misplaced="YES" id="DVj-2C-ft1" customClass="EBSwitch">
-                                                <rect key="frame" x="122" y="417" width="24" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="9cn-h6-by1">
-                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                </buttonCell>
-                                            </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="yFG-AD-aWj">
                                                 <rect key="frame" x="27" y="396" width="187" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1269,7 +1254,7 @@ AAAAAAEGA
                     </subviews>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="-100" y="585"/>
+            <point key="canvasLocation" x="-247" y="580"/>
         </customView>
     </objects>
 </document>

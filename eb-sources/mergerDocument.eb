@@ -90,6 +90,10 @@ entity BoardModelEntity {
 
   transient Int instanceCount dependsFrom self.myInstances.count ;
 
+#--- Background
+  transient CALayer backgroundLayerDisplay
+     dependsFrom prefs.mergerColorBackground, self.modelWidth, self.modelHeight ;
+
 #--- Front Legend Texts
   toMany @cascading CanariSegmentEntity frontLegendTexts ;
 
@@ -280,6 +284,7 @@ entity BoardModelEntity {
 
 #----
   transient CALayer modelLayerDisplay dependsFrom
+    self.backgroundLayerDisplay,
     self.backLegendTextsLayerDisplay,
     self.backLayoutTextsLayerDisplay,
     self.frontLegendTextsLayerDisplay,
@@ -315,9 +320,8 @@ entity MergerBoardInstanceEntity {
 #--- Limit width
   transient Int boardLimitWidth dependsFrom self.myModel.one.modelLimitWidth ;
 
-
-#--- Layer
-  transient CALayer backgroundLayerDisplay dependsFrom self.instanceRect ;
+#--- Background
+  transient CALayer backgroundLayerDisplay dependsFrom prefs.mergerColorBackground, self.instanceRect ;
 
   transient CALayer frontLegendTextsLayerDisplay
      dependsFrom self.x, self.y, prefs.mergerColorFrontLegendTexts, prefs.mergerBoardViewDisplayFrontLegendTexts, self.myModel.one.frontLegendTextsSegments ;
@@ -505,6 +509,9 @@ document PMMergerDocument root MergerRootEntity {
     $color prefs.mergerColorBackTracks {sendContinously:no} ;
   outlet EBColorWell mergerViewDisplayBackLayoutTextsColorWell
     $color prefs.mergerColorBackLayoutTexts {sendContinously:no} ;
+  outlet EBColorWell mergerViewBackgroundColorWell
+    $color prefs.mergerColorBackground {sendContinously:no} ;
+
 
 #------------------------------------- Model Page
 #--- Add board model

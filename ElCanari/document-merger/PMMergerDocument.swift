@@ -73,6 +73,7 @@ import Cocoa
   @IBOutlet var mModelWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mOverlapSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mergerViewBackgroundColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayBackComponentNamesColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayBackComponentValuesColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayBackLayoutTextsColorWell : EBColorWell?
@@ -713,6 +714,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
     }
+    if nil == mergerViewBackgroundColorWell {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mergerViewBackgroundColorWell' outlet is nil") ;
+//    }else if !mergerViewBackgroundColorWell!.isKindOfClass (EBColorWell) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mergerViewBackgroundColorWell' outlet is not an instance of 'EBColorWell'") ;
+    }
     if nil == mergerViewDisplayBackComponentNamesColorWell {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -966,6 +976,7 @@ import Cocoa
     mergerViewDisplayBackPackagesColorWell?.bind_color (g_Preferences!.mergerColorBackPackages_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayBackTracksColorWell?.bind_color (g_Preferences!.mergerColorBackTracks_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayBackLayoutTextsColorWell?.bind_color (g_Preferences!.mergerColorBackLayoutTexts_property, file: #file, line: #line, sendContinously:false)
+    mergerViewBackgroundColorWell?.bind_color (g_Preferences!.mergerColorBackground_property, file: #file, line: #line, sendContinously:false)
     mArtworkNameTextField?.bind_valueObserver (self.mBoardModelSelection.artworkName_property, file: #file, line: #line)
     mInstanceCountTextField?.bind_valueObserver (self.mBoardModelSelection.instanceCount_property, file: #file, line: #line, autoFormatter:true)
     mModelWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.modelWidthUnit_property, file: #file, line: #line)
@@ -1142,6 +1153,7 @@ import Cocoa
     mergerViewDisplayBackPackagesColorWell?.unbind_color ()
     mergerViewDisplayBackTracksColorWell?.unbind_color ()
     mergerViewDisplayBackLayoutTextsColorWell?.unbind_color ()
+    mergerViewBackgroundColorWell?.unbind_color ()
     mArtworkNameTextField?.unbind_valueObserver ()
     mInstanceCountTextField?.unbind_valueObserver ()
     mModelWidthUnitPopUp?.unbind_selectedTag ()
@@ -1257,6 +1269,7 @@ import Cocoa
     self.mModelWidthUnitPopUp?.ebCleanUp ()
     self.mOverlapSwitch?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mergerViewBackgroundColorWell?.ebCleanUp ()
     self.mergerViewDisplayBackComponentNamesColorWell?.ebCleanUp ()
     self.mergerViewDisplayBackComponentValuesColorWell?.ebCleanUp ()
     self.mergerViewDisplayBackLayoutTextsColorWell?.ebCleanUp ()

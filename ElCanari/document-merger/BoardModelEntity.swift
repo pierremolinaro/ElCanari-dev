@@ -19,6 +19,7 @@ class BoardModelEntity : EBManagedObject,
   BoardModelEntity_modelLimitWidth,
   BoardModelEntity_modelLimitWidthUnit,
   BoardModelEntity_instanceCount,
+  BoardModelEntity_backgroundLayerDisplay,
   BoardModelEntity_frontLegendTextsSegments,
   BoardModelEntity_frontLegendTextsLayerDisplay,
   BoardModelEntity_frontLayoutTextsSegments,
@@ -241,6 +242,22 @@ class BoardModelEntity : EBManagedObject,
   var instanceCount : EBSelection <Int> {
     get {
       return instanceCount_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing backgroundLayerDisplay transient property
+  //····················································································································
+
+  var backgroundLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backgroundLayerDisplay_property.prop
+    }
+  }
+
+  var backgroundLayerDisplay : EBSelection <CALayer> {
+    get {
+      return backgroundLayerDisplay_property_selection
     }
   }
 
@@ -1005,6 +1022,7 @@ class BoardModelEntity : EBManagedObject,
   //····················································································································
 
   var instanceCount_property = EBTransientProperty_Int ()
+  var backgroundLayerDisplay_property = EBTransientProperty_CALayer ()
   var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
   var frontLegendTextsLayerDisplay_property = EBTransientProperty_CALayer ()
   var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
@@ -1082,6 +1100,28 @@ class BoardModelEntity : EBManagedObject,
           switch (unwSelf.myInstances_property.count_property_selection) {
           case (.single (let v0)) :
             return .single (compute_BoardModelEntity_instanceCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backgroundLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
+        kind &= unwSelf.modelWidth_property_selection.kind ()
+        kind &= unwSelf.modelHeight_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_backgroundLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1918,7 +1958,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.modelLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.backLegendTextsLayerDisplay_property_selection.kind ()
+        var kind = unwSelf.backgroundLayerDisplay_property_selection.kind ()
+        kind &= unwSelf.backLegendTextsLayerDisplay_property_selection.kind ()
         kind &= unwSelf.backLayoutTextsLayerDisplay_property_selection.kind ()
         kind &= unwSelf.frontLegendTextsLayerDisplay_property_selection.kind ()
         kind &= unwSelf.frontLayoutTextsLayerDisplay_property_selection.kind ()
@@ -1941,9 +1982,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.backLegendTextsLayerDisplay_property_selection, unwSelf.backLayoutTextsLayerDisplay_property_selection, unwSelf.frontLegendTextsLayerDisplay_property_selection, unwSelf.frontLayoutTextsLayerDisplay_property_selection, unwSelf.holeLayerDisplay_property_selection, unwSelf.viaLayerDisplay_property_selection, unwSelf.frontPadsDisplay_property_selection, unwSelf.backPadsDisplay_property_selection, unwSelf.boardLimitsDisplay_property_selection, unwSelf.backComponentNameDisplay_property_selection, unwSelf.frontComponentNameDisplay_property_selection, unwSelf.frontComponentValueDisplay_property_selection, unwSelf.backComponentValueDisplay_property_selection, unwSelf.backTracksDisplay_property_selection, unwSelf.frontTracksDisplay_property_selection, unwSelf.frontPackagesDisplay_property_selection, unwSelf.backPackagesDisplay_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16)) :
-            return .single (compute_BoardModelEntity_modelLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16))
+          switch (unwSelf.backgroundLayerDisplay_property_selection, unwSelf.backLegendTextsLayerDisplay_property_selection, unwSelf.backLayoutTextsLayerDisplay_property_selection, unwSelf.frontLegendTextsLayerDisplay_property_selection, unwSelf.frontLayoutTextsLayerDisplay_property_selection, unwSelf.holeLayerDisplay_property_selection, unwSelf.viaLayerDisplay_property_selection, unwSelf.frontPadsDisplay_property_selection, unwSelf.backPadsDisplay_property_selection, unwSelf.boardLimitsDisplay_property_selection, unwSelf.backComponentNameDisplay_property_selection, unwSelf.frontComponentNameDisplay_property_selection, unwSelf.frontComponentValueDisplay_property_selection, unwSelf.backComponentValueDisplay_property_selection, unwSelf.backTracksDisplay_property_selection, unwSelf.frontTracksDisplay_property_selection, unwSelf.frontPackagesDisplay_property_selection, unwSelf.backPackagesDisplay_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17)) :
+            return .single (compute_BoardModelEntity_modelLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17))
           default :
             return .empty
           }
@@ -1954,6 +1995,9 @@ class BoardModelEntity : EBManagedObject,
     }
   //--- Install property observers for transients
     self.myInstances_property.addEBObserver (self.instanceCount_property)
+    g_Preferences?.mergerColorBackground_property.addEBObserver (self.backgroundLayerDisplay_property)
+    self.modelWidth_property.addEBObserver (self.backgroundLayerDisplay_property)
+    self.modelHeight_property.addEBObserver (self.backgroundLayerDisplay_property)
     self.frontLegendTexts_property.addEBObserverOf_x1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_y1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_x2 (self.frontLegendTextsSegments_property)
@@ -2096,6 +2140,7 @@ class BoardModelEntity : EBManagedObject,
     g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
     g_Preferences?.mergerModelViewDisplayBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
     self.backPackagesSegments_property.addEBObserver (self.backPackagesDisplay_property)
+    self.backgroundLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.backLegendTextsLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.frontLegendTextsLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
@@ -2147,6 +2192,9 @@ class BoardModelEntity : EBManagedObject,
   deinit {
   //--- Remove observers
     self.myInstances_property.removeEBObserver (self.instanceCount_property)
+    g_Preferences?.mergerColorBackground_property.removeEBObserver (self.backgroundLayerDisplay_property)
+    self.modelWidth_property.removeEBObserver (self.backgroundLayerDisplay_property)
+    self.modelHeight_property.removeEBObserver (self.backgroundLayerDisplay_property)
     self.frontLegendTexts_property.removeEBObserverOf_x1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.removeEBObserverOf_y1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.removeEBObserverOf_x2 (self.frontLegendTextsSegments_property)
@@ -2289,6 +2337,7 @@ class BoardModelEntity : EBManagedObject,
     g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
     g_Preferences?.mergerModelViewDisplayBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
     self.backPackagesSegments_property.removeEBObserver (self.backPackagesDisplay_property)
+    self.backgroundLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.backLegendTextsLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.frontLegendTextsLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
@@ -2394,6 +2443,14 @@ class BoardModelEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.instanceCount_property.mObserverExplorer,
       valueExplorer:&self.instanceCount_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backgroundLayerDisplay",
+      idx:self.backgroundLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backgroundLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.backgroundLayerDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "frontLegendTextsSegments",
@@ -3697,6 +3754,62 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
     for managedObject in inSet {
       for observer in mObserversOf_instanceCount {
         managedObject.instanceCount_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backgroundLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backgroundLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backgroundLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backgroundLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backgroundLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backgroundLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backgroundLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backgroundLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backgroundLayerDisplay_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backgroundLayerDisplay {
+        managedObject.backgroundLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backgroundLayerDisplay_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backgroundLayerDisplay {
+        managedObject.backgroundLayerDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -5822,6 +5935,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backgroundLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendTextsLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedSet)
@@ -5873,6 +5987,7 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
+        addEBObserversOf_backgroundLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendTextsLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedSet)
@@ -5996,6 +6111,12 @@ protocol BoardModelEntity_modelLimitWidthUnit : class {
 
 protocol BoardModelEntity_instanceCount : class {
   var instanceCount : EBSelection < Int > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelEntity_backgroundLayerDisplay : class {
+  var backgroundLayerDisplay : EBSelection < CALayer > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

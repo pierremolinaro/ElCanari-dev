@@ -66,6 +66,8 @@ prefs {
   property NSColor mergerColorBackPackages default gray ;
   property NSColor mergerColorBackTracks default green ;
   property NSColor mergerColorBackLayoutTexts default green ;
+
+  property NSColor mergerColorBackground default lightGray ;
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

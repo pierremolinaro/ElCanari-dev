@@ -1163,6 +1163,25 @@ var g_Preferences : Preferences? = nil
   }
 
   //····················································································································
+  //   Accessing mergerColorBackground stored property
+  //····················································································································
+
+  var mergerColorBackground : NSColor {
+    get {
+      return self.mergerColorBackground_property.propval
+    }
+    set {
+      self.mergerColorBackground_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorBackground_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackground_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing errorMessageColor stored property
   //····················································································································
 
@@ -2728,6 +2747,7 @@ var g_Preferences : Preferences? = nil
   var mergerColorBackPackages_property = EBStoredProperty_NSColor (NSColor.gray)
   var mergerColorBackTracks_property = EBStoredProperty_NSColor (NSColor.green)
   var mergerColorBackLayoutTexts_property = EBStoredProperty_NSColor (NSColor.green)
+  var mergerColorBackground_property = EBStoredProperty_NSColor (NSColor.lightGray)
   var errorMessageColor_property = EBStoredProperty_NSColor (NSColor.red)
   var warningMessageColor_property = EBStoredProperty_NSColor (NSColor.orange)
   var successMessageColor_property = EBStoredProperty_NSColor (NSColor.blue)
@@ -2892,6 +2912,7 @@ var g_Preferences : Preferences? = nil
     self.mergerColorBackPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackPackages")
     self.mergerColorBackTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackTracks")
     self.mergerColorBackLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackLayoutTexts")
+    self.mergerColorBackground_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackground")
     self.errorMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
     self.warningMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
     self.successMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:successMessageColor")
@@ -3692,6 +3713,7 @@ var g_Preferences : Preferences? = nil
     self.mergerColorBackPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackPackages")
     self.mergerColorBackTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackTracks")
     self.mergerColorBackLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackLayoutTexts")
+    self.mergerColorBackground_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackground")
     self.errorMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
     self.warningMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
     self.successMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:successMessageColor")

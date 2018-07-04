@@ -11,20 +11,20 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstanceEntity_backgroundLayerDisplay (
-       _ prefs_mergerColorBackground : NSColor,                
-       _ self_instanceRect : CanariBoardRect
+func compute_BoardModelEntity_backgroundLayerDisplay (
+       _ prefs_mergerColorBackground : NSColor,       
+       _ self_modelWidth : Int,                       
+       _ self_modelHeight : Int
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  let result = CAShapeLayer ()
-  let x = canariUnitToCocoa (self_instanceRect.x)
-  let y = canariUnitToCocoa (self_instanceRect.y)
-  let width = canariUnitToCocoa (self_instanceRect.width)
-  let height = canariUnitToCocoa (self_instanceRect.height)
-  let r = CGRect (x:x, y:y, width:width, height:height)
-  result.path = CGPath (rect: r, transform: nil)
-  result.fillColor = prefs_mergerColorBackground.cgColor
-  result.isOpaque = true
+  let width = canariUnitToCocoa (self_modelWidth)
+  let height = canariUnitToCocoa (self_modelHeight)
+  let r = CGRect (x: 0.0 , y: 0.0, width: width, height: height)
+  let shape = CAShapeLayer ()
+  shape.path = CGPath (rect: r, transform: nil)
+  shape.fillColor = prefs_mergerColorBackground.cgColor
+  let result = CALayer ()
+  result.sublayers = [shape]
   return result
 //--- END OF USER ZONE 2
 }

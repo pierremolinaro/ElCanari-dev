@@ -12,6 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_BoardModelEntity_modelLayerDisplay (
+       _ self_backgroundLayerDisplay : CALayer,  
        _ self_backLegendTextsLayerDisplay : CALayer,
        _ self_backLayoutTextsLayerDisplay : CALayer,
        _ self_frontLegendTextsLayerDisplay : CALayer,
@@ -33,6 +34,7 @@ func compute_BoardModelEntity_modelLayerDisplay (
 //--- START OF USER ZONE 2
   let result = CALayer ()
   result.sublayers = [
+    self_backgroundLayerDisplay,
     self_backTracksDisplay,
     self_backLayoutTextsLayerDisplay,
     self_backPackagesDisplay,

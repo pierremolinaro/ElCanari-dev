@@ -498,16 +498,17 @@ class MergerBoardInstanceEntity : EBManagedObject,
     }
     self.backgroundLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.instanceRect_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
+        kind &= unwSelf.instanceRect_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.instanceRect_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_MergerBoardInstanceEntity_backgroundLayerDisplay (v0))
+          switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.instanceRect_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_MergerBoardInstanceEntity_backgroundLayerDisplay (v0, v1))
           default :
             return .empty
           }
@@ -967,6 +968,7 @@ class MergerBoardInstanceEntity : EBManagedObject,
     self.myModel_property.addEBObserverOf_modelWidth (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_modelHeight (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_modelLimitWidth (self.boardLimitWidth_property)
+    g_Preferences?.mergerColorBackground_property.addEBObserver (self.backgroundLayerDisplay_property)
     self.instanceRect_property.addEBObserver (self.backgroundLayerDisplay_property)
     self.x_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
     self.y_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
@@ -1088,6 +1090,7 @@ class MergerBoardInstanceEntity : EBManagedObject,
     self.myModel_property.removeEBObserverOf_modelWidth (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_modelHeight (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_modelLimitWidth (self.boardLimitWidth_property)
+    g_Preferences?.mergerColorBackground_property.removeEBObserver (self.backgroundLayerDisplay_property)
     self.instanceRect_property.removeEBObserver (self.backgroundLayerDisplay_property)
     self.x_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
     self.y_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
@@ -3079,6 +3082,7 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
         oldValue?.backPadsDisplay_property.removeEBObserversFrom (mObserversOf_backPadsDisplay)
         oldValue?.backTrackSegments_property.removeEBObserversFrom (mObserversOf_backTrackSegments)
         oldValue?.backTracksDisplay_property.removeEBObserversFrom (mObserversOf_backTracksDisplay)
+        oldValue?.backgroundLayerDisplay_property.removeEBObserversFrom (mObserversOf_backgroundLayerDisplay)
         oldValue?.boardLimits_property.removeEBObserversFrom (mObserversOf_boardLimits)
         oldValue?.boardLimitsDisplay_property.removeEBObserversFrom (mObserversOf_boardLimitsDisplay)
         oldValue?.frontComponentNameDisplay_property.removeEBObserversFrom (mObserversOf_frontComponentNameDisplay)
@@ -3127,6 +3131,7 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
         mValue?.backPadsDisplay_property.addEBObserversFrom (mObserversOf_backPadsDisplay)
         mValue?.backTrackSegments_property.addEBObserversFrom (mObserversOf_backTrackSegments)
         mValue?.backTracksDisplay_property.addEBObserversFrom (mObserversOf_backTracksDisplay)
+        mValue?.backgroundLayerDisplay_property.addEBObserversFrom (mObserversOf_backgroundLayerDisplay)
         mValue?.boardLimits_property.addEBObserversFrom (mObserversOf_boardLimits)
         mValue?.boardLimitsDisplay_property.addEBObserversFrom (mObserversOf_boardLimitsDisplay)
         mValue?.frontComponentNameDisplay_property.addEBObserversFrom (mObserversOf_frontComponentNameDisplay)
@@ -3833,6 +3838,49 @@ final class ToOneRelationship_MergerBoardInstanceEntity_myModel : EBAbstractProp
     mObserversOf_backTracksDisplay.remove (inObserver)
     if let object = self.propval {
       object.backTracksDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: backgroundLayerDisplay
+  //····················································································································
+
+  private var mObserversOf_backgroundLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var backgroundLayerDisplay_property_selection : EBSelection <CALayer?> {
+    get {
+      if let model = self.propval {
+        switch (model.backgroundLayerDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_backgroundLayerDisplay (_ inObserver : EBEvent) {
+    mObserversOf_backgroundLayerDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.backgroundLayerDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backgroundLayerDisplay (_ inObserver : EBEvent) {
+    mObserversOf_backgroundLayerDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.backgroundLayerDisplay_property.removeEBObserver (inObserver)
     }
   }
 

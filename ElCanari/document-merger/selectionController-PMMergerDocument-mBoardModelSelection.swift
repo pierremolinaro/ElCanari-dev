@@ -121,6 +121,13 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
       return self.backTracksDisplay_property.prop
     }
   }
+  var backgroundLayerDisplay_property = EBTransientProperty_CALayer ()
+
+  var backgroundLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backgroundLayerDisplay_property.prop
+    }
+  }
   var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
 
   var boardLimits_property_selection : EBSelection <MergerBoardLimits> {
@@ -367,6 +374,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     bind_property_backPadsDisplay (model: model)
     bind_property_backTrackSegments (model: model)
     bind_property_backTracksDisplay (model: model)
+    bind_property_backgroundLayerDisplay (model: model)
     bind_property_boardLimits (model: model)
     bind_property_boardLimitsDisplay (model: model)
     bind_property_frontComponentNameDisplay (model: model)
@@ -1166,6 +1174,46 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
           var isMultipleSelection = false
           for object in v {
             switch object.backTracksDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backgroundLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+    model.addEBObserverOf_backgroundLayerDisplay (self.backgroundLayerDisplay_property)
+    self.backgroundLayerDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<CALayer> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backgroundLayerDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2764,6 +2812,9 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- backTracksDisplay
     self.backTracksDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backTracksDisplay (self.backTracksDisplay_property)
+  //--- backgroundLayerDisplay
+    self.backgroundLayerDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backgroundLayerDisplay (self.backgroundLayerDisplay_property)
   //--- boardLimits
     self.boardLimits_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_boardLimits (self.boardLimits_property)
