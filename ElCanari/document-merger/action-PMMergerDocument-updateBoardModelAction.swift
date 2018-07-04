@@ -51,6 +51,8 @@ extension PMMergerDocument {
                         updatedBoardModel.modelWidthUnit = newBoardModel.modelWidthUnit
                         updatedBoardModel.modelHeight = newBoardModel.modelHeight
                         updatedBoardModel.modelHeightUnit = newBoardModel.modelHeightUnit
+                        updatedBoardModel.modelLimitWidth = newBoardModel.modelLimitWidth
+                        updatedBoardModel.modelLimitWidthUnit = newBoardModel.modelLimitWidthUnit
                         updatedBoardModel.zoom = newBoardModel.zoom
 
                         let moc = self.managedObjectContext ()

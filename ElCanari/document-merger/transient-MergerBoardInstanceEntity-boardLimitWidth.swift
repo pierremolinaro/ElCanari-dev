@@ -11,16 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMMergerDocument {
-  func arrangeVerticalyAction (_ sender : NSObject) {
+func compute_MergerBoardInstanceEntity_boardLimitWidth (
+       _ self_myModel_modelLimitWidth : Int?
+) -> Int {
 //--- START OF USER ZONE 2
-  if self.rootObject.overlapingArrangment {
-    self.arrangeVerticalyWithOverlap ()
-  }else{
-    self.arrangeVerticaly ()
-  }
+  return self_myModel_modelLimitWidth ?? 0
 //--- END OF USER ZONE 2
-  }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

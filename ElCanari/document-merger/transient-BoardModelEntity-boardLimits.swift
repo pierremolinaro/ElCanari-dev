@@ -14,14 +14,14 @@ import Cocoa
 func compute_BoardModelEntity_boardLimits (
        _ self_modelWidth : Int,            
        _ self_modelHeight : Int,           
-       _ self_boardLimitWidth : Int,       
+       _ self_modelLimitWidth : Int,       
        _ prefs_mergerDisplayBoardLimits : Bool
 ) -> MergerBoardLimits {
 //--- START OF USER ZONE 2
   return MergerBoardLimits (
     boardWidth:self_modelWidth,
     boardHeight:self_modelHeight,
-    lineWidth:prefs_mergerDisplayBoardLimits ? self_boardLimitWidth : 0
+    lineWidth:prefs_mergerDisplayBoardLimits ? self_modelLimitWidth : 0
   )
 //--- END OF USER ZONE 2
 }

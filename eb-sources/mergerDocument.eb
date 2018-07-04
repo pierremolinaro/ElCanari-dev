@@ -175,11 +175,11 @@ entity BoardModelEntity {
   transient CALayer backPadsDisplay dependsFrom prefs.mergerDisplayBackPads, self.backPads ;
 
 #--- Board limits
-  property Int boardLimitWidth default 0 ;
-  property Int boardLimitWidthUnit default 0 ;
+  property Int modelLimitWidth default 0 ;
+  property Int modelLimitWidthUnit default 0 ;
 
   transient MergerBoardLimits boardLimits
-    dependsFrom self.modelWidth, self.modelHeight, self.boardLimitWidth, prefs.mergerDisplayBoardLimits
+    dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth, prefs.mergerDisplayBoardLimits
   ;
 
   transient CALayer boardLimitsDisplay dependsFrom prefs.mergerDisplayBoardLimits, self.boardLimits ;
@@ -312,6 +312,9 @@ entity MergerBoardInstanceEntity {
     dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight
   ;
 
+#--- Limit width
+  transient Int boardLimitWidth dependsFrom self.myModel.one.modelLimitWidth ;
+
 #--- Layer
   transient CALayer backgroundLayerDisplay dependsFrom self.instanceRect ;
 
@@ -398,6 +401,7 @@ entity MergerRootEntity {
   property Int zoom default 0 ;
   property Int boardWidthUnit default 90_000 ;
   property Int boardHeightUnit default 90_000 ;
+  property Bool overlapingArrangment default no ;
 
 #--- Board model name array
   transient MergerBoardModelArray modelNames dependsFrom self.boardModels.all.name ;
@@ -429,7 +433,7 @@ document PMMergerDocument root MergerRootEntity {
 #--- Remove board model
   outlet EBButton removeBoardModelButton
     $run mBoardModelController.remove
-    $enabled mBoardModelController.selectedArray.count > 0
+    $enabled (mBoardModelController.selectedArray.count > 0) & (root.boardInstances.count == 0)
   ;
 
 #--- Update board model
@@ -462,6 +466,12 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBPopUpButton mModelHeightUnitPopUp $selectedTag mBoardModelSelection.modelHeightUnit ;
   outlet CanariDimensionObserverTextField mModelHeightTextField
      $dimensionAndUnit mBoardModelSelection.modelHeight, mBoardModelSelection.modelHeightUnit
+  ;
+
+#--- Model Limits display
+  outlet EBPopUpButton mModelLimitWidthUnitPopUp $selectedTag mBoardModelSelection.modelLimitWidthUnit ;
+  outlet CanariDimensionObserverTextField mModelBoardLimitTextField
+     $dimensionAndUnit mBoardModelSelection.modelLimitWidth, mBoardModelSelection.modelLimitWidthUnit
   ;
 
 #--- Model view
@@ -498,6 +508,8 @@ document PMMergerDocument root MergerRootEntity {
   ;
   
 #--- Arrange
+  outlet EBSwitch mOverlapSwitch $enabled root.boardInstances.count > 0 $value root.overlapingArrangment ;
+
   action arrangeHorizontallyAction ;
   outlet EBButton mArrangeHorizontallyButton $enabled root.boardInstances.count > 0 $run self.arrangeHorizontallyAction ;
   action arrangeVerticalyAction ;

@@ -86,6 +86,24 @@ struct CanariBoardRect {
   }
 
   //····················································································································
+  //   Inset
+  //····················································································································
+
+  func inset (byX inDx : Int, byY inDy : Int) -> CanariBoardRect {
+    let result : CanariBoardRect
+    if self.isEmpty () {
+      result = CanariBoardRect () // Empty Rect
+    }else{
+      let right = self.x + inDx
+      let bottom = self.y + inDy
+      let left = self.x + self.width - inDx
+      let top = self.y + self.height - inDy
+      result = CanariBoardRect (x:right, y:bottom, width:left - right, height:top - bottom)
+    }
+    return result
+  }
+
+  //····················································································································
 
 }
 

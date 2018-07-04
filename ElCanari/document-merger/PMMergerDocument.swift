@@ -26,10 +26,13 @@ import Cocoa
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardView : CanariBoardModelView?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
+  @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightUnitPopUp : EBPopUpButton?
+  @IBOutlet var mModelLimitWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mModelWidthTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mOverlapSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var removeBoardModelButton : EBButton?
   @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton?
@@ -231,6 +234,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mInstanceCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
     }
+    if nil == mModelBoardLimitTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mModelBoardLimitTextField' outlet is nil") ;
+//    }else if !mModelBoardLimitTextField!.isKindOfClass (CanariDimensionObserverTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mModelBoardLimitTextField' outlet is not an instance of 'CanariDimensionObserverTextField'") ;
+    }
     if nil == mModelHeightTextField {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -249,6 +261,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mModelHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
+    if nil == mModelLimitWidthUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mModelLimitWidthUnitPopUp' outlet is nil") ;
+//    }else if !mModelLimitWidthUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mModelLimitWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+    }
     if nil == mModelWidthTextField {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -266,6 +287,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mModelWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+    }
+    if nil == mOverlapSwitch {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mOverlapSwitch' outlet is nil") ;
+//    }else if !mOverlapSwitch!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mOverlapSwitch' outlet is not an instance of 'EBSwitch'") ;
     }
     if nil == mPageSegmentedControl {
       presentErrorWindow (file: #file,
@@ -327,6 +357,8 @@ import Cocoa
     mModelWidthTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelWidthUnit_property, file: #file, line: #line)
     mModelHeightUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.modelHeightUnit_property, file: #file, line: #line)
     mModelHeightTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.modelHeight_property, self.mBoardModelSelection.modelHeightUnit_property, file: #file, line: #line)
+    mModelLimitWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.modelLimitWidthUnit_property, file: #file, line: #line)
+    mModelBoardLimitTextField?.bind_dimensionAndUnit (self.mBoardModelSelection.modelLimitWidth_property, self.mBoardModelSelection.modelLimitWidthUnit_property, file: #file, line: #line)
     mBoardModelView?.bind_size (self.mBoardModelSelection.modelWidth_property, self.mBoardModelSelection.modelHeight_property, file: #file, line: #line)
     mBoardModelView?.bind_zoom (self.mBoardModelSelection.zoom_property, file: #file, line: #line)
     mBoardModelView?.bind_horizontalFlip (g_Preferences!.mergerHorizontalFlip_property, file: #file, line: #line)
@@ -340,15 +372,17 @@ import Cocoa
     mComposedBoardView?.bind_size (self.rootObject.boardWidth_property, self.rootObject.boardHeight_property, file: #file, line: #line)
     mComposedBoardView?.bind_zoom (self.rootObject.zoom_property, file: #file, line: #line)
     mComposedBoardView?.bind_objectLayer (self.rootObject.instancesLayerDisplay_property, file: #file, line: #line)
+    mOverlapSwitch?.bind_value (self.rootObject.overlapingArrangment_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0))
+          return ((self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0)) && (self.rootObject.boardInstances_property.count_property.prop == EBSelection.single (0)))
         },
         outlet:self.removeBoardModelButton
       )
       self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
+      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
       mController_removeBoardModelButton_enabled = controller
     }
     do{
@@ -360,6 +394,16 @@ import Cocoa
       )
       self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
       mController_updateBoardModelButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0))
+        },
+        outlet:self.mOverlapSwitch
+      )
+      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
+      mController_mOverlapSwitch_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
@@ -412,6 +456,8 @@ import Cocoa
     mModelWidthTextField?.unbind_dimensionAndUnit ()
     mModelHeightUnitPopUp?.unbind_selectedTag ()
     mModelHeightTextField?.unbind_dimensionAndUnit ()
+    mModelLimitWidthUnitPopUp?.unbind_selectedTag ()
+    mModelBoardLimitTextField?.unbind_dimensionAndUnit ()
     mBoardModelView?.unbind_size ()
     mBoardModelView?.unbind_zoom ()
     mBoardModelView?.unbind_horizontalFlip ()
@@ -425,11 +471,15 @@ import Cocoa
     mComposedBoardView?.unbind_size ()
     mComposedBoardView?.unbind_zoom ()
     mComposedBoardView?.unbind_objectLayer ()
+    mOverlapSwitch?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_removeBoardModelButton_enabled!)
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_removeBoardModelButton_enabled!)
     mController_removeBoardModelButton_enabled = nil
     self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_updateBoardModelButton_enabled!)
     mController_updateBoardModelButton_enabled = nil
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mOverlapSwitch_enabled!)
+    mController_mOverlapSwitch_enabled = nil
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mArrangeHorizontallyButton_enabled!)
     mController_mArrangeHorizontallyButton_enabled = nil
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mArrangeVerticalyButton_enabled!)
@@ -462,10 +512,13 @@ import Cocoa
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
+    self.mModelBoardLimitTextField?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
     self.mModelHeightUnitPopUp?.ebCleanUp ()
+    self.mModelLimitWidthUnitPopUp?.ebCleanUp ()
     self.mModelWidthTextField?.ebCleanUp ()
     self.mModelWidthUnitPopUp?.ebCleanUp ()
+    self.mOverlapSwitch?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.removeBoardModelButton?.ebCleanUp ()
     self.showPrefsForSettingMergerDisplayButton?.ebCleanUp ()
@@ -478,6 +531,7 @@ import Cocoa
 
   fileprivate var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled?
   fileprivate var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled?
+  fileprivate var mController_mOverlapSwitch_enabled : MultipleBindingController_enabled?
   fileprivate var mController_mArrangeHorizontallyButton_enabled : MultipleBindingController_enabled?
   fileprivate var mController_mArrangeVerticalyButton_enabled : MultipleBindingController_enabled?
 

@@ -16,8 +16,8 @@ class BoardModelEntity : EBManagedObject,
   BoardModelEntity_modelHeight,
   BoardModelEntity_modelHeightUnit,
   BoardModelEntity_zoom,
-  BoardModelEntity_boardLimitWidth,
-  BoardModelEntity_boardLimitWidthUnit,
+  BoardModelEntity_modelLimitWidth,
+  BoardModelEntity_modelLimitWidthUnit,
   BoardModelEntity_instanceCount,
   BoardModelEntity_frontLegendTextsSegments,
   BoardModelEntity_frontLegendTextsLayerDisplay,
@@ -191,40 +191,40 @@ class BoardModelEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing boardLimitWidth stored property
+  //   Accessing modelLimitWidth stored property
   //····················································································································
 
-  var boardLimitWidth : Int {
+  var modelLimitWidth : Int {
     get {
-      return self.boardLimitWidth_property.propval
+      return self.modelLimitWidth_property.propval
     }
     set {
-      self.boardLimitWidth_property.setProp (newValue)
+      self.modelLimitWidth_property.setProp (newValue)
     }
   }
 
-  var boardLimitWidth_property_selection : EBSelection <Int> {
+  var modelLimitWidth_property_selection : EBSelection <Int> {
     get {
-      return self.boardLimitWidth_property.prop
+      return self.modelLimitWidth_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing boardLimitWidthUnit stored property
+  //   Accessing modelLimitWidthUnit stored property
   //····················································································································
 
-  var boardLimitWidthUnit : Int {
+  var modelLimitWidthUnit : Int {
     get {
-      return self.boardLimitWidthUnit_property.propval
+      return self.modelLimitWidthUnit_property.propval
     }
     set {
-      self.boardLimitWidthUnit_property.setProp (newValue)
+      self.modelLimitWidthUnit_property.setProp (newValue)
     }
   }
 
-  var boardLimitWidthUnit_property_selection : EBSelection <Int> {
+  var modelLimitWidthUnit_property_selection : EBSelection <Int> {
     get {
-      return self.boardLimitWidthUnit_property.prop
+      return self.modelLimitWidthUnit_property.prop
     }
   }
 
@@ -997,8 +997,8 @@ class BoardModelEntity : EBManagedObject,
   var modelHeight_property = EBStoredProperty_Int (0)
   var modelHeightUnit_property = EBStoredProperty_Int (0)
   var zoom_property = EBStoredProperty_Int (0)
-  var boardLimitWidth_property = EBStoredProperty_Int (0)
-  var boardLimitWidthUnit_property = EBStoredProperty_Int (0)
+  var modelLimitWidth_property = EBStoredProperty_Int (0)
+  var modelLimitWidthUnit_property = EBStoredProperty_Int (0)
 
   //····················································································································
   //    Transient properties
@@ -1499,7 +1499,7 @@ class BoardModelEntity : EBManagedObject,
       if let unwSelf = self {
         var kind = unwSelf.modelWidth_property_selection.kind ()
         kind &= unwSelf.modelHeight_property_selection.kind ()
-        kind &= unwSelf.boardLimitWidth_property_selection.kind ()
+        kind &= unwSelf.modelLimitWidth_property_selection.kind ()
         kind &= g_Preferences!.mergerDisplayBoardLimits_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1507,7 +1507,7 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.boardLimitWidth_property_selection, g_Preferences!.mergerDisplayBoardLimits_property_selection) {
+          switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.modelLimitWidth_property_selection, g_Preferences!.mergerDisplayBoardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (compute_BoardModelEntity_boardLimits (v0, v1, v2, v3))
           default :
@@ -2002,7 +2002,7 @@ class BoardModelEntity : EBManagedObject,
     self.backPads_property.addEBObserver (self.backPadsDisplay_property)
     self.modelWidth_property.addEBObserver (self.boardLimits_property)
     self.modelHeight_property.addEBObserver (self.boardLimits_property)
-    self.boardLimitWidth_property.addEBObserver (self.boardLimits_property)
+    self.modelLimitWidth_property.addEBObserver (self.boardLimits_property)
     g_Preferences?.mergerDisplayBoardLimits_property.addEBObserver (self.boardLimits_property)
     g_Preferences?.mergerDisplayBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
     self.boardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
@@ -2087,8 +2087,8 @@ class BoardModelEntity : EBManagedObject,
     self.modelHeight_property.undoManager = undoManager ()
     self.modelHeightUnit_property.undoManager = undoManager ()
     self.zoom_property.undoManager = undoManager ()
-    self.boardLimitWidth_property.undoManager = undoManager ()
-    self.boardLimitWidthUnit_property.undoManager = undoManager ()
+    self.modelLimitWidth_property.undoManager = undoManager ()
+    self.modelLimitWidthUnit_property.undoManager = undoManager ()
   //--- Install owner for relationships
     self.myInstances_property.owner = self
     self.frontLegendTexts_property.owner = self
@@ -2178,7 +2178,7 @@ class BoardModelEntity : EBManagedObject,
     self.backPads_property.removeEBObserver (self.backPadsDisplay_property)
     self.modelWidth_property.removeEBObserver (self.boardLimits_property)
     self.modelHeight_property.removeEBObserver (self.boardLimits_property)
-    self.boardLimitWidth_property.removeEBObserver (self.boardLimits_property)
+    self.modelLimitWidth_property.removeEBObserver (self.boardLimits_property)
     g_Preferences?.mergerDisplayBoardLimits_property.removeEBObserver (self.boardLimits_property)
     g_Preferences?.mergerDisplayBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
     self.boardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
@@ -2320,20 +2320,20 @@ class BoardModelEntity : EBManagedObject,
       valueExplorer:&self.zoom_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardLimitWidth",
-      idx:self.boardLimitWidth_property.mEasyBindingsObjectIndex,
+      "modelLimitWidth",
+      idx:self.modelLimitWidth_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardLimitWidth_property.mObserverExplorer,
-      valueExplorer:&self.boardLimitWidth_property.mValueExplorer
+      observerExplorer:&self.modelLimitWidth_property.mObserverExplorer,
+      valueExplorer:&self.modelLimitWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "boardLimitWidthUnit",
-      idx:self.boardLimitWidthUnit_property.mEasyBindingsObjectIndex,
+      "modelLimitWidthUnit",
+      idx:self.modelLimitWidthUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.boardLimitWidthUnit_property.mObserverExplorer,
-      valueExplorer:&self.boardLimitWidthUnit_property.mValueExplorer
+      observerExplorer:&self.modelLimitWidthUnit_property.mObserverExplorer,
+      valueExplorer:&self.modelLimitWidthUnit_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -2769,10 +2769,10 @@ class BoardModelEntity : EBManagedObject,
     self.modelHeightUnit_property.mValueExplorer = nil
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
-    self.boardLimitWidth_property.mObserverExplorer = nil
-    self.boardLimitWidth_property.mValueExplorer = nil
-    self.boardLimitWidthUnit_property.mObserverExplorer = nil
-    self.boardLimitWidthUnit_property.mValueExplorer = nil
+    self.modelLimitWidth_property.mObserverExplorer = nil
+    self.modelLimitWidth_property.mValueExplorer = nil
+    self.modelLimitWidthUnit_property.mObserverExplorer = nil
+    self.modelLimitWidthUnit_property.mValueExplorer = nil
     self.myInstances_property.mValueExplorer = nil
     self.frontLegendTexts_property.mValueExplorer = nil
     self.frontLayoutTexts_property.mValueExplorer = nil
@@ -2804,8 +2804,8 @@ class BoardModelEntity : EBManagedObject,
     self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey: "modelHeight")
     self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelHeightUnit")
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
-    self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
-    self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
+    self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidth")
+    self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidthUnit")
     store (managedObjectArray: myInstances_property.propval as NSArray, relationshipName:"myInstances", intoDictionary: ioDictionary) ;
     store (managedObjectArray: frontLegendTexts_property.propval as NSArray, relationshipName:"frontLegendTexts", intoDictionary: ioDictionary) ;
     store (managedObjectArray: frontLayoutTexts_property.propval as NSArray, relationshipName:"frontLayoutTexts", intoDictionary: ioDictionary) ;
@@ -2837,8 +2837,8 @@ class BoardModelEntity : EBManagedObject,
     self.modelHeight_property.readFrom (dictionary: inDictionary, forKey:"modelHeight")
     self.modelHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"modelHeightUnit")
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
-    self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
-    self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
+    self.modelLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidth")
+    self.modelLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidthUnit")
     self.myInstances_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "myInstances",
       inDictionary: inDictionary,
@@ -3481,115 +3481,115 @@ class ReadOnlyArrayOf_BoardModelEntity : ReadOnlyAbstractArrayProperty <BoardMod
   }
 
   //····················································································································
-  //   Observers of 'boardLimitWidth' stored property
+  //   Observers of 'modelLimitWidth' stored property
   //····················································································································
 
-  private var mObserversOf_boardLimitWidth = EBWeakEventSet ()
+  private var mObserversOf_modelLimitWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_boardLimitWidth.insert (inObserver)
+    mObserversOf_modelLimitWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitWidth_property.addEBObserver (inObserver)
+        managedObject.modelLimitWidth_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_boardLimitWidth.remove (inObserver)
+    mObserversOf_modelLimitWidth.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitWidth_property.removeEBObserver (inObserver)
+        managedObject.modelLimitWidth_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardLimitWidth_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+  final func addEBObserversOf_modelLimitWidth_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardLimitWidth {
-        managedObject.boardLimitWidth_property.addEBObserver (observer)
+      for observer in mObserversOf_modelLimitWidth {
+        managedObject.modelLimitWidth_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardLimitWidth_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for observer in mObserversOf_boardLimitWidth {
+  final func removeEBObserversOf_modelLimitWidth_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_modelLimitWidth {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.boardLimitWidth_property.removeEBObserver (observer)
+        managedObject.modelLimitWidth_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'boardLimitWidthUnit' stored property
+  //   Observers of 'modelLimitWidthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
+  private var mObserversOf_modelLimitWidthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_boardLimitWidthUnit.insert (inObserver)
+    mObserversOf_modelLimitWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitWidthUnit_property.addEBObserver (inObserver)
+        managedObject.modelLimitWidthUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_boardLimitWidthUnit.remove (inObserver)
+    mObserversOf_modelLimitWidthUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.boardLimitWidthUnit_property.removeEBObserver (inObserver)
+        managedObject.modelLimitWidthUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+  final func addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (_ inSet : Set<BoardModelEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardLimitWidthUnit {
-        managedObject.boardLimitWidthUnit_property.addEBObserver (observer)
+      for observer in mObserversOf_modelLimitWidthUnit {
+        managedObject.modelLimitWidthUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
-    for observer in mObserversOf_boardLimitWidthUnit {
+  final func removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (_ inSet : Set<BoardModelEntity>) {
+    for observer in mObserversOf_modelLimitWidthUnit {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.boardLimitWidthUnit_property.removeEBObserver (observer)
+        managedObject.modelLimitWidthUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -5767,8 +5767,8 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         removeEBObserversOf_modelHeight_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedSet)
+        removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedSet)
@@ -5818,8 +5818,8 @@ class TransientArrayOf_BoardModelEntity : ReadOnlyArrayOf_BoardModelEntity {
         addEBObserversOf_modelHeight_toElementsOfSet (addedSet)
         addEBObserversOf_modelHeightUnit_toElementsOfSet (addedSet)
         addEBObserversOf_zoom_toElementsOfSet (addedSet)
-        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
-        addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_modelLimitWidth_toElementsOfSet (addedSet)
+        addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedSet)
@@ -5931,14 +5931,14 @@ protocol BoardModelEntity_zoom : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_boardLimitWidth : class {
-  var boardLimitWidth : Int { get }
+protocol BoardModelEntity_modelLimitWidth : class {
+  var modelLimitWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelEntity_boardLimitWidthUnit : class {
-  var boardLimitWidthUnit : Int { get }
+protocol BoardModelEntity_modelLimitWidthUnit : class {
+  var modelLimitWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -6253,6 +6253,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_myInstances, EBSignatureObserverPro
         removeEBObserversOf_backPadsDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backTracksDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backgroundLayerDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimitsDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentValueDisplay_fromElementsOfSet (removedObjectSet)
@@ -6281,6 +6282,7 @@ ToManyRelationshipReadWrite_BoardModelEntity_myInstances, EBSignatureObserverPro
         addEBObserversOf_backPadsDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backTracksDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backgroundLayerDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimitsDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentValueDisplay_toElementsOfSet (addedObjectSet)

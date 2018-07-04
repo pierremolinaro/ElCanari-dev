@@ -13,6 +13,7 @@ class MergerRootEntity : EBManagedObject,
   MergerRootEntity_zoom,
   MergerRootEntity_boardWidthUnit,
   MergerRootEntity_boardHeightUnit,
+  MergerRootEntity_overlapingArrangment,
   MergerRootEntity_modelNames,
   MergerRootEntity_instancesLayerDisplay,
   MergerRootEntity_boardRect,
@@ -92,6 +93,25 @@ class MergerRootEntity : EBManagedObject,
   var boardHeightUnit_property_selection : EBSelection <Int> {
     get {
       return self.boardHeightUnit_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing overlapingArrangment stored property
+  //····················································································································
+
+  var overlapingArrangment : Bool {
+    get {
+      return self.overlapingArrangment_property.propval
+    }
+    set {
+      self.overlapingArrangment_property.setProp (newValue)
+    }
+  }
+
+  var overlapingArrangment_property_selection : EBSelection <Bool> {
+    get {
+      return self.overlapingArrangment_property.prop
     }
   }
 
@@ -203,6 +223,7 @@ class MergerRootEntity : EBManagedObject,
   var zoom_property = EBStoredProperty_Int (0)
   var boardWidthUnit_property = EBStoredProperty_Int (90000)
   var boardHeightUnit_property = EBStoredProperty_Int (90000)
+  var overlapingArrangment_property = EBStoredProperty_Bool (false)
 
   //····················································································································
   //    Transient properties
@@ -339,6 +360,7 @@ class MergerRootEntity : EBManagedObject,
     self.zoom_property.undoManager = undoManager ()
     self.boardWidthUnit_property.undoManager = undoManager ()
     self.boardHeightUnit_property.undoManager = undoManager ()
+    self.overlapingArrangment_property.undoManager = undoManager ()
   //--- Install owner for relationships
     self.boardModels_property.owner = self
     self.boardInstances_property.owner = self
@@ -393,6 +415,14 @@ class MergerRootEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.boardHeightUnit_property.mObserverExplorer,
       valueExplorer:&self.boardHeightUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "overlapingArrangment",
+      idx:self.overlapingArrangment_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.overlapingArrangment_property.mObserverExplorer,
+      valueExplorer:&self.overlapingArrangment_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -467,6 +497,8 @@ class MergerRootEntity : EBManagedObject,
     self.boardWidthUnit_property.mValueExplorer = nil
     self.boardHeightUnit_property.mObserverExplorer = nil
     self.boardHeightUnit_property.mValueExplorer = nil
+    self.overlapingArrangment_property.mObserverExplorer = nil
+    self.overlapingArrangment_property.mValueExplorer = nil
     self.boardModels_property.mValueExplorer = nil
     self.boardInstances_property.mValueExplorer = nil
     super.clearObjectExplorer ()
@@ -482,6 +514,7 @@ class MergerRootEntity : EBManagedObject,
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
     self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
     self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
+    self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
     store (managedObjectArray: boardModels_property.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
     store (managedObjectArray: boardInstances_property.propval as NSArray, relationshipName:"boardInstances", intoDictionary: ioDictionary) ;
   }
@@ -497,6 +530,7 @@ class MergerRootEntity : EBManagedObject,
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
     self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
     self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
+    self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
     self.boardModels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "boardModels",
       inDictionary: inDictionary,
@@ -785,6 +819,63 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.boardHeightUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'overlapingArrangment' stored property
+  //····················································································································
+
+  private var mObserversOf_overlapingArrangment = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_overlapingArrangment.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.overlapingArrangment_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_overlapingArrangment.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.overlapingArrangment_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_overlapingArrangment_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_overlapingArrangment {
+        managedObject.overlapingArrangment_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_overlapingArrangment_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for observer in mObserversOf_overlapingArrangment {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.overlapingArrangment_property.removeEBObserver (observer)
       }
     }
   }
@@ -1111,6 +1202,7 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
         removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
         removeEBObserversOf_instancesLayerDisplay_fromElementsOfSet (removedSet)
@@ -1124,6 +1216,7 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
         addEBObserversOf_zoom_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidthUnit_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_overlapingArrangment_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_modelNames_toElementsOfSet (addedSet)
         addEBObserversOf_instancesLayerDisplay_toElementsOfSet (addedSet)
@@ -1180,6 +1273,12 @@ protocol MergerRootEntity_boardWidthUnit : class {
 
 protocol MergerRootEntity_boardHeightUnit : class {
   var boardHeightUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_overlapingArrangment : class {
+  var overlapingArrangment : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1302,8 +1401,6 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_backPadsDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backTracksDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimits_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimitsDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameDisplay_fromElementsOfSet (removedObjectSet)
@@ -1326,6 +1423,8 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelLayerDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
@@ -1354,8 +1453,6 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_backPadsDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backTracksDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimits_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimitsDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameDisplay_toElementsOfSet (addedObjectSet)
@@ -1378,6 +1475,8 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardModels, EBSignatureObserverPro
         addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelLayerDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)
@@ -1563,6 +1662,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardInstances, EBSignatureObserver
         removeEBObserversOf_backPadsDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backTracksDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backgroundLayerDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimitsDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentValueDisplay_fromElementsOfSet (removedObjectSet)
@@ -1590,6 +1690,7 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardInstances, EBSignatureObserver
         addEBObserversOf_backPadsDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backTracksDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backgroundLayerDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimitsDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentValueDisplay_toElementsOfSet (addedObjectSet)

@@ -164,8 +164,8 @@ extension PMMergerDocument {
     boardModel.modelWidthUnit = int (fromDict: boardArchiveDict, key: "BOARD-WIDTH-UNIT", &errorArray)
     boardModel.modelHeight = int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT", &errorArray)
     boardModel.modelHeightUnit = int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT-UNIT", &errorArray)
-    boardModel.boardLimitWidth = int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH", &errorArray)
-    boardModel.boardLimitWidthUnit = int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH-UNIT", &errorArray)
+    boardModel.modelLimitWidth = int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH", &errorArray)
+    boardModel.modelLimitWidthUnit = int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH-UNIT", &errorArray)
   //--- Front tracks
     var frontTrackEntities = [CanariSegmentEntity] ()
     let frontTracks = stringArray (fromDict: boardArchiveDict, key: "TRACKS-FRONT", &errorArray)
