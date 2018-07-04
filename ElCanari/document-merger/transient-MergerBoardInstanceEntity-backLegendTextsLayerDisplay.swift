@@ -14,15 +14,16 @@ import Cocoa
 func compute_MergerBoardInstanceEntity_backLegendTextsLayerDisplay (
        _ self_x : Int,                                              
        _ self_y : Int,                                              
-       _ prefs_mergerDisplayBackLegendTexts : Bool,                 
+       _ prefs_mergerColorBackLegendTexts : NSColor,                
+       _ prefs_mergerBoardViewDisplayBackLegendTexts : Bool,        
        _ self_myModel_backLegendTextsSegments : MergerSegmentArray?
 ) -> CALayer {
 //--- START OF USER ZONE 2
   return self_myModel_backLegendTextsSegments!.buildLayer (
     dx:self_x,
     dy:self_y,
-    color:NSColor.blue,
-    display:prefs_mergerDisplayBackLegendTexts
+    color:prefs_mergerColorBackLegendTexts,
+    display:prefs_mergerBoardViewDisplayBackLegendTexts
   )
 //--- END OF USER ZONE 2
 }

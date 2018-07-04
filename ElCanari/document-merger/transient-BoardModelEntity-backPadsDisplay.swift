@@ -12,15 +12,16 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_BoardModelEntity_backPadsDisplay (
-       _ prefs_mergerDisplayBackPads : Bool,   
+       _ prefs_mergerColorBackPads : NSColor,  
+       _ prefs_mergerModelViewDisplayBackPads : Bool,
        _ self_backPads : MergerPadArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
   return self_backPads.buildShape (
     dx: 0,
     dy: 0,
-    color: NSColor.orange,
-    display: prefs_mergerDisplayBackPads
+    color: prefs_mergerColorBackPads,
+    display: prefs_mergerModelViewDisplayBackPads
   )
 //--- END OF USER ZONE 2
 }

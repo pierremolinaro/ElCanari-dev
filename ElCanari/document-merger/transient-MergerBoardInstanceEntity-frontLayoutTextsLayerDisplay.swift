@@ -14,15 +14,16 @@ import Cocoa
 func compute_MergerBoardInstanceEntity_frontLayoutTextsLayerDisplay (
        _ self_x : Int,                                               
        _ self_y : Int,                                               
-       _ prefs_mergerDisplayFrontLayoutTexts : Bool,                 
+       _ prefs_mergerColorFrontLayoutTexts : NSColor,                
+       _ prefs_mergerBoardViewDisplayFrontLayoutTexts : Bool,        
        _ self_myModel_frontLayoutTextsSegments : MergerSegmentArray?
 ) -> CALayer {
 //--- START OF USER ZONE 2
   return self_myModel_frontLayoutTextsSegments!.buildLayer (
     dx:self_x,
     dy:self_y,
-    color:NSColor.blue,
-    display:prefs_mergerDisplayFrontLayoutTexts
+    color:prefs_mergerColorFrontLayoutTexts,
+    display:prefs_mergerBoardViewDisplayFrontLayoutTexts
   )
 //--- END OF USER ZONE 2
 }

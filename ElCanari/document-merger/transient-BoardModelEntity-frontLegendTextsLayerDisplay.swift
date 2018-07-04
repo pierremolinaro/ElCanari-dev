@@ -12,11 +12,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_BoardModelEntity_frontLegendTextsLayerDisplay (
-       _ prefs_mergerDisplayFrontLegendTexts : Bool,        
+       _ prefs_mergerColorFrontLegendTexts : NSColor,       
+       _ prefs_mergerModelViewDisplayFrontLegendTexts : Bool,
        _ self_frontLegendTextsSegments : MergerSegmentArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  return self_frontLegendTextsSegments.buildLayer (color:NSColor.blue, display:prefs_mergerDisplayFrontLegendTexts)
+  return self_frontLegendTextsSegments.buildLayer (color:prefs_mergerColorFrontLegendTexts, display:prefs_mergerModelViewDisplayFrontLegendTexts)
 //--- END OF USER ZONE 2
 }
 

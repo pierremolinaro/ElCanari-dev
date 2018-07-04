@@ -12,6 +12,7 @@ import Cocoa
   @IBOutlet private weak var mView5 : CanariViewWithKeyView?
   @IBOutlet private weak var mView6 : CanariViewWithKeyView?
   @IBOutlet private weak var mView7 : CanariViewWithKeyView?
+  private weak var mAttachedView : CanariViewWithKeyView?
 
   //····················································································································
 
@@ -62,35 +63,32 @@ import Cocoa
 
   func selectViewFromSelectedSegmentIndex () {
     if let masterView = mMasterView {
-    //--- Remove any view from master view
-      let subviews : [NSView] = masterView.subviews
-      if subviews.count > 0 {
-        let viewToDetach = subviews [0] as! CanariViewWithKeyView
-      //--- Look for first responder in order to save it
-        viewToDetach.saveFirstResponder ()
-      //--- Remove from master view
-        viewToDetach.removeFromSuperview ()
-      }
     //--- View to attach
-      let viewToAttach : CanariViewWithKeyView?
+      let possibleViewToAttach : CanariViewWithKeyView?
       switch self.selectedSegment {
-      case 0 : viewToAttach = mView0
-      case 1 : viewToAttach = mView1
-      case 2 : viewToAttach = mView2
-      case 3 : viewToAttach = mView3
-      case 4 : viewToAttach = mView4
-      case 5 : viewToAttach = mView5
-      case 6 : viewToAttach = mView6
-      case 7 : viewToAttach = mView7
-      default : viewToAttach = nil
+      case 0 : possibleViewToAttach = mView0
+      case 1 : possibleViewToAttach = mView1
+      case 2 : possibleViewToAttach = mView2
+      case 3 : possibleViewToAttach = mView3
+      case 4 : possibleViewToAttach = mView4
+      case 5 : possibleViewToAttach = mView5
+      case 6 : possibleViewToAttach = mView6
+      case 7 : possibleViewToAttach = mView7
+      default : possibleViewToAttach = nil
       }
     //--- Attach view
-      if let unwViewToAttach = viewToAttach {
-        masterView.addSubview (unwViewToAttach)
-        unwViewToAttach.frame = masterView.bounds
-        unwViewToAttach.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
+      if let viewToAttach = possibleViewToAttach {
+        viewToAttach.frame = masterView.bounds
+        viewToAttach.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
+        if let attachedView = mAttachedView {
+          attachedView.saveFirstResponder ()
+          masterView.replaceSubview (attachedView, with: viewToAttach)
+        }else{
+          masterView.addSubview (viewToAttach, positioned: .below, relativeTo: nil)
+        }
+        mAttachedView = viewToAttach
       //--- Make First Responder
-        unwViewToAttach.restoreFirstResponder ()
+        viewToAttach.restoreFirstResponder ()
       }
     }
   }

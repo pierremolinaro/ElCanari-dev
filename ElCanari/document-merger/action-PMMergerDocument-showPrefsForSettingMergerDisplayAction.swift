@@ -14,7 +14,15 @@ import Cocoa
 extension PMMergerDocument {
   func showPrefsForSettingMergerDisplayAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-    g_Preferences?.showMergerDisplaySettings ()
+   // g_Preferences?.showMergerDisplaySettings ()
+    if let displaySettingView = mDisplaySettingView, let contentView = self.windowForSheet?.contentView {
+      if displaySettingView.window == nil {
+        displaySettingView.frame.size.height = contentView.bounds.size.height
+        contentView.addSubview (displaySettingView, positioned: .above, relativeTo:nil)
+      }else{
+        displaySettingView.removeFromSuperview ()
+      }
+    }
 //--- END OF USER ZONE 2
   }
 }

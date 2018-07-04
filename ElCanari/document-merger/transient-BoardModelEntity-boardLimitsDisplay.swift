@@ -12,35 +12,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_BoardModelEntity_boardLimitsDisplay (
-       _ prefs_mergerDisplayBoardLimits : Bool,   
+       _ prefs_mergerColorBoardLimits : NSColor,  
+       _ prefs_mergerModelViewDisplayBoardLimits : Bool,
        _ self_boardLimits : MergerBoardLimits
 ) -> CALayer {
 //--- START OF USER ZONE 2
-//  let result = CAShapeLayer ()
-//  if prefs_mergerDisplayBoardLimits && (self_boardLimits.lineWidth > 0) {
-//    let boardWith = canariUnitToCocoa (self_boardLimits.boardWidth)
-//    let boardHeight = canariUnitToCocoa (self_boardLimits.boardHeight)
-//    let lineWidth = canariUnitToCocoa (self_boardLimits.lineWidth)
-//    let path = CGMutablePath ()
-//    path.move    (to:CGPoint (x:lineWidth / 2.0,             y:lineWidth / 2.0))
-//    path.addLine (to:CGPoint (x:lineWidth / 2.0,             y:boardHeight - lineWidth / 2.0))
-//    path.addLine (to:CGPoint (x:boardWith - lineWidth / 2.0, y:boardHeight - lineWidth / 2.0))
-//    path.addLine (to:CGPoint (x:boardWith - lineWidth / 2.0, y:lineWidth / 2.0))
-//    path.addLine (to:CGPoint (x:lineWidth / 2.0,             y:lineWidth / 2.0))
-//    let shape = CAShapeLayer ()
-//    shape.path = path
-//    shape.position = CGPoint (x:0.0, y:0.0)
-//    shape.strokeColor = NSColor.brown.cgColor
-//    shape.fillColor = nil // NSColor.yellow.cgColor
-//    shape.lineWidth = lineWidth
-//    shape.lineCap = kCALineCapSquare
-//    shape.lineJoin = kCALineJoinMiter
-////    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
-////    shape.isOpaque = false
-//    result.sublayers = [shape]
-//  }
-//  return result
-  return self_boardLimits.buildShape (dx:0, dy:0, color:NSColor.brown, display:prefs_mergerDisplayBoardLimits)
+  return self_boardLimits.buildShape (dx:0, dy:0, color:prefs_mergerColorBoardLimits, display:prefs_mergerModelViewDisplayBoardLimits)
 //--- END OF USER ZONE 2
 }
 

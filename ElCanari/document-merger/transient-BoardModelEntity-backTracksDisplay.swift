@@ -12,11 +12,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_BoardModelEntity_backTracksDisplay (
-       _ prefs_mergerDisplayBackLayoutTracks : Bool,
+       _ prefs_mergerColorBackTracks : NSColor,  
+       _ prefs_mergerModelViewDisplayBackTracks : Bool,
        _ self_backTrackSegments : MergerSegmentArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  return self_backTrackSegments.buildLayer (color:NSColor.green, display:prefs_mergerDisplayBackLayoutTracks)
+  return self_backTrackSegments.buildLayer (color:prefs_mergerColorBackTracks, display:prefs_mergerModelViewDisplayBackTracks)
 //--- END OF USER ZONE 2
 }
 

@@ -65,25 +65,6 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mMenuRevealInFinder_fonts : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_packages : CanariMenu? = nil
   @IBOutlet var mMenuRevealInFinder_symbols : CanariMenu? = nil
-  @IBOutlet var mMergerDisplayBackComponenValuesCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayBackComponentNamesCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayBackLayoutTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayBackLayoutTracksCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayBackLegendTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayBackPackagesCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayBackPadsCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayBoardLimitsCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayFrontComponenValuesCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayFrontComponentNamesCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayFrontLayoutTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayFrontLayoutTracksCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayFrontLegendTextsCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayFrontPackagesCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayFrontPadsCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayHolesCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerDisplayViasCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerHorizontalFlipCheckbox : EBSwitch? = nil
-  @IBOutlet var mMergerVerticalFlipCheckbox : EBSwitch? = nil
   @IBOutlet var mPackageBackgroundColorColorWell : EBColorWell? = nil
   @IBOutlet var mPackageColorColorWell : EBColorWell? = nil
   @IBOutlet var mPackageColorForDeviceColorWell : EBColorWell? = nil
@@ -137,363 +118,1047 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var selectionHilitePopupButton : EBPopUpButton? = nil
 
   //····················································································································
-  //   Accessing mergerHorizontalFlip stored property
+  //   Accessing mergerModelViewHorizontalFlip stored property
   //····················································································································
 
-  var mergerHorizontalFlip : Bool {
+  var mergerModelViewHorizontalFlip : Bool {
     get {
-      return self.mergerHorizontalFlip_property.propval
+      return self.mergerModelViewHorizontalFlip_property.propval
     }
     set {
-      self.mergerHorizontalFlip_property.setProp (newValue)
+      self.mergerModelViewHorizontalFlip_property.setProp (newValue)
     }
   }
 
-  var mergerHorizontalFlip_property_selection : EBSelection <Bool> {
+  var mergerModelViewHorizontalFlip_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerHorizontalFlip_property.prop
+      return self.mergerModelViewHorizontalFlip_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerVerticalFlip stored property
+  //   Accessing mergerModelViewVerticalFlip stored property
   //····················································································································
 
-  var mergerVerticalFlip : Bool {
+  var mergerModelViewVerticalFlip : Bool {
     get {
-      return self.mergerVerticalFlip_property.propval
+      return self.mergerModelViewVerticalFlip_property.propval
     }
     set {
-      self.mergerVerticalFlip_property.setProp (newValue)
+      self.mergerModelViewVerticalFlip_property.setProp (newValue)
     }
   }
 
-  var mergerVerticalFlip_property_selection : EBSelection <Bool> {
+  var mergerModelViewVerticalFlip_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerVerticalFlip_property.prop
+      return self.mergerModelViewVerticalFlip_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayHoles stored property
+  //   Accessing mergerModelViewDisplayHoles stored property
   //····················································································································
 
-  var mergerDisplayHoles : Bool {
+  var mergerModelViewDisplayHoles : Bool {
     get {
-      return self.mergerDisplayHoles_property.propval
+      return self.mergerModelViewDisplayHoles_property.propval
     }
     set {
-      self.mergerDisplayHoles_property.setProp (newValue)
+      self.mergerModelViewDisplayHoles_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayHoles_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayHoles_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayHoles_property.prop
+      return self.mergerModelViewDisplayHoles_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayVias stored property
+  //   Accessing mergerModelViewDisplayVias stored property
   //····················································································································
 
-  var mergerDisplayVias : Bool {
+  var mergerModelViewDisplayVias : Bool {
     get {
-      return self.mergerDisplayVias_property.propval
+      return self.mergerModelViewDisplayVias_property.propval
     }
     set {
-      self.mergerDisplayVias_property.setProp (newValue)
+      self.mergerModelViewDisplayVias_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayVias_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayVias_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayVias_property.prop
+      return self.mergerModelViewDisplayVias_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayFrontPads stored property
+  //   Accessing mergerModelViewDisplayFrontPads stored property
   //····················································································································
 
-  var mergerDisplayFrontPads : Bool {
+  var mergerModelViewDisplayFrontPads : Bool {
     get {
-      return self.mergerDisplayFrontPads_property.propval
+      return self.mergerModelViewDisplayFrontPads_property.propval
     }
     set {
-      self.mergerDisplayFrontPads_property.setProp (newValue)
+      self.mergerModelViewDisplayFrontPads_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayFrontPads_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayFrontPads_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayFrontPads_property.prop
+      return self.mergerModelViewDisplayFrontPads_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayBoardLimits stored property
+  //   Accessing mergerModelViewDisplayBoardLimits stored property
   //····················································································································
 
-  var mergerDisplayBoardLimits : Bool {
+  var mergerModelViewDisplayBoardLimits : Bool {
     get {
-      return self.mergerDisplayBoardLimits_property.propval
+      return self.mergerModelViewDisplayBoardLimits_property.propval
     }
     set {
-      self.mergerDisplayBoardLimits_property.setProp (newValue)
+      self.mergerModelViewDisplayBoardLimits_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayBoardLimits_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayBoardLimits_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayBoardLimits_property.prop
+      return self.mergerModelViewDisplayBoardLimits_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayFrontComponentNames stored property
+  //   Accessing mergerModelViewDisplayFrontComponentNames stored property
   //····················································································································
 
-  var mergerDisplayFrontComponentNames : Bool {
+  var mergerModelViewDisplayFrontComponentNames : Bool {
     get {
-      return self.mergerDisplayFrontComponentNames_property.propval
+      return self.mergerModelViewDisplayFrontComponentNames_property.propval
     }
     set {
-      self.mergerDisplayFrontComponentNames_property.setProp (newValue)
+      self.mergerModelViewDisplayFrontComponentNames_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayFrontComponentNames_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayFrontComponentNames_property.prop
+      return self.mergerModelViewDisplayFrontComponentNames_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayFrontComponentValues stored property
+  //   Accessing mergerModelViewDisplayFrontComponentValues stored property
   //····················································································································
 
-  var mergerDisplayFrontComponentValues : Bool {
+  var mergerModelViewDisplayFrontComponentValues : Bool {
     get {
-      return self.mergerDisplayFrontComponentValues_property.propval
+      return self.mergerModelViewDisplayFrontComponentValues_property.propval
     }
     set {
-      self.mergerDisplayFrontComponentValues_property.setProp (newValue)
+      self.mergerModelViewDisplayFrontComponentValues_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayFrontComponentValues_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayFrontComponentValues_property.prop
+      return self.mergerModelViewDisplayFrontComponentValues_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayFrontPackages stored property
+  //   Accessing mergerModelViewDisplayFrontPackages stored property
   //····················································································································
 
-  var mergerDisplayFrontPackages : Bool {
+  var mergerModelViewDisplayFrontPackages : Bool {
     get {
-      return self.mergerDisplayFrontPackages_property.propval
+      return self.mergerModelViewDisplayFrontPackages_property.propval
     }
     set {
-      self.mergerDisplayFrontPackages_property.setProp (newValue)
+      self.mergerModelViewDisplayFrontPackages_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayFrontPackages_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayFrontPackages_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayFrontPackages_property.prop
+      return self.mergerModelViewDisplayFrontPackages_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayFrontLegendTexts stored property
+  //   Accessing mergerModelViewDisplayFrontLegendTexts stored property
   //····················································································································
 
-  var mergerDisplayFrontLegendTexts : Bool {
+  var mergerModelViewDisplayFrontLegendTexts : Bool {
     get {
-      return self.mergerDisplayFrontLegendTexts_property.propval
+      return self.mergerModelViewDisplayFrontLegendTexts_property.propval
     }
     set {
-      self.mergerDisplayFrontLegendTexts_property.setProp (newValue)
+      self.mergerModelViewDisplayFrontLegendTexts_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayFrontLegendTexts_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayFrontLegendTexts_property.prop
+      return self.mergerModelViewDisplayFrontLegendTexts_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayFrontLayoutTracks stored property
+  //   Accessing mergerModelViewDisplayFrontTracks stored property
   //····················································································································
 
-  var mergerDisplayFrontLayoutTracks : Bool {
+  var mergerModelViewDisplayFrontTracks : Bool {
     get {
-      return self.mergerDisplayFrontLayoutTracks_property.propval
+      return self.mergerModelViewDisplayFrontTracks_property.propval
     }
     set {
-      self.mergerDisplayFrontLayoutTracks_property.setProp (newValue)
+      self.mergerModelViewDisplayFrontTracks_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayFrontLayoutTracks_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayFrontTracks_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayFrontLayoutTracks_property.prop
+      return self.mergerModelViewDisplayFrontTracks_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayFrontLayoutTexts stored property
+  //   Accessing mergerModelViewDisplayFrontLayoutTexts stored property
   //····················································································································
 
-  var mergerDisplayFrontLayoutTexts : Bool {
+  var mergerModelViewDisplayFrontLayoutTexts : Bool {
     get {
-      return self.mergerDisplayFrontLayoutTexts_property.propval
+      return self.mergerModelViewDisplayFrontLayoutTexts_property.propval
     }
     set {
-      self.mergerDisplayFrontLayoutTexts_property.setProp (newValue)
+      self.mergerModelViewDisplayFrontLayoutTexts_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayFrontLayoutTexts_property.prop
+      return self.mergerModelViewDisplayFrontLayoutTexts_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayBackPads stored property
+  //   Accessing mergerModelViewDisplayBackPads stored property
   //····················································································································
 
-  var mergerDisplayBackPads : Bool {
+  var mergerModelViewDisplayBackPads : Bool {
     get {
-      return self.mergerDisplayBackPads_property.propval
+      return self.mergerModelViewDisplayBackPads_property.propval
     }
     set {
-      self.mergerDisplayBackPads_property.setProp (newValue)
+      self.mergerModelViewDisplayBackPads_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayBackPads_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayBackPads_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayBackPads_property.prop
+      return self.mergerModelViewDisplayBackPads_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayBackComponentNames stored property
+  //   Accessing mergerModelViewDisplayBackComponentNames stored property
   //····················································································································
 
-  var mergerDisplayBackComponentNames : Bool {
+  var mergerModelViewDisplayBackComponentNames : Bool {
     get {
-      return self.mergerDisplayBackComponentNames_property.propval
+      return self.mergerModelViewDisplayBackComponentNames_property.propval
     }
     set {
-      self.mergerDisplayBackComponentNames_property.setProp (newValue)
+      self.mergerModelViewDisplayBackComponentNames_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayBackComponentNames_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayBackComponentNames_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayBackComponentNames_property.prop
+      return self.mergerModelViewDisplayBackComponentNames_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayBackComponentValues stored property
+  //   Accessing mergerModelViewDisplayBackComponentValues stored property
   //····················································································································
 
-  var mergerDisplayBackComponentValues : Bool {
+  var mergerModelViewDisplayBackComponentValues : Bool {
     get {
-      return self.mergerDisplayBackComponentValues_property.propval
+      return self.mergerModelViewDisplayBackComponentValues_property.propval
     }
     set {
-      self.mergerDisplayBackComponentValues_property.setProp (newValue)
+      self.mergerModelViewDisplayBackComponentValues_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayBackComponentValues_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayBackComponentValues_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayBackComponentValues_property.prop
+      return self.mergerModelViewDisplayBackComponentValues_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayBackLegendTexts stored property
+  //   Accessing mergerModelViewDisplayBackLegendTexts stored property
   //····················································································································
 
-  var mergerDisplayBackLegendTexts : Bool {
+  var mergerModelViewDisplayBackLegendTexts : Bool {
     get {
-      return self.mergerDisplayBackLegendTexts_property.propval
+      return self.mergerModelViewDisplayBackLegendTexts_property.propval
     }
     set {
-      self.mergerDisplayBackLegendTexts_property.setProp (newValue)
+      self.mergerModelViewDisplayBackLegendTexts_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayBackLegendTexts_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayBackLegendTexts_property.prop
+      return self.mergerModelViewDisplayBackLegendTexts_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayBackPackages stored property
+  //   Accessing mergerModelViewDisplayBackPackages stored property
   //····················································································································
 
-  var mergerDisplayBackPackages : Bool {
+  var mergerModelViewDisplayBackPackages : Bool {
     get {
-      return self.mergerDisplayBackPackages_property.propval
+      return self.mergerModelViewDisplayBackPackages_property.propval
     }
     set {
-      self.mergerDisplayBackPackages_property.setProp (newValue)
+      self.mergerModelViewDisplayBackPackages_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayBackPackages_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayBackPackages_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayBackPackages_property.prop
+      return self.mergerModelViewDisplayBackPackages_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayBackLayoutTracks stored property
+  //   Accessing mergerModelViewDisplayBackTracks stored property
   //····················································································································
 
-  var mergerDisplayBackLayoutTracks : Bool {
+  var mergerModelViewDisplayBackTracks : Bool {
     get {
-      return self.mergerDisplayBackLayoutTracks_property.propval
+      return self.mergerModelViewDisplayBackTracks_property.propval
     }
     set {
-      self.mergerDisplayBackLayoutTracks_property.setProp (newValue)
+      self.mergerModelViewDisplayBackTracks_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayBackLayoutTracks_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayBackTracks_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayBackLayoutTracks_property.prop
+      return self.mergerModelViewDisplayBackTracks_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing mergerDisplayBackLayoutTexts stored property
+  //   Accessing mergerModelViewDisplayBackLayoutTexts stored property
   //····················································································································
 
-  var mergerDisplayBackLayoutTexts : Bool {
+  var mergerModelViewDisplayBackLayoutTexts : Bool {
     get {
-      return self.mergerDisplayBackLayoutTexts_property.propval
+      return self.mergerModelViewDisplayBackLayoutTexts_property.propval
     }
     set {
-      self.mergerDisplayBackLayoutTexts_property.setProp (newValue)
+      self.mergerModelViewDisplayBackLayoutTexts_property.setProp (newValue)
     }
   }
 
-  var mergerDisplayBackLayoutTexts_property_selection : EBSelection <Bool> {
+  var mergerModelViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> {
     get {
-      return self.mergerDisplayBackLayoutTexts_property.prop
+      return self.mergerModelViewDisplayBackLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewHorizontalFlip stored property
+  //····················································································································
+
+  var mergerBoardViewHorizontalFlip : Bool {
+    get {
+      return self.mergerBoardViewHorizontalFlip_property.propval
+    }
+    set {
+      self.mergerBoardViewHorizontalFlip_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewHorizontalFlip_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewHorizontalFlip_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewVerticalFlip stored property
+  //····················································································································
+
+  var mergerBoardViewVerticalFlip : Bool {
+    get {
+      return self.mergerBoardViewVerticalFlip_property.propval
+    }
+    set {
+      self.mergerBoardViewVerticalFlip_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewVerticalFlip_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewVerticalFlip_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayHoles stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayHoles : Bool {
+    get {
+      return self.mergerBoardViewDisplayHoles_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayHoles_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayHoles_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayHoles_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayVias stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayVias : Bool {
+    get {
+      return self.mergerBoardViewDisplayVias_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayVias_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayVias_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayVias_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayFrontPads stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontPads : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontPads_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontPads_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayFrontPads_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayBoardLimits stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayBoardLimits : Bool {
+    get {
+      return self.mergerBoardViewDisplayBoardLimits_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBoardLimits_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayBoardLimits_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBoardLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayFrontComponentNames stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontComponentNames : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontComponentNames_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontComponentNames_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayFrontComponentValues stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontComponentValues : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontComponentValues_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontComponentValues_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayFrontPackages stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontPackages : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontPackages_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontPackages_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayFrontPackages_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayFrontLegendTexts stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLegendTexts : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontLegendTexts_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayFrontTracks stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontTracks : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontTracks_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontTracks_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayFrontTracks_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayFrontLayoutTexts stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLayoutTexts : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontLayoutTexts_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayBackPads stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayBackPads : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackPads_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackPads_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayBackPads_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayBackComponentNames stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayBackComponentNames : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackComponentNames_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackComponentNames_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayBackComponentNames_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayBackComponentValues stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayBackComponentValues : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackComponentValues_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackComponentValues_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayBackComponentValues_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayBackLegendTexts stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLegendTexts : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackLegendTexts_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayBackPackages stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayBackPackages : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackPackages_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackPackages_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayBackPackages_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayBackTracks stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayBackTracks : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackTracks_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackTracks_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayBackTracks_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayBackLayoutTexts stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLayoutTexts : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackLayoutTexts_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorHoles stored property
+  //····················································································································
+
+  var mergerColorHoles : NSColor {
+    get {
+      return self.mergerColorHoles_property.propval
+    }
+    set {
+      self.mergerColorHoles_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorHoles_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorHoles_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorVias stored property
+  //····················································································································
+
+  var mergerColorVias : NSColor {
+    get {
+      return self.mergerColorVias_property.propval
+    }
+    set {
+      self.mergerColorVias_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorVias_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorVias_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorFrontPads stored property
+  //····················································································································
+
+  var mergerColorFrontPads : NSColor {
+    get {
+      return self.mergerColorFrontPads_property.propval
+    }
+    set {
+      self.mergerColorFrontPads_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorFrontPads_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorBoardLimits stored property
+  //····················································································································
+
+  var mergerColorBoardLimits : NSColor {
+    get {
+      return self.mergerColorBoardLimits_property.propval
+    }
+    set {
+      self.mergerColorBoardLimits_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorBoardLimits_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBoardLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorFrontComponentNames stored property
+  //····················································································································
+
+  var mergerColorFrontComponentNames : NSColor {
+    get {
+      return self.mergerColorFrontComponentNames_property.propval
+    }
+    set {
+      self.mergerColorFrontComponentNames_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorFrontComponentNames_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorFrontComponentValues stored property
+  //····················································································································
+
+  var mergerColorFrontComponentValues : NSColor {
+    get {
+      return self.mergerColorFrontComponentValues_property.propval
+    }
+    set {
+      self.mergerColorFrontComponentValues_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorFrontComponentValues_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorFrontPackages stored property
+  //····················································································································
+
+  var mergerColorFrontPackages : NSColor {
+    get {
+      return self.mergerColorFrontPackages_property.propval
+    }
+    set {
+      self.mergerColorFrontPackages_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorFrontPackages_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorFrontLegendTexts stored property
+  //····················································································································
+
+  var mergerColorFrontLegendTexts : NSColor {
+    get {
+      return self.mergerColorFrontLegendTexts_property.propval
+    }
+    set {
+      self.mergerColorFrontLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorFrontLegendTexts_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorFrontTracks stored property
+  //····················································································································
+
+  var mergerColorFrontTracks : NSColor {
+    get {
+      return self.mergerColorFrontTracks_property.propval
+    }
+    set {
+      self.mergerColorFrontTracks_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorFrontTracks_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorFrontLayoutTexts stored property
+  //····················································································································
+
+  var mergerColorFrontLayoutTexts : NSColor {
+    get {
+      return self.mergerColorFrontLayoutTexts_property.propval
+    }
+    set {
+      self.mergerColorFrontLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorFrontLayoutTexts_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorBackPads stored property
+  //····················································································································
+
+  var mergerColorBackPads : NSColor {
+    get {
+      return self.mergerColorBackPads_property.propval
+    }
+    set {
+      self.mergerColorBackPads_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorBackPads_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorBackComponentNames stored property
+  //····················································································································
+
+  var mergerColorBackComponentNames : NSColor {
+    get {
+      return self.mergerColorBackComponentNames_property.propval
+    }
+    set {
+      self.mergerColorBackComponentNames_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorBackComponentNames_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorBackComponentValues stored property
+  //····················································································································
+
+  var mergerColorBackComponentValues : NSColor {
+    get {
+      return self.mergerColorBackComponentValues_property.propval
+    }
+    set {
+      self.mergerColorBackComponentValues_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorBackComponentValues_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorBackLegendTexts stored property
+  //····················································································································
+
+  var mergerColorBackLegendTexts : NSColor {
+    get {
+      return self.mergerColorBackLegendTexts_property.propval
+    }
+    set {
+      self.mergerColorBackLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorBackLegendTexts_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorBackPackages stored property
+  //····················································································································
+
+  var mergerColorBackPackages : NSColor {
+    get {
+      return self.mergerColorBackPackages_property.propval
+    }
+    set {
+      self.mergerColorBackPackages_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorBackPackages_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorBackTracks stored property
+  //····················································································································
+
+  var mergerColorBackTracks : NSColor {
+    get {
+      return self.mergerColorBackTracks_property.propval
+    }
+    set {
+      self.mergerColorBackTracks_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorBackTracks_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorBackLayoutTexts stored property
+  //····················································································································
+
+  var mergerColorBackLayoutTexts : NSColor {
+    get {
+      return self.mergerColorBackLayoutTexts_property.propval
+    }
+    set {
+      self.mergerColorBackLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorBackLayoutTexts_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackLayoutTexts_property.prop
     }
   }
 
@@ -2008,25 +2673,61 @@ var g_Preferences : Preferences? = nil
   //    Simple Stored Properties
   //····················································································································
 
-  var mergerHorizontalFlip_property = EBStoredProperty_Bool (false)
-  var mergerVerticalFlip_property = EBStoredProperty_Bool (false)
-  var mergerDisplayHoles_property = EBStoredProperty_Bool (true)
-  var mergerDisplayVias_property = EBStoredProperty_Bool (true)
-  var mergerDisplayFrontPads_property = EBStoredProperty_Bool (true)
-  var mergerDisplayBoardLimits_property = EBStoredProperty_Bool (true)
-  var mergerDisplayFrontComponentNames_property = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontComponentValues_property = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontPackages_property = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontLegendTexts_property = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontLayoutTracks_property = EBStoredProperty_Bool (false)
-  var mergerDisplayFrontLayoutTexts_property = EBStoredProperty_Bool (false)
-  var mergerDisplayBackPads_property = EBStoredProperty_Bool (true)
-  var mergerDisplayBackComponentNames_property = EBStoredProperty_Bool (false)
-  var mergerDisplayBackComponentValues_property = EBStoredProperty_Bool (false)
-  var mergerDisplayBackLegendTexts_property = EBStoredProperty_Bool (false)
-  var mergerDisplayBackPackages_property = EBStoredProperty_Bool (false)
-  var mergerDisplayBackLayoutTracks_property = EBStoredProperty_Bool (false)
-  var mergerDisplayBackLayoutTexts_property = EBStoredProperty_Bool (false)
+  var mergerModelViewHorizontalFlip_property = EBStoredProperty_Bool (false)
+  var mergerModelViewVerticalFlip_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayHoles_property = EBStoredProperty_Bool (true)
+  var mergerModelViewDisplayVias_property = EBStoredProperty_Bool (true)
+  var mergerModelViewDisplayFrontPads_property = EBStoredProperty_Bool (true)
+  var mergerModelViewDisplayBoardLimits_property = EBStoredProperty_Bool (true)
+  var mergerModelViewDisplayFrontComponentNames_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayFrontComponentValues_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayFrontPackages_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayFrontLegendTexts_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayFrontTracks_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayFrontLayoutTexts_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayBackPads_property = EBStoredProperty_Bool (true)
+  var mergerModelViewDisplayBackComponentNames_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayBackComponentValues_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayBackLegendTexts_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayBackPackages_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayBackTracks_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayBackLayoutTexts_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewHorizontalFlip_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewVerticalFlip_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayHoles_property = EBStoredProperty_Bool (true)
+  var mergerBoardViewDisplayVias_property = EBStoredProperty_Bool (true)
+  var mergerBoardViewDisplayFrontPads_property = EBStoredProperty_Bool (true)
+  var mergerBoardViewDisplayBoardLimits_property = EBStoredProperty_Bool (true)
+  var mergerBoardViewDisplayFrontComponentNames_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayFrontComponentValues_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayFrontPackages_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayFrontLegendTexts_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayFrontTracks_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayFrontLayoutTexts_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayBackPads_property = EBStoredProperty_Bool (true)
+  var mergerBoardViewDisplayBackComponentNames_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayBackComponentValues_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayBackLegendTexts_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayBackPackages_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayBackTracks_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayBackLayoutTexts_property = EBStoredProperty_Bool (false)
+  var mergerColorHoles_property = EBStoredProperty_NSColor (NSColor.white)
+  var mergerColorVias_property = EBStoredProperty_NSColor (NSColor.red)
+  var mergerColorFrontPads_property = EBStoredProperty_NSColor (NSColor.brown)
+  var mergerColorBoardLimits_property = EBStoredProperty_NSColor (NSColor.brown)
+  var mergerColorFrontComponentNames_property = EBStoredProperty_NSColor (NSColor.brown)
+  var mergerColorFrontComponentValues_property = EBStoredProperty_NSColor (NSColor.brown)
+  var mergerColorFrontPackages_property = EBStoredProperty_NSColor (NSColor.brown)
+  var mergerColorFrontLegendTexts_property = EBStoredProperty_NSColor (NSColor.brown)
+  var mergerColorFrontTracks_property = EBStoredProperty_NSColor (NSColor.blue)
+  var mergerColorFrontLayoutTexts_property = EBStoredProperty_NSColor (NSColor.blue)
+  var mergerColorBackPads_property = EBStoredProperty_NSColor (NSColor.orange)
+  var mergerColorBackComponentNames_property = EBStoredProperty_NSColor (NSColor.gray)
+  var mergerColorBackComponentValues_property = EBStoredProperty_NSColor (NSColor.gray)
+  var mergerColorBackLegendTexts_property = EBStoredProperty_NSColor (NSColor.gray)
+  var mergerColorBackPackages_property = EBStoredProperty_NSColor (NSColor.gray)
+  var mergerColorBackTracks_property = EBStoredProperty_NSColor (NSColor.green)
+  var mergerColorBackLayoutTexts_property = EBStoredProperty_NSColor (NSColor.green)
   var errorMessageColor_property = EBStoredProperty_NSColor (NSColor.red)
   var warningMessageColor_property = EBStoredProperty_NSColor (NSColor.orange)
   var successMessageColor_property = EBStoredProperty_NSColor (NSColor.blue)
@@ -2136,25 +2837,61 @@ var g_Preferences : Preferences? = nil
     super.init ()
     g_Preferences = self ;
   //--- Read from preferences
-    self.mergerHorizontalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerHorizontalFlip")
-    self.mergerVerticalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerVerticalFlip")
-    self.mergerDisplayHoles_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayHoles")
-    self.mergerDisplayVias_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayVias")
-    self.mergerDisplayFrontPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPads")
-    self.mergerDisplayBoardLimits_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBoardLimits")
-    self.mergerDisplayFrontComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentNames")
-    self.mergerDisplayFrontComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentValues")
-    self.mergerDisplayFrontPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPackages")
-    self.mergerDisplayFrontLegendTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLegendTexts")
-    self.mergerDisplayFrontLayoutTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTracks")
-    self.mergerDisplayFrontLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTexts")
-    self.mergerDisplayBackPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPads")
-    self.mergerDisplayBackComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentNames")
-    self.mergerDisplayBackComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentValues")
-    self.mergerDisplayBackLegendTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLegendTexts")
-    self.mergerDisplayBackPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPackages")
-    self.mergerDisplayBackLayoutTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTracks")
-    self.mergerDisplayBackLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTexts")
+    self.mergerModelViewHorizontalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewHorizontalFlip")
+    self.mergerModelViewVerticalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewVerticalFlip")
+    self.mergerModelViewDisplayHoles_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayHoles")
+    self.mergerModelViewDisplayVias_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayVias")
+    self.mergerModelViewDisplayFrontPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontPads")
+    self.mergerModelViewDisplayBoardLimits_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBoardLimits")
+    self.mergerModelViewDisplayFrontComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontComponentNames")
+    self.mergerModelViewDisplayFrontComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontComponentValues")
+    self.mergerModelViewDisplayFrontPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontPackages")
+    self.mergerModelViewDisplayFrontLegendTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontLegendTexts")
+    self.mergerModelViewDisplayFrontTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontTracks")
+    self.mergerModelViewDisplayFrontLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontLayoutTexts")
+    self.mergerModelViewDisplayBackPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackPads")
+    self.mergerModelViewDisplayBackComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackComponentNames")
+    self.mergerModelViewDisplayBackComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackComponentValues")
+    self.mergerModelViewDisplayBackLegendTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackLegendTexts")
+    self.mergerModelViewDisplayBackPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackPackages")
+    self.mergerModelViewDisplayBackTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackTracks")
+    self.mergerModelViewDisplayBackLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackLayoutTexts")
+    self.mergerBoardViewHorizontalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewHorizontalFlip")
+    self.mergerBoardViewVerticalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewVerticalFlip")
+    self.mergerBoardViewDisplayHoles_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayHoles")
+    self.mergerBoardViewDisplayVias_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayVias")
+    self.mergerBoardViewDisplayFrontPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontPads")
+    self.mergerBoardViewDisplayBoardLimits_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBoardLimits")
+    self.mergerBoardViewDisplayFrontComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontComponentNames")
+    self.mergerBoardViewDisplayFrontComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontComponentValues")
+    self.mergerBoardViewDisplayFrontPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontPackages")
+    self.mergerBoardViewDisplayFrontLegendTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontLegendTexts")
+    self.mergerBoardViewDisplayFrontTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontTracks")
+    self.mergerBoardViewDisplayFrontLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontLayoutTexts")
+    self.mergerBoardViewDisplayBackPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackPads")
+    self.mergerBoardViewDisplayBackComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackComponentNames")
+    self.mergerBoardViewDisplayBackComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackComponentValues")
+    self.mergerBoardViewDisplayBackLegendTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackLegendTexts")
+    self.mergerBoardViewDisplayBackPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackPackages")
+    self.mergerBoardViewDisplayBackTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackTracks")
+    self.mergerBoardViewDisplayBackLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackLayoutTexts")
+    self.mergerColorHoles_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorHoles")
+    self.mergerColorVias_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorVias")
+    self.mergerColorFrontPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontPads")
+    self.mergerColorBoardLimits_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBoardLimits")
+    self.mergerColorFrontComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontComponentNames")
+    self.mergerColorFrontComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontComponentValues")
+    self.mergerColorFrontPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontPackages")
+    self.mergerColorFrontLegendTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontLegendTexts")
+    self.mergerColorFrontTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontTracks")
+    self.mergerColorFrontLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontLayoutTexts")
+    self.mergerColorBackPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackPads")
+    self.mergerColorBackComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackComponentNames")
+    self.mergerColorBackComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackComponentValues")
+    self.mergerColorBackLegendTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackLegendTexts")
+    self.mergerColorBackPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackPackages")
+    self.mergerColorBackTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackTracks")
+    self.mergerColorBackLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackLayoutTexts")
     self.errorMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
     self.warningMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
     self.successMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:successMessageColor")
@@ -2443,82 +3180,6 @@ var g_Preferences : Preferences? = nil
   //--------------------------- Check mMenuRevealInFinder_symbols' outlet not nil
     if nil == mMenuRevealInFinder_symbols {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMenuRevealInFinder_symbols' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayBackComponenValuesCheckbox' outlet not nil
-    if nil == mMergerDisplayBackComponenValuesCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackComponenValuesCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayBackComponentNamesCheckbox' outlet not nil
-    if nil == mMergerDisplayBackComponentNamesCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackComponentNamesCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayBackLayoutTextsCheckbox' outlet not nil
-    if nil == mMergerDisplayBackLayoutTextsCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackLayoutTextsCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayBackLayoutTracksCheckbox' outlet not nil
-    if nil == mMergerDisplayBackLayoutTracksCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackLayoutTracksCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayBackLegendTextsCheckbox' outlet not nil
-    if nil == mMergerDisplayBackLegendTextsCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackLegendTextsCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayBackPackagesCheckbox' outlet not nil
-    if nil == mMergerDisplayBackPackagesCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackPackagesCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayBackPadsCheckbox' outlet not nil
-    if nil == mMergerDisplayBackPadsCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBackPadsCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayBoardLimitsCheckbox' outlet not nil
-    if nil == mMergerDisplayBoardLimitsCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayBoardLimitsCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayFrontComponenValuesCheckbox' outlet not nil
-    if nil == mMergerDisplayFrontComponenValuesCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontComponenValuesCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayFrontComponentNamesCheckbox' outlet not nil
-    if nil == mMergerDisplayFrontComponentNamesCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontComponentNamesCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayFrontLayoutTextsCheckbox' outlet not nil
-    if nil == mMergerDisplayFrontLayoutTextsCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontLayoutTextsCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayFrontLayoutTracksCheckbox' outlet not nil
-    if nil == mMergerDisplayFrontLayoutTracksCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontLayoutTracksCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayFrontLegendTextsCheckbox' outlet not nil
-    if nil == mMergerDisplayFrontLegendTextsCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontLegendTextsCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayFrontPackagesCheckbox' outlet not nil
-    if nil == mMergerDisplayFrontPackagesCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontPackagesCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayFrontPadsCheckbox' outlet not nil
-    if nil == mMergerDisplayFrontPadsCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayFrontPadsCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayHolesCheckbox' outlet not nil
-    if nil == mMergerDisplayHolesCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayHolesCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerDisplayViasCheckbox' outlet not nil
-    if nil == mMergerDisplayViasCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerDisplayViasCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerHorizontalFlipCheckbox' outlet not nil
-    if nil == mMergerHorizontalFlipCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerHorizontalFlipCheckbox' outlet is nil")
-    }
-  //--------------------------- Check mMergerVerticalFlipCheckbox' outlet not nil
-    if nil == mMergerVerticalFlipCheckbox {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mMergerVerticalFlipCheckbox' outlet is nil")
     }
   //--------------------------- Check mPackageBackgroundColorColorWell' outlet not nil
     if nil == mPackageBackgroundColorColorWell {
@@ -2852,25 +3513,6 @@ var g_Preferences : Preferences? = nil
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
   //--------------------------- Install bindings
-    mMergerHorizontalFlipCheckbox?.bind_value (self.mergerHorizontalFlip_property, file: #file, line: #line)
-    mMergerVerticalFlipCheckbox?.bind_value (self.mergerVerticalFlip_property, file: #file, line: #line)
-    mMergerDisplayHolesCheckbox?.bind_value (self.mergerDisplayHoles_property, file: #file, line: #line)
-    mMergerDisplayViasCheckbox?.bind_value (self.mergerDisplayVias_property, file: #file, line: #line)
-    mMergerDisplayFrontPadsCheckbox?.bind_value (self.mergerDisplayFrontPads_property, file: #file, line: #line)
-    mMergerDisplayBoardLimitsCheckbox?.bind_value (self.mergerDisplayBoardLimits_property, file: #file, line: #line)
-    mMergerDisplayFrontComponentNamesCheckbox?.bind_value (self.mergerDisplayFrontComponentNames_property, file: #file, line: #line)
-    mMergerDisplayFrontComponenValuesCheckbox?.bind_value (self.mergerDisplayFrontComponentValues_property, file: #file, line: #line)
-    mMergerDisplayFrontPackagesCheckbox?.bind_value (self.mergerDisplayFrontPackages_property, file: #file, line: #line)
-    mMergerDisplayFrontLegendTextsCheckbox?.bind_value (self.mergerDisplayFrontLegendTexts_property, file: #file, line: #line)
-    mMergerDisplayFrontLayoutTracksCheckbox?.bind_value (self.mergerDisplayFrontLayoutTracks_property, file: #file, line: #line)
-    mMergerDisplayFrontLayoutTextsCheckbox?.bind_value (self.mergerDisplayFrontLayoutTexts_property, file: #file, line: #line)
-    mMergerDisplayBackPadsCheckbox?.bind_value (self.mergerDisplayBackPads_property, file: #file, line: #line)
-    mMergerDisplayBackComponentNamesCheckbox?.bind_value (self.mergerDisplayBackComponentNames_property, file: #file, line: #line)
-    mMergerDisplayBackComponenValuesCheckbox?.bind_value (self.mergerDisplayBackComponentValues_property, file: #file, line: #line)
-    mMergerDisplayBackLegendTextsCheckbox?.bind_value (self.mergerDisplayBackLegendTexts_property, file: #file, line: #line)
-    mMergerDisplayBackPackagesCheckbox?.bind_value (self.mergerDisplayBackPackages_property, file: #file, line: #line)
-    mMergerDisplayBackLayoutTracksCheckbox?.bind_value (self.mergerDisplayBackLayoutTracks_property, file: #file, line: #line)
-    mMergerDisplayBackLayoutTextsCheckbox?.bind_value (self.mergerDisplayBackLayoutTexts_property, file: #file, line: #line)
     mErrorMessageColorColorWell?.bind_color (self.errorMessageColor_property, file: #file, line: #line, sendContinously:false)
     mWarningMessageColorColorWell?.bind_color (self.warningMessageColor_property, file: #file, line: #line, sendContinously:false)
     mSuccessMessageColorColorWell?.bind_color (self.successMessageColor_property, file: #file, line: #line, sendContinously:false)
@@ -2995,25 +3637,61 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   func applicationWillTerminateAction (_ : NSNotification) {
-    self.mergerHorizontalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerHorizontalFlip")
-    self.mergerVerticalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerVerticalFlip")
-    self.mergerDisplayHoles_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayHoles")
-    self.mergerDisplayVias_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayVias")
-    self.mergerDisplayFrontPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPads")
-    self.mergerDisplayBoardLimits_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBoardLimits")
-    self.mergerDisplayFrontComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentNames")
-    self.mergerDisplayFrontComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontComponentValues")
-    self.mergerDisplayFrontPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontPackages")
-    self.mergerDisplayFrontLegendTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLegendTexts")
-    self.mergerDisplayFrontLayoutTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTracks")
-    self.mergerDisplayFrontLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayFrontLayoutTexts")
-    self.mergerDisplayBackPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPads")
-    self.mergerDisplayBackComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentNames")
-    self.mergerDisplayBackComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackComponentValues")
-    self.mergerDisplayBackLegendTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLegendTexts")
-    self.mergerDisplayBackPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackPackages")
-    self.mergerDisplayBackLayoutTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTracks")
-    self.mergerDisplayBackLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerDisplayBackLayoutTexts")
+    self.mergerModelViewHorizontalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewHorizontalFlip")
+    self.mergerModelViewVerticalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewVerticalFlip")
+    self.mergerModelViewDisplayHoles_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayHoles")
+    self.mergerModelViewDisplayVias_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayVias")
+    self.mergerModelViewDisplayFrontPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontPads")
+    self.mergerModelViewDisplayBoardLimits_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBoardLimits")
+    self.mergerModelViewDisplayFrontComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontComponentNames")
+    self.mergerModelViewDisplayFrontComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontComponentValues")
+    self.mergerModelViewDisplayFrontPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontPackages")
+    self.mergerModelViewDisplayFrontLegendTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontLegendTexts")
+    self.mergerModelViewDisplayFrontTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontTracks")
+    self.mergerModelViewDisplayFrontLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontLayoutTexts")
+    self.mergerModelViewDisplayBackPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackPads")
+    self.mergerModelViewDisplayBackComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackComponentNames")
+    self.mergerModelViewDisplayBackComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackComponentValues")
+    self.mergerModelViewDisplayBackLegendTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackLegendTexts")
+    self.mergerModelViewDisplayBackPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackPackages")
+    self.mergerModelViewDisplayBackTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackTracks")
+    self.mergerModelViewDisplayBackLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackLayoutTexts")
+    self.mergerBoardViewHorizontalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewHorizontalFlip")
+    self.mergerBoardViewVerticalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewVerticalFlip")
+    self.mergerBoardViewDisplayHoles_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayHoles")
+    self.mergerBoardViewDisplayVias_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayVias")
+    self.mergerBoardViewDisplayFrontPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontPads")
+    self.mergerBoardViewDisplayBoardLimits_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBoardLimits")
+    self.mergerBoardViewDisplayFrontComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontComponentNames")
+    self.mergerBoardViewDisplayFrontComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontComponentValues")
+    self.mergerBoardViewDisplayFrontPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontPackages")
+    self.mergerBoardViewDisplayFrontLegendTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontLegendTexts")
+    self.mergerBoardViewDisplayFrontTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontTracks")
+    self.mergerBoardViewDisplayFrontLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontLayoutTexts")
+    self.mergerBoardViewDisplayBackPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackPads")
+    self.mergerBoardViewDisplayBackComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackComponentNames")
+    self.mergerBoardViewDisplayBackComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackComponentValues")
+    self.mergerBoardViewDisplayBackLegendTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackLegendTexts")
+    self.mergerBoardViewDisplayBackPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackPackages")
+    self.mergerBoardViewDisplayBackTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackTracks")
+    self.mergerBoardViewDisplayBackLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackLayoutTexts")
+    self.mergerColorHoles_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorHoles")
+    self.mergerColorVias_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorVias")
+    self.mergerColorFrontPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontPads")
+    self.mergerColorBoardLimits_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBoardLimits")
+    self.mergerColorFrontComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontComponentNames")
+    self.mergerColorFrontComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontComponentValues")
+    self.mergerColorFrontPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontPackages")
+    self.mergerColorFrontLegendTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontLegendTexts")
+    self.mergerColorFrontTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontTracks")
+    self.mergerColorFrontLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontLayoutTexts")
+    self.mergerColorBackPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackPads")
+    self.mergerColorBackComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackComponentNames")
+    self.mergerColorBackComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackComponentValues")
+    self.mergerColorBackLegendTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackLegendTexts")
+    self.mergerColorBackPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackPackages")
+    self.mergerColorBackTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackTracks")
+    self.mergerColorBackLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackLayoutTexts")
     self.errorMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
     self.warningMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
     self.successMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:successMessageColor")

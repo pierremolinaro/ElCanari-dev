@@ -14,11 +14,12 @@ import Cocoa
 func compute_MergerBoardInstanceEntity_viaLayerDisplay (
        _ self_x : Int,                                  
        _ self_y : Int,                                  
-       _ prefs_mergerDisplayVias : Bool,                
+       _ prefs_mergerColorVias : NSColor,               
+       _ prefs_mergerBoardViewDisplayVias : Bool,       
        _ self_myModel_viaShapes : MergerViaShapeArray?
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  return self_myModel_viaShapes!.buildPadShape (dx:self_x, dy:self_y, color:NSColor.red, display:prefs_mergerDisplayVias)
+  return self_myModel_viaShapes!.buildPadShape (dx:self_x, dy:self_y, color:prefs_mergerColorVias, display:prefs_mergerBoardViewDisplayVias)
 //--- END OF USER ZONE 2
 }
 

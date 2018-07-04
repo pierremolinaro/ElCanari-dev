@@ -14,15 +14,16 @@ import Cocoa
 func compute_MergerBoardInstanceEntity_backPadsDisplay (
        _ self_x : Int,                                  
        _ self_y : Int,                                  
-       _ prefs_mergerDisplayBackPads : Bool,            
+       _ prefs_mergerColorBackPads : NSColor,           
+       _ prefs_mergerBoardViewDisplayBackPads : Bool,   
        _ self_myModel_backPads : MergerPadArray?
 ) -> CALayer {
 //--- START OF USER ZONE 2
   return self_myModel_backPads!.buildShape (
     dx: self_x,
     dy: self_y,
-    color: NSColor.orange,
-    display: prefs_mergerDisplayBackPads
+    color: prefs_mergerColorBackPads,
+    display: prefs_mergerBoardViewDisplayBackPads
   )
 //--- END OF USER ZONE 2
 }

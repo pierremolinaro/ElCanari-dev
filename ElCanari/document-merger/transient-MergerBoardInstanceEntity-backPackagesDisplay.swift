@@ -14,15 +14,16 @@ import Cocoa
 func compute_MergerBoardInstanceEntity_backPackagesDisplay (
        _ self_x : Int,                                      
        _ self_y : Int,                                      
-       _ prefs_mergerDisplayBackPackages : Bool,            
+       _ prefs_mergerColorBackPackages : NSColor,           
+       _ prefs_mergerBoardViewDisplayBackPackages : Bool,   
        _ self_myModel_backPackagesSegments : MergerSegmentArray?
 ) -> CALayer {
 //--- START OF USER ZONE 2
   return self_myModel_backPackagesSegments!.buildLayer (
     dx:self_x,
     dy:self_y,
-    color:NSColor.blue,
-    display:prefs_mergerDisplayBackPackages
+    color:prefs_mergerColorBackPackages,
+    display:prefs_mergerBoardViewDisplayBackPackages
   )
 //--- END OF USER ZONE 2
 }

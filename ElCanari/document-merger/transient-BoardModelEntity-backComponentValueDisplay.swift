@@ -12,11 +12,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_BoardModelEntity_backComponentValueDisplay (
-       _ prefs_mergerDisplayBackComponentValues : Bool,  
+       _ prefs_mergerColorBackComponentValues : NSColor, 
+       _ prefs_mergerModelViewDisplayBackComponentValues : Bool,
        _ self_backComponentValueSegments : MergerSegmentArray
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  return self_backComponentValueSegments.buildLayer (color:NSColor.purple, display:prefs_mergerDisplayBackComponentValues)
+  return self_backComponentValueSegments.buildLayer (color:prefs_mergerColorBackComponentValues, display:prefs_mergerModelViewDisplayBackComponentValues)
 //--- END OF USER ZONE 2
 }
 

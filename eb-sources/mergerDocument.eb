@@ -100,7 +100,7 @@ entity BoardModelEntity {
   ;
 
   transient CALayer frontLegendTextsLayerDisplay
-     dependsFrom prefs.mergerDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
+     dependsFrom prefs.mergerColorFrontLegendTexts, prefs.mergerModelViewDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
 
 #--- Front Layout Texts
   toMany @cascading CanariSegmentEntity frontLayoutTexts ;
@@ -112,7 +112,7 @@ entity BoardModelEntity {
   ;
 
   transient CALayer frontLayoutTextsLayerDisplay
-     dependsFrom prefs.mergerDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
+     dependsFrom prefs.mergerColorFrontLayoutTexts, prefs.mergerModelViewDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
 
 #--- Back Legend Texts
   toMany @cascading CanariSegmentEntity backLegendTexts ;
@@ -124,7 +124,7 @@ entity BoardModelEntity {
   ;
 
   transient CALayer backLegendTextsLayerDisplay
-    dependsFrom prefs.mergerDisplayBackLegendTexts, self.backLegendTextsSegments ;
+    dependsFrom prefs.mergerColorBackLegendTexts, prefs.mergerModelViewDisplayBackLegendTexts, self.backLegendTextsSegments ;
 
 #--- Back Layout Texts
   toMany @cascading CanariSegmentEntity backLayoutTexts ;
@@ -136,7 +136,7 @@ entity BoardModelEntity {
   ;
 
   transient CALayer backLayoutTextsLayerDisplay
-    dependsFrom prefs.mergerDisplayBackLayoutTexts, self.backLayoutTextsSegments ;
+    dependsFrom prefs.mergerColorBackLayoutTexts, prefs.mergerModelViewDisplayBackLayoutTexts, self.backLayoutTextsSegments ;
 
 #--- Holes
   transient MergerHoleArray padsHoles
@@ -147,7 +147,7 @@ entity BoardModelEntity {
  
   transient MergerHoleArray holes dependsFrom self.padsHoles, self.viasHoles ;
 
-  transient CALayer holeLayerDisplay dependsFrom prefs.mergerDisplayHoles, self.holes ;
+  transient CALayer holeLayerDisplay dependsFrom prefs.mergerColorHoles, prefs.mergerModelViewDisplayHoles, self.holes ;
 
 #--- Vias 
   toMany @cascading BoardModelViaEntity vias ;
@@ -155,7 +155,7 @@ entity BoardModelEntity {
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
 
-  transient CALayer viaLayerDisplay dependsFrom prefs.mergerDisplayVias, self.viaShapes ;
+  transient CALayer viaLayerDisplay dependsFrom prefs.mergerColorVias, prefs.mergerModelViewDisplayVias, self.viaShapes ;
 
 #--- Pads
   toMany @cascading BoardModelPadEntity pads ;
@@ -165,24 +165,24 @@ entity BoardModelEntity {
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
 
-  transient CALayer frontPadsDisplay dependsFrom prefs.mergerDisplayFrontPads, self.frontPads ;
+  transient CALayer frontPadsDisplay dependsFrom prefs.mergerColorFrontPads, prefs.mergerModelViewDisplayFrontPads, self.frontPads ;
 
 #--- Back pads
   transient MergerPadArray backPads
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
 
-  transient CALayer backPadsDisplay dependsFrom prefs.mergerDisplayBackPads, self.backPads ;
+  transient CALayer backPadsDisplay dependsFrom prefs.mergerColorBackPads, prefs.mergerModelViewDisplayBackPads, self.backPads ;
 
 #--- Board limits
   property Int modelLimitWidth default 0 ;
   property Int modelLimitWidthUnit default 0 ;
 
   transient MergerBoardLimits boardLimits
-    dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth, prefs.mergerDisplayBoardLimits
+    dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth, prefs.mergerModelViewDisplayBoardLimits
   ;
 
-  transient CALayer boardLimitsDisplay dependsFrom prefs.mergerDisplayBoardLimits, self.boardLimits ;
+  transient CALayer boardLimitsDisplay dependsFrom prefs.mergerColorBoardLimits, prefs.mergerModelViewDisplayBoardLimits, self.boardLimits ;
  
 #--- Back component names
   toMany @cascading CanariSegmentEntity backComponentNames ;
@@ -194,7 +194,7 @@ entity BoardModelEntity {
   ;
 
   transient CALayer backComponentNameDisplay
-    dependsFrom prefs.mergerDisplayBackComponentNames, self.backComponentNameSegments ;
+    dependsFrom prefs.mergerColorBackComponentNames, prefs.mergerModelViewDisplayBackComponentNames, self.backComponentNameSegments ;
 
 #--- Front component names
   toMany @cascading CanariSegmentEntity frontComponentNames ;
@@ -206,7 +206,7 @@ entity BoardModelEntity {
   ;
 
   transient CALayer frontComponentNameDisplay
-    dependsFrom prefs.mergerDisplayFrontComponentNames, self.frontComponentNameSegments ;
+    dependsFrom prefs.mergerColorFrontComponentNames, prefs.mergerModelViewDisplayFrontComponentNames, self.frontComponentNameSegments ;
 
 #--- Front component values
   toMany @cascading CanariSegmentEntity frontComponentValues ;
@@ -218,7 +218,7 @@ entity BoardModelEntity {
   ;
 
   transient CALayer frontComponentValueDisplay
-     dependsFrom prefs.mergerDisplayFrontComponentValues, self.frontComponentValueSegments ;
+     dependsFrom prefs.mergerColorFrontComponentValues, prefs.mergerModelViewDisplayFrontComponentValues, self.frontComponentValueSegments ;
 
 #--- Back component values
   toMany @cascading CanariSegmentEntity backComponentValues ;
@@ -230,7 +230,7 @@ entity BoardModelEntity {
   ;
 
   transient CALayer backComponentValueDisplay
-    dependsFrom prefs.mergerDisplayBackComponentValues, self.backComponentValueSegments ;
+    dependsFrom prefs.mergerColorBackComponentValues,prefs.mergerModelViewDisplayBackComponentValues, self.backComponentValueSegments ;
 
 #--- Back tracks
   toMany @cascading CanariSegmentEntity backTracks ;
@@ -241,7 +241,7 @@ entity BoardModelEntity {
     self.backTracks.all.width
   ;
 
-  transient CALayer backTracksDisplay dependsFrom prefs.mergerDisplayBackLayoutTracks, self.backTrackSegments ;
+  transient CALayer backTracksDisplay dependsFrom prefs.mergerColorBackTracks, prefs.mergerModelViewDisplayBackTracks, self.backTrackSegments ;
 
 #--- Front tracks
   toMany @cascading CanariSegmentEntity frontTracks ;
@@ -253,7 +253,7 @@ entity BoardModelEntity {
   ;
 
   transient CALayer frontTracksDisplay
-    dependsFrom prefs.mergerDisplayFrontLayoutTracks, self.frontTrackSegments ;
+    dependsFrom prefs.mergerColorFrontTracks, prefs.mergerModelViewDisplayFrontTracks, self.frontTrackSegments ;
 
 #--- Front packages
   toMany @cascading CanariSegmentEntity frontPackages ;
@@ -265,7 +265,7 @@ entity BoardModelEntity {
   ;
 
   transient CALayer frontPackagesDisplay
-    dependsFrom prefs.mergerDisplayFrontPackages, self.frontPackagesSegments ;
+    dependsFrom prefs.mergerColorFrontPackages, prefs.mergerModelViewDisplayFrontPackages, self.frontPackagesSegments ;
 
 #--- Back packages
   toMany @cascading CanariSegmentEntity backPackages ;
@@ -276,7 +276,7 @@ entity BoardModelEntity {
     self.backPackages.all.width
   ;
 
-  transient CALayer backPackagesDisplay dependsFrom prefs.mergerDisplayBackPackages, self.backPackagesSegments ;
+  transient CALayer backPackagesDisplay dependsFrom prefs.mergerColorBackPackages, prefs.mergerModelViewDisplayBackPackages, self.backPackagesSegments ;
 
 #----
   transient CALayer modelLayerDisplay dependsFrom
@@ -315,59 +315,60 @@ entity MergerBoardInstanceEntity {
 #--- Limit width
   transient Int boardLimitWidth dependsFrom self.myModel.one.modelLimitWidth ;
 
+
 #--- Layer
   transient CALayer backgroundLayerDisplay dependsFrom self.instanceRect ;
 
   transient CALayer frontLegendTextsLayerDisplay
-     dependsFrom self.x, self.y, prefs.mergerDisplayFrontLegendTexts, self.myModel.one.frontLegendTextsSegments ;
+     dependsFrom self.x, self.y, prefs.mergerColorFrontLegendTexts, prefs.mergerBoardViewDisplayFrontLegendTexts, self.myModel.one.frontLegendTextsSegments ;
 
   transient CALayer frontLayoutTextsLayerDisplay
-     dependsFrom self.x, self.y, prefs.mergerDisplayFrontLayoutTexts, self.myModel.one.frontLayoutTextsSegments ;
+     dependsFrom self.x, self.y, prefs.mergerColorFrontLayoutTexts, prefs.mergerBoardViewDisplayFrontLayoutTexts, self.myModel.one.frontLayoutTextsSegments ;
 
   transient CALayer backLegendTextsLayerDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayBackLegendTexts, self.myModel.one.backLegendTextsSegments ;
+    dependsFrom self.x, self.y, prefs.mergerColorBackLegendTexts, prefs.mergerBoardViewDisplayBackLegendTexts, self.myModel.one.backLegendTextsSegments ;
 
   transient CALayer backLayoutTextsLayerDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayBackLayoutTexts, self.myModel.one.backLayoutTextsSegments ;
+    dependsFrom self.x, self.y, prefs.mergerColorBackLayoutTexts, prefs.mergerBoardViewDisplayBackLayoutTexts, self.myModel.one.backLayoutTextsSegments ;
 
   transient CALayer holeLayerDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayHoles, self.myModel.one.holes ;
+    dependsFrom self.x, self.y, prefs.mergerColorHoles, prefs.mergerBoardViewDisplayHoles, self.myModel.one.holes ;
 
   transient CALayer viaLayerDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayVias, self.myModel.one.viaShapes ;
+    dependsFrom self.x, self.y, prefs.mergerColorVias, prefs.mergerBoardViewDisplayVias, self.myModel.one.viaShapes ;
 
   transient CALayer frontPadsDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayFrontPads, self.myModel.one.frontPads ;
+    dependsFrom self.x, self.y, prefs.mergerColorFrontPads, prefs.mergerBoardViewDisplayFrontPads, self.myModel.one.frontPads ;
 
   transient CALayer backPadsDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayBackPads, self.myModel.one.backPads ;
+    dependsFrom self.x, self.y, prefs.mergerColorBackPads, prefs.mergerBoardViewDisplayBackPads, self.myModel.one.backPads ;
 
   transient CALayer boardLimitsDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayBoardLimits, self.myModel.one.boardLimits ;
+    dependsFrom self.x, self.y, prefs.mergerColorBoardLimits, prefs.mergerBoardViewDisplayBoardLimits, self.myModel.one.boardLimits ;
 
   transient CALayer backComponentNameDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayBackComponentNames, self.myModel.one.backComponentNameSegments ;
+    dependsFrom self.x, self.y, prefs.mergerColorBackComponentNames, prefs.mergerBoardViewDisplayBackComponentNames, self.myModel.one.backComponentNameSegments ;
 
   transient CALayer frontComponentNameDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayFrontComponentNames, self.myModel.one.frontComponentNameSegments ;
+    dependsFrom self.x, self.y, prefs.mergerColorFrontComponentNames, prefs.mergerBoardViewDisplayFrontComponentNames, self.myModel.one.frontComponentNameSegments ;
 
   transient CALayer frontComponentValueDisplay
-     dependsFrom self.x, self.y, prefs.mergerDisplayFrontComponentValues, self.myModel.one.frontComponentValueSegments ;
+     dependsFrom self.x, self.y, prefs.mergerColorFrontComponentValues, prefs.mergerBoardViewDisplayFrontComponentValues, self.myModel.one.frontComponentValueSegments ;
 
   transient CALayer backComponentValueDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayBackComponentValues, self.myModel.one.backComponentValueSegments ;
+    dependsFrom self.x, self.y, prefs.mergerColorBackComponentValues, prefs.mergerBoardViewDisplayBackComponentValues, self.myModel.one.backComponentValueSegments ;
 
   transient CALayer backTracksDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayBackLayoutTracks, self.myModel.one.backTrackSegments ;
+    dependsFrom self.x, self.y, prefs.mergerColorBackTracks, prefs.mergerBoardViewDisplayBackTracks, self.myModel.one.backTrackSegments ;
 
   transient CALayer frontTracksDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayFrontLayoutTracks, self.myModel.one.frontTrackSegments ;
+    dependsFrom self.x, self.y, prefs.mergerColorFrontTracks, prefs.mergerBoardViewDisplayFrontTracks, self.myModel.one.frontTrackSegments ;
 
   transient CALayer frontPackagesDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayFrontPackages, self.myModel.one.frontPackagesSegments ;
+    dependsFrom self.x, self.y, prefs.mergerColorFrontPackages, prefs.mergerBoardViewDisplayFrontPackages, self.myModel.one.frontPackagesSegments ;
 
   transient CALayer backPackagesDisplay
-    dependsFrom self.x, self.y, prefs.mergerDisplayBackPackages, self.myModel.one.backPackagesSegments ;
+    dependsFrom self.x, self.y, prefs.mergerColorBackPackages, prefs.mergerBoardViewDisplayBackPackages, self.myModel.one.backPackagesSegments ;
 
   transient CALayer instanceLayerDisplay dependsFrom
     self.backgroundLayerDisplay,
@@ -423,7 +424,87 @@ document PMMergerDocument root MergerRootEntity {
 
 #--- Show Preferences for setting display
   action showPrefsForSettingMergerDisplayAction ;
-  outlet EBButton showPrefsForSettingMergerDisplayButton $run self.showPrefsForSettingMergerDisplayAction ;
+  outlet EBButton showPrefsForSettingMergerDisplayButton
+    $run self.showPrefsForSettingMergerDisplayAction
+    $enabled root.selectedPageIndex <= 1 ;
+
+#------------------------------------- Display setting panel
+  outlet NSView mDisplaySettingView $hidden root.selectedPageIndex > 1  ;
+
+  outlet EBSwitch mModelViewHorizontalFlipCheckbox $value prefs.mergerModelViewHorizontalFlip ;
+  outlet EBSwitch mModelViewVerticalFlipCheckbox $value prefs.mergerModelViewVerticalFlip ;
+  outlet EBSwitch mModelViewDisplayHolesCheckbox $value prefs.mergerModelViewDisplayHoles ;
+  outlet EBSwitch mModelViewDisplayViasCheckbox $value prefs.mergerModelViewDisplayVias ;
+  outlet EBSwitch mModelViewDisplayFrontPadsCheckbox $value prefs.mergerModelViewDisplayFrontPads ;
+  outlet EBSwitch mModelViewDisplayBoardLimitsCheckbox $value prefs.mergerModelViewDisplayBoardLimits ;
+  outlet EBSwitch mModelViewDisplayFrontComponentNamesCheckbox $value prefs.mergerModelViewDisplayFrontComponentNames ;
+  outlet EBSwitch mModelViewDisplayFrontComponenValuesCheckbox $value prefs.mergerModelViewDisplayFrontComponentValues ;
+  outlet EBSwitch mModelViewDisplayFrontPackagesCheckbox $value prefs.mergerModelViewDisplayFrontPackages ;
+  outlet EBSwitch mModelViewDisplayFrontLegendTextsCheckbox $value prefs.mergerModelViewDisplayFrontLegendTexts ;
+  outlet EBSwitch mModelViewDisplayFrontTracksCheckbox $value prefs.mergerModelViewDisplayFrontTracks ;
+  outlet EBSwitch mModelViewDisplayFrontLayoutTextsCheckbox $value prefs.mergerModelViewDisplayFrontLayoutTexts ;
+  outlet EBSwitch mModelViewDisplayBackPadsCheckbox $value prefs.mergerModelViewDisplayBackPads ;
+  outlet EBSwitch mModelViewDisplayBackComponentNamesCheckbox $value prefs.mergerModelViewDisplayBackComponentNames ;
+  outlet EBSwitch mModelViewDisplayBackComponenValuesCheckbox $value prefs.mergerModelViewDisplayBackComponentValues ;
+  outlet EBSwitch mModelViewDisplayBackLegendTextsCheckbox $value prefs.mergerModelViewDisplayBackLegendTexts ;
+  outlet EBSwitch mModelViewDisplayBackPackagesCheckbox $value prefs.mergerModelViewDisplayBackPackages ;
+  outlet EBSwitch mModelViewDisplayBackTracksCheckbox $value prefs.mergerModelViewDisplayBackTracks ;
+  outlet EBSwitch mModelViewDisplayBackLayoutTextsCheckbox $value prefs.mergerModelViewDisplayBackLayoutTexts ;
+
+  outlet EBSwitch mBoardViewHorizontalFlipCheckbox $value prefs.mergerBoardViewHorizontalFlip ;
+  outlet EBSwitch mBoardViewVerticalFlipCheckbox $value prefs.mergerBoardViewVerticalFlip ;
+  outlet EBSwitch mBoardViewDisplayHolesCheckbox $value prefs.mergerBoardViewDisplayHoles ;
+  outlet EBSwitch mBoardViewDisplayViasCheckbox $value prefs.mergerBoardViewDisplayVias ;
+  outlet EBSwitch mBoardViewDisplayFrontPadsCheckbox $value prefs.mergerBoardViewDisplayFrontPads ;
+  outlet EBSwitch mBoardViewDisplayBoardLimitsCheckbox $value prefs.mergerBoardViewDisplayBoardLimits ;
+  outlet EBSwitch mBoardViewDisplayFrontComponentNamesCheckbox $value prefs.mergerBoardViewDisplayFrontComponentNames ;
+  outlet EBSwitch mBoardViewDisplayFrontComponenValuesCheckbox $value prefs.mergerBoardViewDisplayFrontComponentValues ;
+  outlet EBSwitch mBoardViewDisplayFrontPackagesCheckbox $value prefs.mergerBoardViewDisplayFrontPackages ;
+  outlet EBSwitch mBoardViewDisplayFrontLegendTextsCheckbox $value prefs.mergerBoardViewDisplayFrontLegendTexts ;
+  outlet EBSwitch mBoardViewDisplayFrontTracksCheckbox $value prefs.mergerBoardViewDisplayFrontTracks ;
+  outlet EBSwitch mBoardViewDisplayFrontLayoutTextsCheckbox $value prefs.mergerBoardViewDisplayFrontLayoutTexts ;
+  outlet EBSwitch mBoardViewDisplayBackPadsCheckbox $value prefs.mergerBoardViewDisplayBackPads ;
+  outlet EBSwitch mBoardViewDisplayBackComponentNamesCheckbox $value prefs.mergerBoardViewDisplayBackComponentNames ;
+  outlet EBSwitch mBoardViewDisplayBackComponenValuesCheckbox $value prefs.mergerBoardViewDisplayBackComponentValues ;
+  outlet EBSwitch mBoardViewDisplayBackLegendTextsCheckbox $value prefs.mergerBoardViewDisplayBackLegendTexts ;
+  outlet EBSwitch mBoardViewDisplayBackPackagesCheckbox $value prefs.mergerBoardViewDisplayBackPackages ;
+  outlet EBSwitch mBoardViewDisplayBackTracksCheckbox $value prefs.mergerBoardViewDisplayBackTracks ;
+  outlet EBSwitch mBoardViewDisplayBackLayoutTextsCheckbox $value prefs.mergerBoardViewDisplayBackLayoutTexts ;
+
+  outlet EBColorWell mergerViewDisplayHolesColorWell
+    $color prefs.mergerColorHoles {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayViasColorWell
+    $color prefs.mergerColorVias {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayFrontPadsColorWell
+    $color prefs.mergerColorFrontPads {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayBoardLimitsColorWell
+    $color prefs.mergerColorBoardLimits {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayFrontComponentNamesColorWell
+    $color prefs.mergerColorFrontComponentNames {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayFrontComponentValuesColorWell
+    $color prefs.mergerColorFrontComponentValues {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayFrontPackagesColorWell
+    $color prefs.mergerColorFrontPackages {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayFrontLegendTextsColorWell
+    $color prefs.mergerColorFrontLegendTexts {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayFrontTracksColorWell
+    $color prefs.mergerColorFrontTracks {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayFrontLayoutTextsColorWell
+    $color prefs.mergerColorFrontLayoutTexts {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayBackPadsColorWell
+    $color prefs.mergerColorBackPads {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayBackComponentNamesColorWell
+    $color prefs.mergerColorBackComponentNames {sendContinously:no} ; 
+  outlet EBColorWell mergerViewDisplayBackComponentValuesColorWell
+    $color prefs.mergerColorBackComponentValues {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayBackLegendTextsColorWell
+    $color prefs.mergerColorBackLegendTexts {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayBackPackagesColorWell
+    $color prefs.mergerColorBackPackages {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayBackTracksColorWell
+    $color prefs.mergerColorBackTracks {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayBackLayoutTextsColorWell
+    $color prefs.mergerColorBackLayoutTexts {sendContinously:no} ;
 
 #------------------------------------- Model Page
 #--- Add board model
@@ -478,8 +559,8 @@ document PMMergerDocument root MergerRootEntity {
   outlet CanariBoardModelView mBoardModelView
     $size mBoardModelSelection.modelWidth, mBoardModelSelection.modelHeight
     $zoom mBoardModelSelection.zoom
-    $horizontalFlip prefs.mergerHorizontalFlip
-    $verticalFlip prefs.mergerVerticalFlip
+    $horizontalFlip prefs.mergerModelViewHorizontalFlip
+    $verticalFlip prefs.mergerModelViewVerticalFlip
     $objectLayer mBoardModelSelection.modelLayerDisplay
   ;
 
@@ -504,6 +585,8 @@ document PMMergerDocument root MergerRootEntity {
   outlet CanariBoardModelView mComposedBoardView
     $size root.boardWidth, root.boardHeight
     $zoom root.zoom
+    $horizontalFlip prefs.mergerBoardViewHorizontalFlip
+    $verticalFlip prefs.mergerBoardViewVerticalFlip
     $objectLayer root.instancesLayerDisplay
   ;
   

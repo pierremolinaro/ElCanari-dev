@@ -1116,7 +1116,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.frontLegendTextsLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayFrontLegendTexts_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorFrontLegendTexts_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontLegendTexts_property_selection.kind ()
         kind &= unwSelf.frontLegendTextsSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1124,9 +1125,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontLegendTexts_property_selection, unwSelf.frontLegendTextsSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_frontLegendTextsLayerDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorFrontLegendTexts_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendTexts_property_selection, unwSelf.frontLegendTextsSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_frontLegendTextsLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1161,7 +1162,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.frontLayoutTextsLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayFrontLayoutTexts_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorFrontLayoutTexts_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontLayoutTexts_property_selection.kind ()
         kind &= unwSelf.frontLayoutTextsSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1169,9 +1171,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontLayoutTexts_property_selection, unwSelf.frontLayoutTextsSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_frontLayoutTextsLayerDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorFrontLayoutTexts_property_selection, g_Preferences!.mergerModelViewDisplayFrontLayoutTexts_property_selection, unwSelf.frontLayoutTextsSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_frontLayoutTextsLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1206,7 +1208,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.backLegendTextsLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayBackLegendTexts_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorBackLegendTexts_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackLegendTexts_property_selection.kind ()
         kind &= unwSelf.backLegendTextsSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1214,9 +1217,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackLegendTexts_property_selection, unwSelf.backLegendTextsSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_backLegendTextsLayerDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorBackLegendTexts_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendTexts_property_selection, unwSelf.backLegendTextsSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_backLegendTextsLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1251,7 +1254,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.backLayoutTextsLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayBackLayoutTexts_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorBackLayoutTexts_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackLayoutTexts_property_selection.kind ()
         kind &= unwSelf.backLayoutTextsSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1259,9 +1263,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackLayoutTexts_property_selection, unwSelf.backLayoutTextsSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_backLayoutTextsLayerDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorBackLayoutTexts_property_selection, g_Preferences!.mergerModelViewDisplayBackLayoutTexts_property_selection, unwSelf.backLayoutTextsSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_backLayoutTextsLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1337,7 +1341,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.holeLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayHoles_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorHoles_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayHoles_property_selection.kind ()
         kind &= unwSelf.holes_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1345,9 +1350,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayHoles_property_selection, unwSelf.holes_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_holeLayerDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorHoles_property_selection, g_Preferences!.mergerModelViewDisplayHoles_property_selection, unwSelf.holes_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_holeLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1380,7 +1385,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.viaLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayVias_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorVias_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayVias_property_selection.kind ()
         kind &= unwSelf.viaShapes_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1388,9 +1394,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayVias_property_selection, unwSelf.viaShapes_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_viaLayerDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorVias_property_selection, g_Preferences!.mergerModelViewDisplayVias_property_selection, unwSelf.viaShapes_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_viaLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1428,7 +1434,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.frontPadsDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayFrontPads_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorFrontPads_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontPads_property_selection.kind ()
         kind &= unwSelf.frontPads_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1436,9 +1443,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontPads_property_selection, unwSelf.frontPads_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_frontPadsDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorFrontPads_property_selection, g_Preferences!.mergerModelViewDisplayFrontPads_property_selection, unwSelf.frontPads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_frontPadsDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1476,7 +1483,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.backPadsDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayBackPads_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorBackPads_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackPads_property_selection.kind ()
         kind &= unwSelf.backPads_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1484,9 +1492,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackPads_property_selection, unwSelf.backPads_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_backPadsDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorBackPads_property_selection, g_Preferences!.mergerModelViewDisplayBackPads_property_selection, unwSelf.backPads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_backPadsDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1500,14 +1508,14 @@ class BoardModelEntity : EBManagedObject,
         var kind = unwSelf.modelWidth_property_selection.kind ()
         kind &= unwSelf.modelHeight_property_selection.kind ()
         kind &= unwSelf.modelLimitWidth_property_selection.kind ()
-        kind &= g_Preferences!.mergerDisplayBoardLimits_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.modelLimitWidth_property_selection, g_Preferences!.mergerDisplayBoardLimits_property_selection) {
+          switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.modelLimitWidth_property_selection, g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (compute_BoardModelEntity_boardLimits (v0, v1, v2, v3))
           default :
@@ -1520,7 +1528,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.boardLimitsDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayBoardLimits_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorBoardLimits_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection.kind ()
         kind &= unwSelf.boardLimits_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1528,9 +1537,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBoardLimits_property_selection, unwSelf.boardLimits_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_boardLimitsDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorBoardLimits_property_selection, g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection, unwSelf.boardLimits_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_boardLimitsDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1565,7 +1574,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.backComponentNameDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayBackComponentNames_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorBackComponentNames_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackComponentNames_property_selection.kind ()
         kind &= unwSelf.backComponentNameSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1573,9 +1583,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackComponentNames_property_selection, unwSelf.backComponentNameSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_backComponentNameDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorBackComponentNames_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentNames_property_selection, unwSelf.backComponentNameSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_backComponentNameDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1610,7 +1620,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.frontComponentNameDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayFrontComponentNames_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorFrontComponentNames_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontComponentNames_property_selection.kind ()
         kind &= unwSelf.frontComponentNameSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1618,9 +1629,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontComponentNames_property_selection, unwSelf.frontComponentNameSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_frontComponentNameDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorFrontComponentNames_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentNames_property_selection, unwSelf.frontComponentNameSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_frontComponentNameDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1655,7 +1666,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.frontComponentValueDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayFrontComponentValues_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorFrontComponentValues_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontComponentValues_property_selection.kind ()
         kind &= unwSelf.frontComponentValueSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1663,9 +1675,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontComponentValues_property_selection, unwSelf.frontComponentValueSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_frontComponentValueDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorFrontComponentValues_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentValues_property_selection, unwSelf.frontComponentValueSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_frontComponentValueDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1700,7 +1712,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.backComponentValueDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayBackComponentValues_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorBackComponentValues_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackComponentValues_property_selection.kind ()
         kind &= unwSelf.backComponentValueSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1708,9 +1721,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackComponentValues_property_selection, unwSelf.backComponentValueSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_backComponentValueDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorBackComponentValues_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentValues_property_selection, unwSelf.backComponentValueSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_backComponentValueDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1745,7 +1758,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.backTracksDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayBackLayoutTracks_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorBackTracks_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackTracks_property_selection.kind ()
         kind &= unwSelf.backTrackSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1753,9 +1767,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackLayoutTracks_property_selection, unwSelf.backTrackSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_backTracksDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorBackTracks_property_selection, g_Preferences!.mergerModelViewDisplayBackTracks_property_selection, unwSelf.backTrackSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_backTracksDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1790,7 +1804,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.frontTracksDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayFrontLayoutTracks_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorFrontTracks_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontTracks_property_selection.kind ()
         kind &= unwSelf.frontTrackSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1798,9 +1813,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontLayoutTracks_property_selection, unwSelf.frontTrackSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_frontTracksDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorFrontTracks_property_selection, g_Preferences!.mergerModelViewDisplayFrontTracks_property_selection, unwSelf.frontTrackSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_frontTracksDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1835,7 +1850,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.frontPackagesDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayFrontPackages_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorFrontPackages_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontPackages_property_selection.kind ()
         kind &= unwSelf.frontPackagesSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1843,9 +1859,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayFrontPackages_property_selection, unwSelf.frontPackagesSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_frontPackagesDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorFrontPackages_property_selection, g_Preferences!.mergerModelViewDisplayFrontPackages_property_selection, unwSelf.frontPackagesSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_frontPackagesDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1880,7 +1896,8 @@ class BoardModelEntity : EBManagedObject,
     }
     self.backPackagesDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = g_Preferences!.mergerDisplayBackPackages_property_selection.kind ()
+        var kind = g_Preferences!.mergerColorBackPackages_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackPackages_property_selection.kind ()
         kind &= unwSelf.backPackagesSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -1888,9 +1905,9 @@ class BoardModelEntity : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerDisplayBackPackages_property_selection, unwSelf.backPackagesSegments_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModelEntity_backPackagesDisplay (v0, v1))
+          switch (g_Preferences!.mergerColorBackPackages_property_selection, g_Preferences!.mergerModelViewDisplayBackPackages_property_selection, unwSelf.backPackagesSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModelEntity_backPackagesDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1942,28 +1959,32 @@ class BoardModelEntity : EBManagedObject,
     self.frontLegendTexts_property.addEBObserverOf_x2 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_y2 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_width (self.frontLegendTextsSegments_property)
-    g_Preferences?.mergerDisplayFrontLegendTexts_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerColorFrontLegendTexts_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontLegendTexts_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
     self.frontLegendTextsSegments_property.addEBObserver (self.frontLegendTextsLayerDisplay_property)
     self.frontLayoutTexts_property.addEBObserverOf_x1 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.addEBObserverOf_y1 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.addEBObserverOf_x2 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.addEBObserverOf_y2 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.addEBObserverOf_width (self.frontLayoutTextsSegments_property)
-    g_Preferences?.mergerDisplayFrontLayoutTexts_property.addEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerColorFrontLayoutTexts_property.addEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontLayoutTexts_property.addEBObserver (self.frontLayoutTextsLayerDisplay_property)
     self.frontLayoutTextsSegments_property.addEBObserver (self.frontLayoutTextsLayerDisplay_property)
     self.backLegendTexts_property.addEBObserverOf_x1 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.addEBObserverOf_y1 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.addEBObserverOf_x2 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.addEBObserverOf_y2 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.addEBObserverOf_width (self.backLegendTextsSegments_property)
-    g_Preferences?.mergerDisplayBackLegendTexts_property.addEBObserver (self.backLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerColorBackLegendTexts_property.addEBObserver (self.backLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackLegendTexts_property.addEBObserver (self.backLegendTextsLayerDisplay_property)
     self.backLegendTextsSegments_property.addEBObserver (self.backLegendTextsLayerDisplay_property)
     self.backLayoutTexts_property.addEBObserverOf_x1 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_y1 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_x2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_y2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_width (self.backLayoutTextsSegments_property)
-    g_Preferences?.mergerDisplayBackLayoutTexts_property.addEBObserver (self.backLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerColorBackLayoutTexts_property.addEBObserver (self.backLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackLayoutTexts_property.addEBObserver (self.backLayoutTextsLayerDisplay_property)
     self.backLayoutTextsSegments_property.addEBObserver (self.backLayoutTextsLayerDisplay_property)
     self.pads_property.addEBObserverOf_x (self.padsHoles_property)
     self.pads_property.addEBObserverOf_y (self.padsHoles_property)
@@ -1973,12 +1994,14 @@ class BoardModelEntity : EBManagedObject,
     self.vias_property.addEBObserverOf_holeDiameter (self.viasHoles_property)
     self.padsHoles_property.addEBObserver (self.holes_property)
     self.viasHoles_property.addEBObserver (self.holes_property)
-    g_Preferences?.mergerDisplayHoles_property.addEBObserver (self.holeLayerDisplay_property)
+    g_Preferences?.mergerColorHoles_property.addEBObserver (self.holeLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayHoles_property.addEBObserver (self.holeLayerDisplay_property)
     self.holes_property.addEBObserver (self.holeLayerDisplay_property)
     self.vias_property.addEBObserverOf_x (self.viaShapes_property)
     self.vias_property.addEBObserverOf_y (self.viaShapes_property)
     self.vias_property.addEBObserverOf_padDiameter (self.viaShapes_property)
-    g_Preferences?.mergerDisplayVias_property.addEBObserver (self.viaLayerDisplay_property)
+    g_Preferences?.mergerColorVias_property.addEBObserver (self.viaLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayVias_property.addEBObserver (self.viaLayerDisplay_property)
     self.viaShapes_property.addEBObserver (self.viaLayerDisplay_property)
     self.pads_property.addEBObserverOf_x (self.frontPads_property)
     self.pads_property.addEBObserverOf_y (self.frontPads_property)
@@ -1988,7 +2011,8 @@ class BoardModelEntity : EBManagedObject,
     self.pads_property.addEBObserverOf_shape (self.frontPads_property)
     self.pads_property.addEBObserverOf_side (self.frontPads_property)
     self.pads_property.addEBObserverOf_rotation (self.frontPads_property)
-    g_Preferences?.mergerDisplayFrontPads_property.addEBObserver (self.frontPadsDisplay_property)
+    g_Preferences?.mergerColorFrontPads_property.addEBObserver (self.frontPadsDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontPads_property.addEBObserver (self.frontPadsDisplay_property)
     self.frontPads_property.addEBObserver (self.frontPadsDisplay_property)
     self.pads_property.addEBObserverOf_x (self.backPads_property)
     self.pads_property.addEBObserverOf_y (self.backPads_property)
@@ -1998,69 +2022,79 @@ class BoardModelEntity : EBManagedObject,
     self.pads_property.addEBObserverOf_shape (self.backPads_property)
     self.pads_property.addEBObserverOf_side (self.backPads_property)
     self.pads_property.addEBObserverOf_rotation (self.backPads_property)
-    g_Preferences?.mergerDisplayBackPads_property.addEBObserver (self.backPadsDisplay_property)
+    g_Preferences?.mergerColorBackPads_property.addEBObserver (self.backPadsDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackPads_property.addEBObserver (self.backPadsDisplay_property)
     self.backPads_property.addEBObserver (self.backPadsDisplay_property)
     self.modelWidth_property.addEBObserver (self.boardLimits_property)
     self.modelHeight_property.addEBObserver (self.boardLimits_property)
     self.modelLimitWidth_property.addEBObserver (self.boardLimits_property)
-    g_Preferences?.mergerDisplayBoardLimits_property.addEBObserver (self.boardLimits_property)
-    g_Preferences?.mergerDisplayBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.boardLimits_property)
+    g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
     self.boardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
     self.backComponentNames_property.addEBObserverOf_x1 (self.backComponentNameSegments_property)
     self.backComponentNames_property.addEBObserverOf_y1 (self.backComponentNameSegments_property)
     self.backComponentNames_property.addEBObserverOf_x2 (self.backComponentNameSegments_property)
     self.backComponentNames_property.addEBObserverOf_y2 (self.backComponentNameSegments_property)
     self.backComponentNames_property.addEBObserverOf_width (self.backComponentNameSegments_property)
-    g_Preferences?.mergerDisplayBackComponentNames_property.addEBObserver (self.backComponentNameDisplay_property)
+    g_Preferences?.mergerColorBackComponentNames_property.addEBObserver (self.backComponentNameDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackComponentNames_property.addEBObserver (self.backComponentNameDisplay_property)
     self.backComponentNameSegments_property.addEBObserver (self.backComponentNameDisplay_property)
     self.frontComponentNames_property.addEBObserverOf_x1 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.addEBObserverOf_y1 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.addEBObserverOf_x2 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.addEBObserverOf_y2 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.addEBObserverOf_width (self.frontComponentNameSegments_property)
-    g_Preferences?.mergerDisplayFrontComponentNames_property.addEBObserver (self.frontComponentNameDisplay_property)
+    g_Preferences?.mergerColorFrontComponentNames_property.addEBObserver (self.frontComponentNameDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontComponentNames_property.addEBObserver (self.frontComponentNameDisplay_property)
     self.frontComponentNameSegments_property.addEBObserver (self.frontComponentNameDisplay_property)
     self.frontComponentValues_property.addEBObserverOf_x1 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.addEBObserverOf_y1 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.addEBObserverOf_x2 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.addEBObserverOf_y2 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.addEBObserverOf_width (self.frontComponentValueSegments_property)
-    g_Preferences?.mergerDisplayFrontComponentValues_property.addEBObserver (self.frontComponentValueDisplay_property)
+    g_Preferences?.mergerColorFrontComponentValues_property.addEBObserver (self.frontComponentValueDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontComponentValues_property.addEBObserver (self.frontComponentValueDisplay_property)
     self.frontComponentValueSegments_property.addEBObserver (self.frontComponentValueDisplay_property)
     self.backComponentValues_property.addEBObserverOf_x1 (self.backComponentValueSegments_property)
     self.backComponentValues_property.addEBObserverOf_y1 (self.backComponentValueSegments_property)
     self.backComponentValues_property.addEBObserverOf_x2 (self.backComponentValueSegments_property)
     self.backComponentValues_property.addEBObserverOf_y2 (self.backComponentValueSegments_property)
     self.backComponentValues_property.addEBObserverOf_width (self.backComponentValueSegments_property)
-    g_Preferences?.mergerDisplayBackComponentValues_property.addEBObserver (self.backComponentValueDisplay_property)
+    g_Preferences?.mergerColorBackComponentValues_property.addEBObserver (self.backComponentValueDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackComponentValues_property.addEBObserver (self.backComponentValueDisplay_property)
     self.backComponentValueSegments_property.addEBObserver (self.backComponentValueDisplay_property)
     self.backTracks_property.addEBObserverOf_x1 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_y1 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_x2 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_y2 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_width (self.backTrackSegments_property)
-    g_Preferences?.mergerDisplayBackLayoutTracks_property.addEBObserver (self.backTracksDisplay_property)
+    g_Preferences?.mergerColorBackTracks_property.addEBObserver (self.backTracksDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackTracks_property.addEBObserver (self.backTracksDisplay_property)
     self.backTrackSegments_property.addEBObserver (self.backTracksDisplay_property)
     self.frontTracks_property.addEBObserverOf_x1 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_y1 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_x2 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_y2 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_width (self.frontTrackSegments_property)
-    g_Preferences?.mergerDisplayFrontLayoutTracks_property.addEBObserver (self.frontTracksDisplay_property)
+    g_Preferences?.mergerColorFrontTracks_property.addEBObserver (self.frontTracksDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontTracks_property.addEBObserver (self.frontTracksDisplay_property)
     self.frontTrackSegments_property.addEBObserver (self.frontTracksDisplay_property)
     self.frontPackages_property.addEBObserverOf_x1 (self.frontPackagesSegments_property)
     self.frontPackages_property.addEBObserverOf_y1 (self.frontPackagesSegments_property)
     self.frontPackages_property.addEBObserverOf_x2 (self.frontPackagesSegments_property)
     self.frontPackages_property.addEBObserverOf_y2 (self.frontPackagesSegments_property)
     self.frontPackages_property.addEBObserverOf_width (self.frontPackagesSegments_property)
-    g_Preferences?.mergerDisplayFrontPackages_property.addEBObserver (self.frontPackagesDisplay_property)
+    g_Preferences?.mergerColorFrontPackages_property.addEBObserver (self.frontPackagesDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontPackages_property.addEBObserver (self.frontPackagesDisplay_property)
     self.frontPackagesSegments_property.addEBObserver (self.frontPackagesDisplay_property)
     self.backPackages_property.addEBObserverOf_x1 (self.backPackagesSegments_property)
     self.backPackages_property.addEBObserverOf_y1 (self.backPackagesSegments_property)
     self.backPackages_property.addEBObserverOf_x2 (self.backPackagesSegments_property)
     self.backPackages_property.addEBObserverOf_y2 (self.backPackagesSegments_property)
     self.backPackages_property.addEBObserverOf_width (self.backPackagesSegments_property)
-    g_Preferences?.mergerDisplayBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
+    g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
     self.backPackagesSegments_property.addEBObserver (self.backPackagesDisplay_property)
     self.backLegendTextsLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
@@ -2118,28 +2152,32 @@ class BoardModelEntity : EBManagedObject,
     self.frontLegendTexts_property.removeEBObserverOf_x2 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.removeEBObserverOf_y2 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.removeEBObserverOf_width (self.frontLegendTextsSegments_property)
-    g_Preferences?.mergerDisplayFrontLegendTexts_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerColorFrontLegendTexts_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontLegendTexts_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
     self.frontLegendTextsSegments_property.removeEBObserver (self.frontLegendTextsLayerDisplay_property)
     self.frontLayoutTexts_property.removeEBObserverOf_x1 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.removeEBObserverOf_y1 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.removeEBObserverOf_x2 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.removeEBObserverOf_y2 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.removeEBObserverOf_width (self.frontLayoutTextsSegments_property)
-    g_Preferences?.mergerDisplayFrontLayoutTexts_property.removeEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerColorFrontLayoutTexts_property.removeEBObserver (self.frontLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontLayoutTexts_property.removeEBObserver (self.frontLayoutTextsLayerDisplay_property)
     self.frontLayoutTextsSegments_property.removeEBObserver (self.frontLayoutTextsLayerDisplay_property)
     self.backLegendTexts_property.removeEBObserverOf_x1 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.removeEBObserverOf_y1 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.removeEBObserverOf_x2 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.removeEBObserverOf_y2 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.removeEBObserverOf_width (self.backLegendTextsSegments_property)
-    g_Preferences?.mergerDisplayBackLegendTexts_property.removeEBObserver (self.backLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerColorBackLegendTexts_property.removeEBObserver (self.backLegendTextsLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackLegendTexts_property.removeEBObserver (self.backLegendTextsLayerDisplay_property)
     self.backLegendTextsSegments_property.removeEBObserver (self.backLegendTextsLayerDisplay_property)
     self.backLayoutTexts_property.removeEBObserverOf_x1 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.removeEBObserverOf_y1 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.removeEBObserverOf_x2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.removeEBObserverOf_y2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.removeEBObserverOf_width (self.backLayoutTextsSegments_property)
-    g_Preferences?.mergerDisplayBackLayoutTexts_property.removeEBObserver (self.backLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerColorBackLayoutTexts_property.removeEBObserver (self.backLayoutTextsLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackLayoutTexts_property.removeEBObserver (self.backLayoutTextsLayerDisplay_property)
     self.backLayoutTextsSegments_property.removeEBObserver (self.backLayoutTextsLayerDisplay_property)
     self.pads_property.removeEBObserverOf_x (self.padsHoles_property)
     self.pads_property.removeEBObserverOf_y (self.padsHoles_property)
@@ -2149,12 +2187,14 @@ class BoardModelEntity : EBManagedObject,
     self.vias_property.removeEBObserverOf_holeDiameter (self.viasHoles_property)
     self.padsHoles_property.removeEBObserver (self.holes_property)
     self.viasHoles_property.removeEBObserver (self.holes_property)
-    g_Preferences?.mergerDisplayHoles_property.removeEBObserver (self.holeLayerDisplay_property)
+    g_Preferences?.mergerColorHoles_property.removeEBObserver (self.holeLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayHoles_property.removeEBObserver (self.holeLayerDisplay_property)
     self.holes_property.removeEBObserver (self.holeLayerDisplay_property)
     self.vias_property.removeEBObserverOf_x (self.viaShapes_property)
     self.vias_property.removeEBObserverOf_y (self.viaShapes_property)
     self.vias_property.removeEBObserverOf_padDiameter (self.viaShapes_property)
-    g_Preferences?.mergerDisplayVias_property.removeEBObserver (self.viaLayerDisplay_property)
+    g_Preferences?.mergerColorVias_property.removeEBObserver (self.viaLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayVias_property.removeEBObserver (self.viaLayerDisplay_property)
     self.viaShapes_property.removeEBObserver (self.viaLayerDisplay_property)
     self.pads_property.removeEBObserverOf_x (self.frontPads_property)
     self.pads_property.removeEBObserverOf_y (self.frontPads_property)
@@ -2164,7 +2204,8 @@ class BoardModelEntity : EBManagedObject,
     self.pads_property.removeEBObserverOf_shape (self.frontPads_property)
     self.pads_property.removeEBObserverOf_side (self.frontPads_property)
     self.pads_property.removeEBObserverOf_rotation (self.frontPads_property)
-    g_Preferences?.mergerDisplayFrontPads_property.removeEBObserver (self.frontPadsDisplay_property)
+    g_Preferences?.mergerColorFrontPads_property.removeEBObserver (self.frontPadsDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontPads_property.removeEBObserver (self.frontPadsDisplay_property)
     self.frontPads_property.removeEBObserver (self.frontPadsDisplay_property)
     self.pads_property.removeEBObserverOf_x (self.backPads_property)
     self.pads_property.removeEBObserverOf_y (self.backPads_property)
@@ -2174,69 +2215,79 @@ class BoardModelEntity : EBManagedObject,
     self.pads_property.removeEBObserverOf_shape (self.backPads_property)
     self.pads_property.removeEBObserverOf_side (self.backPads_property)
     self.pads_property.removeEBObserverOf_rotation (self.backPads_property)
-    g_Preferences?.mergerDisplayBackPads_property.removeEBObserver (self.backPadsDisplay_property)
+    g_Preferences?.mergerColorBackPads_property.removeEBObserver (self.backPadsDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackPads_property.removeEBObserver (self.backPadsDisplay_property)
     self.backPads_property.removeEBObserver (self.backPadsDisplay_property)
     self.modelWidth_property.removeEBObserver (self.boardLimits_property)
     self.modelHeight_property.removeEBObserver (self.boardLimits_property)
     self.modelLimitWidth_property.removeEBObserver (self.boardLimits_property)
-    g_Preferences?.mergerDisplayBoardLimits_property.removeEBObserver (self.boardLimits_property)
-    g_Preferences?.mergerDisplayBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBoardLimits_property.removeEBObserver (self.boardLimits_property)
+    g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
     self.boardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
     self.backComponentNames_property.removeEBObserverOf_x1 (self.backComponentNameSegments_property)
     self.backComponentNames_property.removeEBObserverOf_y1 (self.backComponentNameSegments_property)
     self.backComponentNames_property.removeEBObserverOf_x2 (self.backComponentNameSegments_property)
     self.backComponentNames_property.removeEBObserverOf_y2 (self.backComponentNameSegments_property)
     self.backComponentNames_property.removeEBObserverOf_width (self.backComponentNameSegments_property)
-    g_Preferences?.mergerDisplayBackComponentNames_property.removeEBObserver (self.backComponentNameDisplay_property)
+    g_Preferences?.mergerColorBackComponentNames_property.removeEBObserver (self.backComponentNameDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackComponentNames_property.removeEBObserver (self.backComponentNameDisplay_property)
     self.backComponentNameSegments_property.removeEBObserver (self.backComponentNameDisplay_property)
     self.frontComponentNames_property.removeEBObserverOf_x1 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.removeEBObserverOf_y1 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.removeEBObserverOf_x2 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.removeEBObserverOf_y2 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.removeEBObserverOf_width (self.frontComponentNameSegments_property)
-    g_Preferences?.mergerDisplayFrontComponentNames_property.removeEBObserver (self.frontComponentNameDisplay_property)
+    g_Preferences?.mergerColorFrontComponentNames_property.removeEBObserver (self.frontComponentNameDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontComponentNames_property.removeEBObserver (self.frontComponentNameDisplay_property)
     self.frontComponentNameSegments_property.removeEBObserver (self.frontComponentNameDisplay_property)
     self.frontComponentValues_property.removeEBObserverOf_x1 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.removeEBObserverOf_y1 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.removeEBObserverOf_x2 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.removeEBObserverOf_y2 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.removeEBObserverOf_width (self.frontComponentValueSegments_property)
-    g_Preferences?.mergerDisplayFrontComponentValues_property.removeEBObserver (self.frontComponentValueDisplay_property)
+    g_Preferences?.mergerColorFrontComponentValues_property.removeEBObserver (self.frontComponentValueDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontComponentValues_property.removeEBObserver (self.frontComponentValueDisplay_property)
     self.frontComponentValueSegments_property.removeEBObserver (self.frontComponentValueDisplay_property)
     self.backComponentValues_property.removeEBObserverOf_x1 (self.backComponentValueSegments_property)
     self.backComponentValues_property.removeEBObserverOf_y1 (self.backComponentValueSegments_property)
     self.backComponentValues_property.removeEBObserverOf_x2 (self.backComponentValueSegments_property)
     self.backComponentValues_property.removeEBObserverOf_y2 (self.backComponentValueSegments_property)
     self.backComponentValues_property.removeEBObserverOf_width (self.backComponentValueSegments_property)
-    g_Preferences?.mergerDisplayBackComponentValues_property.removeEBObserver (self.backComponentValueDisplay_property)
+    g_Preferences?.mergerColorBackComponentValues_property.removeEBObserver (self.backComponentValueDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackComponentValues_property.removeEBObserver (self.backComponentValueDisplay_property)
     self.backComponentValueSegments_property.removeEBObserver (self.backComponentValueDisplay_property)
     self.backTracks_property.removeEBObserverOf_x1 (self.backTrackSegments_property)
     self.backTracks_property.removeEBObserverOf_y1 (self.backTrackSegments_property)
     self.backTracks_property.removeEBObserverOf_x2 (self.backTrackSegments_property)
     self.backTracks_property.removeEBObserverOf_y2 (self.backTrackSegments_property)
     self.backTracks_property.removeEBObserverOf_width (self.backTrackSegments_property)
-    g_Preferences?.mergerDisplayBackLayoutTracks_property.removeEBObserver (self.backTracksDisplay_property)
+    g_Preferences?.mergerColorBackTracks_property.removeEBObserver (self.backTracksDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackTracks_property.removeEBObserver (self.backTracksDisplay_property)
     self.backTrackSegments_property.removeEBObserver (self.backTracksDisplay_property)
     self.frontTracks_property.removeEBObserverOf_x1 (self.frontTrackSegments_property)
     self.frontTracks_property.removeEBObserverOf_y1 (self.frontTrackSegments_property)
     self.frontTracks_property.removeEBObserverOf_x2 (self.frontTrackSegments_property)
     self.frontTracks_property.removeEBObserverOf_y2 (self.frontTrackSegments_property)
     self.frontTracks_property.removeEBObserverOf_width (self.frontTrackSegments_property)
-    g_Preferences?.mergerDisplayFrontLayoutTracks_property.removeEBObserver (self.frontTracksDisplay_property)
+    g_Preferences?.mergerColorFrontTracks_property.removeEBObserver (self.frontTracksDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontTracks_property.removeEBObserver (self.frontTracksDisplay_property)
     self.frontTrackSegments_property.removeEBObserver (self.frontTracksDisplay_property)
     self.frontPackages_property.removeEBObserverOf_x1 (self.frontPackagesSegments_property)
     self.frontPackages_property.removeEBObserverOf_y1 (self.frontPackagesSegments_property)
     self.frontPackages_property.removeEBObserverOf_x2 (self.frontPackagesSegments_property)
     self.frontPackages_property.removeEBObserverOf_y2 (self.frontPackagesSegments_property)
     self.frontPackages_property.removeEBObserverOf_width (self.frontPackagesSegments_property)
-    g_Preferences?.mergerDisplayFrontPackages_property.removeEBObserver (self.frontPackagesDisplay_property)
+    g_Preferences?.mergerColorFrontPackages_property.removeEBObserver (self.frontPackagesDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontPackages_property.removeEBObserver (self.frontPackagesDisplay_property)
     self.frontPackagesSegments_property.removeEBObserver (self.frontPackagesDisplay_property)
     self.backPackages_property.removeEBObserverOf_x1 (self.backPackagesSegments_property)
     self.backPackages_property.removeEBObserverOf_y1 (self.backPackagesSegments_property)
     self.backPackages_property.removeEBObserverOf_x2 (self.backPackagesSegments_property)
     self.backPackages_property.removeEBObserverOf_y2 (self.backPackagesSegments_property)
     self.backPackages_property.removeEBObserverOf_width (self.backPackagesSegments_property)
-    g_Preferences?.mergerDisplayBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
+    g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
     self.backPackagesSegments_property.removeEBObserver (self.backPackagesDisplay_property)
     self.backLegendTextsLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)

@@ -3,7 +3,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(CanariViewWithKeyView) class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
-  private var mSavedFirstResponder : NSResponder?
+  private weak var mSavedFirstResponder : NSResponder?
 
   //····················································································································
 
@@ -46,7 +46,7 @@ import Cocoa
 
   //····················································································································
 
-  override var mouseDownCanMoveWindow : Bool { get { return false } }
+  override var mouseDownCanMoveWindow : Bool { return false }
 
   //····················································································································
 

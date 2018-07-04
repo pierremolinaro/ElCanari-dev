@@ -11,17 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModelEntity_frontTracksDisplay (
-       _ prefs_mergerColorFrontTracks : NSColor,  
-       _ prefs_mergerModelViewDisplayFrontTracks : Bool,
-       _ self_frontTrackSegments : MergerSegmentArray
-) -> CALayer {
+extension PMMergerDocument {
+  func dismissDisplaySettingViewAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-  return self_frontTrackSegments.buildLayer (
-    color:prefs_mergerColorFrontTracks,
-    display:prefs_mergerModelViewDisplayFrontTracks
-  )
+    mDisplaySettingView?.removeFromSuperview ()
 //--- END OF USER ZONE 2
+  }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
