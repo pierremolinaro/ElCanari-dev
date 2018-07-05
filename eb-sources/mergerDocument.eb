@@ -604,6 +604,10 @@ document PMMergerDocument root MergerRootEntity {
   outlet EBButton mArrangeHorizontallyButton $enabled root.boardInstances.count > 0 $run self.arrangeHorizontallyAction ;
   action arrangeVerticalyAction ;
   outlet EBButton mArrangeVerticalyButton $enabled root.boardInstances.count > 0 $run self.arrangeVerticalyAction ;
+
+
+#------------------------------------- Product Page
+  outlet EBTextObserverField mFileName $valueObserver self.documentFilePath ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

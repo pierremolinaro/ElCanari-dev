@@ -69,6 +69,7 @@ import Cocoa
   var mGeneratedFileCountString_property = EBTransientProperty_String ()
   var mStatusImage_property = EBTransientProperty_NSImage ()
   var mStatusMessage_property = EBTransientProperty_String ()
+  var documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
   //    Transient arraies
@@ -91,6 +92,31 @@ import Cocoa
   //    Custom object Controllers
   //····················································································································
 
+
+  //····················································································································
+  //    Document file path
+  //····················································································································
+  // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
+
+  override var fileModificationDate : Date? {
+    get {
+      return super.fileModificationDate
+    }
+    set{
+      super.fileModificationDate = newValue
+      self.documentFilePath_property.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  func computeTransient_documentFilePath () -> String {
+    var documentFilePath = ""
+    if let url = self.fileURL {
+      documentFilePath = url.path
+    }
+    return documentFilePath
+  }
 
   //····················································································································
   //    populateExplorerWindow
@@ -603,6 +629,7 @@ import Cocoa
         return .empty
       }
     }
+    self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
   //--------------------------- Install property observers for transients
     self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property)
@@ -742,6 +769,7 @@ import Cocoa
     self.mGeneratedFileCountString_property.readModelFunction = nil
     self.mStatusImage_property.readModelFunction = nil
     self.mStatusMessage_property.readModelFunction = nil
+    self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     mDataController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers

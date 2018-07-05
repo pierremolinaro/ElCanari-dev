@@ -50,6 +50,7 @@ import Cocoa
   //····················································································································
 
   var missingCharactersCountString_property = EBTransientProperty_String ()
+  var documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
   //    Transient arraies
@@ -73,6 +74,31 @@ import Cocoa
   //····················································································································
 
   var selectedCharacter = CurrentCharacterController ()
+
+  //····················································································································
+  //    Document file path
+  //····················································································································
+  // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
+
+  override var fileModificationDate : Date? {
+    get {
+      return super.fileModificationDate
+    }
+    set{
+      super.fileModificationDate = newValue
+      self.documentFilePath_property.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  func computeTransient_documentFilePath () -> String {
+    var documentFilePath = ""
+    if let url = self.fileURL {
+      documentFilePath = url.path
+    }
+    return documentFilePath
+  }
 
   //····················································································································
   //    populateExplorerWindow
@@ -405,6 +431,7 @@ import Cocoa
         return .empty
       }
     }
+    self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
   //--------------------------- Install property observers for transients
     self.rootObject.characters_property.addEBObserverOf_characterIsDefined (self.missingCharactersCountString_property)
     self.rootObject.characters_property.addEBObserverOf_characterIsDefined (self.missingCharacterDescriptorArray_property)
@@ -490,6 +517,7 @@ import Cocoa
   //--------------------------- Uninstall compute functions for transients
     self.missingCharactersCountString_property.readModelFunction = nil
     self.missingCharacterDescriptorArray_property.readModelFunction = nil
+    self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     mMissingCharsController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers

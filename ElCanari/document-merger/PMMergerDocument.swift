@@ -45,6 +45,7 @@ import Cocoa
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardView : CanariBoardModelView?
   @IBOutlet var mDisplaySettingView : NSView?
+  @IBOutlet var mFileName : EBTextObserverField?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
   @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
@@ -104,6 +105,7 @@ import Cocoa
   //    Transient properties
   //····················································································································
 
+  var documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
   //    Transient arraies
@@ -126,6 +128,31 @@ import Cocoa
   //    Custom object Controllers
   //····················································································································
 
+
+  //····················································································································
+  //    Document file path
+  //····················································································································
+  // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
+
+  override var fileModificationDate : Date? {
+    get {
+      return super.fileModificationDate
+    }
+    set{
+      super.fileModificationDate = newValue
+      self.documentFilePath_property.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  func computeTransient_documentFilePath () -> String {
+    var documentFilePath = ""
+    if let url = self.fileURL {
+      documentFilePath = url.path
+    }
+    return documentFilePath
+  }
 
   //····················································································································
   //    populateExplorerWindow
@@ -461,6 +488,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mDisplaySettingView' outlet is not an instance of 'NSView'") ;
+    }
+    if nil == mFileName {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mFileName' outlet is nil") ;
+//    }else if !mFileName!.isKindOfClass (EBTextObserverField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mFileName' outlet is not an instance of 'EBTextObserverField'") ;
     }
     if nil == mInstanceCountTextField {
       presentErrorWindow (file: #file,
@@ -918,6 +954,7 @@ import Cocoa
     )
   //--------------------------- Custom object controllers
   //--------------------------- Transient compute functions
+    self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
   //--------------------------- Install property observers for transients
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -1001,6 +1038,7 @@ import Cocoa
     mComposedBoardView?.bind_verticalFlip (g_Preferences!.mergerBoardViewVerticalFlip_property, file: #file, line: #line)
     mComposedBoardView?.bind_objectLayer (self.rootObject.instancesLayerDisplay_property, file: #file, line: #line)
     mOverlapSwitch?.bind_value (self.rootObject.overlapingArrangment_property, file: #file, line: #line)
+    mFileName?.bind_valueObserver (self.documentFilePath_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1178,6 +1216,7 @@ import Cocoa
     mComposedBoardView?.unbind_verticalFlip ()
     mComposedBoardView?.unbind_objectLayer ()
     mOverlapSwitch?.unbind_value ()
+    mFileName?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
     self.rootObject.selectedPageIndex_property.removeEBObserver (mController_showPrefsForSettingMergerDisplayButton_enabled!)
     mController_showPrefsForSettingMergerDisplayButton_enabled = nil
@@ -1195,6 +1234,7 @@ import Cocoa
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mArrangeVerticalyButton_enabled!)
     mController_mArrangeVerticalyButton_enabled = nil
   //--------------------------- Uninstall compute functions for transients
+    self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     mBoardModelController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers
@@ -1241,6 +1281,7 @@ import Cocoa
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mDisplaySettingView?.ebCleanUp ()
+    self.mFileName?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
     self.mModelBoardLimitTextField?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
