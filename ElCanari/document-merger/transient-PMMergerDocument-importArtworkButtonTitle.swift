@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerRootEntity_noArtwork (
-       _ self_artwork_none : Bool
-) -> Bool {
+func compute_PMMergerDocument_importArtworkButtonTitle (
+       _ self_rootObject_artworkName : String
+) -> String {
 //--- START OF USER ZONE 2
-  return self_artwork_none
+
 //--- END OF USER ZONE 2
 }
 

@@ -27,6 +27,60 @@ import Cocoa
   deinit {
     noteObjectDeallocation (self)
   }
+
+  //····················································································································
+  //  title binding
+  //····················································································································
+
+  private var mTitleController : Controller_EBButton_title?
+
+  func bind_title (_ object:EBReadOnlyProperty_String, file:String, line:Int) {
+    mTitleController = Controller_EBButton_title (object:object, outlet:self, file:file, line:line)
+  }
+
+  func unbind_title () {
+    mTitleController?.unregister ()
+    mTitleController = nil
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller Controller_EBButton_title
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@objc(Controller_EBButton_title)
+final class Controller_EBButton_title : EBSimpleController {
+
+  private let mOutlet: EBButton
+  private let mObject : EBReadOnlyProperty_String
+
+  //····················································································································
+
+  init (object:EBReadOnlyProperty_String, outlet : EBButton, file : String, line : Int) {
+    mObject = object
+    mOutlet = outlet
+    super.init (observedObjects:[object], outlet:outlet)
+  }
+
+  //····················································································································
+
+  override func sendUpdateEvent () {
+    switch mObject.prop {
+    case .empty :
+      mOutlet.title = "—"
+    case .multiple :
+      mOutlet.title = "—"
+    case .single (let v) :
+      mOutlet.title = v
+    }
+  }
+
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

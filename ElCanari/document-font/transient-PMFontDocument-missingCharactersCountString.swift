@@ -12,11 +12,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_PMFontDocument_missingCharactersCountString (
-       _ self_rootObject_characters_characterIsDefined : [FontCharacterEntity_characterIsDefined]
+       _ root_characters_characterIsDefined : [FontCharacterEntity_characterIsDefined]
 ) -> String {
 //--- START OF USER ZONE 2
   var n = 0
-  for c in self_rootObject_characters_characterIsDefined {
+  for c in root_characters_characterIsDefined {
     switch c.characterIsDefined {
     case .empty, .multiple :
       n += 1

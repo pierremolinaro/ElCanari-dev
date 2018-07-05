@@ -112,6 +112,7 @@ import Cocoa
   //    Transient properties
   //····················································································································
 
+  var importArtworkButtonTitle_property = EBTransientProperty_String ()
   var documentFilePath_property = EBTransientProperty_String ()
 
   //····················································································································
@@ -1024,8 +1025,29 @@ import Cocoa
     )
   //--------------------------- Custom object controllers
   //--------------------------- Transient compute functions
+    self.importArtworkButtonTitle_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.artworkName_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.artworkName_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_PMMergerDocument_importArtworkButtonTitle (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
   //--------------------------- Install property observers for transients
+    self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
     mModelViewHorizontalFlipCheckbox?.bind_value (g_Preferences!.mergerModelViewHorizontalFlip_property, file: #file, line: #line)
@@ -1109,11 +1131,12 @@ import Cocoa
     mComposedBoardView?.bind_objectLayer (self.rootObject.instancesLayerDisplay_property, file: #file, line: #line)
     mOverlapSwitch?.bind_value (self.rootObject.overlapingArrangment_property, file: #file, line: #line)
     mArtworNameTextField?.bind_valueObserver (self.rootObject.artworkName_property, file: #file, line: #line)
+    mImportArtworkButton?.bind_title (self.importArtworkButtonTitle_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (self.rootObject.selectedPageIndex_property.prop <= EBSelection.single (1))
+          return (self.rootObject.selectedPageIndex_property_selection <= EBSelection.single (1))
         },
         outlet:self.showPrefsForSettingMergerDisplayButton
       )
@@ -1123,7 +1146,7 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
-          return (self.rootObject.selectedPageIndex_property.prop > EBSelection.single (1))
+          return (self.rootObject.selectedPageIndex_property_selection > EBSelection.single (1))
         },
         outlet:self.mDisplaySettingView
       )
@@ -1133,7 +1156,7 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
-          return (self.rootObject.boardModels_property.count_property.prop > EBSelection.single (0))
+          return (self.rootObject.boardModels_property.count_property_selection > EBSelection.single (0))
         },
         outlet:self.mNoModelMessage
       )
@@ -1143,7 +1166,7 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return ((self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0)) && (self.rootObject.boardInstances_property.count_property.prop == EBSelection.single (0)))
+          return ((self.mBoardModelController.selectedArray_property.count_property_selection > EBSelection.single (0)) && (self.rootObject.boardInstances_property.count_property_selection == EBSelection.single (0)))
         },
         outlet:self.removeBoardModelButton
       )
@@ -1154,7 +1177,7 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0))
+          return (self.mBoardModelController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet:self.updateBoardModelButton
       )
@@ -1164,7 +1187,7 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
-          return (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0))
+          return (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))
         },
         outlet:self.mEmptyBoardMessage
       )
@@ -1174,7 +1197,7 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0))
+          return (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))
         },
         outlet:self.mOverlapSwitch
       )
@@ -1184,7 +1207,7 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0))
+          return (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))
         },
         outlet:self.mArrangeHorizontallyButton
       )
@@ -1194,7 +1217,7 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0))
+          return (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))
         },
         outlet:self.mArrangeVerticalyButton
       )
@@ -1204,42 +1227,42 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
-          return !self.rootObject.noArtwork_property.prop
+          return !self.rootObject.artwork_property_selection
         },
         outlet:self.mNoArtworkMessage
       )
-      self.rootObject.noArtwork_property.addEBObserver (controller)
+      self.rootObject.artwork_property.addEBObserver (controller)
       mController_mNoArtworkMessage_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
-          return self.rootObject.noArtwork_property.prop
+          return self.rootObject.artwork_property_selection
         },
         outlet:self.mArtworkTabView
       )
-      self.rootObject.noArtwork_property.addEBObserver (controller)
+      self.rootObject.artwork_property.addEBObserver (controller)
       mController_mArtworkTabView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
-          return self.rootObject.noArtwork_property.prop
+          return self.rootObject.artwork_property_selection
         },
         outlet:self.mDangerView
       )
-      self.rootObject.noArtwork_property.addEBObserver (controller)
+      self.rootObject.artwork_property.addEBObserver (controller)
       mController_mDangerView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (!self.rootObject.noArtwork_property.prop && (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0)))
+          return (!self.rootObject.artwork_property_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0)))
         },
         outlet:self.mGenerateProductFilesActionButton
       )
+      self.rootObject.artwork_property.addEBObserver (controller)
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
-      self.rootObject.noArtwork_property.addEBObserver (controller)
       mController_mGenerateProductFilesActionButton_enabled = controller
     }
   //--------------------------- Set targets / actions
@@ -1352,6 +1375,7 @@ import Cocoa
     mComposedBoardView?.unbind_objectLayer ()
     mOverlapSwitch?.unbind_value ()
     mArtworNameTextField?.unbind_valueObserver ()
+    mImportArtworkButton?.unbind_title ()
   //--------------------------- Unbind multiple bindings
     self.rootObject.selectedPageIndex_property.removeEBObserver (mController_showPrefsForSettingMergerDisplayButton_enabled!)
     mController_showPrefsForSettingMergerDisplayButton_enabled = nil
@@ -1372,22 +1396,24 @@ import Cocoa
     mController_mArrangeHorizontallyButton_enabled = nil
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mArrangeVerticalyButton_enabled!)
     mController_mArrangeVerticalyButton_enabled = nil
-    self.rootObject.noArtwork_property.removeEBObserver (mController_mNoArtworkMessage_hidden!)
+    self.rootObject.artwork_property.removeEBObserver (mController_mNoArtworkMessage_hidden!)
     mController_mNoArtworkMessage_hidden = nil
-    self.rootObject.noArtwork_property.removeEBObserver (mController_mArtworkTabView_hidden!)
+    self.rootObject.artwork_property.removeEBObserver (mController_mArtworkTabView_hidden!)
     mController_mArtworkTabView_hidden = nil
-    self.rootObject.noArtwork_property.removeEBObserver (mController_mDangerView_hidden!)
+    self.rootObject.artwork_property.removeEBObserver (mController_mDangerView_hidden!)
     mController_mDangerView_hidden = nil
+    self.rootObject.artwork_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
-    self.rootObject.noArtwork_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     mController_mGenerateProductFilesActionButton_enabled = nil
   //--------------------------- Uninstall compute functions for transients
+    self.importArtworkButtonTitle_property.readModelFunction = nil
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     mBoardModelController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers
     mBoardModelSelection.unbind_selection ()
   //--------------------------- Uninstall property observers for transients
+    self.rootObject.artworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
   //--------------------------- Remove targets / actions
     showPrefsForSettingMergerDisplayButton?.target = nil
     addBoardModelButton?.target = nil

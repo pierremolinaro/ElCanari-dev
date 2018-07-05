@@ -422,7 +422,6 @@ entity MergerRootEntity {
 #--- Artwork
   toOne @cascading ArtworkRootEntity artwork ;
   property String artworkName default "" ;
-  transient Bool noArtwork dependsFrom self.artwork.none ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -619,18 +618,19 @@ document PMMergerDocument root MergerRootEntity {
 
 #------------------------------------- Product Page
  # outlet EBTextObserverField mFileName $valueObserver self.documentFilePath ;
-  outlet EBTextField mNoArtworkMessage $hidden !root.noArtwork ;
+  outlet EBTextField mNoArtworkMessage $hidden !root.artwork.none ;
   outlet EBTextObserverField mArtworNameTextField $valueObserver root.artworkName ;
-  outlet NSTabView mArtworkTabView $hidden root.noArtwork ;
-  outlet NSView mDangerView $hidden root.noArtwork ;
+  outlet NSTabView mArtworkTabView $hidden root.artwork.none ;
+  outlet NSView mDangerView $hidden root.artwork.none ;
  
   action generateProductFilesAction ;
 
   action importArtworkAction ;
-  outlet EBButton mImportArtworkButton $run self.importArtworkAction ;
+  outlet EBButton mImportArtworkButton $run self.importArtworkAction $title self.importArtworkButtonTitle ;
+  transient String importArtworkButtonTitle dependsFrom root.artworkName ;
 
   outlet EBButton mGenerateProductFilesActionButton
-    $enabled !root.noArtwork & (root.boardInstances.count > 0)
+    $enabled !root.artwork.none & (root.boardInstances.count > 0)
     $run self.generateProductFilesAction ;
 }
 

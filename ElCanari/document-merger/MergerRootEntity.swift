@@ -19,8 +19,7 @@ class MergerRootEntity : EBManagedObject,
   MergerRootEntity_instancesLayerDisplay,
   MergerRootEntity_boardRect,
   MergerRootEntity_boardWidth,
-  MergerRootEntity_boardHeight,
-  MergerRootEntity_noArtwork {
+  MergerRootEntity_boardHeight {
 
   //····················································································································
   //   Accessing selectedPageIndex stored property
@@ -217,22 +216,6 @@ class MergerRootEntity : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing noArtwork transient property
-  //····················································································································
-
-  var noArtwork_property_selection : EBSelection <Bool> {
-    get {
-      return self.noArtwork_property.prop
-    }
-  }
-
-  var noArtwork : EBSelection <Bool> {
-    get {
-      return noArtwork_property_selection
-    }
-  }
-
-  //····················································································································
   //   Accessing boardModels toMany relationship
   //····················································································································
 
@@ -272,7 +255,6 @@ class MergerRootEntity : EBManagedObject,
   var boardRect_property = EBTransientProperty_CanariBoardRect ()
   var boardWidth_property = EBTransientProperty_Int ()
   var boardHeight_property = EBTransientProperty_Int ()
-  var noArtwork_property = EBTransientProperty_Bool ()
 
   //····················································································································
   //    Relationships
@@ -281,7 +263,7 @@ class MergerRootEntity : EBManagedObject,
   var boardModels_property = ToManyRelationship_MergerRootEntity_boardModels ()
   var boardInstances_property = ToManyRelationship_MergerRootEntity_boardInstances ()
   var artwork_property = ToOneRelationship_MergerRootEntity_artwork ()
-  var artwork_none_selection : EBSelection <Bool> { return .single (self.artwork_property.propval == nil) }
+  var artwork_property_selection : EBSelection <Bool> { return .single (self.artwork_property.propval == nil) }
 
   //····················································································································
   //    init
@@ -390,33 +372,12 @@ class MergerRootEntity : EBManagedObject,
         return .empty
       }
     }
-    self.noArtwork_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.artwork_none_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.artwork_none_selection) {
-          case (.single (let v0)) :
-            return .single (compute_MergerRootEntity_noArtwork (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
   //--- Install property observers for transients
     self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
     self.boardInstances_property.addEBObserverOf_instanceLayerDisplay (self.instancesLayerDisplay_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
     self.boardRect_property.addEBObserver (self.boardWidth_property)
     self.boardRect_property.addEBObserver (self.boardHeight_property)
-    self.artwork_property.addEBObserver (self.noArtwork_property)
   //--- Install undoers for properties
     self.selectedPageIndex_property.undoManager = undoManager ()
     self.zoom_property.undoManager = undoManager ()
@@ -440,7 +401,6 @@ class MergerRootEntity : EBManagedObject,
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
     self.boardRect_property.removeEBObserver (self.boardWidth_property)
     self.boardRect_property.removeEBObserver (self.boardHeight_property)
-    self.artwork_property.removeEBObserver (self.noArtwork_property)
   }
 
   //····················································································································
@@ -537,14 +497,6 @@ class MergerRootEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.boardHeight_property.mObserverExplorer,
       valueExplorer:&self.boardHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "noArtwork",
-      idx:self.noArtwork_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.noArtwork_property.mObserverExplorer,
-      valueExplorer:&self.noArtwork_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -1335,62 +1287,6 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
   }
 
   //····················································································································
-  //   Observers of 'noArtwork' transient property
-  //····················································································································
-
-  private var mObserversOf_noArtwork = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_noArtwork (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_noArtwork.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.noArtwork_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_noArtwork (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_noArtwork.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.noArtwork_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_noArtwork_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_noArtwork {
-        managedObject.noArtwork_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_noArtwork_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_noArtwork {
-        managedObject.noArtwork_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -1440,7 +1336,6 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
         removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
-        removeEBObserversOf_noArtwork_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -1456,7 +1351,6 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
         addEBObserversOf_boardRect_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
-        addEBObserversOf_noArtwork_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -1549,12 +1443,6 @@ protocol MergerRootEntity_boardWidth : class {
 
 protocol MergerRootEntity_boardHeight : class {
   var boardHeight : EBSelection < Int > { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRootEntity_noArtwork : class {
-  var noArtwork : EBSelection < Bool > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -11,18 +11,18 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_PMArtworkDocument_mStatusImage (
-       _ self_rootObject_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
-       _ self_rootObject_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name]
+       _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
+       _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name]
 ) -> NSImage {
 //--- START OF USER ZONE 2
-  let n = self_rootObject_fileGenerationParameterArray_fileExtension.count
+  let n = root_fileGenerationParameterArray_fileExtension.count
   var error = false
   let warning = n == 0
   var fileExtensionSet = Set <String> ()
   var nameSet = Set <String> ()
   for i in 0 ..< n {
-    let fileExtension = self_rootObject_fileGenerationParameterArray_fileExtension [i].fileExtension
-    let name = self_rootObject_fileGenerationParameterArray_name [i].name
+    let fileExtension = root_fileGenerationParameterArray_fileExtension [i].fileExtension
+    let name = root_fileGenerationParameterArray_name [i].name
     if fileExtension == "" {
       error = true
     }else if fileExtensionSet.contains (fileExtension) {

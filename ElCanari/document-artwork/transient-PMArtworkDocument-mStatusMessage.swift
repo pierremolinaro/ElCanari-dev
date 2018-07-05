@@ -12,11 +12,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_PMArtworkDocument_mStatusMessage (
-       _ self_rootObject_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
-       _ self_rootObject_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name]
+       _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
+       _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name]
 ) -> String {
 //--- START OF USER ZONE 2
-  let n = self_rootObject_fileGenerationParameterArray_fileExtension.count
+  let n = root_fileGenerationParameterArray_fileExtension.count
   var result = ""
   var warningCount = 0
   var errorCount = 0
@@ -27,8 +27,8 @@ func compute_PMArtworkDocument_mStatusMessage (
   var fileExtensionSet = Set <String> ()
   var nameSet = Set <String> ()
   for i in 0 ..< n {
-    let fileExtension = self_rootObject_fileGenerationParameterArray_fileExtension [i].fileExtension
-    let name = self_rootObject_fileGenerationParameterArray_name [i].name
+    let fileExtension = root_fileGenerationParameterArray_fileExtension [i].fileExtension
+    let name = root_fileGenerationParameterArray_name [i].name
     if name == "" {
       result += "Error: empty data name for extension '\(fileExtension)'\n"
       errorCount += 1

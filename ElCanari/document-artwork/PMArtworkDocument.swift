@@ -683,7 +683,7 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (self.mDataController.selectedArray_property.count_property.prop > EBSelection.single (0))
+          return (self.mDataController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet:self.mRemoveGenerationFileButton
       )
@@ -693,7 +693,7 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
-          return !self.mDataSelection.drawPadHolesInPDF_property.prop
+          return !self.mDataSelection.drawPadHolesInPDF_property_selection
         },
         outlet:self.mPadHoleDefinitionView
       )

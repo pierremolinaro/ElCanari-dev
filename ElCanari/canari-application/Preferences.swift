@@ -3620,7 +3620,7 @@ var g_Preferences : Preferences? = nil
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (self.additionnalLibraryArrayController.selectedArray_property.count_property.prop > EBSelection.single (0))
+          return (self.additionnalLibraryArrayController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet:self.mRemoveLibraryEntryButton
       )

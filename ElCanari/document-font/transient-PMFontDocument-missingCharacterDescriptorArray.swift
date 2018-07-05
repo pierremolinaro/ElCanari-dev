@@ -12,12 +12,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_PMFontDocument_missingCharacterDescriptorArray (
-       _ self_rootObject_characters_characterIsDefined : [FontCharacterEntity_characterIsDefined]
+       _ root_characters_characterIsDefined : [FontCharacterEntity_characterIsDefined]
 ) -> [MissingCharacter] {
 //--- START OF USER ZONE 2
   var result = [MissingCharacter] ()
   var idx = 0x1F
-  for c in self_rootObject_characters_characterIsDefined {
+  for c in root_characters_characterIsDefined {
     idx += 1
     switch c.characterIsDefined {
     case .empty, .multiple :
