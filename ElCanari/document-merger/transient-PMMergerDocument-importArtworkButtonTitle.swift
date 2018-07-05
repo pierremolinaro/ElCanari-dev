@@ -12,10 +12,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_PMMergerDocument_importArtworkButtonTitle (
-       _ self_rootObject_artworkName : String
+       _ root_artworkName : String
 ) -> String {
 //--- START OF USER ZONE 2
-
+  return (root_artworkName == "") ? "Import Artwork…" : "Detach Artwork"
 //--- END OF USER ZONE 2
 }
 
