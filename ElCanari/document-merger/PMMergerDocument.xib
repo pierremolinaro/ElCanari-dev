@@ -451,30 +451,30 @@ AAAAAAEGA
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView wantsLayer="YES" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="P6R-Ak-MaY" customClass="CanariScrollViewWithPlacard">
-                    <rect key="frame" x="241" y="0.0" width="450" height="500"/>
+                    <rect key="frame" x="241" y="0.0" width="459" height="500"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" wantsLayer="YES" id="nFP-mw-Omh">
-                        <rect key="frame" x="1" y="1" width="433" height="483"/>
+                        <rect key="frame" x="1" y="1" width="442" height="483"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView wantsLayer="YES" misplaced="YES" id="nao-E9-sci" customClass="CanariBoardModelView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="387" width="452" height="417"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <outlet property="menu" destination="3Qt-fi-qrc" id="Bin-ca-Mez"/>
-                                </connections>
                             </customView>
                         </subviews>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="kxP-eD-0bt">
-                        <rect key="frame" x="1" y="484" width="433" height="15"/>
+                        <rect key="frame" x="1" y="484" width="442" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Ffk-v2-YEc">
-                        <rect key="frame" x="434" y="1" width="15" height="483"/>
+                        <rect key="frame" x="443" y="1" width="15" height="483"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
+                    <connections>
+                        <outlet property="menu" destination="3Qt-fi-qrc" id="zgF-Xj-rpA"/>
+                    </connections>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="s7Q-cO-PSS">
                     <rect key="frame" x="18" y="463" width="83" height="14"/>
