@@ -1234,16 +1234,6 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return self.rootObject.noArtwork_property.prop
-        },
-        outlet:self.mImportArtworkButton
-      )
-      self.rootObject.noArtwork_property.addEBObserver (controller)
-      mController_mImportArtworkButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction:{
           return (!self.rootObject.noArtwork_property.prop && (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0)))
         },
         outlet:self.mGenerateProductFilesActionButton
@@ -1388,8 +1378,6 @@ import Cocoa
     mController_mArtworkTabView_hidden = nil
     self.rootObject.noArtwork_property.removeEBObserver (mController_mDangerView_hidden!)
     mController_mDangerView_hidden = nil
-    self.rootObject.noArtwork_property.removeEBObserver (mController_mImportArtworkButton_enabled!)
-    mController_mImportArtworkButton_enabled = nil
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     self.rootObject.noArtwork_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     mController_mGenerateProductFilesActionButton_enabled = nil
@@ -1518,7 +1506,6 @@ import Cocoa
   fileprivate var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden?
   fileprivate var mController_mArtworkTabView_hidden : MultipleBindingController_hidden?
   fileprivate var mController_mDangerView_hidden : MultipleBindingController_hidden?
-  fileprivate var mController_mImportArtworkButton_enabled : MultipleBindingController_enabled?
   fileprivate var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled?
 
   //····················································································································

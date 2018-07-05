@@ -14,7 +14,50 @@ import Cocoa
 extension PMMergerDocument {
   func importArtworkAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-
+    if let currentArtwork = self.rootObject.artwork_property.propval { // Arwork already loaded, remove it
+      self.rootObject.artwork_property.setProp (nil)
+      self.rootObject.artworkName = ""
+      self.managedObjectContext().removeManagedObject (currentArtwork)
+    }else{
+    //--- Dialog
+      if let window = self.windowForSheet {
+        let openPanel = NSOpenPanel ()
+        openPanel.canChooseFiles = true
+        openPanel.canChooseDirectories = false
+        openPanel.allowsMultipleSelection = false
+        openPanel.allowedFileTypes = ["ElCanariArtwork"]
+ //       openPanel.delegate = OpenPanelDelegateForFilteringBoardModels (boardModelNames)
+        openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : Int) in
+          releaseOpenPanelDelegateForFilteringBoardModels ()
+          if returnCode == NSFileHandlingPanelOKButton {
+            if let url = openPanel.url, url.isFileURL {
+              let filePath = url.path
+            //--- Load file, as plist
+              let optionalFileData : Data? = FileManager ().contents (atPath: filePath)
+              if let fileData = optionalFileData {
+                do {
+                  let (_, _, possibleLoadedObject) = try self.managedObjectContext().loadEasyBindingFile (from: fileData)
+                  if let loadedObject = possibleLoadedObject, let loadedArtwork = loadedObject as? ArtworkRootEntity {
+                    self.rootObject.artwork_property.setProp (loadedArtwork)
+                    self.rootObject.artworkName = filePath.lastPathComponent.deletingPathExtension
+                  }
+                }catch let error {
+                  window.presentError (error)
+                }
+              }else{ // Cannot read file
+                let alert = NSAlert ()
+                alert.messageText = "Cannot read file"
+                alert.addButton (withTitle: "Ok")
+                alert.informativeText = "The file \(filePath) cannot be read."
+                alert.beginSheetModal (for: window, completionHandler: {(NSModalResponse) in})
+              }
+            }else{
+              NSLog ("Not a file URL!")
+            }
+          }
+        })
+      }
+    }
 //--- END OF USER ZONE 2
   }
 }

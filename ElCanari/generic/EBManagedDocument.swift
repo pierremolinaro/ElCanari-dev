@@ -169,48 +169,20 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   override func read (from data: Data, ofType typeName: String) throws {
     undoManager?.disableUndoRegistration ()
-  //---- Define input data scanner
-    var dataScanner = EBDataScanner (data:data)
-  //--- Check Signature
-    for c in kFormatSignature.utf8 {
-      dataScanner.acceptRequired (byte: c)
-    }
-  //--- Read Status
-    mReadMetadataStatus = dataScanner.parseByte ()
-  //--- if ok, check byte is 1
-    dataScanner.acceptRequired (byte: 1)
-  //--- Read metadata dictionary
-    let dictionaryData = dataScanner.parseAutosizedData ()
-    let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData as Data,
-      options:[],
-      format:nil
-    ) as! NSDictionary
-    mMetadataDictionary = metadataDictionary.mutableCopy () as! NSMutableDictionary
+  //--- Load file
+    let (metadataStatus, metadataDictionary, possibleRootObject) = try self.managedObjectContext().loadEasyBindingFile (from: data)
+  //--- Store Status
+    self.mReadMetadataStatus = metadataStatus
+  //--- Store metadata dictionary
+    self.mMetadataDictionary = metadataDictionary.mutableCopy () as! NSMutableDictionary
   //--- Read version from file
-    mVersion.setProp (readVersionFromMetadataDictionary (metadataDictionary: metadataDictionary))
-  //--- Read data
-    let dataFormat = dataScanner.parseByte ()
-    let fileData = dataScanner.parseAutosizedData ()
-  //--- if ok, check final byte (0)
-    dataScanner.acceptRequired (byte: 0)
-  //--- Scanner error ?
-    if !dataScanner.ok () {
-      let dictionary = [
-        "Cannot Open Document" :  NSLocalizedDescriptionKey,
-        "The file has an invalid format" :  NSLocalizedRecoverySuggestionErrorKey
-      ]
-      throw NSError (
-        domain:Bundle.main.bundleIdentifier!,
-        code:1,
-        userInfo:dictionary
-      )
+    self.mVersion.setProp (readVersionFromMetadataDictionary (metadataDictionary: metadataDictionary))
+  //--- Free current root object
+    if let currentRootObject = self.mRootObject {
+      self.managedObjectContext().removeManagedObject (currentRootObject)
     }
-  //--- Analyze read data
-    if dataFormat == 0x06 {
-      try readManagedObjectsFromData (inData: fileData)
-    }else{
-      try raiseInvalidDataFormatArror (dataFormat: dataFormat)
-    }
+  //--- Store root object
+    self.mRootObject = possibleRootObject
   //---
     if mRootObject == nil {
       let dictionary = [
@@ -235,94 +207,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       result = versionNumber.intValue
     }
     return result
-  }
-
-  //····················································································································
-
-  final func raiseInvalidDataFormatArror (dataFormat : UInt8) throws {
-    let dictionary = [
-      "Cannot Open Document" :  NSLocalizedDescriptionKey,
-      "Unkown data format: \(dataFormat)" :  NSLocalizedRecoverySuggestionErrorKey
-    ]
-    throw NSError (
-      domain:Bundle.main.bundleIdentifier!,
-      code:1,
-      userInfo:dictionary
-    )
-  }
-
-  //····················································································································
-
-  func readManagedObjectsFromData (inData : Data) throws {
-    let startDate = Date ()
-    let v : Any = try PropertyListSerialization.propertyList (from: inData as Data,
-      options:[],
-      format:nil
-    )
-    let dictionaryArray : [NSDictionary] = v as! [NSDictionary]
-    if kLogReadFileDuration {
-      let timeTaken = NSDate().timeIntervalSince (startDate)
-      NSLog ("Dictionary array: +%g s", timeTaken)
-    }
-    let semaphore : DispatchSemaphore = DispatchSemaphore (value: 0)
-    var progress : EBDocumentReadProgress? = nil
-    if dictionaryArray.count > 10000 {
-      progress = EBDocumentReadProgress (title:lastComponentOfFileName.deletingPathExtension,
-                                         dataLength:dictionaryArray.count * 2,
-                                         semaphore:semaphore)
-    }
-    let queue = DispatchQueue (label: "readObjectFromData")
-    var possibleError : NSError? = nil
-    queue.asyncAfter (deadline: .now (), execute: {
-      do{
-        var objectArray = [EBManagedObject] ()
-        var progressIdx = 0 ;
-        for d in dictionaryArray {
-          let className = d.object (forKey: kEntityKey) as! String
-          let object = try self.mManagedObjectContext.newInstanceOfEntityNamed (inEntityTypeName: className)
-          objectArray.append (object)
-          progressIdx += 1
-          progress?.setProgress (inValue: progressIdx)
-        }
-        if kLogReadFileDuration {
-          let timeTaken = NSDate ().timeIntervalSince (startDate)
-          NSLog ("Creation of %d objects: +%g s", objectArray.count, timeTaken)
-        }
-        var idx = 0
-        for d in dictionaryArray {
-          let object : EBManagedObject = objectArray [idx]
-          object.setUpWithDictionary (d, managedObjectArray:&objectArray)
-          idx += 1
-          progressIdx += 1
-          progress?.setProgress (inValue: progressIdx)
-        }
-        if kLogReadFileDuration {
-          let timeTaken = NSDate().timeIntervalSince (startDate)
-          NSLog ("Read: +%g s", timeTaken)
-        }
-      //--- Set root object
-        if let rootObject = self.mRootObject {
-          self.mManagedObjectContext.removeManagedObject (rootObject)
-        }
-        self.mRootObject = objectArray [0]
-        semaphore.signal()
-      }catch let error as NSError {
-        possibleError = error
-      }
-    })
-    var wait = true
-    while wait {
-      semaphore.wait()
-      if progress != nil {
-        wait = progress!.displayAndTestWaiting ()
-      }else{
-        wait = false
-      }
-    }
-    progress?.orderOut ()
-    if let error = possibleError {
-      throw error
-    }
   }
 
   //····················································································································
@@ -646,123 +530,6 @@ extension Data {
     }while value != 0
     trace? += "\n"
   }
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//     EBDocumentReadProgress
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private struct EBDocumentReadProgress {
-  private var mProgressWindow : NSWindow?
-  private var mProgressIndicator : NSProgressIndicator?
-  private var mTotal : Double
-  private var mCurrentProgress = 0.0
-  private var mSemaphore : DispatchSemaphore
-  private var mMutex : DispatchSemaphore
-  private var mDisplayCounter = 0
-  
-  //····················································································································
-  //  init
-  //····················································································································
-
-  init (title : String, dataLength : Int, semaphore : DispatchSemaphore) {
-    mMutex = DispatchSemaphore (value: 1)
-    mTotal = Double (dataLength)
-    mSemaphore = semaphore
-    if let visibleFrame = NSScreen.main ()?.visibleFrame {
-      let windowWidth = 400.0
-      let windowHeight = 65.0
-      let windowRect = NSMakeRect (
-        NSMidX (visibleFrame) - CGFloat (windowWidth / 2.0),
-        NSMidY (visibleFrame) - CGFloat (windowHeight / 2.0),
-        CGFloat (windowWidth),
-        CGFloat (windowHeight)
-      )
-      let progressWindow = NSWindow (
-        contentRect:windowRect,
-        styleMask:NSTitledWindowMask,
-        backing:.buffered,
-        defer:false
-      )
-      mProgressWindow = progressWindow
-      progressWindow.isExcludedFromWindowsMenu = true
-      progressWindow.title = "Progress"
-      let contientViewRect : NSRect = progressWindow.contentView!.frame
-    //--- Add comment text
-      let ts_r = NSRect (
-        x:25.0,
-        y:30.0,
-        width:NSMaxX (contientViewRect) - 40.0,
-        height:20.0
-      )
-      let ts = NSTextField (frame:ts_r)
-      ts.font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize())
-      ts.stringValue = String (format:"Opening %@…", title)
-      ts.isBezeled = false
-      ts.isBordered = false
-      ts.isEditable = false
-      ts.drawsBackground = false
-      progressWindow.contentView?.addSubview (ts)
-    //--- Add progress indicator
-      let ps_r = NSRect (
-        x:20.0,
-        y:10.0,
-        width:NSMaxX (contientViewRect) - 40.0,
-        height: 20.0
-      )
-      mProgressIndicator = NSProgressIndicator (frame:ps_r)
-      mProgressIndicator!.isIndeterminate = true
-      progressWindow.contentView?.addSubview (mProgressIndicator!)
-    //---
-      mProgressIndicator!.minValue = 0.0
-      mProgressIndicator!.maxValue = 1.0
-      mProgressIndicator!.doubleValue = 0.0
-      mProgressIndicator!.isIndeterminate = false
-      mProgressIndicator!.display ()
-    //---
-      progressWindow.makeKeyAndOrderFront (nil)
-    }
-  }
-
-  //····················································································································
-  //  displayAndTestWaiting
-  //····················································································································
-
-  mutating func displayAndTestWaiting () -> Bool {
-    mProgressIndicator?.doubleValue = mCurrentProgress
-    mProgressIndicator?.display ()
-    mMutex.wait ()
-      mDisplayCounter -= 1
-      let stop = mDisplayCounter < 0
-    mMutex.signal()
-    return !stop
-  }
-
-  //····················································································································
-  //  setProgress
-  //····················································································································
-
-  mutating func setProgress (inValue : Int) {
-    let currentProgress = Double (inValue) / mTotal
-    if (currentProgress - mCurrentProgress) > 0.02 {
-      mMutex.wait ()
-        mCurrentProgress = currentProgress
-        mDisplayCounter += 1
-      mMutex.signal ()
-      mSemaphore.signal ()
-    }
-  }
-  
-  //····················································································································
-  //  orderOut
-  //····················································································································
-
-  func orderOut () {
-    mProgressWindow?.orderOut (nil)
-  }
-
-  //····················································································································
 
 }
 

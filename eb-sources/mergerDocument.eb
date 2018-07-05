@@ -627,7 +627,7 @@ document PMMergerDocument root MergerRootEntity {
   action generateProductFilesAction ;
 
   action importArtworkAction ;
-  outlet EBButton mImportArtworkButton $enabled root.noArtwork $run self.importArtworkAction ;
+  outlet EBButton mImportArtworkButton $run self.importArtworkAction ;
 
   outlet EBButton mGenerateProductFilesActionButton
     $enabled !root.noArtwork & (root.boardInstances.count > 0)

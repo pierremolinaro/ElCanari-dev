@@ -227,6 +227,126 @@ class EBManagedObjectContext : EBObject {
   }
 
   //····················································································································
+  //     Function: read EasyBindings document file
+  //····················································································································
+
+  func loadEasyBindingFile (from data: Data) throws -> (UInt8, NSDictionary, EBManagedObject?) {
+  //---- Define input data scanner
+    var dataScanner = EBDataScanner (data:data)
+  //--- Check Signature
+    for c in kFormatSignature.utf8 {
+      dataScanner.acceptRequired (byte: c)
+    }
+  //--- Read Status
+    let metadataStatus = dataScanner.parseByte ()
+  //--- if ok, check byte is 1
+    dataScanner.acceptRequired (byte: 1)
+  //--- Read metadata dictionary
+    let dictionaryData = dataScanner.parseAutosizedData ()
+    let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData as Data,
+      options:[],
+      format:nil
+    ) as! NSDictionary
+  //  let metadataDictionary = metadataDictionary.mutableCopy () as! NSMutableDictionary
+  //--- Read data
+    let dataFormat = dataScanner.parseByte ()
+    let fileData = dataScanner.parseAutosizedData ()
+  //--- if ok, check final byte (0)
+    dataScanner.acceptRequired (byte: 0)
+  //--- Scanner error ?
+    if !dataScanner.ok () {
+      let dictionary = [
+        "Cannot Open Document" :  NSLocalizedDescriptionKey,
+        "The file has an invalid format" :  NSLocalizedRecoverySuggestionErrorKey
+      ]
+      throw NSError (
+        domain:Bundle.main.bundleIdentifier!,
+        code:1,
+        userInfo:dictionary
+      )
+    }
+  //--- Analyze read data
+    var rootObject : EBManagedObject? = nil
+    if dataFormat == 0x06 {
+      rootObject = try readManagedObjectsFromData (inData: fileData)
+    }else{
+      try raiseInvalidDataFormatArror (dataFormat: dataFormat)
+    }
+  //---
+    if rootObject == nil {
+      let dictionary = [
+        "Cannot Open Document" :  NSLocalizedDescriptionKey,
+        "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
+      ]
+      throw NSError (
+        domain:Bundle.main.bundleIdentifier!,
+        code:1,
+        userInfo:dictionary
+      )
+    }
+  //---
+    return (metadataStatus, metadataDictionary, rootObject)
+  }
+
+  //····················································································································
+
+  final fileprivate func readManagedObjectsFromData (inData : Data) throws -> EBManagedObject? {
+    var resultRootObject : EBManagedObject? = nil
+    let v : Any = try PropertyListSerialization.propertyList (from: inData as Data,
+      options:[],
+      format:nil
+    )
+    let dictionaryArray : [NSDictionary] = v as! [NSDictionary]
+    let semaphore : DispatchSemaphore = DispatchSemaphore (value: 0)
+    let queue = DispatchQueue (label: "readObjectFromData")
+    var possibleError : NSError? = nil
+    queue.asyncAfter (deadline: .now (), execute: {
+      do{
+        var objectArray = [EBManagedObject] ()
+        for d in dictionaryArray {
+          let className = d.object (forKey: kEntityKey) as! String
+          let object = try self.newInstanceOfEntityNamed (inEntityTypeName: className)
+          objectArray.append (object)
+        }
+        var idx = 0
+        for d in dictionaryArray {
+          let object : EBManagedObject = objectArray [idx]
+          object.setUpWithDictionary (d, managedObjectArray:&objectArray)
+          idx += 1
+        }
+      //--- Set root object
+        resultRootObject = objectArray [0]
+        semaphore.signal()
+      }catch let error as NSError {
+        possibleError = error
+      }
+    })
+    var wait = true
+    while wait {
+      semaphore.wait()
+      wait = false
+    }
+    if let error = possibleError {
+      throw error
+    }
+    return resultRootObject
+  }
+
+  //····················································································································
+
+  final fileprivate func raiseInvalidDataFormatArror (dataFormat : UInt8) throws {
+    let dictionary = [
+      "Cannot Open Document" :  NSLocalizedDescriptionKey,
+      "Unkown data format: \(dataFormat)" :  NSLocalizedRecoverySuggestionErrorKey
+    ]
+    throw NSError (
+      domain:Bundle.main.bundleIdentifier!,
+      code:1,
+      userInfo:dictionary
+    )
+  }
+
+  //····················································································································
 
 }
 

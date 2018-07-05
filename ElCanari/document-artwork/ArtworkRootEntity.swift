@@ -529,7 +529,11 @@ class ArtworkRootEntity : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.fileGenerationParameterArray_property.setProp ([]) // Set relationships to nil
+    do{
+      let objects = self.fileGenerationParameterArray_property.propval
+      self.fileGenerationParameterArray_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
