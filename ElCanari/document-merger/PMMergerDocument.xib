@@ -11,7 +11,9 @@
                 <outlet property="addBoardModelButton" destination="2Wu-Dh-CTo" id="Ge9-7X-rm9"/>
                 <outlet property="mArrangeHorizontallyButton" destination="1p8-Aw-BkL" id="N5y-Al-HT6"/>
                 <outlet property="mArrangeVerticalyButton" destination="K4l-4X-Ldt" id="WLw-7R-fvE"/>
+                <outlet property="mArtworNameTextField" destination="syb-21-rHW" id="MoL-GG-Y9o"/>
                 <outlet property="mArtworkNameTextField" destination="sNV-XY-ihk" id="r4K-hG-ctp"/>
+                <outlet property="mArtworkTabView" destination="CGe-Zg-qUA" id="GIJ-id-nGQ"/>
                 <outlet property="mBoardClipView" destination="nFP-mw-Omh" id="VEQ-jL-583"/>
                 <outlet property="mBoardHeightTextField" destination="7dt-7v-ArC" id="779-cB-9W3"/>
                 <outlet property="mBoardHeightUnitPopUp" destination="wB7-F3-Dvt" id="SaL-Vz-UJE"/>
@@ -40,6 +42,7 @@
                 <outlet property="mBoardWidthTextField" destination="Lat-bY-8XF" id="pkw-Gr-UOy"/>
                 <outlet property="mBoardWidthUnitPopUp" destination="q7P-l7-CAx" id="egY-a6-hbR"/>
                 <outlet property="mComposedBoardView" destination="nao-E9-sci" id="Yej-gD-6Hg"/>
+                <outlet property="mDangerView" destination="kZQ-iy-L4Z" id="040-fK-ZgE"/>
                 <outlet property="mDisplaySettingView" destination="gM7-40-CET" id="k3P-rb-BbN"/>
                 <outlet property="mEmptyBoardMessage" destination="TY5-Zu-VN8" id="3zh-MC-Ugv"/>
                 <outlet property="mGenerateProductFilesActionButton" destination="5Wu-A4-TL6" id="7df-pB-Lpb"/>
@@ -295,16 +298,16 @@ AAAAAAEGA
                     </buttonCell>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="Ti9-vf-Dz4" customClass="EBIntObserverField">
-                    <rect key="frame" x="106" y="14" width="128" height="14"/>
+                    <rect key="frame" x="106" y="14" width="58" height="15"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Jyu-wm-btp">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="Jyu-wm-btp">
                         <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="9j7-y6-wzZ">
-                    <rect key="frame" x="43" y="14" width="58" height="14"/>
+                    <rect key="frame" x="43" y="14" width="58" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Instances:" id="piJ-i5-JEw">
                         <font key="font" metaFont="smallSystem"/>
@@ -629,17 +632,17 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <tabView hidden="YES" misplaced="YES" allowsTruncatedLabels="NO" controlSize="small" id="CGe-Zg-qUA">
+                <tabView misplaced="YES" allowsTruncatedLabels="NO" controlSize="small" id="CGe-Zg-qUA">
                     <rect key="frame" x="14" y="-1" width="896" height="519"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <tabViewItems>
                         <tabViewItem label="Minima" identifier="" id="uTE-g6-IP6">
                             <view key="view" id="QnO-ad-g9y">
-                                <rect key="frame" x="10" y="25" width="876" height="481"/>
+                                <rect key="frame" x="10" y="29" width="876" height="477"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" id="vA1-au-Aht">
-                                        <rect key="frame" x="324" y="270" width="57" height="16"/>
+                                        <rect key="frame" x="324" y="266" width="57" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="LR8-5U-ax2">
                                             <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="c9t-og-4KF">
@@ -652,7 +655,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton id="sW4-yo-qhS">
-                                        <rect key="frame" x="389" y="157" width="84" height="22"/>
+                                        <rect key="frame" x="389" y="153" width="84" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="square" title="inch" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="Gbh-U0-LyZ" id="M4J-Rb-aOE">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -669,7 +672,7 @@ AAAAAAEGA
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <textField verticalHuggingPriority="750" id="4TE-4Q-tgB">
-                                        <rect key="frame" x="37" y="183" width="439" height="18"/>
+                                        <rect key="frame" x="37" y="179" width="439" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="left" title="OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2" id="Svb-h5-TdI">
                                             <font key="font" metaFont="miniSystemBold"/>
@@ -678,7 +681,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton id="5mw-VT-HjF">
-                                        <rect key="frame" x="389" y="215" width="84" height="22"/>
+                                        <rect key="frame" x="389" y="211" width="84" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="square" title="inch" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="A3Y-Ip-s8g" id="Hn1-Zr-EWX">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -695,16 +698,16 @@ AAAAAAEGA
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <imageView id="9R5-oL-E70">
-                                        <rect key="frame" x="203" y="298" width="324" height="148"/>
+                                        <rect key="frame" x="203" y="294" width="324" height="148"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="artwork" id="9d7-UJ-YYO"/>
                                     </imageView>
                                     <box verticalHuggingPriority="750" boxType="separator" id="1h9-5e-0Ou">
-                                        <rect key="frame" x="40" y="207" width="433" height="5"/>
+                                        <rect key="frame" x="40" y="203" width="433" height="5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </box>
                                     <textField verticalHuggingPriority="750" id="SWQ-ls-UeO">
-                                        <rect key="frame" x="324" y="161" width="57" height="14"/>
+                                        <rect key="frame" x="324" y="157" width="57" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="gsP-Fg-kJv">
                                             <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="9Sq-PM-m8V">
@@ -717,11 +720,11 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <box verticalHuggingPriority="750" boxType="separator" id="UXj-LU-PV7">
-                                        <rect key="frame" x="40" y="261" width="433" height="5"/>
+                                        <rect key="frame" x="40" y="257" width="433" height="5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </box>
                                     <textField verticalHuggingPriority="750" id="6wk-9o-S7g">
-                                        <rect key="frame" x="324" y="216" width="57" height="17"/>
+                                        <rect key="frame" x="324" y="212" width="57" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="gqt-Ab-lPd">
                                             <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="sH4-Kq-liC">
@@ -734,7 +737,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="xy0-ja-iyu">
-                                        <rect key="frame" x="76" y="162" width="247" height="11"/>
+                                        <rect key="frame" x="76" y="158" width="247" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for OAR:" id="k64-Zn-0qC">
                                             <font key="font" metaFont="miniSystem"/>
@@ -743,7 +746,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="IDi-XT-iwR">
-                                        <rect key="frame" x="76" y="219" width="247" height="14"/>
+                                        <rect key="frame" x="76" y="215" width="247" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for PHD:" id="3R1-Kj-tCE">
                                             <font key="font" metaFont="smallSystem"/>
@@ -752,7 +755,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="iEa-au-hio">
-                                        <rect key="frame" x="76" y="272" width="247" height="14"/>
+                                        <rect key="frame" x="76" y="268" width="247" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for PP, TP, TT and TW:" id="Qma-Te-q0R">
                                             <font key="font" metaFont="smallSystem"/>
@@ -761,7 +764,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="SpA-ye-QkV">
-                                        <rect key="frame" x="37" y="342" width="142" height="59"/>
+                                        <rect key="frame" x="37" y="338" width="142" height="59"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="left" id="7LN-2k-0L4">
                                             <font key="font" metaFont="miniSystemBold"/>
@@ -774,7 +777,7 @@ TW: Track Width</string>
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton id="7he-TF-5XY">
-                                        <rect key="frame" x="389" y="267" width="84" height="22"/>
+                                        <rect key="frame" x="389" y="263" width="84" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="square" title="mil" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="2286" inset="2" preferredEdge="maxY" selectedItem="Ede-fe-EMS" id="iV8-DG-k6H">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -791,7 +794,7 @@ TW: Track Width</string>
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <textField verticalHuggingPriority="750" id="Yi9-XB-voT">
-                                        <rect key="frame" x="37" y="235" width="257" height="20"/>
+                                        <rect key="frame" x="37" y="231" width="257" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="left" title="PHD: Production Hole Diameter (tool size)" id="eF0-Uo-dwp">
                                             <font key="font" metaFont="miniSystemBold"/>
@@ -1007,7 +1010,7 @@ TW: Track Width</string>
                                         <rect key="frame" x="17" y="-31" width="223" height="500"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="3P1-Un-mMM">
-                                            <rect key="frame" x="1" y="23" width="210" height="465"/>
+                                            <rect key="frame" x="1" y="0.0" width="210" height="488"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="14" headerView="Edb-xs-Mv3" id="wSX-t8-y9u">
@@ -1138,12 +1141,12 @@ TW: Track Width</string>
                                             <popUpButton id="IpN-vA-tma">
                                                 <rect key="frame" x="128" y="0.0" width="67" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <popUpButtonCell key="cell" type="square" title="in" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="2286000" inset="2" preferredEdge="maxY" id="4cU-gu-tX7">
+                                                <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" inset="2" preferredEdge="maxY" id="4cU-gu-tX7">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <menu key="menu" title="OtherViews" id="If8-ut-m6O">
                                                         <items>
-                                                            <menuItem title="in" state="on" tag="2286000" id="clp-vp-3ba"/>
+                                                            <menuItem title="in" tag="2286000" id="clp-vp-3ba"/>
                                                             <menuItem title="mil" tag="2286" id="Jsp-Jq-82x"/>
                                                             <menuItem title="pt" tag="31750" id="lxR-ZM-OFN"/>
                                                             <menuItem title="cm" tag="900000" id="ME2-WF-ypo"/>
@@ -1312,7 +1315,7 @@ TW: Track Width</string>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="syb-21-rHW">
+                <textField verticalHuggingPriority="750" misplaced="YES" id="syb-21-rHW" customClass="EBTextObserverField">
                     <rect key="frame" x="18" y="600" width="165" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="---attached artwork name" id="9b7-cU-Khb">

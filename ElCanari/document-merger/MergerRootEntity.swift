@@ -14,6 +14,7 @@ class MergerRootEntity : EBManagedObject,
   MergerRootEntity_boardWidthUnit,
   MergerRootEntity_boardHeightUnit,
   MergerRootEntity_overlapingArrangment,
+  MergerRootEntity_artworkName,
   MergerRootEntity_modelNames,
   MergerRootEntity_instancesLayerDisplay,
   MergerRootEntity_boardRect,
@@ -113,6 +114,25 @@ class MergerRootEntity : EBManagedObject,
   var overlapingArrangment_property_selection : EBSelection <Bool> {
     get {
       return self.overlapingArrangment_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing artworkName stored property
+  //····················································································································
+
+  var artworkName : String {
+    get {
+      return self.artworkName_property.propval
+    }
+    set {
+      self.artworkName_property.setProp (newValue)
+    }
+  }
+
+  var artworkName_property_selection : EBSelection <String> {
+    get {
+      return self.artworkName_property.prop
     }
   }
 
@@ -241,6 +261,7 @@ class MergerRootEntity : EBManagedObject,
   var boardWidthUnit_property = EBStoredProperty_Int (90000)
   var boardHeightUnit_property = EBStoredProperty_Int (90000)
   var overlapingArrangment_property = EBStoredProperty_Bool (false)
+  var artworkName_property = EBStoredProperty_String ("")
 
   //····················································································································
   //    Transient properties
@@ -402,6 +423,7 @@ class MergerRootEntity : EBManagedObject,
     self.boardWidthUnit_property.undoManager = undoManager ()
     self.boardHeightUnit_property.undoManager = undoManager ()
     self.overlapingArrangment_property.undoManager = undoManager ()
+    self.artworkName_property.undoManager = undoManager ()
   //--- Install owner for relationships
     self.artwork_property.owner = self
     self.boardModels_property.owner = self
@@ -466,6 +488,14 @@ class MergerRootEntity : EBManagedObject,
       view:view,
       observerExplorer:&self.overlapingArrangment_property.mObserverExplorer,
       valueExplorer:&self.overlapingArrangment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "artworkName",
+      idx:self.artworkName_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.artworkName_property.mObserverExplorer,
+      valueExplorer:&self.artworkName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -557,6 +587,8 @@ class MergerRootEntity : EBManagedObject,
     self.boardHeightUnit_property.mValueExplorer = nil
     self.overlapingArrangment_property.mObserverExplorer = nil
     self.overlapingArrangment_property.mValueExplorer = nil
+    self.artworkName_property.mObserverExplorer = nil
+    self.artworkName_property.mValueExplorer = nil
     self.artwork_property.mObserverExplorer = nil
     self.artwork_property.mValueExplorer = nil
     self.boardModels_property.mValueExplorer = nil
@@ -575,6 +607,7 @@ class MergerRootEntity : EBManagedObject,
     self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
     self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
     self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
+    self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
     store (managedObjectArray: boardModels_property.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
     store (managedObjectArray: boardInstances_property.propval as NSArray, relationshipName:"boardInstances", intoDictionary: ioDictionary) ;
     store (managedObject:self.artwork_property.propval, relationshipName:"artwork", intoDictionary: ioDictionary) ;
@@ -592,6 +625,7 @@ class MergerRootEntity : EBManagedObject,
     self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
     self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
     self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
+    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
     self.boardModels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "boardModels",
       inDictionary: inDictionary,
@@ -959,6 +993,63 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.overlapingArrangment_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'artworkName' stored property
+  //····················································································································
+
+  private var mObserversOf_artworkName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_artworkName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.artworkName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_artworkName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.artworkName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_artworkName_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_artworkName {
+        managedObject.artworkName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_artworkName_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for observer in mObserversOf_artworkName {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.artworkName_property.removeEBObserver (observer)
       }
     }
   }
@@ -1342,6 +1433,7 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
         removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedSet)
+        removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
         removeEBObserversOf_instancesLayerDisplay_fromElementsOfSet (removedSet)
@@ -1357,6 +1449,7 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
         addEBObserversOf_boardWidthUnit_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
         addEBObserversOf_overlapingArrangment_toElementsOfSet (addedSet)
+        addEBObserversOf_artworkName_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_modelNames_toElementsOfSet (addedSet)
         addEBObserversOf_instancesLayerDisplay_toElementsOfSet (addedSet)
@@ -1420,6 +1513,12 @@ protocol MergerRootEntity_boardHeightUnit : class {
 
 protocol MergerRootEntity_overlapingArrangment : class {
   var overlapingArrangment : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_artworkName : class {
+  var artworkName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
