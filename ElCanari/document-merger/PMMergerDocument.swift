@@ -45,7 +45,8 @@ import Cocoa
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardView : CanariBoardModelView?
   @IBOutlet var mDisplaySettingView : NSView?
-  @IBOutlet var mFileName : EBTextObserverField?
+  @IBOutlet var mEmptyBoardMessage : EBTextField?
+  @IBOutlet var mGenerateProductFilesActionButton : EBButton?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
   @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
@@ -72,6 +73,8 @@ import Cocoa
   @IBOutlet var mModelViewVerticalFlipCheckbox : EBSwitch?
   @IBOutlet var mModelWidthTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mNoArtworkMessage : EBTextField?
+  @IBOutlet var mNoModelMessage : EBTextField?
   @IBOutlet var mOverlapSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mergerViewBackgroundColorWell : EBColorWell?
@@ -489,14 +492,23 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mDisplaySettingView' outlet is not an instance of 'NSView'") ;
     }
-    if nil == mFileName {
+    if nil == mEmptyBoardMessage {
       presentErrorWindow (file: #file,
                               line: #line,
-                              errorMessage: "the 'mFileName' outlet is nil") ;
-//    }else if !mFileName!.isKindOfClass (EBTextObserverField) {
+                              errorMessage: "the 'mEmptyBoardMessage' outlet is nil") ;
+//    }else if !mEmptyBoardMessage!.isKindOfClass (EBTextField) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mFileName' outlet is not an instance of 'EBTextObserverField'") ;
+//                              errorMessage: "the 'mEmptyBoardMessage' outlet is not an instance of 'EBTextField'") ;
+    }
+    if nil == mGenerateProductFilesActionButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mGenerateProductFilesActionButton' outlet is nil") ;
+//    }else if !mGenerateProductFilesActionButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mGenerateProductFilesActionButton' outlet is not an instance of 'EBButton'") ;
     }
     if nil == mInstanceCountTextField {
       presentErrorWindow (file: #file,
@@ -731,6 +743,24 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mModelWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+    }
+    if nil == mNoArtworkMessage {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mNoArtworkMessage' outlet is nil") ;
+//    }else if !mNoArtworkMessage!.isKindOfClass (EBTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mNoArtworkMessage' outlet is not an instance of 'EBTextField'") ;
+    }
+    if nil == mNoModelMessage {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mNoModelMessage' outlet is nil") ;
+//    }else if !mNoModelMessage!.isKindOfClass (EBTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mNoModelMessage' outlet is not an instance of 'EBTextField'") ;
     }
     if nil == mOverlapSwitch {
       presentErrorWindow (file: #file,
@@ -1038,7 +1068,6 @@ import Cocoa
     mComposedBoardView?.bind_verticalFlip (g_Preferences!.mergerBoardViewVerticalFlip_property, file: #file, line: #line)
     mComposedBoardView?.bind_objectLayer (self.rootObject.instancesLayerDisplay_property, file: #file, line: #line)
     mOverlapSwitch?.bind_value (self.rootObject.overlapingArrangment_property, file: #file, line: #line)
-    mFileName?.bind_valueObserver (self.documentFilePath_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1061,6 +1090,16 @@ import Cocoa
       mController_mDisplaySettingView_hidden = controller
     }
     do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return (self.rootObject.boardModels_property.count_property.prop > EBSelection.single (0))
+        },
+        outlet:self.mNoModelMessage
+      )
+      self.rootObject.boardModels_property.count_property.addEBObserver (controller)
+      mController_mNoModelMessage_hidden = controller
+    }
+    do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
           return ((self.mBoardModelController.selectedArray_property.count_property.prop > EBSelection.single (0)) && (self.rootObject.boardInstances_property.count_property.prop == EBSelection.single (0)))
@@ -1080,6 +1119,16 @@ import Cocoa
       )
       self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
       mController_updateBoardModelButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0))
+        },
+        outlet:self.mEmptyBoardMessage
+      )
+      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
+      mController_mEmptyBoardMessage_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
@@ -1111,6 +1160,27 @@ import Cocoa
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
       mController_mArrangeVerticalyButton_enabled = controller
     }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return !self.rootObject.noArtwork_property.prop
+        },
+        outlet:self.mNoArtworkMessage
+      )
+      self.rootObject.noArtwork_property.addEBObserver (controller)
+      mController_mNoArtworkMessage_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (!self.rootObject.noArtwork_property.prop && (self.rootObject.boardInstances_property.count_property.prop > EBSelection.single (0)))
+        },
+        outlet:self.mGenerateProductFilesActionButton
+      )
+      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
+      self.rootObject.noArtwork_property.addEBObserver (controller)
+      mController_mGenerateProductFilesActionButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     showPrefsForSettingMergerDisplayButton?.target = self
     showPrefsForSettingMergerDisplayButton?.action = #selector (PMMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
@@ -1124,6 +1194,8 @@ import Cocoa
     mArrangeHorizontallyButton?.action = #selector (PMMergerDocument.arrangeHorizontallyAction (_:))
     mArrangeVerticalyButton?.target = self
     mArrangeVerticalyButton?.action = #selector (PMMergerDocument.arrangeVerticalyAction (_:))
+    mGenerateProductFilesActionButton?.target = self
+    mGenerateProductFilesActionButton?.action = #selector (PMMergerDocument.generateProductFilesAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -1216,23 +1288,31 @@ import Cocoa
     mComposedBoardView?.unbind_verticalFlip ()
     mComposedBoardView?.unbind_objectLayer ()
     mOverlapSwitch?.unbind_value ()
-    mFileName?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
     self.rootObject.selectedPageIndex_property.removeEBObserver (mController_showPrefsForSettingMergerDisplayButton_enabled!)
     mController_showPrefsForSettingMergerDisplayButton_enabled = nil
     self.rootObject.selectedPageIndex_property.removeEBObserver (mController_mDisplaySettingView_hidden!)
     mController_mDisplaySettingView_hidden = nil
+    self.rootObject.boardModels_property.count_property.removeEBObserver (mController_mNoModelMessage_hidden!)
+    mController_mNoModelMessage_hidden = nil
     self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_removeBoardModelButton_enabled!)
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_removeBoardModelButton_enabled!)
     mController_removeBoardModelButton_enabled = nil
     self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_updateBoardModelButton_enabled!)
     mController_updateBoardModelButton_enabled = nil
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mEmptyBoardMessage_hidden!)
+    mController_mEmptyBoardMessage_hidden = nil
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mOverlapSwitch_enabled!)
     mController_mOverlapSwitch_enabled = nil
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mArrangeHorizontallyButton_enabled!)
     mController_mArrangeHorizontallyButton_enabled = nil
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mArrangeVerticalyButton_enabled!)
     mController_mArrangeVerticalyButton_enabled = nil
+    self.rootObject.noArtwork_property.removeEBObserver (mController_mNoArtworkMessage_hidden!)
+    mController_mNoArtworkMessage_hidden = nil
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
+    self.rootObject.noArtwork_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
+    mController_mGenerateProductFilesActionButton_enabled = nil
   //--------------------------- Uninstall compute functions for transients
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
@@ -1247,6 +1327,7 @@ import Cocoa
     updateBoardModelButton?.target = nil
     mArrangeHorizontallyButton?.target = nil
     mArrangeVerticalyButton?.target = nil
+    mGenerateProductFilesActionButton?.target = nil
   //--------------------------- Clean up outlets
     self.addBoardModelButton?.ebCleanUp ()
     self.mArrangeHorizontallyButton?.ebCleanUp ()
@@ -1281,7 +1362,8 @@ import Cocoa
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mDisplaySettingView?.ebCleanUp ()
-    self.mFileName?.ebCleanUp ()
+    self.mEmptyBoardMessage?.ebCleanUp ()
+    self.mGenerateProductFilesActionButton?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
     self.mModelBoardLimitTextField?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
@@ -1308,6 +1390,8 @@ import Cocoa
     self.mModelViewVerticalFlipCheckbox?.ebCleanUp ()
     self.mModelWidthTextField?.ebCleanUp ()
     self.mModelWidthUnitPopUp?.ebCleanUp ()
+    self.mNoArtworkMessage?.ebCleanUp ()
+    self.mNoModelMessage?.ebCleanUp ()
     self.mOverlapSwitch?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mergerViewBackgroundColorWell?.ebCleanUp ()
@@ -1339,11 +1423,15 @@ import Cocoa
 
   fileprivate var mController_showPrefsForSettingMergerDisplayButton_enabled : MultipleBindingController_enabled?
   fileprivate var mController_mDisplaySettingView_hidden : MultipleBindingController_hidden?
+  fileprivate var mController_mNoModelMessage_hidden : MultipleBindingController_hidden?
   fileprivate var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled?
   fileprivate var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled?
+  fileprivate var mController_mEmptyBoardMessage_hidden : MultipleBindingController_hidden?
   fileprivate var mController_mOverlapSwitch_enabled : MultipleBindingController_enabled?
   fileprivate var mController_mArrangeHorizontallyButton_enabled : MultipleBindingController_enabled?
   fileprivate var mController_mArrangeVerticalyButton_enabled : MultipleBindingController_enabled?
+  fileprivate var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden?
+  fileprivate var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled?
 
   //····················································································································
 

@@ -445,6 +445,7 @@ class MergerBoardInstanceEntity : EBManagedObject,
   //····················································································································
 
   var myModel_property = ToOneRelationship_MergerBoardInstanceEntity_myModel ()
+  var myModel_none_selection : EBSelection <Bool> { return .single (self.myModel_property.propval == nil) }
 
   //····················································································································
   //    init

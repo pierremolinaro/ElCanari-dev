@@ -28,8 +28,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   //  Properties
   //····················································································································
 
-   fileprivate var mBackgroundLayer = CAShapeLayer ()
-   fileprivate var mNoModelTextLayer = CATextLayer ()
+//   fileprivate var mBackgroundLayer = CAShapeLayer ()
+//   fileprivate var mNoModelTextLayer = CATextLayer ()
 
    fileprivate var mObjectLayer = CALayer ()
 
@@ -60,8 +60,8 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.isOpaque = OPAQUE_LAYERS
    // NSLog ("\(self.mBackgroundLayer.isOpaque)")
  //   self.mBackgroundLayer.isOpaque = OPAQUE_LAYERS
-    self.mBackgroundLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
-    self.layer?.addSublayer (mBackgroundLayer)
+//    self.mBackgroundLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
+//    self.layer?.addSublayer (mBackgroundLayer)
 
     self.mObjectLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.mObjectLayer.isOpaque = OPAQUE_LAYERS
@@ -95,23 +95,23 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   override func setBoardModelSize (width : Int, height : Int) {
     super.setBoardModelSize (width:width, height:height)
  //   self.notifyTransaction ()
-    let noModel = (width == 0) || (height == 0)
-    if noModel {
-      self.mBackgroundLayer.fillColor = nil
-      self.mBackgroundLayer.strokeColor = nil
-      self.mBackgroundLayer.isOpaque = false
-      self.mNoModelTextLayer.frame = self.frame
-      self.mNoModelTextLayer.foregroundColor = NSColor.gray.cgColor
-      self.mNoModelTextLayer.contentsScale = NSScreen.main ()!.backingScaleFactor
-      self.mNoModelTextLayer.alignmentMode = kCAAlignmentCenter
-      self.mNoModelTextLayer.string = "No Model"
-    }else{
-      self.mBackgroundLayer.path = CGPath (rect: self.bounds, transform: nil)
-      self.mBackgroundLayer.position = CGPoint (x:0.0, y:0.0)
-      self.mBackgroundLayer.fillColor = NSColor.lightGray.blended (withFraction: 0.5, of: .white)!.cgColor
-      self.mBackgroundLayer.isOpaque = OPAQUE_LAYERS
-      self.mNoModelTextLayer.string = ""
-    }
+//    let noModel = (width == 0) || (height == 0)
+//    if noModel {
+//      self.mBackgroundLayer.fillColor = nil
+//      self.mBackgroundLayer.strokeColor = nil
+//      self.mBackgroundLayer.isOpaque = false
+//      self.mNoModelTextLayer.frame = self.frame
+//      self.mNoModelTextLayer.foregroundColor = NSColor.gray.cgColor
+//      self.mNoModelTextLayer.contentsScale = NSScreen.main ()!.backingScaleFactor
+//      self.mNoModelTextLayer.alignmentMode = kCAAlignmentCenter
+//      self.mNoModelTextLayer.string = "No Model"
+//    }else{
+//      self.mBackgroundLayer.path = CGPath (rect: self.bounds, transform: nil)
+//      self.mBackgroundLayer.position = CGPoint (x:0.0, y:0.0)
+//      self.mBackgroundLayer.fillColor = NSColor.lightGray.blended (withFraction: 0.5, of: .white)!.cgColor
+//      self.mBackgroundLayer.isOpaque = OPAQUE_LAYERS
+//      self.mNoModelTextLayer.string = ""
+//    }
   }
 
   //····················································································································

@@ -18,7 +18,8 @@ class MergerRootEntity : EBManagedObject,
   MergerRootEntity_instancesLayerDisplay,
   MergerRootEntity_boardRect,
   MergerRootEntity_boardWidth,
-  MergerRootEntity_boardHeight {
+  MergerRootEntity_boardHeight,
+  MergerRootEntity_noArtwork {
 
   //····················································································································
   //   Accessing selectedPageIndex stored property
@@ -196,6 +197,22 @@ class MergerRootEntity : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing noArtwork transient property
+  //····················································································································
+
+  var noArtwork_property_selection : EBSelection <Bool> {
+    get {
+      return self.noArtwork_property.prop
+    }
+  }
+
+  var noArtwork : EBSelection <Bool> {
+    get {
+      return noArtwork_property_selection
+    }
+  }
+
+  //····················································································································
   //   Accessing boardModels toMany relationship
   //····················································································································
 
@@ -234,6 +251,7 @@ class MergerRootEntity : EBManagedObject,
   var boardRect_property = EBTransientProperty_CanariBoardRect ()
   var boardWidth_property = EBTransientProperty_Int ()
   var boardHeight_property = EBTransientProperty_Int ()
+  var noArtwork_property = EBTransientProperty_Bool ()
 
   //····················································································································
   //    Relationships
@@ -241,6 +259,8 @@ class MergerRootEntity : EBManagedObject,
 
   var boardModels_property = ToManyRelationship_MergerRootEntity_boardModels ()
   var boardInstances_property = ToManyRelationship_MergerRootEntity_boardInstances ()
+  var artwork_property = ToOneRelationship_MergerRootEntity_artwork ()
+  var artwork_none_selection : EBSelection <Bool> { return .single (self.artwork_property.propval == nil) }
 
   //····················································································································
   //    init
@@ -349,12 +369,33 @@ class MergerRootEntity : EBManagedObject,
         return .empty
       }
     }
+    self.noArtwork_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.artwork_none_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.artwork_none_selection) {
+          case (.single (let v0)) :
+            return .single (compute_MergerRootEntity_noArtwork (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
   //--- Install property observers for transients
     self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
     self.boardInstances_property.addEBObserverOf_instanceLayerDisplay (self.instancesLayerDisplay_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
     self.boardRect_property.addEBObserver (self.boardWidth_property)
     self.boardRect_property.addEBObserver (self.boardHeight_property)
+    self.artwork_property.addEBObserver (self.noArtwork_property)
   //--- Install undoers for properties
     self.selectedPageIndex_property.undoManager = undoManager ()
     self.zoom_property.undoManager = undoManager ()
@@ -362,6 +403,7 @@ class MergerRootEntity : EBManagedObject,
     self.boardHeightUnit_property.undoManager = undoManager ()
     self.overlapingArrangment_property.undoManager = undoManager ()
   //--- Install owner for relationships
+    self.artwork_property.owner = self
     self.boardModels_property.owner = self
     self.boardInstances_property.owner = self
   //--- register properties for handling signature
@@ -376,6 +418,7 @@ class MergerRootEntity : EBManagedObject,
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
     self.boardRect_property.removeEBObserver (self.boardWidth_property)
     self.boardRect_property.removeEBObserver (self.boardHeight_property)
+    self.artwork_property.removeEBObserver (self.noArtwork_property)
   }
 
   //····················································································································
@@ -465,6 +508,14 @@ class MergerRootEntity : EBManagedObject,
       observerExplorer:&self.boardHeight_property.mObserverExplorer,
       valueExplorer:&self.boardHeight_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "noArtwork",
+      idx:self.noArtwork_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.noArtwork_property.mObserverExplorer,
+      valueExplorer:&self.noArtwork_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "boardModels",
@@ -481,6 +532,13 @@ class MergerRootEntity : EBManagedObject,
       valueExplorer:&boardInstances_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForToOneRelationshipNamed (
+      "artwork",
+      idx:self.artwork_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.artwork_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -499,6 +557,8 @@ class MergerRootEntity : EBManagedObject,
     self.boardHeightUnit_property.mValueExplorer = nil
     self.overlapingArrangment_property.mObserverExplorer = nil
     self.overlapingArrangment_property.mValueExplorer = nil
+    self.artwork_property.mObserverExplorer = nil
+    self.artwork_property.mValueExplorer = nil
     self.boardModels_property.mValueExplorer = nil
     self.boardInstances_property.mValueExplorer = nil
     super.clearObjectExplorer ()
@@ -517,6 +577,7 @@ class MergerRootEntity : EBManagedObject,
     self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
     store (managedObjectArray: boardModels_property.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
     store (managedObjectArray: boardInstances_property.propval as NSArray, relationshipName:"boardInstances", intoDictionary: ioDictionary) ;
+    store (managedObject:self.artwork_property.propval, relationshipName:"artwork", intoDictionary: ioDictionary) ;
   }
 
   //····················································································································
@@ -541,6 +602,12 @@ class MergerRootEntity : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [MergerBoardInstanceEntity])
+    self.artwork_property.setProp (readEntityFromDictionary (
+        inRelationshipName: "artwork",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      ) as? ArtworkRootEntity
+    )
   }
 
   //····················································································································
@@ -558,6 +625,10 @@ class MergerRootEntity : EBManagedObject,
       self.boardInstances_property.setProp ([])
       self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
+    if let object = self.artwork_property.propval {
+      self.artwork_property.setProp (nil)
+      self.managedObjectContext ()?.internalRemoveManagedObject (object, &ioObjectsToRemove) // Cascade removing from moc
+    }
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
@@ -572,6 +643,15 @@ class MergerRootEntity : EBManagedObject,
   }
 
   //····················································································································
+  //   resetToOneRelationships
+  //····················································································································
+
+  override func resetToOneRelationships () {
+    super.resetToOneRelationships ()
+    self.artwork_property.setProp (nil)
+  }
+
+  //····················································································································
   //   accessibleObjects
   //····················································································································
 
@@ -582,6 +662,9 @@ class MergerRootEntity : EBManagedObject,
     }
     for managedObject : EBManagedObject in self.boardInstances_property.propval {
       objects.append (managedObject)
+    }
+    if let object = self.artwork_property.propval {
+      objects.append (object)
     }
   }
 
@@ -1161,6 +1244,62 @@ class ReadOnlyArrayOf_MergerRootEntity : ReadOnlyAbstractArrayProperty <MergerRo
   }
 
   //····················································································································
+  //   Observers of 'noArtwork' transient property
+  //····················································································································
+
+  private var mObserversOf_noArtwork = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_noArtwork (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_noArtwork.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.noArtwork_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_noArtwork (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_noArtwork.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.noArtwork_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_noArtwork_toElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_noArtwork {
+        managedObject.noArtwork_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_noArtwork_fromElementsOfSet (_ inSet : Set<MergerRootEntity>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_noArtwork {
+        managedObject.noArtwork_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1209,6 +1348,7 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
         removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
+        removeEBObserversOf_noArtwork_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -1223,6 +1363,7 @@ class TransientArrayOf_MergerRootEntity : ReadOnlyArrayOf_MergerRootEntity {
         addEBObserversOf_boardRect_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
+        addEBObserversOf_noArtwork_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -1309,6 +1450,12 @@ protocol MergerRootEntity_boardWidth : class {
 
 protocol MergerRootEntity_boardHeight : class {
   var boardHeight : EBSelection < Int > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRootEntity_noArtwork : class {
+  var noArtwork : EBSelection < Bool > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1800,5 +1947,621 @@ ToManyRelationshipReadWrite_MergerRootEntity_boardInstances, EBSignatureObserver
 
   //····················································································································
  
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: artwork
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_MergerRootEntity_artwork : EBAbstractProperty {
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  weak var owner : MergerRootEntity? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  weak private var mValue : ArtworkRootEntity? {
+    didSet {
+      if let unwrappedOwner = owner, oldValue !== mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.undoManager()?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
+        }
+      //--- Remove property observers of old object
+        oldValue?.comments_property.removeEBObserversFrom (mObserversOf_comments)
+        oldValue?.drillDataFileExtension_property.removeEBObserversFrom (mObserversOf_drillDataFileExtension)
+        oldValue?.drillDataFormat_property.removeEBObserversFrom (mObserversOf_drillDataFormat)
+        oldValue?.drillListFileExtension_property.removeEBObserversFrom (mObserversOf_drillListFileExtension)
+        oldValue?.drillToolListFileExtension_property.removeEBObserversFrom (mObserversOf_drillToolListFileExtension)
+        oldValue?.minPP_TP_TT_TW_displayUnit_property.removeEBObserversFrom (mObserversOf_minPP_TP_TT_TW_displayUnit)
+        oldValue?.minPP_TP_TT_TW_inEBUnit_property.removeEBObserversFrom (mObserversOf_minPP_TP_TT_TW_inEBUnit)
+        oldValue?.minValueForOARdisplayUnit_property.removeEBObserversFrom (mObserversOf_minValueForOARdisplayUnit)
+        oldValue?.minValueForOARinEBUnit_property.removeEBObserversFrom (mObserversOf_minValueForOARinEBUnit)
+        oldValue?.minValueForPHDdisplayUnit_property.removeEBObserversFrom (mObserversOf_minValueForPHDdisplayUnit)
+        oldValue?.minValueForPHDinEBUnit_property.removeEBObserversFrom (mObserversOf_minValueForPHDinEBUnit)
+        oldValue?.selectedTab_property.removeEBObserversFrom (mObserversOf_selectedTab)
+      //--- Add property observers to new object
+        mValue?.comments_property.addEBObserversFrom (mObserversOf_comments)
+        mValue?.drillDataFileExtension_property.addEBObserversFrom (mObserversOf_drillDataFileExtension)
+        mValue?.drillDataFormat_property.addEBObserversFrom (mObserversOf_drillDataFormat)
+        mValue?.drillListFileExtension_property.addEBObserversFrom (mObserversOf_drillListFileExtension)
+        mValue?.drillToolListFileExtension_property.addEBObserversFrom (mObserversOf_drillToolListFileExtension)
+        mValue?.minPP_TP_TT_TW_displayUnit_property.addEBObserversFrom (mObserversOf_minPP_TP_TT_TW_displayUnit)
+        mValue?.minPP_TP_TT_TW_inEBUnit_property.addEBObserversFrom (mObserversOf_minPP_TP_TT_TW_inEBUnit)
+        mValue?.minValueForOARdisplayUnit_property.addEBObserversFrom (mObserversOf_minValueForOARdisplayUnit)
+        mValue?.minValueForOARinEBUnit_property.addEBObserversFrom (mObserversOf_minValueForOARinEBUnit)
+        mValue?.minValueForPHDdisplayUnit_property.addEBObserversFrom (mObserversOf_minValueForPHDdisplayUnit)
+        mValue?.minValueForPHDinEBUnit_property.addEBObserversFrom (mObserversOf_minValueForPHDinEBUnit)
+        mValue?.selectedTab_property.addEBObserversFrom (mObserversOf_selectedTab)
+       //--- Notify observers
+        postEvent ()
+      }
+    }
+  }
+
+  var propval : ArtworkRootEntity? { get { return mValue } }
+
+  var prop : EBSelection <ArtworkRootEntity?> { get { return .single (mValue) } }
+
+  func setProp (_ value : ArtworkRootEntity?) { mValue = value }
+
+  //····················································································································
+
+  func performUndo (_ oldValue : ArtworkRootEntity?) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : ArtworkRootEntity) {
+    if mValue === object {
+      mValue = nil
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : ArtworkRootEntity) {
+    mValue = object
+  }
+
+  //····················································································································
+  //   Observable property: comments
+  //····················································································································
+
+  private var mObserversOf_comments = EBWeakEventSet ()
+
+  //····················································································································
+
+  var comments_property_selection : EBSelection <String?> {
+    get {
+      if let model = self.propval {
+        switch (model.comments_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+    mObserversOf_comments.insert (inObserver)
+    if let object = self.propval {
+      object.comments_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
+    mObserversOf_comments.remove (inObserver)
+    if let object = self.propval {
+      object.comments_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: drillDataFileExtension
+  //····················································································································
+
+  private var mObserversOf_drillDataFileExtension = EBWeakEventSet ()
+
+  //····················································································································
+
+  var drillDataFileExtension_property_selection : EBSelection <String?> {
+    get {
+      if let model = self.propval {
+        switch (model.drillDataFileExtension_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
+    mObserversOf_drillDataFileExtension.insert (inObserver)
+    if let object = self.propval {
+      object.drillDataFileExtension_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
+    mObserversOf_drillDataFileExtension.remove (inObserver)
+    if let object = self.propval {
+      object.drillDataFileExtension_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: drillDataFormat
+  //····················································································································
+
+  private var mObserversOf_drillDataFormat = EBWeakEventSet ()
+
+  //····················································································································
+
+  var drillDataFormat_property_selection : EBSelection <DrillDataFormatEnum?> {
+    get {
+      if let model = self.propval {
+        switch (model.drillDataFormat_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_drillDataFormat (_ inObserver : EBEvent) {
+    mObserversOf_drillDataFormat.insert (inObserver)
+    if let object = self.propval {
+      object.drillDataFormat_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drillDataFormat (_ inObserver : EBEvent) {
+    mObserversOf_drillDataFormat.remove (inObserver)
+    if let object = self.propval {
+      object.drillDataFormat_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: drillListFileExtension
+  //····················································································································
+
+  private var mObserversOf_drillListFileExtension = EBWeakEventSet ()
+
+  //····················································································································
+
+  var drillListFileExtension_property_selection : EBSelection <String?> {
+    get {
+      if let model = self.propval {
+        switch (model.drillListFileExtension_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_drillListFileExtension (_ inObserver : EBEvent) {
+    mObserversOf_drillListFileExtension.insert (inObserver)
+    if let object = self.propval {
+      object.drillListFileExtension_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drillListFileExtension (_ inObserver : EBEvent) {
+    mObserversOf_drillListFileExtension.remove (inObserver)
+    if let object = self.propval {
+      object.drillListFileExtension_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: drillToolListFileExtension
+  //····················································································································
+
+  private var mObserversOf_drillToolListFileExtension = EBWeakEventSet ()
+
+  //····················································································································
+
+  var drillToolListFileExtension_property_selection : EBSelection <String?> {
+    get {
+      if let model = self.propval {
+        switch (model.drillToolListFileExtension_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_drillToolListFileExtension (_ inObserver : EBEvent) {
+    mObserversOf_drillToolListFileExtension.insert (inObserver)
+    if let object = self.propval {
+      object.drillToolListFileExtension_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drillToolListFileExtension (_ inObserver : EBEvent) {
+    mObserversOf_drillToolListFileExtension.remove (inObserver)
+    if let object = self.propval {
+      object.drillToolListFileExtension_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: minPP_TP_TT_TW_displayUnit
+  //····················································································································
+
+  private var mObserversOf_minPP_TP_TT_TW_displayUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var minPP_TP_TT_TW_displayUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.minPP_TP_TT_TW_displayUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_minPP_TP_TT_TW_displayUnit (_ inObserver : EBEvent) {
+    mObserversOf_minPP_TP_TT_TW_displayUnit.insert (inObserver)
+    if let object = self.propval {
+      object.minPP_TP_TT_TW_displayUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minPP_TP_TT_TW_displayUnit (_ inObserver : EBEvent) {
+    mObserversOf_minPP_TP_TT_TW_displayUnit.remove (inObserver)
+    if let object = self.propval {
+      object.minPP_TP_TT_TW_displayUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: minPP_TP_TT_TW_inEBUnit
+  //····················································································································
+
+  private var mObserversOf_minPP_TP_TT_TW_inEBUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var minPP_TP_TT_TW_inEBUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.minPP_TP_TT_TW_inEBUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_minPP_TP_TT_TW_inEBUnit (_ inObserver : EBEvent) {
+    mObserversOf_minPP_TP_TT_TW_inEBUnit.insert (inObserver)
+    if let object = self.propval {
+      object.minPP_TP_TT_TW_inEBUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minPP_TP_TT_TW_inEBUnit (_ inObserver : EBEvent) {
+    mObserversOf_minPP_TP_TT_TW_inEBUnit.remove (inObserver)
+    if let object = self.propval {
+      object.minPP_TP_TT_TW_inEBUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: minValueForOARdisplayUnit
+  //····················································································································
+
+  private var mObserversOf_minValueForOARdisplayUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var minValueForOARdisplayUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.minValueForOARdisplayUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
+    mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
+    if let object = self.propval {
+      object.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
+    mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
+    if let object = self.propval {
+      object.minValueForOARdisplayUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: minValueForOARinEBUnit
+  //····················································································································
+
+  private var mObserversOf_minValueForOARinEBUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var minValueForOARinEBUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.minValueForOARinEBUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
+    mObserversOf_minValueForOARinEBUnit.insert (inObserver)
+    if let object = self.propval {
+      object.minValueForOARinEBUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
+    mObserversOf_minValueForOARinEBUnit.remove (inObserver)
+    if let object = self.propval {
+      object.minValueForOARinEBUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: minValueForPHDdisplayUnit
+  //····················································································································
+
+  private var mObserversOf_minValueForPHDdisplayUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var minValueForPHDdisplayUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.minValueForPHDdisplayUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
+    mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
+    if let object = self.propval {
+      object.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
+    mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
+    if let object = self.propval {
+      object.minValueForPHDdisplayUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: minValueForPHDinEBUnit
+  //····················································································································
+
+  private var mObserversOf_minValueForPHDinEBUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var minValueForPHDinEBUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.minValueForPHDinEBUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
+    mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
+    if let object = self.propval {
+      object.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
+    mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
+    if let object = self.propval {
+      object.minValueForPHDinEBUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: selectedTab
+  //····················································································································
+
+  private var mObserversOf_selectedTab = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectedTab_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.selectedTab_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
+    mObserversOf_selectedTab.insert (inObserver)
+    if let object = self.propval {
+      object.selectedTab_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
+    mObserversOf_selectedTab.remove (inObserver)
+    if let object = self.propval {
+      object.selectedTab_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
 }
 

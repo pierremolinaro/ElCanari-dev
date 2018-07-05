@@ -401,6 +401,7 @@ entity MergerBoardInstanceEntity {
 entity MergerRootEntity {
   toMany @cascading BoardModelEntity boardModels ;
   toMany @cascading MergerBoardInstanceEntity boardInstances ;
+  toOne @cascading ArtworkRootEntity artwork ;
 
   property Int selectedPageIndex default 0 ;
   property Int zoom default 100 ;
@@ -418,6 +419,9 @@ entity MergerRootEntity {
   transient CanariBoardRect boardRect dependsFrom self.boardInstances.all.instanceRect ;
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;
+
+#--- Artwork
+  transient Bool noArtwork dependsFrom self.artwork.none ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -514,6 +518,9 @@ document PMMergerDocument root MergerRootEntity {
 
 
 #------------------------------------- Model Page
+#--- "No model" message
+ outlet EBTextField mNoModelMessage $hidden root.boardModels.count > 0 ;
+
 #--- Add board model
   action addBoardModelAction ;
   outlet EBButton addBoardModelButton $run self.addBoardModelAction ;
@@ -576,6 +583,9 @@ document PMMergerDocument root MergerRootEntity {
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
 
+#--- "Empty Board" message
+ outlet EBTextField mEmptyBoardMessage $hidden root.boardInstances.count > 0 ;
+
 #--- Board width display
   outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag root.boardWidthUnit ;
   outlet CanariDimensionObserverTextField mBoardWidthTextField
@@ -607,7 +617,13 @@ document PMMergerDocument root MergerRootEntity {
 
 
 #------------------------------------- Product Page
-  outlet EBTextObserverField mFileName $valueObserver self.documentFilePath ;
+ # outlet EBTextObserverField mFileName $valueObserver self.documentFilePath ;
+ outlet EBTextField mNoArtworkMessage $hidden !root.noArtwork ;
+ 
+ action generateProductFilesAction ;
+ outlet EBButton mGenerateProductFilesActionButton
+   $enabled !root.noArtwork & (root.boardInstances.count > 0)
+   $run self.generateProductFilesAction ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
