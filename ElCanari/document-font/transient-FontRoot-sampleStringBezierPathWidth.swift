@@ -11,12 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_FontCharacterEntity_characterIsDefined (
-       _ self_advance : Int,                         
-       _ self_segments_count : Int
-) -> Bool {
+func compute_FontRoot_sampleStringBezierPathWidth (
+       _ self_sampleStringBezierPath : CGPath
+) -> Double {
 //--- START OF USER ZONE 2
-  return (self_advance > 0) || (self_segments_count > 0)
+  return Double (self_sampleStringBezierPath.boundingBoxOfPath.width)
 //--- END OF USER ZONE 2
 }
 

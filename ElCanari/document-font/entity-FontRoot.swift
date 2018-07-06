@@ -5,106 +5,146 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: FontCharacterEntity
+//    Entity: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class FontCharacterEntity : EBManagedObject,
-  FontCharacterEntity_advance,
-  FontCharacterEntity_characterIsDefined,
-  FontCharacterEntity_segmentArrayForDrawing,
-  FontCharacterEntity_gerberCode,
-  FontCharacterEntity_gerberCodeInstructionCountMessage {
+class FontRoot : EBManagedObject,
+  FontRoot_comments,
+  FontRoot_selectedTab,
+  FontRoot_selectedInspector,
+  FontRoot_sampleStringBezierPath,
+  FontRoot_sampleStringBezierPathWidth,
+  FontRoot_sampleStringBezierPathAscent,
+  FontRoot_sampleStringBezierPathDescent {
 
   //····················································································································
-  //   Accessing advance stored property
+  //   Accessing comments stored property
   //····················································································································
 
-  var advance : Int {
+  var comments : String {
     get {
-      return self.advance_property.propval
+      return self.comments_property.propval
     }
     set {
-      self.advance_property.setProp (newValue)
+      self.comments_property.setProp (newValue)
     }
   }
 
-  var advance_property_selection : EBSelection <Int> {
+  var comments_property_selection : EBSelection <String> {
     get {
-      return self.advance_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing characterIsDefined transient property
-  //····················································································································
-
-  var characterIsDefined_property_selection : EBSelection <Bool> {
-    get {
-      return self.characterIsDefined_property.prop
-    }
-  }
-
-  var characterIsDefined : EBSelection <Bool> {
-    get {
-      return characterIsDefined_property_selection
+      return self.comments_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing segmentArrayForDrawing transient property
+  //   Accessing selectedTab stored property
   //····················································································································
 
-  var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
+  var selectedTab : Int {
     get {
-      return self.segmentArrayForDrawing_property.prop
+      return self.selectedTab_property.propval
+    }
+    set {
+      self.selectedTab_property.setProp (newValue)
     }
   }
 
-  var segmentArrayForDrawing : EBSelection <CharacterSegmentListClass> {
+  var selectedTab_property_selection : EBSelection <Int> {
     get {
-      return segmentArrayForDrawing_property_selection
-    }
-  }
-
-  //····················································································································
-  //   Accessing gerberCode transient property
-  //····················································································································
-
-  var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
-    get {
-      return self.gerberCode_property.prop
-    }
-  }
-
-  var gerberCode : EBSelection <CharacterGerberCodeClass> {
-    get {
-      return gerberCode_property_selection
+      return self.selectedTab_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing gerberCodeInstructionCountMessage transient property
+  //   Accessing selectedInspector stored property
   //····················································································································
 
-  var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
+  var selectedInspector : Int {
     get {
-      return self.gerberCodeInstructionCountMessage_property.prop
+      return self.selectedInspector_property.propval
+    }
+    set {
+      self.selectedInspector_property.setProp (newValue)
     }
   }
 
-  var gerberCodeInstructionCountMessage : EBSelection <String> {
+  var selectedInspector_property_selection : EBSelection <Int> {
     get {
-      return gerberCodeInstructionCountMessage_property_selection
+      return self.selectedInspector_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing segments toMany relationship
+  //   Accessing sampleStringBezierPath transient property
   //····················································································································
 
-  var segments_property_selection : EBSelection < [SegmentForFontCharacterEntity] > {
+  var sampleStringBezierPath_property_selection : EBSelection <CGPath> {
     get {
-      return self.segments_property.prop
+      return self.sampleStringBezierPath_property.prop
+    }
+  }
+
+  var sampleStringBezierPath : EBSelection <CGPath> {
+    get {
+      return sampleStringBezierPath_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing sampleStringBezierPathWidth transient property
+  //····················································································································
+
+  var sampleStringBezierPathWidth_property_selection : EBSelection <Double> {
+    get {
+      return self.sampleStringBezierPathWidth_property.prop
+    }
+  }
+
+  var sampleStringBezierPathWidth : EBSelection <Double> {
+    get {
+      return sampleStringBezierPathWidth_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing sampleStringBezierPathAscent transient property
+  //····················································································································
+
+  var sampleStringBezierPathAscent_property_selection : EBSelection <Double> {
+    get {
+      return self.sampleStringBezierPathAscent_property.prop
+    }
+  }
+
+  var sampleStringBezierPathAscent : EBSelection <Double> {
+    get {
+      return sampleStringBezierPathAscent_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing sampleStringBezierPathDescent transient property
+  //····················································································································
+
+  var sampleStringBezierPathDescent_property_selection : EBSelection <Double> {
+    get {
+      return self.sampleStringBezierPathDescent_property.prop
+    }
+  }
+
+  var sampleStringBezierPathDescent : EBSelection <Double> {
+    get {
+      return sampleStringBezierPathDescent_property_selection
+    }
+  }
+
+  //····················································································································
+  //   Accessing characters toMany relationship
+  //····················································································································
+
+  var characters_property_selection : EBSelection < [FontCharacter] > {
+    get {
+      return self.characters_property.prop
     }
   }
 
@@ -112,22 +152,24 @@ class FontCharacterEntity : EBManagedObject,
   //    Stored Properties
   //····················································································································
 
-  var advance_property = EBStoredProperty_Int (0)
+  var comments_property = EBStoredProperty_String ("")
+  var selectedTab_property = EBStoredProperty_Int (0)
+  var selectedInspector_property = EBStoredProperty_Int (0)
 
   //····················································································································
   //    Transient properties
   //····················································································································
 
-  var characterIsDefined_property = EBTransientProperty_Bool ()
-  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
-  var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
-  var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
+  var sampleStringBezierPath_property = EBTransientProperty_CGPath ()
+  var sampleStringBezierPathWidth_property = EBTransientProperty_Double ()
+  var sampleStringBezierPathAscent_property = EBTransientProperty_Double ()
+  var sampleStringBezierPathDescent_property = EBTransientProperty_Double ()
 
   //····················································································································
   //    Relationships
   //····················································································································
 
-  var segments_property = ToManyRelationship_FontCharacterEntity_segments ()
+  var characters_property = ToManyRelationship_FontRoot_characters ()
 
   //····················································································································
   //    init
@@ -136,19 +178,21 @@ class FontCharacterEntity : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    self.characterIsDefined_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPath_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.advance_property_selection.kind ()
-        kind &= unwSelf.segments_property.count_property_selection.kind ()
+        var kind = unwSelf.characters_property_selection.kind ()
+        kind &= unwSelf.characters_property_selection.kind ()
+        kind &= g_Preferences!.sampleString_property_selection.kind ()
+        kind &= g_Preferences!.sampleStringSize_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.advance_property_selection, unwSelf.segments_property.count_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (compute_FontCharacterEntity_characterIsDefined (v0, v1))
+          switch (unwSelf.characters_property_selection, unwSelf.characters_property_selection, g_Preferences!.sampleString_property_selection, g_Preferences!.sampleStringSize_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (compute_FontRoot_sampleStringBezierPath (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -157,18 +201,18 @@ class FontCharacterEntity : EBManagedObject,
         return .empty
       }
     }
-    self.segmentArrayForDrawing_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPathWidth_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.segments_property_selection.kind ()
+        let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.segments_property_selection) {
+          switch (unwSelf.sampleStringBezierPath_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_FontCharacterEntity_segmentArrayForDrawing (v0))
+            return .single (compute_FontRoot_sampleStringBezierPathWidth (v0))
           default :
             return .empty
           }
@@ -177,18 +221,18 @@ class FontCharacterEntity : EBManagedObject,
         return .empty
       }
     }
-    self.gerberCode_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPathAscent_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.segmentArrayForDrawing_property_selection.kind ()
+        let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.segmentArrayForDrawing_property_selection) {
+          switch (unwSelf.sampleStringBezierPath_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_FontCharacterEntity_gerberCode (v0))
+            return .single (compute_FontRoot_sampleStringBezierPathAscent (v0))
           default :
             return .empty
           }
@@ -197,18 +241,18 @@ class FontCharacterEntity : EBManagedObject,
         return .empty
       }
     }
-    self.gerberCodeInstructionCountMessage_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPathDescent_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.gerberCode_property_selection.kind ()
+        let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.gerberCode_property_selection) {
+          switch (unwSelf.sampleStringBezierPath_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_FontCharacterEntity_gerberCodeInstructionCountMessage (v0))
+            return .single (compute_FontRoot_sampleStringBezierPathDescent (v0))
           default :
             return .empty
           }
@@ -218,29 +262,35 @@ class FontCharacterEntity : EBManagedObject,
       }
     }
   //--- Install property observers for transients
-    self.advance_property.addEBObserver (self.characterIsDefined_property)
-    self.segments_property.addEBObserver (self.characterIsDefined_property)
-    self.segments_property.addEBObserverOf_segmentForDrawing (self.segmentArrayForDrawing_property)
-    self.segmentArrayForDrawing_property.addEBObserver (self.gerberCode_property)
-    self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
+    self.characters_property.addEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
+    self.characters_property.addEBObserverOf_advance (self.sampleStringBezierPath_property)
+    g_Preferences?.sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
+    g_Preferences?.sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property)
+    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathWidth_property)
+    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathAscent_property)
+    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
   //--- Install undoers for properties
-    self.advance_property.undoManager = undoManager ()
+    self.comments_property.undoManager = undoManager ()
+    self.selectedTab_property.undoManager = undoManager ()
+    self.selectedInspector_property.undoManager = undoManager ()
   //--- Install owner for relationships
-    self.segments_property.owner = self
+    self.characters_property.owner = self
   //--- register properties for handling signature
-    self.advance_property.setSignatureObserver (observer:self)
-    self.segments_property.setSignatureObserver (observer:self)
+    self.characters_property.setSignatureObserver (observer:self)
+    self.comments_property.setSignatureObserver (observer:self)
   }
 
   //····················································································································
 
   deinit {
   //--- Remove observers
-    self.advance_property.removeEBObserver (self.characterIsDefined_property)
-    self.segments_property.removeEBObserver (self.characterIsDefined_property)
-    self.segments_property.removeEBObserverOf_segmentForDrawing (self.segmentArrayForDrawing_property)
-    self.segmentArrayForDrawing_property.removeEBObserver (self.gerberCode_property)
-    self.gerberCode_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property)
+    self.characters_property.removeEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
+    self.characters_property.removeEBObserverOf_advance (self.sampleStringBezierPath_property)
+    g_Preferences?.sampleString_property.removeEBObserver (self.sampleStringBezierPath_property)
+    g_Preferences?.sampleStringSize_property.removeEBObserver (self.sampleStringBezierPath_property)
+    self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathWidth_property)
+    self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathAscent_property)
+    self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathDescent_property)
   }
 
   //····················································································································
@@ -250,53 +300,69 @@ class FontCharacterEntity : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "advance",
-      idx:self.advance_property.mEasyBindingsObjectIndex,
+      "comments",
+      idx:self.comments_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.advance_property.mObserverExplorer,
-      valueExplorer:&self.advance_property.mValueExplorer
+      observerExplorer:&self.comments_property.mObserverExplorer,
+      valueExplorer:&self.comments_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectedTab",
+      idx:self.selectedTab_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectedTab_property.mObserverExplorer,
+      valueExplorer:&self.selectedTab_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectedInspector",
+      idx:self.selectedInspector_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectedInspector_property.mObserverExplorer,
+      valueExplorer:&self.selectedInspector_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "characterIsDefined",
-      idx:self.characterIsDefined_property.mEasyBindingsObjectIndex,
+      "sampleStringBezierPath",
+      idx:self.sampleStringBezierPath_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.characterIsDefined_property.mObserverExplorer,
-      valueExplorer:&self.characterIsDefined_property.mValueExplorer
+      observerExplorer:&self.sampleStringBezierPath_property.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "segmentArrayForDrawing",
-      idx:self.segmentArrayForDrawing_property.mEasyBindingsObjectIndex,
+      "sampleStringBezierPathWidth",
+      idx:self.sampleStringBezierPathWidth_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.segmentArrayForDrawing_property.mObserverExplorer,
-      valueExplorer:&self.segmentArrayForDrawing_property.mValueExplorer
+      observerExplorer:&self.sampleStringBezierPathWidth_property.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPathWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "gerberCode",
-      idx:self.gerberCode_property.mEasyBindingsObjectIndex,
+      "sampleStringBezierPathAscent",
+      idx:self.sampleStringBezierPathAscent_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.gerberCode_property.mObserverExplorer,
-      valueExplorer:&self.gerberCode_property.mValueExplorer
+      observerExplorer:&self.sampleStringBezierPathAscent_property.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPathAscent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "gerberCodeInstructionCountMessage",
-      idx:self.gerberCodeInstructionCountMessage_property.mEasyBindingsObjectIndex,
+      "sampleStringBezierPathDescent",
+      idx:self.sampleStringBezierPathDescent_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.gerberCodeInstructionCountMessage_property.mObserverExplorer,
-      valueExplorer:&self.gerberCodeInstructionCountMessage_property.mValueExplorer
+      observerExplorer:&self.sampleStringBezierPathDescent_property.mObserverExplorer,
+      valueExplorer:&self.sampleStringBezierPathDescent_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
-      "segments",
-      idx:segments_property.mEasyBindingsObjectIndex,
+      "characters",
+      idx:characters_property.mEasyBindingsObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&segments_property.mValueExplorer
+      valueExplorer:&characters_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -307,9 +373,13 @@ class FontCharacterEntity : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.advance_property.mObserverExplorer = nil
-    self.advance_property.mValueExplorer = nil
-    self.segments_property.mValueExplorer = nil
+    self.comments_property.mObserverExplorer = nil
+    self.comments_property.mValueExplorer = nil
+    self.selectedTab_property.mObserverExplorer = nil
+    self.selectedTab_property.mValueExplorer = nil
+    self.selectedInspector_property.mObserverExplorer = nil
+    self.selectedInspector_property.mValueExplorer = nil
+    self.characters_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -319,8 +389,10 @@ class FontCharacterEntity : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.advance_property.storeIn (dictionary: ioDictionary, forKey: "advance")
-    store (managedObjectArray: segments_property.propval as NSArray, relationshipName:"segments", intoDictionary: ioDictionary) ;
+    self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+    self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
+    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
+    store (managedObjectArray: characters_property.propval as NSArray, relationshipName:"characters", intoDictionary: ioDictionary) ;
   }
 
   //····················································································································
@@ -330,12 +402,14 @@ class FontCharacterEntity : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.advance_property.readFrom (dictionary: inDictionary, forKey:"advance")
-    self.segments_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "segments",
+    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
+    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
+    self.characters_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "characters",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SegmentForFontCharacterEntity])
+    ) as! [FontCharacter])
   }
 
   //····················································································································
@@ -343,7 +417,7 @@ class FontCharacterEntity : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.segments_property.setProp ([]) // Set relationships to nil
+    self.characters_property.setProp ([]) // Set relationships to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
@@ -353,7 +427,7 @@ class FontCharacterEntity : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
-    self.segments_property.setProp ([])
+    self.characters_property.setProp ([])
   }
 
   //····················································································································
@@ -362,7 +436,7 @@ class FontCharacterEntity : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-    for managedObject : EBManagedObject in self.segments_property.propval {
+    for managedObject : EBManagedObject in self.characters_property.propval {
       objects.append (managedObject)
     }
   }
@@ -373,8 +447,8 @@ class FontCharacterEntity : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.advance_property.signature ())
-    crc.accumulateUInt32 (self.segments_property.signature ())
+    crc.accumulateUInt32 (self.characters_property.signature ())
+    crc.accumulateUInt32 (self.comments_property.signature ())
     return crc
   }
 
@@ -383,288 +457,402 @@ class FontCharacterEntity : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_FontCharacterEntity
+//    ReadOnlyArrayOf_FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_FontCharacterEntity : ReadOnlyAbstractArrayProperty <FontCharacterEntity> {
+class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
-  //   Observers of 'advance' stored property
+  //   Observers of 'comments' stored property
   //····················································································································
 
-  private var mObserversOf_advance = EBWeakEventSet ()
+  private var mObserversOf_comments = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_advance (_ inObserver : EBEvent) {
+  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_advance.insert (inObserver)
+    mObserversOf_comments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.advance_property.addEBObserver (inObserver)
+        managedObject.comments_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_advance (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_advance.remove (inObserver)
+    mObserversOf_comments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.advance_property.removeEBObserver (inObserver)
+        managedObject.comments_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_advance_toElementsOfSet (_ inSet : Set<FontCharacterEntity>) {
+  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_advance {
-        managedObject.advance_property.addEBObserver (observer)
+      for observer in mObserversOf_comments {
+        managedObject.comments_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_advance_fromElementsOfSet (_ inSet : Set<FontCharacterEntity>) {
-    for observer in mObserversOf_advance {
+  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<FontRoot>) {
+    for observer in mObserversOf_comments {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.advance_property.removeEBObserver (observer)
+        managedObject.comments_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'characterIsDefined' transient property
+  //   Observers of 'selectedTab' stored property
   //····················································································································
 
-  private var mObserversOf_characterIsDefined = EBWeakEventSet ()
+  private var mObserversOf_selectedTab = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_characterIsDefined (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_characterIsDefined.insert (inObserver)
+    mObserversOf_selectedTab.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.characterIsDefined_property.addEBObserver (inObserver)
+        managedObject.selectedTab_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_characterIsDefined (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_characterIsDefined.remove (inObserver)
+    mObserversOf_selectedTab.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.characterIsDefined_property.removeEBObserver (inObserver)
+        managedObject.selectedTab_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_characterIsDefined_toElementsOfSet (_ inSet : Set<FontCharacterEntity>) {
+  final func addEBObserversOf_selectedTab_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_characterIsDefined {
-        managedObject.characterIsDefined_property.addEBObserver (observer)
+      for observer in mObserversOf_selectedTab {
+        managedObject.selectedTab_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_characterIsDefined_fromElementsOfSet (_ inSet : Set<FontCharacterEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_characterIsDefined {
-        managedObject.characterIsDefined_property.removeEBObserver (observer)
+  final func removeEBObserversOf_selectedTab_fromElementsOfSet (_ inSet : Set<FontRoot>) {
+    for observer in mObserversOf_selectedTab {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.selectedTab_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'segmentArrayForDrawing' transient property
+  //   Observers of 'selectedInspector' stored property
   //····················································································································
 
-  private var mObserversOf_segmentArrayForDrawing = EBWeakEventSet ()
+  private var mObserversOf_selectedInspector = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_segmentArrayForDrawing.insert (inObserver)
+    mObserversOf_selectedInspector.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.segmentArrayForDrawing_property.addEBObserver (inObserver)
+        managedObject.selectedInspector_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_segmentArrayForDrawing.remove (inObserver)
+    mObserversOf_selectedInspector.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.segmentArrayForDrawing_property.removeEBObserver (inObserver)
+        managedObject.selectedInspector_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (_ inSet : Set<FontCharacterEntity>) {
+  final func addEBObserversOf_selectedInspector_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_segmentArrayForDrawing {
-        managedObject.segmentArrayForDrawing_property.addEBObserver (observer)
+      for observer in mObserversOf_selectedInspector {
+        managedObject.selectedInspector_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (_ inSet : Set<FontCharacterEntity>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_segmentArrayForDrawing {
-        managedObject.segmentArrayForDrawing_property.removeEBObserver (observer)
+  final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : Set<FontRoot>) {
+    for observer in mObserversOf_selectedInspector {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.selectedInspector_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'gerberCode' transient property
+  //   Observers of 'sampleStringBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_gerberCode = EBWeakEventSet ()
+  private var mObserversOf_sampleStringBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_gerberCode (_ inObserver : EBEvent) {
+  final func addEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_gerberCode.insert (inObserver)
+    mObserversOf_sampleStringBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gerberCode_property.addEBObserver (inObserver)
+        managedObject.sampleStringBezierPath_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_gerberCode (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_gerberCode.remove (inObserver)
+    mObserversOf_sampleStringBezierPath.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gerberCode_property.removeEBObserver (inObserver)
+        managedObject.sampleStringBezierPath_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_gerberCode_toElementsOfSet (_ inSet : Set<FontCharacterEntity>) {
+  final func addEBObserversOf_sampleStringBezierPath_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_gerberCode {
-        managedObject.gerberCode_property.addEBObserver (observer)
+      for observer in mObserversOf_sampleStringBezierPath {
+        managedObject.sampleStringBezierPath_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_gerberCode_fromElementsOfSet (_ inSet : Set<FontCharacterEntity>) {
+  final func removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_gerberCode {
-        managedObject.gerberCode_property.removeEBObserver (observer)
+      for observer in mObserversOf_sampleStringBezierPath {
+        managedObject.sampleStringBezierPath_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'gerberCodeInstructionCountMessage' transient property
+  //   Observers of 'sampleStringBezierPathWidth' transient property
   //····················································································································
 
-  private var mObserversOf_gerberCodeInstructionCountMessage = EBWeakEventSet ()
+  private var mObserversOf_sampleStringBezierPathWidth = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
+  final func addEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_gerberCodeInstructionCountMessage.insert (inObserver)
+    mObserversOf_sampleStringBezierPathWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gerberCodeInstructionCountMessage_property.addEBObserver (inObserver)
+        managedObject.sampleStringBezierPathWidth_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_gerberCodeInstructionCountMessage.remove (inObserver)
+    mObserversOf_sampleStringBezierPathWidth.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gerberCodeInstructionCountMessage_property.removeEBObserver (inObserver)
+        managedObject.sampleStringBezierPathWidth_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (_ inSet : Set<FontCharacterEntity>) {
+  final func addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_gerberCodeInstructionCountMessage {
-        managedObject.gerberCodeInstructionCountMessage_property.addEBObserver (observer)
+      for observer in mObserversOf_sampleStringBezierPathWidth {
+        managedObject.sampleStringBezierPathWidth_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (_ inSet : Set<FontCharacterEntity>) {
+  final func removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_gerberCodeInstructionCountMessage {
-        managedObject.gerberCodeInstructionCountMessage_property.removeEBObserver (observer)
+      for observer in mObserversOf_sampleStringBezierPathWidth {
+        managedObject.sampleStringBezierPathWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'sampleStringBezierPathAscent' transient property
+  //····················································································································
+
+  private var mObserversOf_sampleStringBezierPathAscent = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_sampleStringBezierPathAscent.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sampleStringBezierPathAscent_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_sampleStringBezierPathAscent.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sampleStringBezierPathAscent_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (_ inSet : Set<FontRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_sampleStringBezierPathAscent {
+        managedObject.sampleStringBezierPathAscent_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (_ inSet : Set<FontRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_sampleStringBezierPathAscent {
+        managedObject.sampleStringBezierPathAscent_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'sampleStringBezierPathDescent' transient property
+  //····················································································································
+
+  private var mObserversOf_sampleStringBezierPathDescent = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_sampleStringBezierPathDescent.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sampleStringBezierPathDescent_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_sampleStringBezierPathDescent.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sampleStringBezierPathDescent_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (_ inSet : Set<FontRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_sampleStringBezierPathDescent {
+        managedObject.sampleStringBezierPathDescent_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (_ inSet : Set<FontRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_sampleStringBezierPathDescent {
+        managedObject.sampleStringBezierPathDescent_property.removeEBObserver (observer)
       }
     }
   }
@@ -674,14 +862,14 @@ class ReadOnlyArrayOf_FontCharacterEntity : ReadOnlyAbstractArrayProperty <FontC
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_FontCharacterEntity
+//    TransientArrayOf_FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_FontCharacterEntity : ReadOnlyArrayOf_FontCharacterEntity {
+class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
-  var readModelFunction : Optional<() -> EBSelection < [FontCharacterEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [FontRoot] > >
 
-  private var prop_cache : EBSelection < [FontCharacterEntity] >? 
+  private var prop_cache : EBSelection < [FontRoot] >? 
 
   //····················································································································
 
@@ -691,37 +879,41 @@ class TransientArrayOf_FontCharacterEntity : ReadOnlyArrayOf_FontCharacterEntity
 
   //····················································································································
 
-  private var mSet = Set <FontCharacterEntity> ()
+  private var mSet = Set <FontRoot> ()
 
-  override var prop : EBSelection < [FontCharacterEntity] > {
+  override var prop : EBSelection < [FontRoot] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <FontCharacterEntity>
+        let newSet : Set <FontRoot>
         switch prop_cache! {
         case .multiple, .empty :
-          newSet = Set <FontCharacterEntity> ()
+          newSet = Set <FontRoot> ()
         case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
-        removeEBObserversOf_advance_fromElementsOfSet (removedSet)
+        removeEBObserversOf_comments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_selectedTab_fromElementsOfSet (removedSet)
+        removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
-        removeEBObserversOf_characterIsDefined_fromElementsOfSet (removedSet)
-        removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedSet)
-        removeEBObserversOf_gerberCode_fromElementsOfSet (removedSet)
-        removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedSet)
+        removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedSet)
+        removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedSet)
+        removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedSet)
+        removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
-        addEBObserversOf_advance_toElementsOfSet (addedSet)
+        addEBObserversOf_comments_toElementsOfSet (addedSet)
+        addEBObserversOf_selectedTab_toElementsOfSet (addedSet)
+        addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
-        addEBObserversOf_characterIsDefined_toElementsOfSet (addedSet)
-        addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedSet)
-        addEBObserversOf_gerberCode_toElementsOfSet (addedSet)
-        addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedSet)
+        addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedSet)
+        addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedSet)
+        addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedSet)
+        addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -752,55 +944,67 @@ class TransientArrayOf_FontCharacterEntity : ReadOnlyArrayOf_FontCharacterEntity
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacterEntity_advance : class {
-  var advance : Int { get }
+protocol FontRoot_comments : class {
+  var comments : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacterEntity_characterIsDefined : class {
-  var characterIsDefined : EBSelection < Bool > { get }
+protocol FontRoot_selectedTab : class {
+  var selectedTab : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacterEntity_segmentArrayForDrawing : class {
-  var segmentArrayForDrawing : EBSelection < CharacterSegmentListClass > { get }
+protocol FontRoot_selectedInspector : class {
+  var selectedInspector : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacterEntity_gerberCode : class {
-  var gerberCode : EBSelection < CharacterGerberCodeClass > { get }
+protocol FontRoot_sampleStringBezierPath : class {
+  var sampleStringBezierPath : EBSelection < CGPath > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacterEntity_gerberCodeInstructionCountMessage : class {
-  var gerberCodeInstructionCountMessage : EBSelection < String > { get }
+protocol FontRoot_sampleStringBezierPathWidth : class {
+  var sampleStringBezierPathWidth : EBSelection < Double > { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: segments
+
+protocol FontRoot_sampleStringBezierPathAscent : class {
+  var sampleStringBezierPathAscent : EBSelection < Double > { get }
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_FontCharacterEntity_segments : ReadOnlyArrayOf_SegmentForFontCharacterEntity {
+protocol FontRoot_sampleStringBezierPathDescent : class {
+  var sampleStringBezierPathDescent : EBSelection < Double > { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: characters
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_FontRoot_characters : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
  
-  func setProp (_ value :  [SegmentForFontCharacterEntity]) { } // Abstract method
+  func setProp (_ value :  [FontCharacter]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: segments
+//    To many relationship: characters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_FontCharacterEntity_segments :
-ToManyRelationshipReadWrite_FontCharacterEntity_segments, EBSignatureObserverProtocol {
-  weak var owner : FontCharacterEntity?
+final class ToManyRelationship_FontRoot_characters :
+ToManyRelationshipReadWrite_FontRoot_characters, EBSignatureObserverProtocol {
+  weak var owner : FontRoot?
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -837,8 +1041,8 @@ ToManyRelationshipReadWrite_FontCharacterEntity_segments, EBSignatureObserverPro
 
   //····················································································································
 
-  private var mSet = Set<SegmentForFontCharacterEntity> ()
-  private var mValue = [SegmentForFontCharacterEntity] () {
+  private var mSet = Set<FontCharacter> ()
+  private var mValue = [FontCharacter] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -855,46 +1059,46 @@ ToManyRelationshipReadWrite_FontCharacterEntity_segments, EBSignatureObserverPro
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
         }
-        removeEBObserversOf_segmentForDrawing_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_characterIsDefined_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : SegmentForFontCharacterEntity in addedObjectSet {
+        for managedObject : FontCharacter in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
-        addEBObserversOf_segmentForDrawing_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_characterIsDefined_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
     }
   }
 
-  override var prop : EBSelection < [SegmentForFontCharacterEntity] > {
+  override var prop : EBSelection < [FontCharacter] > {
     get {
       return .single (mValue)
     }
   }
 
-  override func setProp (_ value :  [SegmentForFontCharacterEntity]) { mValue = value }
+  override func setProp (_ value :  [FontCharacter]) { mValue = value }
 
-  var propval : [SegmentForFontCharacterEntity] { get { return mValue } }
+  var propval : [FontCharacter] { get { return mValue } }
 
   //····················································································································
 
-  func performUndo (_ oldValue : [SegmentForFontCharacterEntity]) {
+  func performUndo (_ oldValue : [FontCharacter]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : SegmentForFontCharacterEntity) {
+  func remove (_ object : FontCharacter) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -905,7 +1109,7 @@ ToManyRelationshipReadWrite_FontCharacterEntity_segments, EBSignatureObserverPro
   
   //····················································································································
 
-  func add (_ object : SegmentForFontCharacterEntity) {
+  func add (_ object : FontCharacter) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)

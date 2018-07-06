@@ -25,9 +25,9 @@ let PMFontComment = "PMFontComment"
   override init () {
     super.init ()
     undoManager?.disableUndoRegistration ()
-    var characterArray = [FontCharacterEntity] ()
+    var characterArray = [FontCharacter] ()
     for _ in 0 ..< CANARI_FONT_CHARACTER_COUNT {
-      let newCharacter = FontCharacterEntity (managedObjectContext: managedObjectContext())
+      let newCharacter = FontCharacter (managedObjectContext: managedObjectContext())
       characterArray.append (newCharacter)
     }
     rootObject.characters_property.setProp (characterArray)

@@ -15,7 +15,7 @@ import Cocoa
 
 @objc(CurrentCharacterController) class CurrentCharacterController : CustomObjectController_PMFontDocument_selectedCharacter {
 
-  private weak var mCharacterArray : ReadOnlyArrayOf_FontCharacterEntity? = nil
+  private weak var mCharacterArray : ReadOnlyArrayOf_FontCharacter? = nil
 
   //····················································································································
 
@@ -33,7 +33,7 @@ import Cocoa
 
   //····················································································································
 
-  final func setModel (_ object : FontRootEntity) {
+  final func setModel (_ object : FontRoot) {
     mCharacterArray = object.characters_property
     mObjectObserver.postEvent ()
   }

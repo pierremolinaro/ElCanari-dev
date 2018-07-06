@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_SegmentForFontCharacterEntity_segmentForDrawing (
-       _ self_x1 : Int,                                       
-       _ self_y1 : Int,                                       
-       _ self_x2 : Int,                                       
+func compute_SegmentForFontCharacter_segmentForDrawing (
+       _ self_x1 : Int,                                 
+       _ self_y1 : Int,                                 
+       _ self_x2 : Int,                                 
        _ self_y2 : Int
 ) -> SegmentForFontCharacterClass {
 //--- START OF USER ZONE 2

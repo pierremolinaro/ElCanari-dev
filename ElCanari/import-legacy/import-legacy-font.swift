@@ -12,8 +12,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 let FONT_LEGACY_ENTITY_NAME_DICTIONARY : [String : String] = [ // used in import-legacy-document.swift
-  "FontRootEntity" : "FontRootEntity", // Canari entity name --> El Canari Entity Name
-  "FontCharacterEntity" : "FontCharacterEntity",
+  "FontRoot" : "FontRoot", // Canari entity name --> El Canari Entity Name
+  "FontCharacter" : "FontCharacter",
   "SegmentForFontCharacterEntity" : "SegmentForFontCharacterEntity"
 ]
 
@@ -35,7 +35,7 @@ let FONT_LEGACY_ENTITY_NAME_DICTIONARY : [String : String] = [ // used in import
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension FontRootEntity {
+extension FontRoot {
 
   //····················································································································
   // In canari 1, a font handles 224 characters, encoded in Mac Roman
@@ -47,18 +47,18 @@ extension FontRootEntity {
     // NSLog ("objectPropertyDictionary \(objectPropertyDictionary)")
   //--- Build a dictionary of imported characters, key is MacRoman character code
     let importedCharacterArray = objectPropertyDictionary ["characters"] as! [NSNumber]
-    var newCharacterDictionary = [Int : FontCharacterEntity] ()
+    var newCharacterDictionary = [Int : FontCharacter] ()
     for idx in importedCharacterArray {
       let index : Int = idx.intValue
-      let newCharacter = legacyImportContext.mObjectArray [index] as! FontCharacterEntity
+      let newCharacter = legacyImportContext.mObjectArray [index] as! FontCharacter
       let macRomanCode : Int = (legacyImportContext.mLegacyObjectDictionaryArray [index] ["code"] as! NSNumber).intValue
       // NSLog ("index \(index), macRomanCode \(macRomanCode)")
       newCharacterDictionary [macRomanCode] = newCharacter
     }
   //--- Build a fresh array of characters
-    var newCharacterArray = [FontCharacterEntity] ()
+    var newCharacterArray = [FontCharacter] ()
     for _ in 0 ..< CANARI_FONT_CHARACTER_COUNT {
-      let newCharacter = FontCharacterEntity (managedObjectContext: legacyImportContext.mManagedObjectContext)
+      let newCharacter = FontCharacter (managedObjectContext: legacyImportContext.mManagedObjectContext)
       newCharacterArray.append (newCharacter)
     }
   //--- Set characters from dictionary
@@ -78,7 +78,7 @@ extension FontRootEntity {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-extension FontCharacterEntity {
+extension FontCharacter {
 
   //····················································································································
 
@@ -94,17 +94,17 @@ extension FontCharacterEntity {
     let possibleGlyph = objectPropertyDictionary ["glyph"] // is nil if no segment
     if let glyph = possibleGlyph {
       // NSLog ("GLYPH \(glyph)")
-      var newSegmentDictionary = [Int : SegmentForFontCharacterEntity] ()
+      var newSegmentDictionary = [Int : SegmentForFontCharacter] ()
       for idx in glyph as! [NSNumber] {
         let index : Int = idx.intValue
         // NSLog ("\(idx), \(index)")
-        let newSegment = legacyImportContext.mObjectArray [index] as! SegmentForFontCharacterEntity
+        let newSegment = legacyImportContext.mObjectArray [index] as! SegmentForFontCharacter
         let layer : Int = (legacyImportContext.mLegacyObjectDictionaryArray [index] ["layer"] as! NSNumber).intValue
         // NSLog ("\(layer)")
         newSegmentDictionary [layer] = newSegment
        // newSegmentArray.append (newSegment)
       }
-      var newSegmentArray = [SegmentForFontCharacterEntity] ()
+      var newSegmentArray = [SegmentForFontCharacter] ()
       for idx in 0 ..< (glyph as! [NSNumber]).count {
          newSegmentArray.append(newSegmentDictionary [idx]!)
       }
@@ -118,7 +118,7 @@ extension FontCharacterEntity {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-extension SegmentForFontCharacterEntity {
+extension SegmentForFontCharacter {
 
   //····················································································································
   // In Canari 1, segment points are encoded in strings: stringForP1, and stringForP2

@@ -122,14 +122,14 @@ import Cocoa
   //····················································································································
 
   override func rootEntityClassName () -> String {
-    return "FontRootEntity"
+    return "FontRoot"
   }
 
   //····················································································································
   //    rootObject
   //····················································································································
 
-  var rootObject : FontRootEntity { get { return mRootObject as! FontRootEntity } }
+  var rootObject : FontRoot { get { return mRootObject as! FontRoot } }
 
   //····················································································································
   //    windowControllerDidLoadNib

@@ -1,5 +1,6 @@
 //--- START OF USER ZONE 1
 
+import Cocoa
 
 //--- END OF USER ZONE 1
 
@@ -11,30 +12,20 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_FontCharacterEntity_gerberCode (
-       _ self_segmentArrayForDrawing : CharacterSegmentListClass
-) -> CharacterGerberCodeClass {
+func compute_FontCharacter_segmentArrayForDrawing (
+       _ self_segments_segmentForDrawing : [SegmentForFontCharacter_segmentForDrawing]
+) -> CharacterSegmentListClass {
 //--- START OF USER ZONE 2
-  var elements = [CharacterGerberCodeElement] ()
-  if self_segmentArrayForDrawing.code.count > 0 {
-    var x = -1000
-    var y = -1000
-    for segment in self_segmentArrayForDrawing.code {
-      let x1 = segment.x1
-      let y1 = segment.y1
-      let x2 = segment.x2
-      let y2 = segment.y2
-      if (x1 != x2) || (y1 != y2) { // Segment is not empty
-        if (x1 != x) || (y1 != y) {
-          elements.append (.moveTo (x: x1, y: y1))
-        }
-        elements.append (.lineTo (x: x2, y: y2))
-        x = x2
-        y = y2
-      }
+  var result = [SegmentForFontCharacterClass] ()
+  for object in self_segments_segmentForDrawing {
+    switch object.segmentForDrawing {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      result.append (v)
     }
   }
-  return CharacterGerberCodeClass (elements: elements)
+  return CharacterSegmentListClass (elements:result)
 //--- END OF USER ZONE 2
 }
 

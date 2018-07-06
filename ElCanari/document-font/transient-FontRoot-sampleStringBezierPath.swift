@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_FontRootEntity_sampleStringBezierPath (
-       _ self_characters_segmentArrayForDrawing : [FontCharacterEntity_segmentArrayForDrawing],
-       _ self_characters_advance : [FontCharacterEntity_advance],
-       _ prefs_sampleString : String,               
+func compute_FontRoot_sampleStringBezierPath (
+       _ self_characters_segmentArrayForDrawing : [FontCharacter_segmentArrayForDrawing],
+       _ self_characters_advance : [FontCharacter_advance],
+       _ prefs_sampleString : String,         
        _ prefs_sampleStringSize : Double
 ) -> CGPath {
 //--- START OF USER ZONE 2
@@ -29,7 +29,7 @@ func compute_FontRootEntity_sampleStringBezierPath (
   for unicodeCharacter in sampleStringAsMacRomanData { // sampleStringASUnicodeArray {
     let characterIndex = Int (unicodeCharacter) - 32
     if characterIndex < self_characters_segmentArrayForDrawing.count {
-      let segmentArrayDescriptor : FontCharacterEntity_segmentArrayForDrawing = self_characters_segmentArrayForDrawing [characterIndex]
+      let segmentArrayDescriptor : FontCharacter_segmentArrayForDrawing = self_characters_segmentArrayForDrawing [characterIndex]
       switch segmentArrayDescriptor.segmentArrayForDrawing {
       case .empty, .multiple :
         break

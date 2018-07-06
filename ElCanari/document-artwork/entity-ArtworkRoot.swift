@@ -5,22 +5,22 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ArtworkRootEntity
+//    Entity: ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ArtworkRootEntity : EBManagedObject,
-  ArtworkRootEntity_selectedTab,
-  ArtworkRootEntity_comments,
-  ArtworkRootEntity_minPP_TP_TT_TW_displayUnit,
-  ArtworkRootEntity_minPP_TP_TT_TW_inEBUnit,
-  ArtworkRootEntity_minValueForOARdisplayUnit,
-  ArtworkRootEntity_minValueForOARinEBUnit,
-  ArtworkRootEntity_minValueForPHDdisplayUnit,
-  ArtworkRootEntity_minValueForPHDinEBUnit,
-  ArtworkRootEntity_drillDataFormat,
-  ArtworkRootEntity_drillDataFileExtension,
-  ArtworkRootEntity_drillListFileExtension,
-  ArtworkRootEntity_drillToolListFileExtension {
+class ArtworkRoot : EBManagedObject,
+  ArtworkRoot_selectedTab,
+  ArtworkRoot_comments,
+  ArtworkRoot_minPP_TP_TT_TW_displayUnit,
+  ArtworkRoot_minPP_TP_TT_TW_inEBUnit,
+  ArtworkRoot_minValueForOARdisplayUnit,
+  ArtworkRoot_minValueForOARinEBUnit,
+  ArtworkRoot_minValueForPHDdisplayUnit,
+  ArtworkRoot_minValueForPHDinEBUnit,
+  ArtworkRoot_drillDataFormat,
+  ArtworkRoot_drillDataFileExtension,
+  ArtworkRoot_drillListFileExtension,
+  ArtworkRoot_drillToolListFileExtension {
 
   //····················································································································
   //   Accessing selectedTab stored property
@@ -286,7 +286,7 @@ class ArtworkRootEntity : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var fileGenerationParameterArray_property = ToManyRelationship_ArtworkRootEntity_fileGenerationParameterArray ()
+  var fileGenerationParameterArray_property = ToManyRelationship_ArtworkRoot_fileGenerationParameterArray ()
 
   //····················································································································
   //    init
@@ -580,10 +580,10 @@ class ArtworkRootEntity : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ArtworkRootEntity
+//    ReadOnlyArrayOf_ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <ArtworkRootEntity> {
+class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> {
 
   //····················································································································
   //   Observers of 'selectedTab' stored property
@@ -623,7 +623,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_selectedTab_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_selectedTab_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_selectedTab {
         managedObject.selectedTab_property.addEBObserver (observer)
@@ -633,7 +633,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_selectedTab_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_selectedTab_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_selectedTab {
       observer.postEvent ()
       for managedObject in inSet {
@@ -680,7 +680,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_comments {
         managedObject.comments_property.addEBObserver (observer)
@@ -690,7 +690,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_comments {
       observer.postEvent ()
       for managedObject in inSet {
@@ -737,7 +737,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_minPP_TP_TT_TW_displayUnit_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_minPP_TP_TT_TW_displayUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_minPP_TP_TT_TW_displayUnit {
         managedObject.minPP_TP_TT_TW_displayUnit_property.addEBObserver (observer)
@@ -747,7 +747,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_minPP_TP_TT_TW_displayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_minPP_TP_TT_TW_displayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_minPP_TP_TT_TW_displayUnit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -794,7 +794,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_minPP_TP_TT_TW_inEBUnit_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_minPP_TP_TT_TW_inEBUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_minPP_TP_TT_TW_inEBUnit {
         managedObject.minPP_TP_TT_TW_inEBUnit_property.addEBObserver (observer)
@@ -804,7 +804,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_minPP_TP_TT_TW_inEBUnit_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_minPP_TP_TT_TW_inEBUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_minPP_TP_TT_TW_inEBUnit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -851,7 +851,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_minValueForOARdisplayUnit {
         managedObject.minValueForOARdisplayUnit_property.addEBObserver (observer)
@@ -861,7 +861,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_minValueForOARdisplayUnit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -908,7 +908,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_minValueForOARinEBUnit {
         managedObject.minValueForOARinEBUnit_property.addEBObserver (observer)
@@ -918,7 +918,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_minValueForOARinEBUnit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -965,7 +965,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_minValueForPHDdisplayUnit {
         managedObject.minValueForPHDdisplayUnit_property.addEBObserver (observer)
@@ -975,7 +975,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_minValueForPHDdisplayUnit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1022,7 +1022,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_minValueForPHDinEBUnit {
         managedObject.minValueForPHDinEBUnit_property.addEBObserver (observer)
@@ -1032,7 +1032,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_minValueForPHDinEBUnit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1079,7 +1079,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_drillDataFormat_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_drillDataFormat_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_drillDataFormat {
         managedObject.drillDataFormat_property.addEBObserver (observer)
@@ -1089,7 +1089,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_drillDataFormat_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_drillDataFormat_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_drillDataFormat {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1136,7 +1136,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_drillDataFileExtension_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_drillDataFileExtension_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_drillDataFileExtension {
         managedObject.drillDataFileExtension_property.addEBObserver (observer)
@@ -1146,7 +1146,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_drillDataFileExtension {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1193,7 +1193,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_drillListFileExtension_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_drillListFileExtension_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_drillListFileExtension {
         managedObject.drillListFileExtension_property.addEBObserver (observer)
@@ -1203,7 +1203,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_drillListFileExtension_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_drillListFileExtension_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_drillListFileExtension {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1250,7 +1250,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func addEBObserversOf_drillToolListFileExtension_toElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func addEBObserversOf_drillToolListFileExtension_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
       for observer in mObserversOf_drillToolListFileExtension {
         managedObject.drillToolListFileExtension_property.addEBObserver (observer)
@@ -1260,7 +1260,7 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 
   //····················································································································
 
-  final func removeEBObserversOf_drillToolListFileExtension_fromElementsOfSet (_ inSet : Set<ArtworkRootEntity>) {
+  final func removeEBObserversOf_drillToolListFileExtension_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for observer in mObserversOf_drillToolListFileExtension {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1274,14 +1274,14 @@ class ReadOnlyArrayOf_ArtworkRootEntity : ReadOnlyAbstractArrayProperty <Artwork
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ArtworkRootEntity
+//    TransientArrayOf_ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ArtworkRootEntity : ReadOnlyArrayOf_ArtworkRootEntity {
+class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
-  var readModelFunction : Optional<() -> EBSelection < [ArtworkRootEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [ArtworkRoot] > >
 
-  private var prop_cache : EBSelection < [ArtworkRootEntity] >? 
+  private var prop_cache : EBSelection < [ArtworkRoot] >? 
 
   //····················································································································
 
@@ -1291,16 +1291,16 @@ class TransientArrayOf_ArtworkRootEntity : ReadOnlyArrayOf_ArtworkRootEntity {
 
   //····················································································································
 
-  private var mSet = Set <ArtworkRootEntity> ()
+  private var mSet = Set <ArtworkRoot> ()
 
-  override var prop : EBSelection < [ArtworkRootEntity] > {
+  override var prop : EBSelection < [ArtworkRoot] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <ArtworkRootEntity>
+        let newSet : Set <ArtworkRoot>
         switch prop_cache! {
         case .multiple, .empty :
-          newSet = Set <ArtworkRootEntity> ()
+          newSet = Set <ArtworkRoot> ()
         case .single (let array) :
           newSet = Set (array)
         }
@@ -1366,73 +1366,73 @@ class TransientArrayOf_ArtworkRootEntity : ReadOnlyArrayOf_ArtworkRootEntity {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_selectedTab : class {
+protocol ArtworkRoot_selectedTab : class {
   var selectedTab : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_comments : class {
+protocol ArtworkRoot_comments : class {
   var comments : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_minPP_TP_TT_TW_displayUnit : class {
+protocol ArtworkRoot_minPP_TP_TT_TW_displayUnit : class {
   var minPP_TP_TT_TW_displayUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_minPP_TP_TT_TW_inEBUnit : class {
+protocol ArtworkRoot_minPP_TP_TT_TW_inEBUnit : class {
   var minPP_TP_TT_TW_inEBUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_minValueForOARdisplayUnit : class {
+protocol ArtworkRoot_minValueForOARdisplayUnit : class {
   var minValueForOARdisplayUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_minValueForOARinEBUnit : class {
+protocol ArtworkRoot_minValueForOARinEBUnit : class {
   var minValueForOARinEBUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_minValueForPHDdisplayUnit : class {
+protocol ArtworkRoot_minValueForPHDdisplayUnit : class {
   var minValueForPHDdisplayUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_minValueForPHDinEBUnit : class {
+protocol ArtworkRoot_minValueForPHDinEBUnit : class {
   var minValueForPHDinEBUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_drillDataFormat : class {
+protocol ArtworkRoot_drillDataFormat : class {
   var drillDataFormat : DrillDataFormatEnum { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_drillDataFileExtension : class {
+protocol ArtworkRoot_drillDataFileExtension : class {
   var drillDataFileExtension : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_drillListFileExtension : class {
+protocol ArtworkRoot_drillListFileExtension : class {
   var drillListFileExtension : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRootEntity_drillToolListFileExtension : class {
+protocol ArtworkRoot_drillToolListFileExtension : class {
   var drillToolListFileExtension : String { get }
 }
 
@@ -1440,7 +1440,7 @@ protocol ArtworkRootEntity_drillToolListFileExtension : class {
 //    To many relationship read write: fileGenerationParameterArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
+class ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
 
   //····················································································································
  
@@ -1454,9 +1454,9 @@ class ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray
 //    To many relationship: fileGenerationParameterArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_ArtworkRootEntity_fileGenerationParameterArray :
-ToManyRelationshipReadWrite_ArtworkRootEntity_fileGenerationParameterArray, EBSignatureObserverProtocol {
-  weak var owner : ArtworkRootEntity?
+final class ToManyRelationship_ArtworkRoot_fileGenerationParameterArray :
+ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray, EBSignatureObserverProtocol {
+  weak var owner : ArtworkRoot?
 
   var mValueExplorer : NSPopUpButton? {
     didSet {

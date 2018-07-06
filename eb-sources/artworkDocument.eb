@@ -9,7 +9,7 @@ binding CanariDrillDataFormatTabView $selectedFormat : property DrillDataFormatE
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity ArtworkRootEntity {
+entity ArtworkRoot {
   toMany @cascading @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
   property Int selectedTab default 0 ;
   property @signature String comments default "" ;
@@ -35,7 +35,7 @@ entity ArtworkRootEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-document PMArtworkDocument root ArtworkRootEntity {
+document PMArtworkDocument root ArtworkRoot {
 #--- Selected Tab
   outlet CanariSegmentedControl mSegmentedControl $selectedPage root.selectedTab ;
 

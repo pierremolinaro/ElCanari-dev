@@ -14,7 +14,7 @@ private let DEBUG_EVENT = false
 
 final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
 
-  private var mModel : ToManyRelationship_ArtworkRootEntity_fileGenerationParameterArray? = nil
+  private var mModel : ToManyRelationship_ArtworkRoot_fileGenerationParameterArray? = nil
 
   let sortedArray_property = TransientArrayOf_ArtworkFileGenerationParameters ()
 
@@ -138,7 +138,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
   //    bind_modelAndView
   //····················································································································
 
-  func bind_modelAndView (model:ToManyRelationship_ArtworkRootEntity_fileGenerationParameterArray, tableViewArray:[EBTableView], file:String, line:Int) {
+  func bind_modelAndView (model:ToManyRelationship_ArtworkRoot_fileGenerationParameterArray, tableViewArray:[EBTableView], file:String, line:Int) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }

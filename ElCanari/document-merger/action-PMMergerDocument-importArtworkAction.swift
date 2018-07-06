@@ -37,7 +37,7 @@ extension PMMergerDocument {
               if let fileData = optionalFileData {
                 do {
                   let (_, _, possibleLoadedObject) = try self.managedObjectContext().loadEasyBindingFile (from: fileData)
-                  if let loadedObject = possibleLoadedObject, let loadedArtwork = loadedObject as? ArtworkRootEntity {
+                  if let loadedObject = possibleLoadedObject, let loadedArtwork = loadedObject as? ArtworkRoot {
                     self.rootObject.artwork_property.setProp (loadedArtwork)
                     self.rootObject.artworkName = filePath.lastPathComponent.deletingPathExtension
                   }

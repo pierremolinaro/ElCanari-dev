@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_PMFontDocument_missingCharactersCountString (
-       _ root_characters_characterIsDefined : [FontCharacterEntity_characterIsDefined]
+       _ root_characters_characterIsDefined : [FontCharacter_characterIsDefined]
 ) -> String {
 //--- START OF USER ZONE 2
   var n = 0

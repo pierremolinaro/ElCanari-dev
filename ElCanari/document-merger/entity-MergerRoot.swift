@@ -592,7 +592,7 @@ class MergerRoot : EBManagedObject,
         inRelationshipName: "artwork",
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
-      ) as? ArtworkRootEntity
+      ) as? ArtworkRoot
     )
   }
 
@@ -1965,7 +1965,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
     }
   }
  
-  weak private var mValue : ArtworkRootEntity? {
+  weak private var mValue : ArtworkRoot? {
     didSet {
       if let unwrappedOwner = owner, oldValue !== mValue {
       //--- Register old value in undo manager
@@ -2006,21 +2006,21 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
     }
   }
 
-  var propval : ArtworkRootEntity? { get { return mValue } }
+  var propval : ArtworkRoot? { get { return mValue } }
 
-  var prop : EBSelection <ArtworkRootEntity?> { get { return .single (mValue) } }
+  var prop : EBSelection <ArtworkRoot?> { get { return .single (mValue) } }
 
-  func setProp (_ value : ArtworkRootEntity?) { mValue = value }
+  func setProp (_ value : ArtworkRoot?) { mValue = value }
 
   //····················································································································
 
-  func performUndo (_ oldValue : ArtworkRootEntity?) {
+  func performUndo (_ oldValue : ArtworkRoot?) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : ArtworkRootEntity) {
+  func remove (_ object : ArtworkRoot) {
     if mValue === object {
       mValue = nil
     }
@@ -2028,7 +2028,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   
   //····················································································································
 
-  func add (_ object : ArtworkRootEntity) {
+  func add (_ object : ArtworkRoot) {
     mValue = object
   }
 

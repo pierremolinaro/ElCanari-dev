@@ -28,8 +28,8 @@ binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity SegmentForFontCharacterEntity {
-#  toOne FontCharacterEntity myCharacter inverse toMany segments ;
+# entity (SegmentForFontCharacterEntity) SegmentForFontCharacter {
+entity SegmentForFontCharacter {
   
   property @signature Int x1 default 2 ;
   property @signature Int y1 default 1 ;
@@ -42,9 +42,8 @@ entity SegmentForFontCharacterEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity FontCharacterEntity {
-#  toOne FontRootEntity myFont inverse toMany characters ;
-  toMany @signature SegmentForFontCharacterEntity segments ; # inverse toOne myCharacter ;
+entity FontCharacter {
+  toMany @signature SegmentForFontCharacter segments ; # inverse toOne myCharacter ;
   
   property @signature Int advance default 0 ;
 
@@ -59,8 +58,8 @@ entity FontCharacterEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity FontRootEntity {
-  toMany @signature FontCharacterEntity characters ; # inverse toOne myFont ;
+entity FontRoot {
+  toMany @signature FontCharacter characters ; # inverse toOne myFont ;
   property @signature String comments default "" ;
   property Int selectedTab default 0 ;
   property Int selectedInspector default 0 ;
@@ -89,7 +88,7 @@ class MissingCharacter {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-document PMFontDocument root FontRootEntity {
+document PMFontDocument root FontRoot {
 #--- Toolbar
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedTab ;
@@ -97,7 +96,7 @@ document PMFontDocument root FontRootEntity {
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
 #--- Character controller
-  customObjectController selectedCharacter classForSwift CurrentCharacterController : FontCharacterEntity ;
+  customObjectController selectedCharacter classForSwift CurrentCharacterController : FontCharacter ;
 
 #--- Advancement
   outlet EBIntField advancementTextField $value selectedCharacter.advance {sendContinously:yes, autoFormatter:yes} ;

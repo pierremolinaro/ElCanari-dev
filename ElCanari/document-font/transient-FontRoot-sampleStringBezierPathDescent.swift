@@ -11,20 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_FontCharacterEntity_gerberCodeInstructionCountMessage (
-       _ self_gerberCode : CharacterGerberCodeClass
-) -> String {
+func compute_FontRoot_sampleStringBezierPathDescent (
+       _ self_sampleStringBezierPath : CGPath
+) -> Double {
 //--- START OF USER ZONE 2
-   let result : String
-   let n = self_gerberCode.code.count
-   if n == 0 {
-     result = "No instruction"
-   }else if n == 1 {
-     result = "1 instruction"
-   }else{
-     result = "\(n) instructions"
-   }
-   return result
+  return Double (self_sampleStringBezierPath.boundingBoxOfPath.origin.y)
 //--- END OF USER ZONE 2
 }
 

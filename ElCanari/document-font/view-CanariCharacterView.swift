@@ -320,7 +320,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   func appendSegment () {
     if let document = mFontDocument {
-      let newSegment = SegmentForFontCharacterEntity (managedObjectContext: document.managedObjectContext())
+      let newSegment = SegmentForFontCharacter (managedObjectContext: document.managedObjectContext())
       var newSegmentEntityArray = self.segmentEntityArray ()
       newSegmentEntityArray.append (newSegment)
       mFontDocument?.selectedCharacter.mSelectedObject?.segments_property.setProp (newSegmentEntityArray)
@@ -333,14 +333,14 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //  selection
   //····················································································································
 
-  private var mSelection = Set <SegmentForFontCharacterEntity> ()
+  private var mSelection = Set <SegmentForFontCharacter> ()
 
   //····················································································································
   //  Model
   //····················································································································
 
-  final func segmentEntityArray () -> [SegmentForFontCharacterEntity] {
-    var result = [SegmentForFontCharacterEntity] ()
+  final func segmentEntityArray () -> [SegmentForFontCharacter] {
+    var result = [SegmentForFontCharacter] ()
     let possibleSegments = mFontDocument?.selectedCharacter.mSelectedObject?.segments_property
     if let segments = possibleSegments {
       switch segments.prop {
@@ -392,7 +392,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final override func selectAll (_ sender : Any?) {
-    mSelection = Set <SegmentForFontCharacterEntity> (segmentEntityArray ())
+    mSelection = Set <SegmentForFontCharacter> (segmentEntityArray ())
     updateSegmentDrawings ()
   }
   
@@ -601,7 +601,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         if let segmentListObject = unarchivedObject as? [[NSNumber]] {
           var segmentEntityArray = self.segmentEntityArray ()
           for archivedSegment : [NSNumber] in segmentListObject {
-            let newSegment = SegmentForFontCharacterEntity (managedObjectContext: fontDocument.managedObjectContext())
+            let newSegment = SegmentForFontCharacter (managedObjectContext: fontDocument.managedObjectContext())
             newSegment.x1 = archivedSegment [0].intValue
             newSegment.y1 = archivedSegment [1].intValue
             newSegment.x2 = archivedSegment [2].intValue
@@ -827,7 +827,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
         mSelectionRectangleLayer.path = CGPath (rect: r, transform: nil)
         let cr = CanariRect (cgrect: r)
-        var selection = Set <SegmentForFontCharacterEntity> ()
+        var selection = Set <SegmentForFontCharacter> ()
         for segment in segmentEntityArray () {
           if segment.intersects (rect: cr) {
             selection.insert (segment)
@@ -892,10 +892,10 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION SegmentForFontCharacterEntity
+//   EXTENSION SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension SegmentForFontCharacterEntity {
+extension SegmentForFontCharacter {
 
   //····················································································································
 

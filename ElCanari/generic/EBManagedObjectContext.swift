@@ -190,14 +190,14 @@ class EBManagedObjectContext : EBObject {
 
   func newInstanceOfEntityNamed (inEntityTypeName : String) throws -> EBManagedObject {
     var result : EBManagedObject
-    if inEntityTypeName == "SegmentForFontCharacterEntity" {
-      result = SegmentForFontCharacterEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "FontCharacterEntity" {
-      result = FontCharacterEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "FontRootEntity" {
-      result = FontRootEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "ArtworkRootEntity" {
-      result = ArtworkRootEntity (managedObjectContext:self)
+    if inEntityTypeName == "SegmentForFontCharacter" {
+      result = SegmentForFontCharacter (managedObjectContext:self)
+    }else if inEntityTypeName == "FontCharacter" {
+      result = FontCharacter (managedObjectContext:self)
+    }else if inEntityTypeName == "FontRoot" {
+      result = FontRoot (managedObjectContext:self)
+    }else if inEntityTypeName == "ArtworkRoot" {
+      result = ArtworkRoot (managedObjectContext:self)
     }else if inEntityTypeName == "ArtworkFileGenerationParameters" {
       result = ArtworkFileGenerationParameters (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelPad" {

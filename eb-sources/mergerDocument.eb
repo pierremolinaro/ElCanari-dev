@@ -418,7 +418,7 @@ entity MergerRoot {
   transient Int boardHeight dependsFrom self.boardRect ;
 
 #--- Artwork
-  toOne @cascading ArtworkRootEntity artwork ;
+  toOne @cascading ArtworkRoot artwork ;
   property String artworkName default "" ;
 }
 

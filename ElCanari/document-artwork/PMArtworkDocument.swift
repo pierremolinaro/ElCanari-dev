@@ -141,14 +141,14 @@ import Cocoa
   //····················································································································
 
   override func rootEntityClassName () -> String {
-    return "ArtworkRootEntity"
+    return "ArtworkRoot"
   }
 
   //····················································································································
   //    rootObject
   //····················································································································
 
-  var rootObject : ArtworkRootEntity { get { return mRootObject as! ArtworkRootEntity } }
+  var rootObject : ArtworkRoot { get { return mRootObject as! ArtworkRoot } }
 
   //····················································································································
   //    windowControllerDidLoadNib

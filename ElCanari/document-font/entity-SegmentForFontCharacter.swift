@@ -5,15 +5,15 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: SegmentForFontCharacterEntity
+//    Entity: SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SegmentForFontCharacterEntity : EBManagedObject,
-  SegmentForFontCharacterEntity_x1,
-  SegmentForFontCharacterEntity_y1,
-  SegmentForFontCharacterEntity_x2,
-  SegmentForFontCharacterEntity_y2,
-  SegmentForFontCharacterEntity_segmentForDrawing {
+class SegmentForFontCharacter : EBManagedObject,
+  SegmentForFontCharacter_x1,
+  SegmentForFontCharacter_y1,
+  SegmentForFontCharacter_x2,
+  SegmentForFontCharacter_y2,
+  SegmentForFontCharacter_segmentForDrawing {
 
   //····················································································································
   //   Accessing x1 stored property
@@ -148,7 +148,7 @@ class SegmentForFontCharacterEntity : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (compute_SegmentForFontCharacterEntity_segmentForDrawing (v0, v1, v2, v3))
+            return .single (compute_SegmentForFontCharacter_segmentForDrawing (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -312,10 +312,10 @@ class SegmentForFontCharacterEntity : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SegmentForFontCharacterEntity
+//    ReadOnlyArrayOf_SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayProperty <SegmentForFontCharacterEntity> {
+class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <SegmentForFontCharacter> {
 
   //····················································································································
   //   Observers of 'x1' stored property
@@ -355,7 +355,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
       for observer in mObserversOf_x1 {
         managedObject.x1_property.addEBObserver (observer)
@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for observer in mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -412,7 +412,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
       for observer in mObserversOf_y1 {
         managedObject.y1_property.addEBObserver (observer)
@@ -422,7 +422,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for observer in mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -469,7 +469,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
       for observer in mObserversOf_x2 {
         managedObject.x2_property.addEBObserver (observer)
@@ -479,7 +479,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for observer in mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -526,7 +526,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
       for observer in mObserversOf_y2 {
         managedObject.y2_property.addEBObserver (observer)
@@ -536,7 +536,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for observer in mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -583,7 +583,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func addEBObserversOf_segmentForDrawing_toElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
+  final func addEBObserversOf_segmentForDrawing_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
       for observer in mObserversOf_segmentForDrawing {
         managedObject.segmentForDrawing_property.addEBObserver (observer)
@@ -593,7 +593,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 
   //····················································································································
 
-  final func removeEBObserversOf_segmentForDrawing_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacterEntity>) {
+  final func removeEBObserversOf_segmentForDrawing_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
       for observer in mObserversOf_segmentForDrawing {
         managedObject.segmentForDrawing_property.removeEBObserver (observer)
@@ -606,14 +606,14 @@ class ReadOnlyArrayOf_SegmentForFontCharacterEntity : ReadOnlyAbstractArrayPrope
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SegmentForFontCharacterEntity
+//    TransientArrayOf_SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SegmentForFontCharacterEntity : ReadOnlyArrayOf_SegmentForFontCharacterEntity {
+class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontCharacter {
 
-  var readModelFunction : Optional<() -> EBSelection < [SegmentForFontCharacterEntity] > >
+  var readModelFunction : Optional<() -> EBSelection < [SegmentForFontCharacter] > >
 
-  private var prop_cache : EBSelection < [SegmentForFontCharacterEntity] >? 
+  private var prop_cache : EBSelection < [SegmentForFontCharacter] >? 
 
   //····················································································································
 
@@ -623,16 +623,16 @@ class TransientArrayOf_SegmentForFontCharacterEntity : ReadOnlyArrayOf_SegmentFo
 
   //····················································································································
 
-  private var mSet = Set <SegmentForFontCharacterEntity> ()
+  private var mSet = Set <SegmentForFontCharacter> ()
 
-  override var prop : EBSelection < [SegmentForFontCharacterEntity] > {
+  override var prop : EBSelection < [SegmentForFontCharacter] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <SegmentForFontCharacterEntity>
+        let newSet : Set <SegmentForFontCharacter>
         switch prop_cache! {
         case .multiple, .empty :
-          newSet = Set <SegmentForFontCharacterEntity> ()
+          newSet = Set <SegmentForFontCharacter> ()
         case .single (let array) :
           newSet = Set (array)
         }
@@ -684,31 +684,31 @@ class TransientArrayOf_SegmentForFontCharacterEntity : ReadOnlyArrayOf_SegmentFo
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacterEntity_x1 : class {
+protocol SegmentForFontCharacter_x1 : class {
   var x1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacterEntity_y1 : class {
+protocol SegmentForFontCharacter_y1 : class {
   var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacterEntity_x2 : class {
+protocol SegmentForFontCharacter_x2 : class {
   var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacterEntity_y2 : class {
+protocol SegmentForFontCharacter_y2 : class {
   var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacterEntity_segmentForDrawing : class {
+protocol SegmentForFontCharacter_segmentForDrawing : class {
   var segmentForDrawing : EBSelection < SegmentForFontCharacterClass > { get }
 }
 

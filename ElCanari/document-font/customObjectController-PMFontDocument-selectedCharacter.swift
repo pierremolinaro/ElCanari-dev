@@ -14,7 +14,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
 
   //····················································································································
 
-  var mSelectedObject : FontCharacterEntity? {
+  var mSelectedObject : FontCharacter? {
     didSet {
       if mSelectedObject !== oldValue {
       //--- Property advance
@@ -67,7 +67,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //   RELATIONSHIPS
   //····················································································································
 
-  // var segments = ToManyRelationshipProxy_FontCharacterEntity_segments () 
+  // var segments = ToManyRelationshipProxy_FontCharacter_segments () 
 
   //····················································································································
   //   OBJECT OBSERVABLE PROPERTIES
