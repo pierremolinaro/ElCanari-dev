@@ -80,6 +80,10 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
         self.items.last?.target = mDocument
         self.items.last?.isEnabled = true
       }
+    //--- Add "Insert an array of boards…" item, with no represented object
+      self.addItem (withTitle: "Insert an array of boards…", action: #selector (PMMergerDocument.insertBoardAction (_:)), keyEquivalent: "")
+      self.items.last?.target = mDocument
+      self.items.last?.isEnabled = true
     }
   }
 

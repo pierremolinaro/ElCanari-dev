@@ -47,6 +47,14 @@
                 <outlet property="mEmptyBoardMessage" destination="TY5-Zu-VN8" id="3zh-MC-Ugv"/>
                 <outlet property="mGenerateProductFilesActionButton" destination="5Wu-A4-TL6" id="7df-pB-Lpb"/>
                 <outlet property="mImportArtworkButton" destination="mUF-7a-S2r" id="jc0-v6-ohS"/>
+                <outlet property="mInsertArrayOfBoardsCancelButton" destination="00c-TV-6Q8" id="0kL-Dn-9oj"/>
+                <outlet property="mInsertArrayOfBoardsOkButton" destination="gVY-xq-Qco" id="BeJ-Da-6mZ"/>
+                <outlet property="mInsertArrayOfBoardsPanel" destination="reL-uK-SPG" id="MUA-fW-ZpV"/>
+                <outlet property="mInsertArrayOfBoardsPopUpButton" destination="Rzz-3i-LrD" id="LTp-A8-qEg"/>
+                <outlet property="mInsertArrayOfBoardsXCautionImageView" destination="GjE-vq-Cga" id="44B-9z-045"/>
+                <outlet property="mInsertArrayOfBoardsXCountField" destination="C8Z-fi-sAg" id="ZzX-B8-5rD"/>
+                <outlet property="mInsertArrayOfBoardsYCautionImageView" destination="7ns-Tw-dpV" id="zZe-sS-fPE"/>
+                <outlet property="mInsertArrayOfBoardsYCountField" destination="CdM-zB-V9k" id="Rrt-TU-TNy"/>
                 <outlet property="mInstanceCountTextField" destination="Ti9-vf-Dz4" id="wgt-zC-2Td"/>
                 <outlet property="mModelBoardLimitTextField" destination="AK2-cU-S3E" id="IKk-uU-hqH"/>
                 <outlet property="mModelHeightTextField" destination="Niu-Df-Kdt" id="yXB-NS-pv3"/>
@@ -2048,9 +2056,134 @@ TW: Track Width</string>
             </subviews>
             <point key="canvasLocation" x="-247" y="580"/>
         </customView>
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="reL-uK-SPG" userLabel="Panel : Insert Array of Boards" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="132" y="380" width="491" height="229"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="213" height="107"/>
+            <view key="contentView" misplaced="YES" id="Xri-xB-035">
+                <rect key="frame" x="0.0" y="0.0" width="491" height="229"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView misplaced="YES" id="aF5-Jq-qYp">
+                        <rect key="frame" x="20" y="70" width="89" height="90"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="NSApplicationIcon" id="GFr-6K-H2O"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="IAs-tS-1fr">
+                        <rect key="frame" x="177" y="192" width="296" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Insert an array of boards" id="7pj-BK-3GB">
+                            <font key="font" metaFont="systemBold"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" misplaced="YES" id="Rzz-3i-LrD">
+                        <rect key="frame" x="240" y="132" width="234" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="iZ4-kv-ggr" id="rtt-Ol-KGA">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="1EI-ve-buK">
+                                <items>
+                                    <menuItem title="Item 1" state="on" id="iZ4-kv-ggr"/>
+                                    <menuItem title="Item 2" id="p40-Jp-dgU"/>
+                                    <menuItem title="Item 3" id="8C8-4f-Br2"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="A3N-lz-aQA">
+                        <rect key="frame" x="177" y="137" width="53" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Model" id="qFC-LV-kjV">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="mj4-HE-wIg">
+                        <rect key="frame" x="177" y="99" width="53" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="X Count" id="3fn-xj-yMj">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="G0X-ih-KqI">
+                        <rect key="frame" x="177" y="69" width="53" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Y Count" id="K4x-Qd-Hxk">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="gVY-xq-Qco">
+                        <rect key="frame" x="402" y="13" width="75" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Insert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HAC-FK-rHr">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="00c-TV-6Q8">
+                        <rect key="frame" x="173" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eER-aj-vEy">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                    </button>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="C8Z-fi-sAg">
+                        <rect key="frame" x="242" y="97" width="46" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="oMt-cg-zmU">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" localizesFormat="NO" numberStyle="decimal" allowsFloats="NO" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="BOh-b1-UUS">
+                                <real key="minimum" value="1"/>
+                            </numberFormatter>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="CdM-zB-V9k">
+                        <rect key="frame" x="242" y="67" width="46" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Td8-iX-7B2">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" localizesFormat="NO" numberStyle="decimal" allowsFloats="NO" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="sZl-T4-rt4">
+                                <real key="minimum" value="1"/>
+                            </numberFormatter>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <imageView toolTip="The X count should be &gt; 0" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="GjE-vq-Cga">
+                        <rect key="frame" x="296" y="94" width="24" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="exclamation" id="91H-8n-9VI"/>
+                    </imageView>
+                    <imageView toolTip="The Y count should be &gt; 0" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="7ns-Tw-dpV">
+                        <rect key="frame" x="296" y="65" width="24" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="exclamation" id="5XM-yk-3Kb"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-130" y="-215"/>
+        </window>
     </objects>
     <resources>
+        <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="artwork" width="278" height="146"/>
+        <image name="exclamation" width="13" height="13"/>
         <image name="panneau-danger" width="325" height="325"/>
     </resources>
 </document>

@@ -51,6 +51,14 @@ import Cocoa
   @IBOutlet var mEmptyBoardMessage : EBTextField?
   @IBOutlet var mGenerateProductFilesActionButton : EBButton?
   @IBOutlet var mImportArtworkButton : EBButton?
+  @IBOutlet var mInsertArrayOfBoardsCancelButton : NSButton?
+  @IBOutlet var mInsertArrayOfBoardsOkButton : NSButton?
+  @IBOutlet var mInsertArrayOfBoardsPanel : NSPanel?
+  @IBOutlet var mInsertArrayOfBoardsPopUpButton : NSPopUpButton?
+  @IBOutlet var mInsertArrayOfBoardsXCautionImageView : NSImageView?
+  @IBOutlet var mInsertArrayOfBoardsXCountField : NSTextField?
+  @IBOutlet var mInsertArrayOfBoardsYCautionImageView : NSImageView?
+  @IBOutlet var mInsertArrayOfBoardsYCountField : NSTextField?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
   @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
@@ -550,6 +558,78 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mImportArtworkButton' outlet is not an instance of 'EBButton'") ;
+    }
+    if nil == mInsertArrayOfBoardsCancelButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInsertArrayOfBoardsCancelButton' outlet is nil") ;
+//    }else if !mInsertArrayOfBoardsCancelButton!.isKindOfClass (NSButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInsertArrayOfBoardsCancelButton' outlet is not an instance of 'NSButton'") ;
+    }
+    if nil == mInsertArrayOfBoardsOkButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInsertArrayOfBoardsOkButton' outlet is nil") ;
+//    }else if !mInsertArrayOfBoardsOkButton!.isKindOfClass (NSButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInsertArrayOfBoardsOkButton' outlet is not an instance of 'NSButton'") ;
+    }
+    if nil == mInsertArrayOfBoardsPanel {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInsertArrayOfBoardsPanel' outlet is nil") ;
+//    }else if !mInsertArrayOfBoardsPanel!.isKindOfClass (NSPanel) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInsertArrayOfBoardsPanel' outlet is not an instance of 'NSPanel'") ;
+    }
+    if nil == mInsertArrayOfBoardsPopUpButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInsertArrayOfBoardsPopUpButton' outlet is nil") ;
+//    }else if !mInsertArrayOfBoardsPopUpButton!.isKindOfClass (NSPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInsertArrayOfBoardsPopUpButton' outlet is not an instance of 'NSPopUpButton'") ;
+    }
+    if nil == mInsertArrayOfBoardsXCautionImageView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInsertArrayOfBoardsXCautionImageView' outlet is nil") ;
+//    }else if !mInsertArrayOfBoardsXCautionImageView!.isKindOfClass (NSImageView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInsertArrayOfBoardsXCautionImageView' outlet is not an instance of 'NSImageView'") ;
+    }
+    if nil == mInsertArrayOfBoardsXCountField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInsertArrayOfBoardsXCountField' outlet is nil") ;
+//    }else if !mInsertArrayOfBoardsXCountField!.isKindOfClass (NSTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInsertArrayOfBoardsXCountField' outlet is not an instance of 'NSTextField'") ;
+    }
+    if nil == mInsertArrayOfBoardsYCautionImageView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInsertArrayOfBoardsYCautionImageView' outlet is nil") ;
+//    }else if !mInsertArrayOfBoardsYCautionImageView!.isKindOfClass (NSImageView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInsertArrayOfBoardsYCautionImageView' outlet is not an instance of 'NSImageView'") ;
+    }
+    if nil == mInsertArrayOfBoardsYCountField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInsertArrayOfBoardsYCountField' outlet is nil") ;
+//    }else if !mInsertArrayOfBoardsYCountField!.isKindOfClass (NSTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInsertArrayOfBoardsYCountField' outlet is not an instance of 'NSTextField'") ;
     }
     if nil == mInstanceCountTextField {
       presentErrorWindow (file: #file,
@@ -1463,6 +1543,14 @@ import Cocoa
     self.mEmptyBoardMessage?.ebCleanUp ()
     self.mGenerateProductFilesActionButton?.ebCleanUp ()
     self.mImportArtworkButton?.ebCleanUp ()
+    self.mInsertArrayOfBoardsCancelButton?.ebCleanUp ()
+    self.mInsertArrayOfBoardsOkButton?.ebCleanUp ()
+    self.mInsertArrayOfBoardsPanel?.ebCleanUp ()
+    self.mInsertArrayOfBoardsPopUpButton?.ebCleanUp ()
+    self.mInsertArrayOfBoardsXCautionImageView?.ebCleanUp ()
+    self.mInsertArrayOfBoardsXCountField?.ebCleanUp ()
+    self.mInsertArrayOfBoardsYCautionImageView?.ebCleanUp ()
+    self.mInsertArrayOfBoardsYCountField?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
     self.mModelBoardLimitTextField?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()

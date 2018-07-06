@@ -320,6 +320,9 @@
 		CFEE8DEF1BECA15300B6F25B /* CanariArtworkDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEE8DEE1BECA15300B6F25B /* CanariArtworkDocument.swift */; };
 		CFF0416D20DD46BE00FB1C5B /* selectionController-PMMergerDocument-mBoardModelSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF0416C20DD46BE00FB1C5B /* selectionController-PMMergerDocument-mBoardModelSelection.swift */; };
 		CFF0417720DD568700FB1C5B /* EBIntObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF0417620DD568700FB1C5B /* EBIntObserverField.swift */; };
+		CFF2620A20EF824700E8F453 /* extension-PMMergerDocument-insert-array-of-boards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2620920EF824700E8F453 /* extension-PMMergerDocument-insert-array-of-boards.swift */; };
+		CFF2620F20EF851000E8F453 /* CanariPanelCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2620C20EF851000E8F453 /* CanariPanelCancelButton.swift */; };
+		CFF2621020EF851000E8F453 /* CanariPanelOkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2620E20EF851000E8F453 /* CanariPanelOkButton.swift */; };
 		CFF2651C20E66F2A00525C0F /* action-PMMergerDocument-showPrefsForSettingMergerDisplayAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2651B20E66F2A00525C0F /* action-PMMergerDocument-showPrefsForSettingMergerDisplayAction.swift */; };
 		CFF2651E20E670E400525C0F /* Preferences+showMergerDisplaySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2651D20E670E400525C0F /* Preferences+showMergerDisplaySettings.swift */; };
 		CFF2652F20E6833600525C0F /* transient-BoardModelEntity-frontLegendTextsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2652D20E6833600525C0F /* transient-BoardModelEntity-frontLegendTextsSegments.swift */; };
@@ -674,6 +677,9 @@
 		CFEE8DEE1BECA15300B6F25B /* CanariArtworkDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariArtworkDocument.swift; sourceTree = "<group>"; };
 		CFF0416C20DD46BE00FB1C5B /* selectionController-PMMergerDocument-mBoardModelSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-PMMergerDocument-mBoardModelSelection.swift"; sourceTree = "<group>"; };
 		CFF0417620DD568700FB1C5B /* EBIntObserverField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBIntObserverField.swift; sourceTree = "<group>"; };
+		CFF2620920EF824700E8F453 /* extension-PMMergerDocument-insert-array-of-boards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-PMMergerDocument-insert-array-of-boards.swift"; sourceTree = "<group>"; };
+		CFF2620C20EF851000E8F453 /* CanariPanelCancelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariPanelCancelButton.swift; sourceTree = "<group>"; };
+		CFF2620E20EF851000E8F453 /* CanariPanelOkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariPanelOkButton.swift; sourceTree = "<group>"; };
 		CFF2651B20E66F2A00525C0F /* action-PMMergerDocument-showPrefsForSettingMergerDisplayAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PMMergerDocument-showPrefsForSettingMergerDisplayAction.swift"; sourceTree = "<group>"; };
 		CFF2651D20E670E400525C0F /* Preferences+showMergerDisplaySettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Preferences+showMergerDisplaySettings.swift"; sourceTree = "<group>"; };
 		CFF2652D20E6833600525C0F /* transient-BoardModelEntity-frontLegendTextsSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModelEntity-frontLegendTextsSegments.swift"; sourceTree = "<group>"; };
@@ -733,13 +739,12 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
-				CF3E2DEF20EE6D1F00A7926B /* transient-PMMergerDocument-importArtworkButtonTitle.swift */,
-				CFD7E80420EE3C200056BEC4 /* action-PMMergerDocument-importArtworkAction.swift */,
-				CF65805720EE1E5F009C743D /* action-PMMergerDocument-generateProductFilesAction.swift */,
 				CFB4801720DC1B8B00CF9639 /* action-PMMergerDocument-addBoardModelAction.swift */,
 				CFC2FEAE20EBFA7A00C45CB3 /* action-PMMergerDocument-arrangeHorizontallyAction.swift */,
 				CFC2FEAF20EBFA7A00C45CB3 /* action-PMMergerDocument-arrangeVerticalyAction.swift */,
 				CF3AD50520ED149700FBF514 /* action-PMMergerDocument-dismissDisplaySettingViewAction.swift */,
+				CF65805720EE1E5F009C743D /* action-PMMergerDocument-generateProductFilesAction.swift */,
+				CFD7E80420EE3C200056BEC4 /* action-PMMergerDocument-importArtworkAction.swift */,
 				CFD7EA2620E7DA8100D53B87 /* action-PMMergerDocument-insertBoardAction.swift */,
 				CFF2651B20E66F2A00525C0F /* action-PMMergerDocument-showPrefsForSettingMergerDisplayAction.swift */,
 				CF30637820E7EE1B0099182C /* action-PMMergerDocument-updateBoardModelAction.swift */,
@@ -750,6 +755,7 @@
 				CFD7EA2820E7E1F300D53B87 /* delegate-NSOpenPanel-load-model.swift */,
 				CF06E7C220E802AD00EA47B9 /* delegate-NSOpenPanel-update-model.swift */,
 				CFC2FEAC20EBEF6100C45CB3 /* extension-PMMergerDocument-arrange-board.swift */,
+				CFF2620920EF824700E8F453 /* extension-PMMergerDocument-insert-array-of-boards.swift */,
 				CFB4801B20DC2BBD00CF9639 /* extension-PMMergerDocument-parse-board-model.swift */,
 				CFD7EA2020E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift */,
 				CF2176A820EA79A100BBC1C4 /* MergerBoardInstanceEntity.swift */,
@@ -829,6 +835,7 @@
 				CFCC4BEE20EAC347006A9CC5 /* transient-MergerRootEntity-frontPadsForDisplay.swift */,
 				CF51223020EB80AA002AAE24 /* transient-MergerRootEntity-instancesLayerDisplay.swift */,
 				CFD7EA2420E7D42900D53B87 /* transient-MergerRootEntity-modelNames.swift */,
+				CF3E2DEF20EE6D1F00A7926B /* transient-PMMergerDocument-importArtworkButtonTitle.swift */,
 				CFBAB0B120DE744500476FB7 /* view-CanariBoardModelView.swift */,
 			);
 			name = "document-merger";
@@ -1033,6 +1040,8 @@
 		CF61FA911B3EBF21000E0257 /* Outlets Canari */ = {
 			isa = PBXGroup;
 			children = (
+				CFF2620C20EF851000E8F453 /* CanariPanelCancelButton.swift */,
+				CFF2620E20EF851000E8F453 /* CanariPanelOkButton.swift */,
 				CFCC4BF020EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift */,
 				CFB0D1E61B46FBC000006BD2 /* CanariDimensionTextField.swift */,
 				CF302AF01B498AE8003D4347 /* CanariDrillDataFormatTabView.swift */,
@@ -1453,6 +1462,7 @@
 				CF63B3DB20EB8F1C009BC140 /* transient-BoardModelEntity-frontLegendTextsLayerDisplay.swift in Sources */,
 				CFF0416D20DD46BE00FB1C5B /* selectionController-PMMergerDocument-mBoardModelSelection.swift in Sources */,
 				CF51222720EB774A002AAE24 /* transient-BoardModelEntity-backLegendTextsLayerDisplay.swift in Sources */,
+				CFF2621020EF851000E8F453 /* CanariPanelOkButton.swift in Sources */,
 				CF63B3EA20EB9B70009BC140 /* transient-BoardModelEntity-backPadsDisplay.swift in Sources */,
 				CF4634451BEE10890064C49B /* ApplicationDelegate+new-document.swift in Sources */,
 				CFEDE5B71B4677C500036ACF /* EBManagedDocument.swift in Sources */,
@@ -1477,6 +1487,7 @@
 				CF6BC0511DE1C53A002D935F /* CanariMenu.swift in Sources */,
 				CF18949E20EBCD5E00B77DCA /* transient-MergerBoardInstanceEntity-frontPadsDisplay.swift in Sources */,
 				CF0201F31BFF5AE40033BA42 /* MissingCharacter.swift in Sources */,
+				CFF2620F20EF851000E8F453 /* CanariPanelCancelButton.swift in Sources */,
 				CF6BC04F1DE1C43F002D935F /* controller-CanariMenu-CanariMenuItemListClass.swift in Sources */,
 				CF71FA3F1B3EA87800FB5049 /* EBAllocationDebug.swift in Sources */,
 				CF92E1F51DDB1C9E0019691C /* CanariRect.swift in Sources */,
@@ -1500,6 +1511,7 @@
 				CF880FEF1DDB85F400954D4E /* CanariCircle.swift in Sources */,
 				CF51222D20EB7DC3002AAE24 /* transient-BoardModelEntity-backLayoutTextsLayerDisplay.swift in Sources */,
 				CF63B3F220EB9D55009BC140 /* transient-BoardModelEntity-backComponentNameDisplay.swift in Sources */,
+				CFF2620A20EF824700E8F453 /* extension-PMMergerDocument-insert-array-of-boards.swift in Sources */,
 				CF3086551B401259005D3BCE /* arrayController-Preferences-additionnalLibraryArrayController.swift in Sources */,
 				CFF5976B1BDD4E17007EDFF9 /* EBCheckedMenuItem.swift in Sources */,
 				CF7FFAF520E5494500DE60BC /* transient-BoardModelEntity-backComponentValueSegments.swift in Sources */,

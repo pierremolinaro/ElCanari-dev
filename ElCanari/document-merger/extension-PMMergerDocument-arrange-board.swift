@@ -18,41 +18,37 @@ extension PMMergerDocument {
   func arrangeVerticaly () {
     let boards = self.rootObject.boardInstances_property.propval
     let sortedBoards = boards.sorted (by: { $0.y < $1.y })
-    for board in sortedBoards {
+    var idx = 0
+    while idx < sortedBoards.count {
+      let board = sortedBoards [idx]
       var newY = 0
       let boardRect = getBoardRect (board)
       let leftRect = CanariBoardRect (x:board.x, y:0, width:boardRect.x, height:board.y)
-      for testedBoard in boards {
-        if testedBoard !== board {
-          switch testedBoard.instanceRect {
-          case .single (let r) :
-            let intersection = leftRect.intersection (r)
-            if !intersection.isEmpty () {
-              newY = max (newY, intersection.y + intersection.height)
-            }
-          default :
-            break
-          }
+      var idy = idx + 1
+      while idy < sortedBoards.count {
+        let testedBoard = sortedBoards [idy]
+        let testedBoardRect = getBoardRect (testedBoard)
+        let intersection = leftRect.intersection (testedBoardRect)
+        if !intersection.isEmpty () {
+          newY = max (newY, intersection.y + intersection.height)
         }
+        idy += 1
       }
       board.y = newY
+      idx += 1
     }
   //--- For boards that intersect, push them up
-    var idx = 0
+    idx = 0
     while idx < sortedBoards.count {
       let board = sortedBoards [idx]
       let boardRect = getBoardRect (board)
       var idy = idx + 1
       while idy < sortedBoards.count {
         let testedBoard = sortedBoards [idy]
-        switch testedBoard.instanceRect {
-        case .single (let testedBoardRect) :
-          let intersection = boardRect.intersection (testedBoardRect)
-          if !intersection.isEmpty () {
-            pushBoardUp (sortedBoards, boardRect, idy, boardRect.y + boardRect.height)
-          }
-        default :
-          break
+        let testedBoardRect = getBoardRect (testedBoard)
+        let intersection = boardRect.intersection (testedBoardRect)
+        if !intersection.isEmpty () {
+          pushBoardUp (sortedBoards, boardRect, idy, boardRect.y + boardRect.height)
         }
         idy += 1
       }
@@ -66,23 +62,27 @@ extension PMMergerDocument {
   //--- Push boards on left
     let boards = self.rootObject.boardInstances_property.propval
     let sortedBoards = boards.sorted (by: { $0.x < $1.x })
-    for board in sortedBoards {
+    var idx = 0
+    while idx < sortedBoards.count {
+      let board = sortedBoards [idx]
       var newX = 0
       let boardRect = getBoardRect (board)
       let leftRect = CanariBoardRect (x:0, y:board.y, width:board.x, height:boardRect.height)
-      for testedBoard in boards {
-        if testedBoard !== board {
-          let testedBoardRect = getBoardRect (testedBoard)
-          let intersection = leftRect.intersection (testedBoardRect)
-          if !intersection.isEmpty () {
-            newX = max (newX, intersection.x + intersection.width)
-          }
+      var idy = idx + 1
+      while idy < sortedBoards.count {
+        let testedBoard = sortedBoards [idy]
+        let testedBoardRect = getBoardRect (testedBoard)
+        let intersection = leftRect.intersection (testedBoardRect)
+        if !intersection.isEmpty () {
+          newX = max (newX, intersection.x + intersection.width)
         }
+        idy += 1
       }
       board.x = newX
+      idx += 1
     }
   //--- For boards that intersect, push them on right
-    var idx = 0
+    idx = 0
     while idx < sortedBoards.count {
       let board = sortedBoards [idx]
       let boardRect = getBoardRect (board)
