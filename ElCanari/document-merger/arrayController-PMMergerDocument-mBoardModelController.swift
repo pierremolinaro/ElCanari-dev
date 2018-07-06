@@ -14,11 +14,11 @@ private let DEBUG_EVENT = false
 
 final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
 
-  private var mModel : ToManyRelationship_MergerRootEntity_boardModels? = nil
+  private var mModel : ToManyRelationship_MergerRoot_boardModels? = nil
 
-  let sortedArray_property = TransientArrayOf_BoardModelEntity ()
+  let sortedArray_property = TransientArrayOf_BoardModel ()
 
-  let selectedArray_property = TransientArrayOf_BoardModelEntity ()
+  let selectedArray_property = TransientArrayOf_BoardModel ()
 
   private let mSelectedSet : SelectedSet_PMMergerDocument_mBoardModelController
 
@@ -74,7 +74,7 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
       case .multiple :
         return .multiple
       case .single (let v) :
-        var result = [BoardModelEntity] ()
+        var result = [BoardModel] ()
         for object in v {
           if self.mSelectedSet.mSet.contains (object) {
             result.append (object)
@@ -87,7 +87,7 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
 
   //····················································································································
 
-  func isOrderedBefore (left : BoardModelEntity, right : BoardModelEntity) -> Bool {
+  func isOrderedBefore (left : BoardModel, right : BoardModel) -> Bool {
     var order = ComparisonResult.orderedSame
     for (column, ascending) in mSortDescriptorArray {
       if column == "name" {
@@ -138,7 +138,7 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
   //    bind_modelAndView
   //····················································································································
 
-  func bind_modelAndView (model:ToManyRelationship_MergerRootEntity_boardModels, tableViewArray:[EBTableView], file:String, line:Int) {
+  func bind_modelAndView (model:ToManyRelationship_MergerRoot_boardModels, tableViewArray:[EBTableView], file:String, line:Int) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
@@ -229,7 +229,7 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [BoardModelEntity : Int] ()
+      var objectDictionary = [BoardModel : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -272,7 +272,7 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <BoardModelEntity> ()
+      var newSelectedObjectSet = Set <BoardModel> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v.objectAtIndex (index, file: #file, line: #line))
       }
@@ -335,14 +335,14 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
   //    select
   //····················································································································
 
-  func select (object inObject: BoardModelEntity) {
+  func select (object inObject: BoardModel) {
     if let model = mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <BoardModelEntity> ()
+          var newSelectedObjectSet = Set <BoardModel> ()
           newSelectedObjectSet.insert (inObject)
           mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -363,11 +363,11 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject : BoardModelEntity = BoardModelEntity (managedObjectContext:managedObjectContext)
+        let newObject : BoardModel = BoardModel (managedObjectContext:managedObjectContext)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <BoardModelEntity> ()
+        var newSelectedObjectSet = Set <BoardModel> ()
         newSelectedObjectSet.insert (newObject)
         mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -394,7 +394,7 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [BoardModelEntity : Int] ()
+          var sortedObjectDictionary = [BoardModel : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -417,13 +417,13 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : BoardModelEntity? = nil
+          var newSelectedObject : BoardModel? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [BoardModelEntity : Int] ()
+          var objectDictionary = [BoardModel : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -443,7 +443,7 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <BoardModelEntity> ()
+          var newSelectionSet = Set <BoardModel> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -466,13 +466,13 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
 final class SelectedSet_PMMergerDocument_mBoardModelController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_BoardModelEntity
+  private let mSortedArray : TransientArrayOf_BoardModel
 
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_BoardModelEntity) {
+        sortedArray : TransientArrayOf_BoardModel) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -481,7 +481,7 @@ final class SelectedSet_PMMergerDocument_mBoardModelController : EBAbstractPrope
 
   //····················································································································
 
-  private var mPrivateSet = Set<BoardModelEntity> () {
+  private var mPrivateSet = Set<BoardModel> () {
     didSet {
       if mPrivateSet != oldValue {
         postEvent ()
@@ -491,7 +491,7 @@ final class SelectedSet_PMMergerDocument_mBoardModelController : EBAbstractPrope
 
   //····················································································································
 
-  var mSet : Set<BoardModelEntity> {
+  var mSet : Set<BoardModel> {
     set {
       var newSelectedSet = newValue
       switch mSortedArray.prop {

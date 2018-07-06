@@ -200,18 +200,18 @@ class EBManagedObjectContext : EBObject {
       result = ArtworkRootEntity (managedObjectContext:self)
     }else if inEntityTypeName == "ArtworkFileGenerationParameters" {
       result = ArtworkFileGenerationParameters (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelPadEntity" {
-      result = BoardModelPadEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "CanariSegmentEntity" {
-      result = CanariSegmentEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelViaEntity" {
-      result = BoardModelViaEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "BoardModelEntity" {
-      result = BoardModelEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "MergerBoardInstanceEntity" {
-      result = MergerBoardInstanceEntity (managedObjectContext:self)
-    }else if inEntityTypeName == "MergerRootEntity" {
-      result = MergerRootEntity (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModelPad" {
+      result = BoardModelPad (managedObjectContext:self)
+    }else if inEntityTypeName == "CanariSegment" {
+      result = CanariSegment (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModelVia" {
+      result = BoardModelVia (managedObjectContext:self)
+    }else if inEntityTypeName == "BoardModel" {
+      result = BoardModel (managedObjectContext:self)
+    }else if inEntityTypeName == "MergerBoardInstance" {
+      result = MergerBoardInstance (managedObjectContext:self)
+    }else if inEntityTypeName == "MergerRoot" {
+      result = MergerRoot (managedObjectContext:self)
     }else{
        let dictionary : [NSObject : Any] = [
         NSLocalizedDescriptionKey as NSObject : "Cannot read document",

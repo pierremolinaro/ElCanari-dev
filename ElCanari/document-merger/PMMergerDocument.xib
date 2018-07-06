@@ -51,9 +51,7 @@
                 <outlet property="mInsertArrayOfBoardsOkButton" destination="gVY-xq-Qco" id="BeJ-Da-6mZ"/>
                 <outlet property="mInsertArrayOfBoardsPanel" destination="reL-uK-SPG" id="MUA-fW-ZpV"/>
                 <outlet property="mInsertArrayOfBoardsPopUpButton" destination="Rzz-3i-LrD" id="LTp-A8-qEg"/>
-                <outlet property="mInsertArrayOfBoardsXCautionImageView" destination="GjE-vq-Cga" id="44B-9z-045"/>
                 <outlet property="mInsertArrayOfBoardsXCountField" destination="C8Z-fi-sAg" id="ZzX-B8-5rD"/>
-                <outlet property="mInsertArrayOfBoardsYCautionImageView" destination="7ns-Tw-dpV" id="zZe-sS-fPE"/>
                 <outlet property="mInsertArrayOfBoardsYCountField" destination="CdM-zB-V9k" id="Rrt-TU-TNy"/>
                 <outlet property="mInstanceCountTextField" destination="Ti9-vf-Dz4" id="wgt-zC-2Td"/>
                 <outlet property="mModelBoardLimitTextField" destination="AK2-cU-S3E" id="IKk-uU-hqH"/>
@@ -2069,7 +2067,7 @@ TW: Track Width</string>
                     <imageView misplaced="YES" id="aF5-Jq-qYp">
                         <rect key="frame" x="20" y="70" width="89" height="90"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="NSApplicationIcon" id="GFr-6K-H2O"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="NSApplicationIcon" id="GFr-6K-H2O"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="IAs-tS-1fr">
                         <rect key="frame" x="177" y="192" width="296" height="17"/>
@@ -2165,25 +2163,14 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <imageView toolTip="The X count should be &gt; 0" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="GjE-vq-Cga">
-                        <rect key="frame" x="296" y="94" width="24" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="exclamation" id="91H-8n-9VI"/>
-                    </imageView>
-                    <imageView toolTip="The Y count should be &gt; 0" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="7ns-Tw-dpV">
-                        <rect key="frame" x="296" y="65" width="24" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="exclamation" id="5XM-yk-3Kb"/>
-                    </imageView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-130" y="-215"/>
+            <point key="canvasLocation" x="-287" y="-257"/>
         </window>
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="artwork" width="278" height="146"/>
-        <image name="exclamation" width="13" height="13"/>
         <image name="panneau-danger" width="325" height="325"/>
     </resources>
 </document>

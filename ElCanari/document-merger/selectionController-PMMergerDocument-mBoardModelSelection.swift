@@ -10,7 +10,7 @@ import Cocoa
 
 @objc(SelectionController_PMMergerDocument_mBoardModelSelection)
 final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject {
-  private var mModel : ReadOnlyArrayOf_BoardModelEntity?
+  private var mModel : ReadOnlyArrayOf_BoardModel?
 
   //····················································································································
   //   SELECTION OBSERVABLE PROPERTIES
@@ -357,7 +357,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //   BIND SELECTION
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_BoardModelEntity, file:String, line:Int) {
+  func bind_selection (model : ReadOnlyArrayOf_BoardModel, file:String, line:Int) {
     mModel = model
     bind_property_artworkName (model: model)
     bind_property_backComponentNameDisplay (model: model)
@@ -570,7 +570,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_artworkName (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_artworkName (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_artworkName (self.artworkName_property)
     self.artworkName_property.readModelFunction = {
       if let model = self.mModel {
@@ -640,7 +640,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backComponentNameDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backComponentNameDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backComponentNameDisplay (self.backComponentNameDisplay_property)
     self.backComponentNameDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -680,7 +680,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backComponentNameSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backComponentNameSegments (self.backComponentNameSegments_property)
     self.backComponentNameSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -720,7 +720,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backComponentValueDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backComponentValueDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backComponentValueDisplay (self.backComponentValueDisplay_property)
     self.backComponentValueDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -760,7 +760,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backComponentValueSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backComponentValueSegments (self.backComponentValueSegments_property)
     self.backComponentValueSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -800,7 +800,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backLayoutTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backLayoutTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backLayoutTextsLayerDisplay (self.backLayoutTextsLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -840,7 +840,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments_property)
     self.backLayoutTextsSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -880,7 +880,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backLegendTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backLegendTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backLegendTextsLayerDisplay (self.backLegendTextsLayerDisplay_property)
     self.backLegendTextsLayerDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -920,7 +920,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backLegendTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments_property)
     self.backLegendTextsSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -960,7 +960,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backPackagesDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backPackagesDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backPackagesDisplay (self.backPackagesDisplay_property)
     self.backPackagesDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1000,7 +1000,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backPackagesSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backPackagesSegments (self.backPackagesSegments_property)
     self.backPackagesSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -1040,7 +1040,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backPads (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backPads (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backPads (self.backPads_property)
     self.backPads_property.readModelFunction = {
       if let model = self.mModel {
@@ -1080,7 +1080,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backPadsDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backPadsDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backPadsDisplay (self.backPadsDisplay_property)
     self.backPadsDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1120,7 +1120,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backTrackSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backTrackSegments (self.backTrackSegments_property)
     self.backTrackSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -1160,7 +1160,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backTracksDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backTracksDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backTracksDisplay (self.backTracksDisplay_property)
     self.backTracksDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1200,7 +1200,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_backgroundLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_backgroundLayerDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_backgroundLayerDisplay (self.backgroundLayerDisplay_property)
     self.backgroundLayerDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1240,7 +1240,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_boardLimits (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_boardLimits (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_boardLimits (self.boardLimits_property)
     self.boardLimits_property.readModelFunction = {
       if let model = self.mModel {
@@ -1280,7 +1280,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_boardLimitsDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_boardLimitsDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_boardLimitsDisplay (self.boardLimitsDisplay_property)
     self.boardLimitsDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1320,7 +1320,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontComponentNameDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontComponentNameDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontComponentNameDisplay (self.frontComponentNameDisplay_property)
     self.frontComponentNameDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1360,7 +1360,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontComponentNameSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments_property)
     self.frontComponentNameSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -1400,7 +1400,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontComponentValueDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontComponentValueDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontComponentValueDisplay (self.frontComponentValueDisplay_property)
     self.frontComponentValueDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1440,7 +1440,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontComponentValueSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontComponentValueSegments (self.frontComponentValueSegments_property)
     self.frontComponentValueSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -1480,7 +1480,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontLayoutTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontLayoutTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontLayoutTextsLayerDisplay (self.frontLayoutTextsLayerDisplay_property)
     self.frontLayoutTextsLayerDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1520,7 +1520,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments_property)
     self.frontLayoutTextsSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -1560,7 +1560,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontLegendTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontLegendTextsLayerDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontLegendTextsLayerDisplay (self.frontLegendTextsLayerDisplay_property)
     self.frontLegendTextsLayerDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1600,7 +1600,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontLegendTextsSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments_property)
     self.frontLegendTextsSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -1640,7 +1640,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontPackagesDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontPackagesDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontPackagesDisplay (self.frontPackagesDisplay_property)
     self.frontPackagesDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1680,7 +1680,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontPackagesSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontPackagesSegments (self.frontPackagesSegments_property)
     self.frontPackagesSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -1720,7 +1720,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontPads (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontPads (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontPads (self.frontPads_property)
     self.frontPads_property.readModelFunction = {
       if let model = self.mModel {
@@ -1760,7 +1760,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontPadsDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontPadsDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontPadsDisplay (self.frontPadsDisplay_property)
     self.frontPadsDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1800,7 +1800,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontTrackSegments (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontTrackSegments (self.frontTrackSegments_property)
     self.frontTrackSegments_property.readModelFunction = {
       if let model = self.mModel {
@@ -1840,7 +1840,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_frontTracksDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_frontTracksDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_frontTracksDisplay (self.frontTracksDisplay_property)
     self.frontTracksDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1880,7 +1880,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_holeLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_holeLayerDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_holeLayerDisplay (self.holeLayerDisplay_property)
     self.holeLayerDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -1920,7 +1920,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_holes (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_holes (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_holes (self.holes_property)
     self.holes_property.readModelFunction = {
       if let model = self.mModel {
@@ -1960,7 +1960,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_instanceCount (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_instanceCount (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_instanceCount (self.instanceCount_property)
     self.instanceCount_property.readModelFunction = {
       if let model = self.mModel {
@@ -2000,7 +2000,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_modelHeight (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_modelHeight (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_modelHeight (self.modelHeight_property)
     self.modelHeight_property.readModelFunction = {
       if let model = self.mModel {
@@ -2070,7 +2070,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_modelHeightUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_modelHeightUnit (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_modelHeightUnit (self.modelHeightUnit_property)
     self.modelHeightUnit_property.readModelFunction = {
       if let model = self.mModel {
@@ -2140,7 +2140,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_modelLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_modelLayerDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_modelLayerDisplay (self.modelLayerDisplay_property)
     self.modelLayerDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -2180,7 +2180,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_modelLimitWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_modelLimitWidth (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_modelLimitWidth (self.modelLimitWidth_property)
     self.modelLimitWidth_property.readModelFunction = {
       if let model = self.mModel {
@@ -2250,7 +2250,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_modelLimitWidthUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_modelLimitWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_modelLimitWidthUnit (self.modelLimitWidthUnit_property)
     self.modelLimitWidthUnit_property.readModelFunction = {
       if let model = self.mModel {
@@ -2320,7 +2320,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_modelWidth (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_modelWidth (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_modelWidth (self.modelWidth_property)
     self.modelWidth_property.readModelFunction = {
       if let model = self.mModel {
@@ -2390,7 +2390,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_modelWidthUnit (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_modelWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_modelWidthUnit (self.modelWidthUnit_property)
     self.modelWidthUnit_property.readModelFunction = {
       if let model = self.mModel {
@@ -2460,7 +2460,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_name (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_name (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_name (self.name_property)
     self.name_property.readModelFunction = {
       if let model = self.mModel {
@@ -2530,7 +2530,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_padsHoles (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_padsHoles (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_padsHoles (self.padsHoles_property)
     self.padsHoles_property.readModelFunction = {
       if let model = self.mModel {
@@ -2570,7 +2570,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_viaLayerDisplay (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_viaLayerDisplay (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_viaLayerDisplay (self.viaLayerDisplay_property)
     self.viaLayerDisplay_property.readModelFunction = {
       if let model = self.mModel {
@@ -2610,7 +2610,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_viaShapes (self.viaShapes_property)
     self.viaShapes_property.readModelFunction = {
       if let model = self.mModel {
@@ -2650,7 +2650,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_viasHoles (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_viasHoles (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_viasHoles (self.viasHoles_property)
     self.viasHoles_property.readModelFunction = {
       if let model = self.mModel {
@@ -2690,7 +2690,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
 
   //···················································································································*
 
-  private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModelEntity) {
+  private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_zoom (self.zoom_property)
     self.zoom_property.readModelFunction = {
       if let model = self.mModel {

@@ -21,7 +21,7 @@ extension PMMergerDocument {
         let y = cocoaToCanariUnit (mouseLocation.y)
         if let representedObject = menuItem.representedObject as? InsertBoardMenuRepresentedObject {
           let boardModelName = representedObject.boardModelName
-          var possibleBoardModel : BoardModelEntity? = nil
+          var possibleBoardModel : BoardModel? = nil
           for boardModel in self.rootObject.boardModels_property.propval {
             if boardModel.name == boardModelName {
               possibleBoardModel = boardModel
@@ -30,7 +30,7 @@ extension PMMergerDocument {
           }
           if  let boardModel = possibleBoardModel {
            // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
-            let newBoard = MergerBoardInstanceEntity (managedObjectContext: self.managedObjectContext())
+            let newBoard = MergerBoardInstance (managedObjectContext: self.managedObjectContext())
             newBoard.myModel_property.setProp (boardModel)
             newBoard.x = x
             newBoard.y = y

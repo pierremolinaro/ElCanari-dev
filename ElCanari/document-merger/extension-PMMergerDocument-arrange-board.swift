@@ -102,7 +102,7 @@ extension PMMergerDocument {
 
   //····················································································································
 
-  fileprivate func pushBoardRight (_ sortedBoards : [MergerBoardInstanceEntity],
+  fileprivate func pushBoardRight (_ sortedBoards : [MergerBoardInstance],
                                    _ inBoardRect : CanariBoardRect,
                                    _ inIndex : Int,
                                    _ inNewX : Int) {
@@ -123,7 +123,7 @@ extension PMMergerDocument {
 
   //····················································································································
 
-  fileprivate func pushBoardUp (_ sortedBoards : [MergerBoardInstanceEntity],
+  fileprivate func pushBoardUp (_ sortedBoards : [MergerBoardInstance],
                                 _ inBoardRect : CanariBoardRect,
                                 _ inIndex : Int,
                                 _ inNewY : Int) {
@@ -200,7 +200,7 @@ extension PMMergerDocument {
 
   //····················································································································
 
-  fileprivate func pushBoardUpWithOverlap (_ sortedBoards : [MergerBoardInstanceEntity],
+  fileprivate func pushBoardUpWithOverlap (_ sortedBoards : [MergerBoardInstance],
                                            _ inBoardRect : CanariBoardRect,
                                            _ inBoardLimit : Int,
                                            _ inIndex : Int,
@@ -272,7 +272,7 @@ extension PMMergerDocument {
 
   //····················································································································
 
-  fileprivate func pushBoardRightWithOverlap (_ sortedBoards : [MergerBoardInstanceEntity],
+  fileprivate func pushBoardRightWithOverlap (_ sortedBoards : [MergerBoardInstance],
                                               _ inBoardRect : CanariBoardRect,
                                               _ inBoardLimit : Int,
                                               _ inIndex : Int,
@@ -303,7 +303,7 @@ extension PMMergerDocument {
 //   UTILITIES
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func getBoardRect (_ board : MergerBoardInstanceEntity) -> CanariBoardRect {
+fileprivate func getBoardRect (_ board : MergerBoardInstance) -> CanariBoardRect {
   let result : CanariBoardRect
   switch board.instanceRect {
   case .single (let r) :
@@ -316,7 +316,7 @@ fileprivate func getBoardRect (_ board : MergerBoardInstanceEntity) -> CanariBoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func getBoardLimit (_ board : MergerBoardInstanceEntity) -> Int {
+fileprivate func getBoardLimit (_ board : MergerBoardInstance) -> Int {
   let result : Int
   switch board.boardLimitWidth {
   case .single (let r) :

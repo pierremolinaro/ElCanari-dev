@@ -43,7 +43,6 @@ extension PMMergerDocument {
       }else{
         mInsertArrayOfBoardsXCountField?.stringValue = "1"
       }
-      mInsertArrayOfBoardsXCautionImageView?.isHidden = true
     //--- If Y count is invalid, set to 1
       let yCount : Int? = Int (mInsertArrayOfBoardsYCountField?.stringValue ?? "")
       if let y = yCount {
@@ -53,7 +52,6 @@ extension PMMergerDocument {
       }else{
         mInsertArrayOfBoardsYCountField?.stringValue = "1"
       }
-      mInsertArrayOfBoardsYCautionImageView?.isHidden = true
     //--- Display panel
       self.windowForSheet?.beginSheet (panel, completionHandler: { (inResponse : NSModalResponse) in
         if inResponse == NSModalResponseStop {
@@ -66,7 +64,7 @@ extension PMMergerDocument {
             for _ in 0 ..< yCount {
               var x = inX
               for _ in 0 ..< xCount {
-                let newBoard = MergerBoardInstanceEntity (managedObjectContext: self.managedObjectContext())
+                let newBoard = MergerBoardInstance (managedObjectContext: self.managedObjectContext())
                 newBoard.myModel_property.setProp (boardModel)
                 newBoard.x = x
                 newBoard.y = y

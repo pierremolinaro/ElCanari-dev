@@ -39,9 +39,7 @@ binding CanariBoardInsertMenu $names : transient MergerBoardModelArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BoardModelPadEntity {
-
-#  property String name default "" ;
+entity BoardModelPad {
   property Int x default 0 ;
   property Int y default 0 ;
   property Int width default 0 ;
@@ -54,7 +52,7 @@ entity BoardModelPadEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity CanariSegmentEntity {
+entity CanariSegment {
   property Int x1 default 0 ;
   property Int y1 default 0 ;
   property Int x2 default 0 ;
@@ -64,7 +62,7 @@ entity CanariSegmentEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BoardModelViaEntity {
+entity BoardModelVia {
 
   property Int x default 0 ;
   property Int y default 0 ;
@@ -74,7 +72,7 @@ entity BoardModelViaEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BoardModelEntity {
+entity BoardModel {
   
   property String artworkName default "" ;
   property String name default "" ;
@@ -86,7 +84,7 @@ entity BoardModelEntity {
   property Int zoom default 0 ; # 0 means "fit to window"
 
 #--- Instances
-  toMany MergerBoardInstanceEntity myInstances inverse toOne myModel ;
+  toMany MergerBoardInstance myInstances inverse toOne myModel ;
 
   transient Int instanceCount dependsFrom self.myInstances.count ;
 
@@ -95,7 +93,7 @@ entity BoardModelEntity {
      dependsFrom prefs.mergerColorBackground, self.modelWidth, self.modelHeight ;
 
 #--- Front Legend Texts
-  toMany @cascading CanariSegmentEntity frontLegendTexts ;
+  toMany @cascading CanariSegment frontLegendTexts ;
 
   transient MergerSegmentArray frontLegendTextsSegments dependsFrom
     self.frontLegendTexts.all.x1, self.frontLegendTexts.all.y1,
@@ -107,7 +105,7 @@ entity BoardModelEntity {
      dependsFrom prefs.mergerColorFrontLegendTexts, prefs.mergerModelViewDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
 
 #--- Front Layout Texts
-  toMany @cascading CanariSegmentEntity frontLayoutTexts ;
+  toMany @cascading CanariSegment frontLayoutTexts ;
 
   transient MergerSegmentArray frontLayoutTextsSegments dependsFrom
     self.frontLayoutTexts.all.x1, self.frontLayoutTexts.all.y1,
@@ -119,7 +117,7 @@ entity BoardModelEntity {
      dependsFrom prefs.mergerColorFrontLayoutTexts, prefs.mergerModelViewDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
 
 #--- Back Legend Texts
-  toMany @cascading CanariSegmentEntity backLegendTexts ;
+  toMany @cascading CanariSegment backLegendTexts ;
 
   transient MergerSegmentArray backLegendTextsSegments dependsFrom
     self.backLegendTexts.all.x1, self.backLegendTexts.all.y1,
@@ -131,7 +129,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerColorBackLegendTexts, prefs.mergerModelViewDisplayBackLegendTexts, self.backLegendTextsSegments ;
 
 #--- Back Layout Texts
-  toMany @cascading CanariSegmentEntity backLayoutTexts ;
+  toMany @cascading CanariSegment backLayoutTexts ;
 
   transient MergerSegmentArray backLayoutTextsSegments dependsFrom
     self.backLayoutTexts.all.x1, self.backLayoutTexts.all.y1,
@@ -154,7 +152,7 @@ entity BoardModelEntity {
   transient CALayer holeLayerDisplay dependsFrom prefs.mergerColorHoles, prefs.mergerModelViewDisplayHoles, self.holes ;
 
 #--- Vias 
-  toMany @cascading BoardModelViaEntity vias ;
+  toMany @cascading BoardModelVia vias ;
   
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
@@ -162,7 +160,7 @@ entity BoardModelEntity {
   transient CALayer viaLayerDisplay dependsFrom prefs.mergerColorVias, prefs.mergerModelViewDisplayVias, self.viaShapes ;
 
 #--- Pads
-  toMany @cascading BoardModelPadEntity pads ;
+  toMany @cascading BoardModelPad pads ;
 
 #--- Front pads
   transient MergerPadArray frontPads
@@ -189,7 +187,7 @@ entity BoardModelEntity {
   transient CALayer boardLimitsDisplay dependsFrom prefs.mergerColorBoardLimits, prefs.mergerModelViewDisplayBoardLimits, self.boardLimits ;
  
 #--- Back component names
-  toMany @cascading CanariSegmentEntity backComponentNames ;
+  toMany @cascading CanariSegment backComponentNames ;
 
   transient MergerSegmentArray backComponentNameSegments dependsFrom
     self.backComponentNames.all.x1, self.backComponentNames.all.y1,
@@ -201,7 +199,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerColorBackComponentNames, prefs.mergerModelViewDisplayBackComponentNames, self.backComponentNameSegments ;
 
 #--- Front component names
-  toMany @cascading CanariSegmentEntity frontComponentNames ;
+  toMany @cascading CanariSegment frontComponentNames ;
 
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
     self.frontComponentNames.all.x1, self.frontComponentNames.all.y1,
@@ -213,7 +211,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerColorFrontComponentNames, prefs.mergerModelViewDisplayFrontComponentNames, self.frontComponentNameSegments ;
 
 #--- Front component values
-  toMany @cascading CanariSegmentEntity frontComponentValues ;
+  toMany @cascading CanariSegment frontComponentValues ;
 
   transient MergerSegmentArray frontComponentValueSegments dependsFrom
     self.frontComponentValues.all.x1, self.frontComponentValues.all.y1,
@@ -225,7 +223,7 @@ entity BoardModelEntity {
      dependsFrom prefs.mergerColorFrontComponentValues, prefs.mergerModelViewDisplayFrontComponentValues, self.frontComponentValueSegments ;
 
 #--- Back component values
-  toMany @cascading CanariSegmentEntity backComponentValues ;
+  toMany @cascading CanariSegment backComponentValues ;
 
   transient MergerSegmentArray backComponentValueSegments dependsFrom
     self.backComponentValues.all.x1, self.backComponentValues.all.y1,
@@ -237,7 +235,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerColorBackComponentValues,prefs.mergerModelViewDisplayBackComponentValues, self.backComponentValueSegments ;
 
 #--- Back tracks
-  toMany @cascading CanariSegmentEntity backTracks ;
+  toMany @cascading CanariSegment backTracks ;
 
   transient MergerSegmentArray backTrackSegments dependsFrom
     self.backTracks.all.x1, self.backTracks.all.y1,
@@ -248,7 +246,7 @@ entity BoardModelEntity {
   transient CALayer backTracksDisplay dependsFrom prefs.mergerColorBackTracks, prefs.mergerModelViewDisplayBackTracks, self.backTrackSegments ;
 
 #--- Front tracks
-  toMany @cascading CanariSegmentEntity frontTracks ;
+  toMany @cascading CanariSegment frontTracks ;
 
   transient MergerSegmentArray frontTrackSegments dependsFrom
     self.frontTracks.all.x1, self.frontTracks.all.y1,
@@ -260,7 +258,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerColorFrontTracks, prefs.mergerModelViewDisplayFrontTracks, self.frontTrackSegments ;
 
 #--- Front packages
-  toMany @cascading CanariSegmentEntity frontPackages ;
+  toMany @cascading CanariSegment frontPackages ;
 
   transient MergerSegmentArray frontPackagesSegments dependsFrom
     self.frontPackages.all.x1, self.frontPackages.all.y1,
@@ -272,7 +270,7 @@ entity BoardModelEntity {
     dependsFrom prefs.mergerColorFrontPackages, prefs.mergerModelViewDisplayFrontPackages, self.frontPackagesSegments ;
 
 #--- Back packages
-  toMany @cascading CanariSegmentEntity backPackages ;
+  toMany @cascading CanariSegment backPackages ;
 
   transient MergerSegmentArray backPackagesSegments dependsFrom
     self.backPackages.all.x1, self.backPackages.all.y1,
@@ -307,8 +305,8 @@ entity BoardModelEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity MergerBoardInstanceEntity {
-  toOne BoardModelEntity myModel inverse toMany myInstances ;
+entity MergerBoardInstance {
+  toOne BoardModel myModel inverse toMany myInstances ;
   property Int x default 0 ;
   property Int y default 0 ;
 
@@ -398,9 +396,9 @@ entity MergerBoardInstanceEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity MergerRootEntity {
-  toMany @cascading BoardModelEntity boardModels ;
-  toMany @cascading MergerBoardInstanceEntity boardInstances ;
+entity MergerRoot {
+  toMany @cascading BoardModel boardModels ;
+  toMany @cascading MergerBoardInstance boardInstances ;
 
   property Int selectedPageIndex default 0 ;
   property Int zoom default 100 ;
@@ -426,7 +424,7 @@ entity MergerRootEntity {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-document PMMergerDocument root MergerRootEntity {
+document PMMergerDocument root MergerRoot {
 #--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
 
@@ -589,9 +587,7 @@ document PMMergerDocument root MergerRootEntity {
   outlet NSButton mInsertArrayOfBoardsOkButton ;
   outlet NSPopUpButton mInsertArrayOfBoardsPopUpButton ;
   outlet NSTextField mInsertArrayOfBoardsXCountField ;
-  outlet NSImageView mInsertArrayOfBoardsXCautionImageView ;
   outlet NSTextField mInsertArrayOfBoardsYCountField ;
-  outlet NSImageView mInsertArrayOfBoardsYCautionImageView ;
   
 #--- "Empty Board" message
  outlet EBTextField mEmptyBoardMessage $hidden root.boardInstances.count > 0 ;

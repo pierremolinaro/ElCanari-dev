@@ -55,9 +55,7 @@ import Cocoa
   @IBOutlet var mInsertArrayOfBoardsOkButton : NSButton?
   @IBOutlet var mInsertArrayOfBoardsPanel : NSPanel?
   @IBOutlet var mInsertArrayOfBoardsPopUpButton : NSPopUpButton?
-  @IBOutlet var mInsertArrayOfBoardsXCautionImageView : NSImageView?
   @IBOutlet var mInsertArrayOfBoardsXCountField : NSTextField?
-  @IBOutlet var mInsertArrayOfBoardsYCautionImageView : NSImageView?
   @IBOutlet var mInsertArrayOfBoardsYCountField : NSTextField?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
   @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
@@ -193,14 +191,14 @@ import Cocoa
   //····················································································································
 
   override func rootEntityClassName () -> String {
-    return "MergerRootEntity"
+    return "MergerRoot"
   }
 
   //····················································································································
   //    rootObject
   //····················································································································
 
-  var rootObject : MergerRootEntity { get { return mRootObject as! MergerRootEntity } }
+  var rootObject : MergerRoot { get { return mRootObject as! MergerRoot } }
 
   //····················································································································
   //    windowControllerDidLoadNib
@@ -595,15 +593,6 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mInsertArrayOfBoardsPopUpButton' outlet is not an instance of 'NSPopUpButton'") ;
     }
-    if nil == mInsertArrayOfBoardsXCautionImageView {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mInsertArrayOfBoardsXCautionImageView' outlet is nil") ;
-//    }else if !mInsertArrayOfBoardsXCautionImageView!.isKindOfClass (NSImageView) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mInsertArrayOfBoardsXCautionImageView' outlet is not an instance of 'NSImageView'") ;
-    }
     if nil == mInsertArrayOfBoardsXCountField {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -612,15 +601,6 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mInsertArrayOfBoardsXCountField' outlet is not an instance of 'NSTextField'") ;
-    }
-    if nil == mInsertArrayOfBoardsYCautionImageView {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mInsertArrayOfBoardsYCautionImageView' outlet is nil") ;
-//    }else if !mInsertArrayOfBoardsYCautionImageView!.isKindOfClass (NSImageView) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mInsertArrayOfBoardsYCautionImageView' outlet is not an instance of 'NSImageView'") ;
     }
     if nil == mInsertArrayOfBoardsYCountField {
       presentErrorWindow (file: #file,
@@ -1547,9 +1527,7 @@ import Cocoa
     self.mInsertArrayOfBoardsOkButton?.ebCleanUp ()
     self.mInsertArrayOfBoardsPanel?.ebCleanUp ()
     self.mInsertArrayOfBoardsPopUpButton?.ebCleanUp ()
-    self.mInsertArrayOfBoardsXCautionImageView?.ebCleanUp ()
     self.mInsertArrayOfBoardsXCountField?.ebCleanUp ()
-    self.mInsertArrayOfBoardsYCautionImageView?.ebCleanUp ()
     self.mInsertArrayOfBoardsYCountField?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
     self.mModelBoardLimitTextField?.ebCleanUp ()
