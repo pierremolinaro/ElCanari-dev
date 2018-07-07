@@ -26,9 +26,12 @@ extension PMMergerDocument {
         openPanel.canChooseDirectories = false
         openPanel.allowsMultipleSelection = false
         openPanel.allowedFileTypes = ["ElCanariArtwork"]
- //       openPanel.delegate = OpenPanelDelegateForFilteringBoardModels (boardModelNames)
+     //--- Add accessory view
+        let r = CGRect (x:0.0, y:0.0, width:100.0, height:50.0)
+        let accessoryView = CanariViewWithBackground (frame: r)
+        openPanel.accessoryView = accessoryView
+     //--- Dialog
         openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : Int) in
-          releaseOpenPanelDelegateForFilteringBoardModels ()
           if returnCode == NSFileHandlingPanelOKButton {
             if let url = openPanel.url, url.isFileURL {
               let filePath = url.path
