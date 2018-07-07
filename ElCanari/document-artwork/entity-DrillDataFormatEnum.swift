@@ -6,10 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum DrillDataFormatEnum : Int {
+enum DrillDataFormatEnum : Int, ValuePropertyProtocol {
   case excellon = 0
   case excellonWithSeparateToolList = 1
 
+
+  //····················································································································
 
   func descriptionForExplorer () -> String {
     switch self {
@@ -17,6 +19,8 @@ enum DrillDataFormatEnum : Int {
       case .excellonWithSeparateToolList : return "excellonWithSeparateToolList" // 1
     }
   }
+
+  //····················································································································
 
   func enumfromRawValue (rawValue : Int) -> DrillDataFormatEnum {
     var result = self
@@ -26,213 +30,36 @@ enum DrillDataFormatEnum : Int {
     }
     return result
   }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBReadOnlyProperty_DrillDataFormatEnum
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class EBReadOnlyProperty_DrillDataFormatEnum : EBAbstractProperty, EBReadOnlyEnumPropertyProtocol {
-
-  var prop : EBSelection <DrillDataFormatEnum> { get { return .empty } } // Abstract method
-
-  func rawValue () -> Int { return DrillDataFormatEnum.excellon.rawValue }  // Abstract method
-
-  func count () -> Int { return 2 }
 
   //····················································································································
-
-  func compare (other : EBReadOnlyProperty_DrillDataFormatEnum) -> ComparisonResult {
-    switch prop {
-    case .empty :
-      switch other.prop {
-      case .empty :
-        return .orderedSame
-      default:
-        return .orderedAscending
-      }
-    case .multiple :
-      switch other.prop {
-      case .empty :
-        return .orderedDescending
-      case .multiple :
-        return .orderedSame
-     case .single (_) :
-        return .orderedAscending
-     }
-   case .single (let currentValue) :
-      switch other.prop {
-      case .empty, .multiple :
-        return .orderedDescending
-      case .single (let otherValue) :
-        if currentValue.rawValue < otherValue.rawValue {
-          return .orderedAscending
-        }else if currentValue.rawValue > otherValue.rawValue {
-          return .orderedDescending
-        }else{
-          return .orderedSame
-        }
-      }
-    }
-  }
-
-  //····················································································································
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBStoredProperty_DrillDataFormatEnum
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class EBStoredProperty_DrillDataFormatEnum : EBReadOnlyProperty_DrillDataFormatEnum, EBEnumPropertyProtocol {
-  weak var undoManager : UndoManager?
-
-  var mValueExplorer : NSTextField? {
-    didSet {
-      mValueExplorer?.stringValue = mValue.descriptionForExplorer ()
-    }
-  }
-
-  init (_ inValue : DrillDataFormatEnum) {
-    mValue = inValue
-    super.init ()
-  }
-
-  private var mValue : DrillDataFormatEnum {
-    didSet {
-      if mValue != oldValue {
-        mValueExplorer?.stringValue = mValue.descriptionForExplorer ()
-        undoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object:NSNumber (value: oldValue.rawValue))
-        postEvent ()
-        clearSignatureCache ()
-      }
-    }
-  }
-
-  func performUndo (_ oldValue : NSNumber) {
-    if let v = DrillDataFormatEnum (rawValue:oldValue.intValue) {
-      mValue = v
-    }
-  }
-
-  override var prop : EBSelection <DrillDataFormatEnum> { get { return .single (mValue) } }
-
-  var propval : DrillDataFormatEnum { get { return mValue } }
-
-  func setProp (_ value: DrillDataFormatEnum) { mValue = value }
-
-  override func rawValue () -> Int {
-    return mValue.rawValue
-  }
-
-  func setFromRawValue (_ rawValue : Int) {
-    if let v = DrillDataFormatEnum (rawValue:rawValue) {
-      mValue = v
-    }
-  }
-
-  func readInPreferencesWithKey (inKey : String) {
-    let ud = UserDefaults.standard
-    let value : Any? = ud.object (forKey: inKey)
-    if let unwValue : Any = value, unwValue is NSNumber {
-      setFromRawValue ((unwValue as! NSNumber).intValue)
-    }
-  }
-  
-  func storeInPreferencesWithKey (inKey : String) {
-    let ud = UserDefaults.standard
-    ud.set (NSNumber (value: mValue.rawValue), forKey:inKey)
-  }
-
-  func storeIn (dictionary: NSMutableDictionary, forKey inKey:String) {
-    dictionary.setValue (NSNumber (value: mValue.rawValue), forKey:inKey)
-  }
-
-  func readFrom (dictionary:NSDictionary, forKey inKey:String) {
-    let value : Any? = dictionary.object (forKey: inKey)
-    if let unwValue : Any = value, unwValue is NSNumber {
-      setFromRawValue ((unwValue as! NSNumber).intValue)
-    }
-  }
-
-  //····················································································································
- 
-  var validationFunction : (DrillDataFormatEnum, DrillDataFormatEnum) -> EBValidationResult <DrillDataFormatEnum> = defaultValidationFunction
-  
-  func validate (proposedValue : DrillDataFormatEnum) -> EBValidationResult <DrillDataFormatEnum> {
-    return validationFunction (propval, proposedValue)
-  }
-
-  //····················································································································
-  //    SIGNATURE
+  //  ValuePropertyProtocol
   //····················································································································
 
-  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil
-  final private var mSignatureCache : UInt32? = nil
-
-  //····················································································································
-
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol) {
-    mSignatureObserver = observer
+  func ebHashValue () -> UInt32 {
+    return UInt32 (self.rawValue)
   }
 
-  //····················································································································
+  func convertToNSObject () -> NSObject {
+    return NSNumber (value: self.rawValue)
+  }
 
-  final private func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+  static func convertFromNSObject (object : NSObject) -> DrillDataFormatEnum {
+    var result = DrillDataFormatEnum.excellon
+    if let number = object as? NSNumber, let v = DrillDataFormatEnum (rawValue: number.intValue) {
+      result = v
     }
+    return result
   }
 
-  //····················································································································
-
-  final func signature () -> UInt32 {
-    let computedSignature : UInt32
-    if let s = mSignatureCache {
-      computedSignature = s
-    }else{
-      computedSignature = mValue.rawValue.ebHashValue ()
-      mSignatureCache = computedSignature
-    }
-    return computedSignature
-  }
-  
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBTransientProperty_DrillDataFormatEnum
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBTransientProperty_DrillDataFormatEnum : EBReadOnlyProperty_DrillDataFormatEnum {
-  private var mValueCache : EBSelection <DrillDataFormatEnum>?
-
-  var computeFunction : Optional<() -> EBSelection <DrillDataFormatEnum> >
-  
-  override init () {
-    super.init ()
-  }
-
-  override var prop : EBSelection <DrillDataFormatEnum> {
-    get {
-      if mValueCache == nil {
-        if let unwrappedComputeFunction = computeFunction {
-          mValueCache = unwrappedComputeFunction ()
-        }else{
-          mValueCache = .empty
-        }
-      }
-      return mValueCache!
-    }
-  }
-
-  override func postEvent () {
-    if mValueCache != nil {
-      mValueCache = nil
-      super.postEvent ()
-    }
-  }
-}
+typealias EBReadOnlyProperty_DrillDataFormatEnum = EBReadOnlyValueProperty <DrillDataFormatEnum>
+typealias EBTransientProperty_DrillDataFormatEnum = EBTransientValueProperty <DrillDataFormatEnum>
+typealias EBStoredProperty_DrillDataFormatEnum = EBStoredValueProperty <DrillDataFormatEnum>
+typealias EBPropertyProxy_DrillDataFormatEnum = EBPropertyValueProxy <DrillDataFormatEnum>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

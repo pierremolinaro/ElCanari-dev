@@ -420,7 +420,8 @@ entity MergerRoot {
 #--- Artwork
   toOne @cascading ArtworkRoot artwork ;
   property String artworkName default "" ;
-#  selectionController mArtworkController : self.artwork ;
+
+  objectController mArtworkController : self.artwork ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

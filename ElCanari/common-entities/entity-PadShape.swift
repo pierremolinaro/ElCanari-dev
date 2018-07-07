@@ -6,10 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadShape : Int {
+enum PadShape : Int, ValuePropertyProtocol {
   case rectangular = 0
   case round = 1
 
+
+  //····················································································································
 
   func descriptionForExplorer () -> String {
     switch self {
@@ -17,6 +19,8 @@ enum PadShape : Int {
       case .round : return "round" // 1
     }
   }
+
+  //····················································································································
 
   func enumfromRawValue (rawValue : Int) -> PadShape {
     var result = self
@@ -26,213 +30,36 @@ enum PadShape : Int {
     }
     return result
   }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBReadOnlyProperty_PadShape
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class EBReadOnlyProperty_PadShape : EBAbstractProperty, EBReadOnlyEnumPropertyProtocol {
-
-  var prop : EBSelection <PadShape> { get { return .empty } } // Abstract method
-
-  func rawValue () -> Int { return PadShape.rectangular.rawValue }  // Abstract method
-
-  func count () -> Int { return 2 }
 
   //····················································································································
-
-  func compare (other : EBReadOnlyProperty_PadShape) -> ComparisonResult {
-    switch prop {
-    case .empty :
-      switch other.prop {
-      case .empty :
-        return .orderedSame
-      default:
-        return .orderedAscending
-      }
-    case .multiple :
-      switch other.prop {
-      case .empty :
-        return .orderedDescending
-      case .multiple :
-        return .orderedSame
-     case .single (_) :
-        return .orderedAscending
-     }
-   case .single (let currentValue) :
-      switch other.prop {
-      case .empty, .multiple :
-        return .orderedDescending
-      case .single (let otherValue) :
-        if currentValue.rawValue < otherValue.rawValue {
-          return .orderedAscending
-        }else if currentValue.rawValue > otherValue.rawValue {
-          return .orderedDescending
-        }else{
-          return .orderedSame
-        }
-      }
-    }
-  }
-
-  //····················································································································
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBStoredProperty_PadShape
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class EBStoredProperty_PadShape : EBReadOnlyProperty_PadShape, EBEnumPropertyProtocol {
-  weak var undoManager : UndoManager?
-
-  var mValueExplorer : NSTextField? {
-    didSet {
-      mValueExplorer?.stringValue = mValue.descriptionForExplorer ()
-    }
-  }
-
-  init (_ inValue : PadShape) {
-    mValue = inValue
-    super.init ()
-  }
-
-  private var mValue : PadShape {
-    didSet {
-      if mValue != oldValue {
-        mValueExplorer?.stringValue = mValue.descriptionForExplorer ()
-        undoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object:NSNumber (value: oldValue.rawValue))
-        postEvent ()
-        clearSignatureCache ()
-      }
-    }
-  }
-
-  func performUndo (_ oldValue : NSNumber) {
-    if let v = PadShape (rawValue:oldValue.intValue) {
-      mValue = v
-    }
-  }
-
-  override var prop : EBSelection <PadShape> { get { return .single (mValue) } }
-
-  var propval : PadShape { get { return mValue } }
-
-  func setProp (_ value: PadShape) { mValue = value }
-
-  override func rawValue () -> Int {
-    return mValue.rawValue
-  }
-
-  func setFromRawValue (_ rawValue : Int) {
-    if let v = PadShape (rawValue:rawValue) {
-      mValue = v
-    }
-  }
-
-  func readInPreferencesWithKey (inKey : String) {
-    let ud = UserDefaults.standard
-    let value : Any? = ud.object (forKey: inKey)
-    if let unwValue : Any = value, unwValue is NSNumber {
-      setFromRawValue ((unwValue as! NSNumber).intValue)
-    }
-  }
-  
-  func storeInPreferencesWithKey (inKey : String) {
-    let ud = UserDefaults.standard
-    ud.set (NSNumber (value: mValue.rawValue), forKey:inKey)
-  }
-
-  func storeIn (dictionary: NSMutableDictionary, forKey inKey:String) {
-    dictionary.setValue (NSNumber (value: mValue.rawValue), forKey:inKey)
-  }
-
-  func readFrom (dictionary:NSDictionary, forKey inKey:String) {
-    let value : Any? = dictionary.object (forKey: inKey)
-    if let unwValue : Any = value, unwValue is NSNumber {
-      setFromRawValue ((unwValue as! NSNumber).intValue)
-    }
-  }
-
-  //····················································································································
- 
-  var validationFunction : (PadShape, PadShape) -> EBValidationResult <PadShape> = defaultValidationFunction
-  
-  func validate (proposedValue : PadShape) -> EBValidationResult <PadShape> {
-    return validationFunction (propval, proposedValue)
-  }
-
-  //····················································································································
-  //    SIGNATURE
+  //  ValuePropertyProtocol
   //····················································································································
 
-  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil
-  final private var mSignatureCache : UInt32? = nil
-
-  //····················································································································
-
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol) {
-    mSignatureObserver = observer
+  func ebHashValue () -> UInt32 {
+    return UInt32 (self.rawValue)
   }
 
-  //····················································································································
+  func convertToNSObject () -> NSObject {
+    return NSNumber (value: self.rawValue)
+  }
 
-  final private func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+  static func convertFromNSObject (object : NSObject) -> PadShape {
+    var result = PadShape.rectangular
+    if let number = object as? NSNumber, let v = PadShape (rawValue: number.intValue) {
+      result = v
     }
+    return result
   }
 
-  //····················································································································
-
-  final func signature () -> UInt32 {
-    let computedSignature : UInt32
-    if let s = mSignatureCache {
-      computedSignature = s
-    }else{
-      computedSignature = mValue.rawValue.ebHashValue ()
-      mSignatureCache = computedSignature
-    }
-    return computedSignature
-  }
-  
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBTransientProperty_PadShape
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBTransientProperty_PadShape : EBReadOnlyProperty_PadShape {
-  private var mValueCache : EBSelection <PadShape>?
-
-  var computeFunction : Optional<() -> EBSelection <PadShape> >
-  
-  override init () {
-    super.init ()
-  }
-
-  override var prop : EBSelection <PadShape> {
-    get {
-      if mValueCache == nil {
-        if let unwrappedComputeFunction = computeFunction {
-          mValueCache = unwrappedComputeFunction ()
-        }else{
-          mValueCache = .empty
-        }
-      }
-      return mValueCache!
-    }
-  }
-
-  override func postEvent () {
-    if mValueCache != nil {
-      mValueCache = nil
-      super.postEvent ()
-    }
-  }
-}
+typealias EBReadOnlyProperty_PadShape = EBReadOnlyValueProperty <PadShape>
+typealias EBTransientProperty_PadShape = EBTransientValueProperty <PadShape>
+typealias EBStoredProperty_PadShape = EBStoredValueProperty <PadShape>
+typealias EBPropertyProxy_PadShape = EBPropertyValueProxy <PadShape>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
