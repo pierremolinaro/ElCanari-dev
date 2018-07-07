@@ -17,11 +17,8 @@ func compute_MergerRoot_instancesLayerDisplay (
 //--- START OF USER ZONE 2
   var array = [CALayer] ()
   for instance in self_boardInstances_instanceLayerDisplay {
-    switch (instance.instanceLayerDisplay) {
-    case .single (let v) :
-      array.append (v)
-    default :
-      break
+    if let layer = instance.instanceLayerDisplay {
+      array.append (layer)
     }
   }
   let result = CALayer ()

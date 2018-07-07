@@ -30,10 +30,7 @@ func compute_FontRoot_sampleStringBezierPath (
     let characterIndex = Int (unicodeCharacter) - 32
     if characterIndex < self_characters_segmentArrayForDrawing.count {
       let segmentArrayDescriptor : FontCharacter_segmentArrayForDrawing = self_characters_segmentArrayForDrawing [characterIndex]
-      switch segmentArrayDescriptor.segmentArrayForDrawing {
-      case .empty, .multiple :
-        break
-      case .single (let segmentArray) :
+      if let segmentArray = segmentArrayDescriptor.segmentArrayForDrawing {
         for segment in segmentArray.code {
           path.move    (to: CGPoint (x: currentX + toCocoa (segment.x1), y: toCocoa (segment.y1)))
           path.addLine (to: CGPoint (x: currentX + toCocoa (segment.x2), y: toCocoa (segment.y2)))

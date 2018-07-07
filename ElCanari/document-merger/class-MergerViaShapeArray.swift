@@ -17,12 +17,12 @@ final class MergerViaShapeArray : EBSimpleClass {
 
   //····················································································································
 
-  let viaArray : [MergerViaShape]
+  let viaShapeArray : [MergerViaShape]
 
   //····················································································································
 
   init (_ inArray : [MergerViaShape]) {
-    viaArray = inArray
+    viaShapeArray = inArray
     super.init ()
   }
 
@@ -30,7 +30,7 @@ final class MergerViaShapeArray : EBSimpleClass {
 
   override var description : String {
     get {
-      return "MergerViaShapeArray " + String (viaArray.count)
+      return "MergerViaShapeArray " + String (viaShapeArray.count)
     }
   }
 
@@ -39,7 +39,7 @@ final class MergerViaShapeArray : EBSimpleClass {
   func buildPadShape (dx inDx : Int, dy inDy : Int, color inColor : NSColor, display inDisplay : Bool) -> CALayer {
     var components = [CAShapeLayer] ()
     if inDisplay {
-      for via in self.viaArray {
+      for via in self.viaShapeArray {
         let x = canariUnitToCocoa (via.x)
         let y = canariUnitToCocoa (via.y)
         let diameter = canariUnitToCocoa (via.padDiameter)
@@ -59,6 +59,7 @@ final class MergerViaShapeArray : EBSimpleClass {
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

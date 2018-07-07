@@ -101,9 +101,18 @@ class SegmentForFontCharacter : EBManagedObject,
     }
   }
 
-  var segmentForDrawing : EBSelection <SegmentForFontCharacterClass> {
-    get {
-      return segmentForDrawing_property_selection
+//  var segmentForDrawing : EBSelection <SegmentForFontCharacterClass> {
+//    get {
+//      return segmentForDrawing_property_selection
+//    }
+//  }
+
+  var segmentForDrawing : SegmentForFontCharacterClass? {
+    switch segmentForDrawing_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -709,7 +718,7 @@ protocol SegmentForFontCharacter_y2 : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SegmentForFontCharacter_segmentForDrawing : class {
-  var segmentForDrawing : EBSelection < SegmentForFontCharacterClass > { get }
+  var segmentForDrawing : SegmentForFontCharacterClass? { get }
 }
 
 

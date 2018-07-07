@@ -15,24 +15,21 @@ func compute_PMFontDocument_missingCharactersCountString (
        _ root_characters_characterIsDefined : [FontCharacter_characterIsDefined]
 ) -> String {
 //--- START OF USER ZONE 2
-  var n = 0
+  var undefinedCharCount = 0
   for c in root_characters_characterIsDefined {
-    switch c.characterIsDefined {
-    case .empty, .multiple :
-      n += 1
-    case .single (let isDefined) :
-      if !isDefined {
-        n += 1
+    if let characterIsDefined = c.characterIsDefined {
+      if !characterIsDefined {
+        undefinedCharCount += 1
       }
     }
   }
   let result : String
-  if n == 0 {
+  if undefinedCharCount == 0 {
     result = "All characters are defined"
-  }else if n == 1 {
+  }else if undefinedCharCount == 1 {
     result = "1 undefined character"
   }else{
-    result = "\(n) undefined characters"
+    result = "\(undefinedCharCount) undefined characters"
   }
   return result
 //--- END OF USER ZONE 2

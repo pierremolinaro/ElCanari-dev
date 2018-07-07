@@ -352,7 +352,7 @@ extension MergerDocument {
     let padDictArray = dictArray (fromDict: boardArchiveDict, key: "PADS", &errorArray)
     for padDict in padDictArray {
       let pad = BoardModelPad (managedObjectContext:self.managedObjectContext())
-//      pad.name = string (fromDict: padDict, key: "QUALIFIED-NAME", &errorArray)
+      pad.qualifiedName = string (fromDict: padDict, key: "QUALIFIED-NAME", &errorArray)
       pad.x = int (fromDict: padDict, key: "X", &errorArray)
       pad.y = int (fromDict: padDict, key: "Y", &errorArray)
       pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)

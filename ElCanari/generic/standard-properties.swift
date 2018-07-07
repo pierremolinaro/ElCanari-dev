@@ -1255,12 +1255,6 @@ typealias EBReadOnlyPropertyArray_MergerBoardModelArray  = EBReadOnlyClassProper
 typealias EBTransientPropertyArray_MergerBoardModelArray = EBTransientClassProperty <[MergerBoardModelArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property CanariBoardRect
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CanariBoardRect  = EBReadOnlyValueProperty <CanariBoardRect>
-typealias EBTransientProperty_CanariBoardRect = EBTransientValueProperty <CanariBoardRect>
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CALayer
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1269,6 +1263,12 @@ typealias EBTransientProperty_CALayer = EBTransientClassProperty <CALayer>
 typealias EBReadOnlyPropertyArray_CALayer  = EBReadOnlyClassProperty <[CALayer]>
 typealias EBTransientPropertyArray_CALayer = EBTransientClassProperty <[CALayer]>
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property CanariBoardRect
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CanariBoardRect  = EBReadOnlyValueProperty <CanariBoardRect>
+typealias EBTransientProperty_CanariBoardRect = EBTransientValueProperty <CanariBoardRect>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

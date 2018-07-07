@@ -16,7 +16,8 @@ class BoardModelPad : EBManagedObject,
   BoardModelPad_holeDiameter,
   BoardModelPad_shape,
   BoardModelPad_side,
-  BoardModelPad_rotation {
+  BoardModelPad_rotation,
+  BoardModelPad_qualifiedName {
 
   //····················································································································
   //   Accessing x stored property
@@ -171,6 +172,25 @@ class BoardModelPad : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing qualifiedName stored property
+  //····················································································································
+
+  var qualifiedName : String {
+    get {
+      return self.qualifiedName_property.propval
+    }
+    set {
+      self.qualifiedName_property.setProp (newValue)
+    }
+  }
+
+  var qualifiedName_property_selection : EBSelection <String> {
+    get {
+      return self.qualifiedName_property.prop
+    }
+  }
+
+  //····················································································································
   //    Stored Properties
   //····················································································································
 
@@ -182,6 +202,7 @@ class BoardModelPad : EBManagedObject,
   var shape_property = EBStoredProperty_PadShape (PadShape.rectangular)
   var side_property = EBStoredProperty_PadSide (PadSide.traversing)
   var rotation_property = EBStoredProperty_Int (0)
+  var qualifiedName_property = EBStoredProperty_String ("")
 
   //····················································································································
   //    Transient properties
@@ -210,6 +231,7 @@ class BoardModelPad : EBManagedObject,
     self.shape_property.undoManager = undoManager ()
     self.side_property.undoManager = undoManager ()
     self.rotation_property.undoManager = undoManager ()
+    self.qualifiedName_property.undoManager = undoManager ()
   //--- Install owner for relationships
   //--- register properties for handling signature
   }
@@ -290,6 +312,14 @@ class BoardModelPad : EBManagedObject,
       observerExplorer:&self.rotation_property.mObserverExplorer,
       valueExplorer:&self.rotation_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "qualifiedName",
+      idx:self.qualifiedName_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.qualifiedName_property.mObserverExplorer,
+      valueExplorer:&self.qualifiedName_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -317,6 +347,8 @@ class BoardModelPad : EBManagedObject,
     self.side_property.mValueExplorer = nil
     self.rotation_property.mObserverExplorer = nil
     self.rotation_property.mValueExplorer = nil
+    self.qualifiedName_property.mObserverExplorer = nil
+    self.qualifiedName_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -334,6 +366,7 @@ class BoardModelPad : EBManagedObject,
     self.shape_property.storeIn (dictionary: ioDictionary, forKey: "shape")
     self.side_property.storeIn (dictionary: ioDictionary, forKey: "side")
     self.rotation_property.storeIn (dictionary: ioDictionary, forKey: "rotation")
+    self.qualifiedName_property.storeIn (dictionary: ioDictionary, forKey: "qualifiedName")
   }
 
   //····················································································································
@@ -351,6 +384,7 @@ class BoardModelPad : EBManagedObject,
     self.shape_property.readFrom (dictionary: inDictionary, forKey:"shape")
     self.side_property.readFrom (dictionary: inDictionary, forKey:"side")
     self.rotation_property.readFrom (dictionary: inDictionary, forKey:"rotation")
+    self.qualifiedName_property.readFrom (dictionary: inDictionary, forKey:"qualifiedName")
   }
 
   //····················································································································
@@ -836,6 +870,63 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   }
 
   //····················································································································
+  //   Observers of 'qualifiedName' stored property
+  //····················································································································
+
+  private var mObserversOf_qualifiedName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_qualifiedName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_qualifiedName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.qualifiedName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_qualifiedName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_qualifiedName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.qualifiedName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_qualifiedName_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_qualifiedName {
+        managedObject.qualifiedName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_qualifiedName_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
+    for observer in mObserversOf_qualifiedName {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.qualifiedName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -881,6 +972,7 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
         removeEBObserversOf_shape_fromElementsOfSet (removedSet)
         removeEBObserversOf_side_fromElementsOfSet (removedSet)
         removeEBObserversOf_rotation_fromElementsOfSet (removedSet)
+        removeEBObserversOf_qualifiedName_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
@@ -893,6 +985,7 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
         addEBObserversOf_shape_toElementsOfSet (addedSet)
         addEBObserversOf_side_toElementsOfSet (addedSet)
         addEBObserversOf_rotation_toElementsOfSet (addedSet)
+        addEBObserversOf_qualifiedName_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
       //--- Update object set
         mSet = newSet
@@ -968,6 +1061,12 @@ protocol BoardModelPad_side : class {
 
 protocol BoardModelPad_rotation : class {
   var rotation : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelPad_qualifiedName : class {
+  var qualifiedName : String { get }
 }
 
 

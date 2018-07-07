@@ -17,11 +17,8 @@ func compute_MergerRoot_boardRect (
 //--- START OF USER ZONE 2
   var r = CanariBoardRect () // Empty rect
   for board in self_boardInstances_instanceRect {
-    switch board.instanceRect {
-    case .single (let re) :
-      r = r.union (re)
-    default :
-      break
+    if let rect = board.instanceRect {
+      r = r.union (rect)
     }
   }
   return CanariBoardRect (x:0, y:0, width: r.x + r.width, height: r.y + r.height)

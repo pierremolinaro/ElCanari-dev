@@ -28,6 +28,13 @@ final class MergerSegmentArray : EBSimpleClass {
 
   //····················································································································
 
+  override init () {
+    segmentArray = []
+    super.init ()
+  }
+
+  //····················································································································
+
   override var description : String {
     get {
       return "MergerSegmentArray " + String (segmentArray.count)

@@ -304,27 +304,13 @@ extension MergerDocument {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func getBoardRect (_ board : MergerBoardInstance) -> CanariBoardRect {
-  let result : CanariBoardRect
-  switch board.instanceRect {
-  case .single (let r) :
-    result = r
-  default :
-    result = CanariBoardRect ()
-  }
-  return result
+  return board.instanceRect ?? CanariBoardRect ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func getBoardLimit (_ board : MergerBoardInstance) -> Int {
-  let result : Int
-  switch board.boardLimitWidth {
-  case .single (let r) :
-    result = r
-  default :
-    result = 0
-  }
-  return result
+  return board.boardLimitWidth ?? 0
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

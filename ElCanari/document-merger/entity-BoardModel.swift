@@ -239,9 +239,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var instanceCount : EBSelection <Int> {
-    get {
-      return instanceCount_property_selection
+//  var instanceCount : EBSelection <Int> {
+//    get {
+//      return instanceCount_property_selection
+//    }
+//  }
+
+  var instanceCount : Int? {
+    switch instanceCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -255,9 +264,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backgroundLayerDisplay : EBSelection <CALayer> {
-    get {
-      return backgroundLayerDisplay_property_selection
+//  var backgroundLayerDisplay : EBSelection <CALayer> {
+//    get {
+//      return backgroundLayerDisplay_property_selection
+//    }
+//  }
+
+  var backgroundLayerDisplay : CALayer? {
+    switch backgroundLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -271,9 +289,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontLegendTextsSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return frontLegendTextsSegments_property_selection
+//  var frontLegendTextsSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return frontLegendTextsSegments_property_selection
+//    }
+//  }
+
+  var frontLegendTextsSegments : MergerSegmentArray? {
+    switch frontLegendTextsSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -287,9 +314,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontLegendTextsLayerDisplay : EBSelection <CALayer> {
-    get {
-      return frontLegendTextsLayerDisplay_property_selection
+//  var frontLegendTextsLayerDisplay : EBSelection <CALayer> {
+//    get {
+//      return frontLegendTextsLayerDisplay_property_selection
+//    }
+//  }
+
+  var frontLegendTextsLayerDisplay : CALayer? {
+    switch frontLegendTextsLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -303,9 +339,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontLayoutTextsSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return frontLayoutTextsSegments_property_selection
+//  var frontLayoutTextsSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return frontLayoutTextsSegments_property_selection
+//    }
+//  }
+
+  var frontLayoutTextsSegments : MergerSegmentArray? {
+    switch frontLayoutTextsSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -319,9 +364,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontLayoutTextsLayerDisplay : EBSelection <CALayer> {
-    get {
-      return frontLayoutTextsLayerDisplay_property_selection
+//  var frontLayoutTextsLayerDisplay : EBSelection <CALayer> {
+//    get {
+//      return frontLayoutTextsLayerDisplay_property_selection
+//    }
+//  }
+
+  var frontLayoutTextsLayerDisplay : CALayer? {
+    switch frontLayoutTextsLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -335,9 +389,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backLegendTextsSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return backLegendTextsSegments_property_selection
+//  var backLegendTextsSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return backLegendTextsSegments_property_selection
+//    }
+//  }
+
+  var backLegendTextsSegments : MergerSegmentArray? {
+    switch backLegendTextsSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -351,9 +414,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backLegendTextsLayerDisplay : EBSelection <CALayer> {
-    get {
-      return backLegendTextsLayerDisplay_property_selection
+//  var backLegendTextsLayerDisplay : EBSelection <CALayer> {
+//    get {
+//      return backLegendTextsLayerDisplay_property_selection
+//    }
+//  }
+
+  var backLegendTextsLayerDisplay : CALayer? {
+    switch backLegendTextsLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -367,9 +439,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backLayoutTextsSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return backLayoutTextsSegments_property_selection
+//  var backLayoutTextsSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return backLayoutTextsSegments_property_selection
+//    }
+//  }
+
+  var backLayoutTextsSegments : MergerSegmentArray? {
+    switch backLayoutTextsSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -383,9 +464,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backLayoutTextsLayerDisplay : EBSelection <CALayer> {
-    get {
-      return backLayoutTextsLayerDisplay_property_selection
+//  var backLayoutTextsLayerDisplay : EBSelection <CALayer> {
+//    get {
+//      return backLayoutTextsLayerDisplay_property_selection
+//    }
+//  }
+
+  var backLayoutTextsLayerDisplay : CALayer? {
+    switch backLayoutTextsLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -399,9 +489,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var padsHoles : EBSelection <MergerHoleArray> {
-    get {
-      return padsHoles_property_selection
+//  var padsHoles : EBSelection <MergerHoleArray> {
+//    get {
+//      return padsHoles_property_selection
+//    }
+//  }
+
+  var padsHoles : MergerHoleArray? {
+    switch padsHoles_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -415,9 +514,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var viasHoles : EBSelection <MergerHoleArray> {
-    get {
-      return viasHoles_property_selection
+//  var viasHoles : EBSelection <MergerHoleArray> {
+//    get {
+//      return viasHoles_property_selection
+//    }
+//  }
+
+  var viasHoles : MergerHoleArray? {
+    switch viasHoles_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -431,9 +539,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var holes : EBSelection <MergerHoleArray> {
-    get {
-      return holes_property_selection
+//  var holes : EBSelection <MergerHoleArray> {
+//    get {
+//      return holes_property_selection
+//    }
+//  }
+
+  var holes : MergerHoleArray? {
+    switch holes_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -447,9 +564,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var holeLayerDisplay : EBSelection <CALayer> {
-    get {
-      return holeLayerDisplay_property_selection
+//  var holeLayerDisplay : EBSelection <CALayer> {
+//    get {
+//      return holeLayerDisplay_property_selection
+//    }
+//  }
+
+  var holeLayerDisplay : CALayer? {
+    switch holeLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -463,9 +589,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var viaShapes : EBSelection <MergerViaShapeArray> {
-    get {
-      return viaShapes_property_selection
+//  var viaShapes : EBSelection <MergerViaShapeArray> {
+//    get {
+//      return viaShapes_property_selection
+//    }
+//  }
+
+  var viaShapes : MergerViaShapeArray? {
+    switch viaShapes_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -479,9 +614,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var viaLayerDisplay : EBSelection <CALayer> {
-    get {
-      return viaLayerDisplay_property_selection
+//  var viaLayerDisplay : EBSelection <CALayer> {
+//    get {
+//      return viaLayerDisplay_property_selection
+//    }
+//  }
+
+  var viaLayerDisplay : CALayer? {
+    switch viaLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -495,9 +639,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontPads : EBSelection <MergerPadArray> {
-    get {
-      return frontPads_property_selection
+//  var frontPads : EBSelection <MergerPadArray> {
+//    get {
+//      return frontPads_property_selection
+//    }
+//  }
+
+  var frontPads : MergerPadArray? {
+    switch frontPads_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -511,9 +664,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontPadsDisplay : EBSelection <CALayer> {
-    get {
-      return frontPadsDisplay_property_selection
+//  var frontPadsDisplay : EBSelection <CALayer> {
+//    get {
+//      return frontPadsDisplay_property_selection
+//    }
+//  }
+
+  var frontPadsDisplay : CALayer? {
+    switch frontPadsDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -527,9 +689,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backPads : EBSelection <MergerPadArray> {
-    get {
-      return backPads_property_selection
+//  var backPads : EBSelection <MergerPadArray> {
+//    get {
+//      return backPads_property_selection
+//    }
+//  }
+
+  var backPads : MergerPadArray? {
+    switch backPads_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -543,9 +714,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backPadsDisplay : EBSelection <CALayer> {
-    get {
-      return backPadsDisplay_property_selection
+//  var backPadsDisplay : EBSelection <CALayer> {
+//    get {
+//      return backPadsDisplay_property_selection
+//    }
+//  }
+
+  var backPadsDisplay : CALayer? {
+    switch backPadsDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -559,9 +739,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var boardLimits : EBSelection <MergerBoardLimits> {
-    get {
-      return boardLimits_property_selection
+//  var boardLimits : EBSelection <MergerBoardLimits> {
+//    get {
+//      return boardLimits_property_selection
+//    }
+//  }
+
+  var boardLimits : MergerBoardLimits? {
+    switch boardLimits_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -575,9 +764,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var boardLimitsDisplay : EBSelection <CALayer> {
-    get {
-      return boardLimitsDisplay_property_selection
+//  var boardLimitsDisplay : EBSelection <CALayer> {
+//    get {
+//      return boardLimitsDisplay_property_selection
+//    }
+//  }
+
+  var boardLimitsDisplay : CALayer? {
+    switch boardLimitsDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -591,9 +789,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backComponentNameSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return backComponentNameSegments_property_selection
+//  var backComponentNameSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return backComponentNameSegments_property_selection
+//    }
+//  }
+
+  var backComponentNameSegments : MergerSegmentArray? {
+    switch backComponentNameSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -607,9 +814,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backComponentNameDisplay : EBSelection <CALayer> {
-    get {
-      return backComponentNameDisplay_property_selection
+//  var backComponentNameDisplay : EBSelection <CALayer> {
+//    get {
+//      return backComponentNameDisplay_property_selection
+//    }
+//  }
+
+  var backComponentNameDisplay : CALayer? {
+    switch backComponentNameDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -623,9 +839,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontComponentNameSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return frontComponentNameSegments_property_selection
+//  var frontComponentNameSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return frontComponentNameSegments_property_selection
+//    }
+//  }
+
+  var frontComponentNameSegments : MergerSegmentArray? {
+    switch frontComponentNameSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -639,9 +864,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontComponentNameDisplay : EBSelection <CALayer> {
-    get {
-      return frontComponentNameDisplay_property_selection
+//  var frontComponentNameDisplay : EBSelection <CALayer> {
+//    get {
+//      return frontComponentNameDisplay_property_selection
+//    }
+//  }
+
+  var frontComponentNameDisplay : CALayer? {
+    switch frontComponentNameDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -655,9 +889,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontComponentValueSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return frontComponentValueSegments_property_selection
+//  var frontComponentValueSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return frontComponentValueSegments_property_selection
+//    }
+//  }
+
+  var frontComponentValueSegments : MergerSegmentArray? {
+    switch frontComponentValueSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -671,9 +914,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontComponentValueDisplay : EBSelection <CALayer> {
-    get {
-      return frontComponentValueDisplay_property_selection
+//  var frontComponentValueDisplay : EBSelection <CALayer> {
+//    get {
+//      return frontComponentValueDisplay_property_selection
+//    }
+//  }
+
+  var frontComponentValueDisplay : CALayer? {
+    switch frontComponentValueDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -687,9 +939,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backComponentValueSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return backComponentValueSegments_property_selection
+//  var backComponentValueSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return backComponentValueSegments_property_selection
+//    }
+//  }
+
+  var backComponentValueSegments : MergerSegmentArray? {
+    switch backComponentValueSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -703,9 +964,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backComponentValueDisplay : EBSelection <CALayer> {
-    get {
-      return backComponentValueDisplay_property_selection
+//  var backComponentValueDisplay : EBSelection <CALayer> {
+//    get {
+//      return backComponentValueDisplay_property_selection
+//    }
+//  }
+
+  var backComponentValueDisplay : CALayer? {
+    switch backComponentValueDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -719,9 +989,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backTrackSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return backTrackSegments_property_selection
+//  var backTrackSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return backTrackSegments_property_selection
+//    }
+//  }
+
+  var backTrackSegments : MergerSegmentArray? {
+    switch backTrackSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -735,9 +1014,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backTracksDisplay : EBSelection <CALayer> {
-    get {
-      return backTracksDisplay_property_selection
+//  var backTracksDisplay : EBSelection <CALayer> {
+//    get {
+//      return backTracksDisplay_property_selection
+//    }
+//  }
+
+  var backTracksDisplay : CALayer? {
+    switch backTracksDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -751,9 +1039,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontTrackSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return frontTrackSegments_property_selection
+//  var frontTrackSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return frontTrackSegments_property_selection
+//    }
+//  }
+
+  var frontTrackSegments : MergerSegmentArray? {
+    switch frontTrackSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -767,9 +1064,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontTracksDisplay : EBSelection <CALayer> {
-    get {
-      return frontTracksDisplay_property_selection
+//  var frontTracksDisplay : EBSelection <CALayer> {
+//    get {
+//      return frontTracksDisplay_property_selection
+//    }
+//  }
+
+  var frontTracksDisplay : CALayer? {
+    switch frontTracksDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -783,9 +1089,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontPackagesSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return frontPackagesSegments_property_selection
+//  var frontPackagesSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return frontPackagesSegments_property_selection
+//    }
+//  }
+
+  var frontPackagesSegments : MergerSegmentArray? {
+    switch frontPackagesSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -799,9 +1114,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var frontPackagesDisplay : EBSelection <CALayer> {
-    get {
-      return frontPackagesDisplay_property_selection
+//  var frontPackagesDisplay : EBSelection <CALayer> {
+//    get {
+//      return frontPackagesDisplay_property_selection
+//    }
+//  }
+
+  var frontPackagesDisplay : CALayer? {
+    switch frontPackagesDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -815,9 +1139,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backPackagesSegments : EBSelection <MergerSegmentArray> {
-    get {
-      return backPackagesSegments_property_selection
+//  var backPackagesSegments : EBSelection <MergerSegmentArray> {
+//    get {
+//      return backPackagesSegments_property_selection
+//    }
+//  }
+
+  var backPackagesSegments : MergerSegmentArray? {
+    switch backPackagesSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -831,9 +1164,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var backPackagesDisplay : EBSelection <CALayer> {
-    get {
-      return backPackagesDisplay_property_selection
+//  var backPackagesDisplay : EBSelection <CALayer> {
+//    get {
+//      return backPackagesDisplay_property_selection
+//    }
+//  }
+
+  var backPackagesDisplay : CALayer? {
+    switch backPackagesDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -847,9 +1189,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
-  var modelLayerDisplay : EBSelection <CALayer> {
-    get {
-      return modelLayerDisplay_property_selection
+//  var modelLayerDisplay : EBSelection <CALayer> {
+//    get {
+//      return modelLayerDisplay_property_selection
+//    }
+//  }
+
+  var modelLayerDisplay : CALayer? {
+    switch modelLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -6110,235 +6461,235 @@ protocol BoardModel_modelLimitWidthUnit : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_instanceCount : class {
-  var instanceCount : EBSelection < Int > { get }
+  var instanceCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backgroundLayerDisplay : class {
-  var backgroundLayerDisplay : EBSelection < CALayer > { get }
+  var backgroundLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontLegendTextsSegments : class {
-  var frontLegendTextsSegments : EBSelection < MergerSegmentArray > { get }
+  var frontLegendTextsSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontLegendTextsLayerDisplay : class {
-  var frontLegendTextsLayerDisplay : EBSelection < CALayer > { get }
+  var frontLegendTextsLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontLayoutTextsSegments : class {
-  var frontLayoutTextsSegments : EBSelection < MergerSegmentArray > { get }
+  var frontLayoutTextsSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontLayoutTextsLayerDisplay : class {
-  var frontLayoutTextsLayerDisplay : EBSelection < CALayer > { get }
+  var frontLayoutTextsLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backLegendTextsSegments : class {
-  var backLegendTextsSegments : EBSelection < MergerSegmentArray > { get }
+  var backLegendTextsSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backLegendTextsLayerDisplay : class {
-  var backLegendTextsLayerDisplay : EBSelection < CALayer > { get }
+  var backLegendTextsLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backLayoutTextsSegments : class {
-  var backLayoutTextsSegments : EBSelection < MergerSegmentArray > { get }
+  var backLayoutTextsSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backLayoutTextsLayerDisplay : class {
-  var backLayoutTextsLayerDisplay : EBSelection < CALayer > { get }
+  var backLayoutTextsLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_padsHoles : class {
-  var padsHoles : EBSelection < MergerHoleArray > { get }
+  var padsHoles : MergerHoleArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_viasHoles : class {
-  var viasHoles : EBSelection < MergerHoleArray > { get }
+  var viasHoles : MergerHoleArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_holes : class {
-  var holes : EBSelection < MergerHoleArray > { get }
+  var holes : MergerHoleArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_holeLayerDisplay : class {
-  var holeLayerDisplay : EBSelection < CALayer > { get }
+  var holeLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_viaShapes : class {
-  var viaShapes : EBSelection < MergerViaShapeArray > { get }
+  var viaShapes : MergerViaShapeArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_viaLayerDisplay : class {
-  var viaLayerDisplay : EBSelection < CALayer > { get }
+  var viaLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontPads : class {
-  var frontPads : EBSelection < MergerPadArray > { get }
+  var frontPads : MergerPadArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontPadsDisplay : class {
-  var frontPadsDisplay : EBSelection < CALayer > { get }
+  var frontPadsDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backPads : class {
-  var backPads : EBSelection < MergerPadArray > { get }
+  var backPads : MergerPadArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backPadsDisplay : class {
-  var backPadsDisplay : EBSelection < CALayer > { get }
+  var backPadsDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_boardLimits : class {
-  var boardLimits : EBSelection < MergerBoardLimits > { get }
+  var boardLimits : MergerBoardLimits? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_boardLimitsDisplay : class {
-  var boardLimitsDisplay : EBSelection < CALayer > { get }
+  var boardLimitsDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backComponentNameSegments : class {
-  var backComponentNameSegments : EBSelection < MergerSegmentArray > { get }
+  var backComponentNameSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backComponentNameDisplay : class {
-  var backComponentNameDisplay : EBSelection < CALayer > { get }
+  var backComponentNameDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontComponentNameSegments : class {
-  var frontComponentNameSegments : EBSelection < MergerSegmentArray > { get }
+  var frontComponentNameSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontComponentNameDisplay : class {
-  var frontComponentNameDisplay : EBSelection < CALayer > { get }
+  var frontComponentNameDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontComponentValueSegments : class {
-  var frontComponentValueSegments : EBSelection < MergerSegmentArray > { get }
+  var frontComponentValueSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontComponentValueDisplay : class {
-  var frontComponentValueDisplay : EBSelection < CALayer > { get }
+  var frontComponentValueDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backComponentValueSegments : class {
-  var backComponentValueSegments : EBSelection < MergerSegmentArray > { get }
+  var backComponentValueSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backComponentValueDisplay : class {
-  var backComponentValueDisplay : EBSelection < CALayer > { get }
+  var backComponentValueDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backTrackSegments : class {
-  var backTrackSegments : EBSelection < MergerSegmentArray > { get }
+  var backTrackSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backTracksDisplay : class {
-  var backTracksDisplay : EBSelection < CALayer > { get }
+  var backTracksDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontTrackSegments : class {
-  var frontTrackSegments : EBSelection < MergerSegmentArray > { get }
+  var frontTrackSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontTracksDisplay : class {
-  var frontTracksDisplay : EBSelection < CALayer > { get }
+  var frontTracksDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontPackagesSegments : class {
-  var frontPackagesSegments : EBSelection < MergerSegmentArray > { get }
+  var frontPackagesSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_frontPackagesDisplay : class {
-  var frontPackagesDisplay : EBSelection < CALayer > { get }
+  var frontPackagesDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backPackagesSegments : class {
-  var backPackagesSegments : EBSelection < MergerSegmentArray > { get }
+  var backPackagesSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_backPackagesDisplay : class {
-  var backPackagesDisplay : EBSelection < CALayer > { get }
+  var backPackagesDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_modelLayerDisplay : class {
-  var modelLayerDisplay : EBSelection < CALayer > { get }
+  var modelLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7558,6 +7909,7 @@ ToManyRelationshipReadWrite_BoardModel_pads, EBSignatureObserverProtocol {
         }
         removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_qualifiedName_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_rotation_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_side_fromElementsOfSet (removedObjectSet)
@@ -7571,6 +7923,7 @@ ToManyRelationshipReadWrite_BoardModel_pads, EBSignatureObserverProtocol {
         }
         addEBObserversOf_height_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_qualifiedName_toElementsOfSet (addedObjectSet)
         addEBObserversOf_rotation_toElementsOfSet (addedObjectSet)
         addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
         addEBObserversOf_side_toElementsOfSet (addedObjectSet)

@@ -44,9 +44,18 @@ class FontCharacter : EBManagedObject,
     }
   }
 
-  var characterIsDefined : EBSelection <Bool> {
-    get {
-      return characterIsDefined_property_selection
+//  var characterIsDefined : EBSelection <Bool> {
+//    get {
+//      return characterIsDefined_property_selection
+//    }
+//  }
+
+  var characterIsDefined : Bool? {
+    switch characterIsDefined_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -60,9 +69,18 @@ class FontCharacter : EBManagedObject,
     }
   }
 
-  var segmentArrayForDrawing : EBSelection <CharacterSegmentListClass> {
-    get {
-      return segmentArrayForDrawing_property_selection
+//  var segmentArrayForDrawing : EBSelection <CharacterSegmentListClass> {
+//    get {
+//      return segmentArrayForDrawing_property_selection
+//    }
+//  }
+
+  var segmentArrayForDrawing : CharacterSegmentListClass? {
+    switch segmentArrayForDrawing_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -76,9 +94,18 @@ class FontCharacter : EBManagedObject,
     }
   }
 
-  var gerberCode : EBSelection <CharacterGerberCodeClass> {
-    get {
-      return gerberCode_property_selection
+//  var gerberCode : EBSelection <CharacterGerberCodeClass> {
+//    get {
+//      return gerberCode_property_selection
+//    }
+//  }
+
+  var gerberCode : CharacterGerberCodeClass? {
+    switch gerberCode_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -92,9 +119,18 @@ class FontCharacter : EBManagedObject,
     }
   }
 
-  var gerberCodeInstructionCountMessage : EBSelection <String> {
-    get {
-      return gerberCodeInstructionCountMessage_property_selection
+//  var gerberCodeInstructionCountMessage : EBSelection <String> {
+//    get {
+//      return gerberCodeInstructionCountMessage_property_selection
+//    }
+//  }
+
+  var gerberCodeInstructionCountMessage : String? {
+    switch gerberCodeInstructionCountMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -759,25 +795,25 @@ protocol FontCharacter_advance : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacter_characterIsDefined : class {
-  var characterIsDefined : EBSelection < Bool > { get }
+  var characterIsDefined : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacter_segmentArrayForDrawing : class {
-  var segmentArrayForDrawing : EBSelection < CharacterSegmentListClass > { get }
+  var segmentArrayForDrawing : CharacterSegmentListClass? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacter_gerberCode : class {
-  var gerberCode : EBSelection < CharacterGerberCodeClass > { get }
+  var gerberCode : CharacterGerberCodeClass? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontCharacter_gerberCodeInstructionCountMessage : class {
-  var gerberCodeInstructionCountMessage : EBSelection < String > { get }
+  var gerberCodeInstructionCountMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

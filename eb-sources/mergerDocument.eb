@@ -26,8 +26,9 @@ transient property class MergerBoardLimits ;
 transient property class MergerPadArray ;
 transient property class MergerHoleArray ;
 transient property class MergerBoardModelArray ;
-transient property struct CanariBoardRect ;
 transient property class CALayer ;
+
+transient property struct CanariBoardRect ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -57,6 +58,7 @@ entity BoardModelPad {
   property PadShape shape default rectangular ;
   property PadSide side default traversing ;
   property Int rotation default 0 ;
+  property String qualifiedName default "" ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

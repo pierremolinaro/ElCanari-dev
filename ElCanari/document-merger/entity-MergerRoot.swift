@@ -205,9 +205,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
-  var modelNames : EBSelection <MergerBoardModelArray> {
-    get {
-      return modelNames_property_selection
+//  var modelNames : EBSelection <MergerBoardModelArray> {
+//    get {
+//      return modelNames_property_selection
+//    }
+//  }
+
+  var modelNames : MergerBoardModelArray? {
+    switch modelNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -221,9 +230,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
-  var instancesLayerDisplay : EBSelection <CALayer> {
-    get {
-      return instancesLayerDisplay_property_selection
+//  var instancesLayerDisplay : EBSelection <CALayer> {
+//    get {
+//      return instancesLayerDisplay_property_selection
+//    }
+//  }
+
+  var instancesLayerDisplay : CALayer? {
+    switch instancesLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -237,9 +255,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
-  var boardRect : EBSelection <CanariBoardRect> {
-    get {
-      return boardRect_property_selection
+//  var boardRect : EBSelection <CanariBoardRect> {
+//    get {
+//      return boardRect_property_selection
+//    }
+//  }
+
+  var boardRect : CanariBoardRect? {
+    switch boardRect_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -253,9 +280,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
-  var boardWidth : EBSelection <Int> {
-    get {
-      return boardWidth_property_selection
+//  var boardWidth : EBSelection <Int> {
+//    get {
+//      return boardWidth_property_selection
+//    }
+//  }
+
+  var boardWidth : Int? {
+    switch boardWidth_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -269,9 +305,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
-  var boardHeight : EBSelection <Int> {
-    get {
-      return boardHeight_property_selection
+//  var boardHeight : EBSelection <Int> {
+//    get {
+//      return boardHeight_property_selection
+//    }
+//  }
+
+  var boardHeight : Int? {
+    switch boardHeight_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -1715,31 +1760,31 @@ protocol MergerRoot_generatedBoardArchiveFormat : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_modelNames : class {
-  var modelNames : EBSelection < MergerBoardModelArray > { get }
+  var modelNames : MergerBoardModelArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_instancesLayerDisplay : class {
-  var instancesLayerDisplay : EBSelection < CALayer > { get }
+  var instancesLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_boardRect : class {
-  var boardRect : EBSelection < CanariBoardRect > { get }
+  var boardRect : CanariBoardRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_boardWidth : class {
-  var boardWidth : EBSelection < Int > { get }
+  var boardWidth : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_boardHeight : class {
-  var boardHeight : EBSelection < Int > { get }
+  var boardHeight : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

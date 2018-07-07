@@ -84,9 +84,18 @@ class FontRoot : EBManagedObject,
     }
   }
 
-  var sampleStringBezierPath : EBSelection <CGPath> {
-    get {
-      return sampleStringBezierPath_property_selection
+//  var sampleStringBezierPath : EBSelection <CGPath> {
+//    get {
+//      return sampleStringBezierPath_property_selection
+//    }
+//  }
+
+  var sampleStringBezierPath : CGPath? {
+    switch sampleStringBezierPath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -100,9 +109,18 @@ class FontRoot : EBManagedObject,
     }
   }
 
-  var sampleStringBezierPathWidth : EBSelection <Double> {
-    get {
-      return sampleStringBezierPathWidth_property_selection
+//  var sampleStringBezierPathWidth : EBSelection <Double> {
+//    get {
+//      return sampleStringBezierPathWidth_property_selection
+//    }
+//  }
+
+  var sampleStringBezierPathWidth : Double? {
+    switch sampleStringBezierPathWidth_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -116,9 +134,18 @@ class FontRoot : EBManagedObject,
     }
   }
 
-  var sampleStringBezierPathAscent : EBSelection <Double> {
-    get {
-      return sampleStringBezierPathAscent_property_selection
+//  var sampleStringBezierPathAscent : EBSelection <Double> {
+//    get {
+//      return sampleStringBezierPathAscent_property_selection
+//    }
+//  }
+
+  var sampleStringBezierPathAscent : Double? {
+    switch sampleStringBezierPathAscent_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -132,9 +159,18 @@ class FontRoot : EBManagedObject,
     }
   }
 
-  var sampleStringBezierPathDescent : EBSelection <Double> {
-    get {
-      return sampleStringBezierPathDescent_property_selection
+//  var sampleStringBezierPathDescent : EBSelection <Double> {
+//    get {
+//      return sampleStringBezierPathDescent_property_selection
+//    }
+//  }
+
+  var sampleStringBezierPathDescent : Double? {
+    switch sampleStringBezierPathDescent_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -963,25 +999,25 @@ protocol FontRoot_selectedInspector : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRoot_sampleStringBezierPath : class {
-  var sampleStringBezierPath : EBSelection < CGPath > { get }
+  var sampleStringBezierPath : CGPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRoot_sampleStringBezierPathWidth : class {
-  var sampleStringBezierPathWidth : EBSelection < Double > { get }
+  var sampleStringBezierPathWidth : Double? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRoot_sampleStringBezierPathAscent : class {
-  var sampleStringBezierPathAscent : EBSelection < Double > { get }
+  var sampleStringBezierPathAscent : Double? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRoot_sampleStringBezierPathDescent : class {
-  var sampleStringBezierPathDescent : EBSelection < Double > { get }
+  var sampleStringBezierPathDescent : Double? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

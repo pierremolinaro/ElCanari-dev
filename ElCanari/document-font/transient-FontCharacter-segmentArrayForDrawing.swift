@@ -18,11 +18,8 @@ func compute_FontCharacter_segmentArrayForDrawing (
 //--- START OF USER ZONE 2
   var result = [SegmentForFontCharacterClass] ()
   for object in self_segments_segmentForDrawing {
-    switch object.segmentForDrawing {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      result.append (v)
+    if let segment = object.segmentForDrawing {
+      result.append (segment)
     }
   }
   return CharacterSegmentListClass (elements:result)

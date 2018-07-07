@@ -19,11 +19,8 @@ func compute_PMFontDocument_missingCharacterDescriptorArray (
   var idx = 0x1F
   for c in root_characters_characterIsDefined {
     idx += 1
-    switch c.characterIsDefined {
-    case .empty, .multiple :
-      break
-    case .single (let isDefined) :
-      if !isDefined {
+    if let characterIsDefined = c.characterIsDefined {
+      if !characterIsDefined {
         let missingChar = MissingCharacter ()
         missingChar.idx = idx
         missingChar.code = "\(idx) — 0x\(String (idx, radix: 16, uppercase: true))"
