@@ -420,11 +420,12 @@ entity MergerRoot {
 #--- Artwork
   toOne @cascading ArtworkRoot artwork ;
   property String artworkName default "" ;
+#  selectionController mArtworkController : self.artwork ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-document PMMergerDocument root MergerRoot {
+document MergerDocument root MergerRoot {
 #--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
 
@@ -638,6 +639,24 @@ document PMMergerDocument root MergerRoot {
   outlet EBButton mGenerateProductFilesActionButton
     $enabled !root.artwork.none & (root.boardInstances.count > 0)
     $run self.generateProductFilesAction ;
+
+#------------------------------------------- Artwork settings
+#--- Minimum tab
+#  outlet EBPopUpButton mMinPP_TP_TT_TW_inEBUnitPopUp $selectedTag root.artwork.one.minPP_TP_TT_TW_displayUnit ;
+#  outlet CanariDimensionTextField mMinPP_TP_TT_TW_displayUnit_TextField
+#     $dimensionAndUnit root.minPP_TP_TT_TW_inEBUnit, root.minPP_TP_TT_TW_displayUnit
+#  ;
+#
+#  outlet EBPopUpButton mOARUnitPopUp $selectedTag root.minValueForOARdisplayUnit ;
+#  outlet CanariDimensionTextField mOARValueTextField
+#     $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit
+#  ;
+#
+#  outlet EBPopUpButton mPHDUnitPopUp $selectedTag root.minValueForPHDdisplayUnit ;
+#  outlet CanariDimensionTextField mPHDValueTextField
+#     $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
+#  ;
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

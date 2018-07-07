@@ -11,10 +11,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMMergerDocument {
-  func dismissDisplaySettingViewAction (_ sender : NSObject) {
+extension MergerDocument {
+  func importArtworkAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-    mDisplaySettingView?.removeFromSuperview ()
+    if let currentArtwork = self.rootObject.artwork_property.propval { // Arwork already loaded, remove it
+      self.rootObject.artwork_property.setProp (nil)
+      self.rootObject.artworkName = ""
+      self.managedObjectContext().removeManagedObject (currentArtwork)
+    }else{
+      importArtwork ()
+    }
 //--- END OF USER ZONE 2
   }
 }

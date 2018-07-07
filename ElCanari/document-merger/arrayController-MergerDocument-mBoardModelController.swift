@@ -9,10 +9,10 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_PMMergerDocument_mBoardModelController
+//    ArrayController_MergerDocument_mBoardModelController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
 
   private var mModel : ToManyRelationship_MergerRoot_boardModels? = nil
 
@@ -20,7 +20,7 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
 
   let selectedArray_property = TransientArrayOf_BoardModel ()
 
-  private let mSelectedSet : SelectedSet_PMMergerDocument_mBoardModelController
+  private let mSelectedSet : SelectedSet_MergerDocument_mBoardModelController
 
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
@@ -52,7 +52,7 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_PMMergerDocument_mBoardModelController (
+    mSelectedSet = SelectedSet_MergerDocument_mBoardModelController (
       allowsEmptySelection:allowsEmptySelection,
       allowsMultipleSelection:allowsMultipleSelection,
       sortedArray:self.sortedArray_property
@@ -460,10 +460,10 @@ final class ArrayController_PMMergerDocument_mBoardModelController : EBObject, E
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_PMMergerDocument_mBoardModelController
+//    SelectedSet_MergerDocument_mBoardModelController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_PMMergerDocument_mBoardModelController : EBAbstractProperty {
+final class SelectedSet_MergerDocument_mBoardModelController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
   private let mSortedArray : TransientArrayOf_BoardModel

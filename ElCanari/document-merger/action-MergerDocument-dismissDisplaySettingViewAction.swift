@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMMergerDocument {
-  func updateBoardModelAction (_ sender : NSObject) {
+extension MergerDocument {
+  func dismissDisplaySettingViewAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-    updateBoardModel ()
+    mDisplaySettingView?.removeFromSuperview ()
 //--- END OF USER ZONE 2
   }
 }

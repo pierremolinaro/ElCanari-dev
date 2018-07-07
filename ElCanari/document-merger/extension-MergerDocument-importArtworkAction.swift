@@ -1,5 +1,5 @@
 //
-//  extension-PMMergerDocument-importArtworkAction.swift
+//  extension-MergerDocument-importArtworkAction.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 07/07/2018.
@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMMergerDocument {
+extension MergerDocument {
 
   //····················································································································
 

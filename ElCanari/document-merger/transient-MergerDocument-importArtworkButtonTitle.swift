@@ -11,16 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMMergerDocument {
-  func arrangeVerticalyAction (_ sender : NSObject) {
+func compute_MergerDocument_importArtworkButtonTitle (
+       _ root_artworkName : String
+) -> String {
 //--- START OF USER ZONE 2
-  if self.rootObject.overlapingArrangment {
-    self.arrangeVerticalyWithOverlap ()
-  }else{
-    self.arrangeVerticaly ()
-  }
+  return (root_artworkName == "") ? "Import Artwork…" : "Detach Artwork"
 //--- END OF USER ZONE 2
-  }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

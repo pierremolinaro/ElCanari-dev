@@ -11,12 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_PMMergerDocument_importArtworkButtonTitle (
-       _ root_artworkName : String
-) -> String {
+extension MergerDocument {
+  func updateBoardModelAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-  return (root_artworkName == "") ? "Import Artwork…" : "Detach Artwork"
+    updateBoardModel ()
 //--- END OF USER ZONE 2
+  }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

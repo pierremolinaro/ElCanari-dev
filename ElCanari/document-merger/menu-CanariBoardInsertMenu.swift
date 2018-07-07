@@ -19,7 +19,7 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
   //   OUTLET
   //····················································································································
 
-  @IBOutlet weak var mDocument : PMMergerDocument?  = nil // Reference to document SHOULD BE weak
+  @IBOutlet weak var mDocument : MergerDocument?  = nil // Reference to document SHOULD BE weak
   
   //····················································································································
   //   INIT
@@ -75,13 +75,13 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
       self.addItem (withTitle: "No Board Model to Insert", action: nil, keyEquivalent: "")
     }else{
       for name in inNameArray {
-        self.addItem (withTitle: "Insert \"\(name)\"", action: #selector (PMMergerDocument.insertBoardAction (_:)), keyEquivalent: "")
+        self.addItem (withTitle: "Insert \"\(name)\"", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
         self.items.last?.representedObject = InsertBoardMenuRepresentedObject (boardModelName:name)
         self.items.last?.target = mDocument
         self.items.last?.isEnabled = true
       }
     //--- Add "Insert an array of boards…" item, with no represented object
-      self.addItem (withTitle: "Insert an array of boards…", action: #selector (PMMergerDocument.insertBoardAction (_:)), keyEquivalent: "")
+      self.addItem (withTitle: "Insert an array of boards…", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
       self.items.last?.target = mDocument
       self.items.last?.isEnabled = true
     }

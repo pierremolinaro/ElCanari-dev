@@ -6,7 +6,7 @@ import Cocoa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-@objc(PMMergerDocument) class PMMergerDocument : EBManagedDocument {
+@objc(MergerDocument) class MergerDocument : EBManagedDocument {
 
   //····················································································································
   //    Outlets
@@ -130,13 +130,13 @@ import Cocoa
   //    Array Controllers
   //····················································································································
 
-  var mBoardModelController = ArrayController_PMMergerDocument_mBoardModelController ()
+  var mBoardModelController = ArrayController_MergerDocument_mBoardModelController ()
 
   //····················································································································
   //    Selection Controllers
   //····················································································································
 
-  var mBoardModelSelection = SelectionController_PMMergerDocument_mBoardModelSelection ()
+  var mBoardModelSelection = SelectionController_MergerDocument_mBoardModelSelection ()
 
   //····················································································································
   //    Custom object Controllers
@@ -183,7 +183,7 @@ import Cocoa
   //····················································································································
 
   override var windowNibName: String {
-    return "PMMergerDocument"
+    return "MergerDocument"
   }
 
   //····················································································································
@@ -1096,7 +1096,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.rootObject.artworkName_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_PMMergerDocument_importArtworkButtonTitle (v0))
+            return .single (compute_MergerDocument_importArtworkButtonTitle (v0))
           default :
             return .empty
           }
@@ -1327,21 +1327,21 @@ import Cocoa
     }
   //--------------------------- Set targets / actions
     showPrefsForSettingMergerDisplayButton?.target = self
-    showPrefsForSettingMergerDisplayButton?.action = #selector (PMMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
+    showPrefsForSettingMergerDisplayButton?.action = #selector (MergerDocument.showPrefsForSettingMergerDisplayAction (_:))
     addBoardModelButton?.target = self
-    addBoardModelButton?.action = #selector (PMMergerDocument.addBoardModelAction (_:))
+    addBoardModelButton?.action = #selector (MergerDocument.addBoardModelAction (_:))
     removeBoardModelButton?.target = mBoardModelController
-    removeBoardModelButton?.action = #selector (ArrayController_PMMergerDocument_mBoardModelController.remove (_:))
+    removeBoardModelButton?.action = #selector (ArrayController_MergerDocument_mBoardModelController.remove (_:))
     updateBoardModelButton?.target = self
-    updateBoardModelButton?.action = #selector (PMMergerDocument.updateBoardModelAction (_:))
+    updateBoardModelButton?.action = #selector (MergerDocument.updateBoardModelAction (_:))
     mArrangeHorizontallyButton?.target = self
-    mArrangeHorizontallyButton?.action = #selector (PMMergerDocument.arrangeHorizontallyAction (_:))
+    mArrangeHorizontallyButton?.action = #selector (MergerDocument.arrangeHorizontallyAction (_:))
     mArrangeVerticalyButton?.target = self
-    mArrangeVerticalyButton?.action = #selector (PMMergerDocument.arrangeVerticalyAction (_:))
+    mArrangeVerticalyButton?.action = #selector (MergerDocument.arrangeVerticalyAction (_:))
     mImportArtworkButton?.target = self
-    mImportArtworkButton?.action = #selector (PMMergerDocument.importArtworkAction (_:))
+    mImportArtworkButton?.action = #selector (MergerDocument.importArtworkAction (_:))
     mGenerateProductFilesActionButton?.target = self
-    mGenerateProductFilesActionButton?.action = #selector (PMMergerDocument.generateProductFilesAction (_:))
+    mGenerateProductFilesActionButton?.action = #selector (MergerDocument.generateProductFilesAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()

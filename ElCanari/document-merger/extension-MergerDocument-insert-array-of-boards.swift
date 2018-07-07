@@ -1,5 +1,5 @@
 //
-//  extension-PMMergerDocument-insert-array-of-boards.swift
+//  extension-MergerDocument-insert-array-of-boards.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 06/07/2018.
@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMMergerDocument {
+extension MergerDocument {
 
   //····················································································································
 
@@ -22,10 +22,10 @@ extension PMMergerDocument {
         panel.defaultButtonCell = okCell
       }
       mInsertArrayOfBoardsOkButton?.target = self
-      mInsertArrayOfBoardsOkButton?.action = #selector (PMMergerDocument.okInsertArrayOfBoardPanel (_:))
+      mInsertArrayOfBoardsOkButton?.action = #selector (MergerDocument.okInsertArrayOfBoardPanel (_:))
     //--- Cancel Button
       mInsertArrayOfBoardsCancelButton?.target = self
-      mInsertArrayOfBoardsCancelButton?.action = #selector (PMMergerDocument.cancelInsertArrayOfBoardPanel (_:))
+      mInsertArrayOfBoardsCancelButton?.action = #selector (MergerDocument.cancelInsertArrayOfBoardPanel (_:))
     //--- Build popup button items
       insertArrayOfBoardsPopUpButton.removeAllItems ()
       var idx = 0

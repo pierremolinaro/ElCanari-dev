@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMMergerDocument {
+extension MergerDocument {
   func generateProductFilesAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
 

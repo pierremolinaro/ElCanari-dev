@@ -5,11 +5,11 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectionController_PMMergerDocument_mBoardModelSelection                                                        *
+//    SelectionController_MergerDocument_mBoardModelSelection                                                          *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_PMMergerDocument_mBoardModelSelection)
-final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject {
+@objc(SelectionController_MergerDocument_mBoardModelSelection)
+final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   private var mModel : ReadOnlyArrayOf_BoardModel?
 
   //····················································································································
@@ -430,7 +430,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_PMMergerDocument_mBoardModelSelection.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_MergerDocument_mBoardModelSelection.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -526,7 +526,7 @@ final class SelectionController_PMMergerDocument_mBoardModelSelection : EBObject
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_PMMergerDocument_mBoardModelSelection.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_MergerDocument_mBoardModelSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
     mExplorerWindow!.title = windowTitle

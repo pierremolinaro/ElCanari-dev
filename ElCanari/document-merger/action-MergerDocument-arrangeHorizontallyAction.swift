@@ -11,18 +11,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMMergerDocument {
-  func showPrefsForSettingMergerDisplayAction (_ sender : NSObject) {
+extension MergerDocument {
+  func arrangeHorizontallyAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-   // g_Preferences?.showMergerDisplaySettings ()
-    if let displaySettingView = mDisplaySettingView, let contentView = self.windowForSheet?.contentView {
-      if displaySettingView.window == nil {
-        displaySettingView.frame.size.height = contentView.bounds.size.height
-        contentView.addSubview (displaySettingView, positioned: .above, relativeTo:nil)
-      }else{
-        displaySettingView.removeFromSuperview ()
-      }
-    }
+  if self.rootObject.overlapingArrangment {
+    self.arrangeHorizontallyWithOverlap ()
+  }else{
+    self.arrangeHorizontally ()
+  }
 //--- END OF USER ZONE 2
   }
 }

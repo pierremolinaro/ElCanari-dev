@@ -11,10 +11,40 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMMergerDocument {
-  func addBoardModelAction (_ sender : NSObject) {
+extension MergerDocument {
+  func insertBoardAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-    addBoardModel ()
+    if let menuItem = sender as? NSMenuItem, let currentEvent = self.windowForSheet?.currentEvent {
+      let mouseLocationInWindow : NSPoint = currentEvent.locationInWindow
+      if let mouseLocation = self.mComposedBoardView?.convert (mouseLocationInWindow, from:nil) {
+        let x = cocoaToCanariUnit (mouseLocation.x)
+        let y = cocoaToCanariUnit (mouseLocation.y)
+        if let representedObject = menuItem.representedObject as? InsertBoardMenuRepresentedObject {
+          let boardModelName = representedObject.boardModelName
+          var possibleBoardModel : BoardModel? = nil
+          for boardModel in self.rootObject.boardModels_property.propval {
+            if boardModel.name == boardModelName {
+              possibleBoardModel = boardModel
+              break
+            }
+          }
+          if  let boardModel = possibleBoardModel {
+           // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
+            let newBoard = MergerBoardInstance (managedObjectContext: self.managedObjectContext())
+            newBoard.myModel_property.setProp (boardModel)
+            newBoard.x = x
+            newBoard.y = y
+            self.rootObject.boardInstances_property.add (newBoard)
+          }else{
+            NSLog ("Cannot find '\(boardModelName)' board model")
+          }
+        }else{ // No reprsented object, show "insert array of boards" panel
+          self.insertArrayOfBoards (atX:x, y:y)
+        }
+      }
+    }else{
+      NSLog ("Invalid sender")
+    }
 //--- END OF USER ZONE 2
   }
 }
