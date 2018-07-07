@@ -18,6 +18,7 @@ import Cocoa
   @IBOutlet var mArtworNameTextField : EBTextObserverField?
   @IBOutlet var mArtworkNameTextField : EBTextObserverField?
   @IBOutlet var mArtworkTabView : NSTabView?
+  @IBOutlet var mBoardArchiveFormatPopUpButton : CanariBoardBoardArchivePopUpButton?
   @IBOutlet var mBoardClipView : NSClipView?
   @IBOutlet var mBoardHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton?
@@ -49,8 +50,11 @@ import Cocoa
   @IBOutlet var mDangerView : NSView?
   @IBOutlet var mDisplaySettingView : NSView?
   @IBOutlet var mEmptyBoardMessage : EBTextField?
+  @IBOutlet var mGenerateGerber : EBSwitch?
+  @IBOutlet var mGeneratePDF : EBSwitch?
   @IBOutlet var mGenerateProductFilesActionButton : EBButton?
   @IBOutlet var mImportArtworkButton : EBButton?
+  @IBOutlet var mIncorrectDocumentNameTextField : EBTextObserverField?
   @IBOutlet var mInsertArrayOfBoardsCancelButton : NSButton?
   @IBOutlet var mInsertArrayOfBoardsOkButton : NSButton?
   @IBOutlet var mInsertArrayOfBoardsPanel : NSPanel?
@@ -118,8 +122,26 @@ import Cocoa
   //    Transient properties
   //····················································································································
 
+  var documentFileNameOk_property = EBTransientProperty_Bool ()
+  var documentFileNameOk_property_selection : EBSelection <Bool> {
+    return self.documentFileNameOk_property.prop
+  }
+
+  var incorrectDocumentFileErrorMessage_property = EBTransientProperty_String ()
+  var incorrectDocumentFileErrorMessage_property_selection : EBSelection <String> {
+    return self.incorrectDocumentFileErrorMessage_property.prop
+  }
+
   var importArtworkButtonTitle_property = EBTransientProperty_String ()
+  var importArtworkButtonTitle_property_selection : EBSelection <String> {
+    return self.importArtworkButtonTitle_property.prop
+  }
+
   var documentFilePath_property = EBTransientProperty_String ()
+  var documentFilePath_property_selection : EBSelection <String> {
+    return self.documentFilePath_property.prop
+  }
+
 
   //····················································································································
   //    Transient arraies
@@ -259,6 +281,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mArtworkTabView' outlet is not an instance of 'NSTabView'") ;
+    }
+    if nil == mBoardArchiveFormatPopUpButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mBoardArchiveFormatPopUpButton' outlet is nil") ;
+//    }else if !mBoardArchiveFormatPopUpButton!.isKindOfClass (CanariBoardBoardArchivePopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mBoardArchiveFormatPopUpButton' outlet is not an instance of 'CanariBoardBoardArchivePopUpButton'") ;
     }
     if nil == mBoardClipView {
       presentErrorWindow (file: #file,
@@ -539,6 +570,24 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mEmptyBoardMessage' outlet is not an instance of 'EBTextField'") ;
     }
+    if nil == mGenerateGerber {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mGenerateGerber' outlet is nil") ;
+//    }else if !mGenerateGerber!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mGenerateGerber' outlet is not an instance of 'EBSwitch'") ;
+    }
+    if nil == mGeneratePDF {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mGeneratePDF' outlet is nil") ;
+//    }else if !mGeneratePDF!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mGeneratePDF' outlet is not an instance of 'EBSwitch'") ;
+    }
     if nil == mGenerateProductFilesActionButton {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -556,6 +605,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mImportArtworkButton' outlet is not an instance of 'EBButton'") ;
+    }
+    if nil == mIncorrectDocumentNameTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mIncorrectDocumentNameTextField' outlet is nil") ;
+//    }else if !mIncorrectDocumentNameTextField!.isKindOfClass (EBTextObserverField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mIncorrectDocumentNameTextField' outlet is not an instance of 'EBTextObserverField'") ;
     }
     if nil == mInsertArrayOfBoardsCancelButton {
       presentErrorWindow (file: #file,
@@ -1085,6 +1143,46 @@ import Cocoa
     )
   //--------------------------- Custom object controllers
   //--------------------------- Transient compute functions
+    self.documentFileNameOk_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.documentFilePath_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.documentFilePath_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_MergerDocument_documentFileNameOk (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.incorrectDocumentFileErrorMessage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.documentFilePath_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.documentFilePath_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_MergerDocument_incorrectDocumentFileErrorMessage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.importArtworkButtonTitle_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.artworkName_property_selection.kind ()
@@ -1107,6 +1205,8 @@ import Cocoa
     }
     self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
   //--------------------------- Install property observers for transients
+    self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property)
+    self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
     self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -1190,8 +1290,12 @@ import Cocoa
     mComposedBoardView?.bind_verticalFlip (g_Preferences!.mergerBoardViewVerticalFlip_property, file: #file, line: #line)
     mComposedBoardView?.bind_objectLayer (self.rootObject.instancesLayerDisplay_property, file: #file, line: #line)
     mOverlapSwitch?.bind_value (self.rootObject.overlapingArrangment_property, file: #file, line: #line)
+    mIncorrectDocumentNameTextField?.bind_valueObserver (self.incorrectDocumentFileErrorMessage_property, file: #file, line: #line)
     mArtworNameTextField?.bind_valueObserver (self.rootObject.artworkName_property, file: #file, line: #line)
     mImportArtworkButton?.bind_title (self.importArtworkButtonTitle_property, file: #file, line: #line)
+    mGenerateGerber?.bind_value (self.rootObject.generateGerberProductFile_property, file: #file, line: #line)
+    mGeneratePDF?.bind_value (self.rootObject.generatePDFProductFile_property, file: #file, line: #line)
+    mBoardArchiveFormatPopUpButton?.bind_format (self.rootObject.generatedBoardArchiveFormat_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -1307,20 +1411,22 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
-          return self.rootObject.artwork_property_selection
+          return (self.rootObject.artwork_property_selection || self.documentFileNameOk_property_selection)
         },
         outlet:self.mDangerView
       )
+      self.documentFileNameOk_property.addEBObserver (controller)
       self.rootObject.artwork_property.addEBObserver (controller)
       mController_mDangerView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (!self.rootObject.artwork_property_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0)))
+          return ((!self.rootObject.artwork_property_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))) && self.documentFileNameOk_property_selection)
         },
         outlet:self.mGenerateProductFilesActionButton
       )
+      self.documentFileNameOk_property.addEBObserver (controller)
       self.rootObject.artwork_property.addEBObserver (controller)
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
       mController_mGenerateProductFilesActionButton_enabled = controller
@@ -1338,10 +1444,10 @@ import Cocoa
     mArrangeHorizontallyButton?.action = #selector (MergerDocument.arrangeHorizontallyAction (_:))
     mArrangeVerticalyButton?.target = self
     mArrangeVerticalyButton?.action = #selector (MergerDocument.arrangeVerticalyAction (_:))
-    mImportArtworkButton?.target = self
-    mImportArtworkButton?.action = #selector (MergerDocument.importArtworkAction (_:))
     mGenerateProductFilesActionButton?.target = self
     mGenerateProductFilesActionButton?.action = #selector (MergerDocument.generateProductFilesAction (_:))
+    mImportArtworkButton?.target = self
+    mImportArtworkButton?.action = #selector (MergerDocument.importArtworkAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -1434,8 +1540,12 @@ import Cocoa
     mComposedBoardView?.unbind_verticalFlip ()
     mComposedBoardView?.unbind_objectLayer ()
     mOverlapSwitch?.unbind_value ()
+    mIncorrectDocumentNameTextField?.unbind_valueObserver ()
     mArtworNameTextField?.unbind_valueObserver ()
     mImportArtworkButton?.unbind_title ()
+    mGenerateGerber?.unbind_value ()
+    mGeneratePDF?.unbind_value ()
+    mBoardArchiveFormatPopUpButton?.unbind_format ()
   //--------------------------- Unbind multiple bindings
     self.rootObject.selectedPageIndex_property.removeEBObserver (mController_showPrefsForSettingMergerDisplayButton_enabled!)
     mController_showPrefsForSettingMergerDisplayButton_enabled = nil
@@ -1460,12 +1570,16 @@ import Cocoa
     mController_mNoArtworkMessage_hidden = nil
     self.rootObject.artwork_property.removeEBObserver (mController_mArtworkTabView_hidden!)
     mController_mArtworkTabView_hidden = nil
+    self.documentFileNameOk_property.removeEBObserver (mController_mDangerView_hidden!)
     self.rootObject.artwork_property.removeEBObserver (mController_mDangerView_hidden!)
     mController_mDangerView_hidden = nil
+    self.documentFileNameOk_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     self.rootObject.artwork_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     mController_mGenerateProductFilesActionButton_enabled = nil
   //--------------------------- Uninstall compute functions for transients
+    self.documentFileNameOk_property.readModelFunction = nil
+    self.incorrectDocumentFileErrorMessage_property.readModelFunction = nil
     self.importArtworkButtonTitle_property.readModelFunction = nil
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
@@ -1473,6 +1587,8 @@ import Cocoa
   //--------------------------- Unbind selection controllers
     mBoardModelSelection.unbind_selection ()
   //--------------------------- Uninstall property observers for transients
+    self.documentFilePath_property.removeEBObserver (self.documentFileNameOk_property)
+    self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
     self.rootObject.artworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
   //--------------------------- Remove targets / actions
     showPrefsForSettingMergerDisplayButton?.target = nil
@@ -1481,8 +1597,8 @@ import Cocoa
     updateBoardModelButton?.target = nil
     mArrangeHorizontallyButton?.target = nil
     mArrangeVerticalyButton?.target = nil
-    mImportArtworkButton?.target = nil
     mGenerateProductFilesActionButton?.target = nil
+    mImportArtworkButton?.target = nil
   //--------------------------- Clean up outlets
     self.addBoardModelButton?.ebCleanUp ()
     self.mArrangeHorizontallyButton?.ebCleanUp ()
@@ -1490,6 +1606,7 @@ import Cocoa
     self.mArtworNameTextField?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
     self.mArtworkTabView?.ebCleanUp ()
+    self.mBoardArchiveFormatPopUpButton?.ebCleanUp ()
     self.mBoardClipView?.ebCleanUp ()
     self.mBoardHeightTextField?.ebCleanUp ()
     self.mBoardHeightUnitPopUp?.ebCleanUp ()
@@ -1521,8 +1638,11 @@ import Cocoa
     self.mDangerView?.ebCleanUp ()
     self.mDisplaySettingView?.ebCleanUp ()
     self.mEmptyBoardMessage?.ebCleanUp ()
+    self.mGenerateGerber?.ebCleanUp ()
+    self.mGeneratePDF?.ebCleanUp ()
     self.mGenerateProductFilesActionButton?.ebCleanUp ()
     self.mImportArtworkButton?.ebCleanUp ()
+    self.mIncorrectDocumentNameTextField?.ebCleanUp ()
     self.mInsertArrayOfBoardsCancelButton?.ebCleanUp ()
     self.mInsertArrayOfBoardsOkButton?.ebCleanUp ()
     self.mInsertArrayOfBoardsPanel?.ebCleanUp ()

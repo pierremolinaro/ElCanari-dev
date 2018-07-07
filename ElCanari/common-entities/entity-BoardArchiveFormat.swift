@@ -6,25 +6,27 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadShape : Int, ValuePropertyProtocol {
-  case rectangular = 0
-  case round = 1
+enum BoardArchiveFormat : Int, ValuePropertyProtocol {
+  case noGeneration = 0
+  case binary = 1
+  case xml = 2
 
 
   //····················································································································
 
   func descriptionForExplorer () -> String {
     switch self {
-      case .rectangular : return "rectangular" // 0
-      case .round : return "round" // 1
+      case .noGeneration : return "noGeneration" // 0
+      case .binary : return "binary" // 1
+      case .xml : return "xml" // 2
     }
   }
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> PadShape {
+  func enumfromRawValue (rawValue : Int) -> BoardArchiveFormat {
     var result = self
-    let v : PadShape? = PadShape (rawValue:rawValue) ;
+    let v : BoardArchiveFormat? = BoardArchiveFormat (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -43,9 +45,9 @@ enum PadShape : Int, ValuePropertyProtocol {
     return NSNumber (value: self.rawValue)
   }
 
-  static func convertFromNSObject (object : NSObject) -> PadShape {
-    var result = PadShape.rectangular
-    if let number = object as? NSNumber, let v = PadShape (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> BoardArchiveFormat {
+    var result = BoardArchiveFormat.noGeneration
+    if let number = object as? NSNumber, let v = BoardArchiveFormat (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -57,10 +59,10 @@ enum PadShape : Int, ValuePropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PadShape = EBReadOnlyValueProperty <PadShape>
-typealias EBTransientProperty_PadShape = EBTransientValueProperty <PadShape>
-typealias EBReadWriteProperty_PadShape = EBReadWriteValueProperty <PadShape>
-typealias EBStoredProperty_PadShape = EBStoredValueProperty <PadShape>
-typealias EBPropertyProxy_PadShape = EBPropertyValueProxy <PadShape>
+typealias EBReadOnlyProperty_BoardArchiveFormat = EBReadOnlyValueProperty <BoardArchiveFormat>
+typealias EBTransientProperty_BoardArchiveFormat = EBTransientValueProperty <BoardArchiveFormat>
+typealias EBReadWriteProperty_BoardArchiveFormat = EBReadWriteValueProperty <BoardArchiveFormat>
+typealias EBStoredProperty_BoardArchiveFormat = EBStoredValueProperty <BoardArchiveFormat>
+typealias EBPropertyProxy_BoardArchiveFormat = EBPropertyValueProxy <BoardArchiveFormat>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

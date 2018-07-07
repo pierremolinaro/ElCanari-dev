@@ -57,6 +57,18 @@ final class MergerSegmentArray : EBSimpleClass {
     result.sublayers = components
     return result
   }
+
+  //····················································································································
+
+  func add (toArchiveArray : inout [String], dx inDx : Int, dy inDy: Int) {
+    for segment in self.segmentArray {
+      let s = "\(segment.x1 + inDx) \(segment.y1 + inDy) \(segment.x2 + inDx) \(segment.y2 + inDy) \(segment.width)"
+      toArchiveArray.append (s)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

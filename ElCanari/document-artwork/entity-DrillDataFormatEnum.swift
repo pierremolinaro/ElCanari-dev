@@ -59,6 +59,7 @@ enum DrillDataFormatEnum : Int, ValuePropertyProtocol {
 
 typealias EBReadOnlyProperty_DrillDataFormatEnum = EBReadOnlyValueProperty <DrillDataFormatEnum>
 typealias EBTransientProperty_DrillDataFormatEnum = EBTransientValueProperty <DrillDataFormatEnum>
+typealias EBReadWriteProperty_DrillDataFormatEnum = EBReadWriteValueProperty <DrillDataFormatEnum>
 typealias EBStoredProperty_DrillDataFormatEnum = EBStoredValueProperty <DrillDataFormatEnum>
 typealias EBPropertyProxy_DrillDataFormatEnum = EBPropertyValueProxy <DrillDataFormatEnum>
 

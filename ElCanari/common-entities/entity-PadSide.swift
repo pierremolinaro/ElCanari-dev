@@ -61,6 +61,7 @@ enum PadSide : Int, ValuePropertyProtocol {
 
 typealias EBReadOnlyProperty_PadSide = EBReadOnlyValueProperty <PadSide>
 typealias EBTransientProperty_PadSide = EBTransientValueProperty <PadSide>
+typealias EBReadWriteProperty_PadSide = EBReadWriteValueProperty <PadSide>
 typealias EBStoredProperty_PadSide = EBStoredValueProperty <PadSide>
 typealias EBPropertyProxy_PadSide = EBPropertyValueProxy <PadSide>
 

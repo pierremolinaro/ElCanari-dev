@@ -15,6 +15,9 @@ class MergerRoot : EBManagedObject,
   MergerRoot_boardHeightUnit,
   MergerRoot_overlapingArrangment,
   MergerRoot_artworkName,
+  MergerRoot_generateGerberProductFile,
+  MergerRoot_generatePDFProductFile,
+  MergerRoot_generatedBoardArchiveFormat,
   MergerRoot_modelNames,
   MergerRoot_instancesLayerDisplay,
   MergerRoot_boardRect,
@@ -136,6 +139,63 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing generateGerberProductFile stored property
+  //····················································································································
+
+  var generateGerberProductFile : Bool {
+    get {
+      return self.generateGerberProductFile_property.propval
+    }
+    set {
+      self.generateGerberProductFile_property.setProp (newValue)
+    }
+  }
+
+  var generateGerberProductFile_property_selection : EBSelection <Bool> {
+    get {
+      return self.generateGerberProductFile_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing generatePDFProductFile stored property
+  //····················································································································
+
+  var generatePDFProductFile : Bool {
+    get {
+      return self.generatePDFProductFile_property.propval
+    }
+    set {
+      self.generatePDFProductFile_property.setProp (newValue)
+    }
+  }
+
+  var generatePDFProductFile_property_selection : EBSelection <Bool> {
+    get {
+      return self.generatePDFProductFile_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing generatedBoardArchiveFormat stored property
+  //····················································································································
+
+  var generatedBoardArchiveFormat : BoardArchiveFormat {
+    get {
+      return self.generatedBoardArchiveFormat_property.propval
+    }
+    set {
+      self.generatedBoardArchiveFormat_property.setProp (newValue)
+    }
+  }
+
+  var generatedBoardArchiveFormat_property_selection : EBSelection <BoardArchiveFormat> {
+    get {
+      return self.generatedBoardArchiveFormat_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing modelNames transient property
   //····················································································································
 
@@ -245,6 +305,9 @@ class MergerRoot : EBManagedObject,
   var boardHeightUnit_property = EBStoredProperty_Int (90000)
   var overlapingArrangment_property = EBStoredProperty_Bool (false)
   var artworkName_property = EBStoredProperty_String ("")
+  var generateGerberProductFile_property = EBStoredProperty_Bool (true)
+  var generatePDFProductFile_property = EBStoredProperty_Bool (true)
+  var generatedBoardArchiveFormat_property = EBStoredProperty_BoardArchiveFormat (BoardArchiveFormat.noGeneration)
 
   //····················································································································
   //    Transient properties
@@ -385,6 +448,9 @@ class MergerRoot : EBManagedObject,
     self.boardHeightUnit_property.undoManager = undoManager ()
     self.overlapingArrangment_property.undoManager = undoManager ()
     self.artworkName_property.undoManager = undoManager ()
+    self.generateGerberProductFile_property.undoManager = undoManager ()
+    self.generatePDFProductFile_property.undoManager = undoManager ()
+    self.generatedBoardArchiveFormat_property.undoManager = undoManager ()
   //--- Install owner for relationships
     self.artwork_property.owner = self
     self.boardModels_property.owner = self
@@ -456,6 +522,30 @@ class MergerRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.artworkName_property.mObserverExplorer,
       valueExplorer:&self.artworkName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "generateGerberProductFile",
+      idx:self.generateGerberProductFile_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.generateGerberProductFile_property.mObserverExplorer,
+      valueExplorer:&self.generateGerberProductFile_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "generatePDFProductFile",
+      idx:self.generatePDFProductFile_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.generatePDFProductFile_property.mObserverExplorer,
+      valueExplorer:&self.generatePDFProductFile_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "generatedBoardArchiveFormat",
+      idx:self.generatedBoardArchiveFormat_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.generatedBoardArchiveFormat_property.mObserverExplorer,
+      valueExplorer:&self.generatedBoardArchiveFormat_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -541,6 +631,12 @@ class MergerRoot : EBManagedObject,
     self.overlapingArrangment_property.mValueExplorer = nil
     self.artworkName_property.mObserverExplorer = nil
     self.artworkName_property.mValueExplorer = nil
+    self.generateGerberProductFile_property.mObserverExplorer = nil
+    self.generateGerberProductFile_property.mValueExplorer = nil
+    self.generatePDFProductFile_property.mObserverExplorer = nil
+    self.generatePDFProductFile_property.mValueExplorer = nil
+    self.generatedBoardArchiveFormat_property.mObserverExplorer = nil
+    self.generatedBoardArchiveFormat_property.mValueExplorer = nil
     self.artwork_property.mObserverExplorer = nil
     self.artwork_property.mValueExplorer = nil
     self.boardModels_property.mValueExplorer = nil
@@ -560,6 +656,9 @@ class MergerRoot : EBManagedObject,
     self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
     self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
     self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
+    self.generateGerberProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generateGerberProductFile")
+    self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generatePDFProductFile")
+    self.generatedBoardArchiveFormat_property.storeIn (dictionary: ioDictionary, forKey: "generatedBoardArchiveFormat")
     store (managedObjectArray: boardModels_property.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
     store (managedObjectArray: boardInstances_property.propval as NSArray, relationshipName:"boardInstances", intoDictionary: ioDictionary) ;
     store (managedObject:self.artwork_property.propval, relationshipName:"artwork", intoDictionary: ioDictionary) ;
@@ -578,6 +677,9 @@ class MergerRoot : EBManagedObject,
     self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
     self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
     self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
+    self.generateGerberProductFile_property.readFrom (dictionary: inDictionary, forKey:"generateGerberProductFile")
+    self.generatePDFProductFile_property.readFrom (dictionary: inDictionary, forKey:"generatePDFProductFile")
+    self.generatedBoardArchiveFormat_property.readFrom (dictionary: inDictionary, forKey:"generatedBoardArchiveFormat")
     self.boardModels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "boardModels",
       inDictionary: inDictionary,
@@ -1007,6 +1109,177 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
+  //   Observers of 'generateGerberProductFile' stored property
+  //····················································································································
+
+  private var mObserversOf_generateGerberProductFile = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_generateGerberProductFile.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.generateGerberProductFile_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_generateGerberProductFile.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.generateGerberProductFile_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_generateGerberProductFile_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_generateGerberProductFile {
+        managedObject.generateGerberProductFile_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_generateGerberProductFile {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.generateGerberProductFile_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'generatePDFProductFile' stored property
+  //····················································································································
+
+  private var mObserversOf_generatePDFProductFile = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_generatePDFProductFile.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.generatePDFProductFile_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_generatePDFProductFile.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.generatePDFProductFile_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_generatePDFProductFile_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_generatePDFProductFile {
+        managedObject.generatePDFProductFile_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_generatePDFProductFile {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.generatePDFProductFile_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'generatedBoardArchiveFormat' stored property
+  //····················································································································
+
+  private var mObserversOf_generatedBoardArchiveFormat = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_generatedBoardArchiveFormat.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.generatedBoardArchiveFormat_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_generatedBoardArchiveFormat.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.generatedBoardArchiveFormat_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_generatedBoardArchiveFormat {
+        managedObject.generatedBoardArchiveFormat_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_generatedBoardArchiveFormat {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.generatedBoardArchiveFormat_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'modelNames' transient property
   //····················································································································
 
@@ -1330,6 +1603,9 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedSet)
         removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
+        removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedSet)
+        removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedSet)
+        removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
         removeEBObserversOf_instancesLayerDisplay_fromElementsOfSet (removedSet)
@@ -1345,6 +1621,9 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
         addEBObserversOf_overlapingArrangment_toElementsOfSet (addedSet)
         addEBObserversOf_artworkName_toElementsOfSet (addedSet)
+        addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedSet)
+        addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedSet)
+        addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_modelNames_toElementsOfSet (addedSet)
         addEBObserversOf_instancesLayerDisplay_toElementsOfSet (addedSet)
@@ -1413,6 +1692,24 @@ protocol MergerRoot_overlapingArrangment : class {
 
 protocol MergerRoot_artworkName : class {
   var artworkName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_generateGerberProductFile : class {
+  var generateGerberProductFile : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_generatePDFProductFile : class {
+  var generatePDFProductFile : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_generatedBoardArchiveFormat : class {
+  var generatedBoardArchiveFormat : BoardArchiveFormat { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

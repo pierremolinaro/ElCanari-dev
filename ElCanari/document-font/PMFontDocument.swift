@@ -50,7 +50,15 @@ import Cocoa
   //····················································································································
 
   var missingCharactersCountString_property = EBTransientProperty_String ()
+  var missingCharactersCountString_property_selection : EBSelection <String> {
+    return self.missingCharactersCountString_property.prop
+  }
+
   var documentFilePath_property = EBTransientProperty_String ()
+  var documentFilePath_property_selection : EBSelection <String> {
+    return self.documentFilePath_property.prop
+  }
+
 
   //····················································································································
   //    Transient arraies

@@ -11,12 +11,22 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension MergerDocument {
-  func generateProductFilesAction (_ sender : NSObject) {
+func compute_MergerDocument_documentFileNameOk (
+       _ self_documentFilePath : String
+) -> Bool {
 //--- START OF USER ZONE 2
-    generateProductFiles ()
-//--- END OF USER ZONE 2
+  var ok = self_documentFilePath != ""
+  if ok {
+    let baseName = self_documentFilePath.lastPathComponent.deletingPathExtension
+    for char in baseName.characters {
+      ok = ((char >= "A") && (char <= "Z")) || ((char >= "a") && (char <= "z")) ||  ((char >= "0") && (char <= "9"))
+      if !ok {
+        break
+      }
+    }
   }
+  return ok
+//--- END OF USER ZONE 2
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

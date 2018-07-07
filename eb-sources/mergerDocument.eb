@@ -14,6 +14,12 @@ enum PadSide {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum BoardArchiveFormat {
+  noGeneration, binary, xml
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 transient property class MergerViaShapeArray ;
 transient property class MergerSegmentArray ;
 transient property class MergerBoardLimits ;
@@ -31,6 +37,9 @@ binding CanariBoardModelView $zoom : property Int ;
 binding CanariBoardModelView $horizontalFlip : transient Bool ;
 binding CanariBoardModelView $verticalFlip : transient Bool ;
 binding CanariBoardModelView $objectLayer : transient CALayer ;
+
+extern outlet class CanariBoardBoardArchivePopUpButton ;
+binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -420,8 +429,10 @@ entity MergerRoot {
 #--- Artwork
   toOne @cascading ArtworkRoot artwork ;
   property String artworkName default "" ;
-
-  objectController mArtworkController : self.artwork ;
+  property Bool generateGerberProductFile default yes ;
+  property Bool generatePDFProductFile default yes ;
+  property BoardArchiveFormat generatedBoardArchiveFormat default noGeneration ;
+#  objectController mArtworkController : self.artwork ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -625,22 +636,34 @@ document MergerDocument root MergerRoot {
 
 
 #------------------------------------- Product Page
- # outlet EBTextObserverField mFileName $valueObserver self.documentFilePath ;
+  transient Bool documentFileNameOk dependsFrom self.documentFilePath ;
+ 
   outlet EBTextField mNoArtworkMessage $hidden !root.artwork.none ;
+
+  transient String incorrectDocumentFileErrorMessage dependsFrom self.documentFilePath ;
+  outlet EBTextObserverField mIncorrectDocumentNameTextField $valueObserver self.incorrectDocumentFileErrorMessage ;
+
   outlet EBTextObserverField mArtworNameTextField $valueObserver root.artworkName ;
+
   outlet NSTabView mArtworkTabView $hidden root.artwork.none ;
-  outlet NSView mDangerView $hidden root.artwork.none ;
+
+  outlet NSView mDangerView $hidden root.artwork.none | self.documentFileNameOk ;
  
   action generateProductFilesAction ;
-
-  action importArtworkAction ;
-  outlet EBButton mImportArtworkButton $run self.importArtworkAction $title self.importArtworkButtonTitle ;
-  transient String importArtworkButtonTitle dependsFrom root.artworkName ;
-
   outlet EBButton mGenerateProductFilesActionButton
-    $enabled !root.artwork.none & (root.boardInstances.count > 0)
+    $enabled !root.artwork.none & (root.boardInstances.count > 0) & self.documentFileNameOk
     $run self.generateProductFilesAction ;
 
+  action importArtworkAction ;
+  transient String importArtworkButtonTitle dependsFrom root.artworkName ;
+  outlet EBButton mImportArtworkButton $run self.importArtworkAction $title self.importArtworkButtonTitle ;
+
+  outlet EBSwitch mGenerateGerber $value root.generateGerberProductFile ;
+  outlet EBSwitch mGeneratePDF $value root.generatePDFProductFile ;
+
+  outlet CanariBoardBoardArchivePopUpButton mBoardArchiveFormatPopUpButton $format root.generatedBoardArchiveFormat ;
+  
+#--- 
 #------------------------------------------- Artwork settings
 #--- Minimum tab
 #  outlet EBPopUpButton mMinPP_TP_TT_TW_inEBUnitPopUp $selectedTag root.artwork.one.minPP_TP_TT_TW_displayUnit ;

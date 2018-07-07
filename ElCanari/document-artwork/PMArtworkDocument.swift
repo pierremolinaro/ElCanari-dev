@@ -67,9 +67,25 @@ import Cocoa
   //····················································································································
 
   var mGeneratedFileCountString_property = EBTransientProperty_String ()
+  var mGeneratedFileCountString_property_selection : EBSelection <String> {
+    return self.mGeneratedFileCountString_property.prop
+  }
+
   var mStatusImage_property = EBTransientProperty_NSImage ()
+  var mStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mStatusImage_property.prop
+  }
+
   var mStatusMessage_property = EBTransientProperty_String ()
+  var mStatusMessage_property_selection : EBSelection <String> {
+    return self.mStatusMessage_property.prop
+  }
+
   var documentFilePath_property = EBTransientProperty_String ()
+  var documentFilePath_property_selection : EBSelection <String> {
+    return self.documentFilePath_property.prop
+  }
+
 
   //····················································································································
   //    Transient arraies

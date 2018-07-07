@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="PMMergerDocument" customModule="ElCanari" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="MergerDocument" customModule="ElCanari" customModuleProvider="target">
             <connections>
                 <outlet property="addBoardModelButton" destination="2Wu-Dh-CTo" id="Ge9-7X-rm9"/>
                 <outlet property="mArrangeHorizontallyButton" destination="1p8-Aw-BkL" id="N5y-Al-HT6"/>
@@ -14,6 +14,7 @@
                 <outlet property="mArtworNameTextField" destination="syb-21-rHW" id="MoL-GG-Y9o"/>
                 <outlet property="mArtworkNameTextField" destination="sNV-XY-ihk" id="r4K-hG-ctp"/>
                 <outlet property="mArtworkTabView" destination="CGe-Zg-qUA" id="GIJ-id-nGQ"/>
+                <outlet property="mBoardArchiveFormatPopUpButton" destination="a1Z-gP-Hcs" id="uVU-jR-UKt"/>
                 <outlet property="mBoardClipView" destination="nFP-mw-Omh" id="VEQ-jL-583"/>
                 <outlet property="mBoardHeightTextField" destination="7dt-7v-ArC" id="779-cB-9W3"/>
                 <outlet property="mBoardHeightUnitPopUp" destination="wB7-F3-Dvt" id="SaL-Vz-UJE"/>
@@ -45,8 +46,11 @@
                 <outlet property="mDangerView" destination="kZQ-iy-L4Z" id="040-fK-ZgE"/>
                 <outlet property="mDisplaySettingView" destination="gM7-40-CET" id="k3P-rb-BbN"/>
                 <outlet property="mEmptyBoardMessage" destination="TY5-Zu-VN8" id="3zh-MC-Ugv"/>
+                <outlet property="mGenerateGerber" destination="sfd-Ok-J1H" id="gA1-LA-iM7"/>
+                <outlet property="mGeneratePDF" destination="81g-3K-hsT" id="6Nk-Qn-X93"/>
                 <outlet property="mGenerateProductFilesActionButton" destination="5Wu-A4-TL6" id="7df-pB-Lpb"/>
                 <outlet property="mImportArtworkButton" destination="mUF-7a-S2r" id="jc0-v6-ohS"/>
+                <outlet property="mIncorrectDocumentNameTextField" destination="doX-6B-wh1" id="3wt-30-3G9"/>
                 <outlet property="mInsertArrayOfBoardsCancelButton" destination="00c-TV-6Q8" id="0kL-Dn-9oj"/>
                 <outlet property="mInsertArrayOfBoardsOkButton" destination="gVY-xq-Qco" id="BeJ-Da-6mZ"/>
                 <outlet property="mInsertArrayOfBoardsPanel" destination="reL-uK-SPG" id="MUA-fW-ZpV"/>
@@ -645,11 +649,11 @@ AAAAAAEGA
                     <tabViewItems>
                         <tabViewItem label="Minima" identifier="" id="uTE-g6-IP6">
                             <view key="view" id="QnO-ad-g9y">
-                                <rect key="frame" x="10" y="25" width="876" height="514"/>
+                                <rect key="frame" x="10" y="29" width="876" height="510"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" id="vA1-au-Aht">
-                                        <rect key="frame" x="324" y="303" width="57" height="16"/>
+                                        <rect key="frame" x="324" y="299" width="57" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="LR8-5U-ax2">
                                             <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="c9t-og-4KF">
@@ -662,7 +666,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton id="sW4-yo-qhS">
-                                        <rect key="frame" x="389" y="190" width="84" height="22"/>
+                                        <rect key="frame" x="389" y="186" width="84" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="square" title="inch" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="Gbh-U0-LyZ" id="M4J-Rb-aOE">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -679,7 +683,7 @@ AAAAAAEGA
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <textField verticalHuggingPriority="750" id="4TE-4Q-tgB">
-                                        <rect key="frame" x="37" y="216" width="439" height="18"/>
+                                        <rect key="frame" x="37" y="212" width="439" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="left" title="OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2" id="Svb-h5-TdI">
                                             <font key="font" metaFont="miniSystemBold"/>
@@ -688,7 +692,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton id="5mw-VT-HjF">
-                                        <rect key="frame" x="389" y="248" width="84" height="22"/>
+                                        <rect key="frame" x="389" y="244" width="84" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="square" title="inch" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="A3Y-Ip-s8g" id="Hn1-Zr-EWX">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -705,16 +709,16 @@ AAAAAAEGA
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <imageView id="9R5-oL-E70">
-                                        <rect key="frame" x="203" y="331" width="324" height="148"/>
+                                        <rect key="frame" x="203" y="327" width="324" height="148"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="artwork" id="9d7-UJ-YYO"/>
                                     </imageView>
                                     <box verticalHuggingPriority="750" boxType="separator" id="1h9-5e-0Ou">
-                                        <rect key="frame" x="40" y="240" width="433" height="5"/>
+                                        <rect key="frame" x="40" y="236" width="433" height="5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </box>
                                     <textField verticalHuggingPriority="750" id="SWQ-ls-UeO">
-                                        <rect key="frame" x="324" y="194" width="57" height="14"/>
+                                        <rect key="frame" x="324" y="190" width="57" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="gsP-Fg-kJv">
                                             <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="9Sq-PM-m8V">
@@ -727,11 +731,11 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <box verticalHuggingPriority="750" boxType="separator" id="UXj-LU-PV7">
-                                        <rect key="frame" x="40" y="294" width="433" height="5"/>
+                                        <rect key="frame" x="40" y="290" width="433" height="5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </box>
                                     <textField verticalHuggingPriority="750" id="6wk-9o-S7g">
-                                        <rect key="frame" x="324" y="249" width="57" height="17"/>
+                                        <rect key="frame" x="324" y="245" width="57" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="-100,23" id="gqt-Ab-lPd">
                                             <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="sH4-Kq-liC">
@@ -744,7 +748,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="xy0-ja-iyu">
-                                        <rect key="frame" x="76" y="195" width="247" height="11"/>
+                                        <rect key="frame" x="76" y="191" width="247" height="11"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for OAR:" id="k64-Zn-0qC">
                                             <font key="font" metaFont="miniSystem"/>
@@ -753,7 +757,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="IDi-XT-iwR">
-                                        <rect key="frame" x="76" y="252" width="247" height="14"/>
+                                        <rect key="frame" x="76" y="248" width="247" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for PHD:" id="3R1-Kj-tCE">
                                             <font key="font" metaFont="smallSystem"/>
@@ -762,7 +766,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="iEa-au-hio">
-                                        <rect key="frame" x="76" y="305" width="247" height="14"/>
+                                        <rect key="frame" x="76" y="301" width="247" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for PP, TP, TT and TW:" id="Qma-Te-q0R">
                                             <font key="font" metaFont="smallSystem"/>
@@ -771,7 +775,7 @@ AAAAAAEGA
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" id="SpA-ye-QkV">
-                                        <rect key="frame" x="37" y="375" width="142" height="59"/>
+                                        <rect key="frame" x="37" y="371" width="142" height="59"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="left" id="7LN-2k-0L4">
                                             <font key="font" metaFont="miniSystemBold"/>
@@ -784,7 +788,7 @@ TW: Track Width</string>
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton id="7he-TF-5XY">
-                                        <rect key="frame" x="389" y="300" width="84" height="22"/>
+                                        <rect key="frame" x="389" y="296" width="84" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="square" title="mil" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="2286" inset="2" preferredEdge="maxY" selectedItem="Ede-fe-EMS" id="iV8-DG-k6H">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -801,7 +805,7 @@ TW: Track Width</string>
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <textField verticalHuggingPriority="750" id="Yi9-XB-voT">
-                                        <rect key="frame" x="37" y="268" width="257" height="20"/>
+                                        <rect key="frame" x="37" y="264" width="257" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="left" title="PHD: Production Hole Diameter (tool size)" id="eF0-Uo-dwp">
                                             <font key="font" metaFont="miniSystemBold"/>
@@ -1299,7 +1303,7 @@ TW: Track Width</string>
                     </tabViewItems>
                 </tabView>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="syb-21-rHW" customClass="EBTextObserverField">
-                    <rect key="frame" x="186" y="626" width="165" height="14"/>
+                    <rect key="frame" x="186" y="626" width="183" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="---attached artwork name" id="9b7-cU-Khb">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -1316,7 +1320,7 @@ TW: Track Width</string>
                     </buttonCell>
                 </button>
                 <customView misplaced="YES" id="kZQ-iy-L4Z">
-                    <rect key="frame" x="22" y="589" width="395" height="25"/>
+                    <rect key="frame" x="22" y="589" width="348" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <imageView misplaced="YES" id="GNS-IE-7yO">
@@ -1325,8 +1329,8 @@ TW: Track Width</string>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusPartiallyAvailable" id="qa2-mi-TEn"/>
                         </imageView>
                         <textField verticalHuggingPriority="750" misplaced="YES" id="gwG-XI-zVs">
-                            <rect key="frame" x="18" y="4" width="339" height="20"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <rect key="frame" x="18" y="4" width="332" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="It is recommended that you rename the document" id="zlR-2v-gJa">
                                 <font key="font" metaFont="systemBold"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1335,7 +1339,7 @@ TW: Track Width</string>
                         </textField>
                     </subviews>
                 </customView>
-                <button misplaced="YES" id="81g-3K-hsT">
+                <button misplaced="YES" id="81g-3K-hsT" customClass="EBSwitch">
                     <rect key="frame" x="279" y="560" width="90" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="PDF Files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="JRC-5W-W05">
@@ -1343,7 +1347,7 @@ TW: Track Width</string>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button misplaced="YES" id="sfd-Ok-J1H">
+                <button misplaced="YES" id="sfd-Ok-J1H" customClass="EBSwitch">
                     <rect key="frame" x="186" y="560" width="90" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Gerber Files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="q8a-7i-avf">
@@ -1368,7 +1372,7 @@ TW: Track Width</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" misplaced="YES" id="a1Z-gP-Hcs">
+                <popUpButton verticalHuggingPriority="750" misplaced="YES" id="a1Z-gP-Hcs" customClass="CanariBoardBoardArchivePopUpButton">
                     <rect key="frame" x="458" y="557" width="117" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Generate, XML" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="2" imageScaling="proportionallyDown" inset="2" selectedItem="5yk-RS-YUt" id="5mj-Ac-WS7">
@@ -1383,8 +1387,18 @@ TW: Track Width</string>
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="doX-6B-wh1" customClass="EBTextObserverField">
+                    <rect key="frame" x="381" y="583" width="524" height="64"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="justified" id="81G-Tz-Yj7">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">The name of the document (ZZZZ) contains characters that can cause problems for PCB manufacturers. It is recommended that this name only contains letters (without accent), numbers, and the character '-'.</string>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="397.5" y="-96.5"/>
+            <point key="canvasLocation" x="272" y="-106"/>
         </customView>
         <menu id="3Qt-fi-qrc" userLabel="Menu : Insert Board Model" customClass="CanariBoardInsertMenu" customModule="ElCanari" customModuleProvider="target">
             <items>
@@ -2157,16 +2171,6 @@ Gw
             </view>
             <point key="canvasLocation" x="-732" y="-280"/>
         </window>
-        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="doX-6B-wh1">
-            <rect key="frame" x="0.0" y="0.0" width="658" height="47"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="justified" id="81G-Tz-Yj7">
-                <font key="font" metaFont="smallSystem"/>
-                <string key="title">The name of the document (ZZZZ) contains characters that can cause problems for PCB manufacturers. It is recommended that this name only contains letters (without accent), numbers, and the character '-'.</string>
-                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-            </textFieldCell>
-        </textField>
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="128" height="128"/>

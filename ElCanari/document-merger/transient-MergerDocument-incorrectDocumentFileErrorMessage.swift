@@ -11,12 +11,28 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension MergerDocument {
-  func generateProductFilesAction (_ sender : NSObject) {
+func compute_MergerDocument_incorrectDocumentFileErrorMessage (
+       _ self_documentFilePath : String
+) -> String {
 //--- START OF USER ZONE 2
-    generateProductFiles ()
-//--- END OF USER ZONE 2
+  var message = ""
+  if self_documentFilePath == "" {
+    message = "The document is unnamed."
+  }else{
+    var ok = true
+    let baseName = self_documentFilePath.lastPathComponent.deletingPathExtension
+    for char in baseName.characters {
+      ok = ((char >= "A") && (char <= "Z")) || ((char >= "a") && (char <= "z")) ||  ((char >= "0") && (char <= "9"))
+      if !ok {
+        break
+      }
+    }
+    if !ok {
+      message = "The name of the document (\(baseName)) contains characters that can cause problems for PCB manufacturers. It is recommended that this name only contains letters (without accent), numbers, and the character '-'."
+    }
   }
+  return message
+//--- END OF USER ZONE 2
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
