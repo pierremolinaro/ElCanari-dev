@@ -81,12 +81,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var instanceRect : EBSelection <CanariBoardRect> {
-//    get {
-//      return instanceRect_property_selection
-//    }
-//  }
-
   var instanceRect : CanariBoardRect? {
     switch instanceRect_property_selection {
     case .empty, .multiple :
@@ -105,12 +99,6 @@ class MergerBoardInstance : EBManagedObject,
       return self.boardLimitWidth_property.prop
     }
   }
-
-//  var boardLimitWidth : EBSelection <Int> {
-//    get {
-//      return boardLimitWidth_property_selection
-//    }
-//  }
 
   var boardLimitWidth : Int? {
     switch boardLimitWidth_property_selection {
@@ -131,12 +119,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var backgroundLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return backgroundLayerDisplay_property_selection
-//    }
-//  }
-
   var backgroundLayerDisplay : CALayer? {
     switch backgroundLayerDisplay_property_selection {
     case .empty, .multiple :
@@ -155,12 +137,6 @@ class MergerBoardInstance : EBManagedObject,
       return self.frontLegendTextsLayerDisplay_property.prop
     }
   }
-
-//  var frontLegendTextsLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontLegendTextsLayerDisplay_property_selection
-//    }
-//  }
 
   var frontLegendTextsLayerDisplay : CALayer? {
     switch frontLegendTextsLayerDisplay_property_selection {
@@ -181,12 +157,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var frontLayoutTextsLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontLayoutTextsLayerDisplay_property_selection
-//    }
-//  }
-
   var frontLayoutTextsLayerDisplay : CALayer? {
     switch frontLayoutTextsLayerDisplay_property_selection {
     case .empty, .multiple :
@@ -205,12 +175,6 @@ class MergerBoardInstance : EBManagedObject,
       return self.backLegendTextsLayerDisplay_property.prop
     }
   }
-
-//  var backLegendTextsLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return backLegendTextsLayerDisplay_property_selection
-//    }
-//  }
 
   var backLegendTextsLayerDisplay : CALayer? {
     switch backLegendTextsLayerDisplay_property_selection {
@@ -231,12 +195,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var backLayoutTextsLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return backLayoutTextsLayerDisplay_property_selection
-//    }
-//  }
-
   var backLayoutTextsLayerDisplay : CALayer? {
     switch backLayoutTextsLayerDisplay_property_selection {
     case .empty, .multiple :
@@ -255,12 +213,6 @@ class MergerBoardInstance : EBManagedObject,
       return self.holeLayerDisplay_property.prop
     }
   }
-
-//  var holeLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return holeLayerDisplay_property_selection
-//    }
-//  }
 
   var holeLayerDisplay : CALayer? {
     switch holeLayerDisplay_property_selection {
@@ -281,12 +233,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var viaLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return viaLayerDisplay_property_selection
-//    }
-//  }
-
   var viaLayerDisplay : CALayer? {
     switch viaLayerDisplay_property_selection {
     case .empty, .multiple :
@@ -305,12 +251,6 @@ class MergerBoardInstance : EBManagedObject,
       return self.frontPadsDisplay_property.prop
     }
   }
-
-//  var frontPadsDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontPadsDisplay_property_selection
-//    }
-//  }
 
   var frontPadsDisplay : CALayer? {
     switch frontPadsDisplay_property_selection {
@@ -331,12 +271,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var backPadsDisplay : EBSelection <CALayer> {
-//    get {
-//      return backPadsDisplay_property_selection
-//    }
-//  }
-
   var backPadsDisplay : CALayer? {
     switch backPadsDisplay_property_selection {
     case .empty, .multiple :
@@ -355,12 +289,6 @@ class MergerBoardInstance : EBManagedObject,
       return self.boardLimitsDisplay_property.prop
     }
   }
-
-//  var boardLimitsDisplay : EBSelection <CALayer> {
-//    get {
-//      return boardLimitsDisplay_property_selection
-//    }
-//  }
 
   var boardLimitsDisplay : CALayer? {
     switch boardLimitsDisplay_property_selection {
@@ -381,12 +309,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var backComponentNameDisplay : EBSelection <CALayer> {
-//    get {
-//      return backComponentNameDisplay_property_selection
-//    }
-//  }
-
   var backComponentNameDisplay : CALayer? {
     switch backComponentNameDisplay_property_selection {
     case .empty, .multiple :
@@ -405,12 +327,6 @@ class MergerBoardInstance : EBManagedObject,
       return self.frontComponentNameDisplay_property.prop
     }
   }
-
-//  var frontComponentNameDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontComponentNameDisplay_property_selection
-//    }
-//  }
 
   var frontComponentNameDisplay : CALayer? {
     switch frontComponentNameDisplay_property_selection {
@@ -431,12 +347,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var frontComponentValueDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontComponentValueDisplay_property_selection
-//    }
-//  }
-
   var frontComponentValueDisplay : CALayer? {
     switch frontComponentValueDisplay_property_selection {
     case .empty, .multiple :
@@ -455,12 +365,6 @@ class MergerBoardInstance : EBManagedObject,
       return self.backComponentValueDisplay_property.prop
     }
   }
-
-//  var backComponentValueDisplay : EBSelection <CALayer> {
-//    get {
-//      return backComponentValueDisplay_property_selection
-//    }
-//  }
 
   var backComponentValueDisplay : CALayer? {
     switch backComponentValueDisplay_property_selection {
@@ -481,12 +385,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var backTracksDisplay : EBSelection <CALayer> {
-//    get {
-//      return backTracksDisplay_property_selection
-//    }
-//  }
-
   var backTracksDisplay : CALayer? {
     switch backTracksDisplay_property_selection {
     case .empty, .multiple :
@@ -505,12 +403,6 @@ class MergerBoardInstance : EBManagedObject,
       return self.frontTracksDisplay_property.prop
     }
   }
-
-//  var frontTracksDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontTracksDisplay_property_selection
-//    }
-//  }
 
   var frontTracksDisplay : CALayer? {
     switch frontTracksDisplay_property_selection {
@@ -531,12 +423,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var frontPackagesDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontPackagesDisplay_property_selection
-//    }
-//  }
-
   var frontPackagesDisplay : CALayer? {
     switch frontPackagesDisplay_property_selection {
     case .empty, .multiple :
@@ -556,12 +442,6 @@ class MergerBoardInstance : EBManagedObject,
     }
   }
 
-//  var backPackagesDisplay : EBSelection <CALayer> {
-//    get {
-//      return backPackagesDisplay_property_selection
-//    }
-//  }
-
   var backPackagesDisplay : CALayer? {
     switch backPackagesDisplay_property_selection {
     case .empty, .multiple :
@@ -580,12 +460,6 @@ class MergerBoardInstance : EBManagedObject,
       return self.instanceLayerDisplay_property.prop
     }
   }
-
-//  var instanceLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return instanceLayerDisplay_property_selection
-//    }
-//  }
 
   var instanceLayerDisplay : CALayer? {
     switch instanceLayerDisplay_property_selection {
@@ -903,8 +777,8 @@ class MergerBoardInstance : EBManagedObject,
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
-        kind &= g_Preferences!.mergerColorBoardLimits_property_selection.kind ()
-        kind &= g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorInternalBoardLimits_property_selection.kind ()
+        kind &= g_Preferences!.mergerBoardViewDisplayInternalBoardLimits_property_selection.kind ()
         kind &= unwSelf.myModel_property.boardLimits_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -912,7 +786,7 @@ class MergerBoardInstance : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorBoardLimits_property_selection, g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection, unwSelf.myModel_property.boardLimits_property_selection) {
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorInternalBoardLimits_property_selection, g_Preferences!.mergerBoardViewDisplayInternalBoardLimits_property_selection, unwSelf.myModel_property.boardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_MergerBoardInstance_boardLimitsDisplay (v0, v1, v2, v3, v4))
           default :
@@ -1202,8 +1076,8 @@ class MergerBoardInstance : EBManagedObject,
     self.myModel_property.addEBObserverOf_backPads (self.backPadsDisplay_property)
     self.x_property.addEBObserver (self.boardLimitsDisplay_property)
     self.y_property.addEBObserver (self.boardLimitsDisplay_property)
-    g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
-    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
+    g_Preferences?.mergerColorInternalBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
+    g_Preferences?.mergerBoardViewDisplayInternalBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
     self.myModel_property.addEBObserverOf_boardLimits (self.boardLimitsDisplay_property)
     self.x_property.addEBObserver (self.backComponentNameDisplay_property)
     self.y_property.addEBObserver (self.backComponentNameDisplay_property)
@@ -1324,8 +1198,8 @@ class MergerBoardInstance : EBManagedObject,
     self.myModel_property.removeEBObserverOf_backPads (self.backPadsDisplay_property)
     self.x_property.removeEBObserver (self.boardLimitsDisplay_property)
     self.y_property.removeEBObserver (self.boardLimitsDisplay_property)
-    g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
-    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
+    g_Preferences?.mergerColorInternalBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
+    g_Preferences?.mergerBoardViewDisplayInternalBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
     self.myModel_property.removeEBObserverOf_boardLimits (self.boardLimitsDisplay_property)
     self.x_property.removeEBObserver (self.backComponentNameDisplay_property)
     self.y_property.removeEBObserver (self.backComponentNameDisplay_property)
@@ -3208,6 +3082,7 @@ protocol MergerBoardInstance_backPackagesDisplay : class {
 protocol MergerBoardInstance_instanceLayerDisplay : class {
   var instanceLayerDisplay : CALayer? { get }
 }
+
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: myModel

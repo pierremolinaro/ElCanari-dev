@@ -1493,13 +1493,17 @@ ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray, EBSignatur
 
   //····················································································································
 
-  private var mSet = Set<ArtworkFileGenerationParameters> ()
+  private var mSet = Set <ArtworkFileGenerationParameters> ()
   private var mValue = [ArtworkFileGenerationParameters] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1566,15 +1570,11 @@ ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray, EBSignatur
     }
   }
 
-  override var prop : EBSelection < [ArtworkFileGenerationParameters] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [ArtworkFileGenerationParameters] > { return .single (mValue) }
 
-  override func setProp (_ value :  [ArtworkFileGenerationParameters]) { mValue = value }
+  override func setProp (_ inValue : [ArtworkFileGenerationParameters]) { mValue = inValue }
 
-  var propval : [ArtworkFileGenerationParameters] { get { return mValue } }
+  var propval : [ArtworkFileGenerationParameters] { return mValue }
 
   //····················································································································
 

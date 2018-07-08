@@ -101,12 +101,6 @@ class SegmentForFontCharacter : EBManagedObject,
     }
   }
 
-//  var segmentForDrawing : EBSelection <SegmentForFontCharacterClass> {
-//    get {
-//      return segmentForDrawing_property_selection
-//    }
-//  }
-
   var segmentForDrawing : SegmentForFontCharacterClass? {
     switch segmentForDrawing_property_selection {
     case .empty, .multiple :

@@ -14,6 +14,8 @@ class MergerRoot : EBManagedObject,
   MergerRoot_boardWidthUnit,
   MergerRoot_boardHeightUnit,
   MergerRoot_overlapingArrangment,
+  MergerRoot_boardLimitWidth,
+  MergerRoot_boardLimitWidthUnit,
   MergerRoot_artworkName,
   MergerRoot_generateGerberProductFile,
   MergerRoot_generatePDFProductFile,
@@ -22,7 +24,8 @@ class MergerRoot : EBManagedObject,
   MergerRoot_instancesLayerDisplay,
   MergerRoot_boardRect,
   MergerRoot_boardWidth,
-  MergerRoot_boardHeight {
+  MergerRoot_boardHeight,
+  MergerRoot_boardLimitsLayerDisplay {
 
   //····················································································································
   //   Accessing selectedPageIndex stored property
@@ -120,6 +123,44 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing boardLimitWidth stored property
+  //····················································································································
+
+  var boardLimitWidth : Int {
+    get {
+      return self.boardLimitWidth_property.propval
+    }
+    set {
+      self.boardLimitWidth_property.setProp (newValue)
+    }
+  }
+
+  var boardLimitWidth_property_selection : EBSelection <Int> {
+    get {
+      return self.boardLimitWidth_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardLimitWidthUnit stored property
+  //····················································································································
+
+  var boardLimitWidthUnit : Int {
+    get {
+      return self.boardLimitWidthUnit_property.propval
+    }
+    set {
+      self.boardLimitWidthUnit_property.setProp (newValue)
+    }
+  }
+
+  var boardLimitWidthUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.boardLimitWidthUnit_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing artworkName stored property
   //····················································································································
 
@@ -205,12 +246,6 @@ class MergerRoot : EBManagedObject,
     }
   }
 
-//  var modelNames : EBSelection <MergerBoardModelArray> {
-//    get {
-//      return modelNames_property_selection
-//    }
-//  }
-
   var modelNames : MergerBoardModelArray? {
     switch modelNames_property_selection {
     case .empty, .multiple :
@@ -229,12 +264,6 @@ class MergerRoot : EBManagedObject,
       return self.instancesLayerDisplay_property.prop
     }
   }
-
-//  var instancesLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return instancesLayerDisplay_property_selection
-//    }
-//  }
 
   var instancesLayerDisplay : CALayer? {
     switch instancesLayerDisplay_property_selection {
@@ -255,12 +284,6 @@ class MergerRoot : EBManagedObject,
     }
   }
 
-//  var boardRect : EBSelection <CanariBoardRect> {
-//    get {
-//      return boardRect_property_selection
-//    }
-//  }
-
   var boardRect : CanariBoardRect? {
     switch boardRect_property_selection {
     case .empty, .multiple :
@@ -279,12 +302,6 @@ class MergerRoot : EBManagedObject,
       return self.boardWidth_property.prop
     }
   }
-
-//  var boardWidth : EBSelection <Int> {
-//    get {
-//      return boardWidth_property_selection
-//    }
-//  }
 
   var boardWidth : Int? {
     switch boardWidth_property_selection {
@@ -305,14 +322,27 @@ class MergerRoot : EBManagedObject,
     }
   }
 
-//  var boardHeight : EBSelection <Int> {
-//    get {
-//      return boardHeight_property_selection
-//    }
-//  }
-
   var boardHeight : Int? {
     switch boardHeight_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardLimitsLayerDisplay transient property
+  //····················································································································
+
+  var boardLimitsLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.boardLimitsLayerDisplay_property.prop
+    }
+  }
+
+  var boardLimitsLayerDisplay : CALayer? {
+    switch boardLimitsLayerDisplay_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -349,6 +379,8 @@ class MergerRoot : EBManagedObject,
   var boardWidthUnit_property = EBStoredProperty_Int (90000)
   var boardHeightUnit_property = EBStoredProperty_Int (90000)
   var overlapingArrangment_property = EBStoredProperty_Bool (false)
+  var boardLimitWidth_property = EBStoredProperty_Int (90000)
+  var boardLimitWidthUnit_property = EBStoredProperty_Int (90000)
   var artworkName_property = EBStoredProperty_String ("")
   var generateGerberProductFile_property = EBStoredProperty_Bool (true)
   var generatePDFProductFile_property = EBStoredProperty_Bool (true)
@@ -363,6 +395,7 @@ class MergerRoot : EBManagedObject,
   var boardRect_property = EBTransientProperty_CanariBoardRect ()
   var boardWidth_property = EBTransientProperty_Int ()
   var boardHeight_property = EBTransientProperty_Int ()
+  var boardLimitsLayerDisplay_property = EBTransientProperty_CALayer ()
 
   //····················································································································
   //    Relationships
@@ -402,16 +435,17 @@ class MergerRoot : EBManagedObject,
     }
     self.instancesLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardInstances_property_selection.kind ()
+        var kind = unwSelf.boardLimitsLayerDisplay_property_selection.kind ()
+        kind &= unwSelf.boardInstances_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardInstances_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_MergerRoot_instancesLayerDisplay (v0))
+          switch (unwSelf.boardLimitsLayerDisplay_property_selection, unwSelf.boardInstances_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (compute_MergerRoot_instancesLayerDisplay (v0, v1))
           default :
             return .empty
           }
@@ -480,18 +514,50 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
+    self.boardLimitsLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.boardWidth_property_selection.kind ()
+        kind &= unwSelf.boardHeight_property_selection.kind ()
+        kind &= unwSelf.boardLimitWidth_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBoardLimits_property_selection.kind ()
+        kind &= g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.boardWidth_property_selection, unwSelf.boardHeight_property_selection, unwSelf.boardLimitWidth_property_selection, g_Preferences!.mergerColorBoardLimits_property_selection, g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_MergerRoot_boardLimitsLayerDisplay (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
   //--- Install property observers for transients
     self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
+    self.boardLimitsLayerDisplay_property.addEBObserver (self.instancesLayerDisplay_property)
     self.boardInstances_property.addEBObserverOf_instanceLayerDisplay (self.instancesLayerDisplay_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
     self.boardRect_property.addEBObserver (self.boardWidth_property)
     self.boardRect_property.addEBObserver (self.boardHeight_property)
+    self.boardWidth_property.addEBObserver (self.boardLimitsLayerDisplay_property)
+    self.boardHeight_property.addEBObserver (self.boardLimitsLayerDisplay_property)
+    self.boardLimitWidth_property.addEBObserver (self.boardLimitsLayerDisplay_property)
+    g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardLimitsLayerDisplay_property)
+    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardLimitsLayerDisplay_property)
   //--- Install undoers for properties
     self.selectedPageIndex_property.undoManager = undoManager ()
     self.zoom_property.undoManager = undoManager ()
     self.boardWidthUnit_property.undoManager = undoManager ()
     self.boardHeightUnit_property.undoManager = undoManager ()
     self.overlapingArrangment_property.undoManager = undoManager ()
+    self.boardLimitWidth_property.undoManager = undoManager ()
+    self.boardLimitWidthUnit_property.undoManager = undoManager ()
     self.artworkName_property.undoManager = undoManager ()
     self.generateGerberProductFile_property.undoManager = undoManager ()
     self.generatePDFProductFile_property.undoManager = undoManager ()
@@ -508,10 +574,16 @@ class MergerRoot : EBManagedObject,
   deinit {
   //--- Remove observers
     self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
+    self.boardLimitsLayerDisplay_property.removeEBObserver (self.instancesLayerDisplay_property)
     self.boardInstances_property.removeEBObserverOf_instanceLayerDisplay (self.instancesLayerDisplay_property)
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
     self.boardRect_property.removeEBObserver (self.boardWidth_property)
     self.boardRect_property.removeEBObserver (self.boardHeight_property)
+    self.boardWidth_property.removeEBObserver (self.boardLimitsLayerDisplay_property)
+    self.boardHeight_property.removeEBObserver (self.boardLimitsLayerDisplay_property)
+    self.boardLimitWidth_property.removeEBObserver (self.boardLimitsLayerDisplay_property)
+    g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardLimitsLayerDisplay_property)
+    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardLimitsLayerDisplay_property)
   }
 
   //····················································································································
@@ -559,6 +631,22 @@ class MergerRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.overlapingArrangment_property.mObserverExplorer,
       valueExplorer:&self.overlapingArrangment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitWidth",
+      idx:self.boardLimitWidth_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardLimitWidth_property.mObserverExplorer,
+      valueExplorer:&self.boardLimitWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitWidthUnit",
+      idx:self.boardLimitWidthUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardLimitWidthUnit_property.mObserverExplorer,
+      valueExplorer:&self.boardLimitWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "artworkName",
@@ -633,6 +721,14 @@ class MergerRoot : EBManagedObject,
       observerExplorer:&self.boardHeight_property.mObserverExplorer,
       valueExplorer:&self.boardHeight_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "boardLimitsLayerDisplay",
+      idx:self.boardLimitsLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardLimitsLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.boardLimitsLayerDisplay_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "boardModels",
@@ -674,6 +770,10 @@ class MergerRoot : EBManagedObject,
     self.boardHeightUnit_property.mValueExplorer = nil
     self.overlapingArrangment_property.mObserverExplorer = nil
     self.overlapingArrangment_property.mValueExplorer = nil
+    self.boardLimitWidth_property.mObserverExplorer = nil
+    self.boardLimitWidth_property.mValueExplorer = nil
+    self.boardLimitWidthUnit_property.mObserverExplorer = nil
+    self.boardLimitWidthUnit_property.mValueExplorer = nil
     self.artworkName_property.mObserverExplorer = nil
     self.artworkName_property.mValueExplorer = nil
     self.generateGerberProductFile_property.mObserverExplorer = nil
@@ -700,6 +800,8 @@ class MergerRoot : EBManagedObject,
     self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
     self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
     self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
+    self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
+    self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
     self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
     self.generateGerberProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generateGerberProductFile")
     self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generatePDFProductFile")
@@ -721,6 +823,8 @@ class MergerRoot : EBManagedObject,
     self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
     self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
     self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
+    self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
+    self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
     self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
     self.generateGerberProductFile_property.readFrom (dictionary: inDictionary, forKey:"generateGerberProductFile")
     self.generatePDFProductFile_property.readFrom (dictionary: inDictionary, forKey:"generatePDFProductFile")
@@ -1092,6 +1196,120 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.overlapingArrangment_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardLimitWidth' stored property
+  //····················································································································
+
+  private var mObserversOf_boardLimitWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardLimitWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardLimitWidth_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardLimitWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardLimitWidth_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardLimitWidth_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardLimitWidth {
+        managedObject.boardLimitWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardLimitWidth_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_boardLimitWidth {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.boardLimitWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardLimitWidthUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardLimitWidthUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardLimitWidthUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardLimitWidthUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardLimitWidthUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardLimitWidthUnit {
+        managedObject.boardLimitWidthUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_boardLimitWidthUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.boardLimitWidthUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -1605,6 +1823,62 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
+  //   Observers of 'boardLimitsLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_boardLimitsLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardLimitsLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardLimitsLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardLimitsLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardLimitsLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardLimitsLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardLimitsLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardLimitsLayerDisplay_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardLimitsLayerDisplay {
+        managedObject.boardLimitsLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardLimitsLayerDisplay_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardLimitsLayerDisplay {
+        managedObject.boardLimitsLayerDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1647,6 +1921,8 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
         removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedSet)
         removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedSet)
@@ -1657,6 +1933,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardLimitsLayerDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -1665,6 +1942,8 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_boardWidthUnit_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
         addEBObserversOf_overlapingArrangment_toElementsOfSet (addedSet)
+        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
+        addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedSet)
         addEBObserversOf_artworkName_toElementsOfSet (addedSet)
         addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedSet)
         addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedSet)
@@ -1675,6 +1954,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_boardRect_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
+        addEBObserversOf_boardLimitsLayerDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -1735,6 +2015,18 @@ protocol MergerRoot_overlapingArrangment : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol MergerRoot_boardLimitWidth : class {
+  var boardLimitWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardLimitWidthUnit : class {
+  var boardLimitWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol MergerRoot_artworkName : class {
   var artworkName : String { get }
 }
@@ -1785,6 +2077,12 @@ protocol MergerRoot_boardWidth : class {
 
 protocol MergerRoot_boardHeight : class {
   var boardHeight : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardLimitsLayerDisplay : class {
+  var boardLimitsLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1844,13 +2142,17 @@ ToManyRelationshipReadWrite_MergerRoot_boardModels, EBSignatureObserverProtocol 
 
   //····················································································································
 
-  private var mSet = Set<BoardModel> ()
+  private var mSet = Set <BoardModel> ()
   private var mValue = [BoardModel] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1969,15 +2271,11 @@ ToManyRelationshipReadWrite_MergerRoot_boardModels, EBSignatureObserverProtocol 
     }
   }
 
-  override var prop : EBSelection < [BoardModel] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [BoardModel] > { return .single (mValue) }
 
-  override func setProp (_ value :  [BoardModel]) { mValue = value }
+  override func setProp (_ inValue : [BoardModel]) { mValue = inValue }
 
-  var propval : [BoardModel] { get { return mValue } }
+  var propval : [BoardModel] { return mValue }
 
   //····················································································································
 
@@ -2114,13 +2412,17 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
 
   //····················································································································
 
-  private var mSet = Set<MergerBoardInstance> ()
+  private var mSet = Set <MergerBoardInstance> ()
   private var mValue = [MergerBoardInstance] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -2189,15 +2491,11 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
     }
   }
 
-  override var prop : EBSelection < [MergerBoardInstance] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [MergerBoardInstance] > { return .single (mValue) }
 
-  override func setProp (_ value :  [MergerBoardInstance]) { mValue = value }
+  override func setProp (_ inValue : [MergerBoardInstance]) { mValue = inValue }
 
-  var propval : [MergerBoardInstance] { get { return mValue } }
+  var propval : [MergerBoardInstance] { return mValue }
 
   //····················································································································
 
@@ -2277,6 +2575,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
   //····················································································································
  
 }
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: artwork
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

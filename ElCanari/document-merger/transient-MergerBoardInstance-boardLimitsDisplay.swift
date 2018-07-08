@@ -14,12 +14,17 @@ import Cocoa
 func compute_MergerBoardInstance_boardLimitsDisplay (
        _ self_x : Int,                               
        _ self_y : Int,                               
-       _ prefs_mergerColorBoardLimits : NSColor,     
-       _ prefs_mergerBoardViewDisplayBoardLimits : Bool,
+       _ prefs_mergerColorInternalBoardLimits : NSColor,
+       _ prefs_mergerBoardViewDisplayInternalBoardLimits : Bool,
        _ self_myModel_boardLimits : MergerBoardLimits?
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  return self_myModel_boardLimits!.buildShape (dx:self_x, dy:self_y, color:prefs_mergerColorBoardLimits, display:prefs_mergerBoardViewDisplayBoardLimits)
+  return self_myModel_boardLimits!.buildShape (
+    dx:self_x,
+    dy:self_y,
+    color:prefs_mergerColorInternalBoardLimits,
+    display:prefs_mergerBoardViewDisplayInternalBoardLimits
+  )
 //--- END OF USER ZONE 2
 }
 

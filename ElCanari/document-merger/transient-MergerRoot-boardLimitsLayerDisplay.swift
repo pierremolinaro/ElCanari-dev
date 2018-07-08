@@ -11,20 +11,35 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerRoot_instancesLayerDisplay (
-       _ self_boardLimitsLayerDisplay : CALayer,
-       _ self_boardInstances_instanceLayerDisplay : [MergerBoardInstance_instanceLayerDisplay]
+func compute_MergerRoot_boardLimitsLayerDisplay (
+       _ self_boardWidth : Int,                  
+       _ self_boardHeight : Int,                 
+       _ self_boardLimitWidth : Int,             
+       _ prefs_mergerColorBoardLimits : NSColor, 
+       _ prefs_mergerBoardViewDisplayBoardLimits : Bool
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  var array = [CALayer] ()
-  for instance in self_boardInstances_instanceLayerDisplay {
-    if let layer = instance.instanceLayerDisplay {
-      array.append (layer)
-    }
+  let result = CAShapeLayer ()
+  if prefs_mergerBoardViewDisplayBoardLimits && (self_boardLimitWidth > 0) {
+    let boardWith = canariUnitToCocoa (self_boardWidth)
+    let boardHeight = canariUnitToCocoa (self_boardHeight)
+    let lineWidth = canariUnitToCocoa (self_boardLimitWidth)
+    let path = CGMutablePath ()
+    path.move    (to:CGPoint (x:lineWidth / 2.0,             y:lineWidth / 2.0))
+    path.addLine (to:CGPoint (x:lineWidth / 2.0,             y:boardHeight - lineWidth / 2.0))
+    path.addLine (to:CGPoint (x:boardWith - lineWidth / 2.0, y:boardHeight - lineWidth / 2.0))
+    path.addLine (to:CGPoint (x:boardWith - lineWidth / 2.0, y:lineWidth / 2.0))
+    path.addLine (to:CGPoint (x:lineWidth / 2.0,             y:lineWidth / 2.0))
+    let shape = CAShapeLayer ()
+    shape.path = path
+    shape.position = CGPoint (x:0.0, y:0.0)
+    shape.strokeColor = prefs_mergerColorBoardLimits.cgColor
+    shape.fillColor = nil // NSColor.yellow.cgColor
+    shape.lineWidth = lineWidth
+    shape.lineCap = kCALineCapSquare
+    shape.lineJoin = kCALineJoinMiter
+    result.sublayers = [shape]
   }
-  array.append (self_boardLimitsLayerDisplay)
-  let result = CALayer ()
-  result.sublayers = array
   return result
 //--- END OF USER ZONE 2
 }

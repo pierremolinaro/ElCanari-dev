@@ -84,12 +84,6 @@ class FontRoot : EBManagedObject,
     }
   }
 
-//  var sampleStringBezierPath : EBSelection <CGPath> {
-//    get {
-//      return sampleStringBezierPath_property_selection
-//    }
-//  }
-
   var sampleStringBezierPath : CGPath? {
     switch sampleStringBezierPath_property_selection {
     case .empty, .multiple :
@@ -108,12 +102,6 @@ class FontRoot : EBManagedObject,
       return self.sampleStringBezierPathWidth_property.prop
     }
   }
-
-//  var sampleStringBezierPathWidth : EBSelection <Double> {
-//    get {
-//      return sampleStringBezierPathWidth_property_selection
-//    }
-//  }
 
   var sampleStringBezierPathWidth : Double? {
     switch sampleStringBezierPathWidth_property_selection {
@@ -134,12 +122,6 @@ class FontRoot : EBManagedObject,
     }
   }
 
-//  var sampleStringBezierPathAscent : EBSelection <Double> {
-//    get {
-//      return sampleStringBezierPathAscent_property_selection
-//    }
-//  }
-
   var sampleStringBezierPathAscent : Double? {
     switch sampleStringBezierPathAscent_property_selection {
     case .empty, .multiple :
@@ -158,12 +140,6 @@ class FontRoot : EBManagedObject,
       return self.sampleStringBezierPathDescent_property.prop
     }
   }
-
-//  var sampleStringBezierPathDescent : EBSelection <Double> {
-//    get {
-//      return sampleStringBezierPathDescent_property_selection
-//    }
-//  }
 
   var sampleStringBezierPathDescent : Double? {
     switch sampleStringBezierPathDescent_property_selection {
@@ -1077,13 +1053,17 @@ ToManyRelationshipReadWrite_FontRoot_characters, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private var mSet = Set<FontCharacter> ()
+  private var mSet = Set <FontCharacter> ()
   private var mValue = [FontCharacter] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1116,15 +1096,11 @@ ToManyRelationshipReadWrite_FontRoot_characters, EBSignatureObserverProtocol {
     }
   }
 
-  override var prop : EBSelection < [FontCharacter] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [FontCharacter] > { return .single (mValue) }
 
-  override func setProp (_ value :  [FontCharacter]) { mValue = value }
+  override func setProp (_ inValue : [FontCharacter]) { mValue = inValue }
 
-  var propval : [FontCharacter] { get { return mValue } }
+  var propval : [FontCharacter] { return mValue }
 
   //····················································································································
 

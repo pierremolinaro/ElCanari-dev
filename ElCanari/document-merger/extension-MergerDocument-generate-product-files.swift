@@ -51,8 +51,8 @@ extension MergerDocument {
     archiveDict ["ARTWORK"] = self.rootObject.artworkName
     archiveDict ["BOARD-HEIGHT"] = self.rootObject.boardHeight ?? 0
     archiveDict ["BOARD-HEIGHT-UNIT"] = self.rootObject.boardHeightUnit
-//    archiveDict ["BOARD-LINE-WIDTH"] = self.rootObject.board
-//    archiveDict ["BOARD-LINE-UNIT"] = self.rootObject.boardHeightUnit
+    archiveDict ["BOARD-LINE-WIDTH"] = self.rootObject.boardLimitWidth
+    archiveDict ["BOARD-LINE-WIDTH-UNIT"] = self.rootObject.boardLimitWidthUnit
     archiveDict ["BOARD-WIDTH"] = self.rootObject.boardWidth ?? 0
     archiveDict ["BOARD-WIDTH-UNIT"] = self.rootObject.boardWidthUnit
     var backComponentNames = [String] ()
@@ -84,7 +84,7 @@ extension MergerDocument {
       myModel?.backTrackSegments?.add (toArchiveArray: &backTracks, dx: board.x, dy: board.y)
       myModel?.frontTrackSegments?.add (toArchiveArray: &frontTracks, dx: board.x, dy: board.y)
       for via in myModel?.vias_property.propval ?? [] {
-        vias.append ("\(via.x), \(via.y) \(via.padDiameter) \(via.holeDiameter)")
+        vias.append ("\(via.x) \(via.y) \(via.padDiameter) \(via.holeDiameter)")
       }
       for pad in myModel?.pads_property.propval ?? [] {
         let d = NSMutableDictionary ()
@@ -131,6 +131,7 @@ extension MergerDocument {
     archiveDict ["TRACKS-BACK"] = backTracks
     archiveDict ["TRACKS-FRONT"] = frontTracks
     archiveDict ["VIAS"] = vias
+    // NSLog ("ARCHIVE \(archiveDict)")
   //--- Write file
     let data : Data = try PropertyListSerialization.data (
       fromPropertyList: archiveDict,

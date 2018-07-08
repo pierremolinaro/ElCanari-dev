@@ -98,8 +98,6 @@ final class MergerBoardLimits : EBSimpleClass {
       shape.lineWidth = lineWidth
       shape.lineCap = kCALineCapSquare
       shape.lineJoin = kCALineJoinMiter
-  //    shape.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
-  //    shape.isOpaque = false
       result.sublayers = [shape]
     }
     result.position = CGPoint (x:canariUnitToCocoa (inDx), y:canariUnitToCocoa (inDy))

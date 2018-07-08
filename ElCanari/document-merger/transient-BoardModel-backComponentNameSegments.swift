@@ -19,6 +19,7 @@ func compute_BoardModel_backComponentNameSegments (
        _ self_backComponentNames_width : [CanariSegment_width]
 ) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
+  // NSLog ("compute_BoardModel_backComponentNameSegments")
   var segmentArray = [MergerSegment] ()
   var idx = 0
   while idx < self_backComponentNames_x1.count {
@@ -27,6 +28,7 @@ func compute_BoardModel_backComponentNameSegments (
     let x2 = self_backComponentNames_x2 [idx].x2
     let y2 = self_backComponentNames_y2 [idx].y2
     let width = self_backComponentNames_width [idx].width
+    // NSLog ("\(x1) \(y1) \(x2) \(y2) \(width)")
     segmentArray.append (MergerSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
     idx += 1
   }

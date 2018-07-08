@@ -574,6 +574,25 @@ var g_Preferences : Preferences? = nil
   }
 
   //····················································································································
+  //   Accessing mergerBoardViewDisplayInternalBoardLimits stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayInternalBoardLimits : Bool {
+    get {
+      return self.mergerBoardViewDisplayInternalBoardLimits_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayInternalBoardLimits_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayInternalBoardLimits_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayInternalBoardLimits_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing mergerBoardViewDisplayBoardLimits stored property
   //····················································································································
 
@@ -912,6 +931,25 @@ var g_Preferences : Preferences? = nil
   var mergerColorBoardLimits_property_selection : EBSelection <NSColor> {
     get {
       return self.mergerColorBoardLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorInternalBoardLimits stored property
+  //····················································································································
+
+  var mergerColorInternalBoardLimits : NSColor {
+    get {
+      return self.mergerColorInternalBoardLimits_property.propval
+    }
+    set {
+      self.mergerColorInternalBoardLimits_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorInternalBoardLimits_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorInternalBoardLimits_property.prop
     }
   }
 
@@ -2716,6 +2754,7 @@ var g_Preferences : Preferences? = nil
   var mergerBoardViewDisplayHoles_property = EBStoredProperty_Bool (true)
   var mergerBoardViewDisplayVias_property = EBStoredProperty_Bool (true)
   var mergerBoardViewDisplayFrontPads_property = EBStoredProperty_Bool (true)
+  var mergerBoardViewDisplayInternalBoardLimits_property = EBStoredProperty_Bool (true)
   var mergerBoardViewDisplayBoardLimits_property = EBStoredProperty_Bool (true)
   var mergerBoardViewDisplayFrontComponentNames_property = EBStoredProperty_Bool (false)
   var mergerBoardViewDisplayFrontComponentValues_property = EBStoredProperty_Bool (false)
@@ -2734,6 +2773,7 @@ var g_Preferences : Preferences? = nil
   var mergerColorVias_property = EBStoredProperty_NSColor (NSColor.red)
   var mergerColorFrontPads_property = EBStoredProperty_NSColor (NSColor.brown)
   var mergerColorBoardLimits_property = EBStoredProperty_NSColor (NSColor.brown)
+  var mergerColorInternalBoardLimits_property = EBStoredProperty_NSColor (NSColor.yellow)
   var mergerColorFrontComponentNames_property = EBStoredProperty_NSColor (NSColor.brown)
   var mergerColorFrontComponentValues_property = EBStoredProperty_NSColor (NSColor.brown)
   var mergerColorFrontPackages_property = EBStoredProperty_NSColor (NSColor.brown)
@@ -2881,6 +2921,7 @@ var g_Preferences : Preferences? = nil
     self.mergerBoardViewDisplayHoles_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayHoles")
     self.mergerBoardViewDisplayVias_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayVias")
     self.mergerBoardViewDisplayFrontPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontPads")
+    self.mergerBoardViewDisplayInternalBoardLimits_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayInternalBoardLimits")
     self.mergerBoardViewDisplayBoardLimits_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBoardLimits")
     self.mergerBoardViewDisplayFrontComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontComponentNames")
     self.mergerBoardViewDisplayFrontComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontComponentValues")
@@ -2899,6 +2940,7 @@ var g_Preferences : Preferences? = nil
     self.mergerColorVias_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorVias")
     self.mergerColorFrontPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontPads")
     self.mergerColorBoardLimits_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBoardLimits")
+    self.mergerColorInternalBoardLimits_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorInternalBoardLimits")
     self.mergerColorFrontComponentNames_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontComponentNames")
     self.mergerColorFrontComponentValues_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontComponentValues")
     self.mergerColorFrontPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontPackages")
@@ -3682,6 +3724,7 @@ var g_Preferences : Preferences? = nil
     self.mergerBoardViewDisplayHoles_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayHoles")
     self.mergerBoardViewDisplayVias_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayVias")
     self.mergerBoardViewDisplayFrontPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontPads")
+    self.mergerBoardViewDisplayInternalBoardLimits_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayInternalBoardLimits")
     self.mergerBoardViewDisplayBoardLimits_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBoardLimits")
     self.mergerBoardViewDisplayFrontComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontComponentNames")
     self.mergerBoardViewDisplayFrontComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontComponentValues")
@@ -3700,6 +3743,7 @@ var g_Preferences : Preferences? = nil
     self.mergerColorVias_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorVias")
     self.mergerColorFrontPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontPads")
     self.mergerColorBoardLimits_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBoardLimits")
+    self.mergerColorInternalBoardLimits_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorInternalBoardLimits")
     self.mergerColorFrontComponentNames_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontComponentNames")
     self.mergerColorFrontComponentValues_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontComponentValues")
     self.mergerColorFrontPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontPackages")

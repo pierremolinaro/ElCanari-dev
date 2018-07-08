@@ -295,6 +295,7 @@ extension MergerDocument {
     var backComponentNamesEntities = [CanariSegment] ()
     let backComponentNames = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-NAMES-BACK", &errorArray)
     for str in backComponentNames {
+//      NSLog ("\(str)")
       let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
@@ -304,7 +305,12 @@ extension MergerDocument {
       segment.width = ints [4]
       backComponentNamesEntities.append (segment)
     }
+//    NSLog ("--------")
     boardModel.backComponentNames_property.setProp (backComponentNamesEntities)
+//    for object in boardModel.backComponentNames_property.propval {
+//      NSLog ("\(object.x1) \(object.y1) \(object.x2) \(object.y2) \(object.width)")
+//    }
+//    NSLog ("+++++++++")
   //--- Front component names
     var frontComponentNamesEntities = [CanariSegment] ()
     let frontComponentNames = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-NAMES-FRONT", &errorArray)

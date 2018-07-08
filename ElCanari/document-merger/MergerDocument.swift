@@ -19,10 +19,12 @@ import Cocoa
   @IBOutlet var mArtworkNameTextField : EBTextObserverField?
   @IBOutlet var mArtworkTabView : NSTabView?
   @IBOutlet var mBoardArchiveFormatPopUpButton : CanariBoardBoardArchivePopUpButton?
+  @IBOutlet var mBoardBoardLimitTextField : CanariDimensionTextField?
   @IBOutlet var mBoardClipView : NSClipView?
   @IBOutlet var mBoardHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardInsertMenu : CanariBoardInsertMenu?
+  @IBOutlet var mBoardLimitWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardModelTableView : EBTableView?
   @IBOutlet var mBoardModelView : CanariBoardModelView?
   @IBOutlet var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch?
@@ -41,6 +43,7 @@ import Cocoa
   @IBOutlet var mBoardViewDisplayFrontPadsCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayFrontTracksCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayHolesCheckbox : EBSwitch?
+  @IBOutlet var mBoardViewDisplayInternalBoardLimitsCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayViasCheckbox : EBSwitch?
   @IBOutlet var mBoardViewHorizontalFlipCheckbox : EBSwitch?
   @IBOutlet var mBoardViewVerticalFlipCheckbox : EBSwitch?
@@ -108,6 +111,7 @@ import Cocoa
   @IBOutlet var mergerViewDisplayFrontPadsColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayFrontTracksColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayHolesColorWell : EBColorWell?
+  @IBOutlet var mergerViewDisplayInternalBoardLimitsColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayViasColorWell : EBColorWell?
   @IBOutlet var removeBoardModelButton : EBButton?
   @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton?
@@ -291,6 +295,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mBoardArchiveFormatPopUpButton' outlet is not an instance of 'CanariBoardBoardArchivePopUpButton'") ;
     }
+    if nil == mBoardBoardLimitTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mBoardBoardLimitTextField' outlet is nil") ;
+//    }else if !mBoardBoardLimitTextField!.isKindOfClass (CanariDimensionTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mBoardBoardLimitTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+    }
     if nil == mBoardClipView {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -326,6 +339,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mBoardInsertMenu' outlet is not an instance of 'CanariBoardInsertMenu'") ;
+    }
+    if nil == mBoardLimitWidthUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mBoardLimitWidthUnitPopUp' outlet is nil") ;
+//    }else if !mBoardLimitWidthUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mBoardLimitWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
     if nil == mBoardModelTableView {
       presentErrorWindow (file: #file,
@@ -488,6 +510,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mBoardViewDisplayHolesCheckbox' outlet is not an instance of 'EBSwitch'") ;
+    }
+    if nil == mBoardViewDisplayInternalBoardLimitsCheckbox {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mBoardViewDisplayInternalBoardLimitsCheckbox' outlet is nil") ;
+//    }else if !mBoardViewDisplayInternalBoardLimitsCheckbox!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mBoardViewDisplayInternalBoardLimitsCheckbox' outlet is not an instance of 'EBSwitch'") ;
     }
     if nil == mBoardViewDisplayViasCheckbox {
       presentErrorWindow (file: #file,
@@ -1092,6 +1123,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mergerViewDisplayHolesColorWell' outlet is not an instance of 'EBColorWell'") ;
     }
+    if nil == mergerViewDisplayInternalBoardLimitsColorWell {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mergerViewDisplayInternalBoardLimitsColorWell' outlet is nil") ;
+//    }else if !mergerViewDisplayInternalBoardLimitsColorWell!.isKindOfClass (EBColorWell) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mergerViewDisplayInternalBoardLimitsColorWell' outlet is not an instance of 'EBColorWell'") ;
+    }
     if nil == mergerViewDisplayViasColorWell {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -1235,6 +1275,7 @@ import Cocoa
     mBoardViewDisplayViasCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayVias_property, file: #file, line: #line)
     mBoardViewDisplayFrontPadsCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayFrontPads_property, file: #file, line: #line)
     mBoardViewDisplayBoardLimitsCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayBoardLimits_property, file: #file, line: #line)
+    mBoardViewDisplayInternalBoardLimitsCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayInternalBoardLimits_property, file: #file, line: #line)
     mBoardViewDisplayFrontComponentNamesCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayFrontComponentNames_property, file: #file, line: #line)
     mBoardViewDisplayFrontComponenValuesCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayFrontComponentValues_property, file: #file, line: #line)
     mBoardViewDisplayFrontPackagesCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayFrontPackages_property, file: #file, line: #line)
@@ -1252,6 +1293,7 @@ import Cocoa
     mergerViewDisplayViasColorWell?.bind_color (g_Preferences!.mergerColorVias_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayFrontPadsColorWell?.bind_color (g_Preferences!.mergerColorFrontPads_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayBoardLimitsColorWell?.bind_color (g_Preferences!.mergerColorBoardLimits_property, file: #file, line: #line, sendContinously:false)
+    mergerViewDisplayInternalBoardLimitsColorWell?.bind_color (g_Preferences!.mergerColorInternalBoardLimits_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayFrontComponentNamesColorWell?.bind_color (g_Preferences!.mergerColorFrontComponentNames_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayFrontComponentValuesColorWell?.bind_color (g_Preferences!.mergerColorFrontComponentValues_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayFrontPackagesColorWell?.bind_color (g_Preferences!.mergerColorFrontPackages_property, file: #file, line: #line, sendContinously:false)
@@ -1280,6 +1322,8 @@ import Cocoa
     mBoardModelView?.bind_verticalFlip (g_Preferences!.mergerModelViewVerticalFlip_property, file: #file, line: #line)
     mBoardModelView?.bind_objectLayer (self.mBoardModelSelection.modelLayerDisplay_property, file: #file, line: #line)
     mBoardInsertMenu?.bind_names (self.rootObject.modelNames_property, file: #file, line: #line)
+    mBoardLimitWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardLimitWidth_property, file: #file, line: #line)
+    mBoardBoardLimitTextField?.bind_dimensionAndUnit (self.rootObject.boardLimitWidth_property, self.rootObject.boardLimitWidthUnit_property, file: #file, line: #line)
     mBoardWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardWidthUnit_property, file: #file, line: #line)
     mBoardWidthTextField?.bind_dimensionAndUnit (self.rootObject.boardWidth_property, self.rootObject.boardWidthUnit_property, file: #file, line: #line)
     mBoardHeightUnitPopUp?.bind_selectedTag (self.rootObject.boardHeightUnit_property, file: #file, line: #line)
@@ -1485,6 +1529,7 @@ import Cocoa
     mBoardViewDisplayViasCheckbox?.unbind_value ()
     mBoardViewDisplayFrontPadsCheckbox?.unbind_value ()
     mBoardViewDisplayBoardLimitsCheckbox?.unbind_value ()
+    mBoardViewDisplayInternalBoardLimitsCheckbox?.unbind_value ()
     mBoardViewDisplayFrontComponentNamesCheckbox?.unbind_value ()
     mBoardViewDisplayFrontComponenValuesCheckbox?.unbind_value ()
     mBoardViewDisplayFrontPackagesCheckbox?.unbind_value ()
@@ -1502,6 +1547,7 @@ import Cocoa
     mergerViewDisplayViasColorWell?.unbind_color ()
     mergerViewDisplayFrontPadsColorWell?.unbind_color ()
     mergerViewDisplayBoardLimitsColorWell?.unbind_color ()
+    mergerViewDisplayInternalBoardLimitsColorWell?.unbind_color ()
     mergerViewDisplayFrontComponentNamesColorWell?.unbind_color ()
     mergerViewDisplayFrontComponentValuesColorWell?.unbind_color ()
     mergerViewDisplayFrontPackagesColorWell?.unbind_color ()
@@ -1530,6 +1576,8 @@ import Cocoa
     mBoardModelView?.unbind_verticalFlip ()
     mBoardModelView?.unbind_objectLayer ()
     mBoardInsertMenu?.unbind_names ()
+    mBoardLimitWidthUnitPopUp?.unbind_selectedTag ()
+    mBoardBoardLimitTextField?.unbind_dimensionAndUnit ()
     mBoardWidthUnitPopUp?.unbind_selectedTag ()
     mBoardWidthTextField?.unbind_dimensionAndUnit ()
     mBoardHeightUnitPopUp?.unbind_selectedTag ()
@@ -1607,10 +1655,12 @@ import Cocoa
     self.mArtworkNameTextField?.ebCleanUp ()
     self.mArtworkTabView?.ebCleanUp ()
     self.mBoardArchiveFormatPopUpButton?.ebCleanUp ()
+    self.mBoardBoardLimitTextField?.ebCleanUp ()
     self.mBoardClipView?.ebCleanUp ()
     self.mBoardHeightTextField?.ebCleanUp ()
     self.mBoardHeightUnitPopUp?.ebCleanUp ()
     self.mBoardInsertMenu?.ebCleanUp ()
+    self.mBoardLimitWidthUnitPopUp?.ebCleanUp ()
     self.mBoardModelTableView?.ebCleanUp ()
     self.mBoardModelView?.ebCleanUp ()
     self.mBoardViewDisplayBackComponenValuesCheckbox?.ebCleanUp ()
@@ -1629,6 +1679,7 @@ import Cocoa
     self.mBoardViewDisplayFrontPadsCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayFrontTracksCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayHolesCheckbox?.ebCleanUp ()
+    self.mBoardViewDisplayInternalBoardLimitsCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayViasCheckbox?.ebCleanUp ()
     self.mBoardViewHorizontalFlipCheckbox?.ebCleanUp ()
     self.mBoardViewVerticalFlipCheckbox?.ebCleanUp ()
@@ -1696,6 +1747,7 @@ import Cocoa
     self.mergerViewDisplayFrontPadsColorWell?.ebCleanUp ()
     self.mergerViewDisplayFrontTracksColorWell?.ebCleanUp ()
     self.mergerViewDisplayHolesColorWell?.ebCleanUp ()
+    self.mergerViewDisplayInternalBoardLimitsColorWell?.ebCleanUp ()
     self.mergerViewDisplayViasColorWell?.ebCleanUp ()
     self.removeBoardModelButton?.ebCleanUp ()
     self.showPrefsForSettingMergerDisplayButton?.ebCleanUp ()

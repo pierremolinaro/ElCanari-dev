@@ -239,12 +239,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var instanceCount : EBSelection <Int> {
-//    get {
-//      return instanceCount_property_selection
-//    }
-//  }
-
   var instanceCount : Int? {
     switch instanceCount_property_selection {
     case .empty, .multiple :
@@ -263,12 +257,6 @@ class BoardModel : EBManagedObject,
       return self.backgroundLayerDisplay_property.prop
     }
   }
-
-//  var backgroundLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return backgroundLayerDisplay_property_selection
-//    }
-//  }
 
   var backgroundLayerDisplay : CALayer? {
     switch backgroundLayerDisplay_property_selection {
@@ -289,12 +277,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var frontLegendTextsSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return frontLegendTextsSegments_property_selection
-//    }
-//  }
-
   var frontLegendTextsSegments : MergerSegmentArray? {
     switch frontLegendTextsSegments_property_selection {
     case .empty, .multiple :
@@ -313,12 +295,6 @@ class BoardModel : EBManagedObject,
       return self.frontLegendTextsLayerDisplay_property.prop
     }
   }
-
-//  var frontLegendTextsLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontLegendTextsLayerDisplay_property_selection
-//    }
-//  }
 
   var frontLegendTextsLayerDisplay : CALayer? {
     switch frontLegendTextsLayerDisplay_property_selection {
@@ -339,12 +315,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var frontLayoutTextsSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return frontLayoutTextsSegments_property_selection
-//    }
-//  }
-
   var frontLayoutTextsSegments : MergerSegmentArray? {
     switch frontLayoutTextsSegments_property_selection {
     case .empty, .multiple :
@@ -363,12 +333,6 @@ class BoardModel : EBManagedObject,
       return self.frontLayoutTextsLayerDisplay_property.prop
     }
   }
-
-//  var frontLayoutTextsLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontLayoutTextsLayerDisplay_property_selection
-//    }
-//  }
 
   var frontLayoutTextsLayerDisplay : CALayer? {
     switch frontLayoutTextsLayerDisplay_property_selection {
@@ -389,12 +353,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var backLegendTextsSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return backLegendTextsSegments_property_selection
-//    }
-//  }
-
   var backLegendTextsSegments : MergerSegmentArray? {
     switch backLegendTextsSegments_property_selection {
     case .empty, .multiple :
@@ -413,12 +371,6 @@ class BoardModel : EBManagedObject,
       return self.backLegendTextsLayerDisplay_property.prop
     }
   }
-
-//  var backLegendTextsLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return backLegendTextsLayerDisplay_property_selection
-//    }
-//  }
 
   var backLegendTextsLayerDisplay : CALayer? {
     switch backLegendTextsLayerDisplay_property_selection {
@@ -439,12 +391,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var backLayoutTextsSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return backLayoutTextsSegments_property_selection
-//    }
-//  }
-
   var backLayoutTextsSegments : MergerSegmentArray? {
     switch backLayoutTextsSegments_property_selection {
     case .empty, .multiple :
@@ -463,12 +409,6 @@ class BoardModel : EBManagedObject,
       return self.backLayoutTextsLayerDisplay_property.prop
     }
   }
-
-//  var backLayoutTextsLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return backLayoutTextsLayerDisplay_property_selection
-//    }
-//  }
 
   var backLayoutTextsLayerDisplay : CALayer? {
     switch backLayoutTextsLayerDisplay_property_selection {
@@ -489,12 +429,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var padsHoles : EBSelection <MergerHoleArray> {
-//    get {
-//      return padsHoles_property_selection
-//    }
-//  }
-
   var padsHoles : MergerHoleArray? {
     switch padsHoles_property_selection {
     case .empty, .multiple :
@@ -513,12 +447,6 @@ class BoardModel : EBManagedObject,
       return self.viasHoles_property.prop
     }
   }
-
-//  var viasHoles : EBSelection <MergerHoleArray> {
-//    get {
-//      return viasHoles_property_selection
-//    }
-//  }
 
   var viasHoles : MergerHoleArray? {
     switch viasHoles_property_selection {
@@ -539,12 +467,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var holes : EBSelection <MergerHoleArray> {
-//    get {
-//      return holes_property_selection
-//    }
-//  }
-
   var holes : MergerHoleArray? {
     switch holes_property_selection {
     case .empty, .multiple :
@@ -563,12 +485,6 @@ class BoardModel : EBManagedObject,
       return self.holeLayerDisplay_property.prop
     }
   }
-
-//  var holeLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return holeLayerDisplay_property_selection
-//    }
-//  }
 
   var holeLayerDisplay : CALayer? {
     switch holeLayerDisplay_property_selection {
@@ -589,12 +505,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var viaShapes : EBSelection <MergerViaShapeArray> {
-//    get {
-//      return viaShapes_property_selection
-//    }
-//  }
-
   var viaShapes : MergerViaShapeArray? {
     switch viaShapes_property_selection {
     case .empty, .multiple :
@@ -613,12 +523,6 @@ class BoardModel : EBManagedObject,
       return self.viaLayerDisplay_property.prop
     }
   }
-
-//  var viaLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return viaLayerDisplay_property_selection
-//    }
-//  }
 
   var viaLayerDisplay : CALayer? {
     switch viaLayerDisplay_property_selection {
@@ -639,12 +543,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var frontPads : EBSelection <MergerPadArray> {
-//    get {
-//      return frontPads_property_selection
-//    }
-//  }
-
   var frontPads : MergerPadArray? {
     switch frontPads_property_selection {
     case .empty, .multiple :
@@ -663,12 +561,6 @@ class BoardModel : EBManagedObject,
       return self.frontPadsDisplay_property.prop
     }
   }
-
-//  var frontPadsDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontPadsDisplay_property_selection
-//    }
-//  }
 
   var frontPadsDisplay : CALayer? {
     switch frontPadsDisplay_property_selection {
@@ -689,12 +581,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var backPads : EBSelection <MergerPadArray> {
-//    get {
-//      return backPads_property_selection
-//    }
-//  }
-
   var backPads : MergerPadArray? {
     switch backPads_property_selection {
     case .empty, .multiple :
@@ -713,12 +599,6 @@ class BoardModel : EBManagedObject,
       return self.backPadsDisplay_property.prop
     }
   }
-
-//  var backPadsDisplay : EBSelection <CALayer> {
-//    get {
-//      return backPadsDisplay_property_selection
-//    }
-//  }
 
   var backPadsDisplay : CALayer? {
     switch backPadsDisplay_property_selection {
@@ -739,12 +619,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var boardLimits : EBSelection <MergerBoardLimits> {
-//    get {
-//      return boardLimits_property_selection
-//    }
-//  }
-
   var boardLimits : MergerBoardLimits? {
     switch boardLimits_property_selection {
     case .empty, .multiple :
@@ -763,12 +637,6 @@ class BoardModel : EBManagedObject,
       return self.boardLimitsDisplay_property.prop
     }
   }
-
-//  var boardLimitsDisplay : EBSelection <CALayer> {
-//    get {
-//      return boardLimitsDisplay_property_selection
-//    }
-//  }
 
   var boardLimitsDisplay : CALayer? {
     switch boardLimitsDisplay_property_selection {
@@ -789,12 +657,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var backComponentNameSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return backComponentNameSegments_property_selection
-//    }
-//  }
-
   var backComponentNameSegments : MergerSegmentArray? {
     switch backComponentNameSegments_property_selection {
     case .empty, .multiple :
@@ -813,12 +675,6 @@ class BoardModel : EBManagedObject,
       return self.backComponentNameDisplay_property.prop
     }
   }
-
-//  var backComponentNameDisplay : EBSelection <CALayer> {
-//    get {
-//      return backComponentNameDisplay_property_selection
-//    }
-//  }
 
   var backComponentNameDisplay : CALayer? {
     switch backComponentNameDisplay_property_selection {
@@ -839,12 +695,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var frontComponentNameSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return frontComponentNameSegments_property_selection
-//    }
-//  }
-
   var frontComponentNameSegments : MergerSegmentArray? {
     switch frontComponentNameSegments_property_selection {
     case .empty, .multiple :
@@ -863,12 +713,6 @@ class BoardModel : EBManagedObject,
       return self.frontComponentNameDisplay_property.prop
     }
   }
-
-//  var frontComponentNameDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontComponentNameDisplay_property_selection
-//    }
-//  }
 
   var frontComponentNameDisplay : CALayer? {
     switch frontComponentNameDisplay_property_selection {
@@ -889,12 +733,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var frontComponentValueSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return frontComponentValueSegments_property_selection
-//    }
-//  }
-
   var frontComponentValueSegments : MergerSegmentArray? {
     switch frontComponentValueSegments_property_selection {
     case .empty, .multiple :
@@ -913,12 +751,6 @@ class BoardModel : EBManagedObject,
       return self.frontComponentValueDisplay_property.prop
     }
   }
-
-//  var frontComponentValueDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontComponentValueDisplay_property_selection
-//    }
-//  }
 
   var frontComponentValueDisplay : CALayer? {
     switch frontComponentValueDisplay_property_selection {
@@ -939,12 +771,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var backComponentValueSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return backComponentValueSegments_property_selection
-//    }
-//  }
-
   var backComponentValueSegments : MergerSegmentArray? {
     switch backComponentValueSegments_property_selection {
     case .empty, .multiple :
@@ -963,12 +789,6 @@ class BoardModel : EBManagedObject,
       return self.backComponentValueDisplay_property.prop
     }
   }
-
-//  var backComponentValueDisplay : EBSelection <CALayer> {
-//    get {
-//      return backComponentValueDisplay_property_selection
-//    }
-//  }
 
   var backComponentValueDisplay : CALayer? {
     switch backComponentValueDisplay_property_selection {
@@ -989,12 +809,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var backTrackSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return backTrackSegments_property_selection
-//    }
-//  }
-
   var backTrackSegments : MergerSegmentArray? {
     switch backTrackSegments_property_selection {
     case .empty, .multiple :
@@ -1013,12 +827,6 @@ class BoardModel : EBManagedObject,
       return self.backTracksDisplay_property.prop
     }
   }
-
-//  var backTracksDisplay : EBSelection <CALayer> {
-//    get {
-//      return backTracksDisplay_property_selection
-//    }
-//  }
 
   var backTracksDisplay : CALayer? {
     switch backTracksDisplay_property_selection {
@@ -1039,12 +847,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var frontTrackSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return frontTrackSegments_property_selection
-//    }
-//  }
-
   var frontTrackSegments : MergerSegmentArray? {
     switch frontTrackSegments_property_selection {
     case .empty, .multiple :
@@ -1063,12 +865,6 @@ class BoardModel : EBManagedObject,
       return self.frontTracksDisplay_property.prop
     }
   }
-
-//  var frontTracksDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontTracksDisplay_property_selection
-//    }
-//  }
 
   var frontTracksDisplay : CALayer? {
     switch frontTracksDisplay_property_selection {
@@ -1089,12 +885,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var frontPackagesSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return frontPackagesSegments_property_selection
-//    }
-//  }
-
   var frontPackagesSegments : MergerSegmentArray? {
     switch frontPackagesSegments_property_selection {
     case .empty, .multiple :
@@ -1113,12 +903,6 @@ class BoardModel : EBManagedObject,
       return self.frontPackagesDisplay_property.prop
     }
   }
-
-//  var frontPackagesDisplay : EBSelection <CALayer> {
-//    get {
-//      return frontPackagesDisplay_property_selection
-//    }
-//  }
 
   var frontPackagesDisplay : CALayer? {
     switch frontPackagesDisplay_property_selection {
@@ -1139,12 +923,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var backPackagesSegments : EBSelection <MergerSegmentArray> {
-//    get {
-//      return backPackagesSegments_property_selection
-//    }
-//  }
-
   var backPackagesSegments : MergerSegmentArray? {
     switch backPackagesSegments_property_selection {
     case .empty, .multiple :
@@ -1164,12 +942,6 @@ class BoardModel : EBManagedObject,
     }
   }
 
-//  var backPackagesDisplay : EBSelection <CALayer> {
-//    get {
-//      return backPackagesDisplay_property_selection
-//    }
-//  }
-
   var backPackagesDisplay : CALayer? {
     switch backPackagesDisplay_property_selection {
     case .empty, .multiple :
@@ -1188,12 +960,6 @@ class BoardModel : EBManagedObject,
       return self.modelLayerDisplay_property.prop
     }
   }
-
-//  var modelLayerDisplay : EBSelection <CALayer> {
-//    get {
-//      return modelLayerDisplay_property_selection
-//    }
-//  }
 
   var modelLayerDisplay : CALayer? {
     switch modelLayerDisplay_property_selection {
@@ -6749,13 +6515,17 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
 
   //····················································································································
 
-  private var mSet = Set<MergerBoardInstance> ()
+  private var mSet = Set <MergerBoardInstance> ()
   private var mValue = [MergerBoardInstance] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -6826,15 +6596,11 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
     }
   }
 
-  override var prop : EBSelection < [MergerBoardInstance] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [MergerBoardInstance] > { return .single (mValue) }
 
-  override func setProp (_ value :  [MergerBoardInstance]) { mValue = value }
+  override func setProp (_ inValue : [MergerBoardInstance]) { mValue = inValue }
 
-  var propval : [MergerBoardInstance] { get { return mValue } }
+  var propval : [MergerBoardInstance] { return mValue }
 
   //····················································································································
 
@@ -6971,13 +6737,17 @@ ToManyRelationshipReadWrite_BoardModel_frontLegendTexts, EBSignatureObserverProt
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7010,15 +6780,11 @@ ToManyRelationshipReadWrite_BoardModel_frontLegendTexts, EBSignatureObserverProt
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -7155,13 +6921,17 @@ ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts, EBSignatureObserverProt
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7194,15 +6964,11 @@ ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts, EBSignatureObserverProt
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -7339,13 +7105,17 @@ ToManyRelationshipReadWrite_BoardModel_backLegendTexts, EBSignatureObserverProto
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7378,15 +7148,11 @@ ToManyRelationshipReadWrite_BoardModel_backLegendTexts, EBSignatureObserverProto
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -7523,13 +7289,17 @@ ToManyRelationshipReadWrite_BoardModel_backLayoutTexts, EBSignatureObserverProto
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7562,15 +7332,11 @@ ToManyRelationshipReadWrite_BoardModel_backLayoutTexts, EBSignatureObserverProto
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -7707,13 +7473,17 @@ ToManyRelationshipReadWrite_BoardModel_vias, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private var mSet = Set<BoardModelVia> ()
+  private var mSet = Set <BoardModelVia> ()
   private var mValue = [BoardModelVia] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7744,15 +7514,11 @@ ToManyRelationshipReadWrite_BoardModel_vias, EBSignatureObserverProtocol {
     }
   }
 
-  override var prop : EBSelection < [BoardModelVia] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [BoardModelVia] > { return .single (mValue) }
 
-  override func setProp (_ value :  [BoardModelVia]) { mValue = value }
+  override func setProp (_ inValue : [BoardModelVia]) { mValue = inValue }
 
-  var propval : [BoardModelVia] { get { return mValue } }
+  var propval : [BoardModelVia] { return mValue }
 
   //····················································································································
 
@@ -7889,13 +7655,17 @@ ToManyRelationshipReadWrite_BoardModel_pads, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private var mSet = Set<BoardModelPad> ()
+  private var mSet = Set <BoardModelPad> ()
   private var mValue = [BoardModelPad] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7936,15 +7706,11 @@ ToManyRelationshipReadWrite_BoardModel_pads, EBSignatureObserverProtocol {
     }
   }
 
-  override var prop : EBSelection < [BoardModelPad] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [BoardModelPad] > { return .single (mValue) }
 
-  override func setProp (_ value :  [BoardModelPad]) { mValue = value }
+  override func setProp (_ inValue : [BoardModelPad]) { mValue = inValue }
 
-  var propval : [BoardModelPad] { get { return mValue } }
+  var propval : [BoardModelPad] { return mValue }
 
   //····················································································································
 
@@ -8081,13 +7847,17 @@ ToManyRelationshipReadWrite_BoardModel_backComponentNames, EBSignatureObserverPr
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8120,15 +7890,11 @@ ToManyRelationshipReadWrite_BoardModel_backComponentNames, EBSignatureObserverPr
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -8265,13 +8031,17 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentNames, EBSignatureObserverP
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8304,15 +8074,11 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentNames, EBSignatureObserverP
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -8449,13 +8215,17 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentValues, EBSignatureObserver
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8488,15 +8258,11 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentValues, EBSignatureObserver
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -8633,13 +8399,17 @@ ToManyRelationshipReadWrite_BoardModel_backComponentValues, EBSignatureObserverP
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8672,15 +8442,11 @@ ToManyRelationshipReadWrite_BoardModel_backComponentValues, EBSignatureObserverP
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -8817,13 +8583,17 @@ ToManyRelationshipReadWrite_BoardModel_backTracks, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8856,15 +8626,11 @@ ToManyRelationshipReadWrite_BoardModel_backTracks, EBSignatureObserverProtocol {
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -9001,13 +8767,17 @@ ToManyRelationshipReadWrite_BoardModel_frontTracks, EBSignatureObserverProtocol 
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -9040,15 +8810,11 @@ ToManyRelationshipReadWrite_BoardModel_frontTracks, EBSignatureObserverProtocol 
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -9185,13 +8951,17 @@ ToManyRelationshipReadWrite_BoardModel_frontPackages, EBSignatureObserverProtoco
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -9224,15 +8994,11 @@ ToManyRelationshipReadWrite_BoardModel_frontPackages, EBSignatureObserverProtoco
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 
@@ -9369,13 +9135,17 @@ ToManyRelationshipReadWrite_BoardModel_backPackages, EBSignatureObserverProtocol
 
   //····················································································································
 
-  private var mSet = Set<CanariSegment> ()
+  private var mSet = Set <CanariSegment> ()
   private var mValue = [CanariSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -9408,15 +9178,11 @@ ToManyRelationshipReadWrite_BoardModel_backPackages, EBSignatureObserverProtocol
     }
   }
 
-  override var prop : EBSelection < [CanariSegment] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
 
-  override func setProp (_ value :  [CanariSegment]) { mValue = value }
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
 
-  var propval : [CanariSegment] { get { return mValue } }
+  var propval : [CanariSegment] { return mValue }
 
   //····················································································································
 

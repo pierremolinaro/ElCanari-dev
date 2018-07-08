@@ -37,14 +37,14 @@ final class MergerSegmentArray : EBSimpleClass {
 
   override var description : String {
     get {
-      return "MergerSegmentArray " + String (segmentArray.count)
+      return "MergerSegmentArray " + String (self.segmentArray.count)
     }
   }
 
   //····················································································································
 
   func buildLayer (color inColor : NSColor, display inDisplay : Bool) -> CALayer {
-    return buildLayer (dx:0, dy:0, color:inColor, display:inDisplay)
+    return self.buildLayer (dx:0, dy:0, color:inColor, display:inDisplay)
   }
 
   //····················································································································

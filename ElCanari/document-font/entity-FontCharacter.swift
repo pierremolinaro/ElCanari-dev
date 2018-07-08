@@ -44,12 +44,6 @@ class FontCharacter : EBManagedObject,
     }
   }
 
-//  var characterIsDefined : EBSelection <Bool> {
-//    get {
-//      return characterIsDefined_property_selection
-//    }
-//  }
-
   var characterIsDefined : Bool? {
     switch characterIsDefined_property_selection {
     case .empty, .multiple :
@@ -68,12 +62,6 @@ class FontCharacter : EBManagedObject,
       return self.segmentArrayForDrawing_property.prop
     }
   }
-
-//  var segmentArrayForDrawing : EBSelection <CharacterSegmentListClass> {
-//    get {
-//      return segmentArrayForDrawing_property_selection
-//    }
-//  }
 
   var segmentArrayForDrawing : CharacterSegmentListClass? {
     switch segmentArrayForDrawing_property_selection {
@@ -94,12 +82,6 @@ class FontCharacter : EBManagedObject,
     }
   }
 
-//  var gerberCode : EBSelection <CharacterGerberCodeClass> {
-//    get {
-//      return gerberCode_property_selection
-//    }
-//  }
-
   var gerberCode : CharacterGerberCodeClass? {
     switch gerberCode_property_selection {
     case .empty, .multiple :
@@ -118,12 +100,6 @@ class FontCharacter : EBManagedObject,
       return self.gerberCodeInstructionCountMessage_property.prop
     }
   }
-
-//  var gerberCodeInstructionCountMessage : EBSelection <String> {
-//    get {
-//      return gerberCodeInstructionCountMessage_property_selection
-//    }
-//  }
 
   var gerberCodeInstructionCountMessage : String? {
     switch gerberCodeInstructionCountMessage_property_selection {
@@ -873,13 +849,17 @@ ToManyRelationshipReadWrite_FontCharacter_segments, EBSignatureObserverProtocol 
 
   //····················································································································
 
-  private var mSet = Set<SegmentForFontCharacter> ()
+  private var mSet = Set <SegmentForFontCharacter> ()
   private var mValue = [SegmentForFontCharacter] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
+ //       mSet = Set ()
+ //       for object in mValue {
+ //         mSet.insert (object)
+ //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -912,15 +892,11 @@ ToManyRelationshipReadWrite_FontCharacter_segments, EBSignatureObserverProtocol 
     }
   }
 
-  override var prop : EBSelection < [SegmentForFontCharacter] > {
-    get {
-      return .single (mValue)
-    }
-  }
+  override var prop : EBSelection < [SegmentForFontCharacter] > { return .single (mValue) }
 
-  override func setProp (_ value :  [SegmentForFontCharacter]) { mValue = value }
+  override func setProp (_ inValue : [SegmentForFontCharacter]) { mValue = inValue }
 
-  var propval : [SegmentForFontCharacter] { get { return mValue } }
+  var propval : [SegmentForFontCharacter] { return mValue }
 
   //····················································································································
 
