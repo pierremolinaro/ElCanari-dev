@@ -98,6 +98,35 @@ final class MergerSegmentArray : EBSimpleClass {
 
   //····················································································································
 
+  func add (toApertures ioApertures : inout [String : [String]],
+            dx inDx : Int,
+            dy inDy: Int,
+            horizontalMirror inHorizontalMirror : Bool,
+            boardWidth inBoardWidth : Int) {
+    for segment in self.segmentArray {
+      let x1 = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - segment.x1 - inDx) : (segment.x1 + inDx))
+      let y1 = canariUnitToMilTenth (segment.y1 + inDy)
+      let x2 = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - segment.x2 - inDx) : (segment.x2 + inDx))
+      let y2 = canariUnitToMilTenth (segment.y2 + inDy)
+      let apertureString = "C,\(String(format: "%.4f", canariUnitToInch (segment.width)))"
+      let moveTo = "X\(String(format: "%06d", x1))Y\(String(format: "%06d", y1))D02"
+      let lineTo = "X\(String(format: "%06d", x2))Y\(String(format: "%06d", y2))D01"
+      if let array = ioApertures [apertureString] {
+        var a = array
+        let possibleLastLineTo = "X\(String(format: "%06d", x1))Y\(String(format: "%06d", y1))D01"
+        if possibleLastLineTo != a.last! {
+          a.append (moveTo)
+        }
+        a.append (lineTo)
+        ioApertures [apertureString] = a
+      }else{
+        ioApertures [apertureString] = [moveTo, lineTo]
+      }
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

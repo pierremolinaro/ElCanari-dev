@@ -180,6 +180,143 @@ final class MergerPadArray : EBSimpleClass {
   }
 
   //····················································································································
+
+  func addPads (toApertures ioApertureDictionary : inout [String : [String]],
+                dx inDx : Int,
+                dy inDy: Int,
+                horizontalMirror inHorizontalMirror : Bool,
+                minimumAperture inMinimumAperture : Int,
+                boardWidth inBoardWidth : Int) {
+    for pad in self.padArray {
+      let x : Int = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - pad.x - inDx) : (pad.x + inDx))
+      let y : Int = canariUnitToMilTenth (pad.y + inDy)
+      let widthTenthMil  : Int = canariUnitToMilTenth (pad.width)
+      let heightTenthMil : Int = canariUnitToMilTenth (pad.height)
+      let widthTenthMilF = Double (widthTenthMil)
+      let heightTenthMilF = Double (heightTenthMil)
+      let widthInch  : CGFloat = canariUnitToInch (pad.width)
+      let heightInch : CGFloat = canariUnitToInch (pad.height)
+      switch pad.shape {
+      case .rectangular :
+        if (pad.rotation == 0) || (pad.rotation == 180_000) {
+          let apertureString = "R,\(String (format:"%1.4f", widthInch))X\(String (format:"%1.4f", heightInch))"
+          let flash = "X\(String(format: "%06d", x))Y\(String(format: "%06d", y))D03"
+          if let array = ioApertureDictionary [apertureString] {
+            var a = array
+            a.append (flash)
+            ioApertureDictionary [apertureString] = a
+          }else{
+            ioApertureDictionary [apertureString] = [flash]
+          }
+        }else if (pad.rotation == 90_000) || (pad.rotation == 270_000) {
+          let apertureString = "R,\(String (format:"%1.4f", heightInch))X\(String (format:"%1.4f", widthInch))"
+          let flash = "X\(String(format: "%06d", x))Y\(String(format: "%06d", y))D03"
+          if let array = ioApertureDictionary [apertureString] {
+            var a = array
+            a.append (flash)
+            ioApertureDictionary [apertureString] = a
+           }else{
+            ioApertureDictionary [apertureString] = [flash]
+           }
+        }else{ // Oblique rectangular pad
+          let cosa = cos (canariRotationToRadians (pad.rotation))
+          let sina = sin (canariRotationToRadians (pad.rotation))
+          var currentApertureMilTenth : Int = canariUnitToMilTenth (inMinimumAperture)
+          NSLog ("currentApertureMilTenth \(currentApertureMilTenth)")
+          var width  : Int = widthTenthMil
+          var height : Int = heightTenthMil
+          while (width > 0) && (height > 0) {
+            let hs = CGFloat (width  - currentApertureMilTenth) / 2.0
+            let ws = CGFloat (height - currentApertureMilTenth) / 2.0
+            let p1x : CGFloat = CGFloat (x) + ( hs * cosa - ws * sina)
+            let p1y : CGFloat = CGFloat (y) + ( hs * sina + ws * cosa)
+            let p2x : CGFloat = CGFloat (x) + (-hs * cosa - ws * sina)
+            let p2y : CGFloat = CGFloat (y) + (-hs * sina + ws * cosa)
+            let p3x : CGFloat = CGFloat (x) + (-hs * cosa + ws * sina)
+            let p3y : CGFloat = CGFloat (y) + (-hs * sina - ws * cosa)
+            let p4x : CGFloat = CGFloat (x) + ( hs * cosa + ws * sina)
+            let p4y : CGFloat = CGFloat (y) + ( hs * sina - ws * cosa)
+            var drawings = [String] ()
+            drawings.append ("X\(String(format: "%06d", Int (p1x)))Y\(String(format: "%06d", Int (p1y)))D02") // Move to
+            drawings.append ("X\(String(format: "%06d", Int (p2x)))Y\(String(format: "%06d", Int (p2y)))D01") // Line to
+            drawings.append ("X\(String(format: "%06d", Int (p3x)))Y\(String(format: "%06d", Int (p3y)))D01") // Line to
+            drawings.append ("X\(String(format: "%06d", Int (p4x)))Y\(String(format: "%06d", Int (p4y)))D01") // Line to
+            drawings.append ("X\(String(format: "%06d", Int (p1x)))Y\(String(format: "%06d", Int (p1y)))D01") // Line to
+            let apertureString = "C,\(String(format: "%.4f", CGFloat (currentApertureMilTenth * 100)))"
+            if let array = ioApertureDictionary [apertureString] {
+              ioApertureDictionary [apertureString] = array + drawings
+            }else{
+              ioApertureDictionary [apertureString] = drawings
+            }
+          //--- Prepare for next iteration
+            width  -= currentApertureMilTenth
+            height -= currentApertureMilTenth
+            currentApertureMilTenth = (currentApertureMilTenth * 3) / 2
+          }
+        }
+      case .round :
+        if pad.width < pad.height {
+          let transform = NSAffineTransform ()
+          if inHorizontalMirror {
+            transform.scaleX (by:-1.0, yBy: 1.0)
+          }
+          transform.rotate (byRadians:canariRotationToRadians (pad.rotation))
+          let apertureString = "C,\(String(format: "%.4f", widthInch))"
+          let p1 = transform.transform (NSPoint (x: 0.0,  y:  (heightTenthMilF - widthTenthMilF) / 2.0))
+          let p2 = transform.transform (NSPoint (x: 0.0,  y: -(heightTenthMilF - widthTenthMilF) / 2.0))
+          let p1x = Int (p1.x.rounded ())
+          let p1y = Int (p1.y.rounded ())
+          let p2x = Int (p2.x.rounded ())
+          let p2y = Int (p2.y.rounded ())
+          let moveTo = "X\(String(format: "%06d", x + p1x))Y\(String(format: "%06d", y + p1y))D02"
+          let lineTo = "X\(String(format: "%06d", x + p2x))Y\(String(format: "%06d", y + p2y))D01"
+          if let array = ioApertureDictionary [apertureString] {
+            var a = array
+            a.append (moveTo)
+            a.append (lineTo)
+            ioApertureDictionary [apertureString] = a
+          }else{
+            ioApertureDictionary [apertureString] = [moveTo, lineTo]
+          }
+        }else if pad.width > pad.height {
+          let transform = NSAffineTransform ()
+          if inHorizontalMirror {
+            transform.scaleX (by:-1.0, yBy: 1.0)
+          }
+          transform.rotate (byRadians:canariRotationToRadians (pad.rotation))
+          let apertureString = "C,\(String(format: "%.4f", heightInch))"
+          let p1 = transform.transform (NSPoint (x:  (widthTenthMilF - heightTenthMilF) / 2.0, y:0.0))
+          let p2 = transform.transform (NSPoint (x: -(widthTenthMilF - heightTenthMilF) / 2.0, y:0.0))
+          let p1x = Int (p1.x.rounded ())
+          let p1y = Int (p1.y.rounded ())
+          let p2x = Int (p2.x.rounded ())
+          let p2y = Int (p2.y.rounded ())
+          let moveTo = "X\(String(format: "%06d", x + p1x))Y\(String(format: "%06d", y + p1y))D02"
+          let lineTo = "X\(String(format: "%06d", x + p2x))Y\(String(format: "%06d", y + p2y))D01"
+          if let array = ioApertureDictionary [apertureString] {
+            var a = array
+            a.append (moveTo)
+            a.append (lineTo)
+            ioApertureDictionary [apertureString] = a
+          }else{
+            ioApertureDictionary [apertureString] = [moveTo, lineTo]
+          }
+        }else{ // Circular pad
+          let apertureString = "C,\(String(format: "%.4f", widthInch))"
+          let flash = "X\(String(format: "%06d", x))Y\(String(format: "%06d", y))D03"
+          if let array = ioApertureDictionary [apertureString] {
+            var a = array
+            a.append (flash)
+            ioApertureDictionary [apertureString] = a
+          }else{
+            ioApertureDictionary [apertureString] = [flash]
+          }
+        }
+      }
+    }
+  }
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

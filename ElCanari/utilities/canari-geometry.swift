@@ -37,6 +37,12 @@ func canariUnitToInch (_ inValue : Int) -> CGFloat {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func canariUnitToMilTenth (_ inValue : Int) -> Int {
+  return Int ((CGFloat (inValue) / 228.6).rounded ())
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // L'unité de rotation utilisée dans canari est le 1/1000° [cru = Canari Rotation Unit]
 // 1_000 cru = 1°
 // 90_000 cru = 90°

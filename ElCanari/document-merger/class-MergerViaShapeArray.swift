@@ -94,6 +94,28 @@ final class MergerViaShapeArray : EBSimpleClass {
 
   //····················································································································
 
+  func addPad (toApertures ioApertureDictionary : inout [String : [String]],
+               dx inDx : Int,
+               dy inDy: Int,
+               horizontalMirror inHorizontalMirror : Bool,
+               boardWidth inBoardWidth : Int) {
+    for via in self.viaShapeArray {
+      let apertureString = "C,\(String(format: "%.4f", canariUnitToInch (via.padDiameter)))"
+      let x = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - via.x - inDx) : (via.x + inDx))
+      let y = canariUnitToMilTenth (via.y + inDy)
+      let flash = "X\(String(format: "%06d", x))Y\(String(format: "%06d", y))D03"
+      if let array = ioApertureDictionary [apertureString] {
+        var a = array
+        a.append (flash)
+        ioApertureDictionary [apertureString] = a
+      }else{
+        ioApertureDictionary [apertureString] = [flash]
+      }
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
