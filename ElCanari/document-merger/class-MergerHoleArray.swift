@@ -96,6 +96,20 @@ final class MergerHoleArray : EBSimpleClass {
 
   //····················································································································
 
+  func enterHolesIn (array ioHoleDiameterArray : inout [Int : [(Int, Int)]]) {
+    for hole in self.holeArray {
+      if let array : [(Int, Int)] = ioHoleDiameterArray [hole.holeDiameter] {
+        var a = array
+        a.append ((hole.x, hole.y))
+        ioHoleDiameterArray [hole.holeDiameter] = a
+      }else{
+        ioHoleDiameterArray [hole.holeDiameter] = [(hole.x, hole.y)]
+      }
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

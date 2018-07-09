@@ -31,6 +31,12 @@ func cocoaToCanariUnit (_ inValue : CGFloat) -> Int {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func canariUnitToInch (_ inValue : Int) -> CGFloat {
+  return (CGFloat (inValue) / 2_286_000.0)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // L'unité de rotation utilisée dans canari est le 1/1000° [cru = Canari Rotation Unit]
 // 1_000 cru = 1°
 // 90_000 cru = 90°
