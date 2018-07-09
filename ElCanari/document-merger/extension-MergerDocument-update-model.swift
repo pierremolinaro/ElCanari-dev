@@ -145,6 +145,18 @@ extension MergerDocument {
                         moc.removeManagedObjects (oldArray)
                         updatedBoardModel.backPackages_property.setProp (newArray)
 
+                        newArray = newBoardModel.backLegendLines_property.propval
+                        oldArray = updatedBoardModel.backLegendLines_property.propval
+                        newBoardModel.backLegendLines_property.setProp ([])
+                        moc.removeManagedObjects (oldArray)
+                        updatedBoardModel.backLegendLines_property.setProp (newArray)
+
+                        newArray = newBoardModel.frontLegendLines_property.propval
+                        oldArray = updatedBoardModel.frontLegendLines_property.propval
+                        newBoardModel.frontLegendLines_property.setProp ([])
+                        moc.removeManagedObjects (oldArray)
+                        updatedBoardModel.frontLegendLines_property.setProp (newArray)
+
                         moc.removeManagedObject (newBoardModel)
                       }
                     }else{
@@ -204,9 +216,11 @@ fileprivate class OpenPanelDelegateForUpdatingBoardModels : EBSimpleClass, NSOpe
   //····················································································································
 
   func panel (_ sender: Any, shouldEnable url: URL) -> Bool {
-    let fileName = url.path.lastPathComponent.deletingPathExtension
-    // NSLog ("\(fileName)")
-    return mBoardModelName == fileName
+    let path = url.path
+    let fm = FileManager ()
+    var isDirectory : ObjCBool = false
+    _ = fm.fileExists(atPath: path, isDirectory: &isDirectory)
+    return isDirectory.boolValue || (mBoardModelName == path.lastPathComponent.deletingPathExtension)
   }
 
   //····················································································································

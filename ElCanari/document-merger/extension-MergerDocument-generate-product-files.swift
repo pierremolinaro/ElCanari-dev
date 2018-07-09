@@ -68,6 +68,8 @@ extension MergerDocument {
     var frontLegendTexts = [String] ()
     var backTracks = [String] ()
     var frontTracks = [String] ()
+    var backLegendLines = [String] ()
+    var frontLegendLines = [String] ()
     var vias = [String] ()
     var pads = [NSDictionary] ()
     for board in self.rootObject.boardInstances_property.propval {
@@ -84,6 +86,8 @@ extension MergerDocument {
       myModel?.frontLegendTextsSegments?.add (toArchiveArray: &frontLegendTexts, dx: board.x, dy: board.y)
       myModel?.backTrackSegments?.add (toArchiveArray: &backTracks, dx: board.x, dy: board.y)
       myModel?.frontTrackSegments?.add (toArchiveArray: &frontTracks, dx: board.x, dy: board.y)
+      myModel?.backLegendLinesSegments?.add (toArchiveArray: &backLegendLines, dx: board.x, dy: board.y)
+      myModel?.frontLegendLinesSegments?.add (toArchiveArray: &frontLegendLines, dx: board.x, dy: board.y)
       for via in myModel?.vias_property.propval ?? [] {
         vias.append ("\(via.x) \(via.y) \(via.padDiameter) \(via.holeDiameter)")
       }
@@ -119,6 +123,8 @@ extension MergerDocument {
     archiveDict ["COMPONENT-VALUES-FRONT"] = frontComponentValues
     archiveDict ["PACKAGES-BACK"] = backPackages
     archiveDict ["PACKAGES-FRONT"] = frontPackages
+    archiveDict ["LINES-BACK"] = backLegendLines
+    archiveDict ["LINES-FRONT"] = frontLegendLines
     archiveDict ["PADS"] = pads
     archiveDict ["TEXTS-LAYOUT-BACK"] = backLayoutTexts
     archiveDict ["TEXTS-LAYOUT-FRONT"] = frontLayoutTexts
@@ -219,12 +225,14 @@ extension MergerDocument {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
             myModel?.frontLegendTextsSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            myModel?.frontLegendLinesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
           }
         }
         if product.drawTextsLegendBottomSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
             myModel?.backLegendTextsSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            myModel?.backLegendLinesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
           }
         }
         if product.drawTracksTopSide {

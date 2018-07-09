@@ -265,6 +265,12 @@
 		CFBAFCE51DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAFCE11DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_fonts.swift */; };
 		CFBAFCE61DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_packages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAFCE21DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_packages.swift */; };
 		CFBAFCE71DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAFCE31DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_symbols.swift */; };
+		CFBED92520F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92420F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift */; };
+		CFBED92720F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92620F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift */; };
+		CFBED92920F3BCC20019C316 /* transient-BoardModel-frontLegendLinesLayerDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92820F3BCC20019C316 /* transient-BoardModel-frontLegendLinesLayerDisplay.swift */; };
+		CFBED92B20F3BD400019C316 /* transient-BoardModel-backLegendLinesLayerDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92A20F3BD400019C316 /* transient-BoardModel-backLegendLinesLayerDisplay.swift */; };
+		CFBED92D20F3C16E0019C316 /* transient-MergerBoardInstance-frontLegendLinesLayerDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92C20F3C16E0019C316 /* transient-MergerBoardInstance-frontLegendLinesLayerDisplay.swift */; };
+		CFBED92F20F3C1E50019C316 /* transient-MergerBoardInstance-backLegendLinesLayerDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92E20F3C1E50019C316 /* transient-MergerBoardInstance-backLegendLinesLayerDisplay.swift */; };
 		CFBEE4DD20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBEE4DC20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift */; };
 		CFC129231B44887700B1866D /* file-metadata-dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC129221B44887700B1866D /* file-metadata-dictionary.swift */; };
 		CFC2FEAD20EBEF6100C45CB3 /* extension-MergerDocument-arrange-board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2FEAC20EBEF6100C45CB3 /* extension-MergerDocument-arrange-board.swift */; };
@@ -626,6 +632,12 @@
 		CFBAFCE11DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_fonts.swift"; sourceTree = "<group>"; };
 		CFBAFCE21DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_packages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_packages.swift"; sourceTree = "<group>"; };
 		CFBAFCE31DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_symbols.swift"; sourceTree = "<group>"; };
+		CFBED92420F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backLegendLinesSegments.swift"; sourceTree = "<group>"; };
+		CFBED92620F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontLegendLinesSegments.swift"; sourceTree = "<group>"; };
+		CFBED92820F3BCC20019C316 /* transient-BoardModel-frontLegendLinesLayerDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontLegendLinesLayerDisplay.swift"; sourceTree = "<group>"; };
+		CFBED92A20F3BD400019C316 /* transient-BoardModel-backLegendLinesLayerDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backLegendLinesLayerDisplay.swift"; sourceTree = "<group>"; };
+		CFBED92C20F3C16E0019C316 /* transient-MergerBoardInstance-frontLegendLinesLayerDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerBoardInstance-frontLegendLinesLayerDisplay.swift"; sourceTree = "<group>"; };
+		CFBED92E20F3C1E50019C316 /* transient-MergerBoardInstance-backLegendLinesLayerDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerBoardInstance-backLegendLinesLayerDisplay.swift"; sourceTree = "<group>"; };
 		CFBEE4DC20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-MergerDocument-mBoardModelController.swift"; sourceTree = "<group>"; };
 		CFC129221B44887700B1866D /* file-metadata-dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "file-metadata-dictionary.swift"; sourceTree = "<group>"; };
 		CFC2FEAC20EBEF6100C45CB3 /* extension-MergerDocument-arrange-board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerDocument-arrange-board.swift"; sourceTree = "<group>"; };
@@ -788,6 +800,8 @@
 				CF1069EE20ED5B3C0039CD94 /* transient-BoardModel-backgroundLayerDisplay.swift */,
 				CF51222C20EB7DC3002AAE24 /* transient-BoardModel-backLayoutTextsLayerDisplay.swift */,
 				CFF2653920E689ED00525C0F /* transient-BoardModel-backLayoutTextsSegments.swift */,
+				CFBED92A20F3BD400019C316 /* transient-BoardModel-backLegendLinesLayerDisplay.swift */,
+				CFBED92420F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift */,
 				CF51222620EB774A002AAE24 /* transient-BoardModel-backLegendTextsLayerDisplay.swift */,
 				CFF2653520E687E100525C0F /* transient-BoardModel-backLegendTextsSegments.swift */,
 				CF18947C20EBB96B00B77DCA /* transient-BoardModel-backPackagesDisplay.swift */,
@@ -804,6 +818,8 @@
 				CF7FFAE820E5449300DE60BC /* transient-BoardModel-frontComponentValueSegments.swift */,
 				CF63B3D820EB8F1C009BC140 /* transient-BoardModel-frontLayoutTextsLayerDisplay.swift */,
 				CFF2653120E6863C00525C0F /* transient-BoardModel-frontLayoutTextsSegments.swift */,
+				CFBED92820F3BCC20019C316 /* transient-BoardModel-frontLegendLinesLayerDisplay.swift */,
+				CFBED92620F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift */,
 				CF63B3D920EB8F1C009BC140 /* transient-BoardModel-frontLegendTextsLayerDisplay.swift */,
 				CFF2652D20E6833600525C0F /* transient-BoardModel-frontLegendTextsSegments.swift */,
 				CF18947820EBB88100B77DCA /* transient-BoardModel-frontPackagesDisplay.swift */,
@@ -824,6 +840,7 @@
 				CF18948320EBCD5E00B77DCA /* transient-MergerBoardInstance-backComponentValueDisplay.swift */,
 				CF07AEC920EBDD700034C1EA /* transient-MergerBoardInstance-backgroundLayerDisplay.swift */,
 				CF18948420EBCD5E00B77DCA /* transient-MergerBoardInstance-backLayoutTextsLayerDisplay.swift */,
+				CFBED92E20F3C1E50019C316 /* transient-MergerBoardInstance-backLegendLinesLayerDisplay.swift */,
 				CF18948520EBCD5E00B77DCA /* transient-MergerBoardInstance-backLegendTextsLayerDisplay.swift */,
 				CF18948620EBCD5E00B77DCA /* transient-MergerBoardInstance-backPackagesDisplay.swift */,
 				CF18948720EBCD5E00B77DCA /* transient-MergerBoardInstance-backPadsDisplay.swift */,
@@ -833,6 +850,7 @@
 				CF18948A20EBCD5E00B77DCA /* transient-MergerBoardInstance-frontComponentNameDisplay.swift */,
 				CF18948B20EBCD5E00B77DCA /* transient-MergerBoardInstance-frontComponentValueDisplay.swift */,
 				CF18948C20EBCD5E00B77DCA /* transient-MergerBoardInstance-frontLayoutTextsLayerDisplay.swift */,
+				CFBED92C20F3C16E0019C316 /* transient-MergerBoardInstance-frontLegendLinesLayerDisplay.swift */,
 				CF18948020EBC93300B77DCA /* transient-MergerBoardInstance-frontLegendTextsLayerDisplay.swift */,
 				CF18948D20EBCD5E00B77DCA /* transient-MergerBoardInstance-frontPackagesDisplay.swift */,
 				CFCC4BE820EABEB3006A9CC5 /* transient-MergerBoardInstance-frontPads.swift */,
@@ -1370,6 +1388,7 @@
 			files = (
 				CFC80AA520E6390500C1A156 /* transient-BoardModel-holes.swift in Sources */,
 				CFD5B94C1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift in Sources */,
+				CFBED92B20F3BD400019C316 /* transient-BoardModel-backLegendLinesLayerDisplay.swift in Sources */,
 				CF5A440320F2ACE6000F08F0 /* transient-MergerRoot-boardLimitsLayerDisplay.swift in Sources */,
 				CFF2653320E6863C00525C0F /* transient-BoardModel-frontLayoutTextsSegments.swift in Sources */,
 				CFE652DF1DD4B24D00BAC27A /* transient-CanariLibraryEntry-mStatusImage.swift in Sources */,
@@ -1485,6 +1504,7 @@
 				CF87A96C20F121D80011B9EC /* extension-MergerDocument-generate-product-files.swift in Sources */,
 				CF5599521FDF364400ED5EE6 /* MergerDocument.swift in Sources */,
 				CF21787920EA894B00BBC1C4 /* transient-MergerBoardInstance-instanceRect.swift in Sources */,
+				CFBED92520F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift in Sources */,
 				CF1FB92620E559A40050391E /* transient-BoardModel-backPackagesSegments.swift in Sources */,
 				CF861B181B3F2FF90006BE63 /* action-Preferences-createUserLibraryAction.swift in Sources */,
 				CFEDE5B81B4677C500036ACF /* EBManagedObject.swift in Sources */,
@@ -1513,6 +1533,7 @@
 				CF61726D1B3C4C4F00F3CA82 /* Preferences.swift in Sources */,
 				CF2176A920EA79A100BBC1C4 /* entity-MergerBoardInstance.swift in Sources */,
 				CF58A2D01DD77E7E00146883 /* action-PMFontDocument-resetVersionAndSignatureAction.swift in Sources */,
+				CFBED92920F3BCC20019C316 /* transient-BoardModel-frontLegendLinesLayerDisplay.swift in Sources */,
 				CF6BC0511DE1C53A002D935F /* CanariMenu.swift in Sources */,
 				CF18949E20EBCD5E00B77DCA /* transient-MergerBoardInstance-frontPadsDisplay.swift in Sources */,
 				CF0201F31BFF5AE40033BA42 /* MissingCharacter.swift in Sources */,
@@ -1557,6 +1578,9 @@
 				CFCC4AF31BF2732D00EFB30A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift in Sources */,
 				CF05F5F91C0328DA00AC21D1 /* EBTextObserverView.swift in Sources */,
 				CF18949A20EBCD5E00B77DCA /* transient-MergerBoardInstance-frontComponentNameDisplay.swift in Sources */,
+				CFBED92720F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift in Sources */,
+				CFBED92F20F3C1E50019C316 /* transient-MergerBoardInstance-backLegendLinesLayerDisplay.swift in Sources */,
+				CFBED92D20F3C16E0019C316 /* transient-MergerBoardInstance-frontLegendLinesLayerDisplay.swift in Sources */,
 				CFCC4BE720EAB3E6006A9CC5 /* transient-MergerRoot-boardWidth.swift in Sources */,
 				CF2A48351DD8A9AB009EF897 /* EBDoubleObserverField.swift in Sources */,
 				CF861AA91B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */,

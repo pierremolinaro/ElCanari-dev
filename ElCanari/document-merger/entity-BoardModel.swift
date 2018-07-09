@@ -20,6 +20,10 @@ class BoardModel : EBManagedObject,
   BoardModel_modelLimitWidthUnit,
   BoardModel_instanceCount,
   BoardModel_backgroundLayerDisplay,
+  BoardModel_frontLegendLinesSegments,
+  BoardModel_frontLegendLinesLayerDisplay,
+  BoardModel_backLegendLinesSegments,
+  BoardModel_backLegendLinesLayerDisplay,
   BoardModel_frontLegendTextsSegments,
   BoardModel_frontLegendTextsLayerDisplay,
   BoardModel_frontLayoutTextsSegments,
@@ -260,6 +264,82 @@ class BoardModel : EBManagedObject,
 
   var backgroundLayerDisplay : CALayer? {
     switch backgroundLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontLegendLinesSegments transient property
+  //····················································································································
+
+  var frontLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.frontLegendLinesSegments_property.prop
+    }
+  }
+
+  var frontLegendLinesSegments : MergerSegmentArray? {
+    switch frontLegendLinesSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontLegendLinesLayerDisplay transient property
+  //····················································································································
+
+  var frontLegendLinesLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.frontLegendLinesLayerDisplay_property.prop
+    }
+  }
+
+  var frontLegendLinesLayerDisplay : CALayer? {
+    switch frontLegendLinesLayerDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing backLegendLinesSegments transient property
+  //····················································································································
+
+  var backLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.backLegendLinesSegments_property.prop
+    }
+  }
+
+  var backLegendLinesSegments : MergerSegmentArray? {
+    switch backLegendLinesSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing backLegendLinesLayerDisplay transient property
+  //····················································································································
+
+  var backLegendLinesLayerDisplay_property_selection : EBSelection <CALayer> {
+    get {
+      return self.backLegendLinesLayerDisplay_property.prop
+    }
+  }
+
+  var backLegendLinesLayerDisplay : CALayer? {
+    switch backLegendLinesLayerDisplay_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -981,6 +1061,26 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing frontLegendLines toMany relationship
+  //····················································································································
+
+  var frontLegendLines_property_selection : EBSelection < [CanariSegment] > {
+    get {
+      return self.frontLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing backLegendLines toMany relationship
+  //····················································································································
+
+  var backLegendLines_property_selection : EBSelection < [CanariSegment] > {
+    get {
+      return self.backLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing frontLegendTexts toMany relationship
   //····················································································································
 
@@ -1140,6 +1240,10 @@ class BoardModel : EBManagedObject,
 
   var instanceCount_property = EBTransientProperty_Int ()
   var backgroundLayerDisplay_property = EBTransientProperty_CALayer ()
+  var frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var frontLegendLinesLayerDisplay_property = EBTransientProperty_CALayer ()
+  var backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var backLegendLinesLayerDisplay_property = EBTransientProperty_CALayer ()
   var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
   var frontLegendTextsLayerDisplay_property = EBTransientProperty_CALayer ()
   var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
@@ -1183,6 +1287,8 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   var myInstances_property = ToManyRelationship_BoardModel_myInstances ()
+  var frontLegendLines_property = ToManyRelationship_BoardModel_frontLegendLines ()
+  var backLegendLines_property = ToManyRelationship_BoardModel_backLegendLines ()
   var frontLegendTexts_property = ToManyRelationship_BoardModel_frontLegendTexts ()
   var frontLayoutTexts_property = ToManyRelationship_BoardModel_frontLayoutTexts ()
   var backLegendTexts_property = ToManyRelationship_BoardModel_backLegendTexts ()
@@ -1239,6 +1345,98 @@ class BoardModel : EBManagedObject,
           switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
             return .single (compute_BoardModel_backgroundLayerDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontLegendLinesSegments_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.frontLegendLines_property_selection.kind ()
+        kind &= unwSelf.frontLegendLines_property_selection.kind ()
+        kind &= unwSelf.frontLegendLines_property_selection.kind ()
+        kind &= unwSelf.frontLegendLines_property_selection.kind ()
+        kind &= unwSelf.frontLegendLines_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModel_frontLegendLinesSegments (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontLegendLinesLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = g_Preferences!.mergerColorFrontLegendLines_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontLegendLines_property_selection.kind ()
+        kind &= unwSelf.frontLegendLinesSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (g_Preferences!.mergerColorFrontLegendLines_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendLines_property_selection, unwSelf.frontLegendLinesSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModel_frontLegendLinesLayerDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backLegendLinesSegments_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.backLegendLines_property_selection.kind ()
+        kind &= unwSelf.backLegendLines_property_selection.kind ()
+        kind &= unwSelf.backLegendLines_property_selection.kind ()
+        kind &= unwSelf.backLegendLines_property_selection.kind ()
+        kind &= unwSelf.backLegendLines_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (compute_BoardModel_backLegendLinesSegments (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.backLegendLinesLayerDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = g_Preferences!.mergerColorBackLegendLines_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackLegendLines_property_selection.kind ()
+        kind &= unwSelf.backLegendLinesSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (g_Preferences!.mergerColorBackLegendLines_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendLines_property_selection, unwSelf.backLegendLinesSegments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModel_backLegendLinesLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2093,15 +2291,17 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.frontTracksDisplay_property_selection.kind ()
         kind &= unwSelf.frontPackagesDisplay_property_selection.kind ()
         kind &= unwSelf.backPackagesDisplay_property_selection.kind ()
+        kind &= unwSelf.backLegendLinesLayerDisplay_property_selection.kind ()
+        kind &= unwSelf.frontLegendLinesLayerDisplay_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.backgroundLayerDisplay_property_selection, unwSelf.backLegendTextsLayerDisplay_property_selection, unwSelf.backLayoutTextsLayerDisplay_property_selection, unwSelf.frontLegendTextsLayerDisplay_property_selection, unwSelf.frontLayoutTextsLayerDisplay_property_selection, unwSelf.holeLayerDisplay_property_selection, unwSelf.viaLayerDisplay_property_selection, unwSelf.frontPadsDisplay_property_selection, unwSelf.backPadsDisplay_property_selection, unwSelf.boardLimitsDisplay_property_selection, unwSelf.backComponentNameDisplay_property_selection, unwSelf.frontComponentNameDisplay_property_selection, unwSelf.frontComponentValueDisplay_property_selection, unwSelf.backComponentValueDisplay_property_selection, unwSelf.backTracksDisplay_property_selection, unwSelf.frontTracksDisplay_property_selection, unwSelf.frontPackagesDisplay_property_selection, unwSelf.backPackagesDisplay_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17)) :
-            return .single (compute_BoardModel_modelLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17))
+          switch (unwSelf.backgroundLayerDisplay_property_selection, unwSelf.backLegendTextsLayerDisplay_property_selection, unwSelf.backLayoutTextsLayerDisplay_property_selection, unwSelf.frontLegendTextsLayerDisplay_property_selection, unwSelf.frontLayoutTextsLayerDisplay_property_selection, unwSelf.holeLayerDisplay_property_selection, unwSelf.viaLayerDisplay_property_selection, unwSelf.frontPadsDisplay_property_selection, unwSelf.backPadsDisplay_property_selection, unwSelf.boardLimitsDisplay_property_selection, unwSelf.backComponentNameDisplay_property_selection, unwSelf.frontComponentNameDisplay_property_selection, unwSelf.frontComponentValueDisplay_property_selection, unwSelf.backComponentValueDisplay_property_selection, unwSelf.backTracksDisplay_property_selection, unwSelf.frontTracksDisplay_property_selection, unwSelf.frontPackagesDisplay_property_selection, unwSelf.backPackagesDisplay_property_selection, unwSelf.backLegendLinesLayerDisplay_property_selection, unwSelf.frontLegendLinesLayerDisplay_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19)) :
+            return .single (compute_BoardModel_modelLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19))
           default :
             return .empty
           }
@@ -2115,6 +2315,22 @@ class BoardModel : EBManagedObject,
     g_Preferences?.mergerColorBackground_property.addEBObserver (self.backgroundLayerDisplay_property)
     self.modelWidth_property.addEBObserver (self.backgroundLayerDisplay_property)
     self.modelHeight_property.addEBObserver (self.backgroundLayerDisplay_property)
+    self.frontLegendLines_property.addEBObserverOf_x1 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.addEBObserverOf_y1 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.addEBObserverOf_x2 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.addEBObserverOf_y2 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.addEBObserverOf_width (self.frontLegendLinesSegments_property)
+    g_Preferences?.mergerColorFrontLegendLines_property.addEBObserver (self.frontLegendLinesLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontLegendLines_property.addEBObserver (self.frontLegendLinesLayerDisplay_property)
+    self.frontLegendLinesSegments_property.addEBObserver (self.frontLegendLinesLayerDisplay_property)
+    self.backLegendLines_property.addEBObserverOf_x1 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.addEBObserverOf_y1 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.addEBObserverOf_x2 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.addEBObserverOf_y2 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.addEBObserverOf_width (self.backLegendLinesSegments_property)
+    g_Preferences?.mergerColorBackLegendLines_property.addEBObserver (self.backLegendLinesLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackLegendLines_property.addEBObserver (self.backLegendLinesLayerDisplay_property)
+    self.backLegendLinesSegments_property.addEBObserver (self.backLegendLinesLayerDisplay_property)
     self.frontLegendTexts_property.addEBObserverOf_x1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_y1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_x2 (self.frontLegendTextsSegments_property)
@@ -2275,6 +2491,8 @@ class BoardModel : EBManagedObject,
     self.frontTracksDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.frontPackagesDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.backPackagesDisplay_property.addEBObserver (self.modelLayerDisplay_property)
+    self.backLegendLinesLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
+    self.frontLegendLinesLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
   //--- Install undoers for properties
     self.artworkName_property.undoManager = undoManager ()
     self.name_property.undoManager = undoManager ()
@@ -2287,6 +2505,8 @@ class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property.undoManager = undoManager ()
   //--- Install owner for relationships
     self.myInstances_property.owner = self
+    self.frontLegendLines_property.owner = self
+    self.backLegendLines_property.owner = self
     self.frontLegendTexts_property.owner = self
     self.frontLayoutTexts_property.owner = self
     self.backLegendTexts_property.owner = self
@@ -2312,6 +2532,22 @@ class BoardModel : EBManagedObject,
     g_Preferences?.mergerColorBackground_property.removeEBObserver (self.backgroundLayerDisplay_property)
     self.modelWidth_property.removeEBObserver (self.backgroundLayerDisplay_property)
     self.modelHeight_property.removeEBObserver (self.backgroundLayerDisplay_property)
+    self.frontLegendLines_property.removeEBObserverOf_x1 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.removeEBObserverOf_y1 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.removeEBObserverOf_x2 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.removeEBObserverOf_y2 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.removeEBObserverOf_width (self.frontLegendLinesSegments_property)
+    g_Preferences?.mergerColorFrontLegendLines_property.removeEBObserver (self.frontLegendLinesLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayFrontLegendLines_property.removeEBObserver (self.frontLegendLinesLayerDisplay_property)
+    self.frontLegendLinesSegments_property.removeEBObserver (self.frontLegendLinesLayerDisplay_property)
+    self.backLegendLines_property.removeEBObserverOf_x1 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.removeEBObserverOf_y1 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.removeEBObserverOf_x2 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.removeEBObserverOf_y2 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.removeEBObserverOf_width (self.backLegendLinesSegments_property)
+    g_Preferences?.mergerColorBackLegendLines_property.removeEBObserver (self.backLegendLinesLayerDisplay_property)
+    g_Preferences?.mergerModelViewDisplayBackLegendLines_property.removeEBObserver (self.backLegendLinesLayerDisplay_property)
+    self.backLegendLinesSegments_property.removeEBObserver (self.backLegendLinesLayerDisplay_property)
     self.frontLegendTexts_property.removeEBObserverOf_x1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.removeEBObserverOf_y1 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.removeEBObserverOf_x2 (self.frontLegendTextsSegments_property)
@@ -2472,6 +2708,8 @@ class BoardModel : EBManagedObject,
     self.frontTracksDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.frontPackagesDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.backPackagesDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
+    self.backLegendLinesLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
+    self.frontLegendLinesLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
   }
 
   //····················································································································
@@ -2568,6 +2806,38 @@ class BoardModel : EBManagedObject,
       view:view,
       observerExplorer:&self.backgroundLayerDisplay_property.mObserverExplorer,
       valueExplorer:&self.backgroundLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontLegendLinesSegments",
+      idx:self.frontLegendLinesSegments_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontLegendLinesSegments_property.mObserverExplorer,
+      valueExplorer:&self.frontLegendLinesSegments_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontLegendLinesLayerDisplay",
+      idx:self.frontLegendLinesLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontLegendLinesLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.frontLegendLinesLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backLegendLinesSegments",
+      idx:self.backLegendLinesSegments_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backLegendLinesSegments_property.mObserverExplorer,
+      valueExplorer:&self.backLegendLinesSegments_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "backLegendLinesLayerDisplay",
+      idx:self.backLegendLinesLayerDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backLegendLinesLayerDisplay_property.mObserverExplorer,
+      valueExplorer:&self.backLegendLinesLayerDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "frontLegendTextsSegments",
@@ -2874,6 +3144,20 @@ class BoardModel : EBManagedObject,
       valueExplorer:&myInstances_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
+      "frontLegendLines",
+      idx:frontLegendLines_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&frontLegendLines_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backLegendLines",
+      idx:backLegendLines_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backLegendLines_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
       "frontLegendTexts",
       idx:frontLegendTexts_property.mEasyBindingsObjectIndex,
       y: &y,
@@ -2999,6 +3283,8 @@ class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property.mObserverExplorer = nil
     self.modelLimitWidthUnit_property.mValueExplorer = nil
     self.myInstances_property.mValueExplorer = nil
+    self.frontLegendLines_property.mValueExplorer = nil
+    self.backLegendLines_property.mValueExplorer = nil
     self.frontLegendTexts_property.mValueExplorer = nil
     self.frontLayoutTexts_property.mValueExplorer = nil
     self.backLegendTexts_property.mValueExplorer = nil
@@ -3032,6 +3318,8 @@ class BoardModel : EBManagedObject,
     self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidth")
     self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidthUnit")
     store (managedObjectArray: myInstances_property.propval as NSArray, relationshipName:"myInstances", intoDictionary: ioDictionary) ;
+    store (managedObjectArray: frontLegendLines_property.propval as NSArray, relationshipName:"frontLegendLines", intoDictionary: ioDictionary) ;
+    store (managedObjectArray: backLegendLines_property.propval as NSArray, relationshipName:"backLegendLines", intoDictionary: ioDictionary) ;
     store (managedObjectArray: frontLegendTexts_property.propval as NSArray, relationshipName:"frontLegendTexts", intoDictionary: ioDictionary) ;
     store (managedObjectArray: frontLayoutTexts_property.propval as NSArray, relationshipName:"frontLayoutTexts", intoDictionary: ioDictionary) ;
     store (managedObjectArray: backLegendTexts_property.propval as NSArray, relationshipName:"backLegendTexts", intoDictionary: ioDictionary) ;
@@ -3069,6 +3357,16 @@ class BoardModel : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [MergerBoardInstance])
+    self.frontLegendLines_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "frontLegendLines",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [CanariSegment])
+    self.backLegendLines_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "backLegendLines",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [CanariSegment])
     self.frontLegendTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLegendTexts",
       inDictionary: inDictionary,
@@ -3147,6 +3445,16 @@ class BoardModel : EBManagedObject,
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     self.myInstances_property.setProp ([]) // Set relationships to nil
+    do{
+      let objects = self.frontLegendLines_property.propval
+      self.frontLegendLines_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.backLegendLines_property.propval
+      self.backLegendLines_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
     do{
       let objects = self.frontLegendTexts_property.propval
       self.frontLegendTexts_property.setProp ([])
@@ -3227,6 +3535,8 @@ class BoardModel : EBManagedObject,
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
     self.myInstances_property.setProp ([])
+    self.frontLegendLines_property.setProp ([])
+    self.backLegendLines_property.setProp ([])
     self.frontLegendTexts_property.setProp ([])
     self.frontLayoutTexts_property.setProp ([])
     self.backLegendTexts_property.setProp ([])
@@ -3250,6 +3560,12 @@ class BoardModel : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
     for managedObject : EBManagedObject in self.myInstances_property.propval {
+      objects.append (managedObject)
+    }
+    for managedObject : EBManagedObject in self.frontLegendLines_property.propval {
+      objects.append (managedObject)
+    }
+    for managedObject : EBManagedObject in self.backLegendLines_property.propval {
       objects.append (managedObject)
     }
     for managedObject : EBManagedObject in self.frontLegendTexts_property.propval {
@@ -3927,6 +4243,230 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     for managedObject in inSet {
       for observer in mObserversOf_backgroundLayerDisplay {
         managedObject.backgroundLayerDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontLegendLinesSegments' transient property
+  //····················································································································
+
+  private var mObserversOf_frontLegendLinesSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontLegendLinesSegments.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontLegendLinesSegments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontLegendLinesSegments.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontLegendLinesSegments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontLegendLinesSegments {
+        managedObject.frontLegendLinesSegments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontLegendLinesSegments {
+        managedObject.frontLegendLinesSegments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontLegendLinesLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_frontLegendLinesLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontLegendLinesLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontLegendLinesLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontLegendLinesLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontLegendLinesLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontLegendLinesLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontLegendLinesLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontLegendLinesLayerDisplay_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontLegendLinesLayerDisplay {
+        managedObject.frontLegendLinesLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontLegendLinesLayerDisplay_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontLegendLinesLayerDisplay {
+        managedObject.frontLegendLinesLayerDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backLegendLinesSegments' transient property
+  //····················································································································
+
+  private var mObserversOf_backLegendLinesSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backLegendLinesSegments.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backLegendLinesSegments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backLegendLinesSegments.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backLegendLinesSegments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backLegendLinesSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backLegendLinesSegments {
+        managedObject.backLegendLinesSegments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backLegendLinesSegments {
+        managedObject.backLegendLinesSegments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'backLegendLinesLayerDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_backLegendLinesLayerDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backLegendLinesLayerDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backLegendLinesLayerDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backLegendLinesLayerDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backLegendLinesLayerDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backLegendLinesLayerDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backLegendLinesLayerDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backLegendLinesLayerDisplay_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backLegendLinesLayerDisplay {
+        managedObject.backLegendLinesLayerDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backLegendLinesLayerDisplay_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backLegendLinesLayerDisplay {
+        managedObject.backLegendLinesLayerDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -6053,6 +6593,10 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
       //--- Remove observers of transient properties
         removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
         removeEBObserversOf_backgroundLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontLegendLinesLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backLegendLinesLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendTextsLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedSet)
@@ -6105,6 +6649,10 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
        //--- Add observers of transient properties
         addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
         addEBObserversOf_backgroundLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedSet)
+        addEBObserversOf_frontLegendLinesLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedSet)
+        addEBObserversOf_backLegendLinesLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendTextsLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedSet)
@@ -6234,6 +6782,30 @@ protocol BoardModel_instanceCount : class {
 
 protocol BoardModel_backgroundLayerDisplay : class {
   var backgroundLayerDisplay : CALayer? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontLegendLinesSegments : class {
+  var frontLegendLinesSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontLegendLinesLayerDisplay : class {
+  var frontLegendLinesLayerDisplay : CALayer? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backLegendLinesSegments : class {
+  var backLegendLinesSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backLegendLinesLayerDisplay : class {
+  var backLegendLinesLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -6537,6 +7109,7 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
         removeEBObserversOf_backComponentNameDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentValueDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLayoutTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLegendLinesLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLegendTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPackagesDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPadsDisplay_fromElementsOfSet (removedObjectSet)
@@ -6547,6 +7120,7 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
         removeEBObserversOf_frontComponentNameDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentValueDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLayoutTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLegendLinesLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLegendTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontPackagesDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontPadsDisplay_fromElementsOfSet (removedObjectSet)
@@ -6566,6 +7140,7 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
         addEBObserversOf_backComponentNameDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentValueDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLayoutTextsLayerDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLegendLinesLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLegendTextsLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPackagesDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPadsDisplay_toElementsOfSet (addedObjectSet)
@@ -6576,6 +7151,7 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
         addEBObserversOf_frontComponentNameDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentValueDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLayoutTextsLayerDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLegendLinesLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLegendTextsLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontPackagesDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontPadsDisplay_toElementsOfSet (addedObjectSet)
@@ -6618,6 +7194,366 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
   //····················································································································
 
   func add (_ object : MergerBoardInstance) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: frontLegendLines
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_BoardModel_frontLegendLines : ReadOnlyArrayOf_CanariSegment {
+
+  //····················································································································
+ 
+  func setProp (_ value :  [CanariSegment]) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: frontLegendLines
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_BoardModel_frontLegendLines :
+ToManyRelationshipReadWrite_BoardModel_frontLegendLines, EBSignatureObserverProtocol {
+  weak var owner : BoardModel?
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set <CanariSegment> ()
+  private var mValue = [CanariSegment] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+        }
+        removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : CanariSegment in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+        }
+        addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
+
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
+
+  var propval : [CanariSegment] { return mValue }
+
+  //····················································································································
+
+  func performUndo (_ oldValue : [CanariSegment]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : CanariSegment) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : CanariSegment) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: backLegendLines
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_BoardModel_backLegendLines : ReadOnlyArrayOf_CanariSegment {
+
+  //····················································································································
+ 
+  func setProp (_ value :  [CanariSegment]) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: backLegendLines
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_BoardModel_backLegendLines :
+ToManyRelationshipReadWrite_BoardModel_backLegendLines, EBSignatureObserverProtocol {
+  weak var owner : BoardModel?
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set <CanariSegment> ()
+  private var mValue = [CanariSegment] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+        }
+        removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : CanariSegment in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+        }
+        addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
+
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
+
+  var propval : [CanariSegment] { return mValue }
+
+  //····················································································································
+
+  func performUndo (_ oldValue : [CanariSegment]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : CanariSegment) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : CanariSegment) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)

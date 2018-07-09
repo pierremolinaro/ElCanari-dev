@@ -25,6 +25,7 @@
                 <outlet property="mBoardViewDisplayBackComponenValuesCheckbox" destination="x0k-XF-xQ7" id="zPX-QS-lid"/>
                 <outlet property="mBoardViewDisplayBackComponentNamesCheckbox" destination="IzM-sk-vfQ" id="Ovg-l2-Pe0"/>
                 <outlet property="mBoardViewDisplayBackLayoutTextsCheckbox" destination="5Wo-PP-8Ew" id="qBs-bE-hKb"/>
+                <outlet property="mBoardViewDisplayBackLegendLinesCheckbox" destination="K4R-Ty-b5F" id="8Jc-vu-Twq"/>
                 <outlet property="mBoardViewDisplayBackLegendTextsCheckbox" destination="v7K-3f-Pvc" id="SOX-jW-liv"/>
                 <outlet property="mBoardViewDisplayBackPackagesCheckbox" destination="lBS-3p-hjW" id="s0b-tw-zpc"/>
                 <outlet property="mBoardViewDisplayBackPadsCheckbox" destination="TNM-am-Cnm" id="Lry-hC-c4e"/>
@@ -33,6 +34,7 @@
                 <outlet property="mBoardViewDisplayFrontComponenValuesCheckbox" destination="lwM-GH-FmG" id="Afa-Ak-xTm"/>
                 <outlet property="mBoardViewDisplayFrontComponentNamesCheckbox" destination="UHj-t5-O5j" id="LXZ-uA-tA3"/>
                 <outlet property="mBoardViewDisplayFrontLayoutTextsCheckbox" destination="1o2-8V-MMH" id="Vc8-6h-yAG"/>
+                <outlet property="mBoardViewDisplayFrontLegendLinesCheckbox" destination="iUD-wC-saR" id="PhF-ll-SCr"/>
                 <outlet property="mBoardViewDisplayFrontLegendTextsCheckbox" destination="IYZ-zl-ah2" id="Wjp-rx-aHZ"/>
                 <outlet property="mBoardViewDisplayFrontPackagesCheckbox" destination="tit-ee-lgl" id="Fbr-TE-Spv"/>
                 <outlet property="mBoardViewDisplayFrontPadsCheckbox" destination="Lpy-L0-X2d" id="9Cw-Tg-DKV"/>
@@ -68,6 +70,7 @@
                 <outlet property="mModelViewDisplayBackComponenValuesCheckbox" destination="xL1-nI-6QB" id="BOd-HL-fm2"/>
                 <outlet property="mModelViewDisplayBackComponentNamesCheckbox" destination="36j-pc-QnB" id="3aU-bd-wdE"/>
                 <outlet property="mModelViewDisplayBackLayoutTextsCheckbox" destination="6ih-Nr-vX0" id="F13-Zu-mT2"/>
+                <outlet property="mModelViewDisplayBackLegendLinesCheckbox" destination="Ifu-dt-5dq" id="JE4-pu-4lJ"/>
                 <outlet property="mModelViewDisplayBackLegendTextsCheckbox" destination="diK-UY-X8z" id="6Xw-5R-0cI"/>
                 <outlet property="mModelViewDisplayBackPackagesCheckbox" destination="g0W-li-ool" id="ItX-6D-3N8"/>
                 <outlet property="mModelViewDisplayBackPadsCheckbox" destination="Fwy-mf-ClJ" id="CDP-2b-J2M"/>
@@ -76,6 +79,7 @@
                 <outlet property="mModelViewDisplayFrontComponenValuesCheckbox" destination="dqM-Zd-gjr" id="SgH-BL-18T"/>
                 <outlet property="mModelViewDisplayFrontComponentNamesCheckbox" destination="h4P-gh-2xC" id="JuF-Ls-OgS"/>
                 <outlet property="mModelViewDisplayFrontLayoutTextsCheckbox" destination="cPf-rQ-ge8" id="mH7-QF-JnY"/>
+                <outlet property="mModelViewDisplayFrontLegendLinesCheckbox" destination="etr-un-hgY" id="MLJ-rz-7ka"/>
                 <outlet property="mModelViewDisplayFrontLegendTextsCheckbox" destination="0br-8l-Gqy" id="USf-K5-i6Z"/>
                 <outlet property="mModelViewDisplayFrontPackagesCheckbox" destination="nqO-um-N1O" id="PDr-sJ-aeg"/>
                 <outlet property="mModelViewDisplayFrontPadsCheckbox" destination="5sQ-5V-cU3" id="YhI-22-9tP"/>
@@ -90,6 +94,7 @@
                 <outlet property="mNoModelMessage" destination="AyG-8t-ISk" id="Y33-A1-3m4"/>
                 <outlet property="mOverlapSwitch" destination="GAQ-bH-PUU" id="da2-qI-nAN"/>
                 <outlet property="mPageSegmentedControl" destination="g6K-IS-SQg" id="vW2-0C-BuI"/>
+                <outlet property="mergerViewBackLegendLinesColorWell" destination="ecX-wk-voF" id="0sj-Vq-E5Z"/>
                 <outlet property="mergerViewBackgroundColorWell" destination="eKL-AZ-hB1" id="Q2m-Sy-d3a"/>
                 <outlet property="mergerViewDisplayBackComponentNamesColorWell" destination="fGN-hx-PDV" id="gSK-yy-GHO"/>
                 <outlet property="mergerViewDisplayBackComponentValuesColorWell" destination="v3p-m5-8RF" id="mU2-LL-0lg"/>
@@ -109,6 +114,7 @@
                 <outlet property="mergerViewDisplayHolesColorWell" destination="gvA-rl-bc1" id="TFh-g2-tuu"/>
                 <outlet property="mergerViewDisplayInternalBoardLimitsColorWell" destination="mWj-xo-yYT" id="4zN-9H-sdh"/>
                 <outlet property="mergerViewDisplayViasColorWell" destination="t0u-dX-I6g" id="H3n-W3-USL"/>
+                <outlet property="mergerViewFrontLegendLinesColorWell" destination="yD6-76-QrJ" id="rql-8a-Ar9"/>
                 <outlet property="removeBoardModelButton" destination="9BP-El-GfJ" id="Jfw-Rs-eVE"/>
                 <outlet property="showPrefsForSettingMergerDisplayButton" destination="Y3w-4l-ytx" id="k7k-t5-8J4"/>
                 <outlet property="updateBoardModelButton" destination="1lJ-Hv-DyN" id="dCz-dO-t7U"/>
@@ -822,26 +828,26 @@ AAAAAAEGA
             </connections>
         </menu>
         <customView wantsLayer="YES" misplaced="YES" id="gM7-40-CET" userLabel="View : Display settings" customClass="CanariViewWithBackground" customModule="ElCanari" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="643"/>
+            <rect key="frame" x="0.0" y="0.0" width="240" height="679"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <subviews>
                 <customView misplaced="YES" id="KG5-rN-Y3k">
-                    <rect key="frame" x="0.0" y="-2" width="240" height="645"/>
+                    <rect key="frame" x="0.0" y="-2" width="240" height="681"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <subviews>
                         <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="yde-Z5-dGm">
-                            <rect key="frame" x="0.0" y="-16" width="240" height="661"/>
+                            <rect key="frame" x="0.0" y="-16" width="240" height="697"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" id="FKc-MP-5iw">
-                                <rect key="frame" x="1" y="1" width="223" height="644"/>
+                                <rect key="frame" x="1" y="1" width="223" height="680"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <customView misplaced="YES" id="DvX-Ap-QJ4">
-                                        <rect key="frame" x="0.0" y="39" width="240" height="644"/>
+                                        <rect key="frame" x="0.0" y="75" width="240" height="680"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <button misplaced="YES" id="Lb2-iL-9kP" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="556" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="592" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="hxc-hm-vvZ">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -849,7 +855,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="kyK-0C-dX0" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="556" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="592" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2im-t4-X0i">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -857,7 +863,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="k0o-YH-sUI">
-                                                <rect key="frame" x="130" y="607" width="43" height="17"/>
+                                                <rect key="frame" x="130" y="643" width="43" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Model" id="Cz4-bg-XFG">
                                                     <font key="font" metaFont="smallSystemBold"/>
@@ -866,7 +872,7 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="Dvo-xZ-auq">
-                                                <rect key="frame" x="170" y="607" width="41" height="17"/>
+                                                <rect key="frame" x="170" y="643" width="41" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Board" id="WEa-PX-o58">
                                                     <font key="font" metaFont="smallSystemBold"/>
@@ -875,7 +881,7 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <button misplaced="YES" id="Mkv-dF-f27" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="581" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="617" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="t7s-kb-gmc">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -883,7 +889,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="N3I-RP-vAw" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="581" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="617" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="PX7-W4-179">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -891,7 +897,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="orh-TU-cdx">
-                                                <rect key="frame" x="8" y="584" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="620" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Horizontal Flip" id="Dgv-BD-ozu">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -900,7 +906,7 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="qmD-8X-K57">
-                                                <rect key="frame" x="8" y="559" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="595" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Vertical Flip" id="Cmj-ut-3gD">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -909,12 +915,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="gvA-rl-bc1" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="532" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="568" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="JJC-uY-o75" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="531" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="567" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="ovS-sA-Ci1">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -922,7 +928,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="iB8-zj-oDI" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="531" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="567" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Lh5-nt-0aD">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -930,7 +936,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="OcW-1L-wvs">
-                                                <rect key="frame" x="8" y="534" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="570" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Holes" id="pJi-kH-sVT">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -939,12 +945,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="t0u-dX-I6g" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="507" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="543" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="3IY-gv-3yS" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="506" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="542" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="7pA-xm-1aA">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -952,7 +958,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="tEs-5D-1uo" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="506" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="542" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="VMT-On-Nre">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -960,7 +966,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="2bW-PK-IX8">
-                                                <rect key="frame" x="8" y="509" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="545" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Vias" id="vmK-Ut-xhj">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -969,12 +975,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="jnP-wg-3Bg" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="482" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="518" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="3zZ-3x-Hia" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="481" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="517" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="qyF-qc-jKW">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -982,7 +988,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="9ag-o1-Sb3" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="481" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="517" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="KZ1-db-FPE">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -990,7 +996,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="wiC-9M-LMo">
-                                                <rect key="frame" x="8" y="484" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="520" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Board Limits" id="Jw2-28-rNt">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -999,12 +1005,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="mWj-xo-yYT" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="457" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="493" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="OE6-bc-h1T" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="456" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="492" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="DUL-2n-jXM">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1012,12 +1018,12 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <colorWell misplaced="YES" id="eKL-AZ-hB1" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="432" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="468" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="yFG-AD-aWj">
-                                                <rect key="frame" x="34" y="410" width="187" height="17"/>
+                                                <rect key="frame" x="34" y="446" width="187" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Front" id="it3-xj-CVY">
                                                     <font key="font" metaFont="smallSystemBold"/>
@@ -1026,12 +1032,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="SFa-uQ-gOD" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="384" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="420" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="Lpy-L0-X2d" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="383" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="419" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="sIl-GX-Lwz">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1039,7 +1045,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="5sQ-5V-cU3" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="383" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="419" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="WlQ-WA-fHR">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1047,7 +1053,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="XbV-lS-Lq0">
-                                                <rect key="frame" x="8" y="386" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="422" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Pads" id="phH-4j-FWw">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1056,7 +1062,7 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="6gD-Sb-56H">
-                                                <rect key="frame" x="8" y="434" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="470" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Background" id="aHi-D1-kgf">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1065,12 +1071,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="6fz-V5-TeI" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="359" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="395" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="UHj-t5-O5j" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="358" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="394" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="b12-Q8-qvB">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1078,7 +1084,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="h4P-gh-2xC" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="358" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="394" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2ah-LQ-sUC">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1086,7 +1092,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="Lde-ka-NSb">
-                                                <rect key="frame" x="8" y="361" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="397" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Names" id="YlX-1A-pMq">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1095,12 +1101,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="uE3-b7-jUT" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="334" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="370" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="lwM-GH-FmG" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="333" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="369" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="AJL-5F-RHg">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1108,7 +1114,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="dqM-Zd-gjr" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="333" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="369" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Ezg-Oh-f1Y">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1116,7 +1122,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="pc4-Is-qzB">
-                                                <rect key="frame" x="8" y="336" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="372" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Values" id="6O8-3v-Zm3">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1125,12 +1131,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="qlh-u2-vH8" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="309" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="345" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="tit-ee-lgl" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="308" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="344" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Gy5-lk-6C3">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1138,7 +1144,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="nqO-um-N1O" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="308" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="344" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="hDI-uk-t2d">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1146,7 +1152,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="iYg-AX-3eU">
-                                                <rect key="frame" x="8" y="311" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="347" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Packages" id="mUU-Tc-m3f">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1155,12 +1161,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="aIk-ac-M9p" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="284" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="320" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="IYZ-zl-ah2" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="283" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="319" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="hBm-7s-6EF">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1168,7 +1174,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="0br-8l-Gqy" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="283" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="319" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="THU-3G-ohh">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1176,7 +1182,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="7yl-Xl-NVy">
-                                                <rect key="frame" x="8" y="286" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="322" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Legend Texts" id="vca-3x-SRE">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1184,13 +1190,43 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <colorWell misplaced="YES" id="yD6-76-QrJ" customClass="EBColorWell">
+                                                <rect key="frame" x="157" y="295" width="36" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </colorWell>
+                                            <button misplaced="YES" id="iUD-wC-saR" customClass="EBSwitch">
+                                                <rect key="frame" x="197" y="294" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Gfr-ow-NXo">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button misplaced="YES" id="etr-un-hgY" customClass="EBSwitch">
+                                                <rect key="frame" x="129" y="294" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="vma-da-Ggp">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                            </button>
+                                            <textField verticalHuggingPriority="750" misplaced="YES" id="t1J-Uv-V0O">
+                                                <rect key="frame" x="8" y="297" width="118" height="18"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Legend Lines" id="4HI-K2-klv">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                             <colorWell misplaced="YES" id="Vg5-Qk-Ukz" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="259" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="270" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="1o2-8V-MMH" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="258" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="269" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="bU3-Ad-bNc">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1198,7 +1234,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="cPf-rQ-ge8" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="258" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="269" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="a0B-Sp-PsL">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1206,7 +1242,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="u6N-Wg-vI0">
-                                                <rect key="frame" x="8" y="261" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="272" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Layout Texts" id="LlK-1W-bD4">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1215,12 +1251,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="XuA-x0-XB4" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="234" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="245" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="5TE-je-FFd" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="233" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="244" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="eZq-aP-N7b">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1228,7 +1264,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="kfZ-nC-Wi7" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="233" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="244" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="ydy-PV-xbi">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1236,7 +1272,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="e8n-Z2-swR">
-                                                <rect key="frame" x="8" y="236" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="247" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Tracks" id="gyV-YF-4mN">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1245,12 +1281,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="ZoF-7Z-hpc" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="184" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="195" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="TNM-am-Cnm" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="183" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="194" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Nhw-1Z-gMk">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1258,7 +1294,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="Fwy-mf-ClJ" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="183" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="194" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="eyI-JG-PcI">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1266,7 +1302,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="Kij-yy-vWY">
-                                                <rect key="frame" x="8" y="186" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="197" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Pads" id="vp6-8p-S7e">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1275,12 +1311,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="fGN-hx-PDV" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="159" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="170" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="IzM-sk-vfQ" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="158" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="169" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="lt5-LL-uDC">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1288,7 +1324,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="36j-pc-QnB" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="158" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="169" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="4cU-g2-d9B">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1296,7 +1332,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="vUx-C7-nEN">
-                                                <rect key="frame" x="8" y="161" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="172" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Names" id="LBe-UC-5uI">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1305,12 +1341,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="v3p-m5-8RF" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="134" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="145" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="x0k-XF-xQ7" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="133" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="144" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="nsN-1E-N8d">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1318,7 +1354,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="xL1-nI-6QB" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="133" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="144" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="iry-Wz-0z7">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1326,7 +1362,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="SYA-3a-h29">
-                                                <rect key="frame" x="8" y="136" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="147" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Values" id="CbF-jF-Efq">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1335,12 +1371,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="UyW-0j-DwU" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="109" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="120" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="lBS-3p-hjW" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="108" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="119" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="13M-Co-AmU">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1348,7 +1384,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="g0W-li-ool" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="108" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="119" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="FXt-uh-EGg">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1356,7 +1392,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="xFL-Th-Wex">
-                                                <rect key="frame" x="8" y="111" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="122" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Packages" id="mhl-FV-6ND">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1365,12 +1401,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="OiK-jm-MBJ" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="84" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="95" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="v7K-3f-Pvc" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="83" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="94" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="kys-pp-d9k">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1378,7 +1414,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="diK-UY-X8z" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="83" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="94" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="nSo-qM-7cd">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1386,7 +1422,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="Hsw-ZU-6OT">
-                                                <rect key="frame" x="8" y="86" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="97" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Legend Texts" id="psJ-mf-UKJ">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1394,13 +1430,43 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <colorWell misplaced="YES" id="ecX-wk-voF" customClass="EBColorWell">
+                                                <rect key="frame" x="157" y="70" width="36" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </colorWell>
+                                            <button misplaced="YES" id="K4R-Ty-b5F" customClass="EBSwitch">
+                                                <rect key="frame" x="197" y="69" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="fOj-KH-kfa">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button misplaced="YES" id="Ifu-dt-5dq" customClass="EBSwitch">
+                                                <rect key="frame" x="129" y="69" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="HYJ-xU-hzm">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                            </button>
+                                            <textField verticalHuggingPriority="750" misplaced="YES" id="gbd-fe-aUV">
+                                                <rect key="frame" x="8" y="72" width="118" height="18"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Legend Lines" id="bJL-n0-u5h">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                             <colorWell misplaced="YES" id="SwI-f7-6Q4" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="59" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="45" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="5Wo-PP-8Ew" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="58" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="44" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="rv0-MP-a6Q">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1408,7 +1474,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="6ih-Nr-vX0" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="58" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="44" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="mym-2s-7lV">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1416,7 +1482,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="jJf-XP-dga">
-                                                <rect key="frame" x="8" y="61" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="47" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Layout Texts" id="R8K-zS-mvn">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1425,12 +1491,12 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <colorWell misplaced="YES" id="8oS-Ca-nR2" customClass="EBColorWell">
-                                                <rect key="frame" x="157" y="34" width="36" height="22"/>
+                                                <rect key="frame" x="157" y="20" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
                                             <button misplaced="YES" id="FNp-Lr-YjW" customClass="EBSwitch">
-                                                <rect key="frame" x="197" y="33" width="24" height="24"/>
+                                                <rect key="frame" x="197" y="19" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Dov-a8-Dy0">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1438,7 +1504,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <button misplaced="YES" id="NrV-vx-bxw" customClass="EBSwitch">
-                                                <rect key="frame" x="129" y="33" width="24" height="24"/>
+                                                <rect key="frame" x="129" y="19" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="NmW-bE-IiL">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1446,7 +1512,7 @@ AAAAAAEGA
                                                 </buttonCell>
                                             </button>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="Jdl-Af-VxD">
-                                                <rect key="frame" x="8" y="36" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="22" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Tracks" id="7bT-IW-LrH">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1455,7 +1521,7 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="OGZ-J8-QhS">
-                                                <rect key="frame" x="34" y="210" width="187" height="17"/>
+                                                <rect key="frame" x="34" y="221" width="187" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Back" id="UmL-6t-gBf">
                                                     <font key="font" metaFont="smallSystemBold"/>
@@ -1464,7 +1530,7 @@ AAAAAAEGA
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" misplaced="YES" id="Bpm-6R-tOi">
-                                                <rect key="frame" x="8" y="458" width="118" height="18"/>
+                                                <rect key="frame" x="8" y="494" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Internal Board Limits" id="hp7-9l-DZl">
                                                     <font key="font" metaFont="smallSystem"/>
@@ -1478,18 +1544,18 @@ AAAAAAEGA
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </clipView>
                             <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="8ym-ed-EAm">
-                                <rect key="frame" x="1" y="645" width="223" height="15"/>
+                                <rect key="frame" x="1" y="681" width="223" height="15"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
-                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="YoT-bf-vnS">
-                                <rect key="frame" x="224" y="1" width="15" height="644"/>
+                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="YoT-bf-vnS">
+                                <rect key="frame" x="224" y="1" width="15" height="680"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
                     </subviews>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="-290" y="560.5"/>
+            <point key="canvasLocation" x="-290" y="543.5"/>
         </customView>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="reL-uK-SPG" userLabel="Panel : Insert Array of Boards" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES"/>

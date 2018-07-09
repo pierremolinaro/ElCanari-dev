@@ -29,7 +29,9 @@ func compute_BoardModel_modelLayerDisplay (
        _ self_backTracksDisplay : CALayer, 
        _ self_frontTracksDisplay : CALayer,
        _ self_frontPackagesDisplay : CALayer,
-       _ self_backPackagesDisplay : CALayer
+       _ self_backPackagesDisplay : CALayer,
+       _ self_backLegendLinesLayerDisplay : CALayer,
+       _ self_frontLegendLinesLayerDisplay : CALayer
 ) -> CALayer {
 //--- START OF USER ZONE 2
   let result = CALayer ()
@@ -41,10 +43,12 @@ func compute_BoardModel_modelLayerDisplay (
     self_backLegendTextsLayerDisplay,
     self_backComponentNameDisplay,
     self_backComponentValueDisplay,
+    self_backLegendLinesLayerDisplay,
     self_backPadsDisplay,
     self_frontLayoutTextsLayerDisplay,
     self_frontTracksDisplay,
     self_frontLegendTextsLayerDisplay,
+    self_frontLegendLinesLayerDisplay,
     self_frontComponentNameDisplay,
     self_frontComponentValueDisplay,
     self_frontPackagesDisplay,

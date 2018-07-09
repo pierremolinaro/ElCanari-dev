@@ -13,7 +13,7 @@ import Cocoa
 
 let ARTWORK_LEGACY_ENTITY_NAME_DICTIONARY : [String : String] = [ // used in import-legacy-document.swift
   "ArtworkFileGenerationParameters" : "ArtworkFileGenerationParameters",
-  "ArtworkRootEntity" : "ArtworkRootEntity",
+  "ArtworkRootEntity" : "ArtworkRoot",
   "ExcellonDrillDataWithSeparateToolListFileEntity" : "", // Empty string : no entity in El Canari Document
   "ExcellonDrillDataEntity" : ""
 ]

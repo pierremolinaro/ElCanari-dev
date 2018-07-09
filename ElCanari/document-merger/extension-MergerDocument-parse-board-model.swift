@@ -207,6 +207,34 @@ extension MergerDocument {
       viaEntities.append (via)
     }
     boardModel.vias_property.setProp (viaEntities)
+  //--- Back Legend texts
+    var backLegendLinesEntities = [CanariSegment] ()
+    let backLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-BACK", &errorArray)
+    for str in backLegendLines {
+      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1 = ints [0]
+      segment.y1 = ints [1]
+      segment.x2 = ints [2]
+      segment.y2 = ints [3]
+      segment.width = ints [4]
+      backLegendLinesEntities.append (segment)
+    }
+    boardModel.backLegendLines_property.setProp (backLegendLinesEntities)
+  //--- Front Legend texts
+    var frontLegendLinesEntities = [CanariSegment] ()
+    let frontLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-FRONT", &errorArray)
+    for str in frontLegendLines {
+      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1 = ints [0]
+      segment.y1 = ints [1]
+      segment.x2 = ints [2]
+      segment.y2 = ints [3]
+      segment.width = ints [4]
+      frontLegendLinesEntities.append (segment)
+    }
+    boardModel.frontLegendLines_property.setProp (frontLegendLinesEntities)
   //--- Front Layout texts
     var frontLayoutTextEntities = [CanariSegment] ()
     let frontLayoutTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LAYOUT-FRONT", &errorArray)

@@ -479,6 +479,44 @@ var g_Preferences : Preferences? = nil
   }
 
   //····················································································································
+  //   Accessing mergerModelViewDisplayFrontLegendLines stored property
+  //····················································································································
+
+  var mergerModelViewDisplayFrontLegendLines : Bool {
+    get {
+      return self.mergerModelViewDisplayFrontLegendLines_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayFrontLegendLines_property.setProp (newValue)
+    }
+  }
+
+  var mergerModelViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayFrontLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerModelViewDisplayBackLegendLines stored property
+  //····················································································································
+
+  var mergerModelViewDisplayBackLegendLines : Bool {
+    get {
+      return self.mergerModelViewDisplayBackLegendLines_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayBackLegendLines_property.setProp (newValue)
+    }
+  }
+
+  var mergerModelViewDisplayBackLegendLines_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayBackLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing mergerBoardViewHorizontalFlip stored property
   //····················································································································
 
@@ -859,6 +897,44 @@ var g_Preferences : Preferences? = nil
   }
 
   //····················································································································
+  //   Accessing mergerBoardViewDisplayFrontLegendLines stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLegendLines : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontLegendLines_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontLegendLines_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerBoardViewDisplayBackLegendLines stored property
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLegendLines : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackLegendLines_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackLegendLines_property.setProp (newValue)
+    }
+  }
+
+  var mergerBoardViewDisplayBackLegendLines_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing mergerColorHoles stored property
   //····················································································································
 
@@ -1197,6 +1273,44 @@ var g_Preferences : Preferences? = nil
   var mergerColorBackLayoutTexts_property_selection : EBSelection <NSColor> {
     get {
       return self.mergerColorBackLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorFrontLegendLines stored property
+  //····················································································································
+
+  var mergerColorFrontLegendLines : NSColor {
+    get {
+      return self.mergerColorFrontLegendLines_property.propval
+    }
+    set {
+      self.mergerColorFrontLegendLines_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorFrontLegendLines_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing mergerColorBackLegendLines stored property
+  //····················································································································
+
+  var mergerColorBackLegendLines : NSColor {
+    get {
+      return self.mergerColorBackLegendLines_property.propval
+    }
+    set {
+      self.mergerColorBackLegendLines_property.setProp (newValue)
+    }
+  }
+
+  var mergerColorBackLegendLines_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackLegendLines_property.prop
     }
   }
 
@@ -2749,6 +2863,8 @@ var g_Preferences : Preferences? = nil
   var mergerModelViewDisplayBackPackages_property = EBStoredProperty_Bool (false)
   var mergerModelViewDisplayBackTracks_property = EBStoredProperty_Bool (false)
   var mergerModelViewDisplayBackLayoutTexts_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayFrontLegendLines_property = EBStoredProperty_Bool (false)
+  var mergerModelViewDisplayBackLegendLines_property = EBStoredProperty_Bool (true)
   var mergerBoardViewHorizontalFlip_property = EBStoredProperty_Bool (false)
   var mergerBoardViewVerticalFlip_property = EBStoredProperty_Bool (false)
   var mergerBoardViewDisplayHoles_property = EBStoredProperty_Bool (true)
@@ -2769,6 +2885,8 @@ var g_Preferences : Preferences? = nil
   var mergerBoardViewDisplayBackPackages_property = EBStoredProperty_Bool (false)
   var mergerBoardViewDisplayBackTracks_property = EBStoredProperty_Bool (false)
   var mergerBoardViewDisplayBackLayoutTexts_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayFrontLegendLines_property = EBStoredProperty_Bool (false)
+  var mergerBoardViewDisplayBackLegendLines_property = EBStoredProperty_Bool (true)
   var mergerColorHoles_property = EBStoredProperty_NSColor (NSColor.white)
   var mergerColorVias_property = EBStoredProperty_NSColor (NSColor.red)
   var mergerColorFrontPads_property = EBStoredProperty_NSColor (NSColor.brown)
@@ -2787,6 +2905,8 @@ var g_Preferences : Preferences? = nil
   var mergerColorBackPackages_property = EBStoredProperty_NSColor (NSColor.gray)
   var mergerColorBackTracks_property = EBStoredProperty_NSColor (NSColor.green)
   var mergerColorBackLayoutTexts_property = EBStoredProperty_NSColor (NSColor.green)
+  var mergerColorFrontLegendLines_property = EBStoredProperty_NSColor (NSColor.gray)
+  var mergerColorBackLegendLines_property = EBStoredProperty_NSColor (NSColor.green)
   var mergerColorBackground_property = EBStoredProperty_NSColor (NSColor.lightGray)
   var errorMessageColor_property = EBStoredProperty_NSColor (NSColor.red)
   var warningMessageColor_property = EBStoredProperty_NSColor (NSColor.orange)
@@ -2916,6 +3036,8 @@ var g_Preferences : Preferences? = nil
     self.mergerModelViewDisplayBackPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackPackages")
     self.mergerModelViewDisplayBackTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackTracks")
     self.mergerModelViewDisplayBackLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackLayoutTexts")
+    self.mergerModelViewDisplayFrontLegendLines_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontLegendLines")
+    self.mergerModelViewDisplayBackLegendLines_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackLegendLines")
     self.mergerBoardViewHorizontalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewHorizontalFlip")
     self.mergerBoardViewVerticalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewVerticalFlip")
     self.mergerBoardViewDisplayHoles_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayHoles")
@@ -2936,6 +3058,8 @@ var g_Preferences : Preferences? = nil
     self.mergerBoardViewDisplayBackPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackPackages")
     self.mergerBoardViewDisplayBackTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackTracks")
     self.mergerBoardViewDisplayBackLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackLayoutTexts")
+    self.mergerBoardViewDisplayFrontLegendLines_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontLegendLines")
+    self.mergerBoardViewDisplayBackLegendLines_property.readInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackLegendLines")
     self.mergerColorHoles_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorHoles")
     self.mergerColorVias_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorVias")
     self.mergerColorFrontPads_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontPads")
@@ -2954,6 +3078,8 @@ var g_Preferences : Preferences? = nil
     self.mergerColorBackPackages_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackPackages")
     self.mergerColorBackTracks_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackTracks")
     self.mergerColorBackLayoutTexts_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackLayoutTexts")
+    self.mergerColorFrontLegendLines_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorFrontLegendLines")
+    self.mergerColorBackLegendLines_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackLegendLines")
     self.mergerColorBackground_property.readInPreferencesWithKey (inKey:"Preferences:mergerColorBackground")
     self.errorMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
     self.warningMessageColor_property.readInPreferencesWithKey (inKey:"Preferences:warningMessageColor")
@@ -3719,6 +3845,8 @@ var g_Preferences : Preferences? = nil
     self.mergerModelViewDisplayBackPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackPackages")
     self.mergerModelViewDisplayBackTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackTracks")
     self.mergerModelViewDisplayBackLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackLayoutTexts")
+    self.mergerModelViewDisplayFrontLegendLines_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayFrontLegendLines")
+    self.mergerModelViewDisplayBackLegendLines_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayBackLegendLines")
     self.mergerBoardViewHorizontalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewHorizontalFlip")
     self.mergerBoardViewVerticalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewVerticalFlip")
     self.mergerBoardViewDisplayHoles_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayHoles")
@@ -3739,6 +3867,8 @@ var g_Preferences : Preferences? = nil
     self.mergerBoardViewDisplayBackPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackPackages")
     self.mergerBoardViewDisplayBackTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackTracks")
     self.mergerBoardViewDisplayBackLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackLayoutTexts")
+    self.mergerBoardViewDisplayFrontLegendLines_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayFrontLegendLines")
+    self.mergerBoardViewDisplayBackLegendLines_property.storeInPreferencesWithKey (inKey:"Preferences:mergerBoardViewDisplayBackLegendLines")
     self.mergerColorHoles_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorHoles")
     self.mergerColorVias_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorVias")
     self.mergerColorFrontPads_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontPads")
@@ -3757,6 +3887,8 @@ var g_Preferences : Preferences? = nil
     self.mergerColorBackPackages_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackPackages")
     self.mergerColorBackTracks_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackTracks")
     self.mergerColorBackLayoutTexts_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackLayoutTexts")
+    self.mergerColorFrontLegendLines_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorFrontLegendLines")
+    self.mergerColorBackLegendLines_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackLegendLines")
     self.mergerColorBackground_property.storeInPreferencesWithKey (inKey:"Preferences:mergerColorBackground")
     self.errorMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:errorMessageColor")
     self.warningMessageColor_property.storeInPreferencesWithKey (inKey:"Preferences:warningMessageColor")

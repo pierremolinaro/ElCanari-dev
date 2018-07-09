@@ -103,6 +103,36 @@ entity BoardModel {
   transient CALayer backgroundLayerDisplay
      dependsFrom prefs.mergerColorBackground, self.modelWidth, self.modelHeight ;
 
+#--- Front Legend Lines
+  toMany @cascading CanariSegment frontLegendLines ;
+
+  transient MergerSegmentArray frontLegendLinesSegments dependsFrom
+    self.frontLegendLines.all.x1, self.frontLegendLines.all.y1,
+    self.frontLegendLines.all.x2, self.frontLegendLines.all.y2,
+    self.frontLegendLines.all.width
+  ;
+
+  transient CALayer frontLegendLinesLayerDisplay dependsFrom
+    prefs.mergerColorFrontLegendLines,
+    prefs.mergerModelViewDisplayFrontLegendLines,
+    self.frontLegendLinesSegments
+  ;
+
+#--- Back Legend Lines
+  toMany @cascading CanariSegment backLegendLines ;
+
+  transient MergerSegmentArray backLegendLinesSegments dependsFrom
+    self.backLegendLines.all.x1, self.backLegendLines.all.y1,
+    self.backLegendLines.all.x2, self.backLegendLines.all.y2,
+    self.backLegendLines.all.width
+  ;
+
+  transient CALayer backLegendLinesLayerDisplay dependsFrom
+    prefs.mergerColorBackLegendLines,
+    prefs.mergerModelViewDisplayBackLegendLines,
+    self.backLegendLinesSegments
+  ;
+
 #--- Front Legend Texts
   toMany @cascading CanariSegment frontLegendTexts ;
 
@@ -112,8 +142,11 @@ entity BoardModel {
     self.frontLegendTexts.all.width
   ;
 
-  transient CALayer frontLegendTextsLayerDisplay
-     dependsFrom prefs.mergerColorFrontLegendTexts, prefs.mergerModelViewDisplayFrontLegendTexts, self.frontLegendTextsSegments ;
+  transient CALayer frontLegendTextsLayerDisplay dependsFrom
+    prefs.mergerColorFrontLegendTexts,
+    prefs.mergerModelViewDisplayFrontLegendTexts,
+    self.frontLegendTextsSegments
+  ;
 
 #--- Front Layout Texts
   toMany @cascading CanariSegment frontLayoutTexts ;
@@ -310,7 +343,9 @@ entity BoardModel {
     self.backTracksDisplay,
     self.frontTracksDisplay,
     self.frontPackagesDisplay,
-    self.backPackagesDisplay
+    self.backPackagesDisplay,
+    self.backLegendLinesLayerDisplay,
+    self.frontLegendLinesLayerDisplay
   ;
 }
 
@@ -331,6 +366,16 @@ entity MergerBoardInstance {
 
 #--- Background
   transient CALayer backgroundLayerDisplay dependsFrom prefs.mergerColorBackground, self.instanceRect ;
+
+  transient CALayer backLegendLinesLayerDisplay dependsFrom
+     self.x, self.y,
+     prefs.mergerColorBackLegendLines, prefs.mergerBoardViewDisplayBackLegendLines,
+     self.myModel.one.backLegendLinesSegments ;
+
+  transient CALayer frontLegendLinesLayerDisplay dependsFrom
+     self.x, self.y,
+     prefs.mergerColorFrontLegendLines, prefs.mergerBoardViewDisplayFrontLegendLines,
+     self.myModel.one.frontLegendLinesSegments ;
 
   transient CALayer frontLegendTextsLayerDisplay
      dependsFrom self.x, self.y, prefs.mergerColorFrontLegendTexts, prefs.mergerBoardViewDisplayFrontLegendTexts, self.myModel.one.frontLegendTextsSegments ;
@@ -401,7 +446,9 @@ entity MergerBoardInstance {
     self.backTracksDisplay,
     self.frontTracksDisplay,
     self.frontPackagesDisplay,
-    self.backPackagesDisplay
+    self.backPackagesDisplay,
+    self.backLegendLinesLayerDisplay,
+    self.frontLegendLinesLayerDisplay
   ;
 }
 
@@ -481,6 +528,8 @@ document MergerDocument root MergerRoot {
   outlet EBSwitch mModelViewDisplayBackPackagesCheckbox $value prefs.mergerModelViewDisplayBackPackages ;
   outlet EBSwitch mModelViewDisplayBackTracksCheckbox $value prefs.mergerModelViewDisplayBackTracks ;
   outlet EBSwitch mModelViewDisplayBackLayoutTextsCheckbox $value prefs.mergerModelViewDisplayBackLayoutTexts ;
+  outlet EBSwitch mModelViewDisplayFrontLegendLinesCheckbox $value prefs.mergerModelViewDisplayFrontLegendLines ;
+  outlet EBSwitch mModelViewDisplayBackLegendLinesCheckbox $value prefs.mergerModelViewDisplayBackLegendLines ;
 
   outlet EBSwitch mBoardViewHorizontalFlipCheckbox $value prefs.mergerBoardViewHorizontalFlip ;
   outlet EBSwitch mBoardViewVerticalFlipCheckbox $value prefs.mergerBoardViewVerticalFlip ;
@@ -502,6 +551,8 @@ document MergerDocument root MergerRoot {
   outlet EBSwitch mBoardViewDisplayBackPackagesCheckbox $value prefs.mergerBoardViewDisplayBackPackages ;
   outlet EBSwitch mBoardViewDisplayBackTracksCheckbox $value prefs.mergerBoardViewDisplayBackTracks ;
   outlet EBSwitch mBoardViewDisplayBackLayoutTextsCheckbox $value prefs.mergerBoardViewDisplayBackLayoutTexts ;
+  outlet EBSwitch mBoardViewDisplayFrontLegendLinesCheckbox $value prefs.mergerBoardViewDisplayFrontLegendLines ;
+  outlet EBSwitch mBoardViewDisplayBackLegendLinesCheckbox $value prefs.mergerBoardViewDisplayBackLegendLines ;
 
   outlet EBColorWell mergerViewDisplayHolesColorWell
     $color prefs.mergerColorHoles {sendContinously:no} ;
@@ -541,6 +592,10 @@ document MergerDocument root MergerRoot {
     $color prefs.mergerColorBackLayoutTexts {sendContinously:no} ;
   outlet EBColorWell mergerViewBackgroundColorWell
     $color prefs.mergerColorBackground {sendContinously:no} ;
+  outlet EBColorWell mergerViewFrontLegendLinesColorWell
+    $color prefs.mergerColorFrontLegendLines {sendContinously:no} ;
+  outlet EBColorWell mergerViewBackLegendLinesColorWell
+    $color prefs.mergerColorBackLegendLines {sendContinously:no} ;
 
 
 #------------------------------------- Model Page

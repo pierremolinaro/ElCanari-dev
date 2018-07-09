@@ -28,6 +28,8 @@ prefs {
   property Bool mergerModelViewDisplayBackPackages default no ;
   property Bool mergerModelViewDisplayBackTracks default no ;
   property Bool mergerModelViewDisplayBackLayoutTexts default no ;
+  property Bool mergerModelViewDisplayFrontLegendLines default no ;
+  property Bool mergerModelViewDisplayBackLegendLines default yes ;
 
   property Bool mergerBoardViewHorizontalFlip default no ;
   property Bool mergerBoardViewVerticalFlip default no ;
@@ -49,6 +51,8 @@ prefs {
   property Bool mergerBoardViewDisplayBackPackages default no ;
   property Bool mergerBoardViewDisplayBackTracks default no ;
   property Bool mergerBoardViewDisplayBackLayoutTexts default no ;
+  property Bool mergerBoardViewDisplayFrontLegendLines default no ;
+  property Bool mergerBoardViewDisplayBackLegendLines default yes ;
 
   property NSColor mergerColorHoles default white ;
   property NSColor mergerColorVias default red ;
@@ -68,6 +72,8 @@ prefs {
   property NSColor mergerColorBackPackages default gray ;
   property NSColor mergerColorBackTracks default green ;
   property NSColor mergerColorBackLayoutTexts default green ;
+  property NSColor mergerColorFrontLegendLines default gray ;
+  property NSColor mergerColorBackLegendLines default green ;
 
   property NSColor mergerColorBackground default lightGray ;
 }

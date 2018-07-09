@@ -29,6 +29,7 @@ import Cocoa
   @IBOutlet var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayBackComponentNamesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayBackLayoutTextsCheckbox : EBSwitch?
+  @IBOutlet var mBoardViewDisplayBackLegendLinesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayBackLegendTextsCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayBackPackagesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayBackPadsCheckbox : EBSwitch?
@@ -37,6 +38,7 @@ import Cocoa
   @IBOutlet var mBoardViewDisplayFrontComponenValuesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayFrontComponentNamesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayFrontLayoutTextsCheckbox : EBSwitch?
+  @IBOutlet var mBoardViewDisplayFrontLegendLinesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayFrontLegendTextsCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayFrontPackagesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayFrontPadsCheckbox : EBSwitch?
@@ -72,6 +74,7 @@ import Cocoa
   @IBOutlet var mModelViewDisplayBackComponenValuesCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayBackComponentNamesCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayBackLayoutTextsCheckbox : EBSwitch?
+  @IBOutlet var mModelViewDisplayBackLegendLinesCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayBackLegendTextsCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayBackPackagesCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayBackPadsCheckbox : EBSwitch?
@@ -80,6 +83,7 @@ import Cocoa
   @IBOutlet var mModelViewDisplayFrontComponenValuesCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayFrontComponentNamesCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayFrontLayoutTextsCheckbox : EBSwitch?
+  @IBOutlet var mModelViewDisplayFrontLegendLinesCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayFrontLegendTextsCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayFrontPackagesCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayFrontPadsCheckbox : EBSwitch?
@@ -94,6 +98,7 @@ import Cocoa
   @IBOutlet var mNoModelMessage : EBTextField?
   @IBOutlet var mOverlapSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mergerViewBackLegendLinesColorWell : EBColorWell?
   @IBOutlet var mergerViewBackgroundColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayBackComponentNamesColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayBackComponentValuesColorWell : EBColorWell?
@@ -113,6 +118,7 @@ import Cocoa
   @IBOutlet var mergerViewDisplayHolesColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayInternalBoardLimitsColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayViasColorWell : EBColorWell?
+  @IBOutlet var mergerViewFrontLegendLinesColorWell : EBColorWell?
   @IBOutlet var removeBoardModelButton : EBButton?
   @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton?
   @IBOutlet var updateBoardModelButton : EBButton?
@@ -385,6 +391,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mBoardViewDisplayBackLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'") ;
     }
+    if nil == mBoardViewDisplayBackLegendLinesCheckbox {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mBoardViewDisplayBackLegendLinesCheckbox' outlet is nil") ;
+//    }else if !mBoardViewDisplayBackLegendLinesCheckbox!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mBoardViewDisplayBackLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'") ;
+    }
     if nil == mBoardViewDisplayBackLegendTextsCheckbox {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -456,6 +471,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mBoardViewDisplayFrontLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'") ;
+    }
+    if nil == mBoardViewDisplayFrontLegendLinesCheckbox {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mBoardViewDisplayFrontLegendLinesCheckbox' outlet is nil") ;
+//    }else if !mBoardViewDisplayFrontLegendLinesCheckbox!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mBoardViewDisplayFrontLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'") ;
     }
     if nil == mBoardViewDisplayFrontLegendTextsCheckbox {
       presentErrorWindow (file: #file,
@@ -772,6 +796,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mModelViewDisplayBackLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'") ;
     }
+    if nil == mModelViewDisplayBackLegendLinesCheckbox {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mModelViewDisplayBackLegendLinesCheckbox' outlet is nil") ;
+//    }else if !mModelViewDisplayBackLegendLinesCheckbox!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mModelViewDisplayBackLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'") ;
+    }
     if nil == mModelViewDisplayBackLegendTextsCheckbox {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -843,6 +876,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mModelViewDisplayFrontLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'") ;
+    }
+    if nil == mModelViewDisplayFrontLegendLinesCheckbox {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mModelViewDisplayFrontLegendLinesCheckbox' outlet is nil") ;
+//    }else if !mModelViewDisplayFrontLegendLinesCheckbox!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mModelViewDisplayFrontLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'") ;
     }
     if nil == mModelViewDisplayFrontLegendTextsCheckbox {
       presentErrorWindow (file: #file,
@@ -969,6 +1011,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
+    }
+    if nil == mergerViewBackLegendLinesColorWell {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mergerViewBackLegendLinesColorWell' outlet is nil") ;
+//    }else if !mergerViewBackLegendLinesColorWell!.isKindOfClass (EBColorWell) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mergerViewBackLegendLinesColorWell' outlet is not an instance of 'EBColorWell'") ;
     }
     if nil == mergerViewBackgroundColorWell {
       presentErrorWindow (file: #file,
@@ -1141,6 +1192,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mergerViewDisplayViasColorWell' outlet is not an instance of 'EBColorWell'") ;
     }
+    if nil == mergerViewFrontLegendLinesColorWell {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mergerViewFrontLegendLinesColorWell' outlet is nil") ;
+//    }else if !mergerViewFrontLegendLinesColorWell!.isKindOfClass (EBColorWell) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mergerViewFrontLegendLinesColorWell' outlet is not an instance of 'EBColorWell'") ;
+    }
     if nil == removeBoardModelButton {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -1269,6 +1329,8 @@ import Cocoa
     mModelViewDisplayBackPackagesCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayBackPackages_property, file: #file, line: #line)
     mModelViewDisplayBackTracksCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayBackTracks_property, file: #file, line: #line)
     mModelViewDisplayBackLayoutTextsCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayBackLayoutTexts_property, file: #file, line: #line)
+    mModelViewDisplayFrontLegendLinesCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayFrontLegendLines_property, file: #file, line: #line)
+    mModelViewDisplayBackLegendLinesCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayBackLegendLines_property, file: #file, line: #line)
     mBoardViewHorizontalFlipCheckbox?.bind_value (g_Preferences!.mergerBoardViewHorizontalFlip_property, file: #file, line: #line)
     mBoardViewVerticalFlipCheckbox?.bind_value (g_Preferences!.mergerBoardViewVerticalFlip_property, file: #file, line: #line)
     mBoardViewDisplayHolesCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayHoles_property, file: #file, line: #line)
@@ -1289,6 +1351,8 @@ import Cocoa
     mBoardViewDisplayBackPackagesCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayBackPackages_property, file: #file, line: #line)
     mBoardViewDisplayBackTracksCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayBackTracks_property, file: #file, line: #line)
     mBoardViewDisplayBackLayoutTextsCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayBackLayoutTexts_property, file: #file, line: #line)
+    mBoardViewDisplayFrontLegendLinesCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayFrontLegendLines_property, file: #file, line: #line)
+    mBoardViewDisplayBackLegendLinesCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayBackLegendLines_property, file: #file, line: #line)
     mergerViewDisplayHolesColorWell?.bind_color (g_Preferences!.mergerColorHoles_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayViasColorWell?.bind_color (g_Preferences!.mergerColorVias_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayFrontPadsColorWell?.bind_color (g_Preferences!.mergerColorFrontPads_property, file: #file, line: #line, sendContinously:false)
@@ -1308,6 +1372,8 @@ import Cocoa
     mergerViewDisplayBackTracksColorWell?.bind_color (g_Preferences!.mergerColorBackTracks_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayBackLayoutTextsColorWell?.bind_color (g_Preferences!.mergerColorBackLayoutTexts_property, file: #file, line: #line, sendContinously:false)
     mergerViewBackgroundColorWell?.bind_color (g_Preferences!.mergerColorBackground_property, file: #file, line: #line, sendContinously:false)
+    mergerViewFrontLegendLinesColorWell?.bind_color (g_Preferences!.mergerColorFrontLegendLines_property, file: #file, line: #line, sendContinously:false)
+    mergerViewBackLegendLinesColorWell?.bind_color (g_Preferences!.mergerColorBackLegendLines_property, file: #file, line: #line, sendContinously:false)
     mArtworkNameTextField?.bind_valueObserver (self.mBoardModelSelection.artworkName_property, file: #file, line: #line)
     mInstanceCountTextField?.bind_valueObserver (self.mBoardModelSelection.instanceCount_property, file: #file, line: #line, autoFormatter:true)
     mModelWidthUnitPopUp?.bind_selectedTag (self.mBoardModelSelection.modelWidthUnit_property, file: #file, line: #line)
@@ -1523,6 +1589,8 @@ import Cocoa
     mModelViewDisplayBackPackagesCheckbox?.unbind_value ()
     mModelViewDisplayBackTracksCheckbox?.unbind_value ()
     mModelViewDisplayBackLayoutTextsCheckbox?.unbind_value ()
+    mModelViewDisplayFrontLegendLinesCheckbox?.unbind_value ()
+    mModelViewDisplayBackLegendLinesCheckbox?.unbind_value ()
     mBoardViewHorizontalFlipCheckbox?.unbind_value ()
     mBoardViewVerticalFlipCheckbox?.unbind_value ()
     mBoardViewDisplayHolesCheckbox?.unbind_value ()
@@ -1543,6 +1611,8 @@ import Cocoa
     mBoardViewDisplayBackPackagesCheckbox?.unbind_value ()
     mBoardViewDisplayBackTracksCheckbox?.unbind_value ()
     mBoardViewDisplayBackLayoutTextsCheckbox?.unbind_value ()
+    mBoardViewDisplayFrontLegendLinesCheckbox?.unbind_value ()
+    mBoardViewDisplayBackLegendLinesCheckbox?.unbind_value ()
     mergerViewDisplayHolesColorWell?.unbind_color ()
     mergerViewDisplayViasColorWell?.unbind_color ()
     mergerViewDisplayFrontPadsColorWell?.unbind_color ()
@@ -1562,6 +1632,8 @@ import Cocoa
     mergerViewDisplayBackTracksColorWell?.unbind_color ()
     mergerViewDisplayBackLayoutTextsColorWell?.unbind_color ()
     mergerViewBackgroundColorWell?.unbind_color ()
+    mergerViewFrontLegendLinesColorWell?.unbind_color ()
+    mergerViewBackLegendLinesColorWell?.unbind_color ()
     mArtworkNameTextField?.unbind_valueObserver ()
     mInstanceCountTextField?.unbind_valueObserver ()
     mModelWidthUnitPopUp?.unbind_selectedTag ()
@@ -1665,6 +1737,7 @@ import Cocoa
     self.mBoardViewDisplayBackComponenValuesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayBackComponentNamesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayBackLayoutTextsCheckbox?.ebCleanUp ()
+    self.mBoardViewDisplayBackLegendLinesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayBackLegendTextsCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayBackPackagesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayBackPadsCheckbox?.ebCleanUp ()
@@ -1673,6 +1746,7 @@ import Cocoa
     self.mBoardViewDisplayFrontComponenValuesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayFrontComponentNamesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayFrontLayoutTextsCheckbox?.ebCleanUp ()
+    self.mBoardViewDisplayFrontLegendLinesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayFrontLegendTextsCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayFrontPackagesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayFrontPadsCheckbox?.ebCleanUp ()
@@ -1708,6 +1782,7 @@ import Cocoa
     self.mModelViewDisplayBackComponenValuesCheckbox?.ebCleanUp ()
     self.mModelViewDisplayBackComponentNamesCheckbox?.ebCleanUp ()
     self.mModelViewDisplayBackLayoutTextsCheckbox?.ebCleanUp ()
+    self.mModelViewDisplayBackLegendLinesCheckbox?.ebCleanUp ()
     self.mModelViewDisplayBackLegendTextsCheckbox?.ebCleanUp ()
     self.mModelViewDisplayBackPackagesCheckbox?.ebCleanUp ()
     self.mModelViewDisplayBackPadsCheckbox?.ebCleanUp ()
@@ -1716,6 +1791,7 @@ import Cocoa
     self.mModelViewDisplayFrontComponenValuesCheckbox?.ebCleanUp ()
     self.mModelViewDisplayFrontComponentNamesCheckbox?.ebCleanUp ()
     self.mModelViewDisplayFrontLayoutTextsCheckbox?.ebCleanUp ()
+    self.mModelViewDisplayFrontLegendLinesCheckbox?.ebCleanUp ()
     self.mModelViewDisplayFrontLegendTextsCheckbox?.ebCleanUp ()
     self.mModelViewDisplayFrontPackagesCheckbox?.ebCleanUp ()
     self.mModelViewDisplayFrontPadsCheckbox?.ebCleanUp ()
@@ -1730,6 +1806,7 @@ import Cocoa
     self.mNoModelMessage?.ebCleanUp ()
     self.mOverlapSwitch?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mergerViewBackLegendLinesColorWell?.ebCleanUp ()
     self.mergerViewBackgroundColorWell?.ebCleanUp ()
     self.mergerViewDisplayBackComponentNamesColorWell?.ebCleanUp ()
     self.mergerViewDisplayBackComponentValuesColorWell?.ebCleanUp ()
@@ -1749,6 +1826,7 @@ import Cocoa
     self.mergerViewDisplayHolesColorWell?.ebCleanUp ()
     self.mergerViewDisplayInternalBoardLimitsColorWell?.ebCleanUp ()
     self.mergerViewDisplayViasColorWell?.ebCleanUp ()
+    self.mergerViewFrontLegendLinesColorWell?.ebCleanUp ()
     self.removeBoardModelButton?.ebCleanUp ()
     self.showPrefsForSettingMergerDisplayButton?.ebCleanUp ()
     self.updateBoardModelButton?.ebCleanUp ()
