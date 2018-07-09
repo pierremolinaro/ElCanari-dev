@@ -127,6 +127,59 @@ final class MergerPadArray : EBSimpleClass {
   }
 
   //····················································································································
+
+  func addPads (toFilledBezierPaths ioBezierPaths : inout [NSBezierPath],
+                dx inDx : Int,
+                dy inDy: Int,
+                horizontalMirror inHorizontalMirror : Bool,
+                boardWidth inBoardWidth : Int) {
+    for pad in self.padArray {
+      let x = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - pad.x - inDx) : (pad.x + inDx))
+      let y = canariUnitToCocoa (pad.y + inDy)
+      let width = canariUnitToCocoa (pad.width)
+      let height = canariUnitToCocoa (pad.height)
+      let r = NSRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
+      let transform = NSAffineTransform ()
+      transform.translateX (by:x, yBy:y)
+      if inHorizontalMirror {
+        transform.scaleX (by:-1.0, yBy: 1.0)
+      }
+      transform.rotate (byRadians:canariRotationToRadians (pad.rotation))
+      let bp : NSBezierPath
+      switch pad.shape {
+      case .rectangular :
+        bp = NSBezierPath (rect:r)
+      case .round :
+        if pad.width < pad.height {
+          bp = NSBezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
+        }else if pad.width > pad.height {
+          bp = NSBezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
+        }else{
+          bp = NSBezierPath (ovalIn:r)
+        }
+      }
+      ioBezierPaths.append (transform.transform (bp))
+    }
+  }
+
+  //····················································································································
+
+  func addHoles (toFilledBezierPaths ioBezierPaths : inout [NSBezierPath],
+                 dx inDx : Int,
+                 dy inDy: Int,
+                 pdfHoleDiameter inHoleDiameter : CGFloat,
+                 horizontalMirror inHorizontalMirror : Bool,
+                 boardWidth inBoardWidth : Int) {
+    for pad in self.padArray {
+      let x = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - pad.x - inDx) : (pad.x + inDx))
+      let y = canariUnitToCocoa (pad.y + inDy)
+      let r = NSRect (x: x - inHoleDiameter / 2.0, y: y - inHoleDiameter / 2.0, width:inHoleDiameter, height:inHoleDiameter)
+      let bp = NSBezierPath (ovalIn:r)
+      ioBezierPaths.append (bp)
+    }
+  }
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

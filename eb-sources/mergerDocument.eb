@@ -666,7 +666,7 @@ document MergerDocument root MergerRoot {
 
   outlet EBTextObserverField mArtworNameTextField $valueObserver root.artworkName ;
 
-  outlet NSTabView mArtworkTabView $hidden root.artwork.none ;
+#  outlet NSTabView mArtworkTabView $hidden root.artwork.none ;
 
   outlet NSView mDangerView $hidden root.artwork.none | self.documentFileNameOk ;
  
@@ -684,6 +684,7 @@ document MergerDocument root MergerRoot {
 
   outlet CanariBoardBoardArchivePopUpButton mBoardArchiveFormatPopUpButton $format root.generatedBoardArchiveFormat ;
   
+  outlet NSTextView mLogTextView $hidden root.artwork.none ;
 #--- 
 #------------------------------------------- Artwork settings
 #--- Minimum tab

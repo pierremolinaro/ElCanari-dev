@@ -6522,10 +6522,6 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -6744,10 +6740,6 @@ ToManyRelationshipReadWrite_BoardModel_frontLegendTexts, EBSignatureObserverProt
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -6928,10 +6920,6 @@ ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts, EBSignatureObserverProt
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7112,10 +7100,6 @@ ToManyRelationshipReadWrite_BoardModel_backLegendTexts, EBSignatureObserverProto
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7296,10 +7280,6 @@ ToManyRelationshipReadWrite_BoardModel_backLayoutTexts, EBSignatureObserverProto
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7480,10 +7460,6 @@ ToManyRelationshipReadWrite_BoardModel_vias, EBSignatureObserverProtocol {
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7662,10 +7638,6 @@ ToManyRelationshipReadWrite_BoardModel_pads, EBSignatureObserverProtocol {
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7854,10 +7826,6 @@ ToManyRelationshipReadWrite_BoardModel_backComponentNames, EBSignatureObserverPr
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8038,10 +8006,6 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentNames, EBSignatureObserverP
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8222,10 +8186,6 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentValues, EBSignatureObserver
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8406,10 +8366,6 @@ ToManyRelationshipReadWrite_BoardModel_backComponentValues, EBSignatureObserverP
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8590,10 +8546,6 @@ ToManyRelationshipReadWrite_BoardModel_backTracks, EBSignatureObserverProtocol {
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8774,10 +8726,6 @@ ToManyRelationshipReadWrite_BoardModel_frontTracks, EBSignatureObserverProtocol 
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -8958,10 +8906,6 @@ ToManyRelationshipReadWrite_BoardModel_frontPackages, EBSignatureObserverProtoco
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -9142,10 +9086,6 @@ ToManyRelationshipReadWrite_BoardModel_backPackages, EBSignatureObserverProtocol
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer

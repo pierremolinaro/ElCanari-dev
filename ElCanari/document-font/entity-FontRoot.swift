@@ -1060,10 +1060,6 @@ ToManyRelationshipReadWrite_FontRoot_characters, EBSignatureObserverProtocol {
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
- //       mSet = Set ()
- //       for object in mValue {
- //         mSet.insert (object)
- //       }
       //--- Register old value in undo manager
         owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer

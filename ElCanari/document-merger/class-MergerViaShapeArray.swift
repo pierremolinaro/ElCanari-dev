@@ -60,6 +60,40 @@ final class MergerViaShapeArray : EBSimpleClass {
 
   //····················································································································
 
+  func addPad (toFilledBezierPaths ioBezierPaths : inout [NSBezierPath],
+               dx inDx : Int,
+               dy inDy: Int,
+               horizontalMirror inHorizontalMirror : Bool,
+               boardWidth inBoardWidth : Int) {
+    for via in self.viaShapeArray {
+      let x = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - via.x - inDx) : (via.x + inDx))
+      let y = canariUnitToCocoa (via.y + inDy)
+      let d = canariUnitToCocoa (via.padDiameter)
+      let r = NSRect (x: x - d / 2.0, y: y - d / 2.0, width: d, height : d)
+      let bp = NSBezierPath (ovalIn: r)
+      ioBezierPaths.append (bp)
+    }
+  }
+
+  //····················································································································
+
+  func addHole (toFilledBezierPaths ioBezierPaths : inout [NSBezierPath],
+                dx inDx : Int,
+                dy inDy: Int,
+                pdfHoleDiameter inHoleDiameter : CGFloat,
+                horizontalMirror inHorizontalMirror : Bool,
+                boardWidth inBoardWidth : Int) {
+    for via in self.viaShapeArray {
+      let x = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - via.x - inDx) : (via.x + inDx))
+      let y = canariUnitToCocoa (via.y + inDy)
+      let r = NSRect (x: x - inHoleDiameter / 2.0, y: y - inHoleDiameter / 2.0, width: inHoleDiameter, height : inHoleDiameter)
+      let bp = NSBezierPath (ovalIn: r)
+      ioBezierPaths.append (bp)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

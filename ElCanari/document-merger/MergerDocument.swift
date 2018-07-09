@@ -17,7 +17,6 @@ import Cocoa
   @IBOutlet var mArrangeVerticalyButton : EBButton?
   @IBOutlet var mArtworNameTextField : EBTextObserverField?
   @IBOutlet var mArtworkNameTextField : EBTextObserverField?
-  @IBOutlet var mArtworkTabView : NSTabView?
   @IBOutlet var mBoardArchiveFormatPopUpButton : CanariBoardBoardArchivePopUpButton?
   @IBOutlet var mBoardBoardLimitTextField : CanariDimensionTextField?
   @IBOutlet var mBoardClipView : NSClipView?
@@ -65,6 +64,7 @@ import Cocoa
   @IBOutlet var mInsertArrayOfBoardsXCountField : NSTextField?
   @IBOutlet var mInsertArrayOfBoardsYCountField : NSTextField?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
+  @IBOutlet var mLogTextView : NSTextView?
   @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightUnitPopUp : EBPopUpButton?
@@ -276,15 +276,6 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mArtworkNameTextField' outlet is not an instance of 'EBTextObserverField'") ;
-    }
-    if nil == mArtworkTabView {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mArtworkTabView' outlet is nil") ;
-//    }else if !mArtworkTabView!.isKindOfClass (NSTabView) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mArtworkTabView' outlet is not an instance of 'NSTabView'") ;
     }
     if nil == mBoardArchiveFormatPopUpButton {
       presentErrorWindow (file: #file,
@@ -708,6 +699,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mInstanceCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
+    }
+    if nil == mLogTextView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mLogTextView' outlet is nil") ;
+//    }else if !mLogTextView!.isKindOfClass (NSTextView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mLogTextView' outlet is not an instance of 'NSTextView'") ;
     }
     if nil == mModelBoardLimitTextField {
       presentErrorWindow (file: #file,
@@ -1445,16 +1445,6 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
-          return self.rootObject.artwork_property_selection
-        },
-        outlet:self.mArtworkTabView
-      )
-      self.rootObject.artwork_property.addEBObserver (controller)
-      mController_mArtworkTabView_hidden = controller
-    }
-    do{
-      let controller = MultipleBindingController_hidden (
-        computeFunction:{
           return (self.rootObject.artwork_property_selection || self.documentFileNameOk_property_selection)
         },
         outlet:self.mDangerView
@@ -1474,6 +1464,16 @@ import Cocoa
       self.rootObject.artwork_property.addEBObserver (controller)
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
       mController_mGenerateProductFilesActionButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return self.rootObject.artwork_property_selection
+        },
+        outlet:self.mLogTextView
+      )
+      self.rootObject.artwork_property.addEBObserver (controller)
+      mController_mLogTextView_hidden = controller
     }
   //--------------------------- Set targets / actions
     showPrefsForSettingMergerDisplayButton?.target = self
@@ -1616,8 +1616,6 @@ import Cocoa
     mController_mArrangeVerticalyButton_enabled = nil
     self.rootObject.artwork_property.removeEBObserver (mController_mNoArtworkMessage_hidden!)
     mController_mNoArtworkMessage_hidden = nil
-    self.rootObject.artwork_property.removeEBObserver (mController_mArtworkTabView_hidden!)
-    mController_mArtworkTabView_hidden = nil
     self.documentFileNameOk_property.removeEBObserver (mController_mDangerView_hidden!)
     self.rootObject.artwork_property.removeEBObserver (mController_mDangerView_hidden!)
     mController_mDangerView_hidden = nil
@@ -1625,6 +1623,8 @@ import Cocoa
     self.rootObject.artwork_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     mController_mGenerateProductFilesActionButton_enabled = nil
+    self.rootObject.artwork_property.removeEBObserver (mController_mLogTextView_hidden!)
+    mController_mLogTextView_hidden = nil
   //--------------------------- Uninstall compute functions for transients
     self.documentFileNameOk_property.readModelFunction = nil
     self.incorrectDocumentFileErrorMessage_property.readModelFunction = nil
@@ -1653,7 +1653,6 @@ import Cocoa
     self.mArrangeVerticalyButton?.ebCleanUp ()
     self.mArtworNameTextField?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
-    self.mArtworkTabView?.ebCleanUp ()
     self.mBoardArchiveFormatPopUpButton?.ebCleanUp ()
     self.mBoardBoardLimitTextField?.ebCleanUp ()
     self.mBoardClipView?.ebCleanUp ()
@@ -1701,6 +1700,7 @@ import Cocoa
     self.mInsertArrayOfBoardsXCountField?.ebCleanUp ()
     self.mInsertArrayOfBoardsYCountField?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
+    self.mLogTextView?.ebCleanUp ()
     self.mModelBoardLimitTextField?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
     self.mModelHeightUnitPopUp?.ebCleanUp ()
@@ -1768,9 +1768,9 @@ import Cocoa
   fileprivate var mController_mArrangeHorizontallyButton_enabled : MultipleBindingController_enabled?
   fileprivate var mController_mArrangeVerticalyButton_enabled : MultipleBindingController_enabled?
   fileprivate var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden?
-  fileprivate var mController_mArtworkTabView_hidden : MultipleBindingController_hidden?
   fileprivate var mController_mDangerView_hidden : MultipleBindingController_hidden?
   fileprivate var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled?
+  fileprivate var mController_mLogTextView_hidden : MultipleBindingController_hidden?
 
   //····················································································································
 

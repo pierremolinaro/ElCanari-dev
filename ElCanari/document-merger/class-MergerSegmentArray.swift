@@ -76,6 +76,28 @@ final class MergerSegmentArray : EBSimpleClass {
 
   //····················································································································
 
+  func add (toStrokeBezierPaths ioBezierPaths : inout [NSBezierPath],
+            dx inDx : Int,
+            dy inDy: Int,
+            horizontalMirror inHorizontalMirror : Bool,
+            boardWidth inBoardWidth : Int) {
+    for segment in self.segmentArray {
+      let x1 = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - segment.x1 - inDx) : (segment.x1 + inDx))
+      let y1 = canariUnitToCocoa (segment.y1 + inDy)
+      let x2 = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - segment.x2 - inDx) : (segment.x2 + inDx))
+      let y2 = canariUnitToCocoa (segment.y2 + inDy)
+      let width = canariUnitToCocoa (segment.width)
+      let bp = NSBezierPath ()
+      bp.move (to:CGPoint (x:x1, y:y1))
+      bp.line (to:CGPoint (x:x2, y:y2))
+      bp.lineWidth = width
+      bp.lineCapStyle = .roundLineCapStyle
+      ioBezierPaths.append (bp)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -286,6 +286,7 @@
 		CFCC4BEF20EAC347006A9CC5 /* transient-MergerRoot-frontPadsForDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC4BEE20EAC347006A9CC5 /* transient-MergerRoot-frontPadsForDisplay.swift */; };
 		CFCC4BF120EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC4BF020EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift */; };
 		CFCE71FB20DD611100AB1DE7 /* entity-BoardModelVia.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCE71FA20DD611100AB1DE7 /* entity-BoardModelVia.swift */; };
+		CFD0E38820F38DBF00FDE32A /* CanariOffscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD0E38720F38DBF00FDE32A /* CanariOffscreenView.swift */; };
 		CFD5B94C1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5B94B1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift */; };
 		CFD7E80520EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E80420EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift */; };
 		CFD7EA2120E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EA2020E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift */; };
@@ -646,6 +647,7 @@
 		CFCC4BEE20EAC347006A9CC5 /* transient-MergerRoot-frontPadsForDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerRoot-frontPadsForDisplay.swift"; sourceTree = "<group>"; };
 		CFCC4BF020EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariDimensionObserverTextField.swift; sourceTree = "<group>"; };
 		CFCE71FA20DD611100AB1DE7 /* entity-BoardModelVia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-BoardModelVia.swift"; sourceTree = "<group>"; };
+		CFD0E38720F38DBF00FDE32A /* CanariOffscreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariOffscreenView.swift; sourceTree = "<group>"; };
 		CFD5B94B1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller_CanariFontSampleStringView_sampleStringFontSize.swift; sourceTree = "<group>"; };
 		CFD7E80420EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-importArtworkAction.swift"; sourceTree = "<group>"; };
 		CFD7EA2020E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "menu-CanariBoardInsertMenu.swift"; sourceTree = "<group>"; };
@@ -1057,6 +1059,7 @@
 				CF61FA921B3EBF72000E0257 /* CanariFontCharacterSelectButton.swift */,
 				CF61FA941B3ECA48000E0257 /* CanariFontCharacterSelectView.swift */,
 				CF6BC0501DE1C53A002D935F /* CanariMenu.swift */,
+				CFD0E38720F38DBF00FDE32A /* CanariOffscreenView.swift */,
 				CF75947C20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift */,
 				CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */,
 				CF3395591B4AC885009C561B /* CanariSignatureField.swift */,
@@ -1573,6 +1576,7 @@
 				CF33955A1B4AC885009C561B /* CanariSignatureField.swift in Sources */,
 				CF61FA931B3EBF72000E0257 /* CanariFontCharacterSelectButton.swift in Sources */,
 				CF9D584A1BFA2B7100E6BA54 /* legacy-bz2-data-analysis.swift in Sources */,
+				CFD0E38820F38DBF00FDE32A /* CanariOffscreenView.swift in Sources */,
 				CF7C5A5F1B46F6DB00213EA8 /* arrayController-PMArtworkDocument-mDataController.swift in Sources */,
 				CFE652DA1DD4B22600BAC27A /* transient-PMFontDocument-missingCharactersCountString.swift in Sources */,
 				CF87642A1DD4A11100D16B6B /* Controller_CanariCharacterView_transparency.swift in Sources */,
