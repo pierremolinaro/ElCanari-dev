@@ -159,6 +159,15 @@ extension MergerDocument {
         mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
         var strokeBezierPaths = [NSBezierPath] ()
         var filledBezierPaths = [NSBezierPath] ()
+        if product.drawInternalBoardLimits {
+          for board in self.rootObject.boardInstances_property.propval {
+            let lineWidth : CGFloat = canariUnitToCocoa (board.myModel_property.propval!.modelLimitWidth)
+            let r : NSRect = board.instanceRect!.cocoaRect ().insetBy (dx: lineWidth / 2.0, dy: lineWidth / 2.0)
+            let bp = NSBezierPath (rect:r)
+            bp.lineWidth = lineWidth
+            strokeBezierPaths.append (bp)
+          }
+        }
         if product.drawBoardLimits {
           let boardLineWidth = canariUnitToCocoa (self.rootObject.boardLimitWidth)
           let r = cocoaBoardRect.insetBy (dx: boardLineWidth / 2.0, dy: boardLineWidth / 2.0)
@@ -338,6 +347,7 @@ extension MergerDocument {
           let right = canariUnitToMilTenth (r.x + r.width) - lineWidthMilTenth / 2
           let bottom = canariUnitToMilTenth (r.y) + lineWidthMilTenth / 2
           let top = canariUnitToMilTenth (r.y + r.height) - lineWidthMilTenth / 2
+          NSLog ("instance \(left) \(bottom) \(right) \(top)")
           var drawings = [String] ()
           drawings.append ("X\( left)Y\(bottom)D02") // Move to
           drawings.append ("X\( left)Y\(   top)D01") // Line to
@@ -358,6 +368,7 @@ extension MergerDocument {
         let right = canariUnitToMilTenth (boardWidth - boardLineWidthMilTenth / 2)
         let bottom = boardLineWidthMilTenth / 2
         let top = canariUnitToMilTenth (self.rootObject.boardHeight! - boardLineWidthMilTenth / 2)
+        NSLog ("board \(left) \(bottom) \(right) \(top)")
         var drawings = [String] ()
         drawings.append ("X\( left)Y\(bottom)D02") // Move to
         drawings.append ("X\( left)Y\(   top)D01") // Line to

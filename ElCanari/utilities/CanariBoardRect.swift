@@ -71,11 +71,11 @@ struct CanariBoardRect {
     }else if inOtherRect.isEmpty () {
       result = self
     }else{
-      let right = min (self.x, inOtherRect.x)
+      let left = min (self.x, inOtherRect.x)
       let bottom = min (self.y, inOtherRect.y)
-      let left = max (self.x + self.width, inOtherRect.x + inOtherRect.width)
+      let right = max (self.x + self.width, inOtherRect.x + inOtherRect.width)
       let top = max (self.y + self.height, inOtherRect.y + inOtherRect.height)
-      result = CanariBoardRect (x:right, y:bottom, width:left - right, height:top - bottom)
+      result = CanariBoardRect (x:left, y:bottom, width:right - left, height:top - bottom)
     }
     return result
   }

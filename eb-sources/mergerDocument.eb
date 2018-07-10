@@ -665,7 +665,7 @@ document MergerDocument root MergerRoot {
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
 
 #--- Board Limit Width display
-  outlet EBPopUpButton mBoardLimitWidthUnitPopUp $selectedTag root.boardLimitWidth ;
+  outlet EBPopUpButton mBoardLimitWidthUnitPopUp $selectedTag root.boardLimitWidthUnit ;
   outlet CanariDimensionTextField mBoardBoardLimitTextField
      $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
   ;

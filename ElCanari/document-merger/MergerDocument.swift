@@ -1388,7 +1388,7 @@ import Cocoa
     mBoardModelView?.bind_verticalFlip (g_Preferences!.mergerModelViewVerticalFlip_property, file: #file, line: #line)
     mBoardModelView?.bind_objectLayer (self.mBoardModelSelection.modelLayerDisplay_property, file: #file, line: #line)
     mBoardInsertMenu?.bind_names (self.rootObject.modelNames_property, file: #file, line: #line)
-    mBoardLimitWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardLimitWidth_property, file: #file, line: #line)
+    mBoardLimitWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardLimitWidthUnit_property, file: #file, line: #line)
     mBoardBoardLimitTextField?.bind_dimensionAndUnit (self.rootObject.boardLimitWidth_property, self.rootObject.boardLimitWidthUnit_property, file: #file, line: #line)
     mBoardWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardWidthUnit_property, file: #file, line: #line)
     mBoardWidthTextField?.bind_dimensionAndUnit (self.rootObject.boardWidth_property, self.rootObject.boardWidthUnit_property, file: #file, line: #line)
