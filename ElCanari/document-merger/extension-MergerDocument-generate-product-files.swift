@@ -323,8 +323,10 @@ extension MergerDocument {
       let horizontalMirror = product.horizontalMirror
       let filePath = inFilePath + "." + product.fileExtension
       mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
-      var s = "G70*\n" // length unit is inch
-      s += "%FSAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
+      // var s = "G70*\n" // length unit is inch [OBSOLETE]
+      //s += "%FSAX24Y24*%\n" // [missing L] A = Absolute coordinates, 24 = all data are in 2.4 form
+      var s = "%FSLAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
+      s += "%MOIN*%\n" // length unit is inch
       var apertureDictionary = [String : [String]] ()
       var polygons = [[String]] ()
       let minimumApertureMilTenth = canariUnitToMilTenth (self.rootObject.artwork_property.propval!.minPP_TP_TT_TW_inEBUnit)
@@ -466,6 +468,7 @@ extension MergerDocument {
       idx = 10
       for aperture in keys {
         s += "D\(idx)*\n"
+        s += "G01" // Linear interpolation
         for element in apertureDictionary [aperture]! {
           s += element + "*\n"
         }
