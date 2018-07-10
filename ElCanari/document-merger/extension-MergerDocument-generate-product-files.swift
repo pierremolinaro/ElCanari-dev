@@ -341,20 +341,20 @@ extension MergerDocument {
       let minimumApertureMilTenth = canariUnitToMilTenth (self.rootObject.artwork_property.propval!.minPPTPTTTW)
       if product.drawInternalBoardLimits {
         for board in self.rootObject.boardInstances_property.propval {
-          let lineWidthMilTenth : Int = canariUnitToMilTenth (board.myModel_property.propval!.modelLimitWidth)
+          let lineWidth : Int = board.myModel_property.propval!.modelLimitWidth
           let r : CanariBoardRect = board.instanceRect!
-          let left  = canariUnitToMilTenth (r.x) + lineWidthMilTenth / 2
-          let right = canariUnitToMilTenth (r.x + r.width) - lineWidthMilTenth / 2
-          let bottom = canariUnitToMilTenth (r.y) + lineWidthMilTenth / 2
-          let top = canariUnitToMilTenth (r.y + r.height) - lineWidthMilTenth / 2
-          NSLog ("instance \(left) \(bottom) \(right) \(top)")
+          let left  = canariUnitToMilTenth (r.x + lineWidth / 2)
+          let right = canariUnitToMilTenth (r.x + r.width - lineWidth / 2)
+          let bottom = canariUnitToMilTenth (r.y + lineWidth / 2)
+          let top = canariUnitToMilTenth (r.y + r.height - lineWidth / 2)
+          NSLog ("instance \(r.x) \(r.y) \(r.x + r.width) \(r.y + r.height), \(board.myModel_property.propval!.modelLimitWidth)")
           var drawings = [String] ()
           drawings.append ("X\( left)Y\(bottom)D02") // Move to
           drawings.append ("X\( left)Y\(   top)D01") // Line to
           drawings.append ("X\(right)Y\(   top)D01") // Line to
           drawings.append ("X\(right)Y\(bottom)D01") // Line to
           drawings.append ("X\( left)Y\(bottom)D01") // Line to
-          let apertureString = "C,\(String(format: "%.4f", CGFloat (lineWidthMilTenth) / 10_000.0)))"
+          let apertureString = "C,\(String(format: "%.4f", canariUnitToInch (lineWidth)))"
           if let array = apertureDictionary [apertureString] {
             apertureDictionary [apertureString] = array + drawings
           }else{
@@ -363,19 +363,19 @@ extension MergerDocument {
         }
       }
       if product.drawBoardLimits {
-        let boardLineWidthMilTenth = canariUnitToMilTenth (self.rootObject.boardLimitWidth)
-        let left = boardLineWidthMilTenth / 2
-        let right = canariUnitToMilTenth (boardWidth - boardLineWidthMilTenth / 2)
-        let bottom = boardLineWidthMilTenth / 2
-        let top = canariUnitToMilTenth (self.rootObject.boardHeight! - boardLineWidthMilTenth / 2)
-        NSLog ("board \(left) \(bottom) \(right) \(top)")
+        let boardLineWidth = self.rootObject.boardLimitWidth
+        let left = canariUnitToMilTenth (boardLineWidth / 2)
+        let right = canariUnitToMilTenth (boardWidth - boardLineWidth / 2)
+        let bottom = canariUnitToMilTenth (boardLineWidth / 2)
+        let top = canariUnitToMilTenth (self.rootObject.boardHeight! - boardLineWidth / 2)
+        NSLog ("board \(boardWidth) \(self.rootObject.boardHeight!) \(self.rootObject.boardLimitWidth)")
         var drawings = [String] ()
         drawings.append ("X\( left)Y\(bottom)D02") // Move to
         drawings.append ("X\( left)Y\(   top)D01") // Line to
         drawings.append ("X\(right)Y\(   top)D01") // Line to
         drawings.append ("X\(right)Y\(bottom)D01") // Line to
         drawings.append ("X\( left)Y\(bottom)D01") // Line to
-        let apertureString = "C,\(String(format: "%.4f", CGFloat (boardLineWidthMilTenth) / 10_000.0)))"
+        let apertureString = "C,\(String(format: "%.4f", canariUnitToInch (boardLineWidth)))"
         if let array = apertureDictionary [apertureString] {
           apertureDictionary [apertureString] = array + drawings
         }else{
