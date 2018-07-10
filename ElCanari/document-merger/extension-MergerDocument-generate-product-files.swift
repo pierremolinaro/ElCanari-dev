@@ -337,11 +337,11 @@ extension MergerDocument {
         let bottom = boardLineWidthMilTenth / 2
         let top = canariUnitToMilTenth (self.rootObject.boardHeight! - boardLineWidthMilTenth / 2)
         var drawings = [String] ()
-        drawings.append ("X\(String(format: "%06d",  left))Y\(String(format: "%06d", bottom))D02") // Move to
-        drawings.append ("X\(String(format: "%06d",  left))Y\(String(format: "%06d",    top))D01") // Line to
-        drawings.append ("X\(String(format: "%06d", right))Y\(String(format: "%06d",    top))D01") // Line to
-        drawings.append ("X\(String(format: "%06d", right))Y\(String(format: "%06d", bottom))D01") // Line to
-        drawings.append ("X\(String(format: "%06d",  left))Y\(String(format: "%06d", bottom))D01") // Line to
+        drawings.append ("X\( left)Y\(bottom)D02") // Move to
+        drawings.append ("X\( left)Y\(   top)D01") // Line to
+        drawings.append ("X\(right)Y\(   top)D01") // Line to
+        drawings.append ("X\(right)Y\(bottom)D01") // Line to
+        drawings.append ("X\( left)Y\(bottom)D01") // Line to
         let apertureString = "C,\(String(format: "%.4f", CGFloat (boardLineWidthMilTenth) / 10_000.0)))"
         if let array = apertureDictionary [apertureString] {
           apertureDictionary [apertureString] = array + drawings

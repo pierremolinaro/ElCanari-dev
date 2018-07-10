@@ -103,7 +103,7 @@ final class MergerViaShapeArray : EBSimpleClass {
       let apertureString = "C,\(String(format: "%.4f", canariUnitToInch (via.padDiameter)))"
       let x = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - via.x - inDx) : (via.x + inDx))
       let y = canariUnitToMilTenth (via.y + inDy)
-      let flash = "X\(String(format: "%06d", x))Y\(String(format: "%06d", y))D03"
+      let flash = "X\(x)Y\(y)D03"
       if let array = ioApertureDictionary [apertureString] {
         var a = array
         a.append (flash)

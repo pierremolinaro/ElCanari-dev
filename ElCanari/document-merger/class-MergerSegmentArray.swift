@@ -109,11 +109,11 @@ final class MergerSegmentArray : EBSimpleClass {
       let x2 = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - segment.x2 - inDx) : (segment.x2 + inDx))
       let y2 = canariUnitToMilTenth (segment.y2 + inDy)
       let apertureString = "C,\(String(format: "%.4f", canariUnitToInch (segment.width)))"
-      let moveTo = "X\(String(format: "%06d", x1))Y\(String(format: "%06d", y1))D02"
-      let lineTo = "X\(String(format: "%06d", x2))Y\(String(format: "%06d", y2))D01"
+      let moveTo = "X\(x1)Y\(y1)D02"
+      let lineTo = "X\(x2)Y\(y2)D01"
       if let array = ioApertures [apertureString] {
         var a = array
-        let possibleLastLineTo = "X\(String(format: "%06d", x1))Y\(String(format: "%06d", y1))D01"
+        let possibleLastLineTo = "X\(x1)Y\(y1)D01"
         if possibleLastLineTo != a.last! {
           a.append (moveTo)
         }
