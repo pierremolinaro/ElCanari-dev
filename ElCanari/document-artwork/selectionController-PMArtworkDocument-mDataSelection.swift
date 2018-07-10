@@ -51,6 +51,13 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
       return self.drawComponentValuesTopSide_property.prop
     }
   }
+  var drawInternalBoardLimits_property = EBPropertyProxy_Bool ()
+
+  var drawInternalBoardLimits_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawInternalBoardLimits_property.prop
+    }
+  }
   var drawPackageLegendBottomSide_property = EBPropertyProxy_Bool ()
 
   var drawPackageLegendBottomSide_property_selection : EBSelection <Bool> {
@@ -182,6 +189,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     bind_property_drawComponentNamesTopSide (model: model)
     bind_property_drawComponentValuesBottomSide (model: model)
     bind_property_drawComponentValuesTopSide (model: model)
+    bind_property_drawInternalBoardLimits (model: model)
     bind_property_drawPackageLegendBottomSide (model: model)
     bind_property_drawPackageLegendTopSide (model: model)
     bind_property_drawPadHolesInPDF (model: model)
@@ -276,6 +284,14 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
       view:view,
       observerExplorer:&self.drawComponentValuesTopSide_property.mObserverExplorer,
       valueExplorer:&self.drawComponentValuesTopSide_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawInternalBoardLimits",
+      idx:self.drawInternalBoardLimits_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawInternalBoardLimits_property.mObserverExplorer,
+      valueExplorer:&self.drawInternalBoardLimits_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawPackageLegendBottomSide",
@@ -802,6 +818,76 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           for object in v {
             let result = object.drawComponentValuesTopSide_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drawInternalBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
+    model.addEBObserverOf_drawInternalBoardLimits (self.drawInternalBoardLimits_property)
+    self.drawInternalBoardLimits_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drawInternalBoardLimits_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.drawInternalBoardLimits_property.writeModelFunction = { (inValue : Bool) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.drawInternalBoardLimits_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.drawInternalBoardLimits_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.drawInternalBoardLimits_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -2036,6 +2122,11 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     self.drawComponentValuesTopSide_property.writeModelFunction = nil 
     self.drawComponentValuesTopSide_property.validateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide_property)
+  //--- drawInternalBoardLimits
+    self.drawInternalBoardLimits_property.readModelFunction = nil 
+    self.drawInternalBoardLimits_property.writeModelFunction = nil 
+    self.drawInternalBoardLimits_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawInternalBoardLimits (self.drawInternalBoardLimits_property)
   //--- drawPackageLegendBottomSide
     self.drawPackageLegendBottomSide_property.readModelFunction = nil 
     self.drawPackageLegendBottomSide_property.writeModelFunction = nil 

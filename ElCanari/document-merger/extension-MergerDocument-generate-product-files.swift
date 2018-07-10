@@ -329,7 +329,29 @@ extension MergerDocument {
       s += "%MOIN*%\n" // length unit is inch
       var apertureDictionary = [String : [String]] ()
       var polygons = [[String]] ()
-      let minimumApertureMilTenth = canariUnitToMilTenth (self.rootObject.artwork_property.propval!.minPP_TP_TT_TW_inEBUnit)
+      let minimumApertureMilTenth = canariUnitToMilTenth (self.rootObject.artwork_property.propval!.minPPTPTTTW)
+      if product.drawInternalBoardLimits {
+        for board in self.rootObject.boardInstances_property.propval {
+          let lineWidthMilTenth : Int = canariUnitToMilTenth (board.myModel_property.propval!.modelLimitWidth)
+          let r : CanariBoardRect = board.instanceRect!
+          let left  = canariUnitToMilTenth (r.x) + lineWidthMilTenth / 2
+          let right = canariUnitToMilTenth (r.x + r.width) - lineWidthMilTenth / 2
+          let bottom = canariUnitToMilTenth (r.y) + lineWidthMilTenth / 2
+          let top = canariUnitToMilTenth (r.y + r.height) - lineWidthMilTenth / 2
+          var drawings = [String] ()
+          drawings.append ("X\( left)Y\(bottom)D02") // Move to
+          drawings.append ("X\( left)Y\(   top)D01") // Line to
+          drawings.append ("X\(right)Y\(   top)D01") // Line to
+          drawings.append ("X\(right)Y\(bottom)D01") // Line to
+          drawings.append ("X\( left)Y\(bottom)D01") // Line to
+          let apertureString = "C,\(String(format: "%.4f", CGFloat (lineWidthMilTenth) / 10_000.0)))"
+          if let array = apertureDictionary [apertureString] {
+            apertureDictionary [apertureString] = array + drawings
+          }else{
+            apertureDictionary [apertureString] = drawings
+          }
+        }
+      }
       if product.drawBoardLimits {
         let boardLineWidthMilTenth = canariUnitToMilTenth (self.rootObject.boardLimitWidth)
         let left = boardLineWidthMilTenth / 2

@@ -11,12 +11,14 @@ import Cocoa
 class ArtworkRoot : EBManagedObject,
   ArtworkRoot_selectedTab,
   ArtworkRoot_comments,
-  ArtworkRoot_minPP_TP_TT_TW_displayUnit,
-  ArtworkRoot_minPP_TP_TT_TW_inEBUnit,
+  ArtworkRoot_minPPTPTTTWdisplayUnit,
+  ArtworkRoot_minPPTPTTTW,
   ArtworkRoot_minValueForOARdisplayUnit,
   ArtworkRoot_minValueForOARinEBUnit,
   ArtworkRoot_minValueForPHDdisplayUnit,
   ArtworkRoot_minValueForPHDinEBUnit,
+  ArtworkRoot_minValueForBoardLimitWidthDisplayUnit,
+  ArtworkRoot_minValueForBoardLimitWidth,
   ArtworkRoot_drillDataFormat,
   ArtworkRoot_drillDataFileExtension,
   ArtworkRoot_drillListFileExtension,
@@ -61,40 +63,40 @@ class ArtworkRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing minPP_TP_TT_TW_displayUnit stored property
+  //   Accessing minPPTPTTTWdisplayUnit stored property
   //····················································································································
 
-  var minPP_TP_TT_TW_displayUnit : Int {
+  var minPPTPTTTWdisplayUnit : Int {
     get {
-      return self.minPP_TP_TT_TW_displayUnit_property.propval
+      return self.minPPTPTTTWdisplayUnit_property.propval
     }
     set {
-      self.minPP_TP_TT_TW_displayUnit_property.setProp (newValue)
+      self.minPPTPTTTWdisplayUnit_property.setProp (newValue)
     }
   }
 
-  var minPP_TP_TT_TW_displayUnit_property_selection : EBSelection <Int> {
+  var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> {
     get {
-      return self.minPP_TP_TT_TW_displayUnit_property.prop
+      return self.minPPTPTTTWdisplayUnit_property.prop
     }
   }
 
   //····················································································································
-  //   Accessing minPP_TP_TT_TW_inEBUnit stored property
+  //   Accessing minPPTPTTTW stored property
   //····················································································································
 
-  var minPP_TP_TT_TW_inEBUnit : Int {
+  var minPPTPTTTW : Int {
     get {
-      return self.minPP_TP_TT_TW_inEBUnit_property.propval
+      return self.minPPTPTTTW_property.propval
     }
     set {
-      self.minPP_TP_TT_TW_inEBUnit_property.setProp (newValue)
+      self.minPPTPTTTW_property.setProp (newValue)
     }
   }
 
-  var minPP_TP_TT_TW_inEBUnit_property_selection : EBSelection <Int> {
+  var minPPTPTTTW_property_selection : EBSelection <Int> {
     get {
-      return self.minPP_TP_TT_TW_inEBUnit_property.prop
+      return self.minPPTPTTTW_property.prop
     }
   }
 
@@ -171,6 +173,44 @@ class ArtworkRoot : EBManagedObject,
   var minValueForPHDinEBUnit_property_selection : EBSelection <Int> {
     get {
       return self.minValueForPHDinEBUnit_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing minValueForBoardLimitWidthDisplayUnit stored property
+  //····················································································································
+
+  var minValueForBoardLimitWidthDisplayUnit : Int {
+    get {
+      return self.minValueForBoardLimitWidthDisplayUnit_property.propval
+    }
+    set {
+      self.minValueForBoardLimitWidthDisplayUnit_property.setProp (newValue)
+    }
+  }
+
+  var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.minValueForBoardLimitWidthDisplayUnit_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing minValueForBoardLimitWidth stored property
+  //····················································································································
+
+  var minValueForBoardLimitWidth : Int {
+    get {
+      return self.minValueForBoardLimitWidth_property.propval
+    }
+    set {
+      self.minValueForBoardLimitWidth_property.setProp (newValue)
+    }
+  }
+
+  var minValueForBoardLimitWidth_property_selection : EBSelection <Int> {
+    get {
+      return self.minValueForBoardLimitWidth_property.prop
     }
   }
 
@@ -266,12 +306,14 @@ class ArtworkRoot : EBManagedObject,
 
   var selectedTab_property = EBStoredProperty_Int (0)
   var comments_property = EBStoredProperty_String ("")
-  var minPP_TP_TT_TW_displayUnit_property = EBStoredProperty_Int (90)
-  var minPP_TP_TT_TW_inEBUnit_property = EBStoredProperty_Int (18000)
+  var minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (90)
+  var minPPTPTTTW_property = EBStoredProperty_Int (18000)
   var minValueForOARdisplayUnit_property = EBStoredProperty_Int (90)
   var minValueForOARinEBUnit_property = EBStoredProperty_Int (18000)
   var minValueForPHDdisplayUnit_property = EBStoredProperty_Int (90)
   var minValueForPHDinEBUnit_property = EBStoredProperty_Int (18000)
+  var minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (90000)
+  var minValueForBoardLimitWidth_property = EBStoredProperty_Int (90000)
   var drillDataFormat_property = EBStoredProperty_DrillDataFormatEnum (DrillDataFormatEnum.excellon)
   var drillDataFileExtension_property = EBStoredProperty_String ("drf")
   var drillListFileExtension_property = EBStoredProperty_String ("drd")
@@ -299,12 +341,14 @@ class ArtworkRoot : EBManagedObject,
   //--- Install undoers for properties
     self.selectedTab_property.undoManager = undoManager ()
     self.comments_property.undoManager = undoManager ()
-    self.minPP_TP_TT_TW_displayUnit_property.undoManager = undoManager ()
-    self.minPP_TP_TT_TW_inEBUnit_property.undoManager = undoManager ()
+    self.minPPTPTTTWdisplayUnit_property.undoManager = undoManager ()
+    self.minPPTPTTTW_property.undoManager = undoManager ()
     self.minValueForOARdisplayUnit_property.undoManager = undoManager ()
     self.minValueForOARinEBUnit_property.undoManager = undoManager ()
     self.minValueForPHDdisplayUnit_property.undoManager = undoManager ()
     self.minValueForPHDinEBUnit_property.undoManager = undoManager ()
+    self.minValueForBoardLimitWidthDisplayUnit_property.undoManager = undoManager ()
+    self.minValueForBoardLimitWidth_property.undoManager = undoManager ()
     self.drillDataFormat_property.undoManager = undoManager ()
     self.drillDataFileExtension_property.undoManager = undoManager ()
     self.drillListFileExtension_property.undoManager = undoManager ()
@@ -318,7 +362,8 @@ class ArtworkRoot : EBManagedObject,
     self.drillListFileExtension_property.setSignatureObserver (observer:self)
     self.drillToolListFileExtension_property.setSignatureObserver (observer:self)
     self.fileGenerationParameterArray_property.setSignatureObserver (observer:self)
-    self.minPP_TP_TT_TW_inEBUnit_property.setSignatureObserver (observer:self)
+    self.minPPTPTTTW_property.setSignatureObserver (observer:self)
+    self.minValueForBoardLimitWidth_property.setSignatureObserver (observer:self)
     self.minValueForOARinEBUnit_property.setSignatureObserver (observer:self)
     self.minValueForPHDinEBUnit_property.setSignatureObserver (observer:self)
   }
@@ -352,20 +397,20 @@ class ArtworkRoot : EBManagedObject,
       valueExplorer:&self.comments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "minPP_TP_TT_TW_displayUnit",
-      idx:self.minPP_TP_TT_TW_displayUnit_property.mEasyBindingsObjectIndex,
+      "minPPTPTTTWdisplayUnit",
+      idx:self.minPPTPTTTWdisplayUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.minPP_TP_TT_TW_displayUnit_property.mObserverExplorer,
-      valueExplorer:&self.minPP_TP_TT_TW_displayUnit_property.mValueExplorer
+      observerExplorer:&self.minPPTPTTTWdisplayUnit_property.mObserverExplorer,
+      valueExplorer:&self.minPPTPTTTWdisplayUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "minPP_TP_TT_TW_inEBUnit",
-      idx:self.minPP_TP_TT_TW_inEBUnit_property.mEasyBindingsObjectIndex,
+      "minPPTPTTTW",
+      idx:self.minPPTPTTTW_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.minPP_TP_TT_TW_inEBUnit_property.mObserverExplorer,
-      valueExplorer:&self.minPP_TP_TT_TW_inEBUnit_property.mValueExplorer
+      observerExplorer:&self.minPPTPTTTW_property.mObserverExplorer,
+      valueExplorer:&self.minPPTPTTTW_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "minValueForOARdisplayUnit",
@@ -398,6 +443,22 @@ class ArtworkRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.minValueForPHDinEBUnit_property.mObserverExplorer,
       valueExplorer:&self.minValueForPHDinEBUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "minValueForBoardLimitWidthDisplayUnit",
+      idx:self.minValueForBoardLimitWidthDisplayUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer,
+      valueExplorer:&self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "minValueForBoardLimitWidth",
+      idx:self.minValueForBoardLimitWidth_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.minValueForBoardLimitWidth_property.mObserverExplorer,
+      valueExplorer:&self.minValueForBoardLimitWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drillDataFormat",
@@ -453,10 +514,10 @@ class ArtworkRoot : EBManagedObject,
     self.selectedTab_property.mValueExplorer = nil
     self.comments_property.mObserverExplorer = nil
     self.comments_property.mValueExplorer = nil
-    self.minPP_TP_TT_TW_displayUnit_property.mObserverExplorer = nil
-    self.minPP_TP_TT_TW_displayUnit_property.mValueExplorer = nil
-    self.minPP_TP_TT_TW_inEBUnit_property.mObserverExplorer = nil
-    self.minPP_TP_TT_TW_inEBUnit_property.mValueExplorer = nil
+    self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
+    self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
+    self.minPPTPTTTW_property.mObserverExplorer = nil
+    self.minPPTPTTTW_property.mValueExplorer = nil
     self.minValueForOARdisplayUnit_property.mObserverExplorer = nil
     self.minValueForOARdisplayUnit_property.mValueExplorer = nil
     self.minValueForOARinEBUnit_property.mObserverExplorer = nil
@@ -465,6 +526,10 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForPHDdisplayUnit_property.mValueExplorer = nil
     self.minValueForPHDinEBUnit_property.mObserverExplorer = nil
     self.minValueForPHDinEBUnit_property.mValueExplorer = nil
+    self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer = nil
+    self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer = nil
+    self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
+    self.minValueForBoardLimitWidth_property.mValueExplorer = nil
     self.drillDataFormat_property.mObserverExplorer = nil
     self.drillDataFormat_property.mValueExplorer = nil
     self.drillDataFileExtension_property.mObserverExplorer = nil
@@ -485,12 +550,14 @@ class ArtworkRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
     self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
     self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
-    self.minPP_TP_TT_TW_displayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minPP_TP_TT_TW_displayUnit")
-    self.minPP_TP_TT_TW_inEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minPP_TP_TT_TW_inEBUnit")
+    self.minPPTPTTTWdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTWdisplayUnit")
+    self.minPPTPTTTW_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTW")
     self.minValueForOARdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARdisplayUnit")
     self.minValueForOARinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARinEBUnit")
     self.minValueForPHDdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDdisplayUnit")
     self.minValueForPHDinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDinEBUnit")
+    self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
+    self.minValueForBoardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidth")
     self.drillDataFormat_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFormat")
     self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
     self.drillListFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillListFileExtension")
@@ -507,12 +574,14 @@ class ArtworkRoot : EBManagedObject,
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
     self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
     self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
-    self.minPP_TP_TT_TW_displayUnit_property.readFrom (dictionary: inDictionary, forKey:"minPP_TP_TT_TW_displayUnit")
-    self.minPP_TP_TT_TW_inEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minPP_TP_TT_TW_inEBUnit")
+    self.minPPTPTTTWdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minPPTPTTTWdisplayUnit")
+    self.minPPTPTTTW_property.readFrom (dictionary: inDictionary, forKey:"minPPTPTTTW")
     self.minValueForOARdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForOARdisplayUnit")
     self.minValueForOARinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForOARinEBUnit")
     self.minValueForPHDdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDdisplayUnit")
     self.minValueForPHDinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDinEBUnit")
+    self.minValueForBoardLimitWidthDisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidthDisplayUnit")
+    self.minValueForBoardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidth")
     self.drillDataFormat_property.readFrom (dictionary: inDictionary, forKey:"drillDataFormat")
     self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
     self.drillListFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillListFileExtension")
@@ -569,7 +638,8 @@ class ArtworkRoot : EBManagedObject,
     crc.accumulateUInt32 (self.drillListFileExtension_property.signature ())
     crc.accumulateUInt32 (self.drillToolListFileExtension_property.signature ())
     crc.accumulateUInt32 (self.fileGenerationParameterArray_property.signature ())
-    crc.accumulateUInt32 (self.minPP_TP_TT_TW_inEBUnit_property.signature ())
+    crc.accumulateUInt32 (self.minPPTPTTTW_property.signature ())
+    crc.accumulateUInt32 (self.minValueForBoardLimitWidth_property.signature ())
     crc.accumulateUInt32 (self.minValueForOARinEBUnit_property.signature ())
     crc.accumulateUInt32 (self.minValueForPHDinEBUnit_property.signature ())
     return crc
@@ -700,115 +770,115 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   }
 
   //····················································································································
-  //   Observers of 'minPP_TP_TT_TW_displayUnit' stored property
+  //   Observers of 'minPPTPTTTWdisplayUnit' stored property
   //····················································································································
 
-  private var mObserversOf_minPP_TP_TT_TW_displayUnit = EBWeakEventSet ()
+  private var mObserversOf_minPPTPTTTWdisplayUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_minPP_TP_TT_TW_displayUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_minPP_TP_TT_TW_displayUnit.insert (inObserver)
+    mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minPP_TP_TT_TW_displayUnit_property.addEBObserver (inObserver)
+        managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_minPP_TP_TT_TW_displayUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_minPP_TP_TT_TW_displayUnit.remove (inObserver)
+    mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minPP_TP_TT_TW_displayUnit_property.removeEBObserver (inObserver)
+        managedObject.minPPTPTTTWdisplayUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_minPP_TP_TT_TW_displayUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
+  final func addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_minPP_TP_TT_TW_displayUnit {
-        managedObject.minPP_TP_TT_TW_displayUnit_property.addEBObserver (observer)
+      for observer in mObserversOf_minPPTPTTTWdisplayUnit {
+        managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_minPP_TP_TT_TW_displayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_minPP_TP_TT_TW_displayUnit {
+  final func removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
+    for observer in mObserversOf_minPPTPTTTWdisplayUnit {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.minPP_TP_TT_TW_displayUnit_property.removeEBObserver (observer)
+        managedObject.minPPTPTTTWdisplayUnit_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'minPP_TP_TT_TW_inEBUnit' stored property
+  //   Observers of 'minPPTPTTTW' stored property
   //····················································································································
 
-  private var mObserversOf_minPP_TP_TT_TW_inEBUnit = EBWeakEventSet ()
+  private var mObserversOf_minPPTPTTTW = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_minPP_TP_TT_TW_inEBUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_minPP_TP_TT_TW_inEBUnit.insert (inObserver)
+    mObserversOf_minPPTPTTTW.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minPP_TP_TT_TW_inEBUnit_property.addEBObserver (inObserver)
+        managedObject.minPPTPTTTW_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_minPP_TP_TT_TW_inEBUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_minPP_TP_TT_TW_inEBUnit.remove (inObserver)
+    mObserversOf_minPPTPTTTW.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.minPP_TP_TT_TW_inEBUnit_property.removeEBObserver (inObserver)
+        managedObject.minPPTPTTTW_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_minPP_TP_TT_TW_inEBUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
+  final func addEBObserversOf_minPPTPTTTW_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_minPP_TP_TT_TW_inEBUnit {
-        managedObject.minPP_TP_TT_TW_inEBUnit_property.addEBObserver (observer)
+      for observer in mObserversOf_minPPTPTTTW {
+        managedObject.minPPTPTTTW_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_minPP_TP_TT_TW_inEBUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_minPP_TP_TT_TW_inEBUnit {
+  final func removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
+    for observer in mObserversOf_minPPTPTTTW {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.minPP_TP_TT_TW_inEBUnit_property.removeEBObserver (observer)
+        managedObject.minPPTPTTTW_property.removeEBObserver (observer)
       }
     }
   }
@@ -1037,6 +1107,120 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.minValueForPHDinEBUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'minValueForBoardLimitWidthDisplayUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_minValueForBoardLimitWidthDisplayUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_minValueForBoardLimitWidthDisplayUnit {
+        managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
+    for observer in mObserversOf_minValueForBoardLimitWidthDisplayUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'minValueForBoardLimitWidth' stored property
+  //····················································································································
+
+  private var mObserversOf_minValueForBoardLimitWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.minValueForBoardLimitWidth_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_minValueForBoardLimitWidth {
+        managedObject.minValueForBoardLimitWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
+    for observer in mObserversOf_minValueForBoardLimitWidth {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.minValueForBoardLimitWidth_property.removeEBObserver (observer)
       }
     }
   }
@@ -1309,12 +1493,14 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
       //--- Remove observers of stored properties
         removeEBObserversOf_selectedTab_fromElementsOfSet (removedSet)
         removeEBObserversOf_comments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_minPP_TP_TT_TW_displayUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_minPP_TP_TT_TW_inEBUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedSet)
         removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_drillDataFormat_fromElementsOfSet (removedSet)
         removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedSet)
         removeEBObserversOf_drillListFileExtension_fromElementsOfSet (removedSet)
@@ -1325,12 +1511,14 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
        //--- Add observers of stored properties
         addEBObserversOf_selectedTab_toElementsOfSet (addedSet)
         addEBObserversOf_comments_toElementsOfSet (addedSet)
-        addEBObserversOf_minPP_TP_TT_TW_displayUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_minPP_TP_TT_TW_inEBUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedSet)
         addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedSet)
         addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedSet)
         addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedSet)
         addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedSet)
         addEBObserversOf_drillDataFormat_toElementsOfSet (addedSet)
         addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedSet)
         addEBObserversOf_drillListFileExtension_toElementsOfSet (addedSet)
@@ -1378,14 +1566,14 @@ protocol ArtworkRoot_comments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_minPP_TP_TT_TW_displayUnit : class {
-  var minPP_TP_TT_TW_displayUnit : Int { get }
+protocol ArtworkRoot_minPPTPTTTWdisplayUnit : class {
+  var minPPTPTTTWdisplayUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_minPP_TP_TT_TW_inEBUnit : class {
-  var minPP_TP_TT_TW_inEBUnit : Int { get }
+protocol ArtworkRoot_minPPTPTTTW : class {
+  var minPPTPTTTW : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1410,6 +1598,18 @@ protocol ArtworkRoot_minValueForPHDdisplayUnit : class {
 
 protocol ArtworkRoot_minValueForPHDinEBUnit : class {
   var minValueForPHDinEBUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_minValueForBoardLimitWidthDisplayUnit : class {
+  var minValueForBoardLimitWidthDisplayUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_minValueForBoardLimitWidth : class {
+  var minValueForBoardLimitWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1516,6 +1716,7 @@ ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray, EBSignatur
         removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (removedObjectSet)
@@ -1543,6 +1744,7 @@ ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray, EBSignatur
         addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (addedObjectSet)

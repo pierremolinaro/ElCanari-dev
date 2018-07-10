@@ -14,14 +14,17 @@ entity ArtworkRoot {
   property Int selectedTab default 0 ;
   property @signature String comments default "" ;
 
-  property Int minPP_TP_TT_TW_displayUnit default 90 ; # 1µm
-  property @signature Int minPP_TP_TT_TW_inEBUnit default 18_000 ; # 200µm
+  property Int minPPTPTTTWdisplayUnit default 90 ; # 1µm
+  property @signature Int minPPTPTTTW default 18_000 ; # 200µm
 
   property Int minValueForOARdisplayUnit default 90 ; # 1µm
   property @signature Int minValueForOARinEBUnit default 18_000 ; # 200µm
 
   property Int minValueForPHDdisplayUnit default 90 ; # 1µm
   property @signature Int minValueForPHDinEBUnit default 18_000 ; # 200µm
+
+  property Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; # 1mm
+  property @signature Int minValueForBoardLimitWidth default 90_000 ; # 1mm
 
   property @signature DrillDataFormatEnum drillDataFormat default excellon ;
 
@@ -40,9 +43,9 @@ document PMArtworkDocument root ArtworkRoot {
   outlet CanariSegmentedControl mSegmentedControl $selectedPage root.selectedTab ;
 
 #--- Minimum tab
-  outlet EBPopUpButton mMinPP_TP_TT_TW_inEBUnitPopUp $selectedTag root.minPP_TP_TT_TW_displayUnit ;
-  outlet CanariDimensionTextField mMinPP_TP_TT_TW_displayUnit_TextField
-     $dimensionAndUnit root.minPP_TP_TT_TW_inEBUnit, root.minPP_TP_TT_TW_displayUnit
+  outlet EBPopUpButton mMinPPTPTTTWinEBUnitPopUp $selectedTag root.minPPTPTTTWdisplayUnit ;
+  outlet CanariDimensionTextField mMinPPTPTTTWdisplayUnitTextField
+     $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit
   ;
 
   outlet EBPopUpButton mOARUnitPopUp $selectedTag root.minValueForOARdisplayUnit ;
@@ -55,6 +58,10 @@ document PMArtworkDocument root ArtworkRoot {
      $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit
   ;
 
+  outlet EBPopUpButton minValueForBoardLimitUnitPopUp $selectedTag root.minValueForBoardLimitWidthDisplayUnit ;
+  outlet CanariDimensionTextField minValueForBoardLimitTextField
+     $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
+  ;
 
 #--- Format tab
   outlet CanariDrillDataFormatTabView mDrillDataFormatTabView $selectedFormat root.drillDataFormat ;
@@ -75,6 +82,7 @@ document PMArtworkDocument root ArtworkRoot {
 
   selectionController mDataSelection : mDataController.selectedArray ;
   outlet EBTextField mExtensionTextField $value mDataSelection.fileExtension {sendContinously:no} ;
+  outlet EBSwitch mDrawBoardInternalLimitsSwitch $value mDataSelection.drawInternalBoardLimits ;
   outlet EBSwitch mDrawBoardLimitsSwitch $value mDataSelection.drawBoardLimits ;
   outlet EBSwitch mDrawComponentValuesTopSideSwitch $value mDataSelection.drawComponentValuesTopSide ;
   outlet EBSwitch mDrawComponentValuesBottomSideSwitch $value mDataSelection.drawComponentValuesBottomSide ;
@@ -127,6 +135,7 @@ document PMArtworkDocument root ArtworkRoot {
 
 entity ArtworkFileGenerationParameters {
   property @signature Bool drawBoardLimits default no ;
+  property @signature Bool drawInternalBoardLimits default no ;
   property @signature Bool drawComponentNamesTopSide default no ;
   property @signature Bool drawComponentNamesBottomSide default no ;
   property @signature Bool drawComponentValuesTopSide default no ;

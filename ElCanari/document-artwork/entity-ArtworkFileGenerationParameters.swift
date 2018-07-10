@@ -10,6 +10,7 @@ import Cocoa
 
 class ArtworkFileGenerationParameters : EBManagedObject,
   ArtworkFileGenerationParameters_drawBoardLimits,
+  ArtworkFileGenerationParameters_drawInternalBoardLimits,
   ArtworkFileGenerationParameters_drawComponentNamesTopSide,
   ArtworkFileGenerationParameters_drawComponentNamesBottomSide,
   ArtworkFileGenerationParameters_drawComponentValuesTopSide,
@@ -48,6 +49,25 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   var drawBoardLimits_property_selection : EBSelection <Bool> {
     get {
       return self.drawBoardLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing drawInternalBoardLimits stored property
+  //····················································································································
+
+  var drawInternalBoardLimits : Bool {
+    get {
+      return self.drawInternalBoardLimits_property.propval
+    }
+    set {
+      self.drawInternalBoardLimits_property.setProp (newValue)
+    }
+  }
+
+  var drawInternalBoardLimits_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawInternalBoardLimits_property.prop
     }
   }
 
@@ -455,6 +475,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   var drawBoardLimits_property = EBStoredProperty_Bool (false)
+  var drawInternalBoardLimits_property = EBStoredProperty_Bool (false)
   var drawComponentNamesTopSide_property = EBStoredProperty_Bool (false)
   var drawComponentNamesBottomSide_property = EBStoredProperty_Bool (false)
   var drawComponentValuesTopSide_property = EBStoredProperty_Bool (false)
@@ -497,6 +518,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Install property observers for transients
   //--- Install undoers for properties
     self.drawBoardLimits_property.undoManager = undoManager ()
+    self.drawInternalBoardLimits_property.undoManager = undoManager ()
     self.drawComponentNamesTopSide_property.undoManager = undoManager ()
     self.drawComponentNamesBottomSide_property.undoManager = undoManager ()
     self.drawComponentValuesTopSide_property.undoManager = undoManager ()
@@ -525,6 +547,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     self.drawComponentNamesTopSide_property.setSignatureObserver (observer:self)
     self.drawComponentValuesBottomSide_property.setSignatureObserver (observer:self)
     self.drawComponentValuesTopSide_property.setSignatureObserver (observer:self)
+    self.drawInternalBoardLimits_property.setSignatureObserver (observer:self)
     self.drawPackageLegendBottomSide_property.setSignatureObserver (observer:self)
     self.drawPackageLegendTopSide_property.setSignatureObserver (observer:self)
     self.drawPadHolesInPDF_property.setSignatureObserver (observer:self)
@@ -563,6 +586,14 @@ class ArtworkFileGenerationParameters : EBManagedObject,
       view:view,
       observerExplorer:&self.drawBoardLimits_property.mObserverExplorer,
       valueExplorer:&self.drawBoardLimits_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "drawInternalBoardLimits",
+      idx:self.drawInternalBoardLimits_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.drawInternalBoardLimits_property.mObserverExplorer,
+      valueExplorer:&self.drawInternalBoardLimits_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "drawComponentNamesTopSide",
@@ -745,6 +776,8 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   override func clearObjectExplorer () {
     self.drawBoardLimits_property.mObserverExplorer = nil
     self.drawBoardLimits_property.mValueExplorer = nil
+    self.drawInternalBoardLimits_property.mObserverExplorer = nil
+    self.drawInternalBoardLimits_property.mValueExplorer = nil
     self.drawComponentNamesTopSide_property.mObserverExplorer = nil
     self.drawComponentNamesTopSide_property.mValueExplorer = nil
     self.drawComponentNamesBottomSide_property.mObserverExplorer = nil
@@ -797,6 +830,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
     self.drawBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawBoardLimits")
+    self.drawInternalBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawInternalBoardLimits")
     self.drawComponentNamesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesTopSide")
     self.drawComponentNamesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesBottomSide")
     self.drawComponentValuesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesTopSide")
@@ -828,6 +862,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
     self.drawBoardLimits_property.readFrom (dictionary: inDictionary, forKey:"drawBoardLimits")
+    self.drawInternalBoardLimits_property.readFrom (dictionary: inDictionary, forKey:"drawInternalBoardLimits")
     self.drawComponentNamesTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesTopSide")
     self.drawComponentNamesBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesBottomSide")
     self.drawComponentValuesTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesTopSide")
@@ -878,6 +913,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     crc.accumulateUInt32 (self.drawComponentNamesTopSide_property.signature ())
     crc.accumulateUInt32 (self.drawComponentValuesBottomSide_property.signature ())
     crc.accumulateUInt32 (self.drawComponentValuesTopSide_property.signature ())
+    crc.accumulateUInt32 (self.drawInternalBoardLimits_property.signature ())
     crc.accumulateUInt32 (self.drawPackageLegendBottomSide_property.signature ())
     crc.accumulateUInt32 (self.drawPackageLegendTopSide_property.signature ())
     crc.accumulateUInt32 (self.drawPadHolesInPDF_property.signature ())
@@ -961,6 +997,63 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawBoardLimits_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'drawInternalBoardLimits' stored property
+  //····················································································································
+
+  private var mObserversOf_drawInternalBoardLimits = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_drawInternalBoardLimits.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawInternalBoardLimits_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drawInternalBoardLimits (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_drawInternalBoardLimits.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.drawInternalBoardLimits_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_drawInternalBoardLimits {
+        managedObject.drawInternalBoardLimits_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
+    for observer in mObserversOf_drawInternalBoardLimits {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.drawInternalBoardLimits_property.removeEBObserver (observer)
       }
     }
   }
@@ -2201,6 +2294,7 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
         removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedSet)
+        removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedSet)
         removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedSet)
         removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedSet)
         removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (removedSet)
@@ -2227,6 +2321,7 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
         addEBObserversOf_drawBoardLimits_toElementsOfSet (addedSet)
+        addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedSet)
         addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedSet)
         addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedSet)
         addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (addedSet)
@@ -2281,6 +2376,12 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 
 protocol ArtworkFileGenerationParameters_drawBoardLimits : class {
   var drawBoardLimits : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawInternalBoardLimits : class {
+  var drawInternalBoardLimits : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

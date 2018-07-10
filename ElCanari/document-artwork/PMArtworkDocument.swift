@@ -16,6 +16,7 @@ import Cocoa
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mDataTableView : EBTableView?
   @IBOutlet var mDimensionForPadHoleInPDFTextField : CanariDimensionTextField?
+  @IBOutlet var mDrawBoardInternalLimitsSwitch : EBSwitch?
   @IBOutlet var mDrawBoardLimitsSwitch : EBSwitch?
   @IBOutlet var mDrawComponentNamesBottomSideSwitch : EBSwitch?
   @IBOutlet var mDrawComponentNamesTopSideSwitch : EBSwitch?
@@ -41,8 +42,8 @@ import Cocoa
   @IBOutlet var mGeneratedFileCountTextField : EBTextObserverField?
   @IBOutlet var mHorizontalMirrorSwitch : EBSwitch?
   @IBOutlet var mMeasurementUnitForPadHoleInPDFPopUp : EBPopUpButton?
-  @IBOutlet var mMinPP_TP_TT_TW_displayUnit_TextField : CanariDimensionTextField?
-  @IBOutlet var mMinPP_TP_TT_TW_inEBUnitPopUp : EBPopUpButton?
+  @IBOutlet var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionTextField?
+  @IBOutlet var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton?
   @IBOutlet var mOARUnitPopUp : EBPopUpButton?
   @IBOutlet var mOARValueTextField : CanariDimensionTextField?
   @IBOutlet var mOtherSignatureTextField : CanariSignatureField?
@@ -55,6 +56,8 @@ import Cocoa
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mVersionField : CanariVersionField?
   @IBOutlet var mVersionFieldInToolbar : CanariVersionField?
+  @IBOutlet var minValueForBoardLimitTextField : CanariDimensionTextField?
+  @IBOutlet var minValueForBoardLimitUnitPopUp : EBPopUpButton?
   @IBOutlet var resetVersionAndSignatureButton : EBButton?
 
   //····················································································································
@@ -207,6 +210,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mDimensionForPadHoleInPDFTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+    }
+    if nil == mDrawBoardInternalLimitsSwitch {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDrawBoardInternalLimitsSwitch' outlet is nil") ;
+//    }else if !mDrawBoardInternalLimitsSwitch!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDrawBoardInternalLimitsSwitch' outlet is not an instance of 'EBSwitch'") ;
     }
     if nil == mDrawBoardLimitsSwitch {
       presentErrorWindow (file: #file,
@@ -433,23 +445,23 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mMeasurementUnitForPadHoleInPDFPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
-    if nil == mMinPP_TP_TT_TW_displayUnit_TextField {
+    if nil == mMinPPTPTTTWdisplayUnitTextField {
       presentErrorWindow (file: #file,
                               line: #line,
-                              errorMessage: "the 'mMinPP_TP_TT_TW_displayUnit_TextField' outlet is nil") ;
-//    }else if !mMinPP_TP_TT_TW_displayUnit_TextField!.isKindOfClass (CanariDimensionTextField) {
+                              errorMessage: "the 'mMinPPTPTTTWdisplayUnitTextField' outlet is nil") ;
+//    }else if !mMinPPTPTTTWdisplayUnitTextField!.isKindOfClass (CanariDimensionTextField) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mMinPP_TP_TT_TW_displayUnit_TextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+//                              errorMessage: "the 'mMinPPTPTTTWdisplayUnitTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
     }
-    if nil == mMinPP_TP_TT_TW_inEBUnitPopUp {
+    if nil == mMinPPTPTTTWinEBUnitPopUp {
       presentErrorWindow (file: #file,
                               line: #line,
-                              errorMessage: "the 'mMinPP_TP_TT_TW_inEBUnitPopUp' outlet is nil") ;
-//    }else if !mMinPP_TP_TT_TW_inEBUnitPopUp!.isKindOfClass (EBPopUpButton) {
+                              errorMessage: "the 'mMinPPTPTTTWinEBUnitPopUp' outlet is nil") ;
+//    }else if !mMinPPTPTTTWinEBUnitPopUp!.isKindOfClass (EBPopUpButton) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mMinPP_TP_TT_TW_inEBUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+//                              errorMessage: "the 'mMinPPTPTTTWinEBUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
     if nil == mOARUnitPopUp {
       presentErrorWindow (file: #file,
@@ -559,6 +571,24 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mVersionFieldInToolbar' outlet is not an instance of 'CanariVersionField'") ;
     }
+    if nil == minValueForBoardLimitTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'minValueForBoardLimitTextField' outlet is nil") ;
+//    }else if !minValueForBoardLimitTextField!.isKindOfClass (CanariDimensionTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'minValueForBoardLimitTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+    }
+    if nil == minValueForBoardLimitUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'minValueForBoardLimitUnitPopUp' outlet is nil") ;
+//    }else if !minValueForBoardLimitUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'minValueForBoardLimitUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+    }
     if nil == resetVersionAndSignatureButton {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -654,17 +684,20 @@ import Cocoa
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusMessage_property)
   //--------------------------- Install regular bindings
     mSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
-    mMinPP_TP_TT_TW_inEBUnitPopUp?.bind_selectedTag (self.rootObject.minPP_TP_TT_TW_displayUnit_property, file: #file, line: #line)
-    mMinPP_TP_TT_TW_displayUnit_TextField?.bind_dimensionAndUnit (self.rootObject.minPP_TP_TT_TW_inEBUnit_property, self.rootObject.minPP_TP_TT_TW_displayUnit_property, file: #file, line: #line)
+    mMinPPTPTTTWinEBUnitPopUp?.bind_selectedTag (self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
+    mMinPPTPTTTWdisplayUnitTextField?.bind_dimensionAndUnit (self.rootObject.minPPTPTTTW_property, self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
     mOARUnitPopUp?.bind_selectedTag (self.rootObject.minValueForOARdisplayUnit_property, file: #file, line: #line)
     mOARValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForOARinEBUnit_property, self.rootObject.minValueForOARdisplayUnit_property, file: #file, line: #line)
     mPHDUnitPopUp?.bind_selectedTag (self.rootObject.minValueForPHDdisplayUnit_property, file: #file, line: #line)
     mPHDValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property, file: #file, line: #line)
+    minValueForBoardLimitUnitPopUp?.bind_selectedTag (self.rootObject.minValueForBoardLimitWidthDisplayUnit_property, file: #file, line: #line)
+    minValueForBoardLimitTextField?.bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property, file: #file, line: #line)
     mDrillDataFormatTabView?.bind_selectedFormat (self.rootObject.drillDataFormat_property, file: #file, line: #line)
     mDrillDataFileExtensionTextField?.bind_value (self.rootObject.drillDataFileExtension_property, file: #file, line: #line, sendContinously:false)
     mDrillListFileExtensionTextField?.bind_value (self.rootObject.drillListFileExtension_property, file: #file, line: #line, sendContinously:false)
     mDrillToolListFileExtensionTextField?.bind_value (self.rootObject.drillToolListFileExtension_property, file: #file, line: #line, sendContinously:false)
     mExtensionTextField?.bind_value (self.mDataSelection.fileExtension_property, file: #file, line: #line, sendContinously:false)
+    mDrawBoardInternalLimitsSwitch?.bind_value (self.mDataSelection.drawInternalBoardLimits_property, file: #file, line: #line)
     mDrawBoardLimitsSwitch?.bind_value (self.mDataSelection.drawBoardLimits_property, file: #file, line: #line)
     mDrawComponentValuesTopSideSwitch?.bind_value (self.mDataSelection.drawComponentValuesTopSide_property, file: #file, line: #line)
     mDrawComponentValuesBottomSideSwitch?.bind_value (self.mDataSelection.drawComponentValuesBottomSide_property, file: #file, line: #line)
@@ -735,17 +768,20 @@ import Cocoa
   override func removeUserInterface () {
   //--------------------------- Unbind regular bindings
     mSegmentedControl?.unbind_selectedPage ()
-    mMinPP_TP_TT_TW_inEBUnitPopUp?.unbind_selectedTag ()
-    mMinPP_TP_TT_TW_displayUnit_TextField?.unbind_dimensionAndUnit ()
+    mMinPPTPTTTWinEBUnitPopUp?.unbind_selectedTag ()
+    mMinPPTPTTTWdisplayUnitTextField?.unbind_dimensionAndUnit ()
     mOARUnitPopUp?.unbind_selectedTag ()
     mOARValueTextField?.unbind_dimensionAndUnit ()
     mPHDUnitPopUp?.unbind_selectedTag ()
     mPHDValueTextField?.unbind_dimensionAndUnit ()
+    minValueForBoardLimitUnitPopUp?.unbind_selectedTag ()
+    minValueForBoardLimitTextField?.unbind_dimensionAndUnit ()
     mDrillDataFormatTabView?.unbind_selectedFormat ()
     mDrillDataFileExtensionTextField?.unbind_value ()
     mDrillListFileExtensionTextField?.unbind_value ()
     mDrillToolListFileExtensionTextField?.unbind_value ()
     mExtensionTextField?.unbind_value ()
+    mDrawBoardInternalLimitsSwitch?.unbind_value ()
     mDrawBoardLimitsSwitch?.unbind_value ()
     mDrawComponentValuesTopSideSwitch?.unbind_value ()
     mDrawComponentValuesBottomSideSwitch?.unbind_value ()
@@ -805,6 +841,7 @@ import Cocoa
     self.mCommentTextView?.ebCleanUp ()
     self.mDataTableView?.ebCleanUp ()
     self.mDimensionForPadHoleInPDFTextField?.ebCleanUp ()
+    self.mDrawBoardInternalLimitsSwitch?.ebCleanUp ()
     self.mDrawBoardLimitsSwitch?.ebCleanUp ()
     self.mDrawComponentNamesBottomSideSwitch?.ebCleanUp ()
     self.mDrawComponentNamesTopSideSwitch?.ebCleanUp ()
@@ -830,8 +867,8 @@ import Cocoa
     self.mGeneratedFileCountTextField?.ebCleanUp ()
     self.mHorizontalMirrorSwitch?.ebCleanUp ()
     self.mMeasurementUnitForPadHoleInPDFPopUp?.ebCleanUp ()
-    self.mMinPP_TP_TT_TW_displayUnit_TextField?.ebCleanUp ()
-    self.mMinPP_TP_TT_TW_inEBUnitPopUp?.ebCleanUp ()
+    self.mMinPPTPTTTWdisplayUnitTextField?.ebCleanUp ()
+    self.mMinPPTPTTTWinEBUnitPopUp?.ebCleanUp ()
     self.mOARUnitPopUp?.ebCleanUp ()
     self.mOARValueTextField?.ebCleanUp ()
     self.mOtherSignatureTextField?.ebCleanUp ()
@@ -844,6 +881,8 @@ import Cocoa
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
     self.mVersionFieldInToolbar?.ebCleanUp ()
+    self.minValueForBoardLimitTextField?.ebCleanUp ()
+    self.minValueForBoardLimitUnitPopUp?.ebCleanUp ()
     self.resetVersionAndSignatureButton?.ebCleanUp ()
   }
 

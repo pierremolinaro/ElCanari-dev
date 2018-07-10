@@ -120,17 +120,6 @@ fileprivate class OpenPanelDelegateForImportingArtwork : EBSimpleClass, NSOpenSa
 
   //····················································································································
 
-  //   DELEGATE METHOD
-  //····················································································································
-
-//  func panel (_ sender: Any, shouldEnable url: URL) -> Bool {
-//    let fileName = url.path.lastPathComponent.deletingPathExtension
-//    // NSLog ("\(fileName)")
-//    return mBoardModelNames.index (of:fileName) == nil
-//  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
