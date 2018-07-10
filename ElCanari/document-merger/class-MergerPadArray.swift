@@ -182,10 +182,11 @@ final class MergerPadArray : EBSimpleClass {
   //····················································································································
 
   func addPads (toApertures ioApertureDictionary : inout [String : [String]],
+                toPolygones ioPolygons : inout [[String]],
                 dx inDx : Int,
                 dy inDy: Int,
                 horizontalMirror inHorizontalMirror : Bool,
-                minimumAperture inMinimumAperture : Int,
+                minimumAperture inMinimumApertureMilTenth : Int,
                 boardWidth inBoardWidth : Int) {
     for pad in self.padArray {
       let x : Int = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - pad.x - inDx) : (pad.x + inDx))
@@ -218,41 +219,61 @@ final class MergerPadArray : EBSimpleClass {
            }else{
             ioApertureDictionary [apertureString] = [flash]
            }
-        }else{ // Oblique rectangular pad
+        }else{ // Oblique rectangular pad: use G36 ······ G37 codes
           let cosa = cos (canariRotationToRadians (pad.rotation))
           let sina = sin (canariRotationToRadians (pad.rotation))
-          var currentApertureMilTenth : Int = canariUnitToMilTenth (inMinimumAperture)
-          NSLog ("currentApertureMilTenth \(currentApertureMilTenth)")
-          var width  : Int = widthTenthMil
-          var height : Int = heightTenthMil
-          while (width > 0) && (height > 0) {
-            let hs = CGFloat (width  - currentApertureMilTenth) / 2.0
-            let ws = CGFloat (height - currentApertureMilTenth) / 2.0
-            let p1x : CGFloat = CGFloat (x) + ( hs * cosa - ws * sina)
-            let p1y : CGFloat = CGFloat (y) + ( hs * sina + ws * cosa)
-            let p2x : CGFloat = CGFloat (x) + (-hs * cosa - ws * sina)
-            let p2y : CGFloat = CGFloat (y) + (-hs * sina + ws * cosa)
-            let p3x : CGFloat = CGFloat (x) + (-hs * cosa + ws * sina)
-            let p3y : CGFloat = CGFloat (y) + (-hs * sina - ws * cosa)
-            let p4x : CGFloat = CGFloat (x) + ( hs * cosa + ws * sina)
-            let p4y : CGFloat = CGFloat (y) + ( hs * sina - ws * cosa)
-            var drawings = [String] ()
-            drawings.append ("X\(String(format: "%06d", Int (p1x)))Y\(String(format: "%06d", Int (p1y)))D02") // Move to
-            drawings.append ("X\(String(format: "%06d", Int (p2x)))Y\(String(format: "%06d", Int (p2y)))D01") // Line to
-            drawings.append ("X\(String(format: "%06d", Int (p3x)))Y\(String(format: "%06d", Int (p3y)))D01") // Line to
-            drawings.append ("X\(String(format: "%06d", Int (p4x)))Y\(String(format: "%06d", Int (p4y)))D01") // Line to
-            drawings.append ("X\(String(format: "%06d", Int (p1x)))Y\(String(format: "%06d", Int (p1y)))D01") // Line to
-            let apertureString = "C,\(String(format: "%.4f", CGFloat (currentApertureMilTenth * 100)))"
-            if let array = ioApertureDictionary [apertureString] {
-              ioApertureDictionary [apertureString] = array + drawings
-            }else{
-              ioApertureDictionary [apertureString] = drawings
-            }
-          //--- Prepare for next iteration
-            width  -= currentApertureMilTenth
-            height -= currentApertureMilTenth
-            currentApertureMilTenth = (currentApertureMilTenth * 3) / 2
-          }
+          let hs = CGFloat (widthTenthMilF) / 2.0
+          let ws = CGFloat (heightTenthMilF) / 2.0
+          let p1x : CGFloat = CGFloat (x) + ( hs * cosa - ws * sina)
+          let p1y : CGFloat = CGFloat (y) + ( hs * sina + ws * cosa)
+          let p2x : CGFloat = CGFloat (x) + (-hs * cosa - ws * sina)
+          let p2y : CGFloat = CGFloat (y) + (-hs * sina + ws * cosa)
+          let p3x : CGFloat = CGFloat (x) + (-hs * cosa + ws * sina)
+          let p3y : CGFloat = CGFloat (y) + (-hs * sina - ws * cosa)
+          let p4x : CGFloat = CGFloat (x) + ( hs * cosa + ws * sina)
+          let p4y : CGFloat = CGFloat (y) + ( hs * sina - ws * cosa)
+          var drawings = [String] ()
+          drawings.append ("X\(String(format: "%06d", Int (p1x)))Y\(String(format: "%06d", Int (p1y)))D02") // Move to
+          drawings.append ("X\(String(format: "%06d", Int (p2x)))Y\(String(format: "%06d", Int (p2y)))D01") // Line to
+          drawings.append ("X\(String(format: "%06d", Int (p3x)))Y\(String(format: "%06d", Int (p3y)))D01") // Line to
+          drawings.append ("X\(String(format: "%06d", Int (p4x)))Y\(String(format: "%06d", Int (p4y)))D01") // Line to
+          drawings.append ("X\(String(format: "%06d", Int (p1x)))Y\(String(format: "%06d", Int (p1y)))D01") // Line to
+          ioPolygons.append (drawings)
+
+//          let cosa = cos (canariRotationToRadians (pad.rotation))
+//          let sina = sin (canariRotationToRadians (pad.rotation))
+//          var currentApertureMilTenth : Int = inMinimumApertureMilTenth
+//          // NSLog ("currentApertureMilTenth \(currentApertureMilTenth)")
+//          var width  : Int = widthTenthMil
+//          var height : Int = heightTenthMil
+//          while (width > 0) && (height > 0) {
+//            let hs = CGFloat (width  - currentApertureMilTenth) / 2.0
+//            let ws = CGFloat (height - currentApertureMilTenth) / 2.0
+//            let p1x : CGFloat = CGFloat (x) + ( hs * cosa - ws * sina)
+//            let p1y : CGFloat = CGFloat (y) + ( hs * sina + ws * cosa)
+//            let p2x : CGFloat = CGFloat (x) + (-hs * cosa - ws * sina)
+//            let p2y : CGFloat = CGFloat (y) + (-hs * sina + ws * cosa)
+//            let p3x : CGFloat = CGFloat (x) + (-hs * cosa + ws * sina)
+//            let p3y : CGFloat = CGFloat (y) + (-hs * sina - ws * cosa)
+//            let p4x : CGFloat = CGFloat (x) + ( hs * cosa + ws * sina)
+//            let p4y : CGFloat = CGFloat (y) + ( hs * sina - ws * cosa)
+//            var drawings = [String] ()
+//            drawings.append ("X\(String(format: "%06d", Int (p1x)))Y\(String(format: "%06d", Int (p1y)))D02") // Move to
+//            drawings.append ("X\(String(format: "%06d", Int (p2x)))Y\(String(format: "%06d", Int (p2y)))D01") // Line to
+//            drawings.append ("X\(String(format: "%06d", Int (p3x)))Y\(String(format: "%06d", Int (p3y)))D01") // Line to
+//            drawings.append ("X\(String(format: "%06d", Int (p4x)))Y\(String(format: "%06d", Int (p4y)))D01") // Line to
+//            drawings.append ("X\(String(format: "%06d", Int (p1x)))Y\(String(format: "%06d", Int (p1y)))D01") // Line to
+//            let apertureString = "C,\(String(format: "%.4f", CGFloat (currentApertureMilTenth) / 10_000.0)))"
+//            if let array = ioApertureDictionary [apertureString] {
+//              ioApertureDictionary [apertureString] = array + drawings
+//            }else{
+//              ioApertureDictionary [apertureString] = drawings
+//            }
+//          //--- Prepare for next iteration
+//            width  -= currentApertureMilTenth
+//            height -= currentApertureMilTenth
+//            currentApertureMilTenth = (currentApertureMilTenth * 3) / 2
+//          }
         }
       case .round :
         if pad.width < pad.height {
