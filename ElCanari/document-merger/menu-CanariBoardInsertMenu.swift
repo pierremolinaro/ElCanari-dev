@@ -106,11 +106,12 @@ final class Controller_CanariBoardInsertMenu_names : EBSimpleController {
     mNames = names
     mOutlet = outlet
     super.init (observedObjects:[names], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mNames.prop {
     case .empty :
       mOutlet.setNames ([])

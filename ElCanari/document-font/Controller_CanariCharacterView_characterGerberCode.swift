@@ -26,11 +26,12 @@ final class Controller_CanariCharacterView_characterGerberCode : EBSimpleControl
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  final override func sendUpdateEvent () {
+  final private func updateOutlet () {
     _ = mObject.prop // Required for flushing event
     mOutlet.updateSegmentDrawingsFromCharacterSegmentListController () // Just for triggering display, mObject value not used
   }

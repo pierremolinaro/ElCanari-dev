@@ -123,11 +123,12 @@ final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleContr
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mObject.prop {
     case .empty :
       mOutlet.enableFromValueBinding (false)

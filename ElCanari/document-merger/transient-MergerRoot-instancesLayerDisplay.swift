@@ -17,10 +17,13 @@ func compute_MergerRoot_instancesLayerDisplay (
 ) -> CALayer {
 //--- START OF USER ZONE 2
   var array = [CALayer] ()
+  var idx = 0
   for instance in self_boardInstances_instanceLayerDisplay {
     if let layer = instance.instanceLayerDisplay {
+      layer.name = "\(idx)"
       array.append (layer)
     }
+    idx += 1
   }
   array.append (self_boardLimitsLayerDisplay)
   let result = CALayer ()

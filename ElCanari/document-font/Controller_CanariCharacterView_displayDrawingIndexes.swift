@@ -24,11 +24,12 @@ final class Controller_CanariCharacterView_displayDrawingIndexes : EBSimpleContr
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  final override func sendUpdateEvent () {
+  final private func updateOutlet () {
     _ = mObject.prop // Required for flushing event
     mOutlet.updateSegmentDrawingsFromDisplayDrawingIndexesController ()
   }

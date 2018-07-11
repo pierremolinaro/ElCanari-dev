@@ -60,6 +60,7 @@ final class Controller_CanariDrillDataFormatTabView_selectedFormat : EBSimpleCon
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)
     outlet.delegate = self
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -71,7 +72,7 @@ final class Controller_CanariDrillDataFormatTabView_selectedFormat : EBSimpleCon
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mObject.prop {
     case .empty, .multiple :
       break

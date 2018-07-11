@@ -72,11 +72,12 @@ final class Controller_CanariSignatureField_signature : EBSimpleController {
     if mOutlet.formatter != nil {
       presentErrorWindow (file: file, line: line, errorMessage: "the outlet has a formatter")
     }
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mObject.prop {
     case .empty :
       mOutlet.enableFromValueBinding (false)

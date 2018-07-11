@@ -11,12 +11,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension MergerDocument {
-  func dismissDisplaySettingViewAction (_ sender : NSObject) {
+func compute_MergerBoardInstance_selectionLayer (
+       _ self_instanceRect : CanariBoardRect
+) -> CALayer {
 //--- START OF USER ZONE 2
-    mDisplaySettingView?.removeFromSuperview ()
+  let r : NSRect = self_instanceRect.cocoaRect().insetBy (dx: 1.0, dy: 1.0)
+  let layer = CAShapeLayer ()
+  layer.path = CGPath (rect: r, transform:nil)
+  layer.lineWidth = 2.0
+  layer.lineJoin = kCALineJoinRound
+  layer.fillColor = NSColor.cyan.withAlphaComponent (0.15).cgColor
+  layer.strokeColor = NSColor.cyan.cgColor
+  return layer
 //--- END OF USER ZONE 2
-  }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -23,11 +23,12 @@ final class Controller_CanariMenu_CanariMenuItemListClass : EBSimpleController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet: outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  final override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mObject.prop {
     case .empty, .multiple :
       mOutlet.removeAllItems ()

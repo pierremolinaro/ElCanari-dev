@@ -24,12 +24,12 @@ final class Controller_CanariCharacterView_displayFlow : EBSimpleController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)
-//    mObject.addEBObserver (self)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  final override func sendUpdateEvent () {
+  final private func updateOutlet () {
     _ = mObject.prop // Required for flushing event
     mOutlet.updateSegmentDrawingsFromDisplayFlowController ()
   }

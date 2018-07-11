@@ -84,6 +84,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     if mOutlet.formatter == nil {
       presentErrorWindow (file: file, line: line, errorMessage: "the CanariDimensionTextField outlet has no formatter")
     }
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -96,7 +97,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch combine (mDimension.prop, unit:mUnit.prop) {
     case .empty :
       mOutlet.stringValue = "—"

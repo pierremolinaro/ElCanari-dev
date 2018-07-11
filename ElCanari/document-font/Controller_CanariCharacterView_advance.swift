@@ -24,11 +24,12 @@ final class Controller_CanariCharacterView_advance : EBSimpleController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  final override func sendUpdateEvent () {
+  final private func updateOutlet () {
     switch mObject.prop {
     case .empty, .multiple :
       break ;

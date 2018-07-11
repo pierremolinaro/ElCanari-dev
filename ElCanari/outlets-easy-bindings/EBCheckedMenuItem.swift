@@ -57,6 +57,7 @@ final class Controller_EBCheckedMenuItem_check : EBSimpleController {
     super.init (observedObjects:[checked], outlet:outlet)
     mOutlet.target = self
     mOutlet.action = #selector (Controller_EBCheckedMenuItem_check.menuItemAction(_:))
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -69,7 +70,7 @@ final class Controller_EBCheckedMenuItem_check : EBSimpleController {
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mIsChecked.prop {
     case .empty :
       mOutlet.isEnabled = false

@@ -60,11 +60,12 @@ import Cocoa
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mObject.prop {
     case .empty, .multiple :
       mOutlet.string = ""

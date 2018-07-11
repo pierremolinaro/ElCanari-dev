@@ -334,11 +334,12 @@ final class Controller_CanariViewWithZoomAndFlip_size : EBSimpleController {
     mHeight = height
     mOutlet = outlet
     super.init (observedObjects:[width, height], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     var newWidth = 0
     switch mWidth.prop {
     case .empty :
@@ -380,11 +381,12 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
     mZoom = zoom
     mOutlet = outlet
     super.init (observedObjects:[zoom], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mZoom.prop {
     case .empty :
       mOutlet.setZoomFromController (100, false)
@@ -420,11 +422,12 @@ final class Controller_CanariViewWithZoomAndFlip_horizontalFlip : EBSimpleContro
     mFlip = flip
     mOutlet = outlet
     super.init (observedObjects:[flip], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mFlip.prop {
     case .empty :
       mOutlet.setHorizontalFlipFromController (false)
@@ -454,11 +457,12 @@ final class Controller_CanariViewWithZoomAndFlip_verticalFlip : EBSimpleControll
     mFlip = flip
     mOutlet = outlet
     super.init (observedObjects:[flip], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mFlip.prop {
     case .empty :
       mOutlet.setVerticalFlipFromController (false)

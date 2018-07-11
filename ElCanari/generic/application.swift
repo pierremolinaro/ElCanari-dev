@@ -13,46 +13,62 @@ import Cocoa
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate var gPendingOutletEvents = [EBOutletEvent] ()
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBOutletEvent class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBOutletEvent) class EBOutletEvent : EBEvent {
-  fileprivate var mEventIsPosted = false
-  
+
+  //····················································································································
+  //   Properties
+  //····················································································································
+
+  var eventCallBack : Optional < () -> Void > = nil
+  var mEventIsPosted = false
+
+  //····················································································································
+  //   postEvent
+  //····················································································································
+
   override func postEvent () {
-    postOutletEvent (self)
-  }
-  func sendUpdateEvent () {} // Abstract Method
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    O U T L E T    E V E N T S
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate var gPendingOutletEvents = [EBOutletEvent] ()
-
-fileprivate func postOutletEvent (_ event : EBOutletEvent) {
-  if gPendingOutletEvents.count == 0 {
-    DispatchQueue.main.asyncAfter (deadline: DispatchTime.now()) { flushOutletEvents () }
+    if gPendingOutletEvents.count == 0 {
+      DispatchQueue.main.asyncAfter (deadline: DispatchTime.now()) { flushOutletEvents () }
+      if logEvents () {
+        appendMessageString ("Post events\n")
+      }
+    }
+    
     if logEvents () {
-      appendMessageString ("Post events\n")
+      let str = "  " +  explorerIndexString (self.mEasyBindingsObjectIndex) + self.className + "\n"
+      if !self.mEventIsPosted {
+        appendMessageString (str)
+      }else{ // Event already posted
+        appendMessageString (str, color: NSColor.brown)
+      }
+    }
+    if !self.mEventIsPosted {
+      self.mEventIsPosted = true
+      gPendingOutletEvents.append (self)
     }
   }
-  
-  if logEvents () {
-    let str = "  " +  explorerIndexString (event.mEasyBindingsObjectIndex) + event.className + "\n"
-    if !event.mEventIsPosted {
-      appendMessageString (str)
-    }else{ // Event already posted
-      appendMessageString (str, color: NSColor.brown)
-    }
+
+  //····················································································································
+  //   sendUpdateEvent
+  //····················································································································
+
+  final func sendUpdateEvent () {
+    mEventIsPosted = false
+    self.eventCallBack? ()
   }
-  if !event.mEventIsPosted {
-    event.mEventIsPosted = true
-    gPendingOutletEvents.append (event)
-  }
+
+  //····················································································································
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    flushOutletEvents
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func flushOutletEvents () {

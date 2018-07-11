@@ -52,6 +52,7 @@ import Cocoa
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardView : CanariBoardModelView?
   @IBOutlet var mDangerView : NSView?
+  @IBOutlet var mDelegateForMergerBoardViewEvents : DelegateForMergerBoardViewEvents?
   @IBOutlet var mDisplaySettingView : NSView?
   @IBOutlet var mEmptyBoardMessage : EBTextField?
   @IBOutlet var mGenerateGerber : EBSwitch?
@@ -597,6 +598,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mDangerView' outlet is not an instance of 'NSView'") ;
+    }
+    if nil == mDelegateForMergerBoardViewEvents {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDelegateForMergerBoardViewEvents' outlet is nil") ;
+//    }else if !mDelegateForMergerBoardViewEvents!.isKindOfClass (DelegateForMergerBoardViewEvents) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDelegateForMergerBoardViewEvents' outlet is not an instance of 'DelegateForMergerBoardViewEvents'") ;
     }
     if nil == mDisplaySettingView {
       presentErrorWindow (file: #file,
@@ -1760,6 +1770,7 @@ import Cocoa
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mDangerView?.ebCleanUp ()
+    self.mDelegateForMergerBoardViewEvents?.ebCleanUp ()
     self.mDisplaySettingView?.ebCleanUp ()
     self.mEmptyBoardMessage?.ebCleanUp ()
     self.mGenerateGerber?.ebCleanUp ()

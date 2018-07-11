@@ -67,11 +67,12 @@ private let DEBUG_EVENT = false
     mTableView = tableView
     mDelegate = delegate
     super.init ()
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
   
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     if DEBUG_EVENT {
       print ("DataSource_EBTableView_controller::\(#function)")
     }
@@ -109,11 +110,12 @@ private let DEBUG_EVENT = false
     mTableView = tableView
     mDelegate = delegate
     super.init ()
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
   
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     if DEBUG_EVENT {
       print ("Selection_EBTableView_controller::\(#function)")
     }

@@ -347,7 +347,7 @@ extension MergerDocument {
           let right = canariUnitToMilTenth (r.x + r.width - lineWidth / 2)
           let bottom = canariUnitToMilTenth (r.y + lineWidth / 2)
           let top = canariUnitToMilTenth (r.y + r.height - lineWidth / 2)
-          NSLog ("instance \(r.x) \(r.y) \(r.x + r.width) \(r.y + r.height), \(board.myModel_property.propval!.modelLimitWidth)")
+          // NSLog ("instance \(r.x) \(r.y) \(r.x + r.width) \(r.y + r.height), \(board.myModel_property.propval!.modelLimitWidth)")
           var drawings = [String] ()
           drawings.append ("X\( left)Y\(bottom)D02") // Move to
           drawings.append ("X\( left)Y\(   top)D01") // Line to
@@ -368,7 +368,7 @@ extension MergerDocument {
         let right = canariUnitToMilTenth (boardWidth - boardLineWidth / 2)
         let bottom = canariUnitToMilTenth (boardLineWidth / 2)
         let top = canariUnitToMilTenth (self.rootObject.boardHeight! - boardLineWidth / 2)
-        NSLog ("board \(boardWidth) \(self.rootObject.boardHeight!) \(self.rootObject.boardLimitWidth)")
+        // NSLog ("board \(boardWidth) \(self.rootObject.boardHeight!) \(self.rootObject.boardLimitWidth)")
         var drawings = [String] ()
         drawings.append ("X\( left)Y\(bottom)D02") // Move to
         drawings.append ("X\( left)Y\(   top)D01") // Line to

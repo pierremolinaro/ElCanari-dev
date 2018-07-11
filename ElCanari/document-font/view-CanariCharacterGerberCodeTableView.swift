@@ -72,6 +72,7 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
     super.init (observedObjects:[object], outlet:mTableView)
     tableView.delegate = self
     tableView.dataSource = self
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -85,7 +86,7 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
   
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     if DEBUG_EVENT {
       print ("Controller_CanariCharacterGerberCodeTableView_characterGerberCode::\(#function)")
     }

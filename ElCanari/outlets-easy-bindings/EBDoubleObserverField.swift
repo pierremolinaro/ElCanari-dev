@@ -83,6 +83,7 @@ import Cocoa
     }else if !(mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file: file, line: line, errorMessage: "the formatter should be an NSNumberFormatter")
     }
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -95,7 +96,7 @@ import Cocoa
 
   //····················································································································
 
-  override func sendUpdateEvent () {
+  private func updateOutlet () {
     switch mObject.prop {
     case .empty :
       mOutlet.enableFromValueBinding (false)

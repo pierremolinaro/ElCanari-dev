@@ -33,11 +33,12 @@ class MultipleBindingController_hidden : EBOutletEvent {
     mGetPropertyValueCallBack = inGetPropertyValueCallBack
     mOutlet = inOutlet
     super.init ()
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-   override func sendUpdateEvent () {
+   private func updateOutlet () {
     let model = mGetPropertyValueCallBack ()
     switch model {
     case .single (let b) :
@@ -104,11 +105,12 @@ class MultipleBindingController_enabled : EBOutletEvent {
     mGetPropertyValueCallBack = inGetPropertyValueCallBack
     mOutlet = inOutlet
     super.init ()
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-   override func sendUpdateEvent () {
+   private func updateOutlet () {
     let model = mGetPropertyValueCallBack ()
     switch model {
     case .single (let b) :
@@ -117,14 +119,6 @@ class MultipleBindingController_enabled : EBOutletEvent {
       mOutlet?.enableFromEnableBinding (false)
     }
   }
-
-  //····················································································································
-
-//  deinit {
-//    if let outlet = mOutlet {
-//      gEnabledBindingValueDictionary [outlet] = nil
-//    }
-//  }
 
   //····················································································································
 

@@ -679,7 +679,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final override func mouseDown (with mouseDownEvent: NSEvent) {
-    let mouseDownLocation = convert (mouseDownEvent.locationInWindow, from:nil)
+    let mouseDownLocation = self.convert (mouseDownEvent.locationInWindow, from:nil)
     mMouseLocation = mouseDownLocation
     var possibleKnobIndex : Int? = nil
   //--- First check if mouse down occurs on a knob of a selected object
