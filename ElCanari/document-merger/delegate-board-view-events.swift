@@ -74,14 +74,34 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   // Mouse Events
   //····················································································································
 
+  private var mLastMouseDraggedLocation : NSPoint? = nil
+
   func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int) {
-    // NSLog ("\(inObjectIndex)")
+    mLastMouseDraggedLocation = mBoardView?.convert (inEvent.locationInWindow, from:nil)
     let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
     var newSelectedSet = Set <MergerBoardInstance> ()
     if inObjectIndex >= 0 {
       newSelectedSet.insert (objects [inObjectIndex])
     }
     mSelectedSet = newSelectedSet
+  }
+
+  //····················································································································
+
+  func mouseDragged (with inEvent : NSEvent) {
+    if let lastMouseDraggedLocation = mLastMouseDraggedLocation, let mouseDraggedLocation = mBoardView?.convert (inEvent.locationInWindow, from:nil) {
+      wantsToTranslateSelection (
+        byX:mouseDraggedLocation.x - lastMouseDraggedLocation.x,
+        byY:mouseDraggedLocation.y - lastMouseDraggedLocation.y
+      )
+      mLastMouseDraggedLocation = mouseDraggedLocation
+    }
+  }
+
+  //····················································································································
+
+  func mouseUp (with inEvent : NSEvent) {
+    mLastMouseDraggedLocation = nil
   }
 
   //····················································································································
@@ -93,13 +113,13 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
     for character in (inEvent.characters ?? "").unicodeScalars {
       switch (Int (character.value)) {
       case NSUpArrowFunctionKey :
-        wantsToMoveSelection (byX: 0.0, byY:amount)
+        wantsToTranslateSelection (byX: 0.0, byY:amount)
       case NSDownArrowFunctionKey :
-        wantsToMoveSelection (byX: 0.0, byY:-amount)
+        wantsToTranslateSelection (byX: 0.0, byY:-amount)
       case NSLeftArrowFunctionKey :
-        wantsToMoveSelection (byX: -amount, byY:0.0)
+        wantsToTranslateSelection (byX: -amount, byY:0.0)
       case NSRightArrowFunctionKey :
-        wantsToMoveSelection (byX: amount, byY:0.0)
+        wantsToTranslateSelection (byX: amount, byY:0.0)
       case 0x7F, NSDeleteFunctionKey :
         deleteSelection ()
       default :
@@ -124,7 +144,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
 
   //····················································································································
 
-  private func wantsToMoveSelection (byX inDx: CGFloat, byY inDy: CGFloat) {
+  private func wantsToTranslateSelection (byX inDx: CGFloat, byY inDy: CGFloat) {
     var accepted = true
     for object in mSelectedSet {
       if !object.acceptToTranslate (xBy: inDx, yBy:inDy) {

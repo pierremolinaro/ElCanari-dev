@@ -77,7 +77,6 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   override func mouseDown (with inEvent: NSEvent) {
     let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
     if let result = self.mObjectLayer.findLayer (at: mouseDownLocation) {
-      // NSLog ("HIT \(Unmanaged<CALayer>.passUnretained (result).toOpaque()), --> \(result.name)")
       if let name = result.name, let idx = Int (name) {
         mViewEventDelegate?.mouseDown (with:inEvent, objectIndex:idx) // No object
       }else{
@@ -85,9 +84,20 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
       }
     }else{
       mViewEventDelegate?.mouseDown (with: inEvent, objectIndex: -1) // No object
-     // NSLog ("HIT nil")
     }
     super.mouseDown (with: inEvent)
+  }
+
+  //····················································································································
+
+  override func mouseDragged (with inEvent : NSEvent) {
+    mViewEventDelegate?.mouseDragged (with: inEvent)
+  }
+
+  //····················································································································
+
+  override func mouseUp (with inEvent : NSEvent) {
+    mViewEventDelegate?.mouseUp (with: inEvent)
   }
 
   //····················································································································

@@ -764,7 +764,6 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
-				CF7357C620F6421C00915629 /* transient-MergerBoardInstance-selectionLayer.swift */,
 				CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */,
 				CFC2FEAE20EBFA7A00C45CB3 /* action-MergerDocument-arrangeHorizontallyAction.swift */,
 				CFC2FEAF20EBFA7A00C45CB3 /* action-MergerDocument-arrangeVerticalyAction.swift */,
@@ -779,6 +778,7 @@
 				CF1FB93120E57D900050391E /* class-MergerPadArray.swift */,
 				CF41929420E289510018275C /* class-MergerSegmentArray.swift */,
 				CFDEC77820E0CD4F0065FBCE /* class-MergerViaShapeArray.swift */,
+				CFF3039420F60CA4000D8F53 /* delegate-board-view-events.swift */,
 				CFB4801820DC1B8B00CF9639 /* entity-BoardModel.swift */,
 				CF324D7B20DE54B000ADD025 /* entity-BoardModelPad.swift */,
 				CFCE71FA20DD611100AB1DE7 /* entity-BoardModelVia.swift */,
@@ -861,6 +861,7 @@
 				CF18949020EBCD5E00B77DCA /* transient-MergerBoardInstance-holeLayerDisplay.swift */,
 				CF51222E20EB7EE7002AAE24 /* transient-MergerBoardInstance-instanceLayerDisplay.swift */,
 				CF21787820EA894B00BBC1C4 /* transient-MergerBoardInstance-instanceRect.swift */,
+				CF7357C620F6421C00915629 /* transient-MergerBoardInstance-selectionLayer.swift */,
 				CF18949120EBCD5E00B77DCA /* transient-MergerBoardInstance-viaLayerDisplay.swift */,
 				CF87A87D20F111900011B9EC /* transient-MergerDocument-documentFileNameOk.swift */,
 				CF3E2DEF20EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift */,
@@ -873,7 +874,6 @@
 				CF51223020EB80AA002AAE24 /* transient-MergerRoot-instancesLayerDisplay.swift */,
 				CFD7EA2420E7D42900D53B87 /* transient-MergerRoot-modelNames.swift */,
 				CFBAB0B120DE744500476FB7 /* view-CanariBoardModelView.swift */,
-				CFF3039420F60CA4000D8F53 /* delegate-board-view-events.swift */,
 			);
 			name = "document-merger";
 			path = "ElCanari/document-merger";
