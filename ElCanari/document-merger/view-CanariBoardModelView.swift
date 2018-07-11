@@ -48,6 +48,13 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   }
 
   //····················································································································
+  //  acceptsFirstResponder
+  //····················································································································
+
+  override var acceptsFirstResponder : Bool { return true }
+
+  
+  //····················································································································
   //    Object Layer
   //····················································································································
 
@@ -106,6 +113,94 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
   override func keyDown (with inEvent: NSEvent) {
     mViewEventDelegate?.keyDown (with:inEvent)
+  }
+
+  //····················································································································
+  // Menu Events
+  //····················································································································
+
+  func validateMenuItem (inMenuItem : NSMenuItem) -> Bool {
+    let validate : Bool
+    let action = inMenuItem.action
+    if action == #selector (selectAll(_:)) {
+      validate = (mViewEventDelegate?.objectCount ?? 0) > 0
+    }else if action == #selector (bringToFront(_:)) {
+      validate = (mViewEventDelegate?.objectCount ?? 0) > 0
+    }else if action == #selector (bringForward(_:)) {
+      validate = (mViewEventDelegate?.objectCount ?? 0) > 0
+    }else if action == #selector (sendToBack(_:)) {
+      validate = (mViewEventDelegate?.objectCount ?? 0) > 0
+    }else if action == #selector (sendBackward(_:)) {
+      validate = (mViewEventDelegate?.objectCount ?? 0) > 0
+    }else{
+      validate = super.validateMenuItem (inMenuItem)
+//    }else if (action == @selector (rotateCounterclockwiseSelectedObjects:)) {
+//      validate = mGraphicController.canSelectedObjectsRotate ;
+//    }else if (action == @selector (rotateClockwiseSelectedObjects:)) {
+//      validate = mGraphicController.canSelectedObjectsRotate ;
+//    }else if (action == @selector (horizontalFlipSelectedObjects:)) {
+//      validate = mGraphicController.canSelectedObjectsFlipHorizontally ;
+//    }else if (action == @selector (verticalFlipSelectedObjects:)) {
+//      validate = mGraphicController.canSelectedObjectsFlipVertically ;
+//    }else if (action == @selector (lockSelectedObjects:)) {
+//      validate = YES ;
+//    }else if (action == @selector (unlockSelectedObjects:)) {
+//      validate = YES ;
+//    }else if (action == @selector (groupSelectedObjects:)) {
+//      validate = [self canGroupSelectedObjects] ;
+//    }else if (action == @selector (ungroupSelectedObjects:)) {
+//      validate = [self canUngroupSelectedObjects] ;
+//    }else if (action == @selector (selectAll:)) {
+//      validate = [[self allObjects] count] > 0 ;
+//    }else if (action == @selector (copy:)) {
+//      validate = ([mGeneralPasteboardPrivateObjectType length] != 0) && mGraphicController.oneOrMoreObjectsSelected ;
+//    }else if (action == @selector (cut:)) {
+//      validate = ([mGeneralPasteboardPrivateObjectType length] != 0) && mGraphicController.oneOrMoreObjectsSelected ;
+//    }else if (action == @selector (paste:)) {
+//      NSPasteboard * gp = [NSPasteboard generalPasteboard] ;
+//      validate = ([mGeneralPasteboardPrivateObjectType length] != 0)
+//        && ([gp availableTypeFromArray:[NSArray arrayWithObject:mGeneralPasteboardPrivateObjectType]] != nil)
+//      ;
+//    }else if (action == @selector (delete:)) {
+//      validate = mGraphicController.oneOrMoreObjectsSelected ;
+//    }else if (action == @selector (actionDuplicate:)) {
+//      validate = mGraphicController.oneOrMoreObjectsSelected ;
+//    }else if (action == @selector (snapToGridSelectedObjects:)) {
+//      validate = [mGraphicController canSnapSelectedObjectsToGrid:self.placementGrid] ;
+//    }else{
+//      validate = [super validateMenuItem:inMenuItem] ;
+    }
+    return validate
+  }
+
+  //····················································································································
+
+  override func selectAll (_ : Any?) {
+    mViewEventDelegate?.selectAllObjects ()
+  }
+
+  //····················································································································
+
+  func bringToFront (_ : Any?) {
+    mViewEventDelegate?.bringToFront ()
+  }
+
+  //····················································································································
+
+  func bringForward (_ : Any?) {
+    mViewEventDelegate?.bringForward ()
+  }
+
+  //····················································································································
+
+  func sendToBack (_ : Any?) {
+    mViewEventDelegate?.sendToBack ()
+  }
+
+  //····················································································································
+
+  func sendBackward (_ : Any?) {
+    mViewEventDelegate?.sendBackward ()
   }
 
   //····················································································································

@@ -56,6 +56,13 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   }
 
   //····················································································································
+
+  var objectCount : Int {
+    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    return objects.count
+  }
+
+  //····················································································································
   // init
   //····················································································································
 
@@ -79,22 +86,50 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int) {
     mLastMouseDraggedLocation = mBoardView?.convert (inEvent.locationInWindow, from:nil)
     let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
-    var newSelectedSet = Set <MergerBoardInstance> ()
-    if inObjectIndex >= 0 {
-      newSelectedSet.insert (objects [inObjectIndex])
+    let shiftKey = inEvent.modifierFlags.contains (.shift)
+    let commandKey = inEvent.modifierFlags.contains (.command)
+    if shiftKey { // Shift key extends selection
+      if inObjectIndex >= 0 {
+        var newSet = mSelectedSet
+        newSet.insert (objects [inObjectIndex])
+        mSelectedSet = newSet
+      }
+    }else if commandKey { // Command key toggles selection of object under click
+      if inObjectIndex >= 0 {
+        let object = objects [inObjectIndex]
+        if mSelectedSet.contains (object) {
+          var newSet = mSelectedSet
+          newSet.remove (object)
+          mSelectedSet = newSet
+        }else{
+          var newSet = mSelectedSet
+          newSet.insert (object)
+          mSelectedSet = newSet
+        }
+      }
+    }else{
+      if inObjectIndex >= 0 {
+        let clickedObject = objects [inObjectIndex]
+        if !mSelectedSet.contains (clickedObject) {
+          mSelectedSet = [clickedObject]
+        }
+      }else{ // Click outside an object : clear selection
+        mSelectedSet = Set ()
+      }
     }
-    mSelectedSet = newSelectedSet
   }
 
   //····················································································································
 
   func mouseDragged (with inEvent : NSEvent) {
     if let lastMouseDraggedLocation = mLastMouseDraggedLocation, let mouseDraggedLocation = mBoardView?.convert (inEvent.locationInWindow, from:nil) {
-      wantsToTranslateSelection (
+      let accepted = wantsToTranslateSelection (
         byX:mouseDraggedLocation.x - lastMouseDraggedLocation.x,
         byY:mouseDraggedLocation.y - lastMouseDraggedLocation.y
       )
-      mLastMouseDraggedLocation = mouseDraggedLocation
+      if accepted {
+        mLastMouseDraggedLocation = mouseDraggedLocation
+      }
     }
   }
 
@@ -113,13 +148,13 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
     for character in (inEvent.characters ?? "").unicodeScalars {
       switch (Int (character.value)) {
       case NSUpArrowFunctionKey :
-        wantsToTranslateSelection (byX: 0.0, byY:amount)
+        _ = wantsToTranslateSelection (byX: 0.0, byY:amount)
       case NSDownArrowFunctionKey :
-        wantsToTranslateSelection (byX: 0.0, byY:-amount)
+        _ = wantsToTranslateSelection (byX: 0.0, byY:-amount)
       case NSLeftArrowFunctionKey :
-        wantsToTranslateSelection (byX: -amount, byY:0.0)
+        _ = wantsToTranslateSelection (byX: -amount, byY:0.0)
       case NSRightArrowFunctionKey :
-        wantsToTranslateSelection (byX: amount, byY:0.0)
+        _ = wantsToTranslateSelection (byX: amount, byY:0.0)
       case 0x7F, NSDeleteFunctionKey :
         deleteSelection ()
       default :
@@ -144,7 +179,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
 
   //····················································································································
 
-  private func wantsToTranslateSelection (byX inDx: CGFloat, byY inDy: CGFloat) {
+  private func wantsToTranslateSelection (byX inDx: CGFloat, byY inDy: CGFloat) -> Bool {
     var accepted = true
     for object in mSelectedSet {
       if !object.acceptToTranslate (xBy: inDx, yBy:inDy) {
@@ -157,6 +192,66 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
         object.translate (xBy: inDx, yBy:inDy)
       }
     }
+    return accepted
+  }
+
+  //····················································································································
+  //   Compute selection layer
+  //····················································································································
+
+  func selectAllObjects () {
+    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    mSelectedSet = Set (objects)
+  }
+
+  //····················································································································
+
+  func bringForward () {
+    bringToFront ()
+  }
+
+  //····················································································································
+
+  func bringToFront () {
+    var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    var idx = 0
+    var high = objects.count
+    while idx < high {
+      let object = objects [idx]
+      if mSelectedSet.contains (object) {
+        objects.remove (at: idx)
+        objects.append (object)
+        high -= 1
+      }else{
+        idx += 1
+      }
+    }
+    mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
+  }
+
+  //····················································································································
+
+  func sendBackward () {
+    sendToBack ()
+  }
+  
+  //····················································································································
+
+  func sendToBack () {
+    var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    var low = 0
+    var idx = objects.count - 1
+    while idx > low {
+      let object = objects [idx]
+      if mSelectedSet.contains (object) {
+        objects.remove (at: idx)
+        objects.insert (object, at: 0)
+        low += 1
+      }else{
+        idx -= 1
+      }
+    }
+    mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
   }
 
   //····················································································································
