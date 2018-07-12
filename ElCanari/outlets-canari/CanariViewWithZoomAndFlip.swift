@@ -45,19 +45,13 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   func setBoardModelSize (width : Int, height : Int) {
-//    NSLog ("setBoardModelSize \(width), \(height)")
- //   if let clipView = self.superview as? NSClipView {
-//      let currentUnitSquareSize : NSSize = clipView.convert (NSSize (width: 1.0, height: 1.0), from:nil)
- //     let currentExpansion = currentUnitSquareSize.width ;
-      let noModel = (width == 0) || (height == 0)
-      let newRect = noModel
-        ? CGRect (x:0.0, y:0.0, width:200.0, height:200.0)
-        : CGRect (x:0.0, y:0.0, width:canariUnitToCocoa (width), height:canariUnitToCocoa (height))
-      self.frame.size = newRect.size
-      self.bounds = newRect
- //     clipView.scaleUnitSquare(to: NSSize (width: currentExpansion, height: currentExpansion))
-      scaleToZoom (mZoom, mHorizontalFlip, mVerticalFlip)
-//    }
+    let noModel = (width == 0) || (height == 0)
+    let newRect = noModel
+      ? CGRect (x:0.0, y:0.0, width:200.0, height:200.0)
+      : CGRect (x:0.0, y:0.0, width:canariUnitToCocoa (width), height:canariUnitToCocoa (height))
+    self.frame.size = newRect.size
+    self.bounds = newRect
+    scaleToZoom (mZoom, mHorizontalFlip, mVerticalFlip)
   }
 
   //····················································································································
@@ -236,16 +230,20 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  First responder
+  //  Responder chain
   //····················································································································
 
-  override var acceptsFirstResponder : Bool { get { return true } }
+  override var acceptsFirstResponder : Bool { return true }
+
+  override func becomeFirstResponder () -> Bool { return true }
+
+  override func resignFirstResponder () -> Bool { return true }
 
   //····················································································································
   //  Focus ring (https://developer.apple.com/library/content/qa/qa1785/_index.html)
   //····················································································································
 
-  override var focusRingMaskBounds: NSRect { get { return self.bounds } }
+  override var focusRingMaskBounds : NSRect { return self.bounds }
 
   //····················································································································
 

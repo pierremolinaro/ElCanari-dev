@@ -18,7 +18,7 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
 //   CanariBoardModelView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariBoardModelView : CanariViewWithZoomAndFlip {
+@objc(CanariBoardModelView) class CanariBoardModelView : CanariViewWithZoomAndFlip {
 
   //····················································································································
   //  Outlets
@@ -47,13 +47,6 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
     self.layer?.addSublayer (mSelectionLayer)
   }
 
-  //····················································································································
-  //  acceptsFirstResponder
-  //····················································································································
-
-  override var acceptsFirstResponder : Bool { return true }
-
-  
   //····················································································································
   //    Object Layer
   //····················································································································
@@ -119,57 +112,23 @@ class CanariBoardModelView : CanariViewWithZoomAndFlip {
   // Menu Events
   //····················································································································
 
-  func validateMenuItem (inMenuItem : NSMenuItem) -> Bool {
+  override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
     let action = inMenuItem.action
-    if action == #selector (selectAll(_:)) {
+    if action == #selector (CanariBoardModelView.selectAll(_:)) {
       validate = (mViewEventDelegate?.objectCount ?? 0) > 0
-    }else if action == #selector (bringToFront(_:)) {
-      validate = (mViewEventDelegate?.objectCount ?? 0) > 0
-    }else if action == #selector (bringForward(_:)) {
-      validate = (mViewEventDelegate?.objectCount ?? 0) > 0
-    }else if action == #selector (sendToBack(_:)) {
-      validate = (mViewEventDelegate?.objectCount ?? 0) > 0
-    }else if action == #selector (sendBackward(_:)) {
-      validate = (mViewEventDelegate?.objectCount ?? 0) > 0
+    }else if action == #selector (CanariBoardModelView.bringToFront(_:)) {
+      validate = mViewEventDelegate?.canBringToFront () ?? false
+    }else if action == #selector (CanariBoardModelView.bringForward(_:)) {
+      validate = mViewEventDelegate?.canBringForward () ?? false
+    }else if action == #selector (CanariBoardModelView.sendToBack(_:)) {
+      validate = mViewEventDelegate?.canSendToBack () ?? false
+    }else if action == #selector (CanariBoardModelView.sendBackward(_:)) {
+      validate = mViewEventDelegate?.canSendBackward () ?? false
     }else{
       validate = super.validateMenuItem (inMenuItem)
-//    }else if (action == @selector (rotateCounterclockwiseSelectedObjects:)) {
-//      validate = mGraphicController.canSelectedObjectsRotate ;
-//    }else if (action == @selector (rotateClockwiseSelectedObjects:)) {
-//      validate = mGraphicController.canSelectedObjectsRotate ;
-//    }else if (action == @selector (horizontalFlipSelectedObjects:)) {
-//      validate = mGraphicController.canSelectedObjectsFlipHorizontally ;
-//    }else if (action == @selector (verticalFlipSelectedObjects:)) {
-//      validate = mGraphicController.canSelectedObjectsFlipVertically ;
-//    }else if (action == @selector (lockSelectedObjects:)) {
-//      validate = YES ;
-//    }else if (action == @selector (unlockSelectedObjects:)) {
-//      validate = YES ;
-//    }else if (action == @selector (groupSelectedObjects:)) {
-//      validate = [self canGroupSelectedObjects] ;
-//    }else if (action == @selector (ungroupSelectedObjects:)) {
-//      validate = [self canUngroupSelectedObjects] ;
-//    }else if (action == @selector (selectAll:)) {
-//      validate = [[self allObjects] count] > 0 ;
-//    }else if (action == @selector (copy:)) {
-//      validate = ([mGeneralPasteboardPrivateObjectType length] != 0) && mGraphicController.oneOrMoreObjectsSelected ;
-//    }else if (action == @selector (cut:)) {
-//      validate = ([mGeneralPasteboardPrivateObjectType length] != 0) && mGraphicController.oneOrMoreObjectsSelected ;
-//    }else if (action == @selector (paste:)) {
-//      NSPasteboard * gp = [NSPasteboard generalPasteboard] ;
-//      validate = ([mGeneralPasteboardPrivateObjectType length] != 0)
-//        && ([gp availableTypeFromArray:[NSArray arrayWithObject:mGeneralPasteboardPrivateObjectType]] != nil)
-//      ;
-//    }else if (action == @selector (delete:)) {
-//      validate = mGraphicController.oneOrMoreObjectsSelected ;
-//    }else if (action == @selector (actionDuplicate:)) {
-//      validate = mGraphicController.oneOrMoreObjectsSelected ;
-//    }else if (action == @selector (snapToGridSelectedObjects:)) {
-//      validate = [mGraphicController canSnapSelectedObjectsToGrid:self.placementGrid] ;
-//    }else{
-//      validate = [super validateMenuItem:inMenuItem] ;
     }
+    // NSLog ("VALIDATE \(action) -> \(validate)")
     return validate
   }
 

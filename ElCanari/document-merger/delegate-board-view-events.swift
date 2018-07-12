@@ -196,7 +196,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   }
 
   //····················································································································
-  //   Compute selection layer
+  //   Menu actions
   //····················································································································
 
   func selectAllObjects () {
@@ -206,50 +206,130 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
 
   //····················································································································
 
+  private final func sortedIndexArrayOfSelectedObjects () -> [Int] {
+    var result = [Int] ()
+    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    for object in mSelectedSet {
+      let idx = objects.index (of:object)!
+      result.append (idx)
+    }
+    return result.sorted ()
+  }
+
+  //····················································································································
+  // BRING FORWARD
+  //····················································································································
+
+  func canBringForward () -> Bool {
+    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    var result = (objects.count > 1) && (mSelectedSet.count > 0)
+    if result {
+      let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+      result = sortedIndexArray.last! < (objects.count - 1)
+    }
+    return result
+  }
+
+  //····················································································································
+
   func bringForward () {
-    bringToFront ()
+    var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+    for idx in sortedIndexArray.reversed () {
+       let object = objects [idx]
+       objects.remove (at: idx)
+       objects.insert (object, at:idx+1)
+    }
+    mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
+  }
+
+  //····················································································································
+  // BRING TO FRONT
+  //····················································································································
+
+  func canBringToFront () -> Bool {
+    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    if (objects.count > 1) && (mSelectedSet.count > 0) {
+      let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+      var top = objects.count - 1
+      for idx in sortedIndexArray.reversed () {
+        if idx < top {
+          return true
+        }
+        top -= 1
+      }
+    }
+    return false
   }
 
   //····················································································································
 
   func bringToFront () {
     var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
-    var idx = 0
-    var high = objects.count
-    while idx < high {
+    let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+    for idx in sortedIndexArray {
       let object = objects [idx]
-      if mSelectedSet.contains (object) {
-        objects.remove (at: idx)
-        objects.append (object)
-        high -= 1
-      }else{
-        idx += 1
-      }
+      objects.remove (at: idx)
+      objects.append (object)
     }
     mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
   }
 
   //····················································································································
+  // SEND BACKWARD
+  //····················································································································
+
+  func canSendBackward () -> Bool {
+    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    var result = (objects.count > 1) && (mSelectedSet.count > 0)
+    if result {
+      let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+      result = sortedIndexArray [0] > 0
+    }
+    return result
+  }
+
+  //····················································································································
 
   func sendBackward () {
-    sendToBack ()
+    var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+    for idx in sortedIndexArray.reversed () {
+      let object = objects [idx]
+      objects.remove (at: idx)
+      objects.insert (object, at:idx-1)
+    }
+    mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
   }
   
+  //····················································································································
+  // SEND TO BACK
+  //····················································································································
+
+  func canSendToBack () -> Bool {
+    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    if (objects.count > 1) && (mSelectedSet.count > 0) {
+      let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+      var bottom = 0
+      for idx in sortedIndexArray {
+        if idx > bottom {
+          return true
+        }
+        bottom += 1
+      }
+    }
+    return false
+  }
+
   //····················································································································
 
   func sendToBack () {
     var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
-    var low = 0
-    var idx = objects.count - 1
-    while idx > low {
+    let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+    for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
-      if mSelectedSet.contains (object) {
-        objects.remove (at: idx)
-        objects.insert (object, at: 0)
-        low += 1
-      }else{
-        idx -= 1
-      }
+      objects.remove (at: idx)
+      objects.insert (object, at:0)
     }
     mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
   }
