@@ -23,8 +23,8 @@ extension MergerDocument {
       openPanel.allowsMultipleSelection = false
       openPanel.allowedFileTypes = ["ElCanariArtwork"]
     //--- Add panel delegate
-      gPanel = OpenPanelDelegateForImportingArtwork (openPanel:openPanel)
-      openPanel.delegate = gPanel
+      gPanelDelegate = OpenPanelDelegateForImportingArtwork (openPanel:openPanel, savedURL: openPanel.directoryURL)
+      openPanel.delegate = gPanelDelegate
     //--- Add accessory view
       let libraries = existingLibraryPathArray ()
       let VIEW_WIDTH : CGFloat = 600.0
@@ -42,7 +42,7 @@ extension MergerDocument {
         button.bezelStyle = .regularSquare
         button.title = artworkPath
         button.toolTip = artworkPath
-        button.target = gPanel
+        button.target = gPanelDelegate
         button.action = #selector(OpenPanelDelegateForImportingArtwork.selectDirectory(_:))
         accessoryView.addSubview (button)
       }
@@ -53,7 +53,8 @@ extension MergerDocument {
       }
     //--- Dialog
       openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : Int) in
-        gPanel = nil
+        gPanelDelegate?.restoreSavedURLAndReleasePanel ()
+        gPanelDelegate = nil
         if returnCode == NSFileHandlingPanelOKButton {
           if let url = openPanel.url, url.isFileURL {
             let filePath = url.path
@@ -90,7 +91,7 @@ extension MergerDocument {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gPanel : OpenPanelDelegateForImportingArtwork?
+fileprivate var gPanelDelegate : OpenPanelDelegateForImportingArtwork?
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -100,14 +101,16 @@ fileprivate class OpenPanelDelegateForImportingArtwork : EBSimpleClass, NSOpenSa
   //   PROPERTIES
   //····················································································································
 
-  weak var mOpenPanel : NSOpenPanel? = nil
+  private var mOpenPanel : NSOpenPanel?
+  private let mSavedURL : URL?
 
   //····················································································································
   //   INIT
   //····················································································································
 
-  init (openPanel : NSOpenPanel) {
+  init (openPanel : NSOpenPanel, savedURL inURL : URL?) {
     mOpenPanel = openPanel
+    mSavedURL = inURL
     super.init ()
   }
 
@@ -116,6 +119,13 @@ fileprivate class OpenPanelDelegateForImportingArtwork : EBSimpleClass, NSOpenSa
   func selectDirectory (_ inButton : NSButton) {
     let path = inButton.title
     mOpenPanel?.directoryURL = URL (fileURLWithPath: path, isDirectory: true)
+  }
+
+  //····················································································································
+
+  func restoreSavedURLAndReleasePanel () {
+    mOpenPanel?.directoryURL = self.mSavedURL
+    mOpenPanel = nil
   }
 
   //····················································································································
