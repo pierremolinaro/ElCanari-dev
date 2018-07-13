@@ -20,7 +20,7 @@ func compute_MergerRoot_boardLimitsLayerDisplay (
 ) -> CALayer {
 //--- START OF USER ZONE 2
   let result = CAShapeLayer ()
-  if prefs_mergerBoardViewDisplayBoardLimits && (self_boardLimitWidth > 0) {
+  if prefs_mergerBoardViewDisplayBoardLimits && (self_boardLimitWidth > 0) && (self_boardWidth > 0) && (self_boardHeight > 0) {
     let boardWith = canariUnitToCocoa (self_boardWidth)
     let boardHeight = canariUnitToCocoa (self_boardHeight)
     let lineWidth = canariUnitToCocoa (self_boardLimitWidth)
