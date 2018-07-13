@@ -31,7 +31,8 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   //····················································································································
 
    fileprivate var mObjectLayer = CALayer ()
-   fileprivate var mSelectionLayer = CALayer ()
+   fileprivate var mObjectSelectionLayer = CALayer ()
+   fileprivate var mSelectionRectangleLayer = CALayer ()
 
   //····················································································································
   //  awakeFromNib
@@ -44,7 +45,8 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
     self.mObjectLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
     self.mObjectLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mObjectLayer)
-    self.layer?.addSublayer (mSelectionLayer)
+    self.layer?.addSublayer (mObjectSelectionLayer)
+    self.layer?.addSublayer (mSelectionRectangleLayer)
   }
 
   //····················································································································
@@ -68,7 +70,14 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   //    Selection Layer
   //····················································································································
 
-  var selectionLayer : CALayer { return mSelectionLayer }
+  var objectSelectionLayer : CALayer { return mObjectSelectionLayer }
+  var selectionRectangleLayer : CALayer { return mSelectionRectangleLayer }
+
+  //····················································································································
+
+  func indexesOfObjects (intersecting inRect : CGRect) -> Set <Int> {
+    return self.mObjectLayer.findIndexesOfObjects (intersecting: inRect)
+  }
 
   //····················································································································
   // Mouse Events

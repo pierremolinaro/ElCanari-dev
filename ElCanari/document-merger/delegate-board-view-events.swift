@@ -39,6 +39,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   private var mSelectedSet = Set <MergerBoardInstance> () {
     didSet {
       if mSelectedSet != oldValue {
+        // NSLog ("mSelectedSet \(mSelectedSet)")
       //--- Stop observing selection layers of deselected objects
         let deselectedObjects = oldValue.subtracting (mSelectedSet)
         for object in deselectedObjects {
@@ -82,6 +83,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   private var mLastMouseDraggedLocation : NSPoint? = nil
+  private var mSelectionRectangleOrigin : NSPoint? = nil
 
   func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int) {
     mLastMouseDraggedLocation = mBoardView?.convert (inEvent.locationInWindow, from:nil)
@@ -107,28 +109,51 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
           mSelectedSet = newSet
         }
       }
-    }else{
-      if inObjectIndex >= 0 {
-        let clickedObject = objects [inObjectIndex]
-        if !mSelectedSet.contains (clickedObject) {
-          mSelectedSet = [clickedObject]
-        }
-      }else{ // Click outside an object : clear selection
-        mSelectedSet = Set ()
+    }else if inObjectIndex >= 0 {
+      // NSLog ("Clicked objectindex \(inObjectIndex)")
+      let clickedObject = objects [inObjectIndex]
+      if !mSelectedSet.contains (clickedObject) {
+        mSelectedSet = [clickedObject]
       }
+    }else{ // Click outside an object : clear selection
+      mSelectedSet = Set ()
+      mSelectionRectangleOrigin = mLastMouseDraggedLocation
     }
   }
 
   //····················································································································
 
   func mouseDragged (with inEvent : NSEvent) {
-    if let lastMouseDraggedLocation = mLastMouseDraggedLocation, let mouseDraggedLocation = mBoardView?.convert (inEvent.locationInWindow, from:nil) {
-      let accepted = wantsToTranslateSelection (
-        byX:mouseDraggedLocation.x - lastMouseDraggedLocation.x,
-        byY:mouseDraggedLocation.y - lastMouseDraggedLocation.y
-      )
-      if accepted {
-        mLastMouseDraggedLocation = mouseDraggedLocation
+    if let boardView = mBoardView {
+      let mouseDraggedLocation = boardView.convert (inEvent.locationInWindow, from:nil)
+      if let selectionRectangleOrigin = mSelectionRectangleOrigin {
+        // NSLog ("Dragged")
+        let xMin = min (selectionRectangleOrigin.x, mouseDraggedLocation.x)
+        let yMin = min (selectionRectangleOrigin.y, mouseDraggedLocation.y)
+        let xMax = max (selectionRectangleOrigin.x, mouseDraggedLocation.x)
+        let yMax = max (selectionRectangleOrigin.y, mouseDraggedLocation.y)
+        let layer = CAShapeLayer ()
+        let r = CGRect (x:xMin, y:yMin, width:xMax-xMin, height:yMax-yMin)
+        layer.path = CGPath (rect: r, transform:nil)
+        layer.strokeColor = NSColor.lightGray.cgColor
+        layer.fillColor = NSColor.lightGray.withAlphaComponent (0.2).cgColor
+        layer.lineWidth = 1.0
+        mBoardView?.selectionRectangleLayer.sublayers = [layer]
+        let indexSet = boardView.indexesOfObjects (intersecting:r)
+        var newSelectedSet = Set <MergerBoardInstance> ()
+        var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+        for idx in indexSet {
+          newSelectedSet.insert (objects [idx])
+        }
+        self.mSelectedSet = newSelectedSet
+      }else if let lastMouseDraggedLocation = mLastMouseDraggedLocation {
+        let accepted = wantsToTranslateSelection (
+          byX:mouseDraggedLocation.x - lastMouseDraggedLocation.x,
+          byY:mouseDraggedLocation.y - lastMouseDraggedLocation.y
+        )
+        if accepted {
+          mLastMouseDraggedLocation = mouseDraggedLocation
+        }
       }
     }
   }
@@ -137,6 +162,8 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
 
   func mouseUp (with inEvent : NSEvent) {
     mLastMouseDraggedLocation = nil
+    mSelectionRectangleOrigin = nil
+    mBoardView?.selectionRectangleLayer.sublayers = nil
   }
 
   //····················································································································
@@ -345,7 +372,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
         layers.append (layer)
       }
     }
-    mBoardView?.selectionLayer.sublayers = layers
+    mBoardView?.objectSelectionLayer.sublayers = layers
   }
 
   //····················································································································
@@ -437,5 +464,72 @@ extension CAShapeLayer {
 
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   EXTENSION CALayer
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension CALayer {
+
+  //····················································································································
+
+  func findIndexesOfObjects (intersecting inRect : CGRect) -> Set <Int> {
+     var result = Set <Int> ()
+     if let name = self.name, let idx = Int (name) {
+       var intersect = false
+       for layer in self.sublayers ?? [] {
+         if layer.intersects (inRect) {
+           intersect = true
+           break
+         }
+       }
+       if intersect {
+         result.insert (idx)
+       }
+     }else{
+       for layer in self.sublayers ?? [] {
+         let r = layer.findIndexesOfObjects (intersecting: inRect)
+         result.formUnion (r)
+       }
+     }
+     return result
+  }
+
+  //····················································································································
+
+  func intersects (_ inRect : CGRect) -> Bool {
+    return false
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   EXTENSION CAShapeLayer
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension CAShapeLayer {
+
+  //····················································································································
+
+//  override func findIndexesOfObjects (intersecting inRect : CGRect) -> [Int] {
+//     var result = super.findIndexesOfObjects (intersecting: inRect)
+//     for layer in self.sublayers ?? [] {
+//       let r = layer.findIndexesOfObjects (intersecting: inRect)
+//       result += r
+//     }
+//     return result
+//  }
+
+  //····················································································································
+
+  override func intersects (_ inRect : CGRect) -> Bool {
+    if let boundingBox = self.path?.boundingBox {
+      return inRect.intersects (boundingBox)
+    }else{
+      return false
+    }
+  }
+
+  //····················································································································
+
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
