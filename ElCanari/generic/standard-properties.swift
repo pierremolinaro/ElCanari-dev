@@ -1147,6 +1147,15 @@ typealias EBPropertyProxy_NSColor     = EBPropertyClassProxy <NSColor>
 typealias EBStoredProperty_NSColor    = EBStoredClassProperty <NSColor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class CALayer
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CALayer  = EBReadOnlyClassProperty <CALayer>
+typealias EBTransientProperty_CALayer = EBTransientClassProperty <CALayer>
+typealias EBReadOnlyPropertyArray_CALayer  = EBReadOnlyClassProperty <[CALayer]>
+typealias EBTransientPropertyArray_CALayer = EBTransientClassProperty <[CALayer]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class NSImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1253,15 +1262,6 @@ typealias EBReadOnlyProperty_MergerBoardModelArray  = EBReadOnlyClassProperty <M
 typealias EBTransientProperty_MergerBoardModelArray = EBTransientClassProperty <MergerBoardModelArray>
 typealias EBReadOnlyPropertyArray_MergerBoardModelArray  = EBReadOnlyClassProperty <[MergerBoardModelArray]>
 typealias EBTransientPropertyArray_MergerBoardModelArray = EBTransientClassProperty <[MergerBoardModelArray]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class CALayer
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CALayer  = EBReadOnlyClassProperty <CALayer>
-typealias EBTransientProperty_CALayer = EBTransientClassProperty <CALayer>
-typealias EBReadOnlyPropertyArray_CALayer  = EBReadOnlyClassProperty <[CALayer]>
-typealias EBTransientPropertyArray_CALayer = EBTransientClassProperty <[CALayer]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property CanariBoardRect

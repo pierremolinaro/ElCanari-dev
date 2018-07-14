@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let kDragAndDropModelType = "drag.and.drop.model.type"
+let kDragAndDropModelType = "drag.and.drop.board.model"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   CanariModelDragSourceTableView
@@ -98,7 +98,7 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
                                   event dragEvent: NSEvent,
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
     if let boardView = mBoardView, dragRows.count == 1 {
-    //--- Get board view scale
+    //--- Get board view scale and flip
       let scale = boardView.actualScale ()
       let horizontalFlip : CGFloat = boardView.horizontalFlip () ? -1.0 : 1.0
       let verticalFlip   : CGFloat = boardView.verticalFlip ()   ? -1.0 : 1.0
@@ -106,14 +106,14 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
       let width = scale * canariUnitToCocoa (self.mModelArray [dragRows.first!].width)
       let height = scale * canariUnitToCocoa (self.mModelArray [dragRows.first!].height)
     //--- By default, image is centered;
-      dragImageOffset.pointee = NSPoint (x : horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
+      dragImageOffset.pointee = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
     //--- Build image
       let r = CGRect (x:0.0, y:0.0, width : width, height:height)
       let offScreenView = CanariOffscreenView (frame: r)
-      offScreenView.setBackColor (NSColor.yellow.withAlphaComponent (0.1))
+      offScreenView.setBackColor (NSColor.gray.withAlphaComponent (0.25))
       let bp = NSBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
       bp.lineWidth = 1.0
-      offScreenView.setPaths ([([bp], NSColor.black, .stroke)])
+      offScreenView.setPaths ([([bp], NSColor.gray, .stroke)])
       let pdfData : Data = offScreenView.dataWithPDF (inside: r)
       return NSImage (data: pdfData)!
     }else{

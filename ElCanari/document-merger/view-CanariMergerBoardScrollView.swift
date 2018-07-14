@@ -63,9 +63,9 @@ import Cocoa
 
   //····················································································································
 
-  override func draggingExited (_ sender: NSDraggingInfo?) {
-    // NSLog ("draggingExited")
-  }
+//  override func draggingExited (_ sender: NSDraggingInfo?) {
+//    // NSLog ("draggingExited")
+//  }
 
   //····················································································································
 

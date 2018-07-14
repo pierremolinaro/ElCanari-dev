@@ -26,7 +26,6 @@ transient property class MergerBoardLimits ;
 transient property class MergerPadArray ;
 transient property class MergerHoleArray ;
 transient property class MergerBoardModelArray ;
-transient property class CALayer ;
 
 transient property struct CanariBoardRect ;
 

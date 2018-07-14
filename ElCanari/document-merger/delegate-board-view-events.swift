@@ -10,20 +10,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   ViewEventProtocol
-//   Note: cannot use optional in @objc protocols
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//@objc protocol ViewEventProtocol {
-//
-//  func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int)
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   DelegateForMergerBoardViewEvents
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol {
+class DelegateForMergerBoardViewEvents : EBSimpleClass {
 
   //····················································································································
   //  Outlets
@@ -34,6 +24,40 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
 
   //····················································································································
   // Properties
+  //····················································································································
+
+  private var mModel : ToManyRelationship_MergerRoot_boardInstances? = nil
+  let selectedArray_property = TransientArrayOf_MergerBoardInstance ()
+
+  //····················································································································
+
+  override func awakeFromNib() {
+    super.awakeFromNib ()
+    mModel = mMergerDocument?.rootObject.boardInstances_property
+    self.selectedArray_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel, let selectedSet = self?.mSelectedSet {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var result = [MergerBoardInstance] ()
+          for object in v {
+            if selectedSet.contains (object) {
+              result.append (object)
+            }
+          }
+          return .single (result)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+  // Selected set
   //····················································································································
 
   private var mSelectedSet = Set <MergerBoardInstance> () {
@@ -52,6 +76,8 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
         }
       //---
         self.computeSelectionLayer ()
+      //--- Update selectedArray property
+        self.selectedArray_property.postEvent ()
       }
     }
   }
@@ -59,7 +85,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   var objectCount : Int {
-    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    let objects = mModel?.propval ?? []
     return objects.count
   }
 
@@ -87,7 +113,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
 
   func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int) {
     mLastMouseDraggedLocation = mBoardView?.convert (inEvent.locationInWindow, from:nil)
-    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    let objects = mModel?.propval ?? []
     let shiftKey = inEvent.modifierFlags.contains (.shift)
     let commandKey = inEvent.modifierFlags.contains (.command)
     if shiftKey { // Shift key extends selection
@@ -141,7 +167,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
         mBoardView?.selectionRectangleLayer.sublayers = [layer]
         let indexSet = boardView.indexesOfObjects (intersecting:r)
         var newSelectedSet = Set <MergerBoardInstance> ()
-        var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+        var objects = mModel?.propval ?? []
         for idx in indexSet {
           newSelectedSet.insert (objects [idx])
         }
@@ -193,14 +219,14 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   private func deleteSelection () {
-    var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    var objects = mModel?.propval ?? []
     for object in mSelectedSet {
       if let idx = objects.index (of: object) {
         objects.remove(at: idx)
         mMergerDocument?.managedObjectContext().removeManagedObject (object)
       }
     }
-    mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
+    mModel?.setProp (objects)
     mSelectedSet = Set ()
   }
 
@@ -227,7 +253,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   func selectAllObjects () {
-    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    let objects = mModel?.propval ?? []
     mSelectedSet = Set (objects)
   }
 
@@ -235,7 +261,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
 
   private final func sortedIndexArrayOfSelectedObjects () -> [Int] {
     var result = [Int] ()
-    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    let objects = mModel?.propval ?? []
     for object in mSelectedSet {
       let idx = objects.index (of:object)!
       result.append (idx)
@@ -248,7 +274,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   func canBringForward () -> Bool {
-    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    let objects = mModel?.propval ?? []
     var result = (objects.count > 1) && (mSelectedSet.count > 0)
     if result {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
@@ -260,14 +286,14 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   func bringForward () {
-    var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    var objects = mModel?.propval ?? []
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray.reversed () {
        let object = objects [idx]
        objects.remove (at: idx)
        objects.insert (object, at:idx+1)
     }
-    mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
+    mModel?.setProp (objects)
   }
 
   //····················································································································
@@ -275,7 +301,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   func canBringToFront () -> Bool {
-    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    let objects = mModel?.propval ?? []
     if (objects.count > 1) && (mSelectedSet.count > 0) {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
       var top = objects.count - 1
@@ -292,14 +318,14 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   func bringToFront () {
-    var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    var objects = mModel?.propval ?? []
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray {
       let object = objects [idx]
       objects.remove (at: idx)
       objects.append (object)
     }
-    mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
+    mModel?.setProp (objects)
   }
 
   //····················································································································
@@ -307,7 +333,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   func canSendBackward () -> Bool {
-    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    let objects = mModel?.propval ?? []
     var result = (objects.count > 1) && (mSelectedSet.count > 0)
     if result {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
@@ -319,14 +345,14 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   func sendBackward () {
-    var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    var objects = mModel?.propval ?? []
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)
       objects.insert (object, at:idx-1)
     }
-    mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
+    mModel?.setProp (objects)
   }
   
   //····················································································································
@@ -334,7 +360,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   func canSendToBack () -> Bool {
-    let objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    let objects = mModel?.propval ?? []
     if (objects.count > 1) && (mSelectedSet.count > 0) {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
       var bottom = 0
@@ -351,14 +377,14 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass { // , ViewEventProtocol 
   //····················································································································
 
   func sendToBack () {
-    var objects = mMergerDocument?.rootObject.boardInstances_property.propval ?? []
+    var objects = mModel?.propval ?? []
     let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)
       objects.insert (object, at:0)
     }
-    mMergerDocument?.rootObject.boardInstances_property.setProp (objects)
+    mModel?.setProp (objects)
   }
 
   //····················································································································
