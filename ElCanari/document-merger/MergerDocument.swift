@@ -13,6 +13,7 @@ import Cocoa
   //····················································································································
 
   @IBOutlet var addBoardModelButton : EBButton?
+  @IBOutlet var boardHelpPanel : NSPanel?
   @IBOutlet var mArrangeHorizontallyButton : EBButton?
   @IBOutlet var mArrangeVerticalyButton : EBButton?
   @IBOutlet var mArtworNameTextField : EBTextObserverField?
@@ -60,8 +61,6 @@ import Cocoa
   @IBOutlet var mGenerateProductFilesActionButton : EBButton?
   @IBOutlet var mImportArtworkButton : EBButton?
   @IBOutlet var mIncorrectDocumentNameTextField : EBTextObserverField?
-  @IBOutlet var mInsertArrayOfBoardsCancelButton : NSButton?
-  @IBOutlet var mInsertArrayOfBoardsOkButton : NSButton?
   @IBOutlet var mInsertArrayOfBoardsPanel : NSPanel?
   @IBOutlet var mInsertArrayOfBoardsPopUpButton : NSPopUpButton?
   @IBOutlet var mInsertArrayOfBoardsXCountField : NSTextField?
@@ -121,6 +120,7 @@ import Cocoa
   @IBOutlet var mergerViewDisplayViasColorWell : EBColorWell?
   @IBOutlet var mergerViewFrontLegendLinesColorWell : EBColorWell?
   @IBOutlet var removeBoardModelButton : EBButton?
+  @IBOutlet var showBoardHelpButton : EBButton?
   @IBOutlet var showPrefsForSettingMergerDisplayButton : EBButton?
   @IBOutlet var updateBoardModelButton : EBButton?
 
@@ -247,6 +247,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'addBoardModelButton' outlet is not an instance of 'EBButton'") ;
+    }
+    if nil == boardHelpPanel {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'boardHelpPanel' outlet is nil") ;
+//    }else if !boardHelpPanel!.isKindOfClass (NSPanel) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'boardHelpPanel' outlet is not an instance of 'NSPanel'") ;
     }
     if nil == mArrangeHorizontallyButton {
       presentErrorWindow (file: #file,
@@ -670,24 +679,6 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mIncorrectDocumentNameTextField' outlet is not an instance of 'EBTextObserverField'") ;
-    }
-    if nil == mInsertArrayOfBoardsCancelButton {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mInsertArrayOfBoardsCancelButton' outlet is nil") ;
-//    }else if !mInsertArrayOfBoardsCancelButton!.isKindOfClass (NSButton) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mInsertArrayOfBoardsCancelButton' outlet is not an instance of 'NSButton'") ;
-    }
-    if nil == mInsertArrayOfBoardsOkButton {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mInsertArrayOfBoardsOkButton' outlet is nil") ;
-//    }else if !mInsertArrayOfBoardsOkButton!.isKindOfClass (NSButton) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mInsertArrayOfBoardsOkButton' outlet is not an instance of 'NSButton'") ;
     }
     if nil == mInsertArrayOfBoardsPanel {
       presentErrorWindow (file: #file,
@@ -1220,6 +1211,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'removeBoardModelButton' outlet is not an instance of 'EBButton'") ;
     }
+    if nil == showBoardHelpButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'showBoardHelpButton' outlet is nil") ;
+//    }else if !showBoardHelpButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'showBoardHelpButton' outlet is not an instance of 'EBButton'") ;
+    }
     if nil == showPrefsForSettingMergerDisplayButton {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -1560,6 +1560,8 @@ import Cocoa
     removeBoardModelButton?.action = #selector (ArrayController_MergerDocument_mBoardModelController.remove (_:))
     updateBoardModelButton?.target = self
     updateBoardModelButton?.action = #selector (MergerDocument.updateBoardModelAction (_:))
+    showBoardHelpButton?.target = self
+    showBoardHelpButton?.action = #selector (MergerDocument.showBoardHelpAction (_:))
     mArrangeHorizontallyButton?.target = self
     mArrangeHorizontallyButton?.action = #selector (MergerDocument.arrangeHorizontallyAction (_:))
     mArrangeVerticalyButton?.target = self
@@ -1725,12 +1727,14 @@ import Cocoa
     addBoardModelButton?.target = nil
     removeBoardModelButton?.target = nil
     updateBoardModelButton?.target = nil
+    showBoardHelpButton?.target = nil
     mArrangeHorizontallyButton?.target = nil
     mArrangeVerticalyButton?.target = nil
     mGenerateProductFilesActionButton?.target = nil
     mImportArtworkButton?.target = nil
   //--------------------------- Clean up outlets
     self.addBoardModelButton?.ebCleanUp ()
+    self.boardHelpPanel?.ebCleanUp ()
     self.mArrangeHorizontallyButton?.ebCleanUp ()
     self.mArrangeVerticalyButton?.ebCleanUp ()
     self.mArtworNameTextField?.ebCleanUp ()
@@ -1778,8 +1782,6 @@ import Cocoa
     self.mGenerateProductFilesActionButton?.ebCleanUp ()
     self.mImportArtworkButton?.ebCleanUp ()
     self.mIncorrectDocumentNameTextField?.ebCleanUp ()
-    self.mInsertArrayOfBoardsCancelButton?.ebCleanUp ()
-    self.mInsertArrayOfBoardsOkButton?.ebCleanUp ()
     self.mInsertArrayOfBoardsPanel?.ebCleanUp ()
     self.mInsertArrayOfBoardsPopUpButton?.ebCleanUp ()
     self.mInsertArrayOfBoardsXCountField?.ebCleanUp ()
@@ -1839,6 +1841,7 @@ import Cocoa
     self.mergerViewDisplayViasColorWell?.ebCleanUp ()
     self.mergerViewFrontLegendLinesColorWell?.ebCleanUp ()
     self.removeBoardModelButton?.ebCleanUp ()
+    self.showBoardHelpButton?.ebCleanUp ()
     self.showPrefsForSettingMergerDisplayButton?.ebCleanUp ()
     self.updateBoardModelButton?.ebCleanUp ()
   }

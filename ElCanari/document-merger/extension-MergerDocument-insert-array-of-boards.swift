@@ -17,15 +17,6 @@ extension MergerDocument {
 
   func insertArrayOfBoards (atX inX : Int, y inY : Int) {
     if let panel = mInsertArrayOfBoardsPanel, let insertArrayOfBoardsPopUpButton = mInsertArrayOfBoardsPopUpButton {
-    //--- Ok button
-      if let okCell = mInsertArrayOfBoardsOkButton?.cell as? NSButtonCell {
-        panel.defaultButtonCell = okCell
-      }
-      mInsertArrayOfBoardsOkButton?.target = self
-      mInsertArrayOfBoardsOkButton?.action = #selector (MergerDocument.okInsertArrayOfBoardPanel (_:))
-    //--- Cancel Button
-      mInsertArrayOfBoardsCancelButton?.target = self
-      mInsertArrayOfBoardsCancelButton?.action = #selector (MergerDocument.cancelInsertArrayOfBoardPanel (_:))
     //--- Build popup button items
       insertArrayOfBoardsPopUpButton.removeAllItems ()
       var idx = 0
@@ -76,24 +67,6 @@ extension MergerDocument {
           }
         }
       })
-    }
-  }
-
-  //····················································································································
-
-  func cancelInsertArrayOfBoardPanel (_ sender : Any?) {
-    if let panel = mInsertArrayOfBoardsPanel {
-      panel.orderOut (self)
-      self.windowForSheet?.endSheet (panel, returnCode:NSModalResponseAbort)
-    }
-  }
-
-  //····················································································································
-
-  func okInsertArrayOfBoardPanel (_ sender : Any?) {
-    if let panel = mInsertArrayOfBoardsPanel {
-      panel.orderOut (self)
-      self.windowForSheet?.endSheet (panel, returnCode:NSModalResponseStop)
     }
   }
 

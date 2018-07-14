@@ -670,6 +670,10 @@ document MergerDocument root MergerRoot {
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
 
+  action showBoardHelpAction ;
+  outlet EBButton showBoardHelpButton $run self.showBoardHelpAction ;
+  outlet NSPanel boardHelpPanel ;
+
 #--- Board Limit Width display
   outlet EBPopUpButton mBoardLimitWidthUnitPopUp $selectedTag root.boardLimitWidthUnit ;
   outlet CanariDimensionTextField mBoardBoardLimitTextField
@@ -678,8 +682,6 @@ document MergerDocument root MergerRoot {
 
 #--- "Insert array of boards" panel
   outlet NSPanel mInsertArrayOfBoardsPanel ;
-  outlet NSButton mInsertArrayOfBoardsCancelButton ;
-  outlet NSButton mInsertArrayOfBoardsOkButton ;
   outlet NSPopUpButton mInsertArrayOfBoardsPopUpButton ;
   outlet NSTextField mInsertArrayOfBoardsXCountField ;
   outlet NSTextField mInsertArrayOfBoardsYCountField ;
