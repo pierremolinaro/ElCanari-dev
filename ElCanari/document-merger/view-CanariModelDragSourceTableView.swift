@@ -24,20 +24,24 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
 
   required init? (coder: NSCoder) {
     super.init (coder:coder)
-    noteObjectAllocation (self)
-    self.dataSource = self
-    self.setDraggingSourceOperationMask (.move, forLocal:true)
-    self.register (forDraggedTypes: [kDragAndDropModelType])
+    self.customInit ()
   }
 
   //····················································································································
 
   override init (frame:NSRect) {
     super.init (frame:frame)
+    self.customInit ()
+  }
+  
+  //····················································································································
+
+  private final func customInit () {
     noteObjectAllocation (self)
     self.dataSource = self
     self.setDraggingSourceOperationMask (.copy, forLocal:true)
     self.register (forDraggedTypes: [kDragAndDropModelType])
+//    self.register (forDraggedTypes: [kDragAndDropModelType, NSTIFFPboardType])
   }
   
   //····················································································································
@@ -72,15 +76,22 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
                   writeRowsWith rowIndexes: IndexSet,
                   to pboard : NSPasteboard) -> Bool {
     if rowIndexes.count == 1 {
-      let idx = mModelNameArray [rowIndexes.first!]
-      let data = "\(idx)".data (using: .ascii)
+      let modelName : String = mModelNameArray [rowIndexes.first!]
+ //     let data = "\(idx)".data (using: .ascii)
+      let data = modelName.data (using: .ascii) // NSNumber (value: rowIndexes.first!))
       pboard.declareTypes ([kDragAndDropModelType], owner:self)
+//      pboard.declareTypes ([kDragAndDropModelType, NSTIFFPboardType], owner:self)
+//      let image = NSImage (named: "autorouter")!
+//      pboard.setData (image.tiffRepresentation, forType:NSTIFFPboardType)
       pboard.setData (data, forType:kDragAndDropModelType)
       return true
     }else{
       return false
     }
   }
+
+//   [zPasteBoard setData:[self.nsImageObj TIFFRepresentation] 
+//                 forType:NSTIFFPboardType];
 
   //····················································································································
   //    $models binding
