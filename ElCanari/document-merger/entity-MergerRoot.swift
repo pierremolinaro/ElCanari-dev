@@ -415,16 +415,18 @@ class MergerRoot : EBManagedObject,
   //--- Install compute functions for transients
     self.modelNames_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardModels_property_selection.kind ()
+        var kind = unwSelf.boardModels_property_selection.kind ()
+        kind &= unwSelf.boardModels_property_selection.kind ()
+        kind &= unwSelf.boardModels_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardModels_property_selection) {
-          case (.single (let v0)) :
-            return .single (compute_MergerRoot_modelNames (v0))
+          switch (unwSelf.boardModels_property_selection, unwSelf.boardModels_property_selection, unwSelf.boardModels_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_MergerRoot_modelNames (v0, v1, v2))
           default :
             return .empty
           }
@@ -540,6 +542,8 @@ class MergerRoot : EBManagedObject,
     }
   //--- Install property observers for transients
     self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
+    self.boardModels_property.addEBObserverOf_modelWidth (self.modelNames_property)
+    self.boardModels_property.addEBObserverOf_modelHeight (self.modelNames_property)
     self.boardLimitsLayerDisplay_property.addEBObserver (self.instancesLayerDisplay_property)
     self.boardInstances_property.addEBObserverOf_instanceLayerDisplay (self.instancesLayerDisplay_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
@@ -574,6 +578,8 @@ class MergerRoot : EBManagedObject,
   deinit {
   //--- Remove observers
     self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
+    self.boardModels_property.removeEBObserverOf_modelWidth (self.modelNames_property)
+    self.boardModels_property.removeEBObserverOf_modelHeight (self.modelNames_property)
     self.boardLimitsLayerDisplay_property.removeEBObserver (self.instancesLayerDisplay_property)
     self.boardInstances_property.removeEBObserverOf_instanceLayerDisplay (self.instancesLayerDisplay_property)
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)

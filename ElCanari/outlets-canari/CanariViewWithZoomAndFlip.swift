@@ -205,6 +205,12 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
   //  Horizontal flip
   //····················································································································
 
+  func horizontalFlip () -> Bool {
+    return mHorizontalFlip
+  }
+
+  //····················································································································
+
   func setHorizontalFlipFromController (_ inFlip : Bool) {
     scaleToZoom (mZoom, inFlip, mVerticalFlip)
     mHorizontalFlip = inFlip
@@ -212,6 +218,12 @@ class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
 
   //····················································································································
   //  Vertical flip
+  //····················································································································
+
+  func verticalFlip () -> Bool {
+    return mVerticalFlip
+  }
+
   //····················································································································
 
   func setVerticalFlipFromController (_ inFlip : Bool) {

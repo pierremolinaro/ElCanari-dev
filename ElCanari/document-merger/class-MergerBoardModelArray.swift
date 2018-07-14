@@ -17,12 +17,12 @@ final class MergerBoardModelArray : EBSimpleClass {
 
   //····················································································································
 
-  let modelNameArray : [String]
+  let modelArray : [MergerBoardModelNameAndSize]
 
   //····················································································································
 
-  init (_ inArray : [String]) {
-    modelNameArray = inArray
+  init (_ inArray : [MergerBoardModelNameAndSize]) {
+    modelArray = inArray
     super.init ()
   }
 
@@ -30,8 +30,32 @@ final class MergerBoardModelArray : EBSimpleClass {
 
   override var description : String {
     get {
-      return "MergerBoardModelArray " + String (modelNameArray.count)
+      return "MergerBoardModelArray " + String (self.modelArray.count)
     }
+  }
+
+  //····················································································································
+
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   MergerBoardModelNameAndSize
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct MergerBoardModelNameAndSize {
+
+  //····················································································································
+
+  let name : String
+  let width : Int
+  let height : Int
+
+  //····················································································································
+
+  init (name inName : String, width inWidth : Int, height inHeight : Int) {
+    name = inName
+    width = inWidth
+    height = inHeight
+//    super.init ()
   }
 
   //····················································································································

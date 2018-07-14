@@ -22,6 +22,10 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
 
   //····················································································································
 
+  @IBOutlet weak var mBoardView : CanariBoardModelView? = nil
+
+  //····················································································································
+
   required init? (coder: NSCoder) {
     super.init (coder:coder)
     self.customInit ()
@@ -41,7 +45,6 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
     self.dataSource = self
     self.setDraggingSourceOperationMask (.copy, forLocal:true)
     self.register (forDraggedTypes: [kDragAndDropModelType])
-//    self.register (forDraggedTypes: [kDragAndDropModelType, NSTIFFPboardType])
   }
   
   //····················································································································
@@ -54,18 +57,18 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
   //    Table view data source protocol
   //····················································································································
 
-  private var mModelNameArray = [String] ()
+  private var mModelArray = [MergerBoardModelNameAndSize] ()
 
   //····················································································································
 
   func numberOfRows (in tableView: NSTableView) -> Int {
-    return mModelNameArray.count
+    return mModelArray.count
   }
 
   //····················································································································
 
   func tableView (_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-    return mModelNameArray [row]
+    return mModelArray [row].name
   }
 
   //····················································································································
@@ -76,13 +79,9 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
                   writeRowsWith rowIndexes: IndexSet,
                   to pboard : NSPasteboard) -> Bool {
     if rowIndexes.count == 1 {
-      let modelName : String = mModelNameArray [rowIndexes.first!]
- //     let data = "\(idx)".data (using: .ascii)
-      let data = modelName.data (using: .ascii) // NSNumber (value: rowIndexes.first!))
+      let modelName : String = mModelArray [rowIndexes.first!].name
+      let data = modelName.data (using: .ascii)
       pboard.declareTypes ([kDragAndDropModelType], owner:self)
-//      pboard.declareTypes ([kDragAndDropModelType, NSTIFFPboardType], owner:self)
-//      let image = NSImage (named: "autorouter")!
-//      pboard.setData (image.tiffRepresentation, forType:NSTIFFPboardType)
       pboard.setData (data, forType:kDragAndDropModelType)
       return true
     }else{
@@ -90,8 +89,37 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
     }
   }
 
-//   [zPasteBoard setData:[self.nsImageObj TIFFRepresentation] 
-//                 forType:NSTIFFPboardType];
+  //····················································································································
+  // Providing the drag image
+  //····················································································································
+
+  override func dragImageForRows (with dragRows: IndexSet,
+                                  tableColumns: [NSTableColumn],
+                                  event dragEvent: NSEvent,
+                                  offset dragImageOffset: NSPointPointer) -> NSImage {
+    if let boardView = mBoardView, dragRows.count == 1 {
+    //--- Get board view scale
+      let scale = boardView.actualScale ()
+      let horizontalFlip : CGFloat = boardView.horizontalFlip () ? -1.0 : 1.0
+      let verticalFlip   : CGFloat = boardView.verticalFlip ()   ? -1.0 : 1.0
+    //--- Image size
+      let width = scale * canariUnitToCocoa (self.mModelArray [dragRows.first!].width)
+      let height = scale * canariUnitToCocoa (self.mModelArray [dragRows.first!].height)
+    //--- By default, image is centered;
+      dragImageOffset.pointee = NSPoint (x : horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
+    //--- Build image
+      let r = CGRect (x:0.0, y:0.0, width : width, height:height)
+      let offScreenView = CanariOffscreenView (frame: r)
+      offScreenView.setBackColor (NSColor.yellow.withAlphaComponent (0.1))
+      let bp = NSBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
+      bp.lineWidth = 1.0
+      offScreenView.setPaths ([([bp], NSColor.black, .stroke)])
+      let pdfData : Data = offScreenView.dataWithPDF (inside: r)
+      return NSImage (data: pdfData)!
+    }else{
+      return NSImage (named: "exclamation")!
+    }
+  }
 
   //····················································································································
   //    $models binding
@@ -112,8 +140,8 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
 
   //····················································································································
 
-  func updateModels (_ inNameArray : [String]) {
-    self.mModelNameArray = inNameArray
+  func updateModels (_ inArray : [MergerBoardModelNameAndSize]) {
+    self.mModelArray = inArray
     self.reloadData ()
   }
   
@@ -146,7 +174,7 @@ class Controller_CanariModelDragSourceTableView_models : EBSimpleController {
     case .empty :
       mOutlet.updateModels ([])
     case .single (let v) :
-      mOutlet.updateModels (v.modelNameArray)
+      mOutlet.updateModels (v.modelArray)
     case .multiple :
       mOutlet.updateModels ([])
     }

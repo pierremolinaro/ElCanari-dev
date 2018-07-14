@@ -68,15 +68,15 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func setNames (_ inNameArray : [String]) {
-    // NSLog ("\(inNameArray)")
+  func setNames (_ inArray : [MergerBoardModelNameAndSize]) {
+    // NSLog ("\(inArray)")
     self.removeAllItems ()
-    if inNameArray.count == 0 {
+    if inArray.count == 0 {
       self.addItem (withTitle: "No Board Model to Insert", action: nil, keyEquivalent: "")
     }else{
-      for name in inNameArray {
-        self.addItem (withTitle: "Insert \"\(name)\"", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
-        self.items.last?.representedObject = InsertBoardMenuRepresentedObject (boardModelName:name)
+      for model in inArray {
+        self.addItem (withTitle: "Insert \"\(model.name)\"", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
+        self.items.last?.representedObject = InsertBoardMenuRepresentedObject (boardModelName:model.name)
         self.items.last?.target = mDocument
         self.items.last?.isEnabled = true
       }
@@ -116,7 +116,7 @@ final class Controller_CanariBoardInsertMenu_names : EBSimpleController {
     case .empty :
       mOutlet.setNames ([])
     case .single (let v) :
-      mOutlet.setNames (v.modelNameArray)
+      mOutlet.setNames (v.modelArray)
     case .multiple :
       mOutlet.setNames ([])
     }

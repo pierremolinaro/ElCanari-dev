@@ -730,6 +730,9 @@ AAAAAAEGA
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <outlet property="mBoardView" destination="nao-E9-sci" id="eG8-Gu-NFv"/>
+                                </connections>
                             </tableView>
                         </subviews>
                     </clipView>

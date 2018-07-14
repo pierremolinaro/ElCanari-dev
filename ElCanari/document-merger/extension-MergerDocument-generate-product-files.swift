@@ -311,6 +311,7 @@ extension MergerDocument {
           }
         }
         let view = CanariOffscreenView (frame: cocoaBoardRect)
+        view.setBackColor (NSColor.white)
         let paths : [([NSBezierPath], NSColor, StrokeOrFill)] = [
           (strokeBezierPaths, NSColor.black, .stroke),
           (filledBezierPaths, NSColor.black, .fill),

@@ -22,7 +22,8 @@ enum StrokeOrFill {
 
 class CanariOffscreenView : NSView, EBUserClassNameProtocol {
 
-  private var bezierPaths = [([NSBezierPath], NSColor, StrokeOrFill)] ()
+  private var mBezierPaths = [([NSBezierPath], NSColor, StrokeOrFill)] ()
+  private var mBackColor : NSColor? = nil
 
   //····················································································································
 
@@ -49,7 +50,15 @@ class CanariOffscreenView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   func setPaths (_ inPaths : [([NSBezierPath], NSColor, StrokeOrFill)]) {
-    self.bezierPaths = inPaths
+    self.mBezierPaths = inPaths
+  }
+
+  //····················································································································
+  //  Set back color
+  //····················································································································
+
+  func setBackColor (_ inColor : NSColor) {
+    self.mBackColor = inColor
   }
 
   //····················································································································
@@ -57,16 +66,12 @@ class CanariOffscreenView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   override func draw (_ dirtyRect: NSRect) {
-    NSColor.white.setFill ()
-    NSRectFill (dirtyRect)
-  //--- Draw a thin border line
-//    let r = self.bounds.insetBy (dx: 0.5, dy: 0.5)
-//    NSColor.black.setStroke ()
-//    let bp = NSBezierPath (rect:r)
-//    bp.lineWidth = 1.0
-//    bp.stroke ()
+    if let backColor = mBackColor {
+      backColor.setFill ()
+      NSRectFill (dirtyRect)
+    }
   //--- Bezier paths
-    for (paths, color, operation) in self.bezierPaths {
+    for (paths, color, operation) in self.mBezierPaths {
       switch operation {
       case .stroke :
         color.setStroke ()

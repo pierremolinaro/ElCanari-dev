@@ -12,15 +12,23 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func compute_MergerRoot_modelNames (
-       _ self_boardModels_name : [BoardModel_name]
+       _ self_boardModels_name : [BoardModel_name],
+       _ self_boardModels_modelWidth : [BoardModel_modelWidth],
+       _ self_boardModels_modelHeight : [BoardModel_modelHeight]
 ) -> MergerBoardModelArray {
 //--- START OF USER ZONE 2
-  var nameArray = [String] ()
-  for object in self_boardModels_name {
-    let name = object.name
-    nameArray.append (name)
+  var array = [MergerBoardModelNameAndSize] ()
+  var idx = 0
+  while idx < self_boardModels_name.count {
+    let model = MergerBoardModelNameAndSize (
+      name:self_boardModels_name [idx].name,
+      width: self_boardModels_modelWidth [idx].modelWidth,
+      height: self_boardModels_modelHeight [idx].modelHeight
+    )
+    array.append (model)
+    idx += 1
   }
-  return MergerBoardModelArray (nameArray)
+  return MergerBoardModelArray (array)
 //--- END OF USER ZONE 2
 }
 
