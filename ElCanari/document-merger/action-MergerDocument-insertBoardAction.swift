@@ -38,7 +38,7 @@ extension MergerDocument {
           }else{
             NSLog ("Cannot find '\(boardModelName)' board model")
           }
-        }else{ // No reprsented object, show "insert array of boards" panel
+        }else{ // No represented object, show "insert array of boards" panel
           self.insertArrayOfBoards (atX:x, y:y)
         }
       }

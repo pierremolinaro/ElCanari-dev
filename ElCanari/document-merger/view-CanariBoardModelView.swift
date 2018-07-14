@@ -210,5 +210,4 @@ class Controller_CanariBoardModelView_objectLayer : EBSimpleController {
 
 }
 
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -68,6 +68,7 @@ import Cocoa
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
   @IBOutlet var mLogTextView : NSTextView?
   @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
+  @IBOutlet var mModelDragSourceTableView : CanariModelDragSourceTableView?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mModelLimitWidthUnitPopUp : EBPopUpButton?
@@ -743,6 +744,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mModelBoardLimitTextField' outlet is not an instance of 'CanariDimensionObserverTextField'") ;
     }
+    if nil == mModelDragSourceTableView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mModelDragSourceTableView' outlet is nil") ;
+//    }else if !mModelDragSourceTableView!.isKindOfClass (CanariModelDragSourceTableView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mModelDragSourceTableView' outlet is not an instance of 'CanariModelDragSourceTableView'") ;
+    }
     if nil == mModelHeightTextField {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -1398,6 +1408,7 @@ import Cocoa
     mBoardModelView?.bind_verticalFlip (g_Preferences!.mergerModelViewVerticalFlip_property, file: #file, line: #line)
     mBoardModelView?.bind_objectLayer (self.mBoardModelSelection.modelLayerDisplay_property, file: #file, line: #line)
     mBoardInsertMenu?.bind_names (self.rootObject.modelNames_property, file: #file, line: #line)
+    mModelDragSourceTableView?.bind_models (self.rootObject.modelNames_property, file: #file, line: #line)
     mBoardLimitWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardLimitWidthUnit_property, file: #file, line: #line)
     mBoardBoardLimitTextField?.bind_dimensionAndUnit (self.rootObject.boardLimitWidth_property, self.rootObject.boardLimitWidthUnit_property, file: #file, line: #line)
     mBoardWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardWidthUnit_property, file: #file, line: #line)
@@ -1660,6 +1671,7 @@ import Cocoa
     mBoardModelView?.unbind_verticalFlip ()
     mBoardModelView?.unbind_objectLayer ()
     mBoardInsertMenu?.unbind_names ()
+    mModelDragSourceTableView?.unbind_models ()
     mBoardLimitWidthUnitPopUp?.unbind_selectedTag ()
     mBoardBoardLimitTextField?.unbind_dimensionAndUnit ()
     mBoardWidthUnitPopUp?.unbind_selectedTag ()
@@ -1789,6 +1801,7 @@ import Cocoa
     self.mInstanceCountTextField?.ebCleanUp ()
     self.mLogTextView?.ebCleanUp ()
     self.mModelBoardLimitTextField?.ebCleanUp ()
+    self.mModelDragSourceTableView?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
     self.mModelHeightUnitPopUp?.ebCleanUp ()
     self.mModelLimitWidthUnitPopUp?.ebCleanUp ()

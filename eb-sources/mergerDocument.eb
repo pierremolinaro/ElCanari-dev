@@ -44,6 +44,9 @@ binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat
 
 extern outlet class DelegateForMergerBoardViewEvents ;
 
+extern outlet class CanariModelDragSourceTableView ;
+binding CanariModelDragSourceTableView $models : transient MergerBoardModelArray ;
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariBoardInsertMenu ; 
@@ -670,10 +673,14 @@ document MergerDocument root MergerRoot {
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
 
+#--- Help
   action showBoardHelpAction ;
   outlet EBButton showBoardHelpButton $run self.showBoardHelpAction ;
   outlet NSPanel boardHelpPanel ;
 
+#--- Table view, source of model drag
+  outlet CanariModelDragSourceTableView mModelDragSourceTableView $models root.modelNames ;
+  
 #--- Board Limit Width display
   outlet EBPopUpButton mBoardLimitWidthUnitPopUp $selectedTag root.boardLimitWidthUnit ;
   outlet CanariDimensionTextField mBoardBoardLimitTextField
