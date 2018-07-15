@@ -67,6 +67,14 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
   }
 
   //····················································································································
+  //   SET SELECTION
+  //····················································································································
+
+  func setSelection (_ inObjects : [MissingCharacter]) {
+    mSelectedSet.mSet = Set (inObjects)
+  }
+
+  //····················································································································
 
   private final func setSelectedArrayComputeFunction () {
     self.selectedArray_property.readModelFunction = {

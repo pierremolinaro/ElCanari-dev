@@ -35,6 +35,7 @@ extension MergerDocument {
             newBoard.x = x
             newBoard.y = y
             self.rootObject.boardInstances_property.add (newBoard)
+            self.mBoardInstanceController.setSelection ([newBoard])
           }else{
             NSLog ("Cannot find '\(boardModelName)' board model")
           }

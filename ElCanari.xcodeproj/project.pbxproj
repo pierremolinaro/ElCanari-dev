@@ -780,8 +780,6 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
-				CFB671D920FB71E600C94777 /* selectionController-MergerDocument-mBoardInstanceSelection.swift */,
-				CFB671D720FB719700C94777 /* arrayController-MergerDocument-mBoardInstanceController.swift */,
 				CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */,
 				CFC2FEAE20EBFA7A00C45CB3 /* action-MergerDocument-arrangeHorizontallyAction.swift */,
 				CFC2FEAF20EBFA7A00C45CB3 /* action-MergerDocument-arrangeVerticalyAction.swift */,
@@ -791,6 +789,7 @@
 				CFEF3D2820F9F13E00DA6106 /* action-MergerDocument-showBoardHelpAction.swift */,
 				CFF2651B20E66F2A00525C0F /* action-MergerDocument-showPrefsForSettingMergerDisplayAction.swift */,
 				CF30637820E7EE1B0099182C /* action-MergerDocument-updateBoardModelAction.swift */,
+				CFB671D720FB719700C94777 /* arrayController-MergerDocument-mBoardInstanceController.swift */,
 				CFBEE4DC20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift */,
 				CFD7EA2220E7D27300D53B87 /* class-MergerBoardModelArray.swift */,
 				CFC80A9A20E633B200C1A156 /* class-MergerHoleArray.swift */,
@@ -813,6 +812,7 @@
 				CFD7EA2020E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift */,
 				CF55994F1FDF364400ED5EE6 /* MergerDocument.swift */,
 				CF5599501FDF364400ED5EE6 /* MergerDocument.xib */,
+				CFB671D920FB71E600C94777 /* selectionController-MergerDocument-mBoardInstanceSelection.swift */,
 				CFF0416C20DD46BE00FB1C5B /* selectionController-MergerDocument-mBoardModelSelection.swift */,
 				CF63B3F020EB9D55009BC140 /* transient-BoardModel-backComponentNameDisplay.swift */,
 				CFDB681920E2AC66006D4E90 /* transient-BoardModel-backComponentNameSegments.swift */,

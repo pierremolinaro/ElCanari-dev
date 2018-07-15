@@ -51,6 +51,7 @@ extension MergerDocument {
             let boardModel = self.rootObject.boardModels_property.propval [insertArrayOfBoardsPopUpButton.selectedTag()]
             let boardModelWidth = boardModel.modelWidth
             let boardModelHeight = boardModel.modelHeight
+            var newBoardArray = [MergerBoardInstance] ()
             var y = inY
             for _ in 0 ..< yCount {
               var x = inX
@@ -60,10 +61,12 @@ extension MergerDocument {
                 newBoard.x = x
                 newBoard.y = y
                 self.rootObject.boardInstances_property.add (newBoard)
+                newBoardArray.append (newBoard)
                 x += boardModelWidth
               }
               y += boardModelHeight
             }
+            self.mBoardInstanceController.setSelection (newBoardArray)
           }
         }
       })

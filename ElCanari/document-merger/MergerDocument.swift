@@ -98,6 +98,10 @@ import Cocoa
   @IBOutlet var mNoModelMessage : EBTextField?
   @IBOutlet var mOverlapSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mSelectedBoardXTextField : CanariDimensionTextField?
+  @IBOutlet var mSelectedBoardXUnitPopUp : EBPopUpButton?
+  @IBOutlet var mSelectedBoardYTextField : CanariDimensionTextField?
+  @IBOutlet var mSelectedBoardYUnitPopUp : EBPopUpButton?
   @IBOutlet var mergerViewBackLegendLinesColorWell : EBColorWell?
   @IBOutlet var mergerViewBackgroundColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayBackComponentNamesColorWell : EBColorWell?
@@ -1017,6 +1021,42 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
     }
+    if nil == mSelectedBoardXTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mSelectedBoardXTextField' outlet is nil") ;
+//    }else if !mSelectedBoardXTextField!.isKindOfClass (CanariDimensionTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mSelectedBoardXTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+    }
+    if nil == mSelectedBoardXUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mSelectedBoardXUnitPopUp' outlet is nil") ;
+//    }else if !mSelectedBoardXUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mSelectedBoardXUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+    }
+    if nil == mSelectedBoardYTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mSelectedBoardYTextField' outlet is nil") ;
+//    }else if !mSelectedBoardYTextField!.isKindOfClass (CanariDimensionTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mSelectedBoardYTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+    }
+    if nil == mSelectedBoardYUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mSelectedBoardYUnitPopUp' outlet is nil") ;
+//    }else if !mSelectedBoardYUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mSelectedBoardYUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+    }
     if nil == mergerViewBackLegendLinesColorWell {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -1429,6 +1469,10 @@ import Cocoa
     mComposedBoardView?.bind_horizontalFlip (g_Preferences!.mergerBoardViewHorizontalFlip_property, file: #file, line: #line)
     mComposedBoardView?.bind_verticalFlip (g_Preferences!.mergerBoardViewVerticalFlip_property, file: #file, line: #line)
     mComposedBoardView?.bind_objectLayer (self.rootObject.instancesLayerDisplay_property, file: #file, line: #line)
+    mSelectedBoardXUnitPopUp?.bind_selectedTag (self.rootObject.selectedBoardXUnit_property, file: #file, line: #line)
+    mSelectedBoardXTextField?.bind_dimensionAndUnit (self.mBoardInstanceSelection.x_property, self.rootObject.selectedBoardXUnit_property, file: #file, line: #line)
+    mSelectedBoardYUnitPopUp?.bind_selectedTag (self.rootObject.selectedBoardYUnit_property, file: #file, line: #line)
+    mSelectedBoardYTextField?.bind_dimensionAndUnit (self.mBoardInstanceSelection.y_property, self.rootObject.selectedBoardYUnit_property, file: #file, line: #line)
     mOverlapSwitch?.bind_value (self.rootObject.overlapingArrangment_property, file: #file, line: #line)
     mIncorrectDocumentNameTextField?.bind_valueObserver (self.incorrectDocumentFileErrorMessage_property, file: #file, line: #line)
     mArtworNameTextField?.bind_valueObserver (self.rootObject.artworkName_property, file: #file, line: #line)
@@ -1692,6 +1736,10 @@ import Cocoa
     mComposedBoardView?.unbind_horizontalFlip ()
     mComposedBoardView?.unbind_verticalFlip ()
     mComposedBoardView?.unbind_objectLayer ()
+    mSelectedBoardXUnitPopUp?.unbind_selectedTag ()
+    mSelectedBoardXTextField?.unbind_dimensionAndUnit ()
+    mSelectedBoardYUnitPopUp?.unbind_selectedTag ()
+    mSelectedBoardYTextField?.unbind_dimensionAndUnit ()
     mOverlapSwitch?.unbind_value ()
     mIncorrectDocumentNameTextField?.unbind_valueObserver ()
     mArtworNameTextField?.unbind_valueObserver ()
@@ -1842,6 +1890,10 @@ import Cocoa
     self.mNoModelMessage?.ebCleanUp ()
     self.mOverlapSwitch?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mSelectedBoardXTextField?.ebCleanUp ()
+    self.mSelectedBoardXUnitPopUp?.ebCleanUp ()
+    self.mSelectedBoardYTextField?.ebCleanUp ()
+    self.mSelectedBoardYUnitPopUp?.ebCleanUp ()
     self.mergerViewBackLegendLinesColorWell?.ebCleanUp ()
     self.mergerViewBackgroundColorWell?.ebCleanUp ()
     self.mergerViewDisplayBackComponentNamesColorWell?.ebCleanUp ()

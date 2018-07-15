@@ -67,6 +67,14 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   }
 
   //····················································································································
+  //   SET SELECTION
+  //····················································································································
+
+  func setSelection (_ inObjects : [BoardModel]) {
+    mSelectedSet.mSet = Set (inObjects)
+  }
+
+  //····················································································································
 
   private final func setSelectedArrayComputeFunction () {
     self.selectedArray_property.readModelFunction = {

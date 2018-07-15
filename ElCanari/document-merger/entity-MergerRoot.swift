@@ -14,6 +14,8 @@ class MergerRoot : EBManagedObject,
   MergerRoot_boardWidthUnit,
   MergerRoot_boardHeightUnit,
   MergerRoot_overlapingArrangment,
+  MergerRoot_selectedBoardXUnit,
+  MergerRoot_selectedBoardYUnit,
   MergerRoot_boardLimitWidth,
   MergerRoot_boardLimitWidthUnit,
   MergerRoot_artworkName,
@@ -119,6 +121,44 @@ class MergerRoot : EBManagedObject,
   var overlapingArrangment_property_selection : EBSelection <Bool> {
     get {
       return self.overlapingArrangment_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing selectedBoardXUnit stored property
+  //····················································································································
+
+  var selectedBoardXUnit : Int {
+    get {
+      return self.selectedBoardXUnit_property.propval
+    }
+    set {
+      self.selectedBoardXUnit_property.setProp (newValue)
+    }
+  }
+
+  var selectedBoardXUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.selectedBoardXUnit_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing selectedBoardYUnit stored property
+  //····················································································································
+
+  var selectedBoardYUnit : Int {
+    get {
+      return self.selectedBoardYUnit_property.propval
+    }
+    set {
+      self.selectedBoardYUnit_property.setProp (newValue)
+    }
+  }
+
+  var selectedBoardYUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.selectedBoardYUnit_property.prop
     }
   }
 
@@ -379,6 +419,8 @@ class MergerRoot : EBManagedObject,
   var boardWidthUnit_property = EBStoredProperty_Int (90000)
   var boardHeightUnit_property = EBStoredProperty_Int (90000)
   var overlapingArrangment_property = EBStoredProperty_Bool (false)
+  var selectedBoardXUnit_property = EBStoredProperty_Int (90000)
+  var selectedBoardYUnit_property = EBStoredProperty_Int (90000)
   var boardLimitWidth_property = EBStoredProperty_Int (90000)
   var boardLimitWidthUnit_property = EBStoredProperty_Int (90000)
   var artworkName_property = EBStoredProperty_String ("")
@@ -560,6 +602,8 @@ class MergerRoot : EBManagedObject,
     self.boardWidthUnit_property.undoManager = undoManager ()
     self.boardHeightUnit_property.undoManager = undoManager ()
     self.overlapingArrangment_property.undoManager = undoManager ()
+    self.selectedBoardXUnit_property.undoManager = undoManager ()
+    self.selectedBoardYUnit_property.undoManager = undoManager ()
     self.boardLimitWidth_property.undoManager = undoManager ()
     self.boardLimitWidthUnit_property.undoManager = undoManager ()
     self.artworkName_property.undoManager = undoManager ()
@@ -637,6 +681,22 @@ class MergerRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.overlapingArrangment_property.mObserverExplorer,
       valueExplorer:&self.overlapingArrangment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectedBoardXUnit",
+      idx:self.selectedBoardXUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectedBoardXUnit_property.mObserverExplorer,
+      valueExplorer:&self.selectedBoardXUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectedBoardYUnit",
+      idx:self.selectedBoardYUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectedBoardYUnit_property.mObserverExplorer,
+      valueExplorer:&self.selectedBoardYUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardLimitWidth",
@@ -776,6 +836,10 @@ class MergerRoot : EBManagedObject,
     self.boardHeightUnit_property.mValueExplorer = nil
     self.overlapingArrangment_property.mObserverExplorer = nil
     self.overlapingArrangment_property.mValueExplorer = nil
+    self.selectedBoardXUnit_property.mObserverExplorer = nil
+    self.selectedBoardXUnit_property.mValueExplorer = nil
+    self.selectedBoardYUnit_property.mObserverExplorer = nil
+    self.selectedBoardYUnit_property.mValueExplorer = nil
     self.boardLimitWidth_property.mObserverExplorer = nil
     self.boardLimitWidth_property.mValueExplorer = nil
     self.boardLimitWidthUnit_property.mObserverExplorer = nil
@@ -806,6 +870,8 @@ class MergerRoot : EBManagedObject,
     self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
     self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
     self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
+    self.selectedBoardXUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardXUnit")
+    self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardYUnit")
     self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
     self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
     self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
@@ -829,6 +895,8 @@ class MergerRoot : EBManagedObject,
     self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
     self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
     self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
+    self.selectedBoardXUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardXUnit")
+    self.selectedBoardYUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardYUnit")
     self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
     self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
     self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
@@ -1202,6 +1270,120 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.overlapingArrangment_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectedBoardXUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_selectedBoardXUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_selectedBoardXUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectedBoardXUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_selectedBoardXUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectedBoardXUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectedBoardXUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_selectedBoardXUnit {
+        managedObject.selectedBoardXUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_selectedBoardXUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.selectedBoardXUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectedBoardYUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_selectedBoardYUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_selectedBoardYUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectedBoardYUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_selectedBoardYUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectedBoardYUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectedBoardYUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_selectedBoardYUnit {
+        managedObject.selectedBoardYUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_selectedBoardYUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.selectedBoardYUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -1927,6 +2109,8 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedSet)
+        removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
@@ -1948,6 +2132,8 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_boardWidthUnit_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
         addEBObserversOf_overlapingArrangment_toElementsOfSet (addedSet)
+        addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedSet)
         addEBObserversOf_artworkName_toElementsOfSet (addedSet)
@@ -2017,6 +2203,18 @@ protocol MergerRoot_boardHeightUnit : class {
 
 protocol MergerRoot_overlapingArrangment : class {
   var overlapingArrangment : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_selectedBoardXUnit : class {
+  var selectedBoardXUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_selectedBoardYUnit : class {
+  var selectedBoardYUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

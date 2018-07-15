@@ -68,6 +68,14 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   }
 
   //····················································································································
+  //   SET SELECTION
+  //····················································································································
+
+  func setSelection (_ inObjects : [MergerBoardInstance]) {
+    mSelectedSet.mSet = Set (inObjects)
+  }
+
+  //····················································································································
 
   private final func setSelectedArrayComputeFunction () {
     self.selectedArray_property.readModelFunction = {
@@ -427,39 +435,44 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   private var mLastMouseDraggedLocation : NSPoint? = nil
   private var mSelectionRectangleOrigin : NSPoint? = nil
 
+  //····················································································································
+
   func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int) {
     mLastMouseDraggedLocation = mEBView?.convert (inEvent.locationInWindow, from:nil)
     let objects = mModel?.propval ?? []
-    let shiftKey = inEvent.modifierFlags.contains (.shift)
-    let commandKey = inEvent.modifierFlags.contains (.command)
-    if shiftKey { // Shift key extends selection
-      if inObjectIndex >= 0 {
-        var newSet = mSelectedSet.mSet
-        newSet.insert (objects [inObjectIndex])
-        mSelectedSet.mSet = newSet
-      }
-    }else if commandKey { // Command key toggles selection of object under click
-      if inObjectIndex >= 0 {
-        let object = objects [inObjectIndex]
-        if mSelectedSet.mSet.contains (object) {
+    let controlKey = inEvent.modifierFlags.contains (.control)
+    if !controlKey {
+      let shiftKey = inEvent.modifierFlags.contains (.shift)
+      let commandKey = inEvent.modifierFlags.contains (.command)
+      if shiftKey { // Shift key extends selection
+        if inObjectIndex >= 0 {
           var newSet = mSelectedSet.mSet
-          newSet.remove (object)
-          mSelectedSet.mSet = newSet
-        }else{
-          var newSet = mSelectedSet.mSet
-          newSet.insert (object)
+          newSet.insert (objects [inObjectIndex])
           mSelectedSet.mSet = newSet
         }
+      }else if commandKey { // Command key toggles selection of object under click
+        if inObjectIndex >= 0 {
+          let object = objects [inObjectIndex]
+          if mSelectedSet.mSet.contains (object) {
+            var newSet = mSelectedSet.mSet
+            newSet.remove (object)
+            mSelectedSet.mSet = newSet
+          }else{
+            var newSet = mSelectedSet.mSet
+            newSet.insert (object)
+            mSelectedSet.mSet = newSet
+          }
+        }
+      }else if inObjectIndex >= 0 {
+        // NSLog ("Clicked objectindex \(inObjectIndex)")
+        let clickedObject = objects [inObjectIndex]
+        if !mSelectedSet.mSet.contains (clickedObject) {
+          mSelectedSet.mSet = [clickedObject]
+        }
+      }else{ // Click outside an object : clear selection
+        mSelectedSet.mSet = Set ()
+        mSelectionRectangleOrigin = mLastMouseDraggedLocation
       }
-    }else if inObjectIndex >= 0 {
-      // NSLog ("Clicked objectindex \(inObjectIndex)")
-      let clickedObject = objects [inObjectIndex]
-      if !mSelectedSet.mSet.contains (clickedObject) {
-        mSelectedSet.mSet = [clickedObject]
-      }
-    }else{ // Click outside an object : clear selection
-      mSelectedSet.mSet = Set ()
-      mSelectionRectangleOrigin = mLastMouseDraggedLocation
     }
   }
 

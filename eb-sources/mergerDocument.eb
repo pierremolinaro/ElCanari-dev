@@ -468,6 +468,8 @@ entity MergerRoot {
   property Int boardWidthUnit default 90_000 ;
   property Int boardHeightUnit default 90_000 ;
   property Bool overlapingArrangment default no ;
+  property Int selectedBoardXUnit default 90_000 ;
+  property Int selectedBoardYUnit default 90_000 ;
 
 #--- Board line width
   property Int boardLimitWidth default 90_000 ; # 1mm
@@ -718,7 +720,17 @@ document MergerDocument root MergerRoot {
     $objectLayer root.instancesLayerDisplay
     $graphicController self.mBoardInstanceController
   ;
-  
+
+  outlet EBPopUpButton mSelectedBoardXUnitPopUp $selectedTag root.selectedBoardXUnit ;
+  outlet CanariDimensionTextField mSelectedBoardXTextField
+     $dimensionAndUnit mBoardInstanceSelection.x, root.selectedBoardXUnit
+  ;
+ 
+  outlet EBPopUpButton mSelectedBoardYUnitPopUp $selectedTag root.selectedBoardYUnit ;
+  outlet CanariDimensionTextField mSelectedBoardYTextField
+     $dimensionAndUnit mBoardInstanceSelection.y, root.selectedBoardYUnit
+  ;
+ 
 #--- Arrange
   outlet EBSwitch mOverlapSwitch $enabled root.boardInstances.count > 0 $value root.overlapingArrangment ;
 
