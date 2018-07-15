@@ -8,7 +8,7 @@ import Cocoa
 //    Entity: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class MergerBoardInstance : EBManagedObject,
+class MergerBoardInstance : EBGraphicManagedObject,
   MergerBoardInstance_x,
   MergerBoardInstance_y,
   MergerBoardInstance_instanceRect,
@@ -543,7 +543,7 @@ class MergerBoardInstance : EBManagedObject,
 
   var instanceRect_property = EBTransientProperty_CanariBoardRect ()
   var boardLimitWidth_property = EBTransientProperty_Int ()
-  var selectionLayer_property = EBTransientProperty_CALayer ()
+  // selectionLayer_property is declared in super entity
   var backgroundLayerDisplay_property = EBTransientProperty_CALayer ()
   var backLegendLinesLayerDisplay_property = EBTransientProperty_CALayer ()
   var frontLegendLinesLayerDisplay_property = EBTransientProperty_CALayer ()

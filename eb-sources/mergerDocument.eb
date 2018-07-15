@@ -355,7 +355,7 @@ entity BoardModel {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity MergerBoardInstance {
+graphic entity MergerBoardInstance {
   toOne BoardModel myModel inverse toMany myInstances ;
   property Int x default 0 ;
   property Int y default 0 ;
