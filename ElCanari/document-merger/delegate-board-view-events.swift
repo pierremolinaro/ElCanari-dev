@@ -20,7 +20,7 @@ class DelegateForMergerBoardViewEvents : EBSimpleClass {
   //····················································································································
 
   @IBOutlet private weak var mMergerDocument : MergerDocument? = nil
-  @IBOutlet private weak var mBoardView : CanariBoardModelView? = nil
+  @IBOutlet private weak var mBoardView : EBView? = nil
 
   //····················································································································
   // Properties

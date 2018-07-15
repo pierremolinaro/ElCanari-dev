@@ -31,12 +31,12 @@ transient property struct CanariBoardRect ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extern outlet class CanariBoardModelView ;
-binding CanariBoardModelView $size : transient Int, transient Int ;
-binding CanariBoardModelView $zoom : property Int ;
-binding CanariBoardModelView $horizontalFlip : transient Bool ;
-binding CanariBoardModelView $verticalFlip : transient Bool ;
-binding CanariBoardModelView $objectLayer : transient CALayer ;
+extern outlet class CanariViewWithZoomAndFlip ;
+binding CanariViewWithZoomAndFlip $size : transient Int, transient Int ;
+binding CanariViewWithZoomAndFlip $zoom : property Int ;
+binding CanariViewWithZoomAndFlip $horizontalFlip : transient Bool ;
+binding CanariViewWithZoomAndFlip $verticalFlip : transient Bool ;
+binding CanariViewWithZoomAndFlip $objectLayer : transient CALayer ;
 
 extern outlet class CanariBoardBoardArchivePopUpButton ;
 binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
@@ -661,7 +661,7 @@ document MergerDocument root MergerRoot {
   ;
 
 #--- Model view
-  outlet CanariBoardModelView mBoardModelView
+  outlet CanariViewWithZoomAndFlip mBoardModelView
     $size mBoardModelSelection.modelWidth, mBoardModelSelection.modelHeight
     $zoom mBoardModelSelection.zoom
     $horizontalFlip prefs.mergerModelViewHorizontalFlip
@@ -711,7 +711,7 @@ document MergerDocument root MergerRoot {
   ;
 
 #--- Composed view
-  outlet CanariBoardModelView mComposedBoardView
+  outlet CanariViewWithZoomAndFlip mComposedBoardView
     $size root.boardWidth, root.boardHeight
     $zoom root.zoom
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip

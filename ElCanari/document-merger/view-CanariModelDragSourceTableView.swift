@@ -22,7 +22,7 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
 
   //····················································································································
 
-  @IBOutlet weak var mBoardView : CanariBoardModelView? = nil
+  @IBOutlet weak var mBoardView : CanariViewWithZoomAndFlip? = nil
 
   //····················································································································
 

@@ -26,7 +26,7 @@ import Cocoa
   @IBOutlet var mBoardInsertMenu : CanariBoardInsertMenu?
   @IBOutlet var mBoardLimitWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardModelTableView : EBTableView?
-  @IBOutlet var mBoardModelView : CanariBoardModelView?
+  @IBOutlet var mBoardModelView : CanariViewWithZoomAndFlip?
   @IBOutlet var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayBackComponentNamesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayBackLayoutTextsCheckbox : EBSwitch?
@@ -51,7 +51,7 @@ import Cocoa
   @IBOutlet var mBoardViewVerticalFlipCheckbox : EBSwitch?
   @IBOutlet var mBoardWidthTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
-  @IBOutlet var mComposedBoardView : CanariBoardModelView?
+  @IBOutlet var mComposedBoardView : CanariViewWithZoomAndFlip?
   @IBOutlet var mDangerView : NSView?
   @IBOutlet var mDelegateForMergerBoardViewEvents : DelegateForMergerBoardViewEvents?
   @IBOutlet var mDisplaySettingView : NSView?
@@ -370,10 +370,10 @@ import Cocoa
       presentErrorWindow (file: #file,
                               line: #line,
                               errorMessage: "the 'mBoardModelView' outlet is nil") ;
-//    }else if !mBoardModelView!.isKindOfClass (CanariBoardModelView) {
+//    }else if !mBoardModelView!.isKindOfClass (CanariViewWithZoomAndFlip) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mBoardModelView' outlet is not an instance of 'CanariBoardModelView'") ;
+//                              errorMessage: "the 'mBoardModelView' outlet is not an instance of 'CanariViewWithZoomAndFlip'") ;
     }
     if nil == mBoardViewDisplayBackComponenValuesCheckbox {
       presentErrorWindow (file: #file,
@@ -595,10 +595,10 @@ import Cocoa
       presentErrorWindow (file: #file,
                               line: #line,
                               errorMessage: "the 'mComposedBoardView' outlet is nil") ;
-//    }else if !mComposedBoardView!.isKindOfClass (CanariBoardModelView) {
+//    }else if !mComposedBoardView!.isKindOfClass (CanariViewWithZoomAndFlip) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mComposedBoardView' outlet is not an instance of 'CanariBoardModelView'") ;
+//                              errorMessage: "the 'mComposedBoardView' outlet is not an instance of 'CanariViewWithZoomAndFlip'") ;
     }
     if nil == mDangerView {
       presentErrorWindow (file: #file,

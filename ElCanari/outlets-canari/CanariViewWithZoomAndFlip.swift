@@ -13,32 +13,12 @@ import Cocoa
 //   CanariViewWithZoomAndFlip
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariViewWithZoomAndFlip : NSView, EBUserClassNameProtocol {
+class CanariViewWithZoomAndFlip : EBView {
 
    fileprivate var mHorizontalFlip = false
    fileprivate var mVerticalFlip = false
    fileprivate var mZoom = 100
    fileprivate var mZoomPopUpButton : NSPopUpButton? = nil
-
-  //····················································································································
-
-  override init(frame frameRect: NSRect) {
-    super.init (frame: frameRect)
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  required init? (coder: NSCoder) {
-    super.init (coder: coder)
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
 
   //····················································································································
   //  Set size

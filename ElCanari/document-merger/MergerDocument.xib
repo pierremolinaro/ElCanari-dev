@@ -291,7 +291,7 @@ AAAAAAEGA
                         <rect key="frame" x="1" y="1" width="443" height="483"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView wantsLayer="YES" id="RA9-Ej-gEF" customClass="CanariBoardModelView">
+                            <customView wantsLayer="YES" id="RA9-Ej-gEF" customClass="CanariViewWithZoomAndFlip" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="387" width="163" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
@@ -499,7 +499,7 @@ AAAAAAEGA
                         <rect key="frame" x="1" y="1" width="442" height="483"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView wantsLayer="YES" focusRingType="none" misplaced="YES" id="nao-E9-sci" customClass="CanariBoardModelView">
+                            <customView wantsLayer="YES" focusRingType="none" misplaced="YES" id="nao-E9-sci" customClass="CanariViewWithZoomAndFlip" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="387" width="452" height="417"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
