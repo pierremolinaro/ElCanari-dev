@@ -53,7 +53,6 @@ import Cocoa
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardView : CanariViewWithZoomAndFlip?
   @IBOutlet var mDangerView : NSView?
-  @IBOutlet var mDelegateForMergerBoardViewEvents : DelegateForMergerBoardViewEvents?
   @IBOutlet var mDisplaySettingView : NSView?
   @IBOutlet var mEmptyBoardMessage : EBTextField?
   @IBOutlet var mGenerateGerber : EBSwitch?
@@ -608,15 +607,6 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mDangerView' outlet is not an instance of 'NSView'") ;
-    }
-    if nil == mDelegateForMergerBoardViewEvents {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDelegateForMergerBoardViewEvents' outlet is nil") ;
-//    }else if !mDelegateForMergerBoardViewEvents!.isKindOfClass (DelegateForMergerBoardViewEvents) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDelegateForMergerBoardViewEvents' outlet is not an instance of 'DelegateForMergerBoardViewEvents'") ;
     }
     if nil == mDisplaySettingView {
       presentErrorWindow (file: #file,
@@ -1562,6 +1552,12 @@ import Cocoa
       self.rootObject.artwork_property.addEBObserver (controller)
       mController_mLogTextView_hidden = controller
     }
+ //--------------------------- Graphic controllers
+    self.mGraphicController_mComposedBoardView = Controller_MergerDocument_mComposedBoardView (
+      view: self.mComposedBoardView,
+      model: self.rootObject.boardInstances_property,
+      managedObjectContext: self.managedObjectContext ()
+    )
   //--------------------------- Set targets / actions
     showPrefsForSettingMergerDisplayButton?.target = self
     showPrefsForSettingMergerDisplayButton?.action = #selector (MergerDocument.showPrefsForSettingMergerDisplayAction (_:))
@@ -1786,7 +1782,6 @@ import Cocoa
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mDangerView?.ebCleanUp ()
-    self.mDelegateForMergerBoardViewEvents?.ebCleanUp ()
     self.mDisplaySettingView?.ebCleanUp ()
     self.mEmptyBoardMessage?.ebCleanUp ()
     self.mGenerateGerber?.ebCleanUp ()
@@ -1860,22 +1855,28 @@ import Cocoa
   }
 
   //····················································································································
-  //    Multiple bindings controller
+  //    Graphic controllers
   //····················································································································
 
-  fileprivate var mController_showPrefsForSettingMergerDisplayButton_enabled : MultipleBindingController_enabled?
-  fileprivate var mController_mDisplaySettingView_hidden : MultipleBindingController_hidden?
-  fileprivate var mController_mNoModelMessage_hidden : MultipleBindingController_hidden?
-  fileprivate var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled?
-  fileprivate var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled?
-  fileprivate var mController_mEmptyBoardMessage_hidden : MultipleBindingController_hidden?
-  fileprivate var mController_mOverlapSwitch_enabled : MultipleBindingController_enabled?
-  fileprivate var mController_mArrangeHorizontallyButton_enabled : MultipleBindingController_enabled?
-  fileprivate var mController_mArrangeVerticalyButton_enabled : MultipleBindingController_enabled?
-  fileprivate var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden?
-  fileprivate var mController_mDangerView_hidden : MultipleBindingController_hidden?
-  fileprivate var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled?
-  fileprivate var mController_mLogTextView_hidden : MultipleBindingController_hidden?
+  private var mGraphicController_mComposedBoardView : Controller_MergerDocument_mComposedBoardView? = nil
+
+  //····················································································································
+  //    Multiple bindings controllers
+  //····················································································································
+
+  private var mController_showPrefsForSettingMergerDisplayButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mDisplaySettingView_hidden : MultipleBindingController_hidden? = nil
+  private var mController_mNoModelMessage_hidden : MultipleBindingController_hidden? = nil
+  private var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mEmptyBoardMessage_hidden : MultipleBindingController_hidden? = nil
+  private var mController_mOverlapSwitch_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mArrangeHorizontallyButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mArrangeVerticalyButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden? = nil
+  private var mController_mDangerView_hidden : MultipleBindingController_hidden? = nil
+  private var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mLogTextView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
 

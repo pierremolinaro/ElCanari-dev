@@ -749,6 +749,7 @@ import Cocoa
       self.mDataSelection.drawPadHolesInPDF_property.addEBObserver (controller)
       mController_mPadHoleDefinitionView_hidden = controller
     }
+ //--------------------------- Graphic controllers
   //--------------------------- Set targets / actions
     mAddGenerationFileButton?.target = mDataController
     mAddGenerationFileButton?.action = #selector (ArrayController_PMArtworkDocument_mDataController.add (_:))
@@ -887,11 +888,16 @@ import Cocoa
   }
 
   //····················································································································
-  //    Multiple bindings controller
+  //    Graphic controllers
   //····················································································································
 
-  fileprivate var mController_mRemoveGenerationFileButton_enabled : MultipleBindingController_enabled?
-  fileprivate var mController_mPadHoleDefinitionView_hidden : MultipleBindingController_hidden?
+
+  //····················································································································
+  //    Multiple bindings controllers
+  //····················································································································
+
+  private var mController_mRemoveGenerationFileButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mPadHoleDefinitionView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
 

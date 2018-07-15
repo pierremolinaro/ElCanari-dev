@@ -41,7 +41,7 @@ binding CanariViewWithZoomAndFlip $objectLayer : transient CALayer ;
 extern outlet class CanariBoardBoardArchivePopUpButton ;
 binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
 
-extern outlet class DelegateForMergerBoardViewEvents ;
+#extern outlet class DelegateForMergerBoardViewEvents ;
 
 extern outlet class CanariModelDragSourceTableView ;
 binding CanariModelDragSourceTableView $models : transient MergerBoardModelArray ;
@@ -670,7 +670,7 @@ document MergerDocument root MergerRoot {
   ;
 
 #------------------------------------- Board Page
-  outlet DelegateForMergerBoardViewEvents mDelegateForMergerBoardViewEvents ;
+#  outlet DelegateForMergerBoardViewEvents mDelegateForMergerBoardViewEvents ;
   outlet NSClipView mBoardClipView ;
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
@@ -717,6 +717,7 @@ document MergerDocument root MergerRoot {
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
     $verticalFlip prefs.mergerBoardViewVerticalFlip
     $objectLayer root.instancesLayerDisplay
+    $graphicController mBoardInstancesController : root.boardInstances
   ;
   
 #--- Arrange

@@ -49,7 +49,6 @@
                 <outlet property="mBoardWidthUnitPopUp" destination="q7P-l7-CAx" id="egY-a6-hbR"/>
                 <outlet property="mComposedBoardView" destination="nao-E9-sci" id="Yej-gD-6Hg"/>
                 <outlet property="mDangerView" destination="kZQ-iy-L4Z" id="040-fK-ZgE"/>
-                <outlet property="mDelegateForMergerBoardViewEvents" destination="JSz-E0-zgb" id="RfJ-c2-9fP"/>
                 <outlet property="mDisplaySettingView" destination="gM7-40-CET" id="k3P-rb-BbN"/>
                 <outlet property="mEmptyBoardMessage" destination="TY5-Zu-VN8" id="3zh-MC-Ugv"/>
                 <outlet property="mGenerateGerber" destination="sfd-Ok-J1H" id="gA1-LA-iM7"/>
@@ -503,7 +502,6 @@ AAAAAAEGA
                                 <rect key="frame" x="0.0" y="387" width="452" height="417"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <outlet property="mViewEventDelegate" destination="JSz-E0-zgb" id="eW3-GJ-ZxT"/>
                                     <outlet property="nextKeyView" destination="sRW-Ca-N8E" id="hKv-5h-DVF"/>
                                 </connections>
                             </customView>
@@ -1739,12 +1737,6 @@ Gw
             </view>
             <point key="canvasLocation" x="-732" y="-280"/>
         </window>
-        <customObject id="JSz-E0-zgb" customClass="DelegateForMergerBoardViewEvents" customModule="ElCanari" customModuleProvider="target">
-            <connections>
-                <outlet property="mBoardView" destination="nao-E9-sci" id="jqf-Ne-RMH"/>
-                <outlet property="mMergerDocument" destination="-2" id="xBz-u5-UPm"/>
-            </connections>
-        </customObject>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="PAN-4y-duD" userLabel="Panel : Help for Board Panel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

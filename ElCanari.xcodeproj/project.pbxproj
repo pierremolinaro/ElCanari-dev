@@ -44,6 +44,7 @@
 		CF1FB93020E57D740050391E /* transient-BoardModel-frontPads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB92F20E57D740050391E /* transient-BoardModel-frontPads.swift */; };
 		CF1FB93220E57D900050391E /* class-MergerPadArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB93120E57D900050391E /* class-MergerPadArray.swift */; };
 		CF21589320FB34CC006B59C3 /* EBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF21589220FB34CC006B59C3 /* EBView.swift */; };
+		CF215A6120FB4E96006B59C3 /* graphicController-MergerDocument-mComposedBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF215A6020FB4E96006B59C3 /* graphicController-MergerDocument-mComposedBoardView.swift */; };
 		CF215AFA1BFB59A1007CA9BE /* view-CanariFontSampleStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF215AF91BFB59A1007CA9BE /* view-CanariFontSampleStringView.swift */; };
 		CF215B001BFB61AE007CA9BE /* CurrentCharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF215AFF1BFB61AE007CA9BE /* CurrentCharacterController.swift */; };
 		CF2176A920EA79A100BBC1C4 /* entity-MergerBoardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2176A820EA79A100BBC1C4 /* entity-MergerBoardInstance.swift */; };
@@ -347,7 +348,6 @@
 		CFF2653320E6863C00525C0F /* transient-BoardModel-frontLayoutTextsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2653120E6863C00525C0F /* transient-BoardModel-frontLayoutTextsSegments.swift */; };
 		CFF2653720E687E100525C0F /* transient-BoardModel-backLegendTextsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2653520E687E100525C0F /* transient-BoardModel-backLegendTextsSegments.swift */; };
 		CFF2653B20E689ED00525C0F /* transient-BoardModel-backLayoutTextsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2653920E689ED00525C0F /* transient-BoardModel-backLayoutTextsSegments.swift */; };
-		CFF3039520F60CA4000D8F53 /* delegate-board-view-events.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF3039420F60CA4000D8F53 /* delegate-board-view-events.swift */; };
 		CFF5976B1BDD4E17007EDFF9 /* EBCheckedMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5976A1BDD4E17007EDFF9 /* EBCheckedMenuItem.swift */; };
 		CFF7B4271FDF28C800A5CF44 /* canari_artwork.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */; };
 		CFF7B4291FDF2E3400A5CF44 /* canari_merger.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */; };
@@ -417,6 +417,7 @@
 		CF1FB92F20E57D740050391E /* transient-BoardModel-frontPads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontPads.swift"; sourceTree = "<group>"; };
 		CF1FB93120E57D900050391E /* class-MergerPadArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "class-MergerPadArray.swift"; sourceTree = "<group>"; };
 		CF21589220FB34CC006B59C3 /* EBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBView.swift; sourceTree = "<group>"; };
+		CF215A6020FB4E96006B59C3 /* graphicController-MergerDocument-mComposedBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "graphicController-MergerDocument-mComposedBoardView.swift"; sourceTree = "<group>"; };
 		CF215AF91BFB59A1007CA9BE /* view-CanariFontSampleStringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-CanariFontSampleStringView.swift"; sourceTree = "<group>"; };
 		CF215AFF1BFB61AE007CA9BE /* CurrentCharacterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCharacterController.swift; sourceTree = "<group>"; };
 		CF2176A820EA79A100BBC1C4 /* entity-MergerBoardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-MergerBoardInstance.swift"; sourceTree = "<group>"; };
@@ -637,7 +638,6 @@
 		CFB6A6021BE29DB3005E10FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CFB6AF571B43004500FC1B14 /* action-Preferences-checkLibraryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-checkLibraryAction.swift"; sourceTree = "<group>"; };
 		CFB8E4561B4978FE00D4B8AD /* EBTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBTextView.swift; sourceTree = "<group>"; };
-		CFBAB0B120DE744500476FB7 /* view-CanariBoardModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-CanariBoardModelView.swift"; sourceTree = "<group>"; };
 		CFBAB0B320DE786C00476FB7 /* canari-geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "canari-geometry.swift"; sourceTree = "<group>"; };
 		CFBAFCE01DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_devices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_devices.swift"; sourceTree = "<group>"; };
 		CFBAFCE11DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-Preferences-mValueRevealInFinder_fonts.swift"; sourceTree = "<group>"; };
@@ -724,7 +724,6 @@
 		CFF2653120E6863C00525C0F /* transient-BoardModel-frontLayoutTextsSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontLayoutTextsSegments.swift"; sourceTree = "<group>"; };
 		CFF2653520E687E100525C0F /* transient-BoardModel-backLegendTextsSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backLegendTextsSegments.swift"; sourceTree = "<group>"; };
 		CFF2653920E689ED00525C0F /* transient-BoardModel-backLayoutTextsSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backLayoutTextsSegments.swift"; sourceTree = "<group>"; };
-		CFF3039420F60CA4000D8F53 /* delegate-board-view-events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "delegate-board-view-events.swift"; sourceTree = "<group>"; };
 		CFF5976A1BDD4E17007EDFF9 /* EBCheckedMenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBCheckedMenuItem.swift; sourceTree = "<group>"; };
 		CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_artwork.icns; sourceTree = "<group>"; };
 		CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_merger.icns; sourceTree = "<group>"; };
@@ -794,7 +793,6 @@
 				CF1FB93120E57D900050391E /* class-MergerPadArray.swift */,
 				CF41929420E289510018275C /* class-MergerSegmentArray.swift */,
 				CFDEC77820E0CD4F0065FBCE /* class-MergerViaShapeArray.swift */,
-				CFF3039420F60CA4000D8F53 /* delegate-board-view-events.swift */,
 				CFB4801820DC1B8B00CF9639 /* entity-BoardModel.swift */,
 				CF324D7B20DE54B000ADD025 /* entity-BoardModelPad.swift */,
 				CFCE71FA20DD611100AB1DE7 /* entity-BoardModelVia.swift */,
@@ -808,6 +806,7 @@
 				CFD7EA2820E7E1F300D53B87 /* extension-MergerDocument-load-model.swift */,
 				CFB4801B20DC2BBD00CF9639 /* extension-MergerDocument-parse-board-model.swift */,
 				CF06E7C220E802AD00EA47B9 /* extension-MergerDocument-update-model.swift */,
+				CF215A6020FB4E96006B59C3 /* graphicController-MergerDocument-mComposedBoardView.swift */,
 				CFD7EA2020E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift */,
 				CF55994F1FDF364400ED5EE6 /* MergerDocument.swift */,
 				CF5599501FDF364400ED5EE6 /* MergerDocument.xib */,
@@ -890,7 +889,6 @@
 				CFCC4BEE20EAC347006A9CC5 /* transient-MergerRoot-frontPadsForDisplay.swift */,
 				CF51223020EB80AA002AAE24 /* transient-MergerRoot-instancesLayerDisplay.swift */,
 				CFD7EA2420E7D42900D53B87 /* transient-MergerRoot-modelNames.swift */,
-				CFBAB0B120DE744500476FB7 /* view-CanariBoardModelView.swift */,
 				CF95F6DE20FA399C0080EFFC /* view-CanariMergerBoardScrollView.swift */,
 				CF95F6DC20FA09680080EFFC /* view-CanariModelDragSourceTableView.swift */,
 			);
@@ -1555,6 +1553,7 @@
 				CF45B2731BFE8274004AFFC2 /* EBIntField.swift in Sources */,
 				CF65805820EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift in Sources */,
 				CF51EEB01B4C61C8006D1A45 /* CanariVersionField.swift in Sources */,
+				CF215A6120FB4E96006B59C3 /* graphicController-MergerDocument-mComposedBoardView.swift in Sources */,
 				CF51AD121DD6009F00CEFB7D /* Controller_CanariCharacterView_displayFlow.swift in Sources */,
 				CF18947620EBB7D600B77DCA /* transient-BoardModel-frontTracksDisplay.swift in Sources */,
 				CF21779120EA85D900BBC1C4 /* CanariBoardRect.swift in Sources */,
@@ -1628,7 +1627,6 @@
 				CF71F9261B3EA3DF00FB5049 /* EBFontButton.swift in Sources */,
 				CF18949920EBCD5E00B77DCA /* transient-MergerBoardInstance-boardLimitsDisplay.swift in Sources */,
 				CFAA74191B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift in Sources */,
-				CFF3039520F60CA4000D8F53 /* delegate-board-view-events.swift in Sources */,
 				CF33955A1B4AC885009C561B /* CanariSignatureField.swift in Sources */,
 				CF61FA931B3EBF72000E0257 /* CanariFontCharacterSelectButton.swift in Sources */,
 				CF9D584A1BFA2B7100E6BA54 /* legacy-bz2-data-analysis.swift in Sources */,

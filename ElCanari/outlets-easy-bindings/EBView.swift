@@ -10,6 +10,35 @@ fileprivate let OPAQUE_LAYERS = true ;
 fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   EBViewControllerProtocol
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@objc protocol EBViewControllerProtocol {
+
+  var objectCount : Int { get }
+
+  func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int)
+  func mouseDragged (with inEvent : NSEvent)
+  func mouseUp (with inEvent : NSEvent)
+
+  func keyDown (with inEvent: NSEvent)
+
+  func selectAllObjects ()
+
+  func canBringForward () -> Bool
+  func bringForward ()
+
+  func canBringToFront () -> Bool
+  func bringToFront ()
+
+  func canSendBackward () -> Bool
+  func sendBackward ()
+
+  func canSendToBack () -> Bool
+  func sendToBack ()
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EBView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -36,18 +65,13 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   }
 
   //····················································································································
-  //  Outlets
-  //····················································································································
-
-   @IBOutlet fileprivate weak var mViewEventDelegate : DelegateForMergerBoardViewEvents? = nil
-
-  //····················································································································
   //  Properties
   //····················································································································
 
+   private weak var mViewController : EBViewControllerProtocol? = nil
    fileprivate var mObjectLayer = CALayer ()
-   fileprivate var mObjectSelectionLayer = CALayer ()
-   fileprivate var mSelectionRectangleLayer = CALayer ()
+   private var mObjectSelectionLayer = CALayer ()
+   private var mSelectionRectangleLayer = CALayer ()
 
   //····················································································································
   //  awakeFromNib
@@ -62,6 +86,14 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
     self.layer?.addSublayer (mObjectLayer)
     self.layer?.addSublayer (mObjectSelectionLayer)
     self.layer?.addSublayer (mSelectionRectangleLayer)
+  }
+
+  //····················································································································
+  //    set controller
+  //····················································································································
+
+  func set (controller inController : EBViewControllerProtocol?) {
+    mViewController = inController
   }
 
   //····················································································································
@@ -102,12 +134,12 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
     let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
     if let result = self.mObjectLayer.findLayer (at: mouseDownLocation) {
       if let name = result.name, let idx = Int (name) {
-        mViewEventDelegate?.mouseDown (with:inEvent, objectIndex:idx) // No object
+        mViewController?.mouseDown (with:inEvent, objectIndex:idx) // No object
       }else{
-        mViewEventDelegate?.mouseDown (with:inEvent, objectIndex:-1) // No object
+        mViewController?.mouseDown (with:inEvent, objectIndex:-1) // No object
       }
     }else{
-      mViewEventDelegate?.mouseDown (with: inEvent, objectIndex: -1) // No object
+      mViewController?.mouseDown (with: inEvent, objectIndex: -1) // No object
     }
     super.mouseDown (with: inEvent)
   }
@@ -115,13 +147,13 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   //····················································································································
 
   override func mouseDragged (with inEvent : NSEvent) {
-    mViewEventDelegate?.mouseDragged (with: inEvent)
+    mViewController?.mouseDragged (with: inEvent)
   }
 
   //····················································································································
 
   override func mouseUp (with inEvent : NSEvent) {
-    mViewEventDelegate?.mouseUp (with: inEvent)
+    mViewController?.mouseUp (with: inEvent)
   }
 
   //····················································································································
@@ -129,7 +161,7 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   //····················································································································
 
   override func keyDown (with inEvent: NSEvent) {
-    mViewEventDelegate?.keyDown (with:inEvent)
+    mViewController?.keyDown (with:inEvent)
   }
 
   //····················································································································
@@ -140,15 +172,15 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
     let validate : Bool
     let action = inMenuItem.action
     if action == #selector (EBView.selectAll(_:)) {
-      validate = (mViewEventDelegate?.objectCount ?? 0) > 0
+      validate = (mViewController?.objectCount ?? 0) > 0
     }else if action == #selector (EBView.bringToFront(_:)) {
-      validate = mViewEventDelegate?.canBringToFront () ?? false
+      validate = mViewController?.canBringToFront () ?? false
     }else if action == #selector (EBView.bringForward(_:)) {
-      validate = mViewEventDelegate?.canBringForward () ?? false
+      validate = mViewController?.canBringForward () ?? false
     }else if action == #selector (EBView.sendToBack(_:)) {
-      validate = mViewEventDelegate?.canSendToBack () ?? false
+      validate = mViewController?.canSendToBack () ?? false
     }else if action == #selector (EBView.sendBackward(_:)) {
-      validate = mViewEventDelegate?.canSendBackward () ?? false
+      validate = mViewController?.canSendBackward () ?? false
     }else{
       validate = super.validateMenuItem (inMenuItem)
     }
@@ -159,31 +191,31 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   //····················································································································
 
   override func selectAll (_ : Any?) {
-    mViewEventDelegate?.selectAllObjects ()
+    mViewController?.selectAllObjects ()
   }
 
   //····················································································································
 
   func bringToFront (_ : Any?) {
-    mViewEventDelegate?.bringToFront ()
+    mViewController?.bringToFront ()
   }
 
   //····················································································································
 
   func bringForward (_ : Any?) {
-    mViewEventDelegate?.bringForward ()
+    mViewController?.bringForward ()
   }
 
   //····················································································································
 
   func sendToBack (_ : Any?) {
-    mViewEventDelegate?.sendToBack ()
+    mViewController?.sendToBack ()
   }
 
   //····················································································································
 
   func sendBackward (_ : Any?) {
-    mViewEventDelegate?.sendBackward ()
+    mViewController?.sendBackward ()
   }
 
   //····················································································································
