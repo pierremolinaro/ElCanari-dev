@@ -3799,6 +3799,8 @@ var g_Preferences : Preferences? = nil
     self.additionnalLibraryArrayController.bind_modelAndView (
       model: self.additionnalLibraryArray_property,
       tableViewArray: [mAdditionnalLibraryArrayTableView!],
+      ebView: nil,
+      managedObjectContext: nil,
       file: #file,
       line: #line
     )

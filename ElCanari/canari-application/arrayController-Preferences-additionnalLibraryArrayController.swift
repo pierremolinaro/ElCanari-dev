@@ -25,6 +25,8 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [EBTableView] ()
+  private var mEBView : EBView? = nil
+  private var mManagedObjectContext : EBManagedObjectContext? = nil
 
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
     didSet {
@@ -115,16 +117,23 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //    bind_modelAndView
   //····················································································································
 
-  func bind_modelAndView (model:EBClassArray_CanariLibraryEntry, tableViewArray:[EBTableView], file:String, line:Int) {
+  func bind_modelAndView (model:EBClassArray_CanariLibraryEntry,
+                         tableViewArray:[EBTableView],
+                         ebView: EBView?,
+                         managedObjectContext : EBManagedObjectContext?,
+                         file:String, line:Int) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
   //--- Add observers
-    mModel = model
+    self.mModel = model
+    self.mManagedObjectContext = managedObjectContext
     model.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
     mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
+  //--- Bind ebView
+    mEBView = ebView
   //--- Bind table views
     mTableViewArray = tableViewArray
     for tableView in tableViewArray {
@@ -347,7 +356,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
         NSLog ("Unknown column '\(columnIdentifier)'")
       }
       return result
-    }
+    } 
   }
  
  //····················································································································
@@ -485,7 +494,7 @@ final class SelectedSet_Preferences_additionnalLibraryArrayController : EBAbstra
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
   private let mSortedArray : TransientArrayOf_CanariLibraryEntry
-
+ 
   //····················································································································
 
   init (allowsEmptySelection : Bool,

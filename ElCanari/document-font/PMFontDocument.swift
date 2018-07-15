@@ -392,6 +392,8 @@ import Cocoa
     self.mMissingCharsController.bind_modelAndView (
       model: self.missingCharacterDescriptorArray_property,
       tableViewArray: [mMissingCharsTableView!],
+      ebView: nil,
+      managedObjectContext: self.managedObjectContext (),
       file: #file,
       line: #line
     )
@@ -475,7 +477,6 @@ import Cocoa
     currentCharacterView?.bind_displayDrawingIndexes (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
     commentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
- //--------------------------- Graphic controllers
   //--------------------------- Set targets / actions
     mAddSegmentButton?.target = self
     mAddSegmentButton?.action = #selector (PMFontDocument.addSegmentAction (_:))
@@ -565,11 +566,6 @@ import Cocoa
     self.transparencySlider?.ebCleanUp ()
     self.transparencyTextField?.ebCleanUp ()
   }
-
-  //····················································································································
-  //    Graphic controllers
-  //····················································································································
-
 
   //····················································································································
   //    Multiple bindings controllers

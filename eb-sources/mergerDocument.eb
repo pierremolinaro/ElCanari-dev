@@ -31,7 +31,7 @@ transient property struct CanariBoardRect ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extern outlet class CanariViewWithZoomAndFlip ;
+extern outlet class CanariViewWithZoomAndFlip $graphicController ;
 binding CanariViewWithZoomAndFlip $size : transient Int, transient Int ;
 binding CanariViewWithZoomAndFlip $zoom : property Int ;
 binding CanariViewWithZoomAndFlip $horizontalFlip : transient Bool ;
@@ -40,8 +40,6 @@ binding CanariViewWithZoomAndFlip $objectLayer : transient CALayer ;
 
 extern outlet class CanariBoardBoardArchivePopUpButton ;
 binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
-
-#extern outlet class DelegateForMergerBoardViewEvents ;
 
 extern outlet class CanariModelDragSourceTableView ;
 binding CanariModelDragSourceTableView $models : transient MergerBoardModelArray ;
@@ -670,7 +668,6 @@ document MergerDocument root MergerRoot {
   ;
 
 #------------------------------------- Board Page
-#  outlet DelegateForMergerBoardViewEvents mDelegateForMergerBoardViewEvents ;
   outlet NSClipView mBoardClipView ;
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
@@ -710,14 +707,16 @@ document MergerDocument root MergerRoot {
      $dimensionAndUnit root.boardHeight, root.boardHeightUnit
   ;
 
-#--- Composed view
+#--- Composed Board View
+  arrayController mBoardInstanceController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.boardInstances ;
+  selectionController mBoardInstanceSelection : mBoardInstanceController.selectedArray ;
   outlet CanariViewWithZoomAndFlip mComposedBoardView
     $size root.boardWidth, root.boardHeight
     $zoom root.zoom
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
     $verticalFlip prefs.mergerBoardViewVerticalFlip
     $objectLayer root.instancesLayerDisplay
-    $graphicController mBoardInstancesController : root.boardInstances
+    $graphicController self.mBoardInstanceController
   ;
   
 #--- Arrange

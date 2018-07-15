@@ -25,6 +25,8 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [EBTableView] ()
+  private var mEBView : EBView? = nil
+  private var mManagedObjectContext : EBManagedObjectContext? = nil
 
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
     didSet {
@@ -138,17 +140,24 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
   //    bind_modelAndView
   //····················································································································
 
-  func bind_modelAndView (model:ToManyRelationship_ArtworkRoot_fileGenerationParameterArray, tableViewArray:[EBTableView], file:String, line:Int) {
+  func bind_modelAndView (model:ToManyRelationship_ArtworkRoot_fileGenerationParameterArray,
+                         tableViewArray:[EBTableView],
+                         ebView: EBView?,
+                         managedObjectContext : EBManagedObjectContext?,
+                         file:String, line:Int) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
   //--- Add observers
-    mModel = model
+    self.mModel = model
+    self.mManagedObjectContext = managedObjectContext
     model.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
     mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
     model.addEBObserverOf_name (self.sortedArray_property)
+  //--- Bind ebView
+    mEBView = ebView
   //--- Bind table views
     mTableViewArray = tableViewArray
     for tableView in tableViewArray {
@@ -168,7 +177,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     self.sortedArray_property.removeEBObserver (mSelectedSet)
     mSelectedSet.removeEBObserver (self.selectedArray_property)
   //--- Remove observed properties (for filtering and sorting)
-    mModel?.removeEBObserverOf_name (self.sortedArray_property)
+//    mModel?.removeEBObserverOf_name (self.sortedArray_property)
     for tvc in mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }
@@ -328,7 +337,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
         NSLog ("Unknown column '\(columnIdentifier)'")
       }
       return result
-    }
+    } 
   }
  
   //····················································································································
@@ -467,7 +476,7 @@ final class SelectedSet_PMArtworkDocument_mDataController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
   private let mSortedArray : TransientArrayOf_ArtworkFileGenerationParameters
-
+ 
   //····················································································································
 
   init (allowsEmptySelection : Bool,

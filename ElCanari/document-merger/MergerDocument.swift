@@ -164,12 +164,14 @@ import Cocoa
   //····················································································································
 
   var mBoardModelController = ArrayController_MergerDocument_mBoardModelController ()
+  var mBoardInstanceController = ArrayController_MergerDocument_mBoardInstanceController ()
 
   //····················································································································
   //    Selection Controllers
   //····················································································································
 
   var mBoardModelSelection = SelectionController_MergerDocument_mBoardModelSelection ()
+  var mBoardInstanceSelection = SelectionController_MergerDocument_mBoardInstanceSelection ()
 
   //····················································································································
   //    Custom object Controllers
@@ -207,7 +209,9 @@ import Cocoa
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     mBoardModelController.addExplorer (name: "mBoardModelController", y:&y, view:view)
+    mBoardInstanceController.addExplorer (name: "mBoardInstanceController", y:&y, view:view)
     mBoardModelSelection.addExplorer (name: "mBoardModelSelection", y:&y, view:view)
+    mBoardInstanceSelection.addExplorer (name: "mBoardInstanceSelection", y:&y, view:view)
     super.populateExplorerWindow (&y, view:view)
   }
 
@@ -1242,12 +1246,27 @@ import Cocoa
     self.mBoardModelController.bind_modelAndView (
       model: self.rootObject.boardModels_property,
       tableViewArray: [mBoardModelTableView!],
+      ebView: nil,
+      managedObjectContext: self.managedObjectContext (),
+      file: #file,
+      line: #line
+    )
+    self.mBoardInstanceController.bind_modelAndView (
+      model: self.rootObject.boardInstances_property,
+      tableViewArray: [],
+      ebView: mComposedBoardView,
+      managedObjectContext: self.managedObjectContext (),
       file: #file,
       line: #line
     )
   //--------------------------- Selection controllers
     mBoardModelSelection.bind_selection (
       model: mBoardModelController.selectedArray_property,
+      file: #file,
+      line: #line
+    )
+    mBoardInstanceSelection.bind_selection (
+      model: mBoardInstanceController.selectedArray_property,
       file: #file,
       line: #line
     )
@@ -1552,12 +1571,6 @@ import Cocoa
       self.rootObject.artwork_property.addEBObserver (controller)
       mController_mLogTextView_hidden = controller
     }
- //--------------------------- Graphic controllers
-    self.mGraphicController_mComposedBoardView = Controller_MergerDocument_mComposedBoardView (
-      view: self.mComposedBoardView,
-      model: self.rootObject.boardInstances_property,
-      managedObjectContext: self.managedObjectContext ()
-    )
   //--------------------------- Set targets / actions
     showPrefsForSettingMergerDisplayButton?.target = self
     showPrefsForSettingMergerDisplayButton?.action = #selector (MergerDocument.showPrefsForSettingMergerDisplayAction (_:))
@@ -1724,8 +1737,10 @@ import Cocoa
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     mBoardModelController.unbind_modelAndView ()
+    mBoardInstanceController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers
     mBoardModelSelection.unbind_selection ()
+    mBoardInstanceSelection.unbind_selection ()
   //--------------------------- Uninstall property observers for transients
     self.documentFilePath_property.removeEBObserver (self.documentFileNameOk_property)
     self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
@@ -1853,12 +1868,6 @@ import Cocoa
     self.showPrefsForSettingMergerDisplayButton?.ebCleanUp ()
     self.updateBoardModelButton?.ebCleanUp ()
   }
-
-  //····················································································································
-  //    Graphic controllers
-  //····················································································································
-
-  private var mGraphicController_mComposedBoardView : Controller_MergerDocument_mComposedBoardView? = nil
 
   //····················································································································
   //    Multiple bindings controllers

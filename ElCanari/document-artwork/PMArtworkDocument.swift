@@ -602,6 +602,8 @@ import Cocoa
     self.mDataController.bind_modelAndView (
       model: self.rootObject.fileGenerationParameterArray_property,
       tableViewArray: [mDataTableView!],
+      ebView: nil,
+      managedObjectContext: self.managedObjectContext (),
       file: #file,
       line: #line
     )
@@ -749,7 +751,6 @@ import Cocoa
       self.mDataSelection.drawPadHolesInPDF_property.addEBObserver (controller)
       mController_mPadHoleDefinitionView_hidden = controller
     }
- //--------------------------- Graphic controllers
   //--------------------------- Set targets / actions
     mAddGenerationFileButton?.target = mDataController
     mAddGenerationFileButton?.action = #selector (ArrayController_PMArtworkDocument_mDataController.add (_:))
@@ -886,11 +887,6 @@ import Cocoa
     self.minValueForBoardLimitUnitPopUp?.ebCleanUp ()
     self.resetVersionAndSignatureButton?.ebCleanUp ()
   }
-
-  //····················································································································
-  //    Graphic controllers
-  //····················································································································
-
 
   //····················································································································
   //    Multiple bindings controllers

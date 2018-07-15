@@ -13,7 +13,8 @@ import Foundation
 //  Struct CanariBoardRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct CanariBoardRect {
+struct CanariBoardRect : Hashable, Equatable {
+
   let x : Int
   let y : Int
   let width : Int
@@ -37,6 +38,22 @@ struct CanariBoardRect {
     y = 0
     width = 0 // Empty rect
     height = 0
+  }
+
+  //····················································································································
+  //   Protocol Equatable
+  //····················································································································
+
+  public static func == (lhs: CanariBoardRect, rhs: CanariBoardRect) -> Bool {
+    return (lhs.x == rhs.x) && (lhs.y == rhs.y) && (lhs.width == rhs.width) && (lhs.height == rhs.height)
+  }
+
+  //····················································································································
+  //   Protocol Hashable: hashValue
+  //····················································································································
+
+  var hashValue : Int {
+    return self.x ^ self.y ^ self.width ^ self.height
   }
 
   //····················································································································

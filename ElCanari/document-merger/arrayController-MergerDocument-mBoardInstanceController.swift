@@ -9,18 +9,18 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_MergerDocument_mBoardModelController
+//    ArrayController_MergerDocument_mBoardInstanceController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, EBTableViewDelegate, EBTableViewDataSource, EBViewControllerProtocol {
 
-  private var mModel : ToManyRelationship_MergerRoot_boardModels? = nil
+  private var mModel : ToManyRelationship_MergerRoot_boardInstances? = nil
 
-  let sortedArray_property = TransientArrayOf_BoardModel ()
+  let sortedArray_property = TransientArrayOf_MergerBoardInstance ()
 
-  let selectedArray_property = TransientArrayOf_BoardModel ()
+  let selectedArray_property = TransientArrayOf_MergerBoardInstance ()
 
-  private let mSelectedSet : SelectedSet_MergerDocument_mBoardModelController
+  private let mSelectedSet : SelectedSet_MergerDocument_mBoardInstanceController
 
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
@@ -46,20 +46,21 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
     }
   }
 
-  private let allowsEmptySelection = false
-  private let allowsMultipleSelection = false
+  private let allowsEmptySelection = true
+  private let allowsMultipleSelection = true
   
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_MergerDocument_mBoardModelController (
+    mSelectedSet = SelectedSet_MergerDocument_mBoardInstanceController (
       allowsEmptySelection:allowsEmptySelection,
       allowsMultipleSelection:allowsMultipleSelection,
       sortedArray:self.sortedArray_property
     )
     super.init ()
+    self.mSelectedSet.set (callBack: { [weak self] in self?.computeSelectionLayer () } )
   //--- Set selected array compute function
     setSelectedArrayComputeFunction ()
   //--- Set sorted array compute function
@@ -76,7 +77,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
       case .multiple :
         return .multiple
       case .single (let v) :
-        var result = [BoardModel] ()
+        var result = [MergerBoardInstance] ()
         for object in v {
           if self.mSelectedSet.mSet.contains (object) {
             result.append (object)
@@ -85,28 +86,6 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
         return .single (result)
       }
     }
-  }
-
-  //····················································································································
-
-  func isOrderedBefore (left : BoardModel, right : BoardModel) -> Bool {
-    var order = ComparisonResult.orderedSame
-    for (column, ascending) in mSortDescriptorArray {
-      if column == "name" {
-        order = compare_String (left: left.name_property, right:right.name_property)
-      }
-      if !ascending {
-        switch order {
-        case .orderedAscending : order = .orderedDescending
-        case .orderedDescending : order = .orderedAscending
-        case .orderedSame : break // Exit from switch
-        }
-      }
-      if order != .orderedSame {
-        break // Exit from for
-      }
-    }
-    return order == .orderedAscending
   }
 
   //····················································································································
@@ -120,8 +99,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
         case .multiple :
           return .multiple
         case .single (let modelArray) :
-          let sortedArray = modelArray.sorted (by: {self.isOrderedBefore (left: $0, right: $1)})
-          return .single (sortedArray)
+          return .single (modelArray)
         }
       }else{
         return .empty
@@ -140,7 +118,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //    bind_modelAndView
   //····················································································································
 
-  func bind_modelAndView (model:ToManyRelationship_MergerRoot_boardModels,
+  func bind_modelAndView (model:ToManyRelationship_MergerRoot_boardInstances,
                          tableViewArray:[EBTableView],
                          ebView: EBView?,
                          managedObjectContext : EBManagedObjectContext?,
@@ -155,9 +133,9 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
     self.sortedArray_property.addEBObserver (mSelectedSet)
     mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
-    model.addEBObserverOf_name (self.sortedArray_property)
   //--- Bind ebView
     mEBView = ebView
+    self.mEBView?.set (controller: self)
   //--- Bind table views
     mTableViewArray = tableViewArray
     for tableView in tableViewArray {
@@ -177,7 +155,6 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
     self.sortedArray_property.removeEBObserver (mSelectedSet)
     mSelectedSet.removeEBObserver (self.selectedArray_property)
   //--- Remove observed properties (for filtering and sorting)
-//    mModel?.removeEBObserverOf_name (self.sortedArray_property)
     for tvc in mTableViewDataSourceControllerArray {
       self.sortedArray_property.removeEBObserver (tvc)
     }
@@ -216,12 +193,6 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
     let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
     mSelectedSet.addEBObserver (selectionTableViewController)
     mTableViewSelectionControllerArray.append (selectionTableViewController)
-  //--- Check 'name' column
-    if let column : NSTableColumn = tableView.tableColumn (withIdentifier: "name") {
-      column.sortDescriptorPrototype = nil
-    }else{
-      presentErrorWindow (file: file, line: line, errorMessage:"\"name\" column view unknown")
-    }
   //--- Set descriptors from first column of table view
     var newSortDescriptorArray = [(String, Bool)] ()
     for column in tableView.tableColumns {
@@ -238,7 +209,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [BoardModel : Int] ()
+      var objectDictionary = [MergerBoardInstance : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -281,7 +252,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
       break
     case .single (let v) :
       let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <BoardModel> ()
+      var newSelectedObjectSet = Set <MergerBoardInstance> ()
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v.objectAtIndex (index, file: #file, line: #line))
       }
@@ -315,43 +286,21 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    switch self.sortedArray_property.prop {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      let columnIdentifier = tableColumn!.identifier
-      let result : NSTableCellView = tableView.make (withIdentifier: columnIdentifier, owner:self) as! NSTableCellView
-      if !reuseTableViewCells () {
-        result.identifier = nil // So result cannot be reused, will be freed
-      }
-      let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
-      if columnIdentifier == "name" {
-        if let cell : EBTextField_TableViewCell = result as? EBTextField_TableViewCell {
-          cell.mUnbindFunction = { [weak cell] in
-            cell?.mCellOutlet?.unbind_value ()
-          }
-          cell.mUnbindFunction? ()
-          cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
-        }
-      }else{
-        NSLog ("Unknown column '\(columnIdentifier)'")
-      }
-      return result
-    } 
+    return nil 
   }
  
   //····················································································································
   //    select
   //····················································································································
 
-  func select (object inObject: BoardModel) {
+  func select (object inObject: MergerBoardInstance) {
     if let model = mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <BoardModel> ()
+          var newSelectedObjectSet = Set <MergerBoardInstance> ()
           newSelectedObjectSet.insert (inObject)
           mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -372,11 +321,11 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject : BoardModel = BoardModel (managedObjectContext:managedObjectContext)
+        let newObject : MergerBoardInstance = MergerBoardInstance (managedObjectContext:managedObjectContext)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <BoardModel> ()
+        var newSelectedObjectSet = Set <MergerBoardInstance> ()
         newSelectedObjectSet.insert (newObject)
         mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -403,7 +352,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [BoardModel : Int] ()
+          var sortedObjectDictionary = [MergerBoardInstance : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -426,13 +375,13 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : BoardModel? = nil
+          var newSelectedObject : MergerBoardInstance? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [BoardModel : Int] ()
+          var objectDictionary = [MergerBoardInstance : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -452,7 +401,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <BoardModel> ()
+          var newSelectionSet = Set <MergerBoardInstance> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -466,22 +415,328 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
 
   //····················································································································
 
+  var objectCount : Int {
+    let objects = mModel?.propval ?? []
+    return objects.count
+  }
+
+  //····················································································································
+  // Mouse Events
+  //····················································································································
+
+  private var mLastMouseDraggedLocation : NSPoint? = nil
+  private var mSelectionRectangleOrigin : NSPoint? = nil
+
+  func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int) {
+    mLastMouseDraggedLocation = mEBView?.convert (inEvent.locationInWindow, from:nil)
+    let objects = mModel?.propval ?? []
+    let shiftKey = inEvent.modifierFlags.contains (.shift)
+    let commandKey = inEvent.modifierFlags.contains (.command)
+    if shiftKey { // Shift key extends selection
+      if inObjectIndex >= 0 {
+        var newSet = mSelectedSet.mSet
+        newSet.insert (objects [inObjectIndex])
+        mSelectedSet.mSet = newSet
+      }
+    }else if commandKey { // Command key toggles selection of object under click
+      if inObjectIndex >= 0 {
+        let object = objects [inObjectIndex]
+        if mSelectedSet.mSet.contains (object) {
+          var newSet = mSelectedSet.mSet
+          newSet.remove (object)
+          mSelectedSet.mSet = newSet
+        }else{
+          var newSet = mSelectedSet.mSet
+          newSet.insert (object)
+          mSelectedSet.mSet = newSet
+        }
+      }
+    }else if inObjectIndex >= 0 {
+      // NSLog ("Clicked objectindex \(inObjectIndex)")
+      let clickedObject = objects [inObjectIndex]
+      if !mSelectedSet.mSet.contains (clickedObject) {
+        mSelectedSet.mSet = [clickedObject]
+      }
+    }else{ // Click outside an object : clear selection
+      mSelectedSet.mSet = Set ()
+      mSelectionRectangleOrigin = mLastMouseDraggedLocation
+    }
+  }
+
+  //····················································································································
+
+  func mouseDragged (with inEvent : NSEvent) {
+    if let boardView = mEBView {
+      let mouseDraggedLocation = boardView.convert (inEvent.locationInWindow, from:nil)
+      if let selectionRectangleOrigin = mSelectionRectangleOrigin {
+        // NSLog ("Dragged")
+        let xMin = min (selectionRectangleOrigin.x, mouseDraggedLocation.x)
+        let yMin = min (selectionRectangleOrigin.y, mouseDraggedLocation.y)
+        let xMax = max (selectionRectangleOrigin.x, mouseDraggedLocation.x)
+        let yMax = max (selectionRectangleOrigin.y, mouseDraggedLocation.y)
+        let layer = CAShapeLayer ()
+        let r = CGRect (x:xMin, y:yMin, width:xMax-xMin, height:yMax-yMin)
+        layer.path = CGPath (rect: r, transform:nil)
+        layer.strokeColor = NSColor.lightGray.cgColor
+        layer.fillColor = NSColor.lightGray.withAlphaComponent (0.2).cgColor
+        layer.lineWidth = 1.0
+        mEBView?.selectionRectangleLayer.sublayers = [layer]
+        let indexSet = boardView.indexesOfObjects (intersecting:r)
+        var newSelectedSet = Set <MergerBoardInstance> ()
+        var objects = mModel?.propval ?? []
+        for idx in indexSet {
+          newSelectedSet.insert (objects [idx])
+        }
+        self.mSelectedSet.mSet = newSelectedSet
+      }else if let lastMouseDraggedLocation = mLastMouseDraggedLocation {
+        let accepted = wantsToTranslateSelection (
+          byX:mouseDraggedLocation.x - lastMouseDraggedLocation.x,
+          byY:mouseDraggedLocation.y - lastMouseDraggedLocation.y
+        )
+        if accepted {
+          mLastMouseDraggedLocation = mouseDraggedLocation
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  func mouseUp (with inEvent : NSEvent) {
+    mLastMouseDraggedLocation = nil
+    mSelectionRectangleOrigin = nil
+    mEBView?.selectionRectangleLayer.sublayers = nil
+  }
+
+  //····················································································································
+  // key Events
+  //····················································································································
+
+  func keyDown (with inEvent: NSEvent) {
+    let amount : CGFloat = inEvent.modifierFlags.contains (.shift) ? 36.0 : 9.0 ;
+    for character in (inEvent.characters ?? "").unicodeScalars {
+      switch (Int (character.value)) {
+      case NSUpArrowFunctionKey :
+        _ = wantsToTranslateSelection (byX: 0.0, byY:amount)
+      case NSDownArrowFunctionKey :
+        _ = wantsToTranslateSelection (byX: 0.0, byY:-amount)
+      case NSLeftArrowFunctionKey :
+        _ = wantsToTranslateSelection (byX: -amount, byY:0.0)
+      case NSRightArrowFunctionKey :
+        _ = wantsToTranslateSelection (byX: amount, byY:0.0)
+      case 0x7F, NSDeleteFunctionKey :
+        deleteSelection ()
+      default :
+        break
+      }
+    }
+  }
+
+  //····················································································································
+
+  private func deleteSelection () {
+    var objects = mModel?.propval ?? []
+    for object in mSelectedSet.mSet {
+      if let idx = objects.index (of: object) {
+        objects.remove(at: idx)
+        mManagedObjectContext?.removeManagedObject (object)
+      }
+    }
+    mModel?.setProp (objects)
+    mSelectedSet.mSet = Set ()
+  }
+
+  //····················································································································
+
+  private func wantsToTranslateSelection (byX inDx: CGFloat, byY inDy: CGFloat) -> Bool {
+    var accepted = true
+    for object in mSelectedSet.mSet {
+      if !object.acceptToTranslate (xBy: inDx, yBy:inDy) {
+        accepted = false
+        break
+      }
+    }
+    if accepted {
+      for object in mSelectedSet.mSet {
+        object.translate (xBy: inDx, yBy:inDy)
+      }
+    }
+    return accepted
+  }
+
+  //····················································································································
+  //   Menu actions
+  //····················································································································
+
+  func selectAllObjects () {
+    let objects = mModel?.propval ?? []
+    mSelectedSet.mSet = Set (objects)
+  }
+
+  //····················································································································
+
+  private final func sortedIndexArrayOfSelectedObjects () -> [Int] {
+    var result = [Int] ()
+    let objects = mModel?.propval ?? []
+    for object in mSelectedSet.mSet {
+      let idx = objects.index (of:object)!
+      result.append (idx)
+    }
+    return result.sorted ()
+  }
+
+  //····················································································································
+  // BRING FORWARD
+  //····················································································································
+
+  func canBringForward () -> Bool {
+    let objects = mModel?.propval ?? []
+    var result = (objects.count > 1) && (mSelectedSet.mSet.count > 0)
+    if result {
+      let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+      result = sortedIndexArray.last! < (objects.count - 1)
+    }
+    return result
+  }
+
+  //····················································································································
+
+  func bringForward () {
+    var objects = mModel?.propval ?? []
+    let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+    for idx in sortedIndexArray.reversed () {
+       let object = objects [idx]
+       objects.remove (at: idx)
+       objects.insert (object, at:idx+1)
+    }
+    mModel?.setProp (objects)
+  }
+
+  //····················································································································
+  // BRING TO FRONT
+  //····················································································································
+
+  func canBringToFront () -> Bool {
+    let objects = mModel?.propval ?? []
+    if (objects.count > 1) && (mSelectedSet.mSet.count > 0) {
+      let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+      var top = objects.count - 1
+      for idx in sortedIndexArray.reversed () {
+        if idx < top {
+          return true
+        }
+        top -= 1
+      }
+    }
+    return false
+  }
+
+  //····················································································································
+
+  func bringToFront () {
+    var objects = mModel?.propval ?? []
+    let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+    for idx in sortedIndexArray {
+      let object = objects [idx]
+      objects.remove (at: idx)
+      objects.append (object)
+    }
+    mModel?.setProp (objects)
+  }
+
+  //····················································································································
+  // SEND BACKWARD
+  //····················································································································
+
+  func canSendBackward () -> Bool {
+    let objects = mModel?.propval ?? []
+    var result = (objects.count > 1) && (mSelectedSet.mSet.count > 0)
+    if result {
+      let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+      result = sortedIndexArray [0] > 0
+    }
+    return result
+  }
+
+  //····················································································································
+
+  func sendBackward () {
+    var objects = mModel?.propval ?? []
+    let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+    for idx in sortedIndexArray.reversed () {
+      let object = objects [idx]
+      objects.remove (at: idx)
+      objects.insert (object, at:idx-1)
+    }
+    mModel?.setProp (objects)
+  }
+  
+  //····················································································································
+  // SEND TO BACK
+  //····················································································································
+
+  func canSendToBack () -> Bool {
+    let objects = mModel?.propval ?? []
+    if (objects.count > 1) && (mSelectedSet.mSet.count > 0) {
+      let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+      var bottom = 0
+      for idx in sortedIndexArray {
+        if idx > bottom {
+          return true
+        }
+        bottom += 1
+      }
+    }
+    return false
+  }
+
+  //····················································································································
+
+  func sendToBack () {
+    var objects = mModel?.propval ?? []
+    let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
+    for idx in sortedIndexArray.reversed () {
+      let object = objects [idx]
+      objects.remove (at: idx)
+      objects.insert (object, at:0)
+    }
+    mModel?.setProp (objects)
+  }
+
+  //····················································································································
+  //   Compute selection layer
+  //····················································································································
+
+  private func computeSelectionLayer () {
+    var layers = [CALayer] ()
+    for object in mSelectedSet.mSet {
+      if let layer = object.selectionLayer {
+        layers.append (layer)
+      }
+    }
+    mEBView?.objectSelectionLayer.sublayers = layers
+  }
+
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_MergerDocument_mBoardModelController
+//    SelectedSet_MergerDocument_mBoardInstanceController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_MergerDocument_mBoardModelController : EBAbstractProperty {
+final class SelectedSet_MergerDocument_mBoardInstanceController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_BoardModel
+  private let mSortedArray : TransientArrayOf_MergerBoardInstance
+  private var mObserverOfSelectionLayerOfSelectedObjects = EBOutletEvent ()
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_BoardModel) {
+        sortedArray : TransientArrayOf_MergerBoardInstance) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -490,17 +745,32 @@ final class SelectedSet_MergerDocument_mBoardModelController : EBAbstractPropert
 
   //····················································································································
 
-  private var mPrivateSet = Set<BoardModel> () {
+  func set (callBack : @escaping () -> Void) {
+    mObserverOfSelectionLayerOfSelectedObjects.eventCallBack = callBack
+  }
+
+  //····················································································································
+
+  private var mPrivateSet = Set<MergerBoardInstance> () {
     didSet {
       if mPrivateSet != oldValue {
         postEvent ()
+        let addedSet = mPrivateSet.subtracting (oldValue)
+        for object in addedSet {
+          object.selectionLayer_property.addEBObserver (mObserverOfSelectionLayerOfSelectedObjects)
+        }
+        let removedSet = oldValue.subtracting (mPrivateSet)
+        for object in removedSet {
+          object.selectionLayer_property.removeEBObserver (mObserverOfSelectionLayerOfSelectedObjects)
+        }
+        mObserverOfSelectionLayerOfSelectedObjects.postEvent ()
       }
     }
   }
 
   //····················································································································
 
-  var mSet : Set<BoardModel> {
+  var mSet : Set<MergerBoardInstance> {
     set {
       var newSelectedSet = newValue
       switch mSortedArray.prop {
