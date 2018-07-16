@@ -199,27 +199,27 @@ final class MergerPadArray : EBSimpleClass {
       let heightInch : CGFloat = canariUnitToInch (pad.height)
       switch pad.shape {
       case .rectangular :
-        if (pad.rotation == 0) || (pad.rotation == 180_000) {
-          let apertureString = "R,\(String (format:"%1.4f", widthInch))X\(String (format:"%1.4f", heightInch))"
-          let flash = "X\(x)Y\(y)D03"
-          if let array = ioApertureDictionary [apertureString] {
-            var a = array
-            a.append (flash)
-            ioApertureDictionary [apertureString] = a
-          }else{
-            ioApertureDictionary [apertureString] = [flash]
-          }
-        }else if (pad.rotation == 90_000) || (pad.rotation == 270_000) {
-          let apertureString = "R,\(String (format:"%1.4f", heightInch))X\(String (format:"%1.4f", widthInch))"
-          let flash = "X\(x)Y\(y)D03"
-          if let array = ioApertureDictionary [apertureString] {
-            var a = array
-            a.append (flash)
-            ioApertureDictionary [apertureString] = a
-           }else{
-            ioApertureDictionary [apertureString] = [flash]
-           }
-        }else{ // Oblique rectangular pad: use G36 ······ G37 codes
+//        if (pad.rotation == 0) || (pad.rotation == 180_000) {
+//          let apertureString = "R,\(String (format:"%1.4f", widthInch))X\(String (format:"%1.4f", heightInch))"
+//          let flash = "X\(x)Y\(y)D03"
+//          if let array = ioApertureDictionary [apertureString] {
+//            var a = array
+//            a.append (flash)
+//            ioApertureDictionary [apertureString] = a
+//          }else{
+//            ioApertureDictionary [apertureString] = [flash]
+//          }
+//        }else if (pad.rotation == 90_000) || (pad.rotation == 270_000) {
+//          let apertureString = "R,\(String (format:"%1.4f", heightInch))X\(String (format:"%1.4f", widthInch))"
+//          let flash = "X\(x)Y\(y)D03"
+//          if let array = ioApertureDictionary [apertureString] {
+//            var a = array
+//            a.append (flash)
+//            ioApertureDictionary [apertureString] = a
+//           }else{
+//            ioApertureDictionary [apertureString] = [flash]
+//           }
+//        }else{ // Oblique rectangular pad: use G36 ······ G37 codes
           let cosa = cos (canariRotationToRadians (pad.rotation))
           let sina = sin (canariRotationToRadians (pad.rotation))
           let hs = CGFloat (widthTenthMilF) / 2.0
@@ -239,42 +239,7 @@ final class MergerPadArray : EBSimpleClass {
           drawings.append ("X\(Int (p4x))Y\(Int (p4y))D01") // Line to
           drawings.append ("X\(Int (p1x))Y\(Int (p1y))D01") // Line to
           ioPolygons.append (drawings)
-
-//          let cosa = cos (canariRotationToRadians (pad.rotation))
-//          let sina = sin (canariRotationToRadians (pad.rotation))
-//          var currentApertureMilTenth : Int = inMinimumApertureMilTenth
-//          // NSLog ("currentApertureMilTenth \(currentApertureMilTenth)")
-//          var width  : Int = widthTenthMil
-//          var height : Int = heightTenthMil
-//          while (width > 0) && (height > 0) {
-//            let hs = CGFloat (width  - currentApertureMilTenth) / 2.0
-//            let ws = CGFloat (height - currentApertureMilTenth) / 2.0
-//            let p1x : CGFloat = CGFloat (x) + ( hs * cosa - ws * sina)
-//            let p1y : CGFloat = CGFloat (y) + ( hs * sina + ws * cosa)
-//            let p2x : CGFloat = CGFloat (x) + (-hs * cosa - ws * sina)
-//            let p2y : CGFloat = CGFloat (y) + (-hs * sina + ws * cosa)
-//            let p3x : CGFloat = CGFloat (x) + (-hs * cosa + ws * sina)
-//            let p3y : CGFloat = CGFloat (y) + (-hs * sina - ws * cosa)
-//            let p4x : CGFloat = CGFloat (x) + ( hs * cosa + ws * sina)
-//            let p4y : CGFloat = CGFloat (y) + ( hs * sina - ws * cosa)
-//            var drawings = [String] ()
-//            drawings.append ("X\(Int (p1x))Y\(Int (p1y))D02") // Move to
-//            drawings.append ("X\(Int (p2x))Y\(Int (p2y))D01") // Line to
-//            drawings.append ("X\(Int (p3x))Y\(Int (p3y))D01") // Line to
-//            drawings.append ("X\(Int (p4x))Y\(Int (p4y))D01") // Line to
-//            drawings.append ("X\(Int (p1x))Y\(Int (p1y))D01") // Line to
-//            let apertureString = "C,\(String(format: "%.4f", CGFloat (currentApertureMilTenth) / 10_000.0)))"
-//            if let array = ioApertureDictionary [apertureString] {
-//              ioApertureDictionary [apertureString] = array + drawings
-//            }else{
-//              ioApertureDictionary [apertureString] = drawings
-//            }
-//          //--- Prepare for next iteration
-//            width  -= currentApertureMilTenth
-//            height -= currentApertureMilTenth
-//            currentApertureMilTenth = (currentApertureMilTenth * 3) / 2
-//          }
-        }
+//        }
       case .round :
         if pad.width < pad.height {
           let transform = NSAffineTransform ()

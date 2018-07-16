@@ -105,6 +105,7 @@ import Cocoa
           newBoard.x = cocoaToCanariUnit (draggingLocationInDestinationView.x)
           newBoard.y = cocoaToCanariUnit (draggingLocationInDestinationView.y)
           document.rootObject.boardInstances_property.add (newBoard)
+          document.mBoardInstanceController.setSelection ([newBoard])
         }else{
           NSLog ("Cannot find '\(boardModelName)' board model")
         }

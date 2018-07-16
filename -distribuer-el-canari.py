@@ -1,18 +1,18 @@
 #! /usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 import shutil, os, sys, subprocess, datetime, plistlib, urllib, time, json
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 #-------------------- Version ElCanari
-VERSION_CANARI = "0.2.4"
+VERSION_CANARI = "0.3.1"
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   FOR PRINTING IN COLOR                                                                                              *
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 MAGENTA = '\033[95m'
 BLUE = '\033[94m'
@@ -26,9 +26,9 @@ BOLD_BLUE = BOLD + BLUE
 BOLD_GREEN = BOLD + GREEN
 BOLD_RED = BOLD + RED
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   runCommand                                                                                                         *
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 def runCommand (cmd) :
   str = "+"
@@ -40,9 +40,9 @@ def runCommand (cmd) :
   if childProcess.returncode != 0 :
     sys.exit (childProcess.returncode)
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   runHiddenCommand                                                                                                   *
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 def runHiddenCommand (cmd) :
   str = "+"
@@ -68,7 +68,26 @@ def runHiddenCommand (cmd) :
         sys.exit (childProcess.returncode)
       return result
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#   dictionaryFromJsonFile                                                                                             *
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+def dictionaryFromJsonFile (file) :
+  result = {}
+  if not os.path.exists (os.path.abspath (file)):
+    print (BOLD_RED + "The '" + file + "' file does not exist" + ENDC)
+    sys.exit (1)
+  try:
+    f = open (file, "r")
+    result = json.loads (f.read ())
+    f.close ()
+  except:
+    print (BOLD_RED + "Syntax error in " + file + ENDC)
+    sys.exit (1)
+  return result
+
+
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #--- Get script absolute path
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
@@ -121,7 +140,6 @@ sommeControle = runHiddenCommand (["distribution-el-canari/sign_update.sh",
 sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
 #-------------------- Ajouter les meta infos
 dict = {
-#   "version-svn" : str (numeroRevisionSVN),
   "archive-sum" : sommeControle,
   "build" : buildString
 }
@@ -129,18 +147,20 @@ f = open (TEMP_DIR + "/infos.json", "w")
 f.write (json.dumps (dict, indent=2))
 f.close ()
 #-------------------- Vérifier si l'application est signée
-runCommand (["spctl", "-a", "-t", "exec", "-vv", "ElCanari.app"])
+# runCommand (["codesign", "-s", "351CAC09BC3DB2515349D8081B30F1836D1A1969", "-f", "ElCanari.app"])
+# runCommand (["xattr", "-r", "-d", "com.apple.quarantine", "ElCanari.app"])
+# runCommand (["spctl", "-a", "-vv", "ElCanari.app"])
 #-------------------- Créer l'archive de Cocoa canari
-nomArchive = "ElCanari-" + VERSION_CANARI
-runCommand (["mkdir", nomArchive])
-runCommand (["mv", "ElCanari.app", nomArchive + "/ElCanari.app"])
-runCommand (["ln", "-s", "/Applications", nomArchive + "/Applications"])
-runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg"])
-runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
+# nomArchive = "ElCanari-" + VERSION_CANARI
+# runCommand (["mkdir", nomArchive])
+# runCommand (["mv", "ElCanari.app", nomArchive + "/ElCanari.app"])
+# runCommand (["ln", "-s", "/Applications", nomArchive + "/Applications"])
+# runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg"])
+# runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 #--- Supprimer les répertoires intermédiaires
-while os.path.isdir (TEMP_DIR + "/COCOA-CANARI"):
-  shutil.rmtree (TEMP_DIR + "/COCOA-CANARI")
+# while os.path.isdir (TEMP_DIR + "/COCOA-CANARI"):
+#   shutil.rmtree (TEMP_DIR + "/COCOA-CANARI")
 while os.path.isdir (TEMP_DIR + "/ElCanari-dev-master"):
   shutil.rmtree (TEMP_DIR + "/ElCanari-dev-master")
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

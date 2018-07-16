@@ -6,20 +6,20 @@
 
 #import "bz2-uncompress.h"
 #import <CommonCrypto/CommonDigest.h>
-#import <Security/Security.h>
+//#import <Security/Security.h>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-NSString * _Nonnull systemLibraryPath (void) ;
+//NSString * _Nonnull systemLibraryPath (void) ;
 
-Boolean privilegedTestTool (AuthorizationRef _Nonnull authorization) ;
+//Boolean privilegedTestTool (AuthorizationRef _Nonnull authorization) ;
 
 
-Boolean privilegedMoveToSystemLibraryFile (AuthorizationRef _Nonnull authorization,
-                                           NSString * _Nonnull inAbsoluteTemporaryPath,
-                                           NSString * _Nonnull inRelativeDestinationPath) ;
+//Boolean privilegedMoveToSystemLibraryFile (AuthorizationRef _Nonnull authorization,
+//                                           NSString * _Nonnull inAbsoluteTemporaryPath,
+//                                           NSString * _Nonnull inRelativeDestinationPath) ;
 
-Boolean privilegedRemoveSystemLibraryFile (AuthorizationRef _Nonnull authorization,
-                                           NSString * _Nonnull inRelativeFilePath) ;
+//Boolean privilegedRemoveSystemLibraryFile (AuthorizationRef _Nonnull authorization,
+//                                           NSString * _Nonnull inRelativeFilePath) ;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
