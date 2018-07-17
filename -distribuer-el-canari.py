@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 #-------------------- Version ElCanari
-VERSION_CANARI = "0.3.1"
+VERSION_CANARI = "0.3.0"
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   FOR PRINTING IN COLOR                                                                                              *
@@ -139,11 +139,10 @@ sommeControle = runHiddenCommand (["distribution-el-canari/sign_update.sh",
                                   "distribution-el-canari/dsa_priv.pem"])
 sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
 #-------------------- Ajouter les meta infos
-dict = {
-  "archive-sum" : sommeControle,
-  "build" : buildString
-}
-f = open (TEMP_DIR + "/infos.json", "w")
+dict = dictionaryFromJsonFile (TEMP_DIR + "/ElCanari-dev-master/change.json")
+dict ["archive-sum"] = sommeControle
+dict ["build"] = buildString
+f = open (TEMP_DIR + "/ElCanari.app." + VERSION_CANARI + ".json", "w")
 f.write (json.dumps (dict, indent=2))
 f.close ()
 #-------------------- Vérifier si l'application est signée
