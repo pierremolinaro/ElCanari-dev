@@ -18,6 +18,7 @@ import Cocoa
   @IBOutlet private var mUpdateIntervalPopUpButton : NSPopUpButton?
 
   @IBOutlet private var mSparkleUpdater : NSObject?
+  @IBOutlet private var mSparkleVersionTextField : NSTextField?
 
   //····················································································································
 
@@ -54,6 +55,23 @@ import Cocoa
         withKeyPath: "automaticallyChecksForUpdates",
         options: nil
       )
+    //--- Now, we explore application bundle for finding sparkle version
+      if let frameworkURL = Bundle.main.privateFrameworksURL {
+        let infoPlistURL = frameworkURL.appendingPathComponent ("Sparkle.framework/Versions/Current/Resources/Info.plist")
+        // print ("\(infoPlistURL)")
+        do{
+          let data : Data = try Data (contentsOf: infoPlistURL)
+          // NSLog ("\(data)")
+          if let plist = try PropertyListSerialization.propertyList (from:data, format:nil) as? NSDictionary {
+            if let sparkleVersionString = plist ["CFBundleShortVersionString"] as? String {
+              // NSLog ("\(sparkleVersionString)")
+              mSparkleVersionTextField?.stringValue = "Using Sparkle " + sparkleVersionString
+            }
+          }
+        }catch let error {
+          NSLog ("Cannot read Sparkle plist: error \(error)")
+        }
+      }
     }
   }
 

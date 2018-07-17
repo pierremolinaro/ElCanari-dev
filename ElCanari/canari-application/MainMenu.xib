@@ -22,6 +22,7 @@
         <customObject id="n5I-oj-7oR" customClass="CanariAppUpdaterSettings">
             <connections>
                 <outlet property="mSparkleUpdater" destination="O6f-y5-yve" id="baT-HD-aaQ"/>
+                <outlet property="mSparkleVersionTextField" destination="ile-KZ-7AF" id="ofs-9N-z0N"/>
                 <outlet property="mUpdateCheckbox" destination="6161" id="PT0-cs-kxQ"/>
                 <outlet property="mUpdateIntervalPopUpButton" destination="Fkn-0i-mVD" id="x1s-Fd-r3L"/>
             </connections>
@@ -767,6 +768,15 @@
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="ile-KZ-7AF">
+                                <rect key="frame" x="212" y="42" width="186" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="-- sparkle version --" id="t0p-yX-aYa">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                 </box>
@@ -2001,7 +2011,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="1E8173BF-AFC3-4CC0-A8F3-D237917AF9DD" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="5146B00A-F778-4901-BFE2-FF9031720269" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2517,7 +2527,7 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="1E8173BF-AFC3-4CC0-A8F3-D237917AF9DD" width="20" height="20">
+        <image name="5146B00A-F778-4901-BFE2-FF9031720269" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

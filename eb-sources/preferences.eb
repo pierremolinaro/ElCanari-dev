@@ -6,78 +6,6 @@ prefs {
   outlet CanariToolbar mToolbar ;
 }
 
-#! Merger
-
-prefs {
-  property Bool mergerModelViewHorizontalFlip default no ;
-  property Bool mergerModelViewVerticalFlip default no ;
-  property Bool mergerModelViewDisplayHoles default yes ;
-  property Bool mergerModelViewDisplayVias default yes ;
-  property Bool mergerModelViewDisplayFrontPads default yes ;
-  property Bool mergerModelViewDisplayBoardLimits default yes ;
-  property Bool mergerModelViewDisplayFrontComponentNames default no ;
-  property Bool mergerModelViewDisplayFrontComponentValues default no ;
-  property Bool mergerModelViewDisplayFrontPackages default no ;
-  property Bool mergerModelViewDisplayFrontLegendTexts default no ;
-  property Bool mergerModelViewDisplayFrontTracks default no ;
-  property Bool mergerModelViewDisplayFrontLayoutTexts default no ;
-  property Bool mergerModelViewDisplayBackPads default yes ;
-  property Bool mergerModelViewDisplayBackComponentNames default no ; 
-  property Bool mergerModelViewDisplayBackComponentValues default no ;
-  property Bool mergerModelViewDisplayBackLegendTexts default no ;
-  property Bool mergerModelViewDisplayBackPackages default no ;
-  property Bool mergerModelViewDisplayBackTracks default no ;
-  property Bool mergerModelViewDisplayBackLayoutTexts default no ;
-  property Bool mergerModelViewDisplayFrontLegendLines default no ;
-  property Bool mergerModelViewDisplayBackLegendLines default yes ;
-
-  property Bool mergerBoardViewHorizontalFlip default no ;
-  property Bool mergerBoardViewVerticalFlip default no ;
-  property Bool mergerBoardViewDisplayHoles default yes ;
-  property Bool mergerBoardViewDisplayVias default yes ;
-  property Bool mergerBoardViewDisplayFrontPads default yes ;
-  property Bool mergerBoardViewDisplayInternalBoardLimits default yes ;
-  property Bool mergerBoardViewDisplayBoardLimits default yes ;
-  property Bool mergerBoardViewDisplayFrontComponentNames default no ;
-  property Bool mergerBoardViewDisplayFrontComponentValues default no ;
-  property Bool mergerBoardViewDisplayFrontPackages default no ;
-  property Bool mergerBoardViewDisplayFrontLegendTexts default no ;
-  property Bool mergerBoardViewDisplayFrontTracks default no ;
-  property Bool mergerBoardViewDisplayFrontLayoutTexts default no ;
-  property Bool mergerBoardViewDisplayBackPads default yes ;
-  property Bool mergerBoardViewDisplayBackComponentNames default no ; 
-  property Bool mergerBoardViewDisplayBackComponentValues default no ;
-  property Bool mergerBoardViewDisplayBackLegendTexts default no ;
-  property Bool mergerBoardViewDisplayBackPackages default no ;
-  property Bool mergerBoardViewDisplayBackTracks default no ;
-  property Bool mergerBoardViewDisplayBackLayoutTexts default no ;
-  property Bool mergerBoardViewDisplayFrontLegendLines default no ;
-  property Bool mergerBoardViewDisplayBackLegendLines default yes ;
-
-  property NSColor mergerColorHoles default white ;
-  property NSColor mergerColorVias default red ;
-  property NSColor mergerColorFrontPads default brown ;
-  property NSColor mergerColorBoardLimits default brown ;
-  property NSColor mergerColorInternalBoardLimits default yellow ;
-  property NSColor mergerColorFrontComponentNames default brown ;
-  property NSColor mergerColorFrontComponentValues default brown ;
-  property NSColor mergerColorFrontPackages default brown ;
-  property NSColor mergerColorFrontLegendTexts default brown ;
-  property NSColor mergerColorFrontTracks default blue ;
-  property NSColor mergerColorFrontLayoutTexts default blue ;
-  property NSColor mergerColorBackPads default orange ;
-  property NSColor mergerColorBackComponentNames default gray ; 
-  property NSColor mergerColorBackComponentValues default gray ;
-  property NSColor mergerColorBackLegendTexts default gray ;
-  property NSColor mergerColorBackPackages default gray ;
-  property NSColor mergerColorBackTracks default green ;
-  property NSColor mergerColorBackLayoutTexts default green ;
-  property NSColor mergerColorFrontLegendLines default gray ;
-  property NSColor mergerColorBackLegendLines default green ;
-
-  property NSColor mergerColorBackground default lightGray ;
-}
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 #! Library update 
@@ -456,6 +384,80 @@ prefs {
   outlet EBButton mCheckLibraryAction $run self.checkLibraryAction ;
 #--- Check Library result text view
   outlet NSTextView mCheckLibraryResultTextView ;
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#! Merger
+
+prefs {
+  property Bool mergerModelViewHorizontalFlip default no ;
+  property Bool mergerModelViewVerticalFlip default no ;
+  property Bool mergerModelViewDisplayHoles default yes ;
+  property Bool mergerModelViewDisplayVias default yes ;
+  property Bool mergerModelViewDisplayFrontPads default yes ;
+  property Bool mergerModelViewDisplayBoardLimits default yes ;
+  property Bool mergerModelViewDisplayFrontComponentNames default no ;
+  property Bool mergerModelViewDisplayFrontComponentValues default no ;
+  property Bool mergerModelViewDisplayFrontPackages default no ;
+  property Bool mergerModelViewDisplayFrontLegendTexts default no ;
+  property Bool mergerModelViewDisplayFrontTracks default no ;
+  property Bool mergerModelViewDisplayFrontLayoutTexts default no ;
+  property Bool mergerModelViewDisplayBackPads default yes ;
+  property Bool mergerModelViewDisplayBackComponentNames default no ; 
+  property Bool mergerModelViewDisplayBackComponentValues default no ;
+  property Bool mergerModelViewDisplayBackLegendTexts default no ;
+  property Bool mergerModelViewDisplayBackPackages default no ;
+  property Bool mergerModelViewDisplayBackTracks default no ;
+  property Bool mergerModelViewDisplayBackLayoutTexts default no ;
+  property Bool mergerModelViewDisplayFrontLegendLines default no ;
+  property Bool mergerModelViewDisplayBackLegendLines default yes ;
+
+  property Bool mergerBoardViewHorizontalFlip default no ;
+  property Bool mergerBoardViewVerticalFlip default no ;
+  property Bool mergerBoardViewDisplayHoles default yes ;
+  property Bool mergerBoardViewDisplayVias default yes ;
+  property Bool mergerBoardViewDisplayFrontPads default yes ;
+  property Bool mergerBoardViewDisplayInternalBoardLimits default yes ;
+  property Bool mergerBoardViewDisplayBoardLimits default yes ;
+  property Bool mergerBoardViewDisplayFrontComponentNames default no ;
+  property Bool mergerBoardViewDisplayFrontComponentValues default no ;
+  property Bool mergerBoardViewDisplayFrontPackages default no ;
+  property Bool mergerBoardViewDisplayFrontLegendTexts default no ;
+  property Bool mergerBoardViewDisplayFrontTracks default no ;
+  property Bool mergerBoardViewDisplayFrontLayoutTexts default no ;
+  property Bool mergerBoardViewDisplayBackPads default yes ;
+  property Bool mergerBoardViewDisplayBackComponentNames default no ; 
+  property Bool mergerBoardViewDisplayBackComponentValues default no ;
+  property Bool mergerBoardViewDisplayBackLegendTexts default no ;
+  property Bool mergerBoardViewDisplayBackPackages default no ;
+  property Bool mergerBoardViewDisplayBackTracks default no ;
+  property Bool mergerBoardViewDisplayBackLayoutTexts default no ;
+  property Bool mergerBoardViewDisplayFrontLegendLines default no ;
+  property Bool mergerBoardViewDisplayBackLegendLines default yes ;
+
+  property NSColor mergerColorHoles default white ;
+  property NSColor mergerColorVias default red ;
+  property NSColor mergerColorFrontPads default brown ;
+  property NSColor mergerColorBoardLimits default brown ;
+  property NSColor mergerColorInternalBoardLimits default yellow ;
+  property NSColor mergerColorFrontComponentNames default brown ;
+  property NSColor mergerColorFrontComponentValues default brown ;
+  property NSColor mergerColorFrontPackages default brown ;
+  property NSColor mergerColorFrontLegendTexts default brown ;
+  property NSColor mergerColorFrontTracks default blue ;
+  property NSColor mergerColorFrontLayoutTexts default blue ;
+  property NSColor mergerColorBackPads default orange ;
+  property NSColor mergerColorBackComponentNames default gray ; 
+  property NSColor mergerColorBackComponentValues default gray ;
+  property NSColor mergerColorBackLegendTexts default gray ;
+  property NSColor mergerColorBackPackages default gray ;
+  property NSColor mergerColorBackTracks default green ;
+  property NSColor mergerColorBackLayoutTexts default green ;
+  property NSColor mergerColorFrontLegendLines default gray ;
+  property NSColor mergerColorBackLegendLines default green ;
+
+  property NSColor mergerColorBackground default lightGray ;
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
