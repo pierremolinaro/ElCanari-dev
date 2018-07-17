@@ -6,6 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //  EBGraphicManagedObject
+//  dynamic before func is required in order to make functions overriden in extensions
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBGraphicManagedObject : EBManagedObject {
@@ -16,13 +17,13 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  func acceptToTranslate (xBy inDx: CGFloat, yBy inDy: CGFloat) -> Bool {
+  dynamic func acceptToTranslate (xBy inDx: CGFloat, yBy inDy: CGFloat) -> Bool {
     return false
   }
 
   //····················································································································
 
-  func translate (xBy inDx: CGFloat, yBy inDy: CGFloat) {
+  dynamic func translate (xBy inDx: CGFloat, yBy inDy: CGFloat) {
   }
 
   //····················································································································
