@@ -147,6 +147,11 @@ import Cocoa
     return self.incorrectDocumentFileErrorMessage_property.prop
   }
 
+  var documentIsUnnamed_property = EBTransientProperty_Bool ()
+  var documentIsUnnamed_property_selection : EBSelection <Bool> {
+    return self.documentIsUnnamed_property.prop
+  }
+
   var importArtworkButtonTitle_property = EBTransientProperty_String ()
   var importArtworkButtonTitle_property_selection : EBSelection <String> {
     return self.importArtworkButtonTitle_property.prop
@@ -1352,6 +1357,26 @@ import Cocoa
         return .empty
       }
     }
+    self.documentIsUnnamed_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.documentFilePath_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.documentFilePath_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_MergerDocument_documentIsUnnamed (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.importArtworkButtonTitle_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.artworkName_property_selection.kind ()
@@ -1376,6 +1401,7 @@ import Cocoa
   //--------------------------- Install property observers for transients
     self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property)
     self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
+    self.documentFilePath_property.addEBObserver (self.documentIsUnnamed_property)
     self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -1596,11 +1622,11 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return ((!self.rootObject.artwork_property_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))) && self.documentFileNameOk_property_selection)
+          return ((!self.rootObject.artwork_property_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))) && !self.documentIsUnnamed_property_selection)
         },
         outlet:self.mGenerateProductFilesActionButton
       )
-      self.documentFileNameOk_property.addEBObserver (controller)
+      self.documentIsUnnamed_property.addEBObserver (controller)
       self.rootObject.artwork_property.addEBObserver (controller)
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
       mController_mGenerateProductFilesActionButton_enabled = controller
@@ -1772,7 +1798,7 @@ import Cocoa
     self.documentFileNameOk_property.removeEBObserver (mController_mDangerView_hidden!)
     self.rootObject.artwork_property.removeEBObserver (mController_mDangerView_hidden!)
     mController_mDangerView_hidden = nil
-    self.documentFileNameOk_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
+    self.documentIsUnnamed_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     self.rootObject.artwork_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mGenerateProductFilesActionButton_enabled!)
     mController_mGenerateProductFilesActionButton_enabled = nil
@@ -1781,6 +1807,7 @@ import Cocoa
   //--------------------------- Uninstall compute functions for transients
     self.documentFileNameOk_property.readModelFunction = nil
     self.incorrectDocumentFileErrorMessage_property.readModelFunction = nil
+    self.documentIsUnnamed_property.readModelFunction = nil
     self.importArtworkButtonTitle_property.readModelFunction = nil
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
@@ -1792,6 +1819,7 @@ import Cocoa
   //--------------------------- Uninstall property observers for transients
     self.documentFilePath_property.removeEBObserver (self.documentFileNameOk_property)
     self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
+    self.documentFilePath_property.removeEBObserver (self.documentIsUnnamed_property)
     self.rootObject.artworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
   //--------------------------- Remove targets / actions
     showPrefsForSettingMergerDisplayButton?.target = nil

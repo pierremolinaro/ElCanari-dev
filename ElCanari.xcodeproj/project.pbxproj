@@ -16,6 +16,7 @@
 		CF0CABED1EB8E3B800DA81FF /* transient-PMArtworkDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CABEB1EB8E3B800DA81FF /* transient-PMArtworkDocument-mStatusMessage.swift */; };
 		CF0EFB331C0382BA0035FF76 /* CharacterSegmentListClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0EFB321C0382BA0035FF76 /* CharacterSegmentListClass.swift */; };
 		CF1069EF20ED5B3C0039CD94 /* transient-BoardModel-backgroundLayerDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1069EE20ED5B3C0039CD94 /* transient-BoardModel-backgroundLayerDisplay.swift */; };
+		CF11892620FE584400639468 /* transient-MergerDocument-documentIsUnnamed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF11892520FE584400639468 /* transient-MergerDocument-documentIsUnnamed.swift */; };
 		CF186B031B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */; };
 		CF18947220EBB70E00B77DCA /* transient-BoardModel-backTracksDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18947020EBB70E00B77DCA /* transient-BoardModel-backTracksDisplay.swift */; };
 		CF18947620EBB7D600B77DCA /* transient-BoardModel-frontTracksDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18947420EBB7D600B77DCA /* transient-BoardModel-frontTracksDisplay.swift */; };
@@ -389,6 +390,7 @@
 		CF0CABEB1EB8E3B800DA81FF /* transient-PMArtworkDocument-mStatusMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PMArtworkDocument-mStatusMessage.swift"; sourceTree = "<group>"; };
 		CF0EFB321C0382BA0035FF76 /* CharacterSegmentListClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSegmentListClass.swift; sourceTree = "<group>"; };
 		CF1069EE20ED5B3C0039CD94 /* transient-BoardModel-backgroundLayerDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backgroundLayerDisplay.swift"; sourceTree = "<group>"; };
+		CF11892520FE584400639468 /* transient-MergerDocument-documentIsUnnamed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerDocument-documentIsUnnamed.swift"; sourceTree = "<group>"; };
 		CF1623061BE25A2B001D351B /* canari-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "canari-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-addLibraryEntryAction.swift"; sourceTree = "<group>"; };
 		CF18947020EBB70E00B77DCA /* transient-BoardModel-backTracksDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backTracksDisplay.swift"; sourceTree = "<group>"; };
@@ -883,6 +885,7 @@
 				CF7357C620F6421C00915629 /* transient-MergerBoardInstance-selectionLayer.swift */,
 				CF18949120EBCD5E00B77DCA /* transient-MergerBoardInstance-viaLayerDisplay.swift */,
 				CF87A87D20F111900011B9EC /* transient-MergerDocument-documentFileNameOk.swift */,
+				CF11892520FE584400639468 /* transient-MergerDocument-documentIsUnnamed.swift */,
 				CF3E2DEF20EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift */,
 				CF87A96520F117150011B9EC /* transient-MergerDocument-incorrectDocumentFileErrorMessage.swift */,
 				CFCC4BE420EAB3E6006A9CC5 /* transient-MergerRoot-boardHeight.swift */,
@@ -1596,6 +1599,7 @@
 				CF3086551B401259005D3BCE /* arrayController-Preferences-additionnalLibraryArrayController.swift in Sources */,
 				CFF5976B1BDD4E17007EDFF9 /* EBCheckedMenuItem.swift in Sources */,
 				CF7FFAF520E5494500DE60BC /* transient-BoardModel-backComponentValueSegments.swift in Sources */,
+				CF11892620FE584400639468 /* transient-MergerDocument-documentIsUnnamed.swift in Sources */,
 				CF1FB93220E57D900050391E /* class-MergerPadArray.swift in Sources */,
 				CFDA579E1BFA524A00EEF3CB /* PMFontDocument.swift in Sources */,
 				CFF2652F20E6833600525C0F /* transient-BoardModel-frontLegendTextsSegments.swift in Sources */,

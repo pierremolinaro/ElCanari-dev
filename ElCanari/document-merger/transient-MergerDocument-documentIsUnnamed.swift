@@ -11,25 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerDocument_documentFileNameOk (
+func compute_MergerDocument_documentIsUnnamed (
        _ self_documentFilePath : String
 ) -> Bool {
 //--- START OF USER ZONE 2
-  var ok = self_documentFilePath != ""
-  if ok {
-    let baseName = self_documentFilePath.lastPathComponent.deletingPathExtension
-    for char in baseName.characters {
-      ok = ((char >= "A") && (char <= "Z"))
-        || ((char >= "a") && (char <= "z"))
-        || ((char >= "0") && (char <= "9"))
-        || (char == "-")
-        || (char == "_")
-      if !ok {
-        break
-      }
-    }
-  }
-  return ok
+  return self_documentFilePath == ""
 //--- END OF USER ZONE 2
 }
 

@@ -28,7 +28,9 @@ func compute_MergerDocument_incorrectDocumentFileErrorMessage (
       }
     }
     if !ok {
-      message = "The name of the document (\(baseName)) contains characters that can cause problems for PCB manufacturers. It is recommended that this name only contains letters (without accent), numbers, and the character '-'."
+      message  = "The name of the document (\(baseName)) contains characters that can cause problems for PCB"
+      message += " manufacturers. It is recommended that this name only contains letters (without any accent),"
+      message += " digits, and the characters '_', '-'."
     }
   }
   return message

@@ -754,10 +754,13 @@ document MergerDocument root MergerRoot {
 
   outlet NSView mDangerView $hidden root.artwork.none | self.documentFileNameOk ;
  
+ transient Bool documentIsUnnamed dependsFrom self.documentFilePath ;
+
   action generateProductFilesAction ;
   outlet EBButton mGenerateProductFilesActionButton
-    $enabled !root.artwork.none & (root.boardInstances.count > 0) & self.documentFileNameOk
-    $run self.generateProductFilesAction ;
+    $enabled !root.artwork.none & (root.boardInstances.count > 0) & !self.documentIsUnnamed
+    $run self.generateProductFilesAction
+  ;
 
   action importArtworkAction ;
   transient String importArtworkButtonTitle dependsFrom root.artworkName ;
