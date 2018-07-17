@@ -2828,9 +2828,6 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
       //--- Remove property observers of old object
         oldValue?.comments_property.removeEBObserversFrom (mObserversOf_comments)
         oldValue?.drillDataFileExtension_property.removeEBObserversFrom (mObserversOf_drillDataFileExtension)
-        oldValue?.drillDataFormat_property.removeEBObserversFrom (mObserversOf_drillDataFormat)
-        oldValue?.drillListFileExtension_property.removeEBObserversFrom (mObserversOf_drillListFileExtension)
-        oldValue?.drillToolListFileExtension_property.removeEBObserversFrom (mObserversOf_drillToolListFileExtension)
         oldValue?.minPPTPTTTW_property.removeEBObserversFrom (mObserversOf_minPPTPTTTW)
         oldValue?.minPPTPTTTWdisplayUnit_property.removeEBObserversFrom (mObserversOf_minPPTPTTTWdisplayUnit)
         oldValue?.minValueForBoardLimitWidth_property.removeEBObserversFrom (mObserversOf_minValueForBoardLimitWidth)
@@ -2843,9 +2840,6 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
       //--- Add property observers to new object
         mValue?.comments_property.addEBObserversFrom (mObserversOf_comments)
         mValue?.drillDataFileExtension_property.addEBObserversFrom (mObserversOf_drillDataFileExtension)
-        mValue?.drillDataFormat_property.addEBObserversFrom (mObserversOf_drillDataFormat)
-        mValue?.drillListFileExtension_property.addEBObserversFrom (mObserversOf_drillListFileExtension)
-        mValue?.drillToolListFileExtension_property.addEBObserversFrom (mObserversOf_drillToolListFileExtension)
         mValue?.minPPTPTTTW_property.addEBObserversFrom (mObserversOf_minPPTPTTTW)
         mValue?.minPPTPTTTWdisplayUnit_property.addEBObserversFrom (mObserversOf_minPPTPTTTWdisplayUnit)
         mValue?.minValueForBoardLimitWidth_property.addEBObserversFrom (mObserversOf_minValueForBoardLimitWidth)
@@ -2970,135 +2964,6 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
     mObserversOf_drillDataFileExtension.remove (inObserver)
     if let object = self.propval {
       object.drillDataFileExtension_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: drillDataFormat
-  //····················································································································
-
-  private var mObserversOf_drillDataFormat = EBWeakEventSet ()
-
-  //····················································································································
-
-  var drillDataFormat_property_selection : EBSelection <DrillDataFormatEnum?> {
-    get {
-      if let model = self.propval {
-        switch (model.drillDataFormat_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_drillDataFormat (_ inObserver : EBEvent) {
-    mObserversOf_drillDataFormat.insert (inObserver)
-    if let object = self.propval {
-      object.drillDataFormat_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_drillDataFormat (_ inObserver : EBEvent) {
-    mObserversOf_drillDataFormat.remove (inObserver)
-    if let object = self.propval {
-      object.drillDataFormat_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: drillListFileExtension
-  //····················································································································
-
-  private var mObserversOf_drillListFileExtension = EBWeakEventSet ()
-
-  //····················································································································
-
-  var drillListFileExtension_property_selection : EBSelection <String?> {
-    get {
-      if let model = self.propval {
-        switch (model.drillListFileExtension_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_drillListFileExtension (_ inObserver : EBEvent) {
-    mObserversOf_drillListFileExtension.insert (inObserver)
-    if let object = self.propval {
-      object.drillListFileExtension_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_drillListFileExtension (_ inObserver : EBEvent) {
-    mObserversOf_drillListFileExtension.remove (inObserver)
-    if let object = self.propval {
-      object.drillListFileExtension_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: drillToolListFileExtension
-  //····················································································································
-
-  private var mObserversOf_drillToolListFileExtension = EBWeakEventSet ()
-
-  //····················································································································
-
-  var drillToolListFileExtension_property_selection : EBSelection <String?> {
-    get {
-      if let model = self.propval {
-        switch (model.drillToolListFileExtension_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_drillToolListFileExtension (_ inObserver : EBEvent) {
-    mObserversOf_drillToolListFileExtension.insert (inObserver)
-    if let object = self.propval {
-      object.drillToolListFileExtension_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_drillToolListFileExtension (_ inObserver : EBEvent) {
-    mObserversOf_drillToolListFileExtension.remove (inObserver)
-    if let object = self.propval {
-      object.drillToolListFileExtension_property.removeEBObserver (inObserver)
     }
   }
 

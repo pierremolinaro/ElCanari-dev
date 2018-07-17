@@ -19,10 +19,7 @@ class ArtworkRoot : EBManagedObject,
   ArtworkRoot_minValueForPHDinEBUnit,
   ArtworkRoot_minValueForBoardLimitWidthDisplayUnit,
   ArtworkRoot_minValueForBoardLimitWidth,
-  ArtworkRoot_drillDataFormat,
-  ArtworkRoot_drillDataFileExtension,
-  ArtworkRoot_drillListFileExtension,
-  ArtworkRoot_drillToolListFileExtension {
+  ArtworkRoot_drillDataFileExtension {
 
   //····················································································································
   //   Accessing selectedTab stored property
@@ -215,25 +212,6 @@ class ArtworkRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing drillDataFormat stored property
-  //····················································································································
-
-  var drillDataFormat : DrillDataFormatEnum {
-    get {
-      return self.drillDataFormat_property.propval
-    }
-    set {
-      self.drillDataFormat_property.setProp (newValue)
-    }
-  }
-
-  var drillDataFormat_property_selection : EBSelection <DrillDataFormatEnum> {
-    get {
-      return self.drillDataFormat_property.prop
-    }
-  }
-
-  //····················································································································
   //   Accessing drillDataFileExtension stored property
   //····················································································································
 
@@ -249,44 +227,6 @@ class ArtworkRoot : EBManagedObject,
   var drillDataFileExtension_property_selection : EBSelection <String> {
     get {
       return self.drillDataFileExtension_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing drillListFileExtension stored property
-  //····················································································································
-
-  var drillListFileExtension : String {
-    get {
-      return self.drillListFileExtension_property.propval
-    }
-    set {
-      self.drillListFileExtension_property.setProp (newValue)
-    }
-  }
-
-  var drillListFileExtension_property_selection : EBSelection <String> {
-    get {
-      return self.drillListFileExtension_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing drillToolListFileExtension stored property
-  //····················································································································
-
-  var drillToolListFileExtension : String {
-    get {
-      return self.drillToolListFileExtension_property.propval
-    }
-    set {
-      self.drillToolListFileExtension_property.setProp (newValue)
-    }
-  }
-
-  var drillToolListFileExtension_property_selection : EBSelection <String> {
-    get {
-      return self.drillToolListFileExtension_property.prop
     }
   }
 
@@ -314,10 +254,7 @@ class ArtworkRoot : EBManagedObject,
   var minValueForPHDinEBUnit_property = EBStoredProperty_Int (18000)
   var minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (90000)
   var minValueForBoardLimitWidth_property = EBStoredProperty_Int (90000)
-  var drillDataFormat_property = EBStoredProperty_DrillDataFormatEnum (DrillDataFormatEnum.excellon)
   var drillDataFileExtension_property = EBStoredProperty_String ("drf")
-  var drillListFileExtension_property = EBStoredProperty_String ("drd")
-  var drillToolListFileExtension_property = EBStoredProperty_String ("drl")
 
   //····················································································································
   //    Transient properties
@@ -349,18 +286,12 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForPHDinEBUnit_property.undoManager = undoManager ()
     self.minValueForBoardLimitWidthDisplayUnit_property.undoManager = undoManager ()
     self.minValueForBoardLimitWidth_property.undoManager = undoManager ()
-    self.drillDataFormat_property.undoManager = undoManager ()
     self.drillDataFileExtension_property.undoManager = undoManager ()
-    self.drillListFileExtension_property.undoManager = undoManager ()
-    self.drillToolListFileExtension_property.undoManager = undoManager ()
   //--- Install owner for relationships
     self.fileGenerationParameterArray_property.owner = self
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.drillDataFileExtension_property.setSignatureObserver (observer:self)
-    self.drillDataFormat_property.setSignatureObserver (observer:self)
-    self.drillListFileExtension_property.setSignatureObserver (observer:self)
-    self.drillToolListFileExtension_property.setSignatureObserver (observer:self)
     self.fileGenerationParameterArray_property.setSignatureObserver (observer:self)
     self.minPPTPTTTW_property.setSignatureObserver (observer:self)
     self.minValueForBoardLimitWidth_property.setSignatureObserver (observer:self)
@@ -461,36 +392,12 @@ class ArtworkRoot : EBManagedObject,
       valueExplorer:&self.minValueForBoardLimitWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "drillDataFormat",
-      idx:self.drillDataFormat_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drillDataFormat_property.mObserverExplorer,
-      valueExplorer:&self.drillDataFormat_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "drillDataFileExtension",
       idx:self.drillDataFileExtension_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drillDataFileExtension_property.mObserverExplorer,
       valueExplorer:&self.drillDataFileExtension_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drillListFileExtension",
-      idx:self.drillListFileExtension_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drillListFileExtension_property.mObserverExplorer,
-      valueExplorer:&self.drillListFileExtension_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "drillToolListFileExtension",
-      idx:self.drillToolListFileExtension_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.drillToolListFileExtension_property.mObserverExplorer,
-      valueExplorer:&self.drillToolListFileExtension_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
@@ -530,14 +437,8 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer = nil
     self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
     self.minValueForBoardLimitWidth_property.mValueExplorer = nil
-    self.drillDataFormat_property.mObserverExplorer = nil
-    self.drillDataFormat_property.mValueExplorer = nil
     self.drillDataFileExtension_property.mObserverExplorer = nil
     self.drillDataFileExtension_property.mValueExplorer = nil
-    self.drillListFileExtension_property.mObserverExplorer = nil
-    self.drillListFileExtension_property.mValueExplorer = nil
-    self.drillToolListFileExtension_property.mObserverExplorer = nil
-    self.drillToolListFileExtension_property.mValueExplorer = nil
     self.fileGenerationParameterArray_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
@@ -558,10 +459,7 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForPHDinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDinEBUnit")
     self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
     self.minValueForBoardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidth")
-    self.drillDataFormat_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFormat")
     self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
-    self.drillListFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillListFileExtension")
-    self.drillToolListFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillToolListFileExtension")
     store (managedObjectArray: fileGenerationParameterArray_property.propval as NSArray, relationshipName:"fileGenerationParameterArray", intoDictionary: ioDictionary) ;
   }
 
@@ -582,10 +480,7 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForPHDinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDinEBUnit")
     self.minValueForBoardLimitWidthDisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidthDisplayUnit")
     self.minValueForBoardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidth")
-    self.drillDataFormat_property.readFrom (dictionary: inDictionary, forKey:"drillDataFormat")
     self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
-    self.drillListFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillListFileExtension")
-    self.drillToolListFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillToolListFileExtension")
     self.fileGenerationParameterArray_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "fileGenerationParameterArray",
       inDictionary: inDictionary,
@@ -634,9 +529,6 @@ class ArtworkRoot : EBManagedObject,
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.comments_property.signature ())
     crc.accumulateUInt32 (self.drillDataFileExtension_property.signature ())
-    crc.accumulateUInt32 (self.drillDataFormat_property.signature ())
-    crc.accumulateUInt32 (self.drillListFileExtension_property.signature ())
-    crc.accumulateUInt32 (self.drillToolListFileExtension_property.signature ())
     crc.accumulateUInt32 (self.fileGenerationParameterArray_property.signature ())
     crc.accumulateUInt32 (self.minPPTPTTTW_property.signature ())
     crc.accumulateUInt32 (self.minValueForBoardLimitWidth_property.signature ())
@@ -1226,63 +1118,6 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   }
 
   //····················································································································
-  //   Observers of 'drillDataFormat' stored property
-  //····················································································································
-
-  private var mObserversOf_drillDataFormat = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drillDataFormat (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_drillDataFormat.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.drillDataFormat_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_drillDataFormat (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_drillDataFormat.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.drillDataFormat_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_drillDataFormat_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_drillDataFormat {
-        managedObject.drillDataFormat_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drillDataFormat_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_drillDataFormat {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drillDataFormat_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'drillDataFileExtension' stored property
   //····················································································································
 
@@ -1340,120 +1175,6 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   }
 
   //····················································································································
-  //   Observers of 'drillListFileExtension' stored property
-  //····················································································································
-
-  private var mObserversOf_drillListFileExtension = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drillListFileExtension (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_drillListFileExtension.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.drillListFileExtension_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_drillListFileExtension (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_drillListFileExtension.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.drillListFileExtension_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_drillListFileExtension_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_drillListFileExtension {
-        managedObject.drillListFileExtension_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drillListFileExtension_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_drillListFileExtension {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drillListFileExtension_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'drillToolListFileExtension' stored property
-  //····················································································································
-
-  private var mObserversOf_drillToolListFileExtension = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_drillToolListFileExtension (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_drillToolListFileExtension.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.drillToolListFileExtension_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_drillToolListFileExtension (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_drillToolListFileExtension.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.drillToolListFileExtension_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_drillToolListFileExtension_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_drillToolListFileExtension {
-        managedObject.drillToolListFileExtension_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_drillToolListFileExtension_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_drillToolListFileExtension {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.drillToolListFileExtension_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -1501,10 +1222,7 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
         removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drillDataFormat_fromElementsOfSet (removedSet)
         removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drillListFileExtension_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drillToolListFileExtension_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
@@ -1519,10 +1237,7 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
         addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedSet)
         addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedSet)
         addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedSet)
-        addEBObserversOf_drillDataFormat_toElementsOfSet (addedSet)
         addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedSet)
-        addEBObserversOf_drillListFileExtension_toElementsOfSet (addedSet)
-        addEBObserversOf_drillToolListFileExtension_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
       //--- Update object set
         mSet = newSet
@@ -1614,26 +1329,8 @@ protocol ArtworkRoot_minValueForBoardLimitWidth : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_drillDataFormat : class {
-  var drillDataFormat : DrillDataFormatEnum { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ArtworkRoot_drillDataFileExtension : class {
   var drillDataFileExtension : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_drillListFileExtension : class {
-  var drillListFileExtension : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_drillToolListFileExtension : class {
-  var drillToolListFileExtension : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -31,9 +31,6 @@
                 <outlet property="mDrawTracksTopSideSwitch" destination="289" id="UQi-79-QmQ"/>
                 <outlet property="mDrawViasSwitch" destination="284" id="CNh-xd-EtB"/>
                 <outlet property="mDrillDataFileExtensionTextField" destination="Gtj-h4-Qq4" id="6BW-KL-d8o"/>
-                <outlet property="mDrillDataFormatTabView" destination="Pmf-eX-ybc" id="nil-9O-08P"/>
-                <outlet property="mDrillListFileExtensionTextField" destination="mHn-rI-Eg8" id="fkl-l1-wde"/>
-                <outlet property="mDrillToolListFileExtensionTextField" destination="Mi5-mY-QX2" id="v3O-Nl-jXx"/>
                 <outlet property="mExtensionTextField" destination="297" id="kpz-tk-jB7"/>
                 <outlet property="mGeneratedFileCountTextField" destination="lrV-dp-Ndm" id="kg7-gp-Gmg"/>
                 <outlet property="mHorizontalMirrorSwitch" destination="581" id="iZc-iJ-WOF"/>
@@ -82,7 +79,6 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="551"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="553"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="554"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="555"/>
                     <toolbarItem implicitItemIdentifier="31A641FE-27C6-4A4A-A007-121B041D6BB6" label="Status" paletteLabel="Status" image="red20" id="X1d-O0-5kQ">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
@@ -123,18 +119,18 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="24A243B7-8AA5-4BDF-8539-FBF74629FEFD" label="Page" paletteLabel="Page" id="559">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="237" height="23"/>
-                        <size key="maxSize" width="241" height="25"/>
+                        <size key="minSize" width="208" height="20"/>
+                        <size key="maxSize" width="265" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="557" customClass="CanariSegmentedControl">
-                            <rect key="frame" x="0.0" y="14" width="237" height="23"/>
+                            <rect key="frame" x="0.0" y="14" width="265" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="selectOne" id="558">
-                                <font key="font" metaFont="system"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="558">
+                                <font key="font" metaFont="cellTitle"/>
                                 <segments>
-                                    <segment label="Minima"/>
-                                    <segment label="Format" tag="1"/>
-                                    <segment label="Data"/>
-                                    <segment label="Infos" selected="YES"/>
+                                    <segment label="Minima" width="64"/>
+                                    <segment label="Drill" width="64" tag="1"/>
+                                    <segment label="Data" width="64"/>
+                                    <segment label="Infos" width="64" selected="YES"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -148,15 +144,17 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="552"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="556"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="555"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
-                    <toolbarItem reference="X1d-O0-5kQ"/>
                     <toolbarItem reference="559"/>
                     <toolbarItem reference="rBJ-XG-abp"/>
                     <toolbarItem reference="rMC-j2-j2J"/>
+                    <toolbarItem reference="555"/>
+                    <toolbarItem reference="X1d-O0-5kQ"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="572" y="227"/>
+            <point key="canvasLocation" x="739" y="197"/>
         </window>
         <customView misplaced="YES" id="215" userLabel="Page : Minima" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="618" height="505"/>
@@ -345,91 +343,19 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
             </subviews>
             <point key="canvasLocation" x="-64" y="105.5"/>
         </customView>
-        <customView id="260" userLabel="Page : Format" customClass="CanariViewWithKeyView">
+        <customView id="260" userLabel="Page : Drill" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="618" height="410"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
-                <tabView id="Pmf-eX-ybc" customClass="CanariDrillDataFormatTabView">
-                    <rect key="frame" x="13" y="178" width="592" height="172"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="Gtj-h4-Qq4" customClass="EBTextField">
+                    <rect key="frame" x="321" y="322" width="240" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <font key="font" metaFont="system"/>
-                    <tabViewItems>
-                        <tabViewItem label="Excellon" identifier="1" id="Oyr-bv-EQK">
-                            <view key="view" id="PSg-lH-CmU">
-                                <rect key="frame" x="10" y="33" width="572" height="126"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <userGuides>
-                                    <userLayoutGuide location="70" affinity="minY"/>
-                                    <userLayoutGuide location="436" affinity="minX"/>
-                                </userGuides>
-                                <subviews>
-                                    <textField verticalHuggingPriority="750" id="Gtj-h4-Qq4" customClass="EBTextField">
-                                        <rect key="frame" x="315" y="59" width="240" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="xyz" drawsBackground="YES" id="Nwr-1t-yY8">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField verticalHuggingPriority="750" id="pY3-wY-vKY">
-                                        <rect key="frame" x="40" y="61" width="269" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Drill Information File Extension:" id="KjA-FC-88h">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                            </view>
-                        </tabViewItem>
-                        <tabViewItem label="Excellon with Separate Tool List File" identifier="2" id="3sy-wT-aXE">
-                            <view key="view" id="wPQ-oL-yZf">
-                                <rect key="frame" x="10" y="33" width="572" height="126"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <textField verticalHuggingPriority="750" id="mHn-rI-Eg8" customClass="EBTextField">
-                                        <rect key="frame" x="315" y="43" width="240" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="xyz" drawsBackground="YES" id="n78-PR-ZxV">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField verticalHuggingPriority="750" id="Mi5-mY-QX2" customClass="EBTextField">
-                                        <rect key="frame" x="315" y="75" width="240" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="xyz" drawsBackground="YES" id="w63-AN-yz9">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField verticalHuggingPriority="750" id="cdf-Lj-6uj">
-                                        <rect key="frame" x="39" y="77" width="270" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Tool List File Extension:" id="VNL-7h-F0C">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField verticalHuggingPriority="750" id="xxC-bx-KRJ">
-                                        <rect key="frame" x="39" y="45" width="270" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Drill File Extension:" id="rOG-7V-3dt">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                            </view>
-                        </tabViewItem>
-                    </tabViewItems>
-                </tabView>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="xyz" drawsBackground="YES" id="Nwr-1t-yY8">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <textField verticalHuggingPriority="750" id="08K-n2-IxX">
                     <rect key="frame" x="240" y="373" width="138" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -439,8 +365,17 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="pY3-wY-vKY">
+                    <rect key="frame" x="46" y="325" width="269" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Drill Information File Extension" id="KjA-FC-88h">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="35" y="-176"/>
+            <point key="canvasLocation" x="2419" y="46"/>
         </customView>
         <customView id="276" userLabel="Page : Files" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="618" height="505"/>
@@ -454,20 +389,20 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                             <rect key="frame" x="0.0" y="0.0" width="210" height="505"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <button id="304" customClass="EBButton">
-                                    <rect key="frame" x="23" y="20" width="24" height="24"/>
+                                <button verticalHuggingPriority="750" id="304" customClass="EBButton">
+                                    <rect key="frame" x="23" y="20" width="24" height="19"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="square" title="-" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" inset="2" id="532">
+                                    <buttonCell key="cell" type="roundRect" title="-" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="532">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="smallSystem"/>
+                                        <font key="font" metaFont="cellTitle"/>
                                     </buttonCell>
                                 </button>
-                                <button id="300" customClass="EBButton">
-                                    <rect key="frame" x="0.0" y="20" width="24" height="24"/>
+                                <button verticalHuggingPriority="750" id="300" customClass="EBButton">
+                                    <rect key="frame" x="0.0" y="20" width="24" height="19"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="square" title="+" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" inset="2" id="531">
-                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="smallSystem"/>
+                                    <buttonCell key="cell" type="roundRect" title="+" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="531">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="cellTitle"/>
                                     </buttonCell>
                                 </button>
                                 <scrollView focusRingType="none" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="301">
@@ -553,7 +488,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                             <subviews>
                                 <customView misplaced="YES" id="621">
                                     <rect key="frame" x="163" y="50" width="189" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" id="596" customClass="CanariDimensionTextField">
                                             <rect key="frame" x="58" y="2" width="56" height="19"/>
@@ -571,10 +506,19 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <popUpButton id="597" customClass="EBPopUpButton">
-                                            <rect key="frame" x="122" y="0.0" width="67" height="22"/>
+                                        <textField verticalHuggingPriority="750" id="618">
+                                            <rect key="frame" x="-2" y="4" width="57" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" inset="2" preferredEdge="maxY" id="598">
+                                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="Diameter:" id="619">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton misplaced="YES" id="597" customClass="EBPopUpButton">
+                                            <rect key="frame" x="116" y="3" width="73" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" inset="2" preferredEdge="maxY" id="598">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <menu key="menu" title="OtherViews" id="599">
@@ -590,20 +534,11 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                                 </menu>
                                             </popUpButtonCell>
                                         </popUpButton>
-                                        <textField verticalHuggingPriority="750" id="618">
-                                            <rect key="frame" x="-2" y="4" width="57" height="14"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="Diameter:" id="619">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                     </subviews>
                                 </customView>
                                 <button misplaced="YES" id="281" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="52" width="115" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Pad Holes in PDF" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="513">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
@@ -816,20 +751,12 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                     </holdingPriorities>
                 </splitView>
             </subviews>
-            <point key="canvasLocation" x="-116" y="-159"/>
+            <point key="canvasLocation" x="-116" y="-159.5"/>
         </customView>
         <customView id="323" userLabel="Page : Infos" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="618" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button toolTip="Resets version to 0.0 and clears history." id="336" customClass="EBButton">
-                    <rect key="frame" x="256" y="547" width="176" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Reset Version and Signature" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="538">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
                 <textField verticalHuggingPriority="750" id="334" customClass="CanariSignatureField">
                     <rect key="frame" x="101" y="541" width="94" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -913,8 +840,16 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button toolTip="Resets version to 0.0 and clears history." verticalHuggingPriority="750" misplaced="YES" id="336" customClass="EBButton">
+                    <rect key="frame" x="211" y="560" width="176" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Reset Version and Signature" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="538">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="-149" y="350.5"/>
+            <point key="canvasLocation" x="254" y="304"/>
         </customView>
     </objects>
     <resources>

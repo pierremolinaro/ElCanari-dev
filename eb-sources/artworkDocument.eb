@@ -2,13 +2,6 @@
 #     A R T W O R K    D O C U M E N T
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum DrillDataFormatEnum {excellon, excellonWithSeparateToolList}
-
-extern outlet class CanariDrillDataFormatTabView ;
-binding CanariDrillDataFormatTabView $selectedFormat : property DrillDataFormatEnum ;
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 entity ArtworkRoot {
   toMany @cascading @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
   property Int selectedTab default 0 ;
@@ -26,14 +19,8 @@ entity ArtworkRoot {
   property Int minValueForBoardLimitWidthDisplayUnit default 90_000 ; # 1mm
   property @signature Int minValueForBoardLimitWidth default 90_000 ; # 1mm
 
-  property @signature DrillDataFormatEnum drillDataFormat default excellon ;
-
 #--- Excellon drill data
   property @signature String drillDataFileExtension default "drf" ;
-
-#--- Excellon drill data with separate tool list file
-  property @signature String drillListFileExtension default "drd" ;
-  property @signature String drillToolListFileExtension default "drl" ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -63,13 +50,8 @@ document PMArtworkDocument root ArtworkRoot {
      $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit
   ;
 
-#--- Format tab
-  outlet CanariDrillDataFormatTabView mDrillDataFormatTabView $selectedFormat root.drillDataFormat ;
-
+#--- Drill Page
   outlet EBTextField mDrillDataFileExtensionTextField $value root.drillDataFileExtension {sendContinously:no} ;
-
-  outlet EBTextField mDrillListFileExtensionTextField $value root.drillListFileExtension {sendContinously:no} ;
-  outlet EBTextField mDrillToolListFileExtensionTextField $value root.drillToolListFileExtension {sendContinously:no} ;
 
 #--- Data Tab
   outlet EBTableView mDataTableView $tableValue mDataController ;

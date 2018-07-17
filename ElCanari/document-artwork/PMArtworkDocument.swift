@@ -35,9 +35,6 @@ import Cocoa
   @IBOutlet var mDrawTracksTopSideSwitch : EBSwitch?
   @IBOutlet var mDrawViasSwitch : EBSwitch?
   @IBOutlet var mDrillDataFileExtensionTextField : EBTextField?
-  @IBOutlet var mDrillDataFormatTabView : CanariDrillDataFormatTabView?
-  @IBOutlet var mDrillListFileExtensionTextField : EBTextField?
-  @IBOutlet var mDrillToolListFileExtensionTextField : EBTextField?
   @IBOutlet var mExtensionTextField : EBTextField?
   @IBOutlet var mGeneratedFileCountTextField : EBTextObserverField?
   @IBOutlet var mHorizontalMirrorSwitch : EBSwitch?
@@ -382,33 +379,6 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mDrillDataFileExtensionTextField' outlet is not an instance of 'EBTextField'") ;
     }
-    if nil == mDrillDataFormatTabView {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDrillDataFormatTabView' outlet is nil") ;
-//    }else if !mDrillDataFormatTabView!.isKindOfClass (CanariDrillDataFormatTabView) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDrillDataFormatTabView' outlet is not an instance of 'CanariDrillDataFormatTabView'") ;
-    }
-    if nil == mDrillListFileExtensionTextField {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDrillListFileExtensionTextField' outlet is nil") ;
-//    }else if !mDrillListFileExtensionTextField!.isKindOfClass (EBTextField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDrillListFileExtensionTextField' outlet is not an instance of 'EBTextField'") ;
-    }
-    if nil == mDrillToolListFileExtensionTextField {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mDrillToolListFileExtensionTextField' outlet is nil") ;
-//    }else if !mDrillToolListFileExtensionTextField!.isKindOfClass (EBTextField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mDrillToolListFileExtensionTextField' outlet is not an instance of 'EBTextField'") ;
-    }
     if nil == mExtensionTextField {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -694,10 +664,7 @@ import Cocoa
     mPHDValueTextField?.bind_dimensionAndUnit (self.rootObject.minValueForPHDinEBUnit_property, self.rootObject.minValueForPHDdisplayUnit_property, file: #file, line: #line)
     minValueForBoardLimitUnitPopUp?.bind_selectedTag (self.rootObject.minValueForBoardLimitWidthDisplayUnit_property, file: #file, line: #line)
     minValueForBoardLimitTextField?.bind_dimensionAndUnit (self.rootObject.minValueForBoardLimitWidth_property, self.rootObject.minValueForBoardLimitWidthDisplayUnit_property, file: #file, line: #line)
-    mDrillDataFormatTabView?.bind_selectedFormat (self.rootObject.drillDataFormat_property, file: #file, line: #line)
     mDrillDataFileExtensionTextField?.bind_value (self.rootObject.drillDataFileExtension_property, file: #file, line: #line, sendContinously:false)
-    mDrillListFileExtensionTextField?.bind_value (self.rootObject.drillListFileExtension_property, file: #file, line: #line, sendContinously:false)
-    mDrillToolListFileExtensionTextField?.bind_value (self.rootObject.drillToolListFileExtension_property, file: #file, line: #line, sendContinously:false)
     mExtensionTextField?.bind_value (self.mDataSelection.fileExtension_property, file: #file, line: #line, sendContinously:false)
     mDrawBoardInternalLimitsSwitch?.bind_value (self.mDataSelection.drawInternalBoardLimits_property, file: #file, line: #line)
     mDrawBoardLimitsSwitch?.bind_value (self.mDataSelection.drawBoardLimits_property, file: #file, line: #line)
@@ -778,10 +745,7 @@ import Cocoa
     mPHDValueTextField?.unbind_dimensionAndUnit ()
     minValueForBoardLimitUnitPopUp?.unbind_selectedTag ()
     minValueForBoardLimitTextField?.unbind_dimensionAndUnit ()
-    mDrillDataFormatTabView?.unbind_selectedFormat ()
     mDrillDataFileExtensionTextField?.unbind_value ()
-    mDrillListFileExtensionTextField?.unbind_value ()
-    mDrillToolListFileExtensionTextField?.unbind_value ()
     mExtensionTextField?.unbind_value ()
     mDrawBoardInternalLimitsSwitch?.unbind_value ()
     mDrawBoardLimitsSwitch?.unbind_value ()
@@ -862,9 +826,6 @@ import Cocoa
     self.mDrawTracksTopSideSwitch?.ebCleanUp ()
     self.mDrawViasSwitch?.ebCleanUp ()
     self.mDrillDataFileExtensionTextField?.ebCleanUp ()
-    self.mDrillDataFormatTabView?.ebCleanUp ()
-    self.mDrillListFileExtensionTextField?.ebCleanUp ()
-    self.mDrillToolListFileExtensionTextField?.ebCleanUp ()
     self.mExtensionTextField?.ebCleanUp ()
     self.mGeneratedFileCountTextField?.ebCleanUp ()
     self.mHorizontalMirrorSwitch?.ebCleanUp ()
