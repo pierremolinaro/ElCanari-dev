@@ -1,6 +1,9 @@
 {
   "NOTE" : ["Compatible with Xcode 9.4.1"],
-  "BUGFIX" : ["Merger: artwork label position in model page"],
+  "BUGFIX" : [
+    "Merger: artwork label position in model page",
+    "Merger: remove model button activation"
+  ],
   "CHANGE" : ["Merger: '-' and '_' characters are allowed in merger documents"],
   "NEW" : []
 }
