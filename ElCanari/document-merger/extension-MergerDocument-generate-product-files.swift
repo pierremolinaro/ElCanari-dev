@@ -310,15 +310,16 @@ extension MergerDocument {
             }
           }
         }
-        let view = CanariOffscreenView (frame: cocoaBoardRect)
-        view.setBackColor (NSColor.white)
+//        let view = CanariOffscreenView (frame: cocoaBoardRect)
+//        view.setBackColor (NSColor.white)
         let paths : [([NSBezierPath], NSColor, StrokeOrFill)] = [
           (strokeBezierPaths, NSColor.black, .stroke),
           (filledBezierPaths, NSColor.black, .fill),
           (holeBezierPaths, NSColor.white, .fill)
         ]
-        view.setPaths (paths)
-        let pdfData : Data = view.dataWithPDF (inside: cocoaBoardRect)
+   //     view.setPaths (paths)
+        let pdfData = buildPDFimage (frame:cocoaBoardRect, paths: paths, backgroundColor:NSColor.white)
+   //     let pdfData : Data = view.dataWithPDF (inside: cocoaBoardRect)
         try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
         mLogTextView?.appendSuccessString (" Ok\n")
       }

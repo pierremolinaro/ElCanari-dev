@@ -109,12 +109,14 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
       dragImageOffset.pointee = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
     //--- Build image
       let r = CGRect (x:0.0, y:0.0, width : width, height:height)
-      let offScreenView = CanariOffscreenView (frame: r)
-      offScreenView.setBackColor (NSColor.gray.withAlphaComponent (0.25))
+//      let offScreenView = CanariOffscreenView (frame: r)
+//      offScreenView.setBackColor (NSColor.gray.withAlphaComponent (0.25))
       let bp = NSBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
       bp.lineWidth = 1.0
-      offScreenView.setPaths ([([bp], NSColor.gray, .stroke)])
-      let pdfData : Data = offScreenView.dataWithPDF (inside: r)
+//      offScreenView.setPaths ([([bp], NSColor.gray, .stroke)])
+      let paths = [([bp], NSColor.gray, StrokeOrFill.stroke)]
+      let pdfData = buildPDFimage (frame:r, paths: paths, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
+   //   let pdfData : Data = offScreenView.dataWithPDF (inside: r)
       return NSImage (data: pdfData)!
     }else{
       return NSImage (named: "exclamation")!

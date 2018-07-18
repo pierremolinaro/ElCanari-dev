@@ -10,6 +10,19 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Build PDF image
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func buildPDFimage (frame inFrame: CGRect,
+                    paths inPaths: [([NSBezierPath], NSColor, StrokeOrFill)],
+                    backgroundColor inBackColor : NSColor? = nil) -> Data {
+  let view = CanariOffscreenView (frame: inFrame)
+  view.setBackColor (inBackColor)
+  view.setPaths (inPaths)
+  return view.dataWithPDF (inside: inFrame)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum StrokeOrFill {
   case stroke
@@ -20,7 +33,7 @@ enum StrokeOrFill {
 //   CanariOffscreenView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariOffscreenView : NSView, EBUserClassNameProtocol {
+fileprivate final class CanariOffscreenView : NSView, EBUserClassNameProtocol {
 
   private var mBezierPaths = [([NSBezierPath], NSColor, StrokeOrFill)] ()
   private var mBackColor : NSColor? = nil
@@ -57,7 +70,7 @@ class CanariOffscreenView : NSView, EBUserClassNameProtocol {
   //  Set back color
   //····················································································································
 
-  func setBackColor (_ inColor : NSColor) {
+  func setBackColor (_ inColor : NSColor?) {
     self.mBackColor = inColor
   }
 
