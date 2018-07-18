@@ -1540,12 +1540,12 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return ((self.mBoardModelController.selectedArray_property.count_property_selection > EBSelection.single (0)) && (self.rootObject.boardInstances_property.count_property_selection == EBSelection.single (0)))
+          return ((self.mBoardModelController.selectedArray_property.count_property_selection > EBSelection.single (0)) && (self.mBoardModelSelection.instanceCount_property_selection == EBSelection.single (0)))
         },
         outlet:self.removeBoardModelButton
       )
       self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
-      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
+      self.mBoardModelSelection.instanceCount_property.addEBObserver (controller)
       mController_removeBoardModelButton_enabled = controller
     }
     do{
@@ -1781,7 +1781,7 @@ import Cocoa
     self.rootObject.boardModels_property.count_property.removeEBObserver (mController_mNoModelMessage_hidden!)
     mController_mNoModelMessage_hidden = nil
     self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_removeBoardModelButton_enabled!)
-    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_removeBoardModelButton_enabled!)
+    self.mBoardModelSelection.instanceCount_property.removeEBObserver (mController_removeBoardModelButton_enabled!)
     mController_removeBoardModelButton_enabled = nil
     self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_updateBoardModelButton_enabled!)
     mController_updateBoardModelButton_enabled = nil

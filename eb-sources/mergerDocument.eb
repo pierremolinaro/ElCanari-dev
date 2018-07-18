@@ -619,7 +619,7 @@ document MergerDocument root MergerRoot {
 #--- Remove board model
   outlet EBButton removeBoardModelButton
     $run mBoardModelController.remove
-    $enabled (mBoardModelController.selectedArray.count > 0) & (root.boardInstances.count == 0)
+    $enabled (mBoardModelController.selectedArray.count > 0) & (mBoardModelSelection.instanceCount == 0)
   ;
 
 #--- Update board model
