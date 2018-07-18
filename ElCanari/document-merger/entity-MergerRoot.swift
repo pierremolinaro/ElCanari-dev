@@ -2649,6 +2649,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
         let removedObjectSet = oldSet.subtracting (mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
+          managedObject.myRoot_property.owner = nil ;
         }
         removeEBObserversOf_backComponentNameDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentValueDisplay_fromElementsOfSet (removedObjectSet)
@@ -2681,6 +2682,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : MergerBoardInstance in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          managedObject.myRoot_property.setProp (owner)
         }
         addEBObserversOf_backComponentNameDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentValueDisplay_toElementsOfSet (addedObjectSet)

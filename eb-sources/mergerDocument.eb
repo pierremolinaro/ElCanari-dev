@@ -86,8 +86,7 @@ entity BoardModelVia {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity BoardModel {
-  
+entity BoardModel {  
   property String artworkName default "" ;
   property String name default "" ;
   property Int modelWidth default 0 ;
@@ -408,6 +407,7 @@ entity BoardModel {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity MergerBoardInstance {
+  toOne MergerRoot myRoot inverse toMany boardInstances ;
   toOne BoardModel myModel inverse toMany myInstances ;
   property Int x default 0 ;
   property Int y default 0 ;
@@ -488,7 +488,7 @@ graphic entity MergerBoardInstance {
     dependsFrom self.x, self.y, prefs.mergerColorBackPackages, prefs.mergerBoardViewDisplayBackPackages, self.myModel.one.backPackagesSegments ;
 
   transient CALayer newInstanceLayerDisplay dependsFrom
-    self.x, self.y, self.myModel.one.imageForInstances
+    self.x, self.y, self.myRoot.one.zoom, self.myModel.one.imageForInstances
   ;
 
   transient CALayer instanceLayerDisplay dependsFrom
@@ -519,7 +519,7 @@ graphic entity MergerBoardInstance {
 
 entity MergerRoot {
   toMany @cascading BoardModel boardModels ;
-  toMany @cascading MergerBoardInstance boardInstances ;
+  toMany @cascading MergerBoardInstance boardInstances inverse toOne myRoot ;
 
   property Int selectedPageIndex default 0 ;
   property Int zoom default 100 ;

@@ -14,6 +14,7 @@ import Cocoa
 func compute_MergerBoardInstance_newInstanceLayerDisplay (
        _ self_x : Int,                                    
        _ self_y : Int,                                    
+       _ self_myRoot_zoom : Int?,                         
        _ self_myModel_imageForInstances : NSImage?
 ) -> CALayer {
 //--- START OF USER ZONE 2
@@ -22,7 +23,7 @@ func compute_MergerBoardInstance_newInstanceLayerDisplay (
   //--- This display image, but it is blurred with large zooms
 //    layer.contents = image
   //--- This displays best image
-    let actualScale = image.recommendedLayerContentsScale (0.0)
+    let actualScale = image.recommendedLayerContentsScale (CGFloat (self_myRoot_zoom!) / 100.0)
     layer.contents = image.layerContents (forContentsScale:actualScale)
     layer.contentsScale = actualScale
   //---
