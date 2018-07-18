@@ -28,6 +28,7 @@ transient property class MergerHoleArray ;
 transient property class MergerBoardModelArray ;
 
 transient property struct CanariBoardRect ;
+transient property class BezierPathArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -102,8 +103,7 @@ entity BoardModel {
   transient Int instanceCount dependsFrom self.myInstances.count ;
 
 #--- Background
-  transient CALayer backgroundLayerDisplay
-     dependsFrom prefs.mergerColorBackground, self.modelWidth, self.modelHeight ;
+  transient CALayer backgroundLayerDisplay dependsFrom prefs.mergerColorBackground, self.modelWidth, self.modelHeight ;
 
 #--- Front Legend Lines
   toMany @cascading CanariSegment frontLegendLines ;
@@ -203,6 +203,8 @@ entity BoardModel {
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
 
+  transient BezierPathArray viasBezierPaths dependsFrom self.viaShapes ;
+
   transient CALayer viaLayerDisplay dependsFrom prefs.mergerColorVias, prefs.mergerModelViewDisplayVias, self.viaShapes ;
 
 #--- Pads
@@ -212,6 +214,8 @@ entity BoardModel {
   transient MergerPadArray frontPads
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
                 self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
+
+  transient BezierPathArray frontPadsBezierPaths dependsFrom self.frontPads ;
 
   transient CALayer frontPadsDisplay dependsFrom prefs.mergerColorFrontPads, prefs.mergerModelViewDisplayFrontPads, self.frontPads ;
 
@@ -229,6 +233,8 @@ entity BoardModel {
   transient MergerBoardLimits boardLimits
     dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth, prefs.mergerModelViewDisplayBoardLimits
   ;
+
+  transient BezierPathArray boardLimitsBezierPaths dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth ;
 
   transient CALayer boardLimitsDisplay dependsFrom prefs.mergerColorBoardLimits, prefs.mergerModelViewDisplayBoardLimits, self.boardLimits ;
  
@@ -289,6 +295,8 @@ entity BoardModel {
     self.backTracks.all.width
   ;
 
+  transient BezierPathArray backTracksBezierPaths dependsFrom self.backTrackSegments ;
+
   transient CALayer backTracksDisplay dependsFrom prefs.mergerColorBackTracks, prefs.mergerModelViewDisplayBackTracks, self.backTrackSegments ;
 
 #--- Front tracks
@@ -299,6 +307,8 @@ entity BoardModel {
     self.frontTracks.all.x2, self.frontTracks.all.y2,
     self.frontTracks.all.width
   ;
+
+  transient BezierPathArray frontTracksBezierPaths dependsFrom self.frontTrackSegments ;
 
   transient CALayer frontTracksDisplay
     dependsFrom prefs.mergerColorFrontTracks, prefs.mergerModelViewDisplayFrontTracks, self.frontTrackSegments ;
@@ -325,6 +335,50 @@ entity BoardModel {
   ;
 
   transient CALayer backPackagesDisplay dependsFrom prefs.mergerColorBackPackages, prefs.mergerModelViewDisplayBackPackages, self.backPackagesSegments ;
+
+#----
+  transient NSImage imageForInstances dependsFrom
+    prefs.mergerColorBackground,
+    self.modelWidth,
+    self.modelHeight,
+# Front tracks
+    self.frontTracksBezierPaths,
+    prefs.mergerBoardViewDisplayFrontTracks,
+    prefs.mergerColorFrontTracks,
+# Back tracks
+    self.backTracksBezierPaths,
+    prefs.mergerBoardViewDisplayBackTracks,
+    prefs.mergerColorBackTracks,
+# Internal Board limits
+    self.boardLimitsBezierPaths,
+    prefs.mergerBoardViewDisplayInternalBoardLimits,
+    prefs.mergerColorInternalBoardLimits,
+#--- Front pads
+    self.frontPadsBezierPaths,
+    prefs.mergerBoardViewDisplayFrontPads,
+    prefs.mergerColorFrontPads,
+#--- Vias
+    self.viasBezierPaths,    
+    prefs.mergerBoardViewDisplayVias,
+    prefs.mergerColorVias
+#    self.backgroundLayerDisplay,
+#    self.backLegendTextsLayerDisplay,
+#    self.backLayoutTextsLayerDisplay,
+#    self.frontLegendTextsLayerDisplay,
+#    self.frontLayoutTextsLayerDisplay,
+#    self.holeLayerDisplay,
+#    self.viaLayerDisplay,
+#    self.backPadsDisplay,
+#    self.boardLimitsDisplay,
+#    self.backComponentNameDisplay,
+#    self.frontComponentNameDisplay,
+#    self.frontComponentValueDisplay,
+#    self.backComponentValueDisplay,
+#    self.frontPackagesDisplay,
+#    self.backPackagesDisplay,
+#    self.backLegendLinesLayerDisplay,
+#    self.frontLegendLinesLayerDisplay
+  ;
 
 #----
   transient CALayer modelLayerDisplay dependsFrom
@@ -433,6 +487,10 @@ graphic entity MergerBoardInstance {
   transient CALayer backPackagesDisplay
     dependsFrom self.x, self.y, prefs.mergerColorBackPackages, prefs.mergerBoardViewDisplayBackPackages, self.myModel.one.backPackagesSegments ;
 
+  transient CALayer newInstanceLayerDisplay dependsFrom
+    self.x, self.y, self.myModel.one.imageForInstances
+  ;
+
   transient CALayer instanceLayerDisplay dependsFrom
     self.backgroundLayerDisplay,
     self.backLegendTextsLayerDisplay,
@@ -483,7 +541,7 @@ entity MergerRoot {
 
 #--- Instance display
   transient CALayer instancesLayerDisplay
-    dependsFrom self.boardLimitsLayerDisplay, self.boardInstances.all.instanceLayerDisplay ;
+    dependsFrom self.boardLimitsLayerDisplay, self.boardInstances.all.newInstanceLayerDisplay ;
 
 #--- Board rect
   transient CanariBoardRect boardRect dependsFrom self.boardInstances.all.instanceRect ;

@@ -128,6 +128,35 @@ final class MergerPadArray : EBSimpleClass {
 
   //····················································································································
 
+  func buidBezierPaths () -> BezierPathArray {
+    var result = BezierPathArray ()
+      for pad in self.padArray {
+      let width = canariUnitToCocoa (pad.width)
+      let height = canariUnitToCocoa (pad.height)
+      let r = CGRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
+      let bp : NSBezierPath
+      switch pad.shape {
+      case .rectangular :
+        bp = NSBezierPath (rect:r)
+      case .round :
+        if pad.width < pad.height {
+          bp = NSBezierPath (roundedRect:r, xRadius:width / 2.0, yRadius:width / 2.0)
+        }else if pad.width > pad.height {
+          bp = NSBezierPath (roundedRect:r, xRadius:height / 2.0, yRadius:height / 2.0)
+        }else{
+          bp = NSBezierPath (ovalIn:r)
+        }
+      }
+      var transform = AffineTransform (translationByX: canariUnitToCocoa (pad.x), byY: canariUnitToCocoa (pad.y))
+      transform.rotate (byRadians: canariRotationToRadians (pad.rotation))
+      bp.transform (using: transform)
+      result.append (bp)
+    }
+    return result
+  }
+
+  //····················································································································
+
   func addPads (toFilledBezierPaths ioBezierPaths : inout [NSBezierPath],
                 dx inDx : Int,
                 dy inDy: Int,

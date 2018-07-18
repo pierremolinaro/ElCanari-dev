@@ -40,7 +40,7 @@ fileprivate final class CanariOffscreenView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override init(frame frameRect: NSRect) {
+  override init (frame frameRect: NSRect) {
     super.init (frame: frameRect)
     noteObjectAllocation (self)
   }

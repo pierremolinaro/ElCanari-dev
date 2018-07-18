@@ -37,12 +37,15 @@ class BoardModel : EBManagedObject,
   BoardModel_holes,
   BoardModel_holeLayerDisplay,
   BoardModel_viaShapes,
+  BoardModel_viasBezierPaths,
   BoardModel_viaLayerDisplay,
   BoardModel_frontPads,
+  BoardModel_frontPadsBezierPaths,
   BoardModel_frontPadsDisplay,
   BoardModel_backPads,
   BoardModel_backPadsDisplay,
   BoardModel_boardLimits,
+  BoardModel_boardLimitsBezierPaths,
   BoardModel_boardLimitsDisplay,
   BoardModel_backComponentNameSegments,
   BoardModel_backComponentNameDisplay,
@@ -53,13 +56,16 @@ class BoardModel : EBManagedObject,
   BoardModel_backComponentValueSegments,
   BoardModel_backComponentValueDisplay,
   BoardModel_backTrackSegments,
+  BoardModel_backTracksBezierPaths,
   BoardModel_backTracksDisplay,
   BoardModel_frontTrackSegments,
+  BoardModel_frontTracksBezierPaths,
   BoardModel_frontTracksDisplay,
   BoardModel_frontPackagesSegments,
   BoardModel_frontPackagesDisplay,
   BoardModel_backPackagesSegments,
   BoardModel_backPackagesDisplay,
+  BoardModel_imageForInstances,
   BoardModel_modelLayerDisplay {
 
   //····················································································································
@@ -595,6 +601,25 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing viasBezierPaths transient property
+  //····················································································································
+
+  var viasBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    get {
+      return self.viasBezierPaths_property.prop
+    }
+  }
+
+  var viasBezierPaths : BezierPathArray? {
+    switch viasBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Accessing viaLayerDisplay transient property
   //····················································································································
 
@@ -625,6 +650,25 @@ class BoardModel : EBManagedObject,
 
   var frontPads : MergerPadArray? {
     switch frontPads_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontPadsBezierPaths transient property
+  //····················································································································
+
+  var frontPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    get {
+      return self.frontPadsBezierPaths_property.prop
+    }
+  }
+
+  var frontPadsBezierPaths : BezierPathArray? {
+    switch frontPadsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -701,6 +745,25 @@ class BoardModel : EBManagedObject,
 
   var boardLimits : MergerBoardLimits? {
     switch boardLimits_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardLimitsBezierPaths transient property
+  //····················································································································
+
+  var boardLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    get {
+      return self.boardLimitsBezierPaths_property.prop
+    }
+  }
+
+  var boardLimitsBezierPaths : BezierPathArray? {
+    switch boardLimitsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -899,6 +962,25 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing backTracksBezierPaths transient property
+  //····················································································································
+
+  var backTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    get {
+      return self.backTracksBezierPaths_property.prop
+    }
+  }
+
+  var backTracksBezierPaths : BezierPathArray? {
+    switch backTracksBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Accessing backTracksDisplay transient property
   //····················································································································
 
@@ -929,6 +1011,25 @@ class BoardModel : EBManagedObject,
 
   var frontTrackSegments : MergerSegmentArray? {
     switch frontTrackSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing frontTracksBezierPaths transient property
+  //····················································································································
+
+  var frontTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    get {
+      return self.frontTracksBezierPaths_property.prop
+    }
+  }
+
+  var frontTracksBezierPaths : BezierPathArray? {
+    switch frontTracksBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1024,6 +1125,25 @@ class BoardModel : EBManagedObject,
 
   var backPackagesDisplay : CALayer? {
     switch backPackagesDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing imageForInstances transient property
+  //····················································································································
+
+  var imageForInstances_property_selection : EBSelection <NSImage> {
+    get {
+      return self.imageForInstances_property.prop
+    }
+  }
+
+  var imageForInstances : NSImage? {
+    switch imageForInstances_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1257,12 +1377,15 @@ class BoardModel : EBManagedObject,
   var holes_property = EBTransientProperty_MergerHoleArray ()
   var holeLayerDisplay_property = EBTransientProperty_CALayer ()
   var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
+  var viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var viaLayerDisplay_property = EBTransientProperty_CALayer ()
   var frontPads_property = EBTransientProperty_MergerPadArray ()
+  var frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var frontPadsDisplay_property = EBTransientProperty_CALayer ()
   var backPads_property = EBTransientProperty_MergerPadArray ()
   var backPadsDisplay_property = EBTransientProperty_CALayer ()
   var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
+  var boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var boardLimitsDisplay_property = EBTransientProperty_CALayer ()
   var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
   var backComponentNameDisplay_property = EBTransientProperty_CALayer ()
@@ -1273,13 +1396,16 @@ class BoardModel : EBManagedObject,
   var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
   var backComponentValueDisplay_property = EBTransientProperty_CALayer ()
   var backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var backTracksDisplay_property = EBTransientProperty_CALayer ()
   var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var frontTracksDisplay_property = EBTransientProperty_CALayer ()
   var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
   var frontPackagesDisplay_property = EBTransientProperty_CALayer ()
   var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
   var backPackagesDisplay_property = EBTransientProperty_CALayer ()
+  var imageForInstances_property = EBTransientProperty_NSImage ()
   var modelLayerDisplay_property = EBTransientProperty_CALayer ()
 
   //····················································································································
@@ -1738,6 +1864,26 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.viasBezierPaths_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.viaShapes_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.viaShapes_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_BoardModel_viasBezierPaths (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.viaLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerColorVias_property_selection.kind ()
@@ -1779,6 +1925,26 @@ class BoardModel : EBManagedObject,
           switch (unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (compute_BoardModel_frontPads (v0, v1, v2, v3, v4, v5, v6, v7))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontPadsBezierPaths_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.frontPads_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.frontPads_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_BoardModel_frontPadsBezierPaths (v0))
           default :
             return .empty
           }
@@ -1873,6 +2039,28 @@ class BoardModel : EBManagedObject,
           switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.modelLimitWidth_property_selection, g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
             return .single (compute_BoardModel_boardLimits (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardLimitsBezierPaths_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.modelWidth_property_selection.kind ()
+        kind &= unwSelf.modelHeight_property_selection.kind ()
+        kind &= unwSelf.modelLimitWidth_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.modelLimitWidth_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (compute_BoardModel_boardLimitsBezierPaths (v0, v1, v2))
           default :
             return .empty
           }
@@ -2111,6 +2299,26 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backTracksBezierPaths_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.backTrackSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.backTrackSegments_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_BoardModel_backTracksBezierPaths (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.backTracksDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerColorBackTracks_property_selection.kind ()
@@ -2149,6 +2357,26 @@ class BoardModel : EBManagedObject,
           switch (unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (compute_BoardModel_frontTrackSegments (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontTracksBezierPaths_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.frontTrackSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.frontTrackSegments_property_selection) {
+          case (.single (let v0)) :
+            return .single (compute_BoardModel_frontTracksBezierPaths (v0))
           default :
             return .empty
           }
@@ -2271,6 +2499,43 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.imageForInstances_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
+        kind &= unwSelf.modelWidth_property_selection.kind ()
+        kind &= unwSelf.modelHeight_property_selection.kind ()
+        kind &= unwSelf.frontTracksBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerBoardViewDisplayFrontTracks_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorFrontTracks_property_selection.kind ()
+        kind &= unwSelf.backTracksBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerBoardViewDisplayBackTracks_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBackTracks_property_selection.kind ()
+        kind &= unwSelf.boardLimitsBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerBoardViewDisplayInternalBoardLimits_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorInternalBoardLimits_property_selection.kind ()
+        kind &= unwSelf.frontPadsBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerBoardViewDisplayFrontPads_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorFrontPads_property_selection.kind ()
+        kind &= unwSelf.viasBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerBoardViewDisplayVias_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorVias_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.frontTracksBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontTracks_property_selection, g_Preferences!.mergerColorFrontTracks_property_selection, unwSelf.backTracksBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackTracks_property_selection, g_Preferences!.mergerColorBackTracks_property_selection, unwSelf.boardLimitsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayInternalBoardLimits_property_selection, g_Preferences!.mergerColorInternalBoardLimits_property_selection, unwSelf.frontPadsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPads_property_selection, g_Preferences!.mergerColorFrontPads_property_selection, unwSelf.viasBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayVias_property_selection, g_Preferences!.mergerColorVias_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17)) :
+            return .single (compute_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.modelLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backgroundLayerDisplay_property_selection.kind ()
@@ -2377,6 +2642,7 @@ class BoardModel : EBManagedObject,
     self.vias_property.addEBObserverOf_x (self.viaShapes_property)
     self.vias_property.addEBObserverOf_y (self.viaShapes_property)
     self.vias_property.addEBObserverOf_padDiameter (self.viaShapes_property)
+    self.viaShapes_property.addEBObserver (self.viasBezierPaths_property)
     g_Preferences?.mergerColorVias_property.addEBObserver (self.viaLayerDisplay_property)
     g_Preferences?.mergerModelViewDisplayVias_property.addEBObserver (self.viaLayerDisplay_property)
     self.viaShapes_property.addEBObserver (self.viaLayerDisplay_property)
@@ -2388,6 +2654,7 @@ class BoardModel : EBManagedObject,
     self.pads_property.addEBObserverOf_shape (self.frontPads_property)
     self.pads_property.addEBObserverOf_side (self.frontPads_property)
     self.pads_property.addEBObserverOf_rotation (self.frontPads_property)
+    self.frontPads_property.addEBObserver (self.frontPadsBezierPaths_property)
     g_Preferences?.mergerColorFrontPads_property.addEBObserver (self.frontPadsDisplay_property)
     g_Preferences?.mergerModelViewDisplayFrontPads_property.addEBObserver (self.frontPadsDisplay_property)
     self.frontPads_property.addEBObserver (self.frontPadsDisplay_property)
@@ -2406,6 +2673,9 @@ class BoardModel : EBManagedObject,
     self.modelHeight_property.addEBObserver (self.boardLimits_property)
     self.modelLimitWidth_property.addEBObserver (self.boardLimits_property)
     g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.boardLimits_property)
+    self.modelWidth_property.addEBObserver (self.boardLimitsBezierPaths_property)
+    self.modelHeight_property.addEBObserver (self.boardLimitsBezierPaths_property)
+    self.modelLimitWidth_property.addEBObserver (self.boardLimitsBezierPaths_property)
     g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
     g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
     self.boardLimits_property.addEBObserver (self.boardLimitsDisplay_property)
@@ -2446,6 +2716,7 @@ class BoardModel : EBManagedObject,
     self.backTracks_property.addEBObserverOf_x2 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_y2 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_width (self.backTrackSegments_property)
+    self.backTrackSegments_property.addEBObserver (self.backTracksBezierPaths_property)
     g_Preferences?.mergerColorBackTracks_property.addEBObserver (self.backTracksDisplay_property)
     g_Preferences?.mergerModelViewDisplayBackTracks_property.addEBObserver (self.backTracksDisplay_property)
     self.backTrackSegments_property.addEBObserver (self.backTracksDisplay_property)
@@ -2454,6 +2725,7 @@ class BoardModel : EBManagedObject,
     self.frontTracks_property.addEBObserverOf_x2 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_y2 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_width (self.frontTrackSegments_property)
+    self.frontTrackSegments_property.addEBObserver (self.frontTracksBezierPaths_property)
     g_Preferences?.mergerColorFrontTracks_property.addEBObserver (self.frontTracksDisplay_property)
     g_Preferences?.mergerModelViewDisplayFrontTracks_property.addEBObserver (self.frontTracksDisplay_property)
     self.frontTrackSegments_property.addEBObserver (self.frontTracksDisplay_property)
@@ -2473,6 +2745,24 @@ class BoardModel : EBManagedObject,
     g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
     g_Preferences?.mergerModelViewDisplayBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
     self.backPackagesSegments_property.addEBObserver (self.backPackagesDisplay_property)
+    g_Preferences?.mergerColorBackground_property.addEBObserver (self.imageForInstances_property)
+    self.modelWidth_property.addEBObserver (self.imageForInstances_property)
+    self.modelHeight_property.addEBObserver (self.imageForInstances_property)
+    self.frontTracksBezierPaths_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayFrontTracks_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorFrontTracks_property.addEBObserver (self.imageForInstances_property)
+    self.backTracksBezierPaths_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayBackTracks_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorBackTracks_property.addEBObserver (self.imageForInstances_property)
+    self.boardLimitsBezierPaths_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayInternalBoardLimits_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorInternalBoardLimits_property.addEBObserver (self.imageForInstances_property)
+    self.frontPadsBezierPaths_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayFrontPads_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorFrontPads_property.addEBObserver (self.imageForInstances_property)
+    self.viasBezierPaths_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayVias_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorVias_property.addEBObserver (self.imageForInstances_property)
     self.backgroundLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.backLegendTextsLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
@@ -2594,6 +2884,7 @@ class BoardModel : EBManagedObject,
     self.vias_property.removeEBObserverOf_x (self.viaShapes_property)
     self.vias_property.removeEBObserverOf_y (self.viaShapes_property)
     self.vias_property.removeEBObserverOf_padDiameter (self.viaShapes_property)
+    self.viaShapes_property.removeEBObserver (self.viasBezierPaths_property)
     g_Preferences?.mergerColorVias_property.removeEBObserver (self.viaLayerDisplay_property)
     g_Preferences?.mergerModelViewDisplayVias_property.removeEBObserver (self.viaLayerDisplay_property)
     self.viaShapes_property.removeEBObserver (self.viaLayerDisplay_property)
@@ -2605,6 +2896,7 @@ class BoardModel : EBManagedObject,
     self.pads_property.removeEBObserverOf_shape (self.frontPads_property)
     self.pads_property.removeEBObserverOf_side (self.frontPads_property)
     self.pads_property.removeEBObserverOf_rotation (self.frontPads_property)
+    self.frontPads_property.removeEBObserver (self.frontPadsBezierPaths_property)
     g_Preferences?.mergerColorFrontPads_property.removeEBObserver (self.frontPadsDisplay_property)
     g_Preferences?.mergerModelViewDisplayFrontPads_property.removeEBObserver (self.frontPadsDisplay_property)
     self.frontPads_property.removeEBObserver (self.frontPadsDisplay_property)
@@ -2623,6 +2915,9 @@ class BoardModel : EBManagedObject,
     self.modelHeight_property.removeEBObserver (self.boardLimits_property)
     self.modelLimitWidth_property.removeEBObserver (self.boardLimits_property)
     g_Preferences?.mergerModelViewDisplayBoardLimits_property.removeEBObserver (self.boardLimits_property)
+    self.modelWidth_property.removeEBObserver (self.boardLimitsBezierPaths_property)
+    self.modelHeight_property.removeEBObserver (self.boardLimitsBezierPaths_property)
+    self.modelLimitWidth_property.removeEBObserver (self.boardLimitsBezierPaths_property)
     g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
     g_Preferences?.mergerModelViewDisplayBoardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
     self.boardLimits_property.removeEBObserver (self.boardLimitsDisplay_property)
@@ -2663,6 +2958,7 @@ class BoardModel : EBManagedObject,
     self.backTracks_property.removeEBObserverOf_x2 (self.backTrackSegments_property)
     self.backTracks_property.removeEBObserverOf_y2 (self.backTrackSegments_property)
     self.backTracks_property.removeEBObserverOf_width (self.backTrackSegments_property)
+    self.backTrackSegments_property.removeEBObserver (self.backTracksBezierPaths_property)
     g_Preferences?.mergerColorBackTracks_property.removeEBObserver (self.backTracksDisplay_property)
     g_Preferences?.mergerModelViewDisplayBackTracks_property.removeEBObserver (self.backTracksDisplay_property)
     self.backTrackSegments_property.removeEBObserver (self.backTracksDisplay_property)
@@ -2671,6 +2967,7 @@ class BoardModel : EBManagedObject,
     self.frontTracks_property.removeEBObserverOf_x2 (self.frontTrackSegments_property)
     self.frontTracks_property.removeEBObserverOf_y2 (self.frontTrackSegments_property)
     self.frontTracks_property.removeEBObserverOf_width (self.frontTrackSegments_property)
+    self.frontTrackSegments_property.removeEBObserver (self.frontTracksBezierPaths_property)
     g_Preferences?.mergerColorFrontTracks_property.removeEBObserver (self.frontTracksDisplay_property)
     g_Preferences?.mergerModelViewDisplayFrontTracks_property.removeEBObserver (self.frontTracksDisplay_property)
     self.frontTrackSegments_property.removeEBObserver (self.frontTracksDisplay_property)
@@ -2690,6 +2987,24 @@ class BoardModel : EBManagedObject,
     g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
     g_Preferences?.mergerModelViewDisplayBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
     self.backPackagesSegments_property.removeEBObserver (self.backPackagesDisplay_property)
+    g_Preferences?.mergerColorBackground_property.removeEBObserver (self.imageForInstances_property)
+    self.modelWidth_property.removeEBObserver (self.imageForInstances_property)
+    self.modelHeight_property.removeEBObserver (self.imageForInstances_property)
+    self.frontTracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayFrontTracks_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorFrontTracks_property.removeEBObserver (self.imageForInstances_property)
+    self.backTracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayBackTracks_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorBackTracks_property.removeEBObserver (self.imageForInstances_property)
+    self.boardLimitsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayInternalBoardLimits_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorInternalBoardLimits_property.removeEBObserver (self.imageForInstances_property)
+    self.frontPadsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayFrontPads_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorFrontPads_property.removeEBObserver (self.imageForInstances_property)
+    self.viasBezierPaths_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayVias_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorVias_property.removeEBObserver (self.imageForInstances_property)
     self.backgroundLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.backLegendTextsLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.backLayoutTextsLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
@@ -2944,6 +3259,14 @@ class BoardModel : EBManagedObject,
       valueExplorer:&self.viaShapes_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "viasBezierPaths",
+      idx:self.viasBezierPaths_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.viasBezierPaths_property.mObserverExplorer,
+      valueExplorer:&self.viasBezierPaths_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "viaLayerDisplay",
       idx:self.viaLayerDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -2958,6 +3281,14 @@ class BoardModel : EBManagedObject,
       view:view,
       observerExplorer:&self.frontPads_property.mObserverExplorer,
       valueExplorer:&self.frontPads_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontPadsBezierPaths",
+      idx:self.frontPadsBezierPaths_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontPadsBezierPaths_property.mObserverExplorer,
+      valueExplorer:&self.frontPadsBezierPaths_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "frontPadsDisplay",
@@ -2990,6 +3321,14 @@ class BoardModel : EBManagedObject,
       view:view,
       observerExplorer:&self.boardLimits_property.mObserverExplorer,
       valueExplorer:&self.boardLimits_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardLimitsBezierPaths",
+      idx:self.boardLimitsBezierPaths_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardLimitsBezierPaths_property.mObserverExplorer,
+      valueExplorer:&self.boardLimitsBezierPaths_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardLimitsDisplay",
@@ -3072,6 +3411,14 @@ class BoardModel : EBManagedObject,
       valueExplorer:&self.backTrackSegments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "backTracksBezierPaths",
+      idx:self.backTracksBezierPaths_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.backTracksBezierPaths_property.mObserverExplorer,
+      valueExplorer:&self.backTracksBezierPaths_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "backTracksDisplay",
       idx:self.backTracksDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -3086,6 +3433,14 @@ class BoardModel : EBManagedObject,
       view:view,
       observerExplorer:&self.frontTrackSegments_property.mObserverExplorer,
       valueExplorer:&self.frontTrackSegments_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontTracksBezierPaths",
+      idx:self.frontTracksBezierPaths_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontTracksBezierPaths_property.mObserverExplorer,
+      valueExplorer:&self.frontTracksBezierPaths_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "frontTracksDisplay",
@@ -3126,6 +3481,14 @@ class BoardModel : EBManagedObject,
       view:view,
       observerExplorer:&self.backPackagesDisplay_property.mObserverExplorer,
       valueExplorer:&self.backPackagesDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "imageForInstances",
+      idx:self.imageForInstances_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.imageForInstances_property.mObserverExplorer,
+      valueExplorer:&self.imageForInstances_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "modelLayerDisplay",
@@ -5200,6 +5563,62 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
+  //   Observers of 'viasBezierPaths' transient property
+  //····················································································································
+
+  private var mObserversOf_viasBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_viasBezierPaths.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.viasBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_viasBezierPaths.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.viasBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_viasBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_viasBezierPaths {
+        managedObject.viasBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_viasBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_viasBezierPaths {
+        managedObject.viasBezierPaths_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'viaLayerDisplay' transient property
   //····················································································································
 
@@ -5307,6 +5726,62 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     for managedObject in inSet {
       for observer in mObserversOf_frontPads {
         managedObject.frontPads_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontPadsBezierPaths' transient property
+  //····················································································································
+
+  private var mObserversOf_frontPadsBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontPadsBezierPaths.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPadsBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontPadsBezierPaths.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontPadsBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPadsBezierPaths {
+        managedObject.frontPadsBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontPadsBezierPaths {
+        managedObject.frontPadsBezierPaths_property.removeEBObserver (observer)
       }
     }
   }
@@ -5531,6 +6006,62 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     for managedObject in inSet {
       for observer in mObserversOf_boardLimits {
         managedObject.boardLimits_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardLimitsBezierPaths' transient property
+  //····················································································································
+
+  private var mObserversOf_boardLimitsBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardLimitsBezierPaths.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardLimitsBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardLimitsBezierPaths.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardLimitsBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardLimitsBezierPaths {
+        managedObject.boardLimitsBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardLimitsBezierPaths {
+        managedObject.boardLimitsBezierPaths_property.removeEBObserver (observer)
       }
     }
   }
@@ -6096,6 +6627,62 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
+  //   Observers of 'backTracksBezierPaths' transient property
+  //····················································································································
+
+  private var mObserversOf_backTracksBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_backTracksBezierPaths.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backTracksBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_backTracksBezierPaths.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.backTracksBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_backTracksBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backTracksBezierPaths {
+        managedObject.backTracksBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_backTracksBezierPaths {
+        managedObject.backTracksBezierPaths_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'backTracksDisplay' transient property
   //····················································································································
 
@@ -6203,6 +6790,62 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     for managedObject in inSet {
       for observer in mObserversOf_frontTrackSegments {
         managedObject.frontTrackSegments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontTracksBezierPaths' transient property
+  //····················································································································
+
+  private var mObserversOf_frontTracksBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_frontTracksBezierPaths.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontTracksBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_frontTracksBezierPaths.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontTracksBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontTracksBezierPaths {
+        managedObject.frontTracksBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_frontTracksBezierPaths {
+        managedObject.frontTracksBezierPaths_property.removeEBObserver (observer)
       }
     }
   }
@@ -6488,6 +7131,62 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
+  //   Observers of 'imageForInstances' transient property
+  //····················································································································
+
+  private var mObserversOf_imageForInstances = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_imageForInstances.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.imageForInstances_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_imageForInstances.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.imageForInstances_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_imageForInstances_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_imageForInstances {
+        managedObject.imageForInstances_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_imageForInstances_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_imageForInstances {
+        managedObject.imageForInstances_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'modelLayerDisplay' transient property
   //····················································································································
 
@@ -6610,12 +7309,15 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         removeEBObserversOf_holes_fromElementsOfSet (removedSet)
         removeEBObserversOf_holeLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_viaShapes_fromElementsOfSet (removedSet)
+        removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_viaLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPads_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPadsDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPads_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPadsDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimits_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitsDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_backComponentNameDisplay_fromElementsOfSet (removedSet)
@@ -6626,13 +7328,16 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_backComponentValueDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_backTracksDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontTracksDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPackagesDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPackagesDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_imageForInstances_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelLayerDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
@@ -6666,12 +7371,15 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         addEBObserversOf_holes_toElementsOfSet (addedSet)
         addEBObserversOf_holeLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_viaShapes_toElementsOfSet (addedSet)
+        addEBObserversOf_viasBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_viaLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontPads_toElementsOfSet (addedSet)
+        addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_frontPadsDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backPads_toElementsOfSet (addedSet)
         addEBObserversOf_backPadsDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimits_toElementsOfSet (addedSet)
+        addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitsDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedSet)
         addEBObserversOf_backComponentNameDisplay_toElementsOfSet (addedSet)
@@ -6682,13 +7390,16 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedSet)
         addEBObserversOf_backComponentValueDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backTrackSegments_toElementsOfSet (addedSet)
+        addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_backTracksDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontTrackSegments_toElementsOfSet (addedSet)
+        addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_frontTracksDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedSet)
         addEBObserversOf_frontPackagesDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backPackagesSegments_toElementsOfSet (addedSet)
         addEBObserversOf_backPackagesDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_imageForInstances_toElementsOfSet (addedSet)
         addEBObserversOf_modelLayerDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
@@ -6888,6 +7599,12 @@ protocol BoardModel_viaShapes : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardModel_viasBezierPaths : class {
+  var viasBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardModel_viaLayerDisplay : class {
   var viaLayerDisplay : CALayer? { get }
 }
@@ -6896,6 +7613,12 @@ protocol BoardModel_viaLayerDisplay : class {
 
 protocol BoardModel_frontPads : class {
   var frontPads : MergerPadArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontPadsBezierPaths : class {
+  var frontPadsBezierPaths : BezierPathArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -6920,6 +7643,12 @@ protocol BoardModel_backPadsDisplay : class {
 
 protocol BoardModel_boardLimits : class {
   var boardLimits : MergerBoardLimits? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_boardLimitsBezierPaths : class {
+  var boardLimitsBezierPaths : BezierPathArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -6984,6 +7713,12 @@ protocol BoardModel_backTrackSegments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardModel_backTracksBezierPaths : class {
+  var backTracksBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardModel_backTracksDisplay : class {
   var backTracksDisplay : CALayer? { get }
 }
@@ -6992,6 +7727,12 @@ protocol BoardModel_backTracksDisplay : class {
 
 protocol BoardModel_frontTrackSegments : class {
   var frontTrackSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontTracksBezierPaths : class {
+  var frontTracksBezierPaths : BezierPathArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7022,6 +7763,12 @@ protocol BoardModel_backPackagesSegments : class {
 
 protocol BoardModel_backPackagesDisplay : class {
   var backPackagesDisplay : CALayer? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_imageForInstances : class {
+  var imageForInstances : NSImage? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7128,6 +7875,7 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
         removeEBObserversOf_holeLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_newInstanceLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectionLayer_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viaLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
@@ -7160,6 +7908,7 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
         addEBObserversOf_holeLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_newInstanceLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectionLayer_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viaLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)

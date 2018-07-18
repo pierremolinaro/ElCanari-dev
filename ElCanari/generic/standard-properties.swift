@@ -1270,6 +1270,15 @@ typealias EBTransientPropertyArray_MergerBoardModelArray = EBTransientClassPrope
 typealias EBReadOnlyProperty_CanariBoardRect  = EBReadOnlyValueProperty <CanariBoardRect>
 typealias EBTransientProperty_CanariBoardRect = EBTransientValueProperty <CanariBoardRect>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class BezierPathArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_BezierPathArray  = EBReadOnlyClassProperty <BezierPathArray>
+typealias EBTransientProperty_BezierPathArray = EBTransientClassProperty <BezierPathArray>
+typealias EBReadOnlyPropertyArray_BezierPathArray  = EBReadOnlyClassProperty <[BezierPathArray]>
+typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[BezierPathArray]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

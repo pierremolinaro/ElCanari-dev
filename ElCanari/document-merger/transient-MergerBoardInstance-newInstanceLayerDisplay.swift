@@ -11,24 +11,25 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerRoot_instancesLayerDisplay (
-       _ self_boardLimitsLayerDisplay : CALayer,
-       _ self_boardInstances_newInstanceLayerDisplay : [MergerBoardInstance_newInstanceLayerDisplay]
+func compute_MergerBoardInstance_newInstanceLayerDisplay (
+       _ self_x : Int,                                    
+       _ self_y : Int,                                    
+       _ self_myModel_imageForInstances : NSImage?
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  var array = [CALayer] ()
-  var idx = 0
-  for instance in self_boardInstances_newInstanceLayerDisplay {
-    if let layer = instance.newInstanceLayerDisplay {
-      layer.name = "\(idx)"
-      array.append (layer)
-    }
-    idx += 1
+  let layer = CALayer ()
+  if let image = self_myModel_imageForInstances {
+  //--- This display image, but it is blurred with large zooms
+//    layer.contents = image
+  //--- This displays best image
+    let actualScale = image.recommendedLayerContentsScale (0.0)
+    layer.contents = image.layerContents (forContentsScale:actualScale)
+    layer.contentsScale = actualScale
+  //---
+    layer.frame = CGRect (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y), width: image.size.width, height: image.size.height)
+    layer.isOpaque = true
   }
-  array.append (self_boardLimitsLayerDisplay)
-  let result = CALayer ()
-  result.sublayers = array
-  return result
+  return layer
 //--- END OF USER ZONE 2
 }
 

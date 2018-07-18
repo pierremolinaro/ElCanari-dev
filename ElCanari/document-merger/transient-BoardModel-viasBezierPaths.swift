@@ -11,24 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerRoot_instancesLayerDisplay (
-       _ self_boardLimitsLayerDisplay : CALayer,
-       _ self_boardInstances_newInstanceLayerDisplay : [MergerBoardInstance_newInstanceLayerDisplay]
-) -> CALayer {
+func compute_BoardModel_viasBezierPaths (
+       _ self_viaShapes : MergerViaShapeArray
+) -> BezierPathArray {
 //--- START OF USER ZONE 2
-  var array = [CALayer] ()
-  var idx = 0
-  for instance in self_boardInstances_newInstanceLayerDisplay {
-    if let layer = instance.newInstanceLayerDisplay {
-      layer.name = "\(idx)"
-      array.append (layer)
-    }
-    idx += 1
-  }
-  array.append (self_boardLimitsLayerDisplay)
-  let result = CALayer ()
-  result.sublayers = array
-  return result
+  return self_viaShapes.shapeBezierPathes ()
 //--- END OF USER ZONE 2
 }
 

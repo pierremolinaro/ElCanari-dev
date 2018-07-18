@@ -60,6 +60,21 @@ final class MergerViaShapeArray : EBSimpleClass {
 
   //····················································································································
 
+  func shapeBezierPathes () -> BezierPathArray {
+    var result = BezierPathArray ()
+    for via in self.viaShapeArray {
+      let x = canariUnitToCocoa (via.x)
+      let y = canariUnitToCocoa (via.y)
+      let diameter = canariUnitToCocoa (via.padDiameter)
+      let r = CGRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
+      let bp = NSBezierPath (ovalIn: r)
+      result.append (bp)
+    }
+    return result
+  }
+
+  //····················································································································
+
   func addPad (toFilledBezierPaths ioBezierPaths : inout [NSBezierPath],
                dx inDx : Int,
                dy inDy: Int,
