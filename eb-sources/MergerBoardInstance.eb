@@ -1,0 +1,112 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity MergerBoardInstance {
+  toOne MergerRoot myRoot inverse toMany boardInstances ;
+  toOne BoardModel myModel inverse toMany myInstances ;
+  property Int x default 0 ;
+  property Int y default 0 ;
+
+#--- Instance rect
+  transient CanariBoardRect instanceRect
+    dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight
+  ;
+
+#--- Limit width
+  transient Int boardLimitWidth dependsFrom self.myModel.one.modelLimitWidth ;
+
+#--- Selection layer
+  transient CALayer selectionLayer dependsFrom self.instanceRect ;
+
+#--- Background
+  transient CALayer backgroundLayerDisplay dependsFrom prefs.mergerColorBackground, self.instanceRect ;
+
+  transient CALayer backLegendLinesLayerDisplay dependsFrom
+     self.x, self.y,
+     prefs.mergerColorBackLegendLines, prefs.mergerBoardViewDisplayBackLegendLines,
+     self.myModel.one.backLegendLinesSegments ;
+
+  transient CALayer frontLegendLinesLayerDisplay dependsFrom
+     self.x, self.y,
+     prefs.mergerColorFrontLegendLines, prefs.mergerBoardViewDisplayFrontLegendLines,
+     self.myModel.one.frontLegendLinesSegments ;
+
+  transient CALayer frontLegendTextsLayerDisplay
+     dependsFrom self.x, self.y, prefs.mergerColorFrontLegendTexts, prefs.mergerBoardViewDisplayFrontLegendTexts, self.myModel.one.frontLegendTextsSegments ;
+
+  transient CALayer frontLayoutTextsLayerDisplay
+     dependsFrom self.x, self.y, prefs.mergerColorFrontLayoutTexts, prefs.mergerBoardViewDisplayFrontLayoutTexts, self.myModel.one.frontLayoutTextsSegments ;
+
+  transient CALayer backLegendTextsLayerDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorBackLegendTexts, prefs.mergerBoardViewDisplayBackLegendTexts, self.myModel.one.backLegendTextsSegments ;
+
+  transient CALayer backLayoutTextsLayerDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorBackLayoutTexts, prefs.mergerBoardViewDisplayBackLayoutTexts, self.myModel.one.backLayoutTextsSegments ;
+
+  transient CALayer holeLayerDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorHoles, prefs.mergerBoardViewDisplayHoles, self.myModel.one.holes ;
+
+  transient CALayer viaLayerDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorVias, prefs.mergerBoardViewDisplayVias, self.myModel.one.viaShapes ;
+
+  transient CALayer frontPadsDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorFrontPads, prefs.mergerBoardViewDisplayFrontPads, self.myModel.one.frontPads ;
+
+  transient CALayer backPadsDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorBackPads, prefs.mergerBoardViewDisplayBackPads, self.myModel.one.backPads ;
+
+  transient CALayer boardLimitsDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorInternalBoardLimits, prefs.mergerBoardViewDisplayInternalBoardLimits, self.myModel.one.boardLimits ;
+
+  transient CALayer backComponentNameDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorBackComponentNames, prefs.mergerBoardViewDisplayBackComponentNames, self.myModel.one.backComponentNameSegments ;
+
+  transient CALayer frontComponentNameDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorFrontComponentNames, prefs.mergerBoardViewDisplayFrontComponentNames, self.myModel.one.frontComponentNameSegments ;
+
+  transient CALayer frontComponentValueDisplay
+     dependsFrom self.x, self.y, prefs.mergerColorFrontComponentValues, prefs.mergerBoardViewDisplayFrontComponentValues, self.myModel.one.frontComponentValueSegments ;
+
+  transient CALayer backComponentValueDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorBackComponentValues, prefs.mergerBoardViewDisplayBackComponentValues, self.myModel.one.backComponentValueSegments ;
+
+  transient CALayer backTracksDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorBackTracks, prefs.mergerBoardViewDisplayBackTracks, self.myModel.one.backTrackSegments ;
+
+  transient CALayer frontTracksDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorFrontTracks, prefs.mergerBoardViewDisplayFrontTracks, self.myModel.one.frontTrackSegments ;
+
+  transient CALayer frontPackagesDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorFrontPackages, prefs.mergerBoardViewDisplayFrontPackages, self.myModel.one.frontPackagesSegments ;
+
+  transient CALayer backPackagesDisplay
+    dependsFrom self.x, self.y, prefs.mergerColorBackPackages, prefs.mergerBoardViewDisplayBackPackages, self.myModel.one.backPackagesSegments ;
+
+  transient CALayer newInstanceLayerDisplay dependsFrom
+    self.x, self.y, self.myRoot.one.zoom, self.myModel.one.imageForInstances
+  ;
+
+  transient CALayer instanceLayerDisplay dependsFrom
+    self.backgroundLayerDisplay,
+    self.backLegendTextsLayerDisplay,
+    self.backLayoutTextsLayerDisplay,
+    self.frontLegendTextsLayerDisplay,
+    self.frontLayoutTextsLayerDisplay,
+    self.holeLayerDisplay,
+    self.viaLayerDisplay,
+    self.frontPadsDisplay,
+    self.backPadsDisplay,
+    self.boardLimitsDisplay,
+    self.backComponentNameDisplay,
+    self.frontComponentNameDisplay,
+    self.frontComponentValueDisplay,
+    self.backComponentValueDisplay,
+    self.backTracksDisplay,
+    self.frontTracksDisplay,
+    self.frontPackagesDisplay,
+    self.backPackagesDisplay,
+    self.backLegendLinesLayerDisplay,
+    self.frontLegendLinesLayerDisplay
+  ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

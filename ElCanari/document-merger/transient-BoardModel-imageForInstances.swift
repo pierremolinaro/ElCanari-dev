@@ -27,20 +27,114 @@ func compute_BoardModel_imageForInstances (
        _ self_frontPadsBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayFrontPads : Bool,
        _ prefs_mergerColorFrontPads : NSColor,
+       _ self_backPadsBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayBackPads : Bool,
+       _ prefs_mergerColorBackPads : NSColor,
        _ self_viasBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayVias : Bool,
-       _ prefs_mergerColorVias : NSColor
+       _ prefs_mergerColorVias : NSColor,  
+       _ self_holesBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayHoles : Bool,
+       _ prefs_mergerColorHoles : NSColor, 
+       _ self_frontLegendLinesBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayFrontLegendLines : Bool,
+       _ prefs_mergerColorFrontLegendLines : NSColor,
+       _ self_backLegendLinesBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayBackLegendLines : Bool,
+       _ prefs_mergerColorBackLegendLines : NSColor,
+       _ self_frontLegendTextsBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayFrontLegendTexts : Bool,
+       _ prefs_mergerColorFrontLegendTexts : NSColor,
+       _ self_frontLayoutTextsBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayFrontLayoutTexts : Bool,
+       _ prefs_mergerColorFrontLayoutTexts : NSColor,
+       _ self_backLegendTextsBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayBackLegendTexts : Bool,
+       _ prefs_mergerColorBackLegendTexts : NSColor,
+       _ self_backLayoutTextsBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayBackLayoutTexts : Bool,
+       _ prefs_mergerColorBackLayoutTexts : NSColor,
+       _ self_backComponentNamesBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayBackComponentNames : Bool,
+       _ prefs_mergerColorBackComponentNames : NSColor,
+       _ self_frontComponentNamesBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayFrontComponentNames : Bool,
+       _ prefs_mergerColorFrontComponentNames : NSColor,
+       _ self_frontComponentValuesBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayFrontComponentValues : Bool,
+       _ prefs_mergerColorFrontComponentValues : NSColor,
+       _ self_backComponentValuesBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayBackComponentValues : Bool,
+       _ prefs_mergerColorBackComponentValues : NSColor,
+       _ self_frontPackagesBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayFrontPackages : Bool,
+       _ prefs_mergerColorFrontPackages : NSColor,
+       _ self_backPackagesBezierPaths : BezierPathArray,
+       _ prefs_mergerBoardViewDisplayBackPackages : Bool,
+       _ prefs_mergerColorBackPackages : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2
   let cocoaBoardRect = CGRect (x: 0.0, y: 0.0, width: canariUnitToCocoa (self_modelWidth), height: canariUnitToCocoa (self_modelHeight))
   var paths = [([NSBezierPath], NSColor, StrokeOrFill)] ()
+//--- Back Legend Lines
+  if (prefs_mergerBoardViewDisplayBackLegendLines) {
+    paths.append ((self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines, .stroke))
+  }
+//--- Back Component Values
+  if (prefs_mergerBoardViewDisplayBackComponentValues) {
+    paths.append ((self_backComponentValuesBezierPaths.array, prefs_mergerColorBackComponentValues, .stroke))
+  }
+//--- Back Component Names
+  if (prefs_mergerBoardViewDisplayBackComponentNames) {
+    paths.append ((self_backComponentNamesBezierPaths.array, prefs_mergerColorBackComponentNames, .stroke))
+  }
+//--- Back Legend Texts
+  if (prefs_mergerBoardViewDisplayBackLegendTexts) {
+    paths.append ((self_backLegendTextsBezierPaths.array, prefs_mergerColorBackLegendTexts, .stroke))
+  }
+//--- Back Packages
+  if (prefs_mergerBoardViewDisplayBackPackages) {
+    paths.append ((self_backPackagesBezierPaths.array, prefs_mergerColorBackPackages, .stroke))
+  }
+//--- Back Layout Texts
+  if (prefs_mergerBoardViewDisplayBackLayoutTexts) {
+    paths.append ((self_backLayoutTextsBezierPaths.array, prefs_mergerColorBackLayoutTexts, .stroke))
+  }
 //--- Back tracks
   if prefs_mergerBoardViewDisplayBackTracks {
     paths.append ((self_backTracksBezierPaths.array, prefs_mergerColorBackTracks, .stroke))
   }
+//--- Back pads
+  if (prefs_mergerBoardViewDisplayBackPads) {
+    paths.append ((self_backPadsBezierPaths.array, prefs_mergerColorBackPads, .fill))
+  }
 //--- Front tracks
   if prefs_mergerBoardViewDisplayFrontTracks {
     paths.append ((self_frontTracksBezierPaths.array, prefs_mergerColorFrontTracks, .stroke))
+  }
+//--- Front layout texts
+  if (prefs_mergerBoardViewDisplayFrontLayoutTexts) {
+    paths.append ((self_frontLayoutTextsBezierPaths.array, prefs_mergerColorFrontLayoutTexts, .stroke))
+  }
+//--- Front Legend Lines
+  if (prefs_mergerBoardViewDisplayFrontLegendLines) {
+    paths.append ((self_frontLegendLinesBezierPaths.array, prefs_mergerColorFrontLegendLines, .stroke))
+  }
+//--- Front Legend texts
+  if (prefs_mergerBoardViewDisplayFrontLegendTexts) {
+    paths.append ((self_frontLegendTextsBezierPaths.array, prefs_mergerColorFrontLegendTexts, .stroke))
+  }
+//--- Front Packages
+  if (prefs_mergerBoardViewDisplayFrontPackages) {
+    paths.append ((self_frontPackagesBezierPaths.array, prefs_mergerColorFrontPackages, .stroke))
+  }
+//--- Front Component Names
+  if (prefs_mergerBoardViewDisplayFrontComponentNames) {
+    paths.append ((self_frontComponentNamesBezierPaths.array, prefs_mergerColorFrontComponentNames, .stroke))
+  }
+//--- Front Component Values
+  if (prefs_mergerBoardViewDisplayFrontComponentValues) {
+    paths.append ((self_frontComponentValuesBezierPaths.array, prefs_mergerColorFrontComponentValues, .stroke))
   }
 //--- Front pads
   if (prefs_mergerBoardViewDisplayFrontPads) {
@@ -53,6 +147,10 @@ func compute_BoardModel_imageForInstances (
 //--- Board limits tracks
   if prefs_mergerBoardViewDisplayInternalBoardLimits {
     paths.append ((self_boardLimitsBezierPaths.array, prefs_mergerColorInternalBoardLimits, .stroke))
+  }
+//--- Holes
+  if (prefs_mergerBoardViewDisplayHoles) {
+    paths.append ((self_holesBezierPaths.array, prefs_mergerColorHoles, .fill))
   }
 //---
   let pdfData = buildPDFimage (frame:cocoaBoardRect, paths: paths, backgroundColor:prefs_mergerColorBackground)

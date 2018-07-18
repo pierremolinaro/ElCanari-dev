@@ -59,5 +59,25 @@ extern outlet class NSPopUpButton $hidden ;
 transient property class CGPath ;
 transient property class CanariMenuItemListClass ; # Used for populating « Open in Library », « Reveal in Finder » menu items
 
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extern outlet class CanariViewWithZoomAndFlip $graphicController ;
+binding CanariViewWithZoomAndFlip $size : transient Int, transient Int ;
+binding CanariViewWithZoomAndFlip $zoom : property Int ;
+binding CanariViewWithZoomAndFlip $horizontalFlip : transient Bool ;
+binding CanariViewWithZoomAndFlip $verticalFlip : transient Bool ;
+binding CanariViewWithZoomAndFlip $objectLayer : transient CALayer ;
+
+extern outlet class CanariBoardBoardArchivePopUpButton ;
+binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
+
+extern outlet class CanariModelDragSourceTableView ;
+binding CanariModelDragSourceTableView $models : transient MergerBoardModelArray ;
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extern outlet class CanariBoardInsertMenu ; 
+binding CanariBoardInsertMenu $names : transient MergerBoardModelArray ;
+
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

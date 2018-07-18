@@ -1,0 +1,388 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity BoardModel {  
+  property String artworkName default "" ;
+  property String name default "" ;
+  property Int modelWidth default 0 ;
+  property Int modelWidthUnit default 0 ;
+  property Int modelHeight default 0 ;
+  property Int modelHeightUnit default 0 ;
+
+  property Int zoom default 0 ; # 0 means "fit to window"
+
+#--- Instances
+  toMany MergerBoardInstance myInstances inverse toOne myModel ;
+
+  transient Int instanceCount dependsFrom self.myInstances.count ;
+
+#--- Background
+  transient CALayer backgroundLayerDisplay dependsFrom prefs.mergerColorBackground, self.modelWidth, self.modelHeight ;
+
+#--- Front Legend Lines
+  toMany @cascading CanariSegment frontLegendLines ;
+
+  transient MergerSegmentArray frontLegendLinesSegments dependsFrom
+    self.frontLegendLines.all.x1, self.frontLegendLines.all.y1,
+    self.frontLegendLines.all.x2, self.frontLegendLines.all.y2,
+    self.frontLegendLines.all.width
+  ;
+
+  transient BezierPathArray frontLegendLinesBezierPaths dependsFrom self.frontLegendLinesSegments ;
+
+  transient CALayer frontLegendLinesLayerDisplay dependsFrom
+    prefs.mergerColorFrontLegendLines,
+    prefs.mergerModelViewDisplayFrontLegendLines,
+    self.frontLegendLinesSegments
+  ;
+
+#--- Back Legend Lines
+  toMany @cascading CanariSegment backLegendLines ;
+
+  transient MergerSegmentArray backLegendLinesSegments dependsFrom
+    self.backLegendLines.all.x1, self.backLegendLines.all.y1,
+    self.backLegendLines.all.x2, self.backLegendLines.all.y2,
+    self.backLegendLines.all.width
+  ;
+
+  transient BezierPathArray backLegendLinesBezierPaths dependsFrom self.backLegendLinesSegments ;
+
+  transient CALayer backLegendLinesLayerDisplay dependsFrom
+    prefs.mergerColorBackLegendLines,
+    prefs.mergerModelViewDisplayBackLegendLines,
+    self.backLegendLinesSegments
+  ;
+
+#--- Front Legend Texts
+  toMany @cascading CanariSegment frontLegendTexts ;
+
+  transient MergerSegmentArray frontLegendTextsSegments dependsFrom
+    self.frontLegendTexts.all.x1, self.frontLegendTexts.all.y1,
+    self.frontLegendTexts.all.x2, self.frontLegendTexts.all.y2,
+    self.frontLegendTexts.all.width
+  ;
+
+  transient BezierPathArray frontLegendTextsBezierPaths dependsFrom self.frontLegendTextsSegments ;
+
+  transient CALayer frontLegendTextsLayerDisplay dependsFrom
+    prefs.mergerColorFrontLegendTexts,
+    prefs.mergerModelViewDisplayFrontLegendTexts,
+    self.frontLegendTextsSegments
+  ;
+
+#--- Front Layout Texts
+  toMany @cascading CanariSegment frontLayoutTexts ;
+
+  transient MergerSegmentArray frontLayoutTextsSegments dependsFrom
+    self.frontLayoutTexts.all.x1, self.frontLayoutTexts.all.y1,
+    self.frontLayoutTexts.all.x2, self.frontLayoutTexts.all.y2,
+    self.frontLayoutTexts.all.width
+  ;
+
+  transient BezierPathArray frontLayoutTextsBezierPaths dependsFrom self.frontLayoutTextsSegments ;
+
+  transient CALayer frontLayoutTextsLayerDisplay
+     dependsFrom prefs.mergerColorFrontLayoutTexts, prefs.mergerModelViewDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
+
+#--- Back Legend Texts
+  toMany @cascading CanariSegment backLegendTexts ;
+
+  transient MergerSegmentArray backLegendTextsSegments dependsFrom
+    self.backLegendTexts.all.x1, self.backLegendTexts.all.y1,
+    self.backLegendTexts.all.x2, self.backLegendTexts.all.y2,
+    self.backLegendTexts.all.width
+  ;
+
+  transient BezierPathArray backLegendTextsBezierPaths dependsFrom self.backLegendTextsSegments ;
+
+  transient CALayer backLegendTextsLayerDisplay
+    dependsFrom prefs.mergerColorBackLegendTexts, prefs.mergerModelViewDisplayBackLegendTexts, self.backLegendTextsSegments ;
+
+#--- Back Layout Texts
+  toMany @cascading CanariSegment backLayoutTexts ;
+
+  transient MergerSegmentArray backLayoutTextsSegments dependsFrom
+    self.backLayoutTexts.all.x1, self.backLayoutTexts.all.y1,
+    self.backLayoutTexts.all.x2, self.backLayoutTexts.all.y2,
+    self.backLayoutTexts.all.width
+  ;
+
+  transient BezierPathArray backLayoutTextsBezierPaths dependsFrom self.backLayoutTextsSegments ;
+
+  transient CALayer backLayoutTextsLayerDisplay
+    dependsFrom prefs.mergerColorBackLayoutTexts, prefs.mergerModelViewDisplayBackLayoutTexts, self.backLayoutTextsSegments ;
+
+#--- Holes
+  transient MergerHoleArray padsHoles
+    dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.holeDiameter ;
+ 
+  transient MergerHoleArray viasHoles
+    dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter ;
+ 
+  transient MergerHoleArray holes dependsFrom self.padsHoles, self.viasHoles ;
+
+  transient BezierPathArray holesBezierPaths dependsFrom self.holes ;
+
+  transient CALayer holeLayerDisplay dependsFrom prefs.mergerColorHoles, prefs.mergerModelViewDisplayHoles, self.holes ;
+
+#--- Vias 
+  toMany @cascading BoardModelVia vias ;
+  
+  transient MergerViaShapeArray viaShapes
+    dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
+
+  transient BezierPathArray viasBezierPaths dependsFrom self.viaShapes ;
+
+  transient CALayer viaLayerDisplay dependsFrom prefs.mergerColorVias, prefs.mergerModelViewDisplayVias, self.viaShapes ;
+
+#--- Pads
+  toMany @cascading BoardModelPad pads ;
+
+#--- Front pads
+  transient MergerPadArray frontPads
+    dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
+                self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
+
+  transient BezierPathArray frontPadsBezierPaths dependsFrom self.frontPads ;
+
+  transient CALayer frontPadsDisplay dependsFrom prefs.mergerColorFrontPads, prefs.mergerModelViewDisplayFrontPads, self.frontPads ;
+
+#--- Back pads
+  transient MergerPadArray backPads
+    dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
+                self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
+
+  transient BezierPathArray backPadsBezierPaths dependsFrom self.backPads ;
+
+  transient CALayer backPadsDisplay dependsFrom prefs.mergerColorBackPads, prefs.mergerModelViewDisplayBackPads, self.backPads ;
+
+#--- Board limits
+  property Int modelLimitWidth default 0 ;
+  property Int modelLimitWidthUnit default 0 ;
+
+  transient MergerBoardLimits boardLimits
+    dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth, prefs.mergerModelViewDisplayBoardLimits
+  ;
+
+  transient BezierPathArray boardLimitsBezierPaths dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth ;
+
+  transient CALayer boardLimitsDisplay dependsFrom prefs.mergerColorBoardLimits, prefs.mergerModelViewDisplayBoardLimits, self.boardLimits ;
+ 
+#--- Back component names
+  toMany @cascading CanariSegment backComponentNames ;
+
+  transient MergerSegmentArray backComponentNameSegments dependsFrom
+    self.backComponentNames.all.x1, self.backComponentNames.all.y1,
+    self.backComponentNames.all.x2, self.backComponentNames.all.y2,
+    self.backComponentNames.all.width
+  ;
+
+  transient BezierPathArray backComponentNamesBezierPaths dependsFrom self.backComponentNameSegments ;
+
+  transient CALayer backComponentNameDisplay
+    dependsFrom prefs.mergerColorBackComponentNames, prefs.mergerModelViewDisplayBackComponentNames, self.backComponentNameSegments ;
+
+#--- Front component names
+  toMany @cascading CanariSegment frontComponentNames ;
+
+  transient MergerSegmentArray frontComponentNameSegments dependsFrom
+    self.frontComponentNames.all.x1, self.frontComponentNames.all.y1,
+    self.frontComponentNames.all.x2, self.frontComponentNames.all.y2,
+    self.frontComponentNames.all.width
+  ;
+
+  transient BezierPathArray frontComponentNamesBezierPaths dependsFrom self.frontComponentNameSegments ;
+
+  transient CALayer frontComponentNameDisplay
+    dependsFrom prefs.mergerColorFrontComponentNames, prefs.mergerModelViewDisplayFrontComponentNames, self.frontComponentNameSegments ;
+
+#--- Front component values
+  toMany @cascading CanariSegment frontComponentValues ;
+
+  transient MergerSegmentArray frontComponentValueSegments dependsFrom
+    self.frontComponentValues.all.x1, self.frontComponentValues.all.y1,
+    self.frontComponentValues.all.x2, self.frontComponentValues.all.y2,
+    self.frontComponentValues.all.width
+  ;
+
+  transient BezierPathArray frontComponentValuesBezierPaths dependsFrom self.frontComponentValueSegments ;
+
+  transient CALayer frontComponentValueDisplay
+     dependsFrom prefs.mergerColorFrontComponentValues, prefs.mergerModelViewDisplayFrontComponentValues, self.frontComponentValueSegments ;
+
+#--- Back component values
+  toMany @cascading CanariSegment backComponentValues ;
+
+  transient MergerSegmentArray backComponentValueSegments dependsFrom
+    self.backComponentValues.all.x1, self.backComponentValues.all.y1,
+    self.backComponentValues.all.x2, self.backComponentValues.all.y2,
+    self.backComponentValues.all.width
+  ;
+
+  transient BezierPathArray backComponentValuesBezierPaths dependsFrom self.backComponentValueSegments ;
+
+  transient CALayer backComponentValueDisplay
+    dependsFrom prefs.mergerColorBackComponentValues,prefs.mergerModelViewDisplayBackComponentValues, self.backComponentValueSegments ;
+
+#--- Back tracks
+  toMany @cascading CanariSegment backTracks ;
+
+  transient MergerSegmentArray backTrackSegments dependsFrom
+    self.backTracks.all.x1, self.backTracks.all.y1,
+    self.backTracks.all.x2, self.backTracks.all.y2,
+    self.backTracks.all.width
+  ;
+
+  transient BezierPathArray backTracksBezierPaths dependsFrom self.backTrackSegments ;
+
+  transient CALayer backTracksDisplay dependsFrom prefs.mergerColorBackTracks, prefs.mergerModelViewDisplayBackTracks, self.backTrackSegments ;
+
+#--- Front tracks
+  toMany @cascading CanariSegment frontTracks ;
+
+  transient MergerSegmentArray frontTrackSegments dependsFrom
+    self.frontTracks.all.x1, self.frontTracks.all.y1,
+    self.frontTracks.all.x2, self.frontTracks.all.y2,
+    self.frontTracks.all.width
+  ;
+
+  transient BezierPathArray frontTracksBezierPaths dependsFrom self.frontTrackSegments ;
+
+  transient CALayer frontTracksDisplay
+    dependsFrom prefs.mergerColorFrontTracks, prefs.mergerModelViewDisplayFrontTracks, self.frontTrackSegments ;
+
+#--- Front packages
+  toMany @cascading CanariSegment frontPackages ;
+
+  transient MergerSegmentArray frontPackagesSegments dependsFrom
+    self.frontPackages.all.x1, self.frontPackages.all.y1,
+    self.frontPackages.all.x2, self.frontPackages.all.y2,
+    self.frontPackages.all.width
+  ;
+
+  transient BezierPathArray frontPackagesBezierPaths dependsFrom self.frontPackagesSegments ;
+
+  transient CALayer frontPackagesDisplay
+    dependsFrom prefs.mergerColorFrontPackages, prefs.mergerModelViewDisplayFrontPackages, self.frontPackagesSegments ;
+
+#--- Back packages
+  toMany @cascading CanariSegment backPackages ;
+
+  transient MergerSegmentArray backPackagesSegments dependsFrom
+    self.backPackages.all.x1, self.backPackages.all.y1,
+    self.backPackages.all.x2, self.backPackages.all.y2,
+    self.backPackages.all.width
+  ;
+
+  transient BezierPathArray backPackagesBezierPaths dependsFrom self.backPackagesSegments ;
+
+  transient CALayer backPackagesDisplay dependsFrom prefs.mergerColorBackPackages, prefs.mergerModelViewDisplayBackPackages, self.backPackagesSegments ;
+
+#----
+  transient CALayer modelLayerDisplay dependsFrom
+    self.backgroundLayerDisplay,
+    self.backLegendTextsLayerDisplay,
+    self.backLayoutTextsLayerDisplay,
+    self.frontLegendTextsLayerDisplay,
+    self.frontLayoutTextsLayerDisplay,
+    self.holeLayerDisplay,
+    self.viaLayerDisplay,
+    self.frontPadsDisplay,
+    self.backPadsDisplay,
+    self.boardLimitsDisplay,
+    self.backComponentNameDisplay,
+    self.frontComponentNameDisplay,
+    self.frontComponentValueDisplay,
+    self.backComponentValueDisplay,
+    self.backTracksDisplay,
+    self.frontTracksDisplay,
+    self.frontPackagesDisplay,
+    self.backPackagesDisplay,
+    self.backLegendLinesLayerDisplay,
+    self.frontLegendLinesLayerDisplay
+  ;
+
+#----
+  transient NSImage imageForInstances dependsFrom
+    prefs.mergerColorBackground,
+    self.modelWidth,
+    self.modelHeight,
+# Front tracks
+    self.frontTracksBezierPaths,
+    prefs.mergerBoardViewDisplayFrontTracks,
+    prefs.mergerColorFrontTracks,
+# Back tracks
+    self.backTracksBezierPaths,
+    prefs.mergerBoardViewDisplayBackTracks,
+    prefs.mergerColorBackTracks,
+# Internal Board limits
+    self.boardLimitsBezierPaths,
+    prefs.mergerBoardViewDisplayInternalBoardLimits,
+    prefs.mergerColorInternalBoardLimits,
+# Front pads
+    self.frontPadsBezierPaths,
+    prefs.mergerBoardViewDisplayFrontPads,
+    prefs.mergerColorFrontPads,
+# Back pads
+    self.backPadsBezierPaths,
+    prefs.mergerBoardViewDisplayBackPads,
+    prefs.mergerColorBackPads,
+# Vias
+    self.viasBezierPaths,    
+    prefs.mergerBoardViewDisplayVias,
+    prefs.mergerColorVias,
+# Holes   
+    self.holesBezierPaths,
+    prefs.mergerBoardViewDisplayHoles,
+    prefs.mergerColorHoles,
+# Front Legend lines   
+    self.frontLegendLinesBezierPaths,
+    prefs.mergerBoardViewDisplayFrontLegendLines,
+    prefs.mergerColorFrontLegendLines,
+# Back Legend lines   
+    self.backLegendLinesBezierPaths,
+    prefs.mergerBoardViewDisplayBackLegendLines,
+    prefs.mergerColorBackLegendLines,
+# Front Legend Texts   
+    self.frontLegendTextsBezierPaths,
+    prefs.mergerBoardViewDisplayFrontLegendTexts,
+    prefs.mergerColorFrontLegendTexts,
+# Front Layout Texts   
+    self.frontLayoutTextsBezierPaths,
+    prefs.mergerBoardViewDisplayFrontLayoutTexts,
+    prefs.mergerColorFrontLayoutTexts,
+# Back Legend Texts   
+    self.backLegendTextsBezierPaths,
+    prefs.mergerBoardViewDisplayBackLegendTexts,
+    prefs.mergerColorBackLegendTexts,
+# Front Layout Texts   
+    self.backLayoutTextsBezierPaths,
+    prefs.mergerBoardViewDisplayBackLayoutTexts,
+    prefs.mergerColorBackLayoutTexts,
+# Back Component Names   
+    self.backComponentNamesBezierPaths,
+    prefs.mergerBoardViewDisplayBackComponentNames,
+    prefs.mergerColorBackComponentNames,
+# Front Component Names   
+    self.frontComponentNamesBezierPaths,
+    prefs.mergerBoardViewDisplayFrontComponentNames,
+    prefs.mergerColorFrontComponentNames,
+# Front Component Values   
+    self.frontComponentValuesBezierPaths,
+    prefs.mergerBoardViewDisplayFrontComponentValues,
+    prefs.mergerColorFrontComponentValues,
+# Front Component Values   
+    self.backComponentValuesBezierPaths,
+    prefs.mergerBoardViewDisplayBackComponentValues,
+    prefs.mergerColorBackComponentValues,
+# Front Packages   
+    self.frontPackagesBezierPaths,
+    prefs.mergerBoardViewDisplayFrontPackages,
+    prefs.mergerColorFrontPackages,
+# Back Packages   
+    self.backPackagesBezierPaths,
+    prefs.mergerBoardViewDisplayBackPackages,
+    prefs.mergerColorBackPackages
+  ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

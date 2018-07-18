@@ -87,6 +87,21 @@ final class MergerHoleArray : EBSimpleClass {
 
   //····················································································································
 
+  func shapeBezierPathes () -> BezierPathArray {
+    var result = BezierPathArray ()
+    for hole in self.holeArray {
+      let x = canariUnitToCocoa (hole.x)
+      let y = canariUnitToCocoa (hole.y)
+      let diameter = canariUnitToCocoa (hole.holeDiameter)
+      let r = CGRect (x: x - diameter / 2.0 , y: y - diameter / 2.0, width: diameter, height: diameter)
+      let bp = NSBezierPath (ovalIn: r)
+      result.append (bp)
+    }
+    return result
+  }
+
+  //····················································································································
+
   func add (toArchiveArray : inout [String], dx inDx : Int, dy inDy: Int) {
     for hole in self.holeArray {
       let s = "\(hole.x + inDx) \(hole.y + inDy) \(hole.holeDiameter)"

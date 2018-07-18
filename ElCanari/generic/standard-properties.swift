@@ -1183,33 +1183,6 @@ typealias EBReadOnlyPropertyArray_CanariMenuItemListClass  = EBReadOnlyClassProp
 typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassProperty <[CanariMenuItemListClass]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class SegmentForFontCharacterClass
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_SegmentForFontCharacterClass  = EBReadOnlyClassProperty <SegmentForFontCharacterClass>
-typealias EBTransientProperty_SegmentForFontCharacterClass = EBTransientClassProperty <SegmentForFontCharacterClass>
-typealias EBReadOnlyPropertyArray_SegmentForFontCharacterClass  = EBReadOnlyClassProperty <[SegmentForFontCharacterClass]>
-typealias EBTransientPropertyArray_SegmentForFontCharacterClass = EBTransientClassProperty <[SegmentForFontCharacterClass]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class CharacterGerberCodeClass
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CharacterGerberCodeClass  = EBReadOnlyClassProperty <CharacterGerberCodeClass>
-typealias EBTransientProperty_CharacterGerberCodeClass = EBTransientClassProperty <CharacterGerberCodeClass>
-typealias EBReadOnlyPropertyArray_CharacterGerberCodeClass  = EBReadOnlyClassProperty <[CharacterGerberCodeClass]>
-typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBTransientClassProperty <[CharacterGerberCodeClass]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class CharacterSegmentListClass
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CharacterSegmentListClass  = EBReadOnlyClassProperty <CharacterSegmentListClass>
-typealias EBTransientProperty_CharacterSegmentListClass = EBTransientClassProperty <CharacterSegmentListClass>
-typealias EBReadOnlyPropertyArray_CharacterSegmentListClass  = EBReadOnlyClassProperty <[CharacterSegmentListClass]>
-typealias EBTransientPropertyArray_CharacterSegmentListClass = EBTransientClassProperty <[CharacterSegmentListClass]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1277,6 +1250,33 @@ typealias EBReadOnlyProperty_BezierPathArray  = EBReadOnlyClassProperty <BezierP
 typealias EBTransientProperty_BezierPathArray = EBTransientClassProperty <BezierPathArray>
 typealias EBReadOnlyPropertyArray_BezierPathArray  = EBReadOnlyClassProperty <[BezierPathArray]>
 typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[BezierPathArray]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class SegmentForFontCharacterClass
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_SegmentForFontCharacterClass  = EBReadOnlyClassProperty <SegmentForFontCharacterClass>
+typealias EBTransientProperty_SegmentForFontCharacterClass = EBTransientClassProperty <SegmentForFontCharacterClass>
+typealias EBReadOnlyPropertyArray_SegmentForFontCharacterClass  = EBReadOnlyClassProperty <[SegmentForFontCharacterClass]>
+typealias EBTransientPropertyArray_SegmentForFontCharacterClass = EBTransientClassProperty <[SegmentForFontCharacterClass]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class CharacterGerberCodeClass
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CharacterGerberCodeClass  = EBReadOnlyClassProperty <CharacterGerberCodeClass>
+typealias EBTransientProperty_CharacterGerberCodeClass = EBTransientClassProperty <CharacterGerberCodeClass>
+typealias EBReadOnlyPropertyArray_CharacterGerberCodeClass  = EBReadOnlyClassProperty <[CharacterGerberCodeClass]>
+typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBTransientClassProperty <[CharacterGerberCodeClass]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class CharacterSegmentListClass
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CharacterSegmentListClass  = EBReadOnlyClassProperty <CharacterSegmentListClass>
+typealias EBTransientProperty_CharacterSegmentListClass = EBTransientClassProperty <CharacterSegmentListClass>
+typealias EBReadOnlyPropertyArray_CharacterSegmentListClass  = EBReadOnlyClassProperty <[CharacterSegmentListClass]>
+typealias EBTransientPropertyArray_CharacterSegmentListClass = EBTransientClassProperty <[CharacterSegmentListClass]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date
