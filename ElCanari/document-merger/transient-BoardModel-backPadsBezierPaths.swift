@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_backPadsBezierPaths (
+func transient_BoardModel_backPadsBezierPaths (
        _ self_backPads : MergerPadArray
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2

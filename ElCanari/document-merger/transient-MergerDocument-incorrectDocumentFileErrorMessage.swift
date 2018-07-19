@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerDocument_incorrectDocumentFileErrorMessage (
+func transient_MergerDocument_incorrectDocumentFileErrorMessage (
        _ self_documentFilePath : String
 ) -> String {
 //--- START OF USER ZONE 2

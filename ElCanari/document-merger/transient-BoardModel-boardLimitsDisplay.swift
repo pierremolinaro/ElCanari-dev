@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_boardLimitsDisplay (
+func transient_BoardModel_boardLimitsDisplay (
        _ prefs_mergerColorBoardLimits : NSColor,
        _ prefs_mergerModelViewDisplayBoardLimits : Bool,
        _ self_boardLimits : MergerBoardLimits

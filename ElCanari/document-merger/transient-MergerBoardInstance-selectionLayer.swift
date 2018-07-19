@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_selectionLayer (
+func transient_MergerBoardInstance_selectionLayer (
        _ self_instanceRect : CanariBoardRect
 ) -> CALayer {
 //--- START OF USER ZONE 2

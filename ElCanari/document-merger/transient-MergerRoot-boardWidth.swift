@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerRoot_boardWidth (
+func transient_MergerRoot_boardWidth (
        _ self_boardRect : CanariBoardRect
 ) -> Int {
 //--- START OF USER ZONE 2

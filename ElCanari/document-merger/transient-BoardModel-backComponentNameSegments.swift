@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_backComponentNameSegments (
+func transient_BoardModel_backComponentNameSegments (
        _ self_backComponentNames_x1 : [CanariSegment_x1],
        _ self_backComponentNames_y1 : [CanariSegment_y1],
        _ self_backComponentNames_x2 : [CanariSegment_x2],

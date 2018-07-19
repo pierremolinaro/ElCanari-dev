@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerRoot_instancesLayerDisplay (
-       _ self_boardLimitsLayerDisplay : CALayer,
+func transient_MergerRoot_instancesLayerDisplay (
+       _ self_boardLimitsLayerDisplay : CALayer, 
        _ self_boardInstances_newInstanceLayerDisplay : [MergerBoardInstance_newInstanceLayerDisplay]
 ) -> CALayer {
 //--- START OF USER ZONE 2

@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_FontCharacter_characterIsDefined (
-       _ self_advance : Int,                   
+func transient_FontCharacter_characterIsDefined (
+       _ self_advance : Int,                     
        _ self_segments_count : Int
 ) -> Bool {
 //--- START OF USER ZONE 2

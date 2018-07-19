@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_frontTracksDisplay (
+func transient_BoardModel_frontTracksDisplay (
        _ prefs_mergerColorFrontTracks : NSColor,
        _ prefs_mergerModelViewDisplayFrontTracks : Bool,
        _ self_frontTrackSegments : MergerSegmentArray

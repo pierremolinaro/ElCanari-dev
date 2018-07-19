@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerRoot_modelNames (
+func transient_MergerRoot_modelNames (
        _ self_boardModels_name : [BoardModel_name],
        _ self_boardModels_modelWidth : [BoardModel_modelWidth],
        _ self_boardModels_modelHeight : [BoardModel_modelHeight]

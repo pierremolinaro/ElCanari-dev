@@ -1742,7 +1742,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.myInstances_property.count_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_instanceCount (v0))
+            return .single (transient_BoardModel_instanceCount (v0))
           default :
             return .empty
           }
@@ -1764,7 +1764,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_backgroundLayerDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_backgroundLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1788,7 +1788,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection, unwSelf.frontLegendLines_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_frontLegendLinesSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_frontLegendLinesSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1808,7 +1808,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontLegendLinesSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_frontLegendLinesBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -1830,7 +1830,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorFrontLegendLines_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendLines_property_selection, unwSelf.frontLegendLinesSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_frontLegendLinesLayerDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_frontLegendLinesLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1854,7 +1854,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection, unwSelf.backLegendLines_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_backLegendLinesSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_backLegendLinesSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1874,7 +1874,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backLegendLinesSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_backLegendLinesBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -1896,7 +1896,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackLegendLines_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendLines_property_selection, unwSelf.backLegendLinesSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_backLegendLinesLayerDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_backLegendLinesLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1920,7 +1920,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection, unwSelf.frontLegendTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_frontLegendTextsSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_frontLegendTextsSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1940,7 +1940,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontLegendTextsSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_frontLegendTextsBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -1962,7 +1962,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorFrontLegendTexts_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendTexts_property_selection, unwSelf.frontLegendTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_frontLegendTextsLayerDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_frontLegendTextsLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -1986,7 +1986,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection, unwSelf.frontLayoutTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_frontLayoutTextsSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_frontLayoutTextsSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -2006,7 +2006,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontLayoutTextsSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_frontLayoutTextsBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -2028,7 +2028,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorFrontLayoutTexts_property_selection, g_Preferences!.mergerModelViewDisplayFrontLayoutTexts_property_selection, unwSelf.frontLayoutTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_frontLayoutTextsLayerDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_frontLayoutTextsLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2052,7 +2052,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection, unwSelf.backLegendTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_backLegendTextsSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_backLegendTextsSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -2072,7 +2072,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backLegendTextsSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_backLegendTextsBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -2094,7 +2094,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackLegendTexts_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendTexts_property_selection, unwSelf.backLegendTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_backLegendTextsLayerDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_backLegendTextsLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2118,7 +2118,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection, unwSelf.backLayoutTexts_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_backLayoutTextsSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_backLayoutTextsSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -2138,7 +2138,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backLayoutTextsSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_backLayoutTextsBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -2160,7 +2160,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackLayoutTexts_property_selection, g_Preferences!.mergerModelViewDisplayBackLayoutTexts_property_selection, unwSelf.backLayoutTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_backLayoutTextsLayerDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_backLayoutTextsLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2182,7 +2182,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_padsHoles (v0, v1, v2))
+            return .single (transient_BoardModel_padsHoles (v0, v1, v2))
           default :
             return .empty
           }
@@ -2204,7 +2204,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.vias_property_selection, unwSelf.vias_property_selection, unwSelf.vias_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_viasHoles (v0, v1, v2))
+            return .single (transient_BoardModel_viasHoles (v0, v1, v2))
           default :
             return .empty
           }
@@ -2225,7 +2225,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.padsHoles_property_selection, unwSelf.viasHoles_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (compute_BoardModel_holes (v0, v1))
+            return .single (transient_BoardModel_holes (v0, v1))
           default :
             return .empty
           }
@@ -2245,7 +2245,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.holes_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_holesBezierPaths (v0))
+            return .single (transient_BoardModel_holesBezierPaths (v0))
           default :
             return .empty
           }
@@ -2267,7 +2267,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorHoles_property_selection, g_Preferences!.mergerModelViewDisplayHoles_property_selection, unwSelf.holes_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_holeLayerDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_holeLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2289,7 +2289,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.vias_property_selection, unwSelf.vias_property_selection, unwSelf.vias_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_viaShapes (v0, v1, v2))
+            return .single (transient_BoardModel_viaShapes (v0, v1, v2))
           default :
             return .empty
           }
@@ -2309,7 +2309,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.viaShapes_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_viasBezierPaths (v0))
+            return .single (transient_BoardModel_viasBezierPaths (v0))
           default :
             return .empty
           }
@@ -2331,7 +2331,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorVias_property_selection, g_Preferences!.mergerModelViewDisplayVias_property_selection, unwSelf.viaShapes_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_viaLayerDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_viaLayerDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2358,7 +2358,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (compute_BoardModel_frontPads (v0, v1, v2, v3, v4, v5, v6, v7))
+            return .single (transient_BoardModel_frontPads (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -2378,7 +2378,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontPads_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_frontPadsBezierPaths (v0))
+            return .single (transient_BoardModel_frontPadsBezierPaths (v0))
           default :
             return .empty
           }
@@ -2400,7 +2400,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorFrontPads_property_selection, g_Preferences!.mergerModelViewDisplayFrontPads_property_selection, unwSelf.frontPads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_frontPadsDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_frontPadsDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2427,7 +2427,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (compute_BoardModel_backPads (v0, v1, v2, v3, v4, v5, v6, v7))
+            return .single (transient_BoardModel_backPads (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -2447,7 +2447,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backPads_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_backPadsBezierPaths (v0))
+            return .single (transient_BoardModel_backPadsBezierPaths (v0))
           default :
             return .empty
           }
@@ -2469,7 +2469,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackPads_property_selection, g_Preferences!.mergerModelViewDisplayBackPads_property_selection, unwSelf.backPads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_backPadsDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_backPadsDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2492,7 +2492,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.modelLimitWidth_property_selection, g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (compute_BoardModel_boardLimits (v0, v1, v2, v3))
+            return .single (transient_BoardModel_boardLimits (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -2514,7 +2514,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.modelLimitWidth_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_boardLimitsBezierPaths (v0, v1, v2))
+            return .single (transient_BoardModel_boardLimitsBezierPaths (v0, v1, v2))
           default :
             return .empty
           }
@@ -2536,7 +2536,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBoardLimits_property_selection, g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection, unwSelf.boardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_boardLimitsDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_boardLimitsDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2560,7 +2560,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection, unwSelf.backComponentNames_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_backComponentNameSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_backComponentNameSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -2580,7 +2580,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backComponentNameSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_backComponentNamesBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -2602,7 +2602,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackComponentNames_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentNames_property_selection, unwSelf.backComponentNameSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_backComponentNameDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_backComponentNameDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2626,7 +2626,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection, unwSelf.frontComponentNames_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_frontComponentNameSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_frontComponentNameSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -2646,7 +2646,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontComponentNameSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_frontComponentNamesBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -2668,7 +2668,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorFrontComponentNames_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentNames_property_selection, unwSelf.frontComponentNameSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_frontComponentNameDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_frontComponentNameDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2692,7 +2692,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection, unwSelf.frontComponentValues_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_frontComponentValueSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_frontComponentValueSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -2712,7 +2712,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontComponentValueSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_frontComponentValuesBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -2734,7 +2734,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorFrontComponentValues_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentValues_property_selection, unwSelf.frontComponentValueSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_frontComponentValueDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_frontComponentValueDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2758,7 +2758,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection, unwSelf.backComponentValues_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_backComponentValueSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_backComponentValueSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -2778,7 +2778,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backComponentValueSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_backComponentValuesBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -2800,7 +2800,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackComponentValues_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentValues_property_selection, unwSelf.backComponentValueSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_backComponentValueDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_backComponentValueDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2824,7 +2824,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection, unwSelf.backTracks_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_backTrackSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_backTrackSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -2844,7 +2844,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backTrackSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_backTracksBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -2866,7 +2866,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackTracks_property_selection, g_Preferences!.mergerModelViewDisplayBackTracks_property_selection, unwSelf.backTrackSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_backTracksDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_backTracksDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2890,7 +2890,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection, unwSelf.frontTracks_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_frontTrackSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_frontTrackSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -2910,7 +2910,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontTrackSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_frontTracksBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -2932,7 +2932,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorFrontTracks_property_selection, g_Preferences!.mergerModelViewDisplayFrontTracks_property_selection, unwSelf.frontTrackSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_frontTracksDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_frontTracksDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -2956,7 +2956,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection, unwSelf.frontPackages_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_frontPackagesSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_frontPackagesSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -2976,7 +2976,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.frontPackagesSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_frontPackagesBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -2998,7 +2998,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorFrontPackages_property_selection, g_Preferences!.mergerModelViewDisplayFrontPackages_property_selection, unwSelf.frontPackagesSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_frontPackagesDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_frontPackagesDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -3022,7 +3022,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection, unwSelf.backPackages_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_BoardModel_backPackagesSegments (v0, v1, v2, v3, v4))
+            return .single (transient_BoardModel_backPackagesSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -3042,7 +3042,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backPackagesSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_BoardModel_backPackagesBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -3064,7 +3064,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackPackages_property_selection, g_Preferences!.mergerModelViewDisplayBackPackages_property_selection, unwSelf.backPackagesSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_BoardModel_backPackagesDisplay (v0, v1, v2))
+            return .single (transient_BoardModel_backPackagesDisplay (v0, v1, v2))
           default :
             return .empty
           }
@@ -3103,7 +3103,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backgroundLayerDisplay_property_selection, unwSelf.backLegendTextsLayerDisplay_property_selection, unwSelf.backLayoutTextsLayerDisplay_property_selection, unwSelf.frontLegendTextsLayerDisplay_property_selection, unwSelf.frontLayoutTextsLayerDisplay_property_selection, unwSelf.holeLayerDisplay_property_selection, unwSelf.viaLayerDisplay_property_selection, unwSelf.frontPadsDisplay_property_selection, unwSelf.backPadsDisplay_property_selection, unwSelf.boardLimitsDisplay_property_selection, unwSelf.backComponentNameDisplay_property_selection, unwSelf.frontComponentNameDisplay_property_selection, unwSelf.frontComponentValueDisplay_property_selection, unwSelf.backComponentValueDisplay_property_selection, unwSelf.backTracksDisplay_property_selection, unwSelf.frontTracksDisplay_property_selection, unwSelf.frontPackagesDisplay_property_selection, unwSelf.backPackagesDisplay_property_selection, unwSelf.backLegendLinesLayerDisplay_property_selection, unwSelf.frontLegendLinesLayerDisplay_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19)) :
-            return .single (compute_BoardModel_modelLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19))
+            return .single (transient_BoardModel_modelLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19))
           default :
             return .empty
           }
@@ -3182,7 +3182,7 @@ class BoardModel : EBManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.frontTracksBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontTracks_property_selection, g_Preferences!.mergerColorFrontTracks_property_selection, unwSelf.backTracksBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackTracks_property_selection, g_Preferences!.mergerColorBackTracks_property_selection, unwSelf.boardLimitsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayInternalBoardLimits_property_selection, g_Preferences!.mergerColorInternalBoardLimits_property_selection, unwSelf.frontPadsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPads_property_selection, g_Preferences!.mergerColorFrontPads_property_selection, unwSelf.backPadsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackPads_property_selection, g_Preferences!.mergerColorBackPads_property_selection, unwSelf.viasBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayVias_property_selection, g_Preferences!.mergerColorVias_property_selection, unwSelf.holesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayHoles_property_selection, g_Preferences!.mergerColorHoles_property_selection, unwSelf.frontLegendLinesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLegendLines_property_selection, g_Preferences!.mergerColorFrontLegendLines_property_selection, unwSelf.backLegendLinesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLegendLines_property_selection, g_Preferences!.mergerColorBackLegendLines_property_selection, unwSelf.frontLegendTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLegendTexts_property_selection, g_Preferences!.mergerColorFrontLegendTexts_property_selection, unwSelf.frontLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLayoutTexts_property_selection, g_Preferences!.mergerColorFrontLayoutTexts_property_selection, unwSelf.backLegendTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLegendTexts_property_selection, g_Preferences!.mergerColorBackLegendTexts_property_selection, unwSelf.backLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLayoutTexts_property_selection, g_Preferences!.mergerColorBackLayoutTexts_property_selection, unwSelf.backComponentNamesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackComponentNames_property_selection, g_Preferences!.mergerColorBackComponentNames_property_selection, unwSelf.frontComponentNamesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontComponentNames_property_selection, g_Preferences!.mergerColorFrontComponentNames_property_selection, unwSelf.frontComponentValuesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontComponentValues_property_selection, g_Preferences!.mergerColorFrontComponentValues_property_selection, unwSelf.backComponentValuesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackComponentValues_property_selection, g_Preferences!.mergerColorBackComponentValues_property_selection, unwSelf.frontPackagesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPackages_property_selection, g_Preferences!.mergerColorFrontPackages_property_selection, unwSelf.backPackagesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackPackages_property_selection, g_Preferences!.mergerColorBackPackages_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59)) :
-            return .single (compute_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59))
+            return .single (transient_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59))
           default :
             return .empty
           }

@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_frontPadsDisplay (
+func transient_BoardModel_frontPadsDisplay (
        _ prefs_mergerColorFrontPads : NSColor,
        _ prefs_mergerModelViewDisplayFrontPads : Bool,
        _ self_frontPads : MergerPadArray

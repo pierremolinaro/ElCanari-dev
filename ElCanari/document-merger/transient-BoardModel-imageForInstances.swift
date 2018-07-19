@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_imageForInstances (
+func transient_BoardModel_imageForInstances (
        _ prefs_mergerColorBackground : NSColor,
-       _ self_modelWidth : Int,            
-       _ self_modelHeight : Int,           
+       _ self_modelWidth : Int,              
+       _ self_modelHeight : Int,             
        _ self_frontTracksBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayFrontTracks : Bool,
        _ prefs_mergerColorFrontTracks : NSColor,
@@ -32,10 +32,10 @@ func compute_BoardModel_imageForInstances (
        _ prefs_mergerColorBackPads : NSColor,
        _ self_viasBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayVias : Bool,
-       _ prefs_mergerColorVias : NSColor,  
+       _ prefs_mergerColorVias : NSColor,    
        _ self_holesBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayHoles : Bool,
-       _ prefs_mergerColorHoles : NSColor, 
+       _ prefs_mergerColorHoles : NSColor,   
        _ self_frontLegendLinesBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayFrontLegendLines : Bool,
        _ prefs_mergerColorFrontLegendLines : NSColor,

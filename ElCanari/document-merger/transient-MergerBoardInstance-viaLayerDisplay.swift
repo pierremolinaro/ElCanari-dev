@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_viaLayerDisplay (
-       _ self_x : Int,                            
-       _ self_y : Int,                            
-       _ prefs_mergerColorVias : NSColor,         
-       _ prefs_mergerBoardViewDisplayVias : Bool, 
+func transient_MergerBoardInstance_viaLayerDisplay (
+       _ self_x : Int,                              
+       _ self_y : Int,                              
+       _ prefs_mergerColorVias : NSColor,           
+       _ prefs_mergerBoardViewDisplayVias : Bool,   
        _ self_myModel_viaShapes : MergerViaShapeArray?
 ) -> CALayer {
 //--- START OF USER ZONE 2

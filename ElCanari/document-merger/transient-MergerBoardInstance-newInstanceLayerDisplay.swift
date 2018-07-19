@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_newInstanceLayerDisplay (
-       _ self_x : Int,                                    
-       _ self_y : Int,                                    
-       _ self_myRoot_zoom : Int?,                         
+func transient_MergerBoardInstance_newInstanceLayerDisplay (
+       _ self_x : Int,                                      
+       _ self_y : Int,                                      
+       _ self_myRoot_zoom : Int?,                           
        _ self_myModel_imageForInstances : NSImage?
 ) -> CALayer {
 //--- START OF USER ZONE 2

@@ -160,7 +160,7 @@ class FontCharacter : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.advance_property_selection, unwSelf.segments_property.count_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (compute_FontCharacter_characterIsDefined (v0, v1))
+            return .single (transient_FontCharacter_characterIsDefined (v0, v1))
           default :
             return .empty
           }
@@ -180,7 +180,7 @@ class FontCharacter : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.segments_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_FontCharacter_segmentArrayForDrawing (v0))
+            return .single (transient_FontCharacter_segmentArrayForDrawing (v0))
           default :
             return .empty
           }
@@ -200,7 +200,7 @@ class FontCharacter : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.segmentArrayForDrawing_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_FontCharacter_gerberCode (v0))
+            return .single (transient_FontCharacter_gerberCode (v0))
           default :
             return .empty
           }
@@ -220,7 +220,7 @@ class FontCharacter : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.gerberCode_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_FontCharacter_gerberCodeInstructionCountMessage (v0))
+            return .single (transient_FontCharacter_gerberCodeInstructionCountMessage (v0))
           default :
             return .empty
           }

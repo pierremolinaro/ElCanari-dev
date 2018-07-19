@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_frontLayoutTextsLayerDisplay (
-       _ self_x : Int,                                         
-       _ self_y : Int,                                         
-       _ prefs_mergerColorFrontLayoutTexts : NSColor,          
-       _ prefs_mergerBoardViewDisplayFrontLayoutTexts : Bool,  
+func transient_MergerBoardInstance_frontLayoutTextsLayerDisplay (
+       _ self_x : Int,                                           
+       _ self_y : Int,                                           
+       _ prefs_mergerColorFrontLayoutTexts : NSColor,            
+       _ prefs_mergerBoardViewDisplayFrontLayoutTexts : Bool,    
        _ self_myModel_frontLayoutTextsSegments : MergerSegmentArray?
 ) -> CALayer {
 //--- START OF USER ZONE 2

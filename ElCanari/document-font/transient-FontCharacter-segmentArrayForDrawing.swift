@@ -12,7 +12,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_FontCharacter_segmentArrayForDrawing (
+func transient_FontCharacter_segmentArrayForDrawing (
        _ self_segments_segmentForDrawing : [SegmentForFontCharacter_segmentForDrawing]
 ) -> CharacterSegmentListClass {
 //--- START OF USER ZONE 2

@@ -99,7 +99,7 @@ class CanariLibraryEntry : EBSimpleClass,
         case .singleSelectionKind :
           switch (unwSelf.mPath_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_CanariLibraryEntry_mStatusImage (v0))
+            return .single (transient_CanariLibraryEntry_mStatusImage (v0))
           default :
             return .empty
           }

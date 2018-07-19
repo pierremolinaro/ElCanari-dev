@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_frontTrackSegments (
+func transient_BoardModel_frontTrackSegments (
        _ self_frontTracks_x1 : [CanariSegment_x1],
        _ self_frontTracks_y1 : [CanariSegment_y1],
        _ self_frontTracks_x2 : [CanariSegment_x2],

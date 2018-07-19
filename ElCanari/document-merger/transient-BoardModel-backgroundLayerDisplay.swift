@@ -11,9 +11,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_backgroundLayerDisplay (
-       _ prefs_mergerColorBackground : NSColor, 
-       _ self_modelWidth : Int,                 
+func transient_BoardModel_backgroundLayerDisplay (
+       _ prefs_mergerColorBackground : NSColor,   
+       _ self_modelWidth : Int,                   
        _ self_modelHeight : Int
 ) -> CALayer {
 //--- START OF USER ZONE 2

@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_CanariLibraryEntry_mStatusImage (
+func transient_CanariLibraryEntry_mStatusImage (
        _ self_mPath : String
 ) -> NSImage {
 //--- START OF USER ZONE 2

@@ -617,7 +617,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.modelWidth_property_selection, unwSelf.myModel_property.modelHeight_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (compute_MergerBoardInstance_instanceRect (v0, v1, v2, v3))
+            return .single (transient_MergerBoardInstance_instanceRect (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -637,7 +637,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.myModel_property.modelLimitWidth_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_MergerBoardInstance_boardLimitWidth (v0))
+            return .single (transient_MergerBoardInstance_boardLimitWidth (v0))
           default :
             return .empty
           }
@@ -657,7 +657,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.instanceRect_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_MergerBoardInstance_selectionLayer (v0))
+            return .single (transient_MergerBoardInstance_selectionLayer (v0))
           default :
             return .empty
           }
@@ -678,7 +678,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.instanceRect_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (compute_MergerBoardInstance_backgroundLayerDisplay (v0, v1))
+            return .single (transient_MergerBoardInstance_backgroundLayerDisplay (v0, v1))
           default :
             return .empty
           }
@@ -702,7 +702,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorBackLegendLines_property_selection, g_Preferences!.mergerBoardViewDisplayBackLegendLines_property_selection, unwSelf.myModel_property.backLegendLinesSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_backLegendLinesLayerDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_backLegendLinesLayerDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -726,7 +726,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorFrontLegendLines_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLegendLines_property_selection, unwSelf.myModel_property.frontLegendLinesSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_frontLegendLinesLayerDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_frontLegendLinesLayerDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -750,7 +750,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorFrontLegendTexts_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLegendTexts_property_selection, unwSelf.myModel_property.frontLegendTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_frontLegendTextsLayerDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_frontLegendTextsLayerDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -774,7 +774,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorFrontLayoutTexts_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLayoutTexts_property_selection, unwSelf.myModel_property.frontLayoutTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_frontLayoutTextsLayerDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_frontLayoutTextsLayerDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -798,7 +798,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorBackLegendTexts_property_selection, g_Preferences!.mergerBoardViewDisplayBackLegendTexts_property_selection, unwSelf.myModel_property.backLegendTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_backLegendTextsLayerDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_backLegendTextsLayerDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -822,7 +822,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorBackLayoutTexts_property_selection, g_Preferences!.mergerBoardViewDisplayBackLayoutTexts_property_selection, unwSelf.myModel_property.backLayoutTextsSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_backLayoutTextsLayerDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_backLayoutTextsLayerDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -846,7 +846,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorHoles_property_selection, g_Preferences!.mergerBoardViewDisplayHoles_property_selection, unwSelf.myModel_property.holes_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_holeLayerDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_holeLayerDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -870,7 +870,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorVias_property_selection, g_Preferences!.mergerBoardViewDisplayVias_property_selection, unwSelf.myModel_property.viaShapes_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_viaLayerDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_viaLayerDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -894,7 +894,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorFrontPads_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPads_property_selection, unwSelf.myModel_property.frontPads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_frontPadsDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_frontPadsDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -918,7 +918,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorBackPads_property_selection, g_Preferences!.mergerBoardViewDisplayBackPads_property_selection, unwSelf.myModel_property.backPads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_backPadsDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_backPadsDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -942,7 +942,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorInternalBoardLimits_property_selection, g_Preferences!.mergerBoardViewDisplayInternalBoardLimits_property_selection, unwSelf.myModel_property.boardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_boardLimitsDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_boardLimitsDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -966,7 +966,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorBackComponentNames_property_selection, g_Preferences!.mergerBoardViewDisplayBackComponentNames_property_selection, unwSelf.myModel_property.backComponentNameSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_backComponentNameDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_backComponentNameDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -990,7 +990,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorFrontComponentNames_property_selection, g_Preferences!.mergerBoardViewDisplayFrontComponentNames_property_selection, unwSelf.myModel_property.frontComponentNameSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_frontComponentNameDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_frontComponentNameDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1014,7 +1014,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorFrontComponentValues_property_selection, g_Preferences!.mergerBoardViewDisplayFrontComponentValues_property_selection, unwSelf.myModel_property.frontComponentValueSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_frontComponentValueDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_frontComponentValueDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1038,7 +1038,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorBackComponentValues_property_selection, g_Preferences!.mergerBoardViewDisplayBackComponentValues_property_selection, unwSelf.myModel_property.backComponentValueSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_backComponentValueDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_backComponentValueDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1062,7 +1062,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorBackTracks_property_selection, g_Preferences!.mergerBoardViewDisplayBackTracks_property_selection, unwSelf.myModel_property.backTrackSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_backTracksDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_backTracksDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1086,7 +1086,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorFrontTracks_property_selection, g_Preferences!.mergerBoardViewDisplayFrontTracks_property_selection, unwSelf.myModel_property.frontTrackSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_frontTracksDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_frontTracksDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1110,7 +1110,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorFrontPackages_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPackages_property_selection, unwSelf.myModel_property.frontPackagesSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_frontPackagesDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_frontPackagesDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1134,7 +1134,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, g_Preferences!.mergerColorBackPackages_property_selection, g_Preferences!.mergerBoardViewDisplayBackPackages_property_selection, unwSelf.myModel_property.backPackagesSegments_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerBoardInstance_backPackagesDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerBoardInstance_backPackagesDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1157,7 +1157,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myRoot_property.zoom_property_selection, unwSelf.myModel_property.imageForInstances_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (compute_MergerBoardInstance_newInstanceLayerDisplay (v0, v1, v2, v3))
+            return .single (transient_MergerBoardInstance_newInstanceLayerDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -1196,7 +1196,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.backgroundLayerDisplay_property_selection, unwSelf.backLegendTextsLayerDisplay_property_selection, unwSelf.backLayoutTextsLayerDisplay_property_selection, unwSelf.frontLegendTextsLayerDisplay_property_selection, unwSelf.frontLayoutTextsLayerDisplay_property_selection, unwSelf.holeLayerDisplay_property_selection, unwSelf.viaLayerDisplay_property_selection, unwSelf.frontPadsDisplay_property_selection, unwSelf.backPadsDisplay_property_selection, unwSelf.boardLimitsDisplay_property_selection, unwSelf.backComponentNameDisplay_property_selection, unwSelf.frontComponentNameDisplay_property_selection, unwSelf.frontComponentValueDisplay_property_selection, unwSelf.backComponentValueDisplay_property_selection, unwSelf.backTracksDisplay_property_selection, unwSelf.frontTracksDisplay_property_selection, unwSelf.frontPackagesDisplay_property_selection, unwSelf.backPackagesDisplay_property_selection, unwSelf.backLegendLinesLayerDisplay_property_selection, unwSelf.frontLegendLinesLayerDisplay_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19)) :
-            return .single (compute_MergerBoardInstance_instanceLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19))
+            return .single (transient_MergerBoardInstance_instanceLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19))
           default :
             return .empty
           }

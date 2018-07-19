@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_frontLegendTextsLayerDisplay (
-       _ prefs_mergerColorFrontLegendTexts : NSColor, 
+func transient_BoardModel_frontLegendTextsLayerDisplay (
+       _ prefs_mergerColorFrontLegendTexts : NSColor,   
        _ prefs_mergerModelViewDisplayFrontLegendTexts : Bool,
        _ self_frontLegendTextsSegments : MergerSegmentArray
 ) -> CALayer {

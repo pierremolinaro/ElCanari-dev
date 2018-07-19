@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_viaLayerDisplay (
-       _ prefs_mergerColorVias : NSColor,
+func transient_BoardModel_viaLayerDisplay (
+       _ prefs_mergerColorVias : NSColor,  
        _ prefs_mergerModelViewDisplayVias : Bool,
        _ self_viaShapes : MergerViaShapeArray
 ) -> CALayer {

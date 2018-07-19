@@ -11,25 +11,25 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_modelLayerDisplay (
+func transient_BoardModel_modelLayerDisplay (
        _ self_backgroundLayerDisplay : CALayer,
        _ self_backLegendTextsLayerDisplay : CALayer,
        _ self_backLayoutTextsLayerDisplay : CALayer,
        _ self_frontLegendTextsLayerDisplay : CALayer,
        _ self_frontLayoutTextsLayerDisplay : CALayer,
-       _ self_holeLayerDisplay : CALayer,  
-       _ self_viaLayerDisplay : CALayer,   
-       _ self_frontPadsDisplay : CALayer,  
-       _ self_backPadsDisplay : CALayer,   
-       _ self_boardLimitsDisplay : CALayer,
+       _ self_holeLayerDisplay : CALayer,    
+       _ self_viaLayerDisplay : CALayer,     
+       _ self_frontPadsDisplay : CALayer,    
+       _ self_backPadsDisplay : CALayer,     
+       _ self_boardLimitsDisplay : CALayer,  
        _ self_backComponentNameDisplay : CALayer,
        _ self_frontComponentNameDisplay : CALayer,
        _ self_frontComponentValueDisplay : CALayer,
        _ self_backComponentValueDisplay : CALayer,
-       _ self_backTracksDisplay : CALayer, 
-       _ self_frontTracksDisplay : CALayer,
+       _ self_backTracksDisplay : CALayer,   
+       _ self_frontTracksDisplay : CALayer,  
        _ self_frontPackagesDisplay : CALayer,
-       _ self_backPackagesDisplay : CALayer,
+       _ self_backPackagesDisplay : CALayer, 
        _ self_backLegendLinesLayerDisplay : CALayer,
        _ self_frontLegendLinesLayerDisplay : CALayer
 ) -> CALayer {

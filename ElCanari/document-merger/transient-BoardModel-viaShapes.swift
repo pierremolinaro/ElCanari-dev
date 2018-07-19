@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_viaShapes (
+func transient_BoardModel_viaShapes (
        _ self_vias_x : [BoardModelVia_x],
        _ self_vias_y : [BoardModelVia_y],
        _ self_vias_padDiameter : [BoardModelVia_padDiameter]

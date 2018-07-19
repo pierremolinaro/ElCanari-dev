@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_frontLegendLinesLayerDisplay (
-       _ self_x : Int,                                         
-       _ self_y : Int,                                         
-       _ prefs_mergerColorFrontLegendLines : NSColor,          
-       _ prefs_mergerBoardViewDisplayFrontLegendLines : Bool,  
+func transient_MergerBoardInstance_frontLegendLinesLayerDisplay (
+       _ self_x : Int,                                           
+       _ self_y : Int,                                           
+       _ prefs_mergerColorFrontLegendLines : NSColor,            
+       _ prefs_mergerBoardViewDisplayFrontLegendLines : Bool,    
        _ self_myModel_frontLegendLinesSegments : MergerSegmentArray?
 ) -> CALayer {
 //--- START OF USER ZONE 2

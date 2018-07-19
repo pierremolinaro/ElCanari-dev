@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerRoot_boardLimitsLayerDisplay (
-       _ self_boardWidth : Int,                  
-       _ self_boardHeight : Int,                 
-       _ self_boardLimitWidth : Int,             
-       _ prefs_mergerColorBoardLimits : NSColor, 
+func transient_MergerRoot_boardLimitsLayerDisplay (
+       _ self_boardWidth : Int,                    
+       _ self_boardHeight : Int,                   
+       _ self_boardLimitWidth : Int,               
+       _ prefs_mergerColorBoardLimits : NSColor,   
        _ prefs_mergerBoardViewDisplayBoardLimits : Bool
 ) -> CALayer {
 //--- START OF USER ZONE 2

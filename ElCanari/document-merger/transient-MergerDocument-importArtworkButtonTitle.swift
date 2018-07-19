@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerDocument_importArtworkButtonTitle (
+func transient_MergerDocument_importArtworkButtonTitle (
        _ root_artworkName : String
 ) -> String {
 //--- START OF USER ZONE 2

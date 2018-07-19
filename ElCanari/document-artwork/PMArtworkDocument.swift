@@ -596,7 +596,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.mDataController.sortedArray_property.count_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_PMArtworkDocument_mGeneratedFileCountString (v0))
+            return .single (transient_PMArtworkDocument_mGeneratedFileCountString (v0))
           default :
             return .empty
           }
@@ -617,7 +617,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (compute_PMArtworkDocument_mStatusImage (v0, v1))
+            return .single (transient_PMArtworkDocument_mStatusImage (v0, v1))
           default :
             return .empty
           }
@@ -638,7 +638,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (compute_PMArtworkDocument_mStatusMessage (v0, v1))
+            return .single (transient_PMArtworkDocument_mStatusMessage (v0, v1))
           default :
             return .empty
           }

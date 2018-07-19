@@ -468,7 +468,7 @@ class MergerRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.boardModels_property_selection, unwSelf.boardModels_property_selection, unwSelf.boardModels_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (compute_MergerRoot_modelNames (v0, v1, v2))
+            return .single (transient_MergerRoot_modelNames (v0, v1, v2))
           default :
             return .empty
           }
@@ -489,7 +489,7 @@ class MergerRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.boardLimitsLayerDisplay_property_selection, unwSelf.boardInstances_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (compute_MergerRoot_instancesLayerDisplay (v0, v1))
+            return .single (transient_MergerRoot_instancesLayerDisplay (v0, v1))
           default :
             return .empty
           }
@@ -509,7 +509,7 @@ class MergerRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.boardInstances_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_MergerRoot_boardRect (v0))
+            return .single (transient_MergerRoot_boardRect (v0))
           default :
             return .empty
           }
@@ -529,7 +529,7 @@ class MergerRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.boardRect_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_MergerRoot_boardWidth (v0))
+            return .single (transient_MergerRoot_boardWidth (v0))
           default :
             return .empty
           }
@@ -549,7 +549,7 @@ class MergerRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.boardRect_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_MergerRoot_boardHeight (v0))
+            return .single (transient_MergerRoot_boardHeight (v0))
           default :
             return .empty
           }
@@ -573,7 +573,7 @@ class MergerRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.boardWidth_property_selection, unwSelf.boardHeight_property_selection, unwSelf.boardLimitWidth_property_selection, g_Preferences!.mergerColorBoardLimits_property_selection, g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (compute_MergerRoot_boardLimitsLayerDisplay (v0, v1, v2, v3, v4))
+            return .single (transient_MergerRoot_boardLimitsLayerDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }

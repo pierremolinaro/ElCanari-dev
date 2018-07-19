@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_PMFontDocument_missingCharactersCountString (
+func transient_PMFontDocument_missingCharactersCountString (
        _ root_characters_characterIsDefined : [FontCharacter_characterIsDefined]
 ) -> String {
 //--- START OF USER ZONE 2

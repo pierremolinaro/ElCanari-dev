@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_FontCharacter_gerberCode (
+func transient_FontCharacter_gerberCode (
        _ self_segmentArrayForDrawing : CharacterSegmentListClass
 ) -> CharacterGerberCodeClass {
 //--- START OF USER ZONE 2

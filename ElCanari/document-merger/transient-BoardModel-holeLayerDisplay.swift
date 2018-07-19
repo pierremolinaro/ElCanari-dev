@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_holeLayerDisplay (
-       _ prefs_mergerColorHoles : NSColor,
+func transient_BoardModel_holeLayerDisplay (
+       _ prefs_mergerColorHoles : NSColor,  
        _ prefs_mergerModelViewDisplayHoles : Bool,
        _ self_holes : MergerHoleArray
 ) -> CALayer {

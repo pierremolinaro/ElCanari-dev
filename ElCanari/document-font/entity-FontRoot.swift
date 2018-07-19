@@ -204,7 +204,7 @@ class FontRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.characters_property_selection, unwSelf.characters_property_selection, g_Preferences!.sampleString_property_selection, g_Preferences!.sampleStringSize_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (compute_FontRoot_sampleStringBezierPath (v0, v1, v2, v3))
+            return .single (transient_FontRoot_sampleStringBezierPath (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -224,7 +224,7 @@ class FontRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.sampleStringBezierPath_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_FontRoot_sampleStringBezierPathWidth (v0))
+            return .single (transient_FontRoot_sampleStringBezierPathWidth (v0))
           default :
             return .empty
           }
@@ -244,7 +244,7 @@ class FontRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.sampleStringBezierPath_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_FontRoot_sampleStringBezierPathAscent (v0))
+            return .single (transient_FontRoot_sampleStringBezierPathAscent (v0))
           default :
             return .empty
           }
@@ -264,7 +264,7 @@ class FontRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.sampleStringBezierPath_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_FontRoot_sampleStringBezierPathDescent (v0))
+            return .single (transient_FontRoot_sampleStringBezierPathDescent (v0))
           default :
             return .empty
           }

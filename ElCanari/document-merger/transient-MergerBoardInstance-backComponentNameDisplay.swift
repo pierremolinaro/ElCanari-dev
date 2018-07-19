@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_backComponentNameDisplay (
-       _ self_x : Int,                                     
-       _ self_y : Int,                                     
-       _ prefs_mergerColorBackComponentNames : NSColor,    
+func transient_MergerBoardInstance_backComponentNameDisplay (
+       _ self_x : Int,                                       
+       _ self_y : Int,                                       
+       _ prefs_mergerColorBackComponentNames : NSColor,      
        _ prefs_mergerBoardViewDisplayBackComponentNames : Bool,
        _ self_myModel_backComponentNameSegments : MergerSegmentArray?
 ) -> CALayer {

@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_boardLimits (
-       _ self_modelWidth : Int,      
-       _ self_modelHeight : Int,     
-       _ self_modelLimitWidth : Int, 
+func transient_BoardModel_boardLimits (
+       _ self_modelWidth : Int,        
+       _ self_modelHeight : Int,       
+       _ self_modelLimitWidth : Int,   
        _ prefs_mergerModelViewDisplayBoardLimits : Bool
 ) -> MergerBoardLimits {
 //--- START OF USER ZONE 2

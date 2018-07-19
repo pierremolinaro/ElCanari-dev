@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_frontLegendLinesLayerDisplay (
-       _ prefs_mergerColorFrontLegendLines : NSColor, 
+func transient_BoardModel_frontLegendLinesLayerDisplay (
+       _ prefs_mergerColorFrontLegendLines : NSColor,   
        _ prefs_mergerModelViewDisplayFrontLegendLines : Bool,
        _ self_frontLegendLinesSegments : MergerSegmentArray
 ) -> CALayer {

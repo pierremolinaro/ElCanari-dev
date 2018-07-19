@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_backPadsDisplay (
+func transient_BoardModel_backPadsDisplay (
        _ prefs_mergerColorBackPads : NSColor,
        _ prefs_mergerModelViewDisplayBackPads : Bool,
        _ self_backPads : MergerPadArray

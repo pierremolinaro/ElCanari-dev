@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_backComponentValueDisplay (
+func transient_BoardModel_backComponentValueDisplay (
        _ prefs_mergerColorBackComponentValues : NSColor,
        _ prefs_mergerModelViewDisplayBackComponentValues : Bool,
        _ self_backComponentValueSegments : MergerSegmentArray

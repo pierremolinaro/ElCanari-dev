@@ -27,7 +27,7 @@ entity BoardModel {
     self.frontLegendLines.all.width
   ;
 
-  transient BezierPathArray frontLegendLinesBezierPaths dependsFrom self.frontLegendLinesSegments ;
+  transient BezierPathArray frontLegendLinesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLegendLinesSegments ;
 
   transient CALayer frontLegendLinesLayerDisplay dependsFrom
     prefs.mergerColorFrontLegendLines,
@@ -44,7 +44,7 @@ entity BoardModel {
     self.backLegendLines.all.width
   ;
 
-  transient BezierPathArray backLegendLinesBezierPaths dependsFrom self.backLegendLinesSegments ;
+  transient BezierPathArray backLegendLinesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLegendLinesSegments ;
 
   transient CALayer backLegendLinesLayerDisplay dependsFrom
     prefs.mergerColorBackLegendLines,
@@ -61,7 +61,7 @@ entity BoardModel {
     self.frontLegendTexts.all.width
   ;
 
-  transient BezierPathArray frontLegendTextsBezierPaths dependsFrom self.frontLegendTextsSegments ;
+  transient BezierPathArray frontLegendTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLegendTextsSegments ;
 
   transient CALayer frontLegendTextsLayerDisplay dependsFrom
     prefs.mergerColorFrontLegendTexts,
@@ -78,7 +78,7 @@ entity BoardModel {
     self.frontLayoutTexts.all.width
   ;
 
-  transient BezierPathArray frontLayoutTextsBezierPaths dependsFrom self.frontLayoutTextsSegments ;
+  transient BezierPathArray frontLayoutTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLayoutTextsSegments ;
 
   transient CALayer frontLayoutTextsLayerDisplay
      dependsFrom prefs.mergerColorFrontLayoutTexts, prefs.mergerModelViewDisplayFrontLayoutTexts, self.frontLayoutTextsSegments ;
@@ -92,7 +92,7 @@ entity BoardModel {
     self.backLegendTexts.all.width
   ;
 
-  transient BezierPathArray backLegendTextsBezierPaths dependsFrom self.backLegendTextsSegments ;
+  transient BezierPathArray backLegendTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLegendTextsSegments ;
 
   transient CALayer backLegendTextsLayerDisplay
     dependsFrom prefs.mergerColorBackLegendTexts, prefs.mergerModelViewDisplayBackLegendTexts, self.backLegendTextsSegments ;
@@ -106,7 +106,7 @@ entity BoardModel {
     self.backLayoutTexts.all.width
   ;
 
-  transient BezierPathArray backLayoutTextsBezierPaths dependsFrom self.backLayoutTextsSegments ;
+  transient BezierPathArray backLayoutTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLayoutTextsSegments ;
 
   transient CALayer backLayoutTextsLayerDisplay
     dependsFrom prefs.mergerColorBackLayoutTexts, prefs.mergerModelViewDisplayBackLayoutTexts, self.backLayoutTextsSegments ;
@@ -176,7 +176,7 @@ entity BoardModel {
     self.backComponentNames.all.width
   ;
 
-  transient BezierPathArray backComponentNamesBezierPaths dependsFrom self.backComponentNameSegments ;
+  transient BezierPathArray backComponentNamesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backComponentNameSegments ;
 
   transient CALayer backComponentNameDisplay
     dependsFrom prefs.mergerColorBackComponentNames, prefs.mergerModelViewDisplayBackComponentNames, self.backComponentNameSegments ;
@@ -190,7 +190,7 @@ entity BoardModel {
     self.frontComponentNames.all.width
   ;
 
-  transient BezierPathArray frontComponentNamesBezierPaths dependsFrom self.frontComponentNameSegments ;
+  transient BezierPathArray frontComponentNamesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontComponentNameSegments ;
 
   transient CALayer frontComponentNameDisplay
     dependsFrom prefs.mergerColorFrontComponentNames, prefs.mergerModelViewDisplayFrontComponentNames, self.frontComponentNameSegments ;
@@ -204,7 +204,7 @@ entity BoardModel {
     self.frontComponentValues.all.width
   ;
 
-  transient BezierPathArray frontComponentValuesBezierPaths dependsFrom self.frontComponentValueSegments ;
+  transient BezierPathArray frontComponentValuesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontComponentValueSegments ;
 
   transient CALayer frontComponentValueDisplay
      dependsFrom prefs.mergerColorFrontComponentValues, prefs.mergerModelViewDisplayFrontComponentValues, self.frontComponentValueSegments ;
@@ -218,7 +218,7 @@ entity BoardModel {
     self.backComponentValues.all.width
   ;
 
-  transient BezierPathArray backComponentValuesBezierPaths dependsFrom self.backComponentValueSegments ;
+  transient BezierPathArray backComponentValuesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backComponentValueSegments ;
 
   transient CALayer backComponentValueDisplay
     dependsFrom prefs.mergerColorBackComponentValues,prefs.mergerModelViewDisplayBackComponentValues, self.backComponentValueSegments ;
@@ -232,7 +232,7 @@ entity BoardModel {
     self.backTracks.all.width
   ;
 
-  transient BezierPathArray backTracksBezierPaths dependsFrom self.backTrackSegments ;
+  transient BezierPathArray backTracksBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backTrackSegments ;
 
   transient CALayer backTracksDisplay dependsFrom prefs.mergerColorBackTracks, prefs.mergerModelViewDisplayBackTracks, self.backTrackSegments ;
 
@@ -245,7 +245,7 @@ entity BoardModel {
     self.frontTracks.all.width
   ;
 
-  transient BezierPathArray frontTracksBezierPaths dependsFrom self.frontTrackSegments ;
+  transient BezierPathArray frontTracksBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontTrackSegments ;
 
   transient CALayer frontTracksDisplay
     dependsFrom prefs.mergerColorFrontTracks, prefs.mergerModelViewDisplayFrontTracks, self.frontTrackSegments ;
@@ -259,7 +259,7 @@ entity BoardModel {
     self.frontPackages.all.width
   ;
 
-  transient BezierPathArray frontPackagesBezierPaths dependsFrom self.frontPackagesSegments ;
+  transient BezierPathArray frontPackagesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontPackagesSegments ;
 
   transient CALayer frontPackagesDisplay
     dependsFrom prefs.mergerColorFrontPackages, prefs.mergerModelViewDisplayFrontPackages, self.frontPackagesSegments ;
@@ -273,7 +273,7 @@ entity BoardModel {
     self.backPackages.all.width
   ;
 
-  transient BezierPathArray backPackagesBezierPaths dependsFrom self.backPackagesSegments ;
+  transient BezierPathArray backPackagesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backPackagesSegments ;
 
   transient CALayer backPackagesDisplay dependsFrom prefs.mergerColorBackPackages, prefs.mergerModelViewDisplayBackPackages, self.backPackagesSegments ;
 

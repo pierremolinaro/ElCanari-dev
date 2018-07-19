@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_backPads (
+func transient_BoardModel_backPads (
        _ self_pads_x : [BoardModelPad_x],
        _ self_pads_y : [BoardModelPad_y],
        _ self_pads_width : [BoardModelPad_width],

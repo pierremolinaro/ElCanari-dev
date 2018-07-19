@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_backgroundLayerDisplay (
-       _ prefs_mergerColorBackground : NSColor,          
+func transient_MergerBoardInstance_backgroundLayerDisplay (
+       _ prefs_mergerColorBackground : NSColor,            
        _ self_instanceRect : CanariBoardRect
 ) -> CALayer {
 //--- START OF USER ZONE 2

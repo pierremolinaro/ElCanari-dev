@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_Preferences_mValueRevealInFinder_artworks (
-       _ self_usesUserLibrary : Bool,                   
+func transient_Preferences_mValueRevealInFinder_artworks (
+       _ self_usesUserLibrary : Bool,                     
        _ self_additionnalLibraryArray_mUses : [CanariLibraryEntry_mUses],
        _ self_additionnalLibraryArray_mPath : [CanariLibraryEntry_mPath]
 ) -> CanariMenuItemListClass {

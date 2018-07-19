@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_holeLayerDisplay (
-       _ self_x : Int,                             
-       _ self_y : Int,                             
-       _ prefs_mergerColorHoles : NSColor,         
-       _ prefs_mergerBoardViewDisplayHoles : Bool, 
+func transient_MergerBoardInstance_holeLayerDisplay (
+       _ self_x : Int,                               
+       _ self_y : Int,                               
+       _ prefs_mergerColorHoles : NSColor,           
+       _ prefs_mergerBoardViewDisplayHoles : Bool,   
        _ self_myModel_holes : MergerHoleArray?
 ) -> CALayer {
 //--- START OF USER ZONE 2

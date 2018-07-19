@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_PMArtworkDocument_mStatusMessage (
+func transient_PMArtworkDocument_mStatusMessage (
        _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
        _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name]
 ) -> String {

@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_instanceRect (
-       _ self_x : Int,                         
-       _ self_y : Int,                         
-       _ self_myModel_modelWidth : Int?,       
+func transient_MergerBoardInstance_instanceRect (
+       _ self_x : Int,                           
+       _ self_y : Int,                           
+       _ self_myModel_modelWidth : Int?,         
        _ self_myModel_modelHeight : Int?
 ) -> CanariBoardRect {
 //--- START OF USER ZONE 2

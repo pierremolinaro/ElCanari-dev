@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerRoot_boardRect (
+func transient_MergerRoot_boardRect (
        _ self_boardInstances_instanceRect : [MergerBoardInstance_instanceRect]
 ) -> CanariBoardRect {
 //--- START OF USER ZONE 2

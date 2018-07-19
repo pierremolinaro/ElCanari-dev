@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_instanceCount (
+func transient_BoardModel_instanceCount (
        _ self_myInstances_count : Int
 ) -> Int {
 //--- START OF USER ZONE 2

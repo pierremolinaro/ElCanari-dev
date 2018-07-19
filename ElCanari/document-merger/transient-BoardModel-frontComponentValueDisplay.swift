@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_frontComponentValueDisplay (
+func transient_BoardModel_frontComponentValueDisplay (
        _ prefs_mergerColorFrontComponentValues : NSColor,
        _ prefs_mergerModelViewDisplayFrontComponentValues : Bool,
        _ self_frontComponentValueSegments : MergerSegmentArray

@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_holes (
+func transient_BoardModel_holes (
        _ self_padsHoles : MergerHoleArray,
        _ self_viasHoles : MergerHoleArray
 ) -> MergerHoleArray {

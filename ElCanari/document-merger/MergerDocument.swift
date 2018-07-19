@@ -1328,7 +1328,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.documentFilePath_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_MergerDocument_documentFileNameOk (v0))
+            return .single (transient_MergerDocument_documentFileNameOk (v0))
           default :
             return .empty
           }
@@ -1348,7 +1348,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.documentFilePath_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_MergerDocument_incorrectDocumentFileErrorMessage (v0))
+            return .single (transient_MergerDocument_incorrectDocumentFileErrorMessage (v0))
           default :
             return .empty
           }
@@ -1368,7 +1368,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.documentFilePath_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_MergerDocument_documentIsUnnamed (v0))
+            return .single (transient_MergerDocument_documentIsUnnamed (v0))
           default :
             return .empty
           }
@@ -1388,7 +1388,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.rootObject.artworkName_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_MergerDocument_importArtworkButtonTitle (v0))
+            return .single (transient_MergerDocument_importArtworkButtonTitle (v0))
           default :
             return .empty
           }

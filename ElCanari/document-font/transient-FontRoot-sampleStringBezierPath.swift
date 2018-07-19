@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_FontRoot_sampleStringBezierPath (
+func transient_FontRoot_sampleStringBezierPath (
        _ self_characters_segmentArrayForDrawing : [FontCharacter_segmentArrayForDrawing],
        _ self_characters_advance : [FontCharacter_advance],
-       _ prefs_sampleString : String,         
+       _ prefs_sampleString : String,           
        _ prefs_sampleStringSize : Double
 ) -> CGPath {
 //--- START OF USER ZONE 2

@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_viasBezierPaths (
+func transient_BoardModel_viasBezierPaths (
        _ self_viaShapes : MergerViaShapeArray
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2

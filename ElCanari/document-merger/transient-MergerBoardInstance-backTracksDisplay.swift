@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_backTracksDisplay (
-       _ self_x : Int,                              
-       _ self_y : Int,                              
-       _ prefs_mergerColorBackTracks : NSColor,     
+func transient_MergerBoardInstance_backTracksDisplay (
+       _ self_x : Int,                                
+       _ self_y : Int,                                
+       _ prefs_mergerColorBackTracks : NSColor,       
        _ prefs_mergerBoardViewDisplayBackTracks : Bool,
        _ self_myModel_backTrackSegments : MergerSegmentArray?
 ) -> CALayer {

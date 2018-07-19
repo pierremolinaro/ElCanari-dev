@@ -412,7 +412,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.rootObject.characters_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_PMFontDocument_missingCharactersCountString (v0))
+            return .single (transient_PMFontDocument_missingCharactersCountString (v0))
           default :
             return .empty
           }
@@ -432,7 +432,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.rootObject.characters_property_selection) {
           case (.single (let v0)) :
-            return .single (compute_PMFontDocument_missingCharacterDescriptorArray (v0))
+            return .single (transient_PMFontDocument_missingCharacterDescriptorArray (v0))
           default :
             return .empty
           }

@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_FontRoot_sampleStringBezierPathAscent (
+func transient_FontRoot_sampleStringBezierPathAscent (
        _ self_sampleStringBezierPath : CGPath
 ) -> Double {
 //--- START OF USER ZONE 2

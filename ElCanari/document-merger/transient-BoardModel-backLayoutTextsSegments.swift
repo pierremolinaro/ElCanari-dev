@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_backLayoutTextsSegments (
+func transient_BoardModel_backLayoutTextsSegments (
        _ self_backLayoutTexts_x1 : [CanariSegment_x1],
        _ self_backLayoutTexts_y1 : [CanariSegment_y1],
        _ self_backLayoutTexts_x2 : [CanariSegment_x2],

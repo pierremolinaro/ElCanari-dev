@@ -151,7 +151,7 @@ class SegmentForFontCharacter : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (compute_SegmentForFontCharacter_segmentForDrawing (v0, v1, v2, v3))
+            return .single (transient_SegmentForFontCharacter_segmentForDrawing (v0, v1, v2, v3))
           default :
             return .empty
           }

@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_boardLimitWidth (
+func transient_MergerBoardInstance_boardLimitWidth (
        _ self_myModel_modelLimitWidth : Int?
 ) -> Int {
 //--- START OF USER ZONE 2

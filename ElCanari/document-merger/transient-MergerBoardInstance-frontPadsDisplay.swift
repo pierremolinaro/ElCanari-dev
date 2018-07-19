@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerBoardInstance_frontPadsDisplay (
-       _ self_x : Int,                             
-       _ self_y : Int,                             
-       _ prefs_mergerColorFrontPads : NSColor,     
+func transient_MergerBoardInstance_frontPadsDisplay (
+       _ self_x : Int,                               
+       _ self_y : Int,                               
+       _ prefs_mergerColorFrontPads : NSColor,       
        _ prefs_mergerBoardViewDisplayFrontPads : Bool,
        _ self_myModel_frontPads : MergerPadArray?
 ) -> CALayer {

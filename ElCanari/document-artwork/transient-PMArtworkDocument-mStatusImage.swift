@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_PMArtworkDocument_mStatusImage (
+func transient_PMArtworkDocument_mStatusImage (
        _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
        _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name]
 ) -> NSImage {

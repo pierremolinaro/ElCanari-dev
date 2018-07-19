@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_BoardModel_frontLegendLinesSegments (
+func transient_BoardModel_frontLegendLinesSegments (
        _ self_frontLegendLines_x1 : [CanariSegment_x1],
        _ self_frontLegendLines_y1 : [CanariSegment_y1],
        _ self_frontLegendLines_x2 : [CanariSegment_x2],

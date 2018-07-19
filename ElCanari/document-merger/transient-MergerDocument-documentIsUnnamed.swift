@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func compute_MergerDocument_documentIsUnnamed (
+func transient_MergerDocument_documentIsUnnamed (
        _ self_documentFilePath : String
 ) -> Bool {
 //--- START OF USER ZONE 2
