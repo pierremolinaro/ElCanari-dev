@@ -616,7 +616,7 @@
             </toolbar>
             <point key="canvasLocation" x="681" y="25"/>
         </window>
-        <customView id="5405" userLabel="GeneralPrefsPage">
+        <customView id="5405" userLabel="Page : General Prefs">
             <rect key="frame" x="0.0" y="0.0" width="452" height="381"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -783,7 +783,7 @@
             </subviews>
             <point key="canvasLocation" x="353" y="455.5"/>
         </customView>
-        <customView id="5461" userLabel="SymboldPrefsPage">
+        <customView id="5461" userLabel="Page : Symbol Prefs">
             <rect key="frame" x="0.0" y="0.0" width="390" height="210"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -889,7 +889,7 @@
             </subviews>
             <point key="canvasLocation" x="307" y="695"/>
         </customView>
-        <customView id="5483" userLabel="PackagePrefsPage">
+        <customView id="5483" userLabel="Page : Package Prefs">
             <rect key="frame" x="0.0" y="0.0" width="390" height="424"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -1095,7 +1095,7 @@
                 </textField>
             </subviews>
         </customView>
-        <customView id="5528" userLabel="DevicePrefsPage">
+        <customView id="5528" userLabel="Page : Device Prefs">
             <rect key="frame" x="0.0" y="0.0" width="390" height="519"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -1364,7 +1364,7 @@
             </subviews>
             <point key="canvasLocation" x="848" y="462.5"/>
         </customView>
-        <customView id="5593" userLabel="SchematicPrefPage">
+        <customView id="5593" userLabel="Page : Schematic Prefs">
             <rect key="frame" x="0.0" y="0.0" width="430" height="351"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -1801,7 +1801,7 @@
             </subviews>
             <point key="canvasLocation" x="647" y="498"/>
         </customView>
-        <customView id="5692" userLabel="FontPrefPage">
+        <customView id="5692" userLabel="Page : Font Prefs">
             <rect key="frame" x="0.0" y="0.0" width="390" height="293"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -2011,7 +2011,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="5146B00A-F778-4901-BFE2-FF9031720269" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="2F7BC97E-60B2-4CF0-BAB3-7687F000B8A2" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2527,7 +2527,7 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="5146B00A-F778-4901-BFE2-FF9031720269" width="20" height="20">
+        <image name="2F7BC97E-60B2-4CF0-BAB3-7687F000B8A2" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

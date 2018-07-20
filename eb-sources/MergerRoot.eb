@@ -6,6 +6,9 @@ entity MergerRoot {
 
   property Int selectedPageIndex default 0 ;
   property Int zoom default 100 ;
+  property Bool automaticBoardSize default no ;
+  property Int boardManualWidth default 9_000_000 ;
+  property Int boardManualHeight default 9_000_000 ;
   property Int boardWidthUnit default 90_000 ;
   property Int boardHeightUnit default 90_000 ;
   property Bool overlapingArrangment default no ;
@@ -27,13 +30,20 @@ entity MergerRoot {
     dependsFrom self.boardLimitsLayerDisplay, self.boardInstances.all.newInstanceLayerDisplay ;
 
 #--- Board rect
-  transient CanariBoardRect boardRect dependsFrom self.boardInstances.all.instanceRect ;
+  transient CanariBoardRect boardRect dependsFrom
+     self.automaticBoardSize,
+     self.boardManualWidth, self.boardManualHeight,
+     self.boardInstances.all.instanceRect ;
+
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;
 
-  transient CALayer boardLimitsLayerDisplay
-     dependsFrom self.boardWidth, self.boardHeight, self.boardLimitWidth,
-                 prefs.mergerColorBoardLimits, prefs.mergerBoardViewDisplayBoardLimits ;
+#--- Board limits
+
+  transient CALayer boardLimitsLayerDisplay dependsFrom
+    self.boardWidth, self.boardHeight, self.boardLimitWidth,
+    prefs.mergerColorBoardLimits, prefs.mergerBoardViewDisplayBoardLimits
+ ;
 
 
 #--- Artwork

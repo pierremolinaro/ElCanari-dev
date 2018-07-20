@@ -794,13 +794,6 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
-				CF4C32C120FFD19800F74D7B /* transient-BoardModel-holesBezierPaths.swift */,
-				CF4C32BF20FFD04C00F74D7B /* transient-BoardModel-backPadsBezierPaths.swift */,
-				CF12885B20FF66EB007B808C /* transient-BoardModel-viasBezierPaths.swift */,
-				CF12885920FF5E81007B808C /* transient-BoardModel-frontPadsBezierPaths.swift */,
-				CF12885720FF5147007B808C /* transient-BoardModel-boardLimitsBezierPaths.swift */,
-				CF0A175320FF45F400448A4C /* transient-MergerBoardInstance-newInstanceLayerDisplay.swift */,
-				CF0A175120FF42DC00448A4C /* transient-BoardModel-imageForInstances.swift */,
 				CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */,
 				CFC2FEAE20EBFA7A00C45CB3 /* action-MergerDocument-arrangeHorizontallyAction.swift */,
 				CFC2FEAF20EBFA7A00C45CB3 /* action-MergerDocument-arrangeVerticalyAction.swift */,
@@ -835,6 +828,7 @@
 				CF5599501FDF364400ED5EE6 /* MergerDocument.xib */,
 				CFB671D920FB71E600C94777 /* selectionController-MergerDocument-mBoardInstanceSelection.swift */,
 				CFF0416C20DD46BE00FB1C5B /* selectionController-MergerDocument-mBoardModelSelection.swift */,
+				CF0A174F20FF3ED800448A4C /* struct-BezierPathArray.swift */,
 				CF63B3F020EB9D55009BC140 /* transient-BoardModel-backComponentNameDisplay.swift */,
 				CFDB681920E2AC66006D4E90 /* transient-BoardModel-backComponentNameSegments.swift */,
 				CF63B3FC20EB9F38009BC140 /* transient-BoardModel-backComponentValueDisplay.swift */,
@@ -849,10 +843,12 @@
 				CF18947C20EBB96B00B77DCA /* transient-BoardModel-backPackagesDisplay.swift */,
 				CF1FB92520E559A40050391E /* transient-BoardModel-backPackagesSegments.swift */,
 				CFC80A9420E62C9200C1A156 /* transient-BoardModel-backPads.swift */,
+				CF4C32BF20FFD04C00F74D7B /* transient-BoardModel-backPadsBezierPaths.swift */,
 				CF63B3E820EB9B70009BC140 /* transient-BoardModel-backPadsDisplay.swift */,
 				CF18947020EBB70E00B77DCA /* transient-BoardModel-backTracksDisplay.swift */,
 				CF323C2820E2DD9E00F8FD8D /* transient-BoardModel-backTrackSegments.swift */,
 				CF1FB92D20E56D290050391E /* transient-BoardModel-boardLimits.swift */,
+				CF12885720FF5147007B808C /* transient-BoardModel-boardLimitsBezierPaths.swift */,
 				CF63B3EC20EB9C1B009BC140 /* transient-BoardModel-boardLimitsDisplay.swift */,
 				CF63B3F420EB9DFE009BC140 /* transient-BoardModel-frontComponentNameDisplay.swift */,
 				CFDB680F20E2A2C6006D4E90 /* transient-BoardModel-frontComponentNameSegments.swift */,
@@ -867,15 +863,19 @@
 				CF18947820EBB88100B77DCA /* transient-BoardModel-frontPackagesDisplay.swift */,
 				CF1FB91D20E553C00050391E /* transient-BoardModel-frontPackagesSegments.swift */,
 				CF1FB92F20E57D740050391E /* transient-BoardModel-frontPads.swift */,
+				CF12885920FF5E81007B808C /* transient-BoardModel-frontPadsBezierPaths.swift */,
 				CF63B3E420EB9A33009BC140 /* transient-BoardModel-frontPadsDisplay.swift */,
 				CF18947420EBB7D600B77DCA /* transient-BoardModel-frontTracksDisplay.swift */,
 				CF323C2420E2D6CC00F8FD8D /* transient-BoardModel-frontTrackSegments.swift */,
 				CF63B3DE20EB94B5009BC140 /* transient-BoardModel-holeLayerDisplay.swift */,
 				CFC80AA420E6390500C1A156 /* transient-BoardModel-holes.swift */,
+				CF4C32C120FFD19800F74D7B /* transient-BoardModel-holesBezierPaths.swift */,
+				CF0A175120FF42DC00448A4C /* transient-BoardModel-imageForInstances.swift */,
 				CF619DFE20ED0DB40024F387 /* transient-BoardModel-instanceCount.swift */,
 				CF51222820EB78FF002AAE24 /* transient-BoardModel-modelLayerDisplay.swift */,
 				CFC80A9E20E634E900C1A156 /* transient-BoardModel-padsHoles.swift */,
 				CF63B3E120EB991A009BC140 /* transient-BoardModel-viaLayerDisplay.swift */,
+				CF12885B20FF66EB007B808C /* transient-BoardModel-viasBezierPaths.swift */,
 				CFDEC77620E0CD170065FBCE /* transient-BoardModel-viaShapes.swift */,
 				CFC80AA220E6388A00C1A156 /* transient-BoardModel-viasHoles.swift */,
 				CF18948220EBCD5E00B77DCA /* transient-MergerBoardInstance-backComponentNameDisplay.swift */,
@@ -901,6 +901,7 @@
 				CF18949020EBCD5E00B77DCA /* transient-MergerBoardInstance-holeLayerDisplay.swift */,
 				CF51222E20EB7EE7002AAE24 /* transient-MergerBoardInstance-instanceLayerDisplay.swift */,
 				CF21787820EA894B00BBC1C4 /* transient-MergerBoardInstance-instanceRect.swift */,
+				CF0A175320FF45F400448A4C /* transient-MergerBoardInstance-newInstanceLayerDisplay.swift */,
 				CF7357C620F6421C00915629 /* transient-MergerBoardInstance-selectionLayer.swift */,
 				CF18949120EBCD5E00B77DCA /* transient-MergerBoardInstance-viaLayerDisplay.swift */,
 				CF87A87D20F111900011B9EC /* transient-MergerDocument-documentFileNameOk.swift */,
@@ -916,7 +917,6 @@
 				CFD7EA2420E7D42900D53B87 /* transient-MergerRoot-modelNames.swift */,
 				CF95F6DE20FA399C0080EFFC /* view-CanariMergerBoardScrollView.swift */,
 				CF95F6DC20FA09680080EFFC /* view-CanariModelDragSourceTableView.swift */,
-				CF0A174F20FF3ED800448A4C /* struct-BezierPathArray.swift */,
 			);
 			name = "document-merger";
 			path = "ElCanari/document-merger";
@@ -1775,7 +1775,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -1857,7 +1857,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LLVM_LTO = YES;
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;

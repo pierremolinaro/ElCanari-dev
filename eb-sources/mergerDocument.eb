@@ -168,6 +168,36 @@ document MergerDocument root MergerRoot {
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
 
+#--- Automatic Board size
+  outlet EBSwitch mAutomaticBoardSizeSwitch $value root.automaticBoardSize ;
+  outlet NSView mAutomaticBoardSizeView $hidden !root.automaticBoardSize ;
+  outlet NSView mManualBoardSizeView $hidden root.automaticBoardSize ;
+
+
+#--- Manual Board width display
+  outlet EBPopUpButton mManualBoardWidthUnitPopUp $selectedTag root.boardWidthUnit ;
+  outlet CanariDimensionTextField mManualBoardWidthTextField
+     $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
+  ;
+
+#--- Manual Board Height display
+  outlet EBPopUpButton mManualBoardHeightUnitPopUp $selectedTag root.boardHeightUnit ;
+  outlet CanariDimensionTextField mManualBoardHeightTextField
+     $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
+  ;
+
+#--- Automatic Board width display
+  outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag root.boardWidthUnit ;
+  outlet CanariDimensionObserverTextField mBoardWidthTextField
+     $dimensionAndUnit root.boardWidth, root.boardWidthUnit
+  ;
+
+#--- Automatic Board Height display
+  outlet EBPopUpButton mBoardHeightUnitPopUp $selectedTag root.boardHeightUnit ;
+  outlet CanariDimensionObserverTextField mBoardHeightTextField
+     $dimensionAndUnit root.boardHeight, root.boardHeightUnit
+  ;
+
 #--- Help
   action showBoardHelpAction ;
   outlet EBButton showBoardHelpButton $run self.showBoardHelpAction ;
@@ -190,18 +220,6 @@ document MergerDocument root MergerRoot {
   
 #--- "Empty Board" message
  outlet EBTextField mEmptyBoardMessage $hidden root.boardInstances.count > 0 ;
-
-#--- Board width display
-  outlet EBPopUpButton mBoardWidthUnitPopUp $selectedTag root.boardWidthUnit ;
-  outlet CanariDimensionObserverTextField mBoardWidthTextField
-     $dimensionAndUnit root.boardWidth, root.boardWidthUnit
-  ;
-
-#--- Board Height display
-  outlet EBPopUpButton mBoardHeightUnitPopUp $selectedTag root.boardHeightUnit ;
-  outlet CanariDimensionObserverTextField mBoardHeightTextField
-     $dimensionAndUnit root.boardHeight, root.boardHeightUnit
-  ;
 
 #--- Composed Board View
   arrayController mBoardInstanceController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.boardInstances ;

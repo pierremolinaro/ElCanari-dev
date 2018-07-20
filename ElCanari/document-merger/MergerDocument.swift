@@ -18,6 +18,8 @@ import Cocoa
   @IBOutlet var mArrangeVerticalyButton : EBButton?
   @IBOutlet var mArtworNameTextField : EBTextObserverField?
   @IBOutlet var mArtworkNameTextField : EBTextObserverField?
+  @IBOutlet var mAutomaticBoardSizeSwitch : EBSwitch?
+  @IBOutlet var mAutomaticBoardSizeView : NSView?
   @IBOutlet var mBoardArchiveFormatPopUpButton : CanariBoardBoardArchivePopUpButton?
   @IBOutlet var mBoardBoardLimitTextField : CanariDimensionTextField?
   @IBOutlet var mBoardClipView : NSClipView?
@@ -66,6 +68,11 @@ import Cocoa
   @IBOutlet var mInsertArrayOfBoardsYCountField : NSTextField?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
   @IBOutlet var mLogTextView : NSTextView?
+  @IBOutlet var mManualBoardHeightTextField : CanariDimensionTextField?
+  @IBOutlet var mManualBoardHeightUnitPopUp : EBPopUpButton?
+  @IBOutlet var mManualBoardSizeView : NSView?
+  @IBOutlet var mManualBoardWidthTextField : CanariDimensionTextField?
+  @IBOutlet var mManualBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelDragSourceTableView : CanariModelDragSourceTableView?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
@@ -305,6 +312,24 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mArtworkNameTextField' outlet is not an instance of 'EBTextObserverField'") ;
+    }
+    if nil == mAutomaticBoardSizeSwitch {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mAutomaticBoardSizeSwitch' outlet is nil") ;
+//    }else if !mAutomaticBoardSizeSwitch!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mAutomaticBoardSizeSwitch' outlet is not an instance of 'EBSwitch'") ;
+    }
+    if nil == mAutomaticBoardSizeView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mAutomaticBoardSizeView' outlet is nil") ;
+//    }else if !mAutomaticBoardSizeView!.isKindOfClass (NSView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mAutomaticBoardSizeView' outlet is not an instance of 'NSView'") ;
     }
     if nil == mBoardArchiveFormatPopUpButton {
       presentErrorWindow (file: #file,
@@ -737,6 +762,51 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mLogTextView' outlet is not an instance of 'NSTextView'") ;
+    }
+    if nil == mManualBoardHeightTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mManualBoardHeightTextField' outlet is nil") ;
+//    }else if !mManualBoardHeightTextField!.isKindOfClass (CanariDimensionTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mManualBoardHeightTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+    }
+    if nil == mManualBoardHeightUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mManualBoardHeightUnitPopUp' outlet is nil") ;
+//    }else if !mManualBoardHeightUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mManualBoardHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+    }
+    if nil == mManualBoardSizeView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mManualBoardSizeView' outlet is nil") ;
+//    }else if !mManualBoardSizeView!.isKindOfClass (NSView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mManualBoardSizeView' outlet is not an instance of 'NSView'") ;
+    }
+    if nil == mManualBoardWidthTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mManualBoardWidthTextField' outlet is nil") ;
+//    }else if !mManualBoardWidthTextField!.isKindOfClass (CanariDimensionTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mManualBoardWidthTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+    }
+    if nil == mManualBoardWidthUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mManualBoardWidthUnitPopUp' outlet is nil") ;
+//    }else if !mManualBoardWidthUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mManualBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
     if nil == mModelBoardLimitTextField {
       presentErrorWindow (file: #file,
@@ -1483,13 +1553,18 @@ import Cocoa
     mBoardModelView?.bind_verticalFlip (g_Preferences!.mergerModelViewVerticalFlip_property, file: #file, line: #line)
     mBoardModelView?.bind_objectLayer (self.mBoardModelSelection.modelLayerDisplay_property, file: #file, line: #line)
     mBoardInsertMenu?.bind_names (self.rootObject.modelNames_property, file: #file, line: #line)
-    mModelDragSourceTableView?.bind_models (self.rootObject.modelNames_property, file: #file, line: #line)
-    mBoardLimitWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardLimitWidthUnit_property, file: #file, line: #line)
-    mBoardBoardLimitTextField?.bind_dimensionAndUnit (self.rootObject.boardLimitWidth_property, self.rootObject.boardLimitWidthUnit_property, file: #file, line: #line)
+    mAutomaticBoardSizeSwitch?.bind_value (self.rootObject.automaticBoardSize_property, file: #file, line: #line)
+    mManualBoardWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardWidthUnit_property, file: #file, line: #line)
+    mManualBoardWidthTextField?.bind_dimensionAndUnit (self.rootObject.boardManualWidth_property, self.rootObject.boardWidthUnit_property, file: #file, line: #line)
+    mManualBoardHeightUnitPopUp?.bind_selectedTag (self.rootObject.boardHeightUnit_property, file: #file, line: #line)
+    mManualBoardHeightTextField?.bind_dimensionAndUnit (self.rootObject.boardManualHeight_property, self.rootObject.boardHeightUnit_property, file: #file, line: #line)
     mBoardWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardWidthUnit_property, file: #file, line: #line)
     mBoardWidthTextField?.bind_dimensionAndUnit (self.rootObject.boardWidth_property, self.rootObject.boardWidthUnit_property, file: #file, line: #line)
     mBoardHeightUnitPopUp?.bind_selectedTag (self.rootObject.boardHeightUnit_property, file: #file, line: #line)
     mBoardHeightTextField?.bind_dimensionAndUnit (self.rootObject.boardHeight_property, self.rootObject.boardHeightUnit_property, file: #file, line: #line)
+    mModelDragSourceTableView?.bind_models (self.rootObject.modelNames_property, file: #file, line: #line)
+    mBoardLimitWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardLimitWidthUnit_property, file: #file, line: #line)
+    mBoardBoardLimitTextField?.bind_dimensionAndUnit (self.rootObject.boardLimitWidth_property, self.rootObject.boardLimitWidthUnit_property, file: #file, line: #line)
     mComposedBoardView?.bind_size (self.rootObject.boardWidth_property, self.rootObject.boardHeight_property, file: #file, line: #line)
     mComposedBoardView?.bind_zoom (self.rootObject.zoom_property, file: #file, line: #line)
     mComposedBoardView?.bind_horizontalFlip (g_Preferences!.mergerBoardViewHorizontalFlip_property, file: #file, line: #line)
@@ -1557,6 +1632,26 @@ import Cocoa
       )
       self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
       mController_updateBoardModelButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return !self.rootObject.automaticBoardSize_property_selection
+        },
+        outlet:self.mAutomaticBoardSizeView
+      )
+      self.rootObject.automaticBoardSize_property.addEBObserver (controller)
+      mController_mAutomaticBoardSizeView_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return self.rootObject.automaticBoardSize_property_selection
+        },
+        outlet:self.mManualBoardSizeView
+      )
+      self.rootObject.automaticBoardSize_property.addEBObserver (controller)
+      mController_mManualBoardSizeView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -1750,13 +1845,18 @@ import Cocoa
     mBoardModelView?.unbind_verticalFlip ()
     mBoardModelView?.unbind_objectLayer ()
     mBoardInsertMenu?.unbind_names ()
-    mModelDragSourceTableView?.unbind_models ()
-    mBoardLimitWidthUnitPopUp?.unbind_selectedTag ()
-    mBoardBoardLimitTextField?.unbind_dimensionAndUnit ()
+    mAutomaticBoardSizeSwitch?.unbind_value ()
+    mManualBoardWidthUnitPopUp?.unbind_selectedTag ()
+    mManualBoardWidthTextField?.unbind_dimensionAndUnit ()
+    mManualBoardHeightUnitPopUp?.unbind_selectedTag ()
+    mManualBoardHeightTextField?.unbind_dimensionAndUnit ()
     mBoardWidthUnitPopUp?.unbind_selectedTag ()
     mBoardWidthTextField?.unbind_dimensionAndUnit ()
     mBoardHeightUnitPopUp?.unbind_selectedTag ()
     mBoardHeightTextField?.unbind_dimensionAndUnit ()
+    mModelDragSourceTableView?.unbind_models ()
+    mBoardLimitWidthUnitPopUp?.unbind_selectedTag ()
+    mBoardBoardLimitTextField?.unbind_dimensionAndUnit ()
     mComposedBoardView?.unbind_size ()
     mComposedBoardView?.unbind_zoom ()
     mComposedBoardView?.unbind_horizontalFlip ()
@@ -1785,6 +1885,10 @@ import Cocoa
     mController_removeBoardModelButton_enabled = nil
     self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (mController_updateBoardModelButton_enabled!)
     mController_updateBoardModelButton_enabled = nil
+    self.rootObject.automaticBoardSize_property.removeEBObserver (mController_mAutomaticBoardSizeView_hidden!)
+    mController_mAutomaticBoardSizeView_hidden = nil
+    self.rootObject.automaticBoardSize_property.removeEBObserver (mController_mManualBoardSizeView_hidden!)
+    mController_mManualBoardSizeView_hidden = nil
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mEmptyBoardMessage_hidden!)
     mController_mEmptyBoardMessage_hidden = nil
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mOverlapSwitch_enabled!)
@@ -1838,6 +1942,8 @@ import Cocoa
     self.mArrangeVerticalyButton?.ebCleanUp ()
     self.mArtworNameTextField?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
+    self.mAutomaticBoardSizeSwitch?.ebCleanUp ()
+    self.mAutomaticBoardSizeView?.ebCleanUp ()
     self.mBoardArchiveFormatPopUpButton?.ebCleanUp ()
     self.mBoardBoardLimitTextField?.ebCleanUp ()
     self.mBoardClipView?.ebCleanUp ()
@@ -1886,6 +1992,11 @@ import Cocoa
     self.mInsertArrayOfBoardsYCountField?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
     self.mLogTextView?.ebCleanUp ()
+    self.mManualBoardHeightTextField?.ebCleanUp ()
+    self.mManualBoardHeightUnitPopUp?.ebCleanUp ()
+    self.mManualBoardSizeView?.ebCleanUp ()
+    self.mManualBoardWidthTextField?.ebCleanUp ()
+    self.mManualBoardWidthUnitPopUp?.ebCleanUp ()
     self.mModelBoardLimitTextField?.ebCleanUp ()
     self.mModelDragSourceTableView?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
@@ -1958,6 +2069,8 @@ import Cocoa
   private var mController_mNoModelMessage_hidden : MultipleBindingController_hidden? = nil
   private var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled? = nil
   private var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mAutomaticBoardSizeView_hidden : MultipleBindingController_hidden? = nil
+  private var mController_mManualBoardSizeView_hidden : MultipleBindingController_hidden? = nil
   private var mController_mEmptyBoardMessage_hidden : MultipleBindingController_hidden? = nil
   private var mController_mOverlapSwitch_enabled : MultipleBindingController_enabled? = nil
   private var mController_mArrangeHorizontallyButton_enabled : MultipleBindingController_enabled? = nil

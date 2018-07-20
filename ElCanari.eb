@@ -31,13 +31,13 @@ include "eb-sources/artworkDocument.eb" ;
 include "eb-sources/PadShape.eb" ;
 include "eb-sources/PadSide.eb" ;
 include "eb-sources/BoardArchiveFormat.eb" ;
-include "eb-sources/mergerDocument.eb" ;
 include "eb-sources/BoardModelPad.eb" ;
 include "eb-sources/CanariSegment.eb" ;
 include "eb-sources/BoardModelVia.eb" ;
 include "eb-sources/BoardModel.eb" ;
 include "eb-sources/MergerBoardInstance.eb" ;
 include "eb-sources/MergerRoot.eb" ;
+include "eb-sources/mergerDocument.eb" ;
 
 #include "eb-sources/projectDocument.ebt" ;
 

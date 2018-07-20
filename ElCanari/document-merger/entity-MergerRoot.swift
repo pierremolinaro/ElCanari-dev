@@ -11,6 +11,9 @@ import Cocoa
 class MergerRoot : EBManagedObject,
   MergerRoot_selectedPageIndex,
   MergerRoot_zoom,
+  MergerRoot_automaticBoardSize,
+  MergerRoot_boardManualWidth,
+  MergerRoot_boardManualHeight,
   MergerRoot_boardWidthUnit,
   MergerRoot_boardHeightUnit,
   MergerRoot_overlapingArrangment,
@@ -64,6 +67,63 @@ class MergerRoot : EBManagedObject,
   var zoom_property_selection : EBSelection <Int> {
     get {
       return self.zoom_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing automaticBoardSize stored property
+  //····················································································································
+
+  var automaticBoardSize : Bool {
+    get {
+      return self.automaticBoardSize_property.propval
+    }
+    set {
+      self.automaticBoardSize_property.setProp (newValue)
+    }
+  }
+
+  var automaticBoardSize_property_selection : EBSelection <Bool> {
+    get {
+      return self.automaticBoardSize_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardManualWidth stored property
+  //····················································································································
+
+  var boardManualWidth : Int {
+    get {
+      return self.boardManualWidth_property.propval
+    }
+    set {
+      self.boardManualWidth_property.setProp (newValue)
+    }
+  }
+
+  var boardManualWidth_property_selection : EBSelection <Int> {
+    get {
+      return self.boardManualWidth_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing boardManualHeight stored property
+  //····················································································································
+
+  var boardManualHeight : Int {
+    get {
+      return self.boardManualHeight_property.propval
+    }
+    set {
+      self.boardManualHeight_property.setProp (newValue)
+    }
+  }
+
+  var boardManualHeight_property_selection : EBSelection <Int> {
+    get {
+      return self.boardManualHeight_property.prop
     }
   }
 
@@ -416,6 +476,9 @@ class MergerRoot : EBManagedObject,
 
   var selectedPageIndex_property = EBStoredProperty_Int (0)
   var zoom_property = EBStoredProperty_Int (100)
+  var automaticBoardSize_property = EBStoredProperty_Bool (false)
+  var boardManualWidth_property = EBStoredProperty_Int (9000000)
+  var boardManualHeight_property = EBStoredProperty_Int (9000000)
   var boardWidthUnit_property = EBStoredProperty_Int (90000)
   var boardHeightUnit_property = EBStoredProperty_Int (90000)
   var overlapingArrangment_property = EBStoredProperty_Bool (false)
@@ -500,16 +563,19 @@ class MergerRoot : EBManagedObject,
     }
     self.boardRect_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardInstances_property_selection.kind ()
+        var kind = unwSelf.automaticBoardSize_property_selection.kind ()
+        kind &= unwSelf.boardManualWidth_property_selection.kind ()
+        kind &= unwSelf.boardManualHeight_property_selection.kind ()
+        kind &= unwSelf.boardInstances_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardInstances_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerRoot_boardRect (v0))
+          switch (unwSelf.automaticBoardSize_property_selection, unwSelf.boardManualWidth_property_selection, unwSelf.boardManualHeight_property_selection, unwSelf.boardInstances_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_MergerRoot_boardRect (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -588,6 +654,9 @@ class MergerRoot : EBManagedObject,
     self.boardModels_property.addEBObserverOf_modelHeight (self.modelNames_property)
     self.boardLimitsLayerDisplay_property.addEBObserver (self.instancesLayerDisplay_property)
     self.boardInstances_property.addEBObserverOf_newInstanceLayerDisplay (self.instancesLayerDisplay_property)
+    self.automaticBoardSize_property.addEBObserver (self.boardRect_property)
+    self.boardManualWidth_property.addEBObserver (self.boardRect_property)
+    self.boardManualHeight_property.addEBObserver (self.boardRect_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
     self.boardRect_property.addEBObserver (self.boardWidth_property)
     self.boardRect_property.addEBObserver (self.boardHeight_property)
@@ -599,6 +668,9 @@ class MergerRoot : EBManagedObject,
   //--- Install undoers for properties
     self.selectedPageIndex_property.undoManager = undoManager ()
     self.zoom_property.undoManager = undoManager ()
+    self.automaticBoardSize_property.undoManager = undoManager ()
+    self.boardManualWidth_property.undoManager = undoManager ()
+    self.boardManualHeight_property.undoManager = undoManager ()
     self.boardWidthUnit_property.undoManager = undoManager ()
     self.boardHeightUnit_property.undoManager = undoManager ()
     self.overlapingArrangment_property.undoManager = undoManager ()
@@ -626,6 +698,9 @@ class MergerRoot : EBManagedObject,
     self.boardModels_property.removeEBObserverOf_modelHeight (self.modelNames_property)
     self.boardLimitsLayerDisplay_property.removeEBObserver (self.instancesLayerDisplay_property)
     self.boardInstances_property.removeEBObserverOf_newInstanceLayerDisplay (self.instancesLayerDisplay_property)
+    self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
+    self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
+    self.boardManualHeight_property.removeEBObserver (self.boardRect_property)
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
     self.boardRect_property.removeEBObserver (self.boardWidth_property)
     self.boardRect_property.removeEBObserver (self.boardHeight_property)
@@ -657,6 +732,30 @@ class MergerRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.zoom_property.mObserverExplorer,
       valueExplorer:&self.zoom_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "automaticBoardSize",
+      idx:self.automaticBoardSize_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.automaticBoardSize_property.mObserverExplorer,
+      valueExplorer:&self.automaticBoardSize_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardManualWidth",
+      idx:self.boardManualWidth_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardManualWidth_property.mObserverExplorer,
+      valueExplorer:&self.boardManualWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardManualHeight",
+      idx:self.boardManualHeight_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardManualHeight_property.mObserverExplorer,
+      valueExplorer:&self.boardManualHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardWidthUnit",
@@ -830,6 +929,12 @@ class MergerRoot : EBManagedObject,
     self.selectedPageIndex_property.mValueExplorer = nil
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
+    self.automaticBoardSize_property.mObserverExplorer = nil
+    self.automaticBoardSize_property.mValueExplorer = nil
+    self.boardManualWidth_property.mObserverExplorer = nil
+    self.boardManualWidth_property.mValueExplorer = nil
+    self.boardManualHeight_property.mObserverExplorer = nil
+    self.boardManualHeight_property.mValueExplorer = nil
     self.boardWidthUnit_property.mObserverExplorer = nil
     self.boardWidthUnit_property.mValueExplorer = nil
     self.boardHeightUnit_property.mObserverExplorer = nil
@@ -867,6 +972,9 @@ class MergerRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
     self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+    self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey: "automaticBoardSize")
+    self.boardManualWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardManualWidth")
+    self.boardManualHeight_property.storeIn (dictionary: ioDictionary, forKey: "boardManualHeight")
     self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
     self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
     self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
@@ -892,6 +1000,9 @@ class MergerRoot : EBManagedObject,
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+    self.automaticBoardSize_property.readFrom (dictionary: inDictionary, forKey:"automaticBoardSize")
+    self.boardManualWidth_property.readFrom (dictionary: inDictionary, forKey:"boardManualWidth")
+    self.boardManualHeight_property.readFrom (dictionary: inDictionary, forKey:"boardManualHeight")
     self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
     self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
     self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
@@ -1099,6 +1210,177 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoom_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'automaticBoardSize' stored property
+  //····················································································································
+
+  private var mObserversOf_automaticBoardSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_automaticBoardSize.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.automaticBoardSize_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_automaticBoardSize.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.automaticBoardSize_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_automaticBoardSize_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_automaticBoardSize {
+        managedObject.automaticBoardSize_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_automaticBoardSize_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_automaticBoardSize {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.automaticBoardSize_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardManualWidth' stored property
+  //····················································································································
+
+  private var mObserversOf_boardManualWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardManualWidth.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardManualWidth_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardManualWidth.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardManualWidth_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardManualWidth_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardManualWidth {
+        managedObject.boardManualWidth_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardManualWidth_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_boardManualWidth {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.boardManualWidth_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'boardManualHeight' stored property
+  //····················································································································
+
+  private var mObserversOf_boardManualHeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardManualHeight.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardManualHeight_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardManualHeight.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardManualHeight_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardManualHeight_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardManualHeight {
+        managedObject.boardManualHeight_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardManualHeight_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_boardManualHeight {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.boardManualHeight_property.removeEBObserver (observer)
       }
     }
   }
@@ -2106,6 +2388,9 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
       //--- Remove observers of stored properties
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
         removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
+        removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedSet)
@@ -2129,6 +2414,9 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
        //--- Add observers of stored properties
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
         addEBObserversOf_zoom_toElementsOfSet (addedSet)
+        addEBObserversOf_automaticBoardSize_toElementsOfSet (addedSet)
+        addEBObserversOf_boardManualWidth_toElementsOfSet (addedSet)
+        addEBObserversOf_boardManualHeight_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidthUnit_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
         addEBObserversOf_overlapingArrangment_toElementsOfSet (addedSet)
@@ -2185,6 +2473,24 @@ protocol MergerRoot_selectedPageIndex : class {
 
 protocol MergerRoot_zoom : class {
   var zoom : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_automaticBoardSize : class {
+  var automaticBoardSize : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardManualWidth : class {
+  var boardManualWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardManualHeight : class {
+  var boardManualHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
