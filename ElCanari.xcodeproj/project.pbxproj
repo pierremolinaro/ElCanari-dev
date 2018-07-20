@@ -285,6 +285,7 @@
 		CFBED92F20F3C1E50019C316 /* transient-MergerBoardInstance-backLegendLinesLayerDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92E20F3C1E50019C316 /* transient-MergerBoardInstance-backLegendLinesLayerDisplay.swift */; };
 		CFBEE4DD20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBEE4DC20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift */; };
 		CFC129231B44887700B1866D /* file-metadata-dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC129221B44887700B1866D /* file-metadata-dictionary.swift */; };
+		CFC19AD321026BC0008C5707 /* NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC19AD221026BC0008C5707 /* NSView.swift */; };
 		CFC2FEAD20EBEF6100C45CB3 /* extension-MergerDocument-arrange-board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2FEAC20EBEF6100C45CB3 /* extension-MergerDocument-arrange-board.swift */; };
 		CFC2FEB020EBFA7A00C45CB3 /* action-MergerDocument-arrangeHorizontallyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2FEAE20EBFA7A00C45CB3 /* action-MergerDocument-arrangeHorizontallyAction.swift */; };
 		CFC2FEB120EBFA7A00C45CB3 /* action-MergerDocument-arrangeVerticalyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2FEAF20EBFA7A00C45CB3 /* action-MergerDocument-arrangeVerticalyAction.swift */; };
@@ -669,6 +670,7 @@
 		CFBED92E20F3C1E50019C316 /* transient-MergerBoardInstance-backLegendLinesLayerDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerBoardInstance-backLegendLinesLayerDisplay.swift"; sourceTree = "<group>"; };
 		CFBEE4DC20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-MergerDocument-mBoardModelController.swift"; sourceTree = "<group>"; };
 		CFC129221B44887700B1866D /* file-metadata-dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "file-metadata-dictionary.swift"; sourceTree = "<group>"; };
+		CFC19AD221026BC0008C5707 /* NSView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSView.swift; sourceTree = "<group>"; };
 		CFC2FEAC20EBEF6100C45CB3 /* extension-MergerDocument-arrange-board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerDocument-arrange-board.swift"; sourceTree = "<group>"; };
 		CFC2FEAE20EBFA7A00C45CB3 /* action-MergerDocument-arrangeHorizontallyAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-arrangeHorizontallyAction.swift"; sourceTree = "<group>"; };
 		CFC2FEAF20EBFA7A00C45CB3 /* action-MergerDocument-arrangeVerticalyAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-arrangeVerticalyAction.swift"; sourceTree = "<group>"; };
@@ -1004,6 +1006,7 @@
 		CF6172681B3C4BE000F3CA82 /* Outlets Easy Bindings */ = {
 			isa = PBXGroup;
 			children = (
+				CFC19AD221026BC0008C5707 /* NSView.swift */,
 				CF861AA41B3F06230006BE63 /* EBButton.swift */,
 				CFF5976A1BDD4E17007EDFF9 /* EBCheckedMenuItem.swift */,
 				CF71F91D1B3EA3DF00FB5049 /* EBColorWell.swift */,
@@ -1682,6 +1685,7 @@
 				CF0A175420FF45F400448A4C /* transient-MergerBoardInstance-newInstanceLayerDisplay.swift in Sources */,
 				CF5599511FDF364400ED5EE6 /* entity-MergerRoot.swift in Sources */,
 				CF61FA951B3ECA48000E0257 /* CanariFontCharacterSelectView.swift in Sources */,
+				CFC19AD321026BC0008C5707 /* NSView.swift in Sources */,
 				CF71F9241B3EA3DF00FB5049 /* EBColorWell.swift in Sources */,
 				CF45496C1DD660D7003C0579 /* import-legacy-font.swift in Sources */,
 				CFEF3D2920F9F13E00DA6106 /* action-MergerDocument-showBoardHelpAction.swift in Sources */,

@@ -9,6 +9,5 @@ transient property class MergerBoardModelArray ;
 
 transient property struct CanariBoardRect ;
 transient property class BezierPathArray ;
-transient property struct CGFloat ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
