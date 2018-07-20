@@ -1252,6 +1252,12 @@ typealias EBReadOnlyPropertyArray_BezierPathArray  = EBReadOnlyClassProperty <[B
 typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[BezierPathArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property CGFloat
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CGFloat  = EBReadOnlyValueProperty <CGFloat>
+typealias EBTransientProperty_CGFloat = EBTransientValueProperty <CGFloat>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class SegmentForFontCharacterClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

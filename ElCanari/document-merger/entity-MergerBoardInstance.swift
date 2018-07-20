@@ -3648,6 +3648,8 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
           unwrappedValue.boardInstances_property.add (unwrappedOwner)
         }
       //--- Remove property observers of old object
+        oldValue?.arrowMagnitude_property.removeEBObserversFrom (mObserversOf_arrowMagnitude)
+        oldValue?.arrowMagnitudeUnit_property.removeEBObserversFrom (mObserversOf_arrowMagnitudeUnit)
         oldValue?.artworkName_property.removeEBObserversFrom (mObserversOf_artworkName)
         oldValue?.automaticBoardSize_property.removeEBObserversFrom (mObserversOf_automaticBoardSize)
         oldValue?.boardHeight_property.removeEBObserversFrom (mObserversOf_boardHeight)
@@ -3660,6 +3662,8 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         oldValue?.boardRect_property.removeEBObserversFrom (mObserversOf_boardRect)
         oldValue?.boardWidth_property.removeEBObserversFrom (mObserversOf_boardWidth)
         oldValue?.boardWidthUnit_property.removeEBObserversFrom (mObserversOf_boardWidthUnit)
+        oldValue?.cocoaArrowMagnitude_property.removeEBObserversFrom (mObserversOf_cocoaArrowMagnitude)
+        oldValue?.cocoaShiftArrowMagnitude_property.removeEBObserversFrom (mObserversOf_cocoaShiftArrowMagnitude)
         oldValue?.generateGerberProductFile_property.removeEBObserversFrom (mObserversOf_generateGerberProductFile)
         oldValue?.generatePDFProductFile_property.removeEBObserversFrom (mObserversOf_generatePDFProductFile)
         oldValue?.generatedBoardArchiveFormat_property.removeEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
@@ -3669,8 +3673,12 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         oldValue?.selectedBoardXUnit_property.removeEBObserversFrom (mObserversOf_selectedBoardXUnit)
         oldValue?.selectedBoardYUnit_property.removeEBObserversFrom (mObserversOf_selectedBoardYUnit)
         oldValue?.selectedPageIndex_property.removeEBObserversFrom (mObserversOf_selectedPageIndex)
+        oldValue?.shiftArrowMagnitude_property.removeEBObserversFrom (mObserversOf_shiftArrowMagnitude)
+        oldValue?.shiftArrowMagnitudeUnit_property.removeEBObserversFrom (mObserversOf_shiftArrowMagnitudeUnit)
         oldValue?.zoom_property.removeEBObserversFrom (mObserversOf_zoom)
       //--- Add property observers to new object
+        mValue?.arrowMagnitude_property.addEBObserversFrom (mObserversOf_arrowMagnitude)
+        mValue?.arrowMagnitudeUnit_property.addEBObserversFrom (mObserversOf_arrowMagnitudeUnit)
         mValue?.artworkName_property.addEBObserversFrom (mObserversOf_artworkName)
         mValue?.automaticBoardSize_property.addEBObserversFrom (mObserversOf_automaticBoardSize)
         mValue?.boardHeight_property.addEBObserversFrom (mObserversOf_boardHeight)
@@ -3683,6 +3691,8 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         mValue?.boardRect_property.addEBObserversFrom (mObserversOf_boardRect)
         mValue?.boardWidth_property.addEBObserversFrom (mObserversOf_boardWidth)
         mValue?.boardWidthUnit_property.addEBObserversFrom (mObserversOf_boardWidthUnit)
+        mValue?.cocoaArrowMagnitude_property.addEBObserversFrom (mObserversOf_cocoaArrowMagnitude)
+        mValue?.cocoaShiftArrowMagnitude_property.addEBObserversFrom (mObserversOf_cocoaShiftArrowMagnitude)
         mValue?.generateGerberProductFile_property.addEBObserversFrom (mObserversOf_generateGerberProductFile)
         mValue?.generatePDFProductFile_property.addEBObserversFrom (mObserversOf_generatePDFProductFile)
         mValue?.generatedBoardArchiveFormat_property.addEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
@@ -3692,6 +3702,8 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         mValue?.selectedBoardXUnit_property.addEBObserversFrom (mObserversOf_selectedBoardXUnit)
         mValue?.selectedBoardYUnit_property.addEBObserversFrom (mObserversOf_selectedBoardYUnit)
         mValue?.selectedPageIndex_property.addEBObserversFrom (mObserversOf_selectedPageIndex)
+        mValue?.shiftArrowMagnitude_property.addEBObserversFrom (mObserversOf_shiftArrowMagnitude)
+        mValue?.shiftArrowMagnitudeUnit_property.addEBObserversFrom (mObserversOf_shiftArrowMagnitudeUnit)
         mValue?.zoom_property.addEBObserversFrom (mObserversOf_zoom)
        //--- Notify observers
         postEvent ()
@@ -3723,6 +3735,92 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
 
   func add (_ object : MergerRoot) {
     mValue = object
+  }
+
+  //····················································································································
+  //   Observable property: arrowMagnitude
+  //····················································································································
+
+  private var mObserversOf_arrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  var arrowMagnitude_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.arrowMagnitude_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_arrowMagnitude.insert (inObserver)
+    if let object = self.propval {
+      object.arrowMagnitude_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_arrowMagnitude.remove (inObserver)
+    if let object = self.propval {
+      object.arrowMagnitude_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: arrowMagnitudeUnit
+  //····················································································································
+
+  private var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var arrowMagnitudeUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.arrowMagnitudeUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
+    mObserversOf_arrowMagnitudeUnit.insert (inObserver)
+    if let object = self.propval {
+      object.arrowMagnitudeUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
+    mObserversOf_arrowMagnitudeUnit.remove (inObserver)
+    if let object = self.propval {
+      object.arrowMagnitudeUnit_property.removeEBObserver (inObserver)
+    }
   }
 
   //····················································································································
@@ -4242,6 +4340,92 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   }
 
   //····················································································································
+  //   Observable property: cocoaArrowMagnitude
+  //····················································································································
+
+  private var mObserversOf_cocoaArrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  var cocoaArrowMagnitude_property_selection : EBSelection <CGFloat?> {
+    get {
+      if let model = self.propval {
+        switch (model.cocoaArrowMagnitude_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_cocoaArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_cocoaArrowMagnitude.insert (inObserver)
+    if let object = self.propval {
+      object.cocoaArrowMagnitude_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cocoaArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_cocoaArrowMagnitude.remove (inObserver)
+    if let object = self.propval {
+      object.cocoaArrowMagnitude_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: cocoaShiftArrowMagnitude
+  //····················································································································
+
+  private var mObserversOf_cocoaShiftArrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  var cocoaShiftArrowMagnitude_property_selection : EBSelection <CGFloat?> {
+    get {
+      if let model = self.propval {
+        switch (model.cocoaShiftArrowMagnitude_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_cocoaShiftArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_cocoaShiftArrowMagnitude.insert (inObserver)
+    if let object = self.propval {
+      object.cocoaShiftArrowMagnitude_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cocoaShiftArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_cocoaShiftArrowMagnitude.remove (inObserver)
+    if let object = self.propval {
+      object.cocoaShiftArrowMagnitude_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: generateGerberProductFile
   //····················································································································
 
@@ -4625,6 +4809,92 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
     mObserversOf_selectedPageIndex.remove (inObserver)
     if let object = self.propval {
       object.selectedPageIndex_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: shiftArrowMagnitude
+  //····················································································································
+
+  private var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  var shiftArrowMagnitude_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.shiftArrowMagnitude_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_shiftArrowMagnitude.insert (inObserver)
+    if let object = self.propval {
+      object.shiftArrowMagnitude_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_shiftArrowMagnitude.remove (inObserver)
+    if let object = self.propval {
+      object.shiftArrowMagnitude_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: shiftArrowMagnitudeUnit
+  //····················································································································
+
+  private var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.shiftArrowMagnitudeUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
+    mObserversOf_shiftArrowMagnitudeUnit.insert (inObserver)
+    if let object = self.propval {
+      object.shiftArrowMagnitudeUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
+    mObserversOf_shiftArrowMagnitudeUnit.remove (inObserver)
+    if let object = self.propval {
+      object.shiftArrowMagnitudeUnit_property.removeEBObserver (inObserver)
     }
   }
 

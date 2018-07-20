@@ -525,8 +525,16 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   // key Events
   //····················································································································
 
+  var arrowKeyMagnitude : CGFloat = 10.0
+  var shiftArrowKeyMagnitude : CGFloat = 10.0
+
+  //····················································································································
+
   func keyDown (with inEvent: NSEvent) {
-    let amount : CGFloat = inEvent.modifierFlags.contains (.shift) ? 36.0 : 9.0 ;
+    let amount : CGFloat = inEvent.modifierFlags.contains (.shift)
+      ? self.shiftArrowKeyMagnitude
+      : self.arrowKeyMagnitude
+    ;
     for character in (inEvent.characters ?? "").unicodeScalars {
       switch (Int (character.value)) {
       case NSUpArrowFunctionKey :

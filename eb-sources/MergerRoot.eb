@@ -6,11 +6,14 @@ entity MergerRoot {
 
   property Int selectedPageIndex default 0 ;
   property Int zoom default 100 ;
+
+#--- Board size
   property Bool automaticBoardSize default no ;
   property Int boardManualWidth default 9_000_000 ;
   property Int boardManualHeight default 9_000_000 ;
   property Int boardWidthUnit default 90_000 ;
   property Int boardHeightUnit default 90_000 ;
+
   property Bool overlapingArrangment default no ;
   property Int selectedBoardXUnit default 90_000 ;
   property Int selectedBoardYUnit default 90_000 ;
@@ -19,6 +22,16 @@ entity MergerRoot {
   property Int boardLimitWidth default 90_000 ; # 1mm
   property Int boardLimitWidthUnit default 90_000 ; # 1mm
 
+#--- Arrow magnitude
+  property Int arrowMagnitude default 900_000 ; # 10mm
+  property Int arrowMagnitudeUnit default 90_000 ; # 1mm
+
+  property Int shiftArrowMagnitude default 3_600_000 ; # 40mm
+  property Int shiftArrowMagnitudeUnit default 90_000 ; # 1mm
+
+  transient CGFloat cocoaArrowMagnitude externFunc canariUnitToCocoa dependsFrom self.arrowMagnitude ;
+  transient CGFloat cocoaShiftArrowMagnitude externFunc canariUnitToCocoa dependsFrom self.shiftArrowMagnitude ;
+  
 #--- Board model name array
   transient MergerBoardModelArray modelNames dependsFrom
      self.boardModels.all.name,

@@ -16,6 +16,8 @@ import Cocoa
   @IBOutlet var boardHelpPanel : NSPanel?
   @IBOutlet var mArrangeHorizontallyButton : EBButton?
   @IBOutlet var mArrangeVerticalyButton : EBButton?
+  @IBOutlet var mArrowMagnitudeTextField : CanariDimensionTextField?
+  @IBOutlet var mArrowMagnitudeUnitPopUp : EBPopUpButton?
   @IBOutlet var mArtworNameTextField : EBTextObserverField?
   @IBOutlet var mArtworkNameTextField : EBTextObserverField?
   @IBOutlet var mAutomaticBoardSizeSwitch : EBSwitch?
@@ -109,6 +111,8 @@ import Cocoa
   @IBOutlet var mSelectedBoardXUnitPopUp : EBPopUpButton?
   @IBOutlet var mSelectedBoardYTextField : CanariDimensionTextField?
   @IBOutlet var mSelectedBoardYUnitPopUp : EBPopUpButton?
+  @IBOutlet var mShiftArrowMagnitudeTextField : CanariDimensionTextField?
+  @IBOutlet var mShiftArrowMagnitudeUnitPopUp : EBPopUpButton?
   @IBOutlet var mergerViewBackLegendLinesColorWell : EBColorWell?
   @IBOutlet var mergerViewBackgroundColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayBackComponentNamesColorWell : EBColorWell?
@@ -294,6 +298,24 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mArrangeVerticalyButton' outlet is not an instance of 'EBButton'") ;
+    }
+    if nil == mArrowMagnitudeTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mArrowMagnitudeTextField' outlet is nil") ;
+//    }else if !mArrowMagnitudeTextField!.isKindOfClass (CanariDimensionTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mArrowMagnitudeTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+    }
+    if nil == mArrowMagnitudeUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mArrowMagnitudeUnitPopUp' outlet is nil") ;
+//    }else if !mArrowMagnitudeUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mArrowMagnitudeUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
     if nil == mArtworNameTextField {
       presentErrorWindow (file: #file,
@@ -1132,6 +1154,24 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mSelectedBoardYUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
+    if nil == mShiftArrowMagnitudeTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mShiftArrowMagnitudeTextField' outlet is nil") ;
+//    }else if !mShiftArrowMagnitudeTextField!.isKindOfClass (CanariDimensionTextField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mShiftArrowMagnitudeTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+    }
+    if nil == mShiftArrowMagnitudeUnitPopUp {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mShiftArrowMagnitudeUnitPopUp' outlet is nil") ;
+//    }else if !mShiftArrowMagnitudeUnitPopUp!.isKindOfClass (EBPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mShiftArrowMagnitudeUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+    }
     if nil == mergerViewBackLegendLinesColorWell {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -1554,6 +1594,10 @@ import Cocoa
     mBoardModelView?.bind_objectLayer (self.mBoardModelSelection.modelLayerDisplay_property, file: #file, line: #line)
     mBoardInsertMenu?.bind_names (self.rootObject.modelNames_property, file: #file, line: #line)
     mAutomaticBoardSizeSwitch?.bind_value (self.rootObject.automaticBoardSize_property, file: #file, line: #line)
+    mArrowMagnitudeUnitPopUp?.bind_selectedTag (self.rootObject.arrowMagnitudeUnit_property, file: #file, line: #line)
+    mArrowMagnitudeTextField?.bind_dimensionAndUnit (self.rootObject.arrowMagnitude_property, self.rootObject.arrowMagnitudeUnit_property, file: #file, line: #line)
+    mShiftArrowMagnitudeUnitPopUp?.bind_selectedTag (self.rootObject.shiftArrowMagnitudeUnit_property, file: #file, line: #line)
+    mShiftArrowMagnitudeTextField?.bind_dimensionAndUnit (self.rootObject.shiftArrowMagnitude_property, self.rootObject.shiftArrowMagnitudeUnit_property, file: #file, line: #line)
     mManualBoardWidthUnitPopUp?.bind_selectedTag (self.rootObject.boardWidthUnit_property, file: #file, line: #line)
     mManualBoardWidthTextField?.bind_dimensionAndUnit (self.rootObject.boardManualWidth_property, self.rootObject.boardWidthUnit_property, file: #file, line: #line)
     mManualBoardHeightUnitPopUp?.bind_selectedTag (self.rootObject.boardHeightUnit_property, file: #file, line: #line)
@@ -1570,6 +1614,8 @@ import Cocoa
     mComposedBoardView?.bind_horizontalFlip (g_Preferences!.mergerBoardViewHorizontalFlip_property, file: #file, line: #line)
     mComposedBoardView?.bind_verticalFlip (g_Preferences!.mergerBoardViewVerticalFlip_property, file: #file, line: #line)
     mComposedBoardView?.bind_objectLayer (self.rootObject.instancesLayerDisplay_property, file: #file, line: #line)
+    mComposedBoardView?.bind_arrowKeyMagnitude (self.rootObject.cocoaArrowMagnitude_property, file: #file, line: #line)
+    mComposedBoardView?.bind_shiftArrowKeyMagnitude (self.rootObject.cocoaShiftArrowMagnitude_property, file: #file, line: #line)
     mSelectedBoardXUnitPopUp?.bind_selectedTag (self.rootObject.selectedBoardXUnit_property, file: #file, line: #line)
     mSelectedBoardXTextField?.bind_dimensionAndUnit (self.mBoardInstanceSelection.x_property, self.rootObject.selectedBoardXUnit_property, file: #file, line: #line)
     mSelectedBoardYUnitPopUp?.bind_selectedTag (self.rootObject.selectedBoardYUnit_property, file: #file, line: #line)
@@ -1846,6 +1892,10 @@ import Cocoa
     mBoardModelView?.unbind_objectLayer ()
     mBoardInsertMenu?.unbind_names ()
     mAutomaticBoardSizeSwitch?.unbind_value ()
+    mArrowMagnitudeUnitPopUp?.unbind_selectedTag ()
+    mArrowMagnitudeTextField?.unbind_dimensionAndUnit ()
+    mShiftArrowMagnitudeUnitPopUp?.unbind_selectedTag ()
+    mShiftArrowMagnitudeTextField?.unbind_dimensionAndUnit ()
     mManualBoardWidthUnitPopUp?.unbind_selectedTag ()
     mManualBoardWidthTextField?.unbind_dimensionAndUnit ()
     mManualBoardHeightUnitPopUp?.unbind_selectedTag ()
@@ -1862,6 +1912,8 @@ import Cocoa
     mComposedBoardView?.unbind_horizontalFlip ()
     mComposedBoardView?.unbind_verticalFlip ()
     mComposedBoardView?.unbind_objectLayer ()
+    mComposedBoardView?.unbind_arrowKeyMagnitude ()
+    mComposedBoardView?.unbind_shiftArrowKeyMagnitude ()
     mSelectedBoardXUnitPopUp?.unbind_selectedTag ()
     mSelectedBoardXTextField?.unbind_dimensionAndUnit ()
     mSelectedBoardYUnitPopUp?.unbind_selectedTag ()
@@ -1940,6 +1992,8 @@ import Cocoa
     self.boardHelpPanel?.ebCleanUp ()
     self.mArrangeHorizontallyButton?.ebCleanUp ()
     self.mArrangeVerticalyButton?.ebCleanUp ()
+    self.mArrowMagnitudeTextField?.ebCleanUp ()
+    self.mArrowMagnitudeUnitPopUp?.ebCleanUp ()
     self.mArtworNameTextField?.ebCleanUp ()
     self.mArtworkNameTextField?.ebCleanUp ()
     self.mAutomaticBoardSizeSwitch?.ebCleanUp ()
@@ -2033,6 +2087,8 @@ import Cocoa
     self.mSelectedBoardXUnitPopUp?.ebCleanUp ()
     self.mSelectedBoardYTextField?.ebCleanUp ()
     self.mSelectedBoardYUnitPopUp?.ebCleanUp ()
+    self.mShiftArrowMagnitudeTextField?.ebCleanUp ()
+    self.mShiftArrowMagnitudeUnitPopUp?.ebCleanUp ()
     self.mergerViewBackLegendLinesColorWell?.ebCleanUp ()
     self.mergerViewBackgroundColorWell?.ebCleanUp ()
     self.mergerViewDisplayBackComponentNamesColorWell?.ebCleanUp ()

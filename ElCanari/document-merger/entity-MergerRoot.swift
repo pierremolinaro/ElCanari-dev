@@ -21,10 +21,16 @@ class MergerRoot : EBManagedObject,
   MergerRoot_selectedBoardYUnit,
   MergerRoot_boardLimitWidth,
   MergerRoot_boardLimitWidthUnit,
+  MergerRoot_arrowMagnitude,
+  MergerRoot_arrowMagnitudeUnit,
+  MergerRoot_shiftArrowMagnitude,
+  MergerRoot_shiftArrowMagnitudeUnit,
   MergerRoot_artworkName,
   MergerRoot_generateGerberProductFile,
   MergerRoot_generatePDFProductFile,
   MergerRoot_generatedBoardArchiveFormat,
+  MergerRoot_cocoaArrowMagnitude,
+  MergerRoot_cocoaShiftArrowMagnitude,
   MergerRoot_modelNames,
   MergerRoot_instancesLayerDisplay,
   MergerRoot_boardRect,
@@ -261,6 +267,82 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing arrowMagnitude stored property
+  //····················································································································
+
+  var arrowMagnitude : Int {
+    get {
+      return self.arrowMagnitude_property.propval
+    }
+    set {
+      self.arrowMagnitude_property.setProp (newValue)
+    }
+  }
+
+  var arrowMagnitude_property_selection : EBSelection <Int> {
+    get {
+      return self.arrowMagnitude_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing arrowMagnitudeUnit stored property
+  //····················································································································
+
+  var arrowMagnitudeUnit : Int {
+    get {
+      return self.arrowMagnitudeUnit_property.propval
+    }
+    set {
+      self.arrowMagnitudeUnit_property.setProp (newValue)
+    }
+  }
+
+  var arrowMagnitudeUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.arrowMagnitudeUnit_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing shiftArrowMagnitude stored property
+  //····················································································································
+
+  var shiftArrowMagnitude : Int {
+    get {
+      return self.shiftArrowMagnitude_property.propval
+    }
+    set {
+      self.shiftArrowMagnitude_property.setProp (newValue)
+    }
+  }
+
+  var shiftArrowMagnitude_property_selection : EBSelection <Int> {
+    get {
+      return self.shiftArrowMagnitude_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing shiftArrowMagnitudeUnit stored property
+  //····················································································································
+
+  var shiftArrowMagnitudeUnit : Int {
+    get {
+      return self.shiftArrowMagnitudeUnit_property.propval
+    }
+    set {
+      self.shiftArrowMagnitudeUnit_property.setProp (newValue)
+    }
+  }
+
+  var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.shiftArrowMagnitudeUnit_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing artworkName stored property
   //····················································································································
 
@@ -333,6 +415,44 @@ class MergerRoot : EBManagedObject,
   var generatedBoardArchiveFormat_property_selection : EBSelection <BoardArchiveFormat> {
     get {
       return self.generatedBoardArchiveFormat_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing cocoaArrowMagnitude transient property
+  //····················································································································
+
+  var cocoaArrowMagnitude_property_selection : EBSelection <CGFloat> {
+    get {
+      return self.cocoaArrowMagnitude_property.prop
+    }
+  }
+
+  var cocoaArrowMagnitude : CGFloat? {
+    switch cocoaArrowMagnitude_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing cocoaShiftArrowMagnitude transient property
+  //····················································································································
+
+  var cocoaShiftArrowMagnitude_property_selection : EBSelection <CGFloat> {
+    get {
+      return self.cocoaShiftArrowMagnitude_property.prop
+    }
+  }
+
+  var cocoaShiftArrowMagnitude : CGFloat? {
+    switch cocoaShiftArrowMagnitude_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -486,6 +606,10 @@ class MergerRoot : EBManagedObject,
   var selectedBoardYUnit_property = EBStoredProperty_Int (90000)
   var boardLimitWidth_property = EBStoredProperty_Int (90000)
   var boardLimitWidthUnit_property = EBStoredProperty_Int (90000)
+  var arrowMagnitude_property = EBStoredProperty_Int (900000)
+  var arrowMagnitudeUnit_property = EBStoredProperty_Int (90000)
+  var shiftArrowMagnitude_property = EBStoredProperty_Int (3600000)
+  var shiftArrowMagnitudeUnit_property = EBStoredProperty_Int (90000)
   var artworkName_property = EBStoredProperty_String ("")
   var generateGerberProductFile_property = EBStoredProperty_Bool (true)
   var generatePDFProductFile_property = EBStoredProperty_Bool (true)
@@ -495,6 +619,8 @@ class MergerRoot : EBManagedObject,
   //    Transient properties
   //····················································································································
 
+  var cocoaArrowMagnitude_property = EBTransientProperty_CGFloat ()
+  var cocoaShiftArrowMagnitude_property = EBTransientProperty_CGFloat ()
   var modelNames_property = EBTransientProperty_MergerBoardModelArray ()
   var instancesLayerDisplay_property = EBTransientProperty_CALayer ()
   var boardRect_property = EBTransientProperty_CanariBoardRect ()
@@ -518,6 +644,46 @@ class MergerRoot : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
+    self.cocoaArrowMagnitude_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.arrowMagnitude_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.arrowMagnitude_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_canariUnitToCocoa (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.cocoaShiftArrowMagnitude_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.shiftArrowMagnitude_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.shiftArrowMagnitude_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_canariUnitToCocoa (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.modelNames_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardModels_property_selection.kind ()
@@ -649,6 +815,8 @@ class MergerRoot : EBManagedObject,
       }
     }
   //--- Install property observers for transients
+    self.arrowMagnitude_property.addEBObserver (self.cocoaArrowMagnitude_property)
+    self.shiftArrowMagnitude_property.addEBObserver (self.cocoaShiftArrowMagnitude_property)
     self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
     self.boardModels_property.addEBObserverOf_modelWidth (self.modelNames_property)
     self.boardModels_property.addEBObserverOf_modelHeight (self.modelNames_property)
@@ -678,6 +846,10 @@ class MergerRoot : EBManagedObject,
     self.selectedBoardYUnit_property.undoManager = undoManager ()
     self.boardLimitWidth_property.undoManager = undoManager ()
     self.boardLimitWidthUnit_property.undoManager = undoManager ()
+    self.arrowMagnitude_property.undoManager = undoManager ()
+    self.arrowMagnitudeUnit_property.undoManager = undoManager ()
+    self.shiftArrowMagnitude_property.undoManager = undoManager ()
+    self.shiftArrowMagnitudeUnit_property.undoManager = undoManager ()
     self.artworkName_property.undoManager = undoManager ()
     self.generateGerberProductFile_property.undoManager = undoManager ()
     self.generatePDFProductFile_property.undoManager = undoManager ()
@@ -693,6 +865,8 @@ class MergerRoot : EBManagedObject,
 
   deinit {
   //--- Remove observers
+    self.arrowMagnitude_property.removeEBObserver (self.cocoaArrowMagnitude_property)
+    self.shiftArrowMagnitude_property.removeEBObserver (self.cocoaShiftArrowMagnitude_property)
     self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
     self.boardModels_property.removeEBObserverOf_modelWidth (self.modelNames_property)
     self.boardModels_property.removeEBObserverOf_modelHeight (self.modelNames_property)
@@ -814,6 +988,38 @@ class MergerRoot : EBManagedObject,
       valueExplorer:&self.boardLimitWidthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "arrowMagnitude",
+      idx:self.arrowMagnitude_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.arrowMagnitude_property.mObserverExplorer,
+      valueExplorer:&self.arrowMagnitude_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "arrowMagnitudeUnit",
+      idx:self.arrowMagnitudeUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.arrowMagnitudeUnit_property.mObserverExplorer,
+      valueExplorer:&self.arrowMagnitudeUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "shiftArrowMagnitude",
+      idx:self.shiftArrowMagnitude_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.shiftArrowMagnitude_property.mObserverExplorer,
+      valueExplorer:&self.shiftArrowMagnitude_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "shiftArrowMagnitudeUnit",
+      idx:self.shiftArrowMagnitudeUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.shiftArrowMagnitudeUnit_property.mObserverExplorer,
+      valueExplorer:&self.shiftArrowMagnitudeUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "artworkName",
       idx:self.artworkName_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -846,6 +1052,22 @@ class MergerRoot : EBManagedObject,
       valueExplorer:&self.generatedBoardArchiveFormat_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "cocoaArrowMagnitude",
+      idx:self.cocoaArrowMagnitude_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.cocoaArrowMagnitude_property.mObserverExplorer,
+      valueExplorer:&self.cocoaArrowMagnitude_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cocoaShiftArrowMagnitude",
+      idx:self.cocoaShiftArrowMagnitude_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.cocoaShiftArrowMagnitude_property.mObserverExplorer,
+      valueExplorer:&self.cocoaShiftArrowMagnitude_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "modelNames",
       idx:self.modelNames_property.mEasyBindingsObjectIndex,
@@ -949,6 +1171,14 @@ class MergerRoot : EBManagedObject,
     self.boardLimitWidth_property.mValueExplorer = nil
     self.boardLimitWidthUnit_property.mObserverExplorer = nil
     self.boardLimitWidthUnit_property.mValueExplorer = nil
+    self.arrowMagnitude_property.mObserverExplorer = nil
+    self.arrowMagnitude_property.mValueExplorer = nil
+    self.arrowMagnitudeUnit_property.mObserverExplorer = nil
+    self.arrowMagnitudeUnit_property.mValueExplorer = nil
+    self.shiftArrowMagnitude_property.mObserverExplorer = nil
+    self.shiftArrowMagnitude_property.mValueExplorer = nil
+    self.shiftArrowMagnitudeUnit_property.mObserverExplorer = nil
+    self.shiftArrowMagnitudeUnit_property.mValueExplorer = nil
     self.artworkName_property.mObserverExplorer = nil
     self.artworkName_property.mValueExplorer = nil
     self.generateGerberProductFile_property.mObserverExplorer = nil
@@ -982,6 +1212,10 @@ class MergerRoot : EBManagedObject,
     self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardYUnit")
     self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
     self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
+    self.arrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitude")
+    self.arrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitudeUnit")
+    self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitude")
+    self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitudeUnit")
     self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
     self.generateGerberProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generateGerberProductFile")
     self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generatePDFProductFile")
@@ -1010,6 +1244,10 @@ class MergerRoot : EBManagedObject,
     self.selectedBoardYUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardYUnit")
     self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
     self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
+    self.arrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitude")
+    self.arrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitudeUnit")
+    self.shiftArrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitude")
+    self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitudeUnit")
     self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
     self.generateGerberProductFile_property.readFrom (dictionary: inDictionary, forKey:"generateGerberProductFile")
     self.generatePDFProductFile_property.readFrom (dictionary: inDictionary, forKey:"generatePDFProductFile")
@@ -1785,6 +2023,234 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
+  //   Observers of 'arrowMagnitude' stored property
+  //····················································································································
+
+  private var mObserversOf_arrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_arrowMagnitude.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.arrowMagnitude_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_arrowMagnitude.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.arrowMagnitude_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_arrowMagnitude_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_arrowMagnitude {
+        managedObject.arrowMagnitude_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_arrowMagnitude_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_arrowMagnitude {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.arrowMagnitude_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'arrowMagnitudeUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_arrowMagnitudeUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.arrowMagnitudeUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_arrowMagnitudeUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.arrowMagnitudeUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_arrowMagnitudeUnit {
+        managedObject.arrowMagnitudeUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_arrowMagnitudeUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.arrowMagnitudeUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'shiftArrowMagnitude' stored property
+  //····················································································································
+
+  private var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_shiftArrowMagnitude.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.shiftArrowMagnitude_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_shiftArrowMagnitude.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.shiftArrowMagnitude_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_shiftArrowMagnitude {
+        managedObject.shiftArrowMagnitude_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_shiftArrowMagnitude {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.shiftArrowMagnitude_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'shiftArrowMagnitudeUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_shiftArrowMagnitudeUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.shiftArrowMagnitudeUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_shiftArrowMagnitudeUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.shiftArrowMagnitudeUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_shiftArrowMagnitudeUnit {
+        managedObject.shiftArrowMagnitudeUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for observer in mObserversOf_shiftArrowMagnitudeUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.shiftArrowMagnitudeUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'artworkName' stored property
   //····················································································································
 
@@ -2008,6 +2474,118 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.generatedBoardArchiveFormat_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'cocoaArrowMagnitude' transient property
+  //····················································································································
+
+  private var mObserversOf_cocoaArrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_cocoaArrowMagnitude (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_cocoaArrowMagnitude.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cocoaArrowMagnitude_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cocoaArrowMagnitude (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_cocoaArrowMagnitude.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cocoaArrowMagnitude_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_cocoaArrowMagnitude_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_cocoaArrowMagnitude {
+        managedObject.cocoaArrowMagnitude_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_cocoaArrowMagnitude_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_cocoaArrowMagnitude {
+        managedObject.cocoaArrowMagnitude_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'cocoaShiftArrowMagnitude' transient property
+  //····················································································································
+
+  private var mObserversOf_cocoaShiftArrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_cocoaShiftArrowMagnitude (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_cocoaShiftArrowMagnitude.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cocoaShiftArrowMagnitude_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cocoaShiftArrowMagnitude (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_cocoaShiftArrowMagnitude.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cocoaShiftArrowMagnitude_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_cocoaShiftArrowMagnitude_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_cocoaShiftArrowMagnitude {
+        managedObject.cocoaShiftArrowMagnitude_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_cocoaShiftArrowMagnitude_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_cocoaShiftArrowMagnitude {
+        managedObject.cocoaShiftArrowMagnitude_property.removeEBObserver (observer)
       }
     }
   }
@@ -2398,11 +2976,17 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedSet)
+        removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedSet)
+        removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
         removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedSet)
         removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedSet)
         removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
+        removeEBObserversOf_cocoaArrowMagnitude_fromElementsOfSet (removedSet)
+        removeEBObserversOf_cocoaShiftArrowMagnitude_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
         removeEBObserversOf_instancesLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
@@ -2424,11 +3008,17 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_arrowMagnitude_toElementsOfSet (addedSet)
+        addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedSet)
+        addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedSet)
         addEBObserversOf_artworkName_toElementsOfSet (addedSet)
         addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedSet)
         addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedSet)
         addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
+        addEBObserversOf_cocoaArrowMagnitude_toElementsOfSet (addedSet)
+        addEBObserversOf_cocoaShiftArrowMagnitude_toElementsOfSet (addedSet)
         addEBObserversOf_modelNames_toElementsOfSet (addedSet)
         addEBObserversOf_instancesLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_boardRect_toElementsOfSet (addedSet)
@@ -2537,6 +3127,30 @@ protocol MergerRoot_boardLimitWidthUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol MergerRoot_arrowMagnitude : class {
+  var arrowMagnitude : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_arrowMagnitudeUnit : class {
+  var arrowMagnitudeUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_shiftArrowMagnitude : class {
+  var shiftArrowMagnitude : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_shiftArrowMagnitudeUnit : class {
+  var shiftArrowMagnitudeUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol MergerRoot_artworkName : class {
   var artworkName : String { get }
 }
@@ -2557,6 +3171,18 @@ protocol MergerRoot_generatePDFProductFile : class {
 
 protocol MergerRoot_generatedBoardArchiveFormat : class {
   var generatedBoardArchiveFormat : BoardArchiveFormat { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_cocoaArrowMagnitude : class {
+  var cocoaArrowMagnitude : CGFloat? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_cocoaShiftArrowMagnitude : class {
+  var cocoaShiftArrowMagnitude : CGFloat? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -36,6 +36,9 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
 
   func canSendToBack () -> Bool
   func sendToBack ()
+
+  var      arrowKeyMagnitude : CGFloat { get set }
+  var shiftArrowKeyMagnitude : CGFloat { get set }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -219,6 +222,48 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   }
 
   //····················································································································
+  //    Arrow Key Magnitude
+  //····················································································································
+
+  private var mArrowKeyMagnitudeController : Controller_EBView_arrowKeyMagnitude?
+
+  func bind_arrowKeyMagnitude (_ property:EBReadOnlyProperty_CGFloat, file:String, line:Int) {
+    mArrowKeyMagnitudeController = Controller_EBView_arrowKeyMagnitude (property, outlet:self)
+  }
+
+  func unbind_arrowKeyMagnitude () {
+    mArrowKeyMagnitudeController?.unregister ()
+    mArrowKeyMagnitudeController = nil
+  }
+
+  //····················································································································
+
+  func set (arrowKeyMagnitude : CGFloat) {
+    mViewController?.arrowKeyMagnitude = arrowKeyMagnitude
+  }
+
+  //····················································································································
+  //    Shift Arrow Key Magnitude
+  //····················································································································
+
+  private var mShiftArrowKeyMagnitudeController : Controller_EBView_shiftArrowKeyMagnitude?
+
+  func bind_shiftArrowKeyMagnitude (_ property:EBReadOnlyProperty_CGFloat, file:String, line:Int) {
+    mShiftArrowKeyMagnitudeController = Controller_EBView_shiftArrowKeyMagnitude (property, outlet:self)
+  }
+
+  func unbind_shiftArrowKeyMagnitude () {
+    mShiftArrowKeyMagnitudeController?.unregister ()
+    mShiftArrowKeyMagnitudeController = nil
+  }
+
+  //····················································································································
+
+  func set (shiftArrowKeyMagnitude : CGFloat) {
+    mViewController?.shiftArrowKeyMagnitude = shiftArrowKeyMagnitude
+  }
+
+  //····················································································································
 
 }
 
@@ -250,6 +295,76 @@ class Controller_EBView_objectLayer : EBSimpleController {
       mOutlet.mObjectLayer.sublayers = [v]
     case .multiple :
       mOutlet.mObjectLayer.sublayers = nil
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_EBView_arrowKeyMagnitude
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_EBView_arrowKeyMagnitude : EBSimpleController {
+
+  private let mProperty : EBReadOnlyProperty_CGFloat
+  private let mOutlet : EBView
+
+  //····················································································································
+
+  init (_ property : EBReadOnlyProperty_CGFloat, outlet : EBView) {
+    mProperty = property
+    mOutlet = outlet
+    super.init (observedObjects:[property], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+  }
+
+  //····················································································································
+
+  private func updateOutlet () {
+    switch mProperty.prop {
+    case .empty :
+      break
+    case .single (let v) :
+      mOutlet.set (arrowKeyMagnitude:v)
+    case .multiple :
+      break
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_EBView_shiftArrowKeyMagnitude
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_EBView_shiftArrowKeyMagnitude : EBSimpleController {
+
+  private let mProperty : EBReadOnlyProperty_CGFloat
+  private let mOutlet : EBView
+
+  //····················································································································
+
+  init (_ property : EBReadOnlyProperty_CGFloat, outlet : EBView) {
+    mProperty = property
+    mOutlet = outlet
+    super.init (observedObjects:[property], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+  }
+
+  //····················································································································
+
+  private func updateOutlet () {
+    switch mProperty.prop {
+    case .empty :
+      break
+    case .single (let v) :
+      mOutlet.set (shiftArrowKeyMagnitude:v)
+    case .multiple :
+      break
     }
   }
 

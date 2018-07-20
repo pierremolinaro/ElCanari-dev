@@ -1,7 +1,10 @@
 {
   "NOTE" : [],
   "BUGFIX" : [],
-  "CHANGE" : ["Merger: speed up board instance dragging in board view"],
-  "NEW" : []
+  "CHANGE" : [],
+  "NEW" : [
+    "Merger: switch automatic / manual board size",
+    "Merger: arrow and shift-arrow key displacement magnitudes are settable"
+  ]
 }
 
