@@ -802,7 +802,6 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
-				CFE3CF142103793C00085921 /* transient-MergerBoardInstance-modelName.swift */,
 				CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */,
 				CFC2FEAE20EBFA7A00C45CB3 /* action-MergerDocument-arrangeHorizontallyAction.swift */,
 				CFC2FEAF20EBFA7A00C45CB3 /* action-MergerDocument-arrangeVerticalyAction.swift */,
@@ -910,8 +909,9 @@
 				CF18948E20EBCD5E00B77DCA /* transient-MergerBoardInstance-frontPadsDisplay.swift */,
 				CF18948F20EBCD5E00B77DCA /* transient-MergerBoardInstance-frontTracksDisplay.swift */,
 				CF18949020EBCD5E00B77DCA /* transient-MergerBoardInstance-holeLayerDisplay.swift */,
-				CF21787820EA894B00BBC1C4 /* transient-MergerBoardInstance-instanceRect.swift */,
 				CF0A175320FF45F400448A4C /* transient-MergerBoardInstance-instanceLayerDisplay.swift */,
+				CF21787820EA894B00BBC1C4 /* transient-MergerBoardInstance-instanceRect.swift */,
+				CFE3CF142103793C00085921 /* transient-MergerBoardInstance-modelName.swift */,
 				CF7357C620F6421C00915629 /* transient-MergerBoardInstance-selectionLayer.swift */,
 				CF18949120EBCD5E00B77DCA /* transient-MergerBoardInstance-viaLayerDisplay.swift */,
 				CF87A87D20F111900011B9EC /* transient-MergerDocument-documentFileNameOk.swift */,

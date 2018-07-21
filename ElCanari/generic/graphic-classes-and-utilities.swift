@@ -21,6 +21,12 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
+  dynamic func acceptedTranslation (by inValue: CGPoint) -> CGPoint {
+    return inValue
+  }
+
+  //····················································································································
+
   dynamic func acceptToTranslate (xBy inDx: CGFloat, yBy inDy: CGFloat) -> Bool {
     return false
   }

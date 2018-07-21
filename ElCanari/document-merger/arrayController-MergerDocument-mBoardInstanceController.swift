@@ -502,13 +502,16 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         }
         self.mSelectedSet.mSet = newSelectedSet
       }else if let lastMouseDraggedLocation = mLastMouseDraggedLocation {
-        let accepted = wantsToTranslateSelection (
-          byX:mouseDraggedLocation.x - lastMouseDraggedLocation.x,
-          byY:mouseDraggedLocation.y - lastMouseDraggedLocation.y
-        )
-        if accepted {
-          mLastMouseDraggedLocation = mouseDraggedLocation
+        var translation = CGPoint (x: mouseDraggedLocation.x - lastMouseDraggedLocation.x, y:mouseDraggedLocation.y - lastMouseDraggedLocation.y)
+        for object in mSelectedSet.mSet {
+          let p = object.acceptedTranslation (by:translation)
+          translation = p
         }
+        for object in mSelectedSet.mSet {
+          object.translate (xBy: translation.x, yBy:translation.y)
+        }
+        let mouseDraggedLocation = CGPoint (x: translation.x + lastMouseDraggedLocation.x, y: translation.y + lastMouseDraggedLocation.y)
+        mLastMouseDraggedLocation = mouseDraggedLocation
       }
     }
   }
