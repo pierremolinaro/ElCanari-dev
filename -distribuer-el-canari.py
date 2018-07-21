@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 #-------------------- Version ElCanari
-VERSION_CANARI = "0.3.3"
+VERSION_CANARI = "0.3.4"
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   FOR PRINTING IN COLOR                                                                                              *
@@ -132,7 +132,7 @@ runCommand (["cp", "-r", "build/Release/ElCanari.app", "."])
 runCommand (["tar", "-cf", "ElCanari.app.tar", "ElCanari.app"])
 runCommand (["bzip2", "-9", "ElCanari.app.tar"])
 BZ2file = TEMP_DIR + "/ElCanari.app." + VERSION_CANARI + ".tar.bz2"
-runCommand (["mv", "ElCanari.app.tar.bz2", BZ2file])
+#runCommand (["mv", "ElCanari.app.tar.bz2", BZ2file])
 #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
 sommeControle = runHiddenCommand (["distribution-el-canari/sign_update.sh",
                                   BZ2file,
@@ -150,12 +150,12 @@ f.close ()
 # runCommand (["xattr", "-r", "-d", "com.apple.quarantine", "ElCanari.app"])
 # runCommand (["spctl", "-a", "-vv", "ElCanari.app"])
 #-------------------- Créer l'archive de Cocoa canari
-# nomArchive = "ElCanari-" + VERSION_CANARI
-# runCommand (["mkdir", nomArchive])
-# runCommand (["mv", "ElCanari.app", nomArchive + "/ElCanari.app"])
-# runCommand (["ln", "-s", "/Applications", nomArchive + "/Applications"])
-# runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg"])
-# runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
+nomArchive = "ElCanari-" + VERSION_CANARI
+runCommand (["mkdir", nomArchive])
+runCommand (["mv", "build/Release/ElCanari.app", nomArchive + "/ElCanari.app"])
+runCommand (["ln", "-s", "/Applications", nomArchive + "/Applications"])
+runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg"])
+runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 #--- Supprimer les répertoires intermédiaires
 # while os.path.isdir (TEMP_DIR + "/COCOA-CANARI"):
 #   shutil.rmtree (TEMP_DIR + "/COCOA-CANARI")

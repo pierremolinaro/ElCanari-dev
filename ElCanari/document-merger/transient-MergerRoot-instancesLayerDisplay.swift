@@ -13,13 +13,13 @@ import Cocoa
 
 func transient_MergerRoot_instancesLayerDisplay (
        _ self_boardLimitsLayerDisplay : CALayer, 
-       _ self_boardInstances_newInstanceLayerDisplay : [MergerBoardInstance_newInstanceLayerDisplay]
+       _ self_boardInstances_instanceLayerDisplay : [MergerBoardInstance_instanceLayerDisplay]
 ) -> CALayer {
 //--- START OF USER ZONE 2
   var array = [CALayer] ()
   var idx = 0
-  for instance in self_boardInstances_newInstanceLayerDisplay {
-    if let layer = instance.newInstanceLayerDisplay {
+  for instance in self_boardInstances_instanceLayerDisplay {
+    if let layer = instance.instanceLayerDisplay {
       layer.name = "\(idx)"
       array.append (layer)
     }

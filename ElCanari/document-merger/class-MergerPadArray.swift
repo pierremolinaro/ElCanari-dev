@@ -161,19 +161,38 @@ final class MergerPadArray : EBSimpleClass {
                 dx inDx : Int,
                 dy inDy: Int,
                 horizontalMirror inHorizontalMirror : Bool,
-                boardWidth inBoardWidth : Int) {
+                boardWidth inBoardWidth : Int,
+                modelWidth inModelWidth : Int,
+                modelHeight inModelHeight : Int,
+                instanceRotation inInstanceRotation : QuadrantRotation) {
     for pad in self.padArray {
-      let x = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - pad.x - inDx) : (pad.x + inDx))
-      let y = canariUnitToCocoa (pad.y + inDy)
+      var x = inDx
+      var y = inDy
+      switch inInstanceRotation {
+      case .rotation0 :
+        x += pad.x
+        y += pad.y
+      case .rotation90 :
+        x += inModelHeight - pad.y
+        y += pad.x
+      case .rotation180 :
+        x += inModelWidth  - pad.x
+        y += inModelHeight - pad.y
+      case .rotation270 :
+        x += pad.y
+        y += inModelWidth - pad.x
+      }
+      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
+      let yf = canariUnitToCocoa (y)
       let width = canariUnitToCocoa (pad.width)
       let height = canariUnitToCocoa (pad.height)
       let r = NSRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
       let transform = NSAffineTransform ()
-      transform.translateX (by:x, yBy:y)
+      transform.translateX (by:xf, yBy:yf)
       if inHorizontalMirror {
         transform.scaleX (by:-1.0, yBy: 1.0)
       }
-      transform.rotate (byRadians:canariRotationToRadians (pad.rotation))
+      transform.rotate (byRadians:canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000))
       let bp : NSBezierPath
       switch pad.shape {
       case .rectangular :
@@ -198,11 +217,30 @@ final class MergerPadArray : EBSimpleClass {
                  dy inDy: Int,
                  pdfHoleDiameter inHoleDiameter : CGFloat,
                  horizontalMirror inHorizontalMirror : Bool,
-                 boardWidth inBoardWidth : Int) {
+                 boardWidth inBoardWidth : Int,
+                 modelWidth inModelWidth : Int,
+                 modelHeight inModelHeight : Int,
+                 instanceRotation inInstanceRotation : QuadrantRotation) {
     for pad in self.padArray {
-      let x = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - pad.x - inDx) : (pad.x + inDx))
-      let y = canariUnitToCocoa (pad.y + inDy)
-      let r = NSRect (x: x - inHoleDiameter / 2.0, y: y - inHoleDiameter / 2.0, width:inHoleDiameter, height:inHoleDiameter)
+      var x = inDx
+      var y = inDy
+      switch inInstanceRotation {
+      case .rotation0 :
+        x += pad.x
+        y += pad.y
+      case .rotation90 :
+        x += inModelHeight - pad.y
+        y += pad.x
+      case .rotation180 :
+        x += inModelWidth  - pad.x
+        y += inModelHeight - pad.y
+      case .rotation270 :
+        x += pad.y
+        y += inModelWidth - pad.x
+      }
+      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
+      let yf = canariUnitToCocoa (y)
+      let r = NSRect (x: xf - inHoleDiameter / 2.0, y: yf - inHoleDiameter / 2.0, width:inHoleDiameter, height:inHoleDiameter)
       let bp = NSBezierPath (ovalIn:r)
       ioBezierPaths.append (bp)
     }
@@ -216,10 +254,30 @@ final class MergerPadArray : EBSimpleClass {
                 dy inDy: Int,
                 horizontalMirror inHorizontalMirror : Bool,
                 minimumAperture inMinimumApertureMilTenth : Int,
-                boardWidth inBoardWidth : Int) {
+                boardWidth inBoardWidth : Int,
+                modelWidth inModelWidth : Int,
+                modelHeight inModelHeight : Int,
+                instanceRotation inInstanceRotation : QuadrantRotation) {
     for pad in self.padArray {
-      let x : Int = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - pad.x - inDx) : (pad.x + inDx))
-      let y : Int = canariUnitToMilTenth (pad.y + inDy)
+      let pasRotationInRadians = canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000)
+      var x = inDx
+      var y = inDy
+      switch inInstanceRotation {
+      case .rotation0 :
+        x += pad.x
+        y += pad.y
+      case .rotation90 :
+        x += inModelHeight - pad.y
+        y += pad.x
+      case .rotation180 :
+        x += inModelWidth  - pad.x
+        y += inModelHeight - pad.y
+      case .rotation270 :
+        x += pad.y
+        y += inModelWidth - pad.x
+      }
+      let xmt : Int = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - x) : x)
+      let ymt : Int = canariUnitToMilTenth (y)
       let widthTenthMil  : Int = canariUnitToMilTenth (pad.width)
       let heightTenthMil : Int = canariUnitToMilTenth (pad.height)
       let widthTenthMilF = Double (widthTenthMil)
@@ -228,54 +286,32 @@ final class MergerPadArray : EBSimpleClass {
       let heightInch : CGFloat = canariUnitToInch (pad.height)
       switch pad.shape {
       case .rectangular :
-//        if (pad.rotation == 0) || (pad.rotation == 180_000) {
-//          let apertureString = "R,\(String (format:"%1.4f", widthInch))X\(String (format:"%1.4f", heightInch))"
-//          let flash = "X\(x)Y\(y)D03"
-//          if let array = ioApertureDictionary [apertureString] {
-//            var a = array
-//            a.append (flash)
-//            ioApertureDictionary [apertureString] = a
-//          }else{
-//            ioApertureDictionary [apertureString] = [flash]
-//          }
-//        }else if (pad.rotation == 90_000) || (pad.rotation == 270_000) {
-//          let apertureString = "R,\(String (format:"%1.4f", heightInch))X\(String (format:"%1.4f", widthInch))"
-//          let flash = "X\(x)Y\(y)D03"
-//          if let array = ioApertureDictionary [apertureString] {
-//            var a = array
-//            a.append (flash)
-//            ioApertureDictionary [apertureString] = a
-//           }else{
-//            ioApertureDictionary [apertureString] = [flash]
-//           }
-//        }else{ // Oblique rectangular pad: use G36 ······ G37 codes
-          let cosa = cos (canariRotationToRadians (pad.rotation))
-          let sina = sin (canariRotationToRadians (pad.rotation))
-          let hs = CGFloat (widthTenthMilF) / 2.0
-          let ws = CGFloat (heightTenthMilF) / 2.0
-          let p1x : CGFloat = CGFloat (x) + ( hs * cosa - ws * sina)
-          let p1y : CGFloat = CGFloat (y) + ( hs * sina + ws * cosa)
-          let p2x : CGFloat = CGFloat (x) + (-hs * cosa - ws * sina)
-          let p2y : CGFloat = CGFloat (y) + (-hs * sina + ws * cosa)
-          let p3x : CGFloat = CGFloat (x) + (-hs * cosa + ws * sina)
-          let p3y : CGFloat = CGFloat (y) + (-hs * sina - ws * cosa)
-          let p4x : CGFloat = CGFloat (x) + ( hs * cosa + ws * sina)
-          let p4y : CGFloat = CGFloat (y) + ( hs * sina - ws * cosa)
-          var drawings = [String] ()
-          drawings.append ("X\(Int (p1x))Y\(Int (p1y))D02") // Move to
-          drawings.append ("X\(Int (p2x))Y\(Int (p2y))D01") // Line to
-          drawings.append ("X\(Int (p3x))Y\(Int (p3y))D01") // Line to
-          drawings.append ("X\(Int (p4x))Y\(Int (p4y))D01") // Line to
-          drawings.append ("X\(Int (p1x))Y\(Int (p1y))D01") // Line to
-          ioPolygons.append (drawings)
-//        }
+        let cosa = cos (pasRotationInRadians)
+        let sina = sin (pasRotationInRadians)
+        let hs = CGFloat (widthTenthMilF) / 2.0
+        let ws = CGFloat (heightTenthMilF) / 2.0
+        let p1x : CGFloat = CGFloat (xmt) + ( hs * cosa - ws * sina)
+        let p1y : CGFloat = CGFloat (ymt) + ( hs * sina + ws * cosa)
+        let p2x : CGFloat = CGFloat (xmt) + (-hs * cosa - ws * sina)
+        let p2y : CGFloat = CGFloat (ymt) + (-hs * sina + ws * cosa)
+        let p3x : CGFloat = CGFloat (xmt) + (-hs * cosa + ws * sina)
+        let p3y : CGFloat = CGFloat (ymt) + (-hs * sina - ws * cosa)
+        let p4x : CGFloat = CGFloat (xmt) + ( hs * cosa + ws * sina)
+        let p4y : CGFloat = CGFloat (ymt) + ( hs * sina - ws * cosa)
+        var drawings = [String] ()
+        drawings.append ("X\(Int (p1x))Y\(Int (p1y))D02") // Move to
+        drawings.append ("X\(Int (p2x))Y\(Int (p2y))D01") // Line to
+        drawings.append ("X\(Int (p3x))Y\(Int (p3y))D01") // Line to
+        drawings.append ("X\(Int (p4x))Y\(Int (p4y))D01") // Line to
+        drawings.append ("X\(Int (p1x))Y\(Int (p1y))D01") // Line to
+        ioPolygons.append (drawings)
       case .round :
         if pad.width < pad.height {
           let transform = NSAffineTransform ()
           if inHorizontalMirror {
             transform.scaleX (by:-1.0, yBy: 1.0)
           }
-          transform.rotate (byRadians:canariRotationToRadians (pad.rotation))
+          transform.rotate (byRadians:pasRotationInRadians)
           let apertureString = "C,\(String(format: "%.4f", widthInch))"
           let p1 = transform.transform (NSPoint (x: 0.0,  y:  (heightTenthMilF - widthTenthMilF) / 2.0))
           let p2 = transform.transform (NSPoint (x: 0.0,  y: -(heightTenthMilF - widthTenthMilF) / 2.0))
@@ -283,8 +319,8 @@ final class MergerPadArray : EBSimpleClass {
           let p1y = Int (p1.y.rounded ())
           let p2x = Int (p2.x.rounded ())
           let p2y = Int (p2.y.rounded ())
-          let moveTo = "X\(x + p1x)Y\(y + p1y)D02"
-          let lineTo = "X\(x + p2x)Y\(y + p2y)D01"
+          let moveTo = "X\(xmt + p1x)Y\(ymt + p1y)D02"
+          let lineTo = "X\(xmt + p2x)Y\(ymt + p2y)D01"
           if let array = ioApertureDictionary [apertureString] {
             var a = array
             a.append (moveTo)
@@ -298,7 +334,7 @@ final class MergerPadArray : EBSimpleClass {
           if inHorizontalMirror {
             transform.scaleX (by:-1.0, yBy: 1.0)
           }
-          transform.rotate (byRadians:canariRotationToRadians (pad.rotation))
+          transform.rotate (byRadians:pasRotationInRadians)
           let apertureString = "C,\(String(format: "%.4f", heightInch))"
           let p1 = transform.transform (NSPoint (x:  (widthTenthMilF - heightTenthMilF) / 2.0, y:0.0))
           let p2 = transform.transform (NSPoint (x: -(widthTenthMilF - heightTenthMilF) / 2.0, y:0.0))
@@ -306,8 +342,8 @@ final class MergerPadArray : EBSimpleClass {
           let p1y = Int (p1.y.rounded ())
           let p2x = Int (p2.x.rounded ())
           let p2y = Int (p2.y.rounded ())
-          let moveTo = "X\(x + p1x)Y\(y + p1y)D02"
-          let lineTo = "X\(x + p2x)Y\(y + p2y)D01"
+          let moveTo = "X\(xmt + p1x)Y\(ymt + p1y)D02"
+          let lineTo = "X\(xmt + p2x)Y\(ymt + p2y)D01"
           if let array = ioApertureDictionary [apertureString] {
             var a = array
             a.append (moveTo)
@@ -318,7 +354,7 @@ final class MergerPadArray : EBSimpleClass {
           }
         }else{ // Circular pad
           let apertureString = "C,\(String(format: "%.4f", widthInch))"
-          let flash = "X\(x)Y\(y)D03"
+          let flash = "X\(xmt)Y\(ymt)D03"
           if let array = ioApertureDictionary [apertureString] {
             var a = array
             a.append (flash)

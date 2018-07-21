@@ -6,9 +6,12 @@ graphic entity MergerBoardInstance {
   property Int x default 0 ;
   property Int y default 0 ;
 
+#--- Instance rotation
+  property QuadrantRotation instanceRotation default rotation0 ;
+
 #--- Instance rect
   transient CanariBoardRect instanceRect
-    dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight
+    dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight, self.instanceRotation
   ;
 
 #--- Limit width
@@ -81,31 +84,10 @@ graphic entity MergerBoardInstance {
   transient CALayer backPackagesDisplay
     dependsFrom self.x, self.y, prefs.mergerColorBackPackages, prefs.mergerBoardViewDisplayBackPackages, self.myModel.one.backPackagesSegments ;
 
-  transient CALayer newInstanceLayerDisplay dependsFrom
-    self.x, self.y, self.myRoot.one.zoom, self.myModel.one.imageForInstances
-  ;
-
   transient CALayer instanceLayerDisplay dependsFrom
-    self.backgroundLayerDisplay,
-    self.backLegendTextsLayerDisplay,
-    self.backLayoutTextsLayerDisplay,
-    self.frontLegendTextsLayerDisplay,
-    self.frontLayoutTextsLayerDisplay,
-    self.holeLayerDisplay,
-    self.viaLayerDisplay,
-    self.frontPadsDisplay,
-    self.backPadsDisplay,
-    self.boardLimitsDisplay,
-    self.backComponentNameDisplay,
-    self.frontComponentNameDisplay,
-    self.frontComponentValueDisplay,
-    self.backComponentValueDisplay,
-    self.backTracksDisplay,
-    self.frontTracksDisplay,
-    self.frontPackagesDisplay,
-    self.backPackagesDisplay,
-    self.backLegendLinesLayerDisplay,
-    self.frontLegendLinesLayerDisplay
+    self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight,
+    self.instanceRotation,
+    self.myRoot.one.zoom, self.myModel.one.imageForInstances
   ;
 }
 

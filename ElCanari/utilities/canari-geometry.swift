@@ -49,7 +49,7 @@ func canariUnitToMilTenth (_ inValue : Int) -> Int {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func canariRotationToRadians (_ inCanariRotation : Int) -> CGFloat {
-  return CGFloat (inCanariRotation) * CGFloat.pi / 180_000.0
+  return CGFloat (inCanariRotation % 360_000) * CGFloat.pi / 180_000.0
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -79,12 +79,31 @@ final class MergerViaShapeArray : EBSimpleClass {
                dx inDx : Int,
                dy inDy: Int,
                horizontalMirror inHorizontalMirror : Bool,
-               boardWidth inBoardWidth : Int) {
+               boardWidth inBoardWidth : Int,
+               modelWidth inModelWidth : Int,
+               modelHeight inModelHeight : Int,
+               instanceRotation inInstanceRotation : QuadrantRotation) {
     for via in self.viaShapeArray {
-      let x = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - via.x - inDx) : (via.x + inDx))
-      let y = canariUnitToCocoa (via.y + inDy)
+      var x = inDx
+      var y = inDy
+      switch inInstanceRotation {
+      case .rotation0 :
+        x += via.x
+        y += via.y
+      case .rotation90 :
+        x += inModelHeight - via.y
+        y += via.x
+      case .rotation180 :
+        x += inModelWidth  - via.x
+        y += inModelHeight - via.y
+      case .rotation270 :
+        x += via.y
+        y += inModelWidth - via.x
+      }
+      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
+      let yf = canariUnitToCocoa (y)
       let d = canariUnitToCocoa (via.padDiameter)
-      let r = NSRect (x: x - d / 2.0, y: y - d / 2.0, width: d, height : d)
+      let r = NSRect (x: xf - d / 2.0, y: yf - d / 2.0, width: d, height : d)
       let bp = NSBezierPath (ovalIn: r)
       ioBezierPaths.append (bp)
     }
@@ -97,11 +116,30 @@ final class MergerViaShapeArray : EBSimpleClass {
                 dy inDy: Int,
                 pdfHoleDiameter inHoleDiameter : CGFloat,
                 horizontalMirror inHorizontalMirror : Bool,
-                boardWidth inBoardWidth : Int) {
+                boardWidth inBoardWidth : Int,
+                modelWidth inModelWidth : Int,
+                modelHeight inModelHeight : Int,
+                instanceRotation inInstanceRotation : QuadrantRotation) {
     for via in self.viaShapeArray {
-      let x = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - via.x - inDx) : (via.x + inDx))
-      let y = canariUnitToCocoa (via.y + inDy)
-      let r = NSRect (x: x - inHoleDiameter / 2.0, y: y - inHoleDiameter / 2.0, width: inHoleDiameter, height : inHoleDiameter)
+      var x = inDx
+      var y = inDy
+      switch inInstanceRotation {
+      case .rotation0 :
+        x += via.x
+        y += via.y
+      case .rotation90 :
+        x += inModelHeight - via.y
+        y += via.x
+      case .rotation180 :
+        x += inModelWidth  - via.x
+        y += inModelHeight - via.y
+      case .rotation270 :
+        x += via.y
+        y += inModelWidth - via.x
+      }
+      let xf = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x) : x)
+      let yf = canariUnitToCocoa (y)
+      let r = NSRect (x: xf - inHoleDiameter / 2.0, y: yf - inHoleDiameter / 2.0, width: inHoleDiameter, height : inHoleDiameter)
       let bp = NSBezierPath (ovalIn: r)
       ioBezierPaths.append (bp)
     }
@@ -113,12 +151,31 @@ final class MergerViaShapeArray : EBSimpleClass {
                dx inDx : Int,
                dy inDy: Int,
                horizontalMirror inHorizontalMirror : Bool,
-               boardWidth inBoardWidth : Int) {
+               boardWidth inBoardWidth : Int,
+               modelWidth inModelWidth : Int,
+               modelHeight inModelHeight : Int,
+               instanceRotation inInstanceRotation : QuadrantRotation) {
     for via in self.viaShapeArray {
+      var x = inDx
+      var y = inDy
+      switch inInstanceRotation {
+      case .rotation0 :
+        x += via.x
+        y += via.y
+      case .rotation90 :
+        x += inModelHeight - via.y
+        y += via.x
+      case .rotation180 :
+        x += inModelWidth  - via.x
+        y += inModelHeight - via.y
+      case .rotation270 :
+        x += via.y
+        y += inModelWidth - via.x
+      }
       let apertureString = "C,\(String(format: "%.4f", canariUnitToInch (via.padDiameter)))"
-      let x = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - via.x - inDx) : (via.x + inDx))
-      let y = canariUnitToMilTenth (via.y + inDy)
-      let flash = "X\(x)Y\(y)D03"
+      let xmt = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - x) : x)
+      let ymt = canariUnitToMilTenth (y)
+      let flash = "X\(xmt)Y\(ymt)D03"
       if let array = ioApertureDictionary [apertureString] {
         var a = array
         a.append (flash)

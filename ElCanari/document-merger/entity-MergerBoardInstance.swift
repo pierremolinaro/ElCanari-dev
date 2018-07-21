@@ -11,6 +11,7 @@ import Cocoa
 class MergerBoardInstance : EBGraphicManagedObject,
   MergerBoardInstance_x,
   MergerBoardInstance_y,
+  MergerBoardInstance_instanceRotation,
   MergerBoardInstance_instanceRect,
   MergerBoardInstance_boardLimitWidth,
   MergerBoardInstance_selectionLayer,
@@ -34,7 +35,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
   MergerBoardInstance_frontTracksDisplay,
   MergerBoardInstance_frontPackagesDisplay,
   MergerBoardInstance_backPackagesDisplay,
-  MergerBoardInstance_newInstanceLayerDisplay,
   MergerBoardInstance_instanceLayerDisplay {
 
   //····················································································································
@@ -72,6 +72,25 @@ class MergerBoardInstance : EBGraphicManagedObject,
   var y_property_selection : EBSelection <Int> {
     get {
       return self.y_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing instanceRotation stored property
+  //····················································································································
+
+  var instanceRotation : QuadrantRotation {
+    get {
+      return self.instanceRotation_property.propval
+    }
+    set {
+      self.instanceRotation_property.setProp (newValue)
+    }
+  }
+
+  var instanceRotation_property_selection : EBSelection <QuadrantRotation> {
+    get {
+      return self.instanceRotation_property.prop
     }
   }
 
@@ -513,25 +532,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Accessing newInstanceLayerDisplay transient property
-  //····················································································································
-
-  var newInstanceLayerDisplay_property_selection : EBSelection <CALayer> {
-    get {
-      return self.newInstanceLayerDisplay_property.prop
-    }
-  }
-
-  var newInstanceLayerDisplay : CALayer? {
-    switch newInstanceLayerDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Accessing instanceLayerDisplay transient property
   //····················································································································
 
@@ -556,6 +556,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   var x_property = EBStoredProperty_Int (0)
   var y_property = EBStoredProperty_Int (0)
+  var instanceRotation_property = EBStoredProperty_QuadrantRotation (QuadrantRotation.rotation0)
 
   //····················································································································
   //    Transient properties
@@ -584,7 +585,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
   var frontTracksDisplay_property = EBTransientProperty_CALayer ()
   var frontPackagesDisplay_property = EBTransientProperty_CALayer ()
   var backPackagesDisplay_property = EBTransientProperty_CALayer ()
-  var newInstanceLayerDisplay_property = EBTransientProperty_CALayer ()
   var instanceLayerDisplay_property = EBTransientProperty_CALayer ()
 
   //····················································································································
@@ -609,15 +609,16 @@ class MergerBoardInstance : EBGraphicManagedObject,
         kind &= unwSelf.y_property_selection.kind ()
         kind &= unwSelf.myModel_property.modelWidth_property_selection.kind ()
         kind &= unwSelf.myModel_property.modelHeight_property_selection.kind ()
+        kind &= unwSelf.instanceRotation_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.modelWidth_property_selection, unwSelf.myModel_property.modelHeight_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_MergerBoardInstance_instanceRect (v0, v1, v2, v3))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.modelWidth_property_selection, unwSelf.myModel_property.modelHeight_property_selection, unwSelf.instanceRotation_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_MergerBoardInstance_instanceRect (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1143,10 +1144,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.newInstanceLayerDisplay_property.readModelFunction = { [weak self] in
+    self.instanceLayerDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.myModel_property.modelWidth_property_selection.kind ()
+        kind &= unwSelf.myModel_property.modelHeight_property_selection.kind ()
+        kind &= unwSelf.instanceRotation_property_selection.kind ()
         kind &= unwSelf.myRoot_property.zoom_property_selection.kind ()
         kind &= unwSelf.myModel_property.imageForInstances_property_selection.kind ()
         switch kind {
@@ -1155,48 +1159,9 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myRoot_property.zoom_property_selection, unwSelf.myModel_property.imageForInstances_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_MergerBoardInstance_newInstanceLayerDisplay (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.instanceLayerDisplay_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.backgroundLayerDisplay_property_selection.kind ()
-        kind &= unwSelf.backLegendTextsLayerDisplay_property_selection.kind ()
-        kind &= unwSelf.backLayoutTextsLayerDisplay_property_selection.kind ()
-        kind &= unwSelf.frontLegendTextsLayerDisplay_property_selection.kind ()
-        kind &= unwSelf.frontLayoutTextsLayerDisplay_property_selection.kind ()
-        kind &= unwSelf.holeLayerDisplay_property_selection.kind ()
-        kind &= unwSelf.viaLayerDisplay_property_selection.kind ()
-        kind &= unwSelf.frontPadsDisplay_property_selection.kind ()
-        kind &= unwSelf.backPadsDisplay_property_selection.kind ()
-        kind &= unwSelf.boardLimitsDisplay_property_selection.kind ()
-        kind &= unwSelf.backComponentNameDisplay_property_selection.kind ()
-        kind &= unwSelf.frontComponentNameDisplay_property_selection.kind ()
-        kind &= unwSelf.frontComponentValueDisplay_property_selection.kind ()
-        kind &= unwSelf.backComponentValueDisplay_property_selection.kind ()
-        kind &= unwSelf.backTracksDisplay_property_selection.kind ()
-        kind &= unwSelf.frontTracksDisplay_property_selection.kind ()
-        kind &= unwSelf.frontPackagesDisplay_property_selection.kind ()
-        kind &= unwSelf.backPackagesDisplay_property_selection.kind ()
-        kind &= unwSelf.backLegendLinesLayerDisplay_property_selection.kind ()
-        kind &= unwSelf.frontLegendLinesLayerDisplay_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.backgroundLayerDisplay_property_selection, unwSelf.backLegendTextsLayerDisplay_property_selection, unwSelf.backLayoutTextsLayerDisplay_property_selection, unwSelf.frontLegendTextsLayerDisplay_property_selection, unwSelf.frontLayoutTextsLayerDisplay_property_selection, unwSelf.holeLayerDisplay_property_selection, unwSelf.viaLayerDisplay_property_selection, unwSelf.frontPadsDisplay_property_selection, unwSelf.backPadsDisplay_property_selection, unwSelf.boardLimitsDisplay_property_selection, unwSelf.backComponentNameDisplay_property_selection, unwSelf.frontComponentNameDisplay_property_selection, unwSelf.frontComponentValueDisplay_property_selection, unwSelf.backComponentValueDisplay_property_selection, unwSelf.backTracksDisplay_property_selection, unwSelf.frontTracksDisplay_property_selection, unwSelf.frontPackagesDisplay_property_selection, unwSelf.backPackagesDisplay_property_selection, unwSelf.backLegendLinesLayerDisplay_property_selection, unwSelf.frontLegendLinesLayerDisplay_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19)) :
-            return .single (transient_MergerBoardInstance_instanceLayerDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.myModel_property.modelWidth_property_selection, unwSelf.myModel_property.modelHeight_property_selection, unwSelf.instanceRotation_property_selection, unwSelf.myRoot_property.zoom_property_selection, unwSelf.myModel_property.imageForInstances_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_MergerBoardInstance_instanceLayerDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -1210,6 +1175,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.y_property.addEBObserver (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_modelWidth (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_modelHeight (self.instanceRect_property)
+    self.instanceRotation_property.addEBObserver (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_modelLimitWidth (self.boardLimitWidth_property)
     self.instanceRect_property.addEBObserver (self.selectionLayer_property)
     g_Preferences?.mergerColorBackground_property.addEBObserver (self.backgroundLayerDisplay_property)
@@ -1309,33 +1275,17 @@ class MergerBoardInstance : EBGraphicManagedObject,
     g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
     g_Preferences?.mergerBoardViewDisplayBackPackages_property.addEBObserver (self.backPackagesDisplay_property)
     self.myModel_property.addEBObserverOf_backPackagesSegments (self.backPackagesDisplay_property)
-    self.x_property.addEBObserver (self.newInstanceLayerDisplay_property)
-    self.y_property.addEBObserver (self.newInstanceLayerDisplay_property)
-    self.myRoot_property.addEBObserverOf_zoom (self.newInstanceLayerDisplay_property)
-    self.myModel_property.addEBObserverOf_imageForInstances (self.newInstanceLayerDisplay_property)
-    self.backgroundLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.backLegendTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.backLayoutTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.frontLegendTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.frontLayoutTextsLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.holeLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.viaLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.frontPadsDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.backPadsDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.boardLimitsDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.backComponentNameDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.frontComponentNameDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.frontComponentValueDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.backComponentValueDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.backTracksDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.frontTracksDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.frontPackagesDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.backPackagesDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.backLegendLinesLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
-    self.frontLegendLinesLayerDisplay_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.x_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.y_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.myModel_property.addEBObserverOf_modelWidth (self.instanceLayerDisplay_property)
+    self.myModel_property.addEBObserverOf_modelHeight (self.instanceLayerDisplay_property)
+    self.instanceRotation_property.addEBObserver (self.instanceLayerDisplay_property)
+    self.myRoot_property.addEBObserverOf_zoom (self.instanceLayerDisplay_property)
+    self.myModel_property.addEBObserverOf_imageForInstances (self.instanceLayerDisplay_property)
   //--- Install undoers for properties
     self.x_property.undoManager = undoManager ()
     self.y_property.undoManager = undoManager ()
+    self.instanceRotation_property.undoManager = undoManager ()
   //--- Install owner for relationships
     self.myRoot_property.owner = self
     self.myModel_property.owner = self
@@ -1350,6 +1300,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.y_property.removeEBObserver (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_modelWidth (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_modelHeight (self.instanceRect_property)
+    self.instanceRotation_property.removeEBObserver (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_modelLimitWidth (self.boardLimitWidth_property)
     self.instanceRect_property.removeEBObserver (self.selectionLayer_property)
     g_Preferences?.mergerColorBackground_property.removeEBObserver (self.backgroundLayerDisplay_property)
@@ -1449,30 +1400,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
     g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
     g_Preferences?.mergerBoardViewDisplayBackPackages_property.removeEBObserver (self.backPackagesDisplay_property)
     self.myModel_property.removeEBObserverOf_backPackagesSegments (self.backPackagesDisplay_property)
-    self.x_property.removeEBObserver (self.newInstanceLayerDisplay_property)
-    self.y_property.removeEBObserver (self.newInstanceLayerDisplay_property)
-    self.myRoot_property.removeEBObserverOf_zoom (self.newInstanceLayerDisplay_property)
-    self.myModel_property.removeEBObserverOf_imageForInstances (self.newInstanceLayerDisplay_property)
-    self.backgroundLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.backLegendTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.backLayoutTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.frontLegendTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.frontLayoutTextsLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.holeLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.viaLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.frontPadsDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.backPadsDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.boardLimitsDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.backComponentNameDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.frontComponentNameDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.frontComponentValueDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.backComponentValueDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.backTracksDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.frontTracksDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.frontPackagesDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.backPackagesDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.backLegendLinesLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
-    self.frontLegendLinesLayerDisplay_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.x_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.y_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.myModel_property.removeEBObserverOf_modelWidth (self.instanceLayerDisplay_property)
+    self.myModel_property.removeEBObserverOf_modelHeight (self.instanceLayerDisplay_property)
+    self.instanceRotation_property.removeEBObserver (self.instanceLayerDisplay_property)
+    self.myRoot_property.removeEBObserverOf_zoom (self.instanceLayerDisplay_property)
+    self.myModel_property.removeEBObserverOf_imageForInstances (self.instanceLayerDisplay_property)
   }
 
   //····················································································································
@@ -1496,6 +1430,14 @@ class MergerBoardInstance : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.y_property.mObserverExplorer,
       valueExplorer:&self.y_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "instanceRotation",
+      idx:self.instanceRotation_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.instanceRotation_property.mObserverExplorer,
+      valueExplorer:&self.instanceRotation_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -1683,14 +1625,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
       valueExplorer:&self.backPackagesDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "newInstanceLayerDisplay",
-      idx:self.newInstanceLayerDisplay_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.newInstanceLayerDisplay_property.mObserverExplorer,
-      valueExplorer:&self.newInstanceLayerDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "instanceLayerDisplay",
       idx:self.instanceLayerDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -1726,6 +1660,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.x_property.mValueExplorer = nil
     self.y_property.mObserverExplorer = nil
     self.y_property.mValueExplorer = nil
+    self.instanceRotation_property.mObserverExplorer = nil
+    self.instanceRotation_property.mValueExplorer = nil
     self.myRoot_property.mObserverExplorer = nil
     self.myRoot_property.mValueExplorer = nil
     self.myModel_property.mObserverExplorer = nil
@@ -1741,6 +1677,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     super.saveIntoDictionary (ioDictionary)
     self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
     self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+    self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey: "instanceRotation")
   }
 
   //····················································································································
@@ -1752,6 +1689,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
     self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
     self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+    self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey:"instanceRotation")
   }
 
   //····················································································································
@@ -1908,6 +1846,63 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'instanceRotation' stored property
+  //····················································································································
+
+  private var mObserversOf_instanceRotation = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_instanceRotation (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_instanceRotation.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instanceRotation_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_instanceRotation (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_instanceRotation.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instanceRotation_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_instanceRotation_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_instanceRotation {
+        managedObject.instanceRotation_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_instanceRotation_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
+    for observer in mObserversOf_instanceRotation {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.instanceRotation_property.removeEBObserver (observer)
       }
     }
   }
@@ -3201,62 +3196,6 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   }
 
   //····················································································································
-  //   Observers of 'newInstanceLayerDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_newInstanceLayerDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_newInstanceLayerDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_newInstanceLayerDisplay.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.newInstanceLayerDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_newInstanceLayerDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_newInstanceLayerDisplay.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.newInstanceLayerDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_newInstanceLayerDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_newInstanceLayerDisplay {
-        managedObject.newInstanceLayerDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_newInstanceLayerDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_newInstanceLayerDisplay {
-        managedObject.newInstanceLayerDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'instanceLayerDisplay' transient property
   //····················································································································
 
@@ -3352,6 +3291,7 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
       //--- Remove observers of stored properties
         removeEBObserversOf_x_fromElementsOfSet (removedSet)
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
+        removeEBObserversOf_instanceRotation_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
@@ -3376,13 +3316,13 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
         removeEBObserversOf_frontTracksDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPackagesDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPackagesDisplay_fromElementsOfSet (removedSet)
-        removeEBObserversOf_newInstanceLayerDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_instanceLayerDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
         addEBObserversOf_x_toElementsOfSet (addedSet)
         addEBObserversOf_y_toElementsOfSet (addedSet)
+        addEBObserversOf_instanceRotation_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_instanceRect_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
@@ -3407,7 +3347,6 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
         addEBObserversOf_frontTracksDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_frontPackagesDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backPackagesDisplay_toElementsOfSet (addedSet)
-        addEBObserversOf_newInstanceLayerDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_instanceLayerDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
@@ -3447,6 +3386,12 @@ protocol MergerBoardInstance_x : class {
 
 protocol MergerBoardInstance_y : class {
   var y : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstance_instanceRotation : class {
+  var instanceRotation : QuadrantRotation { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -3585,12 +3530,6 @@ protocol MergerBoardInstance_frontPackagesDisplay : class {
 
 protocol MergerBoardInstance_backPackagesDisplay : class {
   var backPackagesDisplay : CALayer? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerBoardInstance_newInstanceLayerDisplay : class {
-  var newInstanceLayerDisplay : CALayer? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

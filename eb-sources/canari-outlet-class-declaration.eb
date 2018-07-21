@@ -29,6 +29,10 @@ binding CanariFontCharacterSelectButton $codePoint : property Int ;
 extern outlet class CanariSegmentedControl ;
 binding CanariSegmentedControl $selectedPage : property Int ;
 
+
+extern outlet class CanariQuadrantSegmentedControl : NSView ;
+binding CanariQuadrantSegmentedControl $quadrant : property QuadrantRotation ;
+
 extern outlet class CanariSignatureField ;
 binding CanariSignatureField $signature : transient Int ;
 

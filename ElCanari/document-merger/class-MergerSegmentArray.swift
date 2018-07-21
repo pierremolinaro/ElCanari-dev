@@ -81,9 +81,40 @@ final class MergerSegmentArray : EBSimpleClass {
 
   //····················································································································
 
-  func add (toArchiveArray : inout [String], dx inDx : Int, dy inDy: Int) {
+  func add (toArchiveArray : inout [String],
+            dx inDx : Int,
+            dy inDy: Int,
+            modelWidth inModelWidth : Int,
+            modelHeight inModelHeight : Int,
+            instanceRotation inInstanceRotation : QuadrantRotation) {
     for segment in self.segmentArray {
-      let s = "\(segment.x1 + inDx) \(segment.y1 + inDy) \(segment.x2 + inDx) \(segment.y2 + inDy) \(segment.width)"
+      var x1 = inDx
+      var y1 = inDy
+      var x2 = inDx
+      var y2 = inDy
+      switch inInstanceRotation {
+      case .rotation0 :
+        x1 += segment.x1
+        y1 += segment.y1
+        x2 += segment.x2
+        y2 += segment.y2
+      case .rotation90 :
+        x1 += inModelHeight - segment.y1
+        y1 += segment.x1
+        x2 += inModelHeight - segment.y2
+        y2 += segment.x2
+      case .rotation180 :
+        x1 += inModelWidth  - segment.x1
+        y1 += inModelHeight - segment.y1
+        x2 += inModelWidth  - segment.x2
+        y2 += inModelHeight - segment.y2
+      case .rotation270 :
+        x1 += segment.y1
+        y1 += inModelWidth - segment.x1
+        x2 += segment.y2
+        y2 += inModelWidth - segment.x2
+      }
+      let s = "\(x1) \(y1) \(x2) \(y2) \(segment.width)"
       toArchiveArray.append (s)
     }
   }
@@ -94,16 +125,45 @@ final class MergerSegmentArray : EBSimpleClass {
             dx inDx : Int,
             dy inDy: Int,
             horizontalMirror inHorizontalMirror : Bool,
-            boardWidth inBoardWidth : Int) {
+            boardWidth inBoardWidth : Int,
+            modelWidth inModelWidth : Int,
+            modelHeight inModelHeight : Int,
+            instanceRotation inInstanceRotation : QuadrantRotation) {
     for segment in self.segmentArray {
-      let x1 = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - segment.x1 - inDx) : (segment.x1 + inDx))
-      let y1 = canariUnitToCocoa (segment.y1 + inDy)
-      let x2 = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - segment.x2 - inDx) : (segment.x2 + inDx))
-      let y2 = canariUnitToCocoa (segment.y2 + inDy)
+      var x1 = inDx
+      var y1 = inDy
+      var x2 = inDx
+      var y2 = inDy
+      switch inInstanceRotation {
+      case .rotation0 :
+        x1 += segment.x1
+        y1 += segment.y1
+        x2 += segment.x2
+        y2 += segment.y2
+      case .rotation90 :
+        x1 += inModelHeight - segment.y1
+        y1 += segment.x1
+        x2 += inModelHeight - segment.y2
+        y2 += segment.x2
+      case .rotation180 :
+        x1 += inModelWidth  - segment.x1
+        y1 += inModelHeight - segment.y1
+        x2 += inModelWidth  - segment.x2
+        y2 += inModelHeight - segment.y2
+      case .rotation270 :
+        x1 += segment.y1
+        y1 += inModelWidth - segment.x1
+        x2 += segment.y2
+        y2 += inModelWidth - segment.x2
+      }
+      let x1f = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x1) : x1)
+      let y1f = canariUnitToCocoa (y1)
+      let x2f = canariUnitToCocoa (inHorizontalMirror ? (inBoardWidth - x2) : x2)
+      let y2f = canariUnitToCocoa (y2)
       let width = canariUnitToCocoa (segment.width)
       let bp = NSBezierPath ()
-      bp.move (to:CGPoint (x:x1, y:y1))
-      bp.line (to:CGPoint (x:x2, y:y2))
+      bp.move (to:CGPoint (x:x1f, y:y1f))
+      bp.line (to:CGPoint (x:x2f, y:y2f))
       bp.lineWidth = width
       bp.lineCapStyle = .roundLineCapStyle
       ioBezierPaths.append (bp)
@@ -116,18 +176,47 @@ final class MergerSegmentArray : EBSimpleClass {
             dx inDx : Int,
             dy inDy: Int,
             horizontalMirror inHorizontalMirror : Bool,
-            boardWidth inBoardWidth : Int) {
+            boardWidth inBoardWidth : Int,
+            modelWidth inModelWidth : Int,
+            modelHeight inModelHeight : Int,
+            instanceRotation inInstanceRotation : QuadrantRotation) {
     for segment in self.segmentArray {
-      let x1 = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - segment.x1 - inDx) : (segment.x1 + inDx))
-      let y1 = canariUnitToMilTenth (segment.y1 + inDy)
-      let x2 = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - segment.x2 - inDx) : (segment.x2 + inDx))
-      let y2 = canariUnitToMilTenth (segment.y2 + inDy)
+      var x1 = inDx
+      var y1 = inDy
+      var x2 = inDx
+      var y2 = inDy
+      switch inInstanceRotation {
+      case .rotation0 :
+        x1 += segment.x1
+        y1 += segment.y1
+        x2 += segment.x2
+        y2 += segment.y2
+      case .rotation90 :
+        x1 += inModelHeight - segment.y1
+        y1 += segment.x1
+        x2 += inModelHeight - segment.y2
+        y2 += segment.x2
+      case .rotation180 :
+        x1 += inModelWidth  - segment.x1
+        y1 += inModelHeight - segment.y1
+        x2 += inModelWidth  - segment.x2
+        y2 += inModelHeight - segment.y2
+      case .rotation270 :
+        x1 += segment.y1
+        y1 += inModelWidth - segment.x1
+        x2 += segment.y2
+        y2 += inModelWidth - segment.x2
+      }
+      let x1mt = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - x1) : x1)
+      let y1mt = canariUnitToMilTenth (y1)
+      let x2mt = canariUnitToMilTenth (inHorizontalMirror ? (inBoardWidth - x2) : x2)
+      let y2mt = canariUnitToMilTenth (y2)
       let apertureString = "C,\(String(format: "%.4f", canariUnitToInch (segment.width)))"
-      let moveTo = "X\(x1)Y\(y1)D02"
-      let lineTo = "X\(x2)Y\(y2)D01"
+      let moveTo = "X\(x1mt)Y\(y1mt)D02"
+      let lineTo = "X\(x2mt)Y\(y2mt)D01"
       if let array = ioApertures [apertureString] {
         var a = array
-        let possibleLastLineTo = "X\(x1)Y\(y1)D01"
+        let possibleLastLineTo = "X\(x1mt)Y\(y1mt)D01"
         if possibleLastLineTo != a.last! {
           a.append (moveTo)
         }

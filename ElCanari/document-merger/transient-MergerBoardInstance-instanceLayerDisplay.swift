@@ -12,52 +12,36 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerBoardInstance_instanceLayerDisplay (
-       _ self_backgroundLayerDisplay : CALayer,          
-       _ self_backLegendTextsLayerDisplay : CALayer,     
-       _ self_backLayoutTextsLayerDisplay : CALayer,     
-       _ self_frontLegendTextsLayerDisplay : CALayer,    
-       _ self_frontLayoutTextsLayerDisplay : CALayer,    
-       _ self_holeLayerDisplay : CALayer,                
-       _ self_viaLayerDisplay : CALayer,                 
-       _ self_frontPadsDisplay : CALayer,                
-       _ self_backPadsDisplay : CALayer,                 
-       _ self_boardLimitsDisplay : CALayer,              
-       _ self_backComponentNameDisplay : CALayer,        
-       _ self_frontComponentNameDisplay : CALayer,       
-       _ self_frontComponentValueDisplay : CALayer,      
-       _ self_backComponentValueDisplay : CALayer,       
-       _ self_backTracksDisplay : CALayer,               
-       _ self_frontTracksDisplay : CALayer,              
-       _ self_frontPackagesDisplay : CALayer,            
-       _ self_backPackagesDisplay : CALayer,             
-       _ self_backLegendLinesLayerDisplay : CALayer,     
-       _ self_frontLegendLinesLayerDisplay : CALayer
+       _ self_x : Int,                                   
+       _ self_y : Int,                                   
+       _ self_myModel_modelWidth : Int?,                 
+       _ self_myModel_modelHeight : Int?,                
+       _ self_instanceRotation : QuadrantRotation,       
+       _ self_myRoot_zoom : Int?,                        
+       _ self_myModel_imageForInstances : NSImage?
 ) -> CALayer {
 //--- START OF USER ZONE 2
-  let result = CALayer ()
-  result.sublayers = [
-    self_backgroundLayerDisplay,
-    self_backTracksDisplay,
-    self_backLayoutTextsLayerDisplay,
-    self_backPackagesDisplay,
-    self_backLegendTextsLayerDisplay,
-    self_backLegendLinesLayerDisplay,
-    self_backComponentNameDisplay,
-    self_backComponentValueDisplay,
-    self_backPadsDisplay,
-    self_frontLayoutTextsLayerDisplay,
-    self_frontTracksDisplay,
-    self_frontLegendTextsLayerDisplay,
-    self_frontLegendLinesLayerDisplay,
-    self_frontComponentNameDisplay,
-    self_frontComponentValueDisplay,
-    self_frontPackagesDisplay,
-    self_viaLayerDisplay,
-    self_boardLimitsDisplay,
-    self_frontPadsDisplay,
-    self_holeLayerDisplay
-  ]
-  return result
+  let layer = CALayer ()
+  if let image = self_myModel_imageForInstances {
+  //--- This display image, but it is blurred with large zooms
+//    layer.contents = image
+  //--- This displays best image
+    let actualScale = image.recommendedLayerContentsScale (CGFloat (self_myRoot_zoom!) / 100.0)
+    layer.contents = image.layerContents (forContentsScale:actualScale)
+    layer.contentsScale = actualScale
+  //--- Affine transform
+    let at = CGAffineTransform (rotationAngle: CGFloat (self_instanceRotation.rawValue) * CGFloat.pi / 2.0)
+    layer.setAffineTransform (at)
+  //---
+    switch self_instanceRotation {
+    case .rotation0, .rotation180 :
+      layer.frame = CGRect (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y), width: image.size.width, height: image.size.height)
+    case .rotation90, .rotation270 :
+      layer.frame = CGRect (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y), width: image.size.height, height: image.size.width)
+    }
+    layer.isOpaque = true
+  }
+  return layer
 //--- END OF USER ZONE 2
 }
 

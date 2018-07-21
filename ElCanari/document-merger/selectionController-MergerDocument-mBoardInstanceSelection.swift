@@ -170,11 +170,11 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
       return self.instanceRect_property.prop
     }
   }
-  var newInstanceLayerDisplay_property = EBTransientProperty_CALayer ()
+  var instanceRotation_property = EBPropertyProxy_QuadrantRotation ()
 
-  var newInstanceLayerDisplay_property_selection : EBSelection <CALayer> {
+  var instanceRotation_property_selection : EBSelection <QuadrantRotation> {
     get {
-      return self.newInstanceLayerDisplay_property.prop
+      return self.instanceRotation_property.prop
     }
   }
   var selectionLayer_property = EBTransientProperty_CALayer ()
@@ -234,7 +234,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     bind_property_holeLayerDisplay (model: model)
     bind_property_instanceLayerDisplay (model: model)
     bind_property_instanceRect (model: model)
-    bind_property_newInstanceLayerDisplay (model: model)
+    bind_property_instanceRotation (model: model)
     bind_property_selectionLayer (model: model)
     bind_property_viaLayerDisplay (model: model)
     bind_property_x (model: model)
@@ -277,6 +277,14 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //-------------------------------------------------- Adding properties
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
+    createEntryForPropertyNamed (
+      "instanceRotation",
+      idx:self.instanceRotation_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.instanceRotation_property.mObserverExplorer,
+      valueExplorer:&self.instanceRotation_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "x",
       idx:self.x_property.mEasyBindingsObjectIndex,
@@ -1226,9 +1234,9 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   //···················································································································*
 
-  private final func bind_property_newInstanceLayerDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_newInstanceLayerDisplay (self.newInstanceLayerDisplay_property)
-    self.newInstanceLayerDisplay_property.readModelFunction = {
+  private final func bind_property_instanceRotation (model : ReadOnlyArrayOf_MergerBoardInstance) {
+    model.addEBObserverOf_instanceRotation (self.instanceRotation_property)
+    self.instanceRotation_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1236,10 +1244,10 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<CALayer> ()
+          var s = Set<QuadrantRotation> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.newInstanceLayerDisplay_property_selection {
+            switch object.instanceRotation_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1260,6 +1268,36 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         }
       }else{
         return .empty
+      }
+    }
+    self.instanceRotation_property.writeModelFunction = { (inValue : QuadrantRotation) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.instanceRotation_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.instanceRotation_property.validateAndWriteModelFunction = { (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.instanceRotation_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
       }
     }
   }
@@ -1557,9 +1595,11 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //--- instanceRect
     self.instanceRect_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceRect (self.instanceRect_property)
-  //--- newInstanceLayerDisplay
-    self.newInstanceLayerDisplay_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_newInstanceLayerDisplay (self.newInstanceLayerDisplay_property)
+  //--- instanceRotation
+    self.instanceRotation_property.readModelFunction = nil 
+    self.instanceRotation_property.writeModelFunction = nil 
+    self.instanceRotation_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_instanceRotation (self.instanceRotation_property)
   //--- selectionLayer
     self.selectionLayer_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_selectionLayer (self.selectionLayer_property)

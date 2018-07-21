@@ -69,6 +69,7 @@ import Cocoa
   @IBOutlet var mInsertArrayOfBoardsXCountField : NSTextField?
   @IBOutlet var mInsertArrayOfBoardsYCountField : NSTextField?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
+  @IBOutlet var mInstanceRotation : CanariQuadrantSegmentedControl?
   @IBOutlet var mLogTextView : NSTextView?
   @IBOutlet var mManualBoardHeightTextField : CanariDimensionTextField?
   @IBOutlet var mManualBoardHeightUnitPopUp : EBPopUpButton?
@@ -775,6 +776,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mInstanceCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
+    }
+    if nil == mInstanceRotation {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInstanceRotation' outlet is nil") ;
+//    }else if !mInstanceRotation!.isKindOfClass (CanariQuadrantSegmentedControl) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInstanceRotation' outlet is not an instance of 'CanariQuadrantSegmentedControl'") ;
     }
     if nil == mLogTextView {
       presentErrorWindow (file: #file,
@@ -1620,6 +1630,7 @@ import Cocoa
     mSelectedBoardXTextField?.bind_dimensionAndUnit (self.mBoardInstanceSelection.x_property, self.rootObject.selectedBoardXUnit_property, file: #file, line: #line)
     mSelectedBoardYUnitPopUp?.bind_selectedTag (self.rootObject.selectedBoardYUnit_property, file: #file, line: #line)
     mSelectedBoardYTextField?.bind_dimensionAndUnit (self.mBoardInstanceSelection.y_property, self.rootObject.selectedBoardYUnit_property, file: #file, line: #line)
+    mInstanceRotation?.bind_quadrant (self.mBoardInstanceSelection.instanceRotation_property, file: #file, line: #line)
     mOverlapSwitch?.bind_value (self.rootObject.overlapingArrangment_property, file: #file, line: #line)
     mIncorrectDocumentNameTextField?.bind_valueObserver (self.incorrectDocumentFileErrorMessage_property, file: #file, line: #line)
     mArtworNameTextField?.bind_valueObserver (self.rootObject.artworkName_property, file: #file, line: #line)
@@ -1918,6 +1929,7 @@ import Cocoa
     mSelectedBoardXTextField?.unbind_dimensionAndUnit ()
     mSelectedBoardYUnitPopUp?.unbind_selectedTag ()
     mSelectedBoardYTextField?.unbind_dimensionAndUnit ()
+    mInstanceRotation?.unbind_quadrant ()
     mOverlapSwitch?.unbind_value ()
     mIncorrectDocumentNameTextField?.unbind_valueObserver ()
     mArtworNameTextField?.unbind_valueObserver ()
@@ -2045,6 +2057,7 @@ import Cocoa
     self.mInsertArrayOfBoardsXCountField?.ebCleanUp ()
     self.mInsertArrayOfBoardsYCountField?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
+    self.mInstanceRotation?.ebCleanUp ()
     self.mLogTextView?.ebCleanUp ()
     self.mManualBoardHeightTextField?.ebCleanUp ()
     self.mManualBoardHeightUnitPopUp?.ebCleanUp ()

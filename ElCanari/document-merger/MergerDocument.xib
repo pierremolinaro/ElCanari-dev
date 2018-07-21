@@ -65,6 +65,7 @@
                 <outlet property="mInsertArrayOfBoardsXCountField" destination="C8Z-fi-sAg" id="ZzX-B8-5rD"/>
                 <outlet property="mInsertArrayOfBoardsYCountField" destination="CdM-zB-V9k" id="Rrt-TU-TNy"/>
                 <outlet property="mInstanceCountTextField" destination="Ti9-vf-Dz4" id="wgt-zC-2Td"/>
+                <outlet property="mInstanceRotation" destination="y4U-fo-zL7" id="pFD-SK-hRz"/>
                 <outlet property="mLogTextView" destination="Rki-OK-VtG" id="iad-QU-msc"/>
                 <outlet property="mManualBoardHeightTextField" destination="pNf-w2-84c" id="mhs-Cf-UFH"/>
                 <outlet property="mManualBoardHeightUnitPopUp" destination="fxr-2X-XXz" id="lR8-bi-1Ia"/>
@@ -1029,6 +1030,19 @@ AAAAAAEGA
                         <outlet property="nextKeyView" destination="nao-E9-sci" id="g52-Bq-3fl"/>
                     </connections>
                 </textField>
+                <segmentedControl verticalHuggingPriority="750" misplaced="YES" id="y4U-fo-zL7" customClass="CanariQuadrantSegmentedControl">
+                    <rect key="frame" x="17" y="97" width="217" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="3rd-5l-HzK">
+                        <font key="font" metaFont="smallSystem"/>
+                        <segments>
+                            <segment label="0°" width="52"/>
+                            <segment label="90°" width="52" selected="YES" tag="1"/>
+                            <segment label="180°" width="52"/>
+                            <segment label="270°" width="52"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
             </subviews>
             <point key="canvasLocation" x="1342" y="-655"/>
         </customView>

@@ -79,29 +79,62 @@ extension MergerDocument {
     var pads = [NSDictionary] ()
     for board in self.rootObject.boardInstances_property.propval {
       let myModel : BoardModel? = board.myModel_property.propval
-      myModel?.backComponentNameSegments?.add (toArchiveArray: &backComponentNames, dx: board.x, dy: board.y)
-      myModel?.frontComponentNameSegments?.add (toArchiveArray: &frontComponentNames, dx: board.x, dy: board.y)
-      myModel?.backComponentValueSegments?.add (toArchiveArray: &backComponentValues, dx: board.x, dy: board.y)
-      myModel?.frontComponentValueSegments?.add (toArchiveArray: &frontComponentValues, dx: board.x, dy: board.y)
-      myModel?.backPackagesSegments?.add (toArchiveArray: &backPackages, dx: board.x, dy: board.y)
-      myModel?.frontPackagesSegments?.add (toArchiveArray: &frontPackages, dx: board.x, dy: board.y)
-      myModel?.backLayoutTextsSegments?.add (toArchiveArray: &backLayoutTexts, dx: board.x, dy: board.y)
-      myModel?.frontLayoutTextsSegments?.add (toArchiveArray: &frontLayoutTexts, dx: board.x, dy: board.y)
-      myModel?.backLegendTextsSegments?.add (toArchiveArray: &backLegendTexts, dx: board.x, dy: board.y)
-      myModel?.frontLegendTextsSegments?.add (toArchiveArray: &frontLegendTexts, dx: board.x, dy: board.y)
-      myModel?.backTrackSegments?.add (toArchiveArray: &backTracks, dx: board.x, dy: board.y)
-      myModel?.frontTrackSegments?.add (toArchiveArray: &frontTracks, dx: board.x, dy: board.y)
-      myModel?.backLegendLinesSegments?.add (toArchiveArray: &backLegendLines, dx: board.x, dy: board.y)
-      myModel?.frontLegendLinesSegments?.add (toArchiveArray: &frontLegendLines, dx: board.x, dy: board.y)
+      let modelWidth  = myModel?.modelWidth  ?? 0
+      let modelHeight = myModel?.modelHeight ?? 0
+      let instanceRotation = board.instanceRotation
+      myModel?.backComponentNameSegments?.add (toArchiveArray: &backComponentNames, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.frontComponentNameSegments?.add (toArchiveArray: &frontComponentNames, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.backComponentValueSegments?.add (toArchiveArray: &backComponentValues, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.frontComponentValueSegments?.add (toArchiveArray: &frontComponentValues, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.backPackagesSegments?.add (toArchiveArray: &backPackages, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.frontPackagesSegments?.add (toArchiveArray: &frontPackages, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.backLayoutTextsSegments?.add (toArchiveArray: &backLayoutTexts, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.frontLayoutTextsSegments?.add (toArchiveArray: &frontLayoutTexts, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.backLegendTextsSegments?.add (toArchiveArray: &backLegendTexts, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.frontLegendTextsSegments?.add (toArchiveArray: &frontLegendTexts, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.backTrackSegments?.add (toArchiveArray: &backTracks, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.frontTrackSegments?.add (toArchiveArray: &frontTracks, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.backLegendLinesSegments?.add (toArchiveArray: &backLegendLines, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.frontLegendLinesSegments?.add (toArchiveArray: &frontLegendLines, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
       for via in myModel?.vias_property.propval ?? [] {
-        vias.append ("\(via.x) \(via.y) \(via.padDiameter) \(via.holeDiameter)")
+        var viaX = board.x
+        var viaY = board.y
+        switch instanceRotation {
+        case .rotation0 :
+          viaX += via.x
+          viaY += via.y
+        case .rotation90 :
+          viaX += modelHeight - via.y
+          viaY += via.x
+        case .rotation180 :
+          viaX += modelWidth  - via.x
+          viaY += modelHeight - via.y
+        case .rotation270 :
+          viaX += via.y
+          viaY += modelWidth - via.x
+        }
+        vias.append ("\(viaX) \(viaY) \(via.padDiameter) \(via.holeDiameter)")
       }
       for pad in myModel?.pads_property.propval ?? [] {
         let d = NSMutableDictionary ()
         d ["HEIGHT"] = pad.height
         d ["HOLE-DIAMETER"] = pad.holeDiameter
         d ["QUALIFIED-NAME"] = pad.qualifiedName
-        d ["ROTATION"] = pad.rotation
+        d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
         switch pad.shape {
         case .rectangular :
           d ["SHAPE"] = "RECT"
@@ -117,8 +150,20 @@ extension MergerDocument {
           d ["SIDE"] = "BACK"
         }
         d ["WIDTH"] = pad.width
-        d ["X"] = pad.x
-        d ["Y"] = pad.y
+        switch instanceRotation {
+        case .rotation0 :
+          d ["X"] = board.x + pad.x
+          d ["Y"] = board.y + pad.y
+        case .rotation90 :
+          d ["X"] = board.x + modelHeight - pad.y
+          d ["Y"] = board.y + pad.x
+        case .rotation180 :
+          d ["X"] = board.x + modelWidth  - pad.x
+          d ["Y"] = board.y + modelHeight - pad.y
+        case .rotation270 :
+          d ["X"] = board.x + pad.y
+          d ["Y"] = board.y + modelWidth - pad.x
+        }
         pads.append (d)
       }
     }
@@ -178,93 +223,172 @@ extension MergerDocument {
         if product.drawComponentNamesTopSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.frontComponentNameSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.frontComponentNameSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawComponentNamesBottomSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.backComponentNameSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.backComponentNameSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawComponentValuesTopSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.frontComponentValueSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.frontComponentValueSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawComponentValuesBottomSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.backComponentValueSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.backComponentValueSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawPackageLegendTopSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.frontPackagesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.frontPackagesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawPackageLegendBottomSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.backPackagesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.backPackagesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawPadsTopSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.frontPads?.addPads (toFilledBezierPaths: &filledBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.frontPads?.addPads (toFilledBezierPaths: &filledBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawPadsBottomSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.backPads?.addPads (toFilledBezierPaths: &filledBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.backPads?.addPads (toFilledBezierPaths: &filledBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawTextsLayoutTopSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.frontLayoutTextsSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.frontLayoutTextsSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawTextsLayoutBottomSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.backLayoutTextsSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.backLayoutTextsSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawTextsLegendTopSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.frontLegendTextsSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
-            myModel?.frontLegendLinesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.frontLegendTextsSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+            myModel?.frontLegendLinesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawTextsLegendBottomSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.backLegendTextsSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
-            myModel?.backLegendLinesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.backLegendTextsSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+            myModel?.backLegendLinesSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawTracksTopSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.frontTrackSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.frontTrackSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawTracksBottomSide {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.backTrackSegments?.add (toStrokeBezierPaths: &strokeBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.backTrackSegments?.add (toStrokeBezierPaths: &strokeBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         if product.drawVias {
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
-            myModel?.viaShapes?.addPad (toFilledBezierPaths: &filledBezierPaths, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
+            myModel?.viaShapes?.addPad (toFilledBezierPaths: &filledBezierPaths,
+              dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+              modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
         var holeBezierPaths = [NSBezierPath] ()
@@ -272,6 +396,9 @@ extension MergerDocument {
           let pdfHoleDiameter : CGFloat = canariUnitToCocoa (product.padHoleDiameterInPDF)
           for board in self.rootObject.boardInstances_property.propval {
             let myModel : BoardModel? = board.myModel_property.propval
+            let modelWidth  = myModel?.modelWidth  ?? 0
+            let modelHeight = myModel?.modelHeight ?? 0
+            let instanceRotation = board.instanceRotation
             if product.drawVias {
               myModel?.viaShapes?.addHole (
                 toFilledBezierPaths: &holeBezierPaths,
@@ -279,47 +406,52 @@ extension MergerDocument {
                 dy: board.y,
                 pdfHoleDiameter: pdfHoleDiameter,
                 horizontalMirror: horizontalMirror,
-                boardWidth: boardWidth
+                boardWidth: boardWidth,
+                modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
               )
             }
             if product.drawPadsTopSide {
               for board in self.rootObject.boardInstances_property.propval {
                 let myModel : BoardModel? = board.myModel_property.propval
+                let modelWidth  = myModel?.modelWidth  ?? 0
+                let modelHeight = myModel?.modelHeight ?? 0
+                let instanceRotation = board.instanceRotation
                 myModel?.frontPads?.addHoles (
                   toFilledBezierPaths: &holeBezierPaths,
                   dx: board.x,
                   dy: board.y,
                   pdfHoleDiameter: pdfHoleDiameter,
                   horizontalMirror:horizontalMirror,
-                  boardWidth:boardWidth
+                  boardWidth:boardWidth,
+                  modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
                 )
               }
             }
             if product.drawPadsBottomSide {
               for board in self.rootObject.boardInstances_property.propval {
                 let myModel : BoardModel? = board.myModel_property.propval
+                let modelWidth  = myModel?.modelWidth  ?? 0
+                let modelHeight = myModel?.modelHeight ?? 0
+                let instanceRotation = board.instanceRotation
                 myModel?.backPads?.addHoles (
                   toFilledBezierPaths: &holeBezierPaths,
                   dx: board.x,
                   dy: board.y,
                   pdfHoleDiameter: pdfHoleDiameter,
                   horizontalMirror:horizontalMirror,
-                  boardWidth:boardWidth
+                  boardWidth:boardWidth,
+                  modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
                 )
               }
             }
           }
         }
-//        let view = CanariOffscreenView (frame: cocoaBoardRect)
-//        view.setBackColor (NSColor.white)
         let paths : [([NSBezierPath], NSColor, StrokeOrFill)] = [
           (strokeBezierPaths, NSColor.black, .stroke),
           (filledBezierPaths, NSColor.black, .fill),
           (holeBezierPaths, NSColor.white, .fill)
         ]
-   //     view.setPaths (paths)
         let pdfData = buildPDFimage (frame:cocoaBoardRect, paths: paths, backgroundColor:NSColor.white)
-   //     let pdfData : Data = view.dataWithPDF (inside: cocoaBoardRect)
         try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
         mLogTextView?.appendSuccessString (" Ok\n")
       }
@@ -387,42 +519,75 @@ extension MergerDocument {
       if product.drawComponentNamesTopSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.frontComponentNameSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.frontComponentNameSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawComponentNamesBottomSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.backComponentNameSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.backComponentNameSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawComponentValuesTopSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.frontComponentValueSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.frontComponentValueSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawComponentValuesBottomSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.backComponentValueSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.backComponentValueSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawPackageLegendTopSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.frontPackagesSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.frontPackagesSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawPackageLegendBottomSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.backPackagesSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.backPackagesSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawPadsTopSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
           myModel?.frontPads?.addPads (
             toApertures: &apertureDictionary,
             toPolygones: &polygons,
@@ -430,13 +595,17 @@ extension MergerDocument {
             dy: board.y,
             horizontalMirror: horizontalMirror,
             minimumAperture: minimumApertureMilTenth,
-            boardWidth: boardWidth
+            boardWidth: boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
           )
         }
       }
       if product.drawPadsBottomSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
           myModel?.backPads?.addPads (
             toApertures: &apertureDictionary,
             toPolygones: &polygons,
@@ -444,52 +613,92 @@ extension MergerDocument {
             dy: board.y,
             horizontalMirror:horizontalMirror,
             minimumAperture: minimumApertureMilTenth,
-            boardWidth:boardWidth
+            boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
           )
         }
       }
       if product.drawTextsLayoutTopSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.frontLayoutTextsSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.frontLayoutTextsSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawTextsLayoutBottomSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.backLayoutTextsSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.backLayoutTextsSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawTextsLegendTopSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.frontLegendTextsSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
-          myModel?.frontLegendLinesSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.frontLegendTextsSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+          myModel?.frontLegendLinesSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawTextsLegendBottomSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.backLegendTextsSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
-          myModel?.backLegendLinesSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.backLegendTextsSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+          myModel?.backLegendLinesSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawTracksTopSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.frontTrackSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.frontTrackSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawTracksBottomSide {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.backTrackSegments?.add (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.backTrackSegments?.add (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       if product.drawVias {
         for board in self.rootObject.boardInstances_property.propval {
           let myModel : BoardModel? = board.myModel_property.propval
-          myModel?.viaShapes?.addPad (toApertures: &apertureDictionary, dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth)
+          let modelWidth  = myModel?.modelWidth  ?? 0
+          let modelHeight = myModel?.modelHeight ?? 0
+          let instanceRotation = board.instanceRotation
+          myModel?.viaShapes?.addPad (toApertures: &apertureDictionary,
+            dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
+            modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
         }
       }
       let keys = apertureDictionary.keys.sorted ()
@@ -532,7 +741,12 @@ extension MergerDocument {
     var holeDictionary = [Int : [(Int, Int)]] ()
     for board in self.rootObject.boardInstances_property.propval {
       let myModel : BoardModel? = board.myModel_property.propval
-      myModel?.holes?.enterHolesIn (array: &holeDictionary)
+      let modelWidth  = myModel?.modelWidth  ?? 0
+      let modelHeight = myModel?.modelHeight ?? 0
+      let instanceRotation = board.instanceRotation
+      myModel?.holes?.enterHolesIn (array: &holeDictionary,
+        dx: board.x, dy: board.y,
+        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
     }
     let keys = holeDictionary.keys.sorted ()
  //--- Write hole diameters

@@ -167,7 +167,7 @@ document MergerDocument root MergerRoot {
   outlet NSClipView mBoardClipView ;
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
-
+ 
 #--- Automatic Board size
   outlet EBSwitch mAutomaticBoardSizeSwitch $value root.automaticBoardSize ;
   outlet NSView mAutomaticBoardSizeView $hidden !root.automaticBoardSize ;
@@ -258,6 +258,10 @@ document MergerDocument root MergerRoot {
   outlet CanariDimensionTextField mSelectedBoardYTextField
      $dimensionAndUnit mBoardInstanceSelection.y, root.selectedBoardYUnit
   ;
+
+
+#--- Instance rotation
+  outlet CanariQuadrantSegmentedControl mInstanceRotation $quadrant mBoardInstanceSelection.instanceRotation ;
  
 #--- Arrange
   outlet EBSwitch mOverlapSwitch $enabled root.boardInstances.count > 0 $value root.overlapingArrangment ;

@@ -30,6 +30,7 @@ include "eb-sources/artworkDocument.eb" ;
 #--- Merger
 include "eb-sources/PadShape.eb" ;
 include "eb-sources/PadSide.eb" ;
+include "eb-sources/QuadrantRotation.eb" ;
 include "eb-sources/BoardArchiveFormat.eb" ;
 include "eb-sources/BoardModelPad.eb" ;
 include "eb-sources/CanariSegment.eb" ;

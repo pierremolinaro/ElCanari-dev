@@ -40,7 +40,7 @@ entity MergerRoot {
 
 #--- Instance display
   transient CALayer instancesLayerDisplay
-    dependsFrom self.boardLimitsLayerDisplay, self.boardInstances.all.newInstanceLayerDisplay ;
+    dependsFrom self.boardLimitsLayerDisplay, self.boardInstances.all.instanceLayerDisplay ;
 
 #--- Board rect
   transient CanariBoardRect boardRect dependsFrom
