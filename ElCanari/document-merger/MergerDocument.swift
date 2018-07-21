@@ -69,6 +69,7 @@ import Cocoa
   @IBOutlet var mInsertArrayOfBoardsXCountField : NSTextField?
   @IBOutlet var mInsertArrayOfBoardsYCountField : NSTextField?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
+  @IBOutlet var mInstanceModelNameTextField : EBTextObserverField?
   @IBOutlet var mInstanceRotation : CanariQuadrantSegmentedControl?
   @IBOutlet var mLogTextView : NSTextView?
   @IBOutlet var mManualBoardHeightTextField : CanariDimensionTextField?
@@ -776,6 +777,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mInstanceCountTextField' outlet is not an instance of 'EBIntObserverField'") ;
+    }
+    if nil == mInstanceModelNameTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInstanceModelNameTextField' outlet is nil") ;
+//    }else if !mInstanceModelNameTextField!.isKindOfClass (EBTextObserverField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInstanceModelNameTextField' outlet is not an instance of 'EBTextObserverField'") ;
     }
     if nil == mInstanceRotation {
       presentErrorWindow (file: #file,
@@ -1603,6 +1613,7 @@ import Cocoa
     mBoardModelView?.bind_verticalFlip (g_Preferences!.mergerModelViewVerticalFlip_property, file: #file, line: #line)
     mBoardModelView?.bind_objectLayer (self.mBoardModelSelection.modelLayerDisplay_property, file: #file, line: #line)
     mBoardInsertMenu?.bind_names (self.rootObject.modelNames_property, file: #file, line: #line)
+    mInstanceModelNameTextField?.bind_valueObserver (self.mBoardInstanceSelection.modelName_property, file: #file, line: #line)
     mAutomaticBoardSizeSwitch?.bind_value (self.rootObject.automaticBoardSize_property, file: #file, line: #line)
     mArrowMagnitudeUnitPopUp?.bind_selectedTag (self.rootObject.arrowMagnitudeUnit_property, file: #file, line: #line)
     mArrowMagnitudeTextField?.bind_dimensionAndUnit (self.rootObject.arrowMagnitude_property, self.rootObject.arrowMagnitudeUnit_property, file: #file, line: #line)
@@ -1902,6 +1913,7 @@ import Cocoa
     mBoardModelView?.unbind_verticalFlip ()
     mBoardModelView?.unbind_objectLayer ()
     mBoardInsertMenu?.unbind_names ()
+    mInstanceModelNameTextField?.unbind_valueObserver ()
     mAutomaticBoardSizeSwitch?.unbind_value ()
     mArrowMagnitudeUnitPopUp?.unbind_selectedTag ()
     mArrowMagnitudeTextField?.unbind_dimensionAndUnit ()
@@ -2057,6 +2069,7 @@ import Cocoa
     self.mInsertArrayOfBoardsXCountField?.ebCleanUp ()
     self.mInsertArrayOfBoardsYCountField?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
+    self.mInstanceModelNameTextField?.ebCleanUp ()
     self.mInstanceRotation?.ebCleanUp ()
     self.mLogTextView?.ebCleanUp ()
     self.mManualBoardHeightTextField?.ebCleanUp ()

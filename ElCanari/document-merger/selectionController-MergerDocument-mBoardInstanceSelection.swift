@@ -177,6 +177,13 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
       return self.instanceRotation_property.prop
     }
   }
+  var modelName_property = EBTransientProperty_String ()
+
+  var modelName_property_selection : EBSelection <String> {
+    get {
+      return self.modelName_property.prop
+    }
+  }
   var selectionLayer_property = EBTransientProperty_CALayer ()
 
   var selectionLayer_property_selection : EBSelection <CALayer> {
@@ -235,6 +242,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     bind_property_instanceLayerDisplay (model: model)
     bind_property_instanceRect (model: model)
     bind_property_instanceRotation (model: model)
+    bind_property_modelName (model: model)
     bind_property_selectionLayer (model: model)
     bind_property_viaLayerDisplay (model: model)
     bind_property_x (model: model)
@@ -1304,6 +1312,46 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   //···················································································································*
 
+  private final func bind_property_modelName (model : ReadOnlyArrayOf_MergerBoardInstance) {
+    model.addEBObserverOf_modelName (self.modelName_property)
+    self.modelName_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_selectionLayer (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_selectionLayer (self.selectionLayer_property)
     self.selectionLayer_property.readModelFunction = {
@@ -1600,6 +1648,9 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     self.instanceRotation_property.writeModelFunction = nil 
     self.instanceRotation_property.validateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceRotation (self.instanceRotation_property)
+  //--- modelName
+    self.modelName_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_modelName (self.modelName_property)
   //--- selectionLayer
     self.selectionLayer_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_selectionLayer (self.selectionLayer_property)

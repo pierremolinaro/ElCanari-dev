@@ -14,6 +14,9 @@ graphic entity MergerBoardInstance {
     dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight, self.instanceRotation
   ;
 
+#--- Model Name
+  transient String modelName dependsFrom self.myModel.one.name ;
+
 #--- Limit width
   transient Int boardLimitWidth dependsFrom self.myModel.one.modelLimitWidth ;
 
