@@ -41,7 +41,7 @@ class EBGraphicManagedObject : EBManagedObject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION CALayer
+//   EXTENSION CALayer: findLayer (at inPoint : CGPoint) -> CALayer?
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension CALayer {
@@ -69,8 +69,6 @@ extension CALayer {
   //····················································································································
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION CAShapeLayer
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension CAShapeLayer {
@@ -106,7 +104,7 @@ extension CAShapeLayer {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION CALayer
+//   EXTENSION CALayer: findIndexesOfObjects (intersecting inRect : CGRect)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension CALayer {
@@ -116,11 +114,13 @@ extension CALayer {
   func findIndexesOfObjects (intersecting inRect : CGRect) -> Set <Int> {
      var result = Set <Int> ()
      if let name = self.name, let idx = Int (name) {
-       var intersect = false
-       for layer in self.sublayers ?? [] {
-         if layer.intersects (inRect) {
-           intersect = true
-           break
+       var intersect = self.intersects (inRect)
+       if !intersect {
+         for layer in self.sublayers ?? [] {
+           if layer.intersects (inRect) {
+             intersect = true
+             break
+           }
          }
        }
        if intersect {
@@ -138,12 +138,13 @@ extension CALayer {
   //····················································································································
 
   func intersects (_ inRect : CGRect) -> Bool {
-    return false
+    return self.isOpaque && self.frame.intersects (inRect)
   }
+
+  //····················································································································
+
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION CAShapeLayer
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension CAShapeLayer {
@@ -154,7 +155,7 @@ extension CAShapeLayer {
     if let boundingBox = self.path?.boundingBox {
       return inRect.intersects (boundingBox)
     }else{
-      return false
+      return super.intersects (inRect)
     }
   }
 
@@ -163,4 +164,4 @@ extension CAShapeLayer {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

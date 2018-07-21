@@ -156,6 +156,13 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
       return self.holeLayerDisplay_property.prop
     }
   }
+  var instanceDisplay_property = EBTransientProperty_InstanceDisplay ()
+
+  var instanceDisplay_property_selection : EBSelection <InstanceDisplay> {
+    get {
+      return self.instanceDisplay_property.prop
+    }
+  }
   var instanceLayerDisplay_property = EBTransientProperty_CALayer ()
 
   var instanceLayerDisplay_property_selection : EBSelection <CALayer> {
@@ -239,6 +246,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     bind_property_frontPadsDisplay (model: model)
     bind_property_frontTracksDisplay (model: model)
     bind_property_holeLayerDisplay (model: model)
+    bind_property_instanceDisplay (model: model)
     bind_property_instanceLayerDisplay (model: model)
     bind_property_instanceRect (model: model)
     bind_property_instanceRotation (model: model)
@@ -1162,6 +1170,46 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   //···················································································································*
 
+  private final func bind_property_instanceDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
+    model.addEBObserverOf_instanceDisplay (self.instanceDisplay_property)
+    self.instanceDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<InstanceDisplay> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.instanceDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_instanceLayerDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_instanceLayerDisplay (self.instanceLayerDisplay_property)
     self.instanceLayerDisplay_property.readModelFunction = {
@@ -1637,6 +1685,9 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //--- holeLayerDisplay
     self.holeLayerDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_holeLayerDisplay (self.holeLayerDisplay_property)
+  //--- instanceDisplay
+    self.instanceDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_instanceDisplay (self.instanceDisplay_property)
   //--- instanceLayerDisplay
     self.instanceLayerDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceLayerDisplay (self.instanceLayerDisplay_property)

@@ -36,7 +36,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
   MergerBoardInstance_frontTracksDisplay,
   MergerBoardInstance_frontPackagesDisplay,
   MergerBoardInstance_backPackagesDisplay,
-  MergerBoardInstance_instanceLayerDisplay {
+  MergerBoardInstance_instanceLayerDisplay,
+  MergerBoardInstance_instanceDisplay {
 
   //····················································································································
   //   Accessing x stored property
@@ -571,6 +572,25 @@ class MergerBoardInstance : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Accessing instanceDisplay transient property
+  //····················································································································
+
+  var instanceDisplay_property_selection : EBSelection <InstanceDisplay> {
+    get {
+      return self.instanceDisplay_property.prop
+    }
+  }
+
+  var instanceDisplay : InstanceDisplay? {
+    switch instanceDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    Stored Properties
   //····················································································································
 
@@ -607,6 +627,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   var frontPackagesDisplay_property = EBTransientProperty_CALayer ()
   var backPackagesDisplay_property = EBTransientProperty_CALayer ()
   var instanceLayerDisplay_property = EBTransientProperty_CALayer ()
+  var instanceDisplay_property = EBTransientProperty_InstanceDisplay ()
 
   //····················································································································
   //    Relationships
@@ -1211,6 +1232,29 @@ class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
+    self.instanceDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.instanceRotation_property_selection.kind ()
+        kind &= unwSelf.myModel_property.imageForInstances_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.instanceRotation_property_selection, unwSelf.myModel_property.imageForInstances_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_MergerBoardInstance_instanceDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
   //--- Install property observers for transients
     self.x_property.addEBObserver (self.instanceRect_property)
     self.y_property.addEBObserver (self.instanceRect_property)
@@ -1324,6 +1368,10 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.instanceRotation_property.addEBObserver (self.instanceLayerDisplay_property)
     self.myRoot_property.addEBObserverOf_zoom (self.instanceLayerDisplay_property)
     self.myModel_property.addEBObserverOf_imageForInstances (self.instanceLayerDisplay_property)
+    self.x_property.addEBObserver (self.instanceDisplay_property)
+    self.y_property.addEBObserver (self.instanceDisplay_property)
+    self.instanceRotation_property.addEBObserver (self.instanceDisplay_property)
+    self.myModel_property.addEBObserverOf_imageForInstances (self.instanceDisplay_property)
   //--- Install undoers for properties
     self.x_property.undoManager = undoManager ()
     self.y_property.undoManager = undoManager ()
@@ -1450,6 +1498,10 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.instanceRotation_property.removeEBObserver (self.instanceLayerDisplay_property)
     self.myRoot_property.removeEBObserverOf_zoom (self.instanceLayerDisplay_property)
     self.myModel_property.removeEBObserverOf_imageForInstances (self.instanceLayerDisplay_property)
+    self.x_property.removeEBObserver (self.instanceDisplay_property)
+    self.y_property.removeEBObserver (self.instanceDisplay_property)
+    self.instanceRotation_property.removeEBObserver (self.instanceDisplay_property)
+    self.myModel_property.removeEBObserverOf_imageForInstances (self.instanceDisplay_property)
   }
 
   //····················································································································
@@ -1682,6 +1734,14 @@ class MergerBoardInstance : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.instanceLayerDisplay_property.mObserverExplorer,
       valueExplorer:&self.instanceLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "instanceDisplay",
+      idx:self.instanceDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.instanceDisplay_property.mObserverExplorer,
+      valueExplorer:&self.instanceDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -3359,6 +3419,62 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   }
 
   //····················································································································
+  //   Observers of 'instanceDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_instanceDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_instanceDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_instanceDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instanceDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_instanceDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_instanceDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instanceDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_instanceDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_instanceDisplay {
+        managedObject.instanceDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_instanceDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_instanceDisplay {
+        managedObject.instanceDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -3425,6 +3541,7 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
         removeEBObserversOf_frontPackagesDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPackagesDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_instanceLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_instanceDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -3457,6 +3574,7 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
         addEBObserversOf_frontPackagesDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_backPackagesDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_instanceLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_instanceDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -3653,6 +3771,12 @@ protocol MergerBoardInstance_instanceLayerDisplay : class {
   var instanceLayerDisplay : CALayer? { get }
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstance_instanceDisplay : class {
+  var instanceDisplay : InstanceDisplay? { get }
+}
+
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: myRoot
@@ -3721,6 +3845,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         oldValue?.generateGerberProductFile_property.removeEBObserversFrom (mObserversOf_generateGerberProductFile)
         oldValue?.generatePDFProductFile_property.removeEBObserversFrom (mObserversOf_generatePDFProductFile)
         oldValue?.generatedBoardArchiveFormat_property.removeEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
+        oldValue?.instancesDisplay_property.removeEBObserversFrom (mObserversOf_instancesDisplay)
         oldValue?.instancesLayerDisplay_property.removeEBObserversFrom (mObserversOf_instancesLayerDisplay)
         oldValue?.modelNames_property.removeEBObserversFrom (mObserversOf_modelNames)
         oldValue?.overlapingArrangment_property.removeEBObserversFrom (mObserversOf_overlapingArrangment)
@@ -3750,6 +3875,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         mValue?.generateGerberProductFile_property.addEBObserversFrom (mObserversOf_generateGerberProductFile)
         mValue?.generatePDFProductFile_property.addEBObserversFrom (mObserversOf_generatePDFProductFile)
         mValue?.generatedBoardArchiveFormat_property.addEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
+        mValue?.instancesDisplay_property.addEBObserversFrom (mObserversOf_instancesDisplay)
         mValue?.instancesLayerDisplay_property.addEBObserversFrom (mObserversOf_instancesLayerDisplay)
         mValue?.modelNames_property.addEBObserversFrom (mObserversOf_modelNames)
         mValue?.overlapingArrangment_property.addEBObserversFrom (mObserversOf_overlapingArrangment)
@@ -4605,6 +4731,49 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
     mObserversOf_generatedBoardArchiveFormat.remove (inObserver)
     if let object = self.propval {
       object.generatedBoardArchiveFormat_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: instancesDisplay
+  //····················································································································
+
+  private var mObserversOf_instancesDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var instancesDisplay_property_selection : EBSelection <InstanceDisplayArray?> {
+    get {
+      if let model = self.propval {
+        switch (model.instancesDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_instancesDisplay (_ inObserver : EBEvent) {
+    mObserversOf_instancesDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.instancesDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_instancesDisplay (_ inObserver : EBEvent) {
+    mObserversOf_instancesDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.instancesDisplay_property.removeEBObserver (inObserver)
     }
   }
 

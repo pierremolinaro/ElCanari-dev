@@ -1243,11 +1243,23 @@ typealias EBReadOnlyPropertyArray_MergerBoardModelArray  = EBReadOnlyClassProper
 typealias EBTransientPropertyArray_MergerBoardModelArray = EBTransientClassProperty <[MergerBoardModelArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property CanariBoardRect
+//   Transient property class InstanceDisplay
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CanariBoardRect  = EBReadOnlyValueProperty <CanariBoardRect>
-typealias EBTransientProperty_CanariBoardRect = EBTransientValueProperty <CanariBoardRect>
+typealias EBReadOnlyProperty_InstanceDisplay  = EBReadOnlyClassProperty <InstanceDisplay>
+typealias EBTransientProperty_InstanceDisplay = EBTransientClassProperty <InstanceDisplay>
+typealias EBReadOnlyPropertyArray_InstanceDisplay  = EBReadOnlyClassProperty <[InstanceDisplay]>
+typealias EBTransientPropertyArray_InstanceDisplay = EBTransientClassProperty <[InstanceDisplay]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class InstanceDisplayArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_InstanceDisplayArray  = EBReadOnlyClassProperty <InstanceDisplayArray>
+typealias EBTransientProperty_InstanceDisplayArray = EBTransientClassProperty <InstanceDisplayArray>
+typealias EBReadOnlyPropertyArray_InstanceDisplayArray  = EBReadOnlyClassProperty <[InstanceDisplayArray]>
+typealias EBTransientPropertyArray_InstanceDisplayArray = EBTransientClassProperty <[InstanceDisplayArray]>
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class BezierPathArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1257,6 +1269,12 @@ typealias EBTransientProperty_BezierPathArray = EBTransientClassProperty <Bezier
 typealias EBReadOnlyPropertyArray_BezierPathArray  = EBReadOnlyClassProperty <[BezierPathArray]>
 typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[BezierPathArray]>
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property CanariBoardRect
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CanariBoardRect  = EBReadOnlyValueProperty <CanariBoardRect>
+typealias EBTransientProperty_CanariBoardRect = EBTransientValueProperty <CanariBoardRect>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class SegmentForFontCharacterClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

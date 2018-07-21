@@ -24,7 +24,7 @@ func buildPDFimage (frame inFrame: CGRect,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum StrokeOrFill {
+enum StrokeOrFill : Int {
   case stroke
   case fill
 }

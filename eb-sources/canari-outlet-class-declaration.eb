@@ -70,6 +70,7 @@ binding CanariViewWithZoomAndFlip $zoom : property Int ;
 binding CanariViewWithZoomAndFlip $horizontalFlip : transient Bool ;
 binding CanariViewWithZoomAndFlip $verticalFlip : transient Bool ;
 binding CanariViewWithZoomAndFlip $objectLayer : transient CALayer ;
+binding CanariViewWithZoomAndFlip $objects : transient InstanceDisplayArray ;
 binding CanariViewWithZoomAndFlip $arrowKeyMagnitude : transient CGFloat ;
 binding CanariViewWithZoomAndFlip $shiftArrowKeyMagnitude : transient CGFloat ;
 

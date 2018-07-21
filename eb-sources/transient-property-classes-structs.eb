@@ -6,8 +6,10 @@ transient property class MergerBoardLimits ;
 transient property class MergerPadArray ;
 transient property class MergerHoleArray ;
 transient property class MergerBoardModelArray ;
+transient property class InstanceDisplay ;
+transient property class InstanceDisplayArray ;
+transient property class BezierPathArray ;
 
 transient property struct CanariBoardRect ;
-transient property class BezierPathArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

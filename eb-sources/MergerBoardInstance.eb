@@ -92,6 +92,12 @@ graphic entity MergerBoardInstance {
     self.instanceRotation,
     self.myRoot.one.zoom, self.myModel.one.imageForInstances
   ;
+
+  transient InstanceDisplay instanceDisplay dependsFrom
+    self.x, self.y,
+    self.instanceRotation,
+    self.myModel.one.imageForInstances
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

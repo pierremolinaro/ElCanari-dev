@@ -33,6 +33,7 @@ class MergerRoot : EBManagedObject,
   MergerRoot_cocoaShiftArrowMagnitude,
   MergerRoot_modelNames,
   MergerRoot_instancesLayerDisplay,
+  MergerRoot_instancesDisplay,
   MergerRoot_boardRect,
   MergerRoot_boardWidth,
   MergerRoot_boardHeight,
@@ -495,6 +496,25 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing instancesDisplay transient property
+  //····················································································································
+
+  var instancesDisplay_property_selection : EBSelection <InstanceDisplayArray> {
+    get {
+      return self.instancesDisplay_property.prop
+    }
+  }
+
+  var instancesDisplay : InstanceDisplayArray? {
+    switch instancesDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Accessing boardRect transient property
   //····················································································································
 
@@ -623,6 +643,7 @@ class MergerRoot : EBManagedObject,
   var cocoaShiftArrowMagnitude_property = EBTransientProperty_CGFloat ()
   var modelNames_property = EBTransientProperty_MergerBoardModelArray ()
   var instancesLayerDisplay_property = EBTransientProperty_CALayer ()
+  var instancesDisplay_property = EBTransientProperty_InstanceDisplayArray ()
   var boardRect_property = EBTransientProperty_CanariBoardRect ()
   var boardWidth_property = EBTransientProperty_Int ()
   var boardHeight_property = EBTransientProperty_Int ()
@@ -727,6 +748,26 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
+    self.instancesDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardInstances_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.boardInstances_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_MergerRoot_instancesDisplay (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.boardRect_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.automaticBoardSize_property_selection.kind ()
@@ -822,6 +863,7 @@ class MergerRoot : EBManagedObject,
     self.boardModels_property.addEBObserverOf_modelHeight (self.modelNames_property)
     self.boardLimitsLayerDisplay_property.addEBObserver (self.instancesLayerDisplay_property)
     self.boardInstances_property.addEBObserverOf_instanceLayerDisplay (self.instancesLayerDisplay_property)
+    self.boardInstances_property.addEBObserverOf_instanceDisplay (self.instancesDisplay_property)
     self.automaticBoardSize_property.addEBObserver (self.boardRect_property)
     self.boardManualWidth_property.addEBObserver (self.boardRect_property)
     self.boardManualHeight_property.addEBObserver (self.boardRect_property)
@@ -872,6 +914,7 @@ class MergerRoot : EBManagedObject,
     self.boardModels_property.removeEBObserverOf_modelHeight (self.modelNames_property)
     self.boardLimitsLayerDisplay_property.removeEBObserver (self.instancesLayerDisplay_property)
     self.boardInstances_property.removeEBObserverOf_instanceLayerDisplay (self.instancesLayerDisplay_property)
+    self.boardInstances_property.removeEBObserverOf_instanceDisplay (self.instancesDisplay_property)
     self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
     self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
     self.boardManualHeight_property.removeEBObserver (self.boardRect_property)
@@ -1083,6 +1126,14 @@ class MergerRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.instancesLayerDisplay_property.mObserverExplorer,
       valueExplorer:&self.instancesLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "instancesDisplay",
+      idx:self.instancesDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.instancesDisplay_property.mObserverExplorer,
+      valueExplorer:&self.instancesDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardRect",
@@ -2703,6 +2754,62 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
+  //   Observers of 'instancesDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_instancesDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_instancesDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_instancesDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instancesDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_instancesDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_instancesDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instancesDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_instancesDisplay_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_instancesDisplay {
+        managedObject.instancesDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_instancesDisplay_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_instancesDisplay {
+        managedObject.instancesDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'boardRect' transient property
   //····················································································································
 
@@ -2989,6 +3096,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_cocoaShiftArrowMagnitude_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
         removeEBObserversOf_instancesLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_instancesDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
@@ -3021,6 +3129,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_cocoaShiftArrowMagnitude_toElementsOfSet (addedSet)
         addEBObserversOf_modelNames_toElementsOfSet (addedSet)
         addEBObserversOf_instancesLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_instancesDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_boardRect_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
@@ -3195,6 +3304,12 @@ protocol MergerRoot_modelNames : class {
 
 protocol MergerRoot_instancesLayerDisplay : class {
   var instancesLayerDisplay : CALayer? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_instancesDisplay : class {
+  var instancesDisplay : InstanceDisplayArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -3631,6 +3746,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
         removeEBObserversOf_frontPadsDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontTracksDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holeLayerDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_instanceDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceRotation_fromElementsOfSet (removedObjectSet)
@@ -3665,6 +3781,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
         addEBObserversOf_frontPadsDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontTracksDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holeLayerDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_instanceDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRotation_toElementsOfSet (addedObjectSet)
