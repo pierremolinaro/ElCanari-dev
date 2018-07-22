@@ -446,7 +446,7 @@ extension MergerDocument {
             }
           }
         }
-        var shapes = EBShapes ()
+        let shapes = EBShapes ()
         shapes.append (strokeBezierPaths, NSColor.black, .stroke)
         shapes.append (filledBezierPaths, NSColor.black, .fill)
         shapes.append (holeBezierPaths, NSColor.white, .fill)

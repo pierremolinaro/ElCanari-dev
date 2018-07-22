@@ -489,7 +489,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         let yMax = max (selectionRectangleOrigin.y, mouseDraggedLocation.y)
 
         let r = NSRect (x:xMin, y:yMin, width:xMax-xMin, height:yMax-yMin)
-        var shapes = EBShapes ()
+        let shapes = EBShapes ()
         let bp = NSBezierPath (rect: r)
         bp.lineWidth = 1.0
         shapes.append ([bp], NSColor.lightGray.withAlphaComponent (0.2), .fill)

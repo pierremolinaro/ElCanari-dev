@@ -49,13 +49,14 @@ enum StrokeOrFill : Int {
 //    EBShapes
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct EBShapes : Hashable {
+class EBShapes : Hashable, EBUserClassNameProtocol {
 
   //····················································································································
   //  Properties
   //····················································································································
 
   private var paths : [([NSBezierPath], NSColor, StrokeOrFill)]
+  private var cachedBoundingBox : NSRect?
 
   //····················································································································
   //  init
@@ -63,27 +64,42 @@ struct EBShapes : Hashable {
 
   init () {
     paths = []
+    cachedBoundingBox = nil
+    noteObjectAllocation (self)
   }
 
   //····················································································································
 
   init (_ inPaths : [([NSBezierPath], NSColor, StrokeOrFill)]) {
     paths = inPaths
+    cachedBoundingBox = nil
+    noteObjectAllocation (self)
   }
 
   //····················································································································
 
   init (_ inBezierPaths : [NSBezierPath], _ inColor : NSColor, _ inOperation : StrokeOrFill) {
     paths = []
+    cachedBoundingBox = nil
+    noteObjectAllocation (self)
     self.paths.append ((inBezierPaths, inColor, inOperation))
+  }
+
+  //····················································································································
+  //  deinit
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
   //  append
   //····················································································································
 
-  mutating func append (_ inBezierPaths : [NSBezierPath], _ inColor : NSColor, _ inOperation : StrokeOrFill) {
+  func append (_ inBezierPaths : [NSBezierPath], _ inColor : NSColor, _ inOperation : StrokeOrFill) {
     self.paths.append ((inBezierPaths, inColor, inOperation))
+    self.cachedBoundingBox = nil
   }
 
   //····················································································································
@@ -112,21 +128,26 @@ struct EBShapes : Hashable {
   //····················································································································
 
   var boundingBox : NSRect {
-    var r = NSZeroRect
-    for (bps, _, operation) in self.paths {
-      switch operation {
-      case .fill :
-        for bp in bps {
-          r = r.union (bp.bounds)
-        }
-      case .stroke :
-        for bp in bps {
-          let lineWidth = max (bp.lineWidth, 1.0)
-          r = r.union (bp.bounds.insetBy (dx: -lineWidth, dy: -lineWidth))
+    if let cbb = cachedBoundingBox {
+      return cbb
+    }else{
+      var r = NSZeroRect
+      for (bps, _, operation) in self.paths {
+        switch operation {
+        case .fill :
+          for bp in bps {
+            r = r.union (bp.bounds)
+          }
+        case .stroke :
+          for bp in bps {
+            let lineWidth = max (bp.lineWidth, 1.0)
+            r = r.union (bp.bounds.insetBy (dx: -lineWidth, dy: -lineWidth))
+          }
         }
       }
+      self.cachedBoundingBox = r
+      return r
     }
-    return r
   }
 
   //····················································································································
@@ -281,8 +302,8 @@ struct EBShapeLayer : Hashable {
   //   Properties
   //····················································································································
 
-  let shapes : EBShapes
-  let transform : NSAffineTransform
+  private let mShapes : EBShapes
+  private let mTransform : NSAffineTransform
   var userIndex = -1
   var userSecondaryIndex = -1
 
@@ -291,8 +312,8 @@ struct EBShapeLayer : Hashable {
   //····················································································································
 
   init (_ inShapes : EBShapes, transform inTransform : NSAffineTransform = NSAffineTransform ()) {
-    shapes = inShapes
-    transform = inTransform
+    mShapes = inShapes
+    mTransform = inTransform
   }
 
   //····················································································································
@@ -302,8 +323,8 @@ struct EBShapeLayer : Hashable {
   public static func == (lhs: EBShapeLayer, rhs: EBShapeLayer) -> Bool {
     return (lhs.userIndex == rhs.userIndex)
       && (lhs.userSecondaryIndex == rhs.userSecondaryIndex)
-      && (lhs.shapes == rhs.shapes)
-      && (lhs.transform == rhs.transform)
+      && (lhs.mShapes == rhs.mShapes)
+      && (lhs.mTransform == rhs.mTransform)
   }
 
   //····················································································································
@@ -313,8 +334,8 @@ struct EBShapeLayer : Hashable {
   public var hashValue: Int {
     var h = self.userIndex
     h ^= self.userSecondaryIndex
-    h ^= self.transform.hashValue
-    h ^= self.shapes.hashValue
+    h ^= self.mTransform.hashValue
+    h ^= self.mShapes.hashValue
     return h
   }
 
@@ -322,7 +343,18 @@ struct EBShapeLayer : Hashable {
   // boundingBox
   //····················································································································
 
-  var boundingBox : NSRect { return self.shapes.boundingBox  }
+  var boundingBox : NSRect {
+    let r = self.mShapes.boundingBox
+    let bottomLeft = self.mTransform.transform (r.origin)
+    let bottomRight = self.mTransform.transform (NSPoint (x:r.maxX, y:r.minY))
+    let topRight = self.mTransform.transform (NSPoint (x:r.maxX, y:r.maxY))
+    let topLeft = self.mTransform.transform (NSPoint (x:r.minX, y:r.maxY))
+    let minX = min (bottomRight.x, bottomLeft.x, topRight.x, topLeft.x)
+    let maxX = max (bottomRight.x, bottomLeft.x, topRight.x, topLeft.x)
+    let minY = min (bottomRight.y, bottomLeft.y, topRight.y, topLeft.y)
+    let maxY = max (bottomRight.y, bottomLeft.y, topRight.y, topLeft.y)
+    return NSRect (x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+  }
   
   //····················································································································
   // draw
@@ -330,19 +362,18 @@ struct EBShapeLayer : Hashable {
 
   func draw (_ inDirtyRect: NSRect) {
     if self.boundingBox.intersects (inDirtyRect) {
-      let at = self.transform
-      at.concat ()
-      self.shapes.draw (inDirtyRect)
+      self.mTransform.concat ()
+      self.mShapes.draw (inDirtyRect)
+      let at = self.mTransform.copy () as! NSAffineTransform
       at.invert ()
       at.concat ()
-      at.invert ()
     }
   }
 
   //····················································································································
 
   func sameDisplay (as inObject : EBShapeLayer) -> Bool {
-    return (self.shapes == inObject.shapes)
+    return (self.mTransform == inObject.mTransform) && (self.mShapes == inObject.mShapes)
   }
 
   //····················································································································
@@ -350,7 +381,7 @@ struct EBShapeLayer : Hashable {
   //····················································································································
 
   func intersects (_ inRect : NSRect) -> Bool {
-    return self.shapes.intersects (inRect)
+    return self.boundingBox.intersects (inRect)
   }
 
   //····················································································································

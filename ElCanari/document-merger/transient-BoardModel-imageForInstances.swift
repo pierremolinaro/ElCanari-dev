@@ -74,7 +74,7 @@ func transient_BoardModel_imageForInstances (
        _ prefs_mergerColorBackPackages : NSColor
 ) -> EBShapes {
 //--- START OF USER ZONE 2
-  var shapes = EBShapes ()
+  let shapes = EBShapes ()
 //--- Background
   let backRect = NSRect (x:0.0, y:0.0, width: canariUnitToCocoa(self_modelWidth), height: canariUnitToCocoa(self_modelHeight))
   shapes.append ([NSBezierPath (rect:backRect)], prefs_mergerColorBackground, .fill)
