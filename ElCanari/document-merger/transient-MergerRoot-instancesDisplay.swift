@@ -35,7 +35,6 @@ func transient_MergerRoot_instancesDisplay (
       bp.lineWidth = limitWidth
       bp.lineJoinStyle = .roundLineJoinStyle
       let shapes = EBShapes ([bp], prefs_mergerColorBoardLimits, StrokeOrFill.stroke)
-  //    let boardLimits = EBShapeLayer (shapes, NSPoint (x: r.midX, y: r.midY), r.size, 0.0)
       let boardLimits = EBShapeLayer (shapes)
       array.append (boardLimits)
     }

@@ -13,6 +13,8 @@ import Cocoa
 
 func transient_BoardModel_imageForInstances (
        _ prefs_mergerColorBackground : NSColor,
+       _ self_modelWidth : Int,              
+       _ self_modelHeight : Int,             
        _ self_frontTracksBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayFrontTracks : Bool,
        _ prefs_mergerColorFrontTracks : NSColor,
@@ -73,6 +75,9 @@ func transient_BoardModel_imageForInstances (
 ) -> EBShapes {
 //--- START OF USER ZONE 2
   var shapes = EBShapes ()
+//--- Background
+  let backRect = NSRect (x:0.0, y:0.0, width: canariUnitToCocoa(self_modelWidth), height: canariUnitToCocoa(self_modelHeight))
+  shapes.append ([NSBezierPath (rect:backRect)], prefs_mergerColorBackground, .fill)
 //--- Back Legend Lines
   if (prefs_mergerBoardViewDisplayBackLegendLines) {
     shapes.append (self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines, .stroke)
