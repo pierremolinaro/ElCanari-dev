@@ -415,6 +415,13 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.imageForInstances_property.prop
     }
   }
+  var imageForModel_property = EBTransientProperty_EBShapeLayerArray ()
+
+  var imageForModel_property_selection : EBSelection <EBShapeLayerArray> {
+    get {
+      return self.imageForModel_property.prop
+    }
+  }
   var instanceCount_property = EBTransientProperty_Int ()
 
   var instanceCount_property_selection : EBSelection <Int> {
@@ -584,6 +591,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     bind_property_holes (model: model)
     bind_property_holesBezierPaths (model: model)
     bind_property_imageForInstances (model: model)
+    bind_property_imageForModel (model: model)
     bind_property_instanceCount (model: model)
     bind_property_modelHeight (model: model)
     bind_property_modelHeightUnit (model: model)
@@ -3072,6 +3080,46 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
 
   //···················································································································*
 
+  private final func bind_property_imageForModel (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_imageForModel (self.imageForModel_property)
+    self.imageForModel_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<EBShapeLayerArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.imageForModel_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_instanceCount (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_instanceCount (self.instanceCount_property)
     self.instanceCount_property.readModelFunction = {
@@ -4090,6 +4138,9 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //--- imageForInstances
     self.imageForInstances_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_imageForInstances (self.imageForInstances_property)
+  //--- imageForModel
+    self.imageForModel_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_imageForModel (self.imageForModel_property)
   //--- instanceCount
     self.instanceCount_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceCount (self.instanceCount_property)

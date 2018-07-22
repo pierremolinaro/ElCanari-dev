@@ -5101,6 +5101,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         oldValue?.holes_property.removeEBObserversFrom (mObserversOf_holes)
         oldValue?.holesBezierPaths_property.removeEBObserversFrom (mObserversOf_holesBezierPaths)
         oldValue?.imageForInstances_property.removeEBObserversFrom (mObserversOf_imageForInstances)
+        oldValue?.imageForModel_property.removeEBObserversFrom (mObserversOf_imageForModel)
         oldValue?.instanceCount_property.removeEBObserversFrom (mObserversOf_instanceCount)
         oldValue?.modelHeight_property.removeEBObserversFrom (mObserversOf_modelHeight)
         oldValue?.modelHeightUnit_property.removeEBObserversFrom (mObserversOf_modelHeightUnit)
@@ -5174,6 +5175,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         mValue?.holes_property.addEBObserversFrom (mObserversOf_holes)
         mValue?.holesBezierPaths_property.addEBObserversFrom (mObserversOf_holesBezierPaths)
         mValue?.imageForInstances_property.addEBObserversFrom (mObserversOf_imageForInstances)
+        mValue?.imageForModel_property.addEBObserversFrom (mObserversOf_imageForModel)
         mValue?.instanceCount_property.addEBObserversFrom (mObserversOf_instanceCount)
         mValue?.modelHeight_property.addEBObserversFrom (mObserversOf_modelHeight)
         mValue?.modelHeightUnit_property.addEBObserversFrom (mObserversOf_modelHeightUnit)
@@ -7669,6 +7671,49 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     mObserversOf_imageForInstances.remove (inObserver)
     if let object = self.propval {
       object.imageForInstances_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: imageForModel
+  //····················································································································
+
+  private var mObserversOf_imageForModel = EBWeakEventSet ()
+
+  //····················································································································
+
+  var imageForModel_property_selection : EBSelection <EBShapeLayerArray?> {
+    get {
+      if let model = self.propval {
+        switch (model.imageForModel_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_imageForModel (_ inObserver : EBEvent) {
+    mObserversOf_imageForModel.insert (inObserver)
+    if let object = self.propval {
+      object.imageForModel_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_imageForModel (_ inObserver : EBEvent) {
+    mObserversOf_imageForModel.remove (inObserver)
+    if let object = self.propval {
+      object.imageForModel_property.removeEBObserver (inObserver)
     }
   }
 

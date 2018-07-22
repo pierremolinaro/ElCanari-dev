@@ -301,6 +301,84 @@ entity BoardModel {
     self.frontLegendLinesLayerDisplay
   ;
 
+  transient EBShapeLayerArray imageForModel dependsFrom
+    prefs.mergerColorBackground,
+    self.modelWidth,
+    self.modelHeight,
+# Front tracks
+    self.frontTracksBezierPaths,
+    prefs.mergerModelViewDisplayFrontTracks,
+    prefs.mergerColorFrontTracks,
+# Back tracks
+    self.backTracksBezierPaths,
+    prefs.mergerModelViewDisplayBackTracks,
+    prefs.mergerColorBackTracks,
+# Front pads
+    self.frontPadsBezierPaths,
+    prefs.mergerModelViewDisplayFrontPads,
+    prefs.mergerColorFrontPads,
+# Back pads
+    self.backPadsBezierPaths,
+    prefs.mergerModelViewDisplayBackPads,
+    prefs.mergerColorBackPads,
+# Vias
+    self.viasBezierPaths,    
+    prefs.mergerModelViewDisplayVias,
+    prefs.mergerColorVias,
+# Holes   
+    self.holesBezierPaths,
+    prefs.mergerModelViewDisplayHoles,
+    prefs.mergerColorHoles,
+# Front Legend lines   
+    self.frontLegendLinesBezierPaths,
+    prefs.mergerModelViewDisplayFrontLegendLines,
+    prefs.mergerColorFrontLegendLines,
+# Back Legend lines   
+    self.backLegendLinesBezierPaths,
+    prefs.mergerModelViewDisplayBackLegendLines,
+    prefs.mergerColorBackLegendLines,
+# Front Legend Texts   
+    self.frontLegendTextsBezierPaths,
+    prefs.mergerModelViewDisplayFrontLegendTexts,
+    prefs.mergerColorFrontLegendTexts,
+# Front Layout Texts   
+    self.frontLayoutTextsBezierPaths,
+    prefs.mergerModelViewDisplayFrontLayoutTexts,
+    prefs.mergerColorFrontLayoutTexts,
+# Back Legend Texts   
+    self.backLegendTextsBezierPaths,
+    prefs.mergerModelViewDisplayBackLegendTexts,
+    prefs.mergerColorBackLegendTexts,
+# Front Layout Texts   
+    self.backLayoutTextsBezierPaths,
+    prefs.mergerModelViewDisplayBackLayoutTexts,
+    prefs.mergerColorBackLayoutTexts,
+# Back Component Names   
+    self.backComponentNamesBezierPaths,
+    prefs.mergerModelViewDisplayBackComponentNames,
+    prefs.mergerColorBackComponentNames,
+# Front Component Names   
+    self.frontComponentNamesBezierPaths,
+    prefs.mergerModelViewDisplayFrontComponentNames,
+    prefs.mergerColorFrontComponentNames,
+# Front Component Values   
+    self.frontComponentValuesBezierPaths,
+    prefs.mergerModelViewDisplayFrontComponentValues,
+    prefs.mergerColorFrontComponentValues,
+# Front Component Values   
+    self.backComponentValuesBezierPaths,
+    prefs.mergerModelViewDisplayBackComponentValues,
+    prefs.mergerColorBackComponentValues,
+# Front Packages   
+    self.frontPackagesBezierPaths,
+    prefs.mergerModelViewDisplayFrontPackages,
+    prefs.mergerColorFrontPackages,
+# Back Packages   
+    self.backPackagesBezierPaths,
+    prefs.mergerModelViewDisplayBackPackages,
+    prefs.mergerColorBackPackages
+  ;
+
 #----
   transient EBShapes imageForInstances dependsFrom
     prefs.mergerColorBackground,

@@ -160,7 +160,8 @@ document MergerDocument root MergerRoot {
     $zoom mBoardModelSelection.zoom
     $horizontalFlip prefs.mergerModelViewHorizontalFlip
     $verticalFlip prefs.mergerModelViewVerticalFlip
-    $objectLayer mBoardModelSelection.modelLayerDisplay
+#    $objectLayer mBoardModelSelection.modelLayerDisplay
+    $objects mBoardModelSelection.imageForModel
   ;
 
 #------------------------------------- Board Page

@@ -19,11 +19,16 @@ func transient_MergerDocument_documentFileNameOk (
   if ok {
     let baseName = self_documentFilePath.lastPathComponent.deletingPathExtension
     for char in baseName.characters {
-      ok = ((char >= "A") && (char <= "Z"))
-        || ((char >= "a") && (char <= "z"))
-        || ((char >= "0") && (char <= "9"))
-        || (char == "-")
-        || (char == "_")
+      ok = (char >= "A") && (char <= "Z")
+      if !ok {
+        ok = (char >= "a") && (char <= "z")
+      }
+      if !ok {
+        ok = (char >= "0") && (char <= "9")
+      }
+      if !ok {
+        ok = (char == "-") || (char == "_")
+      }
       if !ok {
         break
       }

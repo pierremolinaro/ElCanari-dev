@@ -80,6 +80,7 @@ class BoardModel : EBManagedObject,
   BoardModel_backPackagesBezierPaths,
   BoardModel_backPackagesDisplay,
   BoardModel_modelLayerDisplay,
+  BoardModel_imageForModel,
   BoardModel_imageForInstances {
 
   //····················································································································
@@ -1432,6 +1433,25 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing imageForModel transient property
+  //····················································································································
+
+  var imageForModel_property_selection : EBSelection <EBShapeLayerArray> {
+    get {
+      return self.imageForModel_property.prop
+    }
+  }
+
+  var imageForModel : EBShapeLayerArray? {
+    switch imageForModel_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Accessing imageForInstances transient property
   //····················································································································
 
@@ -1700,6 +1720,7 @@ class BoardModel : EBManagedObject,
   var backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var backPackagesDisplay_property = EBTransientProperty_CALayer ()
   var modelLayerDisplay_property = EBTransientProperty_CALayer ()
+  var imageForModel_property = EBTransientProperty_EBShapeLayerArray ()
   var imageForInstances_property = EBTransientProperty_EBShapes ()
 
   //····················································································································
@@ -3112,6 +3133,82 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.imageForModel_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
+        kind &= unwSelf.modelWidth_property_selection.kind ()
+        kind &= unwSelf.modelHeight_property_selection.kind ()
+        kind &= unwSelf.frontTracksBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontTracks_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorFrontTracks_property_selection.kind ()
+        kind &= unwSelf.backTracksBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackTracks_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBackTracks_property_selection.kind ()
+        kind &= unwSelf.frontPadsBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontPads_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorFrontPads_property_selection.kind ()
+        kind &= unwSelf.backPadsBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackPads_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBackPads_property_selection.kind ()
+        kind &= unwSelf.viasBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayVias_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorVias_property_selection.kind ()
+        kind &= unwSelf.holesBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayHoles_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorHoles_property_selection.kind ()
+        kind &= unwSelf.frontLegendLinesBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontLegendLines_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorFrontLegendLines_property_selection.kind ()
+        kind &= unwSelf.backLegendLinesBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackLegendLines_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBackLegendLines_property_selection.kind ()
+        kind &= unwSelf.frontLegendTextsBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontLegendTexts_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorFrontLegendTexts_property_selection.kind ()
+        kind &= unwSelf.frontLayoutTextsBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontLayoutTexts_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorFrontLayoutTexts_property_selection.kind ()
+        kind &= unwSelf.backLegendTextsBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackLegendTexts_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBackLegendTexts_property_selection.kind ()
+        kind &= unwSelf.backLayoutTextsBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackLayoutTexts_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBackLayoutTexts_property_selection.kind ()
+        kind &= unwSelf.backComponentNamesBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackComponentNames_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBackComponentNames_property_selection.kind ()
+        kind &= unwSelf.frontComponentNamesBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontComponentNames_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorFrontComponentNames_property_selection.kind ()
+        kind &= unwSelf.frontComponentValuesBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontComponentValues_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorFrontComponentValues_property_selection.kind ()
+        kind &= unwSelf.backComponentValuesBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackComponentValues_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBackComponentValues_property_selection.kind ()
+        kind &= unwSelf.frontPackagesBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayFrontPackages_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorFrontPackages_property_selection.kind ()
+        kind &= unwSelf.backPackagesBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayBackPackages_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBackPackages_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.frontTracksBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontTracks_property_selection, g_Preferences!.mergerColorFrontTracks_property_selection, unwSelf.backTracksBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackTracks_property_selection, g_Preferences!.mergerColorBackTracks_property_selection, unwSelf.frontPadsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontPads_property_selection, g_Preferences!.mergerColorFrontPads_property_selection, unwSelf.backPadsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackPads_property_selection, g_Preferences!.mergerColorBackPads_property_selection, unwSelf.viasBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayVias_property_selection, g_Preferences!.mergerColorVias_property_selection, unwSelf.holesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayHoles_property_selection, g_Preferences!.mergerColorHoles_property_selection, unwSelf.frontLegendLinesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendLines_property_selection, g_Preferences!.mergerColorFrontLegendLines_property_selection, unwSelf.backLegendLinesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendLines_property_selection, g_Preferences!.mergerColorBackLegendLines_property_selection, unwSelf.frontLegendTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendTexts_property_selection, g_Preferences!.mergerColorFrontLegendTexts_property_selection, unwSelf.frontLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLayoutTexts_property_selection, g_Preferences!.mergerColorFrontLayoutTexts_property_selection, unwSelf.backLegendTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendTexts_property_selection, g_Preferences!.mergerColorBackLegendTexts_property_selection, unwSelf.backLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLayoutTexts_property_selection, g_Preferences!.mergerColorBackLayoutTexts_property_selection, unwSelf.backComponentNamesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentNames_property_selection, g_Preferences!.mergerColorBackComponentNames_property_selection, unwSelf.frontComponentNamesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentNames_property_selection, g_Preferences!.mergerColorFrontComponentNames_property_selection, unwSelf.frontComponentValuesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentValues_property_selection, g_Preferences!.mergerColorFrontComponentValues_property_selection, unwSelf.backComponentValuesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentValues_property_selection, g_Preferences!.mergerColorBackComponentValues_property_selection, unwSelf.frontPackagesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontPackages_property_selection, g_Preferences!.mergerColorFrontPackages_property_selection, unwSelf.backPackagesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackPackages_property_selection, g_Preferences!.mergerColorBackPackages_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56)) :
+            return .single (transient_BoardModel_imageForModel (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.imageForInstances_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
@@ -3395,6 +3492,63 @@ class BoardModel : EBManagedObject,
     self.backPackagesDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.backLegendLinesLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
     self.frontLegendLinesLayerDisplay_property.addEBObserver (self.modelLayerDisplay_property)
+    g_Preferences?.mergerColorBackground_property.addEBObserver (self.imageForModel_property)
+    self.modelWidth_property.addEBObserver (self.imageForModel_property)
+    self.modelHeight_property.addEBObserver (self.imageForModel_property)
+    self.frontTracksBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontTracks_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontTracks_property.addEBObserver (self.imageForModel_property)
+    self.backTracksBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackTracks_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackTracks_property.addEBObserver (self.imageForModel_property)
+    self.frontPadsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontPads_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontPads_property.addEBObserver (self.imageForModel_property)
+    self.backPadsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackPads_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackPads_property.addEBObserver (self.imageForModel_property)
+    self.viasBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayVias_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorVias_property.addEBObserver (self.imageForModel_property)
+    self.holesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayHoles_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorHoles_property.addEBObserver (self.imageForModel_property)
+    self.frontLegendLinesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontLegendLines_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontLegendLines_property.addEBObserver (self.imageForModel_property)
+    self.backLegendLinesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackLegendLines_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackLegendLines_property.addEBObserver (self.imageForModel_property)
+    self.frontLegendTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontLegendTexts_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontLegendTexts_property.addEBObserver (self.imageForModel_property)
+    self.frontLayoutTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontLayoutTexts_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontLayoutTexts_property.addEBObserver (self.imageForModel_property)
+    self.backLegendTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackLegendTexts_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackLegendTexts_property.addEBObserver (self.imageForModel_property)
+    self.backLayoutTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackLayoutTexts_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackLayoutTexts_property.addEBObserver (self.imageForModel_property)
+    self.backComponentNamesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackComponentNames_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackComponentNames_property.addEBObserver (self.imageForModel_property)
+    self.frontComponentNamesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontComponentNames_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontComponentNames_property.addEBObserver (self.imageForModel_property)
+    self.frontComponentValuesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontComponentValues_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontComponentValues_property.addEBObserver (self.imageForModel_property)
+    self.backComponentValuesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackComponentValues_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackComponentValues_property.addEBObserver (self.imageForModel_property)
+    self.frontPackagesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontPackages_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontPackages_property.addEBObserver (self.imageForModel_property)
+    self.backPackagesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackPackages_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.imageForModel_property)
     g_Preferences?.mergerColorBackground_property.addEBObserver (self.imageForInstances_property)
     self.modelWidth_property.addEBObserver (self.imageForInstances_property)
     self.modelHeight_property.addEBObserver (self.imageForInstances_property)
@@ -3693,6 +3847,63 @@ class BoardModel : EBManagedObject,
     self.backPackagesDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.backLegendLinesLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
     self.frontLegendLinesLayerDisplay_property.removeEBObserver (self.modelLayerDisplay_property)
+    g_Preferences?.mergerColorBackground_property.removeEBObserver (self.imageForModel_property)
+    self.modelWidth_property.removeEBObserver (self.imageForModel_property)
+    self.modelHeight_property.removeEBObserver (self.imageForModel_property)
+    self.frontTracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontTracks_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontTracks_property.removeEBObserver (self.imageForModel_property)
+    self.backTracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackTracks_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackTracks_property.removeEBObserver (self.imageForModel_property)
+    self.frontPadsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontPads_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontPads_property.removeEBObserver (self.imageForModel_property)
+    self.backPadsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackPads_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackPads_property.removeEBObserver (self.imageForModel_property)
+    self.viasBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayVias_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorVias_property.removeEBObserver (self.imageForModel_property)
+    self.holesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayHoles_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorHoles_property.removeEBObserver (self.imageForModel_property)
+    self.frontLegendLinesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontLegendLines_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontLegendLines_property.removeEBObserver (self.imageForModel_property)
+    self.backLegendLinesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackLegendLines_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackLegendLines_property.removeEBObserver (self.imageForModel_property)
+    self.frontLegendTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontLegendTexts_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontLegendTexts_property.removeEBObserver (self.imageForModel_property)
+    self.frontLayoutTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontLayoutTexts_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontLayoutTexts_property.removeEBObserver (self.imageForModel_property)
+    self.backLegendTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackLegendTexts_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackLegendTexts_property.removeEBObserver (self.imageForModel_property)
+    self.backLayoutTextsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackLayoutTexts_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackLayoutTexts_property.removeEBObserver (self.imageForModel_property)
+    self.backComponentNamesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackComponentNames_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackComponentNames_property.removeEBObserver (self.imageForModel_property)
+    self.frontComponentNamesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontComponentNames_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontComponentNames_property.removeEBObserver (self.imageForModel_property)
+    self.frontComponentValuesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontComponentValues_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontComponentValues_property.removeEBObserver (self.imageForModel_property)
+    self.backComponentValuesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackComponentValues_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackComponentValues_property.removeEBObserver (self.imageForModel_property)
+    self.frontPackagesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontPackages_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontPackages_property.removeEBObserver (self.imageForModel_property)
+    self.backPackagesBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackPackages_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.imageForModel_property)
     g_Preferences?.mergerColorBackground_property.removeEBObserver (self.imageForInstances_property)
     self.modelWidth_property.removeEBObserver (self.imageForInstances_property)
     self.modelHeight_property.removeEBObserver (self.imageForInstances_property)
@@ -4329,6 +4540,14 @@ class BoardModel : EBManagedObject,
       view:view,
       observerExplorer:&self.modelLayerDisplay_property.mObserverExplorer,
       valueExplorer:&self.modelLayerDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "imageForModel",
+      idx:self.imageForModel_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.imageForModel_property.mObserverExplorer,
+      valueExplorer:&self.imageForModel_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "imageForInstances",
@@ -8811,6 +9030,62 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
+  //   Observers of 'imageForModel' transient property
+  //····················································································································
+
+  private var mObserversOf_imageForModel = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_imageForModel (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_imageForModel.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.imageForModel_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_imageForModel (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_imageForModel.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.imageForModel_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_imageForModel_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_imageForModel {
+        managedObject.imageForModel_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_imageForModel_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_imageForModel {
+        managedObject.imageForModel_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'imageForInstances' transient property
   //····················································································································
 
@@ -8976,6 +9251,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPackagesDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelLayerDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_imageForModel_fromElementsOfSet (removedSet)
         removeEBObserversOf_imageForInstances_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
@@ -9052,6 +9328,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_backPackagesDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_modelLayerDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_imageForModel_toElementsOfSet (addedSet)
         addEBObserversOf_imageForInstances_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
@@ -9505,6 +9782,12 @@ protocol BoardModel_backPackagesDisplay : class {
 
 protocol BoardModel_modelLayerDisplay : class {
   var modelLayerDisplay : CALayer? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_imageForModel : class {
+  var imageForModel : EBShapeLayerArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
