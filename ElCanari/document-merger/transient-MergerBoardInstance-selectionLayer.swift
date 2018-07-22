@@ -13,16 +13,22 @@ import Cocoa
 
 func transient_MergerBoardInstance_selectionLayer (
        _ self_instanceRect : CanariBoardRect
-) -> CALayer {
+) -> EBShapes {
 //--- START OF USER ZONE 2
-  let r : NSRect = self_instanceRect.cocoaRect().insetBy (dx: 1.0, dy: 1.0)
-  let layer = CAShapeLayer ()
-  layer.path = CGPath (rect: r, transform:nil)
-  layer.lineWidth = 2.0
-  layer.lineJoin = kCALineJoinRound
-  layer.fillColor = NSColor.cyan.withAlphaComponent (0.15).cgColor
-  layer.strokeColor = NSColor.cyan.cgColor
-  return layer
+  let r : NSRect = self_instanceRect.cocoaRect().insetBy (dx: 0.5, dy: 0.5)
+  let bp = NSBezierPath (rect: r)
+  bp.lineWidth = 1.0
+  bp.lineJoinStyle = .roundLineJoinStyle
+  let shapes = EBShapes ()
+  shapes.append ([bp], NSColor.cyan.withAlphaComponent (0.15), .fill)
+  shapes.append ([bp], NSColor.cyan, .stroke)
+//  let layer = CAShapeLayer ()
+//  layer.path = CGPath (rect: r, transform:nil)
+//  layer.lineWidth = 1.0
+//  layer.lineJoin = kCALineJoinRound
+//  layer.fillColor = NSColor.cyan.withAlphaComponent (0.15).cgColor
+//  layer.strokeColor = NSColor.cyan.cgColor
+  return shapes
 //--- END OF USER ZONE 2
 }
 

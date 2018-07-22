@@ -53,14 +53,6 @@ entity MergerRoot {
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;
 
-#--- Board limits
-
-  transient CALayer boardLimitsLayerDisplay dependsFrom
-    self.boardWidth, self.boardHeight, self.boardLimitWidth,
-    prefs.mergerColorBoardLimits, prefs.mergerBoardViewDisplayBoardLimits
- ;
-
-
 #--- Artwork
   toOne @cascading ArtworkRoot artwork ;
   property String artworkName default "" ;

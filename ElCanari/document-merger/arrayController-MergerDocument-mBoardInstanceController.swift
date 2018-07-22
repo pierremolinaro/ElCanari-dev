@@ -734,15 +734,14 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   private func computeSelectionLayer () {
-    var layers = [CALayer] ()
+    var shapes = EBShapes ()
     for object in mSelectedSet.mSet {
       if let layer = object.selectionLayer {
-        layers.append (layer)
+        shapes += layer
       }
     }
-    mEBView?.objectSelectionLayer.sublayers = layers
+    mEBView?.objectSelectionLayer = shapes
   }
-
 
   //····················································································································
 

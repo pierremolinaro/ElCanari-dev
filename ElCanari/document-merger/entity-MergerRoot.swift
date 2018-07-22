@@ -35,8 +35,7 @@ class MergerRoot : EBManagedObject,
   MergerRoot_instancesDisplay,
   MergerRoot_boardRect,
   MergerRoot_boardWidth,
-  MergerRoot_boardHeight,
-  MergerRoot_boardLimitsLayerDisplay {
+  MergerRoot_boardHeight {
 
   //····················································································································
   //   Accessing selectedPageIndex stored property
@@ -552,25 +551,6 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing boardLimitsLayerDisplay transient property
-  //····················································································································
-
-  var boardLimitsLayerDisplay_property_selection : EBSelection <CALayer> {
-    get {
-      return self.boardLimitsLayerDisplay_property.prop
-    }
-  }
-
-  var boardLimitsLayerDisplay : CALayer? {
-    switch boardLimitsLayerDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Accessing boardModels toMany relationship
   //····················································································································
 
@@ -626,7 +606,6 @@ class MergerRoot : EBManagedObject,
   var boardRect_property = EBTransientProperty_CanariBoardRect ()
   var boardWidth_property = EBTransientProperty_Int ()
   var boardHeight_property = EBTransientProperty_Int ()
-  var boardLimitsLayerDisplay_property = EBTransientProperty_CALayer ()
 
   //····················································································································
   //    Relationships
@@ -793,30 +772,6 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardLimitsLayerDisplay_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.boardWidth_property_selection.kind ()
-        kind &= unwSelf.boardHeight_property_selection.kind ()
-        kind &= unwSelf.boardLimitWidth_property_selection.kind ()
-        kind &= g_Preferences!.mergerColorBoardLimits_property_selection.kind ()
-        kind &= g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.boardWidth_property_selection, unwSelf.boardHeight_property_selection, unwSelf.boardLimitWidth_property_selection, g_Preferences!.mergerColorBoardLimits_property_selection, g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_MergerRoot_boardLimitsLayerDisplay (v0, v1, v2, v3, v4))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
   //--- Install property observers for transients
     self.arrowMagnitude_property.addEBObserver (self.cocoaArrowMagnitude_property)
     self.shiftArrowMagnitude_property.addEBObserver (self.cocoaShiftArrowMagnitude_property)
@@ -834,11 +789,6 @@ class MergerRoot : EBManagedObject,
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
     self.boardRect_property.addEBObserver (self.boardWidth_property)
     self.boardRect_property.addEBObserver (self.boardHeight_property)
-    self.boardWidth_property.addEBObserver (self.boardLimitsLayerDisplay_property)
-    self.boardHeight_property.addEBObserver (self.boardLimitsLayerDisplay_property)
-    self.boardLimitWidth_property.addEBObserver (self.boardLimitsLayerDisplay_property)
-    g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardLimitsLayerDisplay_property)
-    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardLimitsLayerDisplay_property)
   //--- Install undoers for properties
     self.selectedPageIndex_property.undoManager = undoManager ()
     self.zoom_property.undoManager = undoManager ()
@@ -887,11 +837,6 @@ class MergerRoot : EBManagedObject,
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
     self.boardRect_property.removeEBObserver (self.boardWidth_property)
     self.boardRect_property.removeEBObserver (self.boardHeight_property)
-    self.boardWidth_property.removeEBObserver (self.boardLimitsLayerDisplay_property)
-    self.boardHeight_property.removeEBObserver (self.boardLimitsLayerDisplay_property)
-    self.boardLimitWidth_property.removeEBObserver (self.boardLimitsLayerDisplay_property)
-    g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardLimitsLayerDisplay_property)
-    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardLimitsLayerDisplay_property)
   }
 
   //····················································································································
@@ -1116,14 +1061,6 @@ class MergerRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.boardHeight_property.mObserverExplorer,
       valueExplorer:&self.boardHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "boardLimitsLayerDisplay",
-      idx:self.boardLimitsLayerDisplay_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.boardLimitsLayerDisplay_property.mObserverExplorer,
-      valueExplorer:&self.boardLimitsLayerDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -2880,62 +2817,6 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
-  //   Observers of 'boardLimitsLayerDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_boardLimitsLayerDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_boardLimitsLayerDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_boardLimitsLayerDisplay.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.boardLimitsLayerDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardLimitsLayerDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_boardLimitsLayerDisplay.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.boardLimitsLayerDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_boardLimitsLayerDisplay_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_boardLimitsLayerDisplay {
-        managedObject.boardLimitsLayerDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_boardLimitsLayerDisplay_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_boardLimitsLayerDisplay {
-        managedObject.boardLimitsLayerDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -3001,7 +2882,6 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardLimitsLayerDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -3033,7 +2913,6 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_boardRect_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
-        addEBObserversOf_boardLimitsLayerDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -3225,12 +3104,6 @@ protocol MergerRoot_boardHeight : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardLimitsLayerDisplay : class {
-  var boardLimitsLayerDisplay : CALayer? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship read write: boardModels
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -3306,59 +3179,40 @@ ToManyRelationshipReadWrite_MergerRoot_boardModels, EBSignatureObserverProtocol 
           managedObject.setSignatureObserver (observer: nil)
         }
         removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentNameDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentValueDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLayoutTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLegendLinesLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLegendTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPackagesDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPads_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPadsDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backTracksDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backgroundLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimits_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardLimitsDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontComponentNameDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontComponentValueDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLayoutTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendLinesLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPackagesDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontPads_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPadsDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontTracksDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_holeLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holes_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet)
@@ -3366,14 +3220,12 @@ ToManyRelationshipReadWrite_MergerRoot_boardModels, EBSignatureObserverProtocol 
         removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_padsHoles_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_viaLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_viasHoles_fromElementsOfSet (removedObjectSet)
@@ -3384,59 +3236,40 @@ ToManyRelationshipReadWrite_MergerRoot_boardModels, EBSignatureObserverProtocol 
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentNameDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentValueDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLayoutTextsLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLegendLinesLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLegendTextsLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPackagesDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPads_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPadsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPadsDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backTracksDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backgroundLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimits_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardLimitsDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontComponentNameDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontComponentValueDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLayoutTextsLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendLinesLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendTextsLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPackagesDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontPads_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPadsDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontTrackSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontTracksDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_holeLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holes_toElementsOfSet (addedObjectSet)
         addEBObserversOf_holesBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet)
@@ -3444,14 +3277,12 @@ ToManyRelationshipReadWrite_MergerRoot_boardModels, EBSignatureObserverProtocol 
         addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)
         addEBObserversOf_padsHoles_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_viaLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viasBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_viasHoles_toElementsOfSet (addedObjectSet)
@@ -3622,32 +3453,12 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
           managedObject.setSignatureObserver (observer: nil)
           managedObject.myRoot_property.owner = nil ;
         }
-        removeEBObserversOf_backComponentNameDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentValueDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLayoutTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLegendLinesLayerDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLegendTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPackagesDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPadsDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backTracksDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backgroundLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardLimitsDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontComponentNameDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontComponentValueDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLayoutTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendLinesLayerDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendTextsLayerDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPackagesDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPadsDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontTracksDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_holeLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceRotation_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelName_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectionLayer_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_viaLayerDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
       //--- Added object set
@@ -3656,32 +3467,12 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
           managedObject.setSignatureObserver (observer: self)
           managedObject.myRoot_property.setProp (owner)
         }
-        addEBObserversOf_backComponentNameDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentValueDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLayoutTextsLayerDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLegendLinesLayerDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLegendTextsLayerDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPackagesDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPadsDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backTracksDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backgroundLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardLimitsDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontComponentNameDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontComponentValueDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLayoutTextsLayerDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendLinesLayerDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendTextsLayerDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPackagesDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPadsDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontTracksDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_holeLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRotation_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelName_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectionLayer_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_viaLayerDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y_toElementsOfSet (addedObjectSet)
       //--- Notify observers

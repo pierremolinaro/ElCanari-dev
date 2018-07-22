@@ -1147,15 +1147,6 @@ typealias EBPropertyProxy_NSColor     = EBPropertyClassProxy <NSColor>
 typealias EBStoredProperty_NSColor    = EBStoredClassProperty <NSColor>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class CALayer
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CALayer  = EBReadOnlyClassProperty <CALayer>
-typealias EBTransientProperty_CALayer = EBTransientClassProperty <CALayer>
-typealias EBReadOnlyPropertyArray_CALayer  = EBReadOnlyClassProperty <[CALayer]>
-typealias EBTransientPropertyArray_CALayer = EBTransientClassProperty <[CALayer]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property CGFloat
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -13,7 +13,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  var selectionLayer_property = EBTransientProperty_CALayer ()
+  var selectionLayer_property = EBTransientProperty_EBShapes ()
 
   //····················································································································
 
@@ -100,6 +100,15 @@ class EBShapes : Hashable, EBUserClassNameProtocol {
   func append (_ inBezierPaths : [NSBezierPath], _ inColor : NSColor, _ inOperation : StrokeOrFill) {
     self.paths.append ((inBezierPaths, inColor, inOperation))
     self.cachedBoundingBox = nil
+  }
+
+  //····················································································································
+  //  +=
+  //····················································································································
+
+  public static func += (ioShapes : inout EBShapes, inShapes : EBShapes) {
+    ioShapes.paths += inShapes.paths
+    ioShapes.cachedBoundingBox = nil
   }
 
   //····················································································································
@@ -311,6 +320,13 @@ struct EBShapeLayer : Hashable {
   //   Init
   //····················································································································
 
+  init () {
+    mShapes = EBShapes ()
+    mTransform = NSAffineTransform ()
+  }
+
+  //····················································································································
+
   init (_ inShapes : EBShapes, transform inTransform : NSAffineTransform = NSAffineTransform ()) {
     mShapes = inShapes
     mTransform = inTransform
@@ -452,150 +468,3 @@ struct EBShapeLayerArray : Hashable {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION CALayer: findLayer (at inPoint : CGPoint) -> CALayer?
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension CALayer {
-
-  //····················································································································
-
-  func findLayer (at inPoint : CGPoint) -> CALayer? {
-    if self.isOpaque && self.frame.contains (inPoint) {
-      return self
-    }else{
-      for layer in (self.sublayers ?? []).reversed () {
-        let possibleResult = layer.findLayer (at: inPoint)
-        if let result = possibleResult {
-          if (result.name == nil) && (self.name != nil) {
-            return self
-          }else{
-            return result
-          }
-        }
-      }
-      return nil
-    }
-  }
-
-  //····················································································································
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension CAShapeLayer {
-
-  //····················································································································
-
-  override func findLayer (at inPoint : CGPoint) -> CALayer? {
-    var r = super.findLayer (at: inPoint)
-  //--- Test in filled path
-    if let path = self.path, r == nil, self.fillColor != nil, path.contains (inPoint) {
-      r = self
-    }
-  //--- Test in stroke path
-    if let path = self.path, r == nil, self.strokeColor != nil, self.lineWidth > 0.0 {
-      let possibleStrokePath = CGPath (
-        __byStroking: path,
-        transform:nil,
-        lineWidth: self.lineWidth,
-        lineCap: .round,
-        lineJoin: .round,
-        miterLimit: self.miterLimit
-      )
-      if let strokePath = possibleStrokePath, strokePath.contains (inPoint) {
-        r = self
-      }
-    }
-  //---
-    return r
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION CALayer: findIndexesOfObjects (intersecting inRect : CGRect)
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension CALayer {
-
-  //····················································································································
-
-  func findIndexesOfObjects (intersecting inRect : CGRect) -> Set <Int> {
-     var result = Set <Int> ()
-     if let name = self.name, let idx = Int (name) {
-       var intersect = self.intersects (inRect)
-       if !intersect {
-         for layer in self.sublayers ?? [] {
-           if layer.intersects (inRect) {
-             intersect = true
-             break
-           }
-         }
-       }
-       if intersect {
-         result.insert (idx)
-       }
-     }else{
-       for layer in self.sublayers ?? [] {
-         let r = layer.findIndexesOfObjects (intersecting: inRect)
-         result.formUnion (r)
-       }
-     }
-     return result
-  }
-
-  //····················································································································
-
-  func intersects (_ inRect : CGRect) -> Bool {
-    return self.isOpaque && self.frame.intersects (inRect)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension CAShapeLayer {
-
-  //····················································································································
-
-  override func intersects (_ inRect : CGRect) -> Bool {
-    if let boundingBox = self.path?.boundingBox {
-      return inRect.intersects (boundingBox)
-    }else{
-      return super.intersects (inRect)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

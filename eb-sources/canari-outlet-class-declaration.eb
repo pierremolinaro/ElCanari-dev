@@ -69,7 +69,6 @@ binding CanariViewWithZoomAndFlip $size : transient Int, transient Int ;
 binding CanariViewWithZoomAndFlip $zoom : property Int ;
 binding CanariViewWithZoomAndFlip $horizontalFlip : transient Bool ;
 binding CanariViewWithZoomAndFlip $verticalFlip : transient Bool ;
-binding CanariViewWithZoomAndFlip $objectLayer : transient CALayer ;
 
 extern outlet class CanariBoardBoardArchivePopUpButton ;
 binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;

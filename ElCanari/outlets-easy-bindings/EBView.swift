@@ -5,11 +5,6 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate let OPAQUE_LAYERS = true ;
-fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EBViewControllerProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -72,22 +67,6 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   //····················································································································
 
    private weak var mViewController : EBViewControllerProtocol? = nil
-   fileprivate var mObjectLayer = CALayer ()
-   private var mObjectSelectionLayer = CALayer ()
-
-  //····················································································································
-  //  awakeFromNib
-  //····················································································································
-
-  final override func awakeFromNib () {
-    self.layer?.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
-    self.layer?.isOpaque = OPAQUE_LAYERS
-
-    self.mObjectLayer.drawsAsynchronously = DRAWS_ASYNCHRONOUSLY
-    self.mObjectLayer.isOpaque = OPAQUE_LAYERS
-    self.layer?.addSublayer (mObjectLayer)
-    self.layer?.addSublayer (mObjectSelectionLayer)
-  }
 
   //····················································································································
   //    set controller
@@ -98,27 +77,18 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   }
 
   //····················································································································
-  //    Object Layer
-  //····················································································································
-
-  private var mObjectLayerController : Controller_EBView_objectLayer?
-
-  func bind_objectLayer (_ layer:EBReadOnlyProperty_CALayer, file:String, line:Int) {
-    mObjectLayerController = Controller_EBView_objectLayer (layer:layer, outlet:self)
-  }
-
-  //····················································································································
-
-  func unbind_objectLayer () {
-    mObjectLayerController?.unregister ()
-    mObjectLayerController = nil
-  }
-
-  //····················································································································
   //    Selection Layer
   //····················································································································
 
-  var objectSelectionLayer : CALayer { return mObjectSelectionLayer }
+  private var mSelectionShape = EBShapeLayer ()
+
+  var objectSelectionLayer = EBShapes () {
+    didSet {
+      self.setNeedsDisplay (mSelectionShape.boundingBox)
+      mSelectionShape = EBShapeLayer (objectSelectionLayer)
+      self.setNeedsDisplay (mSelectionShape.boundingBox)
+    }
+  }
 
   //····················································································································
   //    Selection Rectangle Layer
@@ -350,41 +320,7 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
       object.draw (inDirtyRect)
     }
     self.selectionRectangleLayer?.draw (inDirtyRect)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_EBView_objectLayer
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class Controller_EBView_objectLayer : EBSimpleController {
-
-  private let mLayer : EBReadOnlyProperty_CALayer
-  private let mOutlet : EBView
-
-  //····················································································································
-
-  init (layer : EBReadOnlyProperty_CALayer, outlet : EBView) {
-    mLayer = layer
-    mOutlet = outlet
-    super.init (observedObjects:[layer], outlet:outlet)
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mLayer.prop {
-    case .empty :
-      mOutlet.mObjectLayer.sublayers = nil
-    case .single (let v) :
-      mOutlet.mObjectLayer.sublayers = [v]
-    case .multiple :
-      mOutlet.mObjectLayer.sublayers = nil
-    }
+    self.mSelectionShape.draw (inDirtyRect)
   }
 
   //····················································································································
