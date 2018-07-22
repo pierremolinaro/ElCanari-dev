@@ -136,6 +136,8 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   }
 
   //····················································································································
+  // indexesOfObjects intersecting rect
+  //····················································································································
 
   func indexesOfObjects (intersecting inRect : CGRect) -> Set <Int> {
     var result = Set <Int> ()
@@ -148,20 +150,38 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   }
 
   //····················································································································
+  // Object at location
+  //····················································································································
+
+  func object (at inLocation : NSPoint) -> Int {
+    var objectIndex = -1 // No object
+    var idx = self.mObjects.count - 1
+    while (idx >= 0) && (objectIndex < 0) {
+      let object = self.mObjects [idx]
+      if object.contains (inLocation) {
+        objectIndex = object.userIndex
+      }
+      idx -= 1
+    }
+    return objectIndex
+  }
+
+  //····················································································································
   // Mouse Events
   //····················································································································
 
   override func mouseDown (with inEvent: NSEvent) {
     let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-    if let result = self.mObjectLayer.findLayer (at: mouseDownLocation) {
-      if let name = result.name, let idx = Int (name) {
-        mViewController?.mouseDown (with:inEvent, objectIndex:idx) // No object
-      }else{
-        mViewController?.mouseDown (with:inEvent, objectIndex:-1) // No object
-      }
-    }else{
-      mViewController?.mouseDown (with: inEvent, objectIndex: -1) // No object
-    }
+    mViewController?.mouseDown (with: inEvent, objectIndex: self.object (at: mouseDownLocation))
+//    if let result = self.mObjectLayer.findLayer (at: mouseDownLocation) {
+//      if let name = result.name, let idx = Int (name) {
+//        mViewController?.mouseDown (with:inEvent, objectIndex:idx) // No object
+//      }else{
+//        mViewController?.mouseDown (with:inEvent, objectIndex:-1) // No object
+//      }
+//    }else{
+//      mViewController?.mouseDown (with: inEvent, objectIndex: -1) // No object
+//    }
     super.mouseDown (with: inEvent)
   }
 
