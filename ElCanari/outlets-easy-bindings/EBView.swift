@@ -74,7 +74,6 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
    private weak var mViewController : EBViewControllerProtocol? = nil
    fileprivate var mObjectLayer = CALayer ()
    private var mObjectSelectionLayer = CALayer ()
-   private var mSelectionRectangleLayer = CALayer ()
 
   //····················································································································
   //  awakeFromNib
@@ -88,7 +87,6 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
     self.mObjectLayer.isOpaque = OPAQUE_LAYERS
     self.layer?.addSublayer (mObjectLayer)
     self.layer?.addSublayer (mObjectSelectionLayer)
-    self.layer?.addSublayer (mSelectionRectangleLayer)
   }
 
   //····················································································································
@@ -121,12 +119,32 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
   //····················································································································
 
   var objectSelectionLayer : CALayer { return mObjectSelectionLayer }
-  var selectionRectangleLayer : CALayer { return mSelectionRectangleLayer }
+
+  //····················································································································
+  //    Selection Rectangle Layer
+  //····················································································································
+
+  var selectionRectangleLayer : EBShapeLayer? = nil {
+    didSet {
+      if let oldSelectionRectangleLayer = oldValue {
+        self.setNeedsDisplay (oldSelectionRectangleLayer.boundingBox)
+      }
+      if let newSelectionRectangleLayer = selectionRectangleLayer {
+        self.setNeedsDisplay (newSelectionRectangleLayer.boundingBox)
+      }
+    }
+  }
 
   //····················································································································
 
   func indexesOfObjects (intersecting inRect : CGRect) -> Set <Int> {
-    return self.mObjectLayer.findIndexesOfObjects (intersecting: inRect)
+    var result = Set <Int> ()
+    for object in self.mObjects {
+      if (object.userIndex >= 0) && object.intersects (inRect) {
+        result.insert (object.userIndex)
+      }
+    }
+    return result
   }
 
   //····················································································································
@@ -308,12 +326,6 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
       invalidRect = invalidRect.union (inObjects [idx].boundingBox)
       idx += 1
     }
-//    for object in self.mObjects {
-//      invalidRect = invalidRect.union (object.boundingBox)
-//    }
-//    for object in inObjects {
-//      invalidRect = invalidRect.union (object.boundingBox)
-//    }
     self.mObjects = inObjects
     self.setNeedsDisplay (invalidRect)
   }
@@ -326,6 +338,7 @@ fileprivate let DRAWS_ASYNCHRONOUSLY = true ;
     for object in self.mObjects {
       object.draw (inDirtyRect)
     }
+    self.selectionRectangleLayer?.draw (inDirtyRect)
   }
 
   //····················································································································

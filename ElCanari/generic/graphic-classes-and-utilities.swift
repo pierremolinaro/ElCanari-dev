@@ -5,10 +5,6 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-// http://www.knowstack.com/swift-3-1-calayer/
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //  EBGraphicManagedObject
 //  dynamic before func is required in order to make functions overriden in extensions
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -56,7 +52,7 @@ enum StrokeOrFill : Int {
 struct EBShapes : Hashable {
 
   //····················································································································
-  //  Property
+  //  Properties
   //····················································································································
 
   private var paths : [([NSBezierPath], NSColor, StrokeOrFill)]
@@ -109,6 +105,36 @@ struct EBShapes : Hashable {
         }
       }
     }
+  }
+
+  //····················································································································
+  // boundingBox
+  //····················································································································
+
+  var boundingBox : NSRect {
+    var r = NSZeroRect
+    for (bps, _, operation) in self.paths {
+      switch operation {
+      case .fill :
+        for bp in bps {
+          r = r.union (bp.bounds)
+        }
+      case .stroke :
+        for bp in bps {
+          let lineWidth = max (bp.lineWidth, 1.0)
+          r = r.union (bp.bounds.insetBy (dx: -lineWidth, dy: -lineWidth))
+        }
+      }
+    }
+    return r
+  }
+
+  //····················································································································
+  //   intersects
+  //····················································································································
+
+  func intersects (_ inRect : NSRect) -> Bool {
+    return self.boundingBox.intersects (inRect)
   }
 
   //····················································································································
@@ -255,10 +281,8 @@ struct EBShapeLayer : Hashable {
   //   Properties
   //····················································································································
 
-  let drawings : EBShapes
-  let center : NSPoint
-  let size : NSSize
-  let rotation : CGFloat
+  let shapes : EBShapes
+  let transform : NSAffineTransform
   var userIndex = -1
   var userSecondaryIndex = -1
 
@@ -266,11 +290,9 @@ struct EBShapeLayer : Hashable {
   //   Init
   //····················································································································
 
-  init (_ inImage : EBShapes, _ inCenter : NSPoint, _ inSize : NSSize, _ inRotation : CGFloat) {
-    drawings = inImage
-    center = inCenter
-    size = inSize
-    rotation = inRotation
+  init (_ inShapes : EBShapes, transform inTransform : NSAffineTransform = NSAffineTransform ()) {
+    shapes = inShapes
+    transform = inTransform
   }
 
   //····················································································································
@@ -280,10 +302,8 @@ struct EBShapeLayer : Hashable {
   public static func == (lhs: EBShapeLayer, rhs: EBShapeLayer) -> Bool {
     return (lhs.userIndex == rhs.userIndex)
       && (lhs.userSecondaryIndex == rhs.userSecondaryIndex)
-      && (lhs.rotation == rhs.rotation)
-      && (lhs.center == rhs.center)
-      && (lhs.size == rhs.size)
-      && (lhs.drawings == rhs.drawings)
+      && (lhs.shapes == rhs.shapes)
+      && (lhs.transform == rhs.transform)
   }
 
   //····················································································································
@@ -293,12 +313,8 @@ struct EBShapeLayer : Hashable {
   public var hashValue: Int {
     var h = self.userIndex
     h ^= self.userSecondaryIndex
-    h ^= self.rotation.hashValue
-    h ^= self.center.x.hashValue
-    h ^= self.center.y.hashValue
-    h ^= self.size.width.hashValue
-    h ^= self.size.height.hashValue
-    h ^= self.drawings.hashValue
+    h ^= self.transform.hashValue
+    h ^= self.shapes.hashValue
     return h
   }
 
@@ -306,15 +322,7 @@ struct EBShapeLayer : Hashable {
   // boundingBox
   //····················································································································
 
-  var boundingBox : NSRect {
-    let imageWidth  = self.size.width
-    let imageHeight = self.size.height
-    let width  = abs ( imageWidth * cos (self.rotation) + imageHeight * sin (self.rotation))
-    let height = abs (-imageWidth * sin (self.rotation) + imageHeight * cos (self.rotation))
-    let originX = self.center.x - width  / 2.0
-    let originY = self.center.y - height / 2.0
-    return NSRect (origin: NSPoint (x: originX, y:originY), size: NSSize (width: width, height: height))
-  }
+  var boundingBox : NSRect { return self.shapes.boundingBox  }
   
   //····················································································································
   // draw
@@ -322,24 +330,27 @@ struct EBShapeLayer : Hashable {
 
   func draw (_ inDirtyRect: NSRect) {
     if self.boundingBox.intersects (inDirtyRect) {
-      let at = NSAffineTransform ()
-      at.translateX (by: self.center.x, yBy: self.center.y)
-      at.rotate (byRadians: self.rotation)
-      at.translateX (by: -self.size.width / 2.0, yBy: -self.size.height / 2.0)
+      let at = self.transform
       at.concat ()
-      self.drawings.draw (inDirtyRect)
+      self.shapes.draw (inDirtyRect)
       at.invert ()
       at.concat ()
+      at.invert ()
     }
   }
 
   //····················································································································
 
   func sameDisplay (as inObject : EBShapeLayer) -> Bool {
-    return (self.rotation == inObject.rotation)
-      && (self.center == inObject.center)
-      && (self.size == inObject.size)
-      && (self.drawings == inObject.drawings)
+    return (self.shapes == inObject.shapes)
+  }
+
+  //····················································································································
+  //   intersects
+  //····················································································································
+
+  func intersects (_ inRect : NSRect) -> Bool {
+    return self.shapes.intersects (inRect)
   }
 
   //····················································································································

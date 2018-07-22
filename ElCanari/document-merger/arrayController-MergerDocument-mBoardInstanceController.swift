@@ -478,7 +478,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
 
-  func mouseDragged (with inEvent : NSEvent) {
+   func mouseDragged (with inEvent : NSEvent) {
     if let boardView = mEBView {
       let mouseDraggedLocation = boardView.convert (inEvent.locationInWindow, from:nil)
       if let selectionRectangleOrigin = mSelectionRectangleOrigin {
@@ -487,13 +487,15 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         let yMin = min (selectionRectangleOrigin.y, mouseDraggedLocation.y)
         let xMax = max (selectionRectangleOrigin.x, mouseDraggedLocation.x)
         let yMax = max (selectionRectangleOrigin.y, mouseDraggedLocation.y)
-        let layer = CAShapeLayer ()
-        let r = CGRect (x:xMin, y:yMin, width:xMax-xMin, height:yMax-yMin)
-        layer.path = CGPath (rect: r, transform:nil)
-        layer.strokeColor = NSColor.lightGray.cgColor
-        layer.fillColor = NSColor.lightGray.withAlphaComponent (0.2).cgColor
-        layer.lineWidth = 1.0
-        mEBView?.selectionRectangleLayer.sublayers = [layer]
+
+        let r = NSRect (x:xMin, y:yMin, width:xMax-xMin, height:yMax-yMin)
+        var shapes = EBShapes ()
+        let bp = NSBezierPath (rect: r)
+        bp.lineWidth = 1.0
+        shapes.append ([bp], NSColor.lightGray.withAlphaComponent (0.2), .fill)
+        shapes.append ([bp], NSColor.lightGray, .stroke)
+        let layer = EBShapeLayer (shapes)
+        mEBView?.selectionRectangleLayer = layer
         let indexSet = boardView.indexesOfObjects (intersecting:r)
         var newSelectedSet = Set <MergerBoardInstance> ()
         var objects = mModel?.propval ?? []
@@ -521,7 +523,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   func mouseUp (with inEvent : NSEvent) {
     mLastMouseDraggedLocation = nil
     mSelectionRectangleOrigin = nil
-    mEBView?.selectionRectangleLayer.sublayers = nil
+    mEBView?.selectionRectangleLayer = nil
   }
 
   //····················································································································

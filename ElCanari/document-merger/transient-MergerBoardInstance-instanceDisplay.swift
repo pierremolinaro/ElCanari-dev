@@ -22,22 +22,25 @@ func transient_MergerBoardInstance_instanceDisplay (
 //--- START OF USER ZONE 2
   let width  = canariUnitToCocoa (self_myModel_modelWidth!)
   let height = canariUnitToCocoa (self_myModel_modelHeight!)
-  var x = canariUnitToCocoa (self_x)
-  var y = canariUnitToCocoa (self_y)
+  let transform = NSAffineTransform ()
+  transform.translateX (by: canariUnitToCocoa (self_x), yBy: canariUnitToCocoa (self_y))
   switch self_instanceRotation {
-  case .rotation0, .rotation180 :
-    x += width  / 2.0
-    y += height / 2.0
-  case .rotation90, .rotation270 :
-    x += height / 2.0
-    y += width  / 2.0
+  case .rotation0 :
+    break
+  case .rotation90 :
+    transform.translateX (by: height / 2.0, yBy: width / 2.0)
+    transform.rotate (byDegrees: 90.0)
+    transform.translateX (by: -width / 2.0, yBy: -height / 2.0)
+  case .rotation180 :
+    transform.translateX (by: width / 2.0, yBy: height / 2.0)
+    transform.rotate (byDegrees: 180.0)
+    transform.translateX (by: -width / 2.0, yBy: -height / 2.0)
+  case .rotation270 :
+    transform.translateX (by: height / 2.0, yBy: width / 2.0)
+    transform.rotate (byDegrees: 270.0)
+    transform.translateX (by: -width / 2.0, yBy: -height / 2.0)
   }
-  return EBShapeLayer (
-    self_myModel_imageForInstances!,
-    NSPoint (x: x, y: y),
-    NSSize (width: width, height: height),
-    CGFloat (self_instanceRotation.rawValue) * CGFloat.pi / 2.0
-  )
+  return EBShapeLayer (self_myModel_imageForInstances!, transform: transform)
 //--- END OF USER ZONE 2
 }
 
