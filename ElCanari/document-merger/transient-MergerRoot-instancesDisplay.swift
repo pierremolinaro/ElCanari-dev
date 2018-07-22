@@ -12,14 +12,34 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerRoot_instancesDisplay (
+       _ self_boardRect : CanariBoardRect,  
+       _ self_boardLimitWidth : Int,        
+       _ prefs_mergerBoardViewDisplayBoardLimits : Bool,
+       _ prefs_mergerColorBoardLimits : NSColor,
        _ self_boardInstances_instanceDisplay : [MergerBoardInstance_instanceDisplay]
-) -> InstanceDisplayArray {
+) -> EBShapeLayerArray {
 //--- START OF USER ZONE 2
-   var array = [InstanceDisplay] ()
-   for board in self_boardInstances_instanceDisplay {
-     array.append (board.instanceDisplay!)
-   }
-   return InstanceDisplayArray (array)
+    var array = [EBShapeLayer] ()
+    var idx = 0
+    for board in self_boardInstances_instanceDisplay {
+      var instanceDisplay = board.instanceDisplay!
+      instanceDisplay.userIndex = idx
+      array.append (instanceDisplay)
+      idx += 1
+    }
+  //-- Add board limit rect
+    if prefs_mergerBoardViewDisplayBoardLimits {
+      let limitWidth = canariUnitToCocoa (self_boardLimitWidth)
+      let r = self_boardRect.cocoaRect()
+      let bp = NSBezierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))
+      bp.lineWidth = limitWidth
+      bp.lineJoinStyle = .roundLineJoinStyle
+      let shapes = EBShapes ([bp], prefs_mergerColorBoardLimits, StrokeOrFill.stroke)
+      let boardLimits = EBShapeLayer (shapes, NSPoint (x: r.midX, y: r.midY), r.size, 0.0)
+      array.append (boardLimits)
+    }
+  //---
+    return EBShapeLayerArray (array)
 //--- END OF USER ZONE 2
 }
 

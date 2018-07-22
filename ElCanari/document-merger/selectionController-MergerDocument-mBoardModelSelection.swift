@@ -408,9 +408,9 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.holesBezierPaths_property.prop
     }
   }
-  var imageForInstances_property = EBTransientProperty_NSImage ()
+  var imageForInstances_property = EBTransientProperty_EBShapes ()
 
-  var imageForInstances_property_selection : EBSelection <NSImage> {
+  var imageForInstances_property_selection : EBSelection <EBShapes> {
     get {
       return self.imageForInstances_property.prop
     }
@@ -3042,7 +3042,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<NSImage> ()
+          var s = Set<EBShapes> ()
           var isMultipleSelection = false
           for object in v {
             switch object.imageForInstances_property_selection {

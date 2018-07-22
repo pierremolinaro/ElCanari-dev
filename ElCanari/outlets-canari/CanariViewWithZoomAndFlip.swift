@@ -305,49 +305,6 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
-  //    $objects binding
-  //····················································································································
-
-  private var mObjectsController : Controller_CanariViewWithZoomAndFlip_objects?
-
-  func bind_objects (_ objects:EBReadOnlyProperty_InstanceDisplayArray, file:String, line:Int) {
-    mObjectsController = Controller_CanariViewWithZoomAndFlip_objects (objects, outlet:self)
-  }
-
-  func unbind_objects () {
-    mObjectsController?.unregister ()
-    mObjectsController = nil
-  }
-
-  //····················································································································
-
-   private var mObjects = [InstanceDisplay] ()
-
-  //····················································································································
-
-  func setObjects (_ inObjects : [InstanceDisplay]) {
-    var invalidRect = NSZeroRect
-    for object in self.mObjects {
-      invalidRect = invalidRect.union (object.boundingBox)
-    }
-    for object in inObjects {
-      invalidRect = invalidRect.union (object.boundingBox)
-    }
-    self.mObjects = inObjects
-    self.setNeedsDisplay (invalidRect)
-  }
-
-  //····················································································································
-  //  Draw Dirty rect
-  //····················································································································
-
-  override func draw (_ inDirtyRect: NSRect) {
-    for object in self.mObjects {
-      object.draw (inDirtyRect)
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -511,38 +468,4 @@ final class Controller_CanariViewWithZoomAndFlip_verticalFlip : EBSimpleControll
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariViewWithZoomAndFlip_objects
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class Controller_CanariViewWithZoomAndFlip_objects : EBSimpleController {
-
-  private let mLayer : EBReadOnlyProperty_InstanceDisplayArray
-  private let mOutlet : CanariViewWithZoomAndFlip
-
-  //····················································································································
-
-  init (_ layer : EBReadOnlyProperty_InstanceDisplayArray, outlet : CanariViewWithZoomAndFlip) {
-    mLayer = layer
-    mOutlet = outlet
-    super.init (observedObjects:[layer], outlet:outlet)
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mLayer.prop {
-    case .empty :
-      mOutlet.setObjects ([])
-    case .single (let v) :
-      mOutlet.setObjects (v.objects)
-    case .multiple :
-      mOutlet.setObjects ([])
-    }
-  }
-
-  //····················································································································
-
-}
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

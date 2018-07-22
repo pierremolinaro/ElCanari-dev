@@ -246,7 +246,6 @@ document MergerDocument root MergerRoot {
     $zoom root.zoom
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
     $verticalFlip prefs.mergerBoardViewVerticalFlip
-#   $objectLayer root.instancesLayerDisplay
     $objects root.instancesDisplay
     $graphicController self.mBoardInstanceController
     $arrowKeyMagnitude root.cocoaArrowMagnitude

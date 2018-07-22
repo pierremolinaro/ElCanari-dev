@@ -302,10 +302,8 @@ entity BoardModel {
   ;
 
 #----
-  transient NSImage imageForInstances dependsFrom
+  transient EBShapes imageForInstances dependsFrom
     prefs.mergerColorBackground,
-    self.modelWidth,
-    self.modelHeight,
 # Front tracks
     self.frontTracksBezierPaths,
     prefs.mergerBoardViewDisplayFrontTracks,

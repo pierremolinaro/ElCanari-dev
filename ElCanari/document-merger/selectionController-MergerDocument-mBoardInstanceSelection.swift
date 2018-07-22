@@ -156,18 +156,11 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
       return self.holeLayerDisplay_property.prop
     }
   }
-  var instanceDisplay_property = EBTransientProperty_InstanceDisplay ()
+  var instanceDisplay_property = EBTransientProperty_EBShapeLayer ()
 
-  var instanceDisplay_property_selection : EBSelection <InstanceDisplay> {
+  var instanceDisplay_property_selection : EBSelection <EBShapeLayer> {
     get {
       return self.instanceDisplay_property.prop
-    }
-  }
-  var instanceLayerDisplay_property = EBTransientProperty_CALayer ()
-
-  var instanceLayerDisplay_property_selection : EBSelection <CALayer> {
-    get {
-      return self.instanceLayerDisplay_property.prop
     }
   }
   var instanceRect_property = EBTransientProperty_CanariBoardRect ()
@@ -247,7 +240,6 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     bind_property_frontTracksDisplay (model: model)
     bind_property_holeLayerDisplay (model: model)
     bind_property_instanceDisplay (model: model)
-    bind_property_instanceLayerDisplay (model: model)
     bind_property_instanceRect (model: model)
     bind_property_instanceRotation (model: model)
     bind_property_modelName (model: model)
@@ -1180,50 +1172,10 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<InstanceDisplay> ()
+          var s = Set<EBShapeLayer> ()
           var isMultipleSelection = false
           for object in v {
             switch object.instanceDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_instanceLayerDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_instanceLayerDisplay (self.instanceLayerDisplay_property)
-    self.instanceLayerDisplay_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<CALayer> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.instanceLayerDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1688,9 +1640,6 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //--- instanceDisplay
     self.instanceDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceDisplay (self.instanceDisplay_property)
-  //--- instanceLayerDisplay
-    self.instanceLayerDisplay_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_instanceLayerDisplay (self.instanceLayerDisplay_property)
   //--- instanceRect
     self.instanceRect_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceRect (self.instanceRect_property)

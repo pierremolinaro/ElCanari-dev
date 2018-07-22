@@ -41,6 +41,390 @@ class EBGraphicManagedObject : EBManagedObject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    StrokeOrFill
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum StrokeOrFill : Int {
+  case stroke
+  case fill
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBShapes
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct EBShapes : Hashable {
+
+  //····················································································································
+  //  Property
+  //····················································································································
+
+  private var paths : [([NSBezierPath], NSColor, StrokeOrFill)]
+
+  //····················································································································
+  //  init
+  //····················································································································
+
+  init () {
+    paths = []
+  }
+
+  //····················································································································
+
+  init (_ inPaths : [([NSBezierPath], NSColor, StrokeOrFill)]) {
+    paths = inPaths
+  }
+
+  //····················································································································
+
+  init (_ inBezierPaths : [NSBezierPath], _ inColor : NSColor, _ inOperation : StrokeOrFill) {
+    paths = []
+    self.paths.append ((inBezierPaths, inColor, inOperation))
+  }
+
+  //····················································································································
+  //  append
+  //····················································································································
+
+  mutating func append (_ inBezierPaths : [NSBezierPath], _ inColor : NSColor, _ inOperation : StrokeOrFill) {
+    self.paths.append ((inBezierPaths, inColor, inOperation))
+  }
+
+  //····················································································································
+  //  Draw Rect
+  //····················································································································
+
+  func draw (_ dirtyRect: NSRect) {
+    for (paths, color, operation) in self.paths {
+      switch operation {
+      case .stroke :
+        color.setStroke ()
+        for bp in paths {
+          bp.stroke ()
+        }
+      case .fill :
+        color.setFill ()
+        for bp in paths {
+          bp.fill ()
+        }
+      }
+    }
+  }
+
+  //····················································································································
+  /// Returns a Boolean value indicating whether two values are equal.
+  ///
+  /// Equality is the inverse of inequality. For any values `a` and `b`,
+  /// `a == b` implies that `a != b` is `false`.
+  ///
+  /// - Parameters:
+  ///   - lhs: A value to compare.
+  ///   - rhs: Another value to compare.
+  //····················································································································
+
+  public static func == (lhs: EBShapes, rhs: EBShapes) -> Bool {
+    var equal = lhs.paths.count == rhs.paths.count
+    if equal {
+      var idx = 0
+      while idx < lhs.paths.count {
+        equal = (lhs.paths [idx].0.count == rhs.paths [idx].0.count) && (lhs.paths [idx].1 == rhs.paths [idx].1) && (lhs.paths [idx].2 == rhs.paths [idx].2)
+        if equal {
+          var idy = 0
+          while idy < lhs.paths [idx].0.count {
+            equal = lhs.paths [idx].0 [idy] == rhs.paths [idx].0 [idy]
+            if !equal {
+              break
+            }
+            idy += 1
+          }
+        }
+        if !equal {
+          break
+        }
+        idx += 1
+      }
+    }
+    return equal
+  }
+
+  //····················································································································
+  /// The hash value.
+  ///
+  /// Hash values are not guaranteed to be equal across different executions of
+  /// your program. Do not save hash values to use during a future execution.
+  //····················································································································
+
+  public var hashValue : Int {
+    var h = 0
+    for (bps, color, op) in self.paths {
+      h ^= color.hashValue ^ op.rawValue.hashValue
+      for pb in bps {
+        h ^= pb.hashValue
+      }
+    }
+    return h
+  }
+
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Build PDF image
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func buildPDFimage (frame inFrame: CGRect,
+                    shapes inShapes: EBShapes,
+                    backgroundColor inBackColor : NSColor? = nil) -> Data {
+  let view = EBOffscreenView (frame: inFrame)
+  view.setBackColor (inBackColor)
+  view.setPaths (inShapes)
+  return view.dataWithPDF (inside: inFrame)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   EBOffscreenView
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
+
+  private var mShapes = EBShapes ()
+  private var mBackColor : NSColor? = nil
+
+  //····················································································································
+
+  override init (frame frameRect: NSRect) {
+    super.init (frame: frameRect)
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  required init? (coder: NSCoder) {
+    super.init (coder: coder)
+    noteObjectAllocation (self)
+  }
+
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+  //  Set paths
+  //····················································································································
+
+  func setPaths (_ inShapes : EBShapes) {
+    self.mShapes = inShapes
+  }
+
+  //····················································································································
+  //  Set back color
+  //····················································································································
+
+  func setBackColor (_ inColor : NSColor?) {
+    self.mBackColor = inColor
+  }
+
+  //····················································································································
+  //  Draw Rect
+  //····················································································································
+
+  override func draw (_ dirtyRect: NSRect) {
+    if let backColor = mBackColor {
+      backColor.setFill ()
+      NSRectFill (dirtyRect)
+    }
+  //--- Bezier paths
+    self.mShapes.draw (dirtyRect)
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBShapeLayer
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct EBShapeLayer : Hashable {
+
+  //····················································································································
+  //   Properties
+  //····················································································································
+
+  let drawings : EBShapes
+  let center : NSPoint
+  let size : NSSize
+  let rotation : CGFloat
+  var userIndex = -1
+  var userSecondaryIndex = -1
+
+  //····················································································································
+  //   Init
+  //····················································································································
+
+  init (_ inImage : EBShapes, _ inCenter : NSPoint, _ inSize : NSSize, _ inRotation : CGFloat) {
+    drawings = inImage
+    center = inCenter
+    size = inSize
+    rotation = inRotation
+  }
+
+  //····················································································································
+  // Equatable protocol
+  //····················································································································
+
+  public static func == (lhs: EBShapeLayer, rhs: EBShapeLayer) -> Bool {
+    return (lhs.userIndex == rhs.userIndex)
+      && (lhs.userSecondaryIndex == rhs.userSecondaryIndex)
+      && (lhs.rotation == rhs.rotation)
+      && (lhs.center == rhs.center)
+      && (lhs.size == rhs.size)
+      && (lhs.drawings == rhs.drawings)
+  }
+
+  //····················································································································
+  // Hashable protocol
+  //····················································································································
+
+  public var hashValue: Int {
+    var h = self.userIndex
+    h ^= self.userSecondaryIndex
+    h ^= self.rotation.hashValue
+    h ^= self.center.x.hashValue
+    h ^= self.center.y.hashValue
+    h ^= self.size.width.hashValue
+    h ^= self.size.height.hashValue
+    h ^= self.drawings.hashValue
+    return h
+  }
+
+  //····················································································································
+  // boundingBox
+  //····················································································································
+
+  var boundingBox : NSRect {
+    let imageWidth  = self.size.width
+    let imageHeight = self.size.height
+    let width  = abs ( imageWidth * cos (self.rotation) + imageHeight * sin (self.rotation))
+    let height = abs (-imageWidth * sin (self.rotation) + imageHeight * cos (self.rotation))
+    let originX = self.center.x - width  / 2.0
+    let originY = self.center.y - height / 2.0
+    return NSRect (origin: NSPoint (x: originX, y:originY), size: NSSize (width: width, height: height))
+  }
+  
+  //····················································································································
+  // draw
+  //····················································································································
+
+  func draw (_ inDirtyRect: NSRect) {
+    if self.boundingBox.intersects (inDirtyRect) {
+      let at = NSAffineTransform ()
+      at.translateX (by: self.center.x, yBy: self.center.y)
+      at.rotate (byRadians: self.rotation)
+      at.translateX (by: -self.size.width / 2.0, yBy: -self.size.height / 2.0)
+      at.concat ()
+      self.drawings.draw (inDirtyRect)
+      at.invert ()
+      at.concat ()
+    }
+  }
+
+  //····················································································································
+
+  func sameDisplay (as inObject : EBShapeLayer) -> Bool {
+    return (self.rotation == inObject.rotation)
+      && (self.center == inObject.center)
+      && (self.size == inObject.size)
+      && (self.drawings == inObject.drawings)
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBShapeLayerArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct EBShapeLayerArray : Hashable {
+
+  //····················································································································
+  //   Properties
+  //····················································································································
+
+  let objects : [EBShapeLayer]
+
+  //····················································································································
+  //   Init
+  //····················································································································
+
+  init (_ inObjects : [EBShapeLayer]) {
+    objects = inObjects
+  }
+
+  //····················································································································
+  // Equatable protocol
+  //····················································································································
+
+  public static func == (lhs: EBShapeLayerArray, rhs: EBShapeLayerArray) -> Bool {
+    if lhs.objects.count != rhs.objects.count {
+      return false
+    }else{
+      var idx = 0
+      while idx < lhs.objects.count {
+        if lhs.objects [idx] != rhs.objects [idx] {
+          return false
+        }
+        idx += 1
+      }
+      return true
+    }
+  }
+
+  //····················································································································
+  // Hashable protocol
+  //····················································································································
+
+  public var hashValue: Int {
+    var h = 0
+    for object in objects {
+      h ^= object.hashValue
+    }
+    return h
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION CALayer: findLayer (at inPoint : CGPoint) -> CALayer?
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

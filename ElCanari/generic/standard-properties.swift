@@ -1171,6 +1171,24 @@ typealias EBReadOnlyPropertyArray_NSImage  = EBReadOnlyClassProperty <[NSImage]>
 typealias EBTransientPropertyArray_NSImage = EBTransientClassProperty <[NSImage]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property EBShapes
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_EBShapes  = EBReadOnlyValueProperty <EBShapes>
+typealias EBTransientProperty_EBShapes = EBTransientValueProperty <EBShapes>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property EBShapeLayer
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_EBShapeLayer  = EBReadOnlyValueProperty <EBShapeLayer>
+typealias EBTransientProperty_EBShapeLayer = EBTransientValueProperty <EBShapeLayer>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property EBShapeLayerArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_EBShapeLayerArray  = EBReadOnlyValueProperty <EBShapeLayerArray>
+typealias EBTransientProperty_EBShapeLayerArray = EBTransientValueProperty <EBShapeLayerArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CGPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1241,24 +1259,6 @@ typealias EBReadOnlyProperty_MergerBoardModelArray  = EBReadOnlyClassProperty <M
 typealias EBTransientProperty_MergerBoardModelArray = EBTransientClassProperty <MergerBoardModelArray>
 typealias EBReadOnlyPropertyArray_MergerBoardModelArray  = EBReadOnlyClassProperty <[MergerBoardModelArray]>
 typealias EBTransientPropertyArray_MergerBoardModelArray = EBTransientClassProperty <[MergerBoardModelArray]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class InstanceDisplay
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_InstanceDisplay  = EBReadOnlyClassProperty <InstanceDisplay>
-typealias EBTransientProperty_InstanceDisplay = EBTransientClassProperty <InstanceDisplay>
-typealias EBReadOnlyPropertyArray_InstanceDisplay  = EBReadOnlyClassProperty <[InstanceDisplay]>
-typealias EBTransientPropertyArray_InstanceDisplay = EBTransientClassProperty <[InstanceDisplay]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class InstanceDisplayArray
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_InstanceDisplayArray  = EBReadOnlyClassProperty <InstanceDisplayArray>
-typealias EBTransientProperty_InstanceDisplayArray = EBTransientClassProperty <InstanceDisplayArray>
-typealias EBReadOnlyPropertyArray_InstanceDisplayArray  = EBReadOnlyClassProperty <[InstanceDisplayArray]>
-typealias EBTransientPropertyArray_InstanceDisplayArray = EBTransientClassProperty <[InstanceDisplayArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class BezierPathArray

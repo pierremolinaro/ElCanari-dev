@@ -81,20 +81,17 @@ graphic entity MergerBoardInstance {
   transient CALayer frontTracksDisplay
     dependsFrom self.x, self.y, prefs.mergerColorFrontTracks, prefs.mergerBoardViewDisplayFrontTracks, self.myModel.one.frontTrackSegments ;
 
-  transient CALayer frontPackagesDisplay
-    dependsFrom self.x, self.y, prefs.mergerColorFrontPackages, prefs.mergerBoardViewDisplayFrontPackages, self.myModel.one.frontPackagesSegments ;
+  transient CALayer frontPackagesDisplay dependsFrom
+    self.x, self.y, prefs.mergerColorFrontPackages,
+    prefs.mergerBoardViewDisplayFrontPackages, self.myModel.one.frontPackagesSegments ;
 
-  transient CALayer backPackagesDisplay
-    dependsFrom self.x, self.y, prefs.mergerColorBackPackages, prefs.mergerBoardViewDisplayBackPackages, self.myModel.one.backPackagesSegments ;
+  transient CALayer backPackagesDisplay dependsFrom
+     self.x, self.y, prefs.mergerColorBackPackages,
+     prefs.mergerBoardViewDisplayBackPackages, self.myModel.one.backPackagesSegments ;
 
-  transient CALayer instanceLayerDisplay dependsFrom
-    self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight,
-    self.instanceRotation,
-    self.myRoot.one.zoom, self.myModel.one.imageForInstances
-  ;
-
-  transient InstanceDisplay instanceDisplay dependsFrom
+  transient EBShapeLayer instanceDisplay dependsFrom
     self.x, self.y,
+    self.myModel.one.modelWidth, self.myModel.one.modelHeight,
     self.instanceRotation,
     self.myModel.one.imageForInstances
   ;
