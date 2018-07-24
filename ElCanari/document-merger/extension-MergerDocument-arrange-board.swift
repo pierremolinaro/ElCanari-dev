@@ -69,7 +69,6 @@ extension MergerDocument {
         width:instanceRect.width,
         height:instanceRect.bottom
       )
-      NSLog ("testRect.top \(testRect.top)")
       for nonSelectedInstance in nonSelectedSet {
         let intersection = testRect.intersection (getBoardRect (nonSelectedInstance))
         if !intersection.isEmpty () {
@@ -79,7 +78,6 @@ extension MergerDocument {
             width: instanceRect.width,
             height: instanceRect.bottom - intersection.top
           )
-          NSLog ("intersection, testRect.top \(testRect.top)")
         }
       }
       if testRect.isEmpty () {
@@ -87,7 +85,6 @@ extension MergerDocument {
       }else{
         deltaY = max (deltaY, -testRect.height)
       }
-      NSLog ("deltaY \(deltaY)")
     }
     if deltaY < 0 {
       for selectedInstance in selectedSet {
@@ -99,11 +96,85 @@ extension MergerDocument {
   //····················································································································
 
   func arrangeRightNoOverlap () {
+    let boardWidth = self.rootObject.boardWidth!
+  //--- Selected set
+    let selectedSet = self.mBoardInstanceController.selectedSet
+  //--- Non selected set
+    let nonSelectedSet = Set (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
+  //---
+    var deltaX = boardWidth
+    for selectedInstance in selectedSet {
+      let instanceRect = getBoardRect (selectedInstance)
+      var testRect = CanariBoardRect (
+        left:instanceRect.right,
+        bottom:instanceRect.bottom,
+        width:boardWidth - instanceRect.right,
+        height:instanceRect.height
+      )
+      for nonSelectedInstance in nonSelectedSet {
+        let intersection = testRect.intersection (getBoardRect (nonSelectedInstance))
+        if !intersection.isEmpty () {
+          testRect = CanariBoardRect (
+            left: testRect.left,
+            bottom: testRect.bottom,
+            width: intersection.left - testRect.left,
+            height: testRect.height
+          )
+        }
+      }
+      if testRect.isEmpty () {
+        deltaX = 0
+      }else{
+        deltaX = min (deltaX, testRect.width)
+      }
+    }
+    if deltaX > 0 {
+      for selectedInstance in selectedSet {
+        selectedInstance.x += deltaX
+      }
+    }
   }
 
   //····················································································································
 
   func arrangeLeftNoOverlap () {
+    let boardWidth = self.rootObject.boardWidth!
+  //--- Selected set
+    let selectedSet = self.mBoardInstanceController.selectedSet
+  //--- Non selected set
+    let nonSelectedSet = Set (self.rootObject.boardInstances_property.propval).subtracting (selectedSet)
+  //---
+    var deltaX = -boardWidth
+    for selectedInstance in selectedSet {
+      let instanceRect = getBoardRect (selectedInstance)
+      var testRect = CanariBoardRect (
+        left:0,
+        bottom:instanceRect.bottom,
+        width:instanceRect.left,
+        height:instanceRect.height
+      )
+      for nonSelectedInstance in nonSelectedSet {
+        let intersection = testRect.intersection (getBoardRect (nonSelectedInstance))
+        if !intersection.isEmpty () {
+          testRect = CanariBoardRect (
+            left: intersection.right,
+            bottom: instanceRect.bottom,
+            width: instanceRect.left - intersection.right,
+            height: instanceRect.height
+          )
+        }
+      }
+      if testRect.isEmpty () {
+        deltaX = 0
+      }else{
+        deltaX = max (deltaX, -testRect.width)
+      }
+    }
+    if deltaX < 0 {
+      for selectedInstance in selectedSet {
+        selectedInstance.x += deltaX
+      }
+    }
   }
 
   //····················································································································
