@@ -1,9 +1,9 @@
 {
   "NOTE" : [],
-  "BUGFIX" : ["Merger: Excellon file was incorrect"],
-  "CHANGE" : [],
+  "BUGFIX" : ["Merger: Excellon file was incorrect in previous releases"],
+  "CHANGE" : ["Merger: new board display"],
   "NEW" : [
-    "Merger: switch automatic / manual board size",
+    "Merger: switch for selecting automatic / manual board size",
     "Merger: arrow and shift-arrow key displacement magnitudes are settable",
     "Merger: board instances can be rotated"
   ]
