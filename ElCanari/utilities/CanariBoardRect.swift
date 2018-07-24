@@ -15,8 +15,8 @@ import Foundation
 
 struct CanariBoardRect : Hashable, Equatable {
 
-  let x : Int
-  let y : Int
+  let left : Int
+  let bottom : Int
   let width : Int
   let height : Int
 
@@ -24,28 +24,42 @@ struct CanariBoardRect : Hashable, Equatable {
   //   init
   //····················································································································
 
-  init (x inX : Int, y inY : Int, width inWidth : Int, height inHeight : Int) {
-    x = inX
-    y = inY
-    width = inWidth
-    height = inHeight
+  init (left inLeft : Int, bottom inBottom: Int, width inWidth : Int, height inHeight : Int) {
+    if (inWidth > 0) && (inHeight > 0) {
+      left = inLeft
+      bottom = inBottom
+      width = inWidth
+      height = inHeight
+    }else{
+      left = 0
+      bottom = 0
+      width = 0
+      height = 0
+    }
   }
 
   //····················································································································
 
   init () {
-    x = 0
-    y = 0
+    left = 0
+    bottom = 0
     width = 0 // Empty rect
     height = 0
   }
+
+  //····················································································································
+  //   Accessors
+  //····················································································································
+
+  var top    : Int { return self.bottom + self.height }
+  var right  : Int { return self.left + self.width }
 
   //····················································································································
   //   Protocol Equatable
   //····················································································································
 
   public static func == (lhs: CanariBoardRect, rhs: CanariBoardRect) -> Bool {
-    return (lhs.x == rhs.x) && (lhs.y == rhs.y) && (lhs.width == rhs.width) && (lhs.height == rhs.height)
+    return (lhs.left == rhs.left) && (lhs.bottom == rhs.bottom) && (lhs.width == rhs.width) && (lhs.height == rhs.height)
   }
 
   //····················································································································
@@ -53,7 +67,7 @@ struct CanariBoardRect : Hashable, Equatable {
   //····················································································································
 
   var hashValue : Int {
-    return self.x ^ self.y ^ self.width ^ self.height
+    return self.left ^ self.bottom ^ self.width ^ self.height
   }
 
   //····················································································································
@@ -70,8 +84,8 @@ struct CanariBoardRect : Hashable, Equatable {
 
   func cocoaRect () -> NSRect {
     return NSRect (
-      x:canariUnitToCocoa (self.x),
-      y:canariUnitToCocoa (self.y),
+      x:canariUnitToCocoa (self.left),
+      y:canariUnitToCocoa (self.bottom),
       width:canariUnitToCocoa (self.width),
       height:canariUnitToCocoa (self.height)
     )
@@ -88,11 +102,11 @@ struct CanariBoardRect : Hashable, Equatable {
     }else if inOtherRect.isEmpty () {
       result = self
     }else{
-      let left = min (self.x, inOtherRect.x)
-      let bottom = min (self.y, inOtherRect.y)
-      let right = max (self.x + self.width, inOtherRect.x + inOtherRect.width)
-      let top = max (self.y + self.height, inOtherRect.y + inOtherRect.height)
-      result = CanariBoardRect (x:left, y:bottom, width:right - left, height:top - bottom)
+      let left = min (self.left, inOtherRect.left)
+      let bottom = min (self.bottom, inOtherRect.bottom)
+      let right = max (self.left + self.width, inOtherRect.left + inOtherRect.width)
+      let top = max (self.bottom + self.height, inOtherRect.bottom + inOtherRect.height)
+      result = CanariBoardRect (left:left, bottom:bottom, width:right - left, height:top - bottom)
     }
     return result
   }
@@ -103,14 +117,14 @@ struct CanariBoardRect : Hashable, Equatable {
 
   func intersection (_ inOtherRect : CanariBoardRect) -> CanariBoardRect {
     let result : CanariBoardRect
-    if self.isEmpty () ||  inOtherRect.isEmpty () {
+    if self.isEmpty () || inOtherRect.isEmpty () {
       result = CanariBoardRect () // Empty Rect
     }else{
-      let right = max (self.x, inOtherRect.x)
-      let bottom = max (self.y, inOtherRect.y)
-      let left = min (self.x + self.width, inOtherRect.x + inOtherRect.width)
-      let top = min (self.y + self.height, inOtherRect.y + inOtherRect.height)
-      result = CanariBoardRect (x:right, y:bottom, width:left - right, height:top - bottom)
+      let left   = max (self.left, inOtherRect.left)
+      let bottom = max (self.bottom, inOtherRect.bottom)
+      let right  = min (self.left + self.width,  inOtherRect.left + inOtherRect.width)
+      let top    = min (self.bottom + self.height, inOtherRect.bottom + inOtherRect.height)
+      result = CanariBoardRect (left: left, bottom: bottom, width: right - left, height: top - bottom)
     }
     return result
   }
@@ -124,11 +138,11 @@ struct CanariBoardRect : Hashable, Equatable {
     if self.isEmpty () {
       result = CanariBoardRect () // Empty Rect
     }else{
-      let right = self.x + inDx
-      let bottom = self.y + inDy
-      let left = self.x + self.width - inDx
-      let top = self.y + self.height - inDy
-      result = CanariBoardRect (x:right, y:bottom, width:left - right, height:top - bottom)
+      let right = self.left + inDx
+      let bottom = self.bottom + inDy
+      let left = self.left + self.width - inDx
+      let top = self.bottom + self.height - inDy
+      result = CanariBoardRect (left:right, bottom:bottom, width:left - right, height:top - bottom)
     }
     return result
   }

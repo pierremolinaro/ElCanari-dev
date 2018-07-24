@@ -75,6 +75,12 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
   }
 
   //····················································································································
+  //   GET SELECTED OBJECT SET
+  //····················································································································
+
+  var selectedSet : Set <ArtworkFileGenerationParameters> { return mSelectedSet.mSet }
+
+  //····················································································································
 
   private final func setSelectedArrayComputeFunction () {
     self.selectedArray_property.readModelFunction = {

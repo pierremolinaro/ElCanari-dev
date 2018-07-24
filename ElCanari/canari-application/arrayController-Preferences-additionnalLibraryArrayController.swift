@@ -75,6 +75,12 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   }
 
   //····················································································································
+  //   GET SELECTED OBJECT SET
+  //····················································································································
+
+  var selectedSet : Set <CanariLibraryEntry> { return mSelectedSet.mSet }
+
+  //····················································································································
 
   private final func setSelectedArrayComputeFunction () {
     self.selectedArray_property.readModelFunction = {

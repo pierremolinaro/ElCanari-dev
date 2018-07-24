@@ -720,11 +720,11 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
+				CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */,
 				CFA655CA21060672001E5067 /* action-MergerDocument-arrangeDownAction.swift */,
 				CFA655CB21060672001E5067 /* action-MergerDocument-arrangeLeftAction.swift */,
 				CFA655CC21060672001E5067 /* action-MergerDocument-arrangeRightAction.swift */,
 				CFA655CD21060672001E5067 /* action-MergerDocument-arrangeUpAction.swift */,
-				CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */,
 				CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */,
 				CFD7E80420EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift */,
 				CFD7EA2620E7DA8100D53B87 /* action-MergerDocument-insertBoardAction.swift */,

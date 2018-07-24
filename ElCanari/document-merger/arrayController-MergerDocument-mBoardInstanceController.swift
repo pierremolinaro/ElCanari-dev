@@ -76,6 +76,12 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   }
 
   //····················································································································
+  //   GET SELECTED OBJECT SET
+  //····················································································································
+
+  var selectedSet : Set <MergerBoardInstance> { return mSelectedSet.mSet }
+
+  //····················································································································
 
   private final func setSelectedArrayComputeFunction () {
     self.selectedArray_property.readModelFunction = {

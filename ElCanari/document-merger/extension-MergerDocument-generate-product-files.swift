@@ -476,10 +476,10 @@ extension MergerDocument {
         for board in self.rootObject.boardInstances_property.propval {
           let lineWidth : Int = board.myModel_property.propval!.modelLimitWidth
           let r : CanariBoardRect = board.instanceRect!
-          let left  = canariUnitToMilTenth (r.x + lineWidth / 2)
-          let right = canariUnitToMilTenth (r.x + r.width - lineWidth / 2)
-          let bottom = canariUnitToMilTenth (r.y + lineWidth / 2)
-          let top = canariUnitToMilTenth (r.y + r.height - lineWidth / 2)
+          let left  = canariUnitToMilTenth (r.left + lineWidth / 2)
+          let right = canariUnitToMilTenth (r.left + r.width - lineWidth / 2)
+          let bottom = canariUnitToMilTenth (r.bottom + lineWidth / 2)
+          let top = canariUnitToMilTenth (r.bottom + r.height - lineWidth / 2)
           // NSLog ("instance \(r.x) \(r.y) \(r.x + r.width) \(r.y + r.height), \(board.myModel_property.propval!.modelLimitWidth)")
           var drawings = [String] ()
           drawings.append ("X\( left)Y\(bottom)D02") // Move to
