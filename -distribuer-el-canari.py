@@ -132,7 +132,7 @@ runCommand (["cp", "-r", "build/Release/ElCanari.app", "."])
 runCommand (["tar", "-cf", "ElCanari.app.tar", "ElCanari.app"])
 runCommand (["bzip2", "-9", "ElCanari.app.tar"])
 BZ2file = TEMP_DIR + "/ElCanari.app." + VERSION_CANARI + ".tar.bz2"
-#runCommand (["mv", "ElCanari.app.tar.bz2", BZ2file])
+runCommand (["mv", "ElCanari.app.tar.bz2", BZ2file])
 #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
 sommeControle = runHiddenCommand (["distribution-el-canari/sign_update.sh",
                                   BZ2file,

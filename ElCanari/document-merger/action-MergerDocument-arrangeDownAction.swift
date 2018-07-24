@@ -12,13 +12,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension MergerDocument {
-  func arrangeHorizontallyAction (_ sender : NSObject) {
+  func arrangeDownAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-  if self.rootObject.overlapingArrangment {
-    self.arrangeHorizontallyWithOverlap ()
-  }else{
-    self.arrangeHorizontally ()
-  }
+    if self.rootObject.overlapingArrangment {
+      self.arrangeDownWithOverlap ()
+    }else{
+      self.arrangeDownNoOverlap ()
+    }
 //--- END OF USER ZONE 2
   }
 }

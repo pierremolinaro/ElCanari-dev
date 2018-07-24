@@ -14,8 +14,10 @@ import Cocoa
 
   @IBOutlet var addBoardModelButton : EBButton?
   @IBOutlet var boardHelpPanel : NSPanel?
-  @IBOutlet var mArrangeHorizontallyButton : EBButton?
-  @IBOutlet var mArrangeVerticalyButton : EBButton?
+  @IBOutlet var mArrangeDownButton : EBButton?
+  @IBOutlet var mArrangeLeftButton : EBButton?
+  @IBOutlet var mArrangeRightButton : EBButton?
+  @IBOutlet var mArrangeUpButton : EBButton?
   @IBOutlet var mArrowMagnitudeTextField : CanariDimensionTextField?
   @IBOutlet var mArrowMagnitudeUnitPopUp : EBPopUpButton?
   @IBOutlet var mArtworNameTextField : EBTextObserverField?
@@ -283,23 +285,41 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'boardHelpPanel' outlet is not an instance of 'NSPanel'") ;
     }
-    if nil == mArrangeHorizontallyButton {
+    if nil == mArrangeDownButton {
       presentErrorWindow (file: #file,
                               line: #line,
-                              errorMessage: "the 'mArrangeHorizontallyButton' outlet is nil") ;
-//    }else if !mArrangeHorizontallyButton!.isKindOfClass (EBButton) {
+                              errorMessage: "the 'mArrangeDownButton' outlet is nil") ;
+//    }else if !mArrangeDownButton!.isKindOfClass (EBButton) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mArrangeHorizontallyButton' outlet is not an instance of 'EBButton'") ;
+//                              errorMessage: "the 'mArrangeDownButton' outlet is not an instance of 'EBButton'") ;
     }
-    if nil == mArrangeVerticalyButton {
+    if nil == mArrangeLeftButton {
       presentErrorWindow (file: #file,
                               line: #line,
-                              errorMessage: "the 'mArrangeVerticalyButton' outlet is nil") ;
-//    }else if !mArrangeVerticalyButton!.isKindOfClass (EBButton) {
+                              errorMessage: "the 'mArrangeLeftButton' outlet is nil") ;
+//    }else if !mArrangeLeftButton!.isKindOfClass (EBButton) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mArrangeVerticalyButton' outlet is not an instance of 'EBButton'") ;
+//                              errorMessage: "the 'mArrangeLeftButton' outlet is not an instance of 'EBButton'") ;
+    }
+    if nil == mArrangeRightButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mArrangeRightButton' outlet is nil") ;
+//    }else if !mArrangeRightButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mArrangeRightButton' outlet is not an instance of 'EBButton'") ;
+    }
+    if nil == mArrangeUpButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mArrangeUpButton' outlet is nil") ;
+//    }else if !mArrangeUpButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mArrangeUpButton' outlet is not an instance of 'EBButton'") ;
     }
     if nil == mArrowMagnitudeTextField {
       presentErrorWindow (file: #file,
@@ -1744,22 +1764,42 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))
+          return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mArrangeHorizontallyButton
+        outlet:self.mArrangeRightButton
       )
-      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
-      mController_mArrangeHorizontallyButton_enabled = controller
+      self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
+      mController_mArrangeRightButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
-          return (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))
+          return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mArrangeVerticalyButton
+        outlet:self.mArrangeLeftButton
       )
-      self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
-      mController_mArrangeVerticalyButton_enabled = controller
+      self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
+      mController_mArrangeLeftButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet:self.mArrangeUpButton
+      )
+      self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
+      mController_mArrangeUpButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet:self.mArrangeDownButton
+      )
+      self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
+      mController_mArrangeDownButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -1815,10 +1855,14 @@ import Cocoa
     updateBoardModelButton?.action = #selector (MergerDocument.updateBoardModelAction (_:))
     showBoardHelpButton?.target = self
     showBoardHelpButton?.action = #selector (MergerDocument.showBoardHelpAction (_:))
-    mArrangeHorizontallyButton?.target = self
-    mArrangeHorizontallyButton?.action = #selector (MergerDocument.arrangeHorizontallyAction (_:))
-    mArrangeVerticalyButton?.target = self
-    mArrangeVerticalyButton?.action = #selector (MergerDocument.arrangeVerticalyAction (_:))
+    mArrangeRightButton?.target = self
+    mArrangeRightButton?.action = #selector (MergerDocument.arrangeRightAction (_:))
+    mArrangeLeftButton?.target = self
+    mArrangeLeftButton?.action = #selector (MergerDocument.arrangeLeftAction (_:))
+    mArrangeUpButton?.target = self
+    mArrangeUpButton?.action = #selector (MergerDocument.arrangeUpAction (_:))
+    mArrangeDownButton?.target = self
+    mArrangeDownButton?.action = #selector (MergerDocument.arrangeDownAction (_:))
     mGenerateProductFilesActionButton?.target = self
     mGenerateProductFilesActionButton?.action = #selector (MergerDocument.generateProductFilesAction (_:))
     mImportArtworkButton?.target = self
@@ -1969,10 +2013,14 @@ import Cocoa
     mController_mEmptyBoardMessage_hidden = nil
     self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mOverlapSwitch_enabled!)
     mController_mOverlapSwitch_enabled = nil
-    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mArrangeHorizontallyButton_enabled!)
-    mController_mArrangeHorizontallyButton_enabled = nil
-    self.rootObject.boardInstances_property.count_property.removeEBObserver (mController_mArrangeVerticalyButton_enabled!)
-    mController_mArrangeVerticalyButton_enabled = nil
+    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (mController_mArrangeRightButton_enabled!)
+    mController_mArrangeRightButton_enabled = nil
+    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (mController_mArrangeLeftButton_enabled!)
+    mController_mArrangeLeftButton_enabled = nil
+    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (mController_mArrangeUpButton_enabled!)
+    mController_mArrangeUpButton_enabled = nil
+    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (mController_mArrangeDownButton_enabled!)
+    mController_mArrangeDownButton_enabled = nil
     self.rootObject.artwork_property.removeEBObserver (mController_mNoArtworkMessage_hidden!)
     mController_mNoArtworkMessage_hidden = nil
     self.documentFileNameOk_property.removeEBObserver (mController_mDangerView_hidden!)
@@ -2007,15 +2055,19 @@ import Cocoa
     removeBoardModelButton?.target = nil
     updateBoardModelButton?.target = nil
     showBoardHelpButton?.target = nil
-    mArrangeHorizontallyButton?.target = nil
-    mArrangeVerticalyButton?.target = nil
+    mArrangeRightButton?.target = nil
+    mArrangeLeftButton?.target = nil
+    mArrangeUpButton?.target = nil
+    mArrangeDownButton?.target = nil
     mGenerateProductFilesActionButton?.target = nil
     mImportArtworkButton?.target = nil
   //--------------------------- Clean up outlets
     self.addBoardModelButton?.ebCleanUp ()
     self.boardHelpPanel?.ebCleanUp ()
-    self.mArrangeHorizontallyButton?.ebCleanUp ()
-    self.mArrangeVerticalyButton?.ebCleanUp ()
+    self.mArrangeDownButton?.ebCleanUp ()
+    self.mArrangeLeftButton?.ebCleanUp ()
+    self.mArrangeRightButton?.ebCleanUp ()
+    self.mArrangeUpButton?.ebCleanUp ()
     self.mArrowMagnitudeTextField?.ebCleanUp ()
     self.mArrowMagnitudeUnitPopUp?.ebCleanUp ()
     self.mArtworNameTextField?.ebCleanUp ()
@@ -2155,8 +2207,10 @@ import Cocoa
   private var mController_mManualBoardSizeView_hidden : MultipleBindingController_hidden? = nil
   private var mController_mEmptyBoardMessage_hidden : MultipleBindingController_hidden? = nil
   private var mController_mOverlapSwitch_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mArrangeHorizontallyButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mArrangeVerticalyButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mArrangeRightButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mArrangeLeftButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mArrangeUpButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_mArrangeDownButton_enabled : MultipleBindingController_enabled? = nil
   private var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden? = nil
   private var mController_mDangerView_hidden : MultipleBindingController_hidden? = nil
   private var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
