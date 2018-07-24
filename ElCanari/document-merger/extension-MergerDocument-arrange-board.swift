@@ -16,7 +16,7 @@ extension MergerDocument {
 
   //····················································································································
 
-  func arrangeUpNoOverlap () {
+  func arrangeUp (overlap inOverlap : Bool) {
     let boardHeight = self.rootObject.boardHeight!
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
@@ -25,7 +25,8 @@ extension MergerDocument {
   //---
     var deltaY = boardHeight
     for selectedInstance in selectedSet {
-      let instanceRect = getBoardRect (selectedInstance)
+      let instanceRect = getInstanceRect (selectedInstance)
+      let instanceLimit = getInstanceLimit (selectedInstance)
       var testRect = CanariBoardRect (
         left:instanceRect.left,
         bottom:instanceRect.top,
@@ -33,7 +34,8 @@ extension MergerDocument {
         height:boardHeight - instanceRect.top
       )
       for nonSelectedInstance in nonSelectedSet {
-        let intersection = testRect.intersection (getBoardRect (nonSelectedInstance))
+        let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
+        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).inset (byX:inset, byY: inset))
         if !intersection.isEmpty () {
           testRect = CanariBoardRect (left: testRect.left, bottom: testRect.bottom, width: testRect.width, height: intersection.bottom - testRect.bottom)
         }
@@ -53,7 +55,7 @@ extension MergerDocument {
 
   //····················································································································
 
-  func arrangeDownNoOverlap () {
+  func arrangeDown (overlap inOverlap : Bool) {
     let boardHeight = self.rootObject.boardHeight!
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
@@ -62,7 +64,8 @@ extension MergerDocument {
   //---
     var deltaY = -boardHeight
     for selectedInstance in selectedSet {
-      let instanceRect = getBoardRect (selectedInstance)
+      let instanceRect = getInstanceRect (selectedInstance)
+      let instanceLimit = getInstanceLimit (selectedInstance)
       var testRect = CanariBoardRect (
         left:instanceRect.left,
         bottom:0,
@@ -70,7 +73,8 @@ extension MergerDocument {
         height:instanceRect.bottom
       )
       for nonSelectedInstance in nonSelectedSet {
-        let intersection = testRect.intersection (getBoardRect (nonSelectedInstance))
+        let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
+        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).inset (byX:inset, byY: inset))
         if !intersection.isEmpty () {
           testRect = CanariBoardRect (
             left: instanceRect.left,
@@ -95,7 +99,7 @@ extension MergerDocument {
 
   //····················································································································
 
-  func arrangeRightNoOverlap () {
+  func arrangeRight (overlap inOverlap : Bool) {
     let boardWidth = self.rootObject.boardWidth!
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
@@ -104,7 +108,8 @@ extension MergerDocument {
   //---
     var deltaX = boardWidth
     for selectedInstance in selectedSet {
-      let instanceRect = getBoardRect (selectedInstance)
+      let instanceRect = getInstanceRect (selectedInstance)
+      let instanceLimit = getInstanceLimit (selectedInstance)
       var testRect = CanariBoardRect (
         left:instanceRect.right,
         bottom:instanceRect.bottom,
@@ -112,7 +117,8 @@ extension MergerDocument {
         height:instanceRect.height
       )
       for nonSelectedInstance in nonSelectedSet {
-        let intersection = testRect.intersection (getBoardRect (nonSelectedInstance))
+        let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
+        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).inset (byX:inset, byY: inset))
         if !intersection.isEmpty () {
           testRect = CanariBoardRect (
             left: testRect.left,
@@ -137,7 +143,7 @@ extension MergerDocument {
 
   //····················································································································
 
-  func arrangeLeftNoOverlap () {
+  func arrangeLeft (overlap inOverlap : Bool) {
     let boardWidth = self.rootObject.boardWidth!
   //--- Selected set
     let selectedSet = self.mBoardInstanceController.selectedSet
@@ -146,7 +152,8 @@ extension MergerDocument {
   //---
     var deltaX = -boardWidth
     for selectedInstance in selectedSet {
-      let instanceRect = getBoardRect (selectedInstance)
+      let instanceRect = getInstanceRect (selectedInstance)
+      let instanceLimit = getInstanceLimit (selectedInstance)
       var testRect = CanariBoardRect (
         left:0,
         bottom:instanceRect.bottom,
@@ -154,7 +161,8 @@ extension MergerDocument {
         height:instanceRect.height
       )
       for nonSelectedInstance in nonSelectedSet {
-        let intersection = testRect.intersection (getBoardRect (nonSelectedInstance))
+        let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
+        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).inset (byX:inset, byY: inset))
         if !intersection.isEmpty () {
           testRect = CanariBoardRect (
             left: intersection.right,
@@ -182,339 +190,310 @@ extension MergerDocument {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   ARRANGE WITHOUT OVERLAPPING
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension MergerDocument {
-
-  //····················································································································
-
-  func arrangeUpWithOverlap () {
-  }
-
-  //····················································································································
-
-  func arrangeDownWithOverlap () {
-  }
-
-  //····················································································································
-
-  func arrangeRightWithOverlap () {
-  }
-
-  //····················································································································
-
-  func arrangeLeftWithOverlap () {
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   ARRANGE WITH OVERLAPPING
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension MergerDocument {
-
-  //····················································································································
-
-  func arrangeVerticaly () {
-    let boards = self.rootObject.boardInstances_property.propval
-    let sortedBoards = boards.sorted (by: { $0.y < $1.y })
-    var idx = 0
-    while idx < sortedBoards.count {
-      let board = sortedBoards [idx]
-      var newY = 0
-      let boardRect = getBoardRect (board)
-      let leftRect = CanariBoardRect (left:board.x, bottom:0, width:boardRect.left, height:board.y)
-      var idy = idx + 1
-      while idy < sortedBoards.count {
-        let testedBoard = sortedBoards [idy]
-        let testedBoardRect = getBoardRect (testedBoard)
-        let intersection = leftRect.intersection (testedBoardRect)
-        if !intersection.isEmpty () {
-          newY = max (newY, intersection.bottom + intersection.height)
-        }
-        idy += 1
-      }
-      board.y = newY
-      idx += 1
-    }
-  //--- For boards that intersect, push them up
-    idx = 0
-    while idx < sortedBoards.count {
-      let board = sortedBoards [idx]
-      let boardRect = getBoardRect (board)
-      var idy = idx + 1
-      while idy < sortedBoards.count {
-        let testedBoard = sortedBoards [idy]
-        let testedBoardRect = getBoardRect (testedBoard)
-        let intersection = boardRect.intersection (testedBoardRect)
-        if !intersection.isEmpty () {
-          pushBoardUp (sortedBoards, boardRect, idy, boardRect.top)
-        }
-        idy += 1
-      }
-      idx += 1
-    }
-  }
-
-  //····················································································································
-
-  func arrangeHorizontally () {
-  //--- Push boards on left
-    let boards = self.rootObject.boardInstances_property.propval
-    let sortedBoards = boards.sorted (by: { $0.x < $1.x })
-    var idx = 0
-    while idx < sortedBoards.count {
-      let board = sortedBoards [idx]
-      var newX = 0
-      let boardRect = getBoardRect (board)
-      let leftRect = CanariBoardRect (left:0, bottom:board.y, width:board.x, height:boardRect.height)
-      var idy = idx + 1
-      while idy < sortedBoards.count {
-        let testedBoard = sortedBoards [idy]
-        let testedBoardRect = getBoardRect (testedBoard)
-        let intersection = leftRect.intersection (testedBoardRect)
-        if !intersection.isEmpty () {
-          newX = max (newX, intersection.left + intersection.width)
-        }
-        idy += 1
-      }
-      board.x = newX
-      idx += 1
-    }
-  //--- For boards that intersect, push them on right
-    idx = 0
-    while idx < sortedBoards.count {
-      let board = sortedBoards [idx]
-      let boardRect = getBoardRect (board)
-      var idy = idx + 1
-      while idy < sortedBoards.count {
-        let testedBoard = sortedBoards [idy]
-        let testedBoardRect = getBoardRect (testedBoard)
-        let intersection = boardRect.intersection (testedBoardRect)
-        if !intersection.isEmpty () {
-          pushBoardRight (sortedBoards, boardRect, idy, boardRect.left + boardRect.width)
-        }
-        idy += 1
-      }
-      idx += 1
-    }
-  }
-
-  //····················································································································
-
-  fileprivate func pushBoardRight (_ sortedBoards : [MergerBoardInstance],
-                                   _ inBoardRect : CanariBoardRect,
-                                   _ inIndex : Int,
-                                   _ inNewX : Int) {
-  //--- Push other boards ?
-    var idy = inIndex + 1
-    while idy < sortedBoards.count {
-      let testedBoard = sortedBoards [idy]
-      let testedBoardRect = getBoardRect (testedBoard)
-      let intersection = inBoardRect.intersection (testedBoardRect)
-      if !intersection.isEmpty () {
-        pushBoardRight (sortedBoards, testedBoardRect, idy, inBoardRect.left + inBoardRect.width)
-      }
-      idy += 1
-    }
-  //--- Set new X
-    sortedBoards [inIndex].x = inNewX
-  }
-
-  //····················································································································
-
-  fileprivate func pushBoardUp (_ sortedBoards : [MergerBoardInstance],
-                                _ inBoardRect : CanariBoardRect,
-                                _ inIndex : Int,
-                                _ inNewY : Int) {
-  //--- Push other boards ?
-    var idy = inIndex + 1
-    while idy < sortedBoards.count {
-      let testedBoard = sortedBoards [idy]
-      let testedBoardRect = getBoardRect (testedBoard)
-      let intersection = inBoardRect.intersection (testedBoardRect)
-      if !intersection.isEmpty () {
-        pushBoardUp (sortedBoards, testedBoardRect, idy, inBoardRect.top)
-      }
-      idy += 1
-    }
-  //--- Set new Y
-    sortedBoards [inIndex].y = inNewY
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   ARRANGE WITH OVERLAPPING
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension MergerDocument {
-
-  //····················································································································
-
-  func arrangeVerticalyWithOverlap () {
-    let boards = self.rootObject.boardInstances_property.propval
-    let sortedBoards = boards.sorted (by: { $0.y < $1.y })
-    for board in sortedBoards {
-      var newY = 0
-      let boardRect = getBoardRect (board)
-      let boardLimit = getBoardLimit (board)
-      let leftRect = CanariBoardRect (left:board.x, bottom:0, width:boardRect.left, height:board.y)
-      for testedBoard in boards {
-        if testedBoard !== board {
-          let testedBoardLimit = getBoardLimit (testedBoard)
-          let inset = min (boardLimit, testedBoardLimit)
-          let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
-          let intersection = leftRect.intersection (testedBoardRect)
-          if !intersection.isEmpty () {
-            newY = max (newY, intersection.bottom + intersection.height - inset)
-          }
-        }
-      }
-      board.y = newY
-    }
-  //--- For boards that intersect, push them up
-    var idx = 0
-    while idx < sortedBoards.count {
-      let board = sortedBoards [idx]
-      let boardRect = getBoardRect (board)
-      let boardLimit = getBoardLimit (board)
-      var idy = idx + 1
-      while idy < sortedBoards.count {
-        let testedBoard = sortedBoards [idy]
-        let testedBoardLimit = getBoardLimit (testedBoard)
-        let inset = min (boardLimit, testedBoardLimit)
-        let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
-        let intersection = boardRect.intersection (testedBoardRect)
-        if !intersection.isEmpty () {
-          let newY = boardRect.bottom + boardRect.height - inset
-          pushBoardUpWithOverlap (sortedBoards, boardRect, boardLimit, idy, newY)
-        }
-        idy += 1
-      }
-      idx += 1
-    }
-  }
-
-  //····················································································································
-
-  fileprivate func pushBoardUpWithOverlap (_ sortedBoards : [MergerBoardInstance],
-                                           _ inBoardRect : CanariBoardRect,
-                                           _ inBoardLimit : Int,
-                                           _ inIndex : Int,
-                                           _ inNewY : Int) {
-  //--- Push other boards ?
-    var idy = inIndex + 1
-    while idy < sortedBoards.count {
-      let testedBoard = sortedBoards [idy]
-      let testedBoardLimit = getBoardLimit (testedBoard)
-      let inset = min (inBoardLimit, testedBoardLimit)
-      let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
-      let intersection = inBoardRect.intersection (testedBoardRect)
-      if !intersection.isEmpty () {
-        let newY = inBoardRect.bottom + inBoardRect.height - inset
-        pushBoardUpWithOverlap (sortedBoards, testedBoardRect, testedBoardLimit, idy, newY)
-      }
-      idy += 1
-    }
-  //--- Set new X
-    sortedBoards [inIndex].y = inNewY
-  }
-
-  //····················································································································
-
-  func arrangeHorizontallyWithOverlap () {
-  //--- Push boards on left
-    let boards = self.rootObject.boardInstances_property.propval
-    let sortedBoards = boards.sorted (by: { $0.x < $1.x })
-    for board in sortedBoards {
-      var newX = 0
-      let boardRect = getBoardRect (board)
-      let boardLimit = getBoardLimit (board)
-      let leftRect = CanariBoardRect (left:0, bottom:board.y, width:board.x, height:boardRect.height)
-      for testedBoard in boards {
-        if testedBoard !== board {
-          let testedBoardLimit = getBoardLimit (testedBoard)
-          let inset = min (boardLimit, testedBoardLimit)
-          let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
-          let intersection = leftRect.intersection (testedBoardRect)
-          if !intersection.isEmpty () {
-            newX = max (newX, intersection.left + intersection.width - inset)
-          }
-        }
-      }
-      board.x = newX
-    }
-  //--- For boards that intersect, push them on right
-    var idx = 0
-    while idx < sortedBoards.count {
-      let board = sortedBoards [idx]
-      let boardLimit = getBoardLimit (board)
-      let boardRect = getBoardRect (board)
-      var idy = idx + 1
-      while idy < sortedBoards.count {
-        let testedBoard = sortedBoards [idy]
-        let testedBoardLimit = getBoardLimit (testedBoard)
-        let inset = min (boardLimit, testedBoardLimit)
-        let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
-        let intersection = boardRect.intersection (testedBoardRect)
-        if !intersection.isEmpty () {
-          let newX = boardRect.left + boardRect.width - inset
-          pushBoardRightWithOverlap (sortedBoards, boardRect, testedBoardLimit, idy, newX)
-        }
-        idy += 1
-      }
-      idx += 1
-    }
-  }
-
-  //····················································································································
-
-  fileprivate func pushBoardRightWithOverlap (_ sortedBoards : [MergerBoardInstance],
-                                              _ inBoardRect : CanariBoardRect,
-                                              _ inBoardLimit : Int,
-                                              _ inIndex : Int,
-                                              _ inNewX : Int) {
-  //--- Push other boards ?
-    var idy = inIndex + 1
-    while idy < sortedBoards.count {
-      let testedBoard = sortedBoards [idy]
-      let testedBoardLimit = getBoardLimit (testedBoard)
-      let inset = min (inBoardLimit, testedBoardLimit)
-      let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
-      let intersection = inBoardRect.intersection (testedBoardRect)
-      if !intersection.isEmpty () {
-        let newX = inBoardRect.left + inBoardRect.width - inset
-        pushBoardRightWithOverlap (sortedBoards, testedBoardRect, testedBoardLimit, idy, newX)
-      }
-      idy += 1
-    }
-  //--- Set new X
-    sortedBoards [inIndex].x = inNewX
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   UTILITIES
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func getBoardRect (_ board : MergerBoardInstance) -> CanariBoardRect {
+fileprivate func getInstanceRect (_ board : MergerBoardInstance) -> CanariBoardRect {
   return board.instanceRect!
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func getBoardLimit (_ board : MergerBoardInstance) -> Int {
+fileprivate func getInstanceLimit (_ board : MergerBoardInstance) -> Int {
   return board.boardLimitWidth!
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+////   ARRANGE WITH OVERLAPPING
+////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//
+//extension MergerDocument {
+//
+//  //····················································································································
+//
+//  func arrangeVerticaly () {
+//    let boards = self.rootObject.boardInstances_property.propval
+//    let sortedBoards = boards.sorted (by: { $0.y < $1.y })
+//    var idx = 0
+//    while idx < sortedBoards.count {
+//      let board = sortedBoards [idx]
+//      var newY = 0
+//      let boardRect = getBoardRect (board)
+//      let leftRect = CanariBoardRect (left:board.x, bottom:0, width:boardRect.left, height:board.y)
+//      var idy = idx + 1
+//      while idy < sortedBoards.count {
+//        let testedBoard = sortedBoards [idy]
+//        let testedBoardRect = getBoardRect (testedBoard)
+//        let intersection = leftRect.intersection (testedBoardRect)
+//        if !intersection.isEmpty () {
+//          newY = max (newY, intersection.bottom + intersection.height)
+//        }
+//        idy += 1
+//      }
+//      board.y = newY
+//      idx += 1
+//    }
+//  //--- For boards that intersect, push them up
+//    idx = 0
+//    while idx < sortedBoards.count {
+//      let board = sortedBoards [idx]
+//      let boardRect = getBoardRect (board)
+//      var idy = idx + 1
+//      while idy < sortedBoards.count {
+//        let testedBoard = sortedBoards [idy]
+//        let testedBoardRect = getBoardRect (testedBoard)
+//        let intersection = boardRect.intersection (testedBoardRect)
+//        if !intersection.isEmpty () {
+//          pushBoardUp (sortedBoards, boardRect, idy, boardRect.top)
+//        }
+//        idy += 1
+//      }
+//      idx += 1
+//    }
+//  }
+//
+//  //····················································································································
+//
+//  func arrangeHorizontally () {
+//  //--- Push boards on left
+//    let boards = self.rootObject.boardInstances_property.propval
+//    let sortedBoards = boards.sorted (by: { $0.x < $1.x })
+//    var idx = 0
+//    while idx < sortedBoards.count {
+//      let board = sortedBoards [idx]
+//      var newX = 0
+//      let boardRect = getBoardRect (board)
+//      let leftRect = CanariBoardRect (left:0, bottom:board.y, width:board.x, height:boardRect.height)
+//      var idy = idx + 1
+//      while idy < sortedBoards.count {
+//        let testedBoard = sortedBoards [idy]
+//        let testedBoardRect = getBoardRect (testedBoard)
+//        let intersection = leftRect.intersection (testedBoardRect)
+//        if !intersection.isEmpty () {
+//          newX = max (newX, intersection.left + intersection.width)
+//        }
+//        idy += 1
+//      }
+//      board.x = newX
+//      idx += 1
+//    }
+//  //--- For boards that intersect, push them on right
+//    idx = 0
+//    while idx < sortedBoards.count {
+//      let board = sortedBoards [idx]
+//      let boardRect = getBoardRect (board)
+//      var idy = idx + 1
+//      while idy < sortedBoards.count {
+//        let testedBoard = sortedBoards [idy]
+//        let testedBoardRect = getBoardRect (testedBoard)
+//        let intersection = boardRect.intersection (testedBoardRect)
+//        if !intersection.isEmpty () {
+//          pushBoardRight (sortedBoards, boardRect, idy, boardRect.left + boardRect.width)
+//        }
+//        idy += 1
+//      }
+//      idx += 1
+//    }
+//  }
+//
+//  //····················································································································
+//
+//  fileprivate func pushBoardRight (_ sortedBoards : [MergerBoardInstance],
+//                                   _ inBoardRect : CanariBoardRect,
+//                                   _ inIndex : Int,
+//                                   _ inNewX : Int) {
+//  //--- Push other boards ?
+//    var idy = inIndex + 1
+//    while idy < sortedBoards.count {
+//      let testedBoard = sortedBoards [idy]
+//      let testedBoardRect = getBoardRect (testedBoard)
+//      let intersection = inBoardRect.intersection (testedBoardRect)
+//      if !intersection.isEmpty () {
+//        pushBoardRight (sortedBoards, testedBoardRect, idy, inBoardRect.left + inBoardRect.width)
+//      }
+//      idy += 1
+//    }
+//  //--- Set new X
+//    sortedBoards [inIndex].x = inNewX
+//  }
+//
+//  //····················································································································
+//
+//  fileprivate func pushBoardUp (_ sortedBoards : [MergerBoardInstance],
+//                                _ inBoardRect : CanariBoardRect,
+//                                _ inIndex : Int,
+//                                _ inNewY : Int) {
+//  //--- Push other boards ?
+//    var idy = inIndex + 1
+//    while idy < sortedBoards.count {
+//      let testedBoard = sortedBoards [idy]
+//      let testedBoardRect = getBoardRect (testedBoard)
+//      let intersection = inBoardRect.intersection (testedBoardRect)
+//      if !intersection.isEmpty () {
+//        pushBoardUp (sortedBoards, testedBoardRect, idy, inBoardRect.top)
+//      }
+//      idy += 1
+//    }
+//  //--- Set new Y
+//    sortedBoards [inIndex].y = inNewY
+//  }
+//
+//  //····················································································································
+//
+//}
+//
+////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+////   ARRANGE WITH OVERLAPPING
+////——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//
+//extension MergerDocument {
+//
+//  //····················································································································
+//
+//  func arrangeVerticalyWithOverlap () {
+//    let boards = self.rootObject.boardInstances_property.propval
+//    let sortedBoards = boards.sorted (by: { $0.y < $1.y })
+//    for board in sortedBoards {
+//      var newY = 0
+//      let boardRect = getBoardRect (board)
+//      let boardLimit = getBoardLimit (board)
+//      let leftRect = CanariBoardRect (left:board.x, bottom:0, width:boardRect.left, height:board.y)
+//      for testedBoard in boards {
+//        if testedBoard !== board {
+//          let testedBoardLimit = getBoardLimit (testedBoard)
+//          let inset = min (boardLimit, testedBoardLimit)
+//          let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
+//          let intersection = leftRect.intersection (testedBoardRect)
+//          if !intersection.isEmpty () {
+//            newY = max (newY, intersection.bottom + intersection.height - inset)
+//          }
+//        }
+//      }
+//      board.y = newY
+//    }
+//  //--- For boards that intersect, push them up
+//    var idx = 0
+//    while idx < sortedBoards.count {
+//      let board = sortedBoards [idx]
+//      let boardRect = getBoardRect (board)
+//      let boardLimit = getBoardLimit (board)
+//      var idy = idx + 1
+//      while idy < sortedBoards.count {
+//        let testedBoard = sortedBoards [idy]
+//        let testedBoardLimit = getBoardLimit (testedBoard)
+//        let inset = min (boardLimit, testedBoardLimit)
+//        let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
+//        let intersection = boardRect.intersection (testedBoardRect)
+//        if !intersection.isEmpty () {
+//          let newY = boardRect.bottom + boardRect.height - inset
+//          pushBoardUpWithOverlap (sortedBoards, boardRect, boardLimit, idy, newY)
+//        }
+//        idy += 1
+//      }
+//      idx += 1
+//    }
+//  }
+//
+//  //····················································································································
+//
+//  fileprivate func pushBoardUpWithOverlap (_ sortedBoards : [MergerBoardInstance],
+//                                           _ inBoardRect : CanariBoardRect,
+//                                           _ inBoardLimit : Int,
+//                                           _ inIndex : Int,
+//                                           _ inNewY : Int) {
+//  //--- Push other boards ?
+//    var idy = inIndex + 1
+//    while idy < sortedBoards.count {
+//      let testedBoard = sortedBoards [idy]
+//      let testedBoardLimit = getBoardLimit (testedBoard)
+//      let inset = min (inBoardLimit, testedBoardLimit)
+//      let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
+//      let intersection = inBoardRect.intersection (testedBoardRect)
+//      if !intersection.isEmpty () {
+//        let newY = inBoardRect.bottom + inBoardRect.height - inset
+//        pushBoardUpWithOverlap (sortedBoards, testedBoardRect, testedBoardLimit, idy, newY)
+//      }
+//      idy += 1
+//    }
+//  //--- Set new X
+//    sortedBoards [inIndex].y = inNewY
+//  }
+//
+//  //····················································································································
+//
+//  func arrangeHorizontallyWithOverlap () {
+//  //--- Push boards on left
+//    let boards = self.rootObject.boardInstances_property.propval
+//    let sortedBoards = boards.sorted (by: { $0.x < $1.x })
+//    for board in sortedBoards {
+//      var newX = 0
+//      let boardRect = getBoardRect (board)
+//      let boardLimit = getBoardLimit (board)
+//      let leftRect = CanariBoardRect (left:0, bottom:board.y, width:board.x, height:boardRect.height)
+//      for testedBoard in boards {
+//        if testedBoard !== board {
+//          let testedBoardLimit = getBoardLimit (testedBoard)
+//          let inset = min (boardLimit, testedBoardLimit)
+//          let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
+//          let intersection = leftRect.intersection (testedBoardRect)
+//          if !intersection.isEmpty () {
+//            newX = max (newX, intersection.left + intersection.width - inset)
+//          }
+//        }
+//      }
+//      board.x = newX
+//    }
+//  //--- For boards that intersect, push them on right
+//    var idx = 0
+//    while idx < sortedBoards.count {
+//      let board = sortedBoards [idx]
+//      let boardLimit = getBoardLimit (board)
+//      let boardRect = getBoardRect (board)
+//      var idy = idx + 1
+//      while idy < sortedBoards.count {
+//        let testedBoard = sortedBoards [idy]
+//        let testedBoardLimit = getBoardLimit (testedBoard)
+//        let inset = min (boardLimit, testedBoardLimit)
+//        let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
+//        let intersection = boardRect.intersection (testedBoardRect)
+//        if !intersection.isEmpty () {
+//          let newX = boardRect.left + boardRect.width - inset
+//          pushBoardRightWithOverlap (sortedBoards, boardRect, testedBoardLimit, idy, newX)
+//        }
+//        idy += 1
+//      }
+//      idx += 1
+//    }
+//  }
+//
+//  //····················································································································
+//
+//  fileprivate func pushBoardRightWithOverlap (_ sortedBoards : [MergerBoardInstance],
+//                                              _ inBoardRect : CanariBoardRect,
+//                                              _ inBoardLimit : Int,
+//                                              _ inIndex : Int,
+//                                              _ inNewX : Int) {
+//  //--- Push other boards ?
+//    var idy = inIndex + 1
+//    while idy < sortedBoards.count {
+//      let testedBoard = sortedBoards [idy]
+//      let testedBoardLimit = getBoardLimit (testedBoard)
+//      let inset = min (inBoardLimit, testedBoardLimit)
+//      let testedBoardRect = getBoardRect (testedBoard).inset (byX:inset, byY: inset)
+//      let intersection = inBoardRect.intersection (testedBoardRect)
+//      if !intersection.isEmpty () {
+//        let newX = inBoardRect.left + inBoardRect.width - inset
+//        pushBoardRightWithOverlap (sortedBoards, testedBoardRect, testedBoardLimit, idy, newX)
+//      }
+//      idy += 1
+//    }
+//  //--- Set new X
+//    sortedBoards [inIndex].x = inNewX
+//  }
+//
+//  //····················································································································
+//
+//}
+//
+////—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

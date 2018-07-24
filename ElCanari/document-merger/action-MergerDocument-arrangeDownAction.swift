@@ -14,11 +14,7 @@ import Cocoa
 extension MergerDocument {
   func arrangeDownAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-    if self.rootObject.overlapingArrangment {
-      self.arrangeDownWithOverlap ()
-    }else{
-      self.arrangeDownNoOverlap ()
-    }
+    self.arrangeDown (overlap: self.rootObject.overlapingArrangment)
 //--- END OF USER ZONE 2
   }
 }

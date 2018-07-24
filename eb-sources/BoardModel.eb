@@ -221,6 +221,10 @@ entity BoardModel {
     prefs.mergerColorBackground,
     self.modelWidth,
     self.modelHeight,
+# Board limits
+    self.boardLimitsBezierPaths,
+    prefs.mergerModelViewDisplayBoardLimits,
+    prefs.mergerColorBoardLimits,
 # Front tracks
     self.frontTracksBezierPaths,
     prefs.mergerModelViewDisplayFrontTracks,
