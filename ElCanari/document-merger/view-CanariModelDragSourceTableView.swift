@@ -23,6 +23,7 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
   //····················································································································
 
   @IBOutlet weak var mBoardView : CanariViewWithZoomAndFlip? = nil
+  @IBOutlet weak var mDefaultOrientationPopUpButton : NSPopUpButton? = nil
 
   //····················································································································
 
@@ -103,8 +104,15 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
       let horizontalFlip : CGFloat = boardView.horizontalFlip () ? -1.0 : 1.0
       let verticalFlip   : CGFloat = boardView.verticalFlip ()   ? -1.0 : 1.0
     //--- Image size
-      let width = scale * canariUnitToCocoa (self.mModelArray [dragRows.first!].width)
-      let height = scale * canariUnitToCocoa (self.mModelArray [dragRows.first!].height)
+      var width = scale * canariUnitToCocoa (self.mModelArray [dragRows.first!].width)
+      var height = scale * canariUnitToCocoa (self.mModelArray [dragRows.first!].height)
+    //--- Orientation (0 -> 0°, 1 -> 90°, 2 -> 180°, 3 -> 270°)
+      let rotation = self.mDefaultOrientationPopUpButton?.selectedTag () ?? 0
+      if (rotation == 1) || (rotation == 3) {
+        let temp = width
+        width = height
+        height = temp
+      }
     //--- By default, image is centered;
       dragImageOffset.pointee = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
     //--- Build image

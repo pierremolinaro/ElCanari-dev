@@ -51,6 +51,7 @@ extension MergerDocument {
             let boardModel = self.rootObject.boardModels_property.propval [insertArrayOfBoardsPopUpButton.selectedTag()]
             let boardModelWidth = boardModel.modelWidth
             let boardModelHeight = boardModel.modelHeight
+            let rotation = QuadrantRotation (rawValue: self.mInsertArrayOfBoardsOrientation?.selectedSegment ?? 0)!
             var newBoardArray = [MergerBoardInstance] ()
             var y = inY
             for _ in 0 ..< yCount {
@@ -58,6 +59,7 @@ extension MergerDocument {
               for _ in 0 ..< xCount {
                 let newBoard = MergerBoardInstance (managedObjectContext: self.managedObjectContext())
                 newBoard.myModel_property.setProp (boardModel)
+                newBoard.instanceRotation = rotation
                 newBoard.x = x
                 newBoard.y = y
                 self.rootObject.boardInstances_property.add (newBoard)

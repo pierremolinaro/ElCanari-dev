@@ -66,10 +66,12 @@ import Cocoa
   @IBOutlet var mGenerateProductFilesActionButton : EBButton?
   @IBOutlet var mImportArtworkButton : EBButton?
   @IBOutlet var mIncorrectDocumentNameTextField : EBTextObserverField?
+  @IBOutlet var mInsertArrayOfBoardsOrientation : NSSegmentedControl?
   @IBOutlet var mInsertArrayOfBoardsPanel : NSPanel?
   @IBOutlet var mInsertArrayOfBoardsPopUpButton : NSPopUpButton?
   @IBOutlet var mInsertArrayOfBoardsXCountField : NSTextField?
   @IBOutlet var mInsertArrayOfBoardsYCountField : NSTextField?
+  @IBOutlet var mInsertedInstanceDefaultOrientation : NSPopUpButton?
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
   @IBOutlet var mInstanceModelNameTextField : EBTextObserverField?
   @IBOutlet var mInstanceRotation : CanariQuadrantSegmentedControl?
@@ -753,6 +755,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mIncorrectDocumentNameTextField' outlet is not an instance of 'EBTextObserverField'") ;
     }
+    if nil == mInsertArrayOfBoardsOrientation {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInsertArrayOfBoardsOrientation' outlet is nil") ;
+//    }else if !mInsertArrayOfBoardsOrientation!.isKindOfClass (NSSegmentedControl) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInsertArrayOfBoardsOrientation' outlet is not an instance of 'NSSegmentedControl'") ;
+    }
     if nil == mInsertArrayOfBoardsPanel {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -788,6 +799,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mInsertArrayOfBoardsYCountField' outlet is not an instance of 'NSTextField'") ;
+    }
+    if nil == mInsertedInstanceDefaultOrientation {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mInsertedInstanceDefaultOrientation' outlet is nil") ;
+//    }else if !mInsertedInstanceDefaultOrientation!.isKindOfClass (NSPopUpButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mInsertedInstanceDefaultOrientation' outlet is not an instance of 'NSPopUpButton'") ;
     }
     if nil == mInstanceCountTextField {
       presentErrorWindow (file: #file,
@@ -2116,10 +2136,12 @@ import Cocoa
     self.mGenerateProductFilesActionButton?.ebCleanUp ()
     self.mImportArtworkButton?.ebCleanUp ()
     self.mIncorrectDocumentNameTextField?.ebCleanUp ()
+    self.mInsertArrayOfBoardsOrientation?.ebCleanUp ()
     self.mInsertArrayOfBoardsPanel?.ebCleanUp ()
     self.mInsertArrayOfBoardsPopUpButton?.ebCleanUp ()
     self.mInsertArrayOfBoardsXCountField?.ebCleanUp ()
     self.mInsertArrayOfBoardsYCountField?.ebCleanUp ()
+    self.mInsertedInstanceDefaultOrientation?.ebCleanUp ()
     self.mInstanceCountTextField?.ebCleanUp ()
     self.mInstanceModelNameTextField?.ebCleanUp ()
     self.mInstanceRotation?.ebCleanUp ()

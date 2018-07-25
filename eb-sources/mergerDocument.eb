@@ -167,6 +167,7 @@ document MergerDocument root MergerRoot {
   outlet NSClipView mBoardClipView ;
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
+  outlet NSPopUpButton mInsertedInstanceDefaultOrientation ;
 
 #--- Board model name
   outlet EBTextObserverField mInstanceModelNameTextField $valueObserver mBoardInstanceSelection.modelName ;
@@ -232,6 +233,7 @@ document MergerDocument root MergerRoot {
 #--- "Insert array of boards" panel
   outlet NSPanel mInsertArrayOfBoardsPanel ;
   outlet NSPopUpButton mInsertArrayOfBoardsPopUpButton ;
+  outlet NSSegmentedControl mInsertArrayOfBoardsOrientation ;
   outlet NSTextField mInsertArrayOfBoardsXCountField ;
   outlet NSTextField mInsertArrayOfBoardsYCountField ;
   

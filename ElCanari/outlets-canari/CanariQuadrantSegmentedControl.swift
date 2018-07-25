@@ -83,11 +83,13 @@ final class Controller_CanariQuadrantSegmentedControl_quadrant : EBSimpleControl
     switch mObject.prop {
     case .empty :
       mOutlet.enableFromValueBinding (false)
+      mOutlet.selectedSegment = -1
     case .single (let v) :
       mOutlet.enableFromValueBinding (true)
       mOutlet.selectedSegment = v.rawValue
     case .multiple :
       mOutlet.enableFromValueBinding (false)
+      mOutlet.selectedSegment = -1
     }
   }
 
