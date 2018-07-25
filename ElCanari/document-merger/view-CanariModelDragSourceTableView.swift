@@ -190,5 +190,4 @@ class Controller_CanariModelDragSourceTableView_models : EBSimpleController {
 
 }
 
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

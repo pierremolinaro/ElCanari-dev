@@ -1270,6 +1270,12 @@ typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[
 typealias EBReadOnlyProperty_CanariBoardRect  = EBReadOnlyValueProperty <CanariBoardRect>
 typealias EBTransientProperty_CanariBoardRect = EBTransientValueProperty <CanariBoardRect>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property InstanceIssueArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_InstanceIssueArray  = EBReadOnlyValueProperty <InstanceIssueArray>
+typealias EBTransientProperty_InstanceIssueArray = EBTransientValueProperty <InstanceIssueArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class SegmentForFontCharacterClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

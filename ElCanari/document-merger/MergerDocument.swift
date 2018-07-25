@@ -59,6 +59,7 @@ import Cocoa
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardView : CanariViewWithZoomAndFlip?
   @IBOutlet var mDangerView : NSView?
+  @IBOutlet var mDeselectIssueButton : EBButton?
   @IBOutlet var mDisplaySettingView : NSView?
   @IBOutlet var mEmptyBoardMessage : EBTextField?
   @IBOutlet var mGenerateGerber : EBSwitch?
@@ -75,6 +76,8 @@ import Cocoa
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
   @IBOutlet var mInstanceModelNameTextField : EBTextObserverField?
   @IBOutlet var mInstanceRotation : CanariQuadrantSegmentedControl?
+  @IBOutlet var mIssueTableView : MergerIssueTableView?
+  @IBOutlet var mIssueTextField : EBTextObserverField?
   @IBOutlet var mLogTextView : NSTextView?
   @IBOutlet var mManualBoardHeightTextField : CanariDimensionTextField?
   @IBOutlet var mManualBoardHeightUnitPopUp : EBPopUpButton?
@@ -119,6 +122,7 @@ import Cocoa
   @IBOutlet var mSelectedBoardYUnitPopUp : EBPopUpButton?
   @IBOutlet var mShiftArrowMagnitudeTextField : CanariDimensionTextField?
   @IBOutlet var mShiftArrowMagnitudeUnitPopUp : EBPopUpButton?
+  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mergerViewBackLegendLinesColorWell : EBColorWell?
   @IBOutlet var mergerViewBackgroundColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayBackComponentNamesColorWell : EBColorWell?
@@ -153,6 +157,21 @@ import Cocoa
   //····················································································································
   //    Transient properties
   //····················································································································
+
+  var issues_property = EBTransientProperty_InstanceIssueArray ()
+  var issues_property_selection : EBSelection <InstanceIssueArray> {
+    return self.issues_property.prop
+  }
+
+  var mStatusImage_property = EBTransientProperty_NSImage ()
+  var mStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mStatusImage_property.prop
+  }
+
+  var mStatusMessage_property = EBTransientProperty_String ()
+  var mStatusMessage_property_selection : EBSelection <String> {
+    return self.mStatusMessage_property.prop
+  }
 
   var documentFileNameOk_property = EBTransientProperty_Bool ()
   var documentFileNameOk_property_selection : EBSelection <Bool> {
@@ -692,6 +711,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mDangerView' outlet is not an instance of 'NSView'") ;
     }
+    if nil == mDeselectIssueButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mDeselectIssueButton' outlet is nil") ;
+//    }else if !mDeselectIssueButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mDeselectIssueButton' outlet is not an instance of 'EBButton'") ;
+    }
     if nil == mDisplaySettingView {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -835,6 +863,24 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mInstanceRotation' outlet is not an instance of 'CanariQuadrantSegmentedControl'") ;
+    }
+    if nil == mIssueTableView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mIssueTableView' outlet is nil") ;
+//    }else if !mIssueTableView!.isKindOfClass (MergerIssueTableView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mIssueTableView' outlet is not an instance of 'MergerIssueTableView'") ;
+    }
+    if nil == mIssueTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mIssueTextField' outlet is nil") ;
+//    }else if !mIssueTextField!.isKindOfClass (EBTextObserverField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mIssueTextField' outlet is not an instance of 'EBTextObserverField'") ;
     }
     if nil == mLogTextView {
       presentErrorWindow (file: #file,
@@ -1232,6 +1278,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mShiftArrowMagnitudeUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
     }
+    if nil == mStatusImageViewInToolbar {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil") ;
+//    }else if !mStatusImageViewInToolbar!.isKindOfClass (EBImageObserverView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'") ;
+    }
     if nil == mergerViewBackLegendLinesColorWell {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -1487,6 +1542,70 @@ import Cocoa
     )
   //--------------------------- Custom object controllers
   //--------------------------- Transient compute functions
+    self.issues_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.rootObject.overlapingArrangment_property_selection.kind ()
+        kind &= unwSelf.rootObject.boardRect_property_selection.kind ()
+        kind &= unwSelf.rootObject.boardDisplayRect_property_selection.kind ()
+        kind &= unwSelf.rootObject.boardInstances_property_selection.kind ()
+        kind &= unwSelf.rootObject.boardInstances_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.overlapingArrangment_property_selection, unwSelf.rootObject.boardRect_property_selection, unwSelf.rootObject.boardDisplayRect_property_selection, unwSelf.rootObject.boardInstances_property_selection, unwSelf.rootObject.boardInstances_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_MergerDocument_issues (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mStatusImage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_MergerDocument_mStatusImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mStatusMessage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_MergerDocument_mStatusMessage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.documentFileNameOk_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
@@ -1569,12 +1688,23 @@ import Cocoa
     }
     self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
   //--------------------------- Install property observers for transients
+    self.rootObject.overlapingArrangment_property.addEBObserver (self.issues_property)
+    self.rootObject.boardRect_property.addEBObserver (self.issues_property)
+    self.rootObject.boardDisplayRect_property.addEBObserver (self.issues_property)
+    self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property)
+    self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property)
+    self.issues_property.addEBObserver (self.mStatusImage_property)
+    self.issues_property.addEBObserver (self.mStatusMessage_property)
     self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property)
     self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
     self.documentFilePath_property.addEBObserver (self.documentIsUnnamed_property)
     self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
+    mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
+    mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
+    mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
+    mIssueTableView?.bind_issues (self.issues_property, file: #file, line: #line)
     mModelViewHorizontalFlipCheckbox?.bind_value (g_Preferences!.mergerModelViewHorizontalFlip_property, file: #file, line: #line)
     mModelViewVerticalFlipCheckbox?.bind_value (g_Preferences!.mergerModelViewVerticalFlip_property, file: #file, line: #line)
     mModelViewDisplayHolesCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayHoles_property, file: #file, line: #line)
@@ -1899,6 +2029,10 @@ import Cocoa
   override func removeUserInterface () {
   //--------------------------- Unbind regular bindings
     mPageSegmentedControl?.unbind_selectedPage ()
+    mStatusImageViewInToolbar?.unbind_image ()
+    mStatusImageViewInToolbar?.unbind_tooltip ()
+    mIssueTextField?.unbind_valueObserver ()
+    mIssueTableView?.unbind_issues ()
     mModelViewHorizontalFlipCheckbox?.unbind_value ()
     mModelViewVerticalFlipCheckbox?.unbind_value ()
     mModelViewDisplayHolesCheckbox?.unbind_value ()
@@ -2053,6 +2187,9 @@ import Cocoa
     self.rootObject.artwork_property.removeEBObserver (mController_mLogTextView_hidden!)
     mController_mLogTextView_hidden = nil
   //--------------------------- Uninstall compute functions for transients
+    self.issues_property.readModelFunction = nil
+    self.mStatusImage_property.readModelFunction = nil
+    self.mStatusMessage_property.readModelFunction = nil
     self.documentFileNameOk_property.readModelFunction = nil
     self.incorrectDocumentFileErrorMessage_property.readModelFunction = nil
     self.documentIsUnnamed_property.readModelFunction = nil
@@ -2065,6 +2202,13 @@ import Cocoa
     mBoardModelSelection.unbind_selection ()
     mBoardInstanceSelection.unbind_selection ()
   //--------------------------- Uninstall property observers for transients
+    self.rootObject.overlapingArrangment_property.removeEBObserver (self.issues_property)
+    self.rootObject.boardRect_property.removeEBObserver (self.issues_property)
+    self.rootObject.boardDisplayRect_property.removeEBObserver (self.issues_property)
+    self.rootObject.boardInstances_property.removeEBObserverOf_instanceRect (self.issues_property)
+    self.rootObject.boardInstances_property.removeEBObserverOf_boardLimitWidth (self.issues_property)
+    self.issues_property.removeEBObserver (self.mStatusImage_property)
+    self.issues_property.removeEBObserver (self.mStatusMessage_property)
     self.documentFilePath_property.removeEBObserver (self.documentFileNameOk_property)
     self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
     self.documentFilePath_property.removeEBObserver (self.documentIsUnnamed_property)
@@ -2129,6 +2273,7 @@ import Cocoa
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mDangerView?.ebCleanUp ()
+    self.mDeselectIssueButton?.ebCleanUp ()
     self.mDisplaySettingView?.ebCleanUp ()
     self.mEmptyBoardMessage?.ebCleanUp ()
     self.mGenerateGerber?.ebCleanUp ()
@@ -2145,6 +2290,8 @@ import Cocoa
     self.mInstanceCountTextField?.ebCleanUp ()
     self.mInstanceModelNameTextField?.ebCleanUp ()
     self.mInstanceRotation?.ebCleanUp ()
+    self.mIssueTableView?.ebCleanUp ()
+    self.mIssueTextField?.ebCleanUp ()
     self.mLogTextView?.ebCleanUp ()
     self.mManualBoardHeightTextField?.ebCleanUp ()
     self.mManualBoardHeightUnitPopUp?.ebCleanUp ()
@@ -2189,6 +2336,7 @@ import Cocoa
     self.mSelectedBoardYUnitPopUp?.ebCleanUp ()
     self.mShiftArrowMagnitudeTextField?.ebCleanUp ()
     self.mShiftArrowMagnitudeUnitPopUp?.ebCleanUp ()
+    self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mergerViewBackLegendLinesColorWell?.ebCleanUp ()
     self.mergerViewBackgroundColorWell?.ebCleanUp ()
     self.mergerViewDisplayBackComponentNamesColorWell?.ebCleanUp ()

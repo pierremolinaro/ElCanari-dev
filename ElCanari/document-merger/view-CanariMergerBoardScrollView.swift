@@ -33,6 +33,7 @@ import Cocoa
   
   //····················································································································
   //   Drag destination
+  //····················································································································
   //The six NSDraggingDestination methods are invoked in a distinct order:
   //
   // ① As the image is dragged into the destination’s boundaries, the destination is sent a draggingEntered: message.

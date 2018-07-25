@@ -1,147 +1,158 @@
 //
-//  CanariBoardRect.swift
+//  class-InstanceIssueArray.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 02/07/2018.
+//  Created by Pierre Molinaro on 25/07/2018.
 //
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-import Foundation
+import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Struct CanariBoardRect
+//   InstanceIssueArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct CanariBoardRect : Hashable, Equatable {
-
-  let left : Int
-  let bottom : Int
-  let width : Int
-  let height : Int
+struct InstanceIssueArray : Hashable {
 
   //····················································································································
-  //   init
+  //   Properties
   //····················································································································
 
-  init (left inLeft : Int, bottom inBottom: Int, width inWidth : Int, height inHeight : Int) {
-    if (inWidth > 0) && (inHeight > 0) {
-      left = inLeft
-      bottom = inBottom
-      width = inWidth
-      height = inHeight
-    }else{
-      left = 0
-      bottom = 0
-      width = 0
-      height = 0
+  let mIssues : [InstanceIssue]
+
+  //····················································································································
+  //   Init
+  //····················································································································
+
+  init (issues inIssues : [InstanceIssue]) {
+    mIssues = inIssues
+  }
+
+  //····················································································································
+  //   count
+  //····················································································································
+
+  var count : Int { return mIssues.count }
+
+  //····················································································································
+  //   errorCount
+  //····················································································································
+
+  var errorCount : Int {
+    var n = 0
+    for issue in self.mIssues {
+      switch issue.mKind {
+      case .intersecting, .outside :
+        n += 1
+      case .gap :
+        break
+      }
     }
+    return n
   }
 
   //····················································································································
+  //   warningCount
+  //····················································································································
 
-  init () {
-    left = 0
-    bottom = 0
-    width = 0 // Empty rect
-    height = 0
+  var warningCount : Int {
+    var n = 0
+    for issue in self.mIssues {
+      switch issue.mKind {
+      case .intersecting, .outside :
+        break
+      case .gap :
+        n += 1
+      }
+    }
+    return n
   }
-
-  //····················································································································
-  //   Accessors
-  //····················································································································
-
-  var top     : Int { return self.bottom + self.height }
-  var right   : Int { return self.left + self.width }
-  var isEmpty : Bool { return (width <= 0) || (height <= 0) }
 
   //····················································································································
   //   Protocol Equatable
   //····················································································································
 
-  public static func == (lhs: CanariBoardRect, rhs: CanariBoardRect) -> Bool {
-    return (lhs.left == rhs.left) && (lhs.bottom == rhs.bottom) && (lhs.width == rhs.width) && (lhs.height == rhs.height)
-  }
-
-  //····················································································································
-  //   Protocol Hashable: hashValue
-  //····················································································································
-
-  var hashValue : Int {
-    return self.left ^ self.bottom ^ self.width ^ self.height
-  }
-
-  //····················································································································
-  //   cocoaRect
-  //····················································································································
-
-  func cocoaRect () -> NSRect {
-    return NSRect (
-      x:canariUnitToCocoa (self.left),
-      y:canariUnitToCocoa (self.bottom),
-      width:canariUnitToCocoa (self.width),
-      height:canariUnitToCocoa (self.height)
-    )
-  }
-
-  //····················································································································
-  //   Union
-  //····················································································································
-
-  func union (_ inOtherRect : CanariBoardRect) -> CanariBoardRect {
-    let result : CanariBoardRect
-    if self.isEmpty {
-      result = inOtherRect
-    }else if inOtherRect.isEmpty {
-      result = self
+  public static func == (lhs: InstanceIssueArray, rhs: InstanceIssueArray) -> Bool {
+    if lhs.mIssues.count != rhs.mIssues.count {
+      return false
     }else{
-      let left = min (self.left, inOtherRect.left)
-      let bottom = min (self.bottom, inOtherRect.bottom)
-      let right = max (self.left + self.width, inOtherRect.left + inOtherRect.width)
-      let top = max (self.bottom + self.height, inOtherRect.bottom + inOtherRect.height)
-      result = CanariBoardRect (left:left, bottom:bottom, width:right - left, height:top - bottom)
+      var idx = 0
+      while idx < lhs.mIssues.count {
+        if lhs.mIssues [idx] != rhs.mIssues [idx] {
+          return false
+        }
+        idx += 1
+      }
+      return true
     }
-    return result
   }
 
   //····················································································································
-  //   Intersection
+  //   Protocol Hashable
   //····················································································································
 
-  func intersection (_ inOtherRect : CanariBoardRect) -> CanariBoardRect {
-    let result : CanariBoardRect
-    if self.isEmpty || inOtherRect.isEmpty {
-      result = CanariBoardRect () // Empty Rect
-    }else{
-      let left   = max (self.left, inOtherRect.left)
-      let bottom = max (self.bottom, inOtherRect.bottom)
-      let right  = min (self.left + self.width,  inOtherRect.left + inOtherRect.width)
-      let top    = min (self.bottom + self.height, inOtherRect.bottom + inOtherRect.height)
-      result = CanariBoardRect (left: left, bottom: bottom, width: right - left, height: top - bottom)
+  public var hashValue : Int {
+    var h = 0
+    for issue in mIssues {
+      h ^= issue.hashValue
     }
-    return result
-  }
-
-  //····················································································································
-  //   Inset
-  //····················································································································
-
-  func insetBy (dx inDx : Int, dy inDy : Int) -> CanariBoardRect {
-    let result : CanariBoardRect
-    if self.isEmpty {
-      result = CanariBoardRect () // Empty Rect
-    }else{
-      let right = self.left + inDx
-      let bottom = self.bottom + inDy
-      let left = self.left + self.width - inDx
-      let top = self.bottom + self.height - inDy
-      result = CanariBoardRect (left:right, bottom:bottom, width:left - right, height:top - bottom)
-    }
-    return result
+    return h
   }
 
   //····················································································································
 
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   InstanceIssueKind
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum InstanceIssueKind : Int {
+  case intersecting
+  case outside
+  case gap
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   InstanceIssue
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct InstanceIssue : Hashable {
+
+  //····················································································································
+  //   Properties
+  //····················································································································
+
+  let mKind : InstanceIssueKind
+  let mShapes : EBShapes
+
+  //····················································································································
+  //   Init
+  //····················································································································
+
+  init (kind inKind : InstanceIssueKind, shapes inShapes : EBShapes) {
+    mKind = inKind
+    mShapes = inShapes
+  }
+
+  //····················································································································
+  //   Protocol Equatable
+  //····················································································································
+
+  public static func == (lhs: InstanceIssue, rhs: InstanceIssue) -> Bool {
+    return (lhs.mKind == rhs.mKind) && (lhs.mShapes == rhs.mShapes)
+  }
+
+  //····················································································································
+  //   Protocol Hashable
+  //····················································································································
+
+  public var hashValue: Int { return self.mKind.hashValue ^ self.mShapes.hashValue }
+
+  //····················································································································
+
+}
+
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

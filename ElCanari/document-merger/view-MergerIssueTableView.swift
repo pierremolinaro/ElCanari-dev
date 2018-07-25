@@ -1,147 +1,159 @@
 //
-//  CanariBoardRect.swift
+//  view-MergerIssueTableView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 02/07/2018.
+//  Created by Pierre Molinaro on 25/07/2018.
 //
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-import Foundation
+import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Struct CanariBoardRect
+//   MergerIssueTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct CanariBoardRect : Hashable, Equatable {
-
-  let left : Int
-  let bottom : Int
-  let width : Int
-  let height : Int
+@objc(MergerIssueTableView)
+class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
-  //   init
+  //   Outlet
   //····················································································································
 
-  init (left inLeft : Int, bottom inBottom: Int, width inWidth : Int, height inHeight : Int) {
-    if (inWidth > 0) && (inHeight > 0) {
-      left = inLeft
-      bottom = inBottom
-      width = inWidth
-      height = inHeight
-    }else{
-      left = 0
-      bottom = 0
-      width = 0
-      height = 0
+  @IBOutlet private weak var mBoardView : CanariViewWithZoomAndFlip? = nil
+
+  //····················································································································
+
+  required init? (coder: NSCoder) {
+    super.init (coder:coder)
+    self.customInit ()
+  }
+
+  //····················································································································
+
+  override init (frame:NSRect) {
+    super.init (frame:frame)
+    self.customInit ()
+  }
+  
+  //····················································································································
+
+  private final func customInit () {
+    noteObjectAllocation (self)
+    self.dataSource = self
+    self.delegate = self
+  }
+  
+  //····················································································································
+
+  deinit {
+    noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+  //    Table view data source protocol
+  //····················································································································
+
+  fileprivate var mModelArray = [InstanceIssue] () {
+    didSet {
+      self.reloadData ()
     }
   }
 
   //····················································································································
 
-  init () {
-    left = 0
-    bottom = 0
-    width = 0 // Empty rect
-    height = 0
+  func numberOfRows (in tableView: NSTableView) -> Int {
+    return mModelArray.count
   }
 
   //····················································································································
-  //   Accessors
-  //····················································································································
 
-  var top     : Int { return self.bottom + self.height }
-  var right   : Int { return self.left + self.width }
-  var isEmpty : Bool { return (width <= 0) || (height <= 0) }
-
-  //····················································································································
-  //   Protocol Equatable
-  //····················································································································
-
-  public static func == (lhs: CanariBoardRect, rhs: CanariBoardRect) -> Bool {
-    return (lhs.left == rhs.left) && (lhs.bottom == rhs.bottom) && (lhs.width == rhs.width) && (lhs.height == rhs.height)
-  }
-
-  //····················································································································
-  //   Protocol Hashable: hashValue
-  //····················································································································
-
-  var hashValue : Int {
-    return self.left ^ self.bottom ^ self.width ^ self.height
-  }
-
-  //····················································································································
-  //   cocoaRect
-  //····················································································································
-
-  func cocoaRect () -> NSRect {
-    return NSRect (
-      x:canariUnitToCocoa (self.left),
-      y:canariUnitToCocoa (self.bottom),
-      width:canariUnitToCocoa (self.width),
-      height:canariUnitToCocoa (self.height)
-    )
-  }
-
-  //····················································································································
-  //   Union
-  //····················································································································
-
-  func union (_ inOtherRect : CanariBoardRect) -> CanariBoardRect {
-    let result : CanariBoardRect
-    if self.isEmpty {
-      result = inOtherRect
-    }else if inOtherRect.isEmpty {
-      result = self
-    }else{
-      let left = min (self.left, inOtherRect.left)
-      let bottom = min (self.bottom, inOtherRect.bottom)
-      let right = max (self.left + self.width, inOtherRect.left + inOtherRect.width)
-      let top = max (self.bottom + self.height, inOtherRect.bottom + inOtherRect.height)
-      result = CanariBoardRect (left:left, bottom:bottom, width:right - left, height:top - bottom)
+  func tableView (_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+    let identifier = tableColumn!.identifier
+    var result : Any? = nil
+    if identifier == "image" {
+      switch mModelArray [row].mKind {
+      case .gap :
+        result = NSImage (named: "orange20")!
+      case .intersecting, .outside :
+        result = NSImage (named: "red20")!
+      }
+    }else if identifier == "title" {
+      switch mModelArray [row].mKind {
+      case .gap :
+        result = "Gap"
+      case .intersecting :
+        result = "Intersection"
+      case .outside :
+        result = "Outside"
+      }
     }
     return result
   }
 
   //····················································································································
-  //   Intersection
+  //    Table view delegate
   //····················································································································
 
-  func intersection (_ inOtherRect : CanariBoardRect) -> CanariBoardRect {
-    let result : CanariBoardRect
-    if self.isEmpty || inOtherRect.isEmpty {
-      result = CanariBoardRect () // Empty Rect
-    }else{
-      let left   = max (self.left, inOtherRect.left)
-      let bottom = max (self.bottom, inOtherRect.bottom)
-      let right  = min (self.left + self.width,  inOtherRect.left + inOtherRect.width)
-      let top    = min (self.bottom + self.height, inOtherRect.bottom + inOtherRect.height)
-      result = CanariBoardRect (left: left, bottom: bottom, width: right - left, height: top - bottom)
-    }
-    return result
+  func tableViewSelectionDidChange (_ notification: Notification) {
+    mBoardView?.setIssue ((self.selectedRow < 0) ? EBShapes () : self.mModelArray [self.selectedRow].mShapes)
   }
 
   //····················································································································
-  //   Inset
+  //    $issues binding
   //····················································································································
 
-  func insetBy (dx inDx : Int, dy inDy : Int) -> CanariBoardRect {
-    let result : CanariBoardRect
-    if self.isEmpty {
-      result = CanariBoardRect () // Empty Rect
-    }else{
-      let right = self.left + inDx
-      let bottom = self.bottom + inDy
-      let left = self.left + self.width - inDx
-      let top = self.bottom + self.height - inDy
-      result = CanariBoardRect (left:right, bottom:bottom, width:left - right, height:top - bottom)
-    }
-    return result
+  private var mIssueController : Controller_MergerIssueTableView_issues?
+
+  func bind_issues (_ issues:EBReadOnlyProperty_InstanceIssueArray, file:String, line:Int) {
+    mIssueController = Controller_MergerIssueTableView_issues (issues:issues, outlet:self)
+  }
+
+  //····················································································································
+
+  func unbind_issues () {
+    mIssueController?.unregister ()
+    mIssueController = nil
   }
 
   //····················································································································
 
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_MergerIssueTableView_issues
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class Controller_MergerIssueTableView_issues : EBSimpleController {
+
+  private let mModels : EBReadOnlyProperty_InstanceIssueArray
+  private let mOutlet : MergerIssueTableView
+
+  //····················································································································
+
+  init (issues : EBReadOnlyProperty_InstanceIssueArray, outlet : MergerIssueTableView) {
+    mModels = issues
+    mOutlet = outlet
+    super.init (observedObjects:[issues], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+  }
+
+  //····················································································································
+
+  private func updateOutlet () {
+    switch mModels.prop {
+    case .empty :
+      mOutlet.mModelArray = []
+    case .single (let v) :
+      mOutlet.mModelArray = v.mIssues
+    case .multiple :
+      mOutlet.mModelArray = []
+    }
+  }
+
+  //····················································································································
+
+}
+
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

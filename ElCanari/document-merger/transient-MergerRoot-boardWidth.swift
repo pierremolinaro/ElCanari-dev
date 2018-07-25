@@ -12,10 +12,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerRoot_boardWidth (
-       _ self_boardRect : CanariBoardRect
+       _ self_boardDisplayRect : CanariBoardRect
 ) -> Int {
 //--- START OF USER ZONE 2
-  return self_boardRect.width
+  return self_boardDisplayRect.width
 //--- END OF USER ZONE 2
 }
 

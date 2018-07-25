@@ -35,12 +35,12 @@ extension MergerDocument {
       )
       for nonSelectedInstance in nonSelectedSet {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
-        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).inset (byX:inset, byY: inset))
-        if !intersection.isEmpty () {
+        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
+        if !intersection.isEmpty {
           testRect = CanariBoardRect (left: testRect.left, bottom: testRect.bottom, width: testRect.width, height: intersection.bottom - testRect.bottom)
         }
       }
-      if testRect.isEmpty () {
+      if testRect.isEmpty {
         deltaY = 0
       }else{
         deltaY = min (deltaY, testRect.height)
@@ -74,8 +74,8 @@ extension MergerDocument {
       )
       for nonSelectedInstance in nonSelectedSet {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
-        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).inset (byX:inset, byY: inset))
-        if !intersection.isEmpty () {
+        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
+        if !intersection.isEmpty {
           testRect = CanariBoardRect (
             left: instanceRect.left,
             bottom: intersection.top,
@@ -84,7 +84,7 @@ extension MergerDocument {
           )
         }
       }
-      if testRect.isEmpty () {
+      if testRect.isEmpty {
         deltaY = 0
       }else{
         deltaY = max (deltaY, -testRect.height)
@@ -118,8 +118,8 @@ extension MergerDocument {
       )
       for nonSelectedInstance in nonSelectedSet {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
-        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).inset (byX:inset, byY: inset))
-        if !intersection.isEmpty () {
+        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
+        if !intersection.isEmpty {
           testRect = CanariBoardRect (
             left: testRect.left,
             bottom: testRect.bottom,
@@ -128,7 +128,7 @@ extension MergerDocument {
           )
         }
       }
-      if testRect.isEmpty () {
+      if testRect.isEmpty {
         deltaX = 0
       }else{
         deltaX = min (deltaX, testRect.width)
@@ -162,8 +162,8 @@ extension MergerDocument {
       )
       for nonSelectedInstance in nonSelectedSet {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
-        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).inset (byX:inset, byY: inset))
-        if !intersection.isEmpty () {
+        let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
+        if !intersection.isEmpty {
           testRect = CanariBoardRect (
             left: intersection.right,
             bottom: instanceRect.bottom,
@@ -172,7 +172,7 @@ extension MergerDocument {
           )
         }
       }
-      if testRect.isEmpty () {
+      if testRect.isEmpty {
         deltaX = 0
       }else{
         deltaX = max (deltaX, -testRect.width)

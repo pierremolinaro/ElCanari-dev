@@ -11,11 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_boardHeight (
-       _ self_boardDisplayRect : CanariBoardRect
-) -> Int {
+func transient_MergerDocument_mStatusImage (
+       _ self_issues : InstanceIssueArray
+) -> NSImage {
 //--- START OF USER ZONE 2
-  return self_boardDisplayRect.height
+  if self_issues.count == 0 {
+    return NSImage (named: "green20")!
+  }else if self_issues.errorCount != 0 {
+    return NSImage (named: "red20")!
+  }else{
+    return NSImage (named: "orange20")!
+  }
 //--- END OF USER ZONE 2
 }
 

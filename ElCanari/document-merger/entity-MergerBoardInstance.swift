@@ -1172,6 +1172,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         oldValue?.arrowMagnitudeUnit_property.removeEBObserversFrom (mObserversOf_arrowMagnitudeUnit)
         oldValue?.artworkName_property.removeEBObserversFrom (mObserversOf_artworkName)
         oldValue?.automaticBoardSize_property.removeEBObserversFrom (mObserversOf_automaticBoardSize)
+        oldValue?.boardDisplayRect_property.removeEBObserversFrom (mObserversOf_boardDisplayRect)
         oldValue?.boardHeight_property.removeEBObserversFrom (mObserversOf_boardHeight)
         oldValue?.boardHeightUnit_property.removeEBObserversFrom (mObserversOf_boardHeightUnit)
         oldValue?.boardLimitWidth_property.removeEBObserversFrom (mObserversOf_boardLimitWidth)
@@ -1200,6 +1201,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         mValue?.arrowMagnitudeUnit_property.addEBObserversFrom (mObserversOf_arrowMagnitudeUnit)
         mValue?.artworkName_property.addEBObserversFrom (mObserversOf_artworkName)
         mValue?.automaticBoardSize_property.addEBObserversFrom (mObserversOf_automaticBoardSize)
+        mValue?.boardDisplayRect_property.addEBObserversFrom (mObserversOf_boardDisplayRect)
         mValue?.boardHeight_property.addEBObserversFrom (mObserversOf_boardHeight)
         mValue?.boardHeightUnit_property.addEBObserversFrom (mObserversOf_boardHeightUnit)
         mValue?.boardLimitWidth_property.addEBObserversFrom (mObserversOf_boardLimitWidth)
@@ -1424,6 +1426,49 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
     mObserversOf_automaticBoardSize.remove (inObserver)
     if let object = self.propval {
       object.automaticBoardSize_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardDisplayRect
+  //····················································································································
+
+  private var mObserversOf_boardDisplayRect = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardDisplayRect_property_selection : EBSelection <CanariBoardRect?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardDisplayRect_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
+    mObserversOf_boardDisplayRect.insert (inObserver)
+    if let object = self.propval {
+      object.boardDisplayRect_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
+    mObserversOf_boardDisplayRect.remove (inObserver)
+    if let object = self.propval {
+      object.boardDisplayRect_property.removeEBObserver (inObserver)
     }
   }
 

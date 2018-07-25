@@ -10,6 +10,20 @@ document MergerDocument root MergerRoot {
     $run self.showPrefsForSettingMergerDisplayAction
     $enabled root.selectedPageIndex <= 1 ;
 
+#--- Issues
+  transient InstanceIssueArray issues dependsFrom 
+    root.overlapingArrangment, root.boardRect, root.boardDisplayRect,
+    root.boardInstances.all.instanceRect, root.boardInstances.all.boardLimitWidth ;
+
+  outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
+  transient NSImage mStatusImage dependsFrom self.issues ;
+  transient String mStatusMessage dependsFrom self.issues ;
+
+  outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
+
+  outlet EBButton mDeselectIssueButton ;
+  outlet MergerIssueTableView mIssueTableView $issues self.issues ;
+
 #------------------------------------- Display setting panel
   outlet NSView mDisplaySettingView $hidden root.selectedPageIndex > 1  ;
 
@@ -279,7 +293,6 @@ document MergerDocument root MergerRoot {
   outlet EBButton mArrangeUpButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.arrangeUpAction ;
   action arrangeDownAction ;
   outlet EBButton mArrangeDownButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.arrangeDownAction ;
-
 
 #------------------------------------- Product Page
   transient Bool documentFileNameOk dependsFrom self.documentFilePath ;

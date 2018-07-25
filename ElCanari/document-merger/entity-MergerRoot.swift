@@ -34,6 +34,7 @@ class MergerRoot : EBManagedObject,
   MergerRoot_modelNames,
   MergerRoot_instancesDisplay,
   MergerRoot_boardRect,
+  MergerRoot_boardDisplayRect,
   MergerRoot_boardWidth,
   MergerRoot_boardHeight {
 
@@ -513,6 +514,25 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing boardDisplayRect transient property
+  //····················································································································
+
+  var boardDisplayRect_property_selection : EBSelection <CanariBoardRect> {
+    get {
+      return self.boardDisplayRect_property.prop
+    }
+  }
+
+  var boardDisplayRect : CanariBoardRect? {
+    switch boardDisplayRect_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Accessing boardWidth transient property
   //····················································································································
 
@@ -604,6 +624,7 @@ class MergerRoot : EBManagedObject,
   var modelNames_property = EBTransientProperty_MergerBoardModelArray ()
   var instancesDisplay_property = EBTransientProperty_EBShapeLayerArray ()
   var boardRect_property = EBTransientProperty_CanariBoardRect ()
+  var boardDisplayRect_property = EBTransientProperty_CanariBoardRect ()
   var boardWidth_property = EBTransientProperty_Int ()
   var boardHeight_property = EBTransientProperty_Int ()
 
@@ -732,16 +753,39 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardWidth_property.readModelFunction = { [weak self] in
+    self.boardDisplayRect_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardRect_property_selection.kind ()
+        var kind = unwSelf.automaticBoardSize_property_selection.kind ()
+        kind &= unwSelf.boardManualWidth_property_selection.kind ()
+        kind &= unwSelf.boardManualHeight_property_selection.kind ()
+        kind &= unwSelf.boardInstances_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardRect_property_selection) {
+          switch (unwSelf.automaticBoardSize_property_selection, unwSelf.boardManualWidth_property_selection, unwSelf.boardManualHeight_property_selection, unwSelf.boardInstances_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_MergerRoot_boardDisplayRect (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardWidth_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.boardDisplayRect_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.boardDisplayRect_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerRoot_boardWidth (v0))
           default :
@@ -754,14 +798,14 @@ class MergerRoot : EBManagedObject,
     }
     self.boardHeight_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardRect_property_selection.kind ()
+        let kind = unwSelf.boardDisplayRect_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardRect_property_selection) {
+          switch (unwSelf.boardDisplayRect_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerRoot_boardHeight (v0))
           default :
@@ -787,8 +831,12 @@ class MergerRoot : EBManagedObject,
     self.boardManualWidth_property.addEBObserver (self.boardRect_property)
     self.boardManualHeight_property.addEBObserver (self.boardRect_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
-    self.boardRect_property.addEBObserver (self.boardWidth_property)
-    self.boardRect_property.addEBObserver (self.boardHeight_property)
+    self.automaticBoardSize_property.addEBObserver (self.boardDisplayRect_property)
+    self.boardManualWidth_property.addEBObserver (self.boardDisplayRect_property)
+    self.boardManualHeight_property.addEBObserver (self.boardDisplayRect_property)
+    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardDisplayRect_property)
+    self.boardDisplayRect_property.addEBObserver (self.boardWidth_property)
+    self.boardDisplayRect_property.addEBObserver (self.boardHeight_property)
   //--- Install undoers for properties
     self.selectedPageIndex_property.undoManager = undoManager ()
     self.zoom_property.undoManager = undoManager ()
@@ -835,8 +883,12 @@ class MergerRoot : EBManagedObject,
     self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
     self.boardManualHeight_property.removeEBObserver (self.boardRect_property)
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
-    self.boardRect_property.removeEBObserver (self.boardWidth_property)
-    self.boardRect_property.removeEBObserver (self.boardHeight_property)
+    self.automaticBoardSize_property.removeEBObserver (self.boardDisplayRect_property)
+    self.boardManualWidth_property.removeEBObserver (self.boardDisplayRect_property)
+    self.boardManualHeight_property.removeEBObserver (self.boardDisplayRect_property)
+    self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardDisplayRect_property)
+    self.boardDisplayRect_property.removeEBObserver (self.boardWidth_property)
+    self.boardDisplayRect_property.removeEBObserver (self.boardHeight_property)
   }
 
   //····················································································································
@@ -1045,6 +1097,14 @@ class MergerRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.boardRect_property.mObserverExplorer,
       valueExplorer:&self.boardRect_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "boardDisplayRect",
+      idx:self.boardDisplayRect_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.boardDisplayRect_property.mObserverExplorer,
+      valueExplorer:&self.boardDisplayRect_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "boardWidth",
@@ -2705,6 +2765,62 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
+  //   Observers of 'boardDisplayRect' transient property
+  //····················································································································
+
+  private var mObserversOf_boardDisplayRect = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_boardDisplayRect.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardDisplayRect_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_boardDisplayRect.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.boardDisplayRect_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_boardDisplayRect_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardDisplayRect {
+        managedObject.boardDisplayRect_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_boardDisplayRect_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_boardDisplayRect {
+        managedObject.boardDisplayRect_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'boardWidth' transient property
   //····················································································································
 
@@ -2880,6 +2996,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
         removeEBObserversOf_instancesDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
       //--- Added object set
@@ -2911,6 +3028,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_modelNames_toElementsOfSet (addedSet)
         addEBObserversOf_instancesDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_boardRect_toElementsOfSet (addedSet)
+        addEBObserversOf_boardDisplayRect_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
       //--- Update object set
@@ -3089,6 +3207,12 @@ protocol MergerRoot_instancesDisplay : class {
 
 protocol MergerRoot_boardRect : class {
   var boardRect : CanariBoardRect? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardDisplayRect : class {
+  var boardDisplayRect : CanariBoardRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
