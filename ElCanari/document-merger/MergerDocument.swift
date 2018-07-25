@@ -114,6 +114,7 @@ import Cocoa
   @IBOutlet var mModelWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mNoArtworkMessage : EBTextField?
   @IBOutlet var mNoModelMessage : EBTextField?
+  @IBOutlet var mOperationAndIssueTabView : NSTabView?
   @IBOutlet var mOverlapSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mSelectedBoardXTextField : CanariDimensionTextField?
@@ -1205,6 +1206,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mNoModelMessage' outlet is not an instance of 'EBTextField'") ;
+    }
+    if nil == mOperationAndIssueTabView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mOperationAndIssueTabView' outlet is nil") ;
+//    }else if !mOperationAndIssueTabView!.isKindOfClass (NSTabView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mOperationAndIssueTabView' outlet is not an instance of 'NSTabView'") ;
     }
     if nil == mOverlapSwitch {
       presentErrorWindow (file: #file,
@@ -2328,6 +2338,7 @@ import Cocoa
     self.mModelWidthUnitPopUp?.ebCleanUp ()
     self.mNoArtworkMessage?.ebCleanUp ()
     self.mNoModelMessage?.ebCleanUp ()
+    self.mOperationAndIssueTabView?.ebCleanUp ()
     self.mOverlapSwitch?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mSelectedBoardXTextField?.ebCleanUp ()

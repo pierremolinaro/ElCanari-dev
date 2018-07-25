@@ -126,14 +126,16 @@ struct InstanceIssue : Hashable {
 
   let mKind : InstanceIssueKind
   let mShapes : EBShapes
+  let mRefRect : CanariBoardRect
 
   //····················································································································
   //   Init
   //····················································································································
 
-  init (kind inKind : InstanceIssueKind, shapes inShapes : EBShapes) {
+  init (kind inKind : InstanceIssueKind, shapes inShapes : EBShapes, refRect inRefRect : CanariBoardRect) {
     mKind = inKind
     mShapes = inShapes
+    mRefRect = inRefRect
   }
 
   //····················································································································
@@ -141,14 +143,23 @@ struct InstanceIssue : Hashable {
   //····················································································································
 
   public static func == (lhs: InstanceIssue, rhs: InstanceIssue) -> Bool {
-    return (lhs.mKind == rhs.mKind) && (lhs.mShapes == rhs.mShapes)
+    return (lhs.mKind == rhs.mKind) && (lhs.mShapes == rhs.mShapes) && (lhs.mRefRect == rhs.mRefRect)
   }
 
   //····················································································································
   //   Protocol Hashable
   //····················································································································
 
-  public var hashValue: Int { return self.mKind.hashValue ^ self.mShapes.hashValue }
+  public var hashValue: Int { return self.mKind.hashValue ^ self.mShapes.hashValue ^ self.mRefRect.hashValue }
+
+  //····················································································································
+  //
+  //····················································································································
+
+  public static func displaySortingCompare (lhs: InstanceIssue, rhs: InstanceIssue) -> Bool {
+    return (lhs.mRefRect.bottom < rhs.mRefRect.bottom)
+      || ((lhs.mRefRect.bottom == rhs.mRefRect.bottom) && (lhs.mRefRect.left < rhs.mRefRect.left))
+  }
 
   //····················································································································
 

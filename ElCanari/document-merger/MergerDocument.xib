@@ -111,6 +111,7 @@
                 <outlet property="mModelWidthUnitPopUp" destination="8AK-fL-5Og" id="1sh-Of-gx2"/>
                 <outlet property="mNoArtworkMessage" destination="7QM-ql-usB" id="kwE-3L-4pp"/>
                 <outlet property="mNoModelMessage" destination="AyG-8t-ISk" id="Y33-A1-3m4"/>
+                <outlet property="mOperationAndIssueTabView" destination="Dp9-Pn-vhh" id="tvZ-T4-r9z"/>
                 <outlet property="mOverlapSwitch" destination="GAQ-bH-PUU" id="da2-qI-nAN"/>
                 <outlet property="mPageSegmentedControl" destination="any-JT-3MB" id="FD0-Qf-XPU"/>
                 <outlet property="mSelectedBoardXTextField" destination="3Y8-1B-wfY" id="YfE-xz-xq4"/>

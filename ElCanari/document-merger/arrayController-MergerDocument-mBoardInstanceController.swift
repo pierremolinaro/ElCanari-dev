@@ -444,6 +444,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int) {
+    mModel?.owner?.undoManager ()?.beginUndoGrouping ()
     mLastMouseDraggedLocation = mEBView?.convert (inEvent.locationInWindow, from:nil)
     let objects = mModel?.propval ?? []
     let controlKey = inEvent.modifierFlags.contains (.control)
@@ -527,6 +528,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func mouseUp (with inEvent : NSEvent) {
+    mModel?.owner?.undoManager ()?.endUndoGrouping ()
     mLastMouseDraggedLocation = nil
     mSelectionRectangleOrigin = nil
     mEBView?.selectionRectangleLayer = nil

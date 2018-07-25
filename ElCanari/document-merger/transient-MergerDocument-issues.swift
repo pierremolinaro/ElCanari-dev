@@ -42,7 +42,7 @@ func transient_MergerDocument_issues (
             let bp2 = NSBezierPath (rect: intersectionEnlarged)
             bp2.lineWidth = 2.0
             shapes.append ([bp2], NSColor.red, .stroke)
-            let issue = InstanceIssue (kind: .intersecting, shapes: shapes)
+            let issue = InstanceIssue (kind: .intersecting, shapes: shapes, refRect: intersection)
             array.append (issue)
           }
           idy += 1
@@ -63,10 +63,12 @@ func transient_MergerDocument_issues (
           let bp2 = NSBezierPath (rect: intersectionEnlarged)
           bp2.lineWidth = 2.0
           shapes.append ([bp2], NSColor.red, .stroke)
-          let issue = InstanceIssue (kind: .outside, shapes: shapes)
+          let issue = InstanceIssue (kind: .outside, shapes: shapes, refRect: instanceRect)
           array.append (issue)
         }
       }
+    //-------------------- Sort issues
+      array.sort (by: InstanceIssue.displaySortingCompare)
     //--------------------
       return InstanceIssueArray (issues: array)
 //--- END OF USER ZONE 2

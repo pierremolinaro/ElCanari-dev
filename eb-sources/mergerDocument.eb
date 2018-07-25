@@ -182,6 +182,7 @@ document MergerDocument root MergerRoot {
   outlet CanariBoardInsertMenu mBoardInsertMenu $names root.modelNames ;
   action insertBoardAction ; # Called directly by selecting an item of mBoardInsertMenu
   outlet NSPopUpButton mInsertedInstanceDefaultOrientation ;
+  outlet NSTabView mOperationAndIssueTabView ;
 
 #--- Board model name
   outlet EBTextObserverField mInstanceModelNameTextField $valueObserver mBoardInstanceSelection.modelName ;

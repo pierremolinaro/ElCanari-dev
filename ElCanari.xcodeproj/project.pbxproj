@@ -732,10 +732,6 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
-				CF1A11062108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift */,
-				CF1A11002108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift */,
-				CF1A10FE2108AA5600987BFD /* transient-MergerDocument-mStatusImage.swift */,
-				CF1A10FC2108A1EC00987BFD /* transient-MergerDocument-issues.swift */,
 				CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */,
 				CFA655CA21060672001E5067 /* action-MergerDocument-arrangeDownAction.swift */,
 				CFA655CB21060672001E5067 /* action-MergerDocument-arrangeLeftAction.swift */,
@@ -749,6 +745,7 @@
 				CF30637820E7EE1B0099182C /* action-MergerDocument-updateBoardModelAction.swift */,
 				CFB671D720FB719700C94777 /* arrayController-MergerDocument-mBoardInstanceController.swift */,
 				CFBEE4DC20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift */,
+				CF1A10FA21089C8E00987BFD /* class-InstanceIssueArray.swift */,
 				CFD7EA2220E7D27300D53B87 /* class-MergerBoardModelArray.swift */,
 				CFC80A9A20E633B200C1A156 /* class-MergerHoleArray.swift */,
 				CF1FB93120E57D900050391E /* class-MergerPadArray.swift */,
@@ -814,6 +811,10 @@
 				CF11892520FE584400639468 /* transient-MergerDocument-documentIsUnnamed.swift */,
 				CF3E2DEF20EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift */,
 				CF87A96520F117150011B9EC /* transient-MergerDocument-incorrectDocumentFileErrorMessage.swift */,
+				CF1A10FC2108A1EC00987BFD /* transient-MergerDocument-issues.swift */,
+				CF1A10FE2108AA5600987BFD /* transient-MergerDocument-mStatusImage.swift */,
+				CF1A11002108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift */,
+				CF1A11062108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift */,
 				CFCC4BE420EAB3E6006A9CC5 /* transient-MergerRoot-boardHeight.swift */,
 				CFCC4BE220EAB2C5006A9CC5 /* transient-MergerRoot-boardRect.swift */,
 				CFCC4BE520EAB3E6006A9CC5 /* transient-MergerRoot-boardWidth.swift */,
@@ -821,7 +822,6 @@
 				CFD7EA2420E7D42900D53B87 /* transient-MergerRoot-modelNames.swift */,
 				CF95F6DE20FA399C0080EFFC /* view-CanariMergerBoardScrollView.swift */,
 				CF95F6DC20FA09680080EFFC /* view-CanariModelDragSourceTableView.swift */,
-				CF1A10FA21089C8E00987BFD /* class-InstanceIssueArray.swift */,
 				CF1A11022108BC9400987BFD /* view-MergerIssueTableView.swift */,
 			);
 			name = "document-merger";
