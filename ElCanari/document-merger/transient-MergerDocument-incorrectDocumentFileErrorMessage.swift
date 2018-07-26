@@ -21,8 +21,22 @@ func transient_MergerDocument_incorrectDocumentFileErrorMessage (
   }else{
     var ok = true
     let baseName = self_documentFilePath.lastPathComponent.deletingPathExtension
-    for char in baseName.characters {
-      ok = ((char >= "A") && (char <= "Z")) || ((char >= "a") && (char <= "z")) ||  ((char >= "0") && (char <= "9"))
+    #if swift (>=3.1)
+      let baseNameCharacters = baseName
+    #else
+      let baseNameCharacters = baseName.characters
+    #endif
+    for char in baseNameCharacters {
+      ok = (char >= "A") && (char <= "Z")
+      if !ok {
+        ok = (char >= "a") && (char <= "z")
+      }
+      if !ok {
+        ok = (char >= "0") && (char <= "9")
+      }
+      if !ok {
+        ok = (char == "-") || (char == "_")
+      }
       if !ok {
         break
       }

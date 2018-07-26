@@ -150,7 +150,7 @@ struct InstanceIssue : Hashable {
   //   Protocol Hashable
   //····················································································································
 
-  public var hashValue: Int { return self.mKind.hashValue ^ self.mShapes.hashValue ^ self.mRefRect.hashValue }
+  public var hashValue : Int { return self.mKind.hashValue ^ self.mShapes.hashValue ^ self.mRefRect.hashValue }
 
   //····················································································································
   //
