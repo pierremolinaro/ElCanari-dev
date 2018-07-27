@@ -20,6 +20,9 @@ extension Preferences {
     op.canChooseFiles = false
     op.beginSheetModal (for: (sender as! NSButton).window!,
       completionHandler: { (inReturnCode : Int) in
+        #if swift(>=4)
+          let NSModalResponseOK = NSApplication.ModalResponse.OK
+        #endif
         if inReturnCode == NSModalResponseOK {
           let URLToAdd : URL = op.urls [0]
           let pathToAdd : String? = URLToAdd.path

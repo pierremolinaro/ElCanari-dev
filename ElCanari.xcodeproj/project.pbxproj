@@ -253,6 +253,7 @@
 		CFBED92520F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92420F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift */; };
 		CFBED92720F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBED92620F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift */; };
 		CFBEE4DD20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBEE4DC20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift */; };
+		CFBEF0572109E8A100F02723 /* NSImage-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBEF0562109E8A100F02723 /* NSImage-utilities.swift */; };
 		CFC129231B44887700B1866D /* file-metadata-dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC129221B44887700B1866D /* file-metadata-dictionary.swift */; };
 		CFC19AD321026BC0008C5707 /* NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC19AD221026BC0008C5707 /* NSView.swift */; };
 		CFC2FEAD20EBEF6100C45CB3 /* extension-MergerDocument-arrange-board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2FEAC20EBEF6100C45CB3 /* extension-MergerDocument-arrange-board.swift */; };
@@ -605,6 +606,7 @@
 		CFBED92420F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backLegendLinesSegments.swift"; sourceTree = "<group>"; };
 		CFBED92620F3BC450019C316 /* transient-BoardModel-frontLegendLinesSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontLegendLinesSegments.swift"; sourceTree = "<group>"; };
 		CFBEE4DC20DD26E2000743A2 /* arrayController-MergerDocument-mBoardModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-MergerDocument-mBoardModelController.swift"; sourceTree = "<group>"; };
+		CFBEF0562109E8A100F02723 /* NSImage-utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage-utilities.swift"; sourceTree = "<group>"; };
 		CFC129221B44887700B1866D /* file-metadata-dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "file-metadata-dictionary.swift"; sourceTree = "<group>"; };
 		CFC19AD221026BC0008C5707 /* NSView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSView.swift; sourceTree = "<group>"; };
 		CFC2FEAC20EBEF6100C45CB3 /* extension-MergerDocument-arrange-board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerDocument-arrange-board.swift"; sourceTree = "<group>"; };
@@ -839,6 +841,7 @@
 				CF5CEFB91DD8C53100A70419 /* extension-CGMutablePath.swift */,
 				CF5CEFBB1DD8C6B600A70419 /* extension-CGPoint.swift */,
 				CFFB18B61DDF6E35008B05C1 /* extension-CGRect.swift */,
+				CFBEF0562109E8A100F02723 /* NSImage-utilities.swift */,
 			);
 			name = utilities;
 			path = ElCanari/utilities;
@@ -1508,6 +1511,7 @@
 				CF0A175220FF42DC00448A4C /* transient-BoardModel-imageForInstances.swift in Sources */,
 				CF7FFAF520E5494500DE60BC /* transient-BoardModel-backComponentValueSegments.swift in Sources */,
 				CF11892620FE584400639468 /* transient-MergerDocument-documentIsUnnamed.swift in Sources */,
+				CFBEF0572109E8A100F02723 /* NSImage-utilities.swift in Sources */,
 				CF1FB93220E57D900050391E /* class-MergerPadArray.swift in Sources */,
 				CFDA579E1BFA524A00EEF3CB /* PMFontDocument.swift in Sources */,
 				CFF2652F20E6833600525C0F /* transient-BoardModel-frontLegendTextsSegments.swift in Sources */,
@@ -1768,6 +1772,7 @@
 				STRIP_PNG_TEXT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ElCanari/canari-application/canari-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1796,6 +1801,7 @@
 				STRIP_PNG_TEXT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ElCanari/canari-application/canari-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};

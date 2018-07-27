@@ -213,9 +213,9 @@ class EBManagedObjectContext : EBObject {
     }else if inEntityTypeName == "MergerRoot" {
       result = MergerRoot (managedObjectContext:self)
     }else{
-       let dictionary : [NSObject : Any] = [
-        NSLocalizedDescriptionKey as NSObject : "Cannot read document",
-        NSLocalizedRecoverySuggestionErrorKey as NSObject : "Cannot create object of \(inEntityTypeName) class",
+       let dictionary : [String : Any] = [
+        NSLocalizedDescriptionKey : "Cannot read document",
+        NSLocalizedRecoverySuggestionErrorKey : "Cannot create object of \(inEntityTypeName) class",
       ]
       throw NSError (
         domain:Bundle.main.bundleIdentifier!,
