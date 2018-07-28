@@ -20,6 +20,14 @@ extension String {
 
   //····················································································································
   
+  var deletingLastPathComponent : String {
+    get {
+      return (self as NSString).deletingLastPathComponent
+    }
+  }
+
+  //····················································································································
+  
   var deletingPathExtension : String {
     get {
       return (self as NSString).deletingPathExtension
