@@ -30,7 +30,7 @@
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
                 <menuItem title="ElCanari" id="56">
-                    <menu key="submenu" title="ElCanari" systemMenu="apple" id="57">
+                    <menu key="submenu" title="ElCanari" systemMenu="apple" autoenablesItems="NO" id="57">
                         <items>
                             <menuItem title="About ElCanari" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -1963,7 +1963,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="8262874D-8799-4BB5-BFD4-EAF19107C1E5" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="F30A4940-A975-42AD-A257-1F836BD5B3A0" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2453,7 +2453,7 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="8262874D-8799-4BB5-BFD4-EAF19107C1E5" width="20" height="20">
+        <image name="F30A4940-A975-42AD-A257-1F836BD5B3A0" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

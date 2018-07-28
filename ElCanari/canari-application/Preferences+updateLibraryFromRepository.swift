@@ -2,79 +2,8 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// Comment est effectuée la mise à jour de la librairie des composants ElCanari
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//
-// Cette librairie est contenue dans le repository https://github.com/pierremolinaro/ElCanari-Library
-//
-//--------------- ① Savoir si une mise à jour est disponible
-// On cherche les infos de la branche master :
-//   curl -L https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches
-// La réponse est du style :
-//[
-//  {
-//    "name": "master",
-//    "commit": {
-//      "sha": "910e061c5202ce9904f1ee2e464ee5354869bb2a",
-//      "url": "https://api.github.com/repos/pierremolinaro/ElCanari-Library/commits/910e061c5202ce9904f1ee2e464ee5354869bb2a"
-//    }
-//  }
-//]
-// Le champ sha donne l'identité du dernier commit.
-//
-// On peut faire mieux (https://developer.github.com/v3/?#conditional-requests) : d'abord récupérer l'Etag du dernier
-// commit (l'option -i affiche le header HTTP) :
-//   curl -i -L https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches
-// La réponse :
-//   HTTP/1.1 200 OK
-// ·····
-//   Status: 200 OK
-// ·····
-//   ETag: "e00f8fbc5829aa5e29c64688276e9f4f"
-// ·····
-//   après une ligne vide, la réponse au format json
-//
-// Ensuite, si on relance la commande :
-//   curl -i -H 'If-None-Match:"e00f8fbc5829aa5e29c64688276e9f4f"' https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches
-// La réponse :
-//   HTTP/1.1 304 Not Modified
-// ·····
-//   Status: 304 Not Modified
-// ·····
-//   ETag: "e00f8fbc5829aa5e29c64688276e9f4f"
-// ·····
-//   et pas de réponse au format json
-// L'intérêt de cette méthode est que l'appel n'est pas comptabilisé dans le décompte des appels (max : 60 / h) si la réponse est 304.
-//
-//--------------- ② Connaître les fichiers à remettre à jour
-// On télécharge la liste des fichiers correspondant au commit
-//   curl -i -H "Accept:application/vnd.github.v3+json" https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/910e061c5202ce9904f1ee2e464ee5354869bb2a?recursive=1
-// La réponse est la liste des fichiers au format JSON
-//{
-//  "sha": "910e061c5202ce9904f1ee2e464ee5354869bb2a",
-//  "url": "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/910e061c5202ce9904f1ee2e464ee5354869bb2a",
-//  "tree": [
-//    ················
-//    {
-//      "path": "artworks/electro_dragon.ElCanariArtwork",
-//      "mode": "100644",
-//      "type": "blob",
-//      "sha": "038e85b12174cbcaca0c5c7f1b5885903446fb73",
-//      "size": 5854,
-//      "url": "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/blobs/038e85b12174cbcaca0c5c7f1b5885903446fb73"
-//    },
-//    ················
-// Le champ intéressant est "path", qui contient le chemin relatif des fichiers. Attention, "sha" n'est pas le sha du
-// fichier, mais celle de son blog ; idem pour "url". Mais on peut utiliser la valeur de "sha" pour savoir si le fichier
-// a changé.
-//
-//--------------- ③ Récupérer le contenu d'un fichier
-// Pour chaque fichier à récupérer
-//   curl -H "Accept:application/vnd.github.v3+json" https://raw.githubusercontent.com/pierremolinaro/ElCanari-Library/910e061c5202ce9904f1ee2e464ee5354869bb2a/artworks/electro_dragon.ElCanariArtwork
-//
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let LOG_LIBRARY_UPDATES = true
+private let LOG_LIBRARY_UPDATES = false // When active, downloading is slowed down with sleep (1)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -82,7 +11,6 @@ private let parallelDownloadCount = 4
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gLibraryUpdateWindow : EBWindow? = nil // nil if background search
 private let repositoryDescriptionFile = "repository-description.plist"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -91,16 +19,55 @@ private let repositoryDescriptionFile = "repository-description.plist"
 
 func performLibraryUpdate (_ inWindow : EBWindow?) {
   if LOG_LIBRARY_UPDATES {
-    print ("---- performLibraryUpdate BEGIN (window \(inWindow))")
+    print ("---- performLibraryUpdate BEGIN (window \(String(describing:inWindow)))")
   }
-  gLibraryUpdateWindow = inWindow
-  gLibraryUpdateWindow?.makeKeyAndOrderFront (nil)
-//-------- We start by checking if a repository did change using etag
+//--- Disable update buttons
+  g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
+  g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
+//-------- Show "Check for update" window
+  inWindow?.makeKeyAndOrderFront (nil)
+//-------- ① We start by checking if a repository did change using etag
+  var ok = false
   if let etag = getRepositoryCurrentETag () {
-    performLibraryUpdateUsingEtag (etag)
+    performLibraryUpdateUsingEtag (etag, inWindow, &ok)
   }else{
-    performLibraryUpdateNoEtag ()
+    performLibraryUpdateNoEtag (inWindow, &ok)
   }
+//-------- ② Repository commit SHA has been successfully retrieve, now download the file list corresponding to this commit
+  var libraryFileDictionary = [String : CanariLibraryFileDescriptor] ()
+  if ok {
+    performLibraryUpdateWithCurrentRepositoryDescriptionFile (&libraryFileDictionary, &ok)
+  }
+//-------- ③ Repository has been successfully interrogated, then enumerate local system library
+  if ok {
+    try! performUpdateWithCurrentRepositoryContents (&libraryFileDictionary)
+  }
+//-------- ④ Build library operations
+  var libraryOperations = [LibraryOperationElement] ()
+  if ok {
+    buildLibraryOperations (libraryFileDictionary, &libraryOperations)
+  }
+//-------- ⑤ Order out "Check for update" window
+  if let window = inWindow {
+    if ok && (libraryOperations.count == 0) {
+      let alert = NSAlert ()
+      alert.messageText = "The library is up to date"
+      alert.addButton (withTitle: "Ok")
+      alert.beginSheetModal (
+        for: window,
+        completionHandler: { (response : Int) in window.orderOut (nil) }
+      )
+    }else{
+      window.orderOut (nil)
+    }
+  }
+//-------- ⑥ If ok and there are update operations, perform library update
+  if ok && (libraryOperations.count != 0) {
+    performLibraryOperations (libraryOperations)
+  }else{
+    enableItemsAfterCompletion ()
+  }
+//-------- Done
   if LOG_LIBRARY_UPDATES {
     print ("---- performLibraryUpdate DONE")
   }
@@ -108,7 +75,16 @@ func performLibraryUpdate (_ inWindow : EBWindow?) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func performLibraryUpdateUsingEtag (_ etag : String) {
+private func enableItemsAfterCompletion () {
+//--- Enable update buttons
+  g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = true
+  g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+private func performLibraryUpdateUsingEtag (_ etag : String, _ inWindow : NSWindow?, _ outOk : inout Bool) {
+  outOk = false
   let response = runShellCommandAndGetDataOutput ([
     "/usr/bin/curl",
     "-s", // Silent mode, do not show download progress
@@ -119,7 +95,7 @@ private func performLibraryUpdateUsingEtag (_ etag : String) {
   ])
   switch response {
   case .error (let errorCode) :
-    if let libraryUpdateWindow = gLibraryUpdateWindow {
+    if let libraryUpdateWindow = inWindow {
       let alert = NSAlert ()
       alert.messageText = "Cannot connect to the server"
       alert.addButton (withTitle: "Ok")
@@ -142,9 +118,9 @@ private func performLibraryUpdateUsingEtag (_ etag : String) {
           print ("HTTP status \(status)")
         }
         if status == 304 { // Status 304 --> not modified, use current repository description file
-          performLibraryUpdateWithCurrentRepositoryDescriptionFile ()
+          outOk = true
         }else if status == 200 { // Status 200 --> Ok, modified
-          writeRepositoryDescriptionFile (withResponse: response)
+          writeRepositoryDescriptionFile (withResponse: response, &outOk)
         }
       }
     }
@@ -153,7 +129,8 @@ private func performLibraryUpdateUsingEtag (_ etag : String) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func performLibraryUpdateNoEtag () {
+private func performLibraryUpdateNoEtag (_ inWindow : NSWindow?, _ outOk : inout Bool) {
+  outOk = false
   let response = runShellCommandAndGetDataOutput ([
     "/usr/bin/curl",
     "-s", // Silent mode, do not show download progress
@@ -163,7 +140,7 @@ private func performLibraryUpdateNoEtag () {
   ])
   switch response {
   case .error (let errorCode) :
-    if let libraryUpdateWindow = gLibraryUpdateWindow {
+    if let libraryUpdateWindow = inWindow {
       let alert = NSAlert ()
       alert.messageText = "Cannot connect to the server"
       alert.addButton (withTitle: "Ok")
@@ -177,14 +154,15 @@ private func performLibraryUpdateNoEtag () {
     }
   case .ok (let responseData) :
     if let response = String (data: responseData, encoding: .utf8) {
-      writeRepositoryDescriptionFile (withResponse: response)
+      writeRepositoryDescriptionFile (withResponse: response, &outOk)
     }
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func writeRepositoryDescriptionFile (withResponse inResponse : String) {
+private func writeRepositoryDescriptionFile (withResponse inResponse : String, _ outOk : inout Bool) {
+  outOk = false
   let components = inResponse.components (separatedBy:"\r\n\r\n")
   if components.count == 2 {
     let jsonData = components [1].data (using: .utf8)!
@@ -215,7 +193,7 @@ private func writeRepositoryDescriptionFile (withResponse inResponse : String) {
       repositoryDescriptionDictionary ["commitSHA"] = commitSHA
       let f = systemLibraryPath () + "/" + repositoryDescriptionFile
       repositoryDescriptionDictionary.write (toFile: f, atomically: true)
-      performLibraryUpdateWithCurrentRepositoryDescriptionFile ()
+      outOk = true
     }catch let error {
       print ("Error, error \(error)")
     }
@@ -224,11 +202,13 @@ private func writeRepositoryDescriptionFile (withResponse inResponse : String) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func performLibraryUpdateWithCurrentRepositoryDescriptionFile () {
+private func performLibraryUpdateWithCurrentRepositoryDescriptionFile (
+        _ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor],
+        _ outOk : inout Bool) {
   if LOG_LIBRARY_UPDATES {
     print ("---- performLibraryUpdateWithCurrentRepositoryDescriptionFile BEGIN")
   }
-//------------------ Step ② : download from repository the library.plist file
+  outOk = false
   let response = runShellCommandAndGetDataOutput ([
     "/usr/bin/curl",
     "-s", // Silent mode, do not show download progress
@@ -244,7 +224,7 @@ private func performLibraryUpdateWithCurrentRepositoryDescriptionFile () {
     do{
       let repositoryFilePLIST = try PropertyListSerialization.propertyList (from: responseData, format: nil)
       let repositoryFileArray = repositoryFilePLIST as! [[String : String]]
-      var libraryFileDictionary = [String : CanariLibraryFileDescriptor] ()
+      ioLibraryFileDictionary = [String : CanariLibraryFileDescriptor] ()
       if LOG_LIBRARY_UPDATES {
         print ("*********** Repository contents (SHA:size:path)")
       }
@@ -261,10 +241,9 @@ private func performLibraryUpdateWithCurrentRepositoryDescriptionFile () {
           sizeInRepository: Int (sizeInRepository)!,
           localSHA: ""
         )
-        libraryFileDictionary [path] = descriptor
+        ioLibraryFileDictionary [path] = descriptor
       }
-      try performUpdateWithCurrentRepositoryContents (libraryFileDictionary)
-      // print ("libraryFileDictionary \(libraryFileDictionary)")
+      outOk = true
     }catch let error {
        print ("Error \(error)")
     }
@@ -277,10 +256,8 @@ private func performLibraryUpdateWithCurrentRepositoryDescriptionFile () {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func performUpdateWithCurrentRepositoryContents (_ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor]) throws {
-//------------------ Step ③ : enumerate current file in library
+private func performUpdateWithCurrentRepositoryContents (_ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor]) throws {
   let fm = FileManager ()
-  var libraryFileDictionary = inLibraryFileDictionary
 //--- Get library files
   if fm.fileExists (atPath: systemLibraryPath ()) {
     let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
@@ -295,7 +272,7 @@ private func performUpdateWithCurrentRepositoryContents (_ inLibraryFileDictiona
         enter = !isDirectory.boolValue
       }
       if enter {
-        if let descriptor = libraryFileDictionary [filePath] {
+        if let descriptor = ioLibraryFileDictionary [filePath] {
           let localSHA = try computeFileSHA (filePath)
           let newDescriptor = CanariLibraryFileDescriptor (
             relativePath: descriptor.mRelativePath,
@@ -303,7 +280,7 @@ private func performUpdateWithCurrentRepositoryContents (_ inLibraryFileDictiona
             sizeInRepository: descriptor.mSizeInRepository,
             localSHA: localSHA
           )
-          libraryFileDictionary [filePath] = newDescriptor
+          ioLibraryFileDictionary [filePath] = newDescriptor
         }else{
           let descriptor = CanariLibraryFileDescriptor (
             relativePath: filePath,
@@ -311,54 +288,41 @@ private func performUpdateWithCurrentRepositoryContents (_ inLibraryFileDictiona
             sizeInRepository: 0,
             localSHA: "?"
           )
-          libraryFileDictionary [filePath] = descriptor
+          ioLibraryFileDictionary [filePath] = descriptor
         }
       }
     }
   }
   if LOG_LIBRARY_UPDATES {
     print ("*********** Library descriptor contents (local SHA:repository SHA:SHA:repository size:file path)")
-    for descriptor in libraryFileDictionary.values {
+    for descriptor in ioLibraryFileDictionary.values {
       print ("  \(descriptor.mLocalSHA):\(descriptor.mRepositorySHA):\(descriptor.mSizeInRepository):\(descriptor.mRelativePath)")
     }
   }
-  try performUpdateWithLocalAndRepositoryContents (libraryFileDictionary)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func performUpdateWithLocalAndRepositoryContents (_ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor]) throws {
-  var libraryOperations = [LibraryOperationElement] ()
+private func buildLibraryOperations (
+        _ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
+        _ outLibraryOperations : inout [LibraryOperationElement]) {
   for descriptor in inLibraryFileDictionary.values {
     if descriptor.mRepositorySHA == "" {
       let element = LibraryOperationElement (relativePath: descriptor.mRelativePath, sizeInRepository: 0, operation: .delete)
-      libraryOperations.append (element)
+      outLibraryOperations.append (element)
     }else if (descriptor.mRepositorySHA != "") && (descriptor.mLocalSHA == "") {
       let element = LibraryOperationElement (relativePath: descriptor.mRelativePath, sizeInRepository: descriptor.mSizeInRepository, operation: .download)
-      libraryOperations.append (element)
+      outLibraryOperations.append (element)
     }else if (descriptor.mRepositorySHA != descriptor.mLocalSHA) {
       let element = LibraryOperationElement (relativePath: descriptor.mRelativePath, sizeInRepository: descriptor.mSizeInRepository, operation: .update)
-      libraryOperations.append (element)
+      outLibraryOperations.append (element)
     }
   }
   if LOG_LIBRARY_UPDATES {
     print ("*********** Library operations (operation:file path:size in repository)")
-    for op in libraryOperations {
+    for op in outLibraryOperations {
       print ("  \(op.mOperation):\(op.mRelativePath):\(op.mSizeInRepository)")
     }
-  }
-//--- Hide library checking window (if any)
-  if libraryOperations.count != 0 {
-    gLibraryUpdateWindow?.orderOut (nil)
-    performLibraryOperations (libraryOperations)
-  }else if let libraryUpdateWindow = gLibraryUpdateWindow { // Display an alert saying that library is up to date
-    let alert = NSAlert ()
-    alert.messageText = "The library is up to date"
-    alert.addButton (withTitle: "Ok")
-    alert.beginSheetModal (for: libraryUpdateWindow, completionHandler: {
-     (response : Int) in
-      libraryUpdateWindow.orderOut (nil)
-    })
   }
 }
 
@@ -385,9 +349,6 @@ private func performLibraryOperations (_ inLibraryOperations : [LibraryOperation
   //--- Configure table view in library update window
     gCanariLibraryUpdateController = CanariLibraryUpdateController (inLibraryOperations)
     gCanariLibraryUpdateController.bind ()
-  //--- Enable update button
- //   g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
-    g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = true
   //--- Show library update window
     g_Preferences?.mLibraryUpdateWindow?.makeKeyAndOrderFront (nil)
   }
@@ -415,8 +376,6 @@ class LibraryOperationElement : EBObject {
 
   let mRelativePath : String
   let mSizeInRepository : Int
-
-  private var mCanceled = false
 
   var mOperation : LibraryOperation {
     willSet {
@@ -484,7 +443,7 @@ class LibraryOperationElement : EBObject {
   //····················································································································
 
   func beginAction (_ inController : CanariLibraryUpdateController) {
-    if self.mCanceled {
+    if inController.shouldCancel {
       inController.elementActionDidEnd (self, 0)
     }else{
       switch mOperation {
@@ -509,7 +468,7 @@ class LibraryOperationElement : EBObject {
           var data = Data ()
           var hasData = true
         //--- Loop until all data is got, or download is cancelled
-          while hasData && !self.mCanceled {
+          while hasData && !inController.shouldCancel {
             let newData = fileHandle.availableData
             hasData = newData.count > 0
             data.append (newData)
@@ -517,16 +476,18 @@ class LibraryOperationElement : EBObject {
               self.mOperation = .downloading (data.count * 100 / self.mSizeInRepository)
               inController.updateProgressIndicator ()
             }
-            sleep (1)
+            if LOG_LIBRARY_UPDATES {
+              sleep (1)
+            }
           }
-          if self.mCanceled {
+          if inController.shouldCancel {
             task.terminate ()
           }
         //--- Task completed
           task.waitUntilExit ()
           fileHandle.closeFile ()
           let status = task.terminationStatus
-          if self.mCanceled || (status != 0) {
+          if inController.shouldCancel || (status != 0) {
             self.mOperation = .downloadError (status)
           }else{
             self.mOperation = .downloaded (data)
@@ -540,12 +501,6 @@ class LibraryOperationElement : EBObject {
         inController.elementActionDidEnd (self, 0)
       }
     }
-  }
-
-  //····················································································································
-
-  func cancelAction () {
-    self.mCanceled = true
   }
 
   //····················································································································
@@ -614,6 +569,22 @@ class CanariLibraryUpdateController : EBObject {
   }
   
   //····················································································································
+  //   Handling error or cancel
+  //····················································································································
+
+  private var mErrorCode : Int32 = 0 // No error
+
+  //····················································································································
+
+  var shouldCancel : Bool { return mErrorCode != 0 }
+
+  //····················································································································
+
+  func cancel () {
+    self.mErrorCode = -1
+  }
+
+  //····················································································································
   //  Cocoa bindings
   //····················································································································
 
@@ -662,34 +633,33 @@ class CanariLibraryUpdateController : EBObject {
   //····················································································································
 
   fileprivate func elementActionDidEnd (_ inElement : LibraryOperationElement, _ inErrorCode : Int32) {
-    if inErrorCode != 0 {
-//      cancelLibraryUpdate ()
-    }else{
-    //--- Decrement parallel action count
-      self.mCurrentParallelActionCount -= 1
-    //--- Remove corresponding entry in table view
-      if let idx = self.mCurrentActionArray.index (of: inElement) {
-        self.mCurrentActionArray.remove (at: idx)
-        self.mArrayController.content = self.mCurrentActionArray
-      }
-    //--- Update progress indicator
-      self.updateProgressIndicator ()
-    //--- Update remaining operation count
-      if self.mCurrentActionArray.count == 0 {
-        g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "Commiting changes…"
-      }else if self.mCurrentActionArray.count == 1 {
-        g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "1 element to update"
-     }else{
-        g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "\(self.mCurrentActionArray.count) elements to update"
-      }
-    //--- Launch next action, if any
-      if self.mNextActionIndex < self.mActionArray.count {
-        self.mNextActionIndex += 1
-        self.mCurrentParallelActionCount += 1
-        self.mActionArray [self.mNextActionIndex - 1].beginAction (self)
-      }else if self.mCurrentParallelActionCount == 0 { // Last download did end
-        DispatchQueue.main.async { commitAllActions (self.mActionArray) }
-      }
+    if (self.mErrorCode == 0) && (inErrorCode != 0) {
+       mErrorCode = inErrorCode
+    }
+  //--- Decrement parallel action count
+    self.mCurrentParallelActionCount -= 1
+  //--- Remove corresponding entry in table view
+    if let idx = self.mCurrentActionArray.index (of: inElement) {
+      self.mCurrentActionArray.remove (at: idx)
+      self.mArrayController.content = self.mCurrentActionArray
+    }
+  //--- Update progress indicator
+    self.updateProgressIndicator ()
+  //--- Update remaining operation count
+    if self.mCurrentActionArray.count == 0 {
+      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "Commiting changes…"
+    }else if self.mCurrentActionArray.count == 1 {
+      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "1 element to update"
+   }else{
+      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "\(self.mCurrentActionArray.count) elements to update"
+    }
+  //--- Launch next action, if any
+    if self.mNextActionIndex < self.mActionArray.count {
+      self.mNextActionIndex += 1
+      self.mCurrentParallelActionCount += 1
+      self.mActionArray [self.mNextActionIndex - 1].beginAction (self)
+    }else if self.mCurrentParallelActionCount == 0 { // Last download did end
+      DispatchQueue.main.async { commitAllActions (self.mActionArray) }
     }
   }
 
@@ -709,25 +679,10 @@ class CanariLibraryUpdateController : EBObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func cleanLibraryUpdate () {
-  if LOG_LIBRARY_UPDATES {
-    NSLog ("\(#function)")
-  }
-//--- Hide library update window
-  g_Preferences?.cancelDownloadElementFromRepository ()
-//---
-  gCanariLibraryUpdateController.unbind ()
-  gCanariLibraryUpdateController = CanariLibraryUpdateController ()
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 func startLibraryUpdate () {
   if LOG_LIBRARY_UPDATES {
     NSLog ("\(#function)")
   }
-//--- Update UI
-  g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = false
 //--- Launch parallel downloads
   for _ in 1...parallelDownloadCount {
     gCanariLibraryUpdateController.launchElementDownload ()
@@ -740,16 +695,9 @@ func cancelLibraryUpdate () {
   if LOG_LIBRARY_UPDATES {
     NSLog ("\(#function)")
   }
-//--- The button is inactived during download
-//  if let button = g_Preferences?.mUpDateButtonInLibraryUpdateWindow, !button.isEnabled {
-  //--- Cancel current downloadings
-    for descriptor in gCanariLibraryUpdateController.mActionArray {
-      descriptor.cancelAction ()
-    }
-    startLibraryUpdate ()
-//  }else{ // Download is not started
-//    cleanLibraryUpdate ()
-//  }
+//--- Cancel current downloadings
+  gCanariLibraryUpdateController.cancel ()
+  startLibraryUpdate ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -773,6 +721,7 @@ private func commitAllActions (_ inActionArray : [LibraryOperationElement]) {
 //--- Perform commit
   if !performCommit {
     g_Preferences?.mLibraryUpdateWindow?.orderOut (nil)
+    enableItemsAfterCompletion ()
   }else{
     if let window = g_Preferences?.mLibraryUpdateWindow {
       do{
@@ -781,12 +730,13 @@ private func commitAllActions (_ inActionArray : [LibraryOperationElement]) {
         }
       //--- Delete orphean directories
         try deleteOrphanDirectories ()
+      //--- Completed!
         let alert = NSAlert ()
         alert.messageText = "Update completed, the library is up to date"
         alert.addButton (withTitle: "Ok")
         alert.beginSheetModal (
           for: window,
-          completionHandler: { (response : Int) in window.orderOut (nil) }
+          completionHandler: { (response : Int) in window.orderOut (nil) ; enableItemsAfterCompletion () }
         )
       }catch let error {
         let alert = NSAlert ()
@@ -795,7 +745,7 @@ private func commitAllActions (_ inActionArray : [LibraryOperationElement]) {
         alert.informativeText = "A file system operation returns \(error) error"
         alert.beginSheetModal (
           for: window,
-          completionHandler: { (response : Int) in window.orderOut (nil) }
+          completionHandler: { (response : Int) in window.orderOut (nil) ; enableItemsAfterCompletion () }
         )
       }
     }
@@ -847,6 +797,7 @@ private func deleteOrphanDirectories () throws {
     }
     i -= 1
   }
+  enableItemsAfterCompletion ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -969,7 +920,7 @@ private func getRepositoryCurrentETag () -> String? { // Returns nil if no curre
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func getRepositoryCurrentCommitSHA() -> String {
+private func getRepositoryCurrentCommitSHA () -> String {
   var result = ""
 //--- Get library file
   let currentLibraryContents = systemLibraryPath () + "/" + repositoryDescriptionFile
@@ -977,39 +928,6 @@ private func getRepositoryCurrentCommitSHA() -> String {
     result = sha
   }
   return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    extension Preferences
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension Preferences {
-
-  //····················································································································
-
-  func beginDownloadRepositoryList () {
-    gLibraryUpdateWindow?.makeKeyAndOrderFront (nil)
-    mCheckForLibraryUpdatesButton?.isEnabled = false
-    mUpDateLibraryMenuItemInCanariMenu?.action = nil
-  }
-
-  //····················································································································
-
-  func cancelDownloadRepositoryList () {
-    mCheckForLibraryUpdatesButton?.isEnabled = true
-    mUpDateLibraryMenuItemInCanariMenu?.action = #selector(ApplicationDelegate.updateLibrary(_:))
-  }
-
-  //····················································································································
-
-  func cancelDownloadElementFromRepository () {
-    mLibraryUpdateWindow?.orderOut (nil)
-    mCheckForLibraryUpdatesButton?.isEnabled = true
-    mUpDateLibraryMenuItemInCanariMenu?.action = #selector(ApplicationDelegate.updateLibrary(_:))
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
