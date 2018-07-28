@@ -1,8 +1,5 @@
 
 import Cocoa
-import Foundation
-import SystemConfiguration
-import ServiceManagement
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // Comment est effectuée la mise à jour de la librairie des composants ElCanari
@@ -77,7 +74,7 @@ import ServiceManagement
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let LOG_LIBRARY_UPDATES = false
+private let LOG_LIBRARY_UPDATES = true
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -389,7 +386,8 @@ private func performLibraryOperations (_ inLibraryOperations : [LibraryOperation
     gCanariLibraryUpdateController = CanariLibraryUpdateController (inLibraryOperations)
     gCanariLibraryUpdateController.bind ()
   //--- Enable update button
-    g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
+ //   g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
+    g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = true
   //--- Show library update window
     g_Preferences?.mLibraryUpdateWindow?.makeKeyAndOrderFront (nil)
   }
@@ -402,7 +400,7 @@ enum LibraryOperation {
   case update
   case delete
   case deleteRegistered
-  case downloadError
+  case downloadError (Int32)
   case downloading (Int)
   case downloaded (Data)
 }
@@ -418,7 +416,7 @@ class LibraryOperationElement : EBObject {
   let mRelativePath : String
   let mSizeInRepository : Int
 
-  var mTask : Process? = nil
+  private var mCanceled = false
 
   var mOperation : LibraryOperation {
     willSet {
@@ -486,63 +484,68 @@ class LibraryOperationElement : EBObject {
   //····················································································································
 
   func beginAction (_ inController : CanariLibraryUpdateController) {
-    switch mOperation {
-    case .download, .update :
-      self.mOperation = .downloading (0)
-      let task = Process ()
-      self.mTask = task
-      let concurrentQueue = DispatchQueue (label: "Queue \(relativePath)", attributes: .concurrent)
-      concurrentQueue.async {
-      //--- Define task
-        task.launchPath = "/usr/bin/curl"
-        task.arguments = [
-          "-s", // Silent mode, do not show download progress
-          "-L", // Follow redirections
-          "https://raw.githubusercontent.com/pierremolinaro/ElCanari-Library/\(getRepositoryCurrentCommitSHA ())/\(self.mRelativePath)",
-        ]
-        let pipe = Pipe ()
-        task.standardOutput = pipe
-        task.standardError = pipe
-        let fileHandle = pipe.fileHandleForReading
-      //--- Launch
-        task.launch ()
-        var data = Data ()
-        var hasData = true
-        while hasData {
-          let newData = fileHandle.availableData
-          hasData = newData.count > 0
-          data.append (newData)
-          DispatchQueue.main.async {
-            self.mOperation = .downloading (data.count * 100 / self.mSizeInRepository)
-            inController.updateProgressIndicator ()
-          }
-          sleep (1)
-        }
-      //--- Task completed
-        task.waitUntilExit ()
-        fileHandle.closeFile ()
-        let status = task.terminationStatus
-        if status != 0 {
-          self.mOperation = .downloadError
-        }else{
-          self.mOperation = .downloaded (data)
-        }
-        DispatchQueue.main.async { self.mTask  = nil ; inController.elementActionDidEnd (self, status) }
-      }
-    case .delete :
-      self.mOperation = .deleteRegistered
+    if self.mCanceled {
       inController.elementActionDidEnd (self, 0)
-    case .downloadError, .downloaded, .downloading, .deleteRegistered :
-      ()
+    }else{
+      switch mOperation {
+      case .download, .update :
+        self.mOperation = .downloading (0)
+        let task = Process ()
+        let concurrentQueue = DispatchQueue (label: "Queue \(relativePath)", attributes: .concurrent)
+        concurrentQueue.async {
+        //--- Define task
+          task.launchPath = "/usr/bin/curl"
+          task.arguments = [
+            "-s", // Silent mode, do not show download progress
+            "-L", // Follow redirections
+            "https://raw.githubusercontent.com/pierremolinaro/ElCanari-Library/\(getRepositoryCurrentCommitSHA ())/\(self.mRelativePath)",
+          ]
+          let pipe = Pipe ()
+          task.standardOutput = pipe
+          task.standardError = pipe
+          let fileHandle = pipe.fileHandleForReading
+        //--- Launch
+          task.launch ()
+          var data = Data ()
+          var hasData = true
+        //--- Loop until all data is got, or download is cancelled
+          while hasData && !self.mCanceled {
+            let newData = fileHandle.availableData
+            hasData = newData.count > 0
+            data.append (newData)
+            DispatchQueue.main.async {
+              self.mOperation = .downloading (data.count * 100 / self.mSizeInRepository)
+              inController.updateProgressIndicator ()
+            }
+            sleep (1)
+          }
+          if self.mCanceled {
+            task.terminate ()
+          }
+        //--- Task completed
+          task.waitUntilExit ()
+          fileHandle.closeFile ()
+          let status = task.terminationStatus
+          if self.mCanceled || (status != 0) {
+            self.mOperation = .downloadError (status)
+          }else{
+            self.mOperation = .downloaded (data)
+          }
+          DispatchQueue.main.async { inController.elementActionDidEnd (self, status) }
+        }
+      case .delete :
+        self.mOperation = .deleteRegistered
+        inController.elementActionDidEnd (self, 0)
+      case .downloadError, .downloaded, .downloading, .deleteRegistered :
+        inController.elementActionDidEnd (self, 0)
+      }
     }
   }
 
   //····················································································································
 
   func cancelAction () {
-    if let task = self.mTask {
-      task.terminate ()
-    }
+    self.mCanceled = true
   }
 
   //····················································································································
@@ -738,14 +741,15 @@ func cancelLibraryUpdate () {
     NSLog ("\(#function)")
   }
 //--- The button is inactived during download
-  if let button = g_Preferences?.mUpDateButtonInLibraryUpdateWindow, !button.isEnabled {
+//  if let button = g_Preferences?.mUpDateButtonInLibraryUpdateWindow, !button.isEnabled {
   //--- Cancel current downloadings
     for descriptor in gCanariLibraryUpdateController.mActionArray {
       descriptor.cancelAction ()
     }
-  }else{ // Download is not started
-    cleanLibraryUpdate ()
-  }
+    startLibraryUpdate ()
+//  }else{ // Download is not started
+//    cleanLibraryUpdate ()
+//  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -754,7 +758,6 @@ func cancelLibraryUpdate () {
 
 private func commitAllActions (_ inActionArray : [LibraryOperationElement]) {
 //--- Update UI
-  g_Preferences?.mLibraryUpdateWindow?.orderOut (nil)
   gCanariLibraryUpdateController.unbind ()
   gCanariLibraryUpdateController = CanariLibraryUpdateController ()
 //--- Commit change only if all actions has been successdully completed
@@ -768,24 +771,33 @@ private func commitAllActions (_ inActionArray : [LibraryOperationElement]) {
     }
   }
 //--- Perform commit
-  do{
-    if performCommit {
-      for action in inActionArray {
-        try action.commit ()
-      }
-    //--- Delete orphean directories
-      try deleteOrphanDirectories ()
-    }
-  }catch let error {
+  if !performCommit {
+    g_Preferences?.mLibraryUpdateWindow?.orderOut (nil)
+  }else{
     if let window = g_Preferences?.mLibraryUpdateWindow {
-      let alert = NSAlert ()
-      alert.messageText = "Cannot commit changes"
-      alert.addButton (withTitle: "Ok")
-      alert.informativeText = "A file system operation returns \(error) error"
-      alert.beginSheetModal (
-        for: window,
-        completionHandler: { (response : Int) in window.orderOut (nil) }
-      )
+      do{
+        for action in inActionArray {
+          try action.commit ()
+        }
+      //--- Delete orphean directories
+        try deleteOrphanDirectories ()
+        let alert = NSAlert ()
+        alert.messageText = "Update completed, the library is up to date"
+        alert.addButton (withTitle: "Ok")
+        alert.beginSheetModal (
+          for: window,
+          completionHandler: { (response : Int) in window.orderOut (nil) }
+        )
+      }catch let error {
+        let alert = NSAlert ()
+        alert.messageText = "Cannot commit changes"
+        alert.addButton (withTitle: "Ok")
+        alert.informativeText = "A file system operation returns \(error) error"
+        alert.beginSheetModal (
+          for: window,
+          completionHandler: { (response : Int) in window.orderOut (nil) }
+        )
+      }
     }
   }
 }
