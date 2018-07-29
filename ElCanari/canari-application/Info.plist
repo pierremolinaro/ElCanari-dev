@@ -80,7 +80,7 @@
 	<key>NSPrincipalClass</key>
 	<string>EBApplication</string>
 	<key>PMBuildString</key>
-	<string>2E13</string>
+	<string>2E33</string>
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>name.pcmolinaro.canari.LibraryUpdater</key>

@@ -1,9 +1,7 @@
 {
   "NOTE" : [],
   "BUGFIX" : [],
-  "CHANGE" : [],
-  "NEW" : [
-    "Merger: Board live check"
-  ]
+  "CHANGE" : ["New library repository],
+  "NEW" : []
 }
 

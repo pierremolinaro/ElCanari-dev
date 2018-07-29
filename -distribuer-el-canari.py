@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 #-------------------- Version ElCanari
-VERSION_CANARI = "0.3.5"
+VERSION_CANARI = "0.3.6"
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   FOR PRINTING IN COLOR                                                                                              *
