@@ -14,7 +14,7 @@ import Cocoa
 
 func imageNamed (_ inName : String) ->  NSImage {
   #if swift(>=4)
-    return NSImage (named: NSImage.Name (inName))
+    return NSImage (named: NSImage.Name (inName))!
   #else
     return NSImage (named: inName)!
   #endif

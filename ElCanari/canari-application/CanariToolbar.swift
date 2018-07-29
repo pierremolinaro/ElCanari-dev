@@ -45,7 +45,7 @@ let MERGER_PREFS_INDEX = 8
 
   //····················································································································
 
-  override init (identifier: String) {
+  override init (identifier: SW34_NSToolbar_Identifier) {
     super.init (identifier:identifier)
     noteObjectAllocation (self)
   }
@@ -108,7 +108,7 @@ let MERGER_PREFS_INDEX = 8
 
   //····················································································································
 
-  func toolbarItemAction (_ sender : NSObject) {
+  @objc func toolbarItemAction (_ sender : NSObject) {
     var idx = 0
     if sender == mTab0 {
       selectViewFromSelectedSegmentIndex (mView0, title:mTab0?.label)

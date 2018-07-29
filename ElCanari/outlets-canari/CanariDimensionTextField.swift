@@ -113,7 +113,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
 
   //····················································································································
 
-  func action (_ sender : CanariDimensionTextField) {
+  @objc func action (_ sender : CanariDimensionTextField) {
     switch mUnit.prop {
     case .empty, .multiple :
       break

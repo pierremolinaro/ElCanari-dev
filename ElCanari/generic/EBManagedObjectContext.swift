@@ -33,10 +33,10 @@ class EBManagedObjectContext : EBObject {
   //    insertManagedObject
   //····················································································································
   
-  func insertManagedObject (_ object : EBManagedObject) {
+  @objc func insertManagedObject (_ object : EBManagedObject) {
     if !mManagedObjectSet.contains(object) {
       mManagedObjectSet.insert (object)
-      mUndoManager?.registerUndo (withTarget: self, selector: #selector(removeManagedObject(_:)), object: object)
+      mUndoManager?.registerUndo (withTarget: self, selector: #selector(EBManagedObjectContext.removeManagedObject(_:)), object: object)
     }
   }
 
@@ -44,7 +44,7 @@ class EBManagedObjectContext : EBObject {
   //    removeManagedObject
   //····················································································································
   
-  func removeManagedObject (_ inObject : EBManagedObject) {
+  @objc func removeManagedObject (_ inObject : EBManagedObject) {
     var objectsToRemove = Set <EBManagedObject> ()
     internalRemoveManagedObject (inObject, &objectsToRemove)
     mManagedObjectSet.subtract (objectsToRemove)
@@ -55,7 +55,7 @@ class EBManagedObjectContext : EBObject {
   final func internalRemoveManagedObject (_ inObject : EBManagedObject, _ ioObjectsToRemove : inout Set <EBManagedObject>) {
     if inObject.managedObjectContext () != nil && !ioObjectsToRemove.contains(inObject) {
       ioObjectsToRemove.insert (inObject)
-      mUndoManager?.registerUndo (withTarget: self, selector: #selector(insertManagedObject(_:)), object:inObject)
+      mUndoManager?.registerUndo (withTarget: self, selector: #selector(EBManagedObjectContext.insertManagedObject(_:)), object:inObject)
       inObject.cascadeObjectRemoving (&ioObjectsToRemove)
    }
   }
@@ -140,8 +140,8 @@ class EBManagedObjectContext : EBObject {
       alert.addButton (withTitle: "Ignore Error")
       alert.addButton (withTitle: "Perform Correction")
       alert.beginSheetModal (for: windowForSheet,
-        completionHandler: {(response : Int) in
-          if response == 1001 { // Perform correction
+        completionHandler: {(response : SW34_ApplicationModalResponse) in
+          if response == sw34_AlertSecondButtonReturn /* 1001 */ { // Perform correction
             self.mManagedObjectSet.subtract (unreachableObjectSet)
             self.mManagedObjectSet.formUnion (unregisteredObjectSet)
           }

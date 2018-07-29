@@ -88,7 +88,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
 
-  func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
+  @objc func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
     scaleToZoom (inSender.tag, mHorizontalFlip, mVerticalFlip)
     mZoom = inSender.tag
     mZoomController?.updateModel (self)
@@ -103,14 +103,18 @@ class CanariViewWithZoomAndFlip : EBView {
       NotificationCenter.default.addObserver (
         self,
         selector: #selector (CanariViewWithZoomAndFlip.updateAfterSuperviewResising(_:)),
-        name: NSNotification.Name.NSViewFrameDidChange,
+        name: sw34_frameDidChangeNotification,
         object: clipView
       )
       if let scrollView = clipView.superview as? CanariScrollViewWithPlacard {
         let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
         let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
         mZoomPopUpButton = zoomPopUpButton
-        zoomPopUpButton.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize ())
+        #if swift(>=4)
+          zoomPopUpButton.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
+        #else
+          zoomPopUpButton.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize ())
+        #endif
         zoomPopUpButton.autoenablesItems = false
         zoomPopUpButton.bezelStyle = NSShadowlessSquareBezelStyle
         if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {
@@ -176,7 +180,7 @@ class CanariViewWithZoomAndFlip : EBView {
   //  Super view has been resized
   //····················································································································
 
-  func updateAfterSuperviewResising (_ inSender: Any?) {
+  @objc func updateAfterSuperviewResising (_ inSender: Any?) {
     if mZoom == 0 {
       scaleToZoom (mZoom, mHorizontalFlip, mVerticalFlip)
     }
@@ -241,7 +245,11 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   override func drawFocusRingMask () {
-    NSRectFill (self.bounds)
+    #if swift(>=4)
+      __NSRectFill (self.bounds)
+    #else
+      NSRectFill (self.bounds)
+    #endif
   }
 
   //····················································································································

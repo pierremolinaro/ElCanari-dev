@@ -19,7 +19,7 @@ extension Preferences {
     op.canChooseDirectories = true
     op.canChooseFiles = false
     op.beginSheetModal (for: (sender as! NSButton).window!,
-      completionHandler: { (inReturnCode : Int) in
+      completionHandler: { (inReturnCode : SW34_ApplicationModalResponse) in
         #if swift(>=4)
           let NSModalResponseOK = NSApplication.ModalResponse.OK
         #endif

@@ -309,7 +309,7 @@ private func readOrDownloadLibraryFileDictionary (
           }
           outOk = true
         }else{
-          print ("Entry is not an [[String : String]] object: \(treeEntry)")
+          print ("Entry is not an [[String : String]] object: \(String (describing: treeEntry))")
         }
       }catch let error {
          print ("Error \(error)")

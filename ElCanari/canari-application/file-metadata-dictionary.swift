@@ -44,9 +44,9 @@ let PMDevicePackages = "PMDevicePackages"
 
 
 func canariError (_ message : String, informativeText: String) -> Error {
-  let dictionary : [NSObject : AnyObject] = [
-    NSLocalizedDescriptionKey as NSObject : message as AnyObject,
-    NSLocalizedRecoverySuggestionErrorKey as NSObject : informativeText as AnyObject,
+  let dictionary : [String : String] = [
+    NSLocalizedDescriptionKey : message,
+    NSLocalizedRecoverySuggestionErrorKey : informativeText,
   ]
   return NSError (
     domain:Bundle.main.bundleIdentifier!,

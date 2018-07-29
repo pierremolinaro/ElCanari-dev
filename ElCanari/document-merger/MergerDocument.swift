@@ -265,10 +265,16 @@ import Cocoa
   //    windowNibName
   //····················································································································
 
-  override var windowNibName: String {
-    return "MergerDocument"
-  }
-
+  #if swift(>=4)
+    override var windowNibName : NSNib.Name {
+      return NSNib.Name ("MergerDocument")
+    }
+  #else
+    override var windowNibName : String {
+      return "MergerDocument"
+    }
+  #endif
+  
   //····················································································································
   //    rootEntityClassName
   //····················································································································

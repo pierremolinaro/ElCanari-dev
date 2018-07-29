@@ -123,7 +123,7 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
       let pdfData = buildPDFimage (frame:r, shapes: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
       return NSImage (data: pdfData)!
     }else{
-      return NSImage (named: "exclamation")!
+      return sw34_imageNamed ("exclamation")
     }
   }
 

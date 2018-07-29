@@ -81,7 +81,11 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   override func drawFocusRingMask () {
-    NSRectFill (self.bounds)
+    #if swift(>=4)
+      __NSRectFill (self.bounds)
+    #else
+      NSRectFill (self.bounds)
+    #endif
   }
 
   //····················································································································

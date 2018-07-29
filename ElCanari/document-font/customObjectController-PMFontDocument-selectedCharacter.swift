@@ -89,7 +89,11 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //····················································································································
 
   final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize :NSFont.smallSystemFontSize ())
+    #if swift(>=4)
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    #else
+      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
+    #endif
     let tf = NSTextField (frame:secondColumn (y))
     tf.isEnabled = true
     tf.isEditable = false
@@ -148,7 +152,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  func showObjectWindowFromExplorerButton (_ : Any?) {
+  @objc func showObjectWindowFromExplorerButton (_ : Any?) {
     if mExplorerWindow == nil {
       buildExplorerWindow ()
     }
@@ -159,7 +163,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  func deleteSelectionControllerWindowAction (_ : Any) {
+  @objc func deleteSelectionControllerWindowAction (_ : Any) {
     clearObjectExplorer ()
   }
 

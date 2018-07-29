@@ -17,19 +17,19 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  dynamic func acceptedTranslation (by inValue: CGPoint) -> CGPoint {
+  @objc dynamic func acceptedTranslation (by inValue: CGPoint) -> CGPoint {
     return inValue
   }
 
   //····················································································································
 
-  dynamic func acceptToTranslate (xBy inDx: CGFloat, yBy inDy: CGFloat) -> Bool {
+  @objc dynamic func acceptToTranslate (xBy inDx: CGFloat, yBy inDy: CGFloat) -> Bool {
     return false
   }
 
   //····················································································································
 
-  dynamic func translate (xBy inDx: CGFloat, yBy inDy: CGFloat) {
+  @objc dynamic func translate (xBy inDx: CGFloat, yBy inDy: CGFloat) {
   }
 
   //····················································································································
@@ -288,13 +288,17 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
   //  Draw Rect
   //····················································································································
 
-  override func draw (_ dirtyRect: NSRect) {
+  override func draw (_ inDirtyRect: NSRect) {
     if let backColor = mBackColor {
       backColor.setFill ()
-      NSRectFill (dirtyRect)
+      #if swift(>=4)
+        __NSRectFill (inDirtyRect)
+      #else
+        NSRectFill (inDirtyRect)
+      #endif
     }
   //--- Bezier paths
-    self.mShapes.draw (dirtyRect)
+    self.mShapes.draw (inDirtyRect)
   }
 
   //····················································································································

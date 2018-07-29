@@ -121,10 +121,16 @@ import Cocoa
   //    windowNibName
   //····················································································································
 
-  override var windowNibName: String {
-    return "PMFontDocument"
-  }
-
+  #if swift(>=4)
+    override var windowNibName : NSNib.Name {
+      return NSNib.Name ("PMFontDocument")
+    }
+  #else
+    override var windowNibName : String {
+      return "PMFontDocument"
+    }
+  #endif
+  
   //····················································································································
   //    rootEntityClassName
   //····················································································································

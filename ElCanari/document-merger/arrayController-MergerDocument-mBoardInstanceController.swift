@@ -278,18 +278,18 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:mouseDownInHeaderOfTableColumn:
   //····················································································································
 
-  func tableView (_ tableView: NSTableView, mouseDownInHeaderOf tableColumn: NSTableColumn) {
+  func tableView (_ tableView: NSTableView, mouseDownInHeaderOf inTableColumn: NSTableColumn) {
     var newSortDescriptorArray = [(String, Bool)] ()
-    let identifier : String = tableColumn.identifier
-    for (column, ascending) in mSortDescriptorArray {
-      if identifier == column {
-        newSortDescriptorArray.insert ((column, !ascending), at:0)
+    for (columnName, ascending) in mSortDescriptorArray {
+      if sw34_isColumn (inTableColumn, hasIdentifier: columnName) {
+        newSortDescriptorArray.insert ((columnName, !ascending), at:0)
       }else{
-        newSortDescriptorArray.append ((column, !ascending))
+        newSortDescriptorArray.append ((columnName, !ascending))
       }
     }
     mSortDescriptorArray = newSortDescriptorArray
   }
+
   //····················································································································
   //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
   //····················································································································

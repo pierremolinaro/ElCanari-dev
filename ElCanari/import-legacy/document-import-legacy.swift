@@ -35,7 +35,7 @@ extension EBManagedObject {
   //   additionalSetUpOnLegacyImport
   //····················································································································
 
-  func additionalSetUpOnLegacyImport (_ objectPropertyDictionary : NSDictionary,
+  @objc func additionalSetUpOnLegacyImport (_ objectPropertyDictionary : NSDictionary,
                                       _ legacyImportContext : LegacyImportContext) throws {
     let className = String (describing: type(of: self))
     let dictionary = [
@@ -199,7 +199,11 @@ extension ApplicationDelegate {
                                     legacyFileContents : PMLegacyDocumentContents,
                                     objectDictionaryArray inObjectDictionaryArray : [NSMutableDictionary]) throws -> EBManagedDocument {
     let document : EBManagedDocument
-    let dc = NSDocumentController.shared ()
+    #if swift(>=4)
+      let dc = NSDocumentController.shared
+    #else
+      let dc = NSDocumentController.shared ()
+    #endif
     let pathExtension = (path as NSString).pathExtension
     let possibleElCanariType = LEGACY_EXTENSION_TO_ELCANARI_TYPE_DICTIONARY [pathExtension]
     let legacyClassDictionary = DICTIONARY_LEGACY_EXTENSION_CLASS_DICTIONARY [pathExtension]!

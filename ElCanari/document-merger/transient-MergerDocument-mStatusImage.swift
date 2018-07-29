@@ -16,11 +16,11 @@ func transient_MergerDocument_mStatusImage (
 ) -> NSImage {
 //--- START OF USER ZONE 2
   if self_issues.count == 0 {
-    return NSImage (named: "green20")!
+    return sw34_imageNamed ("green20")
   }else if self_issues.errorCount != 0 {
-    return NSImage (named: "red20")!
+    return sw34_imageNamed ("red20")
   }else{
-    return NSImage (named: "orange20")!
+    return sw34_imageNamed ("orange20")
   }
 //--- END OF USER ZONE 2
 }

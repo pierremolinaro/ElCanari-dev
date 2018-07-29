@@ -38,11 +38,11 @@ func transient_PMArtworkDocument_mStatusImage (
       nameSet.insert (name)
     }
   }
-  var result = NSImage (named: "green20")!
+  var result = sw34_imageNamed ("green20")
   if error {
-    result = NSImage (named: "red20")!
+    result = sw34_imageNamed ("red20")
   }else if warning {
-    result = NSImage (named: "orange20")!
+    result = sw34_imageNamed ("orange20")
   }
   return result
 //--- END OF USER ZONE 2

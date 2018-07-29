@@ -168,7 +168,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   //····················································································································
 
-  func performUndo (_ oldValue : NSNumber) {
+  @objc func performUndo (_ oldValue : NSNumber) {
     mValue = T.convertFromNSObject (object:oldValue)
   }
 
@@ -772,7 +772,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
-  func performUndo (_ oldValue : NSObject) {
+  @objc func performUndo (_ oldValue : NSObject) {
     mValue = oldValue as! T
   }
 

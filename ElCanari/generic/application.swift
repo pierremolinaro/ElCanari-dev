@@ -152,7 +152,7 @@ func appendMessageString (_ message : String, color:NSColor) {
 
   //····················································································································
  
-  func showTransientEventLogWindow (sender : Any) {
+  @objc func showTransientEventLogWindow (sender : Any) {
     mTransientEventExplorerTextView?.string = ""
     mTransientEventExplorerWindow?.makeKeyAndOrderFront (sender)
   }

@@ -52,10 +52,10 @@ extension MergerDocument {
         openPanel.isAccessoryViewDisclosed = true
       }
     //--- Dialog
-      openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : Int) in
+      openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : SW34_ApplicationModalResponse) in
         gPanelDelegate?.restoreSavedURLAndReleasePanel ()
         gPanelDelegate = nil
-        if returnCode == NSFileHandlingPanelOKButton {
+        if returnCode == sw34_FileHandlingPanelOKButton {
           if let url = openPanel.url, url.isFileURL {
             let filePath = url.path
           //--- Load file, as plist
@@ -116,7 +116,7 @@ fileprivate class OpenPanelDelegateForImportingArtwork : EBSimpleClass, NSOpenSa
 
   //····················································································································
 
-  func selectDirectory (_ inButton : NSButton) {
+  @objc func selectDirectory (_ inButton : NSButton) {
     let path = inButton.title
     mOpenPanel?.directoryURL = URL (fileURLWithPath: path, isDirectory: true)
   }
