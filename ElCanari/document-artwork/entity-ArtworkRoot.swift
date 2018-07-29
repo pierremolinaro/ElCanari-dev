@@ -1473,7 +1473,7 @@ ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray, EBSignatur
 
   //····················································································································
 
-  func performUndo (_ oldValue : [ArtworkFileGenerationParameters]) {
+  @objc func performUndo (_ oldValue : [ArtworkFileGenerationParameters]) {
     mValue = oldValue
   }
 

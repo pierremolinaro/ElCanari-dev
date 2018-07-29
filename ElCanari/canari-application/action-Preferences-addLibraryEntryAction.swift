@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  func addLibraryEntryAction (_ sender : NSObject) {
+  @objc func addLibraryEntryAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
     let op = NSOpenPanel ()
     op.allowsMultipleSelection = false

@@ -3425,7 +3425,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardModels, EBSignatureObserverProtocol 
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModel]) {
+  @objc func performUndo (_ oldValue : [BoardModel]) {
     mValue = oldValue
   }
 
@@ -3613,7 +3613,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
 
   //····················································································································
 
-  func performUndo (_ oldValue : [MergerBoardInstance]) {
+  @objc func performUndo (_ oldValue : [MergerBoardInstance]) {
     mValue = oldValue
   }
 
@@ -3767,7 +3767,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
 
   //····················································································································
 
-  func performUndo (_ oldValue : ArtworkRoot?) {
+  @objc func performUndo (_ oldValue : ArtworkRoot?) {
     mValue = oldValue
   }
 

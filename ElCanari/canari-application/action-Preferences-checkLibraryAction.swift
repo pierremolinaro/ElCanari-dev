@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  func checkLibraryAction (_ sender : NSObject) {
+  @objc func checkLibraryAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
     let myWindow = (sender as! NSButton).window!
     checkLibrary (myWindow, logView:mCheckLibraryResultTextView)

@@ -44,11 +44,19 @@ final class Controller_CanariMenu_CanariMenuItemListClass : EBSimpleController {
   //····················································································································
 
   func revealInFinder (_ sender : NSMenuItem) {
+    #if swift(>=4)
+      let ws = NSWorkspace.shared
+    #else
+      let ws = NSWorkspace.shared ()
+    #endif
     let title = sender.title
-    let ws = NSWorkspace.shared ()
     let ok = ws.openFile (title)
     if !ok {
-      NSBeep ()
+      #if swift(>=4)
+        __NSBeep ()
+      #else
+        NSBeep ()
+      #endif
       let alert = NSAlert ()
       alert.messageText = "Cannot open the \(title) directory"
       alert.addButton (withTitle: "Ok")

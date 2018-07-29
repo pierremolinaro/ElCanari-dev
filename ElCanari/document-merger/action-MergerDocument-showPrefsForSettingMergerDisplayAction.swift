@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension MergerDocument {
-  func showPrefsForSettingMergerDisplayAction (_ sender : NSObject) {
+  @objc func showPrefsForSettingMergerDisplayAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
     if let displaySettingView = mDisplaySettingView, let contentView = self.windowForSheet?.contentView {
       if displaySettingView.window == nil { // Insert on window

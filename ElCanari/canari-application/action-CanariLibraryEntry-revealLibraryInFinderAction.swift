@@ -12,9 +12,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension CanariLibraryEntry {
-  func revealLibraryInFinderAction (_ sender : NSObject) {
+  @objc func revealLibraryInFinderAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-    NSWorkspace.shared ().open (URL (fileURLWithPath:self.mPath))
+    #if swift(>=4)
+      let ws = NSWorkspace.shared
+    #else
+      let ws = NSWorkspace.shared ()
+    #endif
+    ws.open (URL (fileURLWithPath:self.mPath))
 //--- END OF USER ZONE 2
   }
 }

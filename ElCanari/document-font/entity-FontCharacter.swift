@@ -896,7 +896,7 @@ ToManyRelationshipReadWrite_FontCharacter_segments, EBSignatureObserverProtocol 
 
   //····················································································································
 
-  func performUndo (_ oldValue : [SegmentForFontCharacter]) {
+  @objc func performUndo (_ oldValue : [SegmentForFontCharacter]) {
     mValue = oldValue
   }
 

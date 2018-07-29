@@ -7325,7 +7325,7 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
 
   //····················································································································
 
-  func performUndo (_ oldValue : [MergerBoardInstance]) {
+  @objc func performUndo (_ oldValue : [MergerBoardInstance]) {
     mValue = oldValue
   }
 
@@ -7505,7 +7505,7 @@ ToManyRelationshipReadWrite_BoardModel_frontLegendLines, EBSignatureObserverProt
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -7685,7 +7685,7 @@ ToManyRelationshipReadWrite_BoardModel_backLegendLines, EBSignatureObserverProto
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -7865,7 +7865,7 @@ ToManyRelationshipReadWrite_BoardModel_frontLegendTexts, EBSignatureObserverProt
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -8045,7 +8045,7 @@ ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts, EBSignatureObserverProt
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -8225,7 +8225,7 @@ ToManyRelationshipReadWrite_BoardModel_backLegendTexts, EBSignatureObserverProto
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -8405,7 +8405,7 @@ ToManyRelationshipReadWrite_BoardModel_backLayoutTexts, EBSignatureObserverProto
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -8583,7 +8583,7 @@ ToManyRelationshipReadWrite_BoardModel_vias, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelVia]) {
+  @objc func performUndo (_ oldValue : [BoardModelVia]) {
     mValue = oldValue
   }
 
@@ -8771,7 +8771,7 @@ ToManyRelationshipReadWrite_BoardModel_pads, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  func performUndo (_ oldValue : [BoardModelPad]) {
+  @objc func performUndo (_ oldValue : [BoardModelPad]) {
     mValue = oldValue
   }
 
@@ -8951,7 +8951,7 @@ ToManyRelationshipReadWrite_BoardModel_backComponentNames, EBSignatureObserverPr
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -9131,7 +9131,7 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentNames, EBSignatureObserverP
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -9311,7 +9311,7 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentValues, EBSignatureObserver
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -9491,7 +9491,7 @@ ToManyRelationshipReadWrite_BoardModel_backComponentValues, EBSignatureObserverP
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -9671,7 +9671,7 @@ ToManyRelationshipReadWrite_BoardModel_backTracks, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -9851,7 +9851,7 @@ ToManyRelationshipReadWrite_BoardModel_frontTracks, EBSignatureObserverProtocol 
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -10031,7 +10031,7 @@ ToManyRelationshipReadWrite_BoardModel_frontPackages, EBSignatureObserverProtoco
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 
@@ -10211,7 +10211,7 @@ ToManyRelationshipReadWrite_BoardModel_backPackages, EBSignatureObserverProtocol
 
   //····················································································································
 
-  func performUndo (_ oldValue : [CanariSegment]) {
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
     mValue = oldValue
   }
 

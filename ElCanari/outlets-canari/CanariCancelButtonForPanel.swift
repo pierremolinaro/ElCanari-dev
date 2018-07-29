@@ -25,9 +25,13 @@ class CanariCancelButtonForPanel : EBButton {
 
   //····················································································································
 
-  func dismissPanelAction (_ sender : Any?) {
+  @objc func dismissPanelAction (_ sender : Any?) {
     if let myPanel = self.window, let parent = myPanel.sheetParent {
-      parent.endSheet (myPanel, returnCode:NSModalResponseAbort)
+      #if swift(>=4)
+        parent.endSheet (myPanel, returnCode: .abort)
+      #else
+        parent.endSheet (myPanel, returnCode: NSModalResponseAbort)
+      #endif
     }
   }
 

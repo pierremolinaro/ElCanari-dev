@@ -131,7 +131,7 @@ import Cocoa
   //--- Set content size
     mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
   //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (NSWindowButton.closeButton)
+    let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
     closeButton?.action = #selector(EBManagedObject.deleteWindowAction(_:))
   //--- Set window title
@@ -149,7 +149,7 @@ import Cocoa
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  func showObjectWindowFromExplorerButton (_: Any) {
+  @objc func showObjectWindowFromExplorerButton (_: Any) {
     showExplorerWindow ()
   }
   
@@ -157,7 +157,7 @@ import Cocoa
   //   deleteWindowAction
   //····················································································································
 
-  func deleteWindowAction (_: Any) {
+  @objc func deleteWindowAction (_: Any) {
     clearObjectExplorer ()
   }
 
@@ -166,7 +166,7 @@ import Cocoa
   //····················································································································
 
   func clearObjectExplorer () {
-    let closeButton = mExplorerWindow?.standardWindowButton (NSWindowButton.closeButton)
+    let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton!.target = nil
     mExplorerWindow?.orderOut (nil)
     mExplorerWindow = nil

@@ -12,9 +12,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  func revealUserLibraryInFinderAction (_ sender : NSObject) {
+  @objc func revealUserLibraryInFinderAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
-    NSWorkspace.shared ().open (URL (fileURLWithPath: userLibraryPath ()))
+    #if swift(>=4)
+      let ws = NSWorkspace.shared
+    #else
+      let ws = NSWorkspace.shared ()
+    #endif
+    ws.open (URL (fileURLWithPath: userLibraryPath ()))
 //--- END OF USER ZONE 2
   }
 }

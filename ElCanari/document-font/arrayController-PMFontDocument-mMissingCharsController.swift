@@ -34,9 +34,9 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
       for tableView in mTableViewArray {
         var first = true
         for (key, ascending) in mSortDescriptorArray {
-          if let column = tableView.tableColumn (withIdentifier: key) {
+          if let column = sw34_tableColumn (tableView, withIdentifier: key) {
             tableView.setIndicatorImage (
-              first ? NSImage (named:ascending ? "NSAscendingSortIndicator" : "NSDescendingSortIndicator") : nil,
+              first ? (ascending ? sw34_imageNamed ("NSAscendingSortIndicator") : sw34_imageNamed ("NSDescendingSortIndicator")) : nil,
               in:column
             )
             first = false
@@ -231,13 +231,13 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
     mSelectedSet.addEBObserver (selectionTableViewController)
     mTableViewSelectionControllerArray.append (selectionTableViewController)
   //--- Check 'code' column
-    if let column : NSTableColumn = tableView.tableColumn (withIdentifier: "code") {
+    if let column : NSTableColumn = sw34_tableColumn (tableView, withIdentifier: "code") {
       column.sortDescriptorPrototype = nil
     }else{
       presentErrorWindow (file: file, line: line, errorMessage:"\"code\" column view unknown")
     }
   //--- Check 'char' column
-    if let column : NSTableColumn = tableView.tableColumn (withIdentifier: "char") {
+    if let column : NSTableColumn = sw34_tableColumn (tableView, withIdentifier: "char") {
       column.sortDescriptorPrototype = nil
     }else{
       presentErrorWindow (file: file, line: line, errorMessage:"\"char\" column view unknown")
@@ -245,7 +245,7 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
   //--- Set descriptors from first column of table view
     var newSortDescriptorArray = [(String, Bool)] ()
     for column in tableView.tableColumns {
-      newSortDescriptorArray.append ((column.identifier, true)) // Ascending
+      newSortDescriptorArray.append ((sw34_columnIdentifier (column), true)) // Ascending
     }
     mSortDescriptorArray = newSortDescriptorArray
   }
@@ -330,7 +330,7 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
   //····················································································································
 
   func tableView (_ tableView : NSTableView,
-                  viewFor tableColumn: NSTableColumn?,
+                  viewFor inTableColumn: NSTableColumn?,
                   row inRowIndex: Int) -> NSView? {
     if DEBUG_EVENT {
       print ("\(#function)")
@@ -339,13 +339,16 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
     case .empty, .multiple :
       return nil
     case .single (let v) :
-      let columnIdentifier = tableColumn!.identifier
-      let result : NSTableCellView = tableView.make (withIdentifier: columnIdentifier, owner:self) as! NSTableCellView
+      #if swift(>=4)
+        let result : NSTableCellView = tableView.makeView (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
+      #else
+        let result : NSTableCellView = tableView.make (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
+      #endif
       if !reuseTableViewCells () {
         result.identifier = nil // So result cannot be reused, will be freed
       }
       let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
-      if columnIdentifier == "code" {
+      if sw34_isColumn (inTableColumn, hasIdentifier: "code") {
         if let cell : EBTextObserverField_TableViewCell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
@@ -353,7 +356,7 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.code_property, file: #file, line: #line)
         }
-      }else if columnIdentifier == "char" {
+      }else if sw34_isColumn (inTableColumn, hasIdentifier: "char") {
         if let cell : EBTextObserverField_TableViewCell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
@@ -362,7 +365,7 @@ final class ArrayController_PMFontDocument_mMissingCharsController : EBObject, E
           cell.mCellOutlet?.bind_valueObserver (object.char_property, file: #file, line: #line)
         }
       }else{
-        NSLog ("Unknown column '\(columnIdentifier)'")
+        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
       }
       return result
     } 

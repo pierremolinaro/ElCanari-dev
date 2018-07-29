@@ -11,7 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let kDragAndDropModelType = "drag.and.drop.board.model"
+#if swift(>=4)
+  let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.board.model")
+#else
+  let kDragAndDropModelType = "drag.and.drop.board.model"
+#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   CanariModelDragSourceTableView

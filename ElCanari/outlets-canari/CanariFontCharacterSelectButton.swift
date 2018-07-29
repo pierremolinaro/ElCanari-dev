@@ -46,10 +46,14 @@ import Cocoa
                     y:eventLocationInWindowCoordinates.y - s.height / 2.0,
                     width:s.width,
                     height:s.height)
-    let viewController = NSViewController.init (nibName:nil, bundle:nil)
+    #if swift(>=4)
+      let viewController = NSViewController.init (nibName:nil, bundle:nil)
+    #else
+      let viewController = NSViewController.init (nibName:nil, bundle:nil)!
+    #endif
     let selectionView = CanariFontCharacterSelectView (frame:r)
     selectionView.setMouseDownSelectedCharacterCode (mSelectedCharacterCode)
-    viewController?.view = selectionView
+    viewController.view = selectionView
     let popover = NSPopover ()
     popover.contentSize = s
     popover.contentViewController = viewController

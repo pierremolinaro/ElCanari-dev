@@ -161,7 +161,11 @@ let MERGER_PREFS_INDEX = 8
         r.origin.y -= attachedPageHeight - currentHeight ;
         masterView.addSubview (unwViewToAttach)
         unwViewToAttach.frame = masterView.bounds
-        unwViewToAttach.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
+        #if swift(>=4)
+          unwViewToAttach.autoresizingMask = [.width, .height]
+        #else
+          unwViewToAttach.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
+        #endif
         masterView.window!.title = unwTitle + " " + mWindowDefaultTitle
         masterView.window!.setFrame (r, display:true, animate:true)
       }

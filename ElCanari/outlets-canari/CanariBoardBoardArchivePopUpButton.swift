@@ -68,7 +68,7 @@ final class Controller_CanariBoardBoardArchivePopUpButton_format : EBSimpleContr
 
   //····················································································································
 
-  func updateModel (_ sender : EBPopUpButton) {
+  @objc func updateModel (_ sender : EBPopUpButton) {
     if let v = BoardArchiveFormat (rawValue: mOutlet.selectedTag ()) {
       _ = mObject.validateAndSetProp (v, windowForSheet:sender.window)
     }

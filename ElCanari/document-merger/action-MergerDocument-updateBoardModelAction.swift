@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension MergerDocument {
-  func updateBoardModelAction (_ sender : NSObject) {
+  @objc func updateBoardModelAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
     updateBoardModel ()
 //--- END OF USER ZONE 2

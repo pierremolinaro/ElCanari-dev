@@ -34,8 +34,13 @@ func checkLibrary (_ window : NSWindow,
       errorCount:&errorCount,
       warningCount:&warningCount
     )
+    #if swift(>=4)
+      let ws = NSWorkspace.shared
+    #else
+      let ws = NSWorkspace.shared ()
+    #endif
     for path in deviceToUpdateSet {
-      NSWorkspace.shared ().open (URL (fileURLWithPath: path))
+      ws.open (URL (fileURLWithPath: path))
     }
   //--- Checking Font
     try checkFontLibrary (logView, errorCount:&errorCount, warningCount:&warningCount)

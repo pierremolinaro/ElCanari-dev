@@ -145,7 +145,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     mainYLayer.lineWidth = 1.0
     self.layer?.addSublayer (mainYLayer)
   //--- Add X axis values
-    let textAttributes : [String : AnyObject] = [
+    let textAttributes : [String : Any] = [
       NSFontAttributeName : NSFont.userFixedPitchFont (ofSize: 11.0)!
     ]
     for x in 0 ... 12 {
@@ -156,7 +156,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       tl.frame = NSRect (x: xx - size.width * 0.5, y: yForY (18) + 10.0, width: size.width, height: size.height)
       tl.string = NSAttributedString (string: s, attributes: textAttributes)
       tl.foregroundColor = NSColor.black.cgColor
-      tl.contentsScale = NSScreen.main ()!.backingScaleFactor
+      tl.contentsScale = sw34_ScreenMain.backingScaleFactor
       tl.alignmentMode = kCAAlignmentCenter
       self.layer?.addSublayer (tl)
     }
@@ -169,7 +169,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       tl.string = NSAttributedString (string: s, attributes: textAttributes)
       tl.frame = NSRect (x: 4.0, y: yy - size.height * 0.5, width: 14.0, height: size.height)
       tl.foregroundColor = NSColor.black.cgColor
-      tl.contentsScale = NSScreen.main ()!.backingScaleFactor
+      tl.contentsScale = sw34_ScreenMain.backingScaleFactor
       tl.alignmentMode = kCAAlignmentRight
       self.layer?.addSublayer (tl)
     }
@@ -389,7 +389,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
   
-  final func delete (_ sender : Any?) {
+  @objc final func delete (_ sender : Any?) {
     deleteSelection ()
   }
   
@@ -402,9 +402,9 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   
   //····················································································································
 
-  func bringForward (_ sender : Any?) {
+  @objc func bringForward (_ sender : Any?) {
     if mSelection.count == 0 {
-      NSBeep ()
+      sw34_Beep ()
     }else{
       var newSegmentEntityArray = self.segmentEntityArray ()
       var idx = newSegmentEntityArray.count
@@ -422,9 +422,9 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bringToFront (_ sender : Any?) {
+  @objc func bringToFront (_ sender : Any?) {
     if mSelection.count == 0 {
-      NSBeep ()
+      sw34_Beep ()
     }else{
       var newSegmentEntityArray = self.segmentEntityArray ()
       var idx = -1
@@ -442,9 +442,9 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   
   //····················································································································
 
-  func sendBackward (_ sender : Any?) {
+  @objc func sendBackward (_ sender : Any?) {
     if mSelection.count == 0 {
-      NSBeep ()
+      sw34_Beep ()
     }else{
       var newSegmentEntityArray = self.segmentEntityArray ()
       var idx = -1
@@ -462,9 +462,9 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func sendToBack (_ sender : Any?) {
+  @objc func sendToBack (_ sender : Any?) {
     if mSelection.count == 0 {
-      NSBeep ()
+      sw34_Beep ()
     }else{
       var newSegmentEntityArray = self.segmentEntityArray ()
       var idx = newSegmentEntityArray.count
@@ -486,7 +486,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   final func deleteSelection () {
     if mSelection.count == 0 {
-      NSBeep ()
+      sw34_Beep ()
     }else{
       var segmentEntityArray = self.segmentEntityArray ()
       for segment in mSelection {
@@ -558,7 +558,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         }
       }
     }else{
-      NSBeep ()
+      sw34_Beep ()
     }
   }
   
@@ -573,7 +573,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         object.y2 = object.y2 + byY
       }
     }else{
-      NSBeep ()
+      sw34_Beep ()
     }
   }
   
@@ -591,7 +591,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func paste (_ sender : Any?) {
+  @objc func paste (_ sender : Any?) {
   //--- Get General Pasteboard
     let pb = NSPasteboard.general ()
   //--- Find a matching type name
@@ -620,7 +620,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func copy (_ sender : Any?) {
+  @objc func copy (_ sender : Any?) {
   //--- Declare pasteboard types
     let pb = NSPasteboard.general ()
     pb.declareTypes ([PRIVATE_PASTEBOARD_TYPE], owner:self)
@@ -643,7 +643,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func cut (_ sender : Any?) {
+  @objc func cut (_ sender : Any?) {
     self.copy (sender)
     deleteSelection ()
   }
@@ -964,9 +964,9 @@ extension SegmentForFontCharacter {
   final func buildGerberIndex (_ index : Int) -> CALayer {
     let x = (xForX (self.x1) + xForX (self.x2)) / 2.0
     let y = (yForY (self.y1) + yForY (self.y2)) / 2.0
-    let textAttributes : [String : AnyObject] = [
+    let textAttributes : [String : Any] = [
       NSFontAttributeName : NSFont.userFixedPitchFont (ofSize: 18.0)!,
-      NSForegroundColorAttributeName : NSColor.yellow.cgColor
+      NSForegroundColorAttributeName : NSColor.yellow
     ]
     let s = "\(index)"
     let size = s.size (withAttributes: textAttributes)
@@ -977,7 +977,7 @@ extension SegmentForFontCharacter {
                               height: size.height)
     textLayer.string = NSAttributedString (string: s, attributes: textAttributes)
     textLayer.alignmentMode = kCAAlignmentCenter
-    textLayer.contentsScale = NSScreen.main ()!.backingScaleFactor
+    textLayer.contentsScale = sw34_ScreenMain.backingScaleFactor
     return textLayer
   }
 

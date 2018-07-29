@@ -89,14 +89,14 @@ private let LEFT_MARGIN      : CGFloat = 40.0
   //--- "MacRoman" title
     do{
       let titleAttributes : [String:AnyObject] = [
-        NSFontAttributeName : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize () / 1.5)
+        NSFontAttributeName : NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize / 1.5)
       ]
       "Mac".draw   (at: NSPoint (x:5.0, y: 1.0 + 14.5 * CHARACTER_HEIGHT), withAttributes:titleAttributes)
       "Roman".draw (at: NSPoint (x:5.0, y: 1.0 + 14.0 * CHARACTER_HEIGHT), withAttributes:titleAttributes)
     }
   //---
     let titleAttributes : [String:AnyObject] = [
-      NSFontAttributeName : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ()),
+      NSFontAttributeName : NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize),
       NSForegroundColorAttributeName : NSColor.blue
     ]
   //--- Title
@@ -116,7 +116,7 @@ private let LEFT_MARGIN      : CGFloat = 40.0
     }
   //---
     let attributes : [String:AnyObject] = [
-      NSFontAttributeName : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
+      NSFontAttributeName : NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize)
     ]
     for c : UInt in 0x20 ... 0xFF {
       drawCharacter (c, attributes:attributes)

@@ -34,9 +34,9 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       for tableView in mTableViewArray {
         var first = true
         for (key, ascending) in mSortDescriptorArray {
-          if let column = tableView.tableColumn (withIdentifier: key) {
+          if let column = sw34_tableColumn (tableView, withIdentifier: key) {
             tableView.setIndicatorImage (
-              first ? NSImage (named:ascending ? "NSAscendingSortIndicator" : "NSDescendingSortIndicator") : nil,
+              first ? (ascending ? sw34_imageNamed ("NSAscendingSortIndicator") : sw34_imageNamed ("NSDescendingSortIndicator")) : nil,
               in:column
             )
             first = false
@@ -210,7 +210,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //--- Set descriptors from first column of table view
     var newSortDescriptorArray = [(String, Bool)] ()
     for column in tableView.tableColumns {
-      newSortDescriptorArray.append ((column.identifier, true)) // Ascending
+      newSortDescriptorArray.append ((sw34_columnIdentifier (column), true)) // Ascending
     }
     mSortDescriptorArray = newSortDescriptorArray
   }
@@ -295,7 +295,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func tableView (_ tableView : NSTableView,
-                  viewFor tableColumn: NSTableColumn?,
+                  viewFor inTableColumn: NSTableColumn?,
                   row inRowIndex: Int) -> NSView? {
     if DEBUG_EVENT {
       print ("\(#function)")
@@ -326,7 +326,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //    add
   //····················································································································
 
-   func add (_ sender : Any) {
+   @objc func add (_ sender : Any) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
@@ -351,7 +351,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //    remove
   //····················································································································
 
-  func remove (_ sender : Any) {
+  @objc func remove (_ sender : Any) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }

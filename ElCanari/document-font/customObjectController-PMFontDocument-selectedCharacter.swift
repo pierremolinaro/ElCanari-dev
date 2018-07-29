@@ -89,11 +89,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //····················································································································
 
   final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    #if swift(>=4)
-      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    #else
-      let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
-    #endif
+    let font = NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize)
     let tf = NSTextField (frame:secondColumn (y))
     tf.isEnabled = true
     tf.isEditable = false

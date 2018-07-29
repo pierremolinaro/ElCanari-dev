@@ -21,14 +21,22 @@ import Cocoa
 
   required init? (coder: NSCoder) {
     super.init (coder:coder)
-    self.register (forDraggedTypes: [kDragAndDropModelType])
+    #if swift(>=4)
+      self.registerForDraggedTypes ([kDragAndDropModelType])
+    #else
+      self.register (forDraggedTypes: [kDragAndDropModelType])
+    #endif
   }
 
   //····················································································································
 
   override init (frame:NSRect) {
     super.init (frame:frame)
-    self.register (forDraggedTypes: [kDragAndDropModelType])
+    #if swift(>=4)
+      self.registerForDraggedTypes ([kDragAndDropModelType])
+    #else
+      self.register (forDraggedTypes: [kDragAndDropModelType])
+    #endif
   }
   
   //····················································································································

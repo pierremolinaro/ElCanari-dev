@@ -16,7 +16,11 @@ extension ApplicationDelegate {
   //····················································································································
 
   @IBAction func openCanariWebSite (_ inSender : AnyObject) {
-    let ws = NSWorkspace.shared ()
+    #if swift(>=4)
+      let ws = NSWorkspace.shared
+    #else
+      let ws = NSWorkspace.shared ()
+    #endif
     let urlString = "http://canari.rts-software.org"
     if let url = URL (string:urlString) {
       ws.open (url)

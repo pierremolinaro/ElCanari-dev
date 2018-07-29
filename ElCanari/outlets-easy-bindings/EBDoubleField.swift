@@ -66,11 +66,14 @@ import Cocoa
       alert.informativeText = "Please provide a valid value."
       alert.addButton (withTitle: "Ok")
       alert.addButton (withTitle: "Discard Change")
-      alert.beginSheetModal (for: window, completionHandler:{(response : NSModalResponse) -> Void in
-        if response == NSAlertSecondButtonReturn { // Discard Change
+      alert.beginSheetModal (
+        for: window,
+        completionHandler:{ (response : SW34_ApplicationModalResponse) -> Void in
+          if response == sw34_AlertSecondButtonReturn { // Discard Change
  //         self.integerValue = self.myIntegerValue.0
+          }
         }
-      })
+      )
     }
     return false
   }
@@ -160,7 +163,7 @@ import Cocoa
 
   //····················································································································
 
-  func action (_ sender : EBDoubleField) {
+  @objc func action (_ sender : EBDoubleField) {
     _ = mObject.validateAndSetProp (mOutlet.doubleValue, windowForSheet:sender.window)
   }
 

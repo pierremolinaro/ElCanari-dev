@@ -1239,7 +1239,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
 
   //····················································································································
 
-  func performUndo (_ oldValue : MergerRoot?) {
+  @objc func performUndo (_ oldValue : MergerRoot?) {
     mValue = oldValue
   }
 
@@ -2632,7 +2632,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
 
   //····················································································································
 
-  func performUndo (_ oldValue : BoardModel?) {
+  @objc func performUndo (_ oldValue : BoardModel?) {
     mValue = oldValue
   }
 

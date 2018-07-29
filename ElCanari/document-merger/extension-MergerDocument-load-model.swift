@@ -32,9 +32,9 @@ extension MergerDocument {
     //--- MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
       gPanel = OpenPanelDelegateForFilteringBoardModels (boardModelNames)
       openPanel.delegate = gPanel
-      openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : Int) in
+      openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : SW34_ApplicationModalResponse) in
         gPanel = nil
-        if returnCode == NSFileHandlingPanelOKButton {
+        if returnCode == sw34_FileHandlingPanelOKButton {
           if let url = openPanel.url, url.isFileURL {
             let filePath = url.path
           //--- Load file, as plist

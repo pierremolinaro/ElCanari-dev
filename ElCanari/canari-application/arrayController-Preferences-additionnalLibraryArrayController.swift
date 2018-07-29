@@ -34,9 +34,9 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       for tableView in mTableViewArray {
         var first = true
         for (key, ascending) in mSortDescriptorArray {
-          if let column = tableView.tableColumn (withIdentifier: key) {
+          if let column = sw34_tableColumn (tableView, withIdentifier: key) {
             tableView.setIndicatorImage (
-              first ? NSImage (named:ascending ? "NSAscendingSortIndicator" : "NSDescendingSortIndicator") : nil,
+              first ? (ascending ? sw34_imageNamed ("NSAscendingSortIndicator") : sw34_imageNamed ("NSDescendingSortIndicator")) : nil,
               in:column
             )
             first = false
@@ -206,25 +206,25 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     mSelectedSet.addEBObserver (selectionTableViewController)
     mTableViewSelectionControllerArray.append (selectionTableViewController)
   //--- Check 'path' column
-    if let column : NSTableColumn = tableView.tableColumn (withIdentifier: "path") {
+    if let column : NSTableColumn = sw34_tableColumn (tableView, withIdentifier: "path") {
       column.sortDescriptorPrototype = nil
     }else{
       presentErrorWindow (file: file, line: line, errorMessage:"\"path\" column view unknown")
     }
   //--- Check 'uses' column
-    if let column : NSTableColumn = tableView.tableColumn (withIdentifier: "uses") {
+    if let column : NSTableColumn = sw34_tableColumn (tableView, withIdentifier: "uses") {
       column.sortDescriptorPrototype = nil
     }else{
       presentErrorWindow (file: file, line: line, errorMessage:"\"uses\" column view unknown")
     }
   //--- Check 'status' column
-    if let column : NSTableColumn = tableView.tableColumn (withIdentifier: "status") {
+    if let column : NSTableColumn = sw34_tableColumn (tableView, withIdentifier: "status") {
       column.sortDescriptorPrototype = nil
     }else{
       presentErrorWindow (file: file, line: line, errorMessage:"\"status\" column view unknown")
     }
   //--- Check 'reveal' column
-    if let column : NSTableColumn = tableView.tableColumn (withIdentifier: "reveal") {
+    if let column : NSTableColumn = sw34_tableColumn (tableView, withIdentifier: "reveal") {
       column.sortDescriptorPrototype = nil
     }else{
       presentErrorWindow (file: file, line: line, errorMessage:"\"reveal\" column view unknown")
@@ -232,7 +232,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //--- Set descriptors from first column of table view
     var newSortDescriptorArray = [(String, Bool)] ()
     for column in tableView.tableColumns {
-      newSortDescriptorArray.append ((column.identifier, true)) // Ascending
+      newSortDescriptorArray.append ((sw34_columnIdentifier (column), true)) // Ascending
     }
     mSortDescriptorArray = newSortDescriptorArray
   }
@@ -317,7 +317,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //····················································································································
 
   func tableView (_ tableView : NSTableView,
-                  viewFor tableColumn: NSTableColumn?,
+                  viewFor inTableColumn: NSTableColumn?,
                   row inRowIndex: Int) -> NSView? {
     if DEBUG_EVENT {
       print ("\(#function)")
@@ -326,13 +326,16 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     case .empty, .multiple :
       return nil
     case .single (let v) :
-      let columnIdentifier = tableColumn!.identifier
-      let result : NSTableCellView = tableView.make (withIdentifier: columnIdentifier, owner:self) as! NSTableCellView
+      #if swift(>=4)
+        let result : NSTableCellView = tableView.makeView (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
+      #else
+        let result : NSTableCellView = tableView.make (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
+      #endif
       if !reuseTableViewCells () {
         result.identifier = nil // So result cannot be reused, will be freed
       }
       let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
-      if columnIdentifier == "path" {
+      if sw34_isColumn (inTableColumn, hasIdentifier: "path") {
         if let cell : EBTextObserverField_TableViewCell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
@@ -340,7 +343,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mPath_property, file: #file, line: #line)
         }
-      }else if columnIdentifier == "uses" {
+      }else if sw34_isColumn (inTableColumn, hasIdentifier: "uses") {
         if let cell : EBSwitch_TableViewCell = result as? EBSwitch_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_value ()
@@ -348,7 +351,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_value (object.mUses_property, file: #file, line: #line)
         }
-      }else if columnIdentifier == "status" {
+      }else if sw34_isColumn (inTableColumn, hasIdentifier: "status") {
         if let cell : EBImageObserverView_TableViewCell = result as? EBImageObserverView_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_image ()
@@ -356,7 +359,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_image (object.mStatusImage_property, file: #file, line: #line)
         }
-      }else if columnIdentifier == "reveal" {
+      }else if sw34_isColumn (inTableColumn, hasIdentifier: "reveal") {
         if let cell : EBButton_TableViewCell = result as? EBButton_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.target = nil
@@ -367,7 +370,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
           cell.mCellOutlet?.action = #selector (CanariLibraryEntry.revealLibraryInFinderAction(_:))
         }
       }else{
-        NSLog ("Unknown column '\(columnIdentifier)'")
+        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
       }
       return result
     } 
@@ -396,7 +399,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //    add
   //····················································································································
 
-   func add (_ sender : Any) {
+   @objc func add (_ sender : Any) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
@@ -421,7 +424,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //    remove
   //····················································································································
 
-  func remove (_ sender : Any) {
+  @objc func remove (_ sender : Any) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }

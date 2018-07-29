@@ -96,7 +96,7 @@ import Cocoa
 
   //····················································································································
 
-  func action (_ sender : EBColorWell) {
+  @objc func action (_ sender : EBColorWell) {
     _ = mObject.validateAndSetProp (mOutlet.color, windowForSheet:sender.window)
   }
 

@@ -343,7 +343,7 @@ func presentErrorWindow (file : String!,
   tf.textColor = NSColor.red
   tf.stringValue = message
   contentView.addSubview (tf)
-  NSBeep () ;
+  sw34_Beep ()
   window.makeKeyAndOrderFront (nil)
   //---
   gErrorWindows.append (window)
@@ -585,7 +585,7 @@ func createEntryForPropertyNamed (_ attributeName : String,
                                   view : NSView,
                                   observerExplorer : inout NSPopUpButton?,
                                   valueExplorer : inout NSTextField?) {
-  let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
+  let font = NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize)
 //--- Explorer popup button
   observerExplorer = NSPopUpButton (frame:firstColumn (y), pullsDown:true)
   observerExplorer?.font = font
@@ -612,7 +612,7 @@ func createEntryForPropertyNamed (_ attributeName : String,
 func createEntryForTitle (_ title : String,
                           y : inout CGFloat,
                           view : NSView) {
-  let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
+  let font = NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize)
 //--- Title textfield
   let tf = NSTextField (frame:titleColumn (y))
   tf.isEnabled = true
@@ -635,7 +635,7 @@ func createEntryForObjectNamed (_ name : String,
                                 object : EBObject,
                                 y : inout CGFloat,
                                 view : NSView) {
-  let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
+  let font = NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize)
 //--- Property textfield
   let tf = NSTextField (frame:secondColumn (y))
   tf.isEnabled = true
@@ -663,7 +663,7 @@ func createEntryForToOneRelationshipNamed (_ relationshipName : String,
                                            y : inout CGFloat,
                                            view : NSView,
                                            valueExplorer : inout NSButton?) {
-  let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
+  let font = NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize)
   let tf = NSTextField (frame:secondColumn (y))
   tf.isEnabled = true
   tf.isEditable = false
@@ -685,7 +685,7 @@ func createEntryForToManyRelationshipNamed (_ relationshipName : String,
                                             y : inout CGFloat,
                                             view : NSView,
                                             valueExplorer : inout NSPopUpButton?) {
-  let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
+  let font = NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize)
   let tf = NSTextField (frame:secondColumn (y))
   tf.isEnabled = true
   tf.isEditable = false
@@ -742,7 +742,7 @@ extension NSTextView {
 
   func appendMessageString (_ inString : String) {
     let attributes : [String : NSObject] = [
-      NSFontAttributeName : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ()),
+      NSFontAttributeName : NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize),
       NSForegroundColorAttributeName : NSColor.black
     ]
     let str = NSAttributedString (string:inString, attributes:attributes)
@@ -758,7 +758,7 @@ extension NSTextView {
 
   func appendMessageString (_ inString : String, color:NSColor) {
     let attributes : [String : NSObject] = [
-      NSFontAttributeName : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ()),
+      NSFontAttributeName : NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize),
       NSForegroundColorAttributeName : color
     ]
     let str = NSAttributedString (string:inString, attributes:attributes)

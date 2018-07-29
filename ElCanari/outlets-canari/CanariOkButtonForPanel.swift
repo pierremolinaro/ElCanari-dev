@@ -33,10 +33,7 @@ class CanariOkButtonForPanel : EBButton {
 
   @objc func dismissPanelAction (_ sender : Any?) {
     if let myPanel = self.window, let parent = myPanel.sheetParent {
-      #if swift(>=4)
-        let NSModalResponseStop = NSApplication.ModalResponse.stop
-      #endif
-      parent.endSheet (myPanel, returnCode:NSModalResponseStop)
+      parent.endSheet (myPanel, returnCode:sw34_NSModalResponseStop)
     }
   }
 

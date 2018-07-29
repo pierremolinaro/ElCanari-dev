@@ -198,25 +198,25 @@ import Cocoa
 
   //····················································································································
 
-  func bringToFront (_ : Any?) {
+  @objc func bringToFront (_ : Any?) {
     mViewController?.bringToFront ()
   }
 
   //····················································································································
 
-  func bringForward (_ : Any?) {
+  @objc func bringForward (_ : Any?) {
     mViewController?.bringForward ()
   }
 
   //····················································································································
 
-  func sendToBack (_ : Any?) {
+  @objc func sendToBack (_ : Any?) {
     mViewController?.sendToBack ()
   }
 
   //····················································································································
 
-  func sendBackward (_ : Any?) {
+  @objc func sendBackward (_ : Any?) {
     mViewController?.sendBackward ()
   }
 

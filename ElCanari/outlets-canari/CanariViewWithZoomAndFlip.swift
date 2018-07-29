@@ -110,11 +110,7 @@ class CanariViewWithZoomAndFlip : EBView {
         let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
         let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
         mZoomPopUpButton = zoomPopUpButton
-        #if swift(>=4)
-          zoomPopUpButton.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
-        #else
-          zoomPopUpButton.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize ())
-        #endif
+        zoomPopUpButton.font = NSFont.systemFont (ofSize:sw34_smallSystemFontSize)
         zoomPopUpButton.autoenablesItems = false
         zoomPopUpButton.bezelStyle = NSShadowlessSquareBezelStyle
         if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {

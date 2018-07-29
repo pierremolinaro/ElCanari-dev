@@ -1100,7 +1100,7 @@ ToManyRelationshipReadWrite_FontRoot_characters, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  func performUndo (_ oldValue : [FontCharacter]) {
+  @objc func performUndo (_ oldValue : [FontCharacter]) {
     mValue = oldValue
   }
 

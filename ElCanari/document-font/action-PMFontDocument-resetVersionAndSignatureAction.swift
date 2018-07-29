@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension PMFontDocument {
-  func resetVersionAndSignatureAction (_ sender : NSObject) {
+  @objc func resetVersionAndSignatureAction (_ sender : NSObject) {
 //--- START OF USER ZONE 2
     resetVersionAndSignature ()
 //--- END OF USER ZONE 2

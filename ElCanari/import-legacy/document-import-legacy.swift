@@ -71,8 +71,8 @@ extension ApplicationDelegate {
     openPanel.allowsOtherFileTypes = false
     openPanel.message = "Select legacy documents to convert into ElCanari documents:"
     openPanel.accessoryView = mSaveAccessoryView
-    openPanel.begin (completionHandler: { (response : Int) in
-      if response == NSFileHandlingPanelOKButton {
+    openPanel.begin (completionHandler: { (response : SW34_ApplicationModalResponse) in
+      if response == sw34_FileHandlingPanelOKButton {
         let legacyDocumentURLs = openPanel.urls
         self.mConvertLegacyDocumentTextView?.clear()
         self.mConvertLegacyDocumentLogWindow?.makeKeyAndOrderFront (nil)
@@ -83,8 +83,10 @@ extension ApplicationDelegate {
           }
         }catch let error {
           let alert = NSAlert (error:error)
-          alert.beginSheetModal (for: self.mConvertLegacyDocumentLogWindow!, completionHandler: { (response: NSModalResponse) -> Void in
-          })
+          alert.beginSheetModal (
+            for: self.mConvertLegacyDocumentLogWindow!,
+            completionHandler: { (response: SW34_ApplicationModalResponse) in }
+          )
         }
       }
     })

@@ -193,7 +193,11 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
       setProp (validatedValue)
     case EBValidationResult.rejectWithBeep :
       result = false
-      NSBeep ()
+      #if swift(>=4)
+        __NSBeep ()
+      #else
+        NSBeep ()
+      #endif
     case EBValidationResult.rejectWithAlert (let informativeText) :
       result = false
       let alert = NSAlert ()
@@ -202,11 +206,14 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
       alert.addButton (withTitle:"Ok")
       alert.addButton (withTitle:"Discard Change")
       if let window = inWindow {
-        alert.beginSheetModal (for:window, completionHandler:{(response : NSModalResponse) in
-          if response == NSAlertSecondButtonReturn { // Discard Change
-            self.postEvent ()
+        alert.beginSheetModal (
+          for:window,
+          completionHandler:{ (response : SW34_ApplicationModalResponse) in
+            if response == sw34_AlertSecondButtonReturn { // Discard Change
+              self.postEvent ()
+            }
           }
-        })
+        )
       }else{
         alert.runModal ()
       }
@@ -797,7 +804,11 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
       setProp (validatedValue)
     case EBValidationResult.rejectWithBeep :
       result = false
-      NSBeep ()
+      #if swift(>=4)
+        __NSBeep ()
+      #else
+        NSBeep ()
+      #endif
     case EBValidationResult.rejectWithAlert (let informativeText) :
       result = false
       let alert = NSAlert ()
@@ -806,11 +817,14 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
       alert.addButton (withTitle:"Ok")
       alert.addButton (withTitle:"Discard Change")
       if let window = inWindow {
-        alert.beginSheetModal (for:window, completionHandler:{(response : NSModalResponse) in
-          if response == NSAlertSecondButtonReturn { // Discard Change
-            self.postEvent ()
+        alert.beginSheetModal (
+          for:window,
+          completionHandler:{ (response : SW34_ApplicationModalResponse) in
+            if response == sw34_AlertSecondButtonReturn { // Discard Change
+              self.postEvent ()
+            }
           }
-        })
+        )
       }else{
         alert.runModal ()
       }

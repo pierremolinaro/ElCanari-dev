@@ -219,7 +219,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //····················································································································
 
   final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize ())
+    let font = NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize)
     let tf = NSTextField (frame:secondColumn (y))
     tf.isEnabled = true
     tf.isEditable = false
@@ -454,7 +454,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //   showObjectWindowFromExplorerButton
   //····················································································································
 
-  func showObjectWindowFromExplorerButton (_ : Any) {
+  @objc func showObjectWindowFromExplorerButton (_ : Any) {
     if mExplorerWindow == nil {
       buildExplorerWindow ()
     }
@@ -465,7 +465,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //   deleteSelectionControllerWindowAction
   //····················································································································
 
-  func deleteSelectionControllerWindowAction (_ : Any) {
+  @objc func deleteSelectionControllerWindowAction (_ : Any) {
     clearObjectExplorer ()
   }
 
