@@ -31,7 +31,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #if swift(>=4)
-  typealias SW34_ApplicationModalResponse =  NSApplication.ModalResponse
+  typealias SW34_ApplicationModalResponse = NSApplication.ModalResponse
   let sw34_FileHandlingPanelOKButton = NSApplication.ModalResponse (NSFileHandlingPanelOKButton)
 #else
   typealias SW34_ApplicationModalResponse = Int

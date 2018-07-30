@@ -22,12 +22,6 @@ func transient_MergerBoardInstance_selectionLayer (
   let shapes = EBShapes ()
   shapes.append ([bp], NSColor.cyan.withAlphaComponent (0.15), .fill)
   shapes.append ([bp], NSColor.cyan, .stroke)
-//  let layer = CAShapeLayer ()
-//  layer.path = CGPath (rect: r, transform:nil)
-//  layer.lineWidth = 1.0
-//  layer.lineJoin = kCALineJoinRound
-//  layer.fillColor = NSColor.cyan.withAlphaComponent (0.15).cgColor
-//  layer.strokeColor = NSColor.cyan.cgColor
   return shapes
 //--- END OF USER ZONE 2
 }

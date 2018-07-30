@@ -1198,7 +1198,7 @@
 				TargetAttributes = {
 					AA0EFB9E19094440C317E21B = {
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -1768,7 +1768,6 @@
 				STRIP_PNG_TEXT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ElCanari/canari-application/canari-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1797,7 +1796,6 @@
 				STRIP_PNG_TEXT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ElCanari/canari-application/canari-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
