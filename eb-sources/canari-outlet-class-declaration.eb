@@ -8,11 +8,11 @@ extern outlet class NSClipView ;
 
 extern outlet class NSPanel ;
 
-extern outlet class NSTextField ;
-
 extern outlet class NSImageView ;
 
 extern outlet class NSButton ;
+
+extern outlet class NSTextField : NSControl ;
 
 extern outlet class NSSegmentedControl ;
 

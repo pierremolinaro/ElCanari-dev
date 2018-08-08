@@ -362,13 +362,18 @@ prefs {
   property Bool checkForSystemLibraryAtStartUp default yes ;
   outlet EBSwitch mCheckForSystemLibraryAtStartUpSwitch $value self.checkForSystemLibraryAtStartUp ;
   property Date nextSystemLibraryCheckAtStartUp default date ;
-  outlet CanariDateObserverField nextSystemLibraryCheckDate $dateObserver self.nextSystemLibraryCheckAtStartUp ;
+  outlet CanariDateObserverField nextSystemLibraryCheckDate
+    $dateObserver self.nextSystemLibraryCheckAtStartUp
+    $hidden !self.checkForSystemLibraryAtStartUp
+  ;
   property Int systemLibraryCheckTimeInterval default 0 ;
   action systemLibraryCheckTimeIntervalAction ;
   outlet EBPopUpButton systemLibraryCheckTimeIntervalPopupButton
     $selectedTag self.systemLibraryCheckTimeInterval
     $run self.systemLibraryCheckTimeIntervalAction
+    $hidden !self.checkForSystemLibraryAtStartUp
   ;
+  outlet NSTextField systemLibraryCheckTimeIntervalTitleTextField $hidden !self.checkForSystemLibraryAtStartUp ;
 
 #--- Array of additionnal libraries
   array CanariLibraryEntry additionnalLibraryArray ;

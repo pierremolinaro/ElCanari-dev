@@ -118,6 +118,7 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var nextSystemLibraryCheckDate : CanariDateObserverField? = nil
   @IBOutlet var selectionHilitePopupButton : EBPopUpButton? = nil
   @IBOutlet var systemLibraryCheckTimeIntervalPopupButton : EBPopUpButton? = nil
+  @IBOutlet var systemLibraryCheckTimeIntervalTitleTextField : NSTextField? = nil
 
   //····················································································································
   //   Accessing errorMessageColor stored property
@@ -3626,6 +3627,10 @@ var g_Preferences : Preferences? = nil
     if nil == systemLibraryCheckTimeIntervalPopupButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'systemLibraryCheckTimeIntervalPopupButton' outlet is nil")
     }
+  //--------------------------- Check systemLibraryCheckTimeIntervalTitleTextField' outlet not nil
+    if nil == systemLibraryCheckTimeIntervalTitleTextField {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'systemLibraryCheckTimeIntervalTitleTextField' outlet is nil")
+    }
   //--------------------------- Install compute functions for transients
     self.mValueRevealInFinder_symbols_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3840,6 +3845,36 @@ var g_Preferences : Preferences? = nil
     systemLibraryCheckTimeIntervalPopupButton?.bind_selectedTag (self.systemLibraryCheckTimeInterval_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return !self.checkForSystemLibraryAtStartUp_property_selection
+        },
+        outlet:self.nextSystemLibraryCheckDate
+      )
+      self.checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
+      mController_nextSystemLibraryCheckDate_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return !self.checkForSystemLibraryAtStartUp_property_selection
+        },
+        outlet:self.systemLibraryCheckTimeIntervalPopupButton
+      )
+      self.checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
+      mController_systemLibraryCheckTimeIntervalPopupButton_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return !self.checkForSystemLibraryAtStartUp_property_selection
+        },
+        outlet:self.systemLibraryCheckTimeIntervalTitleTextField
+      )
+      self.checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
+      mController_systemLibraryCheckTimeIntervalTitleTextField_hidden = controller
+    }
+    do{
       let controller = MultipleBindingController_enabled (
         computeFunction:{
           return (self.additionnalLibraryArrayController.selectedArray_property.count_property_selection > EBSelection.single (0))
@@ -3877,6 +3912,9 @@ var g_Preferences : Preferences? = nil
   //    Multiple bindings controller
   //····················································································································
 
+  fileprivate var mController_nextSystemLibraryCheckDate_hidden : MultipleBindingController_hidden?
+  fileprivate var mController_systemLibraryCheckTimeIntervalPopupButton_hidden : MultipleBindingController_hidden?
+  fileprivate var mController_systemLibraryCheckTimeIntervalTitleTextField_hidden : MultipleBindingController_hidden?
   fileprivate var mController_mRemoveLibraryEntryButton_enabled : MultipleBindingController_enabled?
 
   //····················································································································

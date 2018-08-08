@@ -1963,7 +1963,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="6E1EB88F-66AC-4AA1-BE6D-F43FFA351435" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="39EF8B20-5FE0-4BB0-A8DB-F736DA743563" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2165,7 +2165,7 @@
                     </view>
                 </box>
             </subviews>
-            <point key="canvasLocation" x="-736" y="56"/>
+            <point key="canvasLocation" x="-572" y="40"/>
         </customView>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="PMCheckingForLibaryUpdateWindow" animationBehavior="default" id="6215" userLabel="CheckingForLibraryUpdate" customClass="EBWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -2430,6 +2430,7 @@ Gw
                 <outlet property="nextSystemLibraryCheckDate" destination="z0R-Xy-yGB" id="fd7-lR-mFh"/>
                 <outlet property="selectionHilitePopupButton" destination="5413" id="FaF-0e-0Wy"/>
                 <outlet property="systemLibraryCheckTimeIntervalPopupButton" destination="IMe-Qv-bBs" id="BIu-vq-akB"/>
+                <outlet property="systemLibraryCheckTimeIntervalTitleTextField" destination="FqY-uW-mJE" id="lJG-n3-YnE"/>
             </connections>
         </customObject>
         <window title="Convert Legacy Documents Log" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="PMConvertLegacyWindowLocation" animationBehavior="default" id="UBr-zN-apk" userLabel="ConvertLegacyDocumentLogWindow">
@@ -2489,7 +2490,7 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="6E1EB88F-66AC-4AA1-BE6D-F43FFA351435" width="20" height="20">
+        <image name="39EF8B20-5FE0-4BB0-A8DB-F736DA743563" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
