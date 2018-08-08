@@ -11,16 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension MergerDocument {
-  @objc func importArtworkAction (_ sender : NSObject?) {
+extension Preferences {
+  @objc func systemLibraryCheckTimeIntervalAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let currentArtwork = self.rootObject.artwork_property.propval { // Arwork already loaded, remove it
-      self.rootObject.artwork_property.setProp (nil)
-      self.rootObject.artworkName = ""
-      self.managedObjectContext().removeManagedObject (currentArtwork)
-    }else{
-      importArtwork ()
+    var nextInterval = 24.0 * 3600.0  // One day
+    let tag = self.systemLibraryCheckTimeInterval
+    if tag == 1 {
+      nextInterval *= 7.0 // One week
+    }else if tag == 2 {
+      nextInterval *= 30.0 // One month
     }
+    self.nextSystemLibraryCheckAtStartUp = Date (timeIntervalSinceNow: nextInterval)
 //--- END OF USER ZONE 2
   }
 }

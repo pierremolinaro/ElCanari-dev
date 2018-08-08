@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension MergerDocument {
-  @objc func arrangeDownAction (_ sender : NSObject) {
+  @objc func arrangeDownAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     self.arrangeDown (overlap: self.rootObject.overlapingArrangment)
 //--- END OF USER ZONE 2

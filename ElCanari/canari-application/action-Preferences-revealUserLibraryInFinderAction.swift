@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func revealUserLibraryInFinderAction (_ sender : NSObject) {
+  @objc func revealUserLibraryInFinderAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     #if swift(>=4)
       let ws = NSWorkspace.shared

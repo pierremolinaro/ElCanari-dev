@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension MergerDocument {
-  @objc func generateProductFilesAction (_ sender : NSObject) {
+  @objc func generateProductFilesAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     switch self.issues_property.prop {
     case .multiple, .empty :

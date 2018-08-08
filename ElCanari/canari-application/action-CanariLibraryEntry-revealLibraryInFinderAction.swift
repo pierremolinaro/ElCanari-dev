@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension CanariLibraryEntry {
-  @objc func revealLibraryInFinderAction (_ sender : NSObject) {
+  @objc func revealLibraryInFinderAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     #if swift(>=4)
       let ws = NSWorkspace.shared

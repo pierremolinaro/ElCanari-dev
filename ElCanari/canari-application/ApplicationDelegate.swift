@@ -21,7 +21,11 @@ import Cocoa
 
   func applicationDidFinishLaunching (_ notification: Notification) {
     if g_Preferences?.checkForSystemLibraryAtStartUp ?? false {
-      performLibraryUpdate (nil)
+      let checkDate = g_Preferences?.nextSystemLibraryCheckAtStartUp ?? Date ()
+      if checkDate < Date () {
+        performLibraryUpdate (nil)
+        g_Preferences?.systemLibraryCheckTimeIntervalAction (nil)
+      }
     }
   }
 
@@ -33,28 +37,6 @@ import Cocoa
     // NSLog (@"%s", __PRETTY_FUNCTION__) ;
     return false
   }
-
-  //····················································································································
-  //  Default actions
-  //····················································································································
-
-//  @IBAction func bringForward (_ object : Any?) {
-//  }
-
-  //····················································································································
-
-//  @IBAction func bringToFront (_ object : Any?) {
-//  }
-
-  //····················································································································
-
-//  @IBAction func sendBackward (_ object : Any?) {
-//  }
-
-  //····················································································································
-
-//  @IBAction func sendToBack (_ object : Any?) {
-//  }
 
   //····················································································································
 

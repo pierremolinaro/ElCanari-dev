@@ -1,7 +1,7 @@
 {
   "NOTE" : [],
   "BUGFIX" : [],
-  "CHANGE" : ["New library repository"],
-  "NEW" : []
+  "CHANGE" : [],
+  "NEW" : ["Programmable Update Library Interval"]
 }
 

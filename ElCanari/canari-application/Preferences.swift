@@ -115,7 +115,9 @@ var g_Preferences : Preferences? = nil
   @IBOutlet var mUpdateSystemLibraryBox : NSBox? = nil
   @IBOutlet var mUseLibraryInUserApplicationSupportPathCheckBox : EBSwitch? = nil
   @IBOutlet var mWarningMessageColorColorWell : EBColorWell? = nil
+  @IBOutlet var nextSystemLibraryCheckDate : CanariDateObserverField? = nil
   @IBOutlet var selectionHilitePopupButton : EBPopUpButton? = nil
+  @IBOutlet var systemLibraryCheckTimeIntervalPopupButton : EBPopUpButton? = nil
 
   //····················································································································
   //   Accessing errorMessageColor stored property
@@ -1565,6 +1567,44 @@ var g_Preferences : Preferences? = nil
   }
 
   //····················································································································
+  //   Accessing nextSystemLibraryCheckAtStartUp stored property
+  //····················································································································
+
+  var nextSystemLibraryCheckAtStartUp : Date {
+    get {
+      return self.nextSystemLibraryCheckAtStartUp_property.propval
+    }
+    set {
+      self.nextSystemLibraryCheckAtStartUp_property.setProp (newValue)
+    }
+  }
+
+  var nextSystemLibraryCheckAtStartUp_property_selection : EBSelection <Date> {
+    get {
+      return self.nextSystemLibraryCheckAtStartUp_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing systemLibraryCheckTimeInterval stored property
+  //····················································································································
+
+  var systemLibraryCheckTimeInterval : Int {
+    get {
+      return self.systemLibraryCheckTimeInterval_property.propval
+    }
+    set {
+      self.systemLibraryCheckTimeInterval_property.setProp (newValue)
+    }
+  }
+
+  var systemLibraryCheckTimeInterval_property_selection : EBSelection <Int> {
+    get {
+      return self.systemLibraryCheckTimeInterval_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing mergerModelViewHorizontalFlip stored property
   //····················································································································
 
@@ -2920,6 +2960,8 @@ var g_Preferences : Preferences? = nil
   var fontEditionTransparency_property = EBStoredProperty_Double (0.5)
   var usesUserLibrary_property = EBStoredProperty_Bool (true)
   var checkForSystemLibraryAtStartUp_property = EBStoredProperty_Bool (true)
+  var nextSystemLibraryCheckAtStartUp_property = EBStoredProperty_Date (Date ())
+  var systemLibraryCheckTimeInterval_property = EBStoredProperty_Int (0)
   var mergerModelViewHorizontalFlip_property = EBStoredProperty_Bool (false)
   var mergerModelViewVerticalFlip_property = EBStoredProperty_Bool (false)
   var mergerModelViewDisplayHoles_property = EBStoredProperty_Bool (true)
@@ -3093,6 +3135,8 @@ var g_Preferences : Preferences? = nil
     self.fontEditionTransparency_property.readInPreferencesWithKey (inKey:"Preferences:fontEditionTransparency")
     self.usesUserLibrary_property.readInPreferencesWithKey (inKey:"Preferences:usesUserLibrary")
     self.checkForSystemLibraryAtStartUp_property.readInPreferencesWithKey (inKey:"Preferences:checkForSystemLibraryAtStartUp")
+    self.nextSystemLibraryCheckAtStartUp_property.readInPreferencesWithKey (inKey:"Preferences:nextSystemLibraryCheckAtStartUp")
+    self.systemLibraryCheckTimeInterval_property.readInPreferencesWithKey (inKey:"Preferences:systemLibraryCheckTimeInterval")
     self.mergerModelViewHorizontalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewHorizontalFlip")
     self.mergerModelViewVerticalFlip_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewVerticalFlip")
     self.mergerModelViewDisplayHoles_property.readInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayHoles")
@@ -3570,9 +3614,17 @@ var g_Preferences : Preferences? = nil
     if nil == mWarningMessageColorColorWell {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mWarningMessageColorColorWell' outlet is nil")
     }
+  //--------------------------- Check nextSystemLibraryCheckDate' outlet not nil
+    if nil == nextSystemLibraryCheckDate {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'nextSystemLibraryCheckDate' outlet is nil")
+    }
   //--------------------------- Check selectionHilitePopupButton' outlet not nil
     if nil == selectionHilitePopupButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'selectionHilitePopupButton' outlet is nil")
+    }
+  //--------------------------- Check systemLibraryCheckTimeIntervalPopupButton' outlet not nil
+    if nil == systemLibraryCheckTimeIntervalPopupButton {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'systemLibraryCheckTimeIntervalPopupButton' outlet is nil")
     }
   //--------------------------- Install compute functions for transients
     self.mValueRevealInFinder_symbols_property.readModelFunction = { [weak self] in
@@ -3784,6 +3836,8 @@ var g_Preferences : Preferences? = nil
     mEditionTransparencyTextField?.bind_value (self.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (self.usesUserLibrary_property, file: #file, line: #line)
     mCheckForSystemLibraryAtStartUpSwitch?.bind_value (self.checkForSystemLibraryAtStartUp_property, file: #file, line: #line)
+    nextSystemLibraryCheckDate?.bind_dateObserver (self.nextSystemLibraryCheckAtStartUp_property, file: #file, line: #line)
+    systemLibraryCheckTimeIntervalPopupButton?.bind_selectedTag (self.systemLibraryCheckTimeInterval_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -3807,6 +3861,8 @@ var g_Preferences : Preferences? = nil
   //--------------------------- Set targets / actions
     self.mRevealInFinderLibraryInUserApplicationSupportButton?.target = self
     self.mRevealInFinderLibraryInUserApplicationSupportButton?.action = #selector (Preferences.revealUserLibraryInFinderAction (_:))
+    self.systemLibraryCheckTimeIntervalPopupButton?.target = self
+    self.systemLibraryCheckTimeIntervalPopupButton?.action = #selector (Preferences.systemLibraryCheckTimeIntervalAction (_:))
     self.mAddLibraryEntryButton?.target = self
     self.mAddLibraryEntryButton?.action = #selector (Preferences.addLibraryEntryAction (_:))
     self.mRemoveLibraryEntryButton?.target = additionnalLibraryArrayController
@@ -3904,6 +3960,8 @@ var g_Preferences : Preferences? = nil
     self.fontEditionTransparency_property.storeInPreferencesWithKey (inKey:"Preferences:fontEditionTransparency")
     self.usesUserLibrary_property.storeInPreferencesWithKey (inKey:"Preferences:usesUserLibrary")
     self.checkForSystemLibraryAtStartUp_property.storeInPreferencesWithKey (inKey:"Preferences:checkForSystemLibraryAtStartUp")
+    self.nextSystemLibraryCheckAtStartUp_property.storeInPreferencesWithKey (inKey:"Preferences:nextSystemLibraryCheckAtStartUp")
+    self.systemLibraryCheckTimeInterval_property.storeInPreferencesWithKey (inKey:"Preferences:systemLibraryCheckTimeInterval")
     self.mergerModelViewHorizontalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewHorizontalFlip")
     self.mergerModelViewVerticalFlip_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewVerticalFlip")
     self.mergerModelViewDisplayHoles_property.storeInPreferencesWithKey (inKey:"Preferences:mergerModelViewDisplayHoles")

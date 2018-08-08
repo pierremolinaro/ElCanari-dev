@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension MergerDocument {
-  @objc func insertBoardAction (_ sender : NSObject) {
+  @objc func insertBoardAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let menuItem = sender as? NSMenuItem, let currentEvent = self.windowForSheet?.currentEvent {
       let mouseLocationInWindow : NSPoint = currentEvent.locationInWindow

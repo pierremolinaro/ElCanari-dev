@@ -587,7 +587,7 @@ AAAAAAEGA
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <box autoresizesSubviews="NO" misplaced="YES" boxType="secondary" borderType="line" title="Arrow Keys Magnitude" id="wdH-xO-mg5">
-                                                    <rect key="frame" x="1" y="227" width="222" height="87"/>
+                                                    <rect key="frame" x="1" y="226" width="222" height="87"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="1sH-Mf-0pK">
                                                         <rect key="frame" x="1" y="1" width="220" height="71"/>
@@ -760,7 +760,7 @@ AAAAAAEGA
                                                     </view>
                                                 </box>
                                                 <box autoresizesSubviews="NO" misplaced="YES" boxType="secondary" borderType="line" title="Arrange Selection" id="ffZ-Xq-SuA">
-                                                    <rect key="frame" x="1" y="5" width="222" height="83"/>
+                                                    <rect key="frame" x="1" y="4" width="222" height="83"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="BDo-E7-aaz">
                                                         <rect key="frame" x="1" y="1" width="220" height="67"/>
@@ -780,14 +780,6 @@ AAAAAAEGA
                                                                 <buttonCell key="cell" type="roundRect" title="⬇︎" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hyx-xT-WXe">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                            </button>
-                                                            <button id="GAQ-bH-PUU" customClass="EBSwitch">
-                                                                <rect key="frame" x="17" y="24" width="72" height="24"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <buttonCell key="cell" type="check" title="Overlap" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="qd7-2R-hXf">
-                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                    <font key="font" metaFont="smallSystem"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button verticalHuggingPriority="750" id="1p8-Aw-BkL" customClass="EBButton">
@@ -810,7 +802,7 @@ AAAAAAEGA
                                                     </view>
                                                 </box>
                                                 <box autoresizesSubviews="NO" misplaced="YES" boxType="secondary" borderType="line" title="Selected Instance" id="QgP-AZ-MXj">
-                                                    <rect key="frame" x="1" y="92" width="222" height="131"/>
+                                                    <rect key="frame" x="1" y="91" width="222" height="131"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" id="KFZ-Ax-gRo">
                                                         <rect key="frame" x="1" y="1" width="220" height="115"/>
@@ -1133,10 +1125,18 @@ AAAAAAEGA
                                                                     <outlet property="nextKeyView" destination="nao-E9-sci" id="49O-VE-EeV"/>
                                                                 </connections>
                                                             </textField>
-                                                            <button id="FGl-Od-SnG" customClass="EBSwitch">
-                                                                <rect key="frame" x="17" y="105" width="165" height="24"/>
+                                                            <button misplaced="YES" id="FGl-Od-SnG" customClass="EBSwitch">
+                                                                <rect key="frame" x="17" y="105" width="101" height="24"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <buttonCell key="cell" type="check" title="Automatic Size" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="65N-E6-cUv">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                </buttonCell>
+                                                            </button>
+                                                            <button misplaced="YES" id="GAQ-bH-PUU" customClass="EBSwitch">
+                                                                <rect key="frame" x="137" y="105" width="72" height="24"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <buttonCell key="cell" type="check" title="Overlap" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="qd7-2R-hXf">
                                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                 </buttonCell>

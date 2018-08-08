@@ -357,9 +357,19 @@ prefs {
 #  outlet EBButton mCreateLibraryInSystemApplicationSupportButton $run self.createUserLibraryAction ;
 #---
   outlet NSBox mUpdateSystemLibraryBox ;
+
 #--- Update System Library path at startup
   property Bool checkForSystemLibraryAtStartUp default yes ;
   outlet EBSwitch mCheckForSystemLibraryAtStartUpSwitch $value self.checkForSystemLibraryAtStartUp ;
+  property Date nextSystemLibraryCheckAtStartUp default date ;
+  outlet CanariDateObserverField nextSystemLibraryCheckDate $dateObserver self.nextSystemLibraryCheckAtStartUp ;
+  property Int systemLibraryCheckTimeInterval default 0 ;
+  action systemLibraryCheckTimeIntervalAction ;
+  outlet EBPopUpButton systemLibraryCheckTimeIntervalPopupButton
+    $selectedTag self.systemLibraryCheckTimeInterval
+    $run self.systemLibraryCheckTimeIntervalAction
+  ;
+
 #--- Array of additionnal libraries
   array CanariLibraryEntry additionnalLibraryArray ;
   outlet EBTableView mAdditionnalLibraryArrayTableView $tableValue additionnalLibraryArrayController ;

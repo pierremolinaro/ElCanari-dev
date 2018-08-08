@@ -52,6 +52,9 @@ extern outlet class CanariViewWithKeyView ;
 extern outlet class CanariMenu ;
 binding CanariMenu $populateSubmenus : transient CanariMenuItemListClass ;
 
+extern outlet class CanariDateObserverField : NSTextField ;
+binding CanariDateObserverField $dateObserver : transient Date ;
+
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   Cocoa Outlets
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

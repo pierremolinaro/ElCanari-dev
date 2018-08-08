@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension MergerDocument {
-  @objc func showBoardHelpAction (_ sender : NSObject) {
+  @objc func showBoardHelpAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let panel = self.boardHelpPanel {
       self.windowForSheet?.beginSheet (panel, completionHandler:nil)
