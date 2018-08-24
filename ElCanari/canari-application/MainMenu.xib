@@ -452,7 +452,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-122" y="-233"/>
+            <point key="canvasLocation" x="11" y="-236"/>
         </menu>
         <customObject id="212" userLabel="Application Delegate" customClass="ApplicationDelegate">
             <connections>
@@ -1963,7 +1963,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="39EF8B20-5FE0-4BB0-A8DB-F736DA743563" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="9EE03183-F54D-4384-B7CD-7EE725045EB1" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2490,7 +2490,7 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="39EF8B20-5FE0-4BB0-A8DB-F736DA743563" width="20" height="20">
+        <image name="9EE03183-F54D-4384-B7CD-7EE725045EB1" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

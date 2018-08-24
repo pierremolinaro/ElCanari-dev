@@ -4,7 +4,6 @@
 //
 //  Created by Pierre Molinaro on 05/11/2015.
 //
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
@@ -14,6 +13,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(CanariAppUpdaterSettings) class CanariAppUpdaterSettings : NSObject, EBUserClassNameProtocol {
+
+  //····················································································································
+  //   Outlets
+  //····················································································································
+
   @IBOutlet private var mUpdateCheckbox : NSButton?
   @IBOutlet private var mUpdateIntervalPopUpButton : NSPopUpButton?
 

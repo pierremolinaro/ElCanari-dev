@@ -283,8 +283,17 @@ document MergerDocument root MergerRoot {
 #--- Instance rotation
   outlet CanariQuadrantSegmentedControl mInstanceRotation $quadrant mBoardInstanceSelection.instanceRotation ;
  
-#--- Arrange
+#--- Arrange & move selection
   outlet EBSwitch mOverlapSwitch $enabled root.boardInstances.count > 0 $value root.overlapingArrangment ;
+
+  action moveRightAction ;
+  outlet EBButton mMoveRightButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.moveRightAction ;
+  action moveLeftAction ;
+  outlet EBButton mMoveLeftButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.moveLeftAction ;
+  action moveUpAction ;
+  outlet EBButton mMoveUpButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.moveUpAction ;
+  action moveDownAction ;
+  outlet EBButton mMoveDownButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.moveDownAction ;
 
   action arrangeRightAction ;
   outlet EBButton mArrangeRightButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.arrangeRightAction ;
