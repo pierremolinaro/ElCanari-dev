@@ -28,7 +28,7 @@ func transient_MergerRoot_instancesDisplay (
       idx += 1
     }
   //-- Add board limit rect
-    if prefs_mergerBoardViewDisplayBoardLimits {
+    if prefs_mergerBoardViewDisplayBoardLimits && !self_boardRect.isEmpty {
       let limitWidth = canariUnitToCocoa (self_boardLimitWidth)
       let r = self_boardRect.cocoaRect()
       let bp = NSBezierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))

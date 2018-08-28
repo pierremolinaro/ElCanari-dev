@@ -295,14 +295,12 @@ document MergerDocument root MergerRoot {
   action moveDownAction ;
   outlet EBButton mMoveDownButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.moveDownAction ;
 
-  action arrangeRightAction ;
-  outlet EBButton mArrangeRightButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.arrangeRightAction ;
-  action arrangeLeftAction ;
-  outlet EBButton mArrangeLeftButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.arrangeLeftAction ;
-  action arrangeUpAction ;
-  outlet EBButton mArrangeUpButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.arrangeUpAction ;
-  action arrangeDownAction ;
-  outlet EBButton mArrangeDownButton $enabled mBoardInstanceController.selectedArray.count > 0 $run self.arrangeDownAction ;
+  action arrangeHorizontallyAction ;
+  outlet EBButton mArrangeHorizontallyButton
+    $enabled mBoardInstanceController.selectedArray.count > 0 $run self.arrangeHorizontallyAction ;
+  action arrangeVerticallyAction ;
+  outlet EBButton mArrangeVerticallyButton
+    $enabled mBoardInstanceController.selectedArray.count > 0 $run self.arrangeVerticallyAction ;
 
 #------------------------------------- Product Page
   transient Bool documentFileNameOk dependsFrom self.documentFilePath ;

@@ -11,10 +11,8 @@
             <connections>
                 <outlet property="addBoardModelButton" destination="2Wu-Dh-CTo" id="Ge9-7X-rm9"/>
                 <outlet property="boardHelpPanel" destination="PAN-4y-duD" id="1Kd-pk-TW5"/>
-                <outlet property="mArrangeDownButton" destination="fat-HL-lk6" id="WFb-71-i0Z"/>
-                <outlet property="mArrangeLeftButton" destination="D5k-A1-B4S" id="DWS-3r-VfX"/>
-                <outlet property="mArrangeRightButton" destination="c6K-Ph-Pwj" id="u4h-gY-BW7"/>
-                <outlet property="mArrangeUpButton" destination="U8P-bO-Byj" id="LUH-1N-6dN"/>
+                <outlet property="mArrangeHorizontallyButton" destination="D5k-A1-B4S" id="7eJ-ay-oq7"/>
+                <outlet property="mArrangeVerticallyButton" destination="c6K-Ph-Pwj" id="KBW-nR-MsM"/>
                 <outlet property="mArrowMagnitudeTextField" destination="ieK-KT-COc" id="EI3-8E-511"/>
                 <outlet property="mArrowMagnitudeUnitPopUp" destination="vEq-FZ-5D6" id="v9B-cX-PiQ"/>
                 <outlet property="mArtworNameTextField" destination="syb-21-rHW" id="MoL-GG-Y9o"/>
@@ -812,36 +810,20 @@ AAAAAAEGA
                                                         <rect key="frame" x="1" y="1" width="108" height="67"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <button verticalHuggingPriority="750" misplaced="YES" id="U8P-bO-Byj" customClass="EBButton">
-                                                                <rect key="frame" x="34" y="41" width="40" height="19"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <buttonCell key="cell" type="roundRect" title="⇈" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Ax-mS-JDa">
-                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                            </button>
-                                                            <button verticalHuggingPriority="750" misplaced="YES" id="fat-HL-lk6" customClass="EBButton">
-                                                                <rect key="frame" x="34" y="7" width="40" height="19"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <buttonCell key="cell" type="roundRect" title="⇊" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AOI-ZQ-MGs">
-                                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
-                                                                </buttonCell>
-                                                            </button>
                                                             <button verticalHuggingPriority="750" misplaced="YES" id="c6K-Ph-Pwj" customClass="EBButton">
                                                                 <rect key="frame" x="54" y="24" width="40" height="19"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <buttonCell key="cell" type="roundRect" title="⇉" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ptp-GC-EVI">
+                                                                <buttonCell key="cell" type="roundRect" title="⬍" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ptp-GC-EVI">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
+                                                                    <font key="font" size="12" name="Cambria"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button verticalHuggingPriority="750" misplaced="YES" id="D5k-A1-B4S" customClass="EBButton">
                                                                 <rect key="frame" x="15" y="24" width="40" height="19"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                <buttonCell key="cell" type="roundRect" title="⇇" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DuJ-tY-pJ1">
+                                                                <buttonCell key="cell" type="roundRect" title="⬌" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DuJ-tY-pJ1">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="cellTitle"/>
+                                                                    <font key="font" size="12" name="Cambria"/>
                                                                 </buttonCell>
                                                             </button>
                                                         </subviews>
@@ -1288,7 +1270,7 @@ AAAAAAEGA
                     </scroller>
                 </scrollView>
             </subviews>
-            <point key="canvasLocation" x="621" y="-990.5"/>
+            <point key="canvasLocation" x="386" y="-977"/>
         </customView>
         <customView misplaced="YES" id="12W-qU-wNi" userLabel="Page : Product" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="923" height="684"/>
