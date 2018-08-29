@@ -31,7 +31,7 @@ extension MergerDocument {
         let testedBoardRect = getInstanceRect (testedBoard)
         let intersection = leftRect.intersection (testedBoardRect)
         if !intersection.isEmpty {
-          newY = max (newY, intersection.bottom + intersection.height)
+          newY = max (newY, intersection.top)
         }
         idy += 1
       }
@@ -49,7 +49,7 @@ extension MergerDocument {
         let testedBoardRect = getInstanceRect (testedBoard)
         let intersection = boardRect.intersection (testedBoardRect)
         if !intersection.isEmpty {
-          pushBoardUp (sortedBoards, boardRect, idy, boardRect.bottom + boardRect.height)
+          pushBoardUp (sortedBoards, boardRect, idy, boardRect.top)
         }
         idy += 1
       }
@@ -75,7 +75,7 @@ extension MergerDocument {
         let testedBoardRect = getInstanceRect (testedBoard)
         let intersection = leftRect.intersection (testedBoardRect)
         if !intersection.isEmpty {
-          newX = max (newX, intersection.left + intersection.width)
+          newX = max (newX, intersection.right)
         }
         idy += 1
       }
@@ -93,7 +93,7 @@ extension MergerDocument {
         let testedBoardRect = getInstanceRect (testedBoard)
         let intersection = boardRect.intersection (testedBoardRect)
         if !intersection.isEmpty {
-          pushBoardRight (sortedBoards, boardRect, idy, boardRect.left + boardRect.width)
+          pushBoardRight (sortedBoards, boardRect, idy, boardRect.right)
         }
         idy += 1
       }
@@ -114,7 +114,7 @@ extension MergerDocument {
       let testedBoardRect = getInstanceRect (testedBoard)
       let intersection = inBoardRect.intersection (testedBoardRect)
       if !intersection.isEmpty {
-        pushBoardRight (sortedBoards, testedBoardRect, idy, inBoardRect.left + inBoardRect.width)
+        pushBoardRight (sortedBoards, testedBoardRect, idy, inBoardRect.right)
       }
       idy += 1
     }
@@ -135,7 +135,7 @@ extension MergerDocument {
       let testedBoardRect = getInstanceRect (testedBoard)
       let intersection = inBoardRect.intersection (testedBoardRect)
       if !intersection.isEmpty {
-        pushBoardUp (sortedBoards, testedBoardRect, idy, inBoardRect.bottom + inBoardRect.height)
+        pushBoardUp (sortedBoards, testedBoardRect, idy, inBoardRect.top)
       }
       idy += 1
     }
@@ -170,7 +170,7 @@ extension MergerDocument {
           let testedBoardRect = getInstanceRect (testedBoard).insetBy (dx:inset, dy: inset)
           let intersection = leftRect.intersection (testedBoardRect)
           if !intersection.isEmpty {
-            newY = max (newY, intersection.bottom + intersection.height - inset)
+            newY = max (newY, intersection.top - inset)
           }
         }
       }
@@ -190,7 +190,7 @@ extension MergerDocument {
         let testedBoardRect = getInstanceRect (testedBoard).insetBy (dx:inset, dy: inset)
         let intersection = boardRect.intersection (testedBoardRect)
         if !intersection.isEmpty {
-          let newY = boardRect.bottom + boardRect.height - inset
+          let newY = boardRect.top - inset
           pushBoardUpWithOverlap (sortedBoards, boardRect, boardLimit, idy, newY)
         }
         idy += 1
@@ -215,7 +215,7 @@ extension MergerDocument {
       let testedBoardRect = getInstanceRect (testedBoard).insetBy (dx:inset, dy: inset)
       let intersection = inBoardRect.intersection (testedBoardRect)
       if !intersection.isEmpty {
-        let newY = inBoardRect.bottom + inBoardRect.height - inset
+        let newY = inBoardRect.top - inset
         pushBoardUpWithOverlap (sortedBoards, testedBoardRect, testedBoardLimit, idy, newY)
       }
       idy += 1
@@ -242,7 +242,7 @@ extension MergerDocument {
           let testedBoardRect = getInstanceRect (testedBoard).insetBy (dx:inset, dy: inset)
           let intersection = leftRect.intersection (testedBoardRect)
           if !intersection.isEmpty {
-            newX = max (newX, intersection.left + intersection.width - inset)
+            newX = max (newX, intersection.right - inset)
           }
         }
       }
@@ -262,7 +262,7 @@ extension MergerDocument {
         let testedBoardRect = getInstanceRect (testedBoard).insetBy (dx:inset, dy: inset)
         let intersection = boardRect.intersection (testedBoardRect)
         if !intersection.isEmpty {
-          let newX = boardRect.left + boardRect.width - inset
+          let newX = boardRect.right - inset
           pushBoardRightWithOverlap (sortedBoards, boardRect, testedBoardLimit, idy, newX)
         }
         idy += 1
@@ -287,7 +287,7 @@ extension MergerDocument {
       let testedBoardRect = getInstanceRect (testedBoard).insetBy (dx:inset, dy: inset)
       let intersection = inBoardRect.intersection (testedBoardRect)
       if !intersection.isEmpty {
-        let newX = inBoardRect.left + inBoardRect.width - inset
+        let newX = inBoardRect.right - inset
         pushBoardRightWithOverlap (sortedBoards, testedBoardRect, testedBoardLimit, idy, newX)
       }
       idy += 1

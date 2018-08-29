@@ -14,7 +14,11 @@ import Cocoa
 extension MergerDocument {
   @objc func arrangeHorizontallyAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    ENTER USER CODE HERE
+    if self.rootObject.overlapingArrangment {
+      self.arrangeHorizontallyWithOverlap ()
+    }else{
+      self.arrangeHorizontallyWithOverlap ()
+    }
 //--- END OF USER ZONE 2
   }
 }
