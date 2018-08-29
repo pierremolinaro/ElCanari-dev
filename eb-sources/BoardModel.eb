@@ -81,6 +81,17 @@ entity BoardModel {
 
   transient BezierPathArray backLayoutTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLayoutTextsSegments ;
 
+#--- Internal board limits
+  toMany @cascading CanariSegment internalBoardsLimits ;
+
+  transient MergerSegmentArray internalBoardsLimitsSegments dependsFrom
+    self.internalBoardsLimits.all.x1, self.internalBoardsLimits.all.y1,
+    self.internalBoardsLimits.all.x2, self.internalBoardsLimits.all.y2,
+    self.internalBoardsLimits.all.width
+  ;
+
+  transient BezierPathArray internalBoardsLimitsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.internalBoardsLimitsSegments ;
+
 #--- Holes
   transient MergerHoleArray padsHoles
     dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.holeDiameter ;
@@ -225,6 +236,10 @@ entity BoardModel {
     self.boardLimitsBezierPaths,
     prefs.mergerModelViewDisplayBoardLimits,
     prefs.mergerColorBoardLimits,
+# Internal Board limits
+    self.internalBoardsLimitsBezierPaths,
+    prefs.mergerModelViewDisplayInternalBoardsLimits,
+    prefs.mergerColorInternalBoardsLimits,
 # Front tracks
     self.frontTracksBezierPaths,
     prefs.mergerModelViewDisplayFrontTracks,
@@ -313,9 +328,10 @@ entity BoardModel {
     prefs.mergerBoardViewDisplayBackTracks,
     prefs.mergerColorBackTracks,
 # Internal Board limits
+    self.internalBoardsLimitsBezierPaths,
     self.boardLimitsBezierPaths,
-    prefs.mergerBoardViewDisplayInternalBoardLimits,
-    prefs.mergerColorInternalBoardLimits,
+    prefs.mergerBoardViewDisplayInternalBoardsLimits,
+    prefs.mergerColorInternalBoardsLimits,
 # Front pads
     self.frontPadsBezierPaths,
     prefs.mergerBoardViewDisplayFrontPads,

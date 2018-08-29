@@ -47,7 +47,7 @@ import Cocoa
   @IBOutlet var mBoardViewDisplayFrontPadsCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayFrontTracksCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayHolesCheckbox : EBSwitch?
-  @IBOutlet var mBoardViewDisplayInternalBoardLimitsCheckbox : EBSwitch?
+  @IBOutlet var mBoardViewDisplayInternalBoardsLimitsCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayViasCheckbox : EBSwitch?
   @IBOutlet var mBoardViewHorizontalFlipCheckbox : EBSwitch?
   @IBOutlet var mBoardViewVerticalFlipCheckbox : EBSwitch?
@@ -103,6 +103,7 @@ import Cocoa
   @IBOutlet var mModelViewDisplayFrontPadsCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayFrontTracksCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayHolesCheckbox : EBSwitch?
+  @IBOutlet var mModelViewDisplayInternalBoardsLimitsCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayViasCheckbox : EBSwitch?
   @IBOutlet var mModelViewHorizontalFlipCheckbox : EBSwitch?
   @IBOutlet var mModelViewVerticalFlipCheckbox : EBSwitch?
@@ -142,7 +143,7 @@ import Cocoa
   @IBOutlet var mergerViewDisplayFrontPadsColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayFrontTracksColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayHolesColorWell : EBColorWell?
-  @IBOutlet var mergerViewDisplayInternalBoardLimitsColorWell : EBColorWell?
+  @IBOutlet var mergerViewDisplayInternalBoardsLimitsColorWell : EBColorWell?
   @IBOutlet var mergerViewDisplayViasColorWell : EBColorWell?
   @IBOutlet var mergerViewFrontLegendLinesColorWell : EBColorWell?
   @IBOutlet var removeBoardModelButton : EBButton?
@@ -610,14 +611,14 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mBoardViewDisplayHolesCheckbox' outlet is not an instance of 'EBSwitch'") ;
     }
-    if nil == mBoardViewDisplayInternalBoardLimitsCheckbox {
+    if nil == mBoardViewDisplayInternalBoardsLimitsCheckbox {
       presentErrorWindow (file: #file,
                               line: #line,
-                              errorMessage: "the 'mBoardViewDisplayInternalBoardLimitsCheckbox' outlet is nil") ;
-//    }else if !mBoardViewDisplayInternalBoardLimitsCheckbox!.isKindOfClass (EBSwitch) {
+                              errorMessage: "the 'mBoardViewDisplayInternalBoardsLimitsCheckbox' outlet is nil") ;
+//    }else if !mBoardViewDisplayInternalBoardsLimitsCheckbox!.isKindOfClass (EBSwitch) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mBoardViewDisplayInternalBoardLimitsCheckbox' outlet is not an instance of 'EBSwitch'") ;
+//                              errorMessage: "the 'mBoardViewDisplayInternalBoardsLimitsCheckbox' outlet is not an instance of 'EBSwitch'") ;
     }
     if nil == mBoardViewDisplayViasCheckbox {
       presentErrorWindow (file: #file,
@@ -1114,6 +1115,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mModelViewDisplayHolesCheckbox' outlet is not an instance of 'EBSwitch'") ;
     }
+    if nil == mModelViewDisplayInternalBoardsLimitsCheckbox {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mModelViewDisplayInternalBoardsLimitsCheckbox' outlet is nil") ;
+//    }else if !mModelViewDisplayInternalBoardsLimitsCheckbox!.isKindOfClass (EBSwitch) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mModelViewDisplayInternalBoardsLimitsCheckbox' outlet is not an instance of 'EBSwitch'") ;
+    }
     if nil == mModelViewDisplayViasCheckbox {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -1465,14 +1475,14 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mergerViewDisplayHolesColorWell' outlet is not an instance of 'EBColorWell'") ;
     }
-    if nil == mergerViewDisplayInternalBoardLimitsColorWell {
+    if nil == mergerViewDisplayInternalBoardsLimitsColorWell {
       presentErrorWindow (file: #file,
                               line: #line,
-                              errorMessage: "the 'mergerViewDisplayInternalBoardLimitsColorWell' outlet is nil") ;
-//    }else if !mergerViewDisplayInternalBoardLimitsColorWell!.isKindOfClass (EBColorWell) {
+                              errorMessage: "the 'mergerViewDisplayInternalBoardsLimitsColorWell' outlet is nil") ;
+//    }else if !mergerViewDisplayInternalBoardsLimitsColorWell!.isKindOfClass (EBColorWell) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mergerViewDisplayInternalBoardLimitsColorWell' outlet is not an instance of 'EBColorWell'") ;
+//                              errorMessage: "the 'mergerViewDisplayInternalBoardsLimitsColorWell' outlet is not an instance of 'EBColorWell'") ;
     }
     if nil == mergerViewDisplayViasColorWell {
       presentErrorWindow (file: #file,
@@ -1726,6 +1736,7 @@ import Cocoa
     mModelViewDisplayHolesCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayHoles_property, file: #file, line: #line)
     mModelViewDisplayViasCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayVias_property, file: #file, line: #line)
     mModelViewDisplayFrontPadsCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayFrontPads_property, file: #file, line: #line)
+    mModelViewDisplayInternalBoardsLimitsCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayInternalBoardsLimits_property, file: #file, line: #line)
     mModelViewDisplayBoardLimitsCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayBoardLimits_property, file: #file, line: #line)
     mModelViewDisplayFrontComponentNamesCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayFrontComponentNames_property, file: #file, line: #line)
     mModelViewDisplayFrontComponenValuesCheckbox?.bind_value (g_Preferences!.mergerModelViewDisplayFrontComponentValues_property, file: #file, line: #line)
@@ -1748,7 +1759,7 @@ import Cocoa
     mBoardViewDisplayViasCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayVias_property, file: #file, line: #line)
     mBoardViewDisplayFrontPadsCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayFrontPads_property, file: #file, line: #line)
     mBoardViewDisplayBoardLimitsCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayBoardLimits_property, file: #file, line: #line)
-    mBoardViewDisplayInternalBoardLimitsCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayInternalBoardLimits_property, file: #file, line: #line)
+    mBoardViewDisplayInternalBoardsLimitsCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayInternalBoardsLimits_property, file: #file, line: #line)
     mBoardViewDisplayFrontComponentNamesCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayFrontComponentNames_property, file: #file, line: #line)
     mBoardViewDisplayFrontComponenValuesCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayFrontComponentValues_property, file: #file, line: #line)
     mBoardViewDisplayFrontPackagesCheckbox?.bind_value (g_Preferences!.mergerBoardViewDisplayFrontPackages_property, file: #file, line: #line)
@@ -1768,7 +1779,7 @@ import Cocoa
     mergerViewDisplayViasColorWell?.bind_color (g_Preferences!.mergerColorVias_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayFrontPadsColorWell?.bind_color (g_Preferences!.mergerColorFrontPads_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayBoardLimitsColorWell?.bind_color (g_Preferences!.mergerColorBoardLimits_property, file: #file, line: #line, sendContinously:false)
-    mergerViewDisplayInternalBoardLimitsColorWell?.bind_color (g_Preferences!.mergerColorInternalBoardLimits_property, file: #file, line: #line, sendContinously:false)
+    mergerViewDisplayInternalBoardsLimitsColorWell?.bind_color (g_Preferences!.mergerColorInternalBoardsLimits_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayFrontComponentNamesColorWell?.bind_color (g_Preferences!.mergerColorFrontComponentNames_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayFrontComponentValuesColorWell?.bind_color (g_Preferences!.mergerColorFrontComponentValues_property, file: #file, line: #line, sendContinously:false)
     mergerViewDisplayFrontPackagesColorWell?.bind_color (g_Preferences!.mergerColorFrontPackages_property, file: #file, line: #line, sendContinously:false)
@@ -2054,6 +2065,7 @@ import Cocoa
     mModelViewDisplayHolesCheckbox?.unbind_value ()
     mModelViewDisplayViasCheckbox?.unbind_value ()
     mModelViewDisplayFrontPadsCheckbox?.unbind_value ()
+    mModelViewDisplayInternalBoardsLimitsCheckbox?.unbind_value ()
     mModelViewDisplayBoardLimitsCheckbox?.unbind_value ()
     mModelViewDisplayFrontComponentNamesCheckbox?.unbind_value ()
     mModelViewDisplayFrontComponenValuesCheckbox?.unbind_value ()
@@ -2076,7 +2088,7 @@ import Cocoa
     mBoardViewDisplayViasCheckbox?.unbind_value ()
     mBoardViewDisplayFrontPadsCheckbox?.unbind_value ()
     mBoardViewDisplayBoardLimitsCheckbox?.unbind_value ()
-    mBoardViewDisplayInternalBoardLimitsCheckbox?.unbind_value ()
+    mBoardViewDisplayInternalBoardsLimitsCheckbox?.unbind_value ()
     mBoardViewDisplayFrontComponentNamesCheckbox?.unbind_value ()
     mBoardViewDisplayFrontComponenValuesCheckbox?.unbind_value ()
     mBoardViewDisplayFrontPackagesCheckbox?.unbind_value ()
@@ -2096,7 +2108,7 @@ import Cocoa
     mergerViewDisplayViasColorWell?.unbind_color ()
     mergerViewDisplayFrontPadsColorWell?.unbind_color ()
     mergerViewDisplayBoardLimitsColorWell?.unbind_color ()
-    mergerViewDisplayInternalBoardLimitsColorWell?.unbind_color ()
+    mergerViewDisplayInternalBoardsLimitsColorWell?.unbind_color ()
     mergerViewDisplayFrontComponentNamesColorWell?.unbind_color ()
     mergerViewDisplayFrontComponentValuesColorWell?.unbind_color ()
     mergerViewDisplayFrontPackagesColorWell?.unbind_color ()
@@ -2277,7 +2289,7 @@ import Cocoa
     self.mBoardViewDisplayFrontPadsCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayFrontTracksCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayHolesCheckbox?.ebCleanUp ()
-    self.mBoardViewDisplayInternalBoardLimitsCheckbox?.ebCleanUp ()
+    self.mBoardViewDisplayInternalBoardsLimitsCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayViasCheckbox?.ebCleanUp ()
     self.mBoardViewHorizontalFlipCheckbox?.ebCleanUp ()
     self.mBoardViewVerticalFlipCheckbox?.ebCleanUp ()
@@ -2333,6 +2345,7 @@ import Cocoa
     self.mModelViewDisplayFrontPadsCheckbox?.ebCleanUp ()
     self.mModelViewDisplayFrontTracksCheckbox?.ebCleanUp ()
     self.mModelViewDisplayHolesCheckbox?.ebCleanUp ()
+    self.mModelViewDisplayInternalBoardsLimitsCheckbox?.ebCleanUp ()
     self.mModelViewDisplayViasCheckbox?.ebCleanUp ()
     self.mModelViewHorizontalFlipCheckbox?.ebCleanUp ()
     self.mModelViewVerticalFlipCheckbox?.ebCleanUp ()
@@ -2372,7 +2385,7 @@ import Cocoa
     self.mergerViewDisplayFrontPadsColorWell?.ebCleanUp ()
     self.mergerViewDisplayFrontTracksColorWell?.ebCleanUp ()
     self.mergerViewDisplayHolesColorWell?.ebCleanUp ()
-    self.mergerViewDisplayInternalBoardLimitsColorWell?.ebCleanUp ()
+    self.mergerViewDisplayInternalBoardsLimitsColorWell?.ebCleanUp ()
     self.mergerViewDisplayViasColorWell?.ebCleanUp ()
     self.mergerViewFrontLegendLinesColorWell?.ebCleanUp ()
     self.removeBoardModelButton?.ebCleanUp ()

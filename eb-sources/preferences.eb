@@ -411,6 +411,7 @@ prefs {
   property Bool mergerModelViewDisplayHoles default yes ;
   property Bool mergerModelViewDisplayVias default yes ;
   property Bool mergerModelViewDisplayFrontPads default yes ;
+  property Bool mergerModelViewDisplayInternalBoardsLimits default yes ;
   property Bool mergerModelViewDisplayBoardLimits default yes ;
   property Bool mergerModelViewDisplayFrontComponentNames default no ;
   property Bool mergerModelViewDisplayFrontComponentValues default no ;
@@ -433,7 +434,7 @@ prefs {
   property Bool mergerBoardViewDisplayHoles default yes ;
   property Bool mergerBoardViewDisplayVias default yes ;
   property Bool mergerBoardViewDisplayFrontPads default yes ;
-  property Bool mergerBoardViewDisplayInternalBoardLimits default yes ;
+  property Bool mergerBoardViewDisplayInternalBoardsLimits default yes ;
   property Bool mergerBoardViewDisplayBoardLimits default yes ;
   property Bool mergerBoardViewDisplayFrontComponentNames default no ;
   property Bool mergerBoardViewDisplayFrontComponentValues default no ;
@@ -455,7 +456,7 @@ prefs {
   property NSColor mergerColorVias default red ;
   property NSColor mergerColorFrontPads default brown ;
   property NSColor mergerColorBoardLimits default brown ;
-  property NSColor mergerColorInternalBoardLimits default yellow ;
+  property NSColor mergerColorInternalBoardsLimits default yellow ;
   property NSColor mergerColorFrontComponentNames default brown ;
   property NSColor mergerColorFrontComponentValues default brown ;
   property NSColor mergerColorFrontPackages default brown ;

@@ -21,9 +21,10 @@ func transient_BoardModel_imageForInstances (
        _ self_backTracksBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayBackTracks : Bool,
        _ prefs_mergerColorBackTracks : NSColor,
+       _ self_internalBoardsLimitsBezierPaths : BezierPathArray,
        _ self_boardLimitsBezierPaths : BezierPathArray,
-       _ prefs_mergerBoardViewDisplayInternalBoardLimits : Bool,
-       _ prefs_mergerColorInternalBoardLimits : NSColor,
+       _ prefs_mergerBoardViewDisplayInternalBoardsLimits : Bool,
+       _ prefs_mergerColorInternalBoardsLimits : NSColor,
        _ self_frontPadsBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayFrontPads : Bool,
        _ prefs_mergerColorFrontPads : NSColor,
@@ -147,8 +148,9 @@ func transient_BoardModel_imageForInstances (
     shapes.append (self_viasBezierPaths.array, prefs_mergerColorVias, .fill)
   }
 //--- Board limits tracks
-  if prefs_mergerBoardViewDisplayInternalBoardLimits {
-    shapes.append (self_boardLimitsBezierPaths.array, prefs_mergerColorInternalBoardLimits, .stroke)
+  if prefs_mergerBoardViewDisplayInternalBoardsLimits {
+    shapes.append (self_internalBoardsLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits, .stroke)
+    shapes.append (self_boardLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits, .stroke)
   }
 //--- Holes
   if (prefs_mergerBoardViewDisplayHoles) {

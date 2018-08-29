@@ -32,6 +32,7 @@ document MergerDocument root MergerRoot {
   outlet EBSwitch mModelViewDisplayHolesCheckbox $value prefs.mergerModelViewDisplayHoles ;
   outlet EBSwitch mModelViewDisplayViasCheckbox $value prefs.mergerModelViewDisplayVias ;
   outlet EBSwitch mModelViewDisplayFrontPadsCheckbox $value prefs.mergerModelViewDisplayFrontPads ;
+  outlet EBSwitch mModelViewDisplayInternalBoardsLimitsCheckbox $value prefs.mergerModelViewDisplayInternalBoardsLimits ;
   outlet EBSwitch mModelViewDisplayBoardLimitsCheckbox $value prefs.mergerModelViewDisplayBoardLimits ;
   outlet EBSwitch mModelViewDisplayFrontComponentNamesCheckbox $value prefs.mergerModelViewDisplayFrontComponentNames ;
   outlet EBSwitch mModelViewDisplayFrontComponenValuesCheckbox $value prefs.mergerModelViewDisplayFrontComponentValues ;
@@ -55,7 +56,7 @@ document MergerDocument root MergerRoot {
   outlet EBSwitch mBoardViewDisplayViasCheckbox $value prefs.mergerBoardViewDisplayVias ;
   outlet EBSwitch mBoardViewDisplayFrontPadsCheckbox $value prefs.mergerBoardViewDisplayFrontPads ;
   outlet EBSwitch mBoardViewDisplayBoardLimitsCheckbox $value prefs.mergerBoardViewDisplayBoardLimits ;
-  outlet EBSwitch mBoardViewDisplayInternalBoardLimitsCheckbox $value prefs.mergerBoardViewDisplayInternalBoardLimits ;
+  outlet EBSwitch mBoardViewDisplayInternalBoardsLimitsCheckbox $value prefs.mergerBoardViewDisplayInternalBoardsLimits ;
   outlet EBSwitch mBoardViewDisplayFrontComponentNamesCheckbox $value prefs.mergerBoardViewDisplayFrontComponentNames ;
   outlet EBSwitch mBoardViewDisplayFrontComponenValuesCheckbox $value prefs.mergerBoardViewDisplayFrontComponentValues ;
   outlet EBSwitch mBoardViewDisplayFrontPackagesCheckbox $value prefs.mergerBoardViewDisplayFrontPackages ;
@@ -80,8 +81,8 @@ document MergerDocument root MergerRoot {
     $color prefs.mergerColorFrontPads {sendContinously:no} ;
   outlet EBColorWell mergerViewDisplayBoardLimitsColorWell
     $color prefs.mergerColorBoardLimits {sendContinously:no} ;
-  outlet EBColorWell mergerViewDisplayInternalBoardLimitsColorWell
-    $color prefs.mergerColorInternalBoardLimits {sendContinously:no} ;
+  outlet EBColorWell mergerViewDisplayInternalBoardsLimitsColorWell
+    $color prefs.mergerColorInternalBoardsLimits {sendContinously:no} ;
   outlet EBColorWell mergerViewDisplayFrontComponentNamesColorWell
     $color prefs.mergerColorFrontComponentNames {sendContinously:no} ;
   outlet EBColorWell mergerViewDisplayFrontComponentValuesColorWell

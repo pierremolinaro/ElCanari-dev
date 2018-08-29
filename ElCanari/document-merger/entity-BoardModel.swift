@@ -31,6 +31,8 @@ class BoardModel : EBManagedObject,
   BoardModel_backLegendTextsBezierPaths,
   BoardModel_backLayoutTextsSegments,
   BoardModel_backLayoutTextsBezierPaths,
+  BoardModel_internalBoardsLimitsSegments,
+  BoardModel_internalBoardsLimitsBezierPaths,
   BoardModel_padsHoles,
   BoardModel_viasHoles,
   BoardModel_holes,
@@ -473,6 +475,44 @@ class BoardModel : EBManagedObject,
 
   var backLayoutTextsBezierPaths : BezierPathArray? {
     switch backLayoutTextsBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing internalBoardsLimitsSegments transient property
+  //····················································································································
+
+  var internalBoardsLimitsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.internalBoardsLimitsSegments_property.prop
+    }
+  }
+
+  var internalBoardsLimitsSegments : MergerSegmentArray? {
+    switch internalBoardsLimitsSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing internalBoardsLimitsBezierPaths transient property
+  //····················································································································
+
+  var internalBoardsLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    get {
+      return self.internalBoardsLimitsBezierPaths_property.prop
+    }
+  }
+
+  var internalBoardsLimitsBezierPaths : BezierPathArray? {
+    switch internalBoardsLimitsBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1121,6 +1161,16 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing internalBoardsLimits toMany relationship
+  //····················································································································
+
+  var internalBoardsLimits_property_selection : EBSelection < [CanariSegment] > {
+    get {
+      return self.internalBoardsLimits_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing vias toMany relationship
   //····················································································································
 
@@ -1251,6 +1301,8 @@ class BoardModel : EBManagedObject,
   var backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
   var backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+  var internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
+  var internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var padsHoles_property = EBTransientProperty_MergerHoleArray ()
   var viasHoles_property = EBTransientProperty_MergerHoleArray ()
   var holes_property = EBTransientProperty_MergerHoleArray ()
@@ -1293,6 +1345,7 @@ class BoardModel : EBManagedObject,
   var frontLayoutTexts_property = ToManyRelationship_BoardModel_frontLayoutTexts ()
   var backLegendTexts_property = ToManyRelationship_BoardModel_backLegendTexts ()
   var backLayoutTexts_property = ToManyRelationship_BoardModel_backLayoutTexts ()
+  var internalBoardsLimits_property = ToManyRelationship_BoardModel_internalBoardsLimits ()
   var vias_property = ToManyRelationship_BoardModel_vias ()
   var pads_property = ToManyRelationship_BoardModel_pads ()
   var backComponentNames_property = ToManyRelationship_BoardModel_backComponentNames ()
@@ -1585,6 +1638,50 @@ class BoardModel : EBManagedObject,
           return .multiple
         case .singleSelectionKind :
           switch (unwSelf.backLayoutTextsSegments_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_segmentsToBezierPaths (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.internalBoardsLimitsSegments_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.internalBoardsLimits_property_selection.kind ()
+        kind &= unwSelf.internalBoardsLimits_property_selection.kind ()
+        kind &= unwSelf.internalBoardsLimits_property_selection.kind ()
+        kind &= unwSelf.internalBoardsLimits_property_selection.kind ()
+        kind &= unwSelf.internalBoardsLimits_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.internalBoardsLimits_property_selection, unwSelf.internalBoardsLimits_property_selection, unwSelf.internalBoardsLimits_property_selection, unwSelf.internalBoardsLimits_property_selection, unwSelf.internalBoardsLimits_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_BoardModel_internalBoardsLimitsSegments (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.internalBoardsLimitsBezierPaths_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.internalBoardsLimitsSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.internalBoardsLimitsSegments_property_selection) {
           case (.single (let v0)) :
             return .single (transient_segmentsToBezierPaths (v0))
           default :
@@ -2221,6 +2318,9 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.boardLimitsBezierPaths_property_selection.kind ()
         kind &= g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection.kind ()
         kind &= g_Preferences!.mergerColorBoardLimits_property_selection.kind ()
+        kind &= unwSelf.internalBoardsLimitsBezierPaths_property_selection.kind ()
+        kind &= g_Preferences!.mergerModelViewDisplayInternalBoardsLimits_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorInternalBoardsLimits_property_selection.kind ()
         kind &= unwSelf.frontTracksBezierPaths_property_selection.kind ()
         kind &= g_Preferences!.mergerModelViewDisplayFrontTracks_property_selection.kind ()
         kind &= g_Preferences!.mergerColorFrontTracks_property_selection.kind ()
@@ -2281,9 +2381,9 @@ class BoardModel : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.boardLimitsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection, g_Preferences!.mergerColorBoardLimits_property_selection, unwSelf.frontTracksBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontTracks_property_selection, g_Preferences!.mergerColorFrontTracks_property_selection, unwSelf.backTracksBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackTracks_property_selection, g_Preferences!.mergerColorBackTracks_property_selection, unwSelf.frontPadsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontPads_property_selection, g_Preferences!.mergerColorFrontPads_property_selection, unwSelf.backPadsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackPads_property_selection, g_Preferences!.mergerColorBackPads_property_selection, unwSelf.viasBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayVias_property_selection, g_Preferences!.mergerColorVias_property_selection, unwSelf.holesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayHoles_property_selection, g_Preferences!.mergerColorHoles_property_selection, unwSelf.frontLegendLinesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendLines_property_selection, g_Preferences!.mergerColorFrontLegendLines_property_selection, unwSelf.backLegendLinesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendLines_property_selection, g_Preferences!.mergerColorBackLegendLines_property_selection, unwSelf.frontLegendTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendTexts_property_selection, g_Preferences!.mergerColorFrontLegendTexts_property_selection, unwSelf.frontLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLayoutTexts_property_selection, g_Preferences!.mergerColorFrontLayoutTexts_property_selection, unwSelf.backLegendTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendTexts_property_selection, g_Preferences!.mergerColorBackLegendTexts_property_selection, unwSelf.backLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLayoutTexts_property_selection, g_Preferences!.mergerColorBackLayoutTexts_property_selection, unwSelf.backComponentNamesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentNames_property_selection, g_Preferences!.mergerColorBackComponentNames_property_selection, unwSelf.frontComponentNamesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentNames_property_selection, g_Preferences!.mergerColorFrontComponentNames_property_selection, unwSelf.frontComponentValuesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentValues_property_selection, g_Preferences!.mergerColorFrontComponentValues_property_selection, unwSelf.backComponentValuesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentValues_property_selection, g_Preferences!.mergerColorBackComponentValues_property_selection, unwSelf.frontPackagesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontPackages_property_selection, g_Preferences!.mergerColorFrontPackages_property_selection, unwSelf.backPackagesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackPackages_property_selection, g_Preferences!.mergerColorBackPackages_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59)) :
-            return .single (transient_BoardModel_imageForModel (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59))
+          switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.boardLimitsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBoardLimits_property_selection, g_Preferences!.mergerColorBoardLimits_property_selection, unwSelf.internalBoardsLimitsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayInternalBoardsLimits_property_selection, g_Preferences!.mergerColorInternalBoardsLimits_property_selection, unwSelf.frontTracksBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontTracks_property_selection, g_Preferences!.mergerColorFrontTracks_property_selection, unwSelf.backTracksBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackTracks_property_selection, g_Preferences!.mergerColorBackTracks_property_selection, unwSelf.frontPadsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontPads_property_selection, g_Preferences!.mergerColorFrontPads_property_selection, unwSelf.backPadsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackPads_property_selection, g_Preferences!.mergerColorBackPads_property_selection, unwSelf.viasBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayVias_property_selection, g_Preferences!.mergerColorVias_property_selection, unwSelf.holesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayHoles_property_selection, g_Preferences!.mergerColorHoles_property_selection, unwSelf.frontLegendLinesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendLines_property_selection, g_Preferences!.mergerColorFrontLegendLines_property_selection, unwSelf.backLegendLinesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendLines_property_selection, g_Preferences!.mergerColorBackLegendLines_property_selection, unwSelf.frontLegendTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLegendTexts_property_selection, g_Preferences!.mergerColorFrontLegendTexts_property_selection, unwSelf.frontLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontLayoutTexts_property_selection, g_Preferences!.mergerColorFrontLayoutTexts_property_selection, unwSelf.backLegendTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLegendTexts_property_selection, g_Preferences!.mergerColorBackLegendTexts_property_selection, unwSelf.backLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackLayoutTexts_property_selection, g_Preferences!.mergerColorBackLayoutTexts_property_selection, unwSelf.backComponentNamesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentNames_property_selection, g_Preferences!.mergerColorBackComponentNames_property_selection, unwSelf.frontComponentNamesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentNames_property_selection, g_Preferences!.mergerColorFrontComponentNames_property_selection, unwSelf.frontComponentValuesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontComponentValues_property_selection, g_Preferences!.mergerColorFrontComponentValues_property_selection, unwSelf.backComponentValuesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackComponentValues_property_selection, g_Preferences!.mergerColorBackComponentValues_property_selection, unwSelf.frontPackagesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayFrontPackages_property_selection, g_Preferences!.mergerColorFrontPackages_property_selection, unwSelf.backPackagesBezierPaths_property_selection, g_Preferences!.mergerModelViewDisplayBackPackages_property_selection, g_Preferences!.mergerColorBackPackages_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59), .single (let v60), .single (let v61), .single (let v62)) :
+            return .single (transient_BoardModel_imageForModel (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62))
           default :
             return .empty
           }
@@ -2303,9 +2403,10 @@ class BoardModel : EBManagedObject,
         kind &= unwSelf.backTracksBezierPaths_property_selection.kind ()
         kind &= g_Preferences!.mergerBoardViewDisplayBackTracks_property_selection.kind ()
         kind &= g_Preferences!.mergerColorBackTracks_property_selection.kind ()
+        kind &= unwSelf.internalBoardsLimitsBezierPaths_property_selection.kind ()
         kind &= unwSelf.boardLimitsBezierPaths_property_selection.kind ()
-        kind &= g_Preferences!.mergerBoardViewDisplayInternalBoardLimits_property_selection.kind ()
-        kind &= g_Preferences!.mergerColorInternalBoardLimits_property_selection.kind ()
+        kind &= g_Preferences!.mergerBoardViewDisplayInternalBoardsLimits_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorInternalBoardsLimits_property_selection.kind ()
         kind &= unwSelf.frontPadsBezierPaths_property_selection.kind ()
         kind &= g_Preferences!.mergerBoardViewDisplayFrontPads_property_selection.kind ()
         kind &= g_Preferences!.mergerColorFrontPads_property_selection.kind ()
@@ -2360,9 +2461,9 @@ class BoardModel : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.frontTracksBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontTracks_property_selection, g_Preferences!.mergerColorFrontTracks_property_selection, unwSelf.backTracksBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackTracks_property_selection, g_Preferences!.mergerColorBackTracks_property_selection, unwSelf.boardLimitsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayInternalBoardLimits_property_selection, g_Preferences!.mergerColorInternalBoardLimits_property_selection, unwSelf.frontPadsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPads_property_selection, g_Preferences!.mergerColorFrontPads_property_selection, unwSelf.backPadsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackPads_property_selection, g_Preferences!.mergerColorBackPads_property_selection, unwSelf.viasBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayVias_property_selection, g_Preferences!.mergerColorVias_property_selection, unwSelf.holesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayHoles_property_selection, g_Preferences!.mergerColorHoles_property_selection, unwSelf.frontLegendLinesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLegendLines_property_selection, g_Preferences!.mergerColorFrontLegendLines_property_selection, unwSelf.backLegendLinesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLegendLines_property_selection, g_Preferences!.mergerColorBackLegendLines_property_selection, unwSelf.frontLegendTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLegendTexts_property_selection, g_Preferences!.mergerColorFrontLegendTexts_property_selection, unwSelf.frontLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLayoutTexts_property_selection, g_Preferences!.mergerColorFrontLayoutTexts_property_selection, unwSelf.backLegendTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLegendTexts_property_selection, g_Preferences!.mergerColorBackLegendTexts_property_selection, unwSelf.backLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLayoutTexts_property_selection, g_Preferences!.mergerColorBackLayoutTexts_property_selection, unwSelf.backComponentNamesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackComponentNames_property_selection, g_Preferences!.mergerColorBackComponentNames_property_selection, unwSelf.frontComponentNamesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontComponentNames_property_selection, g_Preferences!.mergerColorFrontComponentNames_property_selection, unwSelf.frontComponentValuesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontComponentValues_property_selection, g_Preferences!.mergerColorFrontComponentValues_property_selection, unwSelf.backComponentValuesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackComponentValues_property_selection, g_Preferences!.mergerColorBackComponentValues_property_selection, unwSelf.frontPackagesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPackages_property_selection, g_Preferences!.mergerColorFrontPackages_property_selection, unwSelf.backPackagesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackPackages_property_selection, g_Preferences!.mergerColorBackPackages_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59)) :
-            return .single (transient_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59))
+          switch (g_Preferences!.mergerColorBackground_property_selection, unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection, unwSelf.frontTracksBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontTracks_property_selection, g_Preferences!.mergerColorFrontTracks_property_selection, unwSelf.backTracksBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackTracks_property_selection, g_Preferences!.mergerColorBackTracks_property_selection, unwSelf.internalBoardsLimitsBezierPaths_property_selection, unwSelf.boardLimitsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayInternalBoardsLimits_property_selection, g_Preferences!.mergerColorInternalBoardsLimits_property_selection, unwSelf.frontPadsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPads_property_selection, g_Preferences!.mergerColorFrontPads_property_selection, unwSelf.backPadsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackPads_property_selection, g_Preferences!.mergerColorBackPads_property_selection, unwSelf.viasBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayVias_property_selection, g_Preferences!.mergerColorVias_property_selection, unwSelf.holesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayHoles_property_selection, g_Preferences!.mergerColorHoles_property_selection, unwSelf.frontLegendLinesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLegendLines_property_selection, g_Preferences!.mergerColorFrontLegendLines_property_selection, unwSelf.backLegendLinesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLegendLines_property_selection, g_Preferences!.mergerColorBackLegendLines_property_selection, unwSelf.frontLegendTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLegendTexts_property_selection, g_Preferences!.mergerColorFrontLegendTexts_property_selection, unwSelf.frontLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontLayoutTexts_property_selection, g_Preferences!.mergerColorFrontLayoutTexts_property_selection, unwSelf.backLegendTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLegendTexts_property_selection, g_Preferences!.mergerColorBackLegendTexts_property_selection, unwSelf.backLayoutTextsBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackLayoutTexts_property_selection, g_Preferences!.mergerColorBackLayoutTexts_property_selection, unwSelf.backComponentNamesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackComponentNames_property_selection, g_Preferences!.mergerColorBackComponentNames_property_selection, unwSelf.frontComponentNamesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontComponentNames_property_selection, g_Preferences!.mergerColorFrontComponentNames_property_selection, unwSelf.frontComponentValuesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontComponentValues_property_selection, g_Preferences!.mergerColorFrontComponentValues_property_selection, unwSelf.backComponentValuesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackComponentValues_property_selection, g_Preferences!.mergerColorBackComponentValues_property_selection, unwSelf.frontPackagesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayFrontPackages_property_selection, g_Preferences!.mergerColorFrontPackages_property_selection, unwSelf.backPackagesBezierPaths_property_selection, g_Preferences!.mergerBoardViewDisplayBackPackages_property_selection, g_Preferences!.mergerColorBackPackages_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23), .single (let v24), .single (let v25), .single (let v26), .single (let v27), .single (let v28), .single (let v29), .single (let v30), .single (let v31), .single (let v32), .single (let v33), .single (let v34), .single (let v35), .single (let v36), .single (let v37), .single (let v38), .single (let v39), .single (let v40), .single (let v41), .single (let v42), .single (let v43), .single (let v44), .single (let v45), .single (let v46), .single (let v47), .single (let v48), .single (let v49), .single (let v50), .single (let v51), .single (let v52), .single (let v53), .single (let v54), .single (let v55), .single (let v56), .single (let v57), .single (let v58), .single (let v59), .single (let v60)) :
+            return .single (transient_BoardModel_imageForInstances (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60))
           default :
             return .empty
           }
@@ -2409,6 +2510,12 @@ class BoardModel : EBManagedObject,
     self.backLayoutTexts_property.addEBObserverOf_y2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_width (self.backLayoutTextsSegments_property)
     self.backLayoutTextsSegments_property.addEBObserver (self.backLayoutTextsBezierPaths_property)
+    self.internalBoardsLimits_property.addEBObserverOf_x1 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.addEBObserverOf_y1 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.addEBObserverOf_x2 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.addEBObserverOf_y2 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.addEBObserverOf_width (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimitsSegments_property.addEBObserver (self.internalBoardsLimitsBezierPaths_property)
     self.pads_property.addEBObserverOf_x (self.padsHoles_property)
     self.pads_property.addEBObserverOf_y (self.padsHoles_property)
     self.pads_property.addEBObserverOf_holeDiameter (self.padsHoles_property)
@@ -2501,6 +2608,9 @@ class BoardModel : EBManagedObject,
     self.boardLimitsBezierPaths_property.addEBObserver (self.imageForModel_property)
     g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.imageForModel_property)
     g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.imageForModel_property)
+    self.internalBoardsLimitsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayInternalBoardsLimits_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorInternalBoardsLimits_property.addEBObserver (self.imageForModel_property)
     self.frontTracksBezierPaths_property.addEBObserver (self.imageForModel_property)
     g_Preferences?.mergerModelViewDisplayFrontTracks_property.addEBObserver (self.imageForModel_property)
     g_Preferences?.mergerColorFrontTracks_property.addEBObserver (self.imageForModel_property)
@@ -2564,9 +2674,10 @@ class BoardModel : EBManagedObject,
     self.backTracksBezierPaths_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerBoardViewDisplayBackTracks_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorBackTracks_property.addEBObserver (self.imageForInstances_property)
+    self.internalBoardsLimitsBezierPaths_property.addEBObserver (self.imageForInstances_property)
     self.boardLimitsBezierPaths_property.addEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayInternalBoardLimits_property.addEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorInternalBoardLimits_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayInternalBoardsLimits_property.addEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorInternalBoardsLimits_property.addEBObserver (self.imageForInstances_property)
     self.frontPadsBezierPaths_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerBoardViewDisplayFrontPads_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorFrontPads_property.addEBObserver (self.imageForInstances_property)
@@ -2633,6 +2744,7 @@ class BoardModel : EBManagedObject,
     self.frontLayoutTexts_property.owner = self
     self.backLegendTexts_property.owner = self
     self.backLayoutTexts_property.owner = self
+    self.internalBoardsLimits_property.owner = self
     self.vias_property.owner = self
     self.pads_property.owner = self
     self.backComponentNames_property.owner = self
@@ -2687,6 +2799,12 @@ class BoardModel : EBManagedObject,
     self.backLayoutTexts_property.removeEBObserverOf_y2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.removeEBObserverOf_width (self.backLayoutTextsSegments_property)
     self.backLayoutTextsSegments_property.removeEBObserver (self.backLayoutTextsBezierPaths_property)
+    self.internalBoardsLimits_property.removeEBObserverOf_x1 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.removeEBObserverOf_y1 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.removeEBObserverOf_x2 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.removeEBObserverOf_y2 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.removeEBObserverOf_width (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimitsSegments_property.removeEBObserver (self.internalBoardsLimitsBezierPaths_property)
     self.pads_property.removeEBObserverOf_x (self.padsHoles_property)
     self.pads_property.removeEBObserverOf_y (self.padsHoles_property)
     self.pads_property.removeEBObserverOf_holeDiameter (self.padsHoles_property)
@@ -2779,6 +2897,9 @@ class BoardModel : EBManagedObject,
     self.boardLimitsBezierPaths_property.removeEBObserver (self.imageForModel_property)
     g_Preferences?.mergerModelViewDisplayBoardLimits_property.removeEBObserver (self.imageForModel_property)
     g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.imageForModel_property)
+    self.internalBoardsLimitsBezierPaths_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayInternalBoardsLimits_property.removeEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorInternalBoardsLimits_property.removeEBObserver (self.imageForModel_property)
     self.frontTracksBezierPaths_property.removeEBObserver (self.imageForModel_property)
     g_Preferences?.mergerModelViewDisplayFrontTracks_property.removeEBObserver (self.imageForModel_property)
     g_Preferences?.mergerColorFrontTracks_property.removeEBObserver (self.imageForModel_property)
@@ -2842,9 +2963,10 @@ class BoardModel : EBManagedObject,
     self.backTracksBezierPaths_property.removeEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerBoardViewDisplayBackTracks_property.removeEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorBackTracks_property.removeEBObserver (self.imageForInstances_property)
+    self.internalBoardsLimitsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
     self.boardLimitsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerBoardViewDisplayInternalBoardLimits_property.removeEBObserver (self.imageForInstances_property)
-    g_Preferences?.mergerColorInternalBoardLimits_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerBoardViewDisplayInternalBoardsLimits_property.removeEBObserver (self.imageForInstances_property)
+    g_Preferences?.mergerColorInternalBoardsLimits_property.removeEBObserver (self.imageForInstances_property)
     self.frontPadsBezierPaths_property.removeEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerBoardViewDisplayFrontPads_property.removeEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorFrontPads_property.removeEBObserver (self.imageForInstances_property)
@@ -3077,6 +3199,22 @@ class BoardModel : EBManagedObject,
       view:view,
       observerExplorer:&self.backLayoutTextsBezierPaths_property.mObserverExplorer,
       valueExplorer:&self.backLayoutTextsBezierPaths_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "internalBoardsLimitsSegments",
+      idx:self.internalBoardsLimitsSegments_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.internalBoardsLimitsSegments_property.mObserverExplorer,
+      valueExplorer:&self.internalBoardsLimitsSegments_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "internalBoardsLimitsBezierPaths",
+      idx:self.internalBoardsLimitsBezierPaths_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.internalBoardsLimitsBezierPaths_property.mObserverExplorer,
+      valueExplorer:&self.internalBoardsLimitsBezierPaths_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padsHoles",
@@ -3369,6 +3507,13 @@ class BoardModel : EBManagedObject,
       valueExplorer:&backLayoutTexts_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
+      "internalBoardsLimits",
+      idx:internalBoardsLimits_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&internalBoardsLimits_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
       "vias",
       idx:vias_property.mEasyBindingsObjectIndex,
       y: &y,
@@ -3472,6 +3617,7 @@ class BoardModel : EBManagedObject,
     self.frontLayoutTexts_property.mValueExplorer = nil
     self.backLegendTexts_property.mValueExplorer = nil
     self.backLayoutTexts_property.mValueExplorer = nil
+    self.internalBoardsLimits_property.mValueExplorer = nil
     self.vias_property.mValueExplorer = nil
     self.pads_property.mValueExplorer = nil
     self.backComponentNames_property.mValueExplorer = nil
@@ -3507,6 +3653,7 @@ class BoardModel : EBManagedObject,
     store (managedObjectArray: frontLayoutTexts_property.propval as NSArray, relationshipName:"frontLayoutTexts", intoDictionary: ioDictionary) ;
     store (managedObjectArray: backLegendTexts_property.propval as NSArray, relationshipName:"backLegendTexts", intoDictionary: ioDictionary) ;
     store (managedObjectArray: backLayoutTexts_property.propval as NSArray, relationshipName:"backLayoutTexts", intoDictionary: ioDictionary) ;
+    store (managedObjectArray: internalBoardsLimits_property.propval as NSArray, relationshipName:"internalBoardsLimits", intoDictionary: ioDictionary) ;
     store (managedObjectArray: vias_property.propval as NSArray, relationshipName:"vias", intoDictionary: ioDictionary) ;
     store (managedObjectArray: pads_property.propval as NSArray, relationshipName:"pads", intoDictionary: ioDictionary) ;
     store (managedObjectArray: backComponentNames_property.propval as NSArray, relationshipName:"backComponentNames", intoDictionary: ioDictionary) ;
@@ -3567,6 +3714,11 @@ class BoardModel : EBManagedObject,
     ) as! [CanariSegment])
     self.backLayoutTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backLayoutTexts",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [CanariSegment])
+    self.internalBoardsLimits_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "internalBoardsLimits",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [CanariSegment])
@@ -3659,6 +3811,11 @@ class BoardModel : EBManagedObject,
       self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
     do{
+      let objects = self.internalBoardsLimits_property.propval
+      self.internalBoardsLimits_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
       let objects = self.vias_property.propval
       self.vias_property.setProp ([])
       self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
@@ -3724,6 +3881,7 @@ class BoardModel : EBManagedObject,
     self.frontLayoutTexts_property.setProp ([])
     self.backLegendTexts_property.setProp ([])
     self.backLayoutTexts_property.setProp ([])
+    self.internalBoardsLimits_property.setProp ([])
     self.vias_property.setProp ([])
     self.pads_property.setProp ([])
     self.backComponentNames_property.setProp ([])
@@ -3761,6 +3919,9 @@ class BoardModel : EBManagedObject,
       objects.append (managedObject)
     }
     for managedObject : EBManagedObject in self.backLayoutTexts_property.propval {
+      objects.append (managedObject)
+    }
+    for managedObject : EBManagedObject in self.internalBoardsLimits_property.propval {
       objects.append (managedObject)
     }
     for managedObject : EBManagedObject in self.vias_property.propval {
@@ -5042,6 +5203,118 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     for managedObject in inSet {
       for observer in mObserversOf_backLayoutTextsBezierPaths {
         managedObject.backLayoutTextsBezierPaths_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'internalBoardsLimitsSegments' transient property
+  //····················································································································
+
+  private var mObserversOf_internalBoardsLimitsSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_internalBoardsLimitsSegments.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.internalBoardsLimitsSegments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_internalBoardsLimitsSegments.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.internalBoardsLimitsSegments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_internalBoardsLimitsSegments {
+        managedObject.internalBoardsLimitsSegments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_internalBoardsLimitsSegments {
+        managedObject.internalBoardsLimitsSegments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'internalBoardsLimitsBezierPaths' transient property
+  //····················································································································
+
+  private var mObserversOf_internalBoardsLimitsBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_internalBoardsLimitsBezierPaths.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.internalBoardsLimitsBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_internalBoardsLimitsBezierPaths.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.internalBoardsLimitsBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_internalBoardsLimitsBezierPaths {
+        managedObject.internalBoardsLimitsBezierPaths_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_internalBoardsLimitsBezierPaths {
+        managedObject.internalBoardsLimitsBezierPaths_property.removeEBObserver (observer)
       }
     }
   }
@@ -6787,6 +7060,8 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedSet)
+        removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_padsHoles_fromElementsOfSet (removedSet)
         removeEBObserversOf_viasHoles_fromElementsOfSet (removedSet)
         removeEBObserversOf_holes_fromElementsOfSet (removedSet)
@@ -6843,6 +7118,8 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedSet)
         addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedSet)
+        addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedSet)
+        addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_padsHoles_toElementsOfSet (addedSet)
         addEBObserversOf_viasHoles_toElementsOfSet (addedSet)
         addEBObserversOf_holes_toElementsOfSet (addedSet)
@@ -7031,6 +7308,18 @@ protocol BoardModel_backLayoutTextsSegments : class {
 
 protocol BoardModel_backLayoutTextsBezierPaths : class {
   var backLayoutTextsBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_internalBoardsLimitsSegments : class {
+  var internalBoardsLimitsSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_internalBoardsLimitsBezierPaths : class {
+  var internalBoardsLimitsBezierPaths : BezierPathArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -8321,6 +8610,186 @@ class ToManyRelationshipReadWrite_BoardModel_backLayoutTexts : ReadOnlyArrayOf_C
 
 final class ToManyRelationship_BoardModel_backLayoutTexts :
 ToManyRelationshipReadWrite_BoardModel_backLayoutTexts, EBSignatureObserverProtocol {
+  weak var owner : BoardModel?
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set <CanariSegment> ()
+  private var mValue = [CanariSegment] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+        }
+        removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : CanariSegment in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+        }
+        addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
+
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
+
+  var propval : [CanariSegment] { return mValue }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : CanariSegment) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : CanariSegment) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: internalBoardsLimits
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits : ReadOnlyArrayOf_CanariSegment {
+
+  //····················································································································
+ 
+  func setProp (_ value :  [CanariSegment]) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: internalBoardsLimits
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_BoardModel_internalBoardsLimits :
+ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits, EBSignatureObserverProtocol {
   weak var owner : BoardModel?
 
   var mValueExplorer : NSPopUpButton? {

@@ -296,6 +296,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.instanceCount_property.prop
     }
   }
+  var internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  var internalBoardsLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    get {
+      return self.internalBoardsLimitsBezierPaths_property.prop
+    }
+  }
+  var internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var internalBoardsLimitsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.internalBoardsLimitsSegments_property.prop
+    }
+  }
   var modelHeight_property = EBPropertyProxy_Int ()
 
   var modelHeight_property_selection : EBSelection <Int> {
@@ -427,6 +441,8 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     bind_property_imageForInstances (model: model)
     bind_property_imageForModel (model: model)
     bind_property_instanceCount (model: model)
+    bind_property_internalBoardsLimitsBezierPaths (model: model)
+    bind_property_internalBoardsLimitsSegments (model: model)
     bind_property_modelHeight (model: model)
     bind_property_modelHeightUnit (model: model)
     bind_property_modelLimitWidth (model: model)
@@ -2232,6 +2248,86 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
 
   //···················································································································*
 
+  private final func bind_property_internalBoardsLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_internalBoardsLimitsBezierPaths (self.internalBoardsLimitsBezierPaths_property)
+    self.internalBoardsLimitsBezierPaths_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.internalBoardsLimitsBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_internalBoardsLimitsSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_internalBoardsLimitsSegments (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimitsSegments_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.internalBoardsLimitsSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_modelHeight (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_modelHeight (self.modelHeight_property)
     self.modelHeight_property.readModelFunction = {
@@ -3079,6 +3175,12 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //--- instanceCount
     self.instanceCount_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceCount (self.instanceCount_property)
+  //--- internalBoardsLimitsBezierPaths
+    self.internalBoardsLimitsBezierPaths_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_internalBoardsLimitsBezierPaths (self.internalBoardsLimitsBezierPaths_property)
+  //--- internalBoardsLimitsSegments
+    self.internalBoardsLimitsSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_internalBoardsLimitsSegments (self.internalBoardsLimitsSegments_property)
   //--- modelHeight
     self.modelHeight_property.readModelFunction = nil 
     self.modelHeight_property.writeModelFunction = nil 

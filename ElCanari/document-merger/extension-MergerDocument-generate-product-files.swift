@@ -61,6 +61,7 @@ extension MergerDocument {
     archiveDict ["BOARD-LINE-WIDTH-UNIT"] = self.rootObject.boardLimitWidthUnit
     archiveDict ["BOARD-WIDTH"] = self.rootObject.boardWidth ?? 0
     archiveDict ["BOARD-WIDTH-UNIT"] = self.rootObject.boardWidthUnit
+    var internalBoardsLimits = [String] ()
     var backComponentNames = [String] ()
     var frontComponentNames = [String] ()
     var backComponentValues = [String] ()
@@ -82,6 +83,10 @@ extension MergerDocument {
       let modelWidth  = myModel?.modelWidth  ?? 0
       let modelHeight = myModel?.modelHeight ?? 0
       let instanceRotation = board.instanceRotation
+      myModel?.boardLimitsSegments ().add (toArchiveArray: &internalBoardsLimits, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.internalBoardsLimitsSegments?.add (toArchiveArray: &internalBoardsLimits, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
       myModel?.backComponentNameSegments?.add (toArchiveArray: &backComponentNames, dx: board.x, dy: board.y,
        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
       myModel?.frontComponentNameSegments?.add (toArchiveArray: &frontComponentNames, dx: board.x, dy: board.y,
@@ -167,6 +172,7 @@ extension MergerDocument {
         pads.append (d)
       }
     }
+    archiveDict ["INTERNAL-BOARDS-LIMITS"] = internalBoardsLimits
     archiveDict ["COMPONENT-NAMES-BACK"] = backComponentNames
     archiveDict ["COMPONENT-NAMES-FRONT"] = frontComponentNames
     archiveDict ["COMPONENT-VALUES-BACK"] = backComponentValues

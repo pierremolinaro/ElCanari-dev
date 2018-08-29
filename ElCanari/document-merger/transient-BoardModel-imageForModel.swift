@@ -18,6 +18,9 @@ func transient_BoardModel_imageForModel (
        _ self_boardLimitsBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayBoardLimits : Bool,
        _ prefs_mergerColorBoardLimits : NSColor,
+       _ self_internalBoardsLimitsBezierPaths : BezierPathArray,
+       _ prefs_mergerModelViewDisplayInternalBoardsLimits : Bool,
+       _ prefs_mergerColorInternalBoardsLimits : NSColor,
        _ self_frontTracksBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayFrontTracks : Bool,
        _ prefs_mergerColorFrontTracks : NSColor,
@@ -141,6 +144,10 @@ func transient_BoardModel_imageForModel (
 //--- Front pads
   if (prefs_mergerModelViewDisplayFrontPads) {
     shapes.append (self_frontPadsBezierPaths.array, prefs_mergerColorFrontPads, .fill)
+  }
+//--- Internal Board limits
+  if prefs_mergerModelViewDisplayInternalBoardsLimits {
+    shapes.append (self_internalBoardsLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits, .stroke)
   }
 //--- Board limits
   if prefs_mergerModelViewDisplayBoardLimits {

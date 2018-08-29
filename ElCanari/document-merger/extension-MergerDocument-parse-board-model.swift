@@ -97,6 +97,20 @@ fileprivate func stringArray (fromDict inDictionary : NSDictionary, key inKey : 
   return result
 }
 
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func optionalStringArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [String] {
+  let object : Any? = inDictionary.value (forKey: inKey)
+  var result = [String] () // Default result
+  if let s = object as? [String] {
+    result = s
+  }else if object != nil {
+    errorArray.append ("The \"\(inKey)\" key value is not an array of string.")
+  }
+  return result
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func array4int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
@@ -166,6 +180,20 @@ extension MergerDocument {
     boardModel.modelHeightUnit = int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT-UNIT", &errorArray)
     boardModel.modelLimitWidth = int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH", &errorArray)
     boardModel.modelLimitWidthUnit = int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH-UNIT", &errorArray)
+  //--- Internal boards limits
+    var internalBoardsLimitsEntities = [CanariSegment] ()
+    let internalBoardsLimits = optionalStringArray (fromDict: boardArchiveDict, key: "INTERNAL-BOARDS-LIMITS", &errorArray)
+    for str in internalBoardsLimits {
+      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1 = ints [0]
+      segment.y1 = ints [1]
+      segment.x2 = ints [2]
+      segment.y2 = ints [3]
+      segment.width = ints [4]
+      internalBoardsLimitsEntities.append (segment)
+    }
+    boardModel.internalBoardsLimits_property.setProp (internalBoardsLimitsEntities)
   //--- Front tracks
     var frontTrackEntities = [CanariSegment] ()
     let frontTracks = stringArray (fromDict: boardArchiveDict, key: "TRACKS-FRONT", &errorArray)
@@ -323,7 +351,6 @@ extension MergerDocument {
     var backComponentNamesEntities = [CanariSegment] ()
     let backComponentNames = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-NAMES-BACK", &errorArray)
     for str in backComponentNames {
-//      NSLog ("\(str)")
       let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
@@ -333,12 +360,7 @@ extension MergerDocument {
       segment.width = ints [4]
       backComponentNamesEntities.append (segment)
     }
-//    NSLog ("--------")
     boardModel.backComponentNames_property.setProp (backComponentNamesEntities)
-//    for object in boardModel.backComponentNames_property.propval {
-//      NSLog ("\(object.x1) \(object.y1) \(object.x2) \(object.y2) \(object.width)")
-//    }
-//    NSLog ("+++++++++")
   //--- Front component names
     var frontComponentNamesEntities = [CanariSegment] ()
     let frontComponentNames = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-NAMES-FRONT", &errorArray)

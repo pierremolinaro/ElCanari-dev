@@ -44,7 +44,7 @@
                 <outlet property="mBoardViewDisplayFrontPadsCheckbox" destination="Lpy-L0-X2d" id="9Cw-Tg-DKV"/>
                 <outlet property="mBoardViewDisplayFrontTracksCheckbox" destination="5TE-je-FFd" id="6CQ-zQ-tXm"/>
                 <outlet property="mBoardViewDisplayHolesCheckbox" destination="JJC-uY-o75" id="a13-gZ-nsI"/>
-                <outlet property="mBoardViewDisplayInternalBoardLimitsCheckbox" destination="OE6-bc-h1T" id="q23-Ne-7y0"/>
+                <outlet property="mBoardViewDisplayInternalBoardsLimitsCheckbox" destination="OE6-bc-h1T" id="qKu-oM-JXC"/>
                 <outlet property="mBoardViewDisplayViasCheckbox" destination="3IY-gv-3yS" id="ig2-ES-es3"/>
                 <outlet property="mBoardViewHorizontalFlipCheckbox" destination="Mkv-dF-f27" id="2f8-8I-yVL"/>
                 <outlet property="mBoardViewVerticalFlipCheckbox" destination="Lb2-iL-9kP" id="dJy-yS-49p"/>
@@ -100,6 +100,7 @@
                 <outlet property="mModelViewDisplayFrontPadsCheckbox" destination="5sQ-5V-cU3" id="YhI-22-9tP"/>
                 <outlet property="mModelViewDisplayFrontTracksCheckbox" destination="kfZ-nC-Wi7" id="SvN-hg-TML"/>
                 <outlet property="mModelViewDisplayHolesCheckbox" destination="iB8-zj-oDI" id="z4i-vO-Ucb"/>
+                <outlet property="mModelViewDisplayInternalBoardsLimitsCheckbox" destination="v7k-MN-2Mv" id="ZpG-5i-NuN"/>
                 <outlet property="mModelViewDisplayViasCheckbox" destination="tEs-5D-1uo" id="b59-Ci-1IJ"/>
                 <outlet property="mModelViewHorizontalFlipCheckbox" destination="N3I-RP-vAw" id="qVh-aY-MQV"/>
                 <outlet property="mModelViewVerticalFlipCheckbox" destination="kyK-0C-dX0" id="SNs-Jb-KPs"/>
@@ -139,7 +140,7 @@
                 <outlet property="mergerViewDisplayFrontPadsColorWell" destination="SFa-uQ-gOD" id="rcY-Tz-QR8"/>
                 <outlet property="mergerViewDisplayFrontTracksColorWell" destination="XuA-x0-XB4" id="tA4-J0-ntz"/>
                 <outlet property="mergerViewDisplayHolesColorWell" destination="gvA-rl-bc1" id="TFh-g2-tuu"/>
-                <outlet property="mergerViewDisplayInternalBoardLimitsColorWell" destination="mWj-xo-yYT" id="4zN-9H-sdh"/>
+                <outlet property="mergerViewDisplayInternalBoardsLimitsColorWell" destination="mWj-xo-yYT" id="5RL-Kf-80D"/>
                 <outlet property="mergerViewDisplayViasColorWell" destination="t0u-dX-I6g" id="H3n-W3-USL"/>
                 <outlet property="mergerViewFrontLegendLinesColorWell" destination="yD6-76-QrJ" id="rql-8a-Ar9"/>
                 <outlet property="removeBoardModelButton" destination="9BP-El-GfJ" id="Jfw-Rs-eVE"/>
@@ -561,7 +562,7 @@ AAAAAAEGA
                     </connections>
                 </scrollView>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="TY5-Zu-VN8" customClass="EBTextField">
-                    <rect key="frame" x="262" y="307.5" width="436" height="52"/>
+                    <rect key="frame" x="262" y="308" width="436" height="52"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Empty Board" id="v44-nv-gAx">
                         <font key="font" metaFont="systemBold" size="24"/>
@@ -2103,6 +2104,14 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <button misplaced="YES" id="v7k-MN-2Mv" customClass="EBSwitch">
+                                                <rect key="frame" x="129" y="492" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="5Cd-HO-nKQ">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                </buttonCell>
+                                            </button>
                                         </subviews>
                                     </customView>
                                 </subviews>
@@ -2120,7 +2129,7 @@ AAAAAAEGA
                     </subviews>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="-39" y="97"/>
+            <point key="canvasLocation" x="-270" y="113"/>
         </customView>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="reL-uK-SPG" userLabel="Panel : Insert Array of Boards" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES"/>

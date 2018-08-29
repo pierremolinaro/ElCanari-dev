@@ -2553,6 +2553,8 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         oldValue?.imageForInstances_property.removeEBObserversFrom (mObserversOf_imageForInstances)
         oldValue?.imageForModel_property.removeEBObserversFrom (mObserversOf_imageForModel)
         oldValue?.instanceCount_property.removeEBObserversFrom (mObserversOf_instanceCount)
+        oldValue?.internalBoardsLimitsBezierPaths_property.removeEBObserversFrom (mObserversOf_internalBoardsLimitsBezierPaths)
+        oldValue?.internalBoardsLimitsSegments_property.removeEBObserversFrom (mObserversOf_internalBoardsLimitsSegments)
         oldValue?.modelHeight_property.removeEBObserversFrom (mObserversOf_modelHeight)
         oldValue?.modelHeightUnit_property.removeEBObserversFrom (mObserversOf_modelHeightUnit)
         oldValue?.modelLimitWidth_property.removeEBObserversFrom (mObserversOf_modelLimitWidth)
@@ -2606,6 +2608,8 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         mValue?.imageForInstances_property.addEBObserversFrom (mObserversOf_imageForInstances)
         mValue?.imageForModel_property.addEBObserversFrom (mObserversOf_imageForModel)
         mValue?.instanceCount_property.addEBObserversFrom (mObserversOf_instanceCount)
+        mValue?.internalBoardsLimitsBezierPaths_property.addEBObserversFrom (mObserversOf_internalBoardsLimitsBezierPaths)
+        mValue?.internalBoardsLimitsSegments_property.addEBObserversFrom (mObserversOf_internalBoardsLimitsSegments)
         mValue?.modelHeight_property.addEBObserversFrom (mObserversOf_modelHeight)
         mValue?.modelHeightUnit_property.addEBObserversFrom (mObserversOf_modelHeightUnit)
         mValue?.modelLimitWidth_property.addEBObserversFrom (mObserversOf_modelLimitWidth)
@@ -4367,6 +4371,92 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     mObserversOf_instanceCount.remove (inObserver)
     if let object = self.propval {
       object.instanceCount_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: internalBoardsLimitsBezierPaths
+  //····················································································································
+
+  private var mObserversOf_internalBoardsLimitsBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  var internalBoardsLimitsBezierPaths_property_selection : EBSelection <BezierPathArray?> {
+    get {
+      if let model = self.propval {
+        switch (model.internalBoardsLimitsBezierPaths_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
+    mObserversOf_internalBoardsLimitsBezierPaths.insert (inObserver)
+    if let object = self.propval {
+      object.internalBoardsLimitsBezierPaths_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
+    mObserversOf_internalBoardsLimitsBezierPaths.remove (inObserver)
+    if let object = self.propval {
+      object.internalBoardsLimitsBezierPaths_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: internalBoardsLimitsSegments
+  //····················································································································
+
+  private var mObserversOf_internalBoardsLimitsSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  var internalBoardsLimitsSegments_property_selection : EBSelection <MergerSegmentArray?> {
+    get {
+      if let model = self.propval {
+        switch (model.internalBoardsLimitsSegments_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
+    mObserversOf_internalBoardsLimitsSegments.insert (inObserver)
+    if let object = self.propval {
+      object.internalBoardsLimitsSegments_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
+    mObserversOf_internalBoardsLimitsSegments.remove (inObserver)
+    if let object = self.propval {
+      object.internalBoardsLimitsSegments_property.removeEBObserver (inObserver)
     }
   }
 
