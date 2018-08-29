@@ -596,7 +596,7 @@ class MergerRoot : EBManagedObject,
 
   var selectedPageIndex_property = EBStoredProperty_Int (0)
   var zoom_property = EBStoredProperty_Int (100)
-  var automaticBoardSize_property = EBStoredProperty_Bool (false)
+  var automaticBoardSize_property = EBStoredProperty_Bool (true)
   var boardManualWidth_property = EBStoredProperty_Int (9000000)
   var boardManualHeight_property = EBStoredProperty_Int (9000000)
   var boardWidthUnit_property = EBStoredProperty_Int (90000)
@@ -755,8 +755,7 @@ class MergerRoot : EBManagedObject,
     }
     self.boardDisplayRect_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.automaticBoardSize_property_selection.kind ()
-        kind &= unwSelf.boardManualWidth_property_selection.kind ()
+        var kind = unwSelf.boardManualWidth_property_selection.kind ()
         kind &= unwSelf.boardManualHeight_property_selection.kind ()
         kind &= unwSelf.boardInstances_property_selection.kind ()
         switch kind {
@@ -765,9 +764,9 @@ class MergerRoot : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.automaticBoardSize_property_selection, unwSelf.boardManualWidth_property_selection, unwSelf.boardManualHeight_property_selection, unwSelf.boardInstances_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_MergerRoot_boardDisplayRect (v0, v1, v2, v3))
+          switch (unwSelf.boardManualWidth_property_selection, unwSelf.boardManualHeight_property_selection, unwSelf.boardInstances_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_MergerRoot_boardDisplayRect (v0, v1, v2))
           default :
             return .empty
           }
@@ -831,7 +830,6 @@ class MergerRoot : EBManagedObject,
     self.boardManualWidth_property.addEBObserver (self.boardRect_property)
     self.boardManualHeight_property.addEBObserver (self.boardRect_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
-    self.automaticBoardSize_property.addEBObserver (self.boardDisplayRect_property)
     self.boardManualWidth_property.addEBObserver (self.boardDisplayRect_property)
     self.boardManualHeight_property.addEBObserver (self.boardDisplayRect_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardDisplayRect_property)
@@ -883,7 +881,6 @@ class MergerRoot : EBManagedObject,
     self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
     self.boardManualHeight_property.removeEBObserver (self.boardRect_property)
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardRect_property)
-    self.automaticBoardSize_property.removeEBObserver (self.boardDisplayRect_property)
     self.boardManualWidth_property.removeEBObserver (self.boardDisplayRect_property)
     self.boardManualHeight_property.removeEBObserver (self.boardDisplayRect_property)
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardDisplayRect_property)

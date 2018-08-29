@@ -97,8 +97,8 @@ struct CanariBoardRect : Hashable, Equatable {
     }else{
       let left = min (self.left, inOtherRect.left)
       let bottom = min (self.bottom, inOtherRect.bottom)
-      let right = max (self.left + self.width, inOtherRect.left + inOtherRect.width)
-      let top = max (self.bottom + self.height, inOtherRect.bottom + inOtherRect.height)
+      let right = max (self.right, inOtherRect.right)
+      let top = max (self.top, inOtherRect.top)
       result = CanariBoardRect (left:left, bottom:bottom, width:right - left, height:top - bottom)
     }
     return result
