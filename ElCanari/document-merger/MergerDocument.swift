@@ -14,8 +14,6 @@ import Cocoa
 
   @IBOutlet var addBoardModelButton : EBButton?
   @IBOutlet var boardHelpPanel : NSPanel?
-  @IBOutlet var mArrangeHorizontallyButton : EBButton?
-  @IBOutlet var mArrangeVerticallyButton : EBButton?
   @IBOutlet var mArrowMagnitudeTextField : CanariDimensionTextField?
   @IBOutlet var mArrowMagnitudeUnitPopUp : EBPopUpButton?
   @IBOutlet var mArtworNameTextField : EBTextObserverField?
@@ -314,24 +312,6 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'boardHelpPanel' outlet is not an instance of 'NSPanel'") ;
-    }
-    if nil == mArrangeHorizontallyButton {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mArrangeHorizontallyButton' outlet is nil") ;
-//    }else if !mArrangeHorizontallyButton!.isKindOfClass (EBButton) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mArrangeHorizontallyButton' outlet is not an instance of 'EBButton'") ;
-    }
-    if nil == mArrangeVerticallyButton {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mArrangeVerticallyButton' outlet is nil") ;
-//    }else if !mArrangeVerticallyButton!.isKindOfClass (EBButton) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mArrangeVerticallyButton' outlet is not an instance of 'EBButton'") ;
     }
     if nil == mArrowMagnitudeTextField {
       presentErrorWindow (file: #file,
@@ -1988,26 +1968,6 @@ import Cocoa
       mController_mMoveDownButton_enabled = controller
     }
     do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction:{
-          return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
-        outlet:self.mArrangeHorizontallyButton
-      )
-      self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
-      mController_mArrangeHorizontallyButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction:{
-          return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
-        },
-        outlet:self.mArrangeVerticallyButton
-      )
-      self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
-      mController_mArrangeVerticallyButton_enabled = controller
-    }
-    do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
           return !self.rootObject.artwork_property_selection
@@ -2069,10 +2029,6 @@ import Cocoa
     mMoveUpButton?.action = #selector (MergerDocument.moveUpAction (_:))
     mMoveDownButton?.target = self
     mMoveDownButton?.action = #selector (MergerDocument.moveDownAction (_:))
-    mArrangeHorizontallyButton?.target = self
-    mArrangeHorizontallyButton?.action = #selector (MergerDocument.arrangeHorizontallyAction (_:))
-    mArrangeVerticallyButton?.target = self
-    mArrangeVerticallyButton?.action = #selector (MergerDocument.arrangeVerticallyAction (_:))
     mGenerateProductFilesActionButton?.target = self
     mGenerateProductFilesActionButton?.action = #selector (MergerDocument.generateProductFilesAction (_:))
     mImportArtworkButton?.target = self
@@ -2235,10 +2191,6 @@ import Cocoa
     mController_mMoveUpButton_enabled = nil
     self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (mController_mMoveDownButton_enabled!)
     mController_mMoveDownButton_enabled = nil
-    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (mController_mArrangeHorizontallyButton_enabled!)
-    mController_mArrangeHorizontallyButton_enabled = nil
-    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (mController_mArrangeVerticallyButton_enabled!)
-    mController_mArrangeVerticallyButton_enabled = nil
     self.rootObject.artwork_property.removeEBObserver (mController_mNoArtworkMessage_hidden!)
     mController_mNoArtworkMessage_hidden = nil
     self.documentFileNameOk_property.removeEBObserver (mController_mDangerView_hidden!)
@@ -2287,15 +2239,11 @@ import Cocoa
     mMoveLeftButton?.target = nil
     mMoveUpButton?.target = nil
     mMoveDownButton?.target = nil
-    mArrangeHorizontallyButton?.target = nil
-    mArrangeVerticallyButton?.target = nil
     mGenerateProductFilesActionButton?.target = nil
     mImportArtworkButton?.target = nil
   //--------------------------- Clean up outlets
     self.addBoardModelButton?.ebCleanUp ()
     self.boardHelpPanel?.ebCleanUp ()
-    self.mArrangeHorizontallyButton?.ebCleanUp ()
-    self.mArrangeVerticallyButton?.ebCleanUp ()
     self.mArrowMagnitudeTextField?.ebCleanUp ()
     self.mArrowMagnitudeUnitPopUp?.ebCleanUp ()
     self.mArtworNameTextField?.ebCleanUp ()
@@ -2450,8 +2398,6 @@ import Cocoa
   private var mController_mMoveLeftButton_enabled : MultipleBindingController_enabled? = nil
   private var mController_mMoveUpButton_enabled : MultipleBindingController_enabled? = nil
   private var mController_mMoveDownButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mArrangeHorizontallyButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mArrangeVerticallyButton_enabled : MultipleBindingController_enabled? = nil
   private var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden? = nil
   private var mController_mDangerView_hidden : MultipleBindingController_hidden? = nil
   private var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil

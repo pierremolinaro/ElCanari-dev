@@ -217,8 +217,6 @@
 		CF880FEF1DDB85F400954D4E /* CanariCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF880FEE1DDB85F400954D4E /* CanariCircle.swift */; };
 		CF8BEB141BFF2D75003C769C /* EBStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BEB131BFF2D75003C769C /* EBStepper.swift */; };
 		CF8BEBF81BFF2F4F003C769C /* validation-Preferences-currentCharacterCodePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BEBF71BFF2F4F003C769C /* validation-Preferences-currentCharacterCodePoint.swift */; };
-		CF8E8C1D2132A7590056D8E9 /* action-MergerDocument-arrangeHorizontallyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E8C1B2132A7590056D8E9 /* action-MergerDocument-arrangeHorizontallyAction.swift */; };
-		CF8E8C1E2132A7590056D8E9 /* action-MergerDocument-arrangeVerticallyAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8E8C1C2132A7590056D8E9 /* action-MergerDocument-arrangeVerticallyAction.swift */; };
 		CF92E1F51DDB1C9E0019691C /* CanariRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF92E1F41DDB1C9E0019691C /* CanariRect.swift */; };
 		CF9363A82102472B00B068AB /* transient-function-canariUnitToCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9363A72102472B00B068AB /* transient-function-canariUnitToCocoa.swift */; };
 		CF95F6DD20FA09680080EFFC /* view-CanariModelDragSourceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF95F6DC20FA09680080EFFC /* view-CanariModelDragSourceTableView.swift */; };
@@ -573,8 +571,6 @@
 		CF880FEE1DDB85F400954D4E /* CanariCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariCircle.swift; sourceTree = "<group>"; };
 		CF8BEB131BFF2D75003C769C /* EBStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBStepper.swift; sourceTree = "<group>"; };
 		CF8BEBF71BFF2F4F003C769C /* validation-Preferences-currentCharacterCodePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "validation-Preferences-currentCharacterCodePoint.swift"; sourceTree = "<group>"; };
-		CF8E8C1B2132A7590056D8E9 /* action-MergerDocument-arrangeHorizontallyAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-arrangeHorizontallyAction.swift"; sourceTree = "<group>"; };
-		CF8E8C1C2132A7590056D8E9 /* action-MergerDocument-arrangeVerticallyAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-arrangeVerticallyAction.swift"; sourceTree = "<group>"; };
 		CF92E1F41DDB1C9E0019691C /* CanariRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariRect.swift; sourceTree = "<group>"; };
 		CF9363A72102472B00B068AB /* transient-function-canariUnitToCocoa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-function-canariUnitToCocoa.swift"; sourceTree = "<group>"; };
 		CF95F6DC20FA09680080EFFC /* view-CanariModelDragSourceTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-CanariModelDragSourceTableView.swift"; sourceTree = "<group>"; };
@@ -741,8 +737,6 @@
 			isa = PBXGroup;
 			children = (
 				CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */,
-				CF8E8C1B2132A7590056D8E9 /* action-MergerDocument-arrangeHorizontallyAction.swift */,
-				CF8E8C1C2132A7590056D8E9 /* action-MergerDocument-arrangeVerticallyAction.swift */,
 				CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */,
 				CFD7E80420EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift */,
 				CFD7EA2620E7DA8100D53B87 /* action-MergerDocument-insertBoardAction.swift */,
@@ -1399,7 +1393,6 @@
 				CF7357C720F6421C00915629 /* transient-MergerBoardInstance-selectionLayer.swift in Sources */,
 				CF9D58491BFA2B7100E6BA54 /* document-import-legacy.swift in Sources */,
 				CF71F9291B3EA3DF00FB5049 /* EBSwitch.swift in Sources */,
-				CF8E8C1D2132A7590056D8E9 /* action-MergerDocument-arrangeHorizontallyAction.swift in Sources */,
 				CF57AB6E1BFE6DF30020E452 /* customObjectController-PMFontDocument-selectedCharacter.swift in Sources */,
 				CF0201F91BFF77D10033BA42 /* arrayController-PMFontDocument-mMissingCharsController.swift in Sources */,
 				CFD7EA2520E7D42900D53B87 /* transient-MergerRoot-modelNames.swift in Sources */,
@@ -1480,7 +1473,6 @@
 				CF1FB92E20E56D290050391E /* transient-BoardModel-boardLimits.swift in Sources */,
 				CF76FB7120F0061800EFD18D /* entity-CanariSegment.swift in Sources */,
 				CFEDEDC11DD88B5900782E3F /* Controller_CanariFontSampleStringView_bezierPath.swift in Sources */,
-				CF8E8C1E2132A7590056D8E9 /* action-MergerDocument-arrangeVerticallyAction.swift in Sources */,
 				CF45B2731BFE8274004AFFC2 /* EBIntField.swift in Sources */,
 				CFA655D121060672001E5067 /* action-MergerDocument-moveUpAction.swift in Sources */,
 				CFA655CE21060672001E5067 /* action-MergerDocument-moveDownAction.swift in Sources */,
