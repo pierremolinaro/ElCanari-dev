@@ -28,7 +28,7 @@ extension MergerDocument {
       openPanel.canChooseFiles = true
       openPanel.canChooseDirectories = false
       openPanel.allowsMultipleSelection = false
-      openPanel.allowedFileTypes = ["ElCanariBoardArchive"]
+      openPanel.allowedFileTypes = ["ElCanariBoardArchive", "kicad_pcb"]
     //--- MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
       gPanel = OpenPanelDelegateForFilteringBoardModels (boardModelNames)
       openPanel.delegate = gPanel
@@ -37,34 +37,10 @@ extension MergerDocument {
         if returnCode == sw34_FileHandlingPanelOKButton {
           if let url = openPanel.url, url.isFileURL {
             let filePath = url.path
-          //--- Load file, as plist
-            let optionalFileData : Data? = FileManager ().contents (atPath: filePath)
-            if let fileData = optionalFileData {
-              do {
-                let optionalBoardArchiveDictionary = try PropertyListSerialization.propertyList (
-                  from: fileData,
-                  options: [],
-                  format: nil
-                )
-                if let boardArchiveDictionary = optionalBoardArchiveDictionary as? NSDictionary {
-                  let s = filePath.lastPathComponent.deletingPathExtension
-                  let possibleBoardModel = self.parseBoardModel (fromDictionary: boardArchiveDictionary, named : s)
-                  if let boardModel = possibleBoardModel {
-                    self.rootObject.boardModels_property.add (boardModel)
-                    self.mBoardModelController.select (object:boardModel)
-                  }
-                }else{
-                  NSLog ("Invalid dictionary!")
-                }
-              }catch let error {
-                window.presentError (error)
-              }
-            }else{ // Cannot read file
-              let alert = NSAlert ()
-              alert.messageText = "Cannot read file"
-              alert.addButton (withTitle: "Ok")
-              alert.informativeText = "The file \(filePath) cannot be read."
-              alert.beginSheetModal (for: window, completionHandler: {(NSModalResponse) in})
+            if filePath.pathExtension == "ElCanariBoardArchive" {
+              self.loadBoardModel_ELCanariArchive (filePath : filePath, windowForSheet: window)
+            }else if filePath.pathExtension == "kicad_pcb" {
+              self.loadBoardModel_kicad (filePath : filePath, windowForSheet: window)
             }
           }else{
             NSLog ("Not a file URL!")

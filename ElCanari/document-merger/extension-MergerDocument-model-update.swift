@@ -48,7 +48,7 @@ extension MergerDocument {
                     )
                     if let boardArchiveDictionary = optionalBoardArchiveDictionary as? NSDictionary {
                       let s = filePath.lastPathComponent.deletingPathExtension
-                      let possibleBoardModel = self.parseBoardModel (fromDictionary: boardArchiveDictionary, named : s)
+                      let possibleBoardModel = self.parseBoardModel_ELCanariArchive (fromDictionary: boardArchiveDictionary, named : s)
                       if let newBoardModel = possibleBoardModel {
                         updatedBoardModel.artworkName = newBoardModel.artworkName
                         updatedBoardModel.modelWidth = newBoardModel.modelWidth

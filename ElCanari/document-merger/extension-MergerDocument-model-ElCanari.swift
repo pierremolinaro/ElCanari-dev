@@ -11,163 +11,45 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func double (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Double {
-  let object : Any? = inDictionary.value (forKey: inKey)
-  var result = 0.0 // Default result
-  if object == nil {
-    errorArray.append ("No \"\(inKey)\" key.")
-  }else if let number = object as? NSNumber {
-    result = number.doubleValue
-  }else{
-    errorArray.append ("The \"\(inKey)\" key value is not a double.")
-  }
-  return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func int (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Int {
-  let object : Any? = inDictionary.value (forKey: inKey)
-  var result = 0 // Default result
-  if object == nil {
-    errorArray.append ("No \"\(inKey)\" key.")
-  }else if let number = object as? NSNumber {
-    result = number.intValue
-  }else{
-    errorArray.append ("The \"\(inKey)\" key value is not an integer.")
-  }
-  return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func intOrZero (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Int {
-  let object : Any? = inDictionary.value (forKey: inKey)
-  var result = 0 // Default result
-  if let number = object as? NSNumber {
-    result = number.intValue
-  }else if object != nil {
-    errorArray.append ("The \"\(inKey)\" key value is not an integer.")
-  }
-  return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func string (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> String {
-  let object : Any? = inDictionary.value (forKey: inKey)
-  var result = "" // Default result
-  if object == nil {
-    errorArray.append ("No \"\(inKey)\" key.")
-  }else if let s = object as? String {
-    result = s
-  }else{
-    errorArray.append ("The \"\(inKey)\" key value is not a string.")
-  }
-  return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func dictArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [NSDictionary] {
-  let object : Any? = inDictionary.value (forKey: inKey)
-  var result = [NSDictionary] () // Default result
-  if object == nil {
-    errorArray.append ("No \"\(inKey)\" key.")
-  }else if let s = object as? [NSDictionary] {
-    result = s
-  }else{
-    errorArray.append ("The \"\(inKey)\" key value is not an array of dictionaries.")
-  }
-  return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func stringArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [String] {
-  let object : Any? = inDictionary.value (forKey: inKey)
-  var result = [String] () // Default result
-  if object == nil {
-    errorArray.append ("No \"\(inKey)\" key.")
-  }else if let s = object as? [String] {
-    result = s
-  }else{
-    errorArray.append ("The \"\(inKey)\" key value is not an array of string.")
-  }
-  return result
-}
-
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func optionalStringArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [String] {
-  let object : Any? = inDictionary.value (forKey: inKey)
-  var result = [String] () // Default result
-  if let s = object as? [String] {
-    result = s
-  }else if object != nil {
-    errorArray.append ("The \"\(inKey)\" key value is not an array of string.")
-  }
-  return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func array4int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
-  let strArray : [String] = inString.components(separatedBy: " ")
-  var result = [Int] () // Default result
-  if strArray.count != 4 {
-    errorArray.append ("The string is not a four integer array.")
-  }else{
-    for s in strArray {
-      let possibleInt : Int? = Int (s)
-      if let n = possibleInt {
-        result.append (n)
-      }else{
-        errorArray.append ("The string is not a four integer array.")
-      }
-    }
-  }
-//--- If an error occurs, add fake int to get a five element vector
-  while result.count < 4 {
-    result.append (0)
-  }
-//---
-  return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func array5int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
-  let strArray : [String] = inString.components(separatedBy: " ")
-  var result = [Int] () // Default result
-  if strArray.count != 5 {
-    errorArray.append ("The string is not a five integer array.")
-  }else{
-    for s in strArray {
-      let possibleInt : Int? = Int (s)
-      if let n = possibleInt {
-        result.append (n)
-      }else{
-        errorArray.append ("The string is not a five integer array.")
-      }
-    }
-  }
-//--- If an error occurs, add fake int to get a five element vector
-  while result.count < 5 {
-    result.append (0)
-  }
-//---
-  return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 extension MergerDocument {
 
   //····················································································································
 
-  func parseBoardModel (fromDictionary boardArchiveDict : NSDictionary, named inName : String) -> BoardModel? {
+  func loadBoardModel_ELCanariArchive (filePath inFilePath : String, windowForSheet inWindow : NSWindow) {
+  //--- Load file, as plist
+    let optionalFileData : Data? = FileManager ().contents (atPath: inFilePath)
+    if let fileData = optionalFileData {
+      do {
+        let optionalBoardArchiveDictionary = try PropertyListSerialization.propertyList (
+          from: fileData,
+          options: [],
+          format: nil
+        )
+        if let boardArchiveDictionary = optionalBoardArchiveDictionary as? NSDictionary {
+          let s = inFilePath.lastPathComponent.deletingPathExtension
+          let possibleBoardModel = self.parseBoardModel_ELCanariArchive (fromDictionary: boardArchiveDictionary, named : s)
+          if let boardModel = possibleBoardModel {
+            self.rootObject.boardModels_property.add (boardModel)
+            self.mBoardModelController.select (object:boardModel)
+          }
+        }else{
+          NSLog ("Invalid dictionary!")
+        }
+      }catch let error {
+        inWindow.presentError (error)
+      }
+    }else{ // Cannot read file
+      let alert = NSAlert ()
+      alert.messageText = "Cannot read file"
+      alert.addButton (withTitle: "Ok")
+      alert.informativeText = "The file \(inFilePath) cannot be read."
+      alert.beginSheetModal (for: inWindow, completionHandler: {(NSModalResponse) in})
+    }
+  }
+
+  //····················································································································
+
+  func parseBoardModel_ELCanariArchive (fromDictionary boardArchiveDict : NSDictionary, named inName : String) -> BoardModel? {
   //  NSLog ("\(boardArchiveDict)")
     let boardModel = BoardModel (managedObjectContext:self.managedObjectContext())
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
@@ -457,6 +339,158 @@ extension MergerDocument {
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func double (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Double {
+  let object : Any? = inDictionary.value (forKey: inKey)
+  var result = 0.0 // Default result
+  if object == nil {
+    errorArray.append ("No \"\(inKey)\" key.")
+  }else if let number = object as? NSNumber {
+    result = number.doubleValue
+  }else{
+    errorArray.append ("The \"\(inKey)\" key value is not a double.")
+  }
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func int (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Int {
+  let object : Any? = inDictionary.value (forKey: inKey)
+  var result = 0 // Default result
+  if object == nil {
+    errorArray.append ("No \"\(inKey)\" key.")
+  }else if let number = object as? NSNumber {
+    result = number.intValue
+  }else{
+    errorArray.append ("The \"\(inKey)\" key value is not an integer.")
+  }
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func intOrZero (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Int {
+  let object : Any? = inDictionary.value (forKey: inKey)
+  var result = 0 // Default result
+  if let number = object as? NSNumber {
+    result = number.intValue
+  }else if object != nil {
+    errorArray.append ("The \"\(inKey)\" key value is not an integer.")
+  }
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func string (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> String {
+  let object : Any? = inDictionary.value (forKey: inKey)
+  var result = "" // Default result
+  if object == nil {
+    errorArray.append ("No \"\(inKey)\" key.")
+  }else if let s = object as? String {
+    result = s
+  }else{
+    errorArray.append ("The \"\(inKey)\" key value is not a string.")
+  }
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func dictArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [NSDictionary] {
+  let object : Any? = inDictionary.value (forKey: inKey)
+  var result = [NSDictionary] () // Default result
+  if object == nil {
+    errorArray.append ("No \"\(inKey)\" key.")
+  }else if let s = object as? [NSDictionary] {
+    result = s
+  }else{
+    errorArray.append ("The \"\(inKey)\" key value is not an array of dictionaries.")
+  }
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func stringArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [String] {
+  let object : Any? = inDictionary.value (forKey: inKey)
+  var result = [String] () // Default result
+  if object == nil {
+    errorArray.append ("No \"\(inKey)\" key.")
+  }else if let s = object as? [String] {
+    result = s
+  }else{
+    errorArray.append ("The \"\(inKey)\" key value is not an array of string.")
+  }
+  return result
+}
+
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func optionalStringArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [String] {
+  let object : Any? = inDictionary.value (forKey: inKey)
+  var result = [String] () // Default result
+  if let s = object as? [String] {
+    result = s
+  }else if object != nil {
+    errorArray.append ("The \"\(inKey)\" key value is not an array of string.")
+  }
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func array4int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
+  let strArray : [String] = inString.components(separatedBy: " ")
+  var result = [Int] () // Default result
+  if strArray.count != 4 {
+    errorArray.append ("The string is not a four integer array.")
+  }else{
+    for s in strArray {
+      let possibleInt : Int? = Int (s)
+      if let n = possibleInt {
+        result.append (n)
+      }else{
+        errorArray.append ("The string is not a four integer array.")
+      }
+    }
+  }
+//--- If an error occurs, add fake int to get a five element vector
+  while result.count < 4 {
+    result.append (0)
+  }
+//---
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func array5int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
+  let strArray : [String] = inString.components(separatedBy: " ")
+  var result = [Int] () // Default result
+  if strArray.count != 5 {
+    errorArray.append ("The string is not a five integer array.")
+  }else{
+    for s in strArray {
+      let possibleInt : Int? = Int (s)
+      if let n = possibleInt {
+        result.append (n)
+      }else{
+        errorArray.append ("The string is not a five integer array.")
+      }
+    }
+  }
+//--- If an error occurs, add fake int to get a five element vector
+  while result.count < 5 {
+    result.append (0)
+  }
+//---
+  return result
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
