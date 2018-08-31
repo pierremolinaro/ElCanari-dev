@@ -11,6 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+//            if filePath.pathExtension == "ElCanariBoardArchive" {
+//              self.loadBoardModel_ELCanariArchive (filePath : filePath, windowForSheet: window)
+//            }else if filePath.pathExtension == "kicad_pcb" {
+//              self.loadBoardModel_kicad (filePath : filePath, windowForSheet: window)
+//            }
+
 extension MergerDocument {
 
   //····················································································································
@@ -40,130 +46,122 @@ extension MergerDocument {
               //--- Load file, as plist
                 let optionalFileData : Data? = FileManager ().contents (atPath: filePath)
                 if let fileData = optionalFileData {
-                  do {
-                    let optionalBoardArchiveDictionary = try PropertyListSerialization.propertyList (
-                      from: fileData,
-                      options: [],
-                      format: nil
-                    )
-                    if let boardArchiveDictionary = optionalBoardArchiveDictionary as? NSDictionary {
-                      let s = filePath.lastPathComponent.deletingPathExtension
-                      let possibleBoardModel = self.parseBoardModel_ELCanariArchive (fromDictionary: boardArchiveDictionary, named : s)
-                      if let newBoardModel = possibleBoardModel {
-                        updatedBoardModel.artworkName = newBoardModel.artworkName
-                        updatedBoardModel.modelWidth = newBoardModel.modelWidth
-                        updatedBoardModel.modelWidthUnit = newBoardModel.modelWidthUnit
-                        updatedBoardModel.modelHeight = newBoardModel.modelHeight
-                        updatedBoardModel.modelHeightUnit = newBoardModel.modelHeightUnit
-                        updatedBoardModel.modelLimitWidth = newBoardModel.modelLimitWidth
-                        updatedBoardModel.modelLimitWidthUnit = newBoardModel.modelLimitWidthUnit
-                        updatedBoardModel.zoom = newBoardModel.zoom
+                  let s = filePath.lastPathComponent.deletingPathExtension
+                  var possibleBoardModel : BoardModel? = nil
+                  if filePath.pathExtension == "ElCanariBoardArchive" {
+                    possibleBoardModel = self.parseBoardModel_ELCanariArchive (fromData: fileData, named: s)
+                  }else if filePath.pathExtension == "kicad_pcb" {
+                    possibleBoardModel = self.parseBoardModel_kicad (fromData: fileData, named: s)
+                  }
+                  if let newBoardModel = possibleBoardModel {
+                    updatedBoardModel.artworkName = newBoardModel.artworkName
+                    updatedBoardModel.modelWidth = newBoardModel.modelWidth
+                    updatedBoardModel.modelWidthUnit = newBoardModel.modelWidthUnit
+                    updatedBoardModel.modelHeight = newBoardModel.modelHeight
+                    updatedBoardModel.modelHeightUnit = newBoardModel.modelHeightUnit
+                    updatedBoardModel.modelLimitWidth = newBoardModel.modelLimitWidth
+                    updatedBoardModel.modelLimitWidthUnit = newBoardModel.modelLimitWidthUnit
+                    updatedBoardModel.zoom = newBoardModel.zoom
 
-                        let moc = self.managedObjectContext ()
+                    let moc = self.managedObjectContext ()
 
-                        var newArray = newBoardModel.frontLegendTexts_property.propval
-                        var oldArray = updatedBoardModel.frontLegendTexts_property.propval
-                        newBoardModel.frontLegendTexts_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.frontLegendTexts_property.setProp (newArray)
+                    var newArray = newBoardModel.frontLegendTexts_property.propval
+                    var oldArray = updatedBoardModel.frontLegendTexts_property.propval
+                    newBoardModel.frontLegendTexts_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.frontLegendTexts_property.setProp (newArray)
 
-                        newArray = newBoardModel.frontLayoutTexts_property.propval
-                        oldArray = updatedBoardModel.frontLayoutTexts_property.propval
-                        newBoardModel.frontLayoutTexts_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.frontLayoutTexts_property.setProp (newArray)
+                    newArray = newBoardModel.frontLayoutTexts_property.propval
+                    oldArray = updatedBoardModel.frontLayoutTexts_property.propval
+                    newBoardModel.frontLayoutTexts_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.frontLayoutTexts_property.setProp (newArray)
 
-                        newArray = newBoardModel.backLegendTexts_property.propval
-                        oldArray = updatedBoardModel.backLegendTexts_property.propval
-                        newBoardModel.backLegendTexts_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.backLegendTexts_property.setProp (newArray)
+                    newArray = newBoardModel.backLegendTexts_property.propval
+                    oldArray = updatedBoardModel.backLegendTexts_property.propval
+                    newBoardModel.backLegendTexts_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.backLegendTexts_property.setProp (newArray)
 
-                        newArray = newBoardModel.backLayoutTexts_property.propval
-                        oldArray = updatedBoardModel.backLayoutTexts_property.propval
-                        newBoardModel.backLayoutTexts_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.backLayoutTexts_property.setProp (newArray)
+                    newArray = newBoardModel.backLayoutTexts_property.propval
+                    oldArray = updatedBoardModel.backLayoutTexts_property.propval
+                    newBoardModel.backLayoutTexts_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.backLayoutTexts_property.setProp (newArray)
 
-                        let newViaArray = newBoardModel.vias_property.propval
-                        let oldViaArray = updatedBoardModel.vias_property.propval
-                        newBoardModel.vias_property.setProp ([])
-                        moc.removeManagedObjects (oldViaArray)
-                        updatedBoardModel.vias_property.setProp (newViaArray)
+                    let newViaArray = newBoardModel.vias_property.propval
+                    let oldViaArray = updatedBoardModel.vias_property.propval
+                    newBoardModel.vias_property.setProp ([])
+                    moc.removeManagedObjects (oldViaArray)
+                    updatedBoardModel.vias_property.setProp (newViaArray)
 
-                        let newPadArray = newBoardModel.pads_property.propval
-                        let oldPadArray = updatedBoardModel.pads_property.propval
-                        newBoardModel.pads_property.setProp ([])
-                        moc.removeManagedObjects (oldPadArray)
-                        updatedBoardModel.pads_property.setProp (newPadArray)
+                    let newPadArray = newBoardModel.pads_property.propval
+                    let oldPadArray = updatedBoardModel.pads_property.propval
+                    newBoardModel.pads_property.setProp ([])
+                    moc.removeManagedObjects (oldPadArray)
+                    updatedBoardModel.pads_property.setProp (newPadArray)
 
-                        newArray = newBoardModel.backComponentNames_property.propval
-                        oldArray = updatedBoardModel.backComponentNames_property.propval
-                        newBoardModel.backComponentNames_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.backComponentNames_property.setProp (newArray)
+                    newArray = newBoardModel.backComponentNames_property.propval
+                    oldArray = updatedBoardModel.backComponentNames_property.propval
+                    newBoardModel.backComponentNames_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.backComponentNames_property.setProp (newArray)
 
-                        newArray = newBoardModel.frontComponentNames_property.propval
-                        oldArray = updatedBoardModel.frontComponentNames_property.propval
-                        newBoardModel.frontComponentNames_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.frontComponentNames_property.setProp (newArray)
+                    newArray = newBoardModel.frontComponentNames_property.propval
+                    oldArray = updatedBoardModel.frontComponentNames_property.propval
+                    newBoardModel.frontComponentNames_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.frontComponentNames_property.setProp (newArray)
 
-                        newArray = newBoardModel.frontComponentValues_property.propval
-                        oldArray = updatedBoardModel.frontComponentValues_property.propval
-                        newBoardModel.frontComponentValues_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.frontComponentValues_property.setProp (newArray)
+                    newArray = newBoardModel.frontComponentValues_property.propval
+                    oldArray = updatedBoardModel.frontComponentValues_property.propval
+                    newBoardModel.frontComponentValues_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.frontComponentValues_property.setProp (newArray)
 
-                        newArray = newBoardModel.backComponentValues_property.propval
-                        oldArray = updatedBoardModel.backComponentValues_property.propval
-                        newBoardModel.backComponentValues_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.backComponentValues_property.setProp (newArray)
+                    newArray = newBoardModel.backComponentValues_property.propval
+                    oldArray = updatedBoardModel.backComponentValues_property.propval
+                    newBoardModel.backComponentValues_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.backComponentValues_property.setProp (newArray)
 
-                        newArray = newBoardModel.backTracks_property.propval
-                        oldArray = updatedBoardModel.backTracks_property.propval
-                        newBoardModel.backTracks_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.backTracks_property.setProp (newArray)
+                    newArray = newBoardModel.backTracks_property.propval
+                    oldArray = updatedBoardModel.backTracks_property.propval
+                    newBoardModel.backTracks_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.backTracks_property.setProp (newArray)
 
-                        newArray = newBoardModel.frontTracks_property.propval
-                        oldArray = updatedBoardModel.frontTracks_property.propval
-                        newBoardModel.frontTracks_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.frontTracks_property.setProp (newArray)
+                    newArray = newBoardModel.frontTracks_property.propval
+                    oldArray = updatedBoardModel.frontTracks_property.propval
+                    newBoardModel.frontTracks_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.frontTracks_property.setProp (newArray)
 
-                        newArray = newBoardModel.frontPackages_property.propval
-                        oldArray = updatedBoardModel.frontPackages_property.propval
-                        newBoardModel.frontPackages_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.frontPackages_property.setProp (newArray)
+                    newArray = newBoardModel.frontPackages_property.propval
+                    oldArray = updatedBoardModel.frontPackages_property.propval
+                    newBoardModel.frontPackages_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.frontPackages_property.setProp (newArray)
 
-                        newArray = newBoardModel.backPackages_property.propval
-                        oldArray = updatedBoardModel.backPackages_property.propval
-                        newBoardModel.backPackages_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.backPackages_property.setProp (newArray)
+                    newArray = newBoardModel.backPackages_property.propval
+                    oldArray = updatedBoardModel.backPackages_property.propval
+                    newBoardModel.backPackages_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.backPackages_property.setProp (newArray)
 
-                        newArray = newBoardModel.backLegendLines_property.propval
-                        oldArray = updatedBoardModel.backLegendLines_property.propval
-                        newBoardModel.backLegendLines_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.backLegendLines_property.setProp (newArray)
+                    newArray = newBoardModel.backLegendLines_property.propval
+                    oldArray = updatedBoardModel.backLegendLines_property.propval
+                    newBoardModel.backLegendLines_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.backLegendLines_property.setProp (newArray)
 
-                        newArray = newBoardModel.frontLegendLines_property.propval
-                        oldArray = updatedBoardModel.frontLegendLines_property.propval
-                        newBoardModel.frontLegendLines_property.setProp ([])
-                        moc.removeManagedObjects (oldArray)
-                        updatedBoardModel.frontLegendLines_property.setProp (newArray)
+                    newArray = newBoardModel.frontLegendLines_property.propval
+                    oldArray = updatedBoardModel.frontLegendLines_property.propval
+                    newBoardModel.frontLegendLines_property.setProp ([])
+                    moc.removeManagedObjects (oldArray)
+                    updatedBoardModel.frontLegendLines_property.setProp (newArray)
 
-                        moc.removeManagedObject (newBoardModel)
-                      }
-                    }else{
-                      NSLog ("Invalid dictionary!")
-                    }
-                  }catch let error {
-                    window.presentError (error)
+                    moc.removeManagedObject (newBoardModel)
                   }
                 }else{ // Cannot read file
                   let alert = NSAlert ()
