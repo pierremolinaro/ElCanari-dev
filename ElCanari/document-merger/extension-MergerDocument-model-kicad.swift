@@ -18,15 +18,16 @@ fileprivate let DEBUG = false
 protocol KicadItem : class {
 
   func display (_ inIndentationString : String, _ ioString : inout String)
-}
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [String]) -> Double?
 
-class KicadItemEnd : KicadItem {
+  func collectTracks (_ ioFrontTrackEntities : inout [CanariSegment],
+                      _ ioBackTrackEntities : inout [CanariSegment],
+                      _ inModelLeftMM  : Double,
+                      _ inModelBottomMM : Double,
+                      _ ioErrorArray : inout [String],
+                      _ inMOC : EBManagedObjectContext)
 
-  func display (_ inIndentationString : String, _ ioString : inout String) {
-    ioString += inIndentationString + "END\n"
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -34,11 +35,35 @@ class KicadItemEnd : KicadItem {
 class KicadItemString : KicadItem {
   let string : String
 
+  //····················································································································
+
   init (_ inString : String) { string = inString }
+
+  //····················································································································
 
   func display (_ inIndentationString : String, _ ioString : inout String) {
     ioString += inIndentationString + "String '\(self.string)'\n"
   }
+
+  //····················································································································
+
+  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [String]) -> Double? {
+    ioErrorArray.append ("String instead of float")
+    return nil
+  }
+
+  //····················································································································
+
+  func collectTracks (_ ioFrontTrackEntities : inout [CanariSegment],
+                      _ ioBackTrackEntities : inout [CanariSegment],
+                      _ inModelLeftMM  : Double,
+                      _ inModelBottomMM : Double,
+                      _ ioErrorArray : inout [String],
+                      _ inMOC : EBManagedObjectContext) {
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -46,11 +71,34 @@ class KicadItemString : KicadItem {
 class KicadItemInt : KicadItem {
   let value : Int
 
+  //····················································································································
+
   init (_ inValue : Int) { value = inValue }
+
+  //····················································································································
 
   func display (_ inIndentationString : String, _ ioString : inout String) {
     ioString += inIndentationString + "Int '\(self.value)'\n"
   }
+
+  //····················································································································
+
+  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [String]) -> Double? {
+    ioErrorArray.append ("Int instead of float")
+    return nil
+  }
+
+  //····················································································································
+
+  func collectTracks (_ ioFrontTrackEntities : inout [CanariSegment],
+                      _ ioBackTrackEntities : inout [CanariSegment],
+                      _ inModelLeftMM  : Double,
+                      _ inModelBottomMM : Double,
+                      _ ioErrorArray : inout [String],
+                      _ inMOC : EBManagedObjectContext) {
+  }
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -58,28 +106,114 @@ class KicadItemInt : KicadItem {
 class KicadItemFloat : KicadItem {
   let value : Double
 
+  //····················································································································
+
   init (_ inValue : Double) { value = inValue }
+
+  //····················································································································
 
   func display (_ inIndentationString : String, _ ioString : inout String) {
     ioString += inIndentationString + "Double '\(self.value)'\n"
   }
+
+  //····················································································································
+
+  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [String]) -> Double? {
+    return self.value
+  }
+
+  //····················································································································
+
+  func collectTracks (_ ioFrontTrackEntities : inout [CanariSegment],
+                      _ ioBackTrackEntities : inout [CanariSegment],
+                      _ inModelLeftMM  : Double,
+                      _ inModelBottomMM : Double,
+                      _ ioErrorArray : inout [String],
+                      _ inMOC : EBManagedObjectContext) {
+  }
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class KicadItemArray : KicadItem {
   let key : String
-  let value : [KicadItem]
+  let items : [KicadItem]
 
-  init (_ inKey : String, _ inValue : [KicadItem]) { key = inKey ; value = inValue }
+  //····················································································································
+
+  init (_ inKey : String, _ inValue : [KicadItem]) { key = inKey ; items = inValue }
+
+  //····················································································································
 
   func display (_ inIndentationString : String, _ ioString : inout String) {
     ioString += inIndentationString + "('\(self.key)'\n"
-    for item in self.value {
+    for item in self.items {
       item.display (inIndentationString + " ", &ioString)
     }
     ioString += inIndentationString + ")\n"
   }
+
+  //····················································································································
+
+  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [String]) -> Double? {
+    var result : Double? = nil
+    if inPath [0] == self.key {
+      if inPath.count == 1 {
+        result = self.items [inIndex].getFloat ([], 0, &ioErrorArray)
+      }else{
+        var search = true
+        var idx = 0
+        while search {
+          if let item = self.items [idx] as? KicadItemArray, item.key == inPath [1] {
+            result = item.getFloat ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray)
+            search = false
+          }else{
+            idx += 1
+            search = idx < self.items.count
+          }
+        }
+        if idx == self.items.count {
+          ioErrorArray.append ("Key \(inPath [0]) not found")
+        }
+      }
+    }else{
+      ioErrorArray.append ("Invalid key \(self.key) instead of \(inPath [0])")
+    }
+    return result
+  }
+
+  //····················································································································
+
+  func collectTracks (_ ioFrontTrackEntities : inout [CanariSegment],
+                      _ ioBackTrackEntities : inout [CanariSegment],
+                      _ inModelLeftMM  : Double,
+                      _ inModelBottomMM : Double,
+                      _ ioErrorArray : inout [String],
+                      _ inMOC : EBManagedObjectContext) {
+    if self.key == "segment" {
+      if let startX = self.getFloat (["segment", "start"], 0, &ioErrorArray),
+         let startY = self.getFloat (["segment", "start"], 1, &ioErrorArray),
+         let endX = self.getFloat (["segment", "end"], 0, &ioErrorArray),
+         let endY = self.getFloat (["segment", "end"], 1, &ioErrorArray),
+         let width = self.getFloat (["segment", "width"], 0, &ioErrorArray) {
+        let segment = CanariSegment (managedObjectContext: inMOC)
+        segment.x1 = millimeterToCanariUnit (startX - inModelLeftMM)
+        segment.y1 = millimeterToCanariUnit (startY - inModelBottomMM)
+        segment.x2 = millimeterToCanariUnit (endX - inModelLeftMM)
+        segment.y2 = millimeterToCanariUnit (endY - inModelBottomMM)
+        segment.width = millimeterToCanariUnit (width)
+        ioFrontTrackEntities.append (segment)
+      }
+    }else{
+      for item in self.items {
+        item.collectTracks (&ioFrontTrackEntities, &ioBackTrackEntities, inModelLeftMM, inModelBottomMM, &ioErrorArray, inMOC)
+      }
+    }
+  }
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -119,14 +253,46 @@ extension MergerDocument {
   //--- Parse
     let contents = parse (array, &index)
   //--- Analyze
-    var str = ""
-    contents?.display ("", &str)
-    Swift.print (str)
+//    var str = ""
+//    contents?.display ("", &str)
+//    Swift.print (str)
+  //--- Extraction board rect
     var errorArray = [String] ()
-//    let rootItems = getItems (contents, "kicad_pcb", &errorArray)
-//    let v1 = getItemsFromArray (rootItems, "title_block", &errorArray)
-//    let v2 = getItemsFromArray (v1, "title", &errorArray)
-
+    let possibleLeft = contents?.getFloat (["kicad_pcb", "general", "area"], 0, &errorArray)
+    let possibleBottom = contents?.getFloat (["kicad_pcb", "general", "area"], 1, &errorArray)
+    let possibleRight = contents?.getFloat (["kicad_pcb", "general", "area"], 2, &errorArray)
+    let possibleTop = contents?.getFloat (["kicad_pcb", "general", "area"], 3, &errorArray)
+    var leftMM = 0.0
+    if let v = possibleLeft {
+      leftMM = v
+    }else{
+      errorArray.append ("left is nil")
+    }
+    var rightMM = 0.0
+    if let v = possibleRight {
+      rightMM = v
+    }else{
+      errorArray.append ("right is nil")
+    }
+    var bottomMM = 0.0
+    if let v = possibleBottom {
+      bottomMM = v
+    }else{
+      errorArray.append ("bottom is nil")
+    }
+    var topMM = 0.0
+    if let v = possibleTop {
+      topMM = v
+    }else{
+      errorArray.append ("top is nil")
+    }
+    let modelWidthMM = rightMM - leftMM
+    let modelHeightMM = topMM - bottomMM
+    // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
+  //--- Parse track
+    var frontTrackEntities = [CanariSegment] ()
+    var backTrackEntities = [CanariSegment] ()
+    contents?.collectTracks (&frontTrackEntities, &backTrackEntities, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
 
 
 
@@ -172,20 +338,6 @@ extension MergerDocument {
 //      frontTrackEntities.append (track)
 //    }
 //    boardModel.frontTracks_property.setProp (frontTrackEntities)
-//  //--- Back tracks
-//    var backTrackEntities = [CanariSegment] ()
-//    let backTracks = stringArray (fromDict: boardArchiveDict, key: "TRACKS-BACK", &errorArray)
-//    for str in backTracks {
-//      let track = CanariSegment (managedObjectContext:self.managedObjectContext())
-//      let ints = array5int (fromString: str, &errorArray)
-//      track.x1 = ints [0]
-//      track.y1 = ints [1]
-//      track.x2 = ints [2]
-//      track.y2 = ints [3]
-//      track.width = ints [4]
-//      backTrackEntities.append (track)
-//    }
-//    boardModel.backTracks_property.setProp (backTrackEntities)
 //  //--- Vias
 //    var viaEntities = [BoardModelVia] ()
 //    let vias = stringArray (fromDict: boardArchiveDict, key: "VIAS", &errorArray)
@@ -401,7 +553,19 @@ extension MergerDocument {
 //    }
 //    boardModel.pads_property.setProp (padEntities)
   //--- Dictionary import ok ?
-    if errorArray.count != 0 { // Error
+    var boardModel : BoardModel? = nil
+    if errorArray.count == 0 {
+      boardModel = BoardModel (managedObjectContext: self.managedObjectContext ())
+      boardModel?.name = inName
+      boardModel?.modelWidth  = millimeterToCanariUnit (modelWidthMM)
+      boardModel?.modelWidthUnit = ONE_MILLIMETER_IN_CANARI_UNIT
+      boardModel?.modelHeight = millimeterToCanariUnit (modelHeightMM)
+      boardModel?.modelHeightUnit = ONE_MILLIMETER_IN_CANARI_UNIT
+      boardModel?.modelLimitWidth = ONE_MILLIMETER_IN_CANARI_UNIT
+      boardModel?.modelLimitWidthUnit = ONE_MILLIMETER_IN_CANARI_UNIT
+      boardModel?.backTracks_property.setProp (backTrackEntities)
+      boardModel?.frontTracks_property.setProp (frontTrackEntities)
+    }else{ // Error
       var s = ""
       for anError in errorArray {
         if s != "" {
@@ -416,8 +580,7 @@ extension MergerDocument {
       alert.beginSheetModal (for: self.windowForSheet!, completionHandler: {(NSModalResponse) in})
     }
   //--- Return
-//    return (errorArray.count == 0) ? boardModel : nil
-    return nil
+    return boardModel
   }
 
   //····················································································································

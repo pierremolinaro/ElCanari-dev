@@ -20,6 +20,10 @@ import Foundation
 // 1 px = 1/72 pouce = 31 750
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let ONE_MILLIMETER_IN_CANARI_UNIT = 90_000
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 func canariUnitToCocoa (_ inValue : Int) -> CGFloat {
   return (CGFloat (inValue) / 31_750.0)
 }
@@ -40,6 +44,12 @@ func canariUnitToInch (_ inValue : Int) -> CGFloat {
 
 func canariUnitToMilTenth (_ inValue : Int) -> Int {
   return Int ((CGFloat (inValue) / 228.6).rounded ())
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func millimeterToCanariUnit (_ inValue : Double) -> Int {
+  return Int ((inValue * Double (ONE_MILLIMETER_IN_CANARI_UNIT)).rounded ())
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
