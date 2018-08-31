@@ -69,6 +69,39 @@ fileprivate class KicadItem {
 
   //····················································································································
 
+  func getOptionalFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)]) -> Double? {
+    var result : Double? = nil
+    if inPath [0] == self.key {
+      if inPath.count == 1 {
+        if inIndex < self.items.count {
+          if let r = Double (self.items [inIndex].key) {
+            result = r
+          }else{
+            ioErrorArray.append (("Key \(self.items [inIndex].key) is not a float", #line))
+          }
+        }
+      }else{
+        var search = true
+        var idx = 0
+        while search {
+          let item = self.items [idx]
+          if item.key == inPath [1] {
+            result = item.getOptionalFloat ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray)
+            search = false
+          }else{
+            idx += 1
+            search = idx < self.items.count
+          }
+        }
+      }
+    }else{
+      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", #line))
+    }
+    return result
+  }
+
+  //····················································································································
+
   func getString (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)]) -> String? {
     var result : String? = nil
     if inPath [0] == self.key {
@@ -155,9 +188,9 @@ extension KicadItem {
          let layer = self.getString (["segment", "layer"], 0, &ioErrorArray) {
         let segment = CanariSegment (managedObjectContext: inMOC)
         segment.x1 = millimeterToCanariUnit (startX - inModelLeftMM)
-        segment.y1 = millimeterToCanariUnit (startY - inModelBottomMM)
+        segment.y1 = millimeterToCanariUnit (inModelBottomMM - startY)
         segment.x2 = millimeterToCanariUnit (endX - inModelLeftMM)
-        segment.y2 = millimeterToCanariUnit (endY - inModelBottomMM)
+        segment.y2 = millimeterToCanariUnit (inModelBottomMM - endY)
         segment.width = millimeterToCanariUnit (width)
         if layer == "F.Cu" {
           ioFrontTrackEntities.append (segment)
@@ -235,6 +268,97 @@ extension KicadItem {
           )
           ioNetClassArray.append (netClass)
         }
+      }
+    }
+  }
+
+  //····················································································································
+
+  func collectComponents (_ ioFrontPackagesEntities : inout [CanariSegment],
+                          _ ioBackPackagesEntities : inout [CanariSegment],
+                          _ ioPadEntities : inout [BoardModelPad],
+                          _ inModelLeftMM  : Double,
+                          _ inModelBottomMM : Double,
+                          _ ioErrorArray : inout [(String, Int)],
+                          _ inMOC : EBManagedObjectContext) {
+    if self.key == "module" {
+      if let x = self.getFloat (["module", "at"], 0, &ioErrorArray),
+         let y = self.getFloat (["module", "at"], 1, &ioErrorArray),
+         let layer = self.getString (["module", "layer"], 0, &ioErrorArray) {
+        let rotationInDegrees = self.getOptionalFloat (["module", "at"], 2, &ioErrorArray) ?? 0.0
+        let transform = NSAffineTransform ()
+        transform.scaleX (by: 1.0, yBy: -1.0)
+        transform.translateX (by: CGFloat (x - inModelLeftMM), yBy: CGFloat (y - inModelBottomMM))
+        transform.rotate (byDegrees: CGFloat (-rotationInDegrees))
+        for item in self.items {
+          if item.key == "fp_line",
+                let startX = item.getFloat (["fp_line", "start"], 0, &ioErrorArray),
+                let startY = item.getFloat (["fp_line", "start"], 1, &ioErrorArray),
+                let endX = item.getFloat (["fp_line", "end"], 0, &ioErrorArray),
+                let endY = item.getFloat (["fp_line", "end"], 1, &ioErrorArray),
+                let widthMM = item.getFloat (["fp_line", "width"], 0, &ioErrorArray),
+                let lineLayer = item.getString (["fp_line", "layer"], 0, &ioErrorArray) {
+            let packageLine = CanariSegment (managedObjectContext: inMOC)
+            let start = transform.transform (NSPoint (x: startX, y: startY))
+            packageLine.x1 = millimeterToCanariUnit (Double(start.x))
+            packageLine.y1 = millimeterToCanariUnit (Double(start.y))
+            let end = transform.transform (NSPoint (x: endX, y: endY))
+            packageLine.x2 = millimeterToCanariUnit (Double(end.x))
+            packageLine.y2 = millimeterToCanariUnit (Double(end.y))
+            packageLine.width = millimeterToCanariUnit (widthMM)
+            if layer == "F.Cu" {
+              if lineLayer == "F.SilkS" {
+                ioFrontPackagesEntities.append (packageLine)
+              }
+            }else if layer == "B.Cu" {
+              if lineLayer == "B.SilkS" {
+                ioBackPackagesEntities.append (packageLine)
+              }
+            }else{
+              ioErrorArray.append (("Invalid module layer: \(layer)", #line))
+            }
+          }else if item.key == "pad",
+                let padSideString = item.getString (["pad"], 1, &ioErrorArray), // thru_hole, smd, np_thru_hole
+                let padShapeString = item.getString (["pad"], 2, &ioErrorArray), // oval, rect, circle
+                let atX = item.getFloat (["pad", "at"], 0, &ioErrorArray),
+                let atY = item.getFloat (["pad", "at"], 1, &ioErrorArray),
+                let widthMM = item.getFloat (["pad", "size"], 0, &ioErrorArray),
+                let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray) {
+            let pad = BoardModelPad (managedObjectContext: inMOC)
+            pad.qualifiedName = ""
+            let padXY = transform.transform (NSPoint (x: atX, y: atY))
+            pad.x = millimeterToCanariUnit (Double(padXY.x))
+            pad.y = millimeterToCanariUnit (Double(padXY.y))
+            pad.width = millimeterToCanariUnit (widthMM)
+            pad.height = millimeterToCanariUnit (heightMM)
+            pad.holeDiameter = 0
+            pad.rotation = degreesToCanariRotation (rotationInDegrees)
+            if padShapeString == "rect" {
+              pad.shape = .rectangular
+            }else if padShapeString == "oval" {
+              pad.shape = .round
+            }else if padShapeString == "circle" {
+              pad.shape = .round
+              if widthMM != heightMM {
+                ioErrorArray.append (("Invalid circle pad: width \"\(widthMM)\".", #line))
+              }
+            }else{
+              ioErrorArray.append (("Invalid pad shape height \(padShapeString) ≠ height \(heightMM)", #line))
+            }
+            if (padSideString == "thru_hole") || (padSideString == "np_thru_hole") {
+              pad.side = .traversing
+            }else if padSideString == "smd" {
+              pad.side = (layer == "B.Cu") ? .front : .back
+            }else{
+              ioErrorArray.append (("Invalid pad side \"\(padSideString)\".", #line))
+            }
+            ioPadEntities.append (pad)
+          }
+        }
+      }
+    }else{
+      for item in self.items {
+        item.collectComponents (&ioFrontPackagesEntities, &ioBackPackagesEntities, &ioPadEntities, inModelLeftMM, inModelBottomMM, &ioErrorArray, inMOC)
       }
     }
   }
@@ -327,20 +451,20 @@ extension MergerDocument {
     }else{
       errorArray.append (("right is nil", #line))
     }
-    var bottomMM = 0.0
+    var topMM = 0.0 // the Y-axis is pointing down
     if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 1, &errorArray) {
-      bottomMM = v
+      topMM = v
     }else{
       errorArray.append (("bottom is nil", #line))
     }
-    var topMM = 0.0
+    var bottomMM = 0.0 // the Y-axis is pointing down
     if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 3, &errorArray) {
-      topMM = v
+      bottomMM = v
     }else{
       errorArray.append (("top is nil", #line))
     }
     let modelWidthMM = rightMM - leftMM
-    let modelHeightMM = topMM - bottomMM
+    let modelHeightMM = bottomMM - topMM // the Y-axis is pointing down
     // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
   //--- Collect tracks
     var frontTrackEntities = [CanariSegment] ()
@@ -358,7 +482,7 @@ extension MergerDocument {
       }
     }
   //--- Build array of net class, index by net index
-  //    Note that net #0 ihas an empty name an is never used
+  //    Note that net #0 has an empty name and is never used
     var netArray = [KicadNetClass] ()
     netArray.append (KicadNetClass ()) // Pseudo net #0
     for netName in netNameArray.dropFirst () {
@@ -371,7 +495,11 @@ extension MergerDocument {
   //--- Collect vias
     var viaEntities = [BoardModelVia] ()
     contents?.collectVias (&viaEntities, leftMM, bottomMM, netArray, &errorArray, self.managedObjectContext ())
-
+  //---- Collect components
+    var padEntities = [BoardModelPad] ()
+    var frontPackagesEntities = [CanariSegment] ()
+    var backPackagesEntities = [CanariSegment] ()
+    contents?.collectComponents (&frontPackagesEntities, &backPackagesEntities, &padEntities, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
 
 
 
@@ -464,34 +592,6 @@ extension MergerDocument {
 //      frontLegendTextEntities.append (segment)
 //    }
 //    boardModel.frontLegendTexts_property.setProp (frontLegendTextEntities)
-//  //--- Back packages
-//    var backPackagesEntities = [CanariSegment] ()
-//    let backPackages = stringArray (fromDict: boardArchiveDict, key: "PACKAGES-BACK", &errorArray)
-//    for str in backPackages {
-//      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-//      let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
-//      backPackagesEntities.append (segment)
-//    }
-//    boardModel.backPackages_property.setProp (backPackagesEntities)
-//  //--- Front packages
-//    var frontPackagesEntities = [CanariSegment] ()
-//    let frontPackages = stringArray (fromDict: boardArchiveDict, key: "PACKAGES-FRONT", &errorArray)
-//    for str in frontPackages {
-//      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-//      let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
-//      frontPackagesEntities.append (segment)
-//    }
-//    boardModel.frontPackages_property.setProp (frontPackagesEntities)
 //  //--- Back component names
 //    var backComponentNamesEntities = [CanariSegment] ()
 //    let backComponentNames = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-NAMES-BACK", &errorArray)
@@ -549,7 +649,6 @@ extension MergerDocument {
 //    }
 //    boardModel.backComponentValues_property.setProp (backComponentValuesEntities)
 //  //--- Pads
-//    var padEntities = [BoardModelPad] ()
 //    let padDictArray = dictArray (fromDict: boardArchiveDict, key: "PADS", &errorArray)
 //    for padDict in padDictArray {
 //      let pad = BoardModelPad (managedObjectContext:self.managedObjectContext())
@@ -580,7 +679,6 @@ extension MergerDocument {
 //      }
 //      padEntities.append (pad)
 //    }
-//    boardModel.pads_property.setProp (padEntities)
   //--- Dictionary import ok ?
     var boardModel : BoardModel? = nil
     if errorArray.count == 0 {
@@ -595,6 +693,9 @@ extension MergerDocument {
       boardModel?.backTracks_property.setProp (backTrackEntities)
       boardModel?.frontTracks_property.setProp (frontTrackEntities)
       boardModel?.vias_property.setProp (viaEntities)
+      boardModel?.frontPackages_property.setProp (frontPackagesEntities)
+      boardModel?.backPackages_property.setProp (backPackagesEntities)
+      boardModel?.pads_property.setProp (padEntities)
     }else{ // Error
       var s = ""
       for anError in errorArray {
@@ -706,51 +807,5 @@ fileprivate func passSeparators (_ inContentString : [UnicodeScalar], _ ioIndex 
 fileprivate func atEnd (_ inContentString : [UnicodeScalar], _ inIndex : Int) -> Bool {
   return inIndex == inContentString.count
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//fileprivate func getItems (_ kicadItem : KicadItem, _ inKey : String, _ ioErrorArray : inout [String]) -> [KicadItem] {
-//  var result = [KicadItem] ()
-//  switch kicadItem {
-//  case .string (let s) :
-//    ioErrorArray.append ("String '\(s)' reached")
-//  case .integer (let v) :
-//    ioErrorArray.append ("Integer '\(v)' reached")
-//  case .float (let v) :
-//    ioErrorArray.append ("Float '\(v)' reached")
-//  case .items (let key, let items) :
-//    if key == inKey {
-//      result = items
-//    }else{
-//      ioErrorArray.append ("Invalid '\(key)' key")
-//    }
-//  case .end :
-//    ioErrorArray.append ("End' reached")
-//  }
-//  return result
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//fileprivate func getItemsFromArray (_ kicadItems : [KicadItem], _ inKey : String, _ ioErrorArray : inout [String]) -> [KicadItem] {
-//  for item in kicadItems {
-//    switch item {
-//    case .string :
-//      ()
-//    case .integer :
-//      ()
-//    case .float :
-//      ()
-//    case .items (let key, let items) :
-//      if key == inKey {
-//        return items
-//      }
-//    case .end :
-//      ()
-//    }
-//  }
-//  ioErrorArray.append ("Unknown '\(inKey)' key")
-//  return [KicadItem] ()
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

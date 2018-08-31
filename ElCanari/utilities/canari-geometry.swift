@@ -63,3 +63,9 @@ func canariRotationToRadians (_ inCanariRotation : Int) -> CGFloat {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func degreesToCanariRotation (_ inRotationInDegrees : Double) -> Int {
+  return Int ((inRotationInDegrees * 1_000.0).rounded ())
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
