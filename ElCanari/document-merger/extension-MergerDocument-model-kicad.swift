@@ -15,129 +15,7 @@ fileprivate let DEBUG = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol KicadItem : class {
-
-  func display (_ inIndentationString : String, _ ioString : inout String)
-
-  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [String]) -> Double?
-
-  func collectTracks (_ ioFrontTrackEntities : inout [CanariSegment],
-                      _ ioBackTrackEntities : inout [CanariSegment],
-                      _ inModelLeftMM  : Double,
-                      _ inModelBottomMM : Double,
-                      _ ioErrorArray : inout [String],
-                      _ inMOC : EBManagedObjectContext)
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class KicadItemString : KicadItem {
-  let string : String
-
-  //····················································································································
-
-  init (_ inString : String) { string = inString }
-
-  //····················································································································
-
-  func display (_ inIndentationString : String, _ ioString : inout String) {
-    ioString += inIndentationString + "String '\(self.string)'\n"
-  }
-
-  //····················································································································
-
-  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [String]) -> Double? {
-    ioErrorArray.append ("String instead of float")
-    return nil
-  }
-
-  //····················································································································
-
-  func collectTracks (_ ioFrontTrackEntities : inout [CanariSegment],
-                      _ ioBackTrackEntities : inout [CanariSegment],
-                      _ inModelLeftMM  : Double,
-                      _ inModelBottomMM : Double,
-                      _ ioErrorArray : inout [String],
-                      _ inMOC : EBManagedObjectContext) {
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class KicadItemInt : KicadItem {
-  let value : Int
-
-  //····················································································································
-
-  init (_ inValue : Int) { value = inValue }
-
-  //····················································································································
-
-  func display (_ inIndentationString : String, _ ioString : inout String) {
-    ioString += inIndentationString + "Int '\(self.value)'\n"
-  }
-
-  //····················································································································
-
-  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [String]) -> Double? {
-    ioErrorArray.append ("Int instead of float")
-    return nil
-  }
-
-  //····················································································································
-
-  func collectTracks (_ ioFrontTrackEntities : inout [CanariSegment],
-                      _ ioBackTrackEntities : inout [CanariSegment],
-                      _ inModelLeftMM  : Double,
-                      _ inModelBottomMM : Double,
-                      _ ioErrorArray : inout [String],
-                      _ inMOC : EBManagedObjectContext) {
-  }
-
-  //····················································································································
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class KicadItemFloat : KicadItem {
-  let value : Double
-
-  //····················································································································
-
-  init (_ inValue : Double) { value = inValue }
-
-  //····················································································································
-
-  func display (_ inIndentationString : String, _ ioString : inout String) {
-    ioString += inIndentationString + "Double '\(self.value)'\n"
-  }
-
-  //····················································································································
-
-  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [String]) -> Double? {
-    return self.value
-  }
-
-  //····················································································································
-
-  func collectTracks (_ ioFrontTrackEntities : inout [CanariSegment],
-                      _ ioBackTrackEntities : inout [CanariSegment],
-                      _ inModelLeftMM  : Double,
-                      _ inModelBottomMM : Double,
-                      _ ioErrorArray : inout [String],
-                      _ inMOC : EBManagedObjectContext) {
-  }
-
-  //····················································································································
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class KicadItemArray : KicadItem {
+fileprivate class KicadItem {
   let key : String
   let items : [KicadItem]
 
@@ -157,16 +35,21 @@ class KicadItemArray : KicadItem {
 
   //····················································································································
 
-  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [String]) -> Double? {
+  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)]) -> Double? {
     var result : Double? = nil
     if inPath [0] == self.key {
       if inPath.count == 1 {
-        result = self.items [inIndex].getFloat ([], 0, &ioErrorArray)
+        if let r = Double (self.items [inIndex].key) {
+          result = r
+        }else{
+          ioErrorArray.append (("Key \(self.items [inIndex].key) is not a float", #line))
+        }
       }else{
         var search = true
         var idx = 0
         while search {
-          if let item = self.items [idx] as? KicadItemArray, item.key == inPath [1] {
+          let item = self.items [idx]
+          if item.key == inPath [1] {
             result = item.getFloat ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray)
             search = false
           }else{
@@ -175,14 +58,85 @@ class KicadItemArray : KicadItem {
           }
         }
         if idx == self.items.count {
-          ioErrorArray.append ("Key \(inPath [0]) not found")
+          ioErrorArray.append (("Key \(inPath [0]) not found", #line))
         }
       }
     }else{
-      ioErrorArray.append ("Invalid key \(self.key) instead of \(inPath [0])")
+      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", #line))
     }
     return result
   }
+
+  //····················································································································
+
+  func getString (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)]) -> String? {
+    var result : String? = nil
+    if inPath [0] == self.key {
+      if inPath.count == 1 {
+        result = self.items [inIndex].key
+      }else{
+        var search = true
+        var idx = 0
+        while search {
+          let item = self.items [idx]
+          if item.key == inPath [1] {
+            result = item.getString ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray)
+            search = false
+          }else{
+            idx += 1
+            search = idx < self.items.count
+          }
+        }
+        if idx == self.items.count {
+          ioErrorArray.append (("Key \(inPath [0]) not found", #line))
+        }
+      }
+    }else{
+      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", #line))
+    }
+    return result
+  }
+
+  //····················································································································
+
+  func getInt (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)]) -> Int? {
+    var result : Int? = nil
+    if inPath [0] == self.key {
+      if inPath.count == 1 {
+        if let r = Int (self.items [inIndex].key) {
+          result = r
+        }else{
+          ioErrorArray.append (("Key \(self.items [inIndex].key) is not an int", #line))
+        }
+      }else{
+        var search = true
+        var idx = 0
+        while search {
+          let item = self.items [idx]
+          if item.key == inPath [1] {
+            result = item.getInt ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray)
+            search = false
+          }else{
+            idx += 1
+            search = idx < self.items.count
+          }
+        }
+        if idx == self.items.count {
+          ioErrorArray.append (("Key \(inPath [0]) not found", #line))
+        }
+      }
+    }else{
+      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", #line))
+    }
+    return result
+  }
+
+  //····················································································································
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension KicadItem {
 
   //····················································································································
 
@@ -190,21 +144,28 @@ class KicadItemArray : KicadItem {
                       _ ioBackTrackEntities : inout [CanariSegment],
                       _ inModelLeftMM  : Double,
                       _ inModelBottomMM : Double,
-                      _ ioErrorArray : inout [String],
+                      _ ioErrorArray : inout [(String, Int)],
                       _ inMOC : EBManagedObjectContext) {
     if self.key == "segment" {
       if let startX = self.getFloat (["segment", "start"], 0, &ioErrorArray),
          let startY = self.getFloat (["segment", "start"], 1, &ioErrorArray),
          let endX = self.getFloat (["segment", "end"], 0, &ioErrorArray),
          let endY = self.getFloat (["segment", "end"], 1, &ioErrorArray),
-         let width = self.getFloat (["segment", "width"], 0, &ioErrorArray) {
+         let width = self.getFloat (["segment", "width"], 0, &ioErrorArray),
+         let layer = self.getString (["segment", "layer"], 0, &ioErrorArray) {
         let segment = CanariSegment (managedObjectContext: inMOC)
         segment.x1 = millimeterToCanariUnit (startX - inModelLeftMM)
         segment.y1 = millimeterToCanariUnit (startY - inModelBottomMM)
         segment.x2 = millimeterToCanariUnit (endX - inModelLeftMM)
         segment.y2 = millimeterToCanariUnit (endY - inModelBottomMM)
         segment.width = millimeterToCanariUnit (width)
-        ioFrontTrackEntities.append (segment)
+        if layer == "F.Cu" {
+          ioFrontTrackEntities.append (segment)
+        }else if layer == "B.Cu" {
+          ioBackTrackEntities.append (segment)
+        }else{
+          ioErrorArray.append (("Invalid segment layer \(layer)", #line))
+        }
       }
     }else{
       for item in self.items {
@@ -214,6 +175,102 @@ class KicadItemArray : KicadItem {
   }
 
   //····················································································································
+
+  func collectVias (_ ioViaEntities : inout [BoardModelVia],
+                    _ inModelLeftMM  : Double,
+                    _ inModelBottomMM : Double,
+                    _ inNetArray : [KicadNetClass],
+                    _ ioErrorArray : inout [(String, Int)],
+                    _ inMOC : EBManagedObjectContext) {
+    if self.key == "via" {
+      if let x = self.getFloat (["via", "at"], 0, &ioErrorArray),
+         let y = self.getFloat (["via", "at"], 1, &ioErrorArray),
+         let diameter = self.getFloat (["via", "size"], 0, &ioErrorArray),
+         let netIndex = self.getInt (["via", "net"], 0, &ioErrorArray) {
+        let via = BoardModelVia (managedObjectContext: inMOC)
+        via.x = millimeterToCanariUnit (x - inModelLeftMM)
+        via.y = millimeterToCanariUnit (y - inModelBottomMM)
+        via.padDiameter = millimeterToCanariUnit (diameter)
+        let netClass = inNetArray [netIndex]
+        via.holeDiameter = netClass.drillDiameter
+        ioViaEntities.append (via)
+      }
+    }else{
+      for item in self.items {
+        item.collectVias (&ioViaEntities, inModelLeftMM, inModelBottomMM, inNetArray, &ioErrorArray, inMOC)
+      }
+    }
+  }
+
+  //····················································································································
+
+  func collectNetNameArray (_ ioNetNameArray : inout [String],
+                            _ ioNetClassArray : inout [KicadNetClass],
+                            _ ioErrorArray : inout [(String, Int)]) {
+    var idx = 0
+    for item in self.items {
+      if item.key == "net" {
+        if let index = item.getInt (["net"], 0, &ioErrorArray), let name = item.getString (["net"], 1, &ioErrorArray) {
+          if index != idx {
+            ioErrorArray.append (("Invalid net index: \(index) instead of \(idx)", #line))
+          }
+          ioNetNameArray.append (name)
+          idx += 1
+        }
+      }else if item.key == "net_class" {
+        if let padDiameter = item.getFloat (["net_class", "via_dia"], 0, &ioErrorArray),
+           let holeDiameter = item.getFloat (["net_class", "via_drill"], 0, &ioErrorArray),
+           let name = item.getString (["net_class"], 0, &ioErrorArray) {
+          var netNameArray = [String] ()
+          for netClassItem in item.items {
+            if netClassItem.key == "add_net", let netName = netClassItem.getString (["add_net"], 0, &ioErrorArray) {
+              netNameArray.append (netName)
+            }
+          }
+          let netClass = KicadNetClass (
+            name: name,
+            padDiameter: millimeterToCanariUnit (padDiameter),
+            drillDiameter: millimeterToCanariUnit (holeDiameter),
+            netNames: netNameArray
+          )
+          ioNetClassArray.append (netClass)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate class KicadNetClass {
+  let name : String
+  let padDiameter : Int
+  let drillDiameter : Int
+  let netNames : [String]
+
+  //····················································································································
+
+  init (name inName : String, padDiameter inPadDiameter : Int, drillDiameter inDrillDiameter : Int, netNames inNetNames : [String]) {
+    name = inName
+    padDiameter = inPadDiameter
+    drillDiameter = inDrillDiameter
+    netNames = inNetNames
+  }
+
+  //····················································································································
+
+  init () {
+    name = "???"
+    padDiameter = 0
+    drillDiameter = 0
+    netNames = []
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -257,42 +314,63 @@ extension MergerDocument {
 //    contents?.display ("", &str)
 //    Swift.print (str)
   //--- Extraction board rect
-    var errorArray = [String] ()
-    let possibleLeft = contents?.getFloat (["kicad_pcb", "general", "area"], 0, &errorArray)
-    let possibleBottom = contents?.getFloat (["kicad_pcb", "general", "area"], 1, &errorArray)
-    let possibleRight = contents?.getFloat (["kicad_pcb", "general", "area"], 2, &errorArray)
-    let possibleTop = contents?.getFloat (["kicad_pcb", "general", "area"], 3, &errorArray)
+    var errorArray = [(String, Int)] ()
     var leftMM = 0.0
-    if let v = possibleLeft {
+    if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 0, &errorArray) {
       leftMM = v
     }else{
-      errorArray.append ("left is nil")
+      errorArray.append (("left is nil", #line))
     }
     var rightMM = 0.0
-    if let v = possibleRight {
+    if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 2, &errorArray) {
       rightMM = v
     }else{
-      errorArray.append ("right is nil")
+      errorArray.append (("right is nil", #line))
     }
     var bottomMM = 0.0
-    if let v = possibleBottom {
+    if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 1, &errorArray) {
       bottomMM = v
     }else{
-      errorArray.append ("bottom is nil")
+      errorArray.append (("bottom is nil", #line))
     }
     var topMM = 0.0
-    if let v = possibleTop {
+    if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 3, &errorArray) {
       topMM = v
     }else{
-      errorArray.append ("top is nil")
+      errorArray.append (("top is nil", #line))
     }
     let modelWidthMM = rightMM - leftMM
     let modelHeightMM = topMM - bottomMM
     // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
-  //--- Parse track
+  //--- Collect tracks
     var frontTrackEntities = [CanariSegment] ()
     var backTrackEntities = [CanariSegment] ()
     contents?.collectTracks (&frontTrackEntities, &backTrackEntities, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
+  //--- Collect net name array, net class array
+    var netNameArray = [String] ()
+    var netClassArray = [KicadNetClass] ()
+    contents?.collectNetNameArray (&netNameArray, &netClassArray, &errorArray)
+  //--- Build dictionary of net class, key by net name
+    var netDictionary = [String : KicadNetClass] ()
+    for netClass in netClassArray {
+      for netName in netClass.netNames {
+        netDictionary [netName] = netClass
+      }
+    }
+  //--- Build array of net class, index by net index
+  //    Note that net #0 ihas an empty name an is never used
+    var netArray = [KicadNetClass] ()
+    netArray.append (KicadNetClass ()) // Pseudo net #0
+    for netName in netNameArray.dropFirst () {
+      if let netClass = netDictionary [netName] {
+        netArray.append (netClass)
+      }else{
+        errorArray.append (("no net named \(netName)", #line))
+      }
+    }
+  //--- Collect vias
+    var viaEntities = [BoardModelVia] ()
+    contents?.collectVias (&viaEntities, leftMM, bottomMM, netArray, &errorArray, self.managedObjectContext ())
 
 
 
@@ -302,55 +380,6 @@ extension MergerDocument {
 //    let boardModel = BoardModel (managedObjectContext:self.managedObjectContext())
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
 //    var errorArray = [String] ()
-//    boardModel.name = inName
-//    boardModel.artworkName = string (fromDict: boardArchiveDict, key: "ARTWORK", &errorArray)
-//    boardModel.modelWidth = int (fromDict: boardArchiveDict, key: "BOARD-WIDTH", &errorArray)
-//    boardModel.modelWidthUnit = int (fromDict: boardArchiveDict, key: "BOARD-WIDTH-UNIT", &errorArray)
-//    boardModel.modelHeight = int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT", &errorArray)
-//    boardModel.modelHeightUnit = int (fromDict: boardArchiveDict, key: "BOARD-HEIGHT-UNIT", &errorArray)
-//    boardModel.modelLimitWidth = int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH", &errorArray)
-//    boardModel.modelLimitWidthUnit = int (fromDict: boardArchiveDict, key: "BOARD-LINE-WIDTH-UNIT", &errorArray)
-//  //--- Internal boards limits
-//    var internalBoardsLimitsEntities = [CanariSegment] ()
-//    let internalBoardsLimits = optionalStringArray (fromDict: boardArchiveDict, key: "INTERNAL-BOARDS-LIMITS", &errorArray)
-//    for str in internalBoardsLimits {
-//      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-//      let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
-//      internalBoardsLimitsEntities.append (segment)
-//    }
-//    boardModel.internalBoardsLimits_property.setProp (internalBoardsLimitsEntities)
-//  //--- Front tracks
-//    var frontTrackEntities = [CanariSegment] ()
-//    let frontTracks = stringArray (fromDict: boardArchiveDict, key: "TRACKS-FRONT", &errorArray)
-//    for str in frontTracks {
-//      let track = CanariSegment (managedObjectContext:self.managedObjectContext())
-//      let ints = array5int (fromString: str, &errorArray)
-//      track.x1 = ints [0]
-//      track.y1 = ints [1]
-//      track.x2 = ints [2]
-//      track.y2 = ints [3]
-//      track.width = ints [4]
-//      frontTrackEntities.append (track)
-//    }
-//    boardModel.frontTracks_property.setProp (frontTrackEntities)
-//  //--- Vias
-//    var viaEntities = [BoardModelVia] ()
-//    let vias = stringArray (fromDict: boardArchiveDict, key: "VIAS", &errorArray)
-//    for str in vias {
-//      let via = BoardModelVia (managedObjectContext:self.managedObjectContext())
-//      let ints = array4int (fromString: str, &errorArray)
-//      via.x = ints [0]
-//      via.y = ints [1]
-//      via.padDiameter = ints [2]
-//      via.holeDiameter = ints [3]
-//      viaEntities.append (via)
-//    }
-//    boardModel.vias_property.setProp (viaEntities)
 //  //--- Back Legend texts
 //    var backLegendLinesEntities = [CanariSegment] ()
 //    let backLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-BACK", &errorArray)
@@ -565,13 +594,14 @@ extension MergerDocument {
       boardModel?.modelLimitWidthUnit = ONE_MILLIMETER_IN_CANARI_UNIT
       boardModel?.backTracks_property.setProp (backTrackEntities)
       boardModel?.frontTracks_property.setProp (frontTrackEntities)
+      boardModel?.vias_property.setProp (viaEntities)
     }else{ // Error
       var s = ""
       for anError in errorArray {
         if s != "" {
           s += "\n"
         }
-        s += anError
+        s += anError.0 + " (line \(anError.1))"
       }
       let alert = NSAlert ()
       alert.messageText = "Cannot Analyse file contents"
@@ -623,7 +653,7 @@ fileprivate func parse (_ inContentString : [UnicodeScalar], _ ioIndex : inout I
           parseItems = false
         }
       }
-      result = KicadItemArray (key, items)
+      result = KicadItem (key, items)
     }else if inContentString [ioIndex] == "\"" { // String
       ioIndex += 1
       var str = ""
@@ -635,7 +665,7 @@ fileprivate func parse (_ inContentString : [UnicodeScalar], _ ioIndex : inout I
         ioIndex += 1
       }
       if DEBUG { print ("STRING '\(str)'") }
-      result = KicadItemString (str)
+      result = KicadItem (str, [])
     }else if (inContentString [ioIndex] > " ") && (inContentString [ioIndex] != ")") && (inContentString [ioIndex] != "(") {
       var str = String (inContentString [ioIndex])
       ioIndex += 1
@@ -645,13 +675,13 @@ fileprivate func parse (_ inContentString : [UnicodeScalar], _ ioIndex : inout I
         ioIndex += 1
         c = inContentString [ioIndex]
       }
-      if let integer = Int (str) {
-        result = KicadItemInt (integer)
-      }else if let v = Double (str) {
-        result = KicadItemFloat (v)
-      }else{
-        result = KicadItemString (str)
-      }
+//      if let integer = Int (str) {
+//        result = KicadItemInt (integer)
+//      }else if let v = Double (str) {
+//        result = KicadItemFloat (v)
+//      }else{
+        result = KicadItem (str, [])
+//      }
     }
   }
   return result
