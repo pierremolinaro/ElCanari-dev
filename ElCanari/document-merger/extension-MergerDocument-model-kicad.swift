@@ -26,23 +26,27 @@ fileprivate class KicadItem {
   //····················································································································
 
   func display (_ inIndentationString : String, _ ioString : inout String) {
-    ioString += inIndentationString + "('\(self.key)'\n"
-    for item in self.items {
-      item.display (inIndentationString + " ", &ioString)
+    if self.items.count == 0 {
+      ioString += inIndentationString + "'\(self.key)'\n"
+    }else{
+      ioString += inIndentationString + "('\(self.key)'\n"
+      for item in self.items {
+        item.display (inIndentationString + " ", &ioString)
+      }
+      ioString += inIndentationString + ")\n"
     }
-    ioString += inIndentationString + ")\n"
   }
 
   //····················································································································
 
-  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)]) -> Double? {
+  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> Double? {
     var result : Double? = nil
     if inPath [0] == self.key {
       if inPath.count == 1 {
         if let r = Double (self.items [inIndex].key) {
           result = r
         }else{
-          ioErrorArray.append (("Key \(self.items [inIndex].key) is not a float", #line))
+          ioErrorArray.append (("Key \(self.items [inIndex].key) is not a float", inLine))
         }
       }else{
         var search = true
@@ -50,7 +54,7 @@ fileprivate class KicadItem {
         while search {
           let item = self.items [idx]
           if item.key == inPath [1] {
-            result = item.getFloat ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray)
+            result = item.getFloat ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray, inLine)
             search = false
           }else{
             idx += 1
@@ -58,18 +62,18 @@ fileprivate class KicadItem {
           }
         }
         if idx == self.items.count {
-          ioErrorArray.append (("Key \(inPath [0]) not found", #line))
+          ioErrorArray.append (("Key \(inPath [1]) not found", inLine))
         }
       }
     }else{
-      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", #line))
+      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", inLine))
     }
     return result
   }
 
   //····················································································································
 
-  func getOptionalFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)]) -> Double? {
+  func getOptionalFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> Double? {
     var result : Double? = nil
     if inPath [0] == self.key {
       if inPath.count == 1 {
@@ -77,7 +81,7 @@ fileprivate class KicadItem {
           if let r = Double (self.items [inIndex].key) {
             result = r
           }else{
-            ioErrorArray.append (("Key \(self.items [inIndex].key) is not a float", #line))
+            ioErrorArray.append (("Key \(self.items [inIndex].key) is not a float", inLine))
           }
         }
       }else{
@@ -86,7 +90,7 @@ fileprivate class KicadItem {
         while search {
           let item = self.items [idx]
           if item.key == inPath [1] {
-            result = item.getOptionalFloat ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray)
+            result = item.getOptionalFloat ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray, inLine)
             search = false
           }else{
             idx += 1
@@ -95,14 +99,14 @@ fileprivate class KicadItem {
         }
       }
     }else{
-      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", #line))
+      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", inLine))
     }
     return result
   }
 
   //····················································································································
 
-  func getString (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)]) -> String? {
+  func getString (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> String? {
     var result : String? = nil
     if inPath [0] == self.key {
       if inPath.count == 1 {
@@ -113,7 +117,7 @@ fileprivate class KicadItem {
         while search {
           let item = self.items [idx]
           if item.key == inPath [1] {
-            result = item.getString ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray)
+            result = item.getString ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray, inLine)
             search = false
           }else{
             idx += 1
@@ -121,25 +125,52 @@ fileprivate class KicadItem {
           }
         }
         if idx == self.items.count {
-          ioErrorArray.append (("Key \(inPath [0]) not found", #line))
+          ioErrorArray.append (("Key \(inPath [1]) not found", inLine))
         }
       }
     }else{
-      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", #line))
+      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", inLine))
     }
     return result
   }
 
   //····················································································································
 
-  func getInt (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)]) -> Int? {
+  func getOptionalString (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> String? {
+    var result : String? = nil
+    if inPath [0] == self.key {
+      if inPath.count == 1 {
+        result = self.items [inIndex].key
+      }else{
+        var search = true
+        var idx = 0
+        while search {
+          let item = self.items [idx]
+          if item.key == inPath [1] {
+            result = item.getOptionalString ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray, inLine)
+            search = false
+          }else{
+            idx += 1
+            search = idx < self.items.count
+          }
+        }
+      }
+    }else{
+      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", inLine))
+    }
+    return result
+  }
+
+  //····················································································································
+
+  func getInt (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> Int? {
     var result : Int? = nil
     if inPath [0] == self.key {
       if inPath.count == 1 {
         if let r = Int (self.items [inIndex].key) {
           result = r
         }else{
-          ioErrorArray.append (("Key \(self.items [inIndex].key) is not an int", #line))
+          ioErrorArray.append (("Key \(self.items [inIndex].key) is not an int", inLine))
         }
       }else{
         var search = true
@@ -147,7 +178,7 @@ fileprivate class KicadItem {
         while search {
           let item = self.items [idx]
           if item.key == inPath [1] {
-            result = item.getInt ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray)
+            result = item.getInt ([String] (inPath.dropFirst ()), inIndex, &ioErrorArray, inLine)
             search = false
           }else{
             idx += 1
@@ -155,11 +186,11 @@ fileprivate class KicadItem {
           }
         }
         if idx == self.items.count {
-          ioErrorArray.append (("Key \(inPath [0]) not found", #line))
+          ioErrorArray.append (("Key \(inPath [1]) not found", #line))
         }
       }
     }else{
-      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", #line))
+      ioErrorArray.append (("Invalid key \(self.key) instead of \(inPath [0])", inLine))
     }
     return result
   }
@@ -180,12 +211,12 @@ extension KicadItem {
                       _ ioErrorArray : inout [(String, Int)],
                       _ inMOC : EBManagedObjectContext) {
     if self.key == "segment" {
-      if let startX = self.getFloat (["segment", "start"], 0, &ioErrorArray),
-         let startY = self.getFloat (["segment", "start"], 1, &ioErrorArray),
-         let endX = self.getFloat (["segment", "end"], 0, &ioErrorArray),
-         let endY = self.getFloat (["segment", "end"], 1, &ioErrorArray),
-         let width = self.getFloat (["segment", "width"], 0, &ioErrorArray),
-         let layer = self.getString (["segment", "layer"], 0, &ioErrorArray) {
+      if let startX = self.getFloat (["segment", "start"], 0, &ioErrorArray, #line),
+         let startY = self.getFloat (["segment", "start"], 1, &ioErrorArray, #line),
+         let endX = self.getFloat (["segment", "end"], 0, &ioErrorArray, #line),
+         let endY = self.getFloat (["segment", "end"], 1, &ioErrorArray, #line),
+         let width = self.getFloat (["segment", "width"], 0, &ioErrorArray, #line),
+         let layer = self.getString (["segment", "layer"], 0, &ioErrorArray, #line) {
         let segment = CanariSegment (managedObjectContext: inMOC)
         segment.x1 = millimeterToCanariUnit (startX - inModelLeftMM)
         segment.y1 = millimeterToCanariUnit (inModelBottomMM - startY)
@@ -216,10 +247,10 @@ extension KicadItem {
                     _ ioErrorArray : inout [(String, Int)],
                     _ inMOC : EBManagedObjectContext) {
     if self.key == "via" {
-      if let x = self.getFloat (["via", "at"], 0, &ioErrorArray),
-         let y = self.getFloat (["via", "at"], 1, &ioErrorArray),
-         let diameter = self.getFloat (["via", "size"], 0, &ioErrorArray),
-         let netIndex = self.getInt (["via", "net"], 0, &ioErrorArray) {
+      if let x = self.getFloat (["via", "at"], 0, &ioErrorArray, #line),
+         let y = self.getFloat (["via", "at"], 1, &ioErrorArray, #line),
+         let diameter = self.getFloat (["via", "size"], 0, &ioErrorArray, #line),
+         let netIndex = self.getInt (["via", "net"], 0, &ioErrorArray, #line) {
         let via = BoardModelVia (managedObjectContext: inMOC)
         via.x = millimeterToCanariUnit (x - inModelLeftMM)
         via.y = millimeterToCanariUnit (y - inModelBottomMM)
@@ -243,7 +274,8 @@ extension KicadItem {
     var idx = 0
     for item in self.items {
       if item.key == "net" {
-        if let index = item.getInt (["net"], 0, &ioErrorArray), let name = item.getString (["net"], 1, &ioErrorArray) {
+        if let index = item.getInt (["net"], 0, &ioErrorArray, #line),
+           let name = item.getString (["net"], 1, &ioErrorArray, #line) {
           if index != idx {
             ioErrorArray.append (("Invalid net index: \(index) instead of \(idx)", #line))
           }
@@ -251,12 +283,12 @@ extension KicadItem {
           idx += 1
         }
       }else if item.key == "net_class" {
-        if let padDiameter = item.getFloat (["net_class", "via_dia"], 0, &ioErrorArray),
-           let holeDiameter = item.getFloat (["net_class", "via_drill"], 0, &ioErrorArray),
-           let name = item.getString (["net_class"], 0, &ioErrorArray) {
+        if let padDiameter = item.getFloat (["net_class", "via_dia"], 0, &ioErrorArray, #line),
+           let holeDiameter = item.getFloat (["net_class", "via_drill"], 0, &ioErrorArray, #line),
+           let name = item.getString (["net_class"], 0, &ioErrorArray, #line) {
           var netNameArray = [String] ()
           for netClassItem in item.items {
-            if netClassItem.key == "add_net", let netName = netClassItem.getString (["add_net"], 0, &ioErrorArray) {
+            if netClassItem.key == "add_net", let netName = netClassItem.getString (["add_net"], 0, &ioErrorArray, #line) {
               netNameArray.append (netName)
             }
           }
@@ -277,27 +309,105 @@ extension KicadItem {
   func collectComponents (_ ioFrontPackagesEntities : inout [CanariSegment],
                           _ ioBackPackagesEntities : inout [CanariSegment],
                           _ ioPadEntities : inout [BoardModelPad],
+                          _ ioFrontComponentNamesEntities : inout [CanariSegment],
+                          _ ioBackComponentNamesEntities : inout [CanariSegment],
+                          _ ioFrontComponentValuesEntities : inout [CanariSegment],
+                          _ ioBackComponentValuesEntities : inout [CanariSegment],
+                          _ inKicadFont : [UnicodeScalar : KicadChar],
                           _ inModelLeftMM  : Double,
                           _ inModelBottomMM : Double,
                           _ ioErrorArray : inout [(String, Int)],
                           _ inMOC : EBManagedObjectContext) {
     if self.key == "module" {
-      if let x = self.getFloat (["module", "at"], 0, &ioErrorArray),
-         let y = self.getFloat (["module", "at"], 1, &ioErrorArray),
-         let layer = self.getString (["module", "layer"], 0, &ioErrorArray) {
-        let rotationInDegrees = self.getOptionalFloat (["module", "at"], 2, &ioErrorArray) ?? 0.0
+      if let x = self.getFloat (["module", "at"], 0, &ioErrorArray, #line),
+         let y = self.getFloat (["module", "at"], 1, &ioErrorArray, #line),
+         let layer = self.getString (["module", "layer"], 0, &ioErrorArray, #line) { // F.Cu, B.Cu
+        let rotationInDegrees = self.getOptionalFloat (["module", "at"], 2, &ioErrorArray, #line) ?? 0.0
         let transform = NSAffineTransform ()
         transform.scaleX (by: 1.0, yBy: -1.0)
         transform.translateX (by: CGFloat (x - inModelLeftMM), yBy: CGFloat (y - inModelBottomMM))
         transform.rotate (byDegrees: CGFloat (-rotationInDegrees))
         for item in self.items {
-          if item.key == "fp_line",
-                let startX = item.getFloat (["fp_line", "start"], 0, &ioErrorArray),
-                let startY = item.getFloat (["fp_line", "start"], 1, &ioErrorArray),
-                let endX = item.getFloat (["fp_line", "end"], 0, &ioErrorArray),
-                let endY = item.getFloat (["fp_line", "end"], 1, &ioErrorArray),
-                let widthMM = item.getFloat (["fp_line", "width"], 0, &ioErrorArray),
-                let lineLayer = item.getString (["fp_line", "layer"], 0, &ioErrorArray) {
+          if item.key == "fp_text",
+                let kind = item.getString (["fp_text"], 0, &ioErrorArray, #line), // reference, value, user
+                let value = item.getString (["fp_text"], 1, &ioErrorArray, #line),
+                let textLayer = item.getString (["fp_text", "layer"], 0, &ioErrorArray, #line),
+                let startX = item.getFloat (["fp_text", "at"], 0, &ioErrorArray, #line),
+                let startY = item.getFloat (["fp_text", "at"], 1, &ioErrorArray, #line),
+                let thickness = item.getOptionalFloat (["fp_text", "effects", "font", "thickness"], 0, &ioErrorArray, #line),
+                let fontSize = item.getOptionalFloat (["fp_text", "effects", "font", "size"], 0, &ioErrorArray, #line) {
+          //--- Mirror ?
+            let optionalMirror = item.getOptionalString (["fp_text", "effects", "justify"], 0, &ioErrorArray, #line)
+            let mirror : Double
+            if let mirrorString = optionalMirror, mirrorString == "mirror" {
+              mirror = -1.0
+            }else{
+              mirror = 1.0
+            }
+          //--- Compute string metrics
+            var stringWidth = 0.0
+            var descent = 0 // is >= 0
+            var ascent = 0  // is < 0
+            for unicodeChar in value.unicodeArray {
+              if let charDefinition = inKicadFont [unicodeChar] {
+                stringWidth += Double (charDefinition.advancement) * fontSize / 21.0
+                for charSegment in charDefinition.segments {
+                  let y1 = charSegment.y1
+                  if y1 > descent {
+                    descent = y1
+                  }
+                  if y1 < ascent {
+                    ascent = y1
+                  }
+                  let y2 = charSegment.y2
+                  if y2 > descent {
+                    descent = y2
+                  }
+                  if y2 < ascent {
+                    ascent = y2
+                  }
+                }
+              }
+            }
+            var segments = [CanariSegment] ()
+            var advancement = startX - mirror * stringWidth / 2.0
+            let textY = startY + Double (descent - ascent) * 0.5 * fontSize / 21.0
+            for unicodeChar in value.unicodeArray {
+              if let charDefinition = inKicadFont [unicodeChar] {
+                for charSegment in charDefinition.segments {
+                  let x1 = advancement + mirror * Double (charSegment.x1) * fontSize / 21.0
+                  let y1 = textY + Double (charSegment.y1) * fontSize / 21.0
+                  let x2 = advancement + mirror * Double (charSegment.x2) * fontSize / 21.0
+                  let y2 = textY + Double (charSegment.y2) * fontSize / 21.0
+                  let p1 = transform.transform (NSPoint (x:x1, y:y1))
+                  let p2 = transform.transform (NSPoint (x:x2, y:y2))
+                  let segment = CanariSegment (managedObjectContext: inMOC)
+                  segment.x1 = millimeterToCanariUnit (Double (p1.x))
+                  segment.y1 = millimeterToCanariUnit (Double (p1.y))
+                  segment.x2 = millimeterToCanariUnit (Double (p2.x))
+                  segment.y2 = millimeterToCanariUnit (Double (p2.y))
+                  segment.width = millimeterToCanariUnit (thickness)
+                  segments.append (segment)
+                }
+                advancement += mirror * Double (charDefinition.advancement) * fontSize / 21.0
+              }
+            }
+            if (kind == "reference") && (textLayer == "F.SilkS") {
+              ioFrontComponentNamesEntities += segments
+            }else if (kind == "reference") && (textLayer == "B.SilkS") {
+              ioBackComponentNamesEntities += segments
+            }else if (kind == "value") && (textLayer == "F.Fab") {
+              ioFrontComponentValuesEntities += segments
+            }else if (kind == "value") && (textLayer == "B.Fab") {
+              ioBackComponentValuesEntities += segments
+            }
+          }else if item.key == "fp_line",
+                let startX = item.getFloat (["fp_line", "start"], 0, &ioErrorArray, #line),
+                let startY = item.getFloat (["fp_line", "start"], 1, &ioErrorArray, #line),
+                let endX = item.getFloat (["fp_line", "end"], 0, &ioErrorArray, #line),
+                let endY = item.getFloat (["fp_line", "end"], 1, &ioErrorArray, #line),
+                let widthMM = item.getFloat (["fp_line", "width"], 0, &ioErrorArray, #line),
+                let lineLayer = item.getString (["fp_line", "layer"], 0, &ioErrorArray, #line) {
             let packageLine = CanariSegment (managedObjectContext: inMOC)
             let start = transform.transform (NSPoint (x: startX, y: startY))
             packageLine.x1 = millimeterToCanariUnit (Double(start.x))
@@ -318,13 +428,13 @@ extension KicadItem {
               ioErrorArray.append (("Invalid module layer: \(layer)", #line))
             }
           }else if item.key == "fp_arc",
-                let centerX = item.getFloat (["fp_arc", "start"], 0, &ioErrorArray),
-                let centerY = item.getFloat (["fp_arc", "start"], 1, &ioErrorArray),
-                let startX = item.getFloat (["fp_arc", "end"], 0, &ioErrorArray),
-                let startY = item.getFloat (["fp_arc", "end"], 1, &ioErrorArray),
-                let angle = item.getFloat (["fp_arc", "angle"], 0, &ioErrorArray),
-                let widthMM = item.getFloat (["fp_arc", "width"], 0, &ioErrorArray),
-                let lineLayer = item.getString (["fp_arc", "layer"], 0, &ioErrorArray) {
+                let centerX = item.getFloat (["fp_arc", "start"], 0, &ioErrorArray, #line),
+                let centerY = item.getFloat (["fp_arc", "start"], 1, &ioErrorArray, #line),
+                let startX = item.getFloat (["fp_arc", "end"], 0, &ioErrorArray, #line),
+                let startY = item.getFloat (["fp_arc", "end"], 1, &ioErrorArray, #line),
+                let angle = item.getFloat (["fp_arc", "angle"], 0, &ioErrorArray, #line),
+                let widthMM = item.getFloat (["fp_arc", "width"], 0, &ioErrorArray, #line),
+                let lineLayer = item.getString (["fp_arc", "layer"], 0, &ioErrorArray, #line) {
             let start = transform.transform (NSPoint (x: startX, y: startY))
             let center = transform.transform (NSPoint (x: centerX, y: centerY))
 //                let packageLine = CanariSegment (managedObjectContext: inMOC)
@@ -382,12 +492,12 @@ extension KicadItem {
               }
             }
           }else if item.key == "pad",
-                let padSideString = item.getString (["pad"], 1, &ioErrorArray), // thru_hole, smd, np_thru_hole
-                let padShapeString = item.getString (["pad"], 2, &ioErrorArray), // oval, rect, circle
-                let atX = item.getFloat (["pad", "at"], 0, &ioErrorArray),
-                let atY = item.getFloat (["pad", "at"], 1, &ioErrorArray),
-                let widthMM = item.getFloat (["pad", "size"], 0, &ioErrorArray),
-                let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray) {
+                let padSideString = item.getString (["pad"], 1, &ioErrorArray, #line), // thru_hole, smd, np_thru_hole
+                let padShapeString = item.getString (["pad"], 2, &ioErrorArray, #line), // oval, rect, circle
+                let atX = item.getFloat (["pad", "at"], 0, &ioErrorArray, #line),
+                let atY = item.getFloat (["pad", "at"], 1, &ioErrorArray, #line),
+                let widthMM = item.getFloat (["pad", "size"], 0, &ioErrorArray, #line),
+                let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray, #line) {
             let pad = BoardModelPad (managedObjectContext: inMOC)
             pad.qualifiedName = ""
             let padXY = transform.transform (NSPoint (x: atX, y: atY))
@@ -411,7 +521,7 @@ extension KicadItem {
             }
             if (padSideString == "thru_hole") || (padSideString == "np_thru_hole") {
               pad.side = .traversing
-              if let holeDiameter = item.getOptionalFloat (["pad", "drill"], 0, &ioErrorArray) {
+              if let holeDiameter = item.getOptionalFloat (["pad", "drill"], 0, &ioErrorArray, #line) {
                 pad.holeDiameter = millimeterToCanariUnit (holeDiameter)
               }
             }else if padSideString == "smd" {
@@ -425,7 +535,10 @@ extension KicadItem {
       }
     }else{
       for item in self.items {
-        item.collectComponents (&ioFrontPackagesEntities, &ioBackPackagesEntities, &ioPadEntities, inModelLeftMM, inModelBottomMM, &ioErrorArray, inMOC)
+        item.collectComponents (&ioFrontPackagesEntities, &ioBackPackagesEntities, &ioPadEntities,
+                                &ioFrontComponentNamesEntities, &ioBackComponentNamesEntities,
+                                &ioFrontComponentValuesEntities, &ioBackComponentValuesEntities,
+                                inKicadFont, inModelLeftMM, inModelBottomMM, &ioErrorArray, inMOC)
       }
     }
   }
@@ -494,40 +607,35 @@ extension MergerDocument {
   func parseBoardModel_kicad (fromData inData : Data, named inName : String) -> BoardModel? {
     var boardModel : BoardModel? = nil
     if let contentString = String (data: inData, encoding: .utf8) {
-    //--- Transform string into an array of unicode scalars
-      var array = [UnicodeScalar] ()
-      for scalar in contentString.unicodeScalars {
-        array.append (scalar)
-      }
-      var index = 0
     //--- Parse
-      let contents = parse (array, &index)
-    //--- Analyze
-  //    var str = ""
-  //    contents?.display ("", &str)
-  //    Swift.print (str)
+      var index = 0
+      let contents = parse (contentString.unicodeArray, &index)
+    //--- Display
+//      var str = ""
+//      contents?.display ("", &str)
+//      Swift.print (str)
     //--- Extraction board rect
       var errorArray = [(String, Int)] ()
       var leftMM = 0.0
-      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 0, &errorArray) {
+      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 0, &errorArray, #line) {
         leftMM = v
       }else{
         errorArray.append (("left is nil", #line))
       }
       var rightMM = 0.0
-      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 2, &errorArray) {
+      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 2, &errorArray, #line) {
         rightMM = v
       }else{
         errorArray.append (("right is nil", #line))
       }
       var topMM = 0.0 // the Y-axis is pointing down
-      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 1, &errorArray) {
+      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 1, &errorArray, #line) {
         topMM = v
       }else{
         errorArray.append (("bottom is nil", #line))
       }
       var bottomMM = 0.0 // the Y-axis is pointing down
-      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 3, &errorArray) {
+      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 3, &errorArray, #line) {
         bottomMM = v
       }else{
         errorArray.append (("top is nil", #line))
@@ -565,18 +673,22 @@ extension MergerDocument {
       var viaEntities = [BoardModelVia] ()
       contents?.collectVias (&viaEntities, leftMM, bottomMM, netArray, &errorArray, self.managedObjectContext ())
     //---- Collect components
+      let font : [UnicodeScalar : KicadChar] = kicadFont ()
       var padEntities = [BoardModelPad] ()
       var frontPackagesEntities = [CanariSegment] ()
       var backPackagesEntities = [CanariSegment] ()
-      contents?.collectComponents (&frontPackagesEntities, &backPackagesEntities, &padEntities, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
+      var backComponentNamesEntities = [CanariSegment] ()
+      var frontComponentNamesEntities = [CanariSegment] ()
+      var frontComponentValuesEntities = [CanariSegment] ()
+      var backComponentValuesEntities = [CanariSegment] ()
+      contents?.collectComponents (&frontPackagesEntities, &backPackagesEntities, &padEntities,
+                                   &frontComponentNamesEntities, &backComponentNamesEntities,
+                                   &frontComponentValuesEntities, &backComponentValuesEntities,
+                                   font, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
 
 
 
 
-    //  NSLog ("\(boardArchiveDict)")
-  //    let boardModel = BoardModel (managedObjectContext:self.managedObjectContext())
-    //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
-  //    var errorArray = [String] ()
   //  //--- Back Legend texts
   //    var backLegendLinesEntities = [CanariSegment] ()
   //    let backLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-BACK", &errorArray)
@@ -661,62 +773,6 @@ extension MergerDocument {
   //      frontLegendTextEntities.append (segment)
   //    }
   //    boardModel.frontLegendTexts_property.setProp (frontLegendTextEntities)
-  //  //--- Back component names
-  //    var backComponentNamesEntities = [CanariSegment] ()
-  //    let backComponentNames = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-NAMES-BACK", &errorArray)
-  //    for str in backComponentNames {
-  //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &errorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      backComponentNamesEntities.append (segment)
-  //    }
-  //    boardModel.backComponentNames_property.setProp (backComponentNamesEntities)
-  //  //--- Front component names
-  //    var frontComponentNamesEntities = [CanariSegment] ()
-  //    let frontComponentNames = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-NAMES-FRONT", &errorArray)
-  //    for str in frontComponentNames {
-  //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &errorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      frontComponentNamesEntities.append (segment)
-  //    }
-  //    boardModel.frontComponentNames_property.setProp (frontComponentNamesEntities)
-  //  //--- Front component values
-  //    var frontComponentValuesEntities = [CanariSegment] ()
-  //    let frontComponentValues = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-VALUES-FRONT", &errorArray)
-  //    for str in frontComponentValues {
-  //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &errorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      frontComponentValuesEntities.append (segment)
-  //    }
-  //    boardModel.frontComponentValues_property.setProp (frontComponentValuesEntities)
-  //  //--- Back component values
-  //    var backComponentValuesEntities = [CanariSegment] ()
-  //    let backComponentValues = stringArray (fromDict: boardArchiveDict, key: "COMPONENT-VALUES-BACK", &errorArray)
-  //    for str in backComponentValues {
-  //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &errorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      backComponentValuesEntities.append (segment)
-  //    }
-  //    boardModel.backComponentValues_property.setProp (backComponentValuesEntities)
     //--- Dictionary import ok ?
       if errorArray.count == 0 {
         boardModel = BoardModel (managedObjectContext: self.managedObjectContext ())
@@ -733,6 +789,10 @@ extension MergerDocument {
         boardModel?.frontPackages_property.setProp (frontPackagesEntities)
         boardModel?.backPackages_property.setProp (backPackagesEntities)
         boardModel?.pads_property.setProp (padEntities)
+        boardModel?.backComponentNames_property.setProp (backComponentNamesEntities)
+        boardModel?.frontComponentNames_property.setProp (frontComponentNamesEntities)
+        boardModel?.frontComponentValues_property.setProp (frontComponentValuesEntities)
+        boardModel?.backComponentValues_property.setProp (backComponentValuesEntities)
       }else{ // Error
         var s = ""
         for anError in errorArray {
@@ -844,6 +904,20 @@ fileprivate func passSeparators (_ inContentString : [UnicodeScalar], _ ioIndex 
 
 fileprivate func atEnd (_ inContentString : [UnicodeScalar], _ inIndex : Int) -> Bool {
   return inIndex == inContentString.count
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension String {
+
+  var unicodeArray : [UnicodeScalar] {
+    var array = [UnicodeScalar] ()
+    for scalar in self.unicodeScalars {
+      array.append (scalar)
+    }
+    return array
+  }
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -77,7 +77,7 @@ static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], i
         if (penDown) {
           cout << "  line (" << point.x << ", " << point.y << ") --> (" << newPoint.x << ", " << newPoint.y << ")" << endl ;
           if (j <= 94) {
-            fprintf (f, "  segments.append (KicadCharSegment (x1: %d, y1:%d, x2:%d, y2: %d))\n", point.x, -point.y, newPoint.x, -newPoint.y) ;
+            fprintf (f, "  segments.append (KicadCharSegment (x1: %d, y1:%d, x2:%d, y2: %d))\n", point.x, point.y, newPoint.x, newPoint.y) ;
           }
         }else{
           penDown = true ;

@@ -10,6 +10,9 @@
 build/**
 *.o
 *.dep
+other-projects/extract-kicad-font/build/**
+other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/project.xcworkspace/**
+other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/xcuserdata/**
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

@@ -744,7 +744,6 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
-				CF4646C1213AA47C0062ECFD /* kicad-font.swift */,
 				CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */,
 				CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */,
 				CFD7E80420EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift */,
@@ -780,6 +779,7 @@
 				CFB4801B20DC2BBD00CF9639 /* extension-MergerDocument-model-ElCanari.swift */,
 				CFE5C0B12137086C009DF4C3 /* extension-MergerDocument-model-kicad.swift */,
 				CF06E7C220E802AD00EA47B9 /* extension-MergerDocument-model-update.swift */,
+				CF4646C1213AA47C0062ECFD /* kicad-font.swift */,
 				CFD7EA2020E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift */,
 				CF55994F1FDF364400ED5EE6 /* MergerDocument.swift */,
 				CF5599501FDF364400ED5EE6 /* MergerDocument.xib */,
