@@ -65,6 +65,7 @@
 		CF45496C1DD660D7003C0579 /* import-legacy-font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45496B1DD660D7003C0579 /* import-legacy-font.swift */; };
 		CF45B2731BFE8274004AFFC2 /* EBIntField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45B2721BFE8274004AFFC2 /* EBIntField.swift */; };
 		CF4634451BEE10890064C49B /* ApplicationDelegate+new-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4634441BEE10890064C49B /* ApplicationDelegate+new-document.swift */; };
+		CF4646C2213AA47C0062ECFD /* kicad-font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4646C1213AA47C0062ECFD /* kicad-font.swift */; };
 		CF4B7C751BEBEA7C00627E76 /* CanariToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B7C741BEBEA7C00627E76 /* CanariToolbar.swift */; };
 		CF4B7D591BEC030100627E76 /* CanariAppUpdaterSparkleSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B7D581BEC030100627E76 /* CanariAppUpdaterSparkleSettings.swift */; };
 		CF4C2C431DD9EA03002D570F /* Preferences+updateLibraryFromRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C2C421DD9EA03002D570F /* Preferences+updateLibraryFromRepository.swift */; };
@@ -420,6 +421,7 @@
 		CF45496B1DD660D7003C0579 /* import-legacy-font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "import-legacy-font.swift"; sourceTree = "<group>"; };
 		CF45B2721BFE8274004AFFC2 /* EBIntField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBIntField.swift; sourceTree = "<group>"; };
 		CF4634441BEE10890064C49B /* ApplicationDelegate+new-document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApplicationDelegate+new-document.swift"; sourceTree = "<group>"; };
+		CF4646C1213AA47C0062ECFD /* kicad-font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "kicad-font.swift"; sourceTree = "<group>"; };
 		CF4B7C741BEBEA7C00627E76 /* CanariToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariToolbar.swift; sourceTree = "<group>"; };
 		CF4B7D581BEC030100627E76 /* CanariAppUpdaterSparkleSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariAppUpdaterSparkleSettings.swift; sourceTree = "<group>"; };
 		CF4C2C421DD9EA03002D570F /* Preferences+updateLibraryFromRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Preferences+updateLibraryFromRepository.swift"; sourceTree = "<group>"; };
@@ -742,6 +744,7 @@
 		CF55994D1FDF361000ED5EE6 /* document-merger */ = {
 			isa = PBXGroup;
 			children = (
+				CF4646C1213AA47C0062ECFD /* kicad-font.swift */,
 				CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */,
 				CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */,
 				CFD7E80420EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift */,
@@ -1450,6 +1453,7 @@
 				CFF2653B20E689ED00525C0F /* transient-BoardModel-backLayoutTextsSegments.swift in Sources */,
 				CFB8E4571B4978FE00D4B8AD /* EBTextView.swift in Sources */,
 				CFE5C0B22137086C009DF4C3 /* extension-MergerDocument-model-kicad.swift in Sources */,
+				CF4646C2213AA47C0062ECFD /* kicad-font.swift in Sources */,
 				CF6172651B3C4BA900F3CA82 /* generic-bindings.swift in Sources */,
 				CFC9566F20E25F4000B7F94F /* EBMenuItem.swift in Sources */,
 				CF71F9281B3EA3DF00FB5049 /* EBPopUpButton.swift in Sources */,
