@@ -313,7 +313,7 @@ extension KicadItem {
                           _ ioBackComponentNamesEntities : inout [CanariSegment],
                           _ ioFrontComponentValuesEntities : inout [CanariSegment],
                           _ ioBackComponentValuesEntities : inout [CanariSegment],
-                          _ inKicadFont : [UnicodeScalar : KicadChar],
+                          _ inKicadFont : [UInt32 : KicadChar],
                           _ inModelLeftMM  : Double,
                           _ inModelBottomMM : Double,
                           _ ioErrorArray : inout [(String, Int)],
@@ -349,7 +349,7 @@ extension KicadItem {
             var descent = 0 // is >= 0
             var ascent = 0  // is < 0
             for unicodeChar in value.unicodeArray {
-              if let charDefinition = inKicadFont [unicodeChar] {
+              if let charDefinition = inKicadFont [unicodeChar.value] {
                 stringWidth += Double (charDefinition.advancement) * fontSize / 21.0
                 for charSegment in charDefinition.segments {
                   let y1 = charSegment.y1
@@ -373,7 +373,7 @@ extension KicadItem {
             var advancement = startX - mirror * stringWidth / 2.0
             let textY = startY + Double (descent - ascent) * 0.5 * fontSize / 21.0
             for unicodeChar in value.unicodeArray {
-              if let charDefinition = inKicadFont [unicodeChar] {
+              if let charDefinition = inKicadFont [unicodeChar.value] {
                 for charSegment in charDefinition.segments {
                   let x1 = advancement + mirror * Double (charSegment.x1) * fontSize / 21.0
                   let y1 = textY + Double (charSegment.y1) * fontSize / 21.0
@@ -673,7 +673,7 @@ extension MergerDocument {
       var viaEntities = [BoardModelVia] ()
       contents?.collectVias (&viaEntities, leftMM, bottomMM, netArray, &errorArray, self.managedObjectContext ())
     //---- Collect components
-      let font : [UnicodeScalar : KicadChar] = kicadFont ()
+      let font : [UInt32 : KicadChar] = kicadFont ()
       var padEntities = [BoardModelPad] ()
       var frontPackagesEntities = [CanariSegment] ()
       var backPackagesEntities = [CanariSegment] ()

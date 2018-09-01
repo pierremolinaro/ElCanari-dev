@@ -30,67 +30,60 @@ typedef struct {
 // From kicad source stroke_font.cpp
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], int aNewStrokeFontSize) {
-  for (int j = 0 ; j < aNewStrokeFontSize ; j++) {
-    if (j <= 94) {
-      fprintf (f, "//--- Character %C\n", wchar_t (j + ' ')) ;
-      fprintf (f, "  segments = [KicadCharSegment] ()\n") ;
+static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], const int inIndex) {
+  fprintf (f, "//--- Character \\u%04x\n", wchar_t (inIndex + ' ')) ;
+  fprintf (f, "  segments = [KicadCharSegment] ()\n") ;
+
+  const wchar_t s = inIndex + ' ' ;
+  printf ("Character #%d: %C\n", inIndex, s) ;
+  int glyphStartX = 0 ;
+  int glyphEndX = 0 ;
+  bool penDown = false ;
+  VECTOR2D point = {0, 0} ;
+  int i = 0 ;
+
+  while (aNewStrokeFont [inIndex] [i]) {
+    char coordinate[2] = { 0, } ;
+
+    for (int k = 0 ; k < 2 ; k++) {
+      coordinate [k] = aNewStrokeFont [inIndex] [i + k] ;
     }
-    const wchar_t s = j + ' ' ;
-    printf ("Character #%d: %C\n", j, s) ;
-    int glyphStartX = 0 ;
-    int glyphEndX = 0 ;
-    bool penDown = false ;
-    VECTOR2D point = {0, 0} ;
-    int i = 0 ;
 
-    while (aNewStrokeFont [j] [i]) {
-      char coordinate[2] = { 0, } ;
-
-      for (int k = 0 ; k < 2 ; k++) {
-        coordinate [k] = aNewStrokeFont [j] [i + k] ;
-      }
-
-      if ( i < 2 ) { // The first two values contain the width of the char
-        glyphStartX = coordinate [0] - 'R' ;
-        glyphEndX   = coordinate [1] - 'R' ;
-        cout << "  Start " << glyphStartX << ", end " << glyphEndX << endl ;
-      }else if ((coordinate[0] == ' ') && (coordinate[1] == 'R')) {
-        penDown = false ;
+    if (i < 2) { // The first two values contain the width of the char
+      glyphStartX = coordinate [0] - 'R' ;
+      glyphEndX   = coordinate [1] - 'R' ;
+      cout << "  Start " << glyphStartX << ", end " << glyphEndX << endl ;
+    }else if ((coordinate[0] == ' ') && (coordinate[1] == 'R')) {
+      penDown = false ;
+    }else{
+      VECTOR2D newPoint = {0, 0} ;
+      // In stroke font, coordinates values are coded as <value> + 'R',
+      // <value> is an ASCII char.
+      // therefore every coordinate description of the Hershey format has an offset,
+      // it has to be subtracted
+      // Note:
+      //  * the stroke coordinates are stored in reduced form (-1.0 to +1.0),
+      //    and the actual size is stroke coordinate * glyph size
+      //  * a few shapes have a height slightly bigger than 1.0 ( like '{' '[' )
+      newPoint.x = coordinate[0] - 'R' - glyphStartX ;
+      #define FONT_OFFSET -10
+      // FONT_OFFSET is here for historical reasons, due to the way the stroke font
+      // was built. It allows shapes coordinates like W M ... to be >= 0
+      // Only shapes like j y have coordinates < 0
+      newPoint.y = coordinate[1] - 'R' + FONT_OFFSET ;
+      // cout << "  (" << newPoint.x << ", " << newPoint.y << ")" << endl ;
+      if (penDown) {
+        cout << "  line (" << point.x << ", " << point.y << ") --> (" << newPoint.x << ", " << newPoint.y << ")" << endl ;
+        fprintf (f, "  segments.append (KicadCharSegment (x1: %d, y1:%d, x2:%d, y2: %d))\n", point.x, point.y, newPoint.x, newPoint.y) ;
       }else{
-        VECTOR2D newPoint = {0, 0} ;
-        // In stroke font, coordinates values are coded as <value> + 'R',
-        // <value> is an ASCII char.
-        // therefore every coordinate description of the Hershey format has an offset,
-        // it has to be subtracted
-        // Note:
-        //  * the stroke coordinates are stored in reduced form (-1.0 to +1.0),
-        //    and the actual size is stroke coordinate * glyph size
-        //  * a few shapes have a height slightly bigger than 1.0 ( like '{' '[' )
-        newPoint.x = coordinate[0] - 'R' - glyphStartX ;
-        #define FONT_OFFSET -10
-        // FONT_OFFSET is here for historical reasons, due to the way the stroke font
-        // was built. It allows shapes coordinates like W M ... to be >= 0
-        // Only shapes like j y have coordinates < 0
-        newPoint.y = coordinate[1] - 'R' + FONT_OFFSET ;
-        // cout << "  (" << newPoint.x << ", " << newPoint.y << ")" << endl ;
-        if (penDown) {
-          cout << "  line (" << point.x << ", " << point.y << ") --> (" << newPoint.x << ", " << newPoint.y << ")" << endl ;
-          if (j <= 94) {
-            fprintf (f, "  segments.append (KicadCharSegment (x1: %d, y1:%d, x2:%d, y2: %d))\n", point.x, point.y, newPoint.x, newPoint.y) ;
-          }
-        }else{
-          penDown = true ;
-        }
-        point = newPoint ;
+        penDown = true ;
       }
+      point = newPoint ;
+    }
 
-      i += 2 ;
-    }
-    if (j <= 94) {
-      fprintf (f, "  dict [UnicodeScalar (%u)] = KicadChar (advancement: %d, segments: segments)\n", j + ' ', glyphEndX - glyphStartX) ;
-    }
+    i += 2 ;
   }
+  fprintf (f, "  dict [%u] = KicadChar (advancement: %d, segments: segments)\n", inIndex + ' ', glyphEndX - glyphStartX) ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -129,11 +122,31 @@ int main(int argc, const char * argv[]) {
   fprintf (f, "}\n\n") ;
   fprintf (f, separator) ;
   fprintf (f, "\n") ;
-  fprintf (f, "func kicadFont () -> [UnicodeScalar : KicadChar] {\n") ;
-  fprintf (f, "  var dict = [UnicodeScalar : KicadChar] ()\n") ;
+  fprintf (f, "func kicadFont () -> [UInt32 : KicadChar] {\n") ;
+  fprintf (f, "  var dict = [UInt32 : KicadChar] ()\n") ;
   fprintf (f, "  var segments : [KicadCharSegment]\n") ;
 
-  loadNewStrokeFont (f, newstroke_font, newstroke_font_bufsize) ;
+  for (int idx = (' ' - ' ') ; idx <= ('~' - ' ') ; idx++) {
+    loadNewStrokeFont (f, newstroke_font, idx) ;
+  }
+  for (int idx = (0xA0 - ' ') ; idx <= (0x2FF - ' ') ; idx++) {
+    loadNewStrokeFont (f, newstroke_font, idx) ;
+  }
+  for (int idx = (0x370 - ' ') ; idx <= (0x523 - ' ') ; idx++) {
+    loadNewStrokeFont (f, newstroke_font, idx) ;
+  }
+  for (int idx = (0x1D00 - ' ') ; idx <= (0x1D7F - ' ') ; idx++) {
+    loadNewStrokeFont (f, newstroke_font, idx) ;
+  }
+  for (int idx = (0x1E00 - ' ') ; idx <= (0x20B5 - ' ') ; idx++) {
+    loadNewStrokeFont (f, newstroke_font, idx) ;
+  }
+  for (int idx = (0x2190 - ' ') ; idx <= (0x23E7 - ' ') ; idx++) {
+    loadNewStrokeFont (f, newstroke_font, idx) ;
+  }
+  for (int idx = (0x25A0 - ' ') ; idx <= (0x25FE - ' ') ; idx++) {
+    loadNewStrokeFont (f, newstroke_font, idx) ;
+  }
   fprintf (f, "//--- Return\n") ;
   fprintf (f, "  return dict\n") ;
   fprintf (f, "}\n\n") ;
