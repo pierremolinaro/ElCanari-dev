@@ -499,7 +499,7 @@ extension KicadItem {
                 let widthMM = item.getFloat (["pad", "size"], 0, &ioErrorArray, #line),
                 let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray, #line) {
             let pad = BoardModelPad (managedObjectContext: inMOC)
-            pad.qualifiedName = ""
+//            pad.qualifiedName = ""
             let padXY = transform.transform (NSPoint (x: atX, y: atY))
             pad.x = millimeterToCanariUnit (Double(padXY.x))
             pad.y = millimeterToCanariUnit (Double(padXY.y))

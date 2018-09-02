@@ -138,7 +138,7 @@ extension MergerDocument {
         let d = NSMutableDictionary ()
         d ["HEIGHT"] = pad.height
         d ["HOLE-DIAMETER"] = pad.holeDiameter
-        d ["QUALIFIED-NAME"] = pad.qualifiedName
+//        d ["QUALIFIED-NAME"] = pad.qualifiedName
         d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
         switch pad.shape {
         case .rectangular :
