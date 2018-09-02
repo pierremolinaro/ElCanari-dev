@@ -10,6 +10,9 @@ document MergerDocument root MergerRoot {
     $run self.showPrefsForSettingMergerDisplayAction
     $enabled root.selectedPageIndex <= 1 ;
 
+  outlet EBButton dismissPrefsForSettingMergerDisplayButton
+    $run self.showPrefsForSettingMergerDisplayAction ;
+
 #--- Issues
   transient InstanceIssueArray issues dependsFrom 
     root.overlapingArrangment, root.boardRect, root.boardDisplayRect,

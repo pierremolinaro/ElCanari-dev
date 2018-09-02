@@ -14,6 +14,7 @@ import Cocoa
 
   @IBOutlet var addBoardModelButton : EBButton?
   @IBOutlet var boardHelpPanel : NSPanel?
+  @IBOutlet var dismissPrefsForSettingMergerDisplayButton : EBButton?
   @IBOutlet var mArrowMagnitudeTextField : CanariDimensionTextField?
   @IBOutlet var mArrowMagnitudeUnitPopUp : EBPopUpButton?
   @IBOutlet var mArtworNameTextField : EBTextObserverField?
@@ -313,6 +314,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'boardHelpPanel' outlet is not an instance of 'NSPanel'") ;
+    }
+    if nil == dismissPrefsForSettingMergerDisplayButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'dismissPrefsForSettingMergerDisplayButton' outlet is nil") ;
+//    }else if !dismissPrefsForSettingMergerDisplayButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'dismissPrefsForSettingMergerDisplayButton' outlet is not an instance of 'EBButton'") ;
     }
     if nil == mArrowMagnitudeTextField {
       presentErrorWindow (file: #file,
@@ -2024,6 +2034,8 @@ import Cocoa
   //--------------------------- Set targets / actions
     showPrefsForSettingMergerDisplayButton?.target = self
     showPrefsForSettingMergerDisplayButton?.action = #selector (MergerDocument.showPrefsForSettingMergerDisplayAction (_:))
+    dismissPrefsForSettingMergerDisplayButton?.target = self
+    dismissPrefsForSettingMergerDisplayButton?.action = #selector (MergerDocument.showPrefsForSettingMergerDisplayAction (_:))
     addBoardModelButton?.target = self
     addBoardModelButton?.action = #selector (MergerDocument.addBoardModelAction (_:))
     removeBoardModelButton?.target = mBoardModelController
@@ -2243,6 +2255,7 @@ import Cocoa
     self.rootObject.artworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
   //--------------------------- Remove targets / actions
     showPrefsForSettingMergerDisplayButton?.target = nil
+    dismissPrefsForSettingMergerDisplayButton?.target = nil
     addBoardModelButton?.target = nil
     removeBoardModelButton?.target = nil
     updateBoardModelButton?.target = nil
@@ -2256,6 +2269,7 @@ import Cocoa
   //--------------------------- Clean up outlets
     self.addBoardModelButton?.ebCleanUp ()
     self.boardHelpPanel?.ebCleanUp ()
+    self.dismissPrefsForSettingMergerDisplayButton?.ebCleanUp ()
     self.mArrowMagnitudeTextField?.ebCleanUp ()
     self.mArrowMagnitudeUnitPopUp?.ebCleanUp ()
     self.mArtworNameTextField?.ebCleanUp ()

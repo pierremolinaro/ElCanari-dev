@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="addBoardModelButton" destination="2Wu-Dh-CTo" id="Ge9-7X-rm9"/>
                 <outlet property="boardHelpPanel" destination="PAN-4y-duD" id="1Kd-pk-TW5"/>
+                <outlet property="dismissPrefsForSettingMergerDisplayButton" destination="p7c-wF-1Pv" id="3xx-rx-24b"/>
                 <outlet property="mArrowMagnitudeTextField" destination="ieK-KT-COc" id="EI3-8E-511"/>
                 <outlet property="mArrowMagnitudeUnitPopUp" destination="vEq-FZ-5D6" id="v9B-cX-PiQ"/>
                 <outlet property="mArtworNameTextField" destination="syb-21-rHW" id="MoL-GG-Y9o"/>
@@ -243,7 +244,7 @@ AAAAAAEGA
             <connections>
                 <outlet property="initialFirstResponder" destination="nao-E9-sci" id="dKx-uJ-l3w"/>
             </connections>
-            <point key="canvasLocation" x="1511" y="-185"/>
+            <point key="canvasLocation" x="1582" y="-205"/>
         </window>
         <customView wantsLayer="YES" id="67F-em-F8g" userLabel="Page : Models" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="700" height="500"/>
@@ -1394,22 +1395,22 @@ AAAAAAEGA
             </connections>
         </menu>
         <customView wantsLayer="YES" misplaced="YES" id="gM7-40-CET" userLabel="View : Display settings" customClass="CanariViewWithBackground" customModule="ElCanari" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="260" height="679"/>
+            <rect key="frame" x="0.0" y="0.0" width="260" height="733"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <subviews>
                 <customView misplaced="YES" id="KG5-rN-Y3k">
-                    <rect key="frame" x="0.0" y="-2" width="260" height="681"/>
+                    <rect key="frame" x="0.0" y="-2" width="260" height="735"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <subviews>
                         <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="yde-Z5-dGm">
-                            <rect key="frame" x="0.0" y="-16" width="260" height="697"/>
+                            <rect key="frame" x="0.0" y="39" width="260" height="696"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" id="FKc-MP-5iw">
-                                <rect key="frame" x="1" y="1" width="243" height="680"/>
+                                <rect key="frame" x="1" y="1" width="243" height="679"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <customView misplaced="YES" id="DvX-Ap-QJ4">
-                                        <rect key="frame" x="0.0" y="75" width="240" height="680"/>
+                                        <rect key="frame" x="0.0" y="74" width="240" height="680"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <button misplaced="YES" id="Lb2-iL-9kP" customClass="EBSwitch">
@@ -2118,18 +2119,26 @@ AAAAAAEGA
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </clipView>
                             <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="8ym-ed-EAm">
-                                <rect key="frame" x="1" y="681" width="243" height="15"/>
+                                <rect key="frame" x="1" y="680" width="243" height="15"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
-                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="YoT-bf-vnS">
-                                <rect key="frame" x="244" y="1" width="15" height="680"/>
+                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="YoT-bf-vnS">
+                                <rect key="frame" x="244" y="1" width="15" height="679"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
+                        <button verticalHuggingPriority="750" misplaced="YES" id="p7c-wF-1Pv" customClass="EBButton">
+                            <rect key="frame" x="170" y="14" width="70" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <buttonCell key="cell" type="roundRect" title="Done" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="weL-Df-d10">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                            </buttonCell>
+                        </button>
                     </subviews>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="-270" y="113"/>
+            <point key="canvasLocation" x="-433" y="156.5"/>
         </customView>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="reL-uK-SPG" userLabel="Panel : Insert Array of Boards" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES"/>
