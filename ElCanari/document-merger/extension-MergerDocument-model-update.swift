@@ -11,12 +11,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//            if filePath.pathExtension == "ElCanariBoardArchive" {
-//              self.loadBoardModel_ELCanariArchive (filePath : filePath, windowForSheet: window)
-//            }else if filePath.pathExtension == "kicad_pcb" {
-//              self.loadBoardModel_kicad (filePath : filePath, windowForSheet: window)
-//            }
-
 extension MergerDocument {
 
   //····················································································································
@@ -34,7 +28,7 @@ extension MergerDocument {
           openPanel.canChooseFiles = true
           openPanel.canChooseDirectories = false
           openPanel.allowsMultipleSelection = false
-          openPanel.allowedFileTypes = ["ElCanariBoardArchive"]
+          openPanel.allowedFileTypes = ["ElCanariBoardArchive", "kicad_pcb"]
         // MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
           gPanel = OpenPanelDelegateForUpdatingBoardModels (boardModelName) // MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
           openPanel.delegate = gPanel

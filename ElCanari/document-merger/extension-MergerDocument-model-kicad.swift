@@ -253,7 +253,7 @@ extension KicadItem {
          let netIndex = self.getInt (["via", "net"], 0, &ioErrorArray, #line) {
         let via = BoardModelVia (managedObjectContext: inMOC)
         via.x = millimeterToCanariUnit (x - inModelLeftMM)
-        via.y = millimeterToCanariUnit (y - inModelBottomMM)
+        via.y = millimeterToCanariUnit (inModelBottomMM - y)
         via.padDiameter = millimeterToCanariUnit (diameter)
         let netClass = inNetArray [netIndex]
         via.holeDiameter = netClass.drillDiameter
@@ -874,13 +874,7 @@ fileprivate func parse (_ inContentString : [UnicodeScalar], _ ioIndex : inout I
         ioIndex += 1
         c = inContentString [ioIndex]
       }
-//      if let integer = Int (str) {
-//        result = KicadItemInt (integer)
-//      }else if let v = Double (str) {
-//        result = KicadItemFloat (v)
-//      }else{
-        result = KicadItem (str, [])
-//      }
+      result = KicadItem (str, [])
     }
   }
   return result
