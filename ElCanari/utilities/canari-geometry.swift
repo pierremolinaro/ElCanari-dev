@@ -47,9 +47,17 @@ func canariUnitToMilTenth (_ inValue : Int) -> Int {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Conversion with millimeters
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func millimeterToCanariUnit (_ inValue : Double) -> Int {
   return Int ((inValue * Double (ONE_MILLIMETER_IN_CANARI_UNIT)).rounded ())
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func canariUnitToMillimeter (_ inValue : Int) -> Double {
+  return Double (inValue) / Double (ONE_MILLIMETER_IN_CANARI_UNIT)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

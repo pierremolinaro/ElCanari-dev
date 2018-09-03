@@ -240,6 +240,64 @@ extension KicadItem {
 
   //····················································································································
 
+  func collectBoardLimits (_ ioLeft : inout Int,
+                           _ ioRight : inout Int,
+                           _ ioTop : inout Int,
+                           _ ioBottom : inout Int,
+                           _ ioLineWidth : inout Int,
+                           _ ioErrorArray : inout [(String, Int)]) {
+    if self.key == "gr_line" {
+      if let startX = self.getFloat (["gr_line", "start"], 0, &ioErrorArray, #line),
+         let startY = self.getFloat (["gr_line", "start"], 1, &ioErrorArray, #line),
+         let endX = self.getFloat (["gr_line", "end"], 0, &ioErrorArray, #line),
+         let endY = self.getFloat (["gr_line", "end"], 1, &ioErrorArray, #line),
+         let width = self.getFloat (["gr_line", "width"], 0, &ioErrorArray, #line),
+//         let angle = self.getFloat (["gr_line", "angle"], 0, &ioErrorArray, #line),
+         let layer = self.getString (["gr_line", "layer"], 0, &ioErrorArray, #line) {
+        if layer == "Edge.Cuts" {
+          let x1 = millimeterToCanariUnit (startX)
+          let y1 = millimeterToCanariUnit (startY)
+          let x2 = millimeterToCanariUnit (endX)
+          let y2 = millimeterToCanariUnit (endY)
+          let lineWidth = millimeterToCanariUnit (width)
+          if ioLeft > x1 {
+            ioLeft = x1
+          }
+          if ioRight < x1 {
+            ioRight = x1
+          }
+          if ioBottom < y1 {
+            ioBottom = y1
+          }
+          if ioTop > y1 {
+            ioTop = y1
+          }
+          if ioLeft > x2 {
+            ioLeft = x2
+          }
+          if ioRight < x2 {
+            ioRight = x2
+          }
+          if ioBottom < y2 {
+            ioBottom = y2
+          }
+          if ioTop > y2 {
+            ioTop = y2
+          }
+          if ioLineWidth < lineWidth {
+            ioLineWidth = lineWidth
+          }
+        }
+      }
+    }else{
+      for item in self.items {
+        item.collectBoardLimits (&ioLeft, &ioRight, &ioTop, &ioBottom, &ioLineWidth, &ioErrorArray)
+      }
+    }
+  }
+
+  //····················································································································
+
   func collectVias (_ ioViaEntities : inout [BoardModelVia],
                     _ inModelLeftMM  : Double,
                     _ inModelBottomMM : Double,
@@ -437,13 +495,6 @@ extension KicadItem {
                 let lineLayer = item.getString (["fp_arc", "layer"], 0, &ioErrorArray, #line) {
             let start = transform.transform (NSPoint (x: startX, y: startY))
             let center = transform.transform (NSPoint (x: centerX, y: centerY))
-//                let packageLine = CanariSegment (managedObjectContext: inMOC)
-//                packageLine.x1 = millimeterToCanariUnit (Double (start.x))
-//                packageLine.y1 = millimeterToCanariUnit (Double (start.y))
-//                packageLine.x2 = millimeterToCanariUnit (Double (center.x))
-//                packageLine.y2 = millimeterToCanariUnit (Double (center.y))
-//                packageLine.width = millimeterToCanariUnit (widthMM)
-//                ioBackPackagesEntities.append (packageLine)
             let bp = NSBezierPath ()
             let dx = start.x - center.x
             let dy = start.y - center.y
@@ -499,7 +550,6 @@ extension KicadItem {
                 let widthMM = item.getFloat (["pad", "size"], 0, &ioErrorArray, #line),
                 let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray, #line) {
             let pad = BoardModelPad (managedObjectContext: inMOC)
-//            pad.qualifiedName = ""
             let padXY = transform.transform (NSPoint (x: atX, y: atY))
             pad.x = millimeterToCanariUnit (Double(padXY.x))
             pad.y = millimeterToCanariUnit (Double(padXY.y))
@@ -614,198 +664,190 @@ extension MergerDocument {
 //      var str = ""
 //      contents?.display ("", &str)
 //      Swift.print (str)
-    //--- Extraction board rect
+    //--- Extract board limits
       var errorArray = [(String, Int)] ()
-      var leftMM = 0.0
-      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 0, &errorArray, #line) {
-        leftMM = v
-      }else{
-        errorArray.append (("left is nil", #line))
-      }
-      var rightMM = 0.0
-      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 2, &errorArray, #line) {
-        rightMM = v
-      }else{
-        errorArray.append (("right is nil", #line))
-      }
-      var topMM = 0.0 // the Y-axis is pointing down
-      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 1, &errorArray, #line) {
-        topMM = v
-      }else{
-        errorArray.append (("bottom is nil", #line))
-      }
-      var bottomMM = 0.0 // the Y-axis is pointing down
-      if let v = contents?.getFloat (["kicad_pcb", "general", "area"], 3, &errorArray, #line) {
-        bottomMM = v
-      }else{
-        errorArray.append (("top is nil", #line))
-      }
-      let modelWidthMM = rightMM - leftMM
-      let modelHeightMM = bottomMM - topMM // the Y-axis is pointing down
-      // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
-    //--- Collect tracks
-      var frontTrackEntities = [CanariSegment] ()
-      var backTrackEntities = [CanariSegment] ()
-      contents?.collectTracks (&frontTrackEntities, &backTrackEntities, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
-    //--- Collect net name array, net class array
-      var netNameArray = [String] ()
-      var netClassArray = [KicadNetClass] ()
-      contents?.collectNetNameArray (&netNameArray, &netClassArray, &errorArray)
-    //--- Build dictionary of net class, key by net name
-      var netDictionary = [String : KicadNetClass] ()
-      for netClass in netClassArray {
-        for netName in netClass.netNames {
-          netDictionary [netName] = netClass
-        }
-      }
-    //--- Build array of net class, index by net index
-    //    Note that net #0 has an empty name and is never used
-      var netArray = [KicadNetClass] ()
-      netArray.append (KicadNetClass ()) // Pseudo net #0
-      for netName in netNameArray.dropFirst () {
-        if let netClass = netDictionary [netName] {
-          netArray.append (netClass)
-        }else{
-          errorArray.append (("no net named \(netName)", #line))
-        }
-      }
-    //--- Collect vias
-      var viaEntities = [BoardModelVia] ()
-      contents?.collectVias (&viaEntities, leftMM, bottomMM, netArray, &errorArray, self.managedObjectContext ())
-    //---- Collect components
-      let font : [UInt32 : KicadChar] = kicadFont ()
-      var padEntities = [BoardModelPad] ()
-      var frontPackagesEntities = [CanariSegment] ()
-      var backPackagesEntities = [CanariSegment] ()
-      var backComponentNamesEntities = [CanariSegment] ()
-      var frontComponentNamesEntities = [CanariSegment] ()
-      var frontComponentValuesEntities = [CanariSegment] ()
-      var backComponentValuesEntities = [CanariSegment] ()
-      contents?.collectComponents (&frontPackagesEntities, &backPackagesEntities, &padEntities,
-                                   &frontComponentNamesEntities, &backComponentNamesEntities,
-                                   &frontComponentValuesEntities, &backComponentValuesEntities,
-                                   font, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
-
-
-
-
-  //  //--- Back Legend texts
-  //    var backLegendLinesEntities = [CanariSegment] ()
-  //    let backLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-BACK", &errorArray)
-  //    for str in backLegendLines {
-  //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &errorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      backLegendLinesEntities.append (segment)
-  //    }
-  //    boardModel.backLegendLines_property.setProp (backLegendLinesEntities)
-  //  //--- Front Legend texts
-  //    var frontLegendLinesEntities = [CanariSegment] ()
-  //    let frontLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-FRONT", &errorArray)
-  //    for str in frontLegendLines {
-  //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &errorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      frontLegendLinesEntities.append (segment)
-  //    }
-  //    boardModel.frontLegendLines_property.setProp (frontLegendLinesEntities)
-  //  //--- Front Layout texts
-  //    var frontLayoutTextEntities = [CanariSegment] ()
-  //    let frontLayoutTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LAYOUT-FRONT", &errorArray)
-  //    for str in frontLayoutTexts {
-  //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &errorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      frontLayoutTextEntities.append (segment)
-  //    }
-  //    boardModel.frontLayoutTexts_property.setProp (frontLayoutTextEntities)
-  //  //--- Back Layout texts
-  //    var backLayoutTextEntities = [CanariSegment] ()
-  //    let backLayoutTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LAYOUT-BACK", &errorArray)
-  //    for str in backLayoutTexts {
-  //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &errorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      backLayoutTextEntities.append (segment)
-  //    }
-  //    boardModel.backLayoutTexts_property.setProp (backLayoutTextEntities)
-  //  //--- Back Legend texts
-  //    var backLegendTextEntities = [CanariSegment] ()
-  //    let backLegendTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LEGEND-BACK", &errorArray)
-  //    for str in backLegendTexts {
-  //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &errorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      backLegendTextEntities.append (segment)
-  //    }
-  //    boardModel.backLegendTexts_property.setProp (backLegendTextEntities)
-  //  //--- Front Legend texts
-  //    var frontLegendTextEntities = [CanariSegment] ()
-  //    let frontTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LEGEND-FRONT", &errorArray)
-  //    for str in frontTexts {
-  //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &errorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      frontLegendTextEntities.append (segment)
-  //    }
-  //    boardModel.frontLegendTexts_property.setProp (frontLegendTextEntities)
-    //--- Dictionary import ok ?
-      if errorArray.count == 0 {
-        boardModel = BoardModel (managedObjectContext: self.managedObjectContext ())
-        boardModel?.name = inName
-        boardModel?.modelWidth  = millimeterToCanariUnit (modelWidthMM)
-        boardModel?.modelWidthUnit = ONE_MILLIMETER_IN_CANARI_UNIT
-        boardModel?.modelHeight = millimeterToCanariUnit (modelHeightMM)
-        boardModel?.modelHeightUnit = ONE_MILLIMETER_IN_CANARI_UNIT
-        boardModel?.modelLimitWidth = ONE_MILLIMETER_IN_CANARI_UNIT
-        boardModel?.modelLimitWidthUnit = ONE_MILLIMETER_IN_CANARI_UNIT
-        boardModel?.backTracks_property.setProp (backTrackEntities)
-        boardModel?.frontTracks_property.setProp (frontTrackEntities)
-        boardModel?.vias_property.setProp (viaEntities)
-        boardModel?.frontPackages_property.setProp (frontPackagesEntities)
-        boardModel?.backPackages_property.setProp (backPackagesEntities)
-        boardModel?.pads_property.setProp (padEntities)
-        boardModel?.backComponentNames_property.setProp (backComponentNamesEntities)
-        boardModel?.frontComponentNames_property.setProp (frontComponentNamesEntities)
-        boardModel?.frontComponentValues_property.setProp (frontComponentValuesEntities)
-        boardModel?.backComponentValues_property.setProp (backComponentValuesEntities)
-      }else{ // Error
-        var s = ""
-        for anError in errorArray {
-          if s != "" {
-            s += "\n"
-          }
-          s += anError.0 + " (line \(anError.1))"
-        }
+      var left   =  Int.max ; var right  = -Int.max
+      var bottom = -Int.max ; var top = Int.max // in Kicad, the Y-axis is pointing down
+      var boardModelWidth = -Int.max
+      contents?.collectBoardLimits (&left, &right, &top, &bottom, &boardModelWidth, &errorArray)
+      if (left >= right) || (top >= bottom) {
         let alert = NSAlert ()
-        alert.messageText = "Cannot Analyse file contents"
+        alert.messageText = "Cannot extract board bounding box"
         alert.addButton (withTitle: "Ok")
-        alert.informativeText = s
+        alert.informativeText = ""
         alert.beginSheetModal (for: self.windowForSheet!, completionHandler: {(NSModalResponse) in})
+      }else{
+        let leftMM = canariUnitToMillimeter (left)
+        let rightMM = canariUnitToMillimeter (right)
+        let topMM = canariUnitToMillimeter (top)
+        let bottomMM = canariUnitToMillimeter (bottom)
+        let modelWidthMM = rightMM - leftMM
+        let modelHeightMM = bottomMM - topMM // in Kicad, the Y-axis is pointing down
+        // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
+      //--- Collect tracks
+        var frontTrackEntities = [CanariSegment] ()
+        var backTrackEntities = [CanariSegment] ()
+        contents?.collectTracks (&frontTrackEntities, &backTrackEntities, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
+      //--- Collect net name array, net class array
+        var netNameArray = [String] ()
+        var netClassArray = [KicadNetClass] ()
+        contents?.collectNetNameArray (&netNameArray, &netClassArray, &errorArray)
+      //--- Build dictionary of net class, key by net name
+        var netDictionary = [String : KicadNetClass] ()
+        for netClass in netClassArray {
+          for netName in netClass.netNames {
+            netDictionary [netName] = netClass
+          }
+        }
+      //--- Build array of net class, index by net index
+      //    Note that net #0 has an empty name and is never used
+        var netArray = [KicadNetClass] ()
+        netArray.append (KicadNetClass ()) // Pseudo net #0
+        for netName in netNameArray.dropFirst () {
+          if let netClass = netDictionary [netName] {
+            netArray.append (netClass)
+          }else{
+            errorArray.append (("no net named \(netName)", #line))
+          }
+        }
+      //--- Collect vias
+        var viaEntities = [BoardModelVia] ()
+        contents?.collectVias (&viaEntities, leftMM, bottomMM, netArray, &errorArray, self.managedObjectContext ())
+      //---- Collect components
+        let font : [UInt32 : KicadChar] = kicadFont ()
+        var padEntities = [BoardModelPad] ()
+        var frontPackagesEntities = [CanariSegment] ()
+        var backPackagesEntities = [CanariSegment] ()
+        var backComponentNamesEntities = [CanariSegment] ()
+        var frontComponentNamesEntities = [CanariSegment] ()
+        var frontComponentValuesEntities = [CanariSegment] ()
+        var backComponentValuesEntities = [CanariSegment] ()
+        contents?.collectComponents (&frontPackagesEntities, &backPackagesEntities, &padEntities,
+                                     &frontComponentNamesEntities, &backComponentNamesEntities,
+                                     &frontComponentValuesEntities, &backComponentValuesEntities,
+                                     font, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
+
+
+
+
+    //  //--- Back Legend texts
+    //    var backLegendLinesEntities = [CanariSegment] ()
+    //    let backLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-BACK", &errorArray)
+    //    for str in backLegendLines {
+    //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+    //      let ints = array5int (fromString: str, &errorArray)
+    //      segment.x1 = ints [0]
+    //      segment.y1 = ints [1]
+    //      segment.x2 = ints [2]
+    //      segment.y2 = ints [3]
+    //      segment.width = ints [4]
+    //      backLegendLinesEntities.append (segment)
+    //    }
+    //    boardModel.backLegendLines_property.setProp (backLegendLinesEntities)
+    //  //--- Front Legend texts
+    //    var frontLegendLinesEntities = [CanariSegment] ()
+    //    let frontLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-FRONT", &errorArray)
+    //    for str in frontLegendLines {
+    //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+    //      let ints = array5int (fromString: str, &errorArray)
+    //      segment.x1 = ints [0]
+    //      segment.y1 = ints [1]
+    //      segment.x2 = ints [2]
+    //      segment.y2 = ints [3]
+    //      segment.width = ints [4]
+    //      frontLegendLinesEntities.append (segment)
+    //    }
+    //    boardModel.frontLegendLines_property.setProp (frontLegendLinesEntities)
+    //  //--- Front Layout texts
+    //    var frontLayoutTextEntities = [CanariSegment] ()
+    //    let frontLayoutTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LAYOUT-FRONT", &errorArray)
+    //    for str in frontLayoutTexts {
+    //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+    //      let ints = array5int (fromString: str, &errorArray)
+    //      segment.x1 = ints [0]
+    //      segment.y1 = ints [1]
+    //      segment.x2 = ints [2]
+    //      segment.y2 = ints [3]
+    //      segment.width = ints [4]
+    //      frontLayoutTextEntities.append (segment)
+    //    }
+    //    boardModel.frontLayoutTexts_property.setProp (frontLayoutTextEntities)
+    //  //--- Back Layout texts
+    //    var backLayoutTextEntities = [CanariSegment] ()
+    //    let backLayoutTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LAYOUT-BACK", &errorArray)
+    //    for str in backLayoutTexts {
+    //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+    //      let ints = array5int (fromString: str, &errorArray)
+    //      segment.x1 = ints [0]
+    //      segment.y1 = ints [1]
+    //      segment.x2 = ints [2]
+    //      segment.y2 = ints [3]
+    //      segment.width = ints [4]
+    //      backLayoutTextEntities.append (segment)
+    //    }
+    //    boardModel.backLayoutTexts_property.setProp (backLayoutTextEntities)
+    //  //--- Back Legend texts
+    //    var backLegendTextEntities = [CanariSegment] ()
+    //    let backLegendTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LEGEND-BACK", &errorArray)
+    //    for str in backLegendTexts {
+    //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+    //      let ints = array5int (fromString: str, &errorArray)
+    //      segment.x1 = ints [0]
+    //      segment.y1 = ints [1]
+    //      segment.x2 = ints [2]
+    //      segment.y2 = ints [3]
+    //      segment.width = ints [4]
+    //      backLegendTextEntities.append (segment)
+    //    }
+    //    boardModel.backLegendTexts_property.setProp (backLegendTextEntities)
+    //  //--- Front Legend texts
+    //    var frontLegendTextEntities = [CanariSegment] ()
+    //    let frontTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LEGEND-FRONT", &errorArray)
+    //    for str in frontTexts {
+    //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+    //      let ints = array5int (fromString: str, &errorArray)
+    //      segment.x1 = ints [0]
+    //      segment.y1 = ints [1]
+    //      segment.x2 = ints [2]
+    //      segment.y2 = ints [3]
+    //      segment.width = ints [4]
+    //      frontLegendTextEntities.append (segment)
+    //    }
+    //    boardModel.frontLegendTexts_property.setProp (frontLegendTextEntities)
+      //--- Dictionary import ok ?
+        if errorArray.count == 0 {
+          boardModel = BoardModel (managedObjectContext: self.managedObjectContext ())
+          boardModel?.name = inName
+          boardModel?.modelWidth  = millimeterToCanariUnit (modelWidthMM)
+          boardModel?.modelWidthUnit = ONE_MILLIMETER_IN_CANARI_UNIT
+          boardModel?.modelHeight = millimeterToCanariUnit (modelHeightMM)
+          boardModel?.modelHeightUnit = ONE_MILLIMETER_IN_CANARI_UNIT
+          boardModel?.modelLimitWidth = boardModelWidth
+          boardModel?.modelLimitWidthUnit = ONE_MILLIMETER_IN_CANARI_UNIT
+          boardModel?.backTracks_property.setProp (backTrackEntities)
+          boardModel?.frontTracks_property.setProp (frontTrackEntities)
+          boardModel?.vias_property.setProp (viaEntities)
+          boardModel?.frontPackages_property.setProp (frontPackagesEntities)
+          boardModel?.backPackages_property.setProp (backPackagesEntities)
+          boardModel?.pads_property.setProp (padEntities)
+          boardModel?.backComponentNames_property.setProp (backComponentNamesEntities)
+          boardModel?.frontComponentNames_property.setProp (frontComponentNamesEntities)
+          boardModel?.frontComponentValues_property.setProp (frontComponentValuesEntities)
+          boardModel?.backComponentValues_property.setProp (backComponentValuesEntities)
+        }else{ // Error
+          var s = ""
+          for anError in errorArray {
+            if s != "" {
+              s += "\n"
+            }
+            s += anError.0 + " (line \(anError.1))"
+          }
+          let alert = NSAlert ()
+          alert.messageText = "Cannot Analyse file contents"
+          alert.addButton (withTitle: "Ok")
+          alert.informativeText = s
+          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: {(NSModalResponse) in})
+        }
       }
     }
   //--- Return
