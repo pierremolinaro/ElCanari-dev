@@ -4,7 +4,6 @@ entity BoardModelVia {
 
   property Int x default 0 ;
   property Int y default 0 ;
-#  property Int holeDiameter default 0 ;
   property Int padDiameter default 0 ;
 }
 

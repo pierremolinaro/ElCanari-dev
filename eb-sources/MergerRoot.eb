@@ -55,8 +55,8 @@ entity MergerRoot {
      self.boardManualWidth, self.boardManualHeight,
      self.boardInstances.all.instanceRect ;
 
-  transient Int boardWidth dependsFrom self.boardDisplayRect ;
-  transient Int boardHeight dependsFrom self.boardDisplayRect ;
+  transient Int boardWidth dependsFrom self.boardRect ;
+  transient Int boardHeight dependsFrom self.boardRect ;
 
 #--- Artwork
   toOne @cascading ArtworkRoot artwork ;

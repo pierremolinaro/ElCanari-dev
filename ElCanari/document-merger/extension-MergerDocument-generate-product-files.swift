@@ -461,8 +461,6 @@ extension MergerDocument {
       let horizontalMirror = product.horizontalMirror
       let filePath = inFilePath + "." + product.fileExtension
       mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
-      // var s = "G70*\n" // length unit is inch [OBSOLETE]
-      //s += "%FSAX24Y24*%\n" // [missing L] A = Absolute coordinates, 24 = all data are in 2.4 form
       var s = "%FSLAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
       s += "%MOIN*%\n" // length unit is inch
       var apertureDictionary = [String : [String]] ()
@@ -769,7 +767,7 @@ extension MergerDocument {
     }
  //--- End of file
     s += "T0\n"
-    s += "M30\n"
+    s += "M30\n" // End code
  //--- Write file
     let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
     try data?.write (to: URL (fileURLWithPath: filePath), options: .atomic)

@@ -26,8 +26,8 @@ func transient_MergerRoot_boardRect (
         }
       }
       return CanariBoardRect (left:0, bottom:0, width: r.left + r.width, height: r.bottom + r.height)
-    }else if self_boardInstances_instanceRect.count == 0 {
-      return CanariBoardRect ()  // Empty rect
+//    }else if self_boardInstances_instanceRect.count == 0 {
+//      return CanariBoardRect ()  // Empty rect
     }else{
       return CanariBoardRect (left:0, bottom:0, width: self_boardManualWidth, height: self_boardManualHeight)
     }

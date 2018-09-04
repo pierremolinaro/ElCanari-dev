@@ -777,14 +777,14 @@ class MergerRoot : EBManagedObject,
     }
     self.boardWidth_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardDisplayRect_property_selection.kind ()
+        let kind = unwSelf.boardRect_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardDisplayRect_property_selection) {
+          switch (unwSelf.boardRect_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerRoot_boardWidth (v0))
           default :
@@ -797,14 +797,14 @@ class MergerRoot : EBManagedObject,
     }
     self.boardHeight_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.boardDisplayRect_property_selection.kind ()
+        let kind = unwSelf.boardRect_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardDisplayRect_property_selection) {
+          switch (unwSelf.boardRect_property_selection) {
           case (.single (let v0)) :
             return .single (transient_MergerRoot_boardHeight (v0))
           default :
@@ -833,8 +833,8 @@ class MergerRoot : EBManagedObject,
     self.boardManualWidth_property.addEBObserver (self.boardDisplayRect_property)
     self.boardManualHeight_property.addEBObserver (self.boardDisplayRect_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardDisplayRect_property)
-    self.boardDisplayRect_property.addEBObserver (self.boardWidth_property)
-    self.boardDisplayRect_property.addEBObserver (self.boardHeight_property)
+    self.boardRect_property.addEBObserver (self.boardWidth_property)
+    self.boardRect_property.addEBObserver (self.boardHeight_property)
   //--- Install undoers for properties
     self.selectedPageIndex_property.undoManager = undoManager ()
     self.zoom_property.undoManager = undoManager ()
@@ -884,8 +884,8 @@ class MergerRoot : EBManagedObject,
     self.boardManualWidth_property.removeEBObserver (self.boardDisplayRect_property)
     self.boardManualHeight_property.removeEBObserver (self.boardDisplayRect_property)
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardDisplayRect_property)
-    self.boardDisplayRect_property.removeEBObserver (self.boardWidth_property)
-    self.boardDisplayRect_property.removeEBObserver (self.boardHeight_property)
+    self.boardRect_property.removeEBObserver (self.boardWidth_property)
+    self.boardRect_property.removeEBObserver (self.boardHeight_property)
   }
 
   //····················································································································
