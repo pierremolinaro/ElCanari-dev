@@ -72,10 +72,10 @@ extension MergerDocument {
     boardModel.modelLimitWidth = int (fromDict: inBoardArchiveDict, key: "BOARD-LINE-WIDTH", &errorArray)
     boardModel.modelLimitWidthUnit = int (fromDict: inBoardArchiveDict, key: "BOARD-LINE-WIDTH-UNIT", &errorArray)
   //--- Internal boards limits
-    var internalBoardsLimitsEntities = [CanariSegment] ()
+    var internalBoardsLimitsEntities = [SegmentEntity] ()
     let internalBoardsLimits = optionalStringArray (fromDict: inBoardArchiveDict, key: "INTERNAL-BOARDS-LIMITS", &errorArray)
     for str in internalBoardsLimits {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -86,10 +86,10 @@ extension MergerDocument {
     }
     boardModel.internalBoardsLimits_property.setProp (internalBoardsLimitsEntities)
   //--- Front tracks
-    var frontTrackEntities = [CanariSegment] ()
+    var frontTrackEntities = [SegmentEntity] ()
     let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-FRONT", &errorArray)
     for str in frontTracks {
-      let track = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let track = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       track.x1 = ints [0]
       track.y1 = ints [1]
@@ -100,10 +100,10 @@ extension MergerDocument {
     }
     boardModel.frontTracks_property.setProp (frontTrackEntities)
   //--- Back tracks
-    var backTrackEntities = [CanariSegment] ()
+    var backTrackEntities = [SegmentEntity] ()
     let backTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-BACK", &errorArray)
     for str in backTracks {
-      let track = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let track = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       track.x1 = ints [0]
       track.y1 = ints [1]
@@ -126,10 +126,10 @@ extension MergerDocument {
     }
     boardModel.vias_property.setProp (viaEntities)
   //--- Back Legend texts
-    var backLegendLinesEntities = [CanariSegment] ()
+    var backLegendLinesEntities = [SegmentEntity] ()
     let backLegendLines = stringArray (fromDict: inBoardArchiveDict, key: "LINES-BACK", &errorArray)
     for str in backLegendLines {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -140,10 +140,10 @@ extension MergerDocument {
     }
     boardModel.backLegendLines_property.setProp (backLegendLinesEntities)
   //--- Front Legend texts
-    var frontLegendLinesEntities = [CanariSegment] ()
+    var frontLegendLinesEntities = [SegmentEntity] ()
     let frontLegendLines = stringArray (fromDict: inBoardArchiveDict, key: "LINES-FRONT", &errorArray)
     for str in frontLegendLines {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -154,10 +154,10 @@ extension MergerDocument {
     }
     boardModel.frontLegendLines_property.setProp (frontLegendLinesEntities)
   //--- Front Layout texts
-    var frontLayoutTextEntities = [CanariSegment] ()
+    var frontLayoutTextEntities = [SegmentEntity] ()
     let frontLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-FRONT", &errorArray)
     for str in frontLayoutTexts {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -168,10 +168,10 @@ extension MergerDocument {
     }
     boardModel.frontLayoutTexts_property.setProp (frontLayoutTextEntities)
   //--- Back Layout texts
-    var backLayoutTextEntities = [CanariSegment] ()
+    var backLayoutTextEntities = [SegmentEntity] ()
     let backLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-BACK", &errorArray)
     for str in backLayoutTexts {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -182,10 +182,10 @@ extension MergerDocument {
     }
     boardModel.backLayoutTexts_property.setProp (backLayoutTextEntities)
   //--- Back Legend texts
-    var backLegendTextEntities = [CanariSegment] ()
+    var backLegendTextEntities = [SegmentEntity] ()
     let backLegendTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LEGEND-BACK", &errorArray)
     for str in backLegendTexts {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -196,10 +196,10 @@ extension MergerDocument {
     }
     boardModel.backLegendTexts_property.setProp (backLegendTextEntities)
   //--- Front Legend texts
-    var frontLegendTextEntities = [CanariSegment] ()
+    var frontLegendTextEntities = [SegmentEntity] ()
     let frontTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LEGEND-FRONT", &errorArray)
     for str in frontTexts {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -210,10 +210,10 @@ extension MergerDocument {
     }
     boardModel.frontLegendTexts_property.setProp (frontLegendTextEntities)
   //--- Back packages
-    var backPackagesEntities = [CanariSegment] ()
+    var backPackagesEntities = [SegmentEntity] ()
     let backPackages = stringArray (fromDict: inBoardArchiveDict, key: "PACKAGES-BACK", &errorArray)
     for str in backPackages {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -224,10 +224,10 @@ extension MergerDocument {
     }
     boardModel.backPackages_property.setProp (backPackagesEntities)
   //--- Front packages
-    var frontPackagesEntities = [CanariSegment] ()
+    var frontPackagesEntities = [SegmentEntity] ()
     let frontPackages = stringArray (fromDict: inBoardArchiveDict, key: "PACKAGES-FRONT", &errorArray)
     for str in frontPackages {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -238,10 +238,10 @@ extension MergerDocument {
     }
     boardModel.frontPackages_property.setProp (frontPackagesEntities)
   //--- Back component names
-    var backComponentNamesEntities = [CanariSegment] ()
+    var backComponentNamesEntities = [SegmentEntity] ()
     let backComponentNames = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-NAMES-BACK", &errorArray)
     for str in backComponentNames {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -252,10 +252,10 @@ extension MergerDocument {
     }
     boardModel.backComponentNames_property.setProp (backComponentNamesEntities)
   //--- Front component names
-    var frontComponentNamesEntities = [CanariSegment] ()
+    var frontComponentNamesEntities = [SegmentEntity] ()
     let frontComponentNames = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-NAMES-FRONT", &errorArray)
     for str in frontComponentNames {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -266,10 +266,10 @@ extension MergerDocument {
     }
     boardModel.frontComponentNames_property.setProp (frontComponentNamesEntities)
   //--- Front component values
-    var frontComponentValuesEntities = [CanariSegment] ()
+    var frontComponentValuesEntities = [SegmentEntity] ()
     let frontComponentValues = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-VALUES-FRONT", &errorArray)
     for str in frontComponentValues {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -280,10 +280,10 @@ extension MergerDocument {
     }
     boardModel.frontComponentValues_property.setProp (frontComponentValuesEntities)
   //--- Back component values
-    var backComponentValuesEntities = [CanariSegment] ()
+    var backComponentValuesEntities = [SegmentEntity] ()
     let backComponentValues = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-VALUES-BACK", &errorArray)
     for str in backComponentValues {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -294,10 +294,10 @@ extension MergerDocument {
     }
     boardModel.backComponentValues_property.setProp (backComponentValuesEntities)
   //--- Drills
-    var drillEntities = [CanariSegment] ()
+    var drillEntities = [SegmentEntity] ()
     let drills = stringArray (fromDict: inBoardArchiveDict, key: "DRILLS", &errorArray)
     for str in drills {
-      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -309,7 +309,7 @@ extension MergerDocument {
     boardModel.drills_property.setProp (drillEntities)
   //--- Front pads
     var backPadEntities = [BoardModelPad] ()
-    let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "BACK-PADS", &errorArray)
+    let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-BACK", &errorArray)
     for padDict in backPadDictArray {
       let pad = BoardModelPad (managedObjectContext:self.managedObjectContext())
       pad.x = int (fromDict: padDict, key: "X", &errorArray)
@@ -330,7 +330,7 @@ extension MergerDocument {
     boardModel.backPads_property.setProp (backPadEntities)
   //--- Front pads
     var frontPadEntities = [BoardModelPad] ()
-    let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "FRONT-PADS", &errorArray)
+    let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-FRONT", &errorArray)
     for padDict in frontPadDictArray {
       let pad = BoardModelPad (managedObjectContext:self.managedObjectContext())
       pad.x = int (fromDict: padDict, key: "X", &errorArray)

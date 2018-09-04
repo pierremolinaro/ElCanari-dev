@@ -498,13 +498,13 @@ class MergerRoot : EBManagedObject,
   //   Accessing boardRect transient property
   //····················································································································
 
-  var boardRect_property_selection : EBSelection <CanariBoardRect> {
+  var boardRect_property_selection : EBSelection <CanariHorizontalRect> {
     get {
       return self.boardRect_property.prop
     }
   }
 
-  var boardRect : CanariBoardRect? {
+  var boardRect : CanariHorizontalRect? {
     switch boardRect_property_selection {
     case .empty, .multiple :
       return nil
@@ -517,13 +517,13 @@ class MergerRoot : EBManagedObject,
   //   Accessing boardDisplayRect transient property
   //····················································································································
 
-  var boardDisplayRect_property_selection : EBSelection <CanariBoardRect> {
+  var boardDisplayRect_property_selection : EBSelection <CanariHorizontalRect> {
     get {
       return self.boardDisplayRect_property.prop
     }
   }
 
-  var boardDisplayRect : CanariBoardRect? {
+  var boardDisplayRect : CanariHorizontalRect? {
     switch boardDisplayRect_property_selection {
     case .empty, .multiple :
       return nil
@@ -623,8 +623,8 @@ class MergerRoot : EBManagedObject,
   var cocoaShiftArrowMagnitude_property = EBTransientProperty_CGFloat ()
   var modelNames_property = EBTransientProperty_MergerBoardModelArray ()
   var instancesDisplay_property = EBTransientProperty_EBShapeLayerArray ()
-  var boardRect_property = EBTransientProperty_CanariBoardRect ()
-  var boardDisplayRect_property = EBTransientProperty_CanariBoardRect ()
+  var boardRect_property = EBTransientProperty_CanariHorizontalRect ()
+  var boardDisplayRect_property = EBTransientProperty_CanariHorizontalRect ()
   var boardWidth_property = EBTransientProperty_Int ()
   var boardHeight_property = EBTransientProperty_Int ()
 
@@ -3203,13 +3203,13 @@ protocol MergerRoot_instancesDisplay : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_boardRect : class {
-  var boardRect : CanariBoardRect? { get }
+  var boardRect : CanariHorizontalRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_boardDisplayRect : class {
-  var boardDisplayRect : CanariBoardRect? { get }
+  var boardDisplayRect : CanariHorizontalRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -203,8 +203,8 @@ extension MergerDocument {
     archiveDict ["PACKAGES-FRONT"] = frontPackages
     archiveDict ["LINES-BACK"] = backLegendLines
     archiveDict ["LINES-FRONT"] = frontLegendLines
-    archiveDict ["FRONT-PADS"] = frontPads
-    archiveDict ["BACK-PADS"] = backPads
+    archiveDict ["PADS-FRONT"] = frontPads
+    archiveDict ["PADS-BACK"] = backPads
     archiveDict ["TEXTS-LAYOUT-BACK"] = backLayoutTexts
     archiveDict ["TEXTS-LAYOUT-FRONT"] = frontLayoutTexts
     archiveDict ["TEXTS-LEGEND-BACK"] = backLegendTexts
@@ -469,7 +469,7 @@ extension MergerDocument {
       if product.drawInternalBoardLimits {
         for board in self.rootObject.boardInstances_property.propval {
           let lineWidth : Int = board.myModel_property.propval!.modelLimitWidth
-          let r : CanariBoardRect = board.instanceRect!
+          let r : CanariHorizontalRect = board.instanceRect!
           let left  = canariUnitToMilTenth (r.left + lineWidth / 2)
           let right = canariUnitToMilTenth (r.left + r.width - lineWidth / 2)
           let bottom = canariUnitToMilTenth (r.bottom + lineWidth / 2)

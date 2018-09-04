@@ -1,6 +1,6 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity CanariSegment {
+entity SegmentEntity {
   property Int x1 default 0 ;
   property Int y1 default 0 ;
   property Int x2 default 0 ;

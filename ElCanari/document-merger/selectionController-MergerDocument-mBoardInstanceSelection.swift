@@ -30,9 +30,9 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
       return self.instanceDisplay_property.prop
     }
   }
-  var instanceRect_property = EBTransientProperty_CanariBoardRect ()
+  var instanceRect_property = EBTransientProperty_CanariHorizontalRect ()
 
-  var instanceRect_property_selection : EBSelection <CanariBoardRect> {
+  var instanceRect_property_selection : EBSelection <CanariHorizontalRect> {
     get {
       return self.instanceRect_property.prop
     }
@@ -292,7 +292,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<CanariBoardRect> ()
+          var s = Set<CanariHorizontalRect> ()
           var isMultipleSelection = false
           for object in v {
             switch object.instanceRect_property_selection {

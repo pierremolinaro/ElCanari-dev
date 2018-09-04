@@ -1269,11 +1269,11 @@ typealias EBReadOnlyPropertyArray_BezierPathArray  = EBReadOnlyClassProperty <[B
 typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[BezierPathArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property CanariBoardRect
+//   Property CanariHorizontalRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_CanariBoardRect  = EBReadOnlyValueProperty <CanariBoardRect>
-typealias EBTransientProperty_CanariBoardRect = EBTransientValueProperty <CanariBoardRect>
+typealias EBReadOnlyProperty_CanariHorizontalRect  = EBReadOnlyValueProperty <CanariHorizontalRect>
+typealias EBTransientProperty_CanariHorizontalRect = EBTransientValueProperty <CanariHorizontalRect>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property InstanceIssueArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -202,8 +202,8 @@ class EBManagedObjectContext : EBObject {
       result = ArtworkFileGenerationParameters (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelPad" {
       result = BoardModelPad (managedObjectContext:self)
-    }else if inEntityTypeName == "CanariSegment" {
-      result = CanariSegment (managedObjectContext:self)
+    }else if inEntityTypeName == "SegmentEntity" {
+      result = SegmentEntity (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModelVia" {
       result = BoardModelVia (managedObjectContext:self)
     }else if inEntityTypeName == "BoardModel" {

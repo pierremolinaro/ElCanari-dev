@@ -27,7 +27,7 @@ extension MergerDocument {
     for selectedInstance in selectedSet {
       let instanceRect = getInstanceRect (selectedInstance)
       let instanceLimit = getInstanceLimit (selectedInstance)
-      var testRect = CanariBoardRect (
+      var testRect = CanariHorizontalRect (
         left:instanceRect.left,
         bottom:instanceRect.top,
         width:instanceRect.width,
@@ -37,7 +37,7 @@ extension MergerDocument {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
         let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
         if !intersection.isEmpty {
-          testRect = CanariBoardRect (left: testRect.left, bottom: testRect.bottom, width: testRect.width, height: intersection.bottom - testRect.bottom)
+          testRect = CanariHorizontalRect (left: testRect.left, bottom: testRect.bottom, width: testRect.width, height: intersection.bottom - testRect.bottom)
         }
       }
       if testRect.isEmpty {
@@ -66,7 +66,7 @@ extension MergerDocument {
     for selectedInstance in selectedSet {
       let instanceRect = getInstanceRect (selectedInstance)
       let instanceLimit = getInstanceLimit (selectedInstance)
-      var testRect = CanariBoardRect (
+      var testRect = CanariHorizontalRect (
         left:instanceRect.left,
         bottom:0,
         width:instanceRect.width,
@@ -76,7 +76,7 @@ extension MergerDocument {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
         let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
         if !intersection.isEmpty {
-          testRect = CanariBoardRect (
+          testRect = CanariHorizontalRect (
             left: instanceRect.left,
             bottom: intersection.top,
             width: instanceRect.width,
@@ -110,7 +110,7 @@ extension MergerDocument {
     for selectedInstance in selectedSet {
       let instanceRect = getInstanceRect (selectedInstance)
       let instanceLimit = getInstanceLimit (selectedInstance)
-      var testRect = CanariBoardRect (
+      var testRect = CanariHorizontalRect (
         left:instanceRect.right,
         bottom:instanceRect.bottom,
         width:boardWidth - instanceRect.right,
@@ -120,7 +120,7 @@ extension MergerDocument {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
         let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
         if !intersection.isEmpty {
-          testRect = CanariBoardRect (
+          testRect = CanariHorizontalRect (
             left: testRect.left,
             bottom: testRect.bottom,
             width: intersection.left - testRect.left,
@@ -154,7 +154,7 @@ extension MergerDocument {
     for selectedInstance in selectedSet {
       let instanceRect = getInstanceRect (selectedInstance)
       let instanceLimit = getInstanceLimit (selectedInstance)
-      var testRect = CanariBoardRect (
+      var testRect = CanariHorizontalRect (
         left:0,
         bottom:instanceRect.bottom,
         width:instanceRect.left,
@@ -164,7 +164,7 @@ extension MergerDocument {
         let inset = inOverlap ? min (instanceLimit, getInstanceLimit (nonSelectedInstance)) : 0
         let intersection = testRect.intersection (getInstanceRect (nonSelectedInstance).insetBy (dx:inset, dy: inset))
         if !intersection.isEmpty {
-          testRect = CanariBoardRect (
+          testRect = CanariHorizontalRect (
             left: intersection.right,
             bottom: instanceRect.bottom,
             width: instanceRect.left - intersection.right,
@@ -193,7 +193,7 @@ extension MergerDocument {
 //   UTILITIES
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func getInstanceRect (_ board : MergerBoardInstance) -> CanariBoardRect {
+fileprivate func getInstanceRect (_ board : MergerBoardInstance) -> CanariHorizontalRect {
   return board.instanceRect!
 }
 
@@ -219,7 +219,7 @@ fileprivate func getInstanceLimit (_ board : MergerBoardInstance) -> Int {
 //      let board = sortedBoards [idx]
 //      var newY = 0
 //      let boardRect = getInstanceRect (board)
-//      let leftRect = CanariBoardRect (left:board.x, bottom:0, width:boardRect.left, height:board.y)
+//      let leftRect = CanariHorizontalRect (left:board.x, bottom:0, width:boardRect.left, height:board.y)
 //      var idy = idx + 1
 //      while idy < sortedBoards.count {
 //        let testedBoard = sortedBoards [idy]
@@ -263,7 +263,7 @@ fileprivate func getInstanceLimit (_ board : MergerBoardInstance) -> Int {
 //      let board = sortedBoards [idx]
 //      var newX = 0
 //      let boardRect = getInstanceRect (board)
-//      let leftRect = CanariBoardRect (left:0, bottom:board.y, width:board.x, height:boardRect.height)
+//      let leftRect = CanariHorizontalRect (left:0, bottom:board.y, width:board.x, height:boardRect.height)
 //      var idy = idx + 1
 //      while idy < sortedBoards.count {
 //        let testedBoard = sortedBoards [idy]
@@ -299,7 +299,7 @@ fileprivate func getInstanceLimit (_ board : MergerBoardInstance) -> Int {
 //  //····················································································································
 //
 //  fileprivate func pushBoardRight (_ sortedBoards : [MergerBoardInstance],
-//                                   _ inBoardRect : CanariBoardRect,
+//                                   _ inBoardRect : CanariHorizontalRect,
 //                                   _ inIndex : Int,
 //                                   _ inNewX : Int) {
 //  //--- Push other boards ?
@@ -320,7 +320,7 @@ fileprivate func getInstanceLimit (_ board : MergerBoardInstance) -> Int {
 //  //····················································································································
 //
 //  fileprivate func pushBoardUp (_ sortedBoards : [MergerBoardInstance],
-//                                _ inBoardRect : CanariBoardRect,
+//                                _ inBoardRect : CanariHorizontalRect,
 //                                _ inIndex : Int,
 //                                _ inNewY : Int) {
 //  //--- Push other boards ?
@@ -357,7 +357,7 @@ fileprivate func getInstanceLimit (_ board : MergerBoardInstance) -> Int {
 //      var newY = 0
 //      let boardRect = getInstanceRect (board)
 //      let boardLimit = getInstanceLimit (board)
-//      let leftRect = CanariBoardRect (left:board.x, bottom:0, width:boardRect.left, height:board.y)
+//      let leftRect = CanariHorizontalRect (left:board.x, bottom:0, width:boardRect.left, height:board.y)
 //      for testedBoard in boards {
 //        if testedBoard !== board {
 //          let testedBoardLimit = getInstanceLimit (testedBoard)
@@ -397,7 +397,7 @@ fileprivate func getInstanceLimit (_ board : MergerBoardInstance) -> Int {
 //  //····················································································································
 //
 //  fileprivate func pushBoardUpWithOverlap (_ sortedBoards : [MergerBoardInstance],
-//                                           _ inBoardRect : CanariBoardRect,
+//                                           _ inBoardRect : CanariHorizontalRect,
 //                                           _ inBoardLimit : Int,
 //                                           _ inIndex : Int,
 //                                           _ inNewY : Int) {
@@ -429,7 +429,7 @@ fileprivate func getInstanceLimit (_ board : MergerBoardInstance) -> Int {
 //      var newX = 0
 //      let boardRect = getInstanceRect (board)
 //      let boardLimit = getInstanceLimit (board)
-//      let leftRect = CanariBoardRect (left:0, bottom:board.y, width:board.x, height:boardRect.height)
+//      let leftRect = CanariHorizontalRect (left:0, bottom:board.y, width:board.x, height:boardRect.height)
 //      for testedBoard in boards {
 //        if testedBoard !== board {
 //          let testedBoardLimit = getInstanceLimit (testedBoard)
@@ -469,7 +469,7 @@ fileprivate func getInstanceLimit (_ board : MergerBoardInstance) -> Int {
 //  //····················································································································
 //
 //  fileprivate func pushBoardRightWithOverlap (_ sortedBoards : [MergerBoardInstance],
-//                                              _ inBoardRect : CanariBoardRect,
+//                                              _ inBoardRect : CanariHorizontalRect,
 //                                              _ inBoardLimit : Int,
 //                                              _ inIndex : Int,
 //                                              _ inNewX : Int) {

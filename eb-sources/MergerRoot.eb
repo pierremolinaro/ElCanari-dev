@@ -45,13 +45,13 @@ entity MergerRoot {
 
 
 #--- Board rect (rect from instances (automatic mode) or from manuel sizes)
-  transient CanariBoardRect boardRect dependsFrom
+  transient CanariHorizontalRect boardRect dependsFrom
      self.automaticBoardSize,
      self.boardManualWidth, self.boardManualHeight,
      self.boardInstances.all.instanceRect ;
 
 #--- Display rect (includes manual size and or instances rect)
-  transient CanariBoardRect boardDisplayRect dependsFrom
+  transient CanariHorizontalRect boardDisplayRect dependsFrom
      self.boardManualWidth, self.boardManualHeight,
      self.boardInstances.all.instanceRect ;
 

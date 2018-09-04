@@ -203,8 +203,8 @@ extension KicadItem {
 
   //····················································································································
 
-  func collectTexts (_ ioFrontLayoutTextEntities : inout [CanariSegment],
-                     _ ioBackLayoutTextEntities : inout [CanariSegment],
+  func collectTexts (_ ioFrontLayoutTextEntities : inout [SegmentEntity],
+                     _ ioBackLayoutTextEntities : inout [SegmentEntity],
                      _ inKicadFont : [UInt32 : KicadChar],
                      _ inModelLeftMM  : Double,
                      _ inModelBottomMM : Double,
@@ -254,7 +254,7 @@ extension KicadItem {
           }
         }
       }
-      var segments = [CanariSegment] ()
+      var segments = [SegmentEntity] ()
       var advancement = -mirror * stringWidth / 2.0
       let textY = Double (descent - ascent) * 0.5 * fontSize / 21.0
       for unicodeChar in value.unicodeArray {
@@ -266,7 +266,7 @@ extension KicadItem {
             let y2 = textY + Double (charSegment.y2) * fontSize / 21.0
             let p1 = textTransform.transform (NSPoint (x:x1, y:y1))
             let p2 = textTransform.transform (NSPoint (x:x2, y:y2))
-            let segment = CanariSegment (managedObjectContext: inMOC)
+            let segment = SegmentEntity (managedObjectContext: inMOC)
             segment.x1 = millimeterToCanariUnit (Double (p1.x))
             segment.y1 = millimeterToCanariUnit (Double (p1.y))
             segment.x2 = millimeterToCanariUnit (Double (p2.x))
@@ -299,8 +299,8 @@ extension KicadItem {
 
   //····················································································································
 
-  func collectTracks (_ ioFrontTrackEntities : inout [CanariSegment],
-                      _ ioBackTrackEntities : inout [CanariSegment],
+  func collectTracks (_ ioFrontTrackEntities : inout [SegmentEntity],
+                      _ ioBackTrackEntities : inout [SegmentEntity],
                       _ inModelLeftMM  : Double,
                       _ inModelBottomMM : Double,
                       _ ioErrorArray : inout [(String, Int)],
@@ -312,7 +312,7 @@ extension KicadItem {
          let endY = self.getFloat (["segment", "end"], 1, &ioErrorArray, #line),
          let width = self.getFloat (["segment", "width"], 0, &ioErrorArray, #line),
          let layer = self.getString (["segment", "layer"], 0, &ioErrorArray, #line) {
-        let segment = CanariSegment (managedObjectContext: inMOC)
+        let segment = SegmentEntity (managedObjectContext: inMOC)
         segment.x1 = millimeterToCanariUnit (startX - inModelLeftMM)
         segment.y1 = millimeterToCanariUnit (inModelBottomMM - startY)
         segment.x2 = millimeterToCanariUnit (endX - inModelLeftMM)
@@ -394,7 +394,7 @@ extension KicadItem {
   //····················································································································
 
   func collectVias (_ ioViaEntities : inout [BoardModelVia],
-                    _ ioDrillEntities : inout [CanariSegment],
+                    _ ioDrillEntities : inout [SegmentEntity],
                     _ inModelLeftMM  : Double,
                     _ inModelBottomMM : Double,
                     _ inNetArray : [KicadNetClass],
@@ -412,7 +412,7 @@ extension KicadItem {
         let netClass = inNetArray [netIndex]
         ioViaEntities.append (via)
       //--- Add drill
-        let segment = CanariSegment (managedObjectContext: inMOC)
+        let segment = SegmentEntity (managedObjectContext: inMOC)
         segment.x1 = via.x
         segment.y1 = via.y
         segment.x2 = via.x
@@ -467,15 +467,15 @@ extension KicadItem {
 
   //····················································································································
 
-  func collectComponents (_ ioFrontPackagesEntities : inout [CanariSegment],
-                          _ ioBackPackagesEntities : inout [CanariSegment],
-                          _ ioDrillEntities : inout [CanariSegment],
+  func collectComponents (_ ioFrontPackagesEntities : inout [SegmentEntity],
+                          _ ioBackPackagesEntities : inout [SegmentEntity],
+                          _ ioDrillEntities : inout [SegmentEntity],
                           _ ioFrontPadEntities : inout [BoardModelPad],
                           _ ioBackPadEntities : inout [BoardModelPad],
-                          _ ioFrontComponentNamesEntities : inout [CanariSegment],
-                          _ ioBackComponentNamesEntities : inout [CanariSegment],
-                          _ ioFrontComponentValuesEntities : inout [CanariSegment],
-                          _ ioBackComponentValuesEntities : inout [CanariSegment],
+                          _ ioFrontComponentNamesEntities : inout [SegmentEntity],
+                          _ ioBackComponentNamesEntities : inout [SegmentEntity],
+                          _ ioFrontComponentValuesEntities : inout [SegmentEntity],
+                          _ ioBackComponentValuesEntities : inout [SegmentEntity],
                           _ inKicadFont : [UInt32 : KicadChar],
                           _ inModelLeftMM  : Double,
                           _ inModelBottomMM : Double,
@@ -532,7 +532,7 @@ extension KicadItem {
                 }
               }
             }
-            var segments = [CanariSegment] ()
+            var segments = [SegmentEntity] ()
             var advancement = startX - mirror * stringWidth / 2.0
             let textY = startY + Double (descent - ascent) * 0.5 * fontSize / 21.0
             for unicodeChar in value.unicodeArray {
@@ -544,7 +544,7 @@ extension KicadItem {
                   let y2 = textY + Double (charSegment.y2) * fontSize / 21.0
                   let p1 = moduleTransform.transform (NSPoint (x:x1, y:y1))
                   let p2 = moduleTransform.transform (NSPoint (x:x2, y:y2))
-                  let segment = CanariSegment (managedObjectContext: inMOC)
+                  let segment = SegmentEntity (managedObjectContext: inMOC)
                   segment.x1 = millimeterToCanariUnit (Double (p1.x))
                   segment.y1 = millimeterToCanariUnit (Double (p1.y))
                   segment.x2 = millimeterToCanariUnit (Double (p2.x))
@@ -571,7 +571,7 @@ extension KicadItem {
                 let endY = item.getFloat (["fp_line", "end"], 1, &ioErrorArray, #line),
                 let widthMM = item.getFloat (["fp_line", "width"], 0, &ioErrorArray, #line),
                 let lineLayer = item.getString (["fp_line", "layer"], 0, &ioErrorArray, #line) {
-            let packageLine = CanariSegment (managedObjectContext: inMOC)
+            let packageLine = SegmentEntity (managedObjectContext: inMOC)
             let start = moduleTransform.transform (NSPoint (x: startX, y: startY))
             packageLine.x1 = millimeterToCanariUnit (Double(start.x))
             packageLine.y1 = millimeterToCanariUnit (Double(start.y))
@@ -623,7 +623,7 @@ extension KicadItem {
               case .moveToBezierPathElement :
                 currentPoint = pointArray [0]
               case .lineToBezierPathElement :
-                let packageLine = CanariSegment (managedObjectContext: inMOC)
+                let packageLine = SegmentEntity (managedObjectContext: inMOC)
                 packageLine.x1 = millimeterToCanariUnit (Double (currentPoint.x))
                 packageLine.y1 = millimeterToCanariUnit (Double (currentPoint.y))
                 packageLine.x2 = millimeterToCanariUnit (Double (pointArray [0].x))
@@ -682,7 +682,7 @@ extension KicadItem {
                   let drillDiameter = millimeterToCanariUnit (holeDiameter)
                   let x1 = pad.x
                   let y1 = pad.y
-                  let drill = CanariSegment (managedObjectContext: inMOC)
+                  let drill = SegmentEntity (managedObjectContext: inMOC)
                   drill.x1 = x1
                   drill.y1 = y1
                   drill.x2 = x1
@@ -699,7 +699,7 @@ extension KicadItem {
                     let p = padTransform.transform (NSPoint (x: (ovalMM - drillDiameterMM) / 2.0, y:0))
                     let dx = millimeterToCanariUnit (Double (p.x))
                     let dy = millimeterToCanariUnit (Double (p.y))
-                    let drill = CanariSegment (managedObjectContext: inMOC)
+                    let drill = SegmentEntity (managedObjectContext: inMOC)
                     drill.x1 = pad.x - dx
                     drill.y1 = pad.y - dy
                     drill.x2 = pad.x + dx
@@ -828,8 +828,8 @@ extension MergerDocument {
         let modelHeightMM = bottomMM - topMM // in Kicad, the Y-axis is pointing down
         // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
       //--- Collect tracks
-        var frontTrackEntities = [CanariSegment] ()
-        var backTrackEntities = [CanariSegment] ()
+        var frontTrackEntities = [SegmentEntity] ()
+        var backTrackEntities = [SegmentEntity] ()
         contents?.collectTracks (&frontTrackEntities, &backTrackEntities, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
       //--- Collect net name array, net class array
         var netNameArray = [String] ()
@@ -854,27 +854,27 @@ extension MergerDocument {
           }
         }
       //--- Collect vias
-        var drillEntities = [CanariSegment] ()
+        var drillEntities = [SegmentEntity] ()
         var viaEntities = [BoardModelVia] ()
         contents?.collectVias (&viaEntities, &drillEntities, leftMM, bottomMM, netArray, &errorArray, self.managedObjectContext ())
       //---- Collect components
         let font : [UInt32 : KicadChar] = kicadFont ()
         var frontPadEntities = [BoardModelPad] ()
         var backPadEntities = [BoardModelPad] ()
-        var frontPackagesEntities = [CanariSegment] ()
-        var backPackagesEntities = [CanariSegment] ()
-        var backComponentNamesEntities = [CanariSegment] ()
-        var frontComponentNamesEntities = [CanariSegment] ()
-        var frontComponentValuesEntities = [CanariSegment] ()
-        var backComponentValuesEntities = [CanariSegment] ()
+        var frontPackagesEntities = [SegmentEntity] ()
+        var backPackagesEntities = [SegmentEntity] ()
+        var backComponentNamesEntities = [SegmentEntity] ()
+        var frontComponentNamesEntities = [SegmentEntity] ()
+        var frontComponentValuesEntities = [SegmentEntity] ()
+        var backComponentValuesEntities = [SegmentEntity] ()
         contents?.collectComponents (&frontPackagesEntities, &backPackagesEntities,
                                      &drillEntities, &frontPadEntities, &backPadEntities,
                                      &frontComponentNamesEntities, &backComponentNamesEntities,
                                      &frontComponentValuesEntities, &backComponentValuesEntities,
                                      font, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
       //---- Collect texts and lines (gr_text)
-        var frontLayoutTextEntities = [CanariSegment] ()
-        var backLayoutTextEntities = [CanariSegment] ()
+        var frontLayoutTextEntities = [SegmentEntity] ()
+        var backLayoutTextEntities = [SegmentEntity] ()
         contents?.collectTexts (&frontLayoutTextEntities, &backLayoutTextEntities,
                                 font, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
 
@@ -882,10 +882,10 @@ extension MergerDocument {
 
 
     //  //--- Back Legend texts
-    //    var backLegendLinesEntities = [CanariSegment] ()
+    //    var backLegendLinesEntities = [SegmentEntity] ()
     //    let backLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-BACK", &errorArray)
     //    for str in backLegendLines {
-    //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+    //      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
     //      let ints = array5int (fromString: str, &errorArray)
     //      segment.x1 = ints [0]
     //      segment.y1 = ints [1]
@@ -896,10 +896,10 @@ extension MergerDocument {
     //    }
     //    boardModel.backLegendLines_property.setProp (backLegendLinesEntities)
     //  //--- Front Legend texts
-    //    var frontLegendLinesEntities = [CanariSegment] ()
+    //    var frontLegendLinesEntities = [SegmentEntity] ()
     //    let frontLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-FRONT", &errorArray)
     //    for str in frontLegendLines {
-    //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+    //      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
     //      let ints = array5int (fromString: str, &errorArray)
     //      segment.x1 = ints [0]
     //      segment.y1 = ints [1]
@@ -910,10 +910,10 @@ extension MergerDocument {
     //    }
     //    boardModel.frontLegendLines_property.setProp (frontLegendLinesEntities)
     //  //--- Back Legend texts
-    //    var backLegendTextEntities = [CanariSegment] ()
+    //    var backLegendTextEntities = [SegmentEntity] ()
     //    let backLegendTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LEGEND-BACK", &errorArray)
     //    for str in backLegendTexts {
-    //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+    //      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
     //      let ints = array5int (fromString: str, &errorArray)
     //      segment.x1 = ints [0]
     //      segment.y1 = ints [1]
@@ -924,10 +924,10 @@ extension MergerDocument {
     //    }
     //    boardModel.backLegendTexts_property.setProp (backLegendTextEntities)
     //  //--- Front Legend texts
-    //    var frontLegendTextEntities = [CanariSegment] ()
+    //    var frontLegendTextEntities = [SegmentEntity] ()
     //    let frontTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LEGEND-FRONT", &errorArray)
     //    for str in frontTexts {
-    //      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+    //      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
     //      let ints = array5int (fromString: str, &errorArray)
     //      segment.x1 = ints [0]
     //      segment.y1 = ints [1]

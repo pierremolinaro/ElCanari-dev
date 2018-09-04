@@ -79,13 +79,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   Accessing instanceRect transient property
   //····················································································································
 
-  var instanceRect_property_selection : EBSelection <CanariBoardRect> {
+  var instanceRect_property_selection : EBSelection <CanariHorizontalRect> {
     get {
       return self.instanceRect_property.prop
     }
   }
 
-  var instanceRect : CanariBoardRect? {
+  var instanceRect : CanariHorizontalRect? {
     switch instanceRect_property_selection {
     case .empty, .multiple :
       return nil
@@ -182,7 +182,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //    Transient properties
   //····················································································································
 
-  var instanceRect_property = EBTransientProperty_CanariBoardRect ()
+  var instanceRect_property = EBTransientProperty_CanariHorizontalRect ()
   var modelName_property = EBTransientProperty_String ()
   var boardLimitWidth_property = EBTransientProperty_Int ()
   // selectionLayer_property is declared in super entity
@@ -1092,7 +1092,7 @@ protocol MergerBoardInstance_instanceRotation : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerBoardInstance_instanceRect : class {
-  var instanceRect : CanariBoardRect? { get }
+  var instanceRect : CanariHorizontalRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1437,7 +1437,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
 
   //····················································································································
 
-  var boardDisplayRect_property_selection : EBSelection <CanariBoardRect?> {
+  var boardDisplayRect_property_selection : EBSelection <CanariHorizontalRect?> {
     get {
       if let model = self.propval {
         switch (model.boardDisplayRect_property_selection) {
@@ -1738,7 +1738,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
 
   //····················································································································
 
-  var boardRect_property_selection : EBSelection <CanariBoardRect?> {
+  var boardRect_property_selection : EBSelection <CanariHorizontalRect?> {
     get {
       if let model = self.propval {
         switch (model.boardRect_property_selection) {

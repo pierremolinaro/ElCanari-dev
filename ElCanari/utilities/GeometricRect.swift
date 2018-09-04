@@ -1,5 +1,5 @@
 //
-//  CanariRect.swift
+//  GeometricRect.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 15/11/2016.
@@ -10,10 +10,10 @@
 import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Struct CanariRect
+//  Struct GeometricRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct CanariRect {
+struct GeometricRect {
   let center : CGPoint
   let angle : CGFloat // In radians
   let size : CGSize
@@ -48,18 +48,18 @@ struct CanariRect {
   //   CircumCircle
   //····················································································································
 
-  func circumCircle () -> CanariCircle {
+  func circumCircle () -> GeometricCircle {
     let radius = sqrt (size.width * size.width + size.height * size.height) / 2.0
-    return CanariCircle (center: self.center, radius: radius)
+    return GeometricCircle (center: self.center, radius: radius)
   }
 
   //····················································································································
   //   inscribedCircle
   //····················································································································
 
-  func inscribedCircle () -> CanariCircle {
+  func inscribedCircle () -> GeometricCircle {
     let radius = min (size.width, size.height) / 2.0
-    return CanariCircle (center: self.center, radius: radius)
+    return GeometricCircle (center: self.center, radius: radius)
   }
 
   //····················································································································
@@ -95,7 +95,7 @@ struct CanariRect {
   //   Intersection
   //····················································································································
 
-  func intersects (circle : CanariCircle) -> Bool {
+  func intersects (circle : GeometricCircle) -> Bool {
   //--- Intersection if circle contains rectangle center
     var intersects = CGPoint.distance (self.center, circle.center) <= circle.radius
   //--- Intersection if rectangle contains circle center
@@ -116,7 +116,7 @@ struct CanariRect {
   
   //····················································································································
 
-  func intersects (rect : CanariRect) -> Bool {
+  func intersects (rect : GeometricRect) -> Bool {
   //--- Method of separating axes (https://www.youtube.com/watch?v=WBy6AveIRRs)
     var intersects = true
     let vertices1 = self.vertices ()
@@ -155,7 +155,7 @@ struct CanariRect {
   //---
     return intersects
   }
-  
+
   //····················································································································
 
 }

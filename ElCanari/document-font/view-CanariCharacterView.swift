@@ -805,7 +805,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         mSelection.removeAll ()
         let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
         mSelectionRectangleLayer.path = CGPath (rect: r, transform: nil)
-        let cr = CanariRect (cgrect: r)
+        let cr = GeometricRect (cgrect: r)
         for segment in segmentEntityArray () {
           if segment.intersects (rect: cr) {
             mSelection.insert (segment)
@@ -830,7 +830,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
         let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
         mSelectionRectangleLayer.path = CGPath (rect: r, transform: nil)
-        let cr = CanariRect (cgrect: r)
+        let cr = GeometricRect (cgrect: r)
         var selection = Set <SegmentForFontCharacter> ()
         for segment in segmentEntityArray () {
           if segment.intersects (rect: cr) {
@@ -904,7 +904,7 @@ extension SegmentForFontCharacter {
   //····················································································································
 
   final func getDrawLayer (alpha : CGFloat) -> CALayer {
-    let oblong = CanariOblong (
+    let oblong = GeometricOblong (
       from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
       to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
       height: PLACEMENT_GRID * 2.0
@@ -917,7 +917,7 @@ extension SegmentForFontCharacter {
   //····················································································································
 
   final func contains (point p : CGPoint) -> Bool {
-    let oblong = CanariOblong (
+    let oblong = GeometricOblong (
       from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
       to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
       height: PLACEMENT_GRID * 2.0
@@ -927,8 +927,8 @@ extension SegmentForFontCharacter {
 
   //····················································································································
 
-  final func intersects (rect r : CanariRect) -> Bool {
-    let oblong = CanariOblong (
+  final func intersects (rect r : GeometricRect) -> Bool {
+    let oblong = GeometricOblong (
       from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
       to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
       height: PLACEMENT_GRID * 2.0

@@ -12,14 +12,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_BoardModel_backTrackSegments (
-       _ self_backTracks_x1 : [CanariSegment_x1],
-       _ self_backTracks_y1 : [CanariSegment_y1],
-       _ self_backTracks_x2 : [CanariSegment_x2],
-       _ self_backTracks_y2 : [CanariSegment_y2],
-       _ self_backTracks_width : [CanariSegment_width]
+       _ self_backTracks_x1 : [SegmentEntity_x1],
+       _ self_backTracks_y1 : [SegmentEntity_y1],
+       _ self_backTracks_x2 : [SegmentEntity_x2],
+       _ self_backTracks_y2 : [SegmentEntity_y2],
+       _ self_backTracks_width : [SegmentEntity_width]
 ) -> MergerSegmentArray {
 //--- START OF USER ZONE 2
-  var segmentArray = [MergerSegment] ()
+  var segmentArray = [CanariSegment] ()
   var idx = 0
   while idx < self_backTracks_x1.count {
     let x1 = self_backTracks_x1 [idx].x1
@@ -27,7 +27,7 @@ func transient_BoardModel_backTrackSegments (
     let x2 = self_backTracks_x2 [idx].x2
     let y2 = self_backTracks_y2 [idx].y2
     let width = self_backTracks_width [idx].width
-    segmentArray.append (MergerSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
+    segmentArray.append (CanariSegment (x1:x1, y1:y1, x2:x2, y2:y2, width:width))
     idx += 1
   }
   return MergerSegmentArray (segmentArray)

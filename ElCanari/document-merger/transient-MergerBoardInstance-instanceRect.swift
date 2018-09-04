@@ -17,13 +17,13 @@ func transient_MergerBoardInstance_instanceRect (
        _ self_myModel_modelWidth : Int?,         
        _ self_myModel_modelHeight : Int?,        
        _ self_instanceRotation : QuadrantRotation
-) -> CanariBoardRect {
+) -> CanariHorizontalRect {
 //--- START OF USER ZONE 2
   switch self_instanceRotation {
   case .rotation0, .rotation180 :
-    return CanariBoardRect (left:self_x, bottom:self_y, width: self_myModel_modelWidth!, height:self_myModel_modelHeight!)
+    return CanariHorizontalRect (left:self_x, bottom:self_y, width: self_myModel_modelWidth!, height:self_myModel_modelHeight!)
   case .rotation90, .rotation270 :
-    return CanariBoardRect (left:self_x, bottom:self_y, width: self_myModel_modelHeight!, height: self_myModel_modelWidth!)
+    return CanariHorizontalRect (left:self_x, bottom:self_y, width: self_myModel_modelHeight!, height: self_myModel_modelWidth!)
   }
 //--- END OF USER ZONE 2
 }

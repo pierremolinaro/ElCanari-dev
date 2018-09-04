@@ -5,15 +5,15 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: CanariSegment
+//    Entity: SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariSegment : EBManagedObject,
-  CanariSegment_x1,
-  CanariSegment_y1,
-  CanariSegment_x2,
-  CanariSegment_y2,
-  CanariSegment_width {
+class SegmentEntity : EBManagedObject,
+  SegmentEntity_x1,
+  SegmentEntity_y1,
+  SegmentEntity_x2,
+  SegmentEntity_y2,
+  SegmentEntity_width {
 
   //····················································································································
   //   Accessing x1 stored property
@@ -272,10 +272,10 @@ class CanariSegment : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_CanariSegment
+//    ReadOnlyArrayOf_SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegment> {
+class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEntity> {
 
   //····················································································································
   //   Observers of 'x1' stored property
@@ -315,7 +315,7 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 
   //····················································································································
 
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<CanariSegment>) {
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x1 {
         managedObject.x1_property.addEBObserver (observer)
@@ -325,7 +325,7 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<CanariSegment>) {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for observer in mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -372,7 +372,7 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 
   //····················································································································
 
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<CanariSegment>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y1 {
         managedObject.y1_property.addEBObserver (observer)
@@ -382,7 +382,7 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<CanariSegment>) {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for observer in mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -429,7 +429,7 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 
   //····················································································································
 
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<CanariSegment>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_x2 {
         managedObject.x2_property.addEBObserver (observer)
@@ -439,7 +439,7 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<CanariSegment>) {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for observer in mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -486,7 +486,7 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 
   //····················································································································
 
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<CanariSegment>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_y2 {
         managedObject.y2_property.addEBObserver (observer)
@@ -496,7 +496,7 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<CanariSegment>) {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for observer in mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -543,7 +543,7 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 
   //····················································································································
 
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<CanariSegment>) {
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
       for observer in mObserversOf_width {
         managedObject.width_property.addEBObserver (observer)
@@ -553,7 +553,7 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 
   //····················································································································
 
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<CanariSegment>) {
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for observer in mObserversOf_width {
       observer.postEvent ()
       for managedObject in inSet {
@@ -567,14 +567,14 @@ class ReadOnlyArrayOf_CanariSegment : ReadOnlyAbstractArrayProperty <CanariSegme
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_CanariSegment
+//    TransientArrayOf_SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_CanariSegment : ReadOnlyArrayOf_CanariSegment {
+class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
-  var readModelFunction : Optional<() -> EBSelection < [CanariSegment] > >
+  var readModelFunction : Optional<() -> EBSelection < [SegmentEntity] > >
 
-  private var prop_cache : EBSelection < [CanariSegment] >? 
+  private var prop_cache : EBSelection < [SegmentEntity] >? 
 
   //····················································································································
 
@@ -584,16 +584,16 @@ class TransientArrayOf_CanariSegment : ReadOnlyArrayOf_CanariSegment {
 
   //····················································································································
 
-  private var mSet = Set <CanariSegment> ()
+  private var mSet = Set <SegmentEntity> ()
 
-  override var prop : EBSelection < [CanariSegment] > {
+  override var prop : EBSelection < [SegmentEntity] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <CanariSegment>
+        let newSet : Set <SegmentEntity>
         switch prop_cache! {
         case .multiple, .empty :
-          newSet = Set <CanariSegment> ()
+          newSet = Set <SegmentEntity> ()
         case .single (let array) :
           newSet = Set (array)
         }
@@ -645,31 +645,31 @@ class TransientArrayOf_CanariSegment : ReadOnlyArrayOf_CanariSegment {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CanariSegment_x1 : class {
+protocol SegmentEntity_x1 : class {
   var x1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CanariSegment_y1 : class {
+protocol SegmentEntity_y1 : class {
   var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CanariSegment_x2 : class {
+protocol SegmentEntity_x2 : class {
   var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CanariSegment_y2 : class {
+protocol SegmentEntity_y2 : class {
   var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CanariSegment_width : class {
+protocol SegmentEntity_width : class {
   var width : Int { get }
 }
 

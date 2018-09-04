@@ -16,20 +16,20 @@ func transient_MergerRoot_boardRect (
        _ self_boardManualWidth : Int,
        _ self_boardManualHeight : Int,
        _ self_boardInstances_instanceRect : [MergerBoardInstance_instanceRect]
-) -> CanariBoardRect {
+) -> CanariHorizontalRect {
 //--- START OF USER ZONE 2
     if self_automaticBoardSize {
-      var r = CanariBoardRect () // Empty rect
+      var r = CanariHorizontalRect () // Empty rect
       for board in self_boardInstances_instanceRect {
         if let rect = board.instanceRect {
           r = r.union (rect)
         }
       }
-      return CanariBoardRect (left:0, bottom:0, width: r.left + r.width, height: r.bottom + r.height)
+      return CanariHorizontalRect (left:0, bottom:0, width: r.left + r.width, height: r.bottom + r.height)
 //    }else if self_boardInstances_instanceRect.count == 0 {
-//      return CanariBoardRect ()  // Empty rect
+//      return CanariHorizontalRect ()  // Empty rect
     }else{
-      return CanariBoardRect (left:0, bottom:0, width: self_boardManualWidth, height: self_boardManualHeight)
+      return CanariHorizontalRect (left:0, bottom:0, width: self_boardManualWidth, height: self_boardManualHeight)
     }
 //--- END OF USER ZONE 2
 }

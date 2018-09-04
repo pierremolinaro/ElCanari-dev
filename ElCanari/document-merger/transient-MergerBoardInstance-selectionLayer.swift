@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerBoardInstance_selectionLayer (
-       _ self_instanceRect : CanariBoardRect
+       _ self_instanceRect : CanariHorizontalRect
 ) -> EBShapes {
 //--- START OF USER ZONE 2
   let r : NSRect = self_instanceRect.cocoaRect().insetBy (dx: 0.5, dy: 0.5)

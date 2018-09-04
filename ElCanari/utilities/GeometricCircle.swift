@@ -1,8 +1,8 @@
 //
-//  CanariOblong.swift
+//  GeometricCircle.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 19/11/2016.
+//  Created by Pierre Molinaro on 15/11/2016.
 //
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -10,75 +10,59 @@
 import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Struct CanariOblong
+//  Struct GeometricCircle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct CanariOblong {
-  let p1 : CGPoint
-  let p2 : CGPoint
-  let height : CGFloat
+struct GeometricCircle {
+  let center : CGPoint
+  let radius : CGFloat
 
   //····················································································································
   //   init
   //····················································································································
 
-  init (from p1 : CGPoint, to p2 : CGPoint, height : CGFloat) {
-    self.p1 = p1
-    self.p2 = p2
-    self.height = height
+  init (center : CGPoint, radius : CGFloat) {
+    self.center = center
+    self.radius = radius
   }
 
   //····················································································································
-  //   Contains point
+  //   Intersection
   //····················································································································
 
-  func contains (point p : CGPoint) -> Bool {
-  //--- p inside P1 circle
-    var inside = CGPoint.distance (self.p1, p) <= (height / 2.0)
-  //--- p inside P2 circle
-    if !inside {
-      inside = CGPoint.distance (self.p2, p) <= (height / 2.0)
-    }
-  //--- p inside rectangle
-    if !inside {
-      let r = CanariRect (from: self.p1, to: self.p2, height: self.height)
-      inside = r.contains (point: p)
-    }
-    return inside
+  func intersects (circle : GeometricCircle) -> Bool {
+    let d = CGPoint.distance (self.center, circle.center)
+    return d <= (self.radius + circle.radius)
   }
 
   //····················································································································
 
-  func intersects (rect : CanariRect) -> Bool {
-  //--- rect intersects P1 circle
-    let c1 = CanariCircle (center: self.p1, radius: self.height / 2.0)
-    var intersects = rect.intersects (circle: c1)
-  //--- rect intersects P2 circle
+  func intersects (segmentFrom p1 : CGPoint, to p2 : CGPoint) -> Bool {
+    var intersects = CGPoint.distance (p1, self.center) <= self.radius
     if !intersects {
-      let c2 = CanariCircle (center: self.p2, radius: self.height / 2.0)
-      intersects = rect.intersects (circle: c2)
+      intersects = CGPoint.distance (p2, self.center) <= self.radius
     }
-  //--- rect intersects rectangle
     if !intersects {
-      let r = CanariRect (from: self.p1, to: self.p2, height: self.height)
-      intersects = rect.intersects (rect: r)
+      let segmentAngle = CGPoint.angleInRadian (p1, p2)
+      let segmentCenter = CGPoint (x: (p1.x + p2.x) / 2.0, y: (p1.y + p2.y) / 2.0)
+      let tr = CGAffineTransform (rotationAngle: -segmentAngle).translatedBy (x:-segmentCenter.x, y:-segmentCenter.y)
+      let point = self.center.applying (tr)
+      intersects = abs (point.y) <= self.radius
+      if intersects {
+        let segmentLength = CGPoint.distance (p1, p2)
+        intersects = abs (point.x) <= (segmentLength * 0.5)
+      }
     }
     return intersects
   }
-  
+
   //····················································································································
 
-  func shape () -> CAShapeLayer {
-    let mutablePath = CGMutablePath ()
-    mutablePath.move (to: self.p1)
-    mutablePath.addLine (to: self.p2)
-    let newLayer = CAShapeLayer ()
-    newLayer.path = mutablePath
-    newLayer.lineWidth = self.height
-    newLayer.lineCap = kCALineCapRound
-    return newLayer
+  func path () -> CGPath {
+    let r = CGRect (x: center.x - radius, y: center.y - radius, width: radius  * 2.0, height: radius * 2.0)
+    return CGPath (ellipseIn: r, transform: nil)
   }
 
-}
+  //····················································································································
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+}

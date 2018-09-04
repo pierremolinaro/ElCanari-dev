@@ -1,5 +1,5 @@
 //
-//  CanariBoardRect.swift
+//  CanariHorizontalRect.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 02/07/2018.
@@ -10,10 +10,10 @@
 import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Struct CanariBoardRect
+//  Struct CanariHorizontalRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct CanariBoardRect : Hashable, Equatable {
+struct CanariHorizontalRect : Hashable, Equatable {
 
   let left : Int
   let bottom : Int
@@ -59,7 +59,7 @@ struct CanariBoardRect : Hashable, Equatable {
   //   Protocol Equatable
   //····················································································································
 
-  public static func == (lhs: CanariBoardRect, rhs: CanariBoardRect) -> Bool {
+  public static func == (lhs: CanariHorizontalRect, rhs: CanariHorizontalRect) -> Bool {
     return (lhs.left == rhs.left) && (lhs.bottom == rhs.bottom) && (lhs.width == rhs.width) && (lhs.height == rhs.height)
   }
 
@@ -88,8 +88,8 @@ struct CanariBoardRect : Hashable, Equatable {
   //   Union
   //····················································································································
 
-  func union (_ inOtherRect : CanariBoardRect) -> CanariBoardRect {
-    let result : CanariBoardRect
+  func union (_ inOtherRect : CanariHorizontalRect) -> CanariHorizontalRect {
+    let result : CanariHorizontalRect
     if self.isEmpty {
       result = inOtherRect
     }else if inOtherRect.isEmpty {
@@ -99,7 +99,7 @@ struct CanariBoardRect : Hashable, Equatable {
       let bottom = min (self.bottom, inOtherRect.bottom)
       let right = max (self.right, inOtherRect.right)
       let top = max (self.top, inOtherRect.top)
-      result = CanariBoardRect (left:left, bottom:bottom, width:right - left, height:top - bottom)
+      result = CanariHorizontalRect (left:left, bottom:bottom, width:right - left, height:top - bottom)
     }
     return result
   }
@@ -108,16 +108,16 @@ struct CanariBoardRect : Hashable, Equatable {
   //   Intersection
   //····················································································································
 
-  func intersection (_ inOtherRect : CanariBoardRect) -> CanariBoardRect {
-    let result : CanariBoardRect
+  func intersection (_ inOtherRect : CanariHorizontalRect) -> CanariHorizontalRect {
+    let result : CanariHorizontalRect
     if self.isEmpty || inOtherRect.isEmpty {
-      result = CanariBoardRect () // Empty Rect
+      result = CanariHorizontalRect () // Empty Rect
     }else{
       let left   = max (self.left, inOtherRect.left)
       let bottom = max (self.bottom, inOtherRect.bottom)
       let right  = min (self.left + self.width,  inOtherRect.left + inOtherRect.width)
       let top    = min (self.bottom + self.height, inOtherRect.bottom + inOtherRect.height)
-      result = CanariBoardRect (left: left, bottom: bottom, width: right - left, height: top - bottom)
+      result = CanariHorizontalRect (left: left, bottom: bottom, width: right - left, height: top - bottom)
     }
     return result
   }
@@ -126,19 +126,41 @@ struct CanariBoardRect : Hashable, Equatable {
   //   Inset
   //····················································································································
 
-  func insetBy (dx inDx : Int, dy inDy : Int) -> CanariBoardRect {
-    let result : CanariBoardRect
+  func insetBy (dx inDx : Int, dy inDy : Int) -> CanariHorizontalRect {
+    let result : CanariHorizontalRect
     if self.isEmpty {
-      result = CanariBoardRect () // Empty Rect
+      result = CanariHorizontalRect () // Empty Rect
     }else{
       let right = self.left + inDx
       let bottom = self.bottom + inDy
       let left = self.left + self.width - inDx
       let top = self.bottom + self.height - inDy
-      result = CanariBoardRect (left:right, bottom:bottom, width:left - right, height:top - bottom)
+      result = CanariHorizontalRect (left:right, bottom:bottom, width:left - right, height:top - bottom)
     }
     return result
   }
+
+  //····················································································································
+  //   Contains point
+  //····················································································································
+
+  func contains (x inX : Int, y inY : Int) -> Bool {
+    return (inX >= self.left) && (inX <= self.right) && (inY >= self.bottom) && (inY <= self.top)
+  }
+
+  //····················································································································
+  //   Inset
+  //····················································································································
+
+  func clipping (segment inSegment : CanariSegment) -> CanariSegment? {
+    let r = self.insetBy (dx: inSegment.width / 2, dy: inSegment.width / 2)
+    if r.contains (x: inSegment.x1, y: inSegment.y2) && r.contains (x: inSegment.x2, y: inSegment.y2) {
+      return inSegment
+    }else{
+      return nil
+    }
+  }
+
 
   //····················································································································
 
