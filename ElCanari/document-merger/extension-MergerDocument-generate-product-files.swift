@@ -28,7 +28,7 @@ extension MergerDocument {
         }
       //--- Generate board archive
         if self.rootObject.generatedBoardArchiveFormat != .noGeneration {
-          let boardArchivePath = productDirectory + "/" + baseName + ".ElCanariBoardArchive"
+          let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_MERGER_ARCHIVE
           mLogTextView?.appendMessageString("Generating \(boardArchivePath.lastPathComponent)…")
           try generateBoardArchive (atPath:boardArchivePath)
           mLogTextView?.appendSuccessString (" Ok\n")

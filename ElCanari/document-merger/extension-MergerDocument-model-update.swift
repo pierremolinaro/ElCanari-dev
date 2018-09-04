@@ -28,7 +28,7 @@ extension MergerDocument {
           openPanel.canChooseFiles = true
           openPanel.canChooseDirectories = false
           openPanel.allowsMultipleSelection = false
-          openPanel.allowedFileTypes = ["ElCanariBoardArchive", "kicad_pcb"]
+          openPanel.allowedFileTypes = [EL_CANARI_MERGER_ARCHIVE, KICAD_PCB]
         // MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
           gPanel = OpenPanelDelegateForUpdatingBoardModels (boardModelName) // MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
           openPanel.delegate = gPanel
@@ -42,9 +42,9 @@ extension MergerDocument {
                 if let fileData = optionalFileData {
                   let s = filePath.lastPathComponent.deletingPathExtension
                   var possibleBoardModel : BoardModel? = nil
-                  if filePath.pathExtension == "ElCanariBoardArchive" {
+                  if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {
                     possibleBoardModel = self.parseBoardModel_ELCanariArchive (fromData: fileData, named: s)
-                  }else if filePath.pathExtension == "kicad_pcb" {
+                  }else if filePath.pathExtension == KICAD_PCB {
                     possibleBoardModel = self.parseBoardModel_kicad (fromData: fileData, named: s)
                   }
                   if let newBoardModel = possibleBoardModel {
