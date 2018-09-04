@@ -38,12 +38,12 @@ fileprivate class KicadItem {
 
   //····················································································································
 
-  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> Double? {
-    var result : Double? = nil
+  func getFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> CGFloat? {
+    var result : CGFloat? = nil
     if inPath [0] == self.key {
       if inPath.count == 1 {
         if let r = Double (self.items [inIndex].key) {
-          result = r
+          result = CGFloat (r)
         }else{
           ioErrorArray.append (("Key \(self.items [inIndex].key) is not a float", inLine))
         }
@@ -72,13 +72,13 @@ fileprivate class KicadItem {
 
   //····················································································································
 
-  func getOptionalFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> Double? {
-    var result : Double? = nil
+  func getOptionalFloat (_ inPath : [String], _ inIndex : Int, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> CGFloat? {
+    var result : CGFloat? = nil
     if inPath [0] == self.key {
       if inPath.count == 1 {
         if inIndex < self.items.count {
           if let r = Double (self.items [inIndex].key) {
-            result = r
+            result = CGFloat (r)
           }else{
             ioErrorArray.append (("Key \(self.items [inIndex].key) is not a float", inLine))
           }
@@ -206,8 +206,9 @@ extension KicadItem {
   func collectTexts (_ ioFrontLayoutTextEntities : inout [SegmentEntity],
                      _ ioBackLayoutTextEntities : inout [SegmentEntity],
                      _ inKicadFont : [UInt32 : KicadChar],
-                     _ inModelLeftMM  : Double,
-                     _ inModelBottomMM : Double,
+                     _ inModelLeftMM  : CGFloat,
+                     _ inModelBottomMM : CGFloat,
+                     _ inBoardRect : CanariHorizontalRect,
                      _ ioErrorArray : inout [(String, Int)],
                      _ inMOC : EBManagedObjectContext) {
     if self.key == "gr_text",
@@ -220,22 +221,21 @@ extension KicadItem {
       let textTransform = NSAffineTransform ()
       textTransform.scaleX (by: 1.0, yBy: -1.0)
       textTransform.translateX (by: CGFloat (startX - inModelLeftMM), yBy: CGFloat (startY - inModelBottomMM))
-//      textTransform.rotate (byDegrees: CGFloat (-moduleRotationInDegrees))
     //--- Mirror ?
       let optionalMirror = self.getOptionalString (["gr_text", "effects", "justify"], 0, &ioErrorArray, #line)
-      let mirror : Double
+      let mirror : CGFloat
       if let mirrorString = optionalMirror, mirrorString == "mirror" {
         mirror = -1.0
       }else{
         mirror = 1.0
       }
     //--- Compute string metrics
-      var stringWidth = 0.0
+      var stringWidth : CGFloat = 0.0
       var descent = 0 // is >= 0
       var ascent = 0  // is < 0
       for unicodeChar in value.unicodeArray {
         if let charDefinition = inKicadFont [unicodeChar.value] {
-          stringWidth += Double (charDefinition.advancement) * fontSize / 21.0
+          stringWidth += CGFloat (charDefinition.advancement) * fontSize / 21.0
           for charSegment in charDefinition.segments {
             let y1 = charSegment.y1
             if y1 > descent {
@@ -255,26 +255,30 @@ extension KicadItem {
         }
       }
       var segments = [SegmentEntity] ()
-      var advancement = -mirror * stringWidth / 2.0
-      let textY = Double (descent - ascent) * 0.5 * fontSize / 21.0
+      var advancement : CGFloat = -mirror * stringWidth / 2.0
+      let textY = CGFloat (descent - ascent) * 0.5 * fontSize / 21.0
       for unicodeChar in value.unicodeArray {
         if let charDefinition = inKicadFont [unicodeChar.value] {
           for charSegment in charDefinition.segments {
-            let x1 = advancement + mirror * Double (charSegment.x1) * fontSize / 21.0
-            let y1 = textY + Double (charSegment.y1) * fontSize / 21.0
-            let x2 = advancement + mirror * Double (charSegment.x2) * fontSize / 21.0
-            let y2 = textY + Double (charSegment.y2) * fontSize / 21.0
+            let x1 : CGFloat = advancement + mirror * CGFloat (charSegment.x1) * fontSize / 21.0
+            let y1 = textY + CGFloat (charSegment.y1) * fontSize / 21.0
+            let x2 = advancement + mirror * CGFloat (charSegment.x2) * fontSize / 21.0
+            let y2 = textY + CGFloat (charSegment.y2) * fontSize / 21.0
             let p1 = textTransform.transform (NSPoint (x:x1, y:y1))
             let p2 = textTransform.transform (NSPoint (x:x2, y:y2))
-            let segment = SegmentEntity (managedObjectContext: inMOC)
-            segment.x1 = millimeterToCanariUnit (Double (p1.x))
-            segment.y1 = millimeterToCanariUnit (Double (p1.y))
-            segment.x2 = millimeterToCanariUnit (Double (p2.x))
-            segment.y2 = millimeterToCanariUnit (Double (p2.y))
-            segment.width = millimeterToCanariUnit (thickness)
-            segments.append (segment)
+            if let segment = clippedSegment (
+              x1: p1.x,
+              y1: p1.y,
+              x2: p2.x,
+              y2: p2.y,
+              width: millimeterToCanariUnit (thickness),
+              clipRect: inBoardRect,
+              moc: inMOC
+            ) {
+              segments.append (segment)
+            }
           }
-          advancement += mirror * Double (charDefinition.advancement) * fontSize / 21.0
+          advancement += mirror * CGFloat (charDefinition.advancement) * fontSize / 21.0
         }
       }
       if textLayer == "F.Cu" {
@@ -282,17 +286,9 @@ extension KicadItem {
       }else if textLayer == "B.Cu" {
         ioBackLayoutTextEntities += segments
       }
-//        if layer == "F.Cu" {
-//          ioFrontLayoutTextEntities.append (segment)
-//        }else if layer == "B.Cu" {
-//          ioBackLayoutTextEntities.append (segment)
-//        }else{
-//          ioErrorArray.append (("Invalid segment layer \(layer)", #line))
-//        }
-//      }
     }else{
       for item in self.items {
-        item.collectTexts (&ioFrontLayoutTextEntities, &ioBackLayoutTextEntities, inKicadFont, inModelLeftMM, inModelBottomMM, &ioErrorArray, inMOC)
+        item.collectTexts (&ioFrontLayoutTextEntities, &ioBackLayoutTextEntities, inKicadFont, inModelLeftMM, inModelBottomMM, inBoardRect, &ioErrorArray, inMOC)
       }
     }
   }
@@ -301,8 +297,8 @@ extension KicadItem {
 
   func collectTracks (_ ioFrontTrackEntities : inout [SegmentEntity],
                       _ ioBackTrackEntities : inout [SegmentEntity],
-                      _ inModelLeftMM  : Double,
-                      _ inModelBottomMM : Double,
+                      _ inModelLeftMM  : CGFloat,
+                      _ inModelBottomMM : CGFloat,
                       _ ioErrorArray : inout [(String, Int)],
                       _ inMOC : EBManagedObjectContext) {
     if self.key == "segment" {
@@ -395,8 +391,8 @@ extension KicadItem {
 
   func collectVias (_ ioViaEntities : inout [BoardModelVia],
                     _ ioDrillEntities : inout [SegmentEntity],
-                    _ inModelLeftMM  : Double,
-                    _ inModelBottomMM : Double,
+                    _ inModelLeftMM  : CGFloat,
+                    _ inModelBottomMM : CGFloat,
                     _ inNetArray : [KicadNetClass],
                     _ ioErrorArray : inout [(String, Int)],
                     _ inMOC : EBManagedObjectContext) {
@@ -476,9 +472,10 @@ extension KicadItem {
                           _ ioBackComponentNamesEntities : inout [SegmentEntity],
                           _ ioFrontComponentValuesEntities : inout [SegmentEntity],
                           _ ioBackComponentValuesEntities : inout [SegmentEntity],
+                          _ inBoardRect : CanariHorizontalRect,
                           _ inKicadFont : [UInt32 : KicadChar],
-                          _ inModelLeftMM  : Double,
-                          _ inModelBottomMM : Double,
+                          _ inModelLeftMM  : CGFloat,
+                          _ inModelBottomMM : CGFloat,
                           _ ioErrorArray : inout [(String, Int)],
                           _ inMOC : EBManagedObjectContext) {
     if self.key == "module" {
@@ -501,19 +498,19 @@ extension KicadItem {
                 let fontSize = item.getOptionalFloat (["fp_text", "effects", "font", "size"], 0, &ioErrorArray, #line) {
           //--- Mirror ?
             let optionalMirror = item.getOptionalString (["fp_text", "effects", "justify"], 0, &ioErrorArray, #line)
-            let mirror : Double
+            let mirror : CGFloat
             if let mirrorString = optionalMirror, mirrorString == "mirror" {
               mirror = -1.0
             }else{
               mirror = 1.0
             }
           //--- Compute string metrics
-            var stringWidth = 0.0
+            var stringWidth : CGFloat = 0.0
             var descent = 0 // is >= 0
             var ascent = 0  // is < 0
             for unicodeChar in value.unicodeArray {
               if let charDefinition = inKicadFont [unicodeChar.value] {
-                stringWidth += Double (charDefinition.advancement) * fontSize / 21.0
+                stringWidth += CGFloat (charDefinition.advancement) * fontSize / 21.0
                 for charSegment in charDefinition.segments {
                   let y1 = charSegment.y1
                   if y1 > descent {
@@ -534,25 +531,29 @@ extension KicadItem {
             }
             var segments = [SegmentEntity] ()
             var advancement = startX - mirror * stringWidth / 2.0
-            let textY = startY + Double (descent - ascent) * 0.5 * fontSize / 21.0
+            let textY = startY + CGFloat (descent - ascent) * 0.5 * fontSize / 21.0
             for unicodeChar in value.unicodeArray {
               if let charDefinition = inKicadFont [unicodeChar.value] {
                 for charSegment in charDefinition.segments {
-                  let x1 = advancement + mirror * Double (charSegment.x1) * fontSize / 21.0
-                  let y1 = textY + Double (charSegment.y1) * fontSize / 21.0
-                  let x2 = advancement + mirror * Double (charSegment.x2) * fontSize / 21.0
-                  let y2 = textY + Double (charSegment.y2) * fontSize / 21.0
+                  let x1 = advancement + mirror * CGFloat (charSegment.x1) * fontSize / 21.0
+                  let y1 = textY + CGFloat (charSegment.y1) * fontSize / 21.0
+                  let x2 = advancement + mirror * CGFloat (charSegment.x2) * fontSize / 21.0
+                  let y2 = textY + CGFloat (charSegment.y2) * fontSize / 21.0
                   let p1 = moduleTransform.transform (NSPoint (x:x1, y:y1))
                   let p2 = moduleTransform.transform (NSPoint (x:x2, y:y2))
-                  let segment = SegmentEntity (managedObjectContext: inMOC)
-                  segment.x1 = millimeterToCanariUnit (Double (p1.x))
-                  segment.y1 = millimeterToCanariUnit (Double (p1.y))
-                  segment.x2 = millimeterToCanariUnit (Double (p2.x))
-                  segment.y2 = millimeterToCanariUnit (Double (p2.y))
-                  segment.width = millimeterToCanariUnit (thickness)
-                  segments.append (segment)
+                  if let segment = clippedSegment (
+                    x1: p1.x,
+                    y1: p1.y,
+                    x2: p2.x,
+                    y2: p2.y,
+                    width: millimeterToCanariUnit (thickness),
+                    clipRect: inBoardRect,
+                    moc: inMOC
+                  ) {
+                    segments.append (segment)
+                  }
                 }
-                advancement += mirror * Double (charDefinition.advancement) * fontSize / 21.0
+                advancement += mirror * CGFloat (charDefinition.advancement) * fontSize / 21.0
               }
             }
             if (kind == "reference") && (textLayer == "F.SilkS") {
@@ -571,24 +572,28 @@ extension KicadItem {
                 let endY = item.getFloat (["fp_line", "end"], 1, &ioErrorArray, #line),
                 let widthMM = item.getFloat (["fp_line", "width"], 0, &ioErrorArray, #line),
                 let lineLayer = item.getString (["fp_line", "layer"], 0, &ioErrorArray, #line) {
-            let packageLine = SegmentEntity (managedObjectContext: inMOC)
             let start = moduleTransform.transform (NSPoint (x: startX, y: startY))
-            packageLine.x1 = millimeterToCanariUnit (Double(start.x))
-            packageLine.y1 = millimeterToCanariUnit (Double(start.y))
             let end = moduleTransform.transform (NSPoint (x: endX, y: endY))
-            packageLine.x2 = millimeterToCanariUnit (Double(end.x))
-            packageLine.y2 = millimeterToCanariUnit (Double(end.y))
-            packageLine.width = millimeterToCanariUnit (widthMM)
-            if layer == "F.Cu" {
-              if lineLayer == "F.SilkS" {
-                ioFrontPackagesEntities.append (packageLine)
+            if let packageLine = clippedSegment (
+              x1: start.x,
+              y1: start.y,
+              x2: end.x,
+              y2: end.y,
+              width: millimeterToCanariUnit (widthMM),
+              clipRect: inBoardRect,
+              moc: inMOC
+            ) {
+              if layer == "F.Cu" {
+                if lineLayer == "F.SilkS" {
+                  ioFrontPackagesEntities.append (packageLine)
+                }
+              }else if layer == "B.Cu" {
+                if lineLayer == "B.SilkS" {
+                  ioBackPackagesEntities.append (packageLine)
+                }
+              }else{
+                ioErrorArray.append (("Invalid module layer: \(layer)", #line))
               }
-            }else if layer == "B.Cu" {
-              if lineLayer == "B.SilkS" {
-                ioBackPackagesEntities.append (packageLine)
-              }
-            }else{
-              ioErrorArray.append (("Invalid module layer: \(layer)", #line))
             }
           }else if item.key == "fp_arc",
                 let centerX = item.getFloat (["fp_arc", "start"], 0, &ioErrorArray, #line),
@@ -624,10 +629,10 @@ extension KicadItem {
                 currentPoint = pointArray [0]
               case .lineToBezierPathElement :
                 let packageLine = SegmentEntity (managedObjectContext: inMOC)
-                packageLine.x1 = millimeterToCanariUnit (Double (currentPoint.x))
-                packageLine.y1 = millimeterToCanariUnit (Double (currentPoint.y))
-                packageLine.x2 = millimeterToCanariUnit (Double (pointArray [0].x))
-                packageLine.y2 = millimeterToCanariUnit (Double (pointArray [0].y))
+                packageLine.x1 = millimeterToCanariUnit (CGFloat (currentPoint.x))
+                packageLine.y1 = millimeterToCanariUnit (CGFloat (currentPoint.y))
+                packageLine.x2 = millimeterToCanariUnit (CGFloat (pointArray [0].x))
+                packageLine.y2 = millimeterToCanariUnit (CGFloat (pointArray [0].y))
                 currentPoint = pointArray [0]
                 packageLine.width = millimeterToCanariUnit (widthMM)
                 if layer == "F.Cu" {
@@ -656,8 +661,8 @@ extension KicadItem {
                 let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray, #line) {
             let pad = BoardModelPad (managedObjectContext: inMOC)
             let padXY = moduleTransform.transform (NSPoint (x: atX, y: atY))
-            pad.x = millimeterToCanariUnit (Double (padXY.x))
-            pad.y = millimeterToCanariUnit (Double (padXY.y))
+            pad.x = millimeterToCanariUnit (CGFloat (padXY.x))
+            pad.y = millimeterToCanariUnit (CGFloat (padXY.y))
             pad.width = millimeterToCanariUnit (widthMM)
             pad.height = millimeterToCanariUnit (heightMM)
             let padRotationInDegrees = item.getOptionalFloat (["pad", "at"], 2, &ioErrorArray, #line) ?? 0.0
@@ -679,7 +684,7 @@ extension KicadItem {
               ioBackPadEntities.append (pad)
               if let holeSpecification = item.getString (["pad", "drill"], 0, &ioErrorArray, #line) {
                 if let holeDiameter = Double (holeSpecification) {
-                  let drillDiameter = millimeterToCanariUnit (holeDiameter)
+                  let drillDiameter = millimeterToCanariUnit (CGFloat (holeDiameter))
                   let x1 = pad.x
                   let y1 = pad.y
                   let drill = SegmentEntity (managedObjectContext: inMOC)
@@ -697,8 +702,8 @@ extension KicadItem {
                     padTransform.scaleX (by: 1.0, yBy: -1.0)
                     padTransform.rotate (byDegrees: CGFloat (-moduleRotationInDegrees))
                     let p = padTransform.transform (NSPoint (x: (ovalMM - drillDiameterMM) / 2.0, y:0))
-                    let dx = millimeterToCanariUnit (Double (p.x))
-                    let dy = millimeterToCanariUnit (Double (p.y))
+                    let dx = millimeterToCanariUnit (CGFloat (p.x))
+                    let dy = millimeterToCanariUnit (CGFloat (p.y))
                     let drill = SegmentEntity (managedObjectContext: inMOC)
                     drill.x1 = pad.x - dx
                     drill.y1 = pad.y - dy
@@ -731,6 +736,7 @@ extension KicadItem {
                                 &ioDrillEntities, &ioFrontPadEntities, &ioBackPadEntities,
                                 &ioFrontComponentNamesEntities, &ioBackComponentNamesEntities,
                                 &ioFrontComponentValuesEntities, &ioBackComponentValuesEntities,
+                                inBoardRect,
                                 inKicadFont, inModelLeftMM, inModelBottomMM, &ioErrorArray, inMOC)
       }
     }
@@ -826,6 +832,7 @@ extension MergerDocument {
         let bottomMM = canariUnitToMillimeter (bottom)
         let modelWidthMM = rightMM - leftMM
         let modelHeightMM = bottomMM - topMM // in Kicad, the Y-axis is pointing down
+        let boardRect = CanariHorizontalRect (left: 0, bottom: 0, width: right - left, height: bottom - top)
         // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
       //--- Collect tracks
         var frontTrackEntities = [SegmentEntity] ()
@@ -871,12 +878,13 @@ extension MergerDocument {
                                      &drillEntities, &frontPadEntities, &backPadEntities,
                                      &frontComponentNamesEntities, &backComponentNamesEntities,
                                      &frontComponentValuesEntities, &backComponentValuesEntities,
+                                     boardRect,
                                      font, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
       //---- Collect texts and lines (gr_text)
         var frontLayoutTextEntities = [SegmentEntity] ()
         var backLayoutTextEntities = [SegmentEntity] ()
         contents?.collectTexts (&frontLayoutTextEntities, &backLayoutTextEntities,
-                                font, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
+                                font, leftMM, bottomMM, boardRect, &errorArray, self.managedObjectContext ())
 
 
 
@@ -986,6 +994,28 @@ extension MergerDocument {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// https://en.wikipedia.org/wiki/Cohen–Sutherland_algorithm
+
+fileprivate func clippedSegment (x1 inX1_mm : CGFloat, y1 inY1_mm : CGFloat,
+                                 x2 inX2_mm : CGFloat, y2 inY2_mm : CGFloat,
+                                 width inWith : Int,
+                                 clipRect inClipRect: CanariHorizontalRect,
+                                 moc inMOC: EBManagedObjectContext) -> SegmentEntity? {
+  let r : CGRect = inClipRect.insetBy (dx: inWith / 2, dy: inWith / 2).cocoaRect ()
+  if let (p1, p2) = r.clippedSegment (p1: CGPoint (x: inX1_mm, y: inY1_mm), p2: CGPoint (x: inX2_mm, y: inY2_mm)) {
+    let segment = SegmentEntity (managedObjectContext: inMOC)
+    segment.x1 = millimeterToCanariUnit (p1.x)
+    segment.y1 = millimeterToCanariUnit (p1.y)
+    segment.x2 = millimeterToCanariUnit (p2.x)
+    segment.y2 = millimeterToCanariUnit (p2.y)
+    segment.width = inWith
+    return segment
+  }else{
+    return nil
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func parse (_ inContentString : [UnicodeScalar], _ ioIndex : inout Int) -> KicadItem? {
   passSeparators (inContentString, &ioIndex)
@@ -1067,20 +1097,6 @@ fileprivate func passSeparators (_ inContentString : [UnicodeScalar], _ ioIndex 
 
 fileprivate func atEnd (_ inContentString : [UnicodeScalar], _ inIndex : Int) -> Bool {
   return inIndex == inContentString.count
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension String {
-
-  var unicodeArray : [UnicodeScalar] {
-    var array = [UnicodeScalar] ()
-    for scalar in self.unicodeScalars {
-      array.append (scalar)
-    }
-    return array
-  }
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -27,6 +27,7 @@
 		CF1A11012108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A11002108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift */; };
 		CF1A11032108BC9400987BFD /* view-MergerIssueTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A11022108BC9400987BFD /* view-MergerIssueTableView.swift */; };
 		CF1A11072108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1A11062108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift */; };
+		CF1EA419213F0CA400424C02 /* extension-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1EA418213F0CA400424C02 /* extension-String.swift */; };
 		CF1FB91E20E553C00050391E /* transient-BoardModel-frontPackagesSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB91D20E553C00050391E /* transient-BoardModel-frontPackagesSegments.swift */; };
 		CF1FB92620E559A40050391E /* transient-BoardModel-backPackagesSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB92520E559A40050391E /* transient-BoardModel-backPackagesSegments.swift */; };
 		CF1FB92E20E56D290050391E /* transient-BoardModel-boardLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FB92D20E56D290050391E /* transient-BoardModel-boardLimits.swift */; };
@@ -380,6 +381,7 @@
 		CF1A11002108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerDocument-mStatusMessage.swift"; sourceTree = "<group>"; };
 		CF1A11022108BC9400987BFD /* view-MergerIssueTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-MergerIssueTableView.swift"; sourceTree = "<group>"; };
 		CF1A11062108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerRoot-boardDisplayRect.swift"; sourceTree = "<group>"; };
+		CF1EA418213F0CA400424C02 /* extension-String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-String.swift"; sourceTree = "<group>"; };
 		CF1FB91D20E553C00050391E /* transient-BoardModel-frontPackagesSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontPackagesSegments.swift"; sourceTree = "<group>"; };
 		CF1FB92520E559A40050391E /* transient-BoardModel-backPackagesSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-backPackagesSegments.swift"; sourceTree = "<group>"; };
 		CF1FB92D20E56D290050391E /* transient-BoardModel-boardLimits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-boardLimits.swift"; sourceTree = "<group>"; };
@@ -842,6 +844,7 @@
 				CF5CEFB91DD8C53100A70419 /* extension-CGMutablePath.swift */,
 				CF5CEFBB1DD8C6B600A70419 /* extension-CGPoint.swift */,
 				CFFB18B61DDF6E35008B05C1 /* extension-CGRect.swift */,
+				CF1EA418213F0CA400424C02 /* extension-String.swift */,
 				CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */,
 				CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */,
 				CF92E1F41DDB1C9E0019691C /* GeometricRect.swift */,
@@ -1371,6 +1374,7 @@
 				CFEDE5B91B4677C500036ACF /* EBManagedObjectContext.swift in Sources */,
 				CF6A65F91B468ACF00BA5135 /* CanariSegmentedControl.swift in Sources */,
 				CF186B031B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift in Sources */,
+				CF1EA419213F0CA400424C02 /* extension-String.swift in Sources */,
 				CF12885820FF5147007B808C /* transient-BoardModel-boardLimitsBezierPaths.swift in Sources */,
 				CF87F3E220F0CE4500918586 /* entity-PadShape.swift in Sources */,
 				CFB0D1E71B46FBC000006BD2 /* CanariDimensionTextField.swift in Sources */,

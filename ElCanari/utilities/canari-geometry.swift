@@ -50,14 +50,14 @@ func canariUnitToMilTenth (_ inValue : Int) -> Int {
 //   Conversion with millimeters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func millimeterToCanariUnit (_ inValue : Double) -> Int {
-  return Int ((inValue * Double (ONE_MILLIMETER_IN_CANARI_UNIT)).rounded ())
+func millimeterToCanariUnit (_ inValue : CGFloat) -> Int {
+  return Int ((inValue * CGFloat (ONE_MILLIMETER_IN_CANARI_UNIT)).rounded ())
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func canariUnitToMillimeter (_ inValue : Int) -> Double {
-  return Double (inValue) / Double (ONE_MILLIMETER_IN_CANARI_UNIT)
+func canariUnitToMillimeter (_ inValue : Int) -> CGFloat {
+  return CGFloat (inValue) / CGFloat (ONE_MILLIMETER_IN_CANARI_UNIT)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -72,7 +72,7 @@ func canariRotationToRadians (_ inCanariRotation : Int) -> CGFloat {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func degreesToCanariRotation (_ inRotationInDegrees : Double) -> Int {
+func degreesToCanariRotation (_ inRotationInDegrees : CGFloat) -> Int {
   return Int ((inRotationInDegrees * 1_000.0).rounded ())
 }
 
@@ -82,9 +82,9 @@ func angleInDegreesBetweenNSPoints (_ inP1 : NSPoint, _ inP2 : NSPoint) -> CGFlo
   let dx = inP2.x - inP1.x
   let dy = inP2.y - inP1.y
   let distance = sqrt (dx * dx + dy * dy)
-  var angle : CGFloat = 0.0 ;
+  var angle : CGFloat = 0.0
   if distance > 0.0 {
-    angle = asin (dy / distance) * 180.0 / CGFloat.pi ;
+    angle = asin (dy / distance) * 180.0 / CGFloat.pi
     if dx < 0.0 {
       angle = 180.0 - angle
     }

@@ -149,18 +149,49 @@ struct CanariHorizontalRect : Hashable, Equatable {
   }
 
   //····················································································································
+  //   Contains point
+  //····················································································································
+
+  func CohenSutherlandOutcode (x inX : Int, y inY : Int) -> UInt8 {
+    var result : UInt8 = 0
+    if inX < self.left {
+      result |= CohenSutherlandOutcodeLEFT
+    }else if inX > self.right {
+      result |= CohenSutherlandOutcodeRIGHT
+    }
+    if inY < self.bottom {
+      result |= CohenSutherlandOutcodeBOTTOM
+    }else if inY > self.top {
+      result |= CohenSutherlandOutcodeTOP
+    }
+    return result
+  }
+
+  //····················································································································
   //   Inset
   //····················································································································
 
-  func clipping (segment inSegment : CanariSegment) -> CanariSegment? {
-    let r = self.insetBy (dx: inSegment.width / 2, dy: inSegment.width / 2)
-    if r.contains (x: inSegment.x1, y: inSegment.y2) && r.contains (x: inSegment.x2, y: inSegment.y2) {
-      return inSegment
-    }else{
-      return nil
-    }
-  }
+//  func clipping (segment inSegment : CanariSegment) -> CanariSegment? {
+//    let r = self.insetBy (dx: inSegment.width / 2, dy: inSegment.width / 2)
+//    if r.contains (x: inSegment.x1, y: inSegment.y2) && r.contains (x: inSegment.x2, y: inSegment.y2) {
+//      return inSegment
+//    }else{
+//      return nil
+//    }
+//  }
 
+  //····················································································································
+
+//  func clipping (x1 inX1 : Int, y1 inY1 : Int,
+//                 x2 inX2 : Int, y2 inY2 : Int,
+//                 width inWith : Int) -> CanariSegment? {
+//    let r = self.insetBy (dx: inWith / 2, dy: inWith / 2)
+//    if r.contains (x: inX1, y: inY1) && r.contains (x: inX2, y: inY2) {
+//      return inSegment
+//    }else{
+//      return nil
+//    }
+//  }
 
   //····················································································································
 
