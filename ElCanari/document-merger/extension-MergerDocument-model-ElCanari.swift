@@ -118,11 +118,10 @@ extension MergerDocument {
     let vias = stringArray (fromDict: inBoardArchiveDict, key: "VIAS", &errorArray)
     for str in vias {
       let via = BoardModelVia (managedObjectContext:self.managedObjectContext())
-      let ints = array4int (fromString: str, &errorArray)
+      let ints = array3int (fromString: str, &errorArray)
       via.x = ints [0]
       via.y = ints [1]
       via.padDiameter = ints [2]
-      via.holeDiameter = ints [3]
       viaEntities.append (via)
     }
     boardModel.vias_property.setProp (viaEntities)
@@ -294,17 +293,29 @@ extension MergerDocument {
       backComponentValuesEntities.append (segment)
     }
     boardModel.backComponentValues_property.setProp (backComponentValuesEntities)
-  //--- Pads
-    var padEntities = [BoardModelPad] ()
-    let padDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS", &errorArray)
-    for padDict in padDictArray {
+  //--- Drills
+    var drillEntities = [CanariSegment] ()
+    let drills = stringArray (fromDict: inBoardArchiveDict, key: "DRILLS", &errorArray)
+    for str in drills {
+      let segment = CanariSegment (managedObjectContext:self.managedObjectContext())
+      let ints = array5int (fromString: str, &errorArray)
+      segment.x1 = ints [0]
+      segment.y1 = ints [1]
+      segment.x2 = ints [2]
+      segment.y2 = ints [3]
+      segment.width = ints [4]
+      drillEntities.append (segment)
+    }
+    boardModel.drills_property.setProp (drillEntities)
+  //--- Front pads
+    var backPadEntities = [BoardModelPad] ()
+    let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "BACK-PADS", &errorArray)
+    for padDict in backPadDictArray {
       let pad = BoardModelPad (managedObjectContext:self.managedObjectContext())
-//      pad.qualifiedName = string (fromDict: padDict, key: "QUALIFIED-NAME", &errorArray)
       pad.x = int (fromDict: padDict, key: "X", &errorArray)
       pad.y = int (fromDict: padDict, key: "Y", &errorArray)
       pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
       pad.height = int (fromDict: padDict, key: "HEIGHT", &errorArray)
-      pad.holeDiameter = intOrZero (fromDict: padDict, key: "HOLE-DIAMETER", &errorArray)
       pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
       let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
       if shapeString == "RECT" {
@@ -314,19 +325,30 @@ extension MergerDocument {
       }else{
         errorArray.append ("Invalid pad shape \"\(shapeString)\".")
       }
-      let sideString = string (fromDict: padDict, key: "SIDE", &errorArray)
-      if sideString == "TRAVERSING" {
-        pad.side = .traversing
-      }else if sideString == "FRONT" {
-        pad.side = .front
-      }else if sideString == "BACK" {
-        pad.side = .back
-      }else{
-        errorArray.append ("Invalid pad side \"\(sideString)\".")
-      }
-      padEntities.append (pad)
+      backPadEntities.append (pad)
     }
-    boardModel.pads_property.setProp (padEntities)
+    boardModel.backPads_property.setProp (backPadEntities)
+  //--- Front pads
+    var frontPadEntities = [BoardModelPad] ()
+    let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "FRONT-PADS", &errorArray)
+    for padDict in frontPadDictArray {
+      let pad = BoardModelPad (managedObjectContext:self.managedObjectContext())
+      pad.x = int (fromDict: padDict, key: "X", &errorArray)
+      pad.y = int (fromDict: padDict, key: "Y", &errorArray)
+      pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
+      pad.height = int (fromDict: padDict, key: "HEIGHT", &errorArray)
+      pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
+      let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
+      if shapeString == "RECT" {
+        pad.shape = .rectangular
+      }else if shapeString == "ROUND" {
+        pad.shape = .round
+      }else{
+        errorArray.append ("Invalid pad shape \"\(shapeString)\".")
+      }
+      frontPadEntities.append (pad)
+    }
+    boardModel.frontPads_property.setProp (frontPadEntities)
   //--- Dictionary import ok ?
     if errorArray.count != 0 { // Error
       var s = ""
@@ -449,6 +471,31 @@ fileprivate func optionalStringArray (fromDict inDictionary : NSDictionary, key 
   }else if object != nil {
     errorArray.append ("The \"\(inKey)\" key value is not an array of string.")
   }
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func array3int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
+  let strArray : [String] = inString.components(separatedBy: " ")
+  var result = [Int] () // Default result
+  if strArray.count != 3 {
+    errorArray.append ("The string is not a three integer array.")
+  }else{
+    for s in strArray {
+      let possibleInt : Int? = Int (s)
+      if let n = possibleInt {
+        result.append (n)
+      }else{
+        errorArray.append ("The string is not a four integer array.")
+      }
+    }
+  }
+//--- If an error occurs, add fake int to get a five element vector
+  while result.count < 3 {
+    result.append (0)
+  }
+//---
   return result
 }
 

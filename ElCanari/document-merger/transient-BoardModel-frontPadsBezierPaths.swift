@@ -12,10 +12,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_BoardModel_frontPadsBezierPaths (
-       _ self_frontPads : MergerPadArray
+       _ self_frontPadArray : MergerPadArray
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2
-  return self_frontPads.buidBezierPaths ()
+  return self_frontPadArray.buidBezierPaths ()
 //--- END OF USER ZONE 2
 }
 

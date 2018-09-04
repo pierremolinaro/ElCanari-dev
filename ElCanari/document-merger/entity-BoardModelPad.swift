@@ -13,9 +13,7 @@ class BoardModelPad : EBManagedObject,
   BoardModelPad_y,
   BoardModelPad_width,
   BoardModelPad_height,
-  BoardModelPad_holeDiameter,
   BoardModelPad_shape,
-  BoardModelPad_side,
   BoardModelPad_rotation {
 
   //····················································································································
@@ -95,25 +93,6 @@ class BoardModelPad : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing holeDiameter stored property
-  //····················································································································
-
-  var holeDiameter : Int {
-    get {
-      return self.holeDiameter_property.propval
-    }
-    set {
-      self.holeDiameter_property.setProp (newValue)
-    }
-  }
-
-  var holeDiameter_property_selection : EBSelection <Int> {
-    get {
-      return self.holeDiameter_property.prop
-    }
-  }
-
-  //····················································································································
   //   Accessing shape stored property
   //····················································································································
 
@@ -129,25 +108,6 @@ class BoardModelPad : EBManagedObject,
   var shape_property_selection : EBSelection <PadShape> {
     get {
       return self.shape_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing side stored property
-  //····················································································································
-
-  var side : PadSide {
-    get {
-      return self.side_property.propval
-    }
-    set {
-      self.side_property.setProp (newValue)
-    }
-  }
-
-  var side_property_selection : EBSelection <PadSide> {
-    get {
-      return self.side_property.prop
     }
   }
 
@@ -178,9 +138,7 @@ class BoardModelPad : EBManagedObject,
   var y_property = EBStoredProperty_Int (0)
   var width_property = EBStoredProperty_Int (0)
   var height_property = EBStoredProperty_Int (0)
-  var holeDiameter_property = EBStoredProperty_Int (0)
   var shape_property = EBStoredProperty_PadShape (PadShape.rectangular)
-  var side_property = EBStoredProperty_PadSide (PadSide.traversing)
   var rotation_property = EBStoredProperty_Int (0)
 
   //····················································································································
@@ -206,9 +164,7 @@ class BoardModelPad : EBManagedObject,
     self.y_property.undoManager = undoManager ()
     self.width_property.undoManager = undoManager ()
     self.height_property.undoManager = undoManager ()
-    self.holeDiameter_property.undoManager = undoManager ()
     self.shape_property.undoManager = undoManager ()
-    self.side_property.undoManager = undoManager ()
     self.rotation_property.undoManager = undoManager ()
   //--- Install owner for relationships
   //--- register properties for handling signature
@@ -259,28 +215,12 @@ class BoardModelPad : EBManagedObject,
       valueExplorer:&self.height_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "holeDiameter",
-      idx:self.holeDiameter_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.holeDiameter_property.mObserverExplorer,
-      valueExplorer:&self.holeDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "shape",
       idx:self.shape_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.shape_property.mObserverExplorer,
       valueExplorer:&self.shape_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "side",
-      idx:self.side_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.side_property.mObserverExplorer,
-      valueExplorer:&self.side_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "rotation",
@@ -309,12 +249,8 @@ class BoardModelPad : EBManagedObject,
     self.width_property.mValueExplorer = nil
     self.height_property.mObserverExplorer = nil
     self.height_property.mValueExplorer = nil
-    self.holeDiameter_property.mObserverExplorer = nil
-    self.holeDiameter_property.mValueExplorer = nil
     self.shape_property.mObserverExplorer = nil
     self.shape_property.mValueExplorer = nil
-    self.side_property.mObserverExplorer = nil
-    self.side_property.mValueExplorer = nil
     self.rotation_property.mObserverExplorer = nil
     self.rotation_property.mValueExplorer = nil
     super.clearObjectExplorer ()
@@ -330,9 +266,7 @@ class BoardModelPad : EBManagedObject,
     self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
     self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
     self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
-    self.holeDiameter_property.storeIn (dictionary: ioDictionary, forKey: "holeDiameter")
     self.shape_property.storeIn (dictionary: ioDictionary, forKey: "shape")
-    self.side_property.storeIn (dictionary: ioDictionary, forKey: "side")
     self.rotation_property.storeIn (dictionary: ioDictionary, forKey: "rotation")
   }
 
@@ -347,9 +281,7 @@ class BoardModelPad : EBManagedObject,
     self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
     self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
     self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
-    self.holeDiameter_property.readFrom (dictionary: inDictionary, forKey:"holeDiameter")
     self.shape_property.readFrom (dictionary: inDictionary, forKey:"shape")
-    self.side_property.readFrom (dictionary: inDictionary, forKey:"side")
     self.rotation_property.readFrom (dictionary: inDictionary, forKey:"rotation")
   }
 
@@ -608,63 +540,6 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   }
 
   //····················································································································
-  //   Observers of 'holeDiameter' stored property
-  //····················································································································
-
-  private var mObserversOf_holeDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_holeDiameter.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.holeDiameter_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_holeDiameter.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.holeDiameter_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_holeDiameter_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_holeDiameter {
-        managedObject.holeDiameter_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_holeDiameter_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    for observer in mObserversOf_holeDiameter {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.holeDiameter_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'shape' stored property
   //····················································································································
 
@@ -717,63 +592,6 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.shape_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'side' stored property
-  //····················································································································
-
-  private var mObserversOf_side = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_side (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_side.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.side_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_side (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_side.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.side_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_side_toElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_side {
-        managedObject.side_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_side_fromElementsOfSet (_ inSet : Set<BoardModelPad>) {
-    for observer in mObserversOf_side {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.side_property.removeEBObserver (observer)
       }
     }
   }
@@ -877,9 +695,7 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
         removeEBObserversOf_width_fromElementsOfSet (removedSet)
         removeEBObserversOf_height_fromElementsOfSet (removedSet)
-        removeEBObserversOf_holeDiameter_fromElementsOfSet (removedSet)
         removeEBObserversOf_shape_fromElementsOfSet (removedSet)
-        removeEBObserversOf_side_fromElementsOfSet (removedSet)
         removeEBObserversOf_rotation_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
       //--- Added object set
@@ -889,9 +705,7 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
         addEBObserversOf_y_toElementsOfSet (addedSet)
         addEBObserversOf_width_toElementsOfSet (addedSet)
         addEBObserversOf_height_toElementsOfSet (addedSet)
-        addEBObserversOf_holeDiameter_toElementsOfSet (addedSet)
         addEBObserversOf_shape_toElementsOfSet (addedSet)
-        addEBObserversOf_side_toElementsOfSet (addedSet)
         addEBObserversOf_rotation_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
       //--- Update object set
@@ -948,20 +762,8 @@ protocol BoardModelPad_height : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelPad_holeDiameter : class {
-  var holeDiameter : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModelPad_shape : class {
   var shape : PadShape { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelPad_side : class {
-  var side : PadSide { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

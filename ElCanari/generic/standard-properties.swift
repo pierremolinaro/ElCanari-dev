@@ -1251,15 +1251,6 @@ typealias EBReadOnlyPropertyArray_MergerPadArray  = EBReadOnlyClassProperty <[Me
 typealias EBTransientPropertyArray_MergerPadArray = EBTransientClassProperty <[MergerPadArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class MergerHoleArray
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_MergerHoleArray  = EBReadOnlyClassProperty <MergerHoleArray>
-typealias EBTransientProperty_MergerHoleArray = EBTransientClassProperty <MergerHoleArray>
-typealias EBReadOnlyPropertyArray_MergerHoleArray  = EBReadOnlyClassProperty <[MergerHoleArray]>
-typealias EBTransientPropertyArray_MergerHoleArray = EBTransientClassProperty <[MergerHoleArray]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class MergerBoardModelArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -107,11 +107,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backPackagesSegments_property.prop
     }
   }
-  var backPads_property = EBTransientProperty_MergerPadArray ()
+  var backPadArray_property = EBTransientProperty_MergerPadArray ()
 
-  var backPads_property_selection : EBSelection <MergerPadArray> {
+  var backPadArray_property_selection : EBSelection <MergerPadArray> {
     get {
-      return self.backPads_property.prop
+      return self.backPadArray_property.prop
     }
   }
   var backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
@@ -147,6 +147,13 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var boardLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
     get {
       return self.boardLimitsBezierPaths_property.prop
+    }
+  }
+  var drillSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  var drillSegments_property_selection : EBSelection <MergerSegmentArray> {
+    get {
+      return self.drillSegments_property.prop
     }
   }
   var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
@@ -233,11 +240,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontPackagesSegments_property.prop
     }
   }
-  var frontPads_property = EBTransientProperty_MergerPadArray ()
+  var frontPadArray_property = EBTransientProperty_MergerPadArray ()
 
-  var frontPads_property_selection : EBSelection <MergerPadArray> {
+  var frontPadArray_property_selection : EBSelection <MergerPadArray> {
     get {
-      return self.frontPads_property.prop
+      return self.frontPadArray_property.prop
     }
   }
   var frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
@@ -259,13 +266,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
     get {
       return self.frontTracksBezierPaths_property.prop
-    }
-  }
-  var holes_property = EBTransientProperty_MergerHoleArray ()
-
-  var holes_property_selection : EBSelection <MergerHoleArray> {
-    get {
-      return self.holes_property.prop
     }
   }
   var holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
@@ -359,13 +359,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.name_property.prop
     }
   }
-  var padsHoles_property = EBTransientProperty_MergerHoleArray ()
-
-  var padsHoles_property_selection : EBSelection <MergerHoleArray> {
-    get {
-      return self.padsHoles_property.prop
-    }
-  }
   var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
 
   var viaShapes_property_selection : EBSelection <MergerViaShapeArray> {
@@ -378,13 +371,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var viasBezierPaths_property_selection : EBSelection <BezierPathArray> {
     get {
       return self.viasBezierPaths_property.prop
-    }
-  }
-  var viasHoles_property = EBTransientProperty_MergerHoleArray ()
-
-  var viasHoles_property_selection : EBSelection <MergerHoleArray> {
-    get {
-      return self.viasHoles_property.prop
     }
   }
   var zoom_property = EBPropertyProxy_Int ()
@@ -414,12 +400,13 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     bind_property_backLegendTextsSegments (model: model)
     bind_property_backPackagesBezierPaths (model: model)
     bind_property_backPackagesSegments (model: model)
-    bind_property_backPads (model: model)
+    bind_property_backPadArray (model: model)
     bind_property_backPadsBezierPaths (model: model)
     bind_property_backTrackSegments (model: model)
     bind_property_backTracksBezierPaths (model: model)
     bind_property_boardLimits (model: model)
     bind_property_boardLimitsBezierPaths (model: model)
+    bind_property_drillSegments (model: model)
     bind_property_frontComponentNameSegments (model: model)
     bind_property_frontComponentNamesBezierPaths (model: model)
     bind_property_frontComponentValueSegments (model: model)
@@ -432,11 +419,10 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     bind_property_frontLegendTextsSegments (model: model)
     bind_property_frontPackagesBezierPaths (model: model)
     bind_property_frontPackagesSegments (model: model)
-    bind_property_frontPads (model: model)
+    bind_property_frontPadArray (model: model)
     bind_property_frontPadsBezierPaths (model: model)
     bind_property_frontTrackSegments (model: model)
     bind_property_frontTracksBezierPaths (model: model)
-    bind_property_holes (model: model)
     bind_property_holesBezierPaths (model: model)
     bind_property_imageForInstances (model: model)
     bind_property_imageForModel (model: model)
@@ -450,10 +436,8 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     bind_property_modelWidth (model: model)
     bind_property_modelWidthUnit (model: model)
     bind_property_name (model: model)
-    bind_property_padsHoles (model: model)
     bind_property_viaShapes (model: model)
     bind_property_viasBezierPaths (model: model)
-    bind_property_viasHoles (model: model)
     bind_property_zoom (model: model)
   }
 
@@ -1168,9 +1152,9 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_backPads (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backPads (self.backPads_property)
-    self.backPads_property.readModelFunction = {
+  private final func bind_property_backPadArray (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backPadArray (self.backPadArray_property)
+    self.backPadArray_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1181,7 +1165,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set<MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.backPads_property_selection {
+            switch object.backPadArray_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1382,6 +1366,46 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var isMultipleSelection = false
           for object in v {
             switch object.boardLimitsBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drillSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_drillSegments (self.drillSegments_property)
+    self.drillSegments_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drillSegments_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1888,9 +1912,9 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_frontPads (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontPads (self.frontPads_property)
-    self.frontPads_property.readModelFunction = {
+  private final func bind_property_frontPadArray (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontPadArray (self.frontPadArray_property)
+    self.frontPadArray_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -1901,7 +1925,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var s = Set<MergerPadArray> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.frontPads_property_selection {
+            switch object.frontPadArray_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2022,46 +2046,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var isMultipleSelection = false
           for object in v {
             switch object.frontTracksBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_holes (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_holes (self.holes_property)
-    self.holes_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<MergerHoleArray> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.holes_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -2818,46 +2802,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_padsHoles (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_padsHoles (self.padsHoles_property)
-    self.padsHoles_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<MergerHoleArray> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.padsHoles_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
   private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModel) {
     model.addEBObserverOf_viaShapes (self.viaShapes_property)
     self.viaShapes_property.readModelFunction = {
@@ -2912,46 +2856,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
           var isMultipleSelection = false
           for object in v {
             switch object.viasBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_viasHoles (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_viasHoles (self.viasHoles_property)
-    self.viasHoles_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<MergerHoleArray> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.viasHoles_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -3094,9 +2998,9 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //--- backPackagesSegments
     self.backPackagesSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backPackagesSegments (self.backPackagesSegments_property)
-  //--- backPads
-    self.backPads_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_backPads (self.backPads_property)
+  //--- backPadArray
+    self.backPadArray_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_backPadArray (self.backPadArray_property)
   //--- backPadsBezierPaths
     self.backPadsBezierPaths_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_backPadsBezierPaths (self.backPadsBezierPaths_property)
@@ -3112,6 +3016,9 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //--- boardLimitsBezierPaths
     self.boardLimitsBezierPaths_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_boardLimitsBezierPaths (self.boardLimitsBezierPaths_property)
+  //--- drillSegments
+    self.drillSegments_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drillSegments (self.drillSegments_property)
   //--- frontComponentNameSegments
     self.frontComponentNameSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments_property)
@@ -3148,9 +3055,9 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //--- frontPackagesSegments
     self.frontPackagesSegments_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontPackagesSegments (self.frontPackagesSegments_property)
-  //--- frontPads
-    self.frontPads_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_frontPads (self.frontPads_property)
+  //--- frontPadArray
+    self.frontPadArray_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_frontPadArray (self.frontPadArray_property)
   //--- frontPadsBezierPaths
     self.frontPadsBezierPaths_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontPadsBezierPaths (self.frontPadsBezierPaths_property)
@@ -3160,9 +3067,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //--- frontTracksBezierPaths
     self.frontTracksBezierPaths_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_frontTracksBezierPaths (self.frontTracksBezierPaths_property)
-  //--- holes
-    self.holes_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_holes (self.holes_property)
   //--- holesBezierPaths
     self.holesBezierPaths_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_holesBezierPaths (self.holesBezierPaths_property)
@@ -3216,18 +3120,12 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     self.name_property.writeModelFunction = nil 
     self.name_property.validateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_name (self.name_property)
-  //--- padsHoles
-    self.padsHoles_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_padsHoles (self.padsHoles_property)
   //--- viaShapes
     self.viaShapes_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_viaShapes (self.viaShapes_property)
   //--- viasBezierPaths
     self.viasBezierPaths_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_viasBezierPaths (self.viasBezierPaths_property)
-  //--- viasHoles
-    self.viasHoles_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_viasHoles (self.viasHoles_property)
   //--- zoom
     self.zoom_property.readModelFunction = nil 
     self.zoom_property.writeModelFunction = nil 

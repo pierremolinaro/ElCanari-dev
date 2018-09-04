@@ -92,16 +92,13 @@ entity BoardModel {
 
   transient BezierPathArray internalBoardsLimitsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.internalBoardsLimitsSegments ;
 
-#--- Holes
-  transient MergerHoleArray padsHoles
-    dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.holeDiameter ;
+#--- Drills
+  toMany @cascading CanariSegment drills ;
  
-  transient MergerHoleArray viasHoles
-    dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.holeDiameter ;
- 
-  transient MergerHoleArray holes dependsFrom self.padsHoles, self.viasHoles ;
+  transient MergerSegmentArray drillSegments
+    dependsFrom self.drills.all.x1, self.drills.all.y1, self.drills.all.x2, self.drills.all.y2, self.drills.all.width ;
 
-  transient BezierPathArray holesBezierPaths dependsFrom self.holes ;
+  transient BezierPathArray holesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.drillSegments ;
 
 #--- Vias 
   toMany @cascading BoardModelVia vias ;
@@ -111,22 +108,23 @@ entity BoardModel {
 
   transient BezierPathArray viasBezierPaths dependsFrom self.viaShapes ;
 
-#--- Pads
-  toMany @cascading BoardModelPad pads ;
-
 #--- Front pads
-  transient MergerPadArray frontPads
-    dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
-                self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
+  toMany @cascading BoardModelPad frontPads ;
 
-  transient BezierPathArray frontPadsBezierPaths dependsFrom self.frontPads ;
+  transient MergerPadArray frontPadArray
+    dependsFrom self.frontPads.all.x, self.frontPads.all.y, self.frontPads.all.width, self.frontPads.all.height,
+                self.frontPads.all.shape, self.frontPads.all.rotation ;
+
+  transient BezierPathArray frontPadsBezierPaths dependsFrom self.frontPadArray ;
 
 #--- Back pads
-  transient MergerPadArray backPads
-    dependsFrom self.pads.all.x, self.pads.all.y, self.pads.all.width, self.pads.all.height,
-                self.pads.all.holeDiameter, self.pads.all.shape, self.pads.all.side, self.pads.all.rotation ;
+  toMany @cascading BoardModelPad backPads ;
 
-  transient BezierPathArray backPadsBezierPaths dependsFrom self.backPads ;
+  transient MergerPadArray backPadArray
+    dependsFrom self.backPads.all.x, self.backPads.all.y, self.backPads.all.width, self.backPads.all.height,
+                self.backPads.all.shape, self.backPads.all.rotation ;
+
+  transient BezierPathArray backPadsBezierPaths dependsFrom self.backPadArray ;
 
 #--- Board limits
   property Int modelLimitWidth default 0 ;

@@ -1,5 +1,4 @@
 //
-//  add-board-model.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 21/06/2018.
@@ -299,6 +298,7 @@ extension KicadItem {
   //····················································································································
 
   func collectVias (_ ioViaEntities : inout [BoardModelVia],
+                    _ ioDrillEntities : inout [CanariSegment],
                     _ inModelLeftMM  : Double,
                     _ inModelBottomMM : Double,
                     _ inNetArray : [KicadNetClass],
@@ -314,12 +314,19 @@ extension KicadItem {
         via.y = millimeterToCanariUnit (inModelBottomMM - y)
         via.padDiameter = millimeterToCanariUnit (diameter)
         let netClass = inNetArray [netIndex]
-        via.holeDiameter = netClass.drillDiameter
         ioViaEntities.append (via)
+      //--- Add drill
+        let segment = CanariSegment (managedObjectContext: inMOC)
+        segment.x1 = via.x
+        segment.y1 = via.y
+        segment.x2 = via.x
+        segment.y2 = via.y
+        segment.width = netClass.drillDiameter
+        ioDrillEntities.append (segment)
       }
     }else{
       for item in self.items {
-        item.collectVias (&ioViaEntities, inModelLeftMM, inModelBottomMM, inNetArray, &ioErrorArray, inMOC)
+        item.collectVias (&ioViaEntities, &ioDrillEntities, inModelLeftMM, inModelBottomMM, inNetArray, &ioErrorArray, inMOC)
       }
     }
   }
@@ -366,7 +373,9 @@ extension KicadItem {
 
   func collectComponents (_ ioFrontPackagesEntities : inout [CanariSegment],
                           _ ioBackPackagesEntities : inout [CanariSegment],
-                          _ ioPadEntities : inout [BoardModelPad],
+                          _ ioDrillEntities : inout [CanariSegment],
+                          _ ioFrontPadEntities : inout [BoardModelPad],
+                          _ ioBackPadEntities : inout [BoardModelPad],
                           _ ioFrontComponentNamesEntities : inout [CanariSegment],
                           _ ioBackComponentNamesEntities : inout [CanariSegment],
                           _ ioFrontComponentValuesEntities : inout [CanariSegment],
@@ -551,11 +560,10 @@ extension KicadItem {
                 let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray, #line) {
             let pad = BoardModelPad (managedObjectContext: inMOC)
             let padXY = transform.transform (NSPoint (x: atX, y: atY))
-            pad.x = millimeterToCanariUnit (Double(padXY.x))
-            pad.y = millimeterToCanariUnit (Double(padXY.y))
+            pad.x = millimeterToCanariUnit (Double (padXY.x))
+            pad.y = millimeterToCanariUnit (Double (padXY.y))
             pad.width = millimeterToCanariUnit (widthMM)
             pad.height = millimeterToCanariUnit (heightMM)
-            pad.holeDiameter = 0
             pad.rotation = degreesToCanariRotation (rotationInDegrees)
             if padShapeString == "rect" {
               pad.shape = .rectangular
@@ -570,22 +578,36 @@ extension KicadItem {
               ioErrorArray.append (("Invalid pad shape height \(padShapeString) ≠ height \(heightMM)", #line))
             }
             if (padSideString == "thru_hole") || (padSideString == "np_thru_hole") {
-              pad.side = .traversing
+              ioFrontPadEntities.append (pad)
+              ioBackPadEntities.append (pad)
               if let holeDiameter = item.getOptionalFloat (["pad", "drill"], 0, &ioErrorArray, #line) {
-                pad.holeDiameter = millimeterToCanariUnit (holeDiameter)
+                let drillDiameter = millimeterToCanariUnit (holeDiameter)
+                let x1 = pad.x
+                let y1 = pad.y
+                let drill = CanariSegment (managedObjectContext: inMOC)
+                drill.x1 = x1
+                drill.y1 = y1
+                drill.x2 = x1 // §
+                drill.y2 = y1
+                drill.width = drillDiameter
+                ioDrillEntities.append (drill)
               }
             }else if padSideString == "smd" {
-              pad.side = (layer == "B.Cu") ? .front : .back
+              if layer == "F.Cu" {
+                ioFrontPadEntities.append (pad)
+              }else{
+                ioBackPadEntities.append (pad)
+              }
             }else{
               ioErrorArray.append (("Invalid pad side \"\(padSideString)\".", #line))
             }
-            ioPadEntities.append (pad)
           }
         }
       }
     }else{
       for item in self.items {
-        item.collectComponents (&ioFrontPackagesEntities, &ioBackPackagesEntities, &ioPadEntities,
+        item.collectComponents (&ioFrontPackagesEntities, &ioBackPackagesEntities,
+                                &ioDrillEntities, &ioFrontPadEntities, &ioBackPadEntities,
                                 &ioFrontComponentNamesEntities, &ioBackComponentNamesEntities,
                                 &ioFrontComponentValuesEntities, &ioBackComponentValuesEntities,
                                 inKicadFont, inModelLeftMM, inModelBottomMM, &ioErrorArray, inMOC)
@@ -711,18 +733,21 @@ extension MergerDocument {
           }
         }
       //--- Collect vias
+        var drillEntities = [CanariSegment] ()
         var viaEntities = [BoardModelVia] ()
-        contents?.collectVias (&viaEntities, leftMM, bottomMM, netArray, &errorArray, self.managedObjectContext ())
+        contents?.collectVias (&viaEntities, &drillEntities, leftMM, bottomMM, netArray, &errorArray, self.managedObjectContext ())
       //---- Collect components
         let font : [UInt32 : KicadChar] = kicadFont ()
-        var padEntities = [BoardModelPad] ()
+        var frontPadEntities = [BoardModelPad] ()
+        var backPadEntities = [BoardModelPad] ()
         var frontPackagesEntities = [CanariSegment] ()
         var backPackagesEntities = [CanariSegment] ()
         var backComponentNamesEntities = [CanariSegment] ()
         var frontComponentNamesEntities = [CanariSegment] ()
         var frontComponentValuesEntities = [CanariSegment] ()
         var backComponentValuesEntities = [CanariSegment] ()
-        contents?.collectComponents (&frontPackagesEntities, &backPackagesEntities, &padEntities,
+        contents?.collectComponents (&frontPackagesEntities, &backPackagesEntities,
+                                     &drillEntities, &frontPadEntities, &backPadEntities,
                                      &frontComponentNamesEntities, &backComponentNamesEntities,
                                      &frontComponentValuesEntities, &backComponentValuesEntities,
                                      font, leftMM, bottomMM, &errorArray, self.managedObjectContext ())
@@ -829,11 +854,13 @@ extension MergerDocument {
           boardModel?.vias_property.setProp (viaEntities)
           boardModel?.frontPackages_property.setProp (frontPackagesEntities)
           boardModel?.backPackages_property.setProp (backPackagesEntities)
-          boardModel?.pads_property.setProp (padEntities)
+          boardModel?.frontPads_property.setProp (frontPadEntities)
+          boardModel?.backPads_property.setProp (backPadEntities)
           boardModel?.backComponentNames_property.setProp (backComponentNamesEntities)
           boardModel?.frontComponentNames_property.setProp (frontComponentNamesEntities)
           boardModel?.frontComponentValues_property.setProp (frontComponentValuesEntities)
           boardModel?.backComponentValues_property.setProp (backComponentValuesEntities)
+          boardModel?.drills_property.setProp (drillEntities)
         }else{ // Error
           var s = ""
           for anError in errorArray {

@@ -33,15 +33,13 @@ class BoardModel : EBManagedObject,
   BoardModel_backLayoutTextsBezierPaths,
   BoardModel_internalBoardsLimitsSegments,
   BoardModel_internalBoardsLimitsBezierPaths,
-  BoardModel_padsHoles,
-  BoardModel_viasHoles,
-  BoardModel_holes,
+  BoardModel_drillSegments,
   BoardModel_holesBezierPaths,
   BoardModel_viaShapes,
   BoardModel_viasBezierPaths,
-  BoardModel_frontPads,
+  BoardModel_frontPadArray,
   BoardModel_frontPadsBezierPaths,
-  BoardModel_backPads,
+  BoardModel_backPadArray,
   BoardModel_backPadsBezierPaths,
   BoardModel_boardLimits,
   BoardModel_boardLimitsBezierPaths,
@@ -521,55 +519,17 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing padsHoles transient property
+  //   Accessing drillSegments transient property
   //····················································································································
 
-  var padsHoles_property_selection : EBSelection <MergerHoleArray> {
+  var drillSegments_property_selection : EBSelection <MergerSegmentArray> {
     get {
-      return self.padsHoles_property.prop
+      return self.drillSegments_property.prop
     }
   }
 
-  var padsHoles : MergerHoleArray? {
-    switch padsHoles_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing viasHoles transient property
-  //····················································································································
-
-  var viasHoles_property_selection : EBSelection <MergerHoleArray> {
-    get {
-      return self.viasHoles_property.prop
-    }
-  }
-
-  var viasHoles : MergerHoleArray? {
-    switch viasHoles_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing holes transient property
-  //····················································································································
-
-  var holes_property_selection : EBSelection <MergerHoleArray> {
-    get {
-      return self.holes_property.prop
-    }
-  }
-
-  var holes : MergerHoleArray? {
-    switch holes_property_selection {
+  var drillSegments : MergerSegmentArray? {
+    switch drillSegments_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -635,17 +595,17 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing frontPads transient property
+  //   Accessing frontPadArray transient property
   //····················································································································
 
-  var frontPads_property_selection : EBSelection <MergerPadArray> {
+  var frontPadArray_property_selection : EBSelection <MergerPadArray> {
     get {
-      return self.frontPads_property.prop
+      return self.frontPadArray_property.prop
     }
   }
 
-  var frontPads : MergerPadArray? {
-    switch frontPads_property_selection {
+  var frontPadArray : MergerPadArray? {
+    switch frontPadArray_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -673,17 +633,17 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing backPads transient property
+  //   Accessing backPadArray transient property
   //····················································································································
 
-  var backPads_property_selection : EBSelection <MergerPadArray> {
+  var backPadArray_property_selection : EBSelection <MergerPadArray> {
     get {
-      return self.backPads_property.prop
+      return self.backPadArray_property.prop
     }
   }
 
-  var backPads : MergerPadArray? {
-    switch backPads_property_selection {
+  var backPadArray : MergerPadArray? {
+    switch backPadArray_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1171,6 +1131,16 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing drills toMany relationship
+  //····················································································································
+
+  var drills_property_selection : EBSelection < [CanariSegment] > {
+    get {
+      return self.drills_property.prop
+    }
+  }
+
+  //····················································································································
   //   Accessing vias toMany relationship
   //····················································································································
 
@@ -1181,12 +1151,22 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing pads toMany relationship
+  //   Accessing frontPads toMany relationship
   //····················································································································
 
-  var pads_property_selection : EBSelection < [BoardModelPad] > {
+  var frontPads_property_selection : EBSelection < [BoardModelPad] > {
     get {
-      return self.pads_property.prop
+      return self.frontPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing backPads toMany relationship
+  //····················································································································
+
+  var backPads_property_selection : EBSelection < [BoardModelPad] > {
+    get {
+      return self.backPads_property.prop
     }
   }
 
@@ -1303,15 +1283,13 @@ class BoardModel : EBManagedObject,
   var backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
   var internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var padsHoles_property = EBTransientProperty_MergerHoleArray ()
-  var viasHoles_property = EBTransientProperty_MergerHoleArray ()
-  var holes_property = EBTransientProperty_MergerHoleArray ()
+  var drillSegments_property = EBTransientProperty_MergerSegmentArray ()
   var holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
   var viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var frontPads_property = EBTransientProperty_MergerPadArray ()
+  var frontPadArray_property = EBTransientProperty_MergerPadArray ()
   var frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var backPads_property = EBTransientProperty_MergerPadArray ()
+  var backPadArray_property = EBTransientProperty_MergerPadArray ()
   var backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
   var boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
@@ -1346,8 +1324,10 @@ class BoardModel : EBManagedObject,
   var backLegendTexts_property = ToManyRelationship_BoardModel_backLegendTexts ()
   var backLayoutTexts_property = ToManyRelationship_BoardModel_backLayoutTexts ()
   var internalBoardsLimits_property = ToManyRelationship_BoardModel_internalBoardsLimits ()
+  var drills_property = ToManyRelationship_BoardModel_drills ()
   var vias_property = ToManyRelationship_BoardModel_vias ()
-  var pads_property = ToManyRelationship_BoardModel_pads ()
+  var frontPads_property = ToManyRelationship_BoardModel_frontPads ()
+  var backPads_property = ToManyRelationship_BoardModel_backPads ()
   var backComponentNames_property = ToManyRelationship_BoardModel_backComponentNames ()
   var frontComponentNames_property = ToManyRelationship_BoardModel_frontComponentNames ()
   var frontComponentValues_property = ToManyRelationship_BoardModel_frontComponentValues ()
@@ -1692,63 +1672,22 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.padsHoles_property.readModelFunction = { [weak self] in
+    self.drillSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
+        var kind = unwSelf.drills_property_selection.kind ()
+        kind &= unwSelf.drills_property_selection.kind ()
+        kind &= unwSelf.drills_property_selection.kind ()
+        kind &= unwSelf.drills_property_selection.kind ()
+        kind &= unwSelf.drills_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardModel_padsHoles (v0, v1, v2))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.viasHoles_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.vias_property_selection.kind ()
-        kind &= unwSelf.vias_property_selection.kind ()
-        kind &= unwSelf.vias_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.vias_property_selection, unwSelf.vias_property_selection, unwSelf.vias_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_BoardModel_viasHoles (v0, v1, v2))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.holes_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.padsHoles_property_selection.kind ()
-        kind &= unwSelf.viasHoles_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.padsHoles_property_selection, unwSelf.viasHoles_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_BoardModel_holes (v0, v1))
+          switch (unwSelf.drills_property_selection, unwSelf.drills_property_selection, unwSelf.drills_property_selection, unwSelf.drills_property_selection, unwSelf.drills_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_BoardModel_drillSegments (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -1759,16 +1698,16 @@ class BoardModel : EBManagedObject,
     }
     self.holesBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.holes_property_selection.kind ()
+        let kind = unwSelf.drillSegments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.holes_property_selection) {
+          switch (unwSelf.drillSegments_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_BoardModel_holesBezierPaths (v0))
+            return .single (transient_segmentsToBezierPaths (v0))
           default :
             return .empty
           }
@@ -1819,25 +1758,23 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.frontPads_property.readModelFunction = { [weak self] in
+    self.frontPadArray_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
+        var kind = unwSelf.frontPads_property_selection.kind ()
+        kind &= unwSelf.frontPads_property_selection.kind ()
+        kind &= unwSelf.frontPads_property_selection.kind ()
+        kind &= unwSelf.frontPads_property_selection.kind ()
+        kind &= unwSelf.frontPads_property_selection.kind ()
+        kind &= unwSelf.frontPads_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_BoardModel_frontPads (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (unwSelf.frontPads_property_selection, unwSelf.frontPads_property_selection, unwSelf.frontPads_property_selection, unwSelf.frontPads_property_selection, unwSelf.frontPads_property_selection, unwSelf.frontPads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_BoardModel_frontPadArray (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -1848,14 +1785,14 @@ class BoardModel : EBManagedObject,
     }
     self.frontPadsBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.frontPads_property_selection.kind ()
+        let kind = unwSelf.frontPadArray_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.frontPads_property_selection) {
+          switch (unwSelf.frontPadArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_BoardModel_frontPadsBezierPaths (v0))
           default :
@@ -1866,25 +1803,23 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
-    self.backPads_property.readModelFunction = { [weak self] in
+    self.backPadArray_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
-        kind &= unwSelf.pads_property_selection.kind ()
+        var kind = unwSelf.backPads_property_selection.kind ()
+        kind &= unwSelf.backPads_property_selection.kind ()
+        kind &= unwSelf.backPads_property_selection.kind ()
+        kind &= unwSelf.backPads_property_selection.kind ()
+        kind &= unwSelf.backPads_property_selection.kind ()
+        kind &= unwSelf.backPads_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection, unwSelf.pads_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_BoardModel_backPads (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (unwSelf.backPads_property_selection, unwSelf.backPads_property_selection, unwSelf.backPads_property_selection, unwSelf.backPads_property_selection, unwSelf.backPads_property_selection, unwSelf.backPads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_BoardModel_backPadArray (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -1895,14 +1830,14 @@ class BoardModel : EBManagedObject,
     }
     self.backPadsBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.backPads_property_selection.kind ()
+        let kind = unwSelf.backPadArray_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.backPads_property_selection) {
+          switch (unwSelf.backPadArray_property_selection) {
           case (.single (let v0)) :
             return .single (transient_BoardModel_backPadsBezierPaths (v0))
           default :
@@ -2516,37 +2451,30 @@ class BoardModel : EBManagedObject,
     self.internalBoardsLimits_property.addEBObserverOf_y2 (self.internalBoardsLimitsSegments_property)
     self.internalBoardsLimits_property.addEBObserverOf_width (self.internalBoardsLimitsSegments_property)
     self.internalBoardsLimitsSegments_property.addEBObserver (self.internalBoardsLimitsBezierPaths_property)
-    self.pads_property.addEBObserverOf_x (self.padsHoles_property)
-    self.pads_property.addEBObserverOf_y (self.padsHoles_property)
-    self.pads_property.addEBObserverOf_holeDiameter (self.padsHoles_property)
-    self.vias_property.addEBObserverOf_x (self.viasHoles_property)
-    self.vias_property.addEBObserverOf_y (self.viasHoles_property)
-    self.vias_property.addEBObserverOf_holeDiameter (self.viasHoles_property)
-    self.padsHoles_property.addEBObserver (self.holes_property)
-    self.viasHoles_property.addEBObserver (self.holes_property)
-    self.holes_property.addEBObserver (self.holesBezierPaths_property)
+    self.drills_property.addEBObserverOf_x1 (self.drillSegments_property)
+    self.drills_property.addEBObserverOf_y1 (self.drillSegments_property)
+    self.drills_property.addEBObserverOf_x2 (self.drillSegments_property)
+    self.drills_property.addEBObserverOf_y2 (self.drillSegments_property)
+    self.drills_property.addEBObserverOf_width (self.drillSegments_property)
+    self.drillSegments_property.addEBObserver (self.holesBezierPaths_property)
     self.vias_property.addEBObserverOf_x (self.viaShapes_property)
     self.vias_property.addEBObserverOf_y (self.viaShapes_property)
     self.vias_property.addEBObserverOf_padDiameter (self.viaShapes_property)
     self.viaShapes_property.addEBObserver (self.viasBezierPaths_property)
-    self.pads_property.addEBObserverOf_x (self.frontPads_property)
-    self.pads_property.addEBObserverOf_y (self.frontPads_property)
-    self.pads_property.addEBObserverOf_width (self.frontPads_property)
-    self.pads_property.addEBObserverOf_height (self.frontPads_property)
-    self.pads_property.addEBObserverOf_holeDiameter (self.frontPads_property)
-    self.pads_property.addEBObserverOf_shape (self.frontPads_property)
-    self.pads_property.addEBObserverOf_side (self.frontPads_property)
-    self.pads_property.addEBObserverOf_rotation (self.frontPads_property)
-    self.frontPads_property.addEBObserver (self.frontPadsBezierPaths_property)
-    self.pads_property.addEBObserverOf_x (self.backPads_property)
-    self.pads_property.addEBObserverOf_y (self.backPads_property)
-    self.pads_property.addEBObserverOf_width (self.backPads_property)
-    self.pads_property.addEBObserverOf_height (self.backPads_property)
-    self.pads_property.addEBObserverOf_holeDiameter (self.backPads_property)
-    self.pads_property.addEBObserverOf_shape (self.backPads_property)
-    self.pads_property.addEBObserverOf_side (self.backPads_property)
-    self.pads_property.addEBObserverOf_rotation (self.backPads_property)
-    self.backPads_property.addEBObserver (self.backPadsBezierPaths_property)
+    self.frontPads_property.addEBObserverOf_x (self.frontPadArray_property)
+    self.frontPads_property.addEBObserverOf_y (self.frontPadArray_property)
+    self.frontPads_property.addEBObserverOf_width (self.frontPadArray_property)
+    self.frontPads_property.addEBObserverOf_height (self.frontPadArray_property)
+    self.frontPads_property.addEBObserverOf_shape (self.frontPadArray_property)
+    self.frontPads_property.addEBObserverOf_rotation (self.frontPadArray_property)
+    self.frontPadArray_property.addEBObserver (self.frontPadsBezierPaths_property)
+    self.backPads_property.addEBObserverOf_x (self.backPadArray_property)
+    self.backPads_property.addEBObserverOf_y (self.backPadArray_property)
+    self.backPads_property.addEBObserverOf_width (self.backPadArray_property)
+    self.backPads_property.addEBObserverOf_height (self.backPadArray_property)
+    self.backPads_property.addEBObserverOf_shape (self.backPadArray_property)
+    self.backPads_property.addEBObserverOf_rotation (self.backPadArray_property)
+    self.backPadArray_property.addEBObserver (self.backPadsBezierPaths_property)
     self.modelWidth_property.addEBObserver (self.boardLimits_property)
     self.modelHeight_property.addEBObserver (self.boardLimits_property)
     self.modelLimitWidth_property.addEBObserver (self.boardLimits_property)
@@ -2745,8 +2673,10 @@ class BoardModel : EBManagedObject,
     self.backLegendTexts_property.owner = self
     self.backLayoutTexts_property.owner = self
     self.internalBoardsLimits_property.owner = self
+    self.drills_property.owner = self
     self.vias_property.owner = self
-    self.pads_property.owner = self
+    self.frontPads_property.owner = self
+    self.backPads_property.owner = self
     self.backComponentNames_property.owner = self
     self.frontComponentNames_property.owner = self
     self.frontComponentValues_property.owner = self
@@ -2805,37 +2735,30 @@ class BoardModel : EBManagedObject,
     self.internalBoardsLimits_property.removeEBObserverOf_y2 (self.internalBoardsLimitsSegments_property)
     self.internalBoardsLimits_property.removeEBObserverOf_width (self.internalBoardsLimitsSegments_property)
     self.internalBoardsLimitsSegments_property.removeEBObserver (self.internalBoardsLimitsBezierPaths_property)
-    self.pads_property.removeEBObserverOf_x (self.padsHoles_property)
-    self.pads_property.removeEBObserverOf_y (self.padsHoles_property)
-    self.pads_property.removeEBObserverOf_holeDiameter (self.padsHoles_property)
-    self.vias_property.removeEBObserverOf_x (self.viasHoles_property)
-    self.vias_property.removeEBObserverOf_y (self.viasHoles_property)
-    self.vias_property.removeEBObserverOf_holeDiameter (self.viasHoles_property)
-    self.padsHoles_property.removeEBObserver (self.holes_property)
-    self.viasHoles_property.removeEBObserver (self.holes_property)
-    self.holes_property.removeEBObserver (self.holesBezierPaths_property)
+    self.drills_property.removeEBObserverOf_x1 (self.drillSegments_property)
+    self.drills_property.removeEBObserverOf_y1 (self.drillSegments_property)
+    self.drills_property.removeEBObserverOf_x2 (self.drillSegments_property)
+    self.drills_property.removeEBObserverOf_y2 (self.drillSegments_property)
+    self.drills_property.removeEBObserverOf_width (self.drillSegments_property)
+    self.drillSegments_property.removeEBObserver (self.holesBezierPaths_property)
     self.vias_property.removeEBObserverOf_x (self.viaShapes_property)
     self.vias_property.removeEBObserverOf_y (self.viaShapes_property)
     self.vias_property.removeEBObserverOf_padDiameter (self.viaShapes_property)
     self.viaShapes_property.removeEBObserver (self.viasBezierPaths_property)
-    self.pads_property.removeEBObserverOf_x (self.frontPads_property)
-    self.pads_property.removeEBObserverOf_y (self.frontPads_property)
-    self.pads_property.removeEBObserverOf_width (self.frontPads_property)
-    self.pads_property.removeEBObserverOf_height (self.frontPads_property)
-    self.pads_property.removeEBObserverOf_holeDiameter (self.frontPads_property)
-    self.pads_property.removeEBObserverOf_shape (self.frontPads_property)
-    self.pads_property.removeEBObserverOf_side (self.frontPads_property)
-    self.pads_property.removeEBObserverOf_rotation (self.frontPads_property)
-    self.frontPads_property.removeEBObserver (self.frontPadsBezierPaths_property)
-    self.pads_property.removeEBObserverOf_x (self.backPads_property)
-    self.pads_property.removeEBObserverOf_y (self.backPads_property)
-    self.pads_property.removeEBObserverOf_width (self.backPads_property)
-    self.pads_property.removeEBObserverOf_height (self.backPads_property)
-    self.pads_property.removeEBObserverOf_holeDiameter (self.backPads_property)
-    self.pads_property.removeEBObserverOf_shape (self.backPads_property)
-    self.pads_property.removeEBObserverOf_side (self.backPads_property)
-    self.pads_property.removeEBObserverOf_rotation (self.backPads_property)
-    self.backPads_property.removeEBObserver (self.backPadsBezierPaths_property)
+    self.frontPads_property.removeEBObserverOf_x (self.frontPadArray_property)
+    self.frontPads_property.removeEBObserverOf_y (self.frontPadArray_property)
+    self.frontPads_property.removeEBObserverOf_width (self.frontPadArray_property)
+    self.frontPads_property.removeEBObserverOf_height (self.frontPadArray_property)
+    self.frontPads_property.removeEBObserverOf_shape (self.frontPadArray_property)
+    self.frontPads_property.removeEBObserverOf_rotation (self.frontPadArray_property)
+    self.frontPadArray_property.removeEBObserver (self.frontPadsBezierPaths_property)
+    self.backPads_property.removeEBObserverOf_x (self.backPadArray_property)
+    self.backPads_property.removeEBObserverOf_y (self.backPadArray_property)
+    self.backPads_property.removeEBObserverOf_width (self.backPadArray_property)
+    self.backPads_property.removeEBObserverOf_height (self.backPadArray_property)
+    self.backPads_property.removeEBObserverOf_shape (self.backPadArray_property)
+    self.backPads_property.removeEBObserverOf_rotation (self.backPadArray_property)
+    self.backPadArray_property.removeEBObserver (self.backPadsBezierPaths_property)
     self.modelWidth_property.removeEBObserver (self.boardLimits_property)
     self.modelHeight_property.removeEBObserver (self.boardLimits_property)
     self.modelLimitWidth_property.removeEBObserver (self.boardLimits_property)
@@ -3217,28 +3140,12 @@ class BoardModel : EBManagedObject,
       valueExplorer:&self.internalBoardsLimitsBezierPaths_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "padsHoles",
-      idx:self.padsHoles_property.mEasyBindingsObjectIndex,
+      "drillSegments",
+      idx:self.drillSegments_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.padsHoles_property.mObserverExplorer,
-      valueExplorer:&self.padsHoles_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "viasHoles",
-      idx:self.viasHoles_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.viasHoles_property.mObserverExplorer,
-      valueExplorer:&self.viasHoles_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "holes",
-      idx:self.holes_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.holes_property.mObserverExplorer,
-      valueExplorer:&self.holes_property.mValueExplorer
+      observerExplorer:&self.drillSegments_property.mObserverExplorer,
+      valueExplorer:&self.drillSegments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "holesBezierPaths",
@@ -3265,12 +3172,12 @@ class BoardModel : EBManagedObject,
       valueExplorer:&self.viasBezierPaths_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "frontPads",
-      idx:self.frontPads_property.mEasyBindingsObjectIndex,
+      "frontPadArray",
+      idx:self.frontPadArray_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.frontPads_property.mObserverExplorer,
-      valueExplorer:&self.frontPads_property.mValueExplorer
+      observerExplorer:&self.frontPadArray_property.mObserverExplorer,
+      valueExplorer:&self.frontPadArray_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "frontPadsBezierPaths",
@@ -3281,12 +3188,12 @@ class BoardModel : EBManagedObject,
       valueExplorer:&self.frontPadsBezierPaths_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "backPads",
-      idx:self.backPads_property.mEasyBindingsObjectIndex,
+      "backPadArray",
+      idx:self.backPadArray_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.backPads_property.mObserverExplorer,
-      valueExplorer:&self.backPads_property.mValueExplorer
+      observerExplorer:&self.backPadArray_property.mObserverExplorer,
+      valueExplorer:&self.backPadArray_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "backPadsBezierPaths",
@@ -3514,6 +3421,13 @@ class BoardModel : EBManagedObject,
       valueExplorer:&internalBoardsLimits_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
+      "drills",
+      idx:drills_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&drills_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
       "vias",
       idx:vias_property.mEasyBindingsObjectIndex,
       y: &y,
@@ -3521,11 +3435,18 @@ class BoardModel : EBManagedObject,
       valueExplorer:&vias_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
-      "pads",
-      idx:pads_property.mEasyBindingsObjectIndex,
+      "frontPads",
+      idx:frontPads_property.mEasyBindingsObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&pads_property.mValueExplorer
+      valueExplorer:&frontPads_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backPads",
+      idx:backPads_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backPads_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "backComponentNames",
@@ -3618,8 +3539,10 @@ class BoardModel : EBManagedObject,
     self.backLegendTexts_property.mValueExplorer = nil
     self.backLayoutTexts_property.mValueExplorer = nil
     self.internalBoardsLimits_property.mValueExplorer = nil
+    self.drills_property.mValueExplorer = nil
     self.vias_property.mValueExplorer = nil
-    self.pads_property.mValueExplorer = nil
+    self.frontPads_property.mValueExplorer = nil
+    self.backPads_property.mValueExplorer = nil
     self.backComponentNames_property.mValueExplorer = nil
     self.frontComponentNames_property.mValueExplorer = nil
     self.frontComponentValues_property.mValueExplorer = nil
@@ -3654,8 +3577,10 @@ class BoardModel : EBManagedObject,
     store (managedObjectArray: backLegendTexts_property.propval as NSArray, relationshipName:"backLegendTexts", intoDictionary: ioDictionary) ;
     store (managedObjectArray: backLayoutTexts_property.propval as NSArray, relationshipName:"backLayoutTexts", intoDictionary: ioDictionary) ;
     store (managedObjectArray: internalBoardsLimits_property.propval as NSArray, relationshipName:"internalBoardsLimits", intoDictionary: ioDictionary) ;
+    store (managedObjectArray: drills_property.propval as NSArray, relationshipName:"drills", intoDictionary: ioDictionary) ;
     store (managedObjectArray: vias_property.propval as NSArray, relationshipName:"vias", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: pads_property.propval as NSArray, relationshipName:"pads", intoDictionary: ioDictionary) ;
+    store (managedObjectArray: frontPads_property.propval as NSArray, relationshipName:"frontPads", intoDictionary: ioDictionary) ;
+    store (managedObjectArray: backPads_property.propval as NSArray, relationshipName:"backPads", intoDictionary: ioDictionary) ;
     store (managedObjectArray: backComponentNames_property.propval as NSArray, relationshipName:"backComponentNames", intoDictionary: ioDictionary) ;
     store (managedObjectArray: frontComponentNames_property.propval as NSArray, relationshipName:"frontComponentNames", intoDictionary: ioDictionary) ;
     store (managedObjectArray: frontComponentValues_property.propval as NSArray, relationshipName:"frontComponentValues", intoDictionary: ioDictionary) ;
@@ -3722,13 +3647,23 @@ class BoardModel : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [CanariSegment])
+    self.drills_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "drills",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [CanariSegment])
     self.vias_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "vias",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [BoardModelVia])
-    self.pads_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "pads",
+    self.frontPads_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "frontPads",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [BoardModelPad])
+    self.backPads_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "backPads",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [BoardModelPad])
@@ -3816,13 +3751,23 @@ class BoardModel : EBManagedObject,
       self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
     do{
+      let objects = self.drills_property.propval
+      self.drills_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
       let objects = self.vias_property.propval
       self.vias_property.setProp ([])
       self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
     do{
-      let objects = self.pads_property.propval
-      self.pads_property.setProp ([])
+      let objects = self.frontPads_property.propval
+      self.frontPads_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+    do{
+      let objects = self.backPads_property.propval
+      self.backPads_property.setProp ([])
       self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
     do{
@@ -3882,8 +3827,10 @@ class BoardModel : EBManagedObject,
     self.backLegendTexts_property.setProp ([])
     self.backLayoutTexts_property.setProp ([])
     self.internalBoardsLimits_property.setProp ([])
+    self.drills_property.setProp ([])
     self.vias_property.setProp ([])
-    self.pads_property.setProp ([])
+    self.frontPads_property.setProp ([])
+    self.backPads_property.setProp ([])
     self.backComponentNames_property.setProp ([])
     self.frontComponentNames_property.setProp ([])
     self.frontComponentValues_property.setProp ([])
@@ -3924,10 +3871,16 @@ class BoardModel : EBManagedObject,
     for managedObject : EBManagedObject in self.internalBoardsLimits_property.propval {
       objects.append (managedObject)
     }
+    for managedObject : EBManagedObject in self.drills_property.propval {
+      objects.append (managedObject)
+    }
     for managedObject : EBManagedObject in self.vias_property.propval {
       objects.append (managedObject)
     }
-    for managedObject : EBManagedObject in self.pads_property.propval {
+    for managedObject : EBManagedObject in self.frontPads_property.propval {
+      objects.append (managedObject)
+    }
+    for managedObject : EBManagedObject in self.backPads_property.propval {
       objects.append (managedObject)
     }
     for managedObject : EBManagedObject in self.backComponentNames_property.propval {
@@ -5320,169 +5273,57 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
-  //   Observers of 'padsHoles' transient property
+  //   Observers of 'drillSegments' transient property
   //····················································································································
 
-  private var mObserversOf_padsHoles = EBWeakEventSet ()
+  private var mObserversOf_drillSegments = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_padsHoles (_ inObserver : EBEvent) {
+  final func addEBObserverOf_drillSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_padsHoles.insert (inObserver)
+    mObserversOf_drillSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padsHoles_property.addEBObserver (inObserver)
+        managedObject.drillSegments_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_padsHoles (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_drillSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_padsHoles.remove (inObserver)
+    mObserversOf_drillSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padsHoles_property.removeEBObserver (inObserver)
+        managedObject.drillSegments_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_padsHoles_toElementsOfSet (_ inSet : Set<BoardModel>) {
+  final func addEBObserversOf_drillSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_padsHoles {
-        managedObject.padsHoles_property.addEBObserver (observer)
+      for observer in mObserversOf_drillSegments {
+        managedObject.drillSegments_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_padsHoles_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+  final func removeEBObserversOf_drillSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_padsHoles {
-        managedObject.padsHoles_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'viasHoles' transient property
-  //····················································································································
-
-  private var mObserversOf_viasHoles = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_viasHoles (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_viasHoles.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.viasHoles_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_viasHoles (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_viasHoles.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.viasHoles_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_viasHoles_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_viasHoles {
-        managedObject.viasHoles_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_viasHoles_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_viasHoles {
-        managedObject.viasHoles_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'holes' transient property
-  //····················································································································
-
-  private var mObserversOf_holes = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_holes (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_holes.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.holes_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_holes (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_holes.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.holes_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_holes_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_holes {
-        managedObject.holes_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_holes_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_holes {
-        managedObject.holes_property.removeEBObserver (observer)
+      for observer in mObserversOf_drillSegments {
+        managedObject.drillSegments_property.removeEBObserver (observer)
       }
     }
   }
@@ -5656,57 +5497,57 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
-  //   Observers of 'frontPads' transient property
+  //   Observers of 'frontPadArray' transient property
   //····················································································································
 
-  private var mObserversOf_frontPads = EBWeakEventSet ()
+  private var mObserversOf_frontPadArray = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_frontPads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontPads.insert (inObserver)
+    mObserversOf_frontPadArray.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.frontPads_property.addEBObserver (inObserver)
+        managedObject.frontPadArray_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_frontPads (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontPads.remove (inObserver)
+    mObserversOf_frontPadArray.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.frontPads_property.removeEBObserver (inObserver)
+        managedObject.frontPadArray_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_frontPads_toElementsOfSet (_ inSet : Set<BoardModel>) {
+  final func addEBObserversOf_frontPadArray_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontPads {
-        managedObject.frontPads_property.addEBObserver (observer)
+      for observer in mObserversOf_frontPadArray {
+        managedObject.frontPadArray_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_frontPads_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+  final func removeEBObserversOf_frontPadArray_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontPads {
-        managedObject.frontPads_property.removeEBObserver (observer)
+      for observer in mObserversOf_frontPadArray {
+        managedObject.frontPadArray_property.removeEBObserver (observer)
       }
     }
   }
@@ -5768,57 +5609,57 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
-  //   Observers of 'backPads' transient property
+  //   Observers of 'backPadArray' transient property
   //····················································································································
 
-  private var mObserversOf_backPads = EBWeakEventSet ()
+  private var mObserversOf_backPadArray = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_backPads (_ inObserver : EBEvent) {
+  final func addEBObserverOf_backPadArray (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backPads.insert (inObserver)
+    mObserversOf_backPadArray.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.backPads_property.addEBObserver (inObserver)
+        managedObject.backPadArray_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_backPads (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_backPadArray (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backPads.remove (inObserver)
+    mObserversOf_backPadArray.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.backPads_property.removeEBObserver (inObserver)
+        managedObject.backPadArray_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_backPads_toElementsOfSet (_ inSet : Set<BoardModel>) {
+  final func addEBObserversOf_backPadArray_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backPads {
-        managedObject.backPads_property.addEBObserver (observer)
+      for observer in mObserversOf_backPadArray {
+        managedObject.backPadArray_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_backPads_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+  final func removeEBObserversOf_backPadArray_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backPads {
-        managedObject.backPads_property.removeEBObserver (observer)
+      for observer in mObserversOf_backPadArray {
+        managedObject.backPadArray_property.removeEBObserver (observer)
       }
     }
   }
@@ -7062,15 +6903,13 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedSet)
-        removeEBObserversOf_padsHoles_fromElementsOfSet (removedSet)
-        removeEBObserversOf_viasHoles_fromElementsOfSet (removedSet)
-        removeEBObserversOf_holes_fromElementsOfSet (removedSet)
+        removeEBObserversOf_drillSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_viaShapes_fromElementsOfSet (removedSet)
         removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedSet)
-        removeEBObserversOf_frontPads_fromElementsOfSet (removedSet)
+        removeEBObserversOf_frontPadArray_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedSet)
-        removeEBObserversOf_backPads_fromElementsOfSet (removedSet)
+        removeEBObserversOf_backPadArray_fromElementsOfSet (removedSet)
         removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimits_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedSet)
@@ -7120,15 +6959,13 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedSet)
         addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedSet)
-        addEBObserversOf_padsHoles_toElementsOfSet (addedSet)
-        addEBObserversOf_viasHoles_toElementsOfSet (addedSet)
-        addEBObserversOf_holes_toElementsOfSet (addedSet)
+        addEBObserversOf_drillSegments_toElementsOfSet (addedSet)
         addEBObserversOf_holesBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_viaShapes_toElementsOfSet (addedSet)
         addEBObserversOf_viasBezierPaths_toElementsOfSet (addedSet)
-        addEBObserversOf_frontPads_toElementsOfSet (addedSet)
+        addEBObserversOf_frontPadArray_toElementsOfSet (addedSet)
         addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedSet)
-        addEBObserversOf_backPads_toElementsOfSet (addedSet)
+        addEBObserversOf_backPadArray_toElementsOfSet (addedSet)
         addEBObserversOf_backPadsBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimits_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedSet)
@@ -7324,20 +7161,8 @@ protocol BoardModel_internalBoardsLimitsBezierPaths : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModel_padsHoles : class {
-  var padsHoles : MergerHoleArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_viasHoles : class {
-  var viasHoles : MergerHoleArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_holes : class {
-  var holes : MergerHoleArray? { get }
+protocol BoardModel_drillSegments : class {
+  var drillSegments : MergerSegmentArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7360,8 +7185,8 @@ protocol BoardModel_viasBezierPaths : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModel_frontPads : class {
-  var frontPads : MergerPadArray? { get }
+protocol BoardModel_frontPadArray : class {
+  var frontPadArray : MergerPadArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -7372,8 +7197,8 @@ protocol BoardModel_frontPadsBezierPaths : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModel_backPads : class {
-  var backPads : MergerPadArray? { get }
+protocol BoardModel_backPadArray : class {
+  var backPadArray : MergerPadArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -8951,6 +8776,186 @@ ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits, EBSignatureObserver
  
 }
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: drills
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_BoardModel_drills : ReadOnlyArrayOf_CanariSegment {
+
+  //····················································································································
+ 
+  func setProp (_ value :  [CanariSegment]) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: drills
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_BoardModel_drills :
+ToManyRelationshipReadWrite_BoardModel_drills, EBSignatureObserverProtocol {
+  weak var owner : BoardModel?
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set <CanariSegment> ()
+  private var mValue = [CanariSegment] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+        }
+        removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : CanariSegment in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+        }
+        addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBSelection < [CanariSegment] > { return .single (mValue) }
+
+  override func setProp (_ inValue : [CanariSegment]) { mValue = inValue }
+
+  var propval : [CanariSegment] { return mValue }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [CanariSegment]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : CanariSegment) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : CanariSegment) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship read write: vias
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -9025,7 +9030,6 @@ ToManyRelationshipReadWrite_BoardModel_vias, EBSignatureObserverProtocol {
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
         }
-        removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
@@ -9034,7 +9038,6 @@ ToManyRelationshipReadWrite_BoardModel_vias, EBSignatureObserverProtocol {
         for managedObject : BoardModelVia in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
-        addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
         addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y_toElementsOfSet (addedObjectSet)
@@ -9129,10 +9132,10 @@ ToManyRelationshipReadWrite_BoardModel_vias, EBSignatureObserverProtocol {
  
 }
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: pads
+//    To many relationship read write: frontPads
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_pads : ReadOnlyArrayOf_BoardModelPad {
+class ToManyRelationshipReadWrite_BoardModel_frontPads : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
  
@@ -9143,11 +9146,11 @@ class ToManyRelationshipReadWrite_BoardModel_pads : ReadOnlyArrayOf_BoardModelPa
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: pads
+//    To many relationship: frontPads
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_pads :
-ToManyRelationshipReadWrite_BoardModel_pads, EBSignatureObserverProtocol {
+final class ToManyRelationship_BoardModel_frontPads :
+ToManyRelationshipReadWrite_BoardModel_frontPads, EBSignatureObserverProtocol {
   weak var owner : BoardModel?
 
   var mValueExplorer : NSPopUpButton? {
@@ -9204,10 +9207,8 @@ ToManyRelationshipReadWrite_BoardModel_pads, EBSignatureObserverProtocol {
           managedObject.setSignatureObserver (observer: nil)
         }
         removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_rotation_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_side_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
@@ -9217,10 +9218,190 @@ ToManyRelationshipReadWrite_BoardModel_pads, EBSignatureObserverProtocol {
           managedObject.setSignatureObserver (observer: self)
         }
         addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
         addEBObserversOf_rotation_toElementsOfSet (addedObjectSet)
         addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_side_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBSelection < [BoardModelPad] > { return .single (mValue) }
+
+  override func setProp (_ inValue : [BoardModelPad]) { mValue = inValue }
+
+  var propval : [BoardModelPad] { return mValue }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [BoardModelPad]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : BoardModelPad) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : BoardModelPad) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: backPads
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_BoardModel_backPads : ReadOnlyArrayOf_BoardModelPad {
+
+  //····················································································································
+ 
+  func setProp (_ value :  [BoardModelPad]) { } // Abstract method
+  
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: backPads
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_BoardModel_backPads :
+ToManyRelationshipReadWrite_BoardModel_backPads, EBSignatureObserverProtocol {
+  weak var owner : BoardModel?
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set <BoardModelPad> ()
+  private var mValue = [BoardModelPad] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+        }
+        removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_rotation_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : BoardModelPad in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+        }
+        addEBObserversOf_height_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_rotation_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y_toElementsOfSet (addedObjectSet)

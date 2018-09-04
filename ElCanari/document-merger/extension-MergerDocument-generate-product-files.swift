@@ -77,7 +77,9 @@ extension MergerDocument {
     var backLegendLines = [String] ()
     var frontLegendLines = [String] ()
     var vias = [String] ()
-    var pads = [NSDictionary] ()
+    var frontPads = [NSDictionary] ()
+    var backPads = [NSDictionary] ()
+    var drills = [String] ()
     for board in self.rootObject.boardInstances_property.propval {
       let myModel : BoardModel? = board.myModel_property.propval
       let modelWidth  = myModel?.modelWidth  ?? 0
@@ -115,6 +117,8 @@ extension MergerDocument {
        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
       myModel?.frontLegendLinesSegments?.add (toArchiveArray: &frontLegendLines, dx: board.x, dy: board.y,
        modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
+      myModel?.drillSegments?.add (toArchiveArray: &drills, dx: board.x, dy: board.y,
+       modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
       for via in myModel?.vias_property.propval ?? [] {
         var viaX = board.x
         var viaY = board.y
@@ -132,27 +136,17 @@ extension MergerDocument {
           viaX += via.y
           viaY += modelWidth - via.x
         }
-        vias.append ("\(viaX) \(viaY) \(via.padDiameter) \(via.holeDiameter)")
+        vias.append ("\(viaX) \(viaY) \(via.padDiameter)")
       }
-      for pad in myModel?.pads_property.propval ?? [] {
+      for pad in myModel?.frontPads_property.propval ?? [] {
         let d = NSMutableDictionary ()
         d ["HEIGHT"] = pad.height
-        d ["HOLE-DIAMETER"] = pad.holeDiameter
-//        d ["QUALIFIED-NAME"] = pad.qualifiedName
         d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
         switch pad.shape {
         case .rectangular :
           d ["SHAPE"] = "RECT"
         case .round :
           d ["SHAPE"] = "ROUND"
-        }
-        switch pad.side {
-        case .traversing :
-          d ["SIDE"] = "TRAVERSING"
-        case .front :
-          d ["SIDE"] = "FRONT"
-        case .back :
-          d ["SIDE"] = "BACK"
         }
         d ["WIDTH"] = pad.width
         switch instanceRotation {
@@ -169,9 +163,37 @@ extension MergerDocument {
           d ["X"] = board.x + pad.y
           d ["Y"] = board.y + modelWidth - pad.x
         }
-        pads.append (d)
+        frontPads.append (d)
+      }
+      for pad in myModel?.backPads_property.propval ?? [] {
+        let d = NSMutableDictionary ()
+        d ["HEIGHT"] = pad.height
+        d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
+        switch pad.shape {
+        case .rectangular :
+          d ["SHAPE"] = "RECT"
+        case .round :
+          d ["SHAPE"] = "ROUND"
+        }
+        d ["WIDTH"] = pad.width
+        switch instanceRotation {
+        case .rotation0 :
+          d ["X"] = board.x + pad.x
+          d ["Y"] = board.y + pad.y
+        case .rotation90 :
+          d ["X"] = board.x + modelHeight - pad.y
+          d ["Y"] = board.y + pad.x
+        case .rotation180 :
+          d ["X"] = board.x + modelWidth  - pad.x
+          d ["Y"] = board.y + modelHeight - pad.y
+        case .rotation270 :
+          d ["X"] = board.x + pad.y
+          d ["Y"] = board.y + modelWidth - pad.x
+        }
+        backPads.append (d)
       }
     }
+
     archiveDict ["INTERNAL-BOARDS-LIMITS"] = internalBoardsLimits
     archiveDict ["COMPONENT-NAMES-BACK"] = backComponentNames
     archiveDict ["COMPONENT-NAMES-FRONT"] = frontComponentNames
@@ -181,7 +203,8 @@ extension MergerDocument {
     archiveDict ["PACKAGES-FRONT"] = frontPackages
     archiveDict ["LINES-BACK"] = backLegendLines
     archiveDict ["LINES-FRONT"] = frontLegendLines
-    archiveDict ["PADS"] = pads
+    archiveDict ["FRONT-PADS"] = frontPads
+    archiveDict ["BACK-PADS"] = backPads
     archiveDict ["TEXTS-LAYOUT-BACK"] = backLayoutTexts
     archiveDict ["TEXTS-LAYOUT-FRONT"] = frontLayoutTexts
     archiveDict ["TEXTS-LEGEND-BACK"] = backLegendTexts
@@ -189,6 +212,7 @@ extension MergerDocument {
     archiveDict ["TRACKS-BACK"] = backTracks
     archiveDict ["TRACKS-FRONT"] = frontTracks
     archiveDict ["VIAS"] = vias
+    archiveDict ["DRILLS"] = drills
     // NSLog ("ARCHIVE \(archiveDict)")
   //--- Write file
     let data : Data = try PropertyListSerialization.data (
@@ -298,7 +322,7 @@ extension MergerDocument {
             let modelWidth  = myModel?.modelWidth  ?? 0
             let modelHeight = myModel?.modelHeight ?? 0
             let instanceRotation = board.instanceRotation
-            myModel?.frontPads?.addPads (toFilledBezierPaths: &filledBezierPaths,
+            myModel?.frontPadArray?.addPads (toFilledBezierPaths: &filledBezierPaths,
               dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
               modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
@@ -309,7 +333,7 @@ extension MergerDocument {
             let modelWidth  = myModel?.modelWidth  ?? 0
             let modelHeight = myModel?.modelHeight ?? 0
             let instanceRotation = board.instanceRotation
-            myModel?.backPads?.addPads (toFilledBezierPaths: &filledBezierPaths,
+            myModel?.backPadArray?.addPads (toFilledBezierPaths: &filledBezierPaths,
               dx: board.x, dy: board.y, horizontalMirror:horizontalMirror, boardWidth:boardWidth,
               modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
@@ -397,7 +421,7 @@ extension MergerDocument {
               modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
           }
         }
-        var holeBezierPaths = [NSBezierPath] ()
+        var drillBezierPaths = [NSBezierPath] ()
         if product.drawPadHolesInPDF {
           let pdfHoleDiameter : CGFloat = canariUnitToCocoa (product.padHoleDiameterInPDF)
           for board in self.rootObject.boardInstances_property.propval {
@@ -406,56 +430,22 @@ extension MergerDocument {
             let modelHeight = myModel?.modelHeight ?? 0
             let instanceRotation = board.instanceRotation
             if product.drawVias {
-              myModel?.viaShapes?.addHole (
-                toFilledBezierPaths: &holeBezierPaths,
+              myModel?.drillSegments?.addDrillForPDF (
+                toStrokeBezierPaths: &drillBezierPaths,
                 dx: board.x,
                 dy: board.y,
-                pdfHoleDiameter: pdfHoleDiameter,
                 horizontalMirror: horizontalMirror,
+                pdfDrillDiameter: pdfHoleDiameter,
                 boardWidth: boardWidth,
                 modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
               )
-            }
-            if product.drawPadsTopSide {
-              for board in self.rootObject.boardInstances_property.propval {
-                let myModel : BoardModel? = board.myModel_property.propval
-                let modelWidth  = myModel?.modelWidth  ?? 0
-                let modelHeight = myModel?.modelHeight ?? 0
-                let instanceRotation = board.instanceRotation
-                myModel?.frontPads?.addHoles (
-                  toFilledBezierPaths: &holeBezierPaths,
-                  dx: board.x,
-                  dy: board.y,
-                  pdfHoleDiameter: pdfHoleDiameter,
-                  horizontalMirror:horizontalMirror,
-                  boardWidth:boardWidth,
-                  modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
-                )
-              }
-            }
-            if product.drawPadsBottomSide {
-              for board in self.rootObject.boardInstances_property.propval {
-                let myModel : BoardModel? = board.myModel_property.propval
-                let modelWidth  = myModel?.modelWidth  ?? 0
-                let modelHeight = myModel?.modelHeight ?? 0
-                let instanceRotation = board.instanceRotation
-                myModel?.backPads?.addHoles (
-                  toFilledBezierPaths: &holeBezierPaths,
-                  dx: board.x,
-                  dy: board.y,
-                  pdfHoleDiameter: pdfHoleDiameter,
-                  horizontalMirror:horizontalMirror,
-                  boardWidth:boardWidth,
-                  modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation
-                )
-              }
             }
           }
         }
         let shapes = EBShapes ()
         shapes.append (strokeBezierPaths, NSColor.black, .stroke)
         shapes.append (filledBezierPaths, NSColor.black, .fill)
-        shapes.append (holeBezierPaths, NSColor.white, .fill)
+        shapes.append (drillBezierPaths, NSColor.white, .stroke)
         let pdfData = buildPDFimage (frame:cocoaBoardRect, shapes: shapes, backgroundColor:NSColor.white)
         try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
         mLogTextView?.appendSuccessString (" Ok\n")
@@ -593,7 +583,7 @@ extension MergerDocument {
           let modelWidth  = myModel?.modelWidth  ?? 0
           let modelHeight = myModel?.modelHeight ?? 0
           let instanceRotation = board.instanceRotation
-          myModel?.frontPads?.addPads (
+          myModel?.frontPadArray?.addPads (
             toApertures: &apertureDictionary,
             toPolygones: &polygons,
             dx: board.x,
@@ -611,7 +601,7 @@ extension MergerDocument {
           let modelWidth  = myModel?.modelWidth  ?? 0
           let modelHeight = myModel?.modelHeight ?? 0
           let instanceRotation = board.instanceRotation
-          myModel?.backPads?.addPads (
+          myModel?.backPadArray?.addPads (
             toApertures: &apertureDictionary,
             toPolygones: &polygons,
             dx: board.x,
@@ -743,13 +733,13 @@ extension MergerDocument {
     var s = "M48\n"
     s += "INCH\n"
  //--- Array of hole diameters
-    var holeDictionary = [Int : [(Int, Int)]] ()
+    var holeDictionary = [Int : [(Int, Int, Int, Int)]] ()
     for board in self.rootObject.boardInstances_property.propval {
       let myModel : BoardModel? = board.myModel_property.propval
       let modelWidth  = myModel?.modelWidth  ?? 0
       let modelHeight = myModel?.modelHeight ?? 0
       let instanceRotation = board.instanceRotation
-      myModel?.holes?.enterHolesIn (array: &holeDictionary,
+      myModel?.drillSegments?.enterDrills (array: &holeDictionary,
         dx: board.x, dy: board.y,
         modelWidth: modelWidth, modelHeight: modelHeight, instanceRotation: instanceRotation)
     }
@@ -768,8 +758,13 @@ extension MergerDocument {
     for diameter in keys {
       idx += 1
       s += "T\(idx)\n"
-      for (x, y) in holeDictionary [diameter]! {
-        s += "X\(String(format: "%.3f", canariUnitToInch (x)))Y\(String(format: "%.3f", canariUnitToInch (y)))\n"
+      for (x1, y1, x2, y2) in holeDictionary [diameter]! {
+        if (x1 == x2) && (y1 == y2) { // Circular
+          s += "X\(String(format: "%.3f", canariUnitToInch (x1)))Y\(String(format: "%.3f", canariUnitToInch (y1)))\n"
+        }else{ // oblong
+          s += "X\(String(format: "%.3f", canariUnitToInch (x1)))Y\(String(format: "%.3f", canariUnitToInch (y1)))"
+          s += "G85X\(String(format: "%.3f", canariUnitToInch (x2)))Y\(String(format: "%.3f", canariUnitToInch (y2)))\n"
+        }
       }
     }
  //--- End of file

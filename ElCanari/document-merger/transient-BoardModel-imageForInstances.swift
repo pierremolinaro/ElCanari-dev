@@ -154,7 +154,7 @@ func transient_BoardModel_imageForInstances (
   }
 //--- Holes
   if (prefs_mergerBoardViewDisplayHoles) {
-    shapes.append (self_holesBezierPaths.array, prefs_mergerColorHoles, .fill)
+    shapes.append (self_holesBezierPaths.array, prefs_mergerColorHoles, .stroke)
   }
 //---
   return shapes

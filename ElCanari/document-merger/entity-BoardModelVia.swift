@@ -11,7 +11,6 @@ import Cocoa
 class BoardModelVia : EBManagedObject,
   BoardModelVia_x,
   BoardModelVia_y,
-  BoardModelVia_holeDiameter,
   BoardModelVia_padDiameter {
 
   //····················································································································
@@ -53,25 +52,6 @@ class BoardModelVia : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing holeDiameter stored property
-  //····················································································································
-
-  var holeDiameter : Int {
-    get {
-      return self.holeDiameter_property.propval
-    }
-    set {
-      self.holeDiameter_property.setProp (newValue)
-    }
-  }
-
-  var holeDiameter_property_selection : EBSelection <Int> {
-    get {
-      return self.holeDiameter_property.prop
-    }
-  }
-
-  //····················································································································
   //   Accessing padDiameter stored property
   //····················································································································
 
@@ -96,7 +76,6 @@ class BoardModelVia : EBManagedObject,
 
   var x_property = EBStoredProperty_Int (0)
   var y_property = EBStoredProperty_Int (0)
-  var holeDiameter_property = EBStoredProperty_Int (0)
   var padDiameter_property = EBStoredProperty_Int (0)
 
   //····················································································································
@@ -120,7 +99,6 @@ class BoardModelVia : EBManagedObject,
   //--- Install undoers for properties
     self.x_property.undoManager = undoManager ()
     self.y_property.undoManager = undoManager ()
-    self.holeDiameter_property.undoManager = undoManager ()
     self.padDiameter_property.undoManager = undoManager ()
   //--- Install owner for relationships
   //--- register properties for handling signature
@@ -155,14 +133,6 @@ class BoardModelVia : EBManagedObject,
       valueExplorer:&self.y_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "holeDiameter",
-      idx:self.holeDiameter_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.holeDiameter_property.mObserverExplorer,
-      valueExplorer:&self.holeDiameter_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "padDiameter",
       idx:self.padDiameter_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -185,8 +155,6 @@ class BoardModelVia : EBManagedObject,
     self.x_property.mValueExplorer = nil
     self.y_property.mObserverExplorer = nil
     self.y_property.mValueExplorer = nil
-    self.holeDiameter_property.mObserverExplorer = nil
-    self.holeDiameter_property.mValueExplorer = nil
     self.padDiameter_property.mObserverExplorer = nil
     self.padDiameter_property.mValueExplorer = nil
     super.clearObjectExplorer ()
@@ -200,7 +168,6 @@ class BoardModelVia : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
     self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
     self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
-    self.holeDiameter_property.storeIn (dictionary: ioDictionary, forKey: "holeDiameter")
     self.padDiameter_property.storeIn (dictionary: ioDictionary, forKey: "padDiameter")
   }
 
@@ -213,7 +180,6 @@ class BoardModelVia : EBManagedObject,
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
     self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
     self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
-    self.holeDiameter_property.readFrom (dictionary: inDictionary, forKey:"holeDiameter")
     self.padDiameter_property.readFrom (dictionary: inDictionary, forKey:"padDiameter")
   }
 
@@ -358,63 +324,6 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   }
 
   //····················································································································
-  //   Observers of 'holeDiameter' stored property
-  //····················································································································
-
-  private var mObserversOf_holeDiameter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_holeDiameter.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.holeDiameter_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_holeDiameter.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.holeDiameter_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_holeDiameter_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_holeDiameter {
-        managedObject.holeDiameter_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_holeDiameter_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in mObserversOf_holeDiameter {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.holeDiameter_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'padDiameter' stored property
   //····················································································································
 
@@ -511,7 +420,6 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
       //--- Remove observers of stored properties
         removeEBObserversOf_x_fromElementsOfSet (removedSet)
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
-        removeEBObserversOf_holeDiameter_fromElementsOfSet (removedSet)
         removeEBObserversOf_padDiameter_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
       //--- Added object set
@@ -519,7 +427,6 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
        //--- Add observers of stored properties
         addEBObserversOf_x_toElementsOfSet (addedSet)
         addEBObserversOf_y_toElementsOfSet (addedSet)
-        addEBObserversOf_holeDiameter_toElementsOfSet (addedSet)
         addEBObserversOf_padDiameter_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
       //--- Update object set
@@ -560,12 +467,6 @@ protocol BoardModelVia_x : class {
 
 protocol BoardModelVia_y : class {
   var y : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelVia_holeDiameter : class {
-  var holeDiameter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

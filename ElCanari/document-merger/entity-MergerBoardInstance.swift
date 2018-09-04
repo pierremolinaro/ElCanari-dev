@@ -2526,12 +2526,13 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         oldValue?.backLegendTextsSegments_property.removeEBObserversFrom (mObserversOf_backLegendTextsSegments)
         oldValue?.backPackagesBezierPaths_property.removeEBObserversFrom (mObserversOf_backPackagesBezierPaths)
         oldValue?.backPackagesSegments_property.removeEBObserversFrom (mObserversOf_backPackagesSegments)
-        oldValue?.backPads_property.removeEBObserversFrom (mObserversOf_backPads)
+        oldValue?.backPadArray_property.removeEBObserversFrom (mObserversOf_backPadArray)
         oldValue?.backPadsBezierPaths_property.removeEBObserversFrom (mObserversOf_backPadsBezierPaths)
         oldValue?.backTrackSegments_property.removeEBObserversFrom (mObserversOf_backTrackSegments)
         oldValue?.backTracksBezierPaths_property.removeEBObserversFrom (mObserversOf_backTracksBezierPaths)
         oldValue?.boardLimits_property.removeEBObserversFrom (mObserversOf_boardLimits)
         oldValue?.boardLimitsBezierPaths_property.removeEBObserversFrom (mObserversOf_boardLimitsBezierPaths)
+        oldValue?.drillSegments_property.removeEBObserversFrom (mObserversOf_drillSegments)
         oldValue?.frontComponentNameSegments_property.removeEBObserversFrom (mObserversOf_frontComponentNameSegments)
         oldValue?.frontComponentNamesBezierPaths_property.removeEBObserversFrom (mObserversOf_frontComponentNamesBezierPaths)
         oldValue?.frontComponentValueSegments_property.removeEBObserversFrom (mObserversOf_frontComponentValueSegments)
@@ -2544,11 +2545,10 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         oldValue?.frontLegendTextsSegments_property.removeEBObserversFrom (mObserversOf_frontLegendTextsSegments)
         oldValue?.frontPackagesBezierPaths_property.removeEBObserversFrom (mObserversOf_frontPackagesBezierPaths)
         oldValue?.frontPackagesSegments_property.removeEBObserversFrom (mObserversOf_frontPackagesSegments)
-        oldValue?.frontPads_property.removeEBObserversFrom (mObserversOf_frontPads)
+        oldValue?.frontPadArray_property.removeEBObserversFrom (mObserversOf_frontPadArray)
         oldValue?.frontPadsBezierPaths_property.removeEBObserversFrom (mObserversOf_frontPadsBezierPaths)
         oldValue?.frontTrackSegments_property.removeEBObserversFrom (mObserversOf_frontTrackSegments)
         oldValue?.frontTracksBezierPaths_property.removeEBObserversFrom (mObserversOf_frontTracksBezierPaths)
-        oldValue?.holes_property.removeEBObserversFrom (mObserversOf_holes)
         oldValue?.holesBezierPaths_property.removeEBObserversFrom (mObserversOf_holesBezierPaths)
         oldValue?.imageForInstances_property.removeEBObserversFrom (mObserversOf_imageForInstances)
         oldValue?.imageForModel_property.removeEBObserversFrom (mObserversOf_imageForModel)
@@ -2562,10 +2562,8 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         oldValue?.modelWidth_property.removeEBObserversFrom (mObserversOf_modelWidth)
         oldValue?.modelWidthUnit_property.removeEBObserversFrom (mObserversOf_modelWidthUnit)
         oldValue?.name_property.removeEBObserversFrom (mObserversOf_name)
-        oldValue?.padsHoles_property.removeEBObserversFrom (mObserversOf_padsHoles)
         oldValue?.viaShapes_property.removeEBObserversFrom (mObserversOf_viaShapes)
         oldValue?.viasBezierPaths_property.removeEBObserversFrom (mObserversOf_viasBezierPaths)
-        oldValue?.viasHoles_property.removeEBObserversFrom (mObserversOf_viasHoles)
         oldValue?.zoom_property.removeEBObserversFrom (mObserversOf_zoom)
       //--- Add property observers to new object
         mValue?.artworkName_property.addEBObserversFrom (mObserversOf_artworkName)
@@ -2581,12 +2579,13 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         mValue?.backLegendTextsSegments_property.addEBObserversFrom (mObserversOf_backLegendTextsSegments)
         mValue?.backPackagesBezierPaths_property.addEBObserversFrom (mObserversOf_backPackagesBezierPaths)
         mValue?.backPackagesSegments_property.addEBObserversFrom (mObserversOf_backPackagesSegments)
-        mValue?.backPads_property.addEBObserversFrom (mObserversOf_backPads)
+        mValue?.backPadArray_property.addEBObserversFrom (mObserversOf_backPadArray)
         mValue?.backPadsBezierPaths_property.addEBObserversFrom (mObserversOf_backPadsBezierPaths)
         mValue?.backTrackSegments_property.addEBObserversFrom (mObserversOf_backTrackSegments)
         mValue?.backTracksBezierPaths_property.addEBObserversFrom (mObserversOf_backTracksBezierPaths)
         mValue?.boardLimits_property.addEBObserversFrom (mObserversOf_boardLimits)
         mValue?.boardLimitsBezierPaths_property.addEBObserversFrom (mObserversOf_boardLimitsBezierPaths)
+        mValue?.drillSegments_property.addEBObserversFrom (mObserversOf_drillSegments)
         mValue?.frontComponentNameSegments_property.addEBObserversFrom (mObserversOf_frontComponentNameSegments)
         mValue?.frontComponentNamesBezierPaths_property.addEBObserversFrom (mObserversOf_frontComponentNamesBezierPaths)
         mValue?.frontComponentValueSegments_property.addEBObserversFrom (mObserversOf_frontComponentValueSegments)
@@ -2599,11 +2598,10 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         mValue?.frontLegendTextsSegments_property.addEBObserversFrom (mObserversOf_frontLegendTextsSegments)
         mValue?.frontPackagesBezierPaths_property.addEBObserversFrom (mObserversOf_frontPackagesBezierPaths)
         mValue?.frontPackagesSegments_property.addEBObserversFrom (mObserversOf_frontPackagesSegments)
-        mValue?.frontPads_property.addEBObserversFrom (mObserversOf_frontPads)
+        mValue?.frontPadArray_property.addEBObserversFrom (mObserversOf_frontPadArray)
         mValue?.frontPadsBezierPaths_property.addEBObserversFrom (mObserversOf_frontPadsBezierPaths)
         mValue?.frontTrackSegments_property.addEBObserversFrom (mObserversOf_frontTrackSegments)
         mValue?.frontTracksBezierPaths_property.addEBObserversFrom (mObserversOf_frontTracksBezierPaths)
-        mValue?.holes_property.addEBObserversFrom (mObserversOf_holes)
         mValue?.holesBezierPaths_property.addEBObserversFrom (mObserversOf_holesBezierPaths)
         mValue?.imageForInstances_property.addEBObserversFrom (mObserversOf_imageForInstances)
         mValue?.imageForModel_property.addEBObserversFrom (mObserversOf_imageForModel)
@@ -2617,10 +2615,8 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         mValue?.modelWidth_property.addEBObserversFrom (mObserversOf_modelWidth)
         mValue?.modelWidthUnit_property.addEBObserversFrom (mObserversOf_modelWidthUnit)
         mValue?.name_property.addEBObserversFrom (mObserversOf_name)
-        mValue?.padsHoles_property.addEBObserversFrom (mObserversOf_padsHoles)
         mValue?.viaShapes_property.addEBObserversFrom (mObserversOf_viaShapes)
         mValue?.viasBezierPaths_property.addEBObserversFrom (mObserversOf_viasBezierPaths)
-        mValue?.viasHoles_property.addEBObserversFrom (mObserversOf_viasHoles)
         mValue?.zoom_property.addEBObserversFrom (mObserversOf_zoom)
        //--- Notify observers
         postEvent ()
@@ -3214,17 +3210,17 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: backPads
+  //   Observable property: backPadArray
   //····················································································································
 
-  private var mObserversOf_backPads = EBWeakEventSet ()
+  private var mObserversOf_backPadArray = EBWeakEventSet ()
 
   //····················································································································
 
-  var backPads_property_selection : EBSelection <MergerPadArray?> {
+  var backPadArray_property_selection : EBSelection <MergerPadArray?> {
     get {
       if let model = self.propval {
-        switch (model.backPads_property_selection) {
+        switch (model.backPadArray_property_selection) {
         case .empty :
           return .empty
         case .multiple :
@@ -3240,19 +3236,19 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_backPads (_ inObserver : EBEvent) {
-    mObserversOf_backPads.insert (inObserver)
+  final func addEBObserverOf_backPadArray (_ inObserver : EBEvent) {
+    mObserversOf_backPadArray.insert (inObserver)
     if let object = self.propval {
-      object.backPads_property.addEBObserver (inObserver)
+      object.backPadArray_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_backPads (_ inObserver : EBEvent) {
-    mObserversOf_backPads.remove (inObserver)
+  final func removeEBObserverOf_backPadArray (_ inObserver : EBEvent) {
+    mObserversOf_backPadArray.remove (inObserver)
     if let object = self.propval {
-      object.backPads_property.removeEBObserver (inObserver)
+      object.backPadArray_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3468,6 +3464,49 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     mObserversOf_boardLimitsBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.boardLimitsBezierPaths_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: drillSegments
+  //····················································································································
+
+  private var mObserversOf_drillSegments = EBWeakEventSet ()
+
+  //····················································································································
+
+  var drillSegments_property_selection : EBSelection <MergerSegmentArray?> {
+    get {
+      if let model = self.propval {
+        switch (model.drillSegments_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_drillSegments (_ inObserver : EBEvent) {
+    mObserversOf_drillSegments.insert (inObserver)
+    if let object = self.propval {
+      object.drillSegments_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_drillSegments (_ inObserver : EBEvent) {
+    mObserversOf_drillSegments.remove (inObserver)
+    if let object = self.propval {
+      object.drillSegments_property.removeEBObserver (inObserver)
     }
   }
 
@@ -3988,17 +4027,17 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: frontPads
+  //   Observable property: frontPadArray
   //····················································································································
 
-  private var mObserversOf_frontPads = EBWeakEventSet ()
+  private var mObserversOf_frontPadArray = EBWeakEventSet ()
 
   //····················································································································
 
-  var frontPads_property_selection : EBSelection <MergerPadArray?> {
+  var frontPadArray_property_selection : EBSelection <MergerPadArray?> {
     get {
       if let model = self.propval {
-        switch (model.frontPads_property_selection) {
+        switch (model.frontPadArray_property_selection) {
         case .empty :
           return .empty
         case .multiple :
@@ -4014,19 +4053,19 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPads (_ inObserver : EBEvent) {
-    mObserversOf_frontPads.insert (inObserver)
+  final func addEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
+    mObserversOf_frontPadArray.insert (inObserver)
     if let object = self.propval {
-      object.frontPads_property.addEBObserver (inObserver)
+      object.frontPadArray_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_frontPads (_ inObserver : EBEvent) {
-    mObserversOf_frontPads.remove (inObserver)
+  final func removeEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
+    mObserversOf_frontPadArray.remove (inObserver)
     if let object = self.propval {
-      object.frontPads_property.removeEBObserver (inObserver)
+      object.frontPadArray_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4156,49 +4195,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     mObserversOf_frontTracksBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.frontTracksBezierPaths_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: holes
-  //····················································································································
-
-  private var mObserversOf_holes = EBWeakEventSet ()
-
-  //····················································································································
-
-  var holes_property_selection : EBSelection <MergerHoleArray?> {
-    get {
-      if let model = self.propval {
-        switch (model.holes_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_holes (_ inObserver : EBEvent) {
-    mObserversOf_holes.insert (inObserver)
-    if let object = self.propval {
-      object.holes_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_holes (_ inObserver : EBEvent) {
-    mObserversOf_holes.remove (inObserver)
-    if let object = self.propval {
-      object.holes_property.removeEBObserver (inObserver)
     }
   }
 
@@ -4762,49 +4758,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: padsHoles
-  //····················································································································
-
-  private var mObserversOf_padsHoles = EBWeakEventSet ()
-
-  //····················································································································
-
-  var padsHoles_property_selection : EBSelection <MergerHoleArray?> {
-    get {
-      if let model = self.propval {
-        switch (model.padsHoles_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_padsHoles (_ inObserver : EBEvent) {
-    mObserversOf_padsHoles.insert (inObserver)
-    if let object = self.propval {
-      object.padsHoles_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_padsHoles (_ inObserver : EBEvent) {
-    mObserversOf_padsHoles.remove (inObserver)
-    if let object = self.propval {
-      object.padsHoles_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
   //   Observable property: viaShapes
   //····················································································································
 
@@ -4887,49 +4840,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     mObserversOf_viasBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.viasBezierPaths_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: viasHoles
-  //····················································································································
-
-  private var mObserversOf_viasHoles = EBWeakEventSet ()
-
-  //····················································································································
-
-  var viasHoles_property_selection : EBSelection <MergerHoleArray?> {
-    get {
-      if let model = self.propval {
-        switch (model.viasHoles_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_viasHoles (_ inObserver : EBEvent) {
-    mObserversOf_viasHoles.insert (inObserver)
-    if let object = self.propval {
-      object.viasHoles_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_viasHoles (_ inObserver : EBEvent) {
-    mObserversOf_viasHoles.remove (inObserver)
-    if let object = self.propval {
-      object.viasHoles_property.removeEBObserver (inObserver)
     }
   }
 

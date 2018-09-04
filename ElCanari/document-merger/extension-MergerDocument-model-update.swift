@@ -89,11 +89,23 @@ extension MergerDocument {
                     moc.removeManagedObjects (oldViaArray)
                     updatedBoardModel.vias_property.setProp (newViaArray)
 
-                    let newPadArray = newBoardModel.pads_property.propval
-                    let oldPadArray = updatedBoardModel.pads_property.propval
-                    newBoardModel.pads_property.setProp ([])
-                    moc.removeManagedObjects (oldPadArray)
-                    updatedBoardModel.pads_property.setProp (newPadArray)
+                    let newDrillArray = newBoardModel.drills_property.propval
+                    let oldDrillArray = updatedBoardModel.drills_property.propval
+                    newBoardModel.drills_property.setProp ([])
+                    moc.removeManagedObjects (oldDrillArray)
+                    updatedBoardModel.drills_property.setProp (newDrillArray)
+
+                    let newBackPadArray = newBoardModel.backPads_property.propval
+                    let oldBackPadArray = updatedBoardModel.backPads_property.propval
+                    newBoardModel.backPads_property.setProp ([])
+                    moc.removeManagedObjects (oldBackPadArray)
+                    updatedBoardModel.backPads_property.setProp (newBackPadArray)
+
+                    let newFrontPadArray = newBoardModel.frontPads_property.propval
+                    let oldFrontPadArray = updatedBoardModel.frontPads_property.propval
+                    newBoardModel.frontPads_property.setProp ([])
+                    moc.removeManagedObjects (oldFrontPadArray)
+                    updatedBoardModel.frontPads_property.setProp (newFrontPadArray)
 
                     newArray = newBoardModel.backComponentNames_property.propval
                     oldArray = updatedBoardModel.backComponentNames_property.propval

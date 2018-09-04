@@ -159,7 +159,7 @@ func transient_BoardModel_imageForModel (
   }
 //--- Holes
   if (prefs_mergerModelViewDisplayHoles) {
-    shapes.append (self_holesBezierPaths.array, prefs_mergerColorHoles, .fill)
+    shapes.append (self_holesBezierPaths.array, prefs_mergerColorHoles, .stroke)
   }
 //---
   let shapeLayer = EBShapeLayer (shapes)

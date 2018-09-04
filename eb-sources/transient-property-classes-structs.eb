@@ -4,7 +4,6 @@ transient property class MergerViaShapeArray ;
 transient property class MergerSegmentArray ;
 transient property class MergerBoardLimits ;
 transient property class MergerPadArray ;
-transient property class MergerHoleArray ;
 transient property class MergerBoardModelArray ;
 transient property class BezierPathArray ;
 
