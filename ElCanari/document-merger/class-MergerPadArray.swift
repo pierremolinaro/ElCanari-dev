@@ -85,7 +85,7 @@ final class MergerPadArray : EBSimpleClass {
 
   func buidBezierPaths () -> BezierPathArray {
     var result = BezierPathArray ()
-      for pad in self.padArray {
+    for pad in self.padArray {
       let width = canariUnitToCocoa (pad.width)
       let height = canariUnitToCocoa (pad.height)
       let r = CGRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)

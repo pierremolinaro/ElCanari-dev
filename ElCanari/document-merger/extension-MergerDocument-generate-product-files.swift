@@ -748,7 +748,7 @@ extension MergerDocument {
     var idx = 0
     for diameter in keys {
       idx += 1
-      s += "T\(idx)C\(String(format: "%.3f", canariUnitToInch (diameter)))\n"
+      s += "T\(idx)C\(String(format: "%.4f", canariUnitToInch (diameter)))\n"
     }
  //--- Write holes
     s += "%\n"
@@ -760,16 +760,16 @@ extension MergerDocument {
       s += "T\(idx)\n"
       for (x1, y1, x2, y2) in holeDictionary [diameter]! {
         if (x1 == x2) && (y1 == y2) { // Circular
-          s += "X\(String(format: "%.3f", canariUnitToInch (x1)))Y\(String(format: "%.3f", canariUnitToInch (y1)))\n"
+          s += "X\(String(format: "%.4f", canariUnitToInch (x1)))Y\(String(format: "%.4f", canariUnitToInch (y1)))\n"
         }else{ // oblong
-          s += "X\(String(format: "%.3f", canariUnitToInch (x1)))Y\(String(format: "%.3f", canariUnitToInch (y1)))"
-          s += "G85X\(String(format: "%.3f", canariUnitToInch (x2)))Y\(String(format: "%.3f", canariUnitToInch (y2)))\n"
+          s += "X\(String(format: "%.4f", canariUnitToInch (x1)))Y\(String(format: "%.4f", canariUnitToInch (y1)))"
+          s += "G85X\(String(format: "%.4f", canariUnitToInch (x2)))Y\(String(format: "%.4f", canariUnitToInch (y2)))\n"
         }
       }
     }
  //--- End of file
     s += "T0\n"
-    s += "30\n"
+    s += "M30\n"
  //--- Write file
     let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
     try data?.write (to: URL (fileURLWithPath: filePath), options: .atomic)

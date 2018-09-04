@@ -491,7 +491,7 @@ fileprivate func array3int (fromString inString : String, _ errorArray : inout [
       }
     }
   }
-//--- If an error occurs, add fake int to get a five element vector
+//--- If an error occurs, add fake int to get a three element vector
   while result.count < 3 {
     result.append (0)
   }
@@ -516,7 +516,7 @@ fileprivate func array4int (fromString inString : String, _ errorArray : inout [
       }
     }
   }
-//--- If an error occurs, add fake int to get a five element vector
+//--- If an error occurs, add fake int to get a four element vector
   while result.count < 4 {
     result.append (0)
   }
