@@ -1,0 +1,18 @@
+
+entity FontCharacter {
+  toMany @signature SegmentForFontCharacter segments ;
+  
+#  property @signature Int codePoint default 0 ; # Unicode point code
+  
+  property @signature Int advance default 0 ;
+
+  transient Bool characterIsDefined dependsFrom self.advance, self.segments.count ;
+
+  transient CharacterSegmentListClass segmentArrayForDrawing dependsFrom self.segments.all.segmentForDrawing ;
+
+  transient CharacterGerberCodeClass gerberCode dependsFrom self.segmentArrayForDrawing ;
+
+  transient String gerberCodeInstructionCountMessage dependsFrom self.gerberCode ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

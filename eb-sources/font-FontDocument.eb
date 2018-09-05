@@ -28,58 +28,6 @@ binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-# entity (SegmentForFontCharacterEntity) SegmentForFontCharacter {
-entity SegmentForFontCharacter {
-  
-  property @signature Int x1 default 2 ;
-  property @signature Int y1 default 1 ;
-
-  property @signature Int x2 default 9 ;
-  property @signature Int y2 default 8 ;
-
-  transient SegmentForFontCharacterClass segmentForDrawing dependsFrom self.x1, self.y1, self.x2, self.y2 ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity FontCharacter {
-  toMany @signature SegmentForFontCharacter segments ; # inverse toOne myCharacter ;
-  
-  property @signature Int advance default 0 ;
-
-  transient Bool characterIsDefined dependsFrom self.advance, self.segments.count ;
-
-  transient CharacterSegmentListClass segmentArrayForDrawing dependsFrom self.segments.all.segmentForDrawing ;
-
-  transient CharacterGerberCodeClass gerberCode dependsFrom self.segmentArrayForDrawing ;
-
-  transient String gerberCodeInstructionCountMessage dependsFrom self.gerberCode ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-entity FontRoot {
-  toMany @signature FontCharacter characters ; # inverse toOne myFont ;
-  property @signature String comments default "" ;
-  property Int selectedTab default 0 ;
-  property Int selectedInspector default 0 ;
-
-  transient CGPath sampleStringBezierPath dependsFrom
-    self.characters.all.segmentArrayForDrawing,
-    self.characters.all.advance,
-    prefs.sampleString,
-    prefs.sampleStringSize
-  ;
-  
-  transient Double sampleStringBezierPathWidth dependsFrom self.sampleStringBezierPath ;
-  
-  transient Double sampleStringBezierPathAscent dependsFrom self.sampleStringBezierPath ;
-  
-  transient Double sampleStringBezierPathDescent dependsFrom self.sampleStringBezierPath ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 class MissingCharacter {
   property Int idx default 0 ; # Only for sorting
   property String code default "??" ;

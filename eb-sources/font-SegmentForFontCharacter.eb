@@ -1,0 +1,14 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity SegmentForFontCharacter {
+  
+  property @signature Int x1 default 2 ;
+  property @signature Int y1 default 1 ;
+
+  property @signature Int x2 default 9 ;
+  property @signature Int y2 default 8 ;
+
+  transient SegmentForFontCharacterClass segmentForDrawing dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

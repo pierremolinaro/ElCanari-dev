@@ -190,10 +190,10 @@ class EBManagedObjectContext : EBObject {
 
   func newInstanceOfEntityNamed (inEntityTypeName : String) throws -> EBManagedObject {
     var result : EBManagedObject
-    if inEntityTypeName == "SegmentForFontCharacter" {
-      result = SegmentForFontCharacter (managedObjectContext:self)
-    }else if inEntityTypeName == "FontCharacter" {
+    if inEntityTypeName == "FontCharacter" {
       result = FontCharacter (managedObjectContext:self)
+    }else if inEntityTypeName == "SegmentForFontCharacter" {
+      result = SegmentForFontCharacter (managedObjectContext:self)
     }else if inEntityTypeName == "FontRoot" {
       result = FontRoot (managedObjectContext:self)
     }else if inEntityTypeName == "ArtworkRoot" {
