@@ -58,7 +58,10 @@ fileprivate class KicadNetClass {
 
   //····················································································································
 
-  init (name inName : String, padDiameter inPadDiameter : Int, drillDiameter inDrillDiameter : Int, netNames inNetNames : [String]) {
+  init (name inName : String,
+        padDiameter inPadDiameter : Int,
+        drillDiameter inDrillDiameter : Int,
+        netNames inNetNames : [String]) {
     name = inName
     padDiameter = inPadDiameter
     drillDiameter = inDrillDiameter
@@ -248,35 +251,6 @@ extension MergerDocument {
       }else{
 
       }
-  //--- Collect tracks
-//    var frontTrackEntities = [SegmentEntity] ()
-//    var backTrackEntities = [SegmentEntity] ()
-//    possibleContents?.collectTracks (&frontTrackEntities, &backTrackEntities, leftMM, bottomMM, &ioErrorArray, self.managedObjectContext ())
-  //--- Collect vias
-//    var drillEntities = [SegmentEntity] ()
-//    var viaEntities = [BoardModelVia] ()
-//    possibleContents?.collectVias (&viaEntities, &drillEntities, leftMM, bottomMM, netArray, &ioErrorArray, self.managedObjectContext ())
-  //---- Collect components
-//    let font : [UInt32 : KicadChar] = kicadFont ()
-//    var frontPadEntities = [BoardModelPad] ()
-//    var backPadEntities = [BoardModelPad] ()
-//    var frontPackagesEntities = [SegmentEntity] ()
-//    var backPackagesEntities = [SegmentEntity] ()
-//    var backComponentNamesEntities = [SegmentEntity] ()
-//    var frontComponentNamesEntities = [SegmentEntity] ()
-//    var frontComponentValuesEntities = [SegmentEntity] ()
-//    var backComponentValuesEntities = [SegmentEntity] ()
-//    possibleContents?.collectComponents (&frontPackagesEntities, &backPackagesEntities,
-//                                 &drillEntities, &frontPadEntities, &backPadEntities,
-//                                 &frontComponentNamesEntities, &backComponentNamesEntities,
-//                                 &frontComponentValuesEntities, &backComponentValuesEntities,
-//                                 boardRect,
-//                                 font, leftMM, bottomMM, &ioErrorArray, self.managedObjectContext ())
-  //---- Collect texts and lines (gr_text)
-//    var frontLayoutTextEntities = [SegmentEntity] ()
-//    var backLayoutTextEntities = [SegmentEntity] ()
-//    possibleContents?.collectTexts (&frontLayoutTextEntities, &backLayoutTextEntities,
-//                            font, leftMM, bottomMM, boardRect, &ioErrorArray, self.managedObjectContext ())
 
 
 
@@ -415,6 +389,7 @@ extension MergerDocument {
        let y = inKicadItem.getFloat (["via", "at"], 1, &ioErrorArray, #line),
        let diameter = inKicadItem.getFloat (["via", "size"], 0, &ioErrorArray, #line),
        let netIndex = inKicadItem.getInt (["via", "net"], 0, &ioErrorArray, #line) {
+    //--- Add via
       let via = BoardModelVia (managedObjectContext: self.managedObjectContext())
       via.x = millimeterToCanariUnit (x - ioTemporaryBoardModel.mLeftMM)
       via.y = millimeterToCanariUnit (ioTemporaryBoardModel.mBottomMM - y)
@@ -449,13 +424,28 @@ extension MergerDocument {
         by: CGFloat (startX - ioTemporaryBoardModel.mLeftMM),
         yBy: CGFloat (startY - ioTemporaryBoardModel.mBottomMM)
       )
+    //--- Justify
+      let effectItem = inKicadItem.getItem ("effects", &ioErrorArray, #line)
+      let justifyArray = effectItem.getOptionalItemContents ("justify")
+      var mirror = false
+      var justification = KicadStringJustification.center
+      for option in justifyArray {
+        if option.key == "mirror" {
+          mirror = true
+        }else if option.key == "right" {
+          justification = .right
+        }else if option.key == "left" {
+          justification = .left
+        }else{
+          ioErrorArray.append (("Invalid justification: \(option.key)", #line))
+        }
+      }
+    //--- Draw
       let segments = drawKicadString (
         str: stringValue,
         transform: textTransform,
-        x: 0.0,
-        y: 0.0,
-        optionalMirror: inKicadItem.getOptionalString (["gr_text", "effects", "justify"], 0, &ioErrorArray, #line),
-        optionalJustify: inKicadItem.getOptionalString (["gr_text", "effects", "justify"], 0, &ioErrorArray, #line),
+        mirror: mirror,
+        justification: justification,
         fontSize: fontSize,
         thickness: thickness,
         font: ioTemporaryBoardModel.mKicadFont,
@@ -487,7 +477,7 @@ extension MergerDocument {
         by: CGFloat (moduleX - ioTemporaryBoardModel.mLeftMM),
         yBy: CGFloat (moduleY - ioTemporaryBoardModel.mBottomMM)
       )
-      moduleTransform.rotate (byDegrees: CGFloat (-moduleRotationInDegrees))
+      moduleTransform.rotate (byDegrees: -moduleRotationInDegrees)
       for item in inKicadItem.items {
         if item.key == "fp_text",
               let kind = item.getString (["fp_text"], 0, &ioErrorArray, #line), // reference, value, user
@@ -497,13 +487,39 @@ extension MergerDocument {
               let startY = item.getFloat (["fp_text", "at"], 1, &ioErrorArray, #line),
               let thickness = item.getOptionalFloat (["fp_text", "effects", "font", "thickness"], 0, &ioErrorArray, #line),
               let fontSize = item.getOptionalFloat (["fp_text", "effects", "font", "size"], 0, &ioErrorArray, #line) {
+        //--- Justify
+          let effectItem = inKicadItem.getOptionalItem ("effects")
+          let justifyArray = effectItem.getOptionalItemContents ("justify")
+          var mirror = false
+          var justification = KicadStringJustification.center
+          for option in justifyArray {
+            if option.key == "mirror" {
+              mirror = true
+            }else if option.key == "right" {
+              justification = .right
+            }else if option.key == "left" {
+              justification = .left
+            }else{
+              ioErrorArray.append (("Invalid justification: \(option.key)", #line))
+            }
+          }
+          let textTransform = NSAffineTransform ()
+          textTransform.scaleX (by: 1.0, yBy: -1.0)
+          textTransform.translateX (
+            by: CGFloat (moduleX - ioTemporaryBoardModel.mLeftMM),
+            yBy: CGFloat (moduleY - ioTemporaryBoardModel.mBottomMM)
+          )
+          textTransform.rotate (byDegrees: -moduleRotationInDegrees)
+          textTransform.translateX (by: startX, yBy: startY)
+        //  textTransform.rotate (byDegrees: moduleRotationInDegrees)
+//          if let textRotationInDegrees = item.getOptionalFloat (["fp_text", "at"], 2, &ioErrorArray, #line) {
+//            textTransform.rotate (byDegrees: -textRotationInDegrees)
+//          }
           let segments = drawKicadString (
             str: stringValue,
-            transform: moduleTransform,
-            x: startX,
-            y: startY,
-            optionalMirror: item.getOptionalString (["fp_text", "effects", "justify"], 0, &ioErrorArray, #line),
-            optionalJustify: item.getOptionalString (["fp_text", "effects", "justify"], 0, &ioErrorArray, #line),
+            transform: textTransform,
+            mirror: mirror,
+            justification: justification,
             fontSize: fontSize,
             thickness: thickness,
             font: ioTemporaryBoardModel.mKicadFont,
@@ -531,10 +547,8 @@ extension MergerDocument {
           let start = moduleTransform.transform (NSPoint (x: startX, y: startY))
           let end = moduleTransform.transform (NSPoint (x: endX, y: endY))
           if let packageLine = clippedSegment (
-            x1: start.x,
-            y1: start.y,
-            x2: end.x,
-            y2: end.y,
+            p1: CGPoint (x: start.x, y: start.y),
+            p2: CGPoint (x: end.x, y: end.y),
             width: millimeterToCanariUnit (widthMM),
             clipRect: ioTemporaryBoardModel.mBoardRect,
             moc: self.managedObjectContext()
@@ -752,13 +766,13 @@ extension MergerDocument {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://en.wikipedia.org/wiki/Cohen–Sutherland_algorithm
 
-func clippedSegment (x1 inX1_mm : CGFloat, y1 inY1_mm : CGFloat,
-                     x2 inX2_mm : CGFloat, y2 inY2_mm : CGFloat,
+func clippedSegment (p1 inP1 : CGPoint,
+                     p2 inP2 : CGPoint,
                      width inWith : Int,
                      clipRect inClipRect: CanariHorizontalRect,
                      moc inMOC: EBManagedObjectContext) -> SegmentEntity? {
   let r : CGRect = inClipRect.insetBy (dx: inWith / 2, dy: inWith / 2).cocoaRect ()
-  if let (p1, p2) = r.clippedSegment (p1: CGPoint (x: inX1_mm, y: inY1_mm), p2: CGPoint (x: inX2_mm, y: inY2_mm)) {
+  if let (p1, p2) = r.clippedSegment (p1: inP1, p2: inP2) {
     let segment = SegmentEntity (managedObjectContext: inMOC)
     segment.x1 = millimeterToCanariUnit (p1.x)
     segment.y1 = millimeterToCanariUnit (p1.y)

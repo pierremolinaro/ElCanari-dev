@@ -196,6 +196,40 @@ class KicadItem {
   }
 
   //····················································································································
+
+  func getOptionalItemContents (_ inName : String) -> [KicadItem] {
+    for item in self.items {
+      if inName == item.key {
+        return item.items
+      }
+    }
+    return [KicadItem] ()
+  }
+
+  //····················································································································
+
+  func getItem (_ inName : String, _ ioErrorArray : inout [(String, Int)], _ inLine : Int) -> KicadItem {
+    for item in self.items {
+      if inName == item.key {
+        return item
+      }
+    }
+    ioErrorArray.append (("Invalid key \(inName)", inLine))
+    return KicadItem ("", [])
+  }
+
+  //····················································································································
+
+  func getOptionalItem (_ inName : String) -> KicadItem {
+    for item in self.items {
+      if inName == item.key {
+        return item
+      }
+    }
+    return KicadItem ("", [])
+  }
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

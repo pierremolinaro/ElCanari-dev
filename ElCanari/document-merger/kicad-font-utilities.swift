@@ -11,6 +11,14 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+fileprivate let KICAD_INTERLINE_PITCH_RATIO : CGFloat = 1.5
+//let KICAD_OVERBAR_POSITION_FACTOR : CGFloat = 1.22
+//let KICAD_BOLD_FACTOR : CGFloat = 1.3
+fileprivate let KICAD_STROKE_FONT_SCALE : CGFloat = 1.0 / 21.0
+//let KICAD_ITALIC_TILT : CGFloat = 1.0 / 8
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 func stringMetrics (str inString : String,
                     fontSize inFontSize : CGFloat,
                     font inKicadFont : [UInt32 : KicadChar]) -> (CGFloat, CGFloat) {
@@ -38,17 +46,25 @@ func stringMetrics (str inString : String,
       }
     }
   }
-  return (CGFloat (stringWidth) * inFontSize / 21.0, CGFloat (descent - ascent) * inFontSize / 21.0)
+  // Swift.print ("descent \(descent), ascent \(ascent)")
+  let fontFactor = inFontSize * KICAD_STROKE_FONT_SCALE
+  return (CGFloat (stringWidth) * fontFactor, CGFloat (descent - ascent) * fontFactor)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum KicadStringJustification {
+  case left
+  case center
+  case right
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func drawKicadString (str inString : String,
                       transform inAffineTransform: NSAffineTransform,
-                      x inStartX : CGFloat,
-                      y inStartY : CGFloat,
-                      optionalMirror inOptionalMirror : String?,
-                      optionalJustify inOptionalJustify : String?,
+                      mirror inMirror : Bool,
+                      justification inJustification : KicadStringJustification,
                       fontSize inFontSize : CGFloat,
                       thickness inThickness : CGFloat,
                       font inKicadFont : [UInt32 : KicadChar],
@@ -56,45 +72,51 @@ func drawKicadString (str inString : String,
                       bottomMM inModelBottomMM : CGFloat,
                       boardRect inBoardRect : CanariHorizontalRect,
                       moc inMOC : EBManagedObjectContext) -> [SegmentEntity] {
-  let mirror : CGFloat
-  if let mirrorString = inOptionalMirror, mirrorString == "mirror" {
-    mirror = -1.0
-  }else{
-    mirror = 1.0
-  }
+  let mirror : CGFloat = inMirror ? -1.0 : 1.0
+  let fontFactor = inFontSize * KICAD_STROKE_FONT_SCALE
 //--- Compute string metrics
-  var maxStringWidth : CGFloat = 0.0
   var totalHeight : CGFloat = 0.0
+  var widthArray = [CGFloat] ()
   var heightArray = [CGFloat] ()
   let components = inString.components (separatedBy: "\\n")
   for str in components {
     let (stringWidth, stringHeight) = stringMetrics (str: str, fontSize: inFontSize, font: inKicadFont)
-    if maxStringWidth < stringWidth {
-      maxStringWidth = stringWidth
-    }
     totalHeight += stringHeight
+    totalHeight += fontFactor * KICAD_INTERLINE_PITCH_RATIO + inThickness
     heightArray.append (stringHeight)
+    widthArray.append (stringWidth)
   }
-//---
+//--- Add interlines
+//  totalHeight += CGFloat (components.count - 1) * (fontFactor * KICAD_INTERLINE_PITCH_RATIO + inThickness)
+//  if components.count > 1 {
+//    Swift.print ("heightArray \(heightArray)")
+//    Swift.print ("pitch \(fontFactor * KICAD_INTERLINE_PITCH_RATIO), inThickness \(inThickness)")
+//  }
+//--- Display string
+  var textY : CGFloat = (components.count > 1) ? 0.0 : (totalHeight * 0.5)
   var segments = [SegmentEntity] ()
-  var textY = inStartY + heightArray.last! * 0.5 // totalHeight * 0.5
   for idx in 0 ..< components.count {
-    let str = components [idx]
-    var advancement = inStartX - mirror * maxStringWidth / 2.0
-    for unicodeChar in str.unicodeArray {
+    var advancement : CGFloat
+    switch inJustification {
+    case .left :
+      advancement = 0
+    case .center :
+      advancement = -mirror * widthArray [idx] / 2.0
+    case .right :
+      advancement = -mirror * widthArray [idx]
+    }
+    for unicodeChar in components [idx].unicodeArray {
       if let charDefinition = inKicadFont [unicodeChar.value] {
         for charSegment in charDefinition.segments {
-          let x1 = advancement + mirror * CGFloat (charSegment.x1) * inFontSize / 21.0
-          let y1 = textY + CGFloat (charSegment.y1) * inFontSize / 21.0
-          let x2 = advancement + mirror * CGFloat (charSegment.x2) * inFontSize / 21.0
-          let y2 = textY + CGFloat (charSegment.y2) * inFontSize / 21.0
+          let x1 = advancement + mirror * CGFloat (charSegment.x1) * fontFactor
+          let y1 = textY + CGFloat (charSegment.y1) * fontFactor
+          let x2 = advancement + mirror * CGFloat (charSegment.x2) * fontFactor
+          let y2 = textY + CGFloat (charSegment.y2) * fontFactor
           let p1 = inAffineTransform.transform (NSPoint (x:x1, y:y1))
           let p2 = inAffineTransform.transform (NSPoint (x:x2, y:y2))
           if let segment = clippedSegment (
-            x1: p1.x,
-            y1: p1.y,
-            x2: p2.x,
-            y2: p2.y,
+            p1: p1,
+            p2: p2,
             width: millimeterToCanariUnit (inThickness),
             clipRect: inBoardRect,
             moc: inMOC
@@ -102,10 +124,10 @@ func drawKicadString (str inString : String,
             segments.append (segment)
           }
         }
-        advancement += mirror * CGFloat (charDefinition.advancement) * inFontSize / 21.0
+        advancement += mirror * CGFloat (charDefinition.advancement) * fontFactor
       }
     }
-    textY += heightArray [idx]
+    textY += heightArray [idx] + (fontFactor * KICAD_INTERLINE_PITCH_RATIO + inThickness)
   }
   return segments
 }
