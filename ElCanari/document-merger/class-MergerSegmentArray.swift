@@ -15,8 +15,8 @@ func transient_segmentsToBezierPaths (_ segments : MergerSegmentArray) -> Bezier
   var result = BezierPathArray ()
   for segment in segments.segmentArray {
      let bp = NSBezierPath ()
-     bp.move (to: NSPoint (x: canariUnitToCocoa(segment.x1), y: canariUnitToCocoa (segment.y1)))
-     bp.line (to: NSPoint (x: canariUnitToCocoa(segment.x2), y: canariUnitToCocoa (segment.y2)))
+     bp.move (to: NSPoint (x: canariUnitToCocoa (segment.x1), y: canariUnitToCocoa (segment.y1)))
+     bp.line (to: NSPoint (x: canariUnitToCocoa (segment.x2), y: canariUnitToCocoa (segment.y2)))
      bp.lineWidth = canariUnitToCocoa (segment.width)
      bp.lineCapStyle = .roundLineCapStyle
      result.append (bp)
@@ -51,9 +51,7 @@ final class MergerSegmentArray : EBSimpleClass {
   //····················································································································
 
   override var description : String {
-    get {
-      return "MergerSegmentArray " + String (self.segmentArray.count)
-    }
+    return "MergerSegmentArray " + String (self.segmentArray.count)
   }
 
   //····················································································································
