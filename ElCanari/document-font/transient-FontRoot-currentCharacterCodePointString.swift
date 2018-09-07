@@ -11,26 +11,21 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PMFontDocument_missingCharacterDescriptorArray (
-       _ root_characters_characterIsDefined : [FontCharacter_characterIsDefined]
-) -> [MissingCharacter] {
+func transient_FontRoot_currentCharacterCodePointString (
+       _ prefs_currentCharacterCodePoint : Int,          
+       _ self_characters_codePoint : [FontCharacter_codePoint]
+) -> String {
 //--- START OF USER ZONE 2
-  var result = [MissingCharacter] ()
-  var idx = 0x1F
-  for c in root_characters_characterIsDefined {
-    idx += 1
-    if let characterIsDefined = c.characterIsDefined {
-      if !characterIsDefined {
-        let missingChar = MissingCharacter ()
-        missingChar.idx = idx
-        missingChar.code = "\(idx) — 0x\(String (idx, radix: 16, uppercase: true))"
-        let s = String (data: Data ([UInt8 (idx)]), encoding: .macOSRoman)! // ))"\(UnicodeScalar (idx)!)"
-        missingChar.char = s
-        result.append (missingChar)
-      }
-    }
-  }
-  return result
+   if self_characters_codePoint.count == 0 {
+     return "—"
+   }else{
+     for p in self_characters_codePoint {
+       if p.codePoint == prefs_currentCharacterCodePoint {
+         return "+u" + String (format: "%04X", prefs_currentCharacterCodePoint)
+       }
+     }
+     return "—"
+   }
 //--- END OF USER ZONE 2
 }
 

@@ -24,14 +24,14 @@ let PMFontComment = "PMFontComment"
 
   override init () {
     super.init ()
-    undoManager?.disableUndoRegistration ()
-    var characterArray = [FontCharacter] ()
-    for _ in 0 ..< CANARI_FONT_CHARACTER_COUNT {
-      let newCharacter = FontCharacter (managedObjectContext: managedObjectContext())
-      characterArray.append (newCharacter)
-    }
-    rootObject.characters_property.setProp (characterArray)
-    undoManager?.enableUndoRegistration ()
+//    undoManager?.disableUndoRegistration ()
+//    var characterArray = [FontCharacter] ()
+//    for _ in 0 ..< CANARI_FONT_CHARACTER_COUNT {
+//      let newCharacter = FontCharacter (managedObjectContext: managedObjectContext())
+//      characterArray.append (newCharacter)
+//    }
+//    rootObject.characters_property.setProp (characterArray)
+//    undoManager?.enableUndoRegistration ()
   }
 
   //····················································································································

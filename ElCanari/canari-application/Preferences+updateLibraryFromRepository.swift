@@ -1,5 +1,6 @@
 
 import Cocoa
+import SystemConfiguration
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //
@@ -73,6 +74,29 @@ private let parallelDownloadCount = 4
 private let repositoryDescriptionFile = "repository-description.plist"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+// https://stackoverflow.com/questions/13276195/mac-osx-how-can-i-grab-proxy-configuration-using-cocoa-or-even-pure-c-function
+
+fileprivate func proxy () -> [String] {
+  var proxyOption = [String] ()
+  if let proxies : NSDictionary = SCDynamicStoreCopyProxies (nil) {
+    // NSLog ("\(proxies)")
+    let possibleHTTPSProxy = proxies ["HTTPSProxy"]
+    let possibleHTTPSEnable = proxies ["HTTPSEnable"]
+    let possibleHTTPSPort = proxies ["HTTPSPort"]
+    if let HTTPSEnable : Int = possibleHTTPSEnable as? Int, HTTPSEnable == 1, let HTTPSProxy = possibleHTTPSProxy {
+      var proxySetting : String = "\(HTTPSProxy)"
+      if let HTTPSPort = possibleHTTPSPort {
+        proxySetting += ":" + "\(HTTPSPort)"
+      }
+      // Swift.print ("proxy \(proxySetting)")
+      proxyOption = ["--proxy", proxySetting]
+    }
+  }
+  return proxyOption
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   LIBRARY UPDATE ENTRY POINT
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -86,34 +110,37 @@ func performLibraryUpdate (_ inWindow : EBWindow?) {
 //-------- Show "Check for update" window
   inWindow?.makeKeyAndOrderFront (nil)
 //-------- ① We start by checking if a repository did change using etag
-  var ok = false
+  var possibleAlert : NSAlert? = nil
   if let etag = getRepositoryCurrentETag (), let _ = getRepositoryCommitSHA () {
-    queryServerLastCommitUsingEtag (etag, inWindow, &ok)
+    queryServerLastCommitUsingEtag (etag, &possibleAlert)
   }else{
-    queryServerLastCommitWithNoEtag (inWindow, &ok)
+    queryServerLastCommitWithNoEtag (&possibleAlert)
   }
 //-------- ② Repository ETAG and commit SHA have been successfully retrieve,
 //            now read of download the file list corresponding to this commit
   var repositoryFileDictionary = [String : CanariLibraryFileDescriptor] ()
-  if ok {
-    readOrDownloadLibraryFileDictionary (&repositoryFileDictionary, &ok)
+  if possibleAlert == nil {
+    readOrDownloadLibraryFileDictionary (&repositoryFileDictionary, &possibleAlert)
   }
 //-------- ③ Repository has been successfully interrogated, then enumerate local system library
   var libraryFileDictionary = repositoryFileDictionary
-  if ok {
+  if possibleAlert == nil {
     try! appendLocalFilesToLibraryFileDictionary (&libraryFileDictionary)
   }
 //-------- ④ Build library operations
   var libraryOperations = [LibraryOperationElement] ()
-  if ok {
+  if possibleAlert == nil {
     buildLibraryOperations (libraryFileDictionary, &libraryOperations)
   }
 //-------- ⑤ Order out "Check for update" window
+  let ok = possibleAlert == nil
   if let window = inWindow {
-    if ok && (libraryOperations.count == 0) {
-      let alert = NSAlert ()
-      alert.messageText = "The library is up to date"
-      alert.addButton (withTitle: "Ok")
+    if (possibleAlert == nil) && (libraryOperations.count == 0) {
+      possibleAlert = NSAlert ()
+      possibleAlert?.messageText = "The library is up to date"
+      possibleAlert?.addButton (withTitle: "Ok")
+    }
+    if let alert = possibleAlert {
       alert.beginSheetModal (
         for: window,
         completionHandler: { (response : Int) in window.orderOut (nil) }
@@ -144,8 +171,7 @@ private func enableItemsAfterCompletion () {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func queryServerLastCommitUsingEtag (_ etag : String, _ inWindow : NSWindow?, _ outOk : inout Bool) {
-  outOk = false
+private func queryServerLastCommitUsingEtag (_ etag : String, _ ioPossibleAlert : inout NSAlert?) {
   let response = runShellCommandAndGetDataOutput ([
     "/usr/bin/curl",
     "-s", // Silent mode, do not show download progress
@@ -153,21 +179,15 @@ private func queryServerLastCommitUsingEtag (_ etag : String, _ inWindow : NSWin
     "-L", // Follow
     "-H", "If-None-Match:\"\(etag)\"",
     "https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches"
-  ])
+  ] + proxy ())
   switch response {
   case .error (let errorCode) :
-    if let libraryUpdateWindow = inWindow {
-      let alert = NSAlert ()
-      alert.messageText = "Cannot connect to the server"
-      alert.addButton (withTitle: "Ok")
-      alert.informativeText = (errorCode == 6)
-        ? "No network connection"
-        : "Server connection error"
-      alert.beginSheetModal (
-        for: libraryUpdateWindow,
-        completionHandler: { (response : Int) in libraryUpdateWindow.orderOut (nil) }
-      )
-    }
+    ioPossibleAlert = NSAlert ()
+    ioPossibleAlert?.messageText = "Cannot connect to the server"
+    ioPossibleAlert?.addButton (withTitle: "Ok")
+    ioPossibleAlert?.informativeText = (errorCode == 6)
+      ? "No network connection"
+      : "Server connection error"
   case .ok (let responseData) :
     if let response = String (data: responseData, encoding: .utf8) {
       //print ("\(response)")
@@ -179,9 +199,8 @@ private func queryServerLastCommitUsingEtag (_ etag : String, _ inWindow : NSWin
           print ("HTTP status \(status)")
         }
         if status == 304 { // Status 304 --> not modified, use current repository description file
-          outOk = true
         }else if status == 200 { // Status 200 --> Ok, modified
-          storeRepositoryETagAndLastCommitSHA (withResponse: response, &outOk)
+          storeRepositoryETagAndLastCommitSHA (withResponse: response, &ioPossibleAlert)
         }
       }
     }
@@ -190,40 +209,32 @@ private func queryServerLastCommitUsingEtag (_ etag : String, _ inWindow : NSWin
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func queryServerLastCommitWithNoEtag (_ inWindow : NSWindow?, _ outOk : inout Bool) {
-  outOk = false
+private func queryServerLastCommitWithNoEtag (_ ioPossibleAlert : inout NSAlert?) {
   let response = runShellCommandAndGetDataOutput ([
     "/usr/bin/curl",
     "-s", // Silent mode, do not show download progress
     "-i", // Add response header in output
     "-L", // Follow
     "https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches"
-  ])
+  ] + proxy ())
   switch response {
   case .error (let errorCode) :
-    if let libraryUpdateWindow = inWindow {
-      let alert = NSAlert ()
-      alert.messageText = "Cannot connect to the server"
-      alert.addButton (withTitle: "Ok")
-      alert.informativeText = (errorCode == 6)
-        ? "No network connection"
-        : "Server connection error"
-      alert.beginSheetModal (
-        for: libraryUpdateWindow,
-        completionHandler: { (response : Int) in libraryUpdateWindow.orderOut (nil) }
-      )
-    }
+    let alert = NSAlert ()
+    alert.messageText = "Cannot connect to the server"
+    alert.addButton (withTitle: "Ok")
+    alert.informativeText = (errorCode == 6)
+      ? "No network connection"
+      : "Server connection error"
   case .ok (let responseData) :
     if let response = String (data: responseData, encoding: .utf8) {
-      storeRepositoryETagAndLastCommitSHA (withResponse: response, &outOk)
+      storeRepositoryETagAndLastCommitSHA (withResponse: response, &ioPossibleAlert)
     }
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : String, _ outOk : inout Bool) {
-  outOk = false
+private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : String, _ ioPossibleAlert : inout NSAlert?) {
   let components = inResponse.components (separatedBy:"\r\n\r\n")
   if components.count == 2 {
     let jsonData = components [1].data (using: .utf8)!
@@ -245,9 +256,8 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
         print ("-->  ETag \(etag)")
       }
       storeRepositoryCurrentETag (etag)
-      outOk = true
     }catch let error {
-      print ("Error, error \(error)")
+      ioPossibleAlert = NSAlert (error: error)
     }
   }
 }
@@ -256,11 +266,10 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
 
 private func readOrDownloadLibraryFileDictionary (
         _ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor],
-        _ outOk : inout Bool) {
+        _ ioPossibleAlert : inout NSAlert?) {
   if LOG_LIBRARY_UPDATES {
     print ("---- readOrDownloadLibraryFileDictionary BEGIN")
   }
-  outOk = false
   if libraryDescriptionFileIsValid () {
     let f = systemLibraryPath () + "/" + repositoryDescriptionFile
     let data = try! Data (contentsOf: URL (fileURLWithPath: f))
@@ -275,7 +284,6 @@ private func readOrDownloadLibraryFileDictionary (
       )
       ioLibraryFileDictionary [filePath] = descriptor
     }
-    outOk = true
   }else{
     let repositoryCommitSHA = getRepositoryCommitSHA ()!
     let response = runShellCommandAndGetDataOutput ([
@@ -283,11 +291,14 @@ private func readOrDownloadLibraryFileDictionary (
       "-s", // Silent mode, do not show download progress
       "-L", // Follow redirections
       "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/\(repositoryCommitSHA)?recursive=1"
-    ])
+    ] + proxy ())
     switch response {
     case .error (let errorCode) :
       if errorCode != 6 { // Error #6 is 'no network connection'
-
+        ioPossibleAlert = NSAlert ()
+        ioPossibleAlert?.messageText = "Cannot connect to the server"
+        ioPossibleAlert?.addButton (withTitle: "Ok")
+        ioPossibleAlert?.informativeText = "Error code: \(errorCode)"
       }
     case .ok (let responseData) :
       do{
@@ -307,17 +318,16 @@ private func readOrDownloadLibraryFileDictionary (
               ioLibraryFileDictionary [filePath] = descriptor
             }
           }
-          outOk = true
         }else{
           print ("Entry is not an [[String : String]] object: \(String (describing: treeEntry))")
         }
       }catch let error {
-         print ("Error \(error)")
+        ioPossibleAlert = NSAlert (error: error)
       }
     }
   }
 //--- Print ?
-  if LOG_LIBRARY_UPDATES && outOk {
+  if LOG_LIBRARY_UPDATES && (ioPossibleAlert == nil) {
     print ("*********** Repository contents (repositorySHA:size:path)")
     for (path, value) in ioLibraryFileDictionary {
       print ("  \(value.mRepositorySHA):\(value.mSizeInRepository):\(path)")
@@ -540,7 +550,7 @@ class LibraryOperationElement : EBObject {
             "-s", // Silent mode, do not show download progress
             "-L", // Follow redirections
             "https://raw.githubusercontent.com/pierremolinaro/ElCanari-Library/\(repositoryCommitSHA)/\(self.mRelativePath)",
-          ]
+          ] + proxy ()
           let pipe = Pipe ()
           task.standardOutput = pipe
           task.standardError = pipe

@@ -148,7 +148,7 @@ f.close ()
 #-------------------- Vérifier si l'application est signée
 # runCommand (["codesign", "-s", "351CAC09BC3DB2515349D8081B30F1836D1A1969", "-f", "ElCanari.app"])
 # runCommand (["xattr", "-r", "-d", "com.apple.quarantine", "ElCanari.app"])
-# runCommand (["spctl", "-a", "-vv", "ElCanari.app"])
+runCommand (["spctl", "-a", "-vv", "ElCanari.app"])
 #-------------------- Créer l'archive de Cocoa canari
 nomArchive = "ElCanari-" + VERSION_CANARI
 runCommand (["mkdir", nomArchive])

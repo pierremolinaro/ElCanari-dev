@@ -16,15 +16,15 @@ import Cocoa
   @IBOutlet var advancementTextField : EBIntField?
   @IBOutlet var commentTextView : EBTextView?
   @IBOutlet var currentCharacterStepper : EBStepper?
-  @IBOutlet var currentCharacterTextField : EBIntField?
   @IBOutlet var currentCharacterView : CanariCharacterView?
   @IBOutlet var gerberCodeInstructionCountMessageTextField : EBTextObserverField?
+  @IBOutlet var mAddCharacterButton : EBButton?
   @IBOutlet var mAddSegmentButton : EBButton?
+  @IBOutlet var mCurrentCharacterTextField : EBTextObserverField?
   @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton?
   @IBOutlet var mFontSampleStringView : CanariFontSampleStringView?
   @IBOutlet var mGerberCodeTableView : CanariCharacterGerberCodeTableView?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mMissingCharsTableView : EBTableView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mSampleStringAscentTextField : EBDoubleObserverField?
   @IBOutlet var mSampleStringDescentTextField : EBDoubleObserverField?
@@ -35,7 +35,6 @@ import Cocoa
   @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mVersionField : CanariVersionField?
-  @IBOutlet var missingCharactersCountTextField : EBTextObserverField?
   @IBOutlet var resetVersionAndSignatureButton : EBButton?
   @IBOutlet var transparencySlider : EBSlider?
   @IBOutlet var transparencyTextField : EBDoubleField?
@@ -49,11 +48,6 @@ import Cocoa
   //    Transient properties
   //····················································································································
 
-  var missingCharactersCountString_property = EBTransientProperty_String ()
-  var missingCharactersCountString_property_selection : EBSelection <String> {
-    return self.missingCharactersCountString_property.prop
-  }
-
   var documentFilePath_property = EBTransientProperty_String ()
   var documentFilePath_property_selection : EBSelection <String> {
     return self.documentFilePath_property.prop
@@ -64,13 +58,11 @@ import Cocoa
   //    Transient arraies
   //····················································································································
 
-  var missingCharacterDescriptorArray_property = TransientArrayOf_MissingCharacter ()
 
   //····················································································································
   //    Array Controllers
   //····················································································································
 
-  var mMissingCharsController = ArrayController_PMFontDocument_mMissingCharsController ()
 
   //····················································································································
   //    Selection Controllers
@@ -113,7 +105,6 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    mMissingCharsController.addExplorer (name: "mMissingCharsController", y:&y, view:view)
     super.populateExplorerWindow (&y, view:view)
   }
 
@@ -187,15 +178,6 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'currentCharacterStepper' outlet is not an instance of 'EBStepper'") ;
     }
-    if nil == currentCharacterTextField {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'currentCharacterTextField' outlet is nil") ;
-//    }else if !currentCharacterTextField!.isKindOfClass (EBIntField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'currentCharacterTextField' outlet is not an instance of 'EBIntField'") ;
-    }
     if nil == currentCharacterView {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -214,6 +196,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'gerberCodeInstructionCountMessageTextField' outlet is not an instance of 'EBTextObserverField'") ;
     }
+    if nil == mAddCharacterButton {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mAddCharacterButton' outlet is nil") ;
+//    }else if !mAddCharacterButton!.isKindOfClass (EBButton) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mAddCharacterButton' outlet is not an instance of 'EBButton'") ;
+    }
     if nil == mAddSegmentButton {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -222,6 +213,15 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mAddSegmentButton' outlet is not an instance of 'EBButton'") ;
+    }
+    if nil == mCurrentCharacterTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mCurrentCharacterTextField' outlet is nil") ;
+//    }else if !mCurrentCharacterTextField!.isKindOfClass (EBTextObserverField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mCurrentCharacterTextField' outlet is not an instance of 'EBTextObserverField'") ;
     }
     if nil == mFontCharacterSelectButton {
       presentErrorWindow (file: #file,
@@ -258,15 +258,6 @@ import Cocoa
 //      presentErrorWindow (file: #file,
 //                              line: #line,
 //                              errorMessage: "the 'mInspectorSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
-    }
-    if nil == mMissingCharsTableView {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mMissingCharsTableView' outlet is nil") ;
-//    }else if !mMissingCharsTableView!.isKindOfClass (EBTableView) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mMissingCharsTableView' outlet is not an instance of 'EBTableView'") ;
     }
     if nil == mPageSegmentedControl {
       presentErrorWindow (file: #file,
@@ -358,15 +349,6 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mVersionField' outlet is not an instance of 'CanariVersionField'") ;
     }
-    if nil == missingCharactersCountTextField {
-      presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'missingCharactersCountTextField' outlet is nil") ;
-//    }else if !missingCharactersCountTextField!.isKindOfClass (EBTextObserverField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'missingCharactersCountTextField' outlet is not an instance of 'EBTextObserverField'") ;
-    }
     if nil == resetVersionAndSignatureButton {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -395,62 +377,12 @@ import Cocoa
 //                              errorMessage: "the 'transparencyTextField' outlet is not an instance of 'EBDoubleField'") ;
     }
   //--------------------------- Array controllers
-    self.mMissingCharsController.bind_modelAndView (
-      model: self.missingCharacterDescriptorArray_property,
-      tableViewArray: [mMissingCharsTableView!],
-      ebView: nil,
-      managedObjectContext: self.managedObjectContext (),
-      file: #file,
-      line: #line
-    )
   //--------------------------- Selection controllers
   //--------------------------- Custom object controllers
     selectedCharacter.setModel (self.rootObject)
   //--------------------------- Transient compute functions
-    self.missingCharactersCountString_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.rootObject.characters_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.rootObject.characters_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PMFontDocument_missingCharactersCountString (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.missingCharacterDescriptorArray_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.rootObject.characters_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.rootObject.characters_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PMFontDocument_missingCharacterDescriptorArray (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
     self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
   //--------------------------- Install property observers for transients
-    self.rootObject.characters_property.addEBObserverOf_characterIsDefined (self.missingCharactersCountString_property)
-    self.rootObject.characters_property.addEBObserverOf_characterIsDefined (self.missingCharacterDescriptorArray_property)
   //--------------------------- Install regular bindings
     mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
@@ -462,7 +394,7 @@ import Cocoa
     transparencyTextField?.bind_value (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     transparencySlider?.bind_doubleValue (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:true)
     mFontCharacterSelectButton?.bind_codePoint (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line)
-    currentCharacterTextField?.bind_value (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line, sendContinously:false, autoFormatter:true)
+    mCurrentCharacterTextField?.bind_valueObserver (self.rootObject.currentCharacterCodePointString_property, file: #file, line: #line)
     currentCharacterStepper?.bind_value (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line, sendContinously:true)
     mShowGerberDrawingFlowCheckbox?.bind_value (g_Preferences!.showGerberDrawingFlow_property, file: #file, line: #line)
     mShowGerberDrawingIndexesCheckbox?.bind_value (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
@@ -471,7 +403,6 @@ import Cocoa
     mSampleStringField?.bind_value (g_Preferences!.sampleString_property, file: #file, line: #line, sendContinously:true)
     mFontSampleStringView?.bind_bezierPath (self.rootObject.sampleStringBezierPath_property, file: #file, line: #line)
     mFontSampleStringView?.bind_sampleStringFontSize (g_Preferences!.sampleStringSize_property, file: #file, line: #line)
-    missingCharactersCountTextField?.bind_valueObserver (self.missingCharactersCountString_property, file: #file, line: #line)
     mSampleStringSizeField?.bind_value (g_Preferences!.sampleStringSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     mSampleStringWidthTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathWidth_property, file: #file, line: #line, autoFormatter:false)
     mSampleStringAscentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathAscent_property, file: #file, line: #line, autoFormatter:false)
@@ -483,7 +414,29 @@ import Cocoa
     currentCharacterView?.bind_displayDrawingIndexes (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
     commentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.rootObject.characters_property.count_property_selection > EBSelection.single (1))
+        },
+        outlet:self.mFontCharacterSelectButton
+      )
+      self.rootObject.characters_property.count_property.addEBObserver (controller)
+      mController_mFontCharacterSelectButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction:{
+          return (self.rootObject.characters_property.count_property_selection > EBSelection.single (1))
+        },
+        outlet:self.currentCharacterStepper
+      )
+      self.rootObject.characters_property.count_property.addEBObserver (controller)
+      mController_currentCharacterStepper_enabled = controller
+    }
   //--------------------------- Set targets / actions
+    mAddCharacterButton?.target = self
+    mAddCharacterButton?.action = #selector (PMFontDocument.addCharacterAction (_:))
     mAddSegmentButton?.target = self
     mAddSegmentButton?.action = #selector (PMFontDocument.addSegmentAction (_:))
     resetVersionAndSignatureButton?.target = self
@@ -509,7 +462,7 @@ import Cocoa
     transparencyTextField?.unbind_value ()
     transparencySlider?.unbind_doubleValue ()
     mFontCharacterSelectButton?.unbind_codePoint ()
-    currentCharacterTextField?.unbind_value ()
+    mCurrentCharacterTextField?.unbind_valueObserver ()
     currentCharacterStepper?.unbind_value ()
     mShowGerberDrawingFlowCheckbox?.unbind_value ()
     mShowGerberDrawingIndexesCheckbox?.unbind_value ()
@@ -518,7 +471,6 @@ import Cocoa
     mSampleStringField?.unbind_value ()
     mFontSampleStringView?.unbind_bezierPath ()
     mFontSampleStringView?.unbind_sampleStringFontSize ()
-    missingCharactersCountTextField?.unbind_valueObserver ()
     mSampleStringSizeField?.unbind_value ()
     mSampleStringWidthTextField?.unbind_valueObserver ()
     mSampleStringAscentTextField?.unbind_valueObserver ()
@@ -530,17 +482,17 @@ import Cocoa
     currentCharacterView?.unbind_displayDrawingIndexes ()
     commentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
+    self.rootObject.characters_property.count_property.removeEBObserver (mController_mFontCharacterSelectButton_enabled!)
+    mController_mFontCharacterSelectButton_enabled = nil
+    self.rootObject.characters_property.count_property.removeEBObserver (mController_currentCharacterStepper_enabled!)
+    mController_currentCharacterStepper_enabled = nil
   //--------------------------- Uninstall compute functions for transients
-    self.missingCharactersCountString_property.readModelFunction = nil
-    self.missingCharacterDescriptorArray_property.readModelFunction = nil
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
-    mMissingCharsController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers
   //--------------------------- Uninstall property observers for transients
-    self.rootObject.characters_property.removeEBObserverOf_characterIsDefined (self.missingCharactersCountString_property)
-    self.rootObject.characters_property.removeEBObserverOf_characterIsDefined (self.missingCharacterDescriptorArray_property)
   //--------------------------- Remove targets / actions
+    mAddCharacterButton?.target = nil
     mAddSegmentButton?.target = nil
     resetVersionAndSignatureButton?.target = nil
   //--------------------------- Clean up outlets
@@ -548,15 +500,15 @@ import Cocoa
     self.advancementTextField?.ebCleanUp ()
     self.commentTextView?.ebCleanUp ()
     self.currentCharacterStepper?.ebCleanUp ()
-    self.currentCharacterTextField?.ebCleanUp ()
     self.currentCharacterView?.ebCleanUp ()
     self.gerberCodeInstructionCountMessageTextField?.ebCleanUp ()
+    self.mAddCharacterButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
+    self.mCurrentCharacterTextField?.ebCleanUp ()
     self.mFontCharacterSelectButton?.ebCleanUp ()
     self.mFontSampleStringView?.ebCleanUp ()
     self.mGerberCodeTableView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
-    self.mMissingCharsTableView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mSampleStringAscentTextField?.ebCleanUp ()
     self.mSampleStringDescentTextField?.ebCleanUp ()
@@ -567,7 +519,6 @@ import Cocoa
     self.mShowGerberDrawingIndexesCheckbox?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
-    self.missingCharactersCountTextField?.ebCleanUp ()
     self.resetVersionAndSignatureButton?.ebCleanUp ()
     self.transparencySlider?.ebCleanUp ()
     self.transparencyTextField?.ebCleanUp ()
@@ -577,6 +528,8 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
+  private var mController_mFontCharacterSelectButton_enabled : MultipleBindingController_enabled? = nil
+  private var mController_currentCharacterStepper_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
 

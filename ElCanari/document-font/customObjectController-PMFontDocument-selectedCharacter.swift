@@ -23,12 +23,12 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
         mSelectedObject?.advance_property.addEBObserver (mObjectObserver)
         mSelectedObject?.advance_property.addEBObserver (self.advance_property)
         self.advance_property.postEvent ()
-      //--- Property characterIsDefined
-        oldValue?.characterIsDefined_property.removeEBObserver (mObjectObserver)
-        oldValue?.characterIsDefined_property.removeEBObserver (self.characterIsDefined_property)
-        mSelectedObject?.characterIsDefined_property.addEBObserver (mObjectObserver)
-        mSelectedObject?.characterIsDefined_property.addEBObserver (self.characterIsDefined_property)
-        self.characterIsDefined_property.postEvent ()
+      //--- Property codePoint
+        oldValue?.codePoint_property.removeEBObserver (mObjectObserver)
+        oldValue?.codePoint_property.removeEBObserver (self.codePoint_property)
+        mSelectedObject?.codePoint_property.addEBObserver (mObjectObserver)
+        mSelectedObject?.codePoint_property.addEBObserver (self.codePoint_property)
+        self.codePoint_property.postEvent ()
       //--- Property gerberCode
         oldValue?.gerberCode_property.removeEBObserver (mObjectObserver)
         oldValue?.gerberCode_property.removeEBObserver (self.gerberCode_property)
@@ -57,7 +57,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   override init () {
     super.init ()
     bind_property_advance ()
-    bind_property_characterIsDefined ()
+    bind_property_codePoint ()
     bind_property_gerberCode ()
     bind_property_gerberCodeInstructionCountMessage ()
     bind_property_segmentArrayForDrawing ()
@@ -74,7 +74,7 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
   //····················································································································
 
   var advance_property = EBPropertyProxy_Int () 
-  var characterIsDefined_property = EBTransientProperty_Bool () 
+  var codePoint_property = EBPropertyProxy_Int () 
   var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass () 
   var gerberCodeInstructionCountMessage_property = EBTransientProperty_String () 
   var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass () 
@@ -122,6 +122,14 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
       view:view,
       observerExplorer:&self.advance_property.mObserverExplorer,
       valueExplorer:&self.advance_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "codePoint",
+      idx:self.codePoint_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.codePoint_property.mObserverExplorer,
+      valueExplorer:&self.codePoint_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -194,13 +202,19 @@ class CustomObjectController_PMFontDocument_selectedCharacter : EBObject {
 
   //···················································································································*
 
-  private final func bind_property_characterIsDefined () {
-    self.characterIsDefined_property.readModelFunction = { [weak self] in
+  private final func bind_property_codePoint () {
+    self.codePoint_property.readModelFunction = { [weak self] in
       if let model = self?.mSelectedObject {
-        return model.characterIsDefined_property_selection
+        return model.codePoint_property_selection
       }else{
         return .empty
       }
+    }
+    self.codePoint_property.writeModelFunction = { [weak self] (inValue : Int) in
+      self?.mSelectedObject?.codePoint = inValue
+    }
+    self.codePoint_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      self?.mSelectedObject?.codePoint_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet) ?? false
     }
   }
 

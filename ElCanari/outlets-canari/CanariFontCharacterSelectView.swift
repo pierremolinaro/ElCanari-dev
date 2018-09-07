@@ -2,10 +2,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let CANARI_FONT_CHARACTER_COUNT = 224 // From 0x20 to 0xFF, MacRoman encoding
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 private let CHARACTER_WIDTH  : CGFloat = 20.0
 private let CHARACTER_HEIGHT : CGFloat = 20.0
 private let LEFT_MARGIN      : CGFloat = 40.0

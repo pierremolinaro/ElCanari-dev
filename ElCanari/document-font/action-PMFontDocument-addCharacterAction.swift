@@ -11,28 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PMFontDocument_missingCharactersCountString (
-       _ root_characters_characterIsDefined : [FontCharacter_characterIsDefined]
-) -> String {
+extension PMFontDocument {
+  @objc func addCharacterAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-  var undefinedCharCount = 0
-  for c in root_characters_characterIsDefined {
-    if let characterIsDefined = c.characterIsDefined {
-      if !characterIsDefined {
-        undefinedCharCount += 1
-      }
-    }
-  }
-  let result : String
-  if undefinedCharCount == 0 {
-    result = "All characters are defined"
-  }else if undefinedCharCount == 1 {
-    result = "1 undefined character"
-  }else{
-    result = "\(undefinedCharCount) undefined characters"
-  }
-  return result
+
 //--- END OF USER ZONE 2
+  }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

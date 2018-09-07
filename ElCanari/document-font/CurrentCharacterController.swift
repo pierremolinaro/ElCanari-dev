@@ -46,8 +46,14 @@ import Cocoa
       switch characterArray.prop {
       case .empty, .multiple :
         mSelectedObject = nil
-      case .single (let array) :
-        mSelectedObject = array [index - 32]
+      case .single (let characterArray) :
+        mSelectedObject = nil
+        for c in characterArray {
+          if c.codePoint == index {
+            mSelectedObject = c
+            break
+          }
+        }
       }
     }else{
       mSelectedObject = nil

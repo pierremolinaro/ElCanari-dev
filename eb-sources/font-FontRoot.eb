@@ -18,6 +18,8 @@ entity FontRoot {
   transient Double sampleStringBezierPathAscent dependsFrom self.sampleStringBezierPath ;
   
   transient Double sampleStringBezierPathDescent dependsFrom self.sampleStringBezierPath ;
+
+  transient String currentCharacterCodePointString dependsFrom prefs.currentCharacterCodePoint, self.characters.all.codePoint ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -55,16 +55,29 @@ document PMFontDocument root FontRoot {
   outlet EBSlider transparencySlider $doubleValue prefs.fontEditionTransparency {sendContinously:yes} ;
 
 #--- Current Character
-  outlet CanariFontCharacterSelectButton mFontCharacterSelectButton $codePoint prefs.currentCharacterCodePoint ;
-  outlet EBIntField currentCharacterTextField $value prefs.currentCharacterCodePoint {sendContinously:no, autoFormatter:yes} ;
-  outlet EBStepper currentCharacterStepper $value prefs.currentCharacterCodePoint {sendContinously:yes} ;
-  outlet EBSwitch mShowGerberDrawingFlowCheckbox $value prefs.showGerberDrawingFlow ;
-  outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value prefs.showGerberDrawingIndexes ;
+  outlet CanariFontCharacterSelectButton mFontCharacterSelectButton
+    $codePoint prefs.currentCharacterCodePoint
+    $enabled root.characters.count > 1
+   ;
+
+  outlet EBTextObserverField mCurrentCharacterTextField $valueObserver root.currentCharacterCodePointString ;
+
+  outlet EBStepper currentCharacterStepper
+    $value prefs.currentCharacterCodePoint {sendContinously:yes}
+    $enabled root.characters.count > 1
+   ;
+  
+  outlet EBButton mAddCharacterButton $run self.addCharacterAction ;
+  action addCharacterAction ;
   
   outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
   action addSegmentAction ;
 
 #--- Gerber Code inspector
+  outlet EBSwitch mShowGerberDrawingFlowCheckbox $value prefs.showGerberDrawingFlow ;
+
+  outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value prefs.showGerberDrawingIndexes ;
+
   outlet EBTextObserverField gerberCodeInstructionCountMessageTextField
     $valueObserver selectedCharacter.gerberCodeInstructionCountMessage
   ;
@@ -80,18 +93,18 @@ document PMFontDocument root FontRoot {
   ;
 
 #--- Missing characters inspector
-  transient String missingCharactersCountString dependsFrom root.characters.all.characterIsDefined ;
-  outlet EBTextObserverField missingCharactersCountTextField $valueObserver self.missingCharactersCountString ;
-
-  transient array MissingCharacter missingCharacterDescriptorArray dependsFrom root.characters.all.characterIsDefined ;
-
-  arrayController mMissingCharsController {allowsEmptySelection:yes, allowsMultipleSelection:yes}
-     self.missingCharacterDescriptorArray
-  {
-     column "code" sort idx EBTextObserverField $valueObserver self.code
-     column "char" EBTextObserverField $valueObserver self.char
-  }
-  outlet EBTableView mMissingCharsTableView $tableValue mMissingCharsController ;
+#  transient String missingCharactersCountString dependsFrom root.characters.all.characterIsDefined ;
+#  outlet EBTextObserverField missingCharactersCountTextField $valueObserver self.missingCharactersCountString ;
+#
+#  transient array MissingCharacter missingCharacterDescriptorArray dependsFrom root.characters.all.characterIsDefined ;
+#
+#  arrayController mMissingCharsController {allowsEmptySelection:yes, allowsMultipleSelection:yes}
+#     self.missingCharacterDescriptorArray
+#  {
+#     column "code" sort idx EBTextObserverField $valueObserver self.code
+#     column "char" EBTextObserverField $valueObserver self.char
+#  }
+#  outlet EBTableView mMissingCharsTableView $tableValue mMissingCharsController ;
 
 #--- Sample String Display
   outlet EBDoubleField mSampleStringSizeField $value prefs.sampleStringSize {sendContinously:no, autoFormatter:no};
