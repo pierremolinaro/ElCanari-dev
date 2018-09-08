@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF0201F31BFF5AE40033BA42 /* MissingCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0201F21BFF5AE40033BA42 /* MissingCharacter.swift */; };
-		CF0201F91BFF77D10033BA42 /* arrayController-PMFontDocument-mMissingCharsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0201F81BFF77D10033BA42 /* arrayController-PMFontDocument-mMissingCharsController.swift */; };
 		CF05F5F91C0328DA00AC21D1 /* EBTextObserverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF05F5F81C0328DA00AC21D1 /* EBTextObserverView.swift */; };
 		CF06E7C320E802AD00EA47B9 /* extension-MergerDocument-model-update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF06E7C220E802AD00EA47B9 /* extension-MergerDocument-model-update.swift */; };
 		CF0A175020FF3ED800448A4C /* struct-BezierPathArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A174F20FF3ED800448A4C /* struct-BezierPathArray.swift */; };
@@ -346,8 +344,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CF0201F21BFF5AE40033BA42 /* MissingCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingCharacter.swift; sourceTree = "<group>"; };
-		CF0201F81BFF77D10033BA42 /* arrayController-PMFontDocument-mMissingCharsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-PMFontDocument-mMissingCharsController.swift"; sourceTree = "<group>"; };
 		CF05F5F81C0328DA00AC21D1 /* EBTextObserverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBTextObserverView.swift; sourceTree = "<group>"; };
 		CF06E7C220E802AD00EA47B9 /* extension-MergerDocument-model-update.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerDocument-model-update.swift"; sourceTree = "<group>"; };
 		CF0A174F20FF3ED800448A4C /* struct-BezierPathArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "struct-BezierPathArray.swift"; sourceTree = "<group>"; };
@@ -1095,7 +1091,6 @@
 				CF90B77521427D4100E725B0 /* action-PMFontDocument-addCharacterAction.swift */,
 				CF3DEFB81BFF92B5002ECBDE /* action-PMFontDocument-addSegmentAction.swift */,
 				CF58A2CF1DD77E7E00146883 /* action-PMFontDocument-resetVersionAndSignatureAction.swift */,
-				CF0201F81BFF77D10033BA42 /* arrayController-PMFontDocument-mMissingCharsController.swift */,
 				CFDBFC592143BA06006780C7 /* arrayController-PMFontDocument-mSelectedCharacterController.swift */,
 				CFDA57A01BFA533A00EEF3CB /* CanariFontDocument.swift */,
 				CF372C481C033DBE00FFC17A /* CharacterGerberCodeClass.swift */,
@@ -1110,7 +1105,6 @@
 				CF9AE9F71BFA763C00B68F69 /* entity-FontCharacter.swift */,
 				CFDA579A1BFA524A00EEF3CB /* entity-FontRoot.swift */,
 				CF9AE9F81BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift */,
-				CF0201F21BFF5AE40033BA42 /* MissingCharacter.swift */,
 				CFDA579B1BFA524A00EEF3CB /* PMFontDocument.swift */,
 				CFDA579C1BFA524A00EEF3CB /* PMFontDocument.xib */,
 				CF80F9EF1C0089E900EC64EF /* SegmentForFontCharacterClass.swift */,
@@ -1365,7 +1359,6 @@
 				CF7357C720F6421C00915629 /* transient-MergerBoardInstance-selectionLayer.swift in Sources */,
 				CF71F9291B3EA3DF00FB5049 /* EBSwitch.swift in Sources */,
 				CF5B06FC213EC703005D6B37 /* CanariSegment.swift in Sources */,
-				CF0201F91BFF77D10033BA42 /* arrayController-PMFontDocument-mMissingCharsController.swift in Sources */,
 				CFD7EA2520E7D42900D53B87 /* transient-MergerRoot-modelNames.swift in Sources */,
 				CFE5C0B02136F770009DF4C3 /* extension-BoardModel-boardLimitsSegments.swift in Sources */,
 				CFB4801C20DC2BBD00CF9639 /* extension-MergerDocument-model-ElCanari.swift in Sources */,
@@ -1457,7 +1450,6 @@
 				CF2176A920EA79A100BBC1C4 /* entity-MergerBoardInstance.swift in Sources */,
 				CF58A2D01DD77E7E00146883 /* action-PMFontDocument-resetVersionAndSignatureAction.swift in Sources */,
 				CF6BC0511DE1C53A002D935F /* CanariMenu.swift in Sources */,
-				CF0201F31BFF5AE40033BA42 /* MissingCharacter.swift in Sources */,
 				CF1A10FD2108A1EC00987BFD /* transient-MergerDocument-issues.swift in Sources */,
 				CF6BC04F1DE1C43F002D935F /* controller-CanariMenu-CanariMenuItemListClass.swift in Sources */,
 				CF71FA3F1B3EA87800FB5049 /* EBAllocationDebug.swift in Sources */,

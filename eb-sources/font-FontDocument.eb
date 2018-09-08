@@ -31,14 +31,6 @@ binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class MissingCharacter {
-  property Int idx default 0 ; # Only for sorting
-  property String code default "??" ;
-  property String char default "?" ;
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 document PMFontDocument root FontRoot {
 #--- Toolbar
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
