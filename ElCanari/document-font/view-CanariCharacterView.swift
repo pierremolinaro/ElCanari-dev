@@ -18,7 +18,7 @@ private let GERBER_FLOW_ARROW_SIZE : CGFloat = 6.0
 private let SELECTION_KNOB_SIZE : CGFloat = 8.0
 private let MAX_X : Int = 24
 private let MIN_Y : Int = -8
-private let MAX_Y : Int = 18
+private let MAX_Y : Int = 24
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -35,9 +35,12 @@ private func yForY (_ inY : Int) -> CGFloat {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func knobRect (_ inX : Int, _ inY : Int) -> NSRect {
-  let x = xForX (inX)
-  let y = yForY (inY)
-  return NSRect (x: x - SELECTION_KNOB_SIZE / 2.0, y: y - SELECTION_KNOB_SIZE / 2.0, width: SELECTION_KNOB_SIZE, height: SELECTION_KNOB_SIZE)
+  return NSRect (
+    x: xForX (inX) - SELECTION_KNOB_SIZE / 2.0,
+    y: yForY (inY) - SELECTION_KNOB_SIZE / 2.0,
+    width: SELECTION_KNOB_SIZE,
+    height: SELECTION_KNOB_SIZE
+  )
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -51,7 +54,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override init(frame frameRect: NSRect) {
+  override init (frame frameRect: NSRect) {
     super.init (frame: frameRect)
     noteObjectAllocation (self)
   }

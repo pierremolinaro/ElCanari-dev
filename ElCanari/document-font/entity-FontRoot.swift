@@ -234,7 +234,8 @@ class FontRoot : EBManagedObject,
   //--- Install compute functions for transients
     self.sampleStringBezierPath_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.characters_property_selection.kind ()
+        var kind = unwSelf.nominalSize_property_selection.kind ()
+        kind &= unwSelf.characters_property_selection.kind ()
         kind &= unwSelf.characters_property_selection.kind ()
         kind &= g_Preferences!.sampleString_property_selection.kind ()
         kind &= g_Preferences!.sampleStringSize_property_selection.kind ()
@@ -244,9 +245,9 @@ class FontRoot : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.characters_property_selection, unwSelf.characters_property_selection, g_Preferences!.sampleString_property_selection, g_Preferences!.sampleStringSize_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_FontRoot_sampleStringBezierPath (v0, v1, v2, v3))
+          switch (unwSelf.nominalSize_property_selection, unwSelf.characters_property_selection, unwSelf.characters_property_selection, g_Preferences!.sampleString_property_selection, g_Preferences!.sampleStringSize_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_FontRoot_sampleStringBezierPath (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -337,6 +338,7 @@ class FontRoot : EBManagedObject,
       }
     }
   //--- Install property observers for transients
+    self.nominalSize_property.addEBObserver (self.sampleStringBezierPath_property)
     self.characters_property.addEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
     self.characters_property.addEBObserverOf_advance (self.sampleStringBezierPath_property)
     g_Preferences?.sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
@@ -362,6 +364,7 @@ class FontRoot : EBManagedObject,
 
   deinit {
   //--- Remove observers
+    self.nominalSize_property.removeEBObserver (self.sampleStringBezierPath_property)
     self.characters_property.removeEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
     self.characters_property.removeEBObserverOf_advance (self.sampleStringBezierPath_property)
     g_Preferences?.sampleString_property.removeEBObserver (self.sampleStringBezierPath_property)

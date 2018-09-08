@@ -8,6 +8,7 @@ entity FontRoot {
   property Int selectedInspector default 0 ;
 
   transient CGPath sampleStringBezierPath dependsFrom
+    self.nominalSize,
     self.characters.all.segmentArrayForDrawing,
     self.characters.all.advance,
     prefs.sampleString,

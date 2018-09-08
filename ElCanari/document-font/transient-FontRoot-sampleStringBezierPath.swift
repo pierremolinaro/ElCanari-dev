@@ -12,6 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_FontRoot_sampleStringBezierPath (
+       _ self_nominalSize : Int,                
        _ self_characters_segmentArrayForDrawing : [FontCharacter_segmentArrayForDrawing],
        _ self_characters_advance : [FontCharacter_advance],
        _ prefs_sampleString : String,           
@@ -19,7 +20,7 @@ func transient_FontRoot_sampleStringBezierPath (
 ) -> CGPath {
 //--- START OF USER ZONE 2
   func toCocoa (_ value : Int) -> CGFloat {
-    return CGFloat (value) * CGFloat (prefs_sampleStringSize) / 14.0
+    return CGFloat (value) * CGFloat (prefs_sampleStringSize) / CGFloat (self_nominalSize)
   }
 
 //  let sampleStringASUnicodeArray : [UInt32] = g_5F_Preferences_21__2E_sampleString_2.unicodeScalars.map { $0.value }
