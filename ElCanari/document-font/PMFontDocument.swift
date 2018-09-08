@@ -22,6 +22,7 @@ import Cocoa
   @IBOutlet var mAddSegmentButton : EBButton?
   @IBOutlet var mCurrentCharacterTextField : EBTextObserverField?
   @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton?
+  @IBOutlet var mFontNominalSizeTextField : EBIntField?
   @IBOutlet var mFontSampleStringView : CanariFontSampleStringView?
   @IBOutlet var mGerberCodeTableView : CanariCharacterGerberCodeTableView?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
@@ -237,6 +238,15 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mFontCharacterSelectButton' outlet is not an instance of 'CanariFontCharacterSelectButton'") ;
     }
+    if nil == mFontNominalSizeTextField {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mFontNominalSizeTextField' outlet is nil") ;
+//    }else if !mFontNominalSizeTextField!.isKindOfClass (EBIntField) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mFontNominalSizeTextField' outlet is not an instance of 'EBIntField'") ;
+    }
     if nil == mFontSampleStringView {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -428,6 +438,7 @@ import Cocoa
     advancementSlider?.bind_intValue (self.mCharacterSelection.advance_property, file: #file, line: #line, sendContinously:true)
     transparencyTextField?.bind_value (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     transparencySlider?.bind_doubleValue (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:true)
+    mFontNominalSizeTextField?.bind_value (self.rootObject.nominalSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     mFontCharacterSelectButton?.bind_codePoint (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line)
     mCurrentCharacterTextField?.bind_valueObserver (self.rootObject.currentCharacterCodePointString_property, file: #file, line: #line)
     currentCharacterStepper?.bind_value (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line, sendContinously:true)
@@ -496,6 +507,7 @@ import Cocoa
     advancementSlider?.unbind_intValue ()
     transparencyTextField?.unbind_value ()
     transparencySlider?.unbind_doubleValue ()
+    mFontNominalSizeTextField?.unbind_value ()
     mFontCharacterSelectButton?.unbind_codePoint ()
     mCurrentCharacterTextField?.unbind_valueObserver ()
     currentCharacterStepper?.unbind_value ()
@@ -543,6 +555,7 @@ import Cocoa
     self.mAddSegmentButton?.ebCleanUp ()
     self.mCurrentCharacterTextField?.ebCleanUp ()
     self.mFontCharacterSelectButton?.ebCleanUp ()
+    self.mFontNominalSizeTextField?.ebCleanUp ()
     self.mFontSampleStringView?.ebCleanUp ()
     self.mGerberCodeTableView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()

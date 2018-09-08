@@ -136,7 +136,7 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
           NSRectFill (r)
         }
         let title = String (format: "%C", code)
-        let dict = [NSForegroundColorAttributeName : mImplementedCharacterSet.contains (code) ? NSColor.gray : NSColor.black]
+        let dict = [NSForegroundColorAttributeName : mImplementedCharacterSet.contains (code) ? NSColor.lightGray : NSColor.blue]
         let attributedString = NSAttributedString (string: title, attributes: dict)
         let size = attributedString.size ()
         attributedString.draw (at: CGPoint (x:x + (PLACEMENT_GRID - size.width) / 2.0, y: y + 3.0))

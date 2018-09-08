@@ -18,6 +18,7 @@
                 <outlet property="mAddSegmentButton" destination="1336" id="al7-fO-3bC"/>
                 <outlet property="mCurrentCharacterTextField" destination="yqI-ko-0Pe" id="WBx-uw-nKW"/>
                 <outlet property="mFontCharacterSelectButton" destination="1357" id="kA8-J5-m7U"/>
+                <outlet property="mFontNominalSizeTextField" destination="29v-1g-72j" id="bgs-0f-2uc"/>
                 <outlet property="mFontSampleStringView" destination="1059" id="fwW-MA-q8K"/>
                 <outlet property="mGerberCodeTableView" destination="gZS-PE-KcP" id="UHE-3j-FsM"/>
                 <outlet property="mInspectorSegmentedControl" destination="1333" id="E71-Py-UYn"/>
@@ -274,7 +275,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="983" y="-384.5"/>
+            <point key="canvasLocation" x="1217" y="-406"/>
         </customView>
         <customView id="1094" userLabel="Page : Infos" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="690" height="480"/>
@@ -345,23 +346,23 @@
             </userGuides>
             <subviews>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="1265">
-                    <rect key="frame" x="0.0" y="420" width="107" height="14"/>
+                    <rect key="frame" x="0.0" y="399" width="107" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Advancement:" id="1270">
-                        <font key="font" metaFont="smallSystem"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Advancement" id="1270">
+                        <font key="font" metaFont="systemBold" size="11"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" id="1262" customClass="EBStepper">
-                    <rect key="frame" x="31" y="455" width="19" height="27"/>
+                    <rect key="frame" x="31" y="420" width="19" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <stepperCell key="cell" continuous="YES" state="on" alignment="left" minValue="32" maxValue="255" doubleValue="255" valueWraps="YES" id="1275">
                         <font key="font" metaFont="system"/>
                     </stepperCell>
                 </stepper>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="1260">
-                    <rect key="frame" x="53" y="462" width="36" height="14"/>
+                    <rect key="frame" x="53" y="427" width="36" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Code:" id="1277">
                         <font key="font" metaFont="smallSystem"/>
@@ -369,14 +370,15 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box verticalHuggingPriority="750" boxType="separator" id="1259">
-                    <rect key="frame" x="0.0" y="441" width="248" height="4"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="H7M-HJ-5kZ">
+                    <rect key="frame" x="0.0" y="471" width="81" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
-                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="1257">
-                    <rect key="frame" x="2" y="382" width="248" height="4"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Nominal Size" id="zEb-R8-TAe">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <button misplaced="YES" id="9u9-51-cUf" customClass="EBSwitch">
                     <rect key="frame" x="-1" y="285" width="166" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -386,36 +388,23 @@
                     </buttonCell>
                 </button>
                 <slider verticalHuggingPriority="750" misplaced="YES" id="8sc-mD-NLs" customClass="EBSlider">
-                    <rect key="frame" x="2" y="339" width="200" height="19"/>
+                    <rect key="frame" x="2" y="331" width="200" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" controlSize="small" continuous="YES" alignment="left" minValue="0.10000000000000001" maxValue="1" doubleValue="0.5" tickMarkPosition="below" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="xcg-ek-eUF"/>
                 </slider>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="5TQ-68-OPN">
-                    <rect key="frame" x="0.0" y="363" width="154" height="14"/>
+                    <rect key="frame" x="0.0" y="353" width="154" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Transparency for Edition:" id="Yce-gT-D6M">
-                        <font key="font" metaFont="smallSystem"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Transparency for Edition" id="Yce-gT-D6M">
+                        <font key="font" metaFont="systemBold" size="11"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="1311">
-                    <rect key="frame" x="-2" y="329" width="250" height="4"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="1288">
+                    <rect key="frame" x="-2" y="448" width="254" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="1314" customClass="EBTextObserverField">
-                    <rect key="frame" x="87" y="308" width="133" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="…nnn instructions…" id="1315">
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="1288">
-                    <rect key="frame" x="-2" y="486" width="254" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Current Character Inspector" id="1289">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Current Character" id="1289">
                         <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -425,13 +414,13 @@
                     <rect key="frame" x="0.0" y="306" width="81" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Gerber Code :" id="1320">
-                        <font key="font" metaFont="smallSystem"/>
+                        <font key="font" metaFont="systemBold" size="11"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button misplaced="YES" id="1357" customClass="CanariFontCharacterSelectButton">
-                    <rect key="frame" x="2" y="458" width="24" height="24"/>
+                    <rect key="frame" x="2" y="423" width="24" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="A" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1358">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -439,7 +428,7 @@
                     </buttonCell>
                 </button>
                 <button toolTip="Add Segment" verticalHuggingPriority="750" misplaced="YES" id="1336" customClass="EBButton">
-                    <rect key="frame" x="158" y="444" width="92" height="17"/>
+                    <rect key="frame" x="158" y="425" width="92" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="New Segment" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1337">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -545,12 +534,12 @@
                     </tableHeaderView>
                 </scrollView>
                 <slider verticalHuggingPriority="750" misplaced="YES" id="1266" customClass="EBSlider">
-                    <rect key="frame" x="2" y="393" width="200" height="19"/>
+                    <rect key="frame" x="2" y="378" width="200" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="24" doubleValue="4" tickMarkPosition="below" numberOfTickMarks="25" allowsTickMarkValuesOnly="YES" sliderType="linear" id="1269"/>
                 </slider>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="1264" customClass="EBIntField">
-                    <rect key="frame" x="208" y="393" width="40" height="19"/>
+                    <rect key="frame" x="208" y="378" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="1271">
                         <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0" negativeFormat="-#,##0" thousandSeparator=" " id="1272">
@@ -566,7 +555,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="SY7-HN-xkY" customClass="EBDoubleField">
-                    <rect key="frame" x="208" y="339" width="40" height="19"/>
+                    <rect key="frame" x="208" y="331" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="meQ-tT-yfv">
                         <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.0" negativeFormat="-#,##0.00" thousandSeparator=" " id="l6Y-gY-cg0">
@@ -591,7 +580,7 @@
                     </buttonCell>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="yqI-ko-0Pe" customClass="EBTextObserverField">
-                    <rect key="frame" x="93" y="462" width="59" height="14"/>
+                    <rect key="frame" x="93" y="427" width="59" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="7CA-rI-OPV">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -600,34 +589,65 @@
                     </textFieldCell>
                 </textField>
                 <button toolTip="Add Segment" verticalHuggingPriority="750" misplaced="YES" id="Taw-Kc-Imy" customClass="EBButton">
-                    <rect key="frame" x="158" y="462" width="92" height="17"/>
+                    <rect key="frame" x="158" y="468" width="92" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="New Character…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2Ep-nC-MhV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="1314" customClass="EBTextObserverField">
+                    <rect key="frame" x="85" y="308" width="133" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="…nnn instructions…" id="1315">
+                        <font key="font" metaFont="system" size="11"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="7m3-Pq-dlV">
+                    <rect key="frame" x="-2" y="487" width="254" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Font" id="mvk-MB-Gb1">
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="29v-1g-72j" customClass="EBIntField">
+                    <rect key="frame" x="87" y="469" width="35" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="size" drawsBackground="YES" id="orB-Lm-Zcc">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="HQk-hO-8LW">
+                            <real key="minimum" value="5"/>
+                            <real key="maximum" value="22"/>
+                        </numberFormatter>
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="-154" y="-474"/>
+            <point key="canvasLocation" x="-312" y="-481.5"/>
         </customView>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ubN-8M-HMA" userLabel="Panel: new character selection" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="139" y="81" width="506" height="378"/>
+            <rect key="contentRect" x="139" y="81" width="506" height="408"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" misplaced="YES" id="LW9-MX-O6e">
-                <rect key="frame" x="0.0" y="0.0" width="506" height="378"/>
+                <rect key="frame" x="0.0" y="0.0" width="506" height="408"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" id="qfU-ox-vnl">
-                        <rect key="frame" x="106" y="69" width="380" height="289"/>
+                        <rect key="frame" x="106" y="61" width="380" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" copiesOnScroll="NO" id="Z8P-ja-716">
-                            <rect key="frame" x="1" y="1" width="363" height="287"/>
+                            <rect key="frame" x="1" y="1" width="363" height="298"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <customView id="ggH-gl-Jr4" customClass="NewCharacterView" customModule="ElCanari" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="191" width="163" height="96"/>
+                                    <rect key="frame" x="0.0" y="202" width="163" height="96"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 </customView>
                             </subviews>
@@ -638,12 +658,12 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="qYt-fX-f23">
-                            <rect key="frame" x="364" y="1" width="15" height="287"/>
+                            <rect key="frame" x="364" y="1" width="15" height="298"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" misplaced="YES" id="HvY-76-oul" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="423" y="21" width="57" height="32"/>
+                        <rect key="frame" x="435" y="13" width="57" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1GL-aD-vXf">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -654,7 +674,7 @@ Gw
                         </buttonCell>
                     </button>
                     <button verticalHuggingPriority="750" misplaced="YES" id="8v6-ti-duU" customClass="CanariCancelButtonForPanel" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="212" y="21" width="82" height="32"/>
+                        <rect key="frame" x="100" y="13" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tPp-aA-feQ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -664,9 +684,26 @@ Gw
 </string>
                         </buttonCell>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="0cF-Ch-13M">
+                        <rect key="frame" x="104" y="377" width="384" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Select new Character:" id="Hbs-3Z-Vi8">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="RXz-gv-Ln8">
+                        <rect key="frame" x="20" y="172" width="64" height="64"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="WuG-bw-Yxr"/>
+                    </imageView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="589" y="-238"/>
+            <point key="canvasLocation" x="605" y="-347"/>
         </window>
     </objects>
+    <resources>
+        <image name="NSApplicationIcon" width="128" height="128"/>
+    </resources>
 </document>

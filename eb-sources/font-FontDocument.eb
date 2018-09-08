@@ -58,13 +58,15 @@ document PMFontDocument root FontRoot {
   outlet EBDoubleField transparencyTextField $value prefs.fontEditionTransparency {sendContinously:no, autoFormatter:no} ;
   outlet EBSlider transparencySlider $doubleValue prefs.fontEditionTransparency {sendContinously:yes} ;
 
-#--- Add Character
+#--- Font
   outlet EBButton mAddCharacterButton $run self.addCharacterAction ;
   action addCharacterAction ;
   
   outlet NSPanel mNewCharacterPanel ;
   outlet NewCharacterView mNewCharacterView ;
-  
+
+  outlet EBIntField mFontNominalSizeTextField $value root.nominalSize {sendContinously:no, autoFormatter:no} ;
+ 
 #--- Current Character
   outlet CanariFontCharacterSelectButton mFontCharacterSelectButton
     $codePoint prefs.currentCharacterCodePoint

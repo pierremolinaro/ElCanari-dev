@@ -15,7 +15,7 @@ import Cocoa
 
 private let PLACEMENT_GRID : CGFloat = 11.0
 private let GERBER_FLOW_ARROW_SIZE : CGFloat = 6.0
-private let SELECTION_HOOK_SIZE : CGFloat = 8.0
+private let SELECTION_KNOB_SIZE : CGFloat = 8.0
 private let MAX_X : Int = 24
 private let MIN_Y : Int = -8
 private let MAX_Y : Int = 18
@@ -33,18 +33,21 @@ private func yForY (_ inY : Int) -> CGFloat {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+private func knobRect (_ inX : Int, _ inY : Int) -> NSRect {
+  let x = xForX (inX)
+  let y = yForY (inY)
+  return NSRect (x: x - SELECTION_KNOB_SIZE / 2.0, y: y - SELECTION_KNOB_SIZE / 2.0, width: SELECTION_KNOB_SIZE, height: SELECTION_KNOB_SIZE)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   CanariCharacterView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class CanariCharacterView : NSView, EBUserClassNameProtocol {
   @IBOutlet weak var mFontDocument : CanariFontDocument?
-//  private var mAdvanceLayer = CAShapeLayer ()
-//  private var mSelectionRectangleLayer = CAShapeLayer ()
-//  private var mSegmentLayer = CALayer ()
-//  private var mStrokeGerberCodeFlowLayer = CAShapeLayer ()
-//  private var mFillGerberCodeFlowLayer = CAShapeLayer ()
-//  private var mFlowIndexLayer = CAShapeLayer ()
-//  private var mSelectionLayer = CALayer ()
+
+  private var mSelectionRectangle : NSRect? = nil
 
   //····················································································································
 
@@ -152,6 +155,16 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       let size = s.size (withAttributes: textAttributes)
       s.draw (at: NSPoint (x: 18.0 - size.width, y: yy - size.height * 0.5), withAttributes: textAttributes)
     }
+  //--- Selection rectangle
+    if let selectionRectangle = mSelectionRectangle {
+      bp = NSBezierPath (rect: selectionRectangle)
+      NSColor.gray.withAlphaComponent (0.1).setFill ()
+      bp.fill ()
+      bp.lineWidth = 1.0
+      NSColor.black.setStroke ()
+      bp.stroke ()
+
+    }
   //--- Character segments
     bp = NSBezierPath ()
     for segment in self.mSegmentList {
@@ -212,6 +225,19 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         idx += 1
       }
     }
+  //--- Draw selection knobs
+    NSColor.white.setFill ()
+    NSColor.black.setStroke ()
+    for segment in self.mSelection {
+      let bp1 = NSBezierPath (rect:knobRect (segment.x1, segment.y1))
+      bp1.fill ()
+      bp1.lineWidth = 1.0
+      bp1.stroke ()
+      let bp2 = NSBezierPath (rect:knobRect (segment.x2, segment.y2))
+      bp2.fill ()
+      bp2.lineWidth = 1.0
+      bp2.stroke ()
+    }
   }
 
   //····················································································································
@@ -263,6 +289,17 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   final func updateSegmentDrawingsFromCharacterSegmentListController (_ inSegments : CharacterSegmentListClass) {
     self.mSegmentList = inSegments.code
+    let oldSelection = self.mSelection
+    self.mSelection = Set ()
+    for oldSegment in oldSelection {
+      for newSegment in self.mSegmentList {
+        if (oldSegment.x1 == newSegment.x1) && (oldSegment.y1 == newSegment.y1)
+        && (oldSegment.x2 == newSegment.x2) && (oldSegment.y2 == newSegment.y2) {
+          self.mSelection.insert (newSegment)
+          break
+        }
+      }
+    }
     self.needsDisplay = true
   }
 
@@ -355,21 +392,17 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   func appendSegment () {
-    if let document = mFontDocument {
-      let newSegment = SegmentForFontCharacter (managedObjectContext: document.managedObjectContext())
-//      var newSegmentEntityArray = self.segmentEntityArray ()
-//      newSegmentEntityArray.append (newSegment)
-//      mFontDocument?.mCharacterSelection.mSelectedObject?.segments_property.setProp (newSegmentEntityArray)
-      mSelection.removeAll ()
-      mSelection.insert (newSegment)
-    }
+    var newSegmentArray = self.mSegmentList
+    let newSegment = SegmentForFontCharacterClass (x1: 2, y1: 1, x2: 9, y2: 8)
+    newSegmentArray.append (newSegment)
+    mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
   }
 
   //····················································································································
   //  selection
   //····················································································································
 
-  private var mSelection = Set <SegmentForFontCharacter> ()
+  private var mSelection = Set <SegmentForFontCharacterClass> ()
 
   //····················································································································
   //  Model
@@ -387,14 +420,14 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       return mSelection.count > 0
     }else if action == #selector (CanariCharacterView.selectAll(_:)) {
       return self.mSegmentList.count > 0
-//    }else if action == #selector (CanariCharacterView.bringForward(_:)) {
-//      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.last!)
-//    }else if action == #selector (CanariCharacterView.bringToFront(_:)) {
-//      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.last!)
-//    }else if action == #selector (CanariCharacterView.sendBackward(_:)) {
-//      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.first!)
-//    }else if action == #selector (CanariCharacterView.sendToBack(_:)) {
-//      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.first!)
+    }else if action == #selector (CanariCharacterView.bringForward(_:)) {
+      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.last!)
+    }else if action == #selector (CanariCharacterView.bringToFront(_:)) {
+      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.last!)
+    }else if action == #selector (CanariCharacterView.sendBackward(_:)) {
+      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.first!)
+    }else if action == #selector (CanariCharacterView.sendToBack(_:)) {
+      return (mSelection.count > 0) && (self.mSegmentList.count > 0) && !mSelection.contains (self.mSegmentList.first!)
     }else if action == #selector (CanariCharacterView.copy(_:)) {
       return (mSelection.count > 0) && (self.mSegmentList.count > 0)
     }else if action == #selector (CanariCharacterView.cut(_:)) {
@@ -415,87 +448,84 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final override func selectAll (_ sender : Any?) {
-//    mSelection = Set <SegmentForFontCharacter> (segmentEntityArray ())
-//    updateSegmentDrawings ()
+    mSelection = Set (self.mSegmentList)
+    self.needsDisplay = true
   }
   
   //····················································································································
 
   @objc func bringForward (_ sender : Any?) {
-//    if mSelection.count == 0 {
-//      sw34_Beep ()
-//    }else{
-//      var newSegmentEntityArray = self.segmentEntityArray ()
-//      var idx = newSegmentEntityArray.count
-//      for segment in self.segmentEntityArray ().reversed () {
-//        idx -= 1
-//        if mSelection.contains (segment) {
-//          newSegmentEntityArray.remove (at: idx)
-//          newSegmentEntityArray.insert (segment, at:idx + 1)
-//        }
-//      }
-////      mFontDocument?.mCharacterSelection.segments_property.setProp (newSegmentEntityArray)
-//      updateSegmentDrawings ()
-//    }
+    if mSelection.count == 0 {
+      sw34_Beep ()
+    }else{
+      var newSegmentArray = self.mSegmentList
+      var idx = newSegmentArray.count
+      for segment in self.mSegmentList.reversed () {
+        idx -= 1
+        if mSelection.contains (segment) {
+          newSegmentArray.remove (at: idx)
+          newSegmentArray.insert (segment, at:idx + 1)
+        }
+      }
+      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+    }
   }
 
   //····················································································································
 
   @objc func bringToFront (_ sender : Any?) {
-//    if mSelection.count == 0 {
-//      sw34_Beep ()
-//    }else{
-//      var idx = -1
-//      for segment in self.mSegmentList {
-//        idx += 1
-//        if mSelection.contains (segment) {
-//          newSegmentEntityArray.remove (at: idx)
-//          newSegmentEntityArray.append (segment)
-//        }
-//      }
-////      mFontDocument?.mCharacterSelection.mSelectedObject?.segments_property.setProp(newSegmentEntityArray)
-//      updateSegmentDrawings ()
-//    }
+    if mSelection.count == 0 {
+      sw34_Beep ()
+    }else{
+      var newSegmentArray = self.mSegmentList
+      var idx = -1
+      for segment in self.mSegmentList {
+        idx += 1
+        if mSelection.contains (segment) {
+          newSegmentArray.remove (at: idx)
+          newSegmentArray.append (segment)
+        }
+      }
+      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+    }
   }
   
   //····················································································································
 
   @objc func sendBackward (_ sender : Any?) {
-//    if mSelection.count == 0 {
-//      sw34_Beep ()
-//    }else{
-//      var newSegmentEntityArray = self.segmentEntityArray ()
-//      var idx = -1
-//      for segment in self.segmentEntityArray () {
-//        idx += 1
-//        if mSelection.contains (segment) {
-//          newSegmentEntityArray.remove (at: idx)
-//          newSegmentEntityArray.insert (segment, at:idx - 1)
-//        }
-//      }
-////      mFontDocument?.mCharacterSelection.mSelectedObject?.segments_property.setProp(newSegmentEntityArray)
-//      updateSegmentDrawings ()
-//    }
+    if mSelection.count == 0 {
+      sw34_Beep ()
+    }else{
+      var newSegmentArray = self.mSegmentList
+      var idx = -1
+      for segment in self.mSegmentList {
+        idx += 1
+        if mSelection.contains (segment) {
+          newSegmentArray.remove (at: idx)
+          newSegmentArray.insert (segment, at:idx - 1)
+        }
+      }
+      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+    }
   }
 
   //····················································································································
 
   @objc func sendToBack (_ sender : Any?) {
-//    if mSelection.count == 0 {
-//      sw34_Beep ()
-//    }else{
-//      var newSegmentEntityArray = self.segmentEntityArray ()
-//      var idx = newSegmentEntityArray.count
-//      for segment in self.segmentEntityArray ().reversed () {
-//        idx -= 1
-//        if mSelection.contains (segment) {
-//          newSegmentEntityArray.remove (at: idx)
-//          newSegmentEntityArray.insert (segment, at:0)
-//        }
-//      }
-////      mFontDocument?.mCharacterSelection.mSelectedObject?.segments_property.setProp(newSegmentEntityArray)
-//      updateSegmentDrawings ()
-//    }
+    if mSelection.count == 0 {
+      sw34_Beep ()
+    }else{
+      var newSegmentArray = self.mSegmentList
+      var idx = newSegmentArray.count
+      for segment in self.mSegmentList.reversed () {
+        idx -= 1
+        if mSelection.contains (segment) {
+          newSegmentArray.remove (at: idx)
+          newSegmentArray.insert (segment, at:0)
+        }
+      }
+      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+    }
   }
 
   //····················································································································
@@ -503,19 +533,18 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final func deleteSelection () {
-//    if mSelection.count == 0 {
-//      sw34_Beep ()
-//    }else{
-//      var segmentEntityArray = self.segmentEntityArray ()
-//      for segment in mSelection {
-//        let possibleIdx = segmentEntityArray.index(of: segment)
-//        if let idx = possibleIdx {
-//          segmentEntityArray.remove (at: idx)
-//        }
-//      }
-////      mFontDocument?.mCharacterSelection.mSelectedObject?.segments_property.setProp(segmentEntityArray)
-//      mSelection.removeAll ()
-//    }
+    if mSelection.count == 0 {
+      sw34_Beep ()
+    }else{
+      var newSegmentArray = self.mSegmentList
+      for segment in mSelection {
+        let possibleIdx = self.mSegmentList.index(of: segment)
+        if let idx = possibleIdx {
+          newSegmentArray.remove (at: idx)
+        }
+      }
+      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+    }
   }
   
   //····················································································································
@@ -564,17 +593,30 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   final func moveSelectionFrom (knob : Int, byX : Int, byY : Int) {
     if canMoveSelectionFrom (knob: knob, byX: byX, byY: byY) {
-      if knob == 0 {
-        for object in mSelection {
-          object.x1 = object.x1 + byX
-          object.y1 = object.y1 + byY
-        }
-      }else{
-        for object in mSelection {
-          object.x2 = object.x2 + byX
-          object.y2 = object.y2 + byY
+      var newSegmentArray = [SegmentForFontCharacterClass] ()
+      let oldSelection = self.mSelection
+      self.mSelection = Set ()
+      for segment in self.mSegmentList {
+        if oldSelection.contains (segment) {
+          var x1 = segment.x1
+          var y1 = segment.y1
+          var x2 = segment.x2
+          var y2 = segment.y2
+          if knob == 0 {
+            x1 += byX
+            y1 += byY
+          }else{
+            x2 += byX
+            y2 += byY
+          }
+          let newSegment = SegmentForFontCharacterClass (x1: x1, y1: y1, x2: x2, y2: y2)
+          newSegmentArray.append (newSegment)
+          self.mSelection.insert (newSegment)
+        }else{
+          newSegmentArray.append (segment)
         }
       }
+      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }else{
       sw34_Beep ()
     }
@@ -584,12 +626,24 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   final func moveSelection (byX : Int, byY : Int) {
     if canMoveSelection (byX: byX, byY: byY) {
-      for object in mSelection {
-        object.x1 = object.x1 + byX
-        object.y1 = object.y1 + byY
-        object.x2 = object.x2 + byX
-        object.y2 = object.y2 + byY
+      var newSegmentArray = [SegmentForFontCharacterClass] ()
+      let oldSelection = self.mSelection
+      self.mSelection = Set ()
+      for segment in self.mSegmentList {
+        if oldSelection.contains (segment) {
+          let newSegment = SegmentForFontCharacterClass (
+            x1: segment.x1 + byX,
+            y1: segment.y1 + byY,
+            x2: segment.x2 + byX,
+            y2: segment.y2 + byY
+          )
+          newSegmentArray.append (newSegment)
+          self.mSelection.insert (newSegment)
+        }else{
+          newSegmentArray.append (segment)
+        }
       }
+      mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }else{
       sw34_Beep ()
     }
@@ -701,61 +755,61 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   final override func mouseDown (with mouseDownEvent: NSEvent) {
-//    let mouseDownLocation = self.convert (mouseDownEvent.locationInWindow, from:nil)
-//    mMouseLocation = mouseDownLocation
-//    var possibleKnobIndex : Int? = nil
-//  //--- First check if mouse down occurs on a knob of a selected object
-//    for segment in segmentEntityArray ().reversed () {
-//      if mSelection.contains (segment) {
-//        possibleKnobIndex = segment.knobIndexFor (point: mouseDownLocation)
-//        if possibleKnobIndex != nil {
-//          mSelection.removeAll ()
-//          mSelection.insert (segment)
-//          break
-//        }
-//      }
-//    }
-//    let shiftKeyOn = mouseDownEvent.modifierFlags.contains (.shift)
-//    let commandKeyOn = mouseDownEvent.modifierFlags.contains (.command)
-//  //--- Second, mouse down in segment ?
-//    var mouseDownInsideSegment = false
-//    if possibleKnobIndex == nil {
-//      for segment in segmentEntityArray ().reversed () {
-//        if segment.contains (point: mouseDownLocation) {
-//          if shiftKeyOn {
-//            mSelection.insert (segment)
-//          }else if commandKeyOn {
-//            if mSelection.contains (segment) {
-//              mSelection.remove (segment)
-//            }else{
-//              mSelection.insert (segment)
-//            }
-//          }else if !mSelection.contains (segment) {
-//            mSelection.removeAll ()
-//            mSelection.insert (segment)
-//          }
-//          mouseDownInsideSegment = true
-//          break // Exit from loop
-//        }
-//      }
-//      if !mouseDownInsideSegment && !shiftKeyOn {
-//        mSelection.removeAll ()
-//      }
-//    }
-//  //--- Handle mouse dragged and mouse up
-//    if let knobIndex = possibleKnobIndex {
-//      waitUntilMouseUpOnMouseDownAt (mouseDownLocation: mouseDownLocation, for: knobIndex)
-//    }else if mouseDownInsideSegment {
-//      waitUntilMouseUpOnMouseDownOnSegment (mouseDownLocation: mouseDownLocation)
-//    }else if shiftKeyOn {
-//      waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation: mouseDownLocation)
-//    }else{
-//      waitUntilMouseUpOnDraggingSelectionRectangleNoShiftKey (mouseDownLocation: mouseDownLocation)
-//    }
-//  //--- Mouse up
-//    mMouseLocation = nil
-//    mSelectionRectangleLayer.path = nil
-//    updateSegmentDrawings ()
+    let mouseDownLocation = self.convert (mouseDownEvent.locationInWindow, from:nil)
+    mMouseLocation = mouseDownLocation
+    var possibleKnobIndex : Int? = nil
+  //--- First check if mouse down occurs on a knob of a selected object
+    for segment in self.mSegmentList.reversed () {
+      if self.mSelection.contains (segment) {
+        possibleKnobIndex = segment.knobIndexFor (point: mouseDownLocation)
+        if possibleKnobIndex != nil {
+          mSelection.removeAll ()
+          mSelection.insert (segment)
+          break
+        }
+      }
+    }
+    let shiftKeyOn = mouseDownEvent.modifierFlags.contains (.shift)
+    let commandKeyOn = mouseDownEvent.modifierFlags.contains (.command)
+  //--- Second, mouse down in segment ?
+    var mouseDownInsideSegment = false
+    if possibleKnobIndex == nil {
+      for segment in self.mSegmentList.reversed () {
+        if segment.contains (point: mouseDownLocation) {
+          if shiftKeyOn {
+            mSelection.insert (segment)
+          }else if commandKeyOn {
+            if mSelection.contains (segment) {
+              mSelection.remove (segment)
+            }else{
+              mSelection.insert (segment)
+            }
+          }else if !mSelection.contains (segment) {
+            mSelection.removeAll ()
+            mSelection.insert (segment)
+          }
+          mouseDownInsideSegment = true
+          break // Exit from loop
+        }
+      }
+      if !mouseDownInsideSegment && !shiftKeyOn {
+        mSelection.removeAll ()
+      }
+    }
+  //--- Handle mouse dragged and mouse up
+    if let knobIndex = possibleKnobIndex {
+      waitUntilMouseUpOnMouseDownAt (mouseDownLocation: mouseDownLocation, for: knobIndex)
+    }else if mouseDownInsideSegment {
+      waitUntilMouseUpOnMouseDownOnSegment (mouseDownLocation: mouseDownLocation)
+    }else if shiftKeyOn {
+      waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation: mouseDownLocation)
+    }else{
+      waitUntilMouseUpOnDraggingSelectionRectangleNoShiftKey (mouseDownLocation: mouseDownLocation)
+    }
+  //--- Mouse up
+    mMouseLocation = nil
+    mSelectionRectangle = nil
+    self.needsDisplay = true
   }
   
   //····················································································································
@@ -764,10 +818,8 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     var mouseLocation = mouseDownLocation
     var loop = true
     while loop {
-      updateSegmentDrawings ()
     //--- Wait for mouse dragged or mouse up
       let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
-   //   let event : NSEvent = self.window!.nextEvent (matching: [NSLeftMouseDraggedMask, NSLeftMouseUpMask])!
       loop = event.type == .leftMouseDragged // NSLeftMouseDragged
       if loop { // NSLeftMouseDragged
         let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
@@ -789,9 +841,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     var mouseLocation = mouseDownLocation
     var loop = true
     while loop {
-      updateSegmentDrawings ()
     //--- Wait for mouse dragged or mouse up
-    //  let event : NSEvent = self.window!.nextEvent (matching: [NSLeftMouseDraggedMask, NSLeftMouseUpMask])!
       let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
       loop = event.type == .leftMouseDragged // NSLeftMouseDragged
       if loop { // NSLeftMouseDragged
@@ -811,104 +861,53 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
   
   private final func waitUntilMouseUpOnDraggingSelectionRectangleNoShiftKey (mouseDownLocation : CGPoint) {
-//    var loop = true
-//    while loop {
-//      updateSegmentDrawings ()
-//    //--- Wait for mouse dragged or mouse up
-//      //  let event : NSEvent = self.window!.nextEvent (matching: [NSLeftMouseDraggedMask, NSLeftMouseUpMask])!
-//      let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
-//      loop = event.type == .leftMouseDragged // NSLeftMouseDragged
-//      if loop { // NSLeftMouseDragged
-//        let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
-//        mSelection.removeAll ()
-//        let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
-//        mSelectionRectangleLayer.path = CGPath (rect: r, transform: nil)
-//        let cr = GeometricRect (cgrect: r)
-//        for segment in segmentEntityArray () {
-//          if segment.intersects (rect: cr) {
-//            mSelection.insert (segment)
-//          }
-//        }
-//      }
-//    }
+    var loop = true
+    while loop {
+      self.display ()
+    //--- Wait for mouse dragged or mouse up
+      let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
+      loop = event.type == .leftMouseDragged // NSLeftMouseDragged
+      if loop { // NSLeftMouseDragged
+        let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
+        mSelection.removeAll ()
+        let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
+        mSelectionRectangle = r
+        let cr = GeometricRect (cgrect: r)
+        for segment in self.mSegmentList {
+          if segment.intersects (rect: cr) {
+            mSelection.insert (segment)
+          }
+        }
+      }
+    }
   }
   
   //····················································································································
   
   private final func waitUntilMouseUpOnDraggingSelectionRectangleWithShiftKey (mouseDownLocation : CGPoint) {
-//    let selectionOnMouseDown = mSelection
-//    var loop = true
-//    while loop {
-//      updateSegmentDrawings ()
-//    //--- Wait for mouse dragged or mouse up
-//      //  let event : NSEvent = self.window!.nextEvent (matching: [NSLeftMouseDraggedMask, NSLeftMouseUpMask])!
-//      let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
-//      loop = event.type == .leftMouseDragged // NSLeftMouseDragged
-//      if loop { // NSLeftMouseDragged
-//        let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
-//        let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
-//        mSelectionRectangleLayer.path = CGPath (rect: r, transform: nil)
-//        let cr = GeometricRect (cgrect: r)
-//        var selection = Set <SegmentForFontCharacter> ()
-//        for segment in segmentEntityArray () {
-//          if segment.intersects (rect: cr) {
-//            selection.insert (segment)
-//          }
-//        }
-//        mSelection = selection.symmetricDifference (selectionOnMouseDown)
-//      }
-//    }
+    let selectionOnMouseDown = mSelection
+    var loop = true
+    while loop {
+      self.display ()
+    //--- Wait for mouse dragged or mouse up
+      let event : NSEvent = self.window!.nextEvent (matching: [.leftMouseDragged, .leftMouseUp])!
+      loop = event.type == .leftMouseDragged
+      if loop {
+        let mouseDraggedLocation = convert (event.locationInWindow, from:nil)
+        let r = CGRect (point: mouseDownLocation, point: mouseDraggedLocation)
+        mSelectionRectangle = r
+        let cr = GeometricRect (cgrect: r)
+        var selection = Set <SegmentForFontCharacterClass> ()
+        for segment in self.mSegmentList {
+          if segment.intersects (rect: cr) {
+            selection.insert (segment)
+          }
+        }
+        mSelection = selection.symmetricDifference (selectionOnMouseDown)
+      }
+    }
   }
   
-  //····················································································································
-  //  Display
-  //····················································································································
-
-  private final func updateSegmentDrawings () {
-//    let segmentEntityArray = self.mSegmentList
-//  //--- Remove non existing object from selection
-//    mSelection.formIntersection (segmentEntityArray)
-//  //--- Draw segments
-//    let alpha = CGFloat (g_Preferences?.fontEditionTransparency ?? 1.0)
-//    var segmentLayers = [CALayer] ()
-//    for segment in segmentEntityArray {
-//      segmentLayers.append (segment.getDrawLayer (alpha: alpha))
-//    }
-//    mSegmentLayer.sublayers = segmentLayers
-//  //--- Draw display flow
-//    let strokePath = CGMutablePath ()
-//    let fillPath = CGMutablePath ()
-//    if g_Preferences?.showGerberDrawingFlow ?? false {
-//      var currentX = 0
-//      var currentY = 0
-//      strokePath.move (to: CGPoint (x: xForX (0), y: yForY (0)))
-//      for segment in segmentEntityArray {
-//        segment.buildGerberFlow (strokePath: strokePath, fillPath: fillPath, x:&currentX, y:&currentY)
-//      }
-//    }
-//    mStrokeGerberCodeFlowLayer.path = strokePath
-//    mFillGerberCodeFlowLayer.path = fillPath
-//  //--- Draw display flow indexes
-//    var indexLayers = [CALayer] ()
-//    if g_Preferences?.showGerberDrawingIndexes ?? false {
-//      var idx = 1
-//      for segment in segmentEntityArray {
-//        indexLayers.append (segment.buildGerberIndex (idx))
-//        idx += 1
-//      }
-//    }
-//    mFlowIndexLayer.sublayers = indexLayers
-//  //--- Draw selection hooks
-//    mSelectionLayer.sublayers = nil
-//    var selectionLayers = [CALayer] ()
-//    for segment in segmentEntityArray {
-//      if mSelection.contains (segment) {
-//        selectionLayers.append (segment.getSelectionLayer (mMouseLocation))
-//      }
-//    }
-//    mSelectionLayer.sublayers = selectionLayers
-  }
-
   //····················································································································
 
 }
@@ -917,19 +916,25 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 //   EXTENSION SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension SegmentForFontCharacter {
+extension SegmentForFontCharacterClass {
 
   //····················································································································
 
-  final func getDrawLayer (alpha : CGFloat) -> CALayer {
-    let oblong = GeometricOblong (
-      from: CGPoint (x: xForX (self.x1), y: yForY (self.y1)),
-      to:   CGPoint (x: xForX (self.x2), y: yForY (self.y2)),
-      height: PLACEMENT_GRID * 2.0
-    )
-    let shapeLayer = oblong.shape ()
-    shapeLayer.strokeColor = NSColor.black.withAlphaComponent (alpha).cgColor
-    return shapeLayer
+  final func knobIndexFor (point p : CGPoint) -> Int? { // Return nil if point is outside a knob
+    var result : Int? = nil
+    do{
+      let r = knobRect (self.x1, self.y1)
+      if r.contains (p) {
+        result = 0
+      }
+    }
+    if result == nil {
+      let r = knobRect (self.x2, self.y2)
+      if r.contains (p) {
+        result = 1
+      }
+    }
+    return result
   }
 
   //····················································································································
@@ -952,90 +957,6 @@ extension SegmentForFontCharacter {
       height: PLACEMENT_GRID * 2.0
     )
     return oblong.intersects (rect: r)
-  }
-
-  //····················································································································
-
-  final func knobIndexFor (point p : CGPoint) -> Int? { // Return nil if point is outside a knob
-    var result : Int? = nil
-    do{
-      let x = xForX (self.x1)
-      let y = yForY (self.y1)
-      let r = CGRect (x: x - SELECTION_HOOK_SIZE / 2.0, y: y - SELECTION_HOOK_SIZE / 2.0, width: SELECTION_HOOK_SIZE, height: SELECTION_HOOK_SIZE)
-      if r.contains (p) {
-        result = 0
-      }
-    }
-    if result == nil {
-      let x = xForX (self.x2)
-      let y = yForY (self.y2)
-      let r = CGRect (x: x - SELECTION_HOOK_SIZE / 2.0, y: y - SELECTION_HOOK_SIZE / 2.0, width: SELECTION_HOOK_SIZE, height: SELECTION_HOOK_SIZE)
-      if r.contains (p) {
-        result = 1
-      }
-    }
-    return result
-  }
-
-  //····················································································································
-
-//  final func buildGerberIndex (_ index : Int) -> CALayer {
-//    let x = (xForX (self.x1) + xForX (self.x2)) / 2.0
-//    let y = (yForY (self.y1) + yForY (self.y2)) / 2.0
-//    let textAttributes : [String : Any] = [
-//      NSFontAttributeName : NSFont.userFixedPitchFont (ofSize: 18.0)!,
-//      NSForegroundColorAttributeName : NSColor.yellow
-//    ]
-//    let s = "\(index)"
-//    let size = s.size (withAttributes: textAttributes)
-//    let textLayer = CATextLayer ()
-//    textLayer.frame = NSRect (x: x - size.width * 0.5,
-//                              y: y - size.height * 0.5,
-//                              width: size.width,
-//                              height: size.height)
-//    textLayer.string = NSAttributedString (string: s, attributes: textAttributes)
-//    textLayer.alignmentMode = kCAAlignmentCenter
-//    textLayer.contentsScale = sw34_ScreenMain.backingScaleFactor
-//    return textLayer
-//  }
-
-  //····················································································································
-  
-//  final func buildGerberFlow (strokePath : CGMutablePath, fillPath : CGMutablePath, x: inout Int, y: inout Int) {
-//    if (self.x1 != x) || (self.y1 != y) {
-//      x = self.x1
-//      y = self.y1
-//      strokePath.addArrow (fillPath: fillPath, to: CGPoint (x: xForX (x), y: yForY (y)), arrowSize: GERBER_FLOW_ARROW_SIZE)
-//    }
-//    if (self.x2 != x) || (self.y2 != y) {
-//      x = self.x2
-//      y = self.y2
-//      strokePath.addArrow (fillPath: fillPath, to: CGPoint (x: xForX (x), y: yForY (y)), arrowSize: GERBER_FLOW_ARROW_SIZE)
-//    }
-//  }
-  
-  //····················································································································
-
-  final func getSelectionLayer (_ inMouseDownLocation : CGPoint?) -> CAShapeLayer {
-    var underMouse = false
-    if let mouseDownLocation = inMouseDownLocation {
-      underMouse = contains (point: mouseDownLocation)
-    }
-    let x1 = xForX (self.x1)
-    let y1 = yForY (self.y1)
-    let x2 = xForX (self.x2)
-    let y2 = yForY (self.y2)
-    let mutablePath = CGMutablePath ()
-    let r1 = CGRect (x: x1 - SELECTION_HOOK_SIZE / 2.0, y: y1 - SELECTION_HOOK_SIZE / 2.0, width: SELECTION_HOOK_SIZE, height: SELECTION_HOOK_SIZE)
-    mutablePath.addRect (r1, transform: CGAffineTransform.identity)
-    let r2 = CGRect (x: x2 - SELECTION_HOOK_SIZE / 2.0, y: y2 - SELECTION_HOOK_SIZE / 2.0, width: SELECTION_HOOK_SIZE, height: SELECTION_HOOK_SIZE)
-    mutablePath.addRect (r2, transform: CGAffineTransform.identity)
-    let newLayer = CAShapeLayer ()
-    newLayer.path = mutablePath
-    newLayer.fillColor = underMouse ? NSColor.lightGray.cgColor : NSColor.white.cgColor
-    newLayer.strokeColor = NSColor.black.cgColor
-    newLayer.lineWidth = 1.0
-    return newLayer
   }
 
   //····················································································································

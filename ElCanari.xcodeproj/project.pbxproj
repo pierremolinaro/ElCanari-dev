@@ -54,7 +54,6 @@
 		CF372C491C033DBE00FFC17A /* CharacterGerberCodeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF372C481C033DBE00FFC17A /* CharacterGerberCodeClass.swift */; };
 		CF3AD50820ED16B100FBF514 /* CanariViewWithBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3AD50720ED16B100FBF514 /* CanariViewWithBackground.swift */; };
 		CF3C62F21DD897E000978A09 /* transient-FontRoot-sampleStringBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C62F11DD897E000978A09 /* transient-FontRoot-sampleStringBezierPath.swift */; };
-		CF3DB1201B4EF22300DB418E /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3DB11F1B4EF22300DB418E /* libbz2.1.0.dylib */; };
 		CF3DEFB91BFF92B5002ECBDE /* action-PMFontDocument-addSegmentAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DEFB81BFF92B5002ECBDE /* action-PMFontDocument-addSegmentAction.swift */; };
 		CF3E2DF020EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E2DEF20EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift */; };
 		CF3FD6862104F83D0009B269 /* transient-MergerBoardInstance-instanceDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3FD6852104F83D0009B269 /* transient-MergerBoardInstance-instanceDisplay.swift */; };
@@ -333,16 +332,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CF1623041BE25698001D351B /* Copy Library Updater */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LaunchServices;
-			dstSubfolderSpec = 1;
-			files = (
-			);
-			name = "Copy Library Updater";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CFDBEFFA1BEA1333001CEA4B /* Copy Sparkle Framework */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -690,7 +679,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF3DB1201B4EF22300DB418E /* libbz2.1.0.dylib in Frameworks */,
 				CFACBA241BEA157D0074F5B7 /* Sparkle.framework in Frameworks */,
 				CF747FC71B3C419D00140C49 /* WebKit.framework in Frameworks */,
 			);
@@ -1166,7 +1154,6 @@
 				9DD601BBE69F351039152189 /* Sources */,
 				CF027E821BE4FF5D00BD3A31 /* ShellScript */,
 				F495B6AB9DCF8D3B5C6E0B01 /* Frameworks */,
-				CF1623041BE25698001D351B /* Copy Library Updater */,
 				CFDBEFFA1BEA1333001CEA4B /* Copy Sparkle Framework */,
 			);
 			buildRules = (

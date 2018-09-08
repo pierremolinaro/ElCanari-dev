@@ -66,7 +66,37 @@ let PMFontComment = "PMFontComment"
   }
 
   //····················································································································
-  //    windowControllerDidLoadNib
+  //   Method called by CanariCharacterView, when segments of currently selected characters change
+  //····················································································································
+
+  func defineSegmentsForCurrentCharacter (_ inSegments : [SegmentForFontCharacterClass]) {
+  //--- Search character
+    var possibleCurrentCharacter : FontCharacter? = nil
+    if let codePoint = g_Preferences?.currentCharacterCodePoint {
+      for character in self.rootObject.characters_property.propval {
+        if character.codePoint == codePoint {
+          possibleCurrentCharacter = character
+          break
+        }
+      }
+    }
+  //--- Update segments
+    if let currentCharacter = possibleCurrentCharacter {
+      var newSegmentEntityArray = [SegmentForFontCharacter] ()
+      for segment in inSegments {
+        let newSegment = SegmentForFontCharacter (managedObjectContext: self.managedObjectContext())
+        newSegment.x1 = segment.x1
+        newSegment.y1 = segment.y1
+        newSegment.x2 = segment.x2
+        newSegment.y2 = segment.y2
+        newSegmentEntityArray.append (newSegment)
+      }
+      currentCharacter.segments_property.setProp (newSegmentEntityArray)
+    }
+  }
+  
+  //····················································································································
+  //    HANDLING CURRENT CHARACTER: windowControllerDidLoadNib
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
