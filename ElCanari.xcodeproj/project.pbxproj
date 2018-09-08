@@ -1092,12 +1092,11 @@
 		CFDA57991BFA521A00EEF3CB /* document-font */ = {
 			isa = PBXGroup;
 			children = (
-				CFDBFC592143BA06006780C7 /* arrayController-PMFontDocument-mSelectedCharacterController.swift */,
-				CFDBFC5A2143BA06006780C7 /* selectionController-PMFontDocument-mCharacterSelection.swift */,
 				CF90B77521427D4100E725B0 /* action-PMFontDocument-addCharacterAction.swift */,
 				CF3DEFB81BFF92B5002ECBDE /* action-PMFontDocument-addSegmentAction.swift */,
 				CF58A2CF1DD77E7E00146883 /* action-PMFontDocument-resetVersionAndSignatureAction.swift */,
 				CF0201F81BFF77D10033BA42 /* arrayController-PMFontDocument-mMissingCharsController.swift */,
+				CFDBFC592143BA06006780C7 /* arrayController-PMFontDocument-mSelectedCharacterController.swift */,
 				CFDA57A01BFA533A00EEF3CB /* CanariFontDocument.swift */,
 				CF372C481C033DBE00FFC17A /* CharacterGerberCodeClass.swift */,
 				CF0EFB321C0382BA0035FF76 /* CharacterSegmentListClass.swift */,
@@ -1115,6 +1114,7 @@
 				CFDA579B1BFA524A00EEF3CB /* PMFontDocument.swift */,
 				CFDA579C1BFA524A00EEF3CB /* PMFontDocument.xib */,
 				CF80F9EF1C0089E900EC64EF /* SegmentForFontCharacterClass.swift */,
+				CFDBFC5A2143BA06006780C7 /* selectionController-PMFontDocument-mCharacterSelection.swift */,
 				CFE652CE1DD4B22600BAC27A /* transient-FontCharacter-characterIsDefined.swift */,
 				CFE652CF1DD4B22600BAC27A /* transient-FontCharacter-gerberCode.swift */,
 				CFE652D01DD4B22600BAC27A /* transient-FontCharacter-gerberCodeInstructionCountMessage.swift */,

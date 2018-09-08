@@ -78,7 +78,7 @@ document PMFontDocument root FontRoot {
   outlet EBStepper currentCharacterStepper
     $value prefs.currentCharacterCodePoint {sendContinously:yes}
     $enabled root.characters.count > 1
-   ;
+  ;
     
   outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
   action addSegmentAction ;

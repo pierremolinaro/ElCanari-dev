@@ -24,9 +24,12 @@ extension PMFontDocument {
     //--- Display sheet
       window.beginSheet (panel, completionHandler: { (response : NSModalResponse) in
         if response == NSModalResponseStop, let codePoint = self.mNewCharacterView?.selectedCharacter {
+          var characterSet = self.rootObject.characters_property.propval
           let newCharacter = FontCharacter (managedObjectContext: self.managedObjectContext())
           newCharacter.codePoint = codePoint
-          self.rootObject.characters_property.add (newCharacter)
+          characterSet.append (newCharacter)
+          characterSet = characterSet.sorted (by :{$0.codePoint < $1.codePoint})
+          self.rootObject.characters_property.setProp (characterSet)
           g_Preferences?.currentCharacterCodePoint = codePoint
         }
       })
