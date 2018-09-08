@@ -664,53 +664,56 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   @objc func paste (_ sender : Any?) {
-//  //--- Get General Pasteboard
-//    let pb = NSPasteboard.general ()
-//  //--- Find a matching type name
-//    let possibleMatchingTypeName : String? = pb.availableType (from: [PRIVATE_PASTEBOARD_TYPE])
-//    if let matchingTypeName = possibleMatchingTypeName, let fontDocument = mFontDocument {
-//    //--- Get data from pasteboard
-//      let possibleArchive : Data? = pb.data (forType:matchingTypeName)
-//      if let archive = possibleArchive {
-//      //--- Unarchive to get array of archived objects
-//        let unarchivedObject : Any? = NSUnarchiver.unarchiveObject (with: archive)
-//        if let segmentListObject = unarchivedObject as? [[NSNumber]] {
-//          var segmentEntityArray = self.segmentEntityArray ()
-//          for archivedSegment : [NSNumber] in segmentListObject {
-//            let newSegment = SegmentForFontCharacter (managedObjectContext: fontDocument.managedObjectContext())
-//            newSegment.x1 = archivedSegment [0].intValue
-//            newSegment.y1 = archivedSegment [1].intValue
-//            newSegment.x2 = archivedSegment [2].intValue
-//            newSegment.y2 = archivedSegment [3].intValue
-//            segmentEntityArray.append (newSegment)
-//          }
-////          mFontDocument?.mCharacterSelection.mSelectedObject?.segments_property.setProp (segmentEntityArray)
-//        }
-//      }
-//    }
+  //--- Get General Pasteboard
+    let pb = NSPasteboard.general ()
+  //--- Find a matching type name
+    let possibleMatchingTypeName : String? = pb.availableType (from: [PRIVATE_PASTEBOARD_TYPE])
+    if let matchingTypeName = possibleMatchingTypeName {
+    //--- Get data from pasteboard
+      let possibleArchive : Data? = pb.data (forType:matchingTypeName)
+      if let archive = possibleArchive {
+      //--- Unarchive to get array of archived objects
+        let unarchivedObject : Any? = NSUnarchiver.unarchiveObject (with: archive)
+        if let segmentListObject = unarchivedObject as? [[NSNumber]] {
+          var newSegmentArray = self.mSegmentList
+          self.mSelection.removeAll ()
+          for archivedSegment : [NSNumber] in segmentListObject {
+            let newSegment = SegmentForFontCharacterClass (
+              x1: archivedSegment [0].intValue,
+              y1: archivedSegment [1].intValue,
+              x2: archivedSegment [2].intValue,
+              y2: archivedSegment [3].intValue
+            )
+            newSegmentArray.append (newSegment)
+            self.mSelection.insert (newSegment)
+          }
+          mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
+        }
+      }
+    }
   }
 
   //····················································································································
 
   @objc func copy (_ sender : Any?) {
-//  //--- Declare pasteboard types
-//    let pb = NSPasteboard.general ()
-//    pb.declareTypes ([PRIVATE_PASTEBOARD_TYPE], owner:self)
-//  //--- Copy private representation
-//    var segmentArray = [[NSNumber]] ()
-//    for segment in segmentEntityArray () {
-//      if mSelection.contains (segment) {
-//        let s : [NSNumber] = [
-//          NSNumber (value: segment.x1),
-//          NSNumber (value: segment.y1),
-//          NSNumber (value: segment.x2),
-//          NSNumber (value: segment.y2)
-//        ]
-//        segmentArray.append (s)
-//      }
-//    }
-//    let data = NSArchiver.archivedData (withRootObject: segmentArray)
-//    pb.setData (data, forType: PRIVATE_PASTEBOARD_TYPE)
+  //--- Declare pasteboard types
+    let pb = NSPasteboard.general ()
+    pb.declareTypes ([PRIVATE_PASTEBOARD_TYPE], owner:self)
+  //--- Copy private representation
+    var segmentArray = [[NSNumber]] ()
+    for segment in self.mSegmentList {
+      if mSelection.contains (segment) {
+        let s : [NSNumber] = [
+          NSNumber (value: segment.x1),
+          NSNumber (value: segment.y1),
+          NSNumber (value: segment.x2),
+          NSNumber (value: segment.y2)
+        ]
+        segmentArray.append (s)
+      }
+    }
+    let data = NSArchiver.archivedData (withRootObject: segmentArray)
+    pb.setData (data, forType: PRIVATE_PASTEBOARD_TYPE)
   }
 
   //····················································································································

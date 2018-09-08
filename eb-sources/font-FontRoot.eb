@@ -14,11 +14,11 @@ entity FontRoot {
     prefs.sampleStringSize
   ;
   
-  transient Double sampleStringBezierPathWidth dependsFrom self.sampleStringBezierPath ;
+  transient String sampleStringBezierPathWidth dependsFrom self.sampleStringBezierPath ;
   
-  transient Double sampleStringBezierPathAscent dependsFrom self.sampleStringBezierPath ;
+  transient String sampleStringBezierPathAscent dependsFrom self.sampleStringBezierPath ;
   
-  transient Double sampleStringBezierPathDescent dependsFrom self.sampleStringBezierPath ;
+  transient String sampleStringBezierPathDescent dependsFrom self.sampleStringBezierPath ;
 
   transient String currentCharacterCodePointString dependsFrom prefs.currentCharacterCodePoint, self.characters.all.codePoint ;
 }

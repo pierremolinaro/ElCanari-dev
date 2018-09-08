@@ -118,13 +118,13 @@ class FontRoot : EBManagedObject,
   //   Accessing sampleStringBezierPathWidth transient property
   //····················································································································
 
-  var sampleStringBezierPathWidth_property_selection : EBSelection <Double> {
+  var sampleStringBezierPathWidth_property_selection : EBSelection <String> {
     get {
       return self.sampleStringBezierPathWidth_property.prop
     }
   }
 
-  var sampleStringBezierPathWidth : Double? {
+  var sampleStringBezierPathWidth : String? {
     switch sampleStringBezierPathWidth_property_selection {
     case .empty, .multiple :
       return nil
@@ -137,13 +137,13 @@ class FontRoot : EBManagedObject,
   //   Accessing sampleStringBezierPathAscent transient property
   //····················································································································
 
-  var sampleStringBezierPathAscent_property_selection : EBSelection <Double> {
+  var sampleStringBezierPathAscent_property_selection : EBSelection <String> {
     get {
       return self.sampleStringBezierPathAscent_property.prop
     }
   }
 
-  var sampleStringBezierPathAscent : Double? {
+  var sampleStringBezierPathAscent : String? {
     switch sampleStringBezierPathAscent_property_selection {
     case .empty, .multiple :
       return nil
@@ -156,13 +156,13 @@ class FontRoot : EBManagedObject,
   //   Accessing sampleStringBezierPathDescent transient property
   //····················································································································
 
-  var sampleStringBezierPathDescent_property_selection : EBSelection <Double> {
+  var sampleStringBezierPathDescent_property_selection : EBSelection <String> {
     get {
       return self.sampleStringBezierPathDescent_property.prop
     }
   }
 
-  var sampleStringBezierPathDescent : Double? {
+  var sampleStringBezierPathDescent : String? {
     switch sampleStringBezierPathDescent_property_selection {
     case .empty, .multiple :
       return nil
@@ -214,9 +214,9 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   var sampleStringBezierPath_property = EBTransientProperty_CGPath ()
-  var sampleStringBezierPathWidth_property = EBTransientProperty_Double ()
-  var sampleStringBezierPathAscent_property = EBTransientProperty_Double ()
-  var sampleStringBezierPathDescent_property = EBTransientProperty_Double ()
+  var sampleStringBezierPathWidth_property = EBTransientProperty_String ()
+  var sampleStringBezierPathAscent_property = EBTransientProperty_String ()
+  var sampleStringBezierPathDescent_property = EBTransientProperty_String ()
   var currentCharacterCodePointString_property = EBTransientProperty_String ()
 
   //····················································································································
@@ -1192,19 +1192,19 @@ protocol FontRoot_sampleStringBezierPath : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRoot_sampleStringBezierPathWidth : class {
-  var sampleStringBezierPathWidth : Double? { get }
+  var sampleStringBezierPathWidth : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRoot_sampleStringBezierPathAscent : class {
-  var sampleStringBezierPathAscent : Double? { get }
+  var sampleStringBezierPathAscent : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRoot_sampleStringBezierPathDescent : class {
-  var sampleStringBezierPathDescent : Double? { get }
+  var sampleStringBezierPathDescent : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -29,11 +29,11 @@ import Cocoa
   @IBOutlet var mNewCharacterPanel : NSPanel?
   @IBOutlet var mNewCharacterView : NewCharacterView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mSampleStringAscentTextField : EBDoubleObserverField?
-  @IBOutlet var mSampleStringDescentTextField : EBDoubleObserverField?
+  @IBOutlet var mSampleStringAscentTextField : EBTextObserverField?
+  @IBOutlet var mSampleStringDescentTextField : EBTextObserverField?
   @IBOutlet var mSampleStringField : EBTextField?
   @IBOutlet var mSampleStringSizeField : EBDoubleField?
-  @IBOutlet var mSampleStringWidthTextField : EBDoubleObserverField?
+  @IBOutlet var mSampleStringWidthTextField : EBTextObserverField?
   @IBOutlet var mShowGerberDrawingFlowCheckbox : EBSwitch?
   @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
@@ -305,19 +305,19 @@ import Cocoa
       presentErrorWindow (file: #file,
                               line: #line,
                               errorMessage: "the 'mSampleStringAscentTextField' outlet is nil") ;
-//    }else if !mSampleStringAscentTextField!.isKindOfClass (EBDoubleObserverField) {
+//    }else if !mSampleStringAscentTextField!.isKindOfClass (EBTextObserverField) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mSampleStringAscentTextField' outlet is not an instance of 'EBDoubleObserverField'") ;
+//                              errorMessage: "the 'mSampleStringAscentTextField' outlet is not an instance of 'EBTextObserverField'") ;
     }
     if nil == mSampleStringDescentTextField {
       presentErrorWindow (file: #file,
                               line: #line,
                               errorMessage: "the 'mSampleStringDescentTextField' outlet is nil") ;
-//    }else if !mSampleStringDescentTextField!.isKindOfClass (EBDoubleObserverField) {
+//    }else if !mSampleStringDescentTextField!.isKindOfClass (EBTextObserverField) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mSampleStringDescentTextField' outlet is not an instance of 'EBDoubleObserverField'") ;
+//                              errorMessage: "the 'mSampleStringDescentTextField' outlet is not an instance of 'EBTextObserverField'") ;
     }
     if nil == mSampleStringField {
       presentErrorWindow (file: #file,
@@ -341,10 +341,10 @@ import Cocoa
       presentErrorWindow (file: #file,
                               line: #line,
                               errorMessage: "the 'mSampleStringWidthTextField' outlet is nil") ;
-//    }else if !mSampleStringWidthTextField!.isKindOfClass (EBDoubleObserverField) {
+//    }else if !mSampleStringWidthTextField!.isKindOfClass (EBTextObserverField) {
 //      presentErrorWindow (file: #file,
 //                              line: #line,
-//                              errorMessage: "the 'mSampleStringWidthTextField' outlet is not an instance of 'EBDoubleObserverField'") ;
+//                              errorMessage: "the 'mSampleStringWidthTextField' outlet is not an instance of 'EBTextObserverField'") ;
     }
     if nil == mShowGerberDrawingFlowCheckbox {
       presentErrorWindow (file: #file,
@@ -450,9 +450,9 @@ import Cocoa
     mFontSampleStringView?.bind_bezierPath (self.rootObject.sampleStringBezierPath_property, file: #file, line: #line)
     mFontSampleStringView?.bind_sampleStringFontSize (g_Preferences!.sampleStringSize_property, file: #file, line: #line)
     mSampleStringSizeField?.bind_value (g_Preferences!.sampleStringSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
-    mSampleStringWidthTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathWidth_property, file: #file, line: #line, autoFormatter:false)
-    mSampleStringAscentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathAscent_property, file: #file, line: #line, autoFormatter:false)
-    mSampleStringDescentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathDescent_property, file: #file, line: #line, autoFormatter:false)
+    mSampleStringWidthTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathWidth_property, file: #file, line: #line)
+    mSampleStringAscentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathAscent_property, file: #file, line: #line)
+    mSampleStringDescentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathDescent_property, file: #file, line: #line)
     currentCharacterView?.bind_advance (self.mCharacterSelection.advance_property, file: #file, line: #line)
     currentCharacterView?.bind_characterSegmentList (self.mCharacterSelection.segmentArrayForDrawing_property, file: #file, line: #line)
     currentCharacterView?.bind_transparency (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line)

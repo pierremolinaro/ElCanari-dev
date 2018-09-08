@@ -104,9 +104,9 @@ document PMFontDocument root FontRoot {
 
 #--- Sample String Display
   outlet EBDoubleField mSampleStringSizeField $value prefs.sampleStringSize {sendContinously:no, autoFormatter:no};
-  outlet EBDoubleObserverField mSampleStringWidthTextField $valueObserver root.sampleStringBezierPathWidth {autoFormatter:no};
-  outlet EBDoubleObserverField mSampleStringAscentTextField $valueObserver root.sampleStringBezierPathAscent {autoFormatter:no};
-  outlet EBDoubleObserverField mSampleStringDescentTextField $valueObserver root.sampleStringBezierPathDescent {autoFormatter:no};
+  outlet EBTextObserverField mSampleStringWidthTextField $valueObserver root.sampleStringBezierPathWidth ;
+  outlet EBTextObserverField mSampleStringAscentTextField $valueObserver root.sampleStringBezierPathAscent;
+  outlet EBTextObserverField mSampleStringDescentTextField $valueObserver root.sampleStringBezierPathDescent ;
 
 #--- View
   outlet CanariCharacterView currentCharacterView

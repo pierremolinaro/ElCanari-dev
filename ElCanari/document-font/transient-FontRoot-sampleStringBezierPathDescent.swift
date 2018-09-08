@@ -13,9 +13,9 @@ import Cocoa
 
 func transient_FontRoot_sampleStringBezierPathDescent (
        _ self_sampleStringBezierPath : CGPath
-) -> Double {
+) -> String {
 //--- START OF USER ZONE 2
-  return Double (self_sampleStringBezierPath.boundingBoxOfPath.origin.y)
+  return self_sampleStringBezierPath.isEmpty ? "—" : "\(self_sampleStringBezierPath.boundingBoxOfPath.origin.y)"
 //--- END OF USER ZONE 2
 }
 
