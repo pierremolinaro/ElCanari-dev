@@ -30,8 +30,12 @@ final class Controller_CanariCharacterView_displayDrawingIndexes : EBSimpleContr
   //····················································································································
 
   final private func updateOutlet () {
-    _ = mObject.prop // Required for flushing event
-    mOutlet.updateSegmentDrawingsFromDisplayDrawingIndexesController ()
+    switch mObject.prop {
+    case .empty, .multiple :
+      break
+    case .single (let b) :
+      mOutlet.updateSegmentDrawingsFromDisplayDrawingIndexesController (b)
+    }
   }
 
   //····················································································································

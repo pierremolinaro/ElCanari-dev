@@ -14,7 +14,23 @@ import Cocoa
 extension PMFontDocument {
   @objc func addCharacterAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-
+    if let window = self.windowForSheet, let panel = self.mNewCharacterPanel {
+    //--- Populate table view
+      var implementedCharacterSet = Set <Int> ()
+      for character in rootObject.characters_property.propval {
+        implementedCharacterSet.insert (character.codePoint)
+      }
+      self.mNewCharacterView?.setImplementedCharacterSet (implementedCharacterSet)
+    //--- Display sheet
+      window.beginSheet (panel, completionHandler: { (response : NSModalResponse) in
+        if response == NSModalResponseStop, let codePoint = self.mNewCharacterView?.selectedCharacter {
+          let newCharacter = FontCharacter (managedObjectContext: self.managedObjectContext())
+          newCharacter.codePoint = codePoint
+          self.rootObject.characters_property.add (newCharacter)
+          g_Preferences?.currentCharacterCodePoint = codePoint
+        }
+      })
+    }
 //--- END OF USER ZONE 2
   }
 }

@@ -24,14 +24,28 @@ let PMFontComment = "PMFontComment"
 
   override init () {
     super.init ()
-//    undoManager?.disableUndoRegistration ()
+
+  //--- Add kicad font
+//    let font = kicadFont ()
+//    let keys = font.keys.sorted ()
 //    var characterArray = [FontCharacter] ()
-//    for _ in 0 ..< CANARI_FONT_CHARACTER_COUNT {
+//    for key in keys {
+//      let descriptor = font [key]!
 //      let newCharacter = FontCharacter (managedObjectContext: managedObjectContext())
+//      newCharacter.codePoint = Int (key)
+//      newCharacter.advance = descriptor.advancement
+//      for segment in descriptor.segments {
+//        let newSegment = SegmentForFontCharacter (managedObjectContext: managedObjectContext())
+//        newSegment.x1 = segment.x1
+//        newSegment.y1 = -segment.y1 - 1
+//        newSegment.x2 = segment.x2
+//        newSegment.y2 = -segment.y2 - 1
+//        newCharacter.segments_property.add (newSegment)
+//      }
 //      characterArray.append (newCharacter)
 //    }
 //    rootObject.characters_property.setProp (characterArray)
-//    undoManager?.enableUndoRegistration ()
+//    rootObject.nominalSize = 21
   }
 
   //····················································································································
@@ -55,10 +69,48 @@ let PMFontComment = "PMFontComment"
   //    windowControllerDidLoadNib
   //····················································································································
 
-//  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-//    super.windowControllerDidLoadNib (aController)
-//    windowForSheet?.acceptsMouseMovedEvents = true
-//  }
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+    UserDefaults.standard.addObserver (
+      self,
+      forKeyPath: Preferences_currentCharacterCodePoint,
+      options: .new,
+      context: nil
+    )
+    self.updateCurrentCharacterSelection ()
+  }
+
+  //····················································································································
+
+  fileprivate func updateCurrentCharacterSelection () {
+    if let codePoint = g_Preferences?.currentCharacterCodePoint {
+      for character in self.rootObject.characters_property.propval {
+        if character.codePoint == codePoint {
+          self.mSelectedCharacterController.select (object: character)
+          break
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override func observeValue (forKeyPath keyPath: String?,
+                              of object: Any?,
+                              change: [NSKeyValueChangeKey : Any]?,
+                              context: UnsafeMutableRawPointer?) {
+    if keyPath == Preferences_currentCharacterCodePoint {
+      self.updateCurrentCharacterSelection ()
+    }else{
+      super.observeValue (forKeyPath: keyPath, of: object, change: change, context: context)
+    }
+  }
+
+  //····················································································································
+
+  deinit {
+    UserDefaults.standard.removeObserver (self, forKeyPath:Preferences_currentCharacterCodePoint, context: nil)
+  }
 
   //····················································································································
 

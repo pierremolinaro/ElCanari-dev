@@ -32,8 +32,14 @@ final class Controller_CanariCharacterView_characterGerberCode : EBSimpleControl
   //····················································································································
 
   final private func updateOutlet () {
-    _ = mObject.prop // Required for flushing event
-    mOutlet.updateSegmentDrawingsFromCharacterSegmentListController () // Just for triggering display, mObject value not used
+    let array : CharacterSegmentListClass
+    switch mObject.prop {
+    case .empty, .multiple :
+      array = CharacterSegmentListClass (elements: [])
+    case .single (let a) :
+      array = a
+    }
+    mOutlet.updateSegmentDrawingsFromCharacterSegmentListController (array)
   }
 
   //····················································································································

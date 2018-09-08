@@ -2,9 +2,12 @@
 #     F O N T    D O C U M E N T
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-transient property class SegmentForFontCharacterClass ;
 transient property class CharacterGerberCodeClass ;
 transient property class CharacterSegmentListClass ;
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extern outlet class NewCharacterView ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -44,16 +47,24 @@ document PMFontDocument root FontRoot {
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
 #--- Character controller
-  customObjectController selectedCharacter classForSwift CurrentCharacterController : FontCharacter ;
+  arrayController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
+  selectionController mCharacterSelection : mSelectedCharacterController.selectedArray ;
 
 #--- Advancement
-  outlet EBIntField advancementTextField $value selectedCharacter.advance {sendContinously:yes, autoFormatter:yes} ;
-  outlet EBSlider advancementSlider $intValue selectedCharacter.advance {sendContinously:yes} ;
+  outlet EBIntField advancementTextField $value mCharacterSelection.advance {sendContinously:yes, autoFormatter:yes} ;
+  outlet EBSlider advancementSlider $intValue mCharacterSelection.advance {sendContinously:yes} ;
 
 #--- Transparency
   outlet EBDoubleField transparencyTextField $value prefs.fontEditionTransparency {sendContinously:no, autoFormatter:no} ;
   outlet EBSlider transparencySlider $doubleValue prefs.fontEditionTransparency {sendContinously:yes} ;
 
+#--- Add Character
+  outlet EBButton mAddCharacterButton $run self.addCharacterAction ;
+  action addCharacterAction ;
+  
+  outlet NSPanel mNewCharacterPanel ;
+  outlet NewCharacterView mNewCharacterView ;
+  
 #--- Current Character
   outlet CanariFontCharacterSelectButton mFontCharacterSelectButton
     $codePoint prefs.currentCharacterCodePoint
@@ -66,10 +77,7 @@ document PMFontDocument root FontRoot {
     $value prefs.currentCharacterCodePoint {sendContinously:yes}
     $enabled root.characters.count > 1
    ;
-  
-  outlet EBButton mAddCharacterButton $run self.addCharacterAction ;
-  action addCharacterAction ;
-  
+    
   outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
   action addSegmentAction ;
 
@@ -79,9 +87,9 @@ document PMFontDocument root FontRoot {
   outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value prefs.showGerberDrawingIndexes ;
 
   outlet EBTextObserverField gerberCodeInstructionCountMessageTextField
-    $valueObserver selectedCharacter.gerberCodeInstructionCountMessage
+    $valueObserver mCharacterSelection.gerberCodeInstructionCountMessage
   ;
-  outlet CanariCharacterGerberCodeTableView mGerberCodeTableView $characterGerberCode selectedCharacter.gerberCode ;
+  outlet CanariCharacterGerberCodeTableView mGerberCodeTableView $characterGerberCode mCharacterSelection.gerberCode ;
 
 #--- Sample String
   outlet EBTextField mSampleStringField $value prefs.sampleString {sendContinously:yes};
@@ -92,20 +100,6 @@ document PMFontDocument root FontRoot {
     $sampleStringFontSize prefs.sampleStringSize
   ;
 
-#--- Missing characters inspector
-#  transient String missingCharactersCountString dependsFrom root.characters.all.characterIsDefined ;
-#  outlet EBTextObserverField missingCharactersCountTextField $valueObserver self.missingCharactersCountString ;
-#
-#  transient array MissingCharacter missingCharacterDescriptorArray dependsFrom root.characters.all.characterIsDefined ;
-#
-#  arrayController mMissingCharsController {allowsEmptySelection:yes, allowsMultipleSelection:yes}
-#     self.missingCharacterDescriptorArray
-#  {
-#     column "code" sort idx EBTextObserverField $valueObserver self.code
-#     column "char" EBTextObserverField $valueObserver self.char
-#  }
-#  outlet EBTableView mMissingCharsTableView $tableValue mMissingCharsController ;
-
 #--- Sample String Display
   outlet EBDoubleField mSampleStringSizeField $value prefs.sampleStringSize {sendContinously:no, autoFormatter:no};
   outlet EBDoubleObserverField mSampleStringWidthTextField $valueObserver root.sampleStringBezierPathWidth {autoFormatter:no};
@@ -114,8 +108,8 @@ document PMFontDocument root FontRoot {
 
 #--- View
   outlet CanariCharacterView currentCharacterView
-    $advance selectedCharacter.advance
-    $characterSegmentList selectedCharacter.segmentArrayForDrawing
+    $advance mCharacterSelection.advance
+    $characterSegmentList mCharacterSelection.segmentArrayForDrawing
     $transparency prefs.fontEditionTransparency
     $displayFlow prefs.showGerberDrawingFlow
     $displayDrawingIndexes prefs.showGerberDrawingIndexes

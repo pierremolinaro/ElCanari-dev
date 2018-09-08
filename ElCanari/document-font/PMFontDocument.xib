@@ -21,6 +21,8 @@
                 <outlet property="mFontSampleStringView" destination="1059" id="fwW-MA-q8K"/>
                 <outlet property="mGerberCodeTableView" destination="gZS-PE-KcP" id="UHE-3j-FsM"/>
                 <outlet property="mInspectorSegmentedControl" destination="1333" id="E71-Py-UYn"/>
+                <outlet property="mNewCharacterPanel" destination="ubN-8M-HMA" id="s0a-ss-nme"/>
+                <outlet property="mNewCharacterView" destination="ggH-gl-Jr4" id="SVa-FD-IjF"/>
                 <outlet property="mPageSegmentedControl" destination="iem-62-V3i" id="Lav-hX-Ns1"/>
                 <outlet property="mSampleStringAscentTextField" destination="892" id="l4d-D9-lo6"/>
                 <outlet property="mSampleStringDescentTextField" destination="893" id="ynP-mD-FNN"/>
@@ -437,11 +439,11 @@
                     </buttonCell>
                 </button>
                 <button toolTip="Add Segment" verticalHuggingPriority="750" misplaced="YES" id="1336" customClass="EBButton">
-                    <rect key="frame" x="158" y="449" width="92" height="17"/>
+                    <rect key="frame" x="158" y="444" width="92" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="New Segment" bezelStyle="roundedRect" alignment="center" controlSize="mini" borderStyle="border" inset="2" id="1337">
+                    <buttonCell key="cell" type="roundRect" title="New Segment" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1337">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
                 <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="0Se-yQ-JZO">
@@ -592,21 +594,79 @@
                     <rect key="frame" x="93" y="462" width="59" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="7CA-rI-OPV">
-                        <font key="font" metaFont="systemBold" size="11"/>
+                        <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button toolTip="Add Segment" verticalHuggingPriority="750" misplaced="YES" id="Taw-Kc-Imy" customClass="EBButton">
-                    <rect key="frame" x="158" y="467" width="92" height="17"/>
+                    <rect key="frame" x="158" y="462" width="92" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="New Character…" bezelStyle="roundedRect" alignment="center" controlSize="mini" borderStyle="border" inset="2" id="2Ep-nC-MhV">
+                    <buttonCell key="cell" type="roundRect" title="New Character…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2Ep-nC-MhV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="-272" y="-385.5"/>
+            <point key="canvasLocation" x="-154" y="-474"/>
         </customView>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ubN-8M-HMA" userLabel="Panel: new character selection" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="139" y="81" width="506" height="378"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" misplaced="YES" id="LW9-MX-O6e">
+                <rect key="frame" x="0.0" y="0.0" width="506" height="378"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" id="qfU-ox-vnl">
+                        <rect key="frame" x="106" y="69" width="380" height="289"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" copiesOnScroll="NO" id="Z8P-ja-716">
+                            <rect key="frame" x="1" y="1" width="363" height="287"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <customView id="ggH-gl-Jr4" customClass="NewCharacterView" customModule="ElCanari" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="191" width="163" height="96"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                </customView>
+                            </subviews>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="uX6-wB-BVd">
+                            <rect key="frame" x="-100" y="-100" width="363" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="qYt-fX-f23">
+                            <rect key="frame" x="364" y="1" width="15" height="287"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="HvY-76-oul" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                        <rect key="frame" x="423" y="21" width="57" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1GL-aD-vXf">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="8v6-ti-duU" customClass="CanariCancelButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                        <rect key="frame" x="212" y="21" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tPp-aA-feQ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="589" y="-238"/>
+        </window>
     </objects>
 </document>

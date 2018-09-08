@@ -30,8 +30,12 @@ final class Controller_CanariCharacterView_transparency : EBSimpleController {
   //····················································································································
 
   final private func updateOutlet () {
-    _ = mObject.prop // Required for flushing event
-    mOutlet.updateSegmentDrawingsFromTransparencyController ()
+    switch mObject.prop {
+    case .empty, .multiple :
+      break
+    case .single(let t) :
+      mOutlet.updateSegmentDrawingsFromTransparencyController (CGFloat (t))
+    }
   }
 
   //····················································································································

@@ -80,12 +80,7 @@
 	<key>NSPrincipalClass</key>
 	<string>EBApplication</string>
 	<key>PMBuildString</key>
-	<string>2H66</string>
-	<key>SMPrivilegedExecutables</key>
-	<dict>
-		<key>name.pcmolinaro.canari.LibraryUpdater</key>
-		<string>identifier "name.pcmolinaro.canari.LibraryUpdater" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: pierre@pcmolinaro.name (U399CP39LD)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
-	</dict>
+	<string>2I59</string>
 	<key>SUFeedURL</key>
 	<string>https://raw.githubusercontent.com/pierremolinaro/ElCanari-distribution/master/rss.xml</string>
 	<key>SUPublicDSAKeyFile</key>

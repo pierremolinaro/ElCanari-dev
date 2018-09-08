@@ -10,6 +10,7 @@ import Cocoa
 
 class FontRoot : EBManagedObject,
   FontRoot_comments,
+  FontRoot_nominalSize,
   FontRoot_selectedTab,
   FontRoot_selectedInspector,
   FontRoot_sampleStringBezierPath,
@@ -34,6 +35,25 @@ class FontRoot : EBManagedObject,
   var comments_property_selection : EBSelection <String> {
     get {
       return self.comments_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Accessing nominalSize stored property
+  //····················································································································
+
+  var nominalSize : Int {
+    get {
+      return self.nominalSize_property.propval
+    }
+    set {
+      self.nominalSize_property.setProp (newValue)
+    }
+  }
+
+  var nominalSize_property_selection : EBSelection <Int> {
+    get {
+      return self.nominalSize_property.prop
     }
   }
 
@@ -185,6 +205,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   var comments_property = EBStoredProperty_String ("")
+  var nominalSize_property = EBStoredProperty_Int (14)
   var selectedTab_property = EBStoredProperty_Int (0)
   var selectedInspector_property = EBStoredProperty_Int (0)
 
@@ -327,6 +348,7 @@ class FontRoot : EBManagedObject,
     self.characters_property.addEBObserverOf_codePoint (self.currentCharacterCodePointString_property)
   //--- Install undoers for properties
     self.comments_property.undoManager = undoManager ()
+    self.nominalSize_property.undoManager = undoManager ()
     self.selectedTab_property.undoManager = undoManager ()
     self.selectedInspector_property.undoManager = undoManager ()
   //--- Install owner for relationships
@@ -364,6 +386,14 @@ class FontRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.comments_property.mObserverExplorer,
       valueExplorer:&self.comments_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "nominalSize",
+      idx:self.nominalSize_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.nominalSize_property.mObserverExplorer,
+      valueExplorer:&self.nominalSize_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "selectedTab",
@@ -441,6 +471,8 @@ class FontRoot : EBManagedObject,
   override func clearObjectExplorer () {
     self.comments_property.mObserverExplorer = nil
     self.comments_property.mValueExplorer = nil
+    self.nominalSize_property.mObserverExplorer = nil
+    self.nominalSize_property.mValueExplorer = nil
     self.selectedTab_property.mObserverExplorer = nil
     self.selectedTab_property.mValueExplorer = nil
     self.selectedInspector_property.mObserverExplorer = nil
@@ -456,6 +488,7 @@ class FontRoot : EBManagedObject,
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
     self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+    self.nominalSize_property.storeIn (dictionary: ioDictionary, forKey: "nominalSize")
     self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
     self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
     store (managedObjectArray: characters_property.propval as NSArray, relationshipName:"characters", intoDictionary: ioDictionary) ;
@@ -469,6 +502,7 @@ class FontRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
     self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+    self.nominalSize_property.readFrom (dictionary: inDictionary, forKey:"nominalSize")
     self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
     self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
     self.characters_property.setProp (readEntityArrayFromDictionary (
@@ -581,6 +615,63 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.comments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'nominalSize' stored property
+  //····················································································································
+
+  private var mObserversOf_nominalSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_nominalSize (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_nominalSize.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.nominalSize_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_nominalSize (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_nominalSize.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.nominalSize_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_nominalSize_toElementsOfSet (_ inSet : Set<FontRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_nominalSize {
+        managedObject.nominalSize_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_nominalSize_fromElementsOfSet (_ inSet : Set<FontRoot>) {
+    for observer in mObserversOf_nominalSize {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.nominalSize_property.removeEBObserver (observer)
       }
     }
   }
@@ -1018,6 +1109,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
         removeEBObserversOf_comments_fromElementsOfSet (removedSet)
+        removeEBObserversOf_nominalSize_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectedTab_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
@@ -1030,6 +1122,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
         addEBObserversOf_comments_toElementsOfSet (addedSet)
+        addEBObserversOf_nominalSize_toElementsOfSet (addedSet)
         addEBObserversOf_selectedTab_toElementsOfSet (addedSet)
         addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
@@ -1070,6 +1163,12 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
 protocol FontRoot_comments : class {
   var comments : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_nominalSize : class {
+  var nominalSize : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

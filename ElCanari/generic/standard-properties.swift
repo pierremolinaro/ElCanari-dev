@@ -134,6 +134,7 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
 
 final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProperty <T> {
   weak var undoManager : UndoManager?
+  fileprivate var mPreferenceKey : String?
 
   //····················································································································
 
@@ -147,7 +148,21 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   init (_ inValue : T) {
     mValue = inValue
+    mPreferenceKey = nil
     super.init ()
+  }
+
+  //····················································································································
+
+  init (_ inValue : T, prefKey inPreferenceKey : String) {
+    mValue = inValue
+    mPreferenceKey = inPreferenceKey
+    super.init ()
+  //--- Read from preferences
+    let value : Any? = UserDefaults.standard.object (forKey: inPreferenceKey)
+    if let unwValue : NSObject = value as? NSObject {
+      setProp (T.convertFromNSObject (object:unwValue))
+    }
   }
 
   //····················································································································
@@ -155,6 +170,9 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
   private var mValue : T {
     didSet {
       if mValue != oldValue {
+        if let prefKey = self.mPreferenceKey {
+          UserDefaults.standard.set (mValue.convertToNSObject (), forKey:prefKey)
+        }
         mValueExplorer?.stringValue = "\(mValue)"
         undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
         if logEvents () {
@@ -223,20 +241,20 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   //····················································································································
 
-  func readInPreferencesWithKey (inKey : String) {
-    let ud = UserDefaults.standard
-    let value : Any? = ud.object (forKey:inKey)
-    if let unwValue : NSObject = value as? NSObject {
-      setProp (T.convertFromNSObject (object:unwValue))
-    }
-  }
+//  func readInPreferencesWithKey (inKey : String) {
+//    let ud = UserDefaults.standard
+//    let value : Any? = ud.object (forKey:inKey)
+//    if let unwValue : NSObject = value as? NSObject {
+//      setProp (T.convertFromNSObject (object:unwValue))
+//    }
+//  }
 
   //····················································································································
 
-  func storeInPreferencesWithKey (inKey : String) {
-    let ud = UserDefaults.standard
-    ud.set (mValue.convertToNSObject (), forKey:inKey)
-  }
+  // func storeInPreferencesWithKey (inKey : String) {
+  //  let ud = UserDefaults.standard
+  //  ud.set (mValue.convertToNSObject (), forKey:inKey)
+  // }
 
   //····················································································································
 
@@ -745,6 +763,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
 
 final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
   weak var undoManager : UndoManager?
+  fileprivate var mPreferenceKey : String?
 
   //····················································································································
 
@@ -758,7 +777,21 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   init (_ inValue : T) {
     mValue = inValue
+    mPreferenceKey = nil
     super.init ()
+  }
+
+  //····················································································································
+
+  init (_ inValue : T, prefKey inPreferenceKey : String) {
+    mValue = inValue
+    mPreferenceKey = inPreferenceKey
+    super.init ()
+  //--- Read value from preferences
+    let value : Any? = UserDefaults.standard.object (forKey:inPreferenceKey)
+    if let unwValue : Data = value as? Data {
+      setProp (T.unarchiveFromNSData (data:unwValue) as! T)
+    }
   }
 
   //····················································································································
@@ -766,6 +799,9 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
   private var mValue : T {
     didSet {
       if mValue != oldValue {
+        if let prefKey = self.mPreferenceKey {
+          UserDefaults.standard.set (mValue.archiveToNSData (), forKey:prefKey)
+        }
         mValueExplorer?.stringValue = "\(mValue)"
         undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue)
         if logEvents () {
@@ -834,20 +870,20 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
-  func readInPreferencesWithKey (inKey : String) {
-    let ud = UserDefaults.standard
-    let value : Any? = ud.object (forKey:inKey)
-    if let unwValue : Data = value as? Data {
-      setProp (T.unarchiveFromNSData (data:unwValue) as! T)
-    }
-  }
+//  func readInPreferencesWithKey (inKey : String) {
+//    let ud = UserDefaults.standard
+//    let value : Any? = ud.object (forKey:inKey)
+//    if let unwValue : Data = value as? Data {
+//      setProp (T.unarchiveFromNSData (data:unwValue) as! T)
+//    }
+//  }
 
   //····················································································································
 
-  func storeInPreferencesWithKey (inKey : String) {
-    let ud = UserDefaults.standard
-    ud.set (mValue.archiveToNSData (), forKey:inKey)
-  }
+  // func storeInPreferencesWithKey (inKey : String) {
+  //  let ud = UserDefaults.standard
+  //  ud.set (mValue.archiveToNSData (), forKey:inKey)
+  // }
 
   //····················································································································
 
@@ -1280,15 +1316,6 @@ typealias EBTransientProperty_CanariHorizontalRect = EBTransientValueProperty <C
 
 typealias EBReadOnlyProperty_InstanceIssueArray  = EBReadOnlyValueProperty <InstanceIssueArray>
 typealias EBTransientProperty_InstanceIssueArray = EBTransientValueProperty <InstanceIssueArray>
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class SegmentForFontCharacterClass
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_SegmentForFontCharacterClass  = EBReadOnlyClassProperty <SegmentForFontCharacterClass>
-typealias EBTransientProperty_SegmentForFontCharacterClass = EBTransientClassProperty <SegmentForFontCharacterClass>
-typealias EBReadOnlyPropertyArray_SegmentForFontCharacterClass  = EBReadOnlyClassProperty <[SegmentForFontCharacterClass]>
-typealias EBTransientPropertyArray_SegmentForFontCharacterClass = EBTransientClassProperty <[SegmentForFontCharacterClass]>
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CharacterGerberCodeClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

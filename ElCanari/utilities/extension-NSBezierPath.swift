@@ -1,40 +1,41 @@
 //
-//  extension-CGMutablePath.swift
+//  extension-NSBezierPath.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 13/11/2016.
 //
 //
 
-import Foundation
+import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Extension CGMutablePath
+//  Extension NSBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension CGMutablePath {
+extension NSBezierPath {
 
   //····················································································································
 
-  func addArrow (fillPath : CGMutablePath, to endPoint : CGPoint, arrowSize : CGFloat) {
-    if endPoint != currentPoint {
+  func addArrow (fillPath : NSBezierPath, to endPoint : NSPoint, arrowSize : CGFloat) {
+    if endPoint != self.currentPoint {
    //--- Compute angle
-      let angle = CGPoint.angleInRadian (currentPoint, endPoint)
+      let angle = CGPoint.angleInRadian (self.currentPoint, endPoint)
     //--- Affine transform
-      let tr = CGAffineTransform (translationX:endPoint.x, y:endPoint.y).rotated (by:angle)
+      let tr = NSAffineTransform ()
+      tr.translateX (by: endPoint.x, yBy:endPoint.y)
+      tr.rotate (byRadians:angle)
     //--- Draw path
-      let path = CGMutablePath ()
+      let path = NSBezierPath ()
       path.move (to: CGPoint (x: 0.0, y: 0.0))
-      path.addLine (to:CGPoint (x: -2.0 * arrowSize, y:  arrowSize))
-      path.addCurve (to:CGPoint (x: -2.0 * arrowSize, y: -arrowSize),
-                     control1: CGPoint (x: -arrowSize, y: -arrowSize),
-                     control2: CGPoint (x: -arrowSize, y:  arrowSize),
-                     transform: .identity)
-      path.closeSubpath ()
+      path.line (to:CGPoint (x: -2.0 * arrowSize, y:  arrowSize))
+      path.curve (to:CGPoint (x: -2.0 * arrowSize, y: -arrowSize),
+                  controlPoint1: CGPoint (x: -arrowSize, y: -arrowSize),
+                  controlPoint2: CGPoint (x: -arrowSize, y:  arrowSize))
+      path.close ()
     //--- Add path
-      fillPath.addPath (path, transform:tr)
+      fillPath.append (tr.transform (path))
     //--- Draw line
-      self.addLine (to:endPoint)
+      self.line (to:endPoint)
     }
   }
 

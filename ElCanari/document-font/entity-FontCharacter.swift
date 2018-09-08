@@ -150,16 +150,19 @@ class FontCharacter : EBManagedObject,
   //--- Install compute functions for transients
     self.segmentArrayForDrawing_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.segments_property_selection.kind ()
+        var kind = unwSelf.segments_property_selection.kind ()
+        kind &= unwSelf.segments_property_selection.kind ()
+        kind &= unwSelf.segments_property_selection.kind ()
+        kind &= unwSelf.segments_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.segments_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontCharacter_segmentArrayForDrawing (v0))
+          switch (unwSelf.segments_property_selection, unwSelf.segments_property_selection, unwSelf.segments_property_selection, unwSelf.segments_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_FontCharacter_segmentArrayForDrawing (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -209,7 +212,10 @@ class FontCharacter : EBManagedObject,
       }
     }
   //--- Install property observers for transients
-    self.segments_property.addEBObserverOf_segmentForDrawing (self.segmentArrayForDrawing_property)
+    self.segments_property.addEBObserverOf_x1 (self.segmentArrayForDrawing_property)
+    self.segments_property.addEBObserverOf_y1 (self.segmentArrayForDrawing_property)
+    self.segments_property.addEBObserverOf_x2 (self.segmentArrayForDrawing_property)
+    self.segments_property.addEBObserverOf_y2 (self.segmentArrayForDrawing_property)
     self.segmentArrayForDrawing_property.addEBObserver (self.gerberCode_property)
     self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
   //--- Install undoers for properties
@@ -227,7 +233,10 @@ class FontCharacter : EBManagedObject,
 
   deinit {
   //--- Remove observers
-    self.segments_property.removeEBObserverOf_segmentForDrawing (self.segmentArrayForDrawing_property)
+    self.segments_property.removeEBObserverOf_x1 (self.segmentArrayForDrawing_property)
+    self.segments_property.removeEBObserverOf_y1 (self.segmentArrayForDrawing_property)
+    self.segments_property.removeEBObserverOf_x2 (self.segmentArrayForDrawing_property)
+    self.segments_property.removeEBObserverOf_y2 (self.segmentArrayForDrawing_property)
     self.segmentArrayForDrawing_property.removeEBObserver (self.gerberCode_property)
     self.gerberCode_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property)
   }
@@ -850,7 +859,6 @@ ToManyRelationshipReadWrite_FontCharacter_segments, EBSignatureObserverProtocol 
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
         }
-        removeEBObserversOf_segmentForDrawing_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
@@ -860,7 +868,6 @@ ToManyRelationshipReadWrite_FontCharacter_segments, EBSignatureObserverProtocol 
         for managedObject : SegmentForFontCharacter in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
         }
-        addEBObserversOf_segmentForDrawing_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y1_toElementsOfSet (addedObjectSet)

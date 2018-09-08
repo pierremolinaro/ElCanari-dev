@@ -13,14 +13,23 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_FontCharacter_segmentArrayForDrawing (
-       _ self_segments_segmentForDrawing : [SegmentForFontCharacter_segmentForDrawing]
+       _ self_segments_x1 : [SegmentForFontCharacter_x1],
+       _ self_segments_y1 : [SegmentForFontCharacter_y1],
+       _ self_segments_x2 : [SegmentForFontCharacter_x2],
+       _ self_segments_y2 : [SegmentForFontCharacter_y2]
 ) -> CharacterSegmentListClass {
 //--- START OF USER ZONE 2
   var result = [SegmentForFontCharacterClass] ()
-  for object in self_segments_segmentForDrawing {
-    if let segment = object.segmentForDrawing {
-      result.append (segment)
-    }
+  var idx = 0
+  while idx < self_segments_x1.count {
+    let segment = SegmentForFontCharacterClass (
+      x1 : self_segments_x1 [idx].x1,
+      y1 : self_segments_y1 [idx].y1,
+      x2 : self_segments_x2 [idx].x2,
+      y2 : self_segments_y2 [idx].y2
+    )
+    idx += 1
+    result.append (segment)
   }
   return CharacterSegmentListClass (elements:result)
 //--- END OF USER ZONE 2

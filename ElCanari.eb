@@ -14,7 +14,7 @@ include "eb-sources/font-FontCharacter.eb" ;
 include "eb-sources/font-SegmentForFontCharacter.eb" ;
 include "eb-sources/font-FontRoot.eb" ;
 include "eb-sources/font-FontDocument.eb" ;
-#--- Artworl
+#--- Artwork
 include "eb-sources/artworkDocument.eb" ;
 #--- Merger
 include "eb-sources/PadShape.eb" ;

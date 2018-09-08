@@ -25,6 +25,8 @@ import Cocoa
   @IBOutlet var mFontSampleStringView : CanariFontSampleStringView?
   @IBOutlet var mGerberCodeTableView : CanariCharacterGerberCodeTableView?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mNewCharacterPanel : NSPanel?
+  @IBOutlet var mNewCharacterView : NewCharacterView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mSampleStringAscentTextField : EBDoubleObserverField?
   @IBOutlet var mSampleStringDescentTextField : EBDoubleObserverField?
@@ -63,17 +65,18 @@ import Cocoa
   //    Array Controllers
   //····················································································································
 
+  var mSelectedCharacterController = ArrayController_PMFontDocument_mSelectedCharacterController ()
 
   //····················································································································
   //    Selection Controllers
   //····················································································································
 
+  var mCharacterSelection = SelectionController_PMFontDocument_mCharacterSelection ()
 
   //····················································································································
   //    Custom object Controllers
   //····················································································································
 
-  var selectedCharacter = CurrentCharacterController ()
 
   //····················································································································
   //    Document file path
@@ -105,6 +108,8 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+    mSelectedCharacterController.addExplorer (name: "mSelectedCharacterController", y:&y, view:view)
+    mCharacterSelection.addExplorer (name: "mCharacterSelection", y:&y, view:view)
     super.populateExplorerWindow (&y, view:view)
   }
 
@@ -259,6 +264,24 @@ import Cocoa
 //                              line: #line,
 //                              errorMessage: "the 'mInspectorSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
     }
+    if nil == mNewCharacterPanel {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mNewCharacterPanel' outlet is nil") ;
+//    }else if !mNewCharacterPanel!.isKindOfClass (NSPanel) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mNewCharacterPanel' outlet is not an instance of 'NSPanel'") ;
+    }
+    if nil == mNewCharacterView {
+      presentErrorWindow (file: #file,
+                              line: #line,
+                              errorMessage: "the 'mNewCharacterView' outlet is nil") ;
+//    }else if !mNewCharacterView!.isKindOfClass (NewCharacterView) {
+//      presentErrorWindow (file: #file,
+//                              line: #line,
+//                              errorMessage: "the 'mNewCharacterView' outlet is not an instance of 'NewCharacterView'") ;
+    }
     if nil == mPageSegmentedControl {
       presentErrorWindow (file: #file,
                               line: #line,
@@ -377,9 +400,21 @@ import Cocoa
 //                              errorMessage: "the 'transparencyTextField' outlet is not an instance of 'EBDoubleField'") ;
     }
   //--------------------------- Array controllers
+    self.mSelectedCharacterController.bind_modelAndView (
+      model: self.rootObject.characters_property,
+      tableViewArray: [],
+      ebView: nil,
+      managedObjectContext: self.managedObjectContext (),
+      file: #file,
+      line: #line
+    )
   //--------------------------- Selection controllers
+    mCharacterSelection.bind_selection (
+      model: mSelectedCharacterController.selectedArray_property,
+      file: #file,
+      line: #line
+    )
   //--------------------------- Custom object controllers
-    selectedCharacter.setModel (self.rootObject)
   //--------------------------- Transient compute functions
     self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
   //--------------------------- Install property observers for transients
@@ -389,8 +424,8 @@ import Cocoa
     mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
     mVersionField?.bind_version (self.versionObserver_property, file: #file, line: #line)
     mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
-    advancementTextField?.bind_value (self.selectedCharacter.advance_property, file: #file, line: #line, sendContinously:true, autoFormatter:true)
-    advancementSlider?.bind_intValue (self.selectedCharacter.advance_property, file: #file, line: #line, sendContinously:true)
+    advancementTextField?.bind_value (self.mCharacterSelection.advance_property, file: #file, line: #line, sendContinously:true, autoFormatter:true)
+    advancementSlider?.bind_intValue (self.mCharacterSelection.advance_property, file: #file, line: #line, sendContinously:true)
     transparencyTextField?.bind_value (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     transparencySlider?.bind_doubleValue (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:true)
     mFontCharacterSelectButton?.bind_codePoint (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line)
@@ -398,8 +433,8 @@ import Cocoa
     currentCharacterStepper?.bind_value (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line, sendContinously:true)
     mShowGerberDrawingFlowCheckbox?.bind_value (g_Preferences!.showGerberDrawingFlow_property, file: #file, line: #line)
     mShowGerberDrawingIndexesCheckbox?.bind_value (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
-    gerberCodeInstructionCountMessageTextField?.bind_valueObserver (self.selectedCharacter.gerberCodeInstructionCountMessage_property, file: #file, line: #line)
-    mGerberCodeTableView?.bind_characterGerberCode (self.selectedCharacter.gerberCode_property, file: #file, line: #line)
+    gerberCodeInstructionCountMessageTextField?.bind_valueObserver (self.mCharacterSelection.gerberCodeInstructionCountMessage_property, file: #file, line: #line)
+    mGerberCodeTableView?.bind_characterGerberCode (self.mCharacterSelection.gerberCode_property, file: #file, line: #line)
     mSampleStringField?.bind_value (g_Preferences!.sampleString_property, file: #file, line: #line, sendContinously:true)
     mFontSampleStringView?.bind_bezierPath (self.rootObject.sampleStringBezierPath_property, file: #file, line: #line)
     mFontSampleStringView?.bind_sampleStringFontSize (g_Preferences!.sampleStringSize_property, file: #file, line: #line)
@@ -407,8 +442,8 @@ import Cocoa
     mSampleStringWidthTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathWidth_property, file: #file, line: #line, autoFormatter:false)
     mSampleStringAscentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathAscent_property, file: #file, line: #line, autoFormatter:false)
     mSampleStringDescentTextField?.bind_valueObserver (self.rootObject.sampleStringBezierPathDescent_property, file: #file, line: #line, autoFormatter:false)
-    currentCharacterView?.bind_advance (self.selectedCharacter.advance_property, file: #file, line: #line)
-    currentCharacterView?.bind_characterSegmentList (self.selectedCharacter.segmentArrayForDrawing_property, file: #file, line: #line)
+    currentCharacterView?.bind_advance (self.mCharacterSelection.advance_property, file: #file, line: #line)
+    currentCharacterView?.bind_characterSegmentList (self.mCharacterSelection.segmentArrayForDrawing_property, file: #file, line: #line)
     currentCharacterView?.bind_transparency (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line)
     currentCharacterView?.bind_displayFlow (g_Preferences!.showGerberDrawingFlow_property, file: #file, line: #line)
     currentCharacterView?.bind_displayDrawingIndexes (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
@@ -489,7 +524,9 @@ import Cocoa
   //--------------------------- Uninstall compute functions for transients
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
+    mSelectedCharacterController.unbind_modelAndView ()
   //--------------------------- Unbind selection controllers
+    mCharacterSelection.unbind_selection ()
   //--------------------------- Uninstall property observers for transients
   //--------------------------- Remove targets / actions
     mAddCharacterButton?.target = nil
@@ -509,6 +546,8 @@ import Cocoa
     self.mFontSampleStringView?.ebCleanUp ()
     self.mGerberCodeTableView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
+    self.mNewCharacterPanel?.ebCleanUp ()
+    self.mNewCharacterView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mSampleStringAscentTextField?.ebCleanUp ()
     self.mSampleStringDescentTextField?.ebCleanUp ()

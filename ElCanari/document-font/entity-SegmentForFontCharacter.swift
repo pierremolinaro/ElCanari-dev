@@ -12,8 +12,7 @@ class SegmentForFontCharacter : EBManagedObject,
   SegmentForFontCharacter_x1,
   SegmentForFontCharacter_y1,
   SegmentForFontCharacter_x2,
-  SegmentForFontCharacter_y2,
-  SegmentForFontCharacter_segmentForDrawing {
+  SegmentForFontCharacter_y2 {
 
   //····················································································································
   //   Accessing x1 stored property
@@ -92,25 +91,6 @@ class SegmentForFontCharacter : EBManagedObject,
   }
 
   //····················································································································
-  //   Accessing segmentForDrawing transient property
-  //····················································································································
-
-  var segmentForDrawing_property_selection : EBSelection <SegmentForFontCharacterClass> {
-    get {
-      return self.segmentForDrawing_property.prop
-    }
-  }
-
-  var segmentForDrawing : SegmentForFontCharacterClass? {
-    switch segmentForDrawing_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //    Stored Properties
   //····················································································································
 
@@ -123,7 +103,6 @@ class SegmentForFontCharacter : EBManagedObject,
   //    Transient properties
   //····················································································································
 
-  var segmentForDrawing_property = EBTransientProperty_SegmentForFontCharacterClass ()
 
   //····················································································································
   //    Relationships
@@ -137,34 +116,7 @@ class SegmentForFontCharacter : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
-    self.segmentForDrawing_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.x1_property_selection.kind ()
-        kind &= unwSelf.y1_property_selection.kind ()
-        kind &= unwSelf.x2_property_selection.kind ()
-        kind &= unwSelf.y2_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SegmentForFontCharacter_segmentForDrawing (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
   //--- Install property observers for transients
-    self.x1_property.addEBObserver (self.segmentForDrawing_property)
-    self.y1_property.addEBObserver (self.segmentForDrawing_property)
-    self.x2_property.addEBObserver (self.segmentForDrawing_property)
-    self.y2_property.addEBObserver (self.segmentForDrawing_property)
   //--- Install undoers for properties
     self.x1_property.undoManager = undoManager ()
     self.y1_property.undoManager = undoManager ()
@@ -182,10 +134,6 @@ class SegmentForFontCharacter : EBManagedObject,
 
   deinit {
   //--- Remove observers
-    self.x1_property.removeEBObserver (self.segmentForDrawing_property)
-    self.y1_property.removeEBObserver (self.segmentForDrawing_property)
-    self.x2_property.removeEBObserver (self.segmentForDrawing_property)
-    self.y2_property.removeEBObserver (self.segmentForDrawing_property)
   }
 
   //····················································································································
@@ -227,14 +175,6 @@ class SegmentForFontCharacter : EBManagedObject,
       valueExplorer:&self.y2_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "segmentForDrawing",
-      idx:self.segmentForDrawing_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.segmentForDrawing_property.mObserverExplorer,
-      valueExplorer:&self.segmentForDrawing_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -549,62 +489,6 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   }
 
   //····················································································································
-  //   Observers of 'segmentForDrawing' transient property
-  //····················································································································
-
-  private var mObserversOf_segmentForDrawing = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_segmentForDrawing (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_segmentForDrawing.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.segmentForDrawing_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_segmentForDrawing (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_segmentForDrawing.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.segmentForDrawing_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_segmentForDrawing_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_segmentForDrawing {
-        managedObject.segmentForDrawing_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_segmentForDrawing_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_segmentForDrawing {
-        managedObject.segmentForDrawing_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -647,7 +531,6 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
         removeEBObserversOf_x2_fromElementsOfSet (removedSet)
         removeEBObserversOf_y2_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
-        removeEBObserversOf_segmentForDrawing_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -656,7 +539,6 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
         addEBObserversOf_x2_toElementsOfSet (addedSet)
         addEBObserversOf_y2_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
-        addEBObserversOf_segmentForDrawing_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -707,12 +589,6 @@ protocol SegmentForFontCharacter_x2 : class {
 
 protocol SegmentForFontCharacter_y2 : class {
   var y2 : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SegmentForFontCharacter_segmentForDrawing : class {
-  var segmentForDrawing : SegmentForFontCharacterClass? { get }
 }
 
 
