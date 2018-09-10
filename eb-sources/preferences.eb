@@ -375,6 +375,8 @@ prefs {
   ;
   outlet NSTextField systemLibraryCheckTimeIntervalTitleTextField $hidden !self.checkForSystemLibraryAtStartUp ;
 
+  outlet NSTextView mLibraryUpdateLogTextView ;
+
 #--- Array of additionnal libraries
   array CanariLibraryEntry additionnalLibraryArray ;
   outlet EBTableView mAdditionnalLibraryArrayTableView $tableValue additionnalLibraryArrayController ;
@@ -389,6 +391,7 @@ prefs {
 #--- Add Entry Button
   action addLibraryEntryAction ;
   outlet EBButton mAddLibraryEntryButton $run self.addLibraryEntryAction ;
+
 #--- Remove Entry Button
   outlet EBButton mRemoveLibraryEntryButton
     $run additionnalLibraryArrayController.remove

@@ -15,7 +15,7 @@ extension Preferences {
   @objc func checkLibraryAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     let myWindow = (sender as! NSButton).window!
-    checkLibrary (myWindow, logView:mCheckLibraryResultTextView)
+    checkLibrary (myWindow, logView:self.mCheckLibraryResultTextView)
 //--- END OF USER ZONE 2
   }
 }

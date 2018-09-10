@@ -63,7 +63,7 @@ import SystemConfiguration
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let LOG_LIBRARY_UPDATES = false // When active, downloading is slowed down with sleep (1)
+private let SLOW_DOWNLOAD = false // When active, downloading is slowed down with sleep (1)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -100,42 +100,56 @@ fileprivate func proxy () -> [String] {
 //   LIBRARY UPDATE ENTRY POINT
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func performLibraryUpdate (_ inWindow : EBWindow?) {
-  if LOG_LIBRARY_UPDATES {
-    print ("---- performLibraryUpdate BEGIN (window \(String(describing:inWindow)))")
-  }
+func performLibraryUpdate (_ inWindow : EBWindow?, _ inLogTextView : NSTextView) {
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
   g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
+//-------- Cleat log window
+  inLogTextView.clear ()
 //-------- Show "Check for update" window
   inWindow?.makeKeyAndOrderFront (nil)
 //-------- ① We start by checking if a repository did change using etag
+  inLogTextView.appendMessageString ("Phase 1: repository did change?\n", color: NSColor.purple)
   var possibleAlert : NSAlert? = nil
-  if let etag = getRepositoryCurrentETag (), let _ = getRepositoryCommitSHA () {
-    queryServerLastCommitUsingEtag (etag, &possibleAlert)
+  if let etag = getRepositoryCurrentETag (), let sha = getRepositoryCommitSHA () {
+    inLogTextView.appendSuccessString ("  Current Etag: \(etag)\n")
+    inLogTextView.appendSuccessString ("  Current commit SHA: \(sha)\n")
+    queryServerLastCommitUsingEtag (etag, inLogTextView, &possibleAlert)
   }else{
-    queryServerLastCommitWithNoEtag (&possibleAlert)
+    inLogTextView.appendWarningString ("  No current Etag and/or no current commit SHA\n")
+    queryServerLastCommitWithNoEtag (inLogTextView, &possibleAlert)
   }
 //-------- ② Repository ETAG and commit SHA have been successfully retrieve,
 //            now read of download the file list corresponding to this commit
+  inLogTextView.appendMessageString ("Phase 2: get repository file list\n", color: NSColor.purple)
   var repositoryFileDictionary = [String : CanariLibraryFileDescriptor] ()
   if possibleAlert == nil {
-    readOrDownloadLibraryFileDictionary (&repositoryFileDictionary, &possibleAlert)
+    readOrDownloadLibraryFileDictionary (&repositoryFileDictionary, inLogTextView, &possibleAlert)
+  }else{
+    inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
   }
 //-------- ③ Repository has been successfully interrogated, then enumerate local system library
+  inLogTextView.appendMessageString ("Phase 3: enumerate local system library\n", color: NSColor.purple)
   var libraryFileDictionary = repositoryFileDictionary
   if possibleAlert == nil {
-    try! appendLocalFilesToLibraryFileDictionary (&libraryFileDictionary)
+    appendLocalFilesToLibraryFileDictionary (&libraryFileDictionary, inLogTextView, &possibleAlert)
+  }else{
+    inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
   }
 //-------- ④ Build library operations
+  inLogTextView.appendMessageString ("Phase 4: build operation list\n", color: NSColor.purple)
   var libraryOperations = [LibraryOperationElement] ()
   if possibleAlert == nil {
-    buildLibraryOperations (libraryFileDictionary, &libraryOperations)
+    buildLibraryOperations (libraryFileDictionary, &libraryOperations, inLogTextView)
+  }else{
+    inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
   }
 //-------- ⑤ Order out "Check for update" window
+  inLogTextView.appendMessageString ("Phase 5: library is up to date ?\n", color: NSColor.purple)
   let ok = possibleAlert == nil
   if let window = inWindow {
     if (possibleAlert == nil) && (libraryOperations.count == 0) {
+      inLogTextView.appendSuccessString ("  The library is up to date\n")
       possibleAlert = NSAlert ()
       possibleAlert?.messageText = "The library is up to date"
       possibleAlert?.addButton (withTitle: "Ok")
@@ -151,13 +165,13 @@ func performLibraryUpdate (_ inWindow : EBWindow?) {
   }
 //-------- ⑥ If ok and there are update operations, perform library update
   if ok && (libraryOperations.count != 0) {
-    performLibraryOperations (libraryOperations, repositoryFileDictionary)
+    inLogTextView.appendMessageString ("  Display Update Dialog\n", color: NSColor.purple)
+    performLibraryOperations (libraryOperations, repositoryFileDictionary, inLogTextView)
   }else{
+    if !ok {
+      inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
+    }
     enableItemsAfterCompletion ()
-  }
-//-------- Done
-  if LOG_LIBRARY_UPDATES {
-    print ("---- performLibraryUpdate DONE")
   }
 }
 
@@ -171,17 +185,23 @@ private func enableItemsAfterCompletion () {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func queryServerLastCommitUsingEtag (_ etag : String, _ ioPossibleAlert : inout NSAlert?) {
-  let response = runShellCommandAndGetDataOutput ([
+private func queryServerLastCommitUsingEtag (_ etag : String,
+                                             _ inLogTextView : NSTextView,
+                                             _ ioPossibleAlert : inout NSAlert?) {
+  let command = [
     "/usr/bin/curl",
     "-s", // Silent mode, do not show download progress
     "-i", // Add response header in output
     "-L", // Follow
     "-H", "If-None-Match:\"\(etag)\"",
     "https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches"
-  ] + proxy ())
+  ] + proxy ()
+  inLogTextView.appendMessageString ("  Command: \(command)\n")
+  let response = runShellCommandAndGetDataOutput (command)
+  inLogTextView.appendMessageString ("  Result code: \(response)\n")
   switch response {
   case .error (let errorCode) :
+    inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
     ioPossibleAlert = NSAlert ()
     ioPossibleAlert?.messageText = "Cannot connect to the server"
     ioPossibleAlert?.addButton (withTitle: "Ok")
@@ -189,19 +209,21 @@ private func queryServerLastCommitUsingEtag (_ etag : String, _ ioPossibleAlert 
       ? "No network connection"
       : "Server connection error"
   case .ok (let responseData) :
+    inLogTextView.appendSuccessString ("  Result code means 'Ok'\n")
     if let response = String (data: responseData, encoding: .utf8) {
-      //print ("\(response)")
       let c0 = response.components (separatedBy: "Status: ")
       let c1 = c0 [1].components (separatedBy: " ")
       //print ("C1 \(c1 [0])")
       if let status = Int (c1 [0]) {
-        if LOG_LIBRARY_UPDATES {
-          print ("HTTP status \(status)")
-        }
+        inLogTextView.appendMessageString ("  HTTP Status: \(status)\n", color: NSColor.black)
         if status == 304 { // Status 304 --> not modified, use current repository description file
+          inLogTextView.appendMessageString ("  HTTP Status means 'no repository change, use current description file'\n", color: NSColor.black)
         }else if status == 200 { // Status 200 --> Ok, modified
-          storeRepositoryETagAndLastCommitSHA (withResponse: response, &ioPossibleAlert)
+          inLogTextView.appendMessageString ("  HTTP Status means 'repository did change'\n", color: NSColor.black)
+          storeRepositoryETagAndLastCommitSHA (withResponse: response, inLogTextView, &ioPossibleAlert)
         }
+      }else{
+        inLogTextView.appendErrorString ("  Cannot extract HTTP status from downloaded data\n")
       }
     }
   }
@@ -209,16 +231,20 @@ private func queryServerLastCommitUsingEtag (_ etag : String, _ ioPossibleAlert 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func queryServerLastCommitWithNoEtag (_ ioPossibleAlert : inout NSAlert?) {
-  let response = runShellCommandAndGetDataOutput ([
+private func queryServerLastCommitWithNoEtag (_ inLogTextView : NSTextView, _ ioPossibleAlert : inout NSAlert?) {
+  let command = [
     "/usr/bin/curl",
     "-s", // Silent mode, do not show download progress
     "-i", // Add response header in output
     "-L", // Follow
     "https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches"
-  ] + proxy ())
+  ] + proxy ()
+  inLogTextView.appendMessageString ("  Command: \(command)\n")
+  let response = runShellCommandAndGetDataOutput (command)
+  inLogTextView.appendMessageString ("  Result code: \(response)\n")
   switch response {
   case .error (let errorCode) :
+    inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
     let alert = NSAlert ()
     alert.messageText = "Cannot connect to the server"
     alert.addButton (withTitle: "Ok")
@@ -226,15 +252,18 @@ private func queryServerLastCommitWithNoEtag (_ ioPossibleAlert : inout NSAlert?
       ? "No network connection"
       : "Server connection error"
   case .ok (let responseData) :
+    inLogTextView.appendSuccessString ("  Result code means 'Ok'\n")
     if let response = String (data: responseData, encoding: .utf8) {
-      storeRepositoryETagAndLastCommitSHA (withResponse: response, &ioPossibleAlert)
+      storeRepositoryETagAndLastCommitSHA (withResponse: response, inLogTextView, &ioPossibleAlert)
     }
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : String, _ ioPossibleAlert : inout NSAlert?) {
+private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : String,
+                                                  _ inLogTextView : NSTextView,
+                                                  _ ioPossibleAlert : inout NSAlert?) {
   let components = inResponse.components (separatedBy:"\r\n\r\n")
   if components.count == 2 {
     let jsonData = components [1].data (using: .utf8)!
@@ -242,23 +271,22 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
     //--- Get commit sha
       let jsonArray = try JSONSerialization.jsonObject (with: jsonData) as! NSArray
       let jsonDictionary = jsonArray [0] as! NSDictionary
-      if LOG_LIBRARY_UPDATES {
-        print ("-->  jsonDictionary \(jsonDictionary)")
-      }
       let commitDict = jsonDictionary ["commit"]  as! NSDictionary
       let commitSHA = commitDict ["sha"]  as! String
+      inLogTextView.appendSuccessString ("  Commit SHA: \(commitSHA) has been stored in preferences\n")
       storeRepositoryCommitSHA (commitSHA)
     //--- Get ETag
       let c1 = components [0].components (separatedBy:"ETag: \"")
       let c2 = c1 [1].components (separatedBy:"\"")
       let etag = c2 [0]
-      if LOG_LIBRARY_UPDATES {
-        print ("-->  ETag \(etag)")
-      }
       storeRepositoryCurrentETag (etag)
+      inLogTextView.appendSuccessString ("  Etag: \(etag) has been stored in preferences\n")
     }catch let error {
+      inLogTextView.appendErrorString ("  Error parsing JSON: \(error)\n")
       ioPossibleAlert = NSAlert (error: error)
     }
+  }else{
+    inLogTextView.appendErrorString ("  Invalid HTTP result, has \(components.count) components instead of 2\n")
   }
 }
 
@@ -266,12 +294,12 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
 
 private func readOrDownloadLibraryFileDictionary (
         _ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor],
+        _ inLogTextView : NSTextView,
         _ ioPossibleAlert : inout NSAlert?) {
-  if LOG_LIBRARY_UPDATES {
-    print ("---- readOrDownloadLibraryFileDictionary BEGIN")
-  }
   if libraryDescriptionFileIsValid () {
+    inLogTextView.appendMessageString ("  Local repository image file is valid\n")
     let f = systemLibraryPath () + "/" + repositoryDescriptionFile
+    inLogTextView.appendMessageString ("  Local repository image file is \(f)\n")
     let data = try! Data (contentsOf: URL (fileURLWithPath: f))
     let propertyList = try! PropertyListSerialization.propertyList (from: data, format: nil) as! [[String : String]]
     for entry in propertyList {
@@ -284,14 +312,17 @@ private func readOrDownloadLibraryFileDictionary (
       )
       ioLibraryFileDictionary [filePath] = descriptor
     }
-  }else{
-    let repositoryCommitSHA = getRepositoryCommitSHA ()!
-    let response = runShellCommandAndGetDataOutput ([
+  }else if let repositoryCommitSHA = getRepositoryCommitSHA () {
+    inLogTextView.appendWarningString ("  Local repository image file is not valid: get it from repository\n")
+    let command = [
       "/usr/bin/curl",
       "-s", // Silent mode, do not show download progress
       "-L", // Follow redirections
       "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/\(repositoryCommitSHA)?recursive=1"
-    ] + proxy ())
+    ] + proxy ()
+    inLogTextView.appendMessageString ("  Command: \(command)\n")
+    let response = runShellCommandAndGetDataOutput (command)
+    inLogTextView.appendMessageString ("  Result code: \(response)\n")
     switch response {
     case .error (let errorCode) :
       if errorCode != 6 { // Error #6 is 'no network connection'
@@ -325,68 +356,69 @@ private func readOrDownloadLibraryFileDictionary (
         ioPossibleAlert = NSAlert (error: error)
       }
     }
+  }else{
+    inLogTextView.appendErrorString ("  Repository commit SHA does not exist in preferences\n")
   }
 //--- Print ?
-  if LOG_LIBRARY_UPDATES && (ioPossibleAlert == nil) {
-    print ("*********** Repository contents (repositorySHA:size:path)")
-    for (path, value) in ioLibraryFileDictionary {
-      print ("  \(value.mRepositorySHA):\(value.mSizeInRepository):\(path)")
-    }
-  }
-//------------------
-  if LOG_LIBRARY_UPDATES {
-    print ("---- readOrDownloadLibraryFileDictionary END")
+  inLogTextView.appendMessageString ("  Repository contents (repositorySHA:size:path):\n")
+  for (path, value) in ioLibraryFileDictionary {
+    inLogTextView.appendMessageString ("    (\(value.mRepositorySHA):\(value.mSizeInRepository):\(path))\n")
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func appendLocalFilesToLibraryFileDictionary (_ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor]) throws {
-  if LOG_LIBRARY_UPDATES {
-    print ("---- appendLocalFilesToLibraryFileDictionary")
-  }
-//--- Get library files
-  let fm = FileManager ()
-  if fm.fileExists (atPath: systemLibraryPath ()) {
-    let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
-    for filePath in currentLibraryContents {
-    //--- Eliminate ".DS_store" and description plist file
-      var enter = (filePath.lastPathComponent != ".DS_Store") && (filePath != repositoryDescriptionFile)
-    //--- Eliminate directories
-      if enter {
-        let fullPath = systemLibraryPath () + "/" + filePath
-        var isDirectory : ObjCBool = false
-        _ = fm.fileExists (atPath:fullPath, isDirectory: &isDirectory)
-        enter = !isDirectory.boolValue
-      }
-      if enter {
-        if let descriptor = ioLibraryFileDictionary [filePath] {
-          let localSHA = try computeFileSHA (filePath)
-          let newDescriptor = CanariLibraryFileDescriptor (
-            relativePath: descriptor.mRelativePath,
-            repositorySHA: descriptor.mRepositorySHA,
-            sizeInRepository: descriptor.mSizeInRepository,
-            localSHA: localSHA
-          )
-          ioLibraryFileDictionary [filePath] = newDescriptor
-        }else{
-          let descriptor = CanariLibraryFileDescriptor (
-            relativePath: filePath,
-            repositorySHA: "",
-            sizeInRepository: 0,
-            localSHA: "?"
-          )
-          ioLibraryFileDictionary [filePath] = descriptor
+private func appendLocalFilesToLibraryFileDictionary (
+        _ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor],
+        _ inLogTextView : NSTextView,
+        _ ioPossibleAlert : inout NSAlert?) {
+  do{
+    inLogTextView.appendMessageString ("  System Library path is \(systemLibraryPath ())\n")
+    let fm = FileManager ()
+    if fm.fileExists (atPath: systemLibraryPath ()) {
+      let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
+      for filePath in currentLibraryContents {
+      //--- Eliminate ".DS_store" and description plist file
+        var enter = (filePath.lastPathComponent != ".DS_Store") && (filePath != repositoryDescriptionFile)
+      //--- Eliminate directories
+        if enter {
+          let fullPath = systemLibraryPath () + "/" + filePath
+          var isDirectory : ObjCBool = false
+          _ = fm.fileExists (atPath:fullPath, isDirectory: &isDirectory)
+          enter = !isDirectory.boolValue
+        }
+        if enter {
+          if let descriptor = ioLibraryFileDictionary [filePath] {
+            let localSHA = try computeFileSHA (filePath)
+            let newDescriptor = CanariLibraryFileDescriptor (
+              relativePath: descriptor.mRelativePath,
+              repositorySHA: descriptor.mRepositorySHA,
+              sizeInRepository: descriptor.mSizeInRepository,
+              localSHA: localSHA
+            )
+            ioLibraryFileDictionary [filePath] = newDescriptor
+          }else{
+            let descriptor = CanariLibraryFileDescriptor (
+              relativePath: filePath,
+              repositorySHA: "",
+              sizeInRepository: 0,
+              localSHA: "?"
+            )
+            ioLibraryFileDictionary [filePath] = descriptor
+          }
         }
       }
+      inLogTextView.appendMessageString ("  System Library directory contents:\n")
+      inLogTextView.appendMessageString ("    local SHA:repository SHA:SHA:repository size:file path\n")
+      for descriptor in ioLibraryFileDictionary.values {
+        inLogTextView.appendMessageString ("    \(descriptor.mLocalSHA):\(descriptor.mRepositorySHA):\(descriptor.mSizeInRepository):\(descriptor.mRelativePath)\n")
+      }
+    }else{
+      inLogTextView.appendWarningString ("  System Library directory does not exist\n")
     }
-  }
-  if LOG_LIBRARY_UPDATES {
-    print ("*********** Library descriptor contents (local SHA:repository SHA:SHA:repository size:file path)")
-    for descriptor in ioLibraryFileDictionary.values {
-      print ("  \(descriptor.mLocalSHA):\(descriptor.mRepositorySHA):\(descriptor.mSizeInRepository):\(descriptor.mRelativePath)")
-    }
-    print ("---- appendLocalFilesToLibraryFileDictionary END")
+  }catch let error {
+    inLogTextView.appendErrorString ("  Switch exception \(error)\n")
+    ioPossibleAlert = NSAlert (error: error)
   }
 }
 
@@ -394,23 +426,43 @@ private func appendLocalFilesToLibraryFileDictionary (_ ioLibraryFileDictionary 
 
 private func buildLibraryOperations (
         _ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
-        _ outLibraryOperations : inout [LibraryOperationElement]) {
+        _ outLibraryOperations : inout [LibraryOperationElement],
+        _ inLogTextView : NSTextView) {
+  inLogTextView.appendMessageString ("  Library File Dictionary has \(inLibraryFileDictionary.count) entries\n")
   for descriptor in inLibraryFileDictionary.values {
+    // inLogTextView.appendMessageString ("    \(descriptor.mRelativePath): \(descriptor.mRepositorySHA) \(descriptor.mLocalSHA)\n")
     if descriptor.mRepositorySHA == "" {
-      let element = LibraryOperationElement (relativePath: descriptor.mRelativePath, sizeInRepository: 0, operation: .delete)
+      let element = LibraryOperationElement (
+        relativePath: descriptor.mRelativePath,
+        sizeInRepository: 0,
+        operation: .delete,
+        logTextView: inLogTextView
+      )
       outLibraryOperations.append (element)
-    }else if (descriptor.mRepositorySHA != "") && (descriptor.mLocalSHA == "") {
-      let element = LibraryOperationElement (relativePath: descriptor.mRelativePath, sizeInRepository: descriptor.mSizeInRepository, operation: .download)
+    }else if (descriptor.mRepositorySHA != "") && (descriptor.mLocalSHA == "?") {
+      let element = LibraryOperationElement (
+        relativePath: descriptor.mRelativePath,
+        sizeInRepository: descriptor.mSizeInRepository,
+        operation: .download,
+        logTextView: inLogTextView
+      )
       outLibraryOperations.append (element)
     }else if (descriptor.mRepositorySHA != descriptor.mLocalSHA) {
-      let element = LibraryOperationElement (relativePath: descriptor.mRelativePath, sizeInRepository: descriptor.mSizeInRepository, operation: .update)
+      let element = LibraryOperationElement (
+        relativePath: descriptor.mRelativePath,
+        sizeInRepository: descriptor.mSizeInRepository,
+        operation: .update,
+        logTextView: inLogTextView
+      )
       outLibraryOperations.append (element)
     }
   }
-  if LOG_LIBRARY_UPDATES {
-    print ("*********** Library operations (operation:file path:size in repository)")
+  if outLibraryOperations.count == 0 {
+    inLogTextView.appendMessageString ("  No operation\n")
+  }else{
+    inLogTextView.appendMessageString ("  Library operations (operation:file path:size in repository)\n")
     for op in outLibraryOperations {
-      print ("  \(op.mOperation):\(op.mRelativePath):\(op.mSizeInRepository)")
+      inLogTextView.appendMessageString ("    \(op.mOperation):\(op.mRelativePath):\(op.mSizeInRepository)\n")
     }
   }
 }
@@ -419,7 +471,8 @@ private func buildLibraryOperations (
 
 private func performLibraryOperations (
    _ inLibraryOperations : [LibraryOperationElement],
-   _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor]) {
+   _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
+   _ inLogTextView : NSTextView) {
 //--- Perform library update in main thread
   DispatchQueue.main.async  {
   //--- Configure informative text in library update window
@@ -438,7 +491,7 @@ private func performLibraryOperations (
     g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.doubleValue = 0.0
     g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.isIndeterminate = false
   //--- Configure table view in library update window
-    gCanariLibraryUpdateController = CanariLibraryUpdateController (inLibraryOperations, inRepositoryFileDictionary)
+    gCanariLibraryUpdateController = CanariLibraryUpdateController (inLibraryOperations, inRepositoryFileDictionary, inLogTextView)
     gCanariLibraryUpdateController.bind ()
   //--- Show library update window
     g_Preferences?.mLibraryUpdateWindow?.makeKeyAndOrderFront (nil)
@@ -467,6 +520,7 @@ class LibraryOperationElement : EBObject {
 
   let mRelativePath : String
   let mSizeInRepository : Int
+  let mLogTextView : NSTextView
 
   var mOperation : LibraryOperation {
     willSet {
@@ -481,10 +535,12 @@ class LibraryOperationElement : EBObject {
 
   init (relativePath inRelativePath : String,
         sizeInRepository inSizeInRepository : Int,
-        operation inOperation : LibraryOperation) {
+        operation inOperation : LibraryOperation,
+        logTextView inLogTextView: NSTextView) {
     mRelativePath = inRelativePath
     mOperation = inOperation
     mSizeInRepository = inSizeInRepository
+    mLogTextView = inLogTextView
     super.init ()
   }
 
@@ -568,7 +624,7 @@ class LibraryOperationElement : EBObject {
               self.mOperation = .downloading (data.count * 100 / self.mSizeInRepository)
               inController.updateProgressIndicator ()
             }
-            if LOG_LIBRARY_UPDATES {
+            if SLOW_DOWNLOAD {
               sleep (1)
             }
           }
@@ -611,8 +667,8 @@ class LibraryOperationElement : EBObject {
     //--- Create directory
       let destinationDirectory = fullFilePath.deletingLastPathComponent
       if !fm.fileExists(atPath: destinationDirectory) { // If directory does not exist, creta it
-        if LOG_LIBRARY_UPDATES {
-          NSLog ("Create dir '\(destinationDirectory)'")
+        DispatchQueue.main.async {
+          self.mLogTextView.appendMessageString ("  Create directory '\(destinationDirectory)'")
         }
         try fm.createDirectory (atPath:destinationDirectory, withIntermediateDirectories:true, attributes:nil)
       }else if fm.fileExists (atPath: fullFilePath) { // If file exists, delete it
@@ -642,16 +698,21 @@ class CanariLibraryUpdateController : EBObject {
 
   let mActionArray : [LibraryOperationElement]
   let mRepositoryFileDictionary : [String : CanariLibraryFileDescriptor]
+  let mLogTextView : NSTextView
+
+  var logTextView : NSTextView { return self.mLogTextView }
 
   //····················································································································
   //   Init
   //····················································································································
 
   init (_ inActionArray : [LibraryOperationElement],
-        _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor]) {
+        _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
+        _ inLogTextView : NSTextView) {
     mCurrentActionArray = inActionArray
     mActionArray = inActionArray
     mRepositoryFileDictionary = inRepositoryFileDictionary
+    mLogTextView = inLogTextView
     super.init ()
   }
 
@@ -661,6 +722,7 @@ class CanariLibraryUpdateController : EBObject {
     mCurrentActionArray = []
     mActionArray = []
     mRepositoryFileDictionary = [:]
+    mLogTextView = NSTextView ()
     super.init ()
   }
   
@@ -755,7 +817,7 @@ class CanariLibraryUpdateController : EBObject {
       self.mCurrentParallelActionCount += 1
       self.mActionArray [self.mNextActionIndex - 1].beginAction (self)
     }else if self.mCurrentParallelActionCount == 0 { // Last download did end
-      DispatchQueue.main.async { commitAllActions (self.mActionArray, self.mRepositoryFileDictionary) }
+      DispatchQueue.main.async { commitAllActions (self.mActionArray, self.mRepositoryFileDictionary, self.mLogTextView) }
     }
   }
 
@@ -776,9 +838,6 @@ class CanariLibraryUpdateController : EBObject {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func startLibraryUpdate () {
-  if LOG_LIBRARY_UPDATES {
-    NSLog ("\(#function)")
-  }
 //--- Launch parallel downloads
   for _ in 1...parallelDownloadCount {
     gCanariLibraryUpdateController.launchElementDownload ()
@@ -788,9 +847,6 @@ func startLibraryUpdate () {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func cancelLibraryUpdate () {
-  if LOG_LIBRARY_UPDATES {
-    NSLog ("\(#function)")
-  }
 //--- Cancel current downloadings
   gCanariLibraryUpdateController.cancel ()
   startLibraryUpdate ()
@@ -801,9 +857,11 @@ func cancelLibraryUpdate () {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func commitAllActions (_ inActionArray : [LibraryOperationElement],
-                               _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor]) {
+                               _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
+                               _ inLogTextView : NSTextView) {
 //--- Update UI
   gCanariLibraryUpdateController.unbind ()
+  let logTextView = gCanariLibraryUpdateController.logTextView
   gCanariLibraryUpdateController = CanariLibraryUpdateController ()
 //--- Commit change only if all actions has been successdully completed
   var repositoryFileDictionary = inRepositoryFileDictionary
@@ -831,9 +889,9 @@ private func commitAllActions (_ inActionArray : [LibraryOperationElement],
           try action.commit ()
         }
       //--- Delete orphean directories
-        try deleteOrphanDirectories ()
+        try deleteOrphanDirectories (logTextView)
       //--- Write library description plist file
-        try writeLibraryDescriptionPlistFile (repositoryFileDictionary)
+        try writeLibraryDescriptionPlistFile (repositoryFileDictionary, inLogTextView)
       //--- Completed!
         let alert = NSAlert ()
         alert.messageText = "Update completed, the library is up to date"
@@ -860,10 +918,7 @@ private func commitAllActions (_ inActionArray : [LibraryOperationElement],
 //    deleteOrphanDirectories
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func deleteOrphanDirectories () throws {
-  if LOG_LIBRARY_UPDATES {
-    NSLog ("\(#function)")
-  }
+private func deleteOrphanDirectories (_ inLogTextView : NSTextView) throws {
   let fm = FileManager ()
   let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
   var directoryArray = [String] ()
@@ -876,9 +931,6 @@ private func deleteOrphanDirectories () throws {
     }
   }
   directoryArray.sort ()
-  if LOG_LIBRARY_UPDATES {
-    NSLog ("directories to delete '\(directoryArray.description)")
-  }
   var i=directoryArray.count-1
   while i>=0 {
     let fullPath = directoryArray [i]
@@ -894,9 +946,7 @@ private func deleteOrphanDirectories () throws {
       j += 1
     }
     if (currentDirectoryContents.count == 0) {
-      if LOG_LIBRARY_UPDATES {
-        NSLog ("delete orphean at '\(fullPath)")
-      }
+      inLogTextView.appendMessageString ("  Delete orphean directory at '\(fullPath)\n")
       try fm.removeItem (atPath: fullPath)
     }
     i -= 1
@@ -906,13 +956,12 @@ private func deleteOrphanDirectories () throws {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func writeLibraryDescriptionPlistFile (_ inRepositoryFileDictionary: [String : CanariLibraryFileDescriptor]) throws {
-  if LOG_LIBRARY_UPDATES {
-    print ("--- writeLibraryDescriptionPlistFile")
-    print ("*********** Repository contents (repositorySHA:size:path)")
-    for (path, value) in inRepositoryFileDictionary {
-      print ("  \(value.mRepositorySHA):\(value.mSizeInRepository):\(path)")
-    }
+private func writeLibraryDescriptionPlistFile (
+        _ inRepositoryFileDictionary: [String : CanariLibraryFileDescriptor],
+        _ inLogTextView : NSTextView) throws {
+  inLogTextView.appendMessageString ("  Write Library Description Plist File (repositorySHA:size:path)\n")
+  for (path, value) in inRepositoryFileDictionary {
+    inLogTextView.appendMessageString ("    \(value.mRepositorySHA):\(value.mSizeInRepository):\(path)\n")
   }
 //--- Write plist file
   var dictionaryArray = [[String : String]] ()
@@ -927,10 +976,6 @@ private func writeLibraryDescriptionPlistFile (_ inRepositoryFileDictionary: [St
   let f = systemLibraryPath () + "/" + repositoryDescriptionFile
   try data.write (to: URL (fileURLWithPath: f))
   storeRepositoryFileSHA (sha1 (data))
-//---
-  if LOG_LIBRARY_UPDATES {
-    print ("--- writeLibraryDescriptionPlistFile DONE")
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -999,9 +1044,6 @@ private enum ShellCommandStatus {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func runShellCommandAndGetDataOutput (_ command : [String]) -> ShellCommandStatus {
-  if LOG_LIBRARY_UPDATES {
-    print ("Command \(command)")
-  }
 //--- Separate command and arguments
   let cmd = command [0]
   let args = [String] (command.dropFirst ())
@@ -1028,52 +1070,52 @@ private func runShellCommandAndGetDataOutput (_ command : [String]) -> ShellComm
   fileHandle.closeFile ()
   let status = task.terminationStatus
   if status != 0 {
-    if LOG_LIBRARY_UPDATES {
-      print ("Error \(status)")
-    }
     return .error (status)
   }else{
-    if LOG_LIBRARY_UPDATES {
-      print ("Ok \(data.count) bytes")
-    }
     return .ok (data)
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+private let LIBRARY_REPOSITORY_TAG = "library-repository-etag"
+private let LIBRARY_REPOSITORY_COMMIT_SHA = "library-repository-commit-sha"
+private let LOCAL_IMAGE_FILE_SHA = "library-repository-file-sha"
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 private func getRepositoryCurrentETag () -> String? { // Returns nil if no current description file
-  return UserDefaults ().string (forKey: "library-repository-etag")
+  return UserDefaults ().string (forKey: LIBRARY_REPOSITORY_TAG)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func storeRepositoryCurrentETag (_ inETag : String) {
-  UserDefaults ().set (inETag, forKey: "library-repository-etag")
+  UserDefaults ().set (inETag, forKey: LIBRARY_REPOSITORY_TAG)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func getRepositoryCommitSHA () -> String? { // Returns nil if no current commit
-  return UserDefaults ().string (forKey: "library-repository-commit-sha")
+  return UserDefaults ().string (forKey: LIBRARY_REPOSITORY_COMMIT_SHA)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func storeRepositoryCommitSHA(_ inSHA : String) {
-  UserDefaults ().set (inSHA, forKey: "library-repository-commit-sha")
+  UserDefaults ().set (inSHA, forKey: LIBRARY_REPOSITORY_COMMIT_SHA)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func storeRepositoryFileSHA(_ inSHA : String) {
-  UserDefaults ().set (inSHA, forKey: "library-repository-file-sha")
+  UserDefaults ().set (inSHA, forKey: LOCAL_IMAGE_FILE_SHA)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private func libraryDescriptionFileIsValid () -> Bool {
-  let possibleLibraryDescriptionFileSHA = UserDefaults ().string (forKey: "library-repository-file-sha")
+  let possibleLibraryDescriptionFileSHA = UserDefaults ().string (forKey: LOCAL_IMAGE_FILE_SHA)
   if let libraryDescriptionFileSHA = possibleLibraryDescriptionFileSHA {
     do{
       let actualSHA = try computeFileSHA (repositoryDescriptionFile)

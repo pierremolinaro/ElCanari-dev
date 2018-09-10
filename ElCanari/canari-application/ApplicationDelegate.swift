@@ -21,10 +21,14 @@ import Cocoa
 
   func applicationDidFinishLaunching (_ notification: Notification) {
     if g_Preferences?.checkForSystemLibraryAtStartUp ?? false {
-      let checkDate = g_Preferences?.nextSystemLibraryCheckAtStartUp ?? Date ()
-      if checkDate < Date () {
-        performLibraryUpdate (nil)
-        g_Preferences?.systemLibraryCheckTimeIntervalAction (nil)
+      if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
+        let checkDate = g_Preferences?.nextSystemLibraryCheckAtStartUp ?? Date ()
+        if checkDate < Date () {
+          performLibraryUpdate (nil, logTextView)
+          g_Preferences?.systemLibraryCheckTimeIntervalAction (nil)
+        }
+      }else{
+        NSLog ("g_Preferences?.mLibraryUpdateLogTextView is nil")
       }
     }
   }

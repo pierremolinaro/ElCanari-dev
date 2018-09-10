@@ -202,6 +202,7 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   @IBOutlet var mErrorMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
+  @IBOutlet var mLibraryUpdateLogTextView : NSTextView? = nil
   @IBOutlet var mLibraryUpdateWindow : EBWindow? = nil
   @IBOutlet var mLineColorGridForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
@@ -3545,6 +3546,10 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   //--------------------------- Check mInformativeTextInLibraryUpdateWindow' outlet not nil
     if nil == mInformativeTextInLibraryUpdateWindow {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mInformativeTextInLibraryUpdateWindow' outlet is nil")
+    }
+  //--------------------------- Check mLibraryUpdateLogTextView' outlet not nil
+    if nil == mLibraryUpdateLogTextView {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mLibraryUpdateLogTextView' outlet is nil")
     }
   //--------------------------- Check mLibraryUpdateWindow' outlet not nil
     if nil == mLibraryUpdateWindow {
