@@ -34,52 +34,63 @@ class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
   }
   
   //····················································································································
-
-  override func awakeFromNib () {
-  //--- Background Layer
-    let layer = CAShapeLayer ()
-    layer.path = CGPath (rect: self.bounds.insetBy (dx: 0.5, dy: 0.5), transform: nil)
-    layer.position = CGPoint (x:0.0, y:0.0)
-    layer.fillColor = NSColor.white.cgColor
-    layer.strokeColor = NSColor.black.cgColor
-    layer.lineWidth = 1.0
-    self.layer?.addSublayer (layer)
-  //--- Sample String layer
-    mSampleStringLayer.strokeColor = NSColor.black.cgColor
-    mSampleStringLayer.lineWidth = 2.0
-    mSampleStringLayer.lineCap = kCALineCapRound
-    self.layer?.addSublayer (mSampleStringLayer)
-  }
-
-  //····················································································································
   //  update display
   //····················································································································
 
-  private var mSampleStringLayer = CAShapeLayer ()
+  private var mSampleStringBezierPath = NSBezierPath ()
+  private var mSampleStringSize : CGFloat = 1.0
 
   //····················································································································
 
-  func updateDisplayFromBezierPathController (_ bezierPath : CGPath) {
-    mSampleStringLayer.path = bezierPath
-    mSampleStringLayer.position = CGPoint (
-      x:(self.bounds.size.width - bezierPath.boundingBox.size.width) * 0.5,
-      y:(self.bounds.size.height - bezierPath.boundingBox.size.height) * 0.5
-    )
+  func updateDisplayFromBezierPathController (_ inBezierPath : NSBezierPath) {
+    self.mSampleStringBezierPath = inBezierPath
+    self.needsDisplay = true
   }
 
   //····················································································································
   
   func updateDisplayFromFontSizeController (_ fontSize : Double) {
-    mSampleStringLayer.lineWidth = 2.0 * CGFloat (fontSize) / 14.0
+    self.mSampleStringSize = 2.0 * CGFloat (fontSize) / 14.0
+    self.needsDisplay = true
   }
   
+  //····················································································································
+  //  isOpaque
+  //····················································································································
+
+  override var isOpaque : Bool { return true }
+
+  //····················································································································
+  //  drawRect
+  //····················································································································
+
+  override func draw (_ inDirtyRect: NSRect) {
+    NSColor.white.setFill ()
+    NSRectFill (inDirtyRect)
+    NSColor.black.setStroke ()
+    var bp = NSBezierPath (rect:self.bounds.insetBy(dx: 0.5, dy: 0.5))
+    bp.lineWidth = 1.0
+    bp.stroke ()
+    if !self.mSampleStringBezierPath.isEmpty {
+      let size = self.mSampleStringBezierPath.bounds.size
+      let tr = NSAffineTransform ()
+      tr.translateX (by: (self.bounds.size.width - size.width) * 0.5, yBy: (self.bounds.size.height - size.height) * 0.5)
+      bp = tr.transform (self.mSampleStringBezierPath)
+      NSColor.black.setStroke ()
+      bp.lineWidth = self.mSampleStringSize
+      bp.lineJoinStyle = .roundLineJoinStyle
+      bp.lineCapStyle = .roundLineCapStyle
+      bp.stroke ()
+    }
+  }
+
   //····················································································································
   //  $bezierPath binding
   //····················································································································
 
   private var mBezierPathBindingController : Controller_CanariFontSampleStringView_bezierPath?
 
-  final func bind_bezierPath (_ object:EBReadOnlyProperty_CGPath, file:String, line:Int) {
+  final func bind_bezierPath (_ object:EBReadOnlyProperty_NSBezierPath, file:String, line:Int) {
     mBezierPathBindingController = Controller_CanariFontSampleStringView_bezierPath (object:object, outlet:self)
   }
 

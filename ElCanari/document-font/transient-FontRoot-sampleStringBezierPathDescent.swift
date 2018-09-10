@@ -12,10 +12,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_FontRoot_sampleStringBezierPathDescent (
-       _ self_sampleStringBezierPath : CGPath
+       _ self_sampleStringBezierPath : NSBezierPath
 ) -> String {
 //--- START OF USER ZONE 2
-  return self_sampleStringBezierPath.isEmpty ? "—" : "\(self_sampleStringBezierPath.boundingBoxOfPath.origin.y)"
+  return self_sampleStringBezierPath.isEmpty ? "—" : "\(self_sampleStringBezierPath.bounds.origin.y)"
 //--- END OF USER ZONE 2
 }
 

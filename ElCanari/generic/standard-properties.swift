@@ -1233,6 +1233,15 @@ typealias EBTransientProperty_EBShapeLayer = EBTransientValueProperty <EBShapeLa
 typealias EBReadOnlyProperty_EBShapeLayerArray  = EBReadOnlyValueProperty <EBShapeLayerArray>
 typealias EBTransientProperty_EBShapeLayerArray = EBTransientValueProperty <EBShapeLayerArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class NSBezierPath
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_NSBezierPath  = EBReadOnlyClassProperty <NSBezierPath>
+typealias EBTransientProperty_NSBezierPath = EBTransientClassProperty <NSBezierPath>
+typealias EBReadOnlyPropertyArray_NSBezierPath  = EBReadOnlyClassProperty <[NSBezierPath]>
+typealias EBTransientPropertyArray_NSBezierPath = EBTransientClassProperty <[NSBezierPath]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CGPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

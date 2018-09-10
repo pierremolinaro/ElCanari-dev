@@ -7,7 +7,7 @@ entity FontRoot {
   property Int selectedTab default 0 ;
   property Int selectedInspector default 0 ;
 
-  transient CGPath sampleStringBezierPath dependsFrom
+  transient NSBezierPath sampleStringBezierPath dependsFrom
     self.nominalSize,
     self.characters.all.segmentArrayForDrawing,
     self.characters.all.advance,

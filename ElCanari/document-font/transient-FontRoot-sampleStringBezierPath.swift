@@ -17,7 +17,7 @@ func transient_FontRoot_sampleStringBezierPath (
        _ self_characters_advance : [FontCharacter_advance],
        _ prefs_sampleString : String,           
        _ prefs_sampleStringSize : Double
-) -> CGPath {
+) -> NSBezierPath {
 //--- START OF USER ZONE 2
   func toCocoa (_ value : Int) -> CGFloat {
     return CGFloat (value) * CGFloat (prefs_sampleStringSize) / CGFloat (self_nominalSize)
@@ -26,15 +26,15 @@ func transient_FontRoot_sampleStringBezierPath (
 //  let sampleStringASUnicodeArray : [UInt32] = g_5F_Preferences_21__2E_sampleString_2.unicodeScalars.map { $0.value }
   let sampleStringAsMacRomanData = prefs_sampleString.data (using: .macOSRoman, allowLossyConversion: true)!
   var currentX : CGFloat = 0.0
-  let path = CGMutablePath ()
+  let path = NSBezierPath ()
   for unicodeCharacter in sampleStringAsMacRomanData { // sampleStringASUnicodeArray {
     let characterIndex = Int (unicodeCharacter) - 32
     if characterIndex < self_characters_segmentArrayForDrawing.count {
       let segmentArrayDescriptor : FontCharacter_segmentArrayForDrawing = self_characters_segmentArrayForDrawing [characterIndex]
       if let segmentArray = segmentArrayDescriptor.segmentArrayForDrawing {
         for segment in segmentArray.code {
-          path.move    (to: CGPoint (x: currentX + toCocoa (segment.x1), y: toCocoa (segment.y1)))
-          path.addLine (to: CGPoint (x: currentX + toCocoa (segment.x2), y: toCocoa (segment.y2)))
+          path.move (to: NSPoint (x: currentX + toCocoa (segment.x1), y: toCocoa (segment.y1)))
+          path.line (to: NSPoint (x: currentX + toCocoa (segment.x2), y: toCocoa (segment.y2)))
         }
       }
     }

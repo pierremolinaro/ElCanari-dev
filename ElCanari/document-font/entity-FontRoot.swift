@@ -99,13 +99,13 @@ class FontRoot : EBManagedObject,
   //   Accessing sampleStringBezierPath transient property
   //····················································································································
 
-  var sampleStringBezierPath_property_selection : EBSelection <CGPath> {
+  var sampleStringBezierPath_property_selection : EBSelection <NSBezierPath> {
     get {
       return self.sampleStringBezierPath_property.prop
     }
   }
 
-  var sampleStringBezierPath : CGPath? {
+  var sampleStringBezierPath : NSBezierPath? {
     switch sampleStringBezierPath_property_selection {
     case .empty, .multiple :
       return nil
@@ -213,7 +213,7 @@ class FontRoot : EBManagedObject,
   //    Transient properties
   //····················································································································
 
-  var sampleStringBezierPath_property = EBTransientProperty_CGPath ()
+  var sampleStringBezierPath_property = EBTransientProperty_NSBezierPath ()
   var sampleStringBezierPathWidth_property = EBTransientProperty_String ()
   var sampleStringBezierPathAscent_property = EBTransientProperty_String ()
   var sampleStringBezierPathDescent_property = EBTransientProperty_String ()
@@ -1189,7 +1189,7 @@ protocol FontRoot_selectedInspector : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol FontRoot_sampleStringBezierPath : class {
-  var sampleStringBezierPath : CGPath? { get }
+  var sampleStringBezierPath : NSBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

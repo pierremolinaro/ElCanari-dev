@@ -17,7 +17,7 @@ binding CanariCharacterGerberCodeTableView $characterGerberCode : transient Char
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariFontSampleStringView ;
-binding CanariFontSampleStringView $bezierPath : transient CGPath ;
+binding CanariFontSampleStringView $bezierPath : transient NSBezierPath ;
 binding CanariFontSampleStringView $sampleStringFontSize : transient Double ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

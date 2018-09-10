@@ -191,7 +191,7 @@
             </subviews>
             <point key="canvasLocation" x="-248" y="-313"/>
         </customView>
-        <customView wantsLayer="YES" misplaced="YES" id="1057" userLabel="Page : Font" customClass="CanariViewWithKeyView">
+        <customView misplaced="YES" id="1057" userLabel="Page : Font" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="700" height="491"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -231,7 +231,7 @@
                         <outlet property="mView1" destination="883" id="W5K-9o-0Re"/>
                     </connections>
                 </segmentedControl>
-                <customView wantsLayer="YES" focusRingType="exterior" misplaced="YES" id="1058" customClass="CanariCharacterView" customModule="ElCanari" customModuleProvider="target">
+                <customView focusRingType="exterior" misplaced="YES" id="1058" customClass="CanariCharacterView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="279" y="0.0" width="401" height="390"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <connections>
@@ -266,7 +266,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="1217" y="-406"/>
+            <point key="canvasLocation" x="2141" y="-443"/>
         </customView>
         <customView id="1094" userLabel="Page : Infos" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="690" height="480"/>
@@ -340,7 +340,7 @@
                     <rect key="frame" x="0.0" y="399" width="107" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Advancement" id="1270">
-                        <font key="font" metaFont="systemBold" size="11"/>
+                        <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -387,7 +387,7 @@
                     <rect key="frame" x="0.0" y="353" width="154" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Transparency for Edition" id="Yce-gT-D6M">
-                        <font key="font" metaFont="systemBold" size="11"/>
+                        <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -402,10 +402,10 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="1319">
-                    <rect key="frame" x="0.0" y="306" width="81" height="17"/>
+                    <rect key="frame" x="1" y="306" width="89" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Gerber Code :" id="1320">
-                        <font key="font" metaFont="systemBold" size="11"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Gerber Code" id="1320">
+                        <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -588,10 +588,10 @@
                     </buttonCell>
                 </button>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="1314" customClass="EBTextObserverField">
-                    <rect key="frame" x="85" y="308" width="133" height="14"/>
+                    <rect key="frame" x="92" y="308" width="133" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="…nnn instructions…" id="1315">
-                        <font key="font" metaFont="system" size="11"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -619,7 +619,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="-398" y="-354"/>
+            <point key="canvasLocation" x="-398" y="-354.5"/>
         </customView>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ubN-8M-HMA" userLabel="Panel: new character selection" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>

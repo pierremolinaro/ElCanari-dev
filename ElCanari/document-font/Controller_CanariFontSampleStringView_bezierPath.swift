@@ -15,12 +15,12 @@ import Cocoa
 
 final class Controller_CanariFontSampleStringView_bezierPath : EBSimpleController {
 
-  private let mObject : EBReadOnlyProperty_CGPath
+  private let mObject : EBReadOnlyProperty_NSBezierPath
   private let mOutlet : CanariFontSampleStringView
 
   //····················································································································
 
-  init (object : EBReadOnlyProperty_CGPath, outlet : CanariFontSampleStringView) {
+  init (object : EBReadOnlyProperty_NSBezierPath, outlet : CanariFontSampleStringView) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object], outlet:outlet)

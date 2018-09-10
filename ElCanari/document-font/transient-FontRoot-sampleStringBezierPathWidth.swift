@@ -12,10 +12,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_FontRoot_sampleStringBezierPathWidth (
-       _ self_sampleStringBezierPath : CGPath
+       _ self_sampleStringBezierPath : NSBezierPath
 ) -> String {
 //--- START OF USER ZONE 2
-  return self_sampleStringBezierPath.isEmpty ? "—" : "\(self_sampleStringBezierPath.boundingBoxOfPath.width)"
+  return self_sampleStringBezierPath.isEmpty ? "—" : "\(self_sampleStringBezierPath.bounds.width)"
 //--- END OF USER ZONE 2
 }
 
