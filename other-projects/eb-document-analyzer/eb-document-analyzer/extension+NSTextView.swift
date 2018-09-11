@@ -39,10 +39,10 @@ extension NSTextView {
 
   //····················································································································
 
-  func appendAttributedString (inAttributedString : NSAttributedString) {
+  func appendAttributedString (_ inAttributedString : NSAttributedString) {
     if let unwrappedLayoutManager = layoutManager {
       if let ts = unwrappedLayoutManager.textStorage {
-        ts.appendAttributedString (inAttributedString)
+        ts.append (inAttributedString)
         displayAndScrollToEndOfText ()
       }
     }
@@ -50,15 +50,15 @@ extension NSTextView {
 
   //····················································································································
 
-  func appendMessageString (inString : String) {
+  func appendMessageString (_ inString : String) {
     let attributes : [String : NSObject] = [
-      NSFontAttributeName : NSFont.systemFontOfSize (NSFont.systemFontSize ()),
-      NSForegroundColorAttributeName : NSColor.blackColor()
+      NSFontAttributeName : NSFont.systemFont (ofSize: NSFont.systemFontSize ()),
+      NSForegroundColorAttributeName : NSColor.black
     ]
     let str = NSAttributedString (string:inString, attributes:attributes)
     if let unwrappedLayoutManager = layoutManager {
       if let ts = unwrappedLayoutManager.textStorage {
-        ts.appendAttributedString (str)
+        ts.append (str)
         displayAndScrollToEndOfText ()
       }
     }
@@ -66,15 +66,15 @@ extension NSTextView {
 
   //····················································································································
 
-  func appendMessageString (inString : String, color:NSColor) {
+  func appendMessageString (_ inString : String, color:NSColor) {
     let attributes : [String : NSObject] = [
-      NSFontAttributeName : NSFont.systemFontOfSize (NSFont.systemFontSize ()),
+      NSFontAttributeName : NSFont.systemFont (ofSize: NSFont.systemFontSize ()),
       NSForegroundColorAttributeName : color
     ]
     let str = NSAttributedString (string:inString, attributes:attributes)
     if let unwrappedLayoutManager = layoutManager {
       if let ts = unwrappedLayoutManager.textStorage {
-        ts.appendAttributedString (str)
+        ts.append (str)
         displayAndScrollToEndOfText ()
       }
     }
@@ -82,25 +82,25 @@ extension NSTextView {
 
   //····················································································································
 
-  func appendErrorString (inString : String) {
-    appendMessageString (inString, color:NSColor.redColor ())
+  func appendErrorString (_ inString : String) {
+    appendMessageString (inString, color:NSColor.red)
   }
   
   //····················································································································
 
-  func appendWarningString (inString : String) {
-    appendMessageString (inString, color:NSColor.orangeColor ())
+  func appendWarningString (_ inString : String) {
+    appendMessageString (inString, color:NSColor.orange)
   }
 
   //····················································································································
 
-  func appendSuccessString (inString : String) {
-    appendMessageString (inString, color:NSColor.blueColor ())
+  func appendSuccessString (_ inString : String) {
+    appendMessageString (inString, color:NSColor.blue)
   }
   
   //····················································································································
 
-  func appendByte (byte : UInt8) {
+  func appendByte (_ byte : UInt8) {
     appendMessageString (String (format:" %02X", byte))
   }
 

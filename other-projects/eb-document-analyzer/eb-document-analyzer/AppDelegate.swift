@@ -25,11 +25,12 @@ import Cocoa
     op.allowsMultipleSelection = false
     op.canChooseDirectories = false
     op.canChooseFiles = true
-    op.beginWithCompletionHandler ({ (inReturnCode : Int) in
+    op.begin (completionHandler: { (inReturnCode : Int) in
       if inReturnCode == NSModalResponseOK {
-        let URLToAdd : NSURL = op.URLs [0]
-        NSDocumentController.sharedDocumentController ().noteNewRecentDocumentURL (URLToAdd)
-        if let pathToAdd = URLToAdd.path, textView = self.mResultTextView {
+        let URLToAdd : URL = op.urls [0]
+        NSDocumentController.shared ().noteNewRecentDocumentURL (URLToAdd)
+        if let textView = self.mResultTextView {
+          let pathToAdd = URLToAdd.path
           do{
             try analyze (pathToAdd, textView:textView)
           }catch let error as NSError {
@@ -44,7 +45,7 @@ import Cocoa
 
   //····················································································································
 
-  func application (sender: NSApplication, openFile filename: String) -> Bool {
+  func application (_ sender: NSApplication, openFile filename: String) -> Bool {
     if let textView = self.mResultTextView {
       do{
         try analyze (filename, textView:textView)

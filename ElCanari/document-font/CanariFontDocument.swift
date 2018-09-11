@@ -51,7 +51,7 @@ let PMFontComment = "PMFontComment"
   //····················································································································
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
-     metadataDictionary.setObject (NSNumber (value:version), forKey:PMFontVersion as NSCopying)
+     metadataDictionary.setObject (NSNumber (value: version), forKey: PMFontVersion as NSCopying)
      metadataDictionary.setObject (rootObject.comments, forKey:PMFontComment as NSCopying)
   }
 

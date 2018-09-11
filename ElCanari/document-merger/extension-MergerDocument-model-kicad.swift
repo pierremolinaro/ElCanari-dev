@@ -32,16 +32,16 @@ fileprivate struct TemporaryBoardModel {
   var mFrontLayoutTextEntities = [SegmentEntity] ()
   var mBackLayoutTextEntities = [SegmentEntity] ()
 
-  let mBoardRect : CanariHorizontalRect
+  let mBoardRect_mm : NSRect
   let mKicadFont : [UInt32 : KicadChar]
   let mLeftMM  : CGFloat
   let mBottomMM : CGFloat
 
-  init (boardRect inBoardRect : CanariHorizontalRect,
+  init (boardRectMM inBoardRect_mm : NSRect,
         kicadFont inKicadFont : [UInt32 : KicadChar],
         leftMM inLeftMM: CGFloat,
         bottomMM inBottomMM : CGFloat) {
-    mBoardRect = inBoardRect
+    mBoardRect_mm = inBoardRect_mm
     mKicadFont = inKicadFont
     mLeftMM = inLeftMM
     mBottomMM = inBottomMM
@@ -177,7 +177,7 @@ extension MergerDocument {
       let bottomMM = canariUnitToMillimeter (bottom)
       let modelWidthMM = rightMM - leftMM
       let modelHeightMM = bottomMM - topMM // in Kicad, the Y-axis is pointing down
-      let boardRect = CanariHorizontalRect (left: 0, bottom: 0, width: right - left, height: bottom - top)
+      let boardRect_mm = NSRect (x: 0.0, y: 0.0, width: canariUnitToMillimeter (right - left), height: canariUnitToMillimeter (bottom - top))
       // Swift.print ("Board size \(modelWidth) mm • \(modelHeight) mm")
       boardModel.modelWidth  = millimeterToCanariUnit (modelWidthMM)
       boardModel.modelWidthUnit = ONE_MILLIMETER_IN_CANARI_UNIT
@@ -187,7 +187,7 @@ extension MergerDocument {
       boardModel.modelLimitWidthUnit = ONE_MILLIMETER_IN_CANARI_UNIT
     //--- Collect datas
       var temporaryBoardModel = TemporaryBoardModel (
-        boardRect: boardRect,
+        boardRectMM: boardRect_mm,
         kicadFont: inKicadFont,
         leftMM: leftMM,
         bottomMM: bottomMM
@@ -451,7 +451,7 @@ extension MergerDocument {
         font: ioTemporaryBoardModel.mKicadFont,
         leftMM: ioTemporaryBoardModel.mLeftMM,
         bottomMM: ioTemporaryBoardModel.mBottomMM,
-        boardRect: ioTemporaryBoardModel.mBoardRect,
+        boardRect: ioTemporaryBoardModel.mBoardRect_mm,
         moc: self.managedObjectContext()
       )
       if textLayer == "F.Cu" {
@@ -525,7 +525,7 @@ extension MergerDocument {
             font: ioTemporaryBoardModel.mKicadFont,
             leftMM: ioTemporaryBoardModel.mLeftMM,
             bottomMM: ioTemporaryBoardModel.mBottomMM,
-            boardRect: ioTemporaryBoardModel.mBoardRect,
+            boardRect: ioTemporaryBoardModel.mBoardRect_mm,
             moc: self.managedObjectContext ()
           )
           if (kind == "reference") && (textLayer == "F.SilkS") {
@@ -547,10 +547,10 @@ extension MergerDocument {
           let start = moduleTransform.transform (NSPoint (x: startX, y: startY))
           let end = moduleTransform.transform (NSPoint (x: endX, y: endY))
           if let packageLine = clippedSegment (
-            p1: CGPoint (x: start.x, y: start.y),
-            p2: CGPoint (x: end.x, y: end.y),
-            width: millimeterToCanariUnit (widthMM),
-            clipRect: ioTemporaryBoardModel.mBoardRect,
+            p1_mm: CGPoint (x: start.x, y: start.y),
+            p2_mm: CGPoint (x: end.x, y: end.y),
+            width_mm: widthMM,
+            clipRect_mm: ioTemporaryBoardModel.mBoardRect_mm,
             moc: self.managedObjectContext()
           ) {
             if layer == "F.Cu" {
@@ -766,19 +766,19 @@ extension MergerDocument {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://en.wikipedia.org/wiki/Cohen–Sutherland_algorithm
 
-func clippedSegment (p1 inP1 : CGPoint,
-                     p2 inP2 : CGPoint,
-                     width inWith : Int,
-                     clipRect inClipRect: CanariHorizontalRect,
+func clippedSegment (p1_mm inP1 : NSPoint,
+                     p2_mm inP2 : NSPoint,
+                     width_mm inWith : CGFloat,
+                     clipRect_mm inClipRect: NSRect,
                      moc inMOC: EBManagedObjectContext) -> SegmentEntity? {
-  let r : CGRect = inClipRect.insetBy (dx: inWith / 2, dy: inWith / 2).cocoaRect ()
+  let r : CGRect = inClipRect.insetBy (dx: inWith / 2.0, dy: inWith / 2.0)
   if let (p1, p2) = r.clippedSegment (p1: inP1, p2: inP2) {
     let segment = SegmentEntity (managedObjectContext: inMOC)
     segment.x1 = millimeterToCanariUnit (p1.x)
     segment.y1 = millimeterToCanariUnit (p1.y)
     segment.x2 = millimeterToCanariUnit (p2.x)
     segment.y2 = millimeterToCanariUnit (p2.y)
-    segment.width = inWith
+    segment.width = millimeterToCanariUnit (inWith)
     return segment
   }else{
     return nil

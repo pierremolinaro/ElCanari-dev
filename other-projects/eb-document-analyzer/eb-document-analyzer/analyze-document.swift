@@ -15,16 +15,16 @@ private let kFormatSignature = "PM-BINARY-FORMAT"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func analyze (inFilePath : String, textView : NSTextView) throws {
+func analyze (_ inFilePath : String, textView : NSTextView) throws {
 //--- Read data
-  let fileData = try NSData (contentsOfFile:inFilePath, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+  let fileData = try Data (contentsOf: URL(fileURLWithPath: inFilePath), options: NSData.ReadingOptions.mappedIfSafe)
 //---- Show window
   textView.window?.title = (inFilePath as NSString).lastPathComponent
   textView.window?.makeKeyAndOrderFront (nil)
 //---- Clear result
   textView.string = ""
   textView.appendMessageString ("File: \(inFilePath)\n")
-  textView.appendMessageString ("Size: \(fileData.length) bytes\n")
+  textView.appendMessageString ("Size: \(fileData.count) bytes\n")
   textView.appendMessageString ("------------------------------ File contents\n")
 //---- Define input data scanner
   var dataScanner = DataScanner (data:fileData, textView:textView)
@@ -59,8 +59,8 @@ func analyze (inFilePath : String, textView : NSTextView) throws {
   dataScanner.acceptRequiredByte (0, comment:"End of file")
 //--- Display metadata dictionary
   textView.appendMessageString ("------------------------------ Metadata dictionary\n")
-  let metadataDictionary = try NSPropertyListSerialization.propertyListWithData (dictionaryData,
-    options:NSPropertyListReadOptions.Immutable,
+  let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData,
+    options:PropertyListSerialization.MutabilityOptions(),
     format:nil
   ) as! NSDictionary
   textView.appendMessageString (String (format:"%@\n", metadataDictionary))
@@ -68,8 +68,8 @@ func analyze (inFilePath : String, textView : NSTextView) throws {
   switch dataFormat {
   case 6 :
     textView.appendMessageString ("------------------------------ Data in array of dictionaries format\n")
-    let dataArray = try NSPropertyListSerialization.propertyListWithData (data,
-      options:NSPropertyListReadOptions.Immutable,
+    let dataArray = try PropertyListSerialization.propertyList (from: data,
+      options:PropertyListSerialization.MutabilityOptions(),
       format:nil
     ) as! NSArray
     textView.appendMessageString (String (format:"%@\n", dataArray))

@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func analyzeLegacyBZ2Data (data : NSData, textView:NSTextView) {
+func analyzeLegacyBZ2Data (_ data : Data, textView:NSTextView) {
   textView.appendMessageString ("------------------------------ Uncompressed data format\n")
   let uncompressedData = bz2DecompressedData (data)
-  textView.appendMessageString ("Uncompressed data: \(uncompressedData.length) bytes\n")
+  textView.appendMessageString ("Uncompressed data: \(uncompressedData.count) bytes\n")
 //--- Analyze uncompressed data
   var dataScanner = DataScanner (data:uncompressedData, textView:textView)
   textView.appendMessageString ("--- Entities\n")
@@ -50,9 +50,9 @@ class EBEntityLegacyDescription {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func analyzeEntities (inout dataScanner : DataScanner,
+private func analyzeEntities (_ dataScanner : inout DataScanner,
                               textView:NSTextView,
-                              inout entities : [EBEntityLegacyDescription]) {
+                              entities : inout [EBEntityLegacyDescription]) {
 //--- Get entity count
   let entityCount : UInt = dataScanner.parseAutosizedUnsignedInteger ("Entity Count")
   for i : UInt in 0 ..< entityCount {
@@ -106,11 +106,11 @@ private func analyzeEntities (inout dataScanner : DataScanner,
         let attributeName = dataScanner.parseAutosizedString ("Attribute Name")
         entityPropertyNameArray.append (attributeName)
       }else if dataScanner.testAcceptByte (0x0B, comment:"To-one relationship Mark") {
-        /* const NSUInteger relationshipEntityIndex = */ dataScanner.parseAutosizedUnsignedInteger ("Destination Entity Index")
+        /* const NSUInteger relationshipEntityIndex = */ _ = dataScanner.parseAutosizedUnsignedInteger ("Destination Entity Index")
         let relationshipName = dataScanner.parseAutosizedString ("Relationship Name")
         entityRelationshipNameArray.append (relationshipName)
       }else if dataScanner.testAcceptByte (0x0C, comment:"To-many relationship Mark") {
-        /* const NSUInteger relationshipEntityIndex = */ dataScanner.parseAutosizedUnsignedInteger ("Destination Entity Index")
+        /* const NSUInteger relationshipEntityIndex = */ _ = dataScanner.parseAutosizedUnsignedInteger ("Destination Entity Index")
         let relationshipName = dataScanner.parseAutosizedString ("Relationship Name")
         entityRelationshipNameArray.append (relationshipName)
       }else if dataScanner.testAcceptByte (0x0D, comment:"NSTransformableAttributeType Mark") {
@@ -137,10 +137,10 @@ private func analyzeEntities (inout dataScanner : DataScanner,
 //    ANALYZE VALUES
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func loadWithDataScanner (inout dataScanner : DataScanner,
+private func loadWithDataScanner (_ dataScanner : inout DataScanner,
                                   textView:NSTextView,
-                                  inout entities : [EBEntityLegacyDescription],
-                                  inout objectArray : [NSMutableDictionary]) {
+                                  entities : inout [EBEntityLegacyDescription],
+                                  objectArray : inout [NSMutableDictionary]) {
 //------------------------ 'Object count' mark
   dataScanner.acceptRequiredByte (0x02, comment:"Object count Mark")
 //------------------------ Get object count 
@@ -171,11 +171,11 @@ private func loadWithDataScanner (inout dataScanner : DataScanner,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func scanObjectIndex (inObjectIndex : UInt,
-                              inout dataScanner : DataScanner,
+private func scanObjectIndex (_ inObjectIndex : UInt,
+                              dataScanner : inout DataScanner,
                               textView:NSTextView,
-                              inout entities : [EBEntityLegacyDescription],
-                              inout objectArray : [NSMutableDictionary]) {
+                              entities : inout [EBEntityLegacyDescription],
+                              objectArray : inout [NSMutableDictionary]) {
   textView.appendMessageString ("Value of object #\(inObjectIndex)\n")
 //--- 'start of object attribute' mark
   dataScanner.acceptRequiredByte (0x03, comment:"Start of values Mark")
@@ -197,35 +197,35 @@ private func scanObjectIndex (inObjectIndex : UInt,
  
     }else if dataScanner.testAcceptByte (0xFE, comment:"Unsigned Integer Mark for '\(key)'") { // positive signed integer
       let value = dataScanner.parseAutosizedUnsignedInteger ("Value")
-      objectValues.setValue (NSNumber (unsignedLong: value), forKey:key)
+      objectValues.setValue (NSNumber (value: value as UInt), forKey:key)
     }else if dataScanner.testAcceptByte (0xFD, comment:"Negative Integer Mark for '\(key)'") { // negative signed integer
       let value = Int (dataScanner.parseAutosizedUnsignedInteger ("Value to Negate"))
-      objectValues.setValue (NSNumber (long: -value), forKey:key)
+      objectValues.setValue (NSNumber (value: -value as Int), forKey:key)
     }else if dataScanner.testAcceptByte (0x09, comment:"String Mark for '\(key)'") { // String
       let s : String = dataScanner.parseAutosizedString ("Value")
       objectValues.setValue (s, forKey:key)
     }else if dataScanner.testAcceptByte (0x0A, comment:"Boolean NO for '\(key)'") { // False
-      objectValues.setValue (NSNumber (bool: false), forKey:key)
+      objectValues.setValue (NSNumber (value: false as Bool), forKey:key)
     }else if dataScanner.testAcceptByte (0x0B, comment:"Boolean YES for '\(key)'") { // True
-      objectValues.setValue (NSNumber (bool: true), forKey:key)
+      objectValues.setValue (NSNumber (value: true as Bool), forKey:key)
     }else if dataScanner.testAcceptByte (0x0C, comment:"Float Mark for '\(key)'") { // Float
       let data = dataScanner.parseAutosizedData ("Float value (length)", dataComment:"Float value")
-      let floatNumber = NSUnarchiver.unarchiveObjectWithData (data)
+      let floatNumber = NSUnarchiver.unarchiveObject (with: data)
       objectValues.setValue (floatNumber, forKey:key)
     }else if dataScanner.testAcceptByte (0x0D, comment:"Double Mark for '\(key)'") { // Double
       let data = dataScanner.parseAutosizedData ("Double Value (length)", dataComment:"Double Value")
-      let doubleNumber = NSUnarchiver.unarchiveObjectWithData (data)
+      let doubleNumber = NSUnarchiver.unarchiveObject (with: data)
       objectValues.setValue (doubleNumber, forKey:key)
     }else if dataScanner.testAcceptByte (0x0E, comment:"Date Mark for '\(key)'") { // Date
       let data = dataScanner.parseAutosizedData ("Date value (length)", dataComment:"Date value")
-      let date = NSUnarchiver.unarchiveObjectWithData (data)
+      let date = NSUnarchiver.unarchiveObject (with: data)
       objectValues.setValue (date, forKey:key)
     }else if dataScanner.testAcceptByte (0x0F, comment:"Binary Data Mark for '\(key)'") { // Binary Data
       let data = dataScanner.parseAutosizedData ("Data Value (length)", dataComment:"Data Value")
       objectValues.setValue (data, forKey:key)
     }else if dataScanner.testAcceptByte (0x10, comment:"Decimal Mark for '\(key)'") { // Decimal
       let data = dataScanner.parseAutosizedData ("Decimal Value (length)", dataComment:"Decimal Value")
-      let decimalNumber = NSUnarchiver.unarchiveObjectWithData (data)
+      let decimalNumber = NSUnarchiver.unarchiveObject (with: data)
       objectValues.setValue (decimalNumber, forKey:key)
 //    }else if dataScanner.testAcceptByte (0x11, comment:"Transformable Attribute Mark for '\(key)'") { // Decimal
 //      dataScanner.parseAutosizedData ("Value as binary data (length)", dataComment:"Value as binary data")
@@ -239,11 +239,11 @@ private func scanObjectIndex (inObjectIndex : UInt,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func scanRelationshipForObjectIndex (inObjectIndex : UInt,
-                                             inout dataScanner : DataScanner,
+private func scanRelationshipForObjectIndex (_ inObjectIndex : UInt,
+                                             dataScanner : inout DataScanner,
                                              textView:NSTextView,
-                                             inout entities : [EBEntityLegacyDescription],
-                                             inout objectArray : [NSMutableDictionary]) {
+                                             entities : inout [EBEntityLegacyDescription],
+                                             objectArray : inout [NSMutableDictionary]) {
 //--- 'start of object relationship' mark
   dataScanner.acceptRequiredByte (0x04, comment:"Start of #\(inObjectIndex) Object Relationships");
 //--- Entity Index
@@ -260,13 +260,13 @@ private func scanRelationshipForObjectIndex (inObjectIndex : UInt,
     if dataScanner.testAcceptByte (0xFF, comment:"'\(key)' -> nil") { // nil
     }else if dataScanner.testAcceptByte (0x01, comment:"'\(key)' -> To one value") {
       let destinationObjectIndex = dataScanner.parseAutosizedUnsignedInteger ("Destination object index")
-      objectValues.setValue (NSNumber (unsignedLong: destinationObjectIndex), forKey:key)
+      objectValues.setValue (NSNumber (value: destinationObjectIndex as UInt), forKey:key)
     }else if dataScanner.testAcceptByte (0x02, comment:"'\(key)' -> To Many value") {
       let objectCount = dataScanner.parseAutosizedUnsignedInteger ("Destination object count")
       let objectArray = NSMutableArray ()
       for _ in 0 ..< objectCount {
         let destinationObjectIndex = dataScanner.parseAutosizedUnsignedInteger ("Object index")
-        objectArray.addObject (NSNumber (unsignedLong: destinationObjectIndex))
+        objectArray.add (NSNumber (value: destinationObjectIndex as UInt))
       }
       objectValues.setValue (objectArray, forKey:key)
     }else{

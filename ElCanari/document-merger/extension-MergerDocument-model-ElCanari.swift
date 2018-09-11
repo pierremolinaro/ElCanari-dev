@@ -71,7 +71,12 @@ extension MergerDocument {
     boardModel.modelHeightUnit = int (fromDict: inBoardArchiveDict, key: "BOARD-HEIGHT-UNIT", &errorArray)
     boardModel.modelLimitWidth = int (fromDict: inBoardArchiveDict, key: "BOARD-LINE-WIDTH", &errorArray)
     boardModel.modelLimitWidthUnit = int (fromDict: inBoardArchiveDict, key: "BOARD-LINE-WIDTH-UNIT", &errorArray)
-    let boardRect = CanariHorizontalRect (left: 0, bottom: 0, width: boardModel.modelWidth, height: boardModel.modelHeight)
+    let boardRect_mm = NSRect (
+      x: 0.0,
+      y: 0.0,
+      width: canariUnitToMillimeter (boardModel.modelWidth),
+      height: canariUnitToMillimeter (boardModel.modelHeight)
+    )
   //--- Internal boards limits
     var internalBoardsLimitsEntities = [SegmentEntity] ()
     let internalBoardsLimits = optionalStringArray (fromDict: inBoardArchiveDict, key: "INTERNAL-BOARDS-LIMITS", &errorArray)
@@ -130,42 +135,28 @@ extension MergerDocument {
     var backLegendLinesEntities = [SegmentEntity] ()
     let backLegendLines = stringArray (fromDict: inBoardArchiveDict, key: "LINES-BACK", &errorArray)
     for str in backLegendLines {
-//      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
       if let segment = clippedSegment (
-        p1: CGPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-        p2: CGPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
-        width: ints [4],
-        clipRect: boardRect,
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        width_mm: canariUnitToMillimeter (ints [4]),
+        clipRect_mm: boardRect_mm,
         moc: self.managedObjectContext ()
       ) {
         backLegendLinesEntities.append (segment)
       }
-//      backLegendLinesEntities.append (segment)
     }
     boardModel.backLegendLines_property.setProp (backLegendLinesEntities)
   //--- Front Legend texts
     var frontLegendLinesEntities = [SegmentEntity] ()
     let frontLegendLines = stringArray (fromDict: inBoardArchiveDict, key: "LINES-FRONT", &errorArray)
     for str in frontLegendLines {
-//      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
-//      frontLegendLinesEntities.append (segment)
       if let segment = clippedSegment (
-        p1: CGPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-        p2: CGPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
-        width: ints [4],
-        clipRect: boardRect,
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        width_mm: canariUnitToMillimeter (ints [4]),
+        clipRect_mm: boardRect_mm,
         moc: self.managedObjectContext ()
       ) {
         frontLegendLinesEntities.append (segment)
@@ -204,19 +195,12 @@ extension MergerDocument {
     var backLegendTextEntities = [SegmentEntity] ()
     let backLegendTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LEGEND-BACK", &errorArray)
     for str in backLegendTexts {
-//      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
-//      backLegendTextEntities.append (segment)
       if let segment = clippedSegment (
-        p1: CGPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-        p2: CGPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
-        width: ints [4],
-        clipRect: boardRect,
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        width_mm: canariUnitToMillimeter (ints [4]),
+        clipRect_mm: boardRect_mm,
         moc: self.managedObjectContext ()
       ) {
         backLegendTextEntities.append (segment)
@@ -227,19 +211,12 @@ extension MergerDocument {
     var frontLegendTextEntities = [SegmentEntity] ()
     let frontTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LEGEND-FRONT", &errorArray)
     for str in frontTexts {
-//      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
-//      frontLegendTextEntities.append (segment)
       if let segment = clippedSegment (
-        p1: CGPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-        p2: CGPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
-        width: ints [4],
-        clipRect: boardRect,
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        width_mm: canariUnitToMillimeter (ints [4]),
+        clipRect_mm: boardRect_mm,
         moc: self.managedObjectContext ()
       ) {
         frontLegendTextEntities.append (segment)
@@ -250,47 +227,44 @@ extension MergerDocument {
     var backPackagesEntities = [SegmentEntity] ()
     let backPackages = stringArray (fromDict: inBoardArchiveDict, key: "PACKAGES-BACK", &errorArray)
     for str in backPackages {
-      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
-      segment.x1 = ints [0]
-      segment.y1 = ints [1]
-      segment.x2 = ints [2]
-      segment.y2 = ints [3]
-      segment.width = ints [4]
-      backPackagesEntities.append (segment)
+      if let segment = clippedSegment (
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        width_mm: canariUnitToMillimeter (ints [4]),
+        clipRect_mm: boardRect_mm,
+        moc: self.managedObjectContext ()
+      ) {
+        backPackagesEntities.append (segment)
+      }
     }
     boardModel.backPackages_property.setProp (backPackagesEntities)
   //--- Front packages
     var frontPackagesEntities = [SegmentEntity] ()
     let frontPackages = stringArray (fromDict: inBoardArchiveDict, key: "PACKAGES-FRONT", &errorArray)
     for str in frontPackages {
-      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
-      segment.x1 = ints [0]
-      segment.y1 = ints [1]
-      segment.x2 = ints [2]
-      segment.y2 = ints [3]
-      segment.width = ints [4]
-      frontPackagesEntities.append (segment)
+      if let segment = clippedSegment (
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        width_mm: canariUnitToMillimeter (ints [4]),
+        clipRect_mm: boardRect_mm,
+        moc: self.managedObjectContext ()
+      ) {
+        frontPackagesEntities.append (segment)
+      }
     }
     boardModel.frontPackages_property.setProp (frontPackagesEntities)
   //--- Back component names
     var backComponentNamesEntities = [SegmentEntity] ()
     let backComponentNames = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-NAMES-BACK", &errorArray)
     for str in backComponentNames {
-//      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
-//      backComponentNamesEntities.append (segment)
       if let segment = clippedSegment (
-        p1: CGPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-        p2: CGPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
-        width: ints [4],
-        clipRect: boardRect,
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        width_mm: canariUnitToMillimeter (ints [4]),
+        clipRect_mm: boardRect_mm,
         moc: self.managedObjectContext ()
       ) {
         backComponentNamesEntities.append (segment)
@@ -301,19 +275,12 @@ extension MergerDocument {
     var frontComponentNamesEntities = [SegmentEntity] ()
     let frontComponentNames = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-NAMES-FRONT", &errorArray)
     for str in frontComponentNames {
-//      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
-//      frontComponentNamesEntities.append (segment)
       if let segment = clippedSegment (
-        p1: CGPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-        p2: CGPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
-        width: ints [4],
-        clipRect: boardRect,
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        width_mm: canariUnitToMillimeter (ints [4]),
+        clipRect_mm: boardRect_mm,
         moc: self.managedObjectContext ()
       ) {
         frontComponentNamesEntities.append (segment)
@@ -324,19 +291,12 @@ extension MergerDocument {
     var frontComponentValuesEntities = [SegmentEntity] ()
     let frontComponentValues = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-VALUES-FRONT", &errorArray)
     for str in frontComponentValues {
-//      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
-//      frontComponentValuesEntities.append (segment)
       if let segment = clippedSegment (
-        p1: CGPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-        p2: CGPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
-        width: ints [4],
-        clipRect: boardRect,
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        width_mm: canariUnitToMillimeter (ints [4]),
+        clipRect_mm: boardRect_mm,
         moc: self.managedObjectContext ()
       ) {
         frontComponentValuesEntities.append (segment)
@@ -347,19 +307,12 @@ extension MergerDocument {
     var backComponentValuesEntities = [SegmentEntity] ()
     let backComponentValues = stringArray (fromDict: inBoardArchiveDict, key: "COMPONENT-VALUES-BACK", &errorArray)
     for str in backComponentValues {
-//      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
       let ints = array5int (fromString: str, &errorArray)
-//      segment.x1 = ints [0]
-//      segment.y1 = ints [1]
-//      segment.x2 = ints [2]
-//      segment.y2 = ints [3]
-//      segment.width = ints [4]
-//      backComponentValuesEntities.append (segment)
       if let segment = clippedSegment (
-        p1: CGPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
-        p2: CGPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
-        width: ints [4],
-        clipRect: boardRect,
+        p1_mm: NSPoint (x: canariUnitToMillimeter (ints [0]), y:canariUnitToMillimeter (ints [1])),
+        p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
+        width_mm: canariUnitToMillimeter (ints [4]),
+        clipRect_mm: boardRect_mm,
         moc: self.managedObjectContext ()
       ) {
         backComponentValuesEntities.append (segment)

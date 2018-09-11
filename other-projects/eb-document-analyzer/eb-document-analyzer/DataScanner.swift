@@ -3,15 +3,15 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct DataScanner {
-  private var mData : NSData
-  private var mTextView : NSTextView
-  private var mReadIndex : Int = 0
-  private var mReadOk : Bool = true
-  private var mExpectedBytes : Array<UInt8> = []
+  fileprivate var mData : Data
+  fileprivate var mTextView : NSTextView
+  fileprivate var mReadIndex : Int = 0
+  fileprivate var mReadOk : Bool = true
+  fileprivate var mExpectedBytes : Array<UInt8> = []
 
   //····················································································································
 
-  init (data: NSData, textView : NSTextView) {
+  init (data: Data, textView : NSTextView) {
     mData = data
     mTextView = textView
   }
@@ -24,7 +24,7 @@ struct DataScanner {
 
   //····················································································································
 
-  mutating func ignoreBytes (inLengthToIgnore : Int) {
+  mutating func ignoreBytes (_ inLengthToIgnore : Int) {
     if mReadOk {
       mReadIndex += inLengthToIgnore ;
     }
@@ -33,15 +33,15 @@ struct DataScanner {
   //····················································································································
   // http://stackoverflow.com/questions/24067085/pointers-pointer-arithmetic-and-raw-data-in-swift
 
-  mutating func testAcceptByte (inByte : UInt8, comment : String) -> Bool {
+  mutating func testAcceptByte (_ inByte : UInt8, comment : String) -> Bool {
     var result = mReadOk
     if result {
-      if mReadIndex >= mData.length {
+      if mReadIndex >= mData.count {
          NSLog ("Read beyond end of data")
          mReadOk = false
        }else{
-        let byteAsData = mData.subdataWithRange (NSMakeRange(mReadIndex, sizeof(UInt8))).bytes
-        let byte = UnsafePointer<UInt8> (byteAsData).memory
+        let byte = mData [mReadIndex] // (mData.subdata (in: Range (mReadIndex, (sizeof(UInt8)))) as NSData).bytes
+      //  let byte = UnsafePointer<UInt8> (byteAsData).pointee
         result = byte == inByte
         if result {
           printAddress ()
@@ -59,17 +59,17 @@ struct DataScanner {
 
   //····················································································································
 
-  mutating func testAcceptFromByte (lowerBound: UInt8,
+  mutating func testAcceptFromByte (_ lowerBound: UInt8,
                                     upperBound: UInt8,
-                                    inout value:UInt8) -> Bool {
+                                    value:inout UInt8) -> Bool {
     var result = mReadOk
     if result {
-      if mReadIndex >= mData.length {
+      if mReadIndex >= mData.count {
          NSLog ("Read beyond end of data")
          mReadOk = false
        }else{
-        let byteAsData = mData.subdataWithRange (NSMakeRange(mReadIndex, sizeof(UInt8))).bytes
-        let byte = UnsafePointer<UInt8> (byteAsData).memory
+       // let byteAsData = (mData.subdata (in: NSMakeRange(mReadIndex, sizeof(UInt8))) as NSData).bytes
+        let byte = mData [mReadIndex] // UnsafePointer<UInt8> (byteAsData).pointee
         result = (byte >= lowerBound) && (byte <= upperBound) ;
         if (result) {
           value = byte
@@ -87,16 +87,16 @@ struct DataScanner {
 
   //····················································································································
 
-  mutating func acceptRequiredByte (inByte : UInt8,
+  mutating func acceptRequiredByte (_ inByte : UInt8,
                                     comment : String) {
     printAddress ()
     if mReadOk {
-      if mReadIndex >= mData.length {
+      if mReadIndex >= mData.count {
          NSLog ("Read beyond end of data")
          mReadOk = false
       }else{
-        let byteAsData = mData.subdataWithRange (NSMakeRange(mReadIndex, sizeof(UInt8))).bytes
-        let byte = UnsafePointer<UInt8> (byteAsData).memory
+       // let byteAsData = (mData.subdata (in: NSMakeRange(mReadIndex, sizeof(UInt8))) as NSData).bytes
+        let byte = mData [mReadIndex] // UnsafePointer<UInt8> (byteAsData).pointee
         mTextView.appendMessageString (String (format:" %02X", byte))
         mTextView.appendMessageString (" | \(comment)\n")
         if (byte == inByte) {
@@ -120,12 +120,13 @@ struct DataScanner {
   mutating func parseByte () -> UInt8 {
     var result : UInt8 = 0
     if mReadOk {
-      if mReadIndex >= mData.length {
+      if mReadIndex >= mData.count {
          NSLog ("Read beyond end of data")
          mReadOk = false
        }else{
-        let byteAsData = mData.subdataWithRange (NSMakeRange(mReadIndex, sizeof(UInt8))).bytes
-        result = UnsafePointer<UInt8> (byteAsData).memory
+       // let byteAsData = (mData.subdata (in: NSMakeRange(mReadIndex, sizeof(UInt8))) as NSData).bytes
+        result = mData [mReadIndex] // UnsafePointer<UInt8> (byteAsData).pointee
+//        result = UnsafePointer<UInt8> (byteAsData).pointee
         mReadIndex += 1
       }
     }
@@ -134,18 +135,18 @@ struct DataScanner {
 
   //····················································································································
 
-  mutating func parseAutosizedUnsignedInteger (comment : String) -> UInt {
+  mutating func parseAutosizedUnsignedInteger (_ comment : String) -> UInt {
     printAddress ()
     var result : UInt = 0
     var shift : UInt = 0
     var loop = true
     while loop && mReadOk {
-      if mReadIndex >= mData.length {
+      if mReadIndex >= mData.count {
          NSLog ("Read beyond end of data")
          mReadOk = false
       }else{
-        let byteAsData = mData.subdataWithRange (NSMakeRange(mReadIndex, sizeof(UInt8))).bytes
-        let byte = UnsafePointer<UInt8> (byteAsData).memory
+       // let byteAsData = (mData.subdata (in: NSMakeRange(mReadIndex, sizeof(UInt8))) as NSData).bytes
+        let byte = mData [mReadIndex] // UnsafePointer<UInt8> (byteAsData).pointee
         mTextView.appendByte (byte)
         let w : UInt = UInt (byte) & 0x7F
         result |= (w << shift)
@@ -160,16 +161,16 @@ struct DataScanner {
 
   //····················································································································
 
-  mutating func parseAutosizedData (lengthComment : String, dataComment:String) -> NSData {
-    var result = NSData ()
+  mutating func parseAutosizedData (_ lengthComment : String, dataComment:String) -> Data {
+    var result = Data ()
     if mReadOk {
       let dataLength : Int = Int (parseAutosizedUnsignedInteger (lengthComment))
-      if (mReadIndex + dataLength) >= mData.length {
+      if (mReadIndex + dataLength) >= mData.count {
         NSLog ("Read beyond end of data")
         mReadOk = false
       }else{
         printAddress ()
-        result = mData.subdataWithRange (NSMakeRange (mReadIndex, dataLength))
+        result = mData.subdata (in: mReadIndex ..< mReadIndex + dataLength) // mData.subdata (in: NSMakeRange (mReadIndex, dataLength))
         mTextView.appendMessageString (" ... | \(dataComment) (\(dataLength) bytes)\n")
         mReadIndex += dataLength
       }
@@ -179,27 +180,27 @@ struct DataScanner {
 
   //····················································································································
 
-  mutating func parseAutosizedString (comment : String) -> String {
+  mutating func parseAutosizedString (_ comment : String) -> String {
     printAddress ()
     var result : String = ""
-    var ptr = UnsafePointer<UInt8> (mData.bytes)
+    var ptr = (mData as NSData).bytes.bindMemory(to: UInt8.self, capacity: mData.count)
     ptr += mReadIndex
     var stringLength = 0
     var loop = true
     while loop && mReadOk {
-      if (mReadIndex + stringLength) >= mData.length {
+      if (mReadIndex + stringLength) >= mData.count {
          mTextView.appendErrorString ("Read beyond end of data")
          mReadOk = false
       }else{
-        mTextView.appendByte (ptr.memory)
-        loop = ptr.memory != 0
+        mTextView.appendByte (ptr.pointee)
+        loop = ptr.pointee != 0
         ptr += 1
         stringLength += 1
       }
     }
     if (mReadOk) {
-      let d = mData.subdataWithRange (NSMakeRange (mReadIndex, stringLength-1))
-      result = NSString (data:d, encoding: NSUTF8StringEncoding) as! String
+      let d = mData.subdata (in: mReadIndex ..< mReadIndex + stringLength - 1) // mData.subdata (in: NSMakeRange (mReadIndex, stringLength-1))
+      result = String (data:d, encoding: .utf8)!
       mReadIndex += stringLength
       mTextView.appendMessageString (" | \"" + result + "\": \(comment)\n")
     }

@@ -11,6 +11,6 @@
 
 #include <Cocoa/Cocoa.h>
 
-NSData * bz2DecompressedData (NSData * inCompressedData) ;
+NSData * __nonnull bz2DecompressedData (NSData * __nonnull inCompressedData) ;
 
 #endif /* bz2_uncompress_c */

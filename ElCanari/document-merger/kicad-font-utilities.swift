@@ -70,7 +70,7 @@ func drawKicadString (str inString : String,
                       font inKicadFont : [UInt32 : KicadChar],
                       leftMM inModelLeftMM  : CGFloat,
                       bottomMM inModelBottomMM : CGFloat,
-                      boardRect inBoardRect : CanariHorizontalRect,
+                      boardRect inBoardRect : NSRect,
                       moc inMOC : EBManagedObjectContext) -> [SegmentEntity] {
   let mirror : CGFloat = inMirror ? -1.0 : 1.0
   let fontFactor = inFontSize * KICAD_STROKE_FONT_SCALE
@@ -115,10 +115,10 @@ func drawKicadString (str inString : String,
           let p1 = inAffineTransform.transform (NSPoint (x:x1, y:y1))
           let p2 = inAffineTransform.transform (NSPoint (x:x2, y:y2))
           if let segment = clippedSegment (
-            p1: p1,
-            p2: p2,
-            width: millimeterToCanariUnit (inThickness),
-            clipRect: inBoardRect,
+            p1_mm: p1,
+            p2_mm: p2,
+            width_mm: inThickness,
+            clipRect_mm: inBoardRect,
             moc: inMOC
           ) {
             segments.append (segment)
