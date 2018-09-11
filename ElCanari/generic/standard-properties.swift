@@ -1242,15 +1242,6 @@ typealias EBReadOnlyPropertyArray_NSBezierPath  = EBReadOnlyClassProperty <[NSBe
 typealias EBTransientPropertyArray_NSBezierPath = EBTransientClassProperty <[NSBezierPath]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class CGPath
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CGPath  = EBReadOnlyClassProperty <CGPath>
-typealias EBTransientProperty_CGPath = EBTransientClassProperty <CGPath>
-typealias EBReadOnlyPropertyArray_CGPath  = EBReadOnlyClassProperty <[CGPath]>
-typealias EBTransientPropertyArray_CGPath = EBTransientClassProperty <[CGPath]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CanariMenuItemListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

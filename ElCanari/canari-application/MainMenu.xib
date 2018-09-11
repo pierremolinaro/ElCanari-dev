@@ -482,6 +482,7 @@
                     </scrollView>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="-68" y="-151"/>
         </window>
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="PrefsWindowAutosave" animationBehavior="default" id="5382" userLabel="Window : Preferences" customClass="EBWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" unifiedTitleAndToolbar="YES"/>
@@ -1944,7 +1945,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="AF0D3F0F-2C44-4A8F-8DF1-57C7BDD5B1C3" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="E534789F-9D25-4A1F-A59B-8A2127935E87" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2465,10 +2466,11 @@ Gw
                     </scrollView>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="358" y="592"/>
         </window>
     </objects>
     <resources>
-        <image name="AF0D3F0F-2C44-4A8F-8DF1-57C7BDD5B1C3" width="20" height="20">
+        <image name="E534789F-9D25-4A1F-A59B-8A2127935E87" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

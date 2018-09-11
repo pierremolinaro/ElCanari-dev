@@ -80,7 +80,7 @@
 	<key>NSPrincipalClass</key>
 	<string>EBApplication</string>
 	<key>PMBuildString</key>
-	<string>2J10</string>
+	<string>2J16</string>
 	<key>SUFeedURL</key>
 	<string>https://raw.githubusercontent.com/pierremolinaro/ElCanari-distribution/master/rss.xml</string>
 	<key>SUPublicDSAKeyFile</key>

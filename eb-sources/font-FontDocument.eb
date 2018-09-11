@@ -91,7 +91,6 @@ document PMFontDocument root FontRoot {
 #--- Sample string display
   outlet CanariFontSampleStringView mFontSampleStringView
     $bezierPath root.sampleStringBezierPath
-#    $sampleStringFontSize prefs.sampleStringSize
   ;
 
 #--- Sample String Display

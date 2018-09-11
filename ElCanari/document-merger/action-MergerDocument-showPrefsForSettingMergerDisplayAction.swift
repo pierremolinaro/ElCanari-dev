@@ -14,9 +14,11 @@ import Cocoa
 extension MergerDocument {
   @objc func showPrefsForSettingMergerDisplayAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let displaySettingView = mDisplaySettingView, let contentView = self.windowForSheet?.contentView {
+    if let displaySettingView = self.mDisplaySettingView, let contentView = self.windowForSheet?.contentView {
       if displaySettingView.window == nil { // Insert on window
+        contentView.resignFirstResponder ()
         displaySettingView.frame.size.height = contentView.bounds.size.height
+        displaySettingView.frame.origin = NSPoint (x: 0.0, y: 0.0)
         contentView.addSubview (displaySettingView, positioned: .above, relativeTo:nil)
         contentView.window?.makeFirstResponder (displaySettingView)
       }else{ // Remove from window
