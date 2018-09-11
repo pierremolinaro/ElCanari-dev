@@ -23,7 +23,6 @@ func transient_FontRoot_sampleStringBezierPath (
     return CGFloat (value) * CGFloat (prefs_sampleStringSize) / CGFloat (self_nominalSize)
   }
 
-//  let sampleStringASUnicodeArray : [UInt32] = g_5F_Preferences_21__2E_sampleString_2.unicodeScalars.map { $0.value }
   let sampleStringAsMacRomanData = prefs_sampleString.data (using: .macOSRoman, allowLossyConversion: true)!
   var currentX : CGFloat = 0.0
   let path = NSBezierPath ()
@@ -42,6 +41,7 @@ func transient_FontRoot_sampleStringBezierPath (
       currentX += toCocoa (self_characters_advance [characterIndex].advance)
     }
   }
+  path.lineWidth = 2.0 * CGFloat (prefs_sampleStringSize) / CGFloat (self_nominalSize)
   return path
 //--- END OF USER ZONE 2
 }

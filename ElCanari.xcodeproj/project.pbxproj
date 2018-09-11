@@ -269,7 +269,6 @@
 		CFCC4BE920EABEB3006A9CC5 /* transient-MergerBoardInstance-frontPads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC4BE820EABEB3006A9CC5 /* transient-MergerBoardInstance-frontPads.swift */; };
 		CFCC4BF120EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC4BF020EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift */; };
 		CFCE71FB20DD611100AB1DE7 /* entity-BoardModelVia.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCE71FA20DD611100AB1DE7 /* entity-BoardModelVia.swift */; };
-		CFD5B94C1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5B94B1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift */; };
 		CFD7E80520EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E80420EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift */; };
 		CFD7EA2120E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EA2020E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift */; };
 		CFD7EA2320E7D27300D53B87 /* class-MergerBoardModelArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7EA2220E7D27300D53B87 /* class-MergerBoardModelArray.swift */; };
@@ -609,7 +608,6 @@
 		CFCC4BE820EABEB3006A9CC5 /* transient-MergerBoardInstance-frontPads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerBoardInstance-frontPads.swift"; sourceTree = "<group>"; };
 		CFCC4BF020EAC51A006A9CC5 /* CanariDimensionObserverTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariDimensionObserverTextField.swift; sourceTree = "<group>"; };
 		CFCE71FA20DD611100AB1DE7 /* entity-BoardModelVia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-BoardModelVia.swift"; sourceTree = "<group>"; };
-		CFD5B94B1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller_CanariFontSampleStringView_sampleStringFontSize.swift; sourceTree = "<group>"; };
 		CFD7E80420EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-importArtworkAction.swift"; sourceTree = "<group>"; };
 		CFD7EA2020E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "menu-CanariBoardInsertMenu.swift"; sourceTree = "<group>"; };
 		CFD7EA2220E7D27300D53B87 /* class-MergerBoardModelArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "class-MergerBoardModelArray.swift"; sourceTree = "<group>"; };
@@ -1101,7 +1099,6 @@
 				CF51AD111DD6009F00CEFB7D /* Controller_CanariCharacterView_displayFlow.swift */,
 				CF8764291DD4A11100D16B6B /* Controller_CanariCharacterView_transparency.swift */,
 				CFEDEDC01DD88B5900782E3F /* Controller_CanariFontSampleStringView_bezierPath.swift */,
-				CFD5B94B1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift */,
 				CF9AE9F71BFA763C00B68F69 /* entity-FontCharacter.swift */,
 				CFDA579A1BFA524A00EEF3CB /* entity-FontRoot.swift */,
 				CF9AE9F81BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift */,
@@ -1315,7 +1312,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFC80AA520E6390500C1A156 /* transient-BoardModel-drillSegments.swift in Sources */,
-				CFD5B94C1DD8B3F500481AA2 /* Controller_CanariFontSampleStringView_sampleStringFontSize.swift in Sources */,
 				CF3FD6862104F83D0009B269 /* transient-MergerBoardInstance-instanceDisplay.swift in Sources */,
 				CFF2653320E6863C00525C0F /* transient-BoardModel-frontLayoutTextsSegments.swift in Sources */,
 				CFE652DF1DD4B24D00BAC27A /* transient-CanariLibraryEntry-mStatusImage.swift in Sources */,

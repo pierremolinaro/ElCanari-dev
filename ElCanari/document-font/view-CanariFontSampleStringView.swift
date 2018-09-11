@@ -38,7 +38,6 @@ class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   private var mSampleStringBezierPath = NSBezierPath ()
-  private var mSampleStringSize : CGFloat = 1.0
 
   //····················································································································
 
@@ -47,13 +46,7 @@ class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
     self.needsDisplay = true
   }
 
-  //····················································································································
-  
-  func updateDisplayFromFontSizeController (_ fontSize : Double) {
-    self.mSampleStringSize = 2.0 * CGFloat (fontSize) / 14.0
-    self.needsDisplay = true
-  }
-  
+
   //····················································································································
   //  isOpaque
   //····················································································································
@@ -77,7 +70,6 @@ class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
       tr.translateX (by: (self.bounds.size.width - size.width) * 0.5, yBy: (self.bounds.size.height - size.height) * 0.5)
       bp = tr.transform (self.mSampleStringBezierPath)
       NSColor.black.setStroke ()
-      bp.lineWidth = self.mSampleStringSize
       bp.lineJoinStyle = .roundLineJoinStyle
       bp.lineCapStyle = .roundLineCapStyle
       bp.stroke ()
@@ -99,23 +91,6 @@ class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
   final func unbind_bezierPath () {
     mBezierPathBindingController?.unregister ()
     mBezierPathBindingController = nil
-  }
-
-  //····················································································································
-  //  $sampleStringFontSize binding
-  //····················································································································
-
-  private var mSampleStringFontSizeBindingController : Controller_CanariFontSampleStringView_sampleStringFontSize?
-
-  final func bind_sampleStringFontSize (_ object:EBReadOnlyProperty_Double, file:String, line:Int) {
-    mSampleStringFontSizeBindingController = Controller_CanariFontSampleStringView_sampleStringFontSize (object:object, outlet:self)
-  }
-
-  //····················································································································
-
-  final func unbind_sampleStringFontSize () {
-    mSampleStringFontSizeBindingController?.unregister ()
-    mSampleStringFontSizeBindingController = nil
   }
 
   //····················································································································
