@@ -105,11 +105,6 @@ import Cocoa
   var mDataSelection = SelectionController_PMArtworkDocument_mDataSelection ()
 
   //····················································································································
-  //    Custom object Controllers
-  //····················································································································
-
-
-  //····················································································································
   //    Document file path
   //····················································································································
   // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
@@ -589,7 +584,6 @@ import Cocoa
       file: #file,
       line: #line
     )
-  //--------------------------- Custom object controllers
   //--------------------------- Transient compute functions
     self.mGeneratedFileCountString_property.readModelFunction = { [weak self] in
       if let unwSelf = self {

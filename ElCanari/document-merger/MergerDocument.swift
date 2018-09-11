@@ -222,11 +222,6 @@ import Cocoa
   var mBoardInstanceSelection = SelectionController_MergerDocument_mBoardInstanceSelection ()
 
   //····················································································································
-  //    Custom object Controllers
-  //····················································································································
-
-
-  //····················································································································
   //    Document file path
   //····················································································································
   // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
@@ -1576,7 +1571,6 @@ import Cocoa
       file: #file,
       line: #line
     )
-  //--------------------------- Custom object controllers
   //--------------------------- Transient compute functions
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {

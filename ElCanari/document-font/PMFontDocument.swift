@@ -75,11 +75,6 @@ import Cocoa
   var mCharacterSelection = SelectionController_PMFontDocument_mCharacterSelection ()
 
   //····················································································································
-  //    Custom object Controllers
-  //····················································································································
-
-
-  //····················································································································
   //    Document file path
   //····················································································································
   // Cette méthode est appelée après tout enregistrement, qu'il y ait changement de nom ou pas.
@@ -424,7 +419,6 @@ import Cocoa
       file: #file,
       line: #line
     )
-  //--------------------------- Custom object controllers
   //--------------------------- Transient compute functions
     self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
   //--------------------------- Install property observers for transients
