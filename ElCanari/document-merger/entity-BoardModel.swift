@@ -1016,13 +1016,13 @@ class BoardModel : EBManagedObject,
   //   Accessing imageForModel transient property
   //····················································································································
 
-  var imageForModel_property_selection : EBSelection <EBShapeArray> {
+  var imageForModel_property_selection : EBSelection <EBShape> {
     get {
       return self.imageForModel_property.prop
     }
   }
 
-  var imageForModel : EBShapeArray? {
+  var imageForModel : EBShape? {
     switch imageForModel_property_selection {
     case .empty, .multiple :
       return nil
@@ -1309,7 +1309,7 @@ class BoardModel : EBManagedObject,
   var frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
   var backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var imageForModel_property = EBTransientProperty_EBShapeArray ()
+  var imageForModel_property = EBTransientProperty_EBShape ()
   var imageForInstances_property = EBTransientProperty_EBShape ()
 
   //····················································································································
@@ -7318,7 +7318,7 @@ protocol BoardModel_backPackagesBezierPaths : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_imageForModel : class {
-  var imageForModel : EBShapeArray? { get }
+  var imageForModel : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

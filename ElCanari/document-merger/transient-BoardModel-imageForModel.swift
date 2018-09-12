@@ -75,7 +75,7 @@ func transient_BoardModel_imageForModel (
        _ self_backPackagesBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayBackPackages : Bool,
        _ prefs_mergerColorBackPackages : NSColor
-) -> EBShapeArray {
+) -> EBShape {
 //--- START OF USER ZONE 2
   var shapes = [EBShape] ()
 //--- Background
@@ -163,7 +163,7 @@ func transient_BoardModel_imageForModel (
   }
 //---
 //  let shapeLayer = EBShapeLayer (shapes)
-  return EBShapeArray ([EBShape (shapes: shapes)])
+  return EBShape (shapes: shapes)
 //--- END OF USER ZONE 2
 }
 

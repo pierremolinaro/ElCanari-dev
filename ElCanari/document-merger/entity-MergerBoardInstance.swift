@@ -2082,7 +2082,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
 
   //····················································································································
 
-  var instancesDisplay_property_selection : EBSelection <EBShapeArray?> {
+  var instancesDisplay_property_selection : EBSelection <EBShape?> {
     get {
       if let model = self.propval {
         switch (model.instancesDisplay_property_selection) {
@@ -4292,7 +4292,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
 
   //····················································································································
 
-  var imageForModel_property_selection : EBSelection <EBShapeArray?> {
+  var imageForModel_property_selection : EBSelection <EBShape?> {
     get {
       if let model = self.propval {
         switch (model.imageForModel_property_selection) {

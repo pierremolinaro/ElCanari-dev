@@ -238,6 +238,66 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  //   Indexes of objects intersection rectangle
+  //····················································································································
+
+  func indexes (intersecting inRect : CGRect) -> Set <Int> {
+    var result = Set <Int> ()
+    for object in self.mShapes.reversed () {
+      if (object.userIndex >= 0) && object.intersects (inRect) {
+        result.insert (object.userIndex)
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+  // index of object containing point (-1 if none)
+  //····················································································································
+
+  func indexOfObject (containing inPoint : NSPoint) -> Int {
+    var result = -1
+    var idx = self.mShapes.count - 1
+    while (idx >= 0) && (result < 0) {
+      let object = self.mShapes [idx]
+      if (object.userIndex >= 0) && object.contains (inPoint) {
+        result = object.userIndex
+      }
+      idx -= 1
+    }
+    return result
+  }
+
+  //····················································································································
+
+  func computeInvalidRect (_ inObjects : EBShape) -> NSRect {
+    var invalidRect = NSZeroRect
+    let commonCount = min (self.mShapes.count, inObjects.mShapes.count)
+    var idx = 0
+    while idx < commonCount {
+      let currentObjet = self.mShapes [idx]
+      let newObject = inObjects.mShapes [idx]
+      if !newObject.sameDisplay(as: currentObjet) {
+        invalidRect = invalidRect.union (currentObjet.boundingBox)
+        invalidRect = invalidRect.union (newObject.boundingBox)
+      }
+      idx += 1
+    }
+  //--- Enter in invalid rect removed objects
+    while idx < self.mShapes.count {
+      invalidRect = invalidRect.union (self.mShapes [idx].boundingBox)
+      idx += 1
+    }
+  //--- Enter in invalid rect new objects
+    idx = commonCount
+    while idx < inObjects.mShapes.count {
+      invalidRect = invalidRect.union (inObjects.mShapes [idx].boundingBox)
+      idx += 1
+    }
+    return invalidRect
+  }
+
+  //····················································································································
 
 }
 
@@ -361,6 +421,49 @@ class EBStrokeBezierPathShape : EBShape {
   }
 
   //····················································································································
+  //   Indexes of objects intersection rectangle
+  //····················································································································
+
+  override func indexes (intersecting inRect : CGRect) -> Set <Int> {
+    var result = super.indexes (intersecting: inRect)
+    if self.userIndex >= 0 {
+      for bp in self.mPaths.reversed () {
+        if bp.bounds.intersects (inRect) { // §§§§ A AMÉLIORER
+          result.insert (self.userIndex)
+        }
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+  // index of object containing point (-1 if none)
+  //····················································································································
+
+  override func indexOfObject (containing inPoint : NSPoint) -> Int {
+    var result = -1
+    if self.userIndex >= 0 {
+      for bp in self.mPaths.reversed () {
+        if bp.bounds.contains (inPoint) { // §§§§ A AMÉLIORER
+          result = self.userIndex
+          break
+        }
+      }
+    }
+    if result < 0 {
+      result = super.indexOfObject (containing: inPoint)
+    }
+    return result
+  }
+
+  //····················································································································
+
+//  override func computeInvalidRect (_ inObjects : EBShape) -> NSRect {
+//    var invalidRect = super.computeInvalidRect (inObjects)
+//    return invalidRect
+//  }
+
+  //····················································································································
 
 }
 
@@ -454,6 +557,42 @@ class EBFilledBezierPathShape : EBShape {
   }
 
   //····················································································································
+  //   Indexes of objects intersection rectangle
+  //····················································································································
+
+  override func indexes (intersecting inRect : CGRect) -> Set <Int> {
+    var result = super.indexes (intersecting: inRect)
+    if self.userIndex >= 0 {
+      for bp in self.mPaths.reversed () {
+        if bp.bounds.intersects (inRect) { // §§§§ A AMÉLIORER
+          result.insert (self.userIndex)
+        }
+      }
+    }
+    return result
+  }
+
+  //····················································································································
+  // index of object containing point (-1 if none)
+  //····················································································································
+
+  override func indexOfObject (containing inPoint : NSPoint) -> Int {
+    var result = -1
+    if self.userIndex >= 0 {
+      for bp in self.mPaths.reversed () {
+        if bp.bounds.contains (inPoint) { // §§§§ A AMÉLIORER
+          result = self.userIndex
+          break
+        }
+      }
+    }
+    if result < 0 {
+      result = super.indexOfObject (containing: inPoint)
+    }
+    return result
+  }
+
+  //····················································································································
 
 }
 
@@ -530,62 +669,6 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
     }
   //--- Bezier paths
     self.mShape.draw (inDirtyRect)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBShapeArray
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct EBShapeArray : Hashable {
-
-  //····················································································································
-  //   Properties
-  //····················································································································
-
-  let objects : [EBShape]
-
-  //····················································································································
-  //   Init
-  //····················································································································
-
-  init (_ inObjects : [EBShape]) {
-    objects = inObjects
-  }
-
-  //····················································································································
-  // Equatable protocol
-  //····················································································································
-
-  public static func == (lhs: EBShapeArray, rhs: EBShapeArray) -> Bool {
-    if lhs.objects.count != rhs.objects.count {
-      return false
-    }else{
-      var idx = 0
-      while idx < lhs.objects.count {
-        if lhs.objects [idx] != rhs.objects [idx] {
-          return false
-        }
-        idx += 1
-      }
-      return true
-    }
-  }
-
-  //····················································································································
-  // Hashable protocol
-  //····················································································································
-
-  public var hashValue: Int {
-    var h = 0
-    for object in objects {
-      h.rotateLeft ()
-      h ^= object.hashValue
-    }
-    return h
   }
 
   //····················································································································

@@ -226,7 +226,7 @@ entity BoardModel {
 
 
 #--- Image for model
-  transient EBShapeArray imageForModel dependsFrom
+  transient EBShape imageForModel dependsFrom
     prefs.mergerColorBackground,
     self.modelWidth,
     self.modelHeight,

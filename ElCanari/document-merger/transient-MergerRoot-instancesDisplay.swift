@@ -17,7 +17,7 @@ func transient_MergerRoot_instancesDisplay (
        _ prefs_mergerBoardViewDisplayBoardLimits : Bool,
        _ prefs_mergerColorBoardLimits : NSColor,
        _ self_boardInstances_instanceDisplay : [MergerBoardInstance_instanceDisplay]
-) -> EBShapeArray {
+) -> EBShape {
 //--- START OF USER ZONE 2
     var array = [EBShape] ()
     var idx = 0
@@ -38,7 +38,7 @@ func transient_MergerRoot_instancesDisplay (
       array.append (boardLimits)
     }
   //---
-    return EBShapeArray (array)
+    return EBShape (shapes: array)
 //--- END OF USER ZONE 2
 }
 
