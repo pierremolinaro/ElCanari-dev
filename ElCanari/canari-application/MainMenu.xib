@@ -1964,7 +1964,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="B95AF8DB-2FF0-48B2-A898-1CFBF652F23F" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="9CFBFBBE-2A9B-49E4-90CF-C07696F7F442" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2121,7 +2121,7 @@
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="z0R-Xy-yGB" customClass="CanariDateObserverField">
-                                <rect key="frame" x="86" y="19" width="217" height="14"/>
+                                <rect key="frame" x="113" y="19" width="190" height="14"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="8b3-7M-44S">
                                     <dateFormatter key="formatter" dateStyle="long" timeStyle="short" id="7aC-XD-xZa"/>
@@ -2131,9 +2131,9 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="FqY-uW-mJE">
-                                <rect key="frame" x="14" y="19" width="68" height="14"/>
+                                <rect key="frame" x="14" y="19" width="95" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Next Check:" id="Dvx-8P-W8p">
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Last Check Time:" id="Dvx-8P-W8p">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2177,7 +2177,7 @@
                     </view>
                 </box>
             </subviews>
-            <point key="canvasLocation" x="-401" y="-58"/>
+            <point key="canvasLocation" x="-401.5" y="-58.5"/>
         </customView>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="PMCheckingForLibaryUpdateWindow" animationBehavior="default" id="6215" userLabel="CheckingForLibraryUpdate" customClass="EBWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -2490,7 +2490,7 @@ Gw
         </window>
     </objects>
     <resources>
-        <image name="B95AF8DB-2FF0-48B2-A898-1CFBF652F23F" width="20" height="20">
+        <image name="9CFBFBBE-2A9B-49E4-90CF-C07696F7F442" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

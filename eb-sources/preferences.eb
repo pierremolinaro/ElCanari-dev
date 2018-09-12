@@ -352,16 +352,17 @@ prefs {
 #--- Update System Library path at startup
   property Bool checkForSystemLibraryAtStartUp default yes ;
   outlet EBSwitch mCheckForSystemLibraryAtStartUpSwitch $value self.checkForSystemLibraryAtStartUp ;
-  property Date nextSystemLibraryCheckAtStartUp default date ;
+
+  property Date mLastSystemLibraryCheckTime default date ;
+
   outlet CanariDateObserverField nextSystemLibraryCheckDate
-    $dateObserver self.nextSystemLibraryCheckAtStartUp
+    $dateObserver self.mLastSystemLibraryCheckTime
     $hidden !self.checkForSystemLibraryAtStartUp
   ;
   property Int systemLibraryCheckTimeInterval default 0 ;
-  action systemLibraryCheckTimeIntervalAction ;
+
   outlet EBPopUpButton systemLibraryCheckTimeIntervalPopupButton
     $selectedTag self.systemLibraryCheckTimeInterval
-    $run self.systemLibraryCheckTimeIntervalAction
     $hidden !self.checkForSystemLibraryAtStartUp
   ;
   outlet NSTextField systemLibraryCheckTimeIntervalTitleTextField $hidden !self.checkForSystemLibraryAtStartUp ;

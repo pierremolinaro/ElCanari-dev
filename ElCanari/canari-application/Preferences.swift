@@ -86,7 +86,7 @@ let Preferences_currentCharacterCodePoint = "Preferences:currentCharacterCodePoi
 let Preferences_fontEditionTransparency = "Preferences:fontEditionTransparency"
 let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_checkForSystemLibraryAtStartUp = "Preferences:checkForSystemLibraryAtStartUp"
-let Preferences_nextSystemLibraryCheckAtStartUp = "Preferences:nextSystemLibraryCheckAtStartUp"
+let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
 let Preferences_systemLibraryCheckTimeInterval = "Preferences:systemLibraryCheckTimeInterval"
 let Preferences_mergerModelViewHorizontalFlip = "Preferences:mergerModelViewHorizontalFlip"
 let Preferences_mergerModelViewVerticalFlip = "Preferences:mergerModelViewVerticalFlip"
@@ -1716,21 +1716,21 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   }
 
   //····················································································································
-  //   Accessing nextSystemLibraryCheckAtStartUp stored property
+  //   Accessing mLastSystemLibraryCheckTime stored property
   //····················································································································
 
-  var nextSystemLibraryCheckAtStartUp : Date {
+  var mLastSystemLibraryCheckTime : Date {
     get {
-      return self.nextSystemLibraryCheckAtStartUp_property.propval
+      return self.mLastSystemLibraryCheckTime_property.propval
     }
     set {
-      self.nextSystemLibraryCheckAtStartUp_property.setProp (newValue)
+      self.mLastSystemLibraryCheckTime_property.setProp (newValue)
     }
   }
 
-  var nextSystemLibraryCheckAtStartUp_property_selection : EBSelection <Date> {
+  var mLastSystemLibraryCheckTime_property_selection : EBSelection <Date> {
     get {
-      return self.nextSystemLibraryCheckAtStartUp_property.prop
+      return self.mLastSystemLibraryCheckTime_property.prop
     }
   }
 
@@ -3128,7 +3128,7 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   var fontEditionTransparency_property = EBStoredProperty_Double (0.5, prefKey: Preferences_fontEditionTransparency)
   var usesUserLibrary_property = EBStoredProperty_Bool (true, prefKey: Preferences_usesUserLibrary)
   var checkForSystemLibraryAtStartUp_property = EBStoredProperty_Bool (true, prefKey: Preferences_checkForSystemLibraryAtStartUp)
-  var nextSystemLibraryCheckAtStartUp_property = EBStoredProperty_Date (Date (), prefKey: Preferences_nextSystemLibraryCheckAtStartUp)
+  var mLastSystemLibraryCheckTime_property = EBStoredProperty_Date (Date (), prefKey: Preferences_mLastSystemLibraryCheckTime)
   var systemLibraryCheckTimeInterval_property = EBStoredProperty_Int (0, prefKey: Preferences_systemLibraryCheckTimeInterval)
   var mergerModelViewHorizontalFlip_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewHorizontalFlip)
   var mergerModelViewVerticalFlip_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewVerticalFlip)
@@ -3304,7 +3304,7 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
 //    self.fontEditionTransparency_property.readInPreferencesWithKey (inKey: Preferences_fontEditionTransparency)
 //    self.usesUserLibrary_property.readInPreferencesWithKey (inKey: Preferences_usesUserLibrary)
 //    self.checkForSystemLibraryAtStartUp_property.readInPreferencesWithKey (inKey: Preferences_checkForSystemLibraryAtStartUp)
-//    self.nextSystemLibraryCheckAtStartUp_property.readInPreferencesWithKey (inKey: Preferences_nextSystemLibraryCheckAtStartUp)
+//    self.mLastSystemLibraryCheckTime_property.readInPreferencesWithKey (inKey: Preferences_mLastSystemLibraryCheckTime)
 //    self.systemLibraryCheckTimeInterval_property.readInPreferencesWithKey (inKey: Preferences_systemLibraryCheckTimeInterval)
 //    self.mergerModelViewHorizontalFlip_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewHorizontalFlip)
 //    self.mergerModelViewVerticalFlip_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewVerticalFlip)
@@ -4018,7 +4018,7 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
     mEditionTransparencyTextField?.bind_value (self.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (self.usesUserLibrary_property, file: #file, line: #line)
     mCheckForSystemLibraryAtStartUpSwitch?.bind_value (self.checkForSystemLibraryAtStartUp_property, file: #file, line: #line)
-    nextSystemLibraryCheckDate?.bind_dateObserver (self.nextSystemLibraryCheckAtStartUp_property, file: #file, line: #line)
+    nextSystemLibraryCheckDate?.bind_dateObserver (self.mLastSystemLibraryCheckTime_property, file: #file, line: #line)
     systemLibraryCheckTimeIntervalPopupButton?.bind_selectedTag (self.systemLibraryCheckTimeInterval_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
@@ -4073,8 +4073,6 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   //--------------------------- Set targets / actions
     self.mRevealInFinderLibraryInUserApplicationSupportButton?.target = self
     self.mRevealInFinderLibraryInUserApplicationSupportButton?.action = #selector (Preferences.revealUserLibraryInFinderAction (_:))
-    self.systemLibraryCheckTimeIntervalPopupButton?.target = self
-    self.systemLibraryCheckTimeIntervalPopupButton?.action = #selector (Preferences.systemLibraryCheckTimeIntervalAction (_:))
     self.mAddLibraryEntryButton?.target = self
     self.mAddLibraryEntryButton?.action = #selector (Preferences.addLibraryEntryAction (_:))
     self.mRemoveLibraryEntryButton?.target = additionnalLibraryArrayController
@@ -4175,7 +4173,7 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
 //    self.fontEditionTransparency_property.storeInPreferencesWithKey (inKey: Preferences_fontEditionTransparency)
 //    self.usesUserLibrary_property.storeInPreferencesWithKey (inKey: Preferences_usesUserLibrary)
 //    self.checkForSystemLibraryAtStartUp_property.storeInPreferencesWithKey (inKey: Preferences_checkForSystemLibraryAtStartUp)
-//    self.nextSystemLibraryCheckAtStartUp_property.storeInPreferencesWithKey (inKey: Preferences_nextSystemLibraryCheckAtStartUp)
+//    self.mLastSystemLibraryCheckTime_property.storeInPreferencesWithKey (inKey: Preferences_mLastSystemLibraryCheckTime)
 //    self.systemLibraryCheckTimeInterval_property.storeInPreferencesWithKey (inKey: Preferences_systemLibraryCheckTimeInterval)
 //    self.mergerModelViewHorizontalFlip_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewHorizontalFlip)
 //    self.mergerModelViewVerticalFlip_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewVerticalFlip)

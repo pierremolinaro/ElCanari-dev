@@ -11,7 +11,6 @@ extension ApplicationDelegate {
     if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
       g_Preferences?.mCheckingForLibraryUpdateProgressIndicator?.startAnimation (nil)
       performLibraryUpdate (g_Preferences?.mCheckingForLibraryUpdateWindow, logTextView)
-      g_Preferences?.systemLibraryCheckTimeIntervalAction (nil)
     }else{
       NSLog ("g_Preferences?.mLibraryUpdateLogTextView is nil")
     }
