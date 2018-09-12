@@ -280,7 +280,7 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
                                                   _ ioPossibleAlert : inout NSAlert?) {
   let components = inResponse.components (separatedBy:"\r\n\r\n")
   if components.count >= 2 {
-    let jsonData = components [1].data (using: .utf8)!
+    let jsonData = components [components.count - 1].data (using: .utf8)!
     do{
       inLogTextView.appendErrorString ("  HTTP result, has \(components.count) lines\n")
     //--- Get commit sha
@@ -291,7 +291,7 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
       inLogTextView.appendSuccessString ("  Commit SHA: \(commitSHA) has been stored in preferences\n")
       storeRepositoryCommitSHA (commitSHA)
     //--- Get ETag
-      let c1 = components [0].components (separatedBy:"ETag: \"")
+      let c1 = components [components.count - 2].components (separatedBy:"ETag: \"")
       let c2 = c1 [1].components (separatedBy:"\"")
       let etag = c2 [0]
       storeRepositoryCurrentETag (etag)
