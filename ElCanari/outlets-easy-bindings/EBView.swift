@@ -80,12 +80,12 @@ import Cocoa
   //    Selection Layer
   //····················································································································
 
-  private var mSelectionShape = EBShapeLayer ()
+  private var mSelectionShape = EBShape ()
 
   var objectSelectionLayer = EBShape () {
     didSet {
       self.setNeedsDisplay (mSelectionShape.boundingBox)
-      mSelectionShape = EBShapeLayer (objectSelectionLayer)
+      mSelectionShape = self.objectSelectionLayer
       self.setNeedsDisplay (mSelectionShape.boundingBox)
     }
   }
@@ -94,7 +94,7 @@ import Cocoa
   //    Selection Rectangle Layer
   //····················································································································
 
-  var selectionRectangleLayer : EBShapeLayer? = nil {
+  var selectionRectangleLayer : EBShape? = nil {
     didSet {
       if let oldSelectionRectangleLayer = oldValue {
         self.setNeedsDisplay (oldSelectionRectangleLayer.boundingBox)
@@ -268,7 +268,7 @@ import Cocoa
 
   private var mObjectsController : Controller_EBView_objects?
 
-  func bind_objects (_ objects:EBReadOnlyProperty_EBShapeLayerArray, file:String, line:Int) {
+  func bind_objects (_ objects:EBReadOnlyProperty_EBShapeArray, file:String, line:Int) {
     mObjectsController = Controller_EBView_objects (objects, outlet:self)
   }
 
@@ -279,11 +279,11 @@ import Cocoa
 
   //····················································································································
 
-   private var mObjects = [EBShapeLayer] ()
+   private var mObjects = [EBShape] ()
 
   //····················································································································
 
-  func setObjects (_ inObjects : [EBShapeLayer]) {
+  func setObjects (_ inObjects : [EBShape]) {
     var invalidRect = NSZeroRect
     let commonCount = min (self.mObjects.count, inObjects.count)
     var idx = 0
@@ -403,12 +403,12 @@ final class Controller_EBView_shiftArrowKeyMagnitude : EBSimpleController {
 
 class Controller_EBView_objects : EBSimpleController {
 
-  private let mLayer : EBReadOnlyProperty_EBShapeLayerArray
+  private let mLayer : EBReadOnlyProperty_EBShapeArray
   private let mOutlet : EBView
 
   //····················································································································
 
-  init (_ layer : EBReadOnlyProperty_EBShapeLayerArray, outlet : EBView) {
+  init (_ layer : EBReadOnlyProperty_EBShapeArray, outlet : EBView) {
     mLayer = layer
     mOutlet = outlet
     super.init (observedObjects:[layer], outlet:outlet)

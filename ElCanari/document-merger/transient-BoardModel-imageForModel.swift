@@ -75,95 +75,95 @@ func transient_BoardModel_imageForModel (
        _ self_backPackagesBezierPaths : BezierPathArray,
        _ prefs_mergerModelViewDisplayBackPackages : Bool,
        _ prefs_mergerColorBackPackages : NSColor
-) -> EBShapeLayerArray {
+) -> EBShapeArray {
 //--- START OF USER ZONE 2
-  let shapes = EBShape ()
+  var shapes = [EBShape] ()
 //--- Background
   let backRect = NSRect (x:0.0, y:0.0, width: canariUnitToCocoa(self_modelWidth), height: canariUnitToCocoa(self_modelHeight))
-  shapes.append (shape: EBFilledBezierPathShape ([NSBezierPath (rect:backRect)], prefs_mergerColorBackground))
+  shapes.append (EBFilledBezierPathShape ([NSBezierPath (rect:backRect)], prefs_mergerColorBackground))
 //--- Back Legend Lines
   if (prefs_mergerModelViewDisplayBackLegendLines) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines))
+    shapes.append (EBStrokeBezierPathShape (self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines))
   }
 //--- Back Component Values
   if (prefs_mergerModelViewDisplayBackComponentValues) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_backComponentValuesBezierPaths.array, prefs_mergerColorBackComponentValues))
+    shapes.append (EBStrokeBezierPathShape (self_backComponentValuesBezierPaths.array, prefs_mergerColorBackComponentValues))
   }
 //--- Back Component Names
   if (prefs_mergerModelViewDisplayBackComponentNames) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_backComponentNamesBezierPaths.array, prefs_mergerColorBackComponentNames))
+    shapes.append (EBStrokeBezierPathShape (self_backComponentNamesBezierPaths.array, prefs_mergerColorBackComponentNames))
   }
 //--- Back Legend Texts
   if (prefs_mergerModelViewDisplayBackLegendTexts) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_backLegendTextsBezierPaths.array, prefs_mergerColorBackLegendTexts))
+    shapes.append (EBStrokeBezierPathShape (self_backLegendTextsBezierPaths.array, prefs_mergerColorBackLegendTexts))
   }
 //--- Back Packages
   if (prefs_mergerModelViewDisplayBackPackages) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_backPackagesBezierPaths.array, prefs_mergerColorBackPackages))
+    shapes.append (EBStrokeBezierPathShape (self_backPackagesBezierPaths.array, prefs_mergerColorBackPackages))
   }
 //--- Back Layout Texts
   if (prefs_mergerModelViewDisplayBackLayoutTexts) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_backLayoutTextsBezierPaths.array, prefs_mergerColorBackLayoutTexts))
+    shapes.append (EBStrokeBezierPathShape (self_backLayoutTextsBezierPaths.array, prefs_mergerColorBackLayoutTexts))
   }
 //--- Back tracks
   if prefs_mergerModelViewDisplayBackTracks {
-    shapes.append (shape: EBStrokeBezierPathShape (self_backTracksBezierPaths.array, prefs_mergerColorBackTracks))
+    shapes.append (EBStrokeBezierPathShape (self_backTracksBezierPaths.array, prefs_mergerColorBackTracks))
   }
 //--- Back pads
   if (prefs_mergerModelViewDisplayBackPads) {
-    shapes.append (shape: EBFilledBezierPathShape (self_backPadsBezierPaths.array, prefs_mergerColorBackPads))
+    shapes.append (EBFilledBezierPathShape (self_backPadsBezierPaths.array, prefs_mergerColorBackPads))
   }
 //--- Front tracks
   if prefs_mergerModelViewDisplayFrontTracks {
-    shapes.append (shape: EBStrokeBezierPathShape (self_frontTracksBezierPaths.array, prefs_mergerColorFrontTracks))
+    shapes.append (EBStrokeBezierPathShape (self_frontTracksBezierPaths.array, prefs_mergerColorFrontTracks))
   }
 //--- Front layout texts
   if (prefs_mergerModelViewDisplayFrontLayoutTexts) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_frontLayoutTextsBezierPaths.array, prefs_mergerColorFrontLayoutTexts))
+    shapes.append (EBStrokeBezierPathShape (self_frontLayoutTextsBezierPaths.array, prefs_mergerColorFrontLayoutTexts))
   }
 //--- Front Legend Lines
   if (prefs_mergerModelViewDisplayFrontLegendLines) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_frontLegendLinesBezierPaths.array, prefs_mergerColorFrontLegendLines))
+    shapes.append (EBStrokeBezierPathShape (self_frontLegendLinesBezierPaths.array, prefs_mergerColorFrontLegendLines))
   }
 //--- Front Legend texts
   if (prefs_mergerModelViewDisplayFrontLegendTexts) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_frontLegendTextsBezierPaths.array, prefs_mergerColorFrontLegendTexts))
+    shapes.append (EBStrokeBezierPathShape (self_frontLegendTextsBezierPaths.array, prefs_mergerColorFrontLegendTexts))
   }
 //--- Front Packages
   if (prefs_mergerModelViewDisplayFrontPackages) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_frontPackagesBezierPaths.array, prefs_mergerColorFrontPackages))
+    shapes.append (EBStrokeBezierPathShape (self_frontPackagesBezierPaths.array, prefs_mergerColorFrontPackages))
   }
 //--- Front Component Names
   if (prefs_mergerModelViewDisplayFrontComponentNames) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_frontComponentNamesBezierPaths.array, prefs_mergerColorFrontComponentNames))
+    shapes.append (EBStrokeBezierPathShape (self_frontComponentNamesBezierPaths.array, prefs_mergerColorFrontComponentNames))
   }
 //--- Front Component Values
   if (prefs_mergerModelViewDisplayFrontComponentValues) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_frontComponentValuesBezierPaths.array, prefs_mergerColorFrontComponentValues))
+    shapes.append (EBStrokeBezierPathShape (self_frontComponentValuesBezierPaths.array, prefs_mergerColorFrontComponentValues))
   }
 //--- Front pads
   if (prefs_mergerModelViewDisplayFrontPads) {
-    shapes.append (shape: EBFilledBezierPathShape (self_frontPadsBezierPaths.array, prefs_mergerColorFrontPads))
+    shapes.append (EBFilledBezierPathShape (self_frontPadsBezierPaths.array, prefs_mergerColorFrontPads))
   }
 //--- Internal Board limits
   if prefs_mergerModelViewDisplayInternalBoardsLimits {
-    shapes.append (shape: EBStrokeBezierPathShape (self_internalBoardsLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits))
+    shapes.append (EBStrokeBezierPathShape (self_internalBoardsLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits))
   }
 //--- Board limits
   if prefs_mergerModelViewDisplayBoardLimits {
-    shapes.append (shape: EBStrokeBezierPathShape (self_boardLimitsBezierPaths.array, prefs_mergerColorBoardLimits))
+    shapes.append (EBStrokeBezierPathShape (self_boardLimitsBezierPaths.array, prefs_mergerColorBoardLimits))
   }
 //--- Vias
   if (prefs_mergerModelViewDisplayVias) {
-    shapes.append (shape: EBFilledBezierPathShape (self_viasBezierPaths.array, prefs_mergerColorVias))
+    shapes.append (EBFilledBezierPathShape (self_viasBezierPaths.array, prefs_mergerColorVias))
   }
 //--- Holes
   if (prefs_mergerModelViewDisplayHoles) {
-    shapes.append (shape: EBStrokeBezierPathShape (self_holesBezierPaths.array, prefs_mergerColorHoles))
+    shapes.append (EBStrokeBezierPathShape (self_holesBezierPaths.array, prefs_mergerColorHoles))
   }
 //---
-  let shapeLayer = EBShapeLayer (shapes)
-  return EBShapeLayerArray ([shapeLayer])
+//  let shapeLayer = EBShapeLayer (shapes)
+  return EBShapeArray ([EBShape (shapes: shapes)])
 //--- END OF USER ZONE 2
 }
 

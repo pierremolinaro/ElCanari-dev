@@ -496,13 +496,12 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         let yMax = max (selectionRectangleOrigin.y, mouseDraggedLocation.y)
 
         let r = NSRect (x:xMin, y:yMin, width:xMax-xMin, height:yMax-yMin)
-        let shapes = EBShape ()
+        var shapes = [EBShape] ()
         let bp = NSBezierPath (rect: r)
         bp.lineWidth = 1.0
-        shapes.append (shape: EBFilledBezierPathShape ([bp], NSColor.lightGray.withAlphaComponent (0.2)))
-        shapes.append (shape: EBStrokeBezierPathShape ([bp], NSColor.lightGray))
-        let layer = EBShapeLayer (shapes)
-        mEBView?.selectionRectangleLayer = layer
+        shapes.append (EBFilledBezierPathShape ([bp], NSColor.lightGray.withAlphaComponent (0.2)))
+        shapes.append (EBStrokeBezierPathShape ([bp], NSColor.lightGray))
+        mEBView?.selectionRectangleLayer = EBShape (shapes: shapes)
         let indexSet = boardView.indexesOfObjects (intersecting:r)
         var newSelectedSet = Set <MergerBoardInstance> ()
         var objects = mModel?.propval ?? []

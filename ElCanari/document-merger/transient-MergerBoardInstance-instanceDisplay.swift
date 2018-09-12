@@ -18,7 +18,7 @@ func transient_MergerBoardInstance_instanceDisplay (
        _ self_myModel_modelHeight : Int?,           
        _ self_instanceRotation : QuadrantRotation,  
        _ self_myModel_imageForInstances : EBShape?
-) -> EBShapeLayer {
+) -> EBShape {
 //--- START OF USER ZONE 2
   let width  = canariUnitToCocoa (self_myModel_modelWidth!)
   let height = canariUnitToCocoa (self_myModel_modelHeight!)
@@ -40,7 +40,7 @@ func transient_MergerBoardInstance_instanceDisplay (
     transform.rotate (byDegrees: 270.0)
     transform.translateX (by: -width / 2.0, yBy: -height / 2.0)
   }
-  return EBShapeLayer (self_myModel_imageForInstances!, transform: transform)
+  return self_myModel_imageForInstances!.transformedBy (transform)
 //--- END OF USER ZONE 2
 }
 

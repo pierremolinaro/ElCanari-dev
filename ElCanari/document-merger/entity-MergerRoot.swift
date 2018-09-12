@@ -479,13 +479,13 @@ class MergerRoot : EBManagedObject,
   //   Accessing instancesDisplay transient property
   //····················································································································
 
-  var instancesDisplay_property_selection : EBSelection <EBShapeLayerArray> {
+  var instancesDisplay_property_selection : EBSelection <EBShapeArray> {
     get {
       return self.instancesDisplay_property.prop
     }
   }
 
-  var instancesDisplay : EBShapeLayerArray? {
+  var instancesDisplay : EBShapeArray? {
     switch instancesDisplay_property_selection {
     case .empty, .multiple :
       return nil
@@ -622,7 +622,7 @@ class MergerRoot : EBManagedObject,
   var cocoaArrowMagnitude_property = EBTransientProperty_CGFloat ()
   var cocoaShiftArrowMagnitude_property = EBTransientProperty_CGFloat ()
   var modelNames_property = EBTransientProperty_MergerBoardModelArray ()
-  var instancesDisplay_property = EBTransientProperty_EBShapeLayerArray ()
+  var instancesDisplay_property = EBTransientProperty_EBShapeArray ()
   var boardRect_property = EBTransientProperty_CanariHorizontalRect ()
   var boardDisplayRect_property = EBTransientProperty_CanariHorizontalRect ()
   var boardWidth_property = EBTransientProperty_Int ()
@@ -3197,7 +3197,7 @@ protocol MergerRoot_modelNames : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_instancesDisplay : class {
-  var instancesDisplay : EBShapeLayerArray? { get }
+  var instancesDisplay : EBShapeArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

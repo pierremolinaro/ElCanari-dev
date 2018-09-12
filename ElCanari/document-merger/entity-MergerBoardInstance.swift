@@ -155,13 +155,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   Accessing instanceDisplay transient property
   //····················································································································
 
-  var instanceDisplay_property_selection : EBSelection <EBShapeLayer> {
+  var instanceDisplay_property_selection : EBSelection <EBShape> {
     get {
       return self.instanceDisplay_property.prop
     }
   }
 
-  var instanceDisplay : EBShapeLayer? {
+  var instanceDisplay : EBShape? {
     switch instanceDisplay_property_selection {
     case .empty, .multiple :
       return nil
@@ -186,7 +186,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   var modelName_property = EBTransientProperty_String ()
   var boardLimitWidth_property = EBTransientProperty_Int ()
   // selectionLayer_property is declared in super entity
-  var instanceDisplay_property = EBTransientProperty_EBShapeLayer ()
+  var instanceDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //    Relationships
@@ -1116,7 +1116,7 @@ protocol MergerBoardInstance_selectionLayer : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerBoardInstance_instanceDisplay : class {
-  var instanceDisplay : EBShapeLayer? { get }
+  var instanceDisplay : EBShape? { get }
 }
 
 
@@ -2082,7 +2082,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
 
   //····················································································································
 
-  var instancesDisplay_property_selection : EBSelection <EBShapeLayerArray?> {
+  var instancesDisplay_property_selection : EBSelection <EBShapeArray?> {
     get {
       if let model = self.propval {
         switch (model.instancesDisplay_property_selection) {
@@ -4292,7 +4292,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
 
   //····················································································································
 
-  var imageForModel_property_selection : EBSelection <EBShapeLayerArray?> {
+  var imageForModel_property_selection : EBSelection <EBShapeArray?> {
     get {
       if let model = self.propval {
         switch (model.imageForModel_property_selection) {

@@ -23,9 +23,9 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
       return self.boardLimitWidth_property.prop
     }
   }
-  var instanceDisplay_property = EBTransientProperty_EBShapeLayer ()
+  var instanceDisplay_property = EBTransientProperty_EBShape ()
 
-  var instanceDisplay_property_selection : EBSelection <EBShapeLayer> {
+  var instanceDisplay_property_selection : EBSelection <EBShape> {
     get {
       return self.instanceDisplay_property.prop
     }
@@ -252,7 +252,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<EBShapeLayer> ()
+          var s = Set<EBShape> ()
           var isMultipleSelection = false
           for object in v {
             switch object.instanceDisplay_property_selection {

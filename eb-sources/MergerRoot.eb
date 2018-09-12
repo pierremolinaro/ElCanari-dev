@@ -39,7 +39,7 @@ entity MergerRoot {
      self.boardModels.all.modelHeight ;
 
 #--- Instance display
-  transient EBShapeLayerArray instancesDisplay  dependsFrom
+  transient EBShapeArray instancesDisplay  dependsFrom
     self.boardRect, self.boardLimitWidth, prefs.mergerBoardViewDisplayBoardLimits, prefs.mergerColorBoardLimits,
     self.boardInstances.all.instanceDisplay ;
 

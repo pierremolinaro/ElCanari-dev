@@ -1221,17 +1221,11 @@ typealias EBReadOnlyPropertyArray_EBShape  = EBReadOnlyClassProperty <[EBShape]>
 typealias EBTransientPropertyArray_EBShape = EBTransientClassProperty <[EBShape]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property EBShapeLayer
+//   Property EBShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_EBShapeLayer  = EBReadOnlyValueProperty <EBShapeLayer>
-typealias EBTransientProperty_EBShapeLayer = EBTransientValueProperty <EBShapeLayer>
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property EBShapeLayerArray
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_EBShapeLayerArray  = EBReadOnlyValueProperty <EBShapeLayerArray>
-typealias EBTransientProperty_EBShapeLayerArray = EBTransientValueProperty <EBShapeLayerArray>
+typealias EBReadOnlyProperty_EBShapeArray  = EBReadOnlyValueProperty <EBShapeArray>
+typealias EBTransientProperty_EBShapeArray = EBTransientValueProperty <EBShapeArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class NSBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
