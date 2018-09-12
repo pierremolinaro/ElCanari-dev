@@ -92,20 +92,22 @@ func performLibraryUpdate (_ inWindow : EBWindow?, _ inLogTextView : NSTextView)
 //-------- ① We start by checking if a repository did change using etag
   inLogTextView.appendMessageString ("Phase 1: repository did change?\n", color: NSColor.purple)
   var possibleAlert : NSAlert? = nil
+  var needsToDownloadRepositoryFileList = true
   if let etag = getRepositoryCurrentETag (), let sha = getRepositoryCommitSHA () {
     inLogTextView.appendSuccessString ("  Current Etag: \(etag)\n")
     inLogTextView.appendSuccessString ("  Current commit SHA: \(sha)\n")
-    queryServerLastCommitUsingEtag (etag, inLogTextView, proxy, &possibleAlert)
+    queryServerLastCommitUsingEtag (etag, inLogTextView, proxy, &needsToDownloadRepositoryFileList, &possibleAlert)
   }else{
     inLogTextView.appendWarningString ("  No current Etag and/or no current commit SHA\n")
     queryServerLastCommitWithNoEtag (inLogTextView, proxy, &possibleAlert)
+    needsToDownloadRepositoryFileList = true
   }
 //-------- ② Repository ETAG and commit SHA have been successfully retrieve,
 //            now read of download the file list corresponding to this commit
   inLogTextView.appendMessageString ("Phase 2: get repository file list\n", color: NSColor.purple)
   var repositoryFileDictionary = [String : CanariLibraryFileDescriptor] ()
   if possibleAlert == nil {
-    readOrDownloadLibraryFileDictionary (&repositoryFileDictionary, inLogTextView, proxy, &possibleAlert)
+    readOrDownloadLibraryFileDictionary (&repositoryFileDictionary, inLogTextView, proxy, needsToDownloadRepositoryFileList, &possibleAlert)
   }else{
     inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
   }
@@ -194,6 +196,7 @@ fileprivate func getProxy (_ inLogTextView : NSTextView) -> [String] {
 private func queryServerLastCommitUsingEtag (_ etag : String,
                                              _ inLogTextView : NSTextView,
                                              _ inProxy : [String],
+                                             _ outNeedsToDownloadRepositoryFileList : inout Bool,
                                              _ ioPossibleAlert : inout NSAlert?) {
   let command = [
     CURL,
@@ -225,9 +228,11 @@ private func queryServerLastCommitUsingEtag (_ etag : String,
         inLogTextView.appendMessageString ("  HTTP Status: \(status)\n", color: NSColor.black)
         if status == 304 { // Status 304 --> not modified, use current repository description file
           inLogTextView.appendMessageString ("  HTTP Status means 'no repository change, use current description file'\n", color: NSColor.black)
+          outNeedsToDownloadRepositoryFileList = false
         }else if status == 200 { // Status 200 --> Ok, modified
           inLogTextView.appendMessageString ("  HTTP Status means 'repository did change'\n", color: NSColor.black)
           storeRepositoryETagAndLastCommitSHA (withResponse: response, inLogTextView, &ioPossibleAlert)
+          outNeedsToDownloadRepositoryFileList = true
         }
       }else{
         inLogTextView.appendErrorString ("  Cannot extract HTTP status from downloaded data\n")
@@ -274,9 +279,10 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
                                                   _ inLogTextView : NSTextView,
                                                   _ ioPossibleAlert : inout NSAlert?) {
   let components = inResponse.components (separatedBy:"\r\n\r\n")
-  if components.count == 2 {
+  if components.count >= 2 {
     let jsonData = components [1].data (using: .utf8)!
     do{
+      inLogTextView.appendErrorString ("  HTTP result, has \(components.count) lines\n")
     //--- Get commit sha
       let jsonArray = try JSONSerialization.jsonObject (with: jsonData) as! NSArray
       let jsonDictionary = jsonArray [0] as! NSDictionary
@@ -295,7 +301,7 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
       ioPossibleAlert = NSAlert (error: error)
     }
   }else{
-    inLogTextView.appendErrorString ("  Invalid HTTP result, has \(components.count) components instead of 2\n")
+    inLogTextView.appendErrorString ("  Invalid HTTP result, has \(components.count) line(s) (should be ≥ 2)\n")
   }
 }
 
@@ -305,74 +311,103 @@ private func readOrDownloadLibraryFileDictionary (
         _ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor],
         _ inLogTextView : NSTextView,
         _ inProxy : [String],
+        _ inNeedsToDownloadRepositoryFileList : Bool,
         _ ioPossibleAlert : inout NSAlert?) {
-  if libraryDescriptionFileIsValid () {
-    inLogTextView.appendMessageString ("  Local repository image file is valid\n")
+//--- Download library description file ?
+  let fm = FileManager ()
+  inLogTextView.appendWarningString ("  Needs to download description file: \(inNeedsToDownloadRepositoryFileList)\n")
+  inLogTextView.appendWarningString ("  Local description file is valid: \(libraryDescriptionFileIsValid ())\n")
+  if inNeedsToDownloadRepositoryFileList || !libraryDescriptionFileIsValid () {
+    if let repositoryCommitSHA = getRepositoryCommitSHA () {
+      inLogTextView.appendWarningString ("  Local repository image file is not valid: get it from repository\n")
+      let command = [
+        CURL,
+        "-s", // Silent mode, do not show download progress
+        "-L", // Follow redirections
+        "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/\(repositoryCommitSHA)?recursive=1"
+      ] + inProxy
+      inLogTextView.appendMessageString ("  Command: \(command)\n")
+      let response = runShellCommandAndGetDataOutput (command)
+      inLogTextView.appendMessageString ("  Result code: \(response)\n")
+      switch response {
+      case .error (let errorCode) :
+        if errorCode != 6 { // Error #6 is 'no network connection'
+          ioPossibleAlert = NSAlert ()
+          ioPossibleAlert?.messageText = "Cannot connect to the server"
+          ioPossibleAlert?.addButton (withTitle: "Ok")
+          ioPossibleAlert?.informativeText = "Error code: \(errorCode)"
+        }
+      case .ok (let responseData) :
+        do{
+          let jsonObject = try JSONSerialization.jsonObject (with: responseData) as! NSDictionary
+          let treeEntry = get (jsonObject, "tree", #line)
+          if let fileDescriptionArray = treeEntry as? [[String : Any]] {
+            for fileDescriptionDictionay in fileDescriptionArray {
+              let filePath = fileDescriptionDictionay ["path"] as! String
+              let ext = filePath.pathExtension
+              if (ext == "ElCanariFont") || (ext == "ElCanariArtwork") {
+                var localSHA = ""
+                if fm.fileExists (atPath: filePath) {
+                  let fileData = try! Data (contentsOf: URL (fileURLWithPath: filePath))
+                  localSHA = sha1 (fileData)
+                }
+                let descriptor = CanariLibraryFileDescriptor (
+                  relativePath: filePath,
+                  repositorySHA: "?",
+                  sizeInRepository: fileDescriptionDictionay ["size"] as! Int,
+                  localSHA: localSHA
+                )
+                ioLibraryFileDictionary [filePath] = descriptor
+              }
+            }
+          }else{
+            inLogTextView.appendErrorString ("  Entry is not an [[String : String]] object: \(String (describing: treeEntry))\n")
+          }
+        }catch let error {
+          ioPossibleAlert = NSAlert (error: error)
+        }
+      }
+    }else{
+      inLogTextView.appendErrorString ("  Repository commit SHA does not exist in preferences\n")
+      let alert = NSAlert ()
+      alert.messageText = "Internal error"
+      alert.addButton (withTitle: "Ok")
+      alert.informativeText = "Repository commit SHA does not exist in preferences."
+      ioPossibleAlert = alert
+    }
+  }
+//--- Now, use local library description file to get repository SHA
+  if (ioPossibleAlert == nil) && libraryDescriptionFileIsValid () {
     let f = systemLibraryPath () + "/" + repositoryDescriptionFile
-    inLogTextView.appendMessageString ("  Local repository image file is \(f)\n")
     let data = try! Data (contentsOf: URL (fileURLWithPath: f))
     let propertyList = try! PropertyListSerialization.propertyList (from: data, format: nil) as! [[String : String]]
     for entry in propertyList {
       let filePath = entry ["path"]!
-      let descriptor = CanariLibraryFileDescriptor (
-        relativePath: filePath,
-        repositorySHA: entry ["sha"]!,
-        sizeInRepository: Int (entry ["size"]!)!,
-        localSHA: ""
-      )
-      ioLibraryFileDictionary [filePath] = descriptor
-    }
-  }else if let repositoryCommitSHA = getRepositoryCommitSHA () {
-    inLogTextView.appendWarningString ("  Local repository image file is not valid: get it from repository\n")
-    let command = [
-      CURL,
-      "-s", // Silent mode, do not show download progress
-      "-L", // Follow redirections
-      "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/\(repositoryCommitSHA)?recursive=1"
-    ] + inProxy
-    inLogTextView.appendMessageString ("  Command: \(command)\n")
-    let response = runShellCommandAndGetDataOutput (command)
-    inLogTextView.appendMessageString ("  Result code: \(response)\n")
-    switch response {
-    case .error (let errorCode) :
-      if errorCode != 6 { // Error #6 is 'no network connection'
-        ioPossibleAlert = NSAlert ()
-        ioPossibleAlert?.messageText = "Cannot connect to the server"
-        ioPossibleAlert?.addButton (withTitle: "Ok")
-        ioPossibleAlert?.informativeText = "Error code: \(errorCode)"
-      }
-    case .ok (let responseData) :
-      do{
-        let jsonObject = try JSONSerialization.jsonObject (with: responseData) as! NSDictionary
-        let treeEntry = get (jsonObject, "tree", #line)
-        if let fileDescriptionArray = treeEntry as? [[String : Any]] {
-          for fileDescriptionDictionay in fileDescriptionArray {
-            let filePath = fileDescriptionDictionay ["path"] as! String
-            let ext = filePath.pathExtension
-            if (ext == "ElCanariFont") || (ext == "ElCanariArtwork") {
-              let descriptor = CanariLibraryFileDescriptor (
-                relativePath: filePath,
-                repositorySHA: "?", // fileDescriptionDictionay ["sha"] as! String,
-                sizeInRepository: fileDescriptionDictionay ["size"] as! Int,
-                localSHA: "?"
-              )
-              ioLibraryFileDictionary [filePath] = descriptor
-            }
-          }
-        }else{
-          inLogTextView.appendErrorString ("  Entry is not an [[String : String]] object: \(String (describing: treeEntry))\n")
+      let repositorySHA = entry ["sha"]!
+      if let descriptor = ioLibraryFileDictionary [filePath] {
+        let newDescriptor = CanariLibraryFileDescriptor (
+          relativePath: filePath,
+          repositorySHA: repositorySHA,
+          sizeInRepository: descriptor.mSizeInRepository,
+          localSHA: descriptor.mLocalSHA
+        )
+        ioLibraryFileDictionary [filePath] = newDescriptor
+      }else{
+        let fullFilePath = systemLibraryPath () + "/" + filePath
+        var localSHA = ""
+        if fm.fileExists (atPath: fullFilePath) {
+          let fileData = try! Data (contentsOf: URL (fileURLWithPath: fullFilePath))
+          localSHA = sha1 (fileData)
         }
-      }catch let error {
-        ioPossibleAlert = NSAlert (error: error)
+        let newDescriptor = CanariLibraryFileDescriptor (
+          relativePath: filePath,
+          repositorySHA: repositorySHA,
+          sizeInRepository: Int (entry ["size"]!)!,
+          localSHA: localSHA
+        )
+        ioLibraryFileDictionary [filePath] = newDescriptor
       }
     }
-  }else{
-    inLogTextView.appendErrorString ("  Repository commit SHA does not exist in preferences\n")
-    let alert = NSAlert ()
-    alert.messageText = "Internal error"
-    alert.addButton (withTitle: "Ok")
-    alert.informativeText = "Repository commit SHA does not exist in preferences."
-    ioPossibleAlert = alert
   }
 //--- Print ?
   inLogTextView.appendMessageString ("  Repository contents (repositorySHA:size:path):\n")
@@ -448,7 +483,8 @@ private func buildLibraryOperations (
   for descriptor in inLibraryFileDictionary.values {
     // inLogTextView.appendMessageString ("    \(descriptor.mRelativePath): \(descriptor.mRepositorySHA) \(descriptor.mLocalSHA)\n")
     if descriptor.mRepositorySHA == "" {
-      let element = LibraryOperationElement (
+     inLogTextView.appendMessageString ("    Delete \(descriptor.mRelativePath)\n")
+     let element = LibraryOperationElement (
         relativePath: descriptor.mRelativePath,
         sizeInRepository: 0,
         operation: .delete,
