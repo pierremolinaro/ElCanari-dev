@@ -496,11 +496,11 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         let yMax = max (selectionRectangleOrigin.y, mouseDraggedLocation.y)
 
         let r = NSRect (x:xMin, y:yMin, width:xMax-xMin, height:yMax-yMin)
-        let shapes = EBShapes ()
+        let shapes = EBShape ()
         let bp = NSBezierPath (rect: r)
         bp.lineWidth = 1.0
-        shapes.append ([bp], NSColor.lightGray.withAlphaComponent (0.2), .fill)
-        shapes.append ([bp], NSColor.lightGray, .stroke)
+        shapes.append (shape: EBFilledBezierPathShape ([bp], NSColor.lightGray.withAlphaComponent (0.2)))
+        shapes.append (shape: EBStrokeBezierPathShape ([bp], NSColor.lightGray))
         let layer = EBShapeLayer (shapes)
         mEBView?.selectionRectangleLayer = layer
         let indexSet = boardView.indexesOfObjects (intersecting:r)
@@ -742,10 +742,10 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   private func computeSelectionLayer () {
-    var shapes = EBShapes ()
+    let shapes = EBShape ()
     for object in mSelectedSet.mSet {
-      if let layer = object.selectionLayer {
-        shapes += layer
+      if let shape = object.selectionLayer {
+        shapes.append (shape: shape)
       }
     }
     mEBView?.objectSelectionLayer = shapes

@@ -1035,13 +1035,13 @@ class BoardModel : EBManagedObject,
   //   Accessing imageForInstances transient property
   //····················································································································
 
-  var imageForInstances_property_selection : EBSelection <EBShapes> {
+  var imageForInstances_property_selection : EBSelection <EBShape> {
     get {
       return self.imageForInstances_property.prop
     }
   }
 
-  var imageForInstances : EBShapes? {
+  var imageForInstances : EBShape? {
     switch imageForInstances_property_selection {
     case .empty, .multiple :
       return nil
@@ -1310,7 +1310,7 @@ class BoardModel : EBManagedObject,
   var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
   var backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
   var imageForModel_property = EBTransientProperty_EBShapeLayerArray ()
-  var imageForInstances_property = EBTransientProperty_EBShapes ()
+  var imageForInstances_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //    Relationships
@@ -7324,7 +7324,7 @@ protocol BoardModel_imageForModel : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_imageForInstances : class {
-  var imageForInstances : EBShapes? { get }
+  var imageForInstances : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

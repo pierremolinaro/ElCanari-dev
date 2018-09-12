@@ -37,11 +37,11 @@ func transient_MergerDocument_issues (
             let bp1 = NSBezierPath (rect: cocoaDisplayRect)
             bp1.appendRect (intersectionEnlarged)
             bp1.windingRule = .evenOddWindingRule
-            let shapes = EBShapes ()
-            shapes.append ([bp1], NSColor.gray.withAlphaComponent (0.5), .fill)
+            let shapes = EBShape ()
+            shapes.append (shape: EBFilledBezierPathShape ([bp1], NSColor.gray.withAlphaComponent (0.5)))
             let bp2 = NSBezierPath (rect: intersectionEnlarged)
             bp2.lineWidth = 2.0
-            shapes.append ([bp2], NSColor.red, .stroke)
+            shapes.append (shape: EBStrokeBezierPathShape ([bp2], NSColor.red))
             let issue = InstanceIssue (kind: .intersecting, shapes: shapes, refRect: intersection)
             array.append (issue)
           }
@@ -58,11 +58,11 @@ func transient_MergerDocument_issues (
           let bp1 = NSBezierPath (rect: cocoaDisplayRect)
           bp1.appendRect (intersectionEnlarged)
           bp1.windingRule = .evenOddWindingRule
-          let shapes = EBShapes ()
-          shapes.append ([bp1], NSColor.gray.withAlphaComponent (0.5), .fill)
+          let shapes = EBShape ()
+          shapes.append (shape: EBFilledBezierPathShape ([bp1], NSColor.gray.withAlphaComponent (0.5)))
           let bp2 = NSBezierPath (rect: intersectionEnlarged)
           bp2.lineWidth = 2.0
-          shapes.append ([bp2], NSColor.red, .stroke)
+          shapes.append (shape: EBStrokeBezierPathShape ([bp2], NSColor.red))
           let issue = InstanceIssue (kind: .outside, shapes: shapes, refRect: instanceRect)
           array.append (issue)
         }

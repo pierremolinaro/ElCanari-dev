@@ -136,13 +136,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   Accessing selectionLayer transient property
   //····················································································································
 
-  var selectionLayer_property_selection : EBSelection <EBShapes> {
+  var selectionLayer_property_selection : EBSelection <EBShape> {
     get {
       return self.selectionLayer_property.prop
     }
   }
 
-  var selectionLayer : EBShapes? {
+  var selectionLayer : EBShape? {
     switch selectionLayer_property_selection {
     case .empty, .multiple :
       return nil
@@ -1110,7 +1110,7 @@ protocol MergerBoardInstance_boardLimitWidth : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerBoardInstance_selectionLayer : class {
-  var selectionLayer : EBShapes? { get }
+  var selectionLayer : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -4249,7 +4249,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
 
   //····················································································································
 
-  var imageForInstances_property_selection : EBSelection <EBShapes?> {
+  var imageForInstances_property_selection : EBSelection <EBShape?> {
     get {
       if let model = self.propval {
         switch (model.imageForInstances_property_selection) {

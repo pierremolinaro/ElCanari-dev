@@ -312,11 +312,11 @@ class CanariViewWithZoomAndFlip : EBView {
   //    Set issue
   //····················································································································
 
-  private var mIssueShapes = EBShapes ()
+  private var mIssueShapes = EBShape ()
 
   //····················································································································
 
-  func setIssue (_ shapes : EBShapes) {
+  func setIssue (_ shapes : EBShape) {
     if mIssueShapes != shapes {
       mIssueShapes = shapes
       self.needsDisplay = true

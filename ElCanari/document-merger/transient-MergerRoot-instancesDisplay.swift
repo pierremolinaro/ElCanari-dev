@@ -34,8 +34,8 @@ func transient_MergerRoot_instancesDisplay (
       let bp = NSBezierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))
       bp.lineWidth = limitWidth
       bp.lineJoinStyle = .roundLineJoinStyle
-      let shapes = EBShapes ([bp], prefs_mergerColorBoardLimits, StrokeOrFill.stroke)
-      let boardLimits = EBShapeLayer (shapes)
+      let shape = EBStrokeBezierPathShape ([bp], prefs_mergerColorBoardLimits)
+      let boardLimits = EBShapeLayer (shape)
       array.append (boardLimits)
     }
   //---

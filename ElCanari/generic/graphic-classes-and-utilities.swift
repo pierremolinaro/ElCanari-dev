@@ -13,7 +13,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  var selectionLayer_property = EBTransientProperty_EBShapes ()
+  var selectionLayer_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
@@ -37,25 +37,16 @@ class EBGraphicManagedObject : EBManagedObject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    StrokeOrFill
+//    EBShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum StrokeOrFill : Int {
-  case stroke
-  case fill
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBShapes
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class EBShapes : Hashable, EBUserClassNameProtocol {
+class EBShape : Hashable, EBUserClassNameProtocol {
 
   //····················································································································
   //  Properties
   //····················································································································
 
-  private var paths : [([NSBezierPath], NSColor, StrokeOrFill)]
+  private var shapes : [EBShape]
   private var cachedBoundingBox : NSRect?
 
   //····················································································································
@@ -63,26 +54,25 @@ class EBShapes : Hashable, EBUserClassNameProtocol {
   //····················································································································
 
   init () {
-    paths = []
+    shapes = []
     cachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  init (_ inPaths : [([NSBezierPath], NSColor, StrokeOrFill)]) {
-    paths = inPaths
+  init (shape inShape : EBShape) {
+    shapes = [inShape]
     cachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  init (_ inBezierPaths : [NSBezierPath], _ inColor : NSColor, _ inOperation : StrokeOrFill) {
-    paths = []
+  init (shapes inShapes : [EBShape]) {
+    shapes = inShapes
     cachedBoundingBox = nil
     noteObjectAllocation (self)
-    self.paths.append ((inBezierPaths, inColor, inOperation))
   }
 
   //····················································································································
@@ -97,8 +87,8 @@ class EBShapes : Hashable, EBUserClassNameProtocol {
   //  append
   //····················································································································
 
-  func append (_ inBezierPaths : [NSBezierPath], _ inColor : NSColor, _ inOperation : StrokeOrFill) {
-    self.paths.append ((inBezierPaths, inColor, inOperation))
+  func append (shape inShape : EBShape) {
+    self.shapes.append (inShape)
     self.cachedBoundingBox = nil
   }
 
@@ -106,29 +96,18 @@ class EBShapes : Hashable, EBUserClassNameProtocol {
   //  +=
   //····················································································································
 
-  public static func += (ioShapes : inout EBShapes, inShapes : EBShapes) {
-    ioShapes.paths += inShapes.paths
-    ioShapes.cachedBoundingBox = nil
+  func append (shapes inShapes : [EBShape]) {
+    self.shapes += inShapes
+    self.cachedBoundingBox = nil
   }
 
   //····················································································································
   //  Draw Rect
   //····················································································································
 
-  func draw (_ dirtyRect: NSRect) {
-    for (paths, color, operation) in self.paths {
-      switch operation {
-      case .stroke :
-        color.setStroke ()
-        for bp in paths {
-          bp.stroke ()
-        }
-      case .fill :
-        color.setFill ()
-        for bp in paths {
-          bp.fill ()
-        }
-      }
+  func draw (_ inDirtyRect: NSRect) {
+    for shape in self.shapes {
+      shape.draw (inDirtyRect)
     }
   }
 
@@ -141,18 +120,8 @@ class EBShapes : Hashable, EBUserClassNameProtocol {
       return cbb
     }else{
       var r = NSZeroRect
-      for (bps, _, operation) in self.paths {
-        switch operation {
-        case .fill :
-          for bp in bps {
-            r = r.union (bp.bounds)
-          }
-        case .stroke :
-          for bp in bps {
-            let lineWidth = max (bp.lineWidth, 1.0)
-            r = r.union (bp.bounds.insetBy (dx: -lineWidth, dy: -lineWidth))
-          }
-        }
+      for shape in self.shapes {
+        r = r.union (shape.boundingBox)
       }
       self.cachedBoundingBox = r
       return r
@@ -178,22 +147,12 @@ class EBShapes : Hashable, EBUserClassNameProtocol {
   ///   - rhs: Another value to compare.
   //····················································································································
 
-  public static func == (lhs: EBShapes, rhs: EBShapes) -> Bool {
-    var equal = lhs.paths.count == rhs.paths.count
+  public static func == (lhs: EBShape, rhs: EBShape) -> Bool {
+    var equal = lhs.shapes.count == rhs.shapes.count
     if equal {
       var idx = 0
-      while idx < lhs.paths.count {
-        equal = (lhs.paths [idx].0.count == rhs.paths [idx].0.count) && (lhs.paths [idx].1 == rhs.paths [idx].1) && (lhs.paths [idx].2 == rhs.paths [idx].2)
-        if equal {
-          var idy = 0
-          while idy < lhs.paths [idx].0.count {
-            equal = lhs.paths [idx].0 [idy] == rhs.paths [idx].0 [idy]
-            if !equal {
-              break
-            }
-            idy += 1
-          }
-        }
+      while idx < lhs.shapes.count {
+        equal = lhs.shapes [idx] == rhs.shapes [idx]
         if !equal {
           break
         }
@@ -212,15 +171,193 @@ class EBShapes : Hashable, EBUserClassNameProtocol {
 
   public var hashValue : Int {
     var h = 0
-    for (bps, color, op) in self.paths {
-      h ^= color.hashValue ^ op.rawValue.hashValue
-      for pb in bps {
-        h ^= pb.hashValue
-      }
+    for shape in self.shapes {
+      h ^= shape.hashValue
     }
     return h
   }
 
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBStrokeBezierPathShape
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class EBStrokeBezierPathShape : EBShape {
+  private var paths : [NSBezierPath]
+  private let color : NSColor
+  private var cachedBoundingBox : NSRect?
+
+  //····················································································································
+  //  Init
+  //····················································································································
+
+  init (_ inPaths: [NSBezierPath], _ inColor: NSColor) {
+    paths = inPaths
+    color = inColor
+    super.init ()
+  }
+
+  //····················································································································
+  //  append
+  //····················································································································
+
+  func append (path inBezierPath : NSBezierPath) {
+    self.paths.append (inBezierPath)
+    self.cachedBoundingBox = nil
+  }
+
+  //····················································································································
+  //  Draw Rect
+  //····················································································································
+
+  override func draw (_ inDirtyRect: NSRect) {
+    self.color.setStroke ()
+    for bp in self.paths {
+      bp.stroke ()
+    }
+  }
+
+  //····················································································································
+  // boundingBox
+  //····················································································································
+
+  override var boundingBox : NSRect {
+    if let cbb = cachedBoundingBox {
+      return cbb
+    }else{
+      var r = super.boundingBox
+      for bp in self.paths {
+        let lineWidth = max (bp.lineWidth, 1.0)
+        r = r.union (bp.bounds.insetBy (dx: -lineWidth, dy: -lineWidth))
+      }
+      self.cachedBoundingBox = r
+      return r
+    }
+  }
+
+  //····················································································································
+  /// Returns a Boolean value indicating whether two values are equal.
+  ///
+  /// Equality is the inverse of inequality. For any values `a` and `b`,
+  /// `a == b` implies that `a != b` is `false`.
+  ///
+  /// - Parameters:
+  ///   - lhs: A value to compare.
+  ///   - rhs: Another value to compare.
+  //····················································································································
+
+  public static func == (lhs: EBStrokeBezierPathShape, rhs: EBStrokeBezierPathShape) -> Bool {
+    var equal = true // lhs super.== rhs
+    if equal {
+      equal = lhs.paths.count == rhs.paths.count
+    }
+    if equal {
+      var idx = 0
+      while idx < lhs.paths.count {
+        equal = lhs.paths [idx] == rhs.paths [idx]
+        if !equal {
+          break
+        }
+        idx += 1
+      }
+    }
+    return equal
+  }
+
+  //····················································································································
+  /// The hash value.
+  ///
+  /// Hash values are not guaranteed to be equal across different executions of
+  /// your program. Do not save hash values to use during a future execution.
+  //····················································································································
+
+  override public var hashValue : Int {
+    var h = super.hashValue
+    h ^= color.hashValue
+    for path in self.paths {
+      h ^= path.hashValue
+    }
+    return h
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBFilledBezierPathShape
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class EBFilledBezierPathShape : EBShape {
+  private var paths : [NSBezierPath]
+  private let color : NSColor
+  private var cachedBoundingBox : NSRect?
+
+  //····················································································································
+  //  Init
+  //····················································································································
+
+  init (_ inPaths: [NSBezierPath], _ inColor: NSColor) {
+    paths = inPaths
+    color = inColor
+    super.init ()
+  }
+
+  //····················································································································
+  //  append
+  //····················································································································
+
+  func append (_ inBezierPath : NSBezierPath) {
+    self.paths.append (inBezierPath)
+    self.cachedBoundingBox = nil
+  }
+
+  //····················································································································
+  //  Draw Rect
+  //····················································································································
+
+  override func draw (_ inDirtyRect: NSRect) {
+    self.color.setFill ()
+    for bp in self.paths {
+      bp.fill ()
+    }
+  }
+
+  //····················································································································
+  // boundingBox
+  //····················································································································
+
+  override var boundingBox : NSRect {
+    if let cbb = cachedBoundingBox {
+      return cbb
+    }else{
+      var r = super.boundingBox
+      for bp in self.paths {
+        r = r.union (bp.bounds)
+      }
+      self.cachedBoundingBox = r
+      return r
+    }
+  }
+
+  //····················································································································
+  /// The hash value.
+  ///
+  /// Hash values are not guaranteed to be equal across different executions of
+  /// your program. Do not save hash values to use during a future execution.
+  //····················································································································
+
+  override public var hashValue : Int {
+    var h = super.hashValue
+    h ^= color.hashValue
+    for path in self.paths {
+      h ^= path.hashValue
+    }
+    return h
+  }
 
   //····················································································································
 
@@ -231,7 +368,7 @@ class EBShapes : Hashable, EBUserClassNameProtocol {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func buildPDFimage (frame inFrame: CGRect,
-                    shapes inShapes: EBShapes,
+                    shapes inShapes: EBShape,
                     backgroundColor inBackColor : NSColor? = nil) -> Data {
   let view = EBOffscreenView (frame: inFrame)
   view.setBackColor (inBackColor)
@@ -245,7 +382,7 @@ func buildPDFimage (frame inFrame: CGRect,
 
 fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
 
-  private var mShapes = EBShapes ()
+  private var mShapes = EBShape ()
   private var mBackColor : NSColor? = nil
 
   //····················································································································
@@ -272,7 +409,7 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
   //  Set paths
   //····················································································································
 
-  func setPaths (_ inShapes : EBShapes) {
+  func setPaths (_ inShapes : EBShape) {
     self.mShapes = inShapes
   }
 
@@ -315,7 +452,7 @@ struct EBShapeLayer : Hashable {
   //   Properties
   //····················································································································
 
-  private let mShapes : EBShapes
+  private let mShapes : EBShape
   private let mTransform : NSAffineTransform
   var userIndex = -1
   var userSecondaryIndex = -1
@@ -325,13 +462,13 @@ struct EBShapeLayer : Hashable {
   //····················································································································
 
   init () {
-    mShapes = EBShapes ()
+    mShapes = EBShape ()
     mTransform = NSAffineTransform ()
   }
 
   //····················································································································
 
-  init (_ inShapes : EBShapes, transform inTransform : NSAffineTransform = NSAffineTransform ()) {
+  init (_ inShapes: EBShape, transform inTransform: NSAffineTransform = NSAffineTransform ()) {
     mShapes = inShapes
     mTransform = inTransform
   }

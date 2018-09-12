@@ -17,7 +17,7 @@ func transient_MergerBoardInstance_instanceDisplay (
        _ self_myModel_modelWidth : Int?,            
        _ self_myModel_modelHeight : Int?,           
        _ self_instanceRotation : QuadrantRotation,  
-       _ self_myModel_imageForInstances : EBShapes?
+       _ self_myModel_imageForInstances : EBShape?
 ) -> EBShapeLayer {
 //--- START OF USER ZONE 2
   let width  = canariUnitToCocoa (self_myModel_modelWidth!)

@@ -21,7 +21,7 @@ graphic entity MergerBoardInstance {
   transient Int boardLimitWidth dependsFrom self.myModel.one.modelLimitWidth ;
 
 #--- Selection layer
-  transient EBShapes selectionLayer dependsFrom self.instanceRect ;
+  transient EBShape selectionLayer dependsFrom self.instanceRect ;
 
 #--- Background
   transient EBShapeLayer instanceDisplay dependsFrom

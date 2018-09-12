@@ -125,14 +125,14 @@ struct InstanceIssue : Hashable {
   //····················································································································
 
   let mKind : InstanceIssueKind
-  let mShapes : EBShapes
+  let mShapes : EBShape
   let mRefRect : CanariHorizontalRect
 
   //····················································································································
   //   Init
   //····················································································································
 
-  init (kind inKind : InstanceIssueKind, shapes inShapes : EBShapes, refRect inRefRect : CanariHorizontalRect) {
+  init (kind inKind : InstanceIssueKind, shapes inShapes : EBShape, refRect inRefRect : CanariHorizontalRect) {
     mKind = inKind
     mShapes = inShapes
     mRefRect = inRefRect

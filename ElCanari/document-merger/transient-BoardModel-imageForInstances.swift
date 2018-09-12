@@ -73,88 +73,88 @@ func transient_BoardModel_imageForInstances (
        _ self_backPackagesBezierPaths : BezierPathArray,
        _ prefs_mergerBoardViewDisplayBackPackages : Bool,
        _ prefs_mergerColorBackPackages : NSColor
-) -> EBShapes {
+) -> EBShape {
 //--- START OF USER ZONE 2
-  let shapes = EBShapes ()
+  let shapes = EBShape ()
 //--- Background
   let backRect = NSRect (x:0.0, y:0.0, width: canariUnitToCocoa(self_modelWidth), height: canariUnitToCocoa(self_modelHeight))
-  shapes.append ([NSBezierPath (rect:backRect)], prefs_mergerColorBackground, .fill)
+  shapes.append (shape: EBFilledBezierPathShape ([NSBezierPath (rect:backRect)], prefs_mergerColorBackground))
 //--- Back Legend Lines
   if (prefs_mergerBoardViewDisplayBackLegendLines) {
-    shapes.append (self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_backLegendLinesBezierPaths.array, prefs_mergerColorBackLegendLines))
   }
 //--- Back Component Values
   if (prefs_mergerBoardViewDisplayBackComponentValues) {
-    shapes.append (self_backComponentValuesBezierPaths.array, prefs_mergerColorBackComponentValues, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_backComponentValuesBezierPaths.array, prefs_mergerColorBackComponentValues))
   }
 //--- Back Component Names
   if (prefs_mergerBoardViewDisplayBackComponentNames) {
-    shapes.append (self_backComponentNamesBezierPaths.array, prefs_mergerColorBackComponentNames, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_backComponentNamesBezierPaths.array, prefs_mergerColorBackComponentNames))
   }
 //--- Back Legend Texts
   if (prefs_mergerBoardViewDisplayBackLegendTexts) {
-    shapes.append (self_backLegendTextsBezierPaths.array, prefs_mergerColorBackLegendTexts, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_backLegendTextsBezierPaths.array, prefs_mergerColorBackLegendTexts))
   }
 //--- Back Packages
   if (prefs_mergerBoardViewDisplayBackPackages) {
-    shapes.append (self_backPackagesBezierPaths.array, prefs_mergerColorBackPackages, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_backPackagesBezierPaths.array, prefs_mergerColorBackPackages))
   }
 //--- Back Layout Texts
   if (prefs_mergerBoardViewDisplayBackLayoutTexts) {
-    shapes.append (self_backLayoutTextsBezierPaths.array, prefs_mergerColorBackLayoutTexts, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_backLayoutTextsBezierPaths.array, prefs_mergerColorBackLayoutTexts))
   }
 //--- Back tracks
   if prefs_mergerBoardViewDisplayBackTracks {
-    shapes.append (self_backTracksBezierPaths.array, prefs_mergerColorBackTracks, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_backTracksBezierPaths.array, prefs_mergerColorBackTracks))
   }
 //--- Back pads
   if (prefs_mergerBoardViewDisplayBackPads) {
-    shapes.append (self_backPadsBezierPaths.array, prefs_mergerColorBackPads, .fill)
+    shapes.append (shape: EBFilledBezierPathShape (self_backPadsBezierPaths.array, prefs_mergerColorBackPads))
   }
 //--- Front tracks
   if prefs_mergerBoardViewDisplayFrontTracks {
-    shapes.append (self_frontTracksBezierPaths.array, prefs_mergerColorFrontTracks, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_frontTracksBezierPaths.array, prefs_mergerColorFrontTracks))
   }
 //--- Front layout texts
   if (prefs_mergerBoardViewDisplayFrontLayoutTexts) {
-    shapes.append (self_frontLayoutTextsBezierPaths.array, prefs_mergerColorFrontLayoutTexts, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_frontLayoutTextsBezierPaths.array, prefs_mergerColorFrontLayoutTexts))
   }
 //--- Front Legend Lines
   if (prefs_mergerBoardViewDisplayFrontLegendLines) {
-    shapes.append (self_frontLegendLinesBezierPaths.array, prefs_mergerColorFrontLegendLines, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_frontLegendLinesBezierPaths.array, prefs_mergerColorFrontLegendLines))
   }
 //--- Front Legend texts
   if (prefs_mergerBoardViewDisplayFrontLegendTexts) {
-    shapes.append (self_frontLegendTextsBezierPaths.array, prefs_mergerColorFrontLegendTexts, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_frontLegendTextsBezierPaths.array, prefs_mergerColorFrontLegendTexts))
   }
 //--- Front Packages
   if (prefs_mergerBoardViewDisplayFrontPackages) {
-    shapes.append (self_frontPackagesBezierPaths.array, prefs_mergerColorFrontPackages, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_frontPackagesBezierPaths.array, prefs_mergerColorFrontPackages))
   }
 //--- Front Component Names
   if (prefs_mergerBoardViewDisplayFrontComponentNames) {
-    shapes.append (self_frontComponentNamesBezierPaths.array, prefs_mergerColorFrontComponentNames, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_frontComponentNamesBezierPaths.array, prefs_mergerColorFrontComponentNames))
   }
 //--- Front Component Values
   if (prefs_mergerBoardViewDisplayFrontComponentValues) {
-    shapes.append (self_frontComponentValuesBezierPaths.array, prefs_mergerColorFrontComponentValues, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_frontComponentValuesBezierPaths.array, prefs_mergerColorFrontComponentValues))
   }
 //--- Front pads
   if (prefs_mergerBoardViewDisplayFrontPads) {
-    shapes.append (self_frontPadsBezierPaths.array, prefs_mergerColorFrontPads, .fill)
+    shapes.append (shape: EBFilledBezierPathShape (self_frontPadsBezierPaths.array, prefs_mergerColorFrontPads))
   }
 //--- Vias
   if (prefs_mergerBoardViewDisplayVias) {
-    shapes.append (self_viasBezierPaths.array, prefs_mergerColorVias, .fill)
+    shapes.append (shape: EBFilledBezierPathShape (self_viasBezierPaths.array, prefs_mergerColorVias))
   }
 //--- Board limits tracks
   if prefs_mergerBoardViewDisplayInternalBoardsLimits {
-    shapes.append (self_internalBoardsLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits, .stroke)
-    shapes.append (self_boardLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_internalBoardsLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits))
+    shapes.append (shape: EBStrokeBezierPathShape (self_boardLimitsBezierPaths.array, prefs_mergerColorInternalBoardsLimits))
   }
 //--- Holes
   if (prefs_mergerBoardViewDisplayHoles) {
-    shapes.append (self_holesBezierPaths.array, prefs_mergerColorHoles, .stroke)
+    shapes.append (shape: EBStrokeBezierPathShape (self_holesBezierPaths.array, prefs_mergerColorHoles))
   }
 //---
   return shapes

@@ -313,7 +313,7 @@ entity BoardModel {
   ;
 
 #----
-  transient EBShapes imageForInstances dependsFrom
+  transient EBShape imageForInstances dependsFrom
     prefs.mergerColorBackground,
     self.modelWidth,
     self.modelHeight,

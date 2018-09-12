@@ -1212,13 +1212,13 @@ typealias EBReadOnlyPropertyArray_NSImage  = EBReadOnlyClassProperty <[NSImage]>
 typealias EBTransientPropertyArray_NSImage = EBTransientClassProperty <[NSImage]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class EBShapes
+//   Transient property class EBShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_EBShapes  = EBReadOnlyClassProperty <EBShapes>
-typealias EBTransientProperty_EBShapes = EBTransientClassProperty <EBShapes>
-typealias EBReadOnlyPropertyArray_EBShapes  = EBReadOnlyClassProperty <[EBShapes]>
-typealias EBTransientPropertyArray_EBShapes = EBTransientClassProperty <[EBShapes]>
+typealias EBReadOnlyProperty_EBShape  = EBReadOnlyClassProperty <EBShape>
+typealias EBTransientProperty_EBShape = EBTransientClassProperty <EBShape>
+typealias EBReadOnlyPropertyArray_EBShape  = EBReadOnlyClassProperty <[EBShape]>
+typealias EBTransientPropertyArray_EBShape = EBTransientClassProperty <[EBShape]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property EBShapeLayer

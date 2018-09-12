@@ -95,7 +95,7 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //····················································································································
 
   func tableViewSelectionDidChange (_ notification: Notification) {
-    mBoardView?.setIssue ((self.selectedRow < 0) ? EBShapes () : self.mModelArray [self.selectedRow].mShapes)
+    mBoardView?.setIssue ((self.selectedRow < 0) ? EBShape () : self.mModelArray [self.selectedRow].mShapes)
   }
 
   //····················································································································

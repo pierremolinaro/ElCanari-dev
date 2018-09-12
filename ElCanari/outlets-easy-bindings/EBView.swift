@@ -82,7 +82,7 @@ import Cocoa
 
   private var mSelectionShape = EBShapeLayer ()
 
-  var objectSelectionLayer = EBShapes () {
+  var objectSelectionLayer = EBShape () {
     didSet {
       self.setNeedsDisplay (mSelectionShape.boundingBox)
       mSelectionShape = EBShapeLayer (objectSelectionLayer)

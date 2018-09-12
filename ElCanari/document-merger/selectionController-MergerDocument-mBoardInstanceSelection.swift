@@ -51,9 +51,9 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
       return self.modelName_property.prop
     }
   }
-  var selectionLayer_property = EBTransientProperty_EBShapes ()
+  var selectionLayer_property = EBTransientProperty_EBShape ()
 
-  var selectionLayer_property_selection : EBSelection <EBShapes> {
+  var selectionLayer_property_selection : EBSelection <EBShape> {
     get {
       return self.selectionLayer_property.prop
     }
@@ -442,7 +442,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<EBShapes> ()
+          var s = Set<EBShape> ()
           var isMultipleSelection = false
           for object in v {
             switch object.selectionLayer_property_selection {
