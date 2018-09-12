@@ -13,6 +13,9 @@ build/**
 other-projects/extract-kicad-font/build/**
 other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/project.xcworkspace/**
 other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/xcuserdata/**
+other-projects/eb-document-analyzer/build/**
+other-projects/eb-document-analyzer/eb-document-analyzer.xcodeproj/project.xcworkspace/**
+other-projects/eb-document-analyzer/eb-document-analyzer.xcodeproj/xcuserdata/**
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
