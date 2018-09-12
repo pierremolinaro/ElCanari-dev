@@ -3579,7 +3579,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceRotation_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelName_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectionLayer_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
       //--- Added object set
@@ -3593,7 +3593,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
         addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRotation_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelName_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectionLayer_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y_toElementsOfSet (addedObjectSet)
       //--- Notify observers

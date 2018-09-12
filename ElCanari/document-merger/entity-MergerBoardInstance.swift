@@ -15,7 +15,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   MergerBoardInstance_instanceRect,
   MergerBoardInstance_modelName,
   MergerBoardInstance_boardLimitWidth,
-  MergerBoardInstance_selectionLayer,
+  MergerBoardInstance_selectionDisplay,
   MergerBoardInstance_instanceDisplay {
 
   //····················································································································
@@ -133,17 +133,17 @@ class MergerBoardInstance : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Accessing selectionLayer transient property
+  //   Accessing selectionDisplay transient property
   //····················································································································
 
-  var selectionLayer_property_selection : EBSelection <EBShape> {
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
     get {
-      return self.selectionLayer_property.prop
+      return self.selectionDisplay_property.prop
     }
   }
 
-  var selectionLayer : EBShape? {
-    switch selectionLayer_property_selection {
+  var selectionDisplay : EBShape? {
+    switch selectionDisplay_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -185,7 +185,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   var instanceRect_property = EBTransientProperty_CanariHorizontalRect ()
   var modelName_property = EBTransientProperty_String ()
   var boardLimitWidth_property = EBTransientProperty_Int ()
-  // selectionLayer_property is declared in super entity
+  // selectionDisplay_property is declared in super entity
   var instanceDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
@@ -268,7 +268,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.selectionLayer_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.instanceRect_property_selection.kind ()
         switch kind {
@@ -279,7 +279,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.instanceRect_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_MergerBoardInstance_selectionLayer (v0))
+            return .single (transient_MergerBoardInstance_selectionDisplay (v0))
           default :
             return .empty
           }
@@ -321,7 +321,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.instanceRotation_property.addEBObserver (self.instanceRect_property)
     self.myModel_property.addEBObserverOf_name (self.modelName_property)
     self.myModel_property.addEBObserverOf_modelLimitWidth (self.boardLimitWidth_property)
-    self.instanceRect_property.addEBObserver (self.selectionLayer_property)
+    self.instanceRect_property.addEBObserver (self.selectionDisplay_property)
     self.x_property.addEBObserver (self.instanceDisplay_property)
     self.y_property.addEBObserver (self.instanceDisplay_property)
     self.myModel_property.addEBObserverOf_modelWidth (self.instanceDisplay_property)
@@ -349,7 +349,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.instanceRotation_property.removeEBObserver (self.instanceRect_property)
     self.myModel_property.removeEBObserverOf_name (self.modelName_property)
     self.myModel_property.removeEBObserverOf_modelLimitWidth (self.boardLimitWidth_property)
-    self.instanceRect_property.removeEBObserver (self.selectionLayer_property)
+    self.instanceRect_property.removeEBObserver (self.selectionDisplay_property)
     self.x_property.removeEBObserver (self.instanceDisplay_property)
     self.y_property.removeEBObserver (self.instanceDisplay_property)
     self.myModel_property.removeEBObserverOf_modelWidth (self.instanceDisplay_property)
@@ -414,12 +414,12 @@ class MergerBoardInstance : EBGraphicManagedObject,
       valueExplorer:&self.boardLimitWidth_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "selectionLayer",
-      idx:self.selectionLayer_property.mEasyBindingsObjectIndex,
+      "selectionDisplay",
+      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.selectionLayer_property.mObserverExplorer,
-      valueExplorer:&self.selectionLayer_property.mValueExplorer
+      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer:&self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "instanceDisplay",
@@ -873,57 +873,57 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   }
 
   //····················································································································
-  //   Observers of 'selectionLayer' transient property
+  //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectionLayer = EBWeakEventSet ()
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_selectionLayer (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectionLayer.insert (inObserver)
+    mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionLayer_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectionLayer (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectionLayer.remove (inObserver)
+    mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionLayer_property.removeEBObserver (inObserver)
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectionLayer_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionLayer {
-        managedObject.selectionLayer_property.addEBObserver (observer)
+      for observer in mObserversOf_selectionDisplay {
+        managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionLayer_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionLayer {
-        managedObject.selectionLayer_property.removeEBObserver (observer)
+      for observer in mObserversOf_selectionDisplay {
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -1029,7 +1029,7 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelName_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
-        removeEBObserversOf_selectionLayer_fromElementsOfSet (removedSet)
+        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_instanceDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
@@ -1041,7 +1041,7 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
         addEBObserversOf_instanceRect_toElementsOfSet (addedSet)
         addEBObserversOf_modelName_toElementsOfSet (addedSet)
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
-        addEBObserversOf_selectionLayer_toElementsOfSet (addedSet)
+        addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_instanceDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
@@ -1109,8 +1109,8 @@ protocol MergerBoardInstance_boardLimitWidth : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerBoardInstance_selectionLayer : class {
-  var selectionLayer : EBShape? { get }
+protocol MergerBoardInstance_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

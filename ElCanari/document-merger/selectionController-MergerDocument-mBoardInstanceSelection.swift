@@ -51,11 +51,11 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
       return self.modelName_property.prop
     }
   }
-  var selectionLayer_property = EBTransientProperty_EBShape ()
+  var selectionDisplay_property = EBTransientProperty_EBShape ()
 
-  var selectionLayer_property_selection : EBSelection <EBShape> {
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
     get {
-      return self.selectionLayer_property.prop
+      return self.selectionDisplay_property.prop
     }
   }
   var x_property = EBPropertyProxy_Int ()
@@ -84,7 +84,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     bind_property_instanceRect (model: model)
     bind_property_instanceRotation (model: model)
     bind_property_modelName (model: model)
-    bind_property_selectionLayer (model: model)
+    bind_property_selectionDisplay (model: model)
     bind_property_x (model: model)
     bind_property_y (model: model)
   }
@@ -432,9 +432,9 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   //···················································································································*
 
-  private final func bind_property_selectionLayer (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_selectionLayer (self.selectionLayer_property)
-    self.selectionLayer_property.readModelFunction = {
+  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
+    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectionDisplay_property.readModelFunction = {
       if let model = self.mModel {
         switch model.prop {
         case .empty :
@@ -445,7 +445,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
           var s = Set<EBShape> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.selectionLayer_property_selection {
+            switch object.selectionDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -634,9 +634,9 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //--- modelName
     self.modelName_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_modelName (self.modelName_property)
-  //--- selectionLayer
-    self.selectionLayer_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_selectionLayer (self.selectionLayer_property)
+  //--- selectionDisplay
+    self.selectionDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- x
     self.x_property.readModelFunction = nil 
     self.x_property.writeModelFunction = nil 

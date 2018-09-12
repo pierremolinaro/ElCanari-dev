@@ -24,7 +24,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  var selectionLayer_property = EBTransientProperty_EBShape ()
+  var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 

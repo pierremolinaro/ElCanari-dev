@@ -60,7 +60,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       sortedArray:self.sortedArray_property
     )
     super.init ()
-    self.mSelectedSet.set (callBack: { [weak self] in self?.computeSelectionLayer () } )
+    self.mSelectedSet.set (callBack: { [weak self] in self?.computeSelectionShape () } )
   //--- Set selected array compute function
     setSelectedArrayComputeFunction ()
   //--- Set sorted array compute function
@@ -740,10 +740,10 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //   Compute selection layer
   //····················································································································
 
-  private func computeSelectionLayer () {
+  private func computeSelectionShape () {
     let shapes = EBShape ()
     for object in mSelectedSet.mSet {
-      if let shape = object.selectionLayer {
+      if let shape = object.selectionDisplay {
         shapes.append (shape: shape)
       }
     }
@@ -789,11 +789,11 @@ final class SelectedSet_MergerDocument_mBoardInstanceController : EBAbstractProp
         postEvent ()
         let addedSet = mPrivateSet.subtracting (oldValue)
         for object in addedSet {
-          object.selectionLayer_property.addEBObserver (mObserverOfSelectionLayerOfSelectedObjects)
+          object.selectionDisplay_property.addEBObserver (mObserverOfSelectionLayerOfSelectedObjects)
         }
         let removedSet = oldValue.subtracting (mPrivateSet)
         for object in removedSet {
-          object.selectionLayer_property.removeEBObserver (mObserverOfSelectionLayerOfSelectedObjects)
+          object.selectionDisplay_property.removeEBObserver (mObserverOfSelectionLayerOfSelectedObjects)
         }
         mObserverOfSelectionLayerOfSelectedObjects.postEvent ()
       }
