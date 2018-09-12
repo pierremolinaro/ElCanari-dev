@@ -550,12 +550,12 @@
             </toolbar>
             <point key="canvasLocation" x="681" y="25"/>
         </window>
-        <customView id="5405" userLabel="Page : General Prefs">
-            <rect key="frame" x="0.0" y="0.0" width="452" height="381"/>
+        <customView misplaced="YES" id="5405" userLabel="Page : General Prefs">
+            <rect key="frame" x="0.0" y="0.0" width="452" height="389"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <box borderType="line" title="Selection Hilite" id="5412">
-                    <rect key="frame" x="17" y="270" width="418" height="96"/>
+                    <rect key="frame" x="17" y="278" width="418" height="96"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="fqt-dy-MBC">
                         <rect key="frame" x="1" y="1" width="416" height="80"/>
@@ -610,7 +610,7 @@
                     </view>
                 </box>
                 <box title="Text Message Colors" id="5406">
-                    <rect key="frame" x="17" y="124" width="418" height="142"/>
+                    <rect key="frame" x="17" y="132" width="418" height="142"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="FmO-vl-c0n">
                         <rect key="frame" x="2" y="2" width="414" height="125"/>
@@ -661,15 +661,15 @@
                         </subviews>
                     </view>
                 </box>
-                <box autoresizesSubviews="NO" borderType="line" title="ElCanari Application Update" id="6117">
-                    <rect key="frame" x="17" y="26" width="418" height="94"/>
+                <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="ElCanari Application Update" id="6117">
+                    <rect key="frame" x="17" y="16" width="418" height="112"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="E4G-cf-WCx">
-                        <rect key="frame" x="1" y="1" width="416" height="78"/>
+                        <rect key="frame" x="1" y="1" width="416" height="96"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button verticalHuggingPriority="750" id="6120">
-                                <rect key="frame" x="18" y="46" width="188" height="23"/>
+                                <rect key="frame" x="18" y="64" width="188" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="smallSquare" title="Check for Application Updates…" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6121">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -680,7 +680,7 @@
                                 </connections>
                             </button>
                             <popUpButton verticalHuggingPriority="750" id="Fkn-0i-mVD">
-                                <rect key="frame" x="211" y="17" width="103" height="22"/>
+                                <rect key="frame" x="211" y="35" width="103" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Daily" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="86400" imageScaling="proportionallyDown" inset="2" selectedItem="wzO-WO-KnM" id="vfL-NS-27F">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -695,7 +695,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <button id="6161" customClass="EBSwitch">
-                                <rect key="frame" x="15" y="20" width="191" height="18"/>
+                                <rect key="frame" x="15" y="38" width="191" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Automatically check for updates" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="6162">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -703,9 +703,28 @@
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="ile-KZ-7AF">
-                                <rect key="frame" x="212" y="42" width="186" height="21"/>
+                                <rect key="frame" x="212" y="60" width="186" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="-- sparkle version --" id="t0p-yX-aYa">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="EAf-rW-mOm">
+                                <rect key="frame" x="16" y="12" width="102" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Last Check Time:" id="unV-XW-3a8">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="SYb-fc-j05">
+                                <rect key="frame" x="122" y="12" width="276" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="… la date…" id="6yI-o1-BHD">
+                                    <dateFormatter key="formatter" dateStyle="long" timeStyle="short" id="Kxf-Dx-Rti"/>
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -715,7 +734,7 @@
                     </view>
                 </box>
             </subviews>
-            <point key="canvasLocation" x="353" y="455.5"/>
+            <point key="canvasLocation" x="353" y="459.5"/>
         </customView>
         <customView id="5461" userLabel="Page : Symbol Prefs">
             <rect key="frame" x="0.0" y="0.0" width="390" height="210"/>
@@ -1945,7 +1964,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="E534789F-9D25-4A1F-A59B-8A2127935E87" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="B95AF8DB-2FF0-48B2-A898-1CFBF652F23F" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2394,6 +2413,7 @@ Gw
                 <outlet property="mProgressIndicatorInLibraryUpdateWindow" destination="6254" id="NVp-IZ-GiW"/>
                 <outlet property="mRemoveLibraryEntryButton" destination="5737" id="s89-Ll-TKd"/>
                 <outlet property="mRevealInFinderLibraryInUserApplicationSupportButton" destination="6278" id="MDq-My-iht"/>
+                <outlet property="mSULastCheckTimeTextField" destination="SYb-fc-j05" id="VOd-Ca-YSx"/>
                 <outlet property="mSampleStringField" destination="5700" id="Zv9-AK-DgC"/>
                 <outlet property="mSampleStringSizeField" destination="5698" id="bDE-ka-b7c"/>
                 <outlet property="mSelectionHiliteColorColorWell" destination="5416" id="BUK-am-HxO"/>
@@ -2470,7 +2490,7 @@ Gw
         </window>
     </objects>
     <resources>
-        <image name="E534789F-9D25-4A1F-A59B-8A2127935E87" width="20" height="20">
+        <image name="B95AF8DB-2FF0-48B2-A898-1CFBF652F23F" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

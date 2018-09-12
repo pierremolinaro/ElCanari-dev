@@ -301,7 +301,7 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
       ioPossibleAlert = NSAlert (error: error)
     }
   }else{
-    inLogTextView.appendErrorString ("  Invalid HTTP result, has \(components.count) line(s) (should be ≥ 2)\n")
+    inLogTextView.appendErrorString ("  Invalid HTTP result, has \(components.count) line (should be ≥ 2)\n")
   }
 }
 

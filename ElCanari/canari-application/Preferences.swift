@@ -235,6 +235,7 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   @IBOutlet var mProgressIndicatorInLibraryUpdateWindow : EBProgressIndicator? = nil
   @IBOutlet var mRemoveLibraryEntryButton : EBButton? = nil
   @IBOutlet var mRevealInFinderLibraryInUserApplicationSupportButton : EBButton? = nil
+  @IBOutlet var mSULastCheckTimeTextField : NSTextField? = nil
   @IBOutlet var mSampleStringField : EBTextField? = nil
   @IBOutlet var mSampleStringSizeField : EBDoubleField? = nil
   @IBOutlet var mSelectionHiliteColorColorWell : EBColorWell? = nil
@@ -3678,6 +3679,10 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   //--------------------------- Check mRevealInFinderLibraryInUserApplicationSupportButton' outlet not nil
     if nil == mRevealInFinderLibraryInUserApplicationSupportButton {
       presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mRevealInFinderLibraryInUserApplicationSupportButton' outlet is nil")
+    }
+  //--------------------------- Check mSULastCheckTimeTextField' outlet not nil
+    if nil == mSULastCheckTimeTextField {
+      presentErrorWindow (file: #file, line: #line, errorMessage: "the 'mSULastCheckTimeTextField' outlet is nil")
     }
   //--------------------------- Check mSampleStringField' outlet not nil
     if nil == mSampleStringField {
