@@ -11,23 +11,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_instancesDisplay (
+func transient_MergerRoot_overObjectsDisplay (
        _ self_boardRect : CanariHorizontalRect,
-       _ self_boardLimitWidth : Int,        
+       _ self_boardLimitWidth : Int,          
        _ prefs_mergerBoardViewDisplayBoardLimits : Bool,
-       _ prefs_mergerColorBoardLimits : NSColor,
-       _ self_boardInstances_objectDisplay : [MergerBoardInstance_objectDisplay]
+       _ prefs_mergerColorBoardLimits : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var array = [EBShape] ()
-    var idx = 0
-    for board in self_boardInstances_objectDisplay {
-      let instanceDisplay = board.objectDisplay!
-      instanceDisplay.userIndex = idx
-      array.append (instanceDisplay)
-      idx += 1
-    }
-  //-- Add board limit rect
     if prefs_mergerBoardViewDisplayBoardLimits && !self_boardRect.isEmpty {
       let limitWidth = canariUnitToCocoa (self_boardLimitWidth)
       let r = self_boardRect.cocoaRect()

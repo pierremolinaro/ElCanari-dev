@@ -1187,8 +1187,8 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         oldValue?.generateGerberProductFile_property.removeEBObserversFrom (mObserversOf_generateGerberProductFile)
         oldValue?.generatePDFProductFile_property.removeEBObserversFrom (mObserversOf_generatePDFProductFile)
         oldValue?.generatedBoardArchiveFormat_property.removeEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
-        oldValue?.instancesDisplay_property.removeEBObserversFrom (mObserversOf_instancesDisplay)
         oldValue?.modelNames_property.removeEBObserversFrom (mObserversOf_modelNames)
+        oldValue?.overObjectsDisplay_property.removeEBObserversFrom (mObserversOf_overObjectsDisplay)
         oldValue?.overlapingArrangment_property.removeEBObserversFrom (mObserversOf_overlapingArrangment)
         oldValue?.selectedBoardXUnit_property.removeEBObserversFrom (mObserversOf_selectedBoardXUnit)
         oldValue?.selectedBoardYUnit_property.removeEBObserversFrom (mObserversOf_selectedBoardYUnit)
@@ -1216,8 +1216,8 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         mValue?.generateGerberProductFile_property.addEBObserversFrom (mObserversOf_generateGerberProductFile)
         mValue?.generatePDFProductFile_property.addEBObserversFrom (mObserversOf_generatePDFProductFile)
         mValue?.generatedBoardArchiveFormat_property.addEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
-        mValue?.instancesDisplay_property.addEBObserversFrom (mObserversOf_instancesDisplay)
         mValue?.modelNames_property.addEBObserversFrom (mObserversOf_modelNames)
+        mValue?.overObjectsDisplay_property.addEBObserversFrom (mObserversOf_overObjectsDisplay)
         mValue?.overlapingArrangment_property.addEBObserversFrom (mObserversOf_overlapingArrangment)
         mValue?.selectedBoardXUnit_property.addEBObserversFrom (mObserversOf_selectedBoardXUnit)
         mValue?.selectedBoardYUnit_property.addEBObserversFrom (mObserversOf_selectedBoardYUnit)
@@ -2075,49 +2075,6 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: instancesDisplay
-  //····················································································································
-
-  private var mObserversOf_instancesDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  var instancesDisplay_property_selection : EBSelection <EBShape?> {
-    get {
-      if let model = self.propval {
-        switch (model.instancesDisplay_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_instancesDisplay (_ inObserver : EBEvent) {
-    mObserversOf_instancesDisplay.insert (inObserver)
-    if let object = self.propval {
-      object.instancesDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_instancesDisplay (_ inObserver : EBEvent) {
-    mObserversOf_instancesDisplay.remove (inObserver)
-    if let object = self.propval {
-      object.instancesDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
   //   Observable property: modelNames
   //····················································································································
 
@@ -2157,6 +2114,49 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
     mObserversOf_modelNames.remove (inObserver)
     if let object = self.propval {
       object.modelNames_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: overObjectsDisplay
+  //····················································································································
+
+  private var mObserversOf_overObjectsDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var overObjectsDisplay_property_selection : EBSelection <EBShape?> {
+    get {
+      if let model = self.propval {
+        switch (model.overObjectsDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_overObjectsDisplay (_ inObserver : EBEvent) {
+    mObserversOf_overObjectsDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.overObjectsDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_overObjectsDisplay (_ inObserver : EBEvent) {
+    mObserversOf_overObjectsDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.overObjectsDisplay_property.removeEBObserver (inObserver)
     }
   }
 

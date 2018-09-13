@@ -28,6 +28,10 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
   private var mEBView : EBView? = nil
   private var mManagedObjectContext : EBManagedObjectContext? = nil
 
+  //····················································································································
+  //    Sort Array
+  //····················································································································
+
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
     didSet {
       self.sortedArray_property.postEvent ()
@@ -132,10 +136,10 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
   //····················································································································
 
   func bind_modelAndView (model:ToManyRelationship_FontRoot_characters,
-                         tableViewArray:[EBTableView],
-                         ebView: EBView?,
-                         managedObjectContext : EBManagedObjectContext?,
-                         file:String, line:Int) {
+                          tableViewArray:[EBTableView],
+                          ebView: EBView?,
+                          managedObjectContext : EBManagedObjectContext?,
+                          file:String, line:Int) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }

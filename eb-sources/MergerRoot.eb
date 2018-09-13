@@ -39,9 +39,8 @@ entity MergerRoot {
      self.boardModels.all.modelHeight ;
 
 #--- Instance display
-  transient EBShape instancesDisplay  dependsFrom
-    self.boardRect, self.boardLimitWidth, prefs.mergerBoardViewDisplayBoardLimits, prefs.mergerColorBoardLimits,
-    self.boardInstances.all.objectDisplay ;
+  transient EBShape overObjectsDisplay  dependsFrom
+    self.boardRect, self.boardLimitWidth, prefs.mergerBoardViewDisplayBoardLimits, prefs.mergerColorBoardLimits ;
 
 
 #--- Board rect (rect from instances (automatic mode) or from manuel sizes)

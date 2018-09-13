@@ -28,6 +28,10 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   private var mEBView : EBView? = nil
   private var mManagedObjectContext : EBManagedObjectContext? = nil
 
+  //····················································································································
+  //    Sort Array
+  //····················································································································
+
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
     didSet {
       self.sortedArray_property.postEvent ()
@@ -132,10 +136,10 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //····················································································································
 
   func bind_modelAndView (model:EBClassArray_CanariLibraryEntry,
-                         tableViewArray:[EBTableView],
-                         ebView: EBView?,
-                         managedObjectContext : EBManagedObjectContext?,
-                         file:String, line:Int) {
+                          tableViewArray:[EBTableView],
+                          ebView: EBView?,
+                          managedObjectContext : EBManagedObjectContext?,
+                          file:String, line:Int) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }

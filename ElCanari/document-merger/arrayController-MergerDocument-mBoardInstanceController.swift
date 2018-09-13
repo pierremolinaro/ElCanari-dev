@@ -28,6 +28,12 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   private var mEBView : EBView? = nil
   private var mManagedObjectContext : EBManagedObjectContext? = nil
 
+//--- Oberser for object display
+  private var mObjectDisplayObserver = EBOutletEvent ()
+  //····················································································································
+  //    Sort Array
+  //····················································································································
+
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
     didSet {
       self.sortedArray_property.postEvent ()
@@ -133,10 +139,10 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func bind_modelAndView (model:ToManyRelationship_MergerRoot_boardInstances,
-                         tableViewArray:[EBTableView],
-                         ebView: EBView?,
-                         managedObjectContext : EBManagedObjectContext?,
-                         file:String, line:Int) {
+                          tableViewArray:[EBTableView],
+                          ebView: EBView?,
+                          managedObjectContext : EBManagedObjectContext?,
+                          file:String, line:Int) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
@@ -150,6 +156,8 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //--- Bind ebView
     mEBView = ebView
     self.mEBView?.set (controller: self)
+    model.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
+    self.mObjectDisplayObserver.eventCallBack = { self.updateObjectDisplay () }
   //--- Bind table views
     mTableViewArray = tableViewArray
     for tableView in tableViewArray {
@@ -165,6 +173,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     if DEBUG_EVENT {
       print ("\(#function)")
     }
+    mModel?.removeEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
     mModel?.removeEBObserver (self.sortedArray_property)
     self.sortedArray_property.removeEBObserver (mSelectedSet)
     mSelectedSet.removeEBObserver (self.selectedArray_property)
@@ -435,7 +444,73 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   }
 
   //····················································································································
+  // Object display should be updated
+  //····················································································································
+
+  private var mObjectDisplayArray = [EBShape] ()
+
+  //····················································································································
+
+  private func updateObjectDisplay () {
+  //--- Build new object display array
+    var newObjectDisplayArray = [EBShape] ()
+    for object in mModel?.propval ?? [] {
+      newObjectDisplayArray.append (object.objectDisplay ?? EBShape ())
+    }
+  //--- Find invalid rectangle
+    var invalidRect = NSZeroRect
+    let minCount = min (self.mObjectDisplayArray.count, newObjectDisplayArray.count)
+    var idx = 0
+    while idx < minCount {
+      if !newObjectDisplayArray [idx].sameDisplay(as: self.mObjectDisplayArray [idx]) {
+        invalidRect = invalidRect.union (newObjectDisplayArray [idx].boundingBox)
+        invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
+      }
+      idx += 1
+    }
+    while idx < self.mObjectDisplayArray.count {
+      invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
+      idx += 1
+    }
+    while idx < newObjectDisplayArray.count {
+      invalidRect = invalidRect.union (newObjectDisplayArray [idx].boundingBox)
+      idx += 1
+    }
+  //--- Store new object array and tell view to display
+    self.mObjectDisplayArray = newObjectDisplayArray
+    mEBView?.requestObjectDisplay (newObjectDisplayArray, invalidRect)
+  }
+
+  //····················································································································
   // Mouse Events
+  //····················································································································
+
+   private func indexOfFrontmostObject (at inLocation : NSPoint) -> Int? {
+    var possibleObjectIndex : Int? = nil
+    var idx = self.mObjectDisplayArray.count
+    while (idx > 0) && (possibleObjectIndex == nil) {
+      idx -= 1
+      if self.mObjectDisplayArray [idx].contains (point: inLocation) {
+        possibleObjectIndex = idx
+      }
+    }
+    return possibleObjectIndex
+  }
+
+  //····················································································································
+
+  private func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
+    var result = Set <Int> ()
+    var idx = 0
+    for object in self.mObjectDisplayArray {
+      if object.intersects (inRect) {
+        result.insert (idx)
+      }
+      idx += 1
+    }
+    return result
+  }
+
   //····················································································································
 
   private var mLastMouseDraggedLocation : NSPoint? = nil
@@ -444,21 +519,24 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
 
-  func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int?) {
-    mLastMouseDraggedLocation = mEBView?.convert (inEvent.locationInWindow, from:nil)
+  func mouseDown (with inEvent: NSEvent) {
+    let mouseDownLocation = mEBView?.convert (inEvent.locationInWindow, from:nil) ?? NSZeroPoint
+    mLastMouseDraggedLocation = mouseDownLocation
+  //--- Find index of object under mouse down
+    let possibleObjectIndex : Int? = self.indexOfFrontmostObject (at: mouseDownLocation)
     let objects = mModel?.propval ?? []
     let controlKey = inEvent.modifierFlags.contains (.control)
     if !controlKey {
       let shiftKey = inEvent.modifierFlags.contains (.shift)
       let commandKey = inEvent.modifierFlags.contains (.command)
       if shiftKey { // Shift key extends selection
-        if let objectIndex = inObjectIndex {
+        if let objectIndex = possibleObjectIndex {
           var newSet = mSelectedSet.mSet
           newSet.insert (objects [objectIndex])
           mSelectedSet.mSet = newSet
         }
       }else if commandKey { // Command key toggles selection of object under click
-        if let objectIndex = inObjectIndex {
+        if let objectIndex = possibleObjectIndex {
           let object = objects [objectIndex]
           if mSelectedSet.mSet.contains (object) {
             var newSet = mSelectedSet.mSet
@@ -470,7 +548,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
             mSelectedSet.mSet = newSet
           }
         }
-      }else if let objectIndex = inObjectIndex {
+      }else if let objectIndex = possibleObjectIndex {
         // NSLog ("Clicked objectindex \(objectIndex)")
         let clickedObject = objects [objectIndex]
         if !mSelectedSet.mSet.contains (clickedObject) {
@@ -502,7 +580,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         shapes.append (EBFilledBezierPathShape ([bp], NSColor.lightGray.withAlphaComponent (0.2)))
         shapes.append (EBStrokeBezierPathShape ([bp], NSColor.lightGray))
         mEBView?.selectionRectangleLayer = EBShape (shapes: shapes)
-        let indexSet = boardView.indexesOfObjects (intersecting:r)
+        let indexSet = self.indexesOfObjects (intersecting:r)
         var newSelectedSet = Set <MergerBoardInstance> ()
         var objects = mModel?.propval ?? []
         for idx in indexSet {
@@ -541,6 +619,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     mSelectionRectangleOrigin = nil
     mEBView?.selectionRectangleLayer = nil
   }
+
 
   //····················································································································
   // key Events

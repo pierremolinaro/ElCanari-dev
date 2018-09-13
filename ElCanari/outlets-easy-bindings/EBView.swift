@@ -12,7 +12,7 @@ protocol EBViewControllerProtocol : class {
 
   var objectCount : Int { get }
 
-  func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int?)
+  func mouseDown (with inEvent: NSEvent)
   func mouseDragged (with inEvent : NSEvent)
   func mouseUp (with inEvent : NSEvent)
 
@@ -77,6 +77,17 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
+  //    Object Display
+  //····················································································································
+
+  private var mObjectDisplayArray = [EBShape] ()
+
+  func requestObjectDisplay (_ inNewObjectDisplayArray : [EBShape], _ inInvalidRect : NSRect) {
+    self.mObjectDisplayArray = inNewObjectDisplayArray
+    self.setNeedsDisplay (inInvalidRect)
+  }
+
+  //····················································································································
   //    Selection Layer
   //····················································································································
 
@@ -106,11 +117,45 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
-  // indexesOfObjects intersecting rectangle
+  //    $overObjectsDisplay binding
   //····················································································································
 
-  func indexesOfObjects (intersecting inRect : CGRect) -> Set <Int> {
-    return self.mObjects.indexes (intersecting: inRect)
+  private var mOverObjectsDisplayController : Controller_EBView_overObjectsDisplay?
+
+  func bind_overObjectsDisplay (_ objects:EBReadOnlyProperty_EBShape, file:String, line:Int) {
+    mOverObjectsDisplayController = Controller_EBView_overObjectsDisplay (objects, outlet:self)
+  }
+
+  func unbind_overObjectsDisplay () {
+    mOverObjectsDisplayController?.unregister ()
+    mOverObjectsDisplayController = nil
+  }
+
+  //····················································································································
+
+  private var mOverObjectsDisplay = EBShape ()
+
+  //····················································································································
+
+  func setOverObjectsDisplay (_ inDisplay : EBShape) {
+    if !self.mOverObjectsDisplay.sameDisplay (as:inDisplay) {
+      self.setNeedsDisplay (self.mOverObjectsDisplay.boundingBox)
+      self.setNeedsDisplay (inDisplay.boundingBox)
+    }
+    self.mOverObjectsDisplay = inDisplay
+  }
+
+  //····················································································································
+  //  Draw Dirty rect
+  //····················································································································
+
+  override func draw (_ inDirtyRect: NSRect) {
+    for object in self.mObjectDisplayArray {
+      object.draw (inDirtyRect)
+    }
+    self.mOverObjectsDisplay.draw (inDirtyRect)
+    self.selectionRectangleLayer?.draw (inDirtyRect)
+    self.mSelectionShape.draw (inDirtyRect)
   }
 
   //····················································································································
@@ -118,10 +163,7 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   override func mouseDown (with inEvent: NSEvent) {
-    let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-    let objectIndex : Int? = self.mObjects.indexOfObject (containing: mouseDownLocation)
-    mViewController?.mouseDown (with: inEvent, objectIndex: objectIndex)
-    super.mouseDown (with: inEvent)
+    mViewController?.mouseDown (with: inEvent)
   }
 
   //····················································································································
@@ -241,69 +283,6 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
-  //    $objects binding
-  //····················································································································
-
-  private var mObjectsController : Controller_EBView_objects?
-
-  func bind_objects (_ objects:EBReadOnlyProperty_EBShape, file:String, line:Int) {
-    mObjectsController = Controller_EBView_objects (objects, outlet:self)
-  }
-
-  func unbind_objects () {
-    mObjectsController?.unregister ()
-    mObjectsController = nil
-  }
-
-  //····················································································································
-
-   private var mObjects = EBShape ()
-
-  //····················································································································
-
-  func setObjects (_ inObjects : EBShape) {
-//    var invalidRect = NSZeroRect
-//    let commonCount = min (self.mObjects.count, inObjects.count)
-//    var idx = 0
-//    while idx < commonCount {
-//      let currentObjet = self.mObjects [idx]
-//      let newObject = inObjects [idx]
-//      if !newObject.sameDisplay(as: currentObjet) {
-//        invalidRect = invalidRect.union (currentObjet.boundingBox)
-//        invalidRect = invalidRect.union (newObject.boundingBox)
-//      }
-//      idx += 1
-//    }
-//  //--- Enter in invalid rect removed objects
-//    while idx < self.mObjects.count {
-//      invalidRect = invalidRect.union (self.mObjects [idx].boundingBox)
-//      idx += 1
-//    }
-//  //--- Enter in invalid rect new objects
-//    idx = commonCount
-//    while idx < inObjects.count {
-//      invalidRect = invalidRect.union (inObjects [idx].boundingBox)
-//      idx += 1
-//    }
-    let invalidRect = self.mObjects.computeInvalidRect (inObjects)
-    self.mObjects = inObjects
-    self.setNeedsDisplay (invalidRect)
-  }
-
-  //····················································································································
-  //  Draw Dirty rect
-  //····················································································································
-
-  override func draw (_ inDirtyRect: NSRect) {
-//    for object in self.mObjects {
-//      object.draw (inDirtyRect)
-//    }
-    self.mObjects.draw (inDirtyRect)
-    self.selectionRectangleLayer?.draw (inDirtyRect)
-    self.mSelectionShape.draw (inDirtyRect)
-  }
-
-  //····················································································································
 
 }
 
@@ -378,10 +357,10 @@ final class Controller_EBView_shiftArrowKeyMagnitude : EBSimpleController {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_EBView_objects
+//   Controller_EBView_overObjectsDisplay
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class Controller_EBView_objects : EBSimpleController {
+class Controller_EBView_overObjectsDisplay : EBSimpleController {
 
   private let mLayer : EBReadOnlyProperty_EBShape
   private let mOutlet : EBView
@@ -399,12 +378,10 @@ class Controller_EBView_objects : EBSimpleController {
 
   private func updateOutlet () {
     switch mLayer.prop {
-    case .empty :
-      mOutlet.setObjects (EBShape ())
+    case .empty, .multiple :
+      mOutlet.setOverObjectsDisplay (EBShape ())
     case .single (let v) :
-      mOutlet.setObjects (v)
-    case .multiple :
-      mOutlet.setObjects (EBShape ())
+      mOutlet.setOverObjectsDisplay (v)
     }
   }
 

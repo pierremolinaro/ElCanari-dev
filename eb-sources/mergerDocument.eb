@@ -178,7 +178,7 @@ document MergerDocument root MergerRoot {
     $zoom mBoardModelSelection.zoom
     $horizontalFlip prefs.mergerModelViewHorizontalFlip
     $verticalFlip prefs.mergerModelViewVerticalFlip
-    $objects mBoardModelSelection.imageForModel
+    $overObjectsDisplay mBoardModelSelection.imageForModel
   ;
 
 #------------------------------------- Board Page
@@ -267,7 +267,7 @@ document MergerDocument root MergerRoot {
     $zoom root.zoom
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
     $verticalFlip prefs.mergerBoardViewVerticalFlip
-    $objects root.instancesDisplay
+    $overObjectsDisplay root.overObjectsDisplay
     $graphicController self.mBoardInstanceController
     $arrowKeyMagnitude root.cocoaArrowMagnitude
     $shiftArrowKeyMagnitude root.cocoaShiftArrowMagnitude

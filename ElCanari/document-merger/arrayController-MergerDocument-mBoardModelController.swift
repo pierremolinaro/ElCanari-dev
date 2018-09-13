@@ -28,6 +28,10 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   private var mEBView : EBView? = nil
   private var mManagedObjectContext : EBManagedObjectContext? = nil
 
+  //····················································································································
+  //    Sort Array
+  //····················································································································
+
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
     didSet {
       self.sortedArray_property.postEvent ()
@@ -155,10 +159,10 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //····················································································································
 
   func bind_modelAndView (model:ToManyRelationship_MergerRoot_boardModels,
-                         tableViewArray:[EBTableView],
-                         ebView: EBView?,
-                         managedObjectContext : EBManagedObjectContext?,
-                         file:String, line:Int) {
+                          tableViewArray:[EBTableView],
+                          ebView: EBView?,
+                          managedObjectContext : EBManagedObjectContext?,
+                          file:String, line:Int) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
