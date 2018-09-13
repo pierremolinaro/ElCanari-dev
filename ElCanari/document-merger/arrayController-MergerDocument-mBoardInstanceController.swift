@@ -443,7 +443,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
 
-  func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int) {
+  func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int?) {
     mModel?.owner?.undoManager ()?.beginUndoGrouping ()
     mLastMouseDraggedLocation = mEBView?.convert (inEvent.locationInWindow, from:nil)
     let objects = mModel?.propval ?? []
@@ -452,14 +452,14 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       let shiftKey = inEvent.modifierFlags.contains (.shift)
       let commandKey = inEvent.modifierFlags.contains (.command)
       if shiftKey { // Shift key extends selection
-        if inObjectIndex >= 0 {
+        if let objectIndex = inObjectIndex {
           var newSet = mSelectedSet.mSet
-          newSet.insert (objects [inObjectIndex])
+          newSet.insert (objects [objectIndex])
           mSelectedSet.mSet = newSet
         }
       }else if commandKey { // Command key toggles selection of object under click
-        if inObjectIndex >= 0 {
-          let object = objects [inObjectIndex]
+        if let objectIndex = inObjectIndex {
+          let object = objects [objectIndex]
           if mSelectedSet.mSet.contains (object) {
             var newSet = mSelectedSet.mSet
             newSet.remove (object)
@@ -470,9 +470,9 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
             mSelectedSet.mSet = newSet
           }
         }
-      }else if inObjectIndex >= 0 {
-        // NSLog ("Clicked objectindex \(inObjectIndex)")
-        let clickedObject = objects [inObjectIndex]
+      }else if let objectIndex = inObjectIndex {
+        // NSLog ("Clicked objectindex \(objectIndex)")
+        let clickedObject = objects [objectIndex]
         if !mSelectedSet.mSet.contains (clickedObject) {
           mSelectedSet.mSet = [clickedObject]
         }

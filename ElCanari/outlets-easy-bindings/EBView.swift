@@ -8,11 +8,11 @@ import Cocoa
 //   EBViewControllerProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc protocol EBViewControllerProtocol {
+protocol EBViewControllerProtocol : class {
 
   var objectCount : Int { get }
 
-  func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int)
+  func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int?)
   func mouseDragged (with inEvent : NSEvent)
   func mouseUp (with inEvent : NSEvent)
 
@@ -110,30 +110,7 @@ import Cocoa
   //····················································································································
 
   func indexesOfObjects (intersecting inRect : CGRect) -> Set <Int> {
-//    var result = Set <Int> ()
-//    for object in self.mObjects {
-//      if (object.userIndex >= 0) && object.intersects (inRect) {
-//        result.insert (object.userIndex)
-//      }
-//    }
     return self.mObjects.indexes (intersecting: inRect)
-  }
-
-  //····················································································································
-  // index of object containing point (-1 if none)
-  //····················································································································
-
-  func indexOfObject (containing inPoint : NSPoint) -> Int {
-//    var result = -1
-//    var idx = self.mObjects.count - 1
-//    while (idx >= 0) && (result < 0) {
-//      let object = self.mObjects [idx]
-//      if (object.userIndex >= 0) && object.contains (inPoint) {
-//        result = object.userIndex
-//      }
-//      idx -= 1
-//    }
-    return self.mObjects.indexOfObject (containing: inPoint)
   }
 
   //····················································································································
@@ -142,7 +119,8 @@ import Cocoa
 
   override func mouseDown (with inEvent: NSEvent) {
     let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-    mViewController?.mouseDown (with: inEvent, objectIndex: self.indexOfObject (containing: mouseDownLocation))
+    let objectIndex : Int? = self.mObjects.indexOfObject (containing: mouseDownLocation)
+    mViewController?.mouseDown (with: inEvent, objectIndex: objectIndex)
     super.mouseDown (with: inEvent)
   }
 

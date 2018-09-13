@@ -24,7 +24,7 @@ graphic entity MergerBoardInstance {
   transient EBShape selectionDisplay dependsFrom self.instanceRect ;
 
 #--- Background
-  transient EBShape instanceDisplay dependsFrom
+  transient EBShape objectDisplay dependsFrom
     self.x, self.y,
     self.myModel.one.modelWidth, self.myModel.one.modelHeight,
     self.instanceRotation,

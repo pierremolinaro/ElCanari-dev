@@ -24,6 +24,10 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
+  var objectDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
   var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
@@ -59,8 +63,8 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 
   private var mShapes : [EBShape]
   private var mCachedBoundingBox : NSRect?
-  var userIndex = -1
-  var userSecondaryIndex = -1
+  var userIndex : Int? = nil
+//  var userSecondaryIndex = -1
 
   //····················································································································
   //  init
@@ -129,7 +133,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
       result.append (shape: shape.transformedBy (inAffineTransform))
     }
     result.userIndex = self.userIndex
-    result.userSecondaryIndex = self.userSecondaryIndex
+//    result.userSecondaryIndex = self.userSecondaryIndex
   }
 
   //····················································································································
@@ -168,20 +172,22 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //   Contains point §§§ TEMPORARY §§§
+  //   Contains point
   //····················································································································
 
-  func contains (_ inPoint : NSPoint) -> Bool {
-    return self.boundingBox.contains (inPoint)
+  func contains (point inPoint : NSPoint) -> Bool {
+    for shape in self.mShapes {
+      if shape.contains (point: inPoint) {
+        return true
+      }
+    }
+    return false
   }
 
   //····················································································································
 
   func sameDisplay (as inObject : EBShape) -> Bool {
-    var equal = true // lhs super.== rhs
-    if equal {
-      equal = self.mShapes.count == inObject.mShapes.count
-    }
+    var equal = self.mShapes.count == inObject.mShapes.count
     if equal {
       var idx = 0
       while idx < self.mShapes.count {
@@ -244,24 +250,24 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   func indexes (intersecting inRect : CGRect) -> Set <Int> {
     var result = Set <Int> ()
     for object in self.mShapes.reversed () {
-      if (object.userIndex >= 0) && object.intersects (inRect) {
-        result.insert (object.userIndex)
+      if let idx = object.userIndex, object.intersects (inRect) {
+        result.insert (idx)
       }
     }
     return result
   }
 
   //····················································································································
-  // index of object containing point (-1 if none)
+  // index of object containing point (nil if none)
   //····················································································································
 
-  func indexOfObject (containing inPoint : NSPoint) -> Int {
-    var result = -1
+  func indexOfObject (containing inPoint : NSPoint) -> Int? {
+    var result : Int? = nil
     var idx = self.mShapes.count - 1
-    while (idx >= 0) && (result < 0) {
+    while (idx >= 0) && (result == nil) {
       let object = self.mShapes [idx]
-      if (object.userIndex >= 0) && object.contains (inPoint) {
-        result = object.userIndex
+      if let userIndex = object.userIndex, object.contains (point: inPoint) {
+        result = userIndex
       }
       idx -= 1
     }
@@ -307,6 +313,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 
 class EBStrokeBezierPathShape : EBShape {
   private var mPaths : [NSBezierPath]
+  private var mCGPaths : [CGPath?] // Computed lazily by contains (point:)
   private let mColor : NSColor
   private var mCachedBoundingBox : NSRect?
 
@@ -316,6 +323,7 @@ class EBStrokeBezierPathShape : EBShape {
 
   init (_ inPaths: [NSBezierPath], _ inColor: NSColor) {
     mPaths = inPaths
+    mCGPaths = [CGPath?](repeating: nil, count: inPaths.count)
     mColor = inColor
     super.init ()
   }
@@ -326,6 +334,7 @@ class EBStrokeBezierPathShape : EBShape {
 
   func append (path inBezierPath : NSBezierPath) {
     self.mPaths.append (inBezierPath)
+    self.mCGPaths.append (nil)
     self.mCachedBoundingBox = nil
   }
 
@@ -371,6 +380,45 @@ class EBStrokeBezierPathShape : EBShape {
       self.mCachedBoundingBox = r
       return r
     }
+  }
+
+  //····················································································································
+  //   Contains point
+  //····················································································································
+
+  override func contains (point inPoint : NSPoint) -> Bool {
+    var result = super.contains (point: inPoint)
+    var idx = 0
+    while (idx < self.mPaths.count) && !result {
+      let cgPath : CGPath
+      if let p = self.mCGPaths [idx] {
+        cgPath = p
+      }else{
+        let bp = self.mPaths [idx]
+        let lineCap : CGLineCap
+        switch bp.lineCapStyle {
+        case .buttLineCapStyle : lineCap = .butt
+        case .roundLineCapStyle : lineCap = .round
+        case .squareLineCapStyle : lineCap = .square
+        }
+        let lineJoin : CGLineJoin
+        switch bp.lineJoinStyle {
+        case .bevelLineJoinStyle : lineJoin = .bevel
+        case .miterLineJoinStyle : lineJoin = .miter
+        case .roundLineJoinStyle : lineJoin = .round
+        }
+        cgPath = bp.cgPath.copy (
+          strokingWithWidth: bp.lineWidth,
+          lineCap: lineCap,
+          lineJoin: lineJoin,
+          miterLimit: bp.miterLimit
+        )
+        self.mCGPaths [idx] = cgPath
+      }
+      result = cgPath.contains (inPoint, using: .winding)
+      idx += 1
+    }
+    return result
   }
 
   //····················································································································
@@ -426,10 +474,10 @@ class EBStrokeBezierPathShape : EBShape {
 
   override func indexes (intersecting inRect : CGRect) -> Set <Int> {
     var result = super.indexes (intersecting: inRect)
-    if self.userIndex >= 0 {
+    if let idx = self.userIndex {
       for bp in self.mPaths.reversed () {
         if bp.bounds.intersects (inRect) { // §§§§ A AMÉLIORER
-          result.insert (self.userIndex)
+          result.insert (idx)
         }
       }
     }
@@ -437,31 +485,16 @@ class EBStrokeBezierPathShape : EBShape {
   }
 
   //····················································································································
-  // index of object containing point (-1 if none)
+  // index of object containing point (nil if none)
   //····················································································································
 
-  override func indexOfObject (containing inPoint : NSPoint) -> Int {
-    var result = -1
-    if self.userIndex >= 0 {
-      for bp in self.mPaths.reversed () {
-        if bp.bounds.contains (inPoint) { // §§§§ A AMÉLIORER
-          result = self.userIndex
-          break
-        }
-      }
-    }
-    if result < 0 {
-      result = super.indexOfObject (containing: inPoint)
+  override func indexOfObject (containing inPoint : NSPoint) -> Int? {
+    var result : Int? = nil
+    if let userIndex = self.userIndex, self.contains (point: inPoint) {
+      result = userIndex
     }
     return result
   }
-
-  //····················································································································
-
-//  override func computeInvalidRect (_ inObjects : EBShape) -> NSRect {
-//    var invalidRect = super.computeInvalidRect (inObjects)
-//    return invalidRect
-//  }
 
   //····················································································································
 
@@ -473,6 +506,7 @@ class EBStrokeBezierPathShape : EBShape {
 
 class EBFilledBezierPathShape : EBShape {
   private var mPaths : [NSBezierPath]
+  private var mCGPaths : [CGPath?] // Computed lazily by contains (point:)
   private let mColor : NSColor
   private var mCachedBoundingBox : NSRect?
 
@@ -483,6 +517,7 @@ class EBFilledBezierPathShape : EBShape {
   init (_ inPaths: [NSBezierPath], _ inColor: NSColor) {
     mPaths = inPaths
     mColor = inColor
+    mCGPaths = [CGPath?] (repeating: nil, count: inPaths.count)
     super.init ()
   }
 
@@ -492,6 +527,7 @@ class EBFilledBezierPathShape : EBShape {
 
   func append (_ inBezierPath : NSBezierPath) {
     self.mPaths.append (inBezierPath)
+    self.mCGPaths.append (nil)
     self.mCachedBoundingBox = nil
   }
 
@@ -539,6 +575,28 @@ class EBFilledBezierPathShape : EBShape {
   }
 
   //····················································································································
+  //   Contains point
+  //····················································································································
+
+  override func contains (point inPoint : NSPoint) -> Bool {
+    var result = super.contains (point: inPoint)
+    var idx = 0
+    while (idx < self.mPaths.count) && !result {
+      let cgPath : CGPath
+      if let p = self.mCGPaths [idx] {
+        cgPath = p
+      }else{
+        let bp = self.mPaths [idx]
+        cgPath = bp.cgPath
+        self.mCGPaths [idx] = cgPath
+      }
+      result = cgPath.contains (inPoint, using: .winding) // §§§ .winding à revoir
+      idx += 1
+    }
+    return result
+  }
+
+  //····················································································································
   /// The hash value.
   ///
   /// Hash values are not guaranteed to be equal across different executions of
@@ -562,10 +620,10 @@ class EBFilledBezierPathShape : EBShape {
 
   override func indexes (intersecting inRect : CGRect) -> Set <Int> {
     var result = super.indexes (intersecting: inRect)
-    if self.userIndex >= 0 {
-      for bp in self.mPaths.reversed () {
+    if let idx = self.userIndex {
+      for bp in self.mPaths {
         if bp.bounds.intersects (inRect) { // §§§§ A AMÉLIORER
-          result.insert (self.userIndex)
+          result.insert (idx)
         }
       }
     }
@@ -573,21 +631,13 @@ class EBFilledBezierPathShape : EBShape {
   }
 
   //····················································································································
-  // index of object containing point (-1 if none)
+  // index of object containing point (nil if none)
   //····················································································································
 
-  override func indexOfObject (containing inPoint : NSPoint) -> Int {
-    var result = -1
-    if self.userIndex >= 0 {
-      for bp in self.mPaths.reversed () {
-        if bp.bounds.contains (inPoint) { // §§§§ A AMÉLIORER
-          result = self.userIndex
-          break
-        }
-      }
-    }
-    if result < 0 {
-      result = super.indexOfObject (containing: inPoint)
+  override func indexOfObject (containing inPoint : NSPoint) -> Int? {
+    var result : Int? = nil
+    if let userIndex = self.userIndex, self.contains(point: inPoint) {
+      result = userIndex
     }
     return result
   }
@@ -669,6 +719,38 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
     }
   //--- Bezier paths
     self.mShape.draw (inDirtyRect)
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//  Extension NSBezierPath
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension NSBezierPath {
+
+  //····················································································································
+  // https://stackoverflow.com/questions/1815568/how-can-i-convert-nsbezierpath-to-cgpath
+
+  public var cgPath: CGPath {
+    let path = CGMutablePath ()
+    var points = [CGPoint] (repeating: .zero, count: 3)
+    for idx in 0 ..< self.elementCount {
+      let type = self.element (at: idx, associatedPoints: &points)
+      switch type {
+      case .moveToBezierPathElement:
+        path.move (to: points[0])
+      case .lineToBezierPathElement:
+        path.addLine (to: points[0])
+      case .curveToBezierPathElement:
+        path.addCurve (to: points[2], control1: points[0], control2: points[1])
+      case .closePathBezierPathElement:
+        path.closeSubpath ()
+      }
+    }
+    return path
   }
 
   //····················································································································

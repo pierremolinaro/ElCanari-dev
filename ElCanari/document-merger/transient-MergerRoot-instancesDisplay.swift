@@ -16,13 +16,13 @@ func transient_MergerRoot_instancesDisplay (
        _ self_boardLimitWidth : Int,        
        _ prefs_mergerBoardViewDisplayBoardLimits : Bool,
        _ prefs_mergerColorBoardLimits : NSColor,
-       _ self_boardInstances_instanceDisplay : [MergerBoardInstance_instanceDisplay]
+       _ self_boardInstances_objectDisplay : [MergerBoardInstance_objectDisplay]
 ) -> EBShape {
 //--- START OF USER ZONE 2
     var array = [EBShape] ()
     var idx = 0
-    for board in self_boardInstances_instanceDisplay {
-      let instanceDisplay = board.instanceDisplay!
+    for board in self_boardInstances_objectDisplay {
+      let instanceDisplay = board.objectDisplay!
       instanceDisplay.userIndex = idx
       array.append (instanceDisplay)
       idx += 1

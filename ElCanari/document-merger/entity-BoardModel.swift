@@ -7404,10 +7404,10 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
           managedObject.myModel_property.owner = nil ;
         }
         removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_instanceDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceRotation_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelName_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
@@ -7418,10 +7418,10 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
           managedObject.myModel_property.setProp (owner)
         }
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_instanceDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRotation_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelName_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y_toElementsOfSet (addedObjectSet)

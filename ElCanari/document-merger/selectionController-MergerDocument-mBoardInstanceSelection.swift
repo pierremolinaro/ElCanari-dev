@@ -23,13 +23,6 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
       return self.boardLimitWidth_property.prop
     }
   }
-  var instanceDisplay_property = EBTransientProperty_EBShape ()
-
-  var instanceDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.instanceDisplay_property.prop
-    }
-  }
   var instanceRect_property = EBTransientProperty_CanariHorizontalRect ()
 
   var instanceRect_property_selection : EBSelection <CanariHorizontalRect> {
@@ -49,6 +42,13 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var modelName_property_selection : EBSelection <String> {
     get {
       return self.modelName_property.prop
+    }
+  }
+  var objectDisplay_property = EBTransientProperty_EBShape ()
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    get {
+      return self.objectDisplay_property.prop
     }
   }
   var selectionDisplay_property = EBTransientProperty_EBShape ()
@@ -80,10 +80,10 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   func bind_selection (model : ReadOnlyArrayOf_MergerBoardInstance, file:String, line:Int) {
     mModel = model
     bind_property_boardLimitWidth (model: model)
-    bind_property_instanceDisplay (model: model)
     bind_property_instanceRect (model: model)
     bind_property_instanceRotation (model: model)
     bind_property_modelName (model: model)
+    bind_property_objectDisplay (model: model)
     bind_property_selectionDisplay (model: model)
     bind_property_x (model: model)
     bind_property_y (model: model)
@@ -242,46 +242,6 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   //···················································································································*
 
-  private final func bind_property_instanceDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_instanceDisplay (self.instanceDisplay_property)
-    self.instanceDisplay_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set<EBShape> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.instanceDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
   private final func bind_property_instanceRect (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_instanceRect (self.instanceRect_property)
     self.instanceRect_property.readModelFunction = {
@@ -406,6 +366,46 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
           var isMultipleSelection = false
           for object in v {
             switch object.modelName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
+    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.objectDisplay_property.readModelFunction = {
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set<EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.objectDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -620,9 +620,6 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //--- boardLimitWidth
     self.boardLimitWidth_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
-  //--- instanceDisplay
-    self.instanceDisplay_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_instanceDisplay (self.instanceDisplay_property)
   //--- instanceRect
     self.instanceRect_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_instanceRect (self.instanceRect_property)
@@ -634,6 +631,9 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //--- modelName
     self.modelName_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_modelName (self.modelName_property)
+  //--- objectDisplay
+    self.objectDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.readModelFunction = nil 
     self.mModel?.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
