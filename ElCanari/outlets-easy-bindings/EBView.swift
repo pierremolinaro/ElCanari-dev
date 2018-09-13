@@ -138,7 +138,7 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   func setOverObjectsDisplay (_ inDisplay : EBShape) {
-    if !self.mOverObjectsDisplay.sameDisplay (as:inDisplay) {
+    if self.mOverObjectsDisplay != inDisplay {
       self.setNeedsDisplay (self.mOverObjectsDisplay.boundingBox)
       self.setNeedsDisplay (inDisplay.boundingBox)
     }

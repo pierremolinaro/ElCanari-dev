@@ -462,7 +462,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     let minCount = min (self.mObjectDisplayArray.count, newObjectDisplayArray.count)
     var idx = 0
     while idx < minCount {
-      if !newObjectDisplayArray [idx].sameDisplay(as: self.mObjectDisplayArray [idx]) {
+      if newObjectDisplayArray [idx] != self.mObjectDisplayArray [idx] {
         invalidRect = invalidRect.union (newObjectDisplayArray [idx].boundingBox)
         invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
       }

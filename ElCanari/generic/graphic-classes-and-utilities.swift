@@ -181,23 +181,6 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   }
 
   //····················································································································
-
-  func sameDisplay (as inObject : EBShape) -> Bool {
-    var equal = self.mShapes.count == inObject.mShapes.count
-    if equal {
-      var idx = 0
-      while idx < self.mShapes.count {
-        equal = self.mShapes [idx] == inObject.mShapes [idx]
-        if !equal {
-          break
-        }
-        idx += 1
-      }
-    }
-    return equal
-  }
-
-  //····················································································································
   /// Returns a Boolean value indicating whether two values are equal.
   ///
   /// Equality is the inverse of inequality. For any values `a` and `b`,
@@ -209,7 +192,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   //····················································································································
 
   public static func == (lhs: EBShape, rhs: EBShape) -> Bool {
-    return lhs.isEqualTo (rhs)
+    return (lhs === rhs) || lhs.isEqualTo (rhs)
   }
 
   //····················································································································
@@ -249,7 +232,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
     while idx < commonCount {
       let currentObjet = self.mShapes [idx]
       let newObject = inObjects.mShapes [idx]
-      if !newObject.sameDisplay(as: currentObjet) {
+      if newObject != currentObjet {
         invalidRect = invalidRect.union (currentObjet.boundingBox)
         invalidRect = invalidRect.union (newObject.boundingBox)
       }
