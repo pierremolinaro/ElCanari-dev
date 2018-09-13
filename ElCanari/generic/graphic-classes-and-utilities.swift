@@ -63,8 +63,6 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 
   private var mShapes : [EBShape]
   private var mCachedBoundingBox : NSRect?
-  var userIndex : Int? = nil
-//  var userSecondaryIndex = -1
 
   //····················································································································
   //  init
@@ -132,8 +130,6 @@ class EBShape : Hashable, EBUserClassNameProtocol {
     for shape in self.mShapes {
       result.append (shape: shape.transformedBy (inAffineTransform))
     }
-    result.userIndex = self.userIndex
-//    result.userSecondaryIndex = self.userSecondaryIndex
   }
 
   //····················································································································
@@ -213,16 +209,17 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   //····················································································································
 
   public static func == (lhs: EBShape, rhs: EBShape) -> Bool {
-    var equal = lhs.mShapes.count == rhs.mShapes.count
-    if equal {
-      var idx = 0
-      while idx < lhs.mShapes.count {
-        equal = lhs.mShapes [idx] == rhs.mShapes [idx]
-        if !equal {
-          break
-        }
-        idx += 1
-      }
+    return lhs.isEqualTo (rhs)
+  }
+
+  //····················································································································
+
+  func isEqualTo (_ inOperand : EBShape) -> Bool {
+    var equal = self.mShapes.count == inOperand.mShapes.count
+    var idx = 0
+    while (idx < self.mShapes.count) && equal {
+      equal = self.mShapes [idx] == inOperand.mShapes [idx]
+      idx += 1
     }
     return equal
   }
@@ -241,37 +238,6 @@ class EBShape : Hashable, EBUserClassNameProtocol {
       h ^= shape.hashValue
     }
     return h
-  }
-
-  //····················································································································
-  //   Indexes of objects intersection rectangle
-  //····················································································································
-
-  func indexes (intersecting inRect : CGRect) -> Set <Int> {
-    var result = Set <Int> ()
-    for object in self.mShapes.reversed () {
-      if let idx = object.userIndex, object.intersects (inRect) {
-        result.insert (idx)
-      }
-    }
-    return result
-  }
-
-  //····················································································································
-  // index of object containing point (nil if none)
-  //····················································································································
-
-  func indexOfObject (containing inPoint : NSPoint) -> Int? {
-    var result : Int? = nil
-    var idx = self.mShapes.count - 1
-    while (idx >= 0) && (result == nil) {
-      let object = self.mShapes [idx]
-      if let userIndex = object.userIndex, object.contains (point: inPoint) {
-        result = userIndex
-      }
-      idx -= 1
-    }
-    return result
   }
 
   //····················································································································
@@ -422,28 +388,17 @@ class EBStrokeBezierPathShape : EBShape {
   }
 
   //····················································································································
-  /// Returns a Boolean value indicating whether two values are equal.
-  ///
-  /// Equality is the inverse of inequality. For any values `a` and `b`,
-  /// `a == b` implies that `a != b` is `false`.
-  ///
-  /// - Parameters:
-  ///   - lhs: A value to compare.
-  ///   - rhs: Another value to compare.
-  //····················································································································
 
-  public static func == (lhs: EBStrokeBezierPathShape, rhs: EBStrokeBezierPathShape) -> Bool {
-    var equal = true // lhs super.== rhs
-    if equal {
-      equal = lhs.mPaths.count == rhs.mPaths.count
-    }
-    if equal {
+  override func isEqualTo (_ inOperand : EBShape) -> Bool {
+    var equal = false
+    if let operand = inOperand as? EBStrokeBezierPathShape {
+      equal = self.mPaths.count == operand.mPaths.count
+      if equal {
+        equal = super.isEqualTo (inOperand)
+      }
       var idx = 0
-      while idx < lhs.mPaths.count {
-        equal = lhs.mPaths [idx] == rhs.mPaths [idx]
-        if !equal {
-          break
-        }
+      while (idx < self.mPaths.count) && equal {
+        equal = self.mPaths [idx] == operand.mPaths [idx]
         idx += 1
       }
     }
@@ -466,34 +421,6 @@ class EBStrokeBezierPathShape : EBShape {
       h ^= path.hashValue
     }
     return h
-  }
-
-  //····················································································································
-  //   Indexes of objects intersection rectangle
-  //····················································································································
-
-  override func indexes (intersecting inRect : CGRect) -> Set <Int> {
-    var result = super.indexes (intersecting: inRect)
-    if let idx = self.userIndex {
-      for bp in self.mPaths.reversed () {
-        if bp.bounds.intersects (inRect) { // §§§§ A AMÉLIORER
-          result.insert (idx)
-        }
-      }
-    }
-    return result
-  }
-
-  //····················································································································
-  // index of object containing point (nil if none)
-  //····················································································································
-
-  override func indexOfObject (containing inPoint : NSPoint) -> Int? {
-    var result : Int? = nil
-    if let userIndex = self.userIndex, self.contains (point: inPoint) {
-      result = userIndex
-    }
-    return result
   }
 
   //····················································································································
@@ -615,31 +542,21 @@ class EBFilledBezierPathShape : EBShape {
   }
 
   //····················································································································
-  //   Indexes of objects intersection rectangle
-  //····················································································································
 
-  override func indexes (intersecting inRect : CGRect) -> Set <Int> {
-    var result = super.indexes (intersecting: inRect)
-    if let idx = self.userIndex {
-      for bp in self.mPaths {
-        if bp.bounds.intersects (inRect) { // §§§§ A AMÉLIORER
-          result.insert (idx)
-        }
+  override func isEqualTo (_ inOperand : EBShape) -> Bool {
+    var equal = false
+    if let operand = inOperand as? EBFilledBezierPathShape {
+      equal = self.mPaths.count == operand.mPaths.count
+      if equal {
+        equal = super.isEqualTo (inOperand)
+      }
+      var idx = 0
+      while (idx < self.mPaths.count) && equal {
+        equal = self.mPaths [idx] == operand.mPaths [idx]
+        idx += 1
       }
     }
-    return result
-  }
-
-  //····················································································································
-  // index of object containing point (nil if none)
-  //····················································································································
-
-  override func indexOfObject (containing inPoint : NSPoint) -> Int? {
-    var result : Int? = nil
-    if let userIndex = self.userIndex, self.contains(point: inPoint) {
-      result = userIndex
-    }
-    return result
+    return equal
   }
 
   //····················································································································
