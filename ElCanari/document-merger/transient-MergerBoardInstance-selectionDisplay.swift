@@ -15,9 +15,9 @@ func transient_MergerBoardInstance_selectionDisplay (
        _ self_instanceRect : CanariHorizontalRect
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let r : NSRect = self_instanceRect.cocoaRect().insetBy (dx: 0.5, dy: 0.5)
+  let r : NSRect = self_instanceRect.cocoaRect() //.insetBy (dx: 0.5, dy: 0.5)
   let bp = NSBezierPath (rect: r)
-  bp.lineWidth = 1.0
+  bp.lineWidth = 0.0
   bp.lineJoinStyle = .roundLineJoinStyle
   let shapes = EBShape ()
   shapes.append (shape: EBFilledBezierPathShape ([bp], NSColor.cyan.withAlphaComponent (0.15)))

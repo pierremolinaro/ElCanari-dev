@@ -163,8 +163,15 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   //   intersects
   //····················································································································
 
-  func intersects (_ inRect : NSRect) -> Bool {
-    return self.boundingBox.intersects (inRect)
+  func intersects (rect inRect : NSRect) -> Bool {
+    var result = false
+    var idx = 0
+    while (idx < self.mShapes.count) && !result {
+      let shape = self.mShapes [idx]
+      idx += 1
+      result = shape.intersects (rect: inRect)
+    }
+    return result
   }
 
   //····················································································································
@@ -343,25 +350,7 @@ class EBStrokeBezierPathShape : EBShape {
       if let p = self.mCGPaths [idx] {
         cgPath = p
       }else{
-        let bp = self.mPaths [idx]
-        let lineCap : CGLineCap
-        switch bp.lineCapStyle {
-        case .buttLineCapStyle : lineCap = .butt
-        case .roundLineCapStyle : lineCap = .round
-        case .squareLineCapStyle : lineCap = .square
-        }
-        let lineJoin : CGLineJoin
-        switch bp.lineJoinStyle {
-        case .bevelLineJoinStyle : lineJoin = .bevel
-        case .miterLineJoinStyle : lineJoin = .miter
-        case .roundLineJoinStyle : lineJoin = .round
-        }
-        cgPath = bp.cgPath.copy (
-          strokingWithWidth: bp.lineWidth,
-          lineCap: lineCap,
-          lineJoin: lineJoin,
-          miterLimit: bp.miterLimit
-        )
+        cgPath = self.mPaths [idx].pathByStroking
         self.mCGPaths [idx] = cgPath
       }
       result = cgPath.contains (inPoint, using: .winding)
@@ -370,6 +359,39 @@ class EBStrokeBezierPathShape : EBShape {
     return result
   }
 
+  //····················································································································
+  //   intersects
+  //····················································································································
+
+  override func intersects (rect inRect : NSRect) -> Bool {
+    var result = super.intersects (rect: inRect)
+    var idx = 0
+    while (idx < self.mPaths.count) && !result {
+      let cgPath : CGPath
+      if let p = self.mCGPaths [idx] {
+        cgPath = p
+      }else{
+        cgPath = self.mPaths [idx].pathByStroking
+        self.mCGPaths [idx] = cgPath
+      }
+      idx += 1
+      result = cgPath.boundingBoxOfPath.intersects (inRect)
+//      let r = cgPath.boundingBoxOfPath.intersection (inRect)
+//      var p = CGPoint (x:r.minX, y:0.0)
+//      while (p.x <= r.maxX) && !result {
+//        p.y = r.minY
+//        while (p.y <= r.maxY) && !result {
+//          result = cgPath.contains (p)
+//          p.y += 1.0
+//        }
+//        p.x += 1.0
+//      }
+    }
+    return result
+  }
+
+  //····················································································································
+  //   isEqualTo
   //····················································································································
 
   override func isEqualTo (_ inOperand : EBShape) -> Bool {
@@ -507,6 +529,38 @@ class EBFilledBezierPathShape : EBShape {
   }
 
   //····················································································································
+  //   intersects
+  //····················································································································
+
+  override func intersects (rect inRect : NSRect) -> Bool {
+    var result = super.intersects (rect: inRect)
+    var idx = 0
+    while (idx < self.mPaths.count) && !result {
+      let cgPath : CGPath
+      if let p = self.mCGPaths [idx] {
+        cgPath = p
+      }else{
+        let bp = self.mPaths [idx]
+        cgPath = bp.cgPath
+        self.mCGPaths [idx] = cgPath
+      }
+      idx += 1
+      result = cgPath.boundingBoxOfPath.intersects (inRect)
+//      let r = cgPath.boundingBoxOfPath.intersection (inRect)
+//      var p = CGPoint (x:r.minX, y:0.0)
+//      while (p.x <= r.maxX) && !result {
+//        p.y = r.minY
+//        while (p.y <= r.maxY) && !result {
+//          result = cgPath.contains (p)
+//          p.y += 1.0
+//        }
+//        p.x += 1.0
+//      }
+    }
+    return result
+  }
+
+  //····················································································································
   /// The hash value.
   ///
   /// Hash values are not guaranteed to be equal across different executions of
@@ -524,6 +578,8 @@ class EBFilledBezierPathShape : EBShape {
     return h
   }
 
+  //····················································································································
+  //   isEqualTo
   //····················································································································
 
   override func isEqualTo (_ inOperand : EBShape) -> Bool {
@@ -651,6 +707,29 @@ extension NSBezierPath {
       }
     }
     return path
+  }
+
+  //····················································································································
+
+  public var pathByStroking : CGPath {
+    let lineCap : CGLineCap
+    switch self.lineCapStyle {
+    case .buttLineCapStyle : lineCap = .butt
+    case .roundLineCapStyle : lineCap = .round
+    case .squareLineCapStyle : lineCap = .square
+    }
+    let lineJoin : CGLineJoin
+    switch self.lineJoinStyle {
+    case .bevelLineJoinStyle : lineJoin = .bevel
+    case .miterLineJoinStyle : lineJoin = .miter
+    case .roundLineJoinStyle : lineJoin = .round
+    }
+    return self.cgPath.copy (
+      strokingWithWidth: self.lineWidth,
+      lineCap: lineCap,
+      lineJoin: lineJoin,
+      miterLimit: self.miterLimit
+    )
   }
 
   //····················································································································

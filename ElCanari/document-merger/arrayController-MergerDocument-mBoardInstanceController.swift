@@ -503,7 +503,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     var result = Set <Int> ()
     var idx = 0
     for object in self.mObjectDisplayArray {
-      if object.intersects (inRect) {
+      if object.intersects (rect: inRect) {
         result.insert (idx)
       }
       idx += 1
@@ -576,7 +576,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         let r = NSRect (x:xMin, y:yMin, width:xMax-xMin, height:yMax-yMin)
         var shapes = [EBShape] ()
         let bp = NSBezierPath (rect: r)
-        bp.lineWidth = 1.0
+        bp.lineWidth = 0.0
         shapes.append (EBFilledBezierPathShape ([bp], NSColor.lightGray.withAlphaComponent (0.2)))
         shapes.append (EBStrokeBezierPathShape ([bp], NSColor.lightGray))
         mEBView?.selectionRectangleLayer = EBShape (shapes: shapes)
