@@ -440,11 +440,11 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   private var mLastMouseDraggedLocation : NSPoint? = nil
   private var mSelectionRectangleOrigin : NSPoint? = nil
+  private var mPerformEndUndoGroupingOnMouseUp = false
 
   //····················································································································
 
   func mouseDown (with inEvent: NSEvent, objectIndex inObjectIndex : Int?) {
-    mModel?.owner?.undoManager ()?.beginUndoGrouping ()
     mLastMouseDraggedLocation = mEBView?.convert (inEvent.locationInWindow, from:nil)
     let objects = mModel?.propval ?? []
     let controlKey = inEvent.modifierFlags.contains (.control)
@@ -515,8 +515,14 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
           let p = object.acceptedTranslation (by:translation)
           translation = p
         }
-        for object in mSelectedSet.mSet {
-          object.translate (xBy: translation.x, yBy:translation.y)
+        if (translation.x != 0.0) || (translation.y != 0.0) {
+          if !self.mPerformEndUndoGroupingOnMouseUp {
+            self.mPerformEndUndoGroupingOnMouseUp = true
+            mModel?.owner?.undoManager ()?.beginUndoGrouping ()
+          }
+          for object in mSelectedSet.mSet {
+            object.translate (xBy: translation.x, yBy:translation.y)
+          }
         }
         let mouseDraggedLocation = CGPoint (x: translation.x + lastMouseDraggedLocation.x, y: translation.y + lastMouseDraggedLocation.y)
         mLastMouseDraggedLocation = mouseDraggedLocation
@@ -527,7 +533,10 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func mouseUp (with inEvent : NSEvent) {
-    mModel?.owner?.undoManager ()?.endUndoGrouping ()
+    if self.mPerformEndUndoGroupingOnMouseUp {
+      self.mPerformEndUndoGroupingOnMouseUp = false
+      mModel?.owner?.undoManager ()?.endUndoGrouping ()
+    }
     mLastMouseDraggedLocation = nil
     mSelectionRectangleOrigin = nil
     mEBView?.selectionRectangleLayer = nil

@@ -17,7 +17,7 @@ extension MergerBoardInstance {
 
   //····················································································································
 
-  override func acceptedTranslation (by inTranslation: CGPoint) -> CGPoint {
+  override func acceptedTranslation (by inTranslation : CGPoint) -> CGPoint {
     var acceptedTranslation = inTranslation
     let newX = canariUnitToCocoa (self.x) + acceptedTranslation.x
     if newX < 0.0 {
