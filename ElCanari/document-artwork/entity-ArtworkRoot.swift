@@ -1268,6 +1268,213 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: ArtworkRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
+
+  //····················································································································
+
+  weak var undoManager : EBUndoManager?
+
+  //····················································································································
+ 
+  func setProp (_ value :  [ArtworkRoot]) { } // Abstract method
+ 
+  var propval : [ArtworkRoot] { return [] } // Abstract method
+ 
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: ArtworkRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_ArtworkRoot :
+       ToManyRelationshipReadWrite_ArtworkRoot,
+       EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkRoot?) -> Void > = nil
+
+  //····················································································································
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set <ArtworkRoot> ()
+  private var mValue = [ArtworkRoot] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+          self.setOppositeRelationship? (nil)
+        }
+        removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : ArtworkRoot in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+        }
+        addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBSelection < [ArtworkRoot] > { return .single (mValue) }
+
+  override func setProp (_ inValue : [ArtworkRoot]) { mValue = inValue }
+
+  override var propval : [ArtworkRoot] { return mValue }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [ArtworkRoot]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : ArtworkRoot) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : ArtworkRoot) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol ArtworkRoot_selectedTab : class {
   var selectedTab : Int { get }
@@ -1363,7 +1570,7 @@ final class ToManyRelationship_ArtworkRoot_fileGenerationParameterArray :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters?) -> Void > = nil
 
   //····················································································································
 

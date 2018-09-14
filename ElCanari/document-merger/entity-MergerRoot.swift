@@ -858,8 +858,8 @@ class MergerRoot : EBManagedObject,
     self.artwork_property.owner = self
     self.boardModels_property.undoManager = self.undoManager ()
     self.boardInstances_property.undoManager = self.undoManager ()
-    self.boardInstances_property.setOppositeRelationship = { (_ inManagedObject : MergerBoardInstance) in
-      inManagedObject.myRoot_property.setProp (self)
+    self.boardInstances_property.setOppositeRelationship = { (_ inManagedObject : MergerBoardInstance?) in
+      inManagedObject?.myRoot_property.setProp (self)
     }
   //--- register properties for handling signature
   }
@@ -3057,6 +3057,247 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: MergerRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_MergerRoot : ReadOnlyArrayOf_MergerRoot {
+
+  //····················································································································
+
+  weak var undoManager : EBUndoManager?
+
+  //····················································································································
+ 
+  func setProp (_ value :  [MergerRoot]) { } // Abstract method
+ 
+  var propval : [MergerRoot] { return [] } // Abstract method
+ 
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: MergerRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_MergerRoot :
+       ToManyRelationshipReadWrite_MergerRoot,
+       EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : MergerRoot?) -> Void > = nil
+
+  //····················································································································
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set <MergerRoot> ()
+  private var mValue = [MergerRoot] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+          self.setOppositeRelationship? (nil)
+        }
+        removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardRect_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_cocoaArrowMagnitude_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_cocoaShiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelNames_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_overObjectsDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : MergerRoot in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+        }
+        addEBObserversOf_arrowMagnitude_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_automaticBoardSize_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardManualHeight_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardManualWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardRect_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_cocoaArrowMagnitude_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_cocoaShiftArrowMagnitude_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelNames_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_overObjectsDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_overlapingArrangment_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBSelection < [MergerRoot] > { return .single (mValue) }
+
+  override func setProp (_ inValue : [MergerRoot]) { mValue = inValue }
+
+  override var propval : [MergerRoot] { return mValue }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [MergerRoot]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : MergerRoot) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : MergerRoot) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_selectedPageIndex : class {
   var selectedPageIndex : Int { get }
@@ -3254,7 +3495,7 @@ final class ToManyRelationship_MergerRoot_boardModels :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModel?) -> Void > = nil
 
   //····················································································································
 
@@ -3542,7 +3783,7 @@ final class ToManyRelationship_MergerRoot_boardInstances :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance?) -> Void > = nil
 
   //····················································································································
 

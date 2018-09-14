@@ -2666,8 +2666,8 @@ class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property.undoManager = self.undoManager ()
   //--- Install undoers and opposite setter for relationships
     self.myInstances_property.undoManager = self.undoManager ()
-    self.myInstances_property.setOppositeRelationship = { (_ inManagedObject : MergerBoardInstance) in
-      inManagedObject.myModel_property.setProp (self)
+    self.myInstances_property.setOppositeRelationship = { (_ inManagedObject : MergerBoardInstance?) in
+      inManagedObject?.myModel_property.setProp (self)
     }
     self.frontLegendLines_property.undoManager = self.undoManager ()
     self.backLegendLines_property.undoManager = self.undoManager ()
@@ -7019,6 +7019,295 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship read write: BoardModel
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ToManyRelationshipReadWrite_BoardModel : ReadOnlyArrayOf_BoardModel {
+
+  //····················································································································
+
+  weak var undoManager : EBUndoManager?
+
+  //····················································································································
+ 
+  func setProp (_ value :  [BoardModel]) { } // Abstract method
+ 
+  var propval : [BoardModel] { return [] } // Abstract method
+ 
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To many relationship: BoardModel
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToManyRelationship_BoardModel :
+       ToManyRelationshipReadWrite_BoardModel,
+       EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModel?) -> Void > = nil
+
+  //····················································································································
+
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  private var mSet = Set <BoardModel> ()
+  private var mValue = [BoardModel] () {
+    didSet {
+      postEvent ()
+      if oldValue != mValue {
+        let oldSet = mSet
+        mSet = Set (mValue)
+      //--- Register old value in undo manager
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
+      //--- Removed object set
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+          self.setOppositeRelationship? (nil)
+        }
+        removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backPadArray_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardLimits_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drillSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontPadArray_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_imageForModel_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+      //--- Added object set
+        let addedObjectSet = mSet.subtracting (oldSet)
+        for managedObject : BoardModel in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+        }
+        addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backPadArray_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backPadsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardLimits_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drillSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontPadArray_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontTrackSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_holesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_imageForModel_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_name_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_viasBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        clearSignatureCache ()
+      }
+    }
+  }
+
+  override var prop : EBSelection < [BoardModel] > { return .single (mValue) }
+
+  override func setProp (_ inValue : [BoardModel]) { mValue = inValue }
+
+  override var propval : [BoardModel] { return mValue }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [BoardModel]) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : BoardModel) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : BoardModel) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
+    }
+  }
+
+  //····················································································································
+
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
+
+  //····················································································································
+
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
+
+  //····················································································································
+ 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol BoardModel_artworkName : class {
   var artworkName : String { get }
@@ -7360,7 +7649,7 @@ final class ToManyRelationship_BoardModel_myInstances :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance?) -> Void > = nil
 
   //····················································································································
 
@@ -7561,7 +7850,7 @@ final class ToManyRelationship_BoardModel_frontLegendLines :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -7755,7 +8044,7 @@ final class ToManyRelationship_BoardModel_backLegendLines :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -7949,7 +8238,7 @@ final class ToManyRelationship_BoardModel_frontLegendTexts :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -8143,7 +8432,7 @@ final class ToManyRelationship_BoardModel_frontLayoutTexts :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -8337,7 +8626,7 @@ final class ToManyRelationship_BoardModel_backLegendTexts :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -8531,7 +8820,7 @@ final class ToManyRelationship_BoardModel_backLayoutTexts :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -8725,7 +9014,7 @@ final class ToManyRelationship_BoardModel_internalBoardsLimits :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -8919,7 +9208,7 @@ final class ToManyRelationship_BoardModel_drills :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -9113,7 +9402,7 @@ final class ToManyRelationship_BoardModel_vias :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia?) -> Void > = nil
 
   //····················································································································
 
@@ -9303,7 +9592,7 @@ final class ToManyRelationship_BoardModel_frontPads :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad?) -> Void > = nil
 
   //····················································································································
 
@@ -9499,7 +9788,7 @@ final class ToManyRelationship_BoardModel_backPads :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad?) -> Void > = nil
 
   //····················································································································
 
@@ -9695,7 +9984,7 @@ final class ToManyRelationship_BoardModel_backComponentNames :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -9889,7 +10178,7 @@ final class ToManyRelationship_BoardModel_frontComponentNames :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -10083,7 +10372,7 @@ final class ToManyRelationship_BoardModel_frontComponentValues :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -10277,7 +10566,7 @@ final class ToManyRelationship_BoardModel_backComponentValues :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -10471,7 +10760,7 @@ final class ToManyRelationship_BoardModel_backTracks :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -10665,7 +10954,7 @@ final class ToManyRelationship_BoardModel_frontTracks :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -10859,7 +11148,7 @@ final class ToManyRelationship_BoardModel_frontPackages :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
@@ -11053,7 +11342,7 @@ final class ToManyRelationship_BoardModel_backPackages :
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
 
   //····················································································································
 
