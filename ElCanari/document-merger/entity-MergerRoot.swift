@@ -3228,9 +3228,15 @@ protocol MergerRoot_boardHeight : class {
 class ToManyRelationshipReadWrite_MergerRoot_boardModels : ReadOnlyArrayOf_BoardModel {
 
   //····················································································································
+
+  weak var owner : MergerRoot?
+
+  //····················································································································
  
   func setProp (_ value :  [BoardModel]) { } // Abstract method
-  
+ 
+  var propval : [BoardModel] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -3240,8 +3246,8 @@ class ToManyRelationshipReadWrite_MergerRoot_boardModels : ReadOnlyArrayOf_Board
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_MergerRoot_boardModels :
-ToManyRelationshipReadWrite_MergerRoot_boardModels, EBSignatureObserverProtocol {
-  weak var owner : MergerRoot?
+       ToManyRelationshipReadWrite_MergerRoot_boardModels,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -3415,7 +3421,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardModels, EBSignatureObserverProtocol 
 
   override func setProp (_ inValue : [BoardModel]) { mValue = inValue }
 
-  var propval : [BoardModel] { return mValue }
+  override var propval : [BoardModel] { return mValue }
 
   //····················································································································
 
@@ -3502,9 +3508,15 @@ ToManyRelationshipReadWrite_MergerRoot_boardModels, EBSignatureObserverProtocol 
 class ToManyRelationshipReadWrite_MergerRoot_boardInstances : ReadOnlyArrayOf_MergerBoardInstance {
 
   //····················································································································
+
+  weak var owner : MergerRoot?
+
+  //····················································································································
  
   func setProp (_ value :  [MergerBoardInstance]) { } // Abstract method
-  
+ 
+  var propval : [MergerBoardInstance] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -3514,8 +3526,8 @@ class ToManyRelationshipReadWrite_MergerRoot_boardInstances : ReadOnlyArrayOf_Me
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_MergerRoot_boardInstances :
-ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtocol {
-  weak var owner : MergerRoot?
+       ToManyRelationshipReadWrite_MergerRoot_boardInstances,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -3603,7 +3615,7 @@ ToManyRelationshipReadWrite_MergerRoot_boardInstances, EBSignatureObserverProtoc
 
   override func setProp (_ inValue : [MergerBoardInstance]) { mValue = inValue }
 
-  var propval : [MergerBoardInstance] { return mValue }
+  override var propval : [MergerBoardInstance] { return mValue }
 
   //····················································································································
 

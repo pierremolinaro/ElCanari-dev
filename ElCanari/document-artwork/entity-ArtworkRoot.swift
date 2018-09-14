@@ -1340,9 +1340,15 @@ protocol ArtworkRoot_drillDataFileExtension : class {
 class ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
 
   //····················································································································
+
+  weak var owner : ArtworkRoot?
+
+  //····················································································································
  
   func setProp (_ value :  [ArtworkFileGenerationParameters]) { } // Abstract method
-  
+ 
+  var propval : [ArtworkFileGenerationParameters] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -1352,8 +1358,8 @@ class ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray : Rea
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_ArtworkRoot_fileGenerationParameterArray :
-ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray, EBSignatureObserverProtocol {
-  weak var owner : ArtworkRoot?
+       ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -1469,7 +1475,7 @@ ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray, EBSignatur
 
   override func setProp (_ inValue : [ArtworkFileGenerationParameters]) { mValue = inValue }
 
-  var propval : [ArtworkFileGenerationParameters] { return mValue }
+  override var propval : [ArtworkFileGenerationParameters] { return mValue }
 
   //····················································································································
 

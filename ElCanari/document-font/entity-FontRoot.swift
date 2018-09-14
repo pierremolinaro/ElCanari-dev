@@ -1223,9 +1223,15 @@ protocol FontRoot_currentCharacterCodePointString : class {
 class ToManyRelationshipReadWrite_FontRoot_characters : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
+
+  weak var owner : FontRoot?
+
+  //····················································································································
  
   func setProp (_ value :  [FontCharacter]) { } // Abstract method
-  
+ 
+  var propval : [FontCharacter] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -1235,8 +1241,8 @@ class ToManyRelationshipReadWrite_FontRoot_characters : ReadOnlyArrayOf_FontChar
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_FontRoot_characters :
-ToManyRelationshipReadWrite_FontRoot_characters, EBSignatureObserverProtocol {
-  weak var owner : FontRoot?
+       ToManyRelationshipReadWrite_FontRoot_characters,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -1316,7 +1322,7 @@ ToManyRelationshipReadWrite_FontRoot_characters, EBSignatureObserverProtocol {
 
   override func setProp (_ inValue : [FontCharacter]) { mValue = inValue }
 
-  var propval : [FontCharacter] { return mValue }
+  override var propval : [FontCharacter] { return mValue }
 
   //····················································································································
 

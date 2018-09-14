@@ -870,23 +870,6 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
-//  func readInPreferencesWithKey (inKey : String) {
-//    let ud = UserDefaults.standard
-//    let value : Any? = ud.object (forKey:inKey)
-//    if let unwValue : Data = value as? Data {
-//      setProp (T.unarchiveFromNSData (data:unwValue) as! T)
-//    }
-//  }
-
-  //····················································································································
-
-  // func storeInPreferencesWithKey (inKey : String) {
-  //  let ud = UserDefaults.standard
-  //  ud.set (mValue.archiveToNSData (), forKey:inKey)
-  // }
-
-  //····················································································································
-
   func storeIn (dictionary:NSMutableDictionary, forKey inKey:String) {
     dictionary.setValue (mValue.archiveToNSData (), forKey:inKey)
   }

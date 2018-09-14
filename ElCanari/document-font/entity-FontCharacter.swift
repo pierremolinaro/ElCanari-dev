@@ -791,9 +791,15 @@ protocol FontCharacter_gerberCodeInstructionCountMessage : class {
 class ToManyRelationshipReadWrite_FontCharacter_segments : ReadOnlyArrayOf_SegmentForFontCharacter {
 
   //····················································································································
+
+  weak var owner : FontCharacter?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentForFontCharacter]) { } // Abstract method
-  
+ 
+  var propval : [SegmentForFontCharacter] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -803,8 +809,8 @@ class ToManyRelationshipReadWrite_FontCharacter_segments : ReadOnlyArrayOf_Segme
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_FontCharacter_segments :
-ToManyRelationshipReadWrite_FontCharacter_segments, EBSignatureObserverProtocol {
-  weak var owner : FontCharacter?
+       ToManyRelationshipReadWrite_FontCharacter_segments,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -882,7 +888,7 @@ ToManyRelationshipReadWrite_FontCharacter_segments, EBSignatureObserverProtocol 
 
   override func setProp (_ inValue : [SegmentForFontCharacter]) { mValue = inValue }
 
-  var propval : [SegmentForFontCharacter] { return mValue }
+  override var propval : [SegmentForFontCharacter] { return mValue }
 
   //····················································································································
 

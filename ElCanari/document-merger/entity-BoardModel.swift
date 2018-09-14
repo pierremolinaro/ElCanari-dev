@@ -7334,9 +7334,15 @@ protocol BoardModel_imageForInstances : class {
 class ToManyRelationshipReadWrite_BoardModel_myInstances : ReadOnlyArrayOf_MergerBoardInstance {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [MergerBoardInstance]) { } // Abstract method
-  
+ 
+  var propval : [MergerBoardInstance] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -7346,8 +7352,8 @@ class ToManyRelationshipReadWrite_BoardModel_myInstances : ReadOnlyArrayOf_Merge
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_myInstances :
-ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_myInstances,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -7435,7 +7441,7 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
 
   override func setProp (_ inValue : [MergerBoardInstance]) { mValue = inValue }
 
-  var propval : [MergerBoardInstance] { return mValue }
+  override var propval : [MergerBoardInstance] { return mValue }
 
   //····················································································································
 
@@ -7522,9 +7528,15 @@ ToManyRelationshipReadWrite_BoardModel_myInstances, EBSignatureObserverProtocol 
 class ToManyRelationshipReadWrite_BoardModel_frontLegendLines : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -7534,8 +7546,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontLegendLines : ReadOnlyArrayOf_
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_frontLegendLines :
-ToManyRelationshipReadWrite_BoardModel_frontLegendLines, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_frontLegendLines,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -7615,7 +7627,7 @@ ToManyRelationshipReadWrite_BoardModel_frontLegendLines, EBSignatureObserverProt
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -7702,9 +7714,15 @@ ToManyRelationshipReadWrite_BoardModel_frontLegendLines, EBSignatureObserverProt
 class ToManyRelationshipReadWrite_BoardModel_backLegendLines : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -7714,8 +7732,8 @@ class ToManyRelationshipReadWrite_BoardModel_backLegendLines : ReadOnlyArrayOf_S
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_backLegendLines :
-ToManyRelationshipReadWrite_BoardModel_backLegendLines, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_backLegendLines,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -7795,7 +7813,7 @@ ToManyRelationshipReadWrite_BoardModel_backLegendLines, EBSignatureObserverProto
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -7882,9 +7900,15 @@ ToManyRelationshipReadWrite_BoardModel_backLegendLines, EBSignatureObserverProto
 class ToManyRelationshipReadWrite_BoardModel_frontLegendTexts : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -7894,8 +7918,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontLegendTexts : ReadOnlyArrayOf_
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_frontLegendTexts :
-ToManyRelationshipReadWrite_BoardModel_frontLegendTexts, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_frontLegendTexts,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -7975,7 +7999,7 @@ ToManyRelationshipReadWrite_BoardModel_frontLegendTexts, EBSignatureObserverProt
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -8062,9 +8086,15 @@ ToManyRelationshipReadWrite_BoardModel_frontLegendTexts, EBSignatureObserverProt
 class ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -8074,8 +8104,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts : ReadOnlyArrayOf_
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_frontLayoutTexts :
-ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -8155,7 +8185,7 @@ ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts, EBSignatureObserverProt
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -8242,9 +8272,15 @@ ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts, EBSignatureObserverProt
 class ToManyRelationshipReadWrite_BoardModel_backLegendTexts : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -8254,8 +8290,8 @@ class ToManyRelationshipReadWrite_BoardModel_backLegendTexts : ReadOnlyArrayOf_S
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_backLegendTexts :
-ToManyRelationshipReadWrite_BoardModel_backLegendTexts, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_backLegendTexts,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -8335,7 +8371,7 @@ ToManyRelationshipReadWrite_BoardModel_backLegendTexts, EBSignatureObserverProto
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -8422,9 +8458,15 @@ ToManyRelationshipReadWrite_BoardModel_backLegendTexts, EBSignatureObserverProto
 class ToManyRelationshipReadWrite_BoardModel_backLayoutTexts : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -8434,8 +8476,8 @@ class ToManyRelationshipReadWrite_BoardModel_backLayoutTexts : ReadOnlyArrayOf_S
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_backLayoutTexts :
-ToManyRelationshipReadWrite_BoardModel_backLayoutTexts, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_backLayoutTexts,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -8515,7 +8557,7 @@ ToManyRelationshipReadWrite_BoardModel_backLayoutTexts, EBSignatureObserverProto
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -8602,9 +8644,15 @@ ToManyRelationshipReadWrite_BoardModel_backLayoutTexts, EBSignatureObserverProto
 class ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -8614,8 +8662,8 @@ class ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits : ReadOnlyArra
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_internalBoardsLimits :
-ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -8695,7 +8743,7 @@ ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits, EBSignatureObserver
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -8782,9 +8830,15 @@ ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits, EBSignatureObserver
 class ToManyRelationshipReadWrite_BoardModel_drills : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -8794,8 +8848,8 @@ class ToManyRelationshipReadWrite_BoardModel_drills : ReadOnlyArrayOf_SegmentEnt
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_drills :
-ToManyRelationshipReadWrite_BoardModel_drills, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_drills,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -8875,7 +8929,7 @@ ToManyRelationshipReadWrite_BoardModel_drills, EBSignatureObserverProtocol {
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -8962,9 +9016,15 @@ ToManyRelationshipReadWrite_BoardModel_drills, EBSignatureObserverProtocol {
 class ToManyRelationshipReadWrite_BoardModel_vias : ReadOnlyArrayOf_BoardModelVia {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [BoardModelVia]) { } // Abstract method
-  
+ 
+  var propval : [BoardModelVia] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -8974,8 +9034,8 @@ class ToManyRelationshipReadWrite_BoardModel_vias : ReadOnlyArrayOf_BoardModelVi
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_vias :
-ToManyRelationshipReadWrite_BoardModel_vias, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_vias,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9051,7 +9111,7 @@ ToManyRelationshipReadWrite_BoardModel_vias, EBSignatureObserverProtocol {
 
   override func setProp (_ inValue : [BoardModelVia]) { mValue = inValue }
 
-  var propval : [BoardModelVia] { return mValue }
+  override var propval : [BoardModelVia] { return mValue }
 
   //····················································································································
 
@@ -9138,9 +9198,15 @@ ToManyRelationshipReadWrite_BoardModel_vias, EBSignatureObserverProtocol {
 class ToManyRelationshipReadWrite_BoardModel_frontPads : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [BoardModelPad]) { } // Abstract method
-  
+ 
+  var propval : [BoardModelPad] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -9150,8 +9216,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontPads : ReadOnlyArrayOf_BoardMo
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_frontPads :
-ToManyRelationshipReadWrite_BoardModel_frontPads, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_frontPads,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9233,7 +9299,7 @@ ToManyRelationshipReadWrite_BoardModel_frontPads, EBSignatureObserverProtocol {
 
   override func setProp (_ inValue : [BoardModelPad]) { mValue = inValue }
 
-  var propval : [BoardModelPad] { return mValue }
+  override var propval : [BoardModelPad] { return mValue }
 
   //····················································································································
 
@@ -9320,9 +9386,15 @@ ToManyRelationshipReadWrite_BoardModel_frontPads, EBSignatureObserverProtocol {
 class ToManyRelationshipReadWrite_BoardModel_backPads : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [BoardModelPad]) { } // Abstract method
-  
+ 
+  var propval : [BoardModelPad] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -9332,8 +9404,8 @@ class ToManyRelationshipReadWrite_BoardModel_backPads : ReadOnlyArrayOf_BoardMod
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_backPads :
-ToManyRelationshipReadWrite_BoardModel_backPads, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_backPads,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9415,7 +9487,7 @@ ToManyRelationshipReadWrite_BoardModel_backPads, EBSignatureObserverProtocol {
 
   override func setProp (_ inValue : [BoardModelPad]) { mValue = inValue }
 
-  var propval : [BoardModelPad] { return mValue }
+  override var propval : [BoardModelPad] { return mValue }
 
   //····················································································································
 
@@ -9502,9 +9574,15 @@ ToManyRelationshipReadWrite_BoardModel_backPads, EBSignatureObserverProtocol {
 class ToManyRelationshipReadWrite_BoardModel_backComponentNames : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -9514,8 +9592,8 @@ class ToManyRelationshipReadWrite_BoardModel_backComponentNames : ReadOnlyArrayO
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_backComponentNames :
-ToManyRelationshipReadWrite_BoardModel_backComponentNames, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_backComponentNames,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9595,7 +9673,7 @@ ToManyRelationshipReadWrite_BoardModel_backComponentNames, EBSignatureObserverPr
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -9682,9 +9760,15 @@ ToManyRelationshipReadWrite_BoardModel_backComponentNames, EBSignatureObserverPr
 class ToManyRelationshipReadWrite_BoardModel_frontComponentNames : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -9694,8 +9778,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontComponentNames : ReadOnlyArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_frontComponentNames :
-ToManyRelationshipReadWrite_BoardModel_frontComponentNames, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_frontComponentNames,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9775,7 +9859,7 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentNames, EBSignatureObserverP
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -9862,9 +9946,15 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentNames, EBSignatureObserverP
 class ToManyRelationshipReadWrite_BoardModel_frontComponentValues : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -9874,8 +9964,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontComponentValues : ReadOnlyArra
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_frontComponentValues :
-ToManyRelationshipReadWrite_BoardModel_frontComponentValues, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_frontComponentValues,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9955,7 +10045,7 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentValues, EBSignatureObserver
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -10042,9 +10132,15 @@ ToManyRelationshipReadWrite_BoardModel_frontComponentValues, EBSignatureObserver
 class ToManyRelationshipReadWrite_BoardModel_backComponentValues : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -10054,8 +10150,8 @@ class ToManyRelationshipReadWrite_BoardModel_backComponentValues : ReadOnlyArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_backComponentValues :
-ToManyRelationshipReadWrite_BoardModel_backComponentValues, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_backComponentValues,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10135,7 +10231,7 @@ ToManyRelationshipReadWrite_BoardModel_backComponentValues, EBSignatureObserverP
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -10222,9 +10318,15 @@ ToManyRelationshipReadWrite_BoardModel_backComponentValues, EBSignatureObserverP
 class ToManyRelationshipReadWrite_BoardModel_backTracks : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -10234,8 +10336,8 @@ class ToManyRelationshipReadWrite_BoardModel_backTracks : ReadOnlyArrayOf_Segmen
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_backTracks :
-ToManyRelationshipReadWrite_BoardModel_backTracks, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_backTracks,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10315,7 +10417,7 @@ ToManyRelationshipReadWrite_BoardModel_backTracks, EBSignatureObserverProtocol {
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -10402,9 +10504,15 @@ ToManyRelationshipReadWrite_BoardModel_backTracks, EBSignatureObserverProtocol {
 class ToManyRelationshipReadWrite_BoardModel_frontTracks : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -10414,8 +10522,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontTracks : ReadOnlyArrayOf_Segme
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_frontTracks :
-ToManyRelationshipReadWrite_BoardModel_frontTracks, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_frontTracks,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10495,7 +10603,7 @@ ToManyRelationshipReadWrite_BoardModel_frontTracks, EBSignatureObserverProtocol 
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -10582,9 +10690,15 @@ ToManyRelationshipReadWrite_BoardModel_frontTracks, EBSignatureObserverProtocol 
 class ToManyRelationshipReadWrite_BoardModel_frontPackages : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -10594,8 +10708,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontPackages : ReadOnlyArrayOf_Seg
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_frontPackages :
-ToManyRelationshipReadWrite_BoardModel_frontPackages, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_frontPackages,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10675,7 +10789,7 @@ ToManyRelationshipReadWrite_BoardModel_frontPackages, EBSignatureObserverProtoco
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
@@ -10762,9 +10876,15 @@ ToManyRelationshipReadWrite_BoardModel_frontPackages, EBSignatureObserverProtoco
 class ToManyRelationshipReadWrite_BoardModel_backPackages : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
+
+  weak var owner : BoardModel?
+
+  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
-  
+ 
+  var propval : [SegmentEntity] { return [] } // Abstract method
+ 
   //····················································································································
 
 }
@@ -10774,8 +10894,8 @@ class ToManyRelationshipReadWrite_BoardModel_backPackages : ReadOnlyArrayOf_Segm
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToManyRelationship_BoardModel_backPackages :
-ToManyRelationshipReadWrite_BoardModel_backPackages, EBSignatureObserverProtocol {
-  weak var owner : BoardModel?
+       ToManyRelationshipReadWrite_BoardModel_backPackages,
+       EBSignatureObserverProtocol {
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10855,7 +10975,7 @@ ToManyRelationshipReadWrite_BoardModel_backPackages, EBSignatureObserverProtocol
 
   override func setProp (_ inValue : [SegmentEntity]) { mValue = inValue }
 
-  var propval : [SegmentEntity] { return mValue }
+  override var propval : [SegmentEntity] { return mValue }
 
   //····················································································································
 
