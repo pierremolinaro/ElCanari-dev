@@ -14,7 +14,7 @@ private let DEBUG_EVENT = false
 
 final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
 
-  private var mModel : ToManyRelationshipReadWrite_FontRoot_characters? = nil
+  private var mModel : ToManyRelationshipReadWrite_FontCharacter? = nil
 
   let sortedArray_property = TransientArrayOf_FontCharacter ()
 
@@ -135,7 +135,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
   //    bind_modelAndView
   //····················································································································
 
-  func bind_modelAndView (model:ToManyRelationshipReadWrite_FontRoot_characters,
+  func bind_modelAndView (model:ToManyRelationshipReadWrite_FontCharacter,
                           tableViewArray:[EBTableView],
                           ebView: EBView?,
                           managedObjectContext : EBManagedObjectContext?,

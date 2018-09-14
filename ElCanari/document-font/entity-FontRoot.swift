@@ -223,7 +223,8 @@ class FontRoot : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var characters_property = ToManyRelationship_FontRoot_characters ()
+  var characters_property = ToManyRelationship_FontCharacter ()
+ // var characters_property = ToManyRelationship_FontRoot_characters ()
 
   //····················································································································
   //    init
@@ -1423,7 +1424,7 @@ protocol FontRoot_currentCharacterCodePointString : class {
 //    To many relationship read write: characters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_FontRoot_characters : ReadOnlyArrayOf_FontCharacter {
+class ToManyRelationshipReadWrite_EX_FontRoot_characters : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
 
@@ -1443,8 +1444,8 @@ class ToManyRelationshipReadWrite_FontRoot_characters : ReadOnlyArrayOf_FontChar
 //    To many relationship: characters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_FontRoot_characters :
-       ToManyRelationshipReadWrite_FontRoot_characters,
+final class ToManyRelationship_EX_FontRoot_characters :
+       ToManyRelationshipReadWrite_EX_FontRoot_characters,
        EBSignatureObserverProtocol {
 
   //····················································································································

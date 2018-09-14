@@ -265,7 +265,8 @@ class ArtworkRoot : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var fileGenerationParameterArray_property = ToManyRelationship_ArtworkRoot_fileGenerationParameterArray ()
+  var fileGenerationParameterArray_property = ToManyRelationship_ArtworkFileGenerationParameters ()
+ // var fileGenerationParameterArray_property = ToManyRelationship_ArtworkRoot_fileGenerationParameterArray ()
 
   //····················································································································
   //    init
@@ -1544,7 +1545,7 @@ protocol ArtworkRoot_drillDataFileExtension : class {
 //    To many relationship read write: fileGenerationParameterArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
+class ToManyRelationshipReadWrite_EX_ArtworkRoot_fileGenerationParameterArray : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
 
   //····················································································································
 
@@ -1564,8 +1565,8 @@ class ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray : Rea
 //    To many relationship: fileGenerationParameterArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_ArtworkRoot_fileGenerationParameterArray :
-       ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray,
+final class ToManyRelationship_EX_ArtworkRoot_fileGenerationParameterArray :
+       ToManyRelationshipReadWrite_EX_ArtworkRoot_fileGenerationParameterArray,
        EBSignatureObserverProtocol {
 
   //····················································································································

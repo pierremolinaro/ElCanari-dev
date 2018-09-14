@@ -139,7 +139,8 @@ class FontCharacter : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var segments_property = ToManyRelationship_FontCharacter_segments ()
+  var segments_property = ToManyRelationship_SegmentForFontCharacter ()
+ // var segments_property = ToManyRelationship_FontCharacter_segments ()
 
   //····················································································································
   //    init
@@ -983,7 +984,7 @@ protocol FontCharacter_gerberCodeInstructionCountMessage : class {
 //    To many relationship read write: segments
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_FontCharacter_segments : ReadOnlyArrayOf_SegmentForFontCharacter {
+class ToManyRelationshipReadWrite_EX_FontCharacter_segments : ReadOnlyArrayOf_SegmentForFontCharacter {
 
   //····················································································································
 
@@ -1003,8 +1004,8 @@ class ToManyRelationshipReadWrite_FontCharacter_segments : ReadOnlyArrayOf_Segme
 //    To many relationship: segments
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_FontCharacter_segments :
-       ToManyRelationshipReadWrite_FontCharacter_segments,
+final class ToManyRelationship_EX_FontCharacter_segments :
+       ToManyRelationshipReadWrite_EX_FontCharacter_segments,
        EBSignatureObserverProtocol {
 
   //····················································································································

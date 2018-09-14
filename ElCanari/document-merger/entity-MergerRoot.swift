@@ -632,8 +632,10 @@ class MergerRoot : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var boardModels_property = ToManyRelationship_MergerRoot_boardModels ()
-  var boardInstances_property = ToManyRelationship_MergerRoot_boardInstances ()
+  var boardModels_property = ToManyRelationship_BoardModel ()
+ // var boardModels_property = ToManyRelationship_MergerRoot_boardModels ()
+  var boardInstances_property = ToManyRelationship_MergerBoardInstance ()
+ // var boardInstances_property = ToManyRelationship_MergerRoot_boardInstances ()
   var artwork_property = ToOneRelationship_MergerRoot_artwork ()
   var artwork_property_selection : EBSelection <Bool> { return .single (self.artwork_property.propval == nil) }
 
@@ -3469,7 +3471,7 @@ protocol MergerRoot_boardHeight : class {
 //    To many relationship read write: boardModels
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_MergerRoot_boardModels : ReadOnlyArrayOf_BoardModel {
+class ToManyRelationshipReadWrite_EX_MergerRoot_boardModels : ReadOnlyArrayOf_BoardModel {
 
   //····················································································································
 
@@ -3489,8 +3491,8 @@ class ToManyRelationshipReadWrite_MergerRoot_boardModels : ReadOnlyArrayOf_Board
 //    To many relationship: boardModels
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_MergerRoot_boardModels :
-       ToManyRelationshipReadWrite_MergerRoot_boardModels,
+final class ToManyRelationship_EX_MergerRoot_boardModels :
+       ToManyRelationshipReadWrite_EX_MergerRoot_boardModels,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -3757,7 +3759,7 @@ final class ToManyRelationship_MergerRoot_boardModels :
 //    To many relationship read write: boardInstances
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_MergerRoot_boardInstances : ReadOnlyArrayOf_MergerBoardInstance {
+class ToManyRelationshipReadWrite_EX_MergerRoot_boardInstances : ReadOnlyArrayOf_MergerBoardInstance {
 
   //····················································································································
 
@@ -3777,8 +3779,8 @@ class ToManyRelationshipReadWrite_MergerRoot_boardInstances : ReadOnlyArrayOf_Me
 //    To many relationship: boardInstances
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_MergerRoot_boardInstances :
-       ToManyRelationshipReadWrite_MergerRoot_boardInstances,
+final class ToManyRelationship_EX_MergerRoot_boardInstances :
+       ToManyRelationshipReadWrite_EX_MergerRoot_boardInstances,
        EBSignatureObserverProtocol {
 
   //····················································································································

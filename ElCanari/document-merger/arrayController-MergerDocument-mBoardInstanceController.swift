@@ -14,7 +14,7 @@ private let DEBUG_EVENT = false
 
 final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, EBTableViewDelegate, EBTableViewDataSource, EBViewControllerProtocol {
 
-  private var mModel : ToManyRelationshipReadWrite_MergerRoot_boardInstances? = nil
+  private var mModel : ToManyRelationshipReadWrite_MergerBoardInstance? = nil
 
   let sortedArray_property = TransientArrayOf_MergerBoardInstance ()
 
@@ -138,7 +138,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //    bind_modelAndView
   //····················································································································
 
-  func bind_modelAndView (model:ToManyRelationshipReadWrite_MergerRoot_boardInstances,
+  func bind_modelAndView (model:ToManyRelationshipReadWrite_MergerBoardInstance,
                           tableViewArray:[EBTableView],
                           ebView: EBView?,
                           managedObjectContext : EBManagedObjectContext?,

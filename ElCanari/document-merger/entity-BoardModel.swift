@@ -1316,26 +1316,46 @@ class BoardModel : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var myInstances_property = ToManyRelationship_BoardModel_myInstances ()
-  var frontLegendLines_property = ToManyRelationship_BoardModel_frontLegendLines ()
-  var backLegendLines_property = ToManyRelationship_BoardModel_backLegendLines ()
-  var frontLegendTexts_property = ToManyRelationship_BoardModel_frontLegendTexts ()
-  var frontLayoutTexts_property = ToManyRelationship_BoardModel_frontLayoutTexts ()
-  var backLegendTexts_property = ToManyRelationship_BoardModel_backLegendTexts ()
-  var backLayoutTexts_property = ToManyRelationship_BoardModel_backLayoutTexts ()
-  var internalBoardsLimits_property = ToManyRelationship_BoardModel_internalBoardsLimits ()
-  var drills_property = ToManyRelationship_BoardModel_drills ()
-  var vias_property = ToManyRelationship_BoardModel_vias ()
-  var frontPads_property = ToManyRelationship_BoardModel_frontPads ()
-  var backPads_property = ToManyRelationship_BoardModel_backPads ()
-  var backComponentNames_property = ToManyRelationship_BoardModel_backComponentNames ()
-  var frontComponentNames_property = ToManyRelationship_BoardModel_frontComponentNames ()
-  var frontComponentValues_property = ToManyRelationship_BoardModel_frontComponentValues ()
-  var backComponentValues_property = ToManyRelationship_BoardModel_backComponentValues ()
-  var backTracks_property = ToManyRelationship_BoardModel_backTracks ()
-  var frontTracks_property = ToManyRelationship_BoardModel_frontTracks ()
-  var frontPackages_property = ToManyRelationship_BoardModel_frontPackages ()
-  var backPackages_property = ToManyRelationship_BoardModel_backPackages ()
+  var myInstances_property = ToManyRelationship_MergerBoardInstance ()
+ // var myInstances_property = ToManyRelationship_BoardModel_myInstances ()
+  var frontLegendLines_property = ToManyRelationship_SegmentEntity ()
+ // var frontLegendLines_property = ToManyRelationship_BoardModel_frontLegendLines ()
+  var backLegendLines_property = ToManyRelationship_SegmentEntity ()
+ // var backLegendLines_property = ToManyRelationship_BoardModel_backLegendLines ()
+  var frontLegendTexts_property = ToManyRelationship_SegmentEntity ()
+ // var frontLegendTexts_property = ToManyRelationship_BoardModel_frontLegendTexts ()
+  var frontLayoutTexts_property = ToManyRelationship_SegmentEntity ()
+ // var frontLayoutTexts_property = ToManyRelationship_BoardModel_frontLayoutTexts ()
+  var backLegendTexts_property = ToManyRelationship_SegmentEntity ()
+ // var backLegendTexts_property = ToManyRelationship_BoardModel_backLegendTexts ()
+  var backLayoutTexts_property = ToManyRelationship_SegmentEntity ()
+ // var backLayoutTexts_property = ToManyRelationship_BoardModel_backLayoutTexts ()
+  var internalBoardsLimits_property = ToManyRelationship_SegmentEntity ()
+ // var internalBoardsLimits_property = ToManyRelationship_BoardModel_internalBoardsLimits ()
+  var drills_property = ToManyRelationship_SegmentEntity ()
+ // var drills_property = ToManyRelationship_BoardModel_drills ()
+  var vias_property = ToManyRelationship_BoardModelVia ()
+ // var vias_property = ToManyRelationship_BoardModel_vias ()
+  var frontPads_property = ToManyRelationship_BoardModelPad ()
+ // var frontPads_property = ToManyRelationship_BoardModel_frontPads ()
+  var backPads_property = ToManyRelationship_BoardModelPad ()
+ // var backPads_property = ToManyRelationship_BoardModel_backPads ()
+  var backComponentNames_property = ToManyRelationship_SegmentEntity ()
+ // var backComponentNames_property = ToManyRelationship_BoardModel_backComponentNames ()
+  var frontComponentNames_property = ToManyRelationship_SegmentEntity ()
+ // var frontComponentNames_property = ToManyRelationship_BoardModel_frontComponentNames ()
+  var frontComponentValues_property = ToManyRelationship_SegmentEntity ()
+ // var frontComponentValues_property = ToManyRelationship_BoardModel_frontComponentValues ()
+  var backComponentValues_property = ToManyRelationship_SegmentEntity ()
+ // var backComponentValues_property = ToManyRelationship_BoardModel_backComponentValues ()
+  var backTracks_property = ToManyRelationship_SegmentEntity ()
+ // var backTracks_property = ToManyRelationship_BoardModel_backTracks ()
+  var frontTracks_property = ToManyRelationship_SegmentEntity ()
+ // var frontTracks_property = ToManyRelationship_BoardModel_frontTracks ()
+  var frontPackages_property = ToManyRelationship_SegmentEntity ()
+ // var frontPackages_property = ToManyRelationship_BoardModel_frontPackages ()
+  var backPackages_property = ToManyRelationship_SegmentEntity ()
+ // var backPackages_property = ToManyRelationship_BoardModel_backPackages ()
 
   //····················································································································
   //    init
@@ -7623,7 +7643,7 @@ protocol BoardModel_imageForInstances : class {
 //    To many relationship read write: myInstances
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_myInstances : ReadOnlyArrayOf_MergerBoardInstance {
+class ToManyRelationshipReadWrite_EX_BoardModel_myInstances : ReadOnlyArrayOf_MergerBoardInstance {
 
   //····················································································································
 
@@ -7643,8 +7663,8 @@ class ToManyRelationshipReadWrite_BoardModel_myInstances : ReadOnlyArrayOf_Merge
 //    To many relationship: myInstances
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_myInstances :
-       ToManyRelationshipReadWrite_BoardModel_myInstances,
+final class ToManyRelationship_EX_BoardModel_myInstances :
+       ToManyRelationshipReadWrite_EX_BoardModel_myInstances,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -7824,7 +7844,7 @@ final class ToManyRelationship_BoardModel_myInstances :
 //    To many relationship read write: frontLegendLines
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_frontLegendLines : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_frontLegendLines : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -7844,8 +7864,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontLegendLines : ReadOnlyArrayOf_
 //    To many relationship: frontLegendLines
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_frontLegendLines :
-       ToManyRelationshipReadWrite_BoardModel_frontLegendLines,
+final class ToManyRelationship_EX_BoardModel_frontLegendLines :
+       ToManyRelationshipReadWrite_EX_BoardModel_frontLegendLines,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -8018,7 +8038,7 @@ final class ToManyRelationship_BoardModel_frontLegendLines :
 //    To many relationship read write: backLegendLines
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_backLegendLines : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_backLegendLines : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -8038,8 +8058,8 @@ class ToManyRelationshipReadWrite_BoardModel_backLegendLines : ReadOnlyArrayOf_S
 //    To many relationship: backLegendLines
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_backLegendLines :
-       ToManyRelationshipReadWrite_BoardModel_backLegendLines,
+final class ToManyRelationship_EX_BoardModel_backLegendLines :
+       ToManyRelationshipReadWrite_EX_BoardModel_backLegendLines,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -8212,7 +8232,7 @@ final class ToManyRelationship_BoardModel_backLegendLines :
 //    To many relationship read write: frontLegendTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_frontLegendTexts : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_frontLegendTexts : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -8232,8 +8252,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontLegendTexts : ReadOnlyArrayOf_
 //    To many relationship: frontLegendTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_frontLegendTexts :
-       ToManyRelationshipReadWrite_BoardModel_frontLegendTexts,
+final class ToManyRelationship_EX_BoardModel_frontLegendTexts :
+       ToManyRelationshipReadWrite_EX_BoardModel_frontLegendTexts,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -8406,7 +8426,7 @@ final class ToManyRelationship_BoardModel_frontLegendTexts :
 //    To many relationship read write: frontLayoutTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_frontLayoutTexts : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -8426,8 +8446,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts : ReadOnlyArrayOf_
 //    To many relationship: frontLayoutTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_frontLayoutTexts :
-       ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts,
+final class ToManyRelationship_EX_BoardModel_frontLayoutTexts :
+       ToManyRelationshipReadWrite_EX_BoardModel_frontLayoutTexts,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -8600,7 +8620,7 @@ final class ToManyRelationship_BoardModel_frontLayoutTexts :
 //    To many relationship read write: backLegendTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_backLegendTexts : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_backLegendTexts : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -8620,8 +8640,8 @@ class ToManyRelationshipReadWrite_BoardModel_backLegendTexts : ReadOnlyArrayOf_S
 //    To many relationship: backLegendTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_backLegendTexts :
-       ToManyRelationshipReadWrite_BoardModel_backLegendTexts,
+final class ToManyRelationship_EX_BoardModel_backLegendTexts :
+       ToManyRelationshipReadWrite_EX_BoardModel_backLegendTexts,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -8794,7 +8814,7 @@ final class ToManyRelationship_BoardModel_backLegendTexts :
 //    To many relationship read write: backLayoutTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_backLayoutTexts : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_backLayoutTexts : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -8814,8 +8834,8 @@ class ToManyRelationshipReadWrite_BoardModel_backLayoutTexts : ReadOnlyArrayOf_S
 //    To many relationship: backLayoutTexts
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_backLayoutTexts :
-       ToManyRelationshipReadWrite_BoardModel_backLayoutTexts,
+final class ToManyRelationship_EX_BoardModel_backLayoutTexts :
+       ToManyRelationshipReadWrite_EX_BoardModel_backLayoutTexts,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -8988,7 +9008,7 @@ final class ToManyRelationship_BoardModel_backLayoutTexts :
 //    To many relationship read write: internalBoardsLimits
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_internalBoardsLimits : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -9008,8 +9028,8 @@ class ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits : ReadOnlyArra
 //    To many relationship: internalBoardsLimits
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_internalBoardsLimits :
-       ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits,
+final class ToManyRelationship_EX_BoardModel_internalBoardsLimits :
+       ToManyRelationshipReadWrite_EX_BoardModel_internalBoardsLimits,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -9182,7 +9202,7 @@ final class ToManyRelationship_BoardModel_internalBoardsLimits :
 //    To many relationship read write: drills
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_drills : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_drills : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -9202,8 +9222,8 @@ class ToManyRelationshipReadWrite_BoardModel_drills : ReadOnlyArrayOf_SegmentEnt
 //    To many relationship: drills
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_drills :
-       ToManyRelationshipReadWrite_BoardModel_drills,
+final class ToManyRelationship_EX_BoardModel_drills :
+       ToManyRelationshipReadWrite_EX_BoardModel_drills,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -9376,7 +9396,7 @@ final class ToManyRelationship_BoardModel_drills :
 //    To many relationship read write: vias
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_vias : ReadOnlyArrayOf_BoardModelVia {
+class ToManyRelationshipReadWrite_EX_BoardModel_vias : ReadOnlyArrayOf_BoardModelVia {
 
   //····················································································································
 
@@ -9396,8 +9416,8 @@ class ToManyRelationshipReadWrite_BoardModel_vias : ReadOnlyArrayOf_BoardModelVi
 //    To many relationship: vias
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_vias :
-       ToManyRelationshipReadWrite_BoardModel_vias,
+final class ToManyRelationship_EX_BoardModel_vias :
+       ToManyRelationshipReadWrite_EX_BoardModel_vias,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -9566,7 +9586,7 @@ final class ToManyRelationship_BoardModel_vias :
 //    To many relationship read write: frontPads
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_frontPads : ReadOnlyArrayOf_BoardModelPad {
+class ToManyRelationshipReadWrite_EX_BoardModel_frontPads : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
 
@@ -9586,8 +9606,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontPads : ReadOnlyArrayOf_BoardMo
 //    To many relationship: frontPads
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_frontPads :
-       ToManyRelationshipReadWrite_BoardModel_frontPads,
+final class ToManyRelationship_EX_BoardModel_frontPads :
+       ToManyRelationshipReadWrite_EX_BoardModel_frontPads,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -9762,7 +9782,7 @@ final class ToManyRelationship_BoardModel_frontPads :
 //    To many relationship read write: backPads
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_backPads : ReadOnlyArrayOf_BoardModelPad {
+class ToManyRelationshipReadWrite_EX_BoardModel_backPads : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
 
@@ -9782,8 +9802,8 @@ class ToManyRelationshipReadWrite_BoardModel_backPads : ReadOnlyArrayOf_BoardMod
 //    To many relationship: backPads
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_backPads :
-       ToManyRelationshipReadWrite_BoardModel_backPads,
+final class ToManyRelationship_EX_BoardModel_backPads :
+       ToManyRelationshipReadWrite_EX_BoardModel_backPads,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -9958,7 +9978,7 @@ final class ToManyRelationship_BoardModel_backPads :
 //    To many relationship read write: backComponentNames
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_backComponentNames : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_backComponentNames : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -9978,8 +9998,8 @@ class ToManyRelationshipReadWrite_BoardModel_backComponentNames : ReadOnlyArrayO
 //    To many relationship: backComponentNames
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_backComponentNames :
-       ToManyRelationshipReadWrite_BoardModel_backComponentNames,
+final class ToManyRelationship_EX_BoardModel_backComponentNames :
+       ToManyRelationshipReadWrite_EX_BoardModel_backComponentNames,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -10152,7 +10172,7 @@ final class ToManyRelationship_BoardModel_backComponentNames :
 //    To many relationship read write: frontComponentNames
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_frontComponentNames : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_frontComponentNames : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -10172,8 +10192,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontComponentNames : ReadOnlyArray
 //    To many relationship: frontComponentNames
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_frontComponentNames :
-       ToManyRelationshipReadWrite_BoardModel_frontComponentNames,
+final class ToManyRelationship_EX_BoardModel_frontComponentNames :
+       ToManyRelationshipReadWrite_EX_BoardModel_frontComponentNames,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -10346,7 +10366,7 @@ final class ToManyRelationship_BoardModel_frontComponentNames :
 //    To many relationship read write: frontComponentValues
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_frontComponentValues : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_frontComponentValues : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -10366,8 +10386,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontComponentValues : ReadOnlyArra
 //    To many relationship: frontComponentValues
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_frontComponentValues :
-       ToManyRelationshipReadWrite_BoardModel_frontComponentValues,
+final class ToManyRelationship_EX_BoardModel_frontComponentValues :
+       ToManyRelationshipReadWrite_EX_BoardModel_frontComponentValues,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -10540,7 +10560,7 @@ final class ToManyRelationship_BoardModel_frontComponentValues :
 //    To many relationship read write: backComponentValues
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_backComponentValues : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_backComponentValues : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -10560,8 +10580,8 @@ class ToManyRelationshipReadWrite_BoardModel_backComponentValues : ReadOnlyArray
 //    To many relationship: backComponentValues
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_backComponentValues :
-       ToManyRelationshipReadWrite_BoardModel_backComponentValues,
+final class ToManyRelationship_EX_BoardModel_backComponentValues :
+       ToManyRelationshipReadWrite_EX_BoardModel_backComponentValues,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -10734,7 +10754,7 @@ final class ToManyRelationship_BoardModel_backComponentValues :
 //    To many relationship read write: backTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_backTracks : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_backTracks : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -10754,8 +10774,8 @@ class ToManyRelationshipReadWrite_BoardModel_backTracks : ReadOnlyArrayOf_Segmen
 //    To many relationship: backTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_backTracks :
-       ToManyRelationshipReadWrite_BoardModel_backTracks,
+final class ToManyRelationship_EX_BoardModel_backTracks :
+       ToManyRelationshipReadWrite_EX_BoardModel_backTracks,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -10928,7 +10948,7 @@ final class ToManyRelationship_BoardModel_backTracks :
 //    To many relationship read write: frontTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_frontTracks : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_frontTracks : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -10948,8 +10968,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontTracks : ReadOnlyArrayOf_Segme
 //    To many relationship: frontTracks
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_frontTracks :
-       ToManyRelationshipReadWrite_BoardModel_frontTracks,
+final class ToManyRelationship_EX_BoardModel_frontTracks :
+       ToManyRelationshipReadWrite_EX_BoardModel_frontTracks,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -11122,7 +11142,7 @@ final class ToManyRelationship_BoardModel_frontTracks :
 //    To many relationship read write: frontPackages
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_frontPackages : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_frontPackages : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -11142,8 +11162,8 @@ class ToManyRelationshipReadWrite_BoardModel_frontPackages : ReadOnlyArrayOf_Seg
 //    To many relationship: frontPackages
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_frontPackages :
-       ToManyRelationshipReadWrite_BoardModel_frontPackages,
+final class ToManyRelationship_EX_BoardModel_frontPackages :
+       ToManyRelationshipReadWrite_EX_BoardModel_frontPackages,
        EBSignatureObserverProtocol {
 
   //····················································································································
@@ -11316,7 +11336,7 @@ final class ToManyRelationship_BoardModel_frontPackages :
 //    To many relationship read write: backPackages
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel_backPackages : ReadOnlyArrayOf_SegmentEntity {
+class ToManyRelationshipReadWrite_EX_BoardModel_backPackages : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
@@ -11336,8 +11356,8 @@ class ToManyRelationshipReadWrite_BoardModel_backPackages : ReadOnlyArrayOf_Segm
 //    To many relationship: backPackages
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel_backPackages :
-       ToManyRelationshipReadWrite_BoardModel_backPackages,
+final class ToManyRelationship_EX_BoardModel_backPackages :
+       ToManyRelationshipReadWrite_EX_BoardModel_backPackages,
        EBSignatureObserverProtocol {
 
   //····················································································································
