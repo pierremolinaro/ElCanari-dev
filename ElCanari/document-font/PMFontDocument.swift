@@ -143,266 +143,324 @@ import Cocoa
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
   //--------------------------- Outlet checking
-    if nil == advancementSlider {
+    if let outlet : Any = self.advancementSlider {
+      if !(outlet is EBSlider) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'advancementSlider' outlet is not an instance of 'EBSlider'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'advancementSlider' outlet is nil") ;
-//    }else if !advancementSlider!.isKindOfClass (EBSlider) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'advancementSlider' outlet is not an instance of 'EBSlider'") ;
+                          line: #line,
+                          errorMessage: "the 'advancementSlider' outlet is nil") ;
     }
-    if nil == advancementTextField {
+    if let outlet : Any = self.advancementTextField {
+      if !(outlet is EBIntField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'advancementTextField' outlet is not an instance of 'EBIntField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'advancementTextField' outlet is nil") ;
-//    }else if !advancementTextField!.isKindOfClass (EBIntField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'advancementTextField' outlet is not an instance of 'EBIntField'") ;
+                          line: #line,
+                          errorMessage: "the 'advancementTextField' outlet is nil") ;
     }
-    if nil == commentTextView {
+    if let outlet : Any = self.commentTextView {
+      if !(outlet is EBTextView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'commentTextView' outlet is not an instance of 'EBTextView'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'commentTextView' outlet is nil") ;
-//    }else if !commentTextView!.isKindOfClass (EBTextView) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'commentTextView' outlet is not an instance of 'EBTextView'") ;
+                          line: #line,
+                          errorMessage: "the 'commentTextView' outlet is nil") ;
     }
-    if nil == currentCharacterStepper {
+    if let outlet : Any = self.currentCharacterStepper {
+      if !(outlet is EBStepper) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'currentCharacterStepper' outlet is not an instance of 'EBStepper'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'currentCharacterStepper' outlet is nil") ;
-//    }else if !currentCharacterStepper!.isKindOfClass (EBStepper) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'currentCharacterStepper' outlet is not an instance of 'EBStepper'") ;
+                          line: #line,
+                          errorMessage: "the 'currentCharacterStepper' outlet is nil") ;
     }
-    if nil == currentCharacterView {
+    if let outlet : Any = self.currentCharacterView {
+      if !(outlet is CanariCharacterView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'currentCharacterView' outlet is not an instance of 'CanariCharacterView'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'currentCharacterView' outlet is nil") ;
-//    }else if !currentCharacterView!.isKindOfClass (CanariCharacterView) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'currentCharacterView' outlet is not an instance of 'CanariCharacterView'") ;
+                          line: #line,
+                          errorMessage: "the 'currentCharacterView' outlet is nil") ;
     }
-    if nil == gerberCodeInstructionCountMessageTextField {
+    if let outlet : Any = self.gerberCodeInstructionCountMessageTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'gerberCodeInstructionCountMessageTextField' outlet is not an instance of 'EBTextObserverField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'gerberCodeInstructionCountMessageTextField' outlet is nil") ;
-//    }else if !gerberCodeInstructionCountMessageTextField!.isKindOfClass (EBTextObserverField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'gerberCodeInstructionCountMessageTextField' outlet is not an instance of 'EBTextObserverField'") ;
+                          line: #line,
+                          errorMessage: "the 'gerberCodeInstructionCountMessageTextField' outlet is nil") ;
     }
-    if nil == mAddCharacterButton {
+    if let outlet : Any = self.mAddCharacterButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mAddCharacterButton' outlet is not an instance of 'EBButton'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mAddCharacterButton' outlet is nil") ;
-//    }else if !mAddCharacterButton!.isKindOfClass (EBButton) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mAddCharacterButton' outlet is not an instance of 'EBButton'") ;
+                          line: #line,
+                          errorMessage: "the 'mAddCharacterButton' outlet is nil") ;
     }
-    if nil == mAddSegmentButton {
+    if let outlet : Any = self.mAddSegmentButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mAddSegmentButton' outlet is not an instance of 'EBButton'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mAddSegmentButton' outlet is nil") ;
-//    }else if !mAddSegmentButton!.isKindOfClass (EBButton) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mAddSegmentButton' outlet is not an instance of 'EBButton'") ;
+                          line: #line,
+                          errorMessage: "the 'mAddSegmentButton' outlet is nil") ;
     }
-    if nil == mCurrentCharacterTextField {
+    if let outlet : Any = self.mCurrentCharacterTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mCurrentCharacterTextField' outlet is not an instance of 'EBTextObserverField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mCurrentCharacterTextField' outlet is nil") ;
-//    }else if !mCurrentCharacterTextField!.isKindOfClass (EBTextObserverField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mCurrentCharacterTextField' outlet is not an instance of 'EBTextObserverField'") ;
+                          line: #line,
+                          errorMessage: "the 'mCurrentCharacterTextField' outlet is nil") ;
     }
-    if nil == mFontCharacterSelectButton {
+    if let outlet : Any = self.mFontCharacterSelectButton {
+      if !(outlet is CanariFontCharacterSelectButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mFontCharacterSelectButton' outlet is not an instance of 'CanariFontCharacterSelectButton'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mFontCharacterSelectButton' outlet is nil") ;
-//    }else if !mFontCharacterSelectButton!.isKindOfClass (CanariFontCharacterSelectButton) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mFontCharacterSelectButton' outlet is not an instance of 'CanariFontCharacterSelectButton'") ;
+                          line: #line,
+                          errorMessage: "the 'mFontCharacterSelectButton' outlet is nil") ;
     }
-    if nil == mFontNominalSizeTextField {
+    if let outlet : Any = self.mFontNominalSizeTextField {
+      if !(outlet is EBIntField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mFontNominalSizeTextField' outlet is not an instance of 'EBIntField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mFontNominalSizeTextField' outlet is nil") ;
-//    }else if !mFontNominalSizeTextField!.isKindOfClass (EBIntField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mFontNominalSizeTextField' outlet is not an instance of 'EBIntField'") ;
+                          line: #line,
+                          errorMessage: "the 'mFontNominalSizeTextField' outlet is nil") ;
     }
-    if nil == mFontSampleStringView {
+    if let outlet : Any = self.mFontSampleStringView {
+      if !(outlet is CanariFontSampleStringView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mFontSampleStringView' outlet is not an instance of 'CanariFontSampleStringView'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mFontSampleStringView' outlet is nil") ;
-//    }else if !mFontSampleStringView!.isKindOfClass (CanariFontSampleStringView) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mFontSampleStringView' outlet is not an instance of 'CanariFontSampleStringView'") ;
+                          line: #line,
+                          errorMessage: "the 'mFontSampleStringView' outlet is nil") ;
     }
-    if nil == mGerberCodeTableView {
+    if let outlet : Any = self.mGerberCodeTableView {
+      if !(outlet is CanariCharacterGerberCodeTableView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mGerberCodeTableView' outlet is not an instance of 'CanariCharacterGerberCodeTableView'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mGerberCodeTableView' outlet is nil") ;
-//    }else if !mGerberCodeTableView!.isKindOfClass (CanariCharacterGerberCodeTableView) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mGerberCodeTableView' outlet is not an instance of 'CanariCharacterGerberCodeTableView'") ;
+                          line: #line,
+                          errorMessage: "the 'mGerberCodeTableView' outlet is nil") ;
     }
-    if nil == mInspectorSegmentedControl {
+    if let outlet : Any = self.mInspectorSegmentedControl {
+      if !(outlet is CanariSegmentedControl) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mInspectorSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mInspectorSegmentedControl' outlet is nil") ;
-//    }else if !mInspectorSegmentedControl!.isKindOfClass (CanariSegmentedControl) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mInspectorSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
+                          line: #line,
+                          errorMessage: "the 'mInspectorSegmentedControl' outlet is nil") ;
     }
-    if nil == mNewCharacterPanel {
+    if let outlet : Any = self.mNewCharacterPanel {
+      if !(outlet is NSPanel) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mNewCharacterPanel' outlet is not an instance of 'NSPanel'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mNewCharacterPanel' outlet is nil") ;
-//    }else if !mNewCharacterPanel!.isKindOfClass (NSPanel) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mNewCharacterPanel' outlet is not an instance of 'NSPanel'") ;
+                          line: #line,
+                          errorMessage: "the 'mNewCharacterPanel' outlet is nil") ;
     }
-    if nil == mNewCharacterView {
+    if let outlet : Any = self.mNewCharacterView {
+      if !(outlet is NewCharacterView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mNewCharacterView' outlet is not an instance of 'NewCharacterView'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mNewCharacterView' outlet is nil") ;
-//    }else if !mNewCharacterView!.isKindOfClass (NewCharacterView) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mNewCharacterView' outlet is not an instance of 'NewCharacterView'") ;
+                          line: #line,
+                          errorMessage: "the 'mNewCharacterView' outlet is nil") ;
     }
-    if nil == mPageSegmentedControl {
+    if let outlet : Any = self.mPageSegmentedControl {
+      if !(outlet is CanariSegmentedControl) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mPageSegmentedControl' outlet is nil") ;
-//    }else if !mPageSegmentedControl!.isKindOfClass (CanariSegmentedControl) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
+                          line: #line,
+                          errorMessage: "the 'mPageSegmentedControl' outlet is nil") ;
     }
-    if nil == mSampleStringAscentTextField {
+    if let outlet : Any = self.mSampleStringAscentTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mSampleStringAscentTextField' outlet is not an instance of 'EBTextObserverField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mSampleStringAscentTextField' outlet is nil") ;
-//    }else if !mSampleStringAscentTextField!.isKindOfClass (EBTextObserverField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mSampleStringAscentTextField' outlet is not an instance of 'EBTextObserverField'") ;
+                          line: #line,
+                          errorMessage: "the 'mSampleStringAscentTextField' outlet is nil") ;
     }
-    if nil == mSampleStringDescentTextField {
+    if let outlet : Any = self.mSampleStringDescentTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mSampleStringDescentTextField' outlet is not an instance of 'EBTextObserverField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mSampleStringDescentTextField' outlet is nil") ;
-//    }else if !mSampleStringDescentTextField!.isKindOfClass (EBTextObserverField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mSampleStringDescentTextField' outlet is not an instance of 'EBTextObserverField'") ;
+                          line: #line,
+                          errorMessage: "the 'mSampleStringDescentTextField' outlet is nil") ;
     }
-    if nil == mSampleStringField {
+    if let outlet : Any = self.mSampleStringField {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mSampleStringField' outlet is not an instance of 'EBTextField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mSampleStringField' outlet is nil") ;
-//    }else if !mSampleStringField!.isKindOfClass (EBTextField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mSampleStringField' outlet is not an instance of 'EBTextField'") ;
+                          line: #line,
+                          errorMessage: "the 'mSampleStringField' outlet is nil") ;
     }
-    if nil == mSampleStringSizeField {
+    if let outlet : Any = self.mSampleStringSizeField {
+      if !(outlet is EBDoubleField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mSampleStringSizeField' outlet is not an instance of 'EBDoubleField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mSampleStringSizeField' outlet is nil") ;
-//    }else if !mSampleStringSizeField!.isKindOfClass (EBDoubleField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mSampleStringSizeField' outlet is not an instance of 'EBDoubleField'") ;
+                          line: #line,
+                          errorMessage: "the 'mSampleStringSizeField' outlet is nil") ;
     }
-    if nil == mSampleStringWidthTextField {
+    if let outlet : Any = self.mSampleStringWidthTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mSampleStringWidthTextField' outlet is not an instance of 'EBTextObserverField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mSampleStringWidthTextField' outlet is nil") ;
-//    }else if !mSampleStringWidthTextField!.isKindOfClass (EBTextObserverField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mSampleStringWidthTextField' outlet is not an instance of 'EBTextObserverField'") ;
+                          line: #line,
+                          errorMessage: "the 'mSampleStringWidthTextField' outlet is nil") ;
     }
-    if nil == mShowGerberDrawingFlowCheckbox {
+    if let outlet : Any = self.mShowGerberDrawingFlowCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mShowGerberDrawingFlowCheckbox' outlet is not an instance of 'EBSwitch'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mShowGerberDrawingFlowCheckbox' outlet is nil") ;
-//    }else if !mShowGerberDrawingFlowCheckbox!.isKindOfClass (EBSwitch) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mShowGerberDrawingFlowCheckbox' outlet is not an instance of 'EBSwitch'") ;
+                          line: #line,
+                          errorMessage: "the 'mShowGerberDrawingFlowCheckbox' outlet is nil") ;
     }
-    if nil == mShowGerberDrawingIndexesCheckbox {
+    if let outlet : Any = self.mShowGerberDrawingIndexesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mShowGerberDrawingIndexesCheckbox' outlet is not an instance of 'EBSwitch'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mShowGerberDrawingIndexesCheckbox' outlet is nil") ;
-//    }else if !mShowGerberDrawingIndexesCheckbox!.isKindOfClass (EBSwitch) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mShowGerberDrawingIndexesCheckbox' outlet is not an instance of 'EBSwitch'") ;
+                          line: #line,
+                          errorMessage: "the 'mShowGerberDrawingIndexesCheckbox' outlet is nil") ;
     }
-    if nil == mSignatureTextField {
+    if let outlet : Any = self.mSignatureTextField {
+      if !(outlet is CanariSignatureField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mSignatureTextField' outlet is not an instance of 'CanariSignatureField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mSignatureTextField' outlet is nil") ;
-//    }else if !mSignatureTextField!.isKindOfClass (CanariSignatureField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mSignatureTextField' outlet is not an instance of 'CanariSignatureField'") ;
+                          line: #line,
+                          errorMessage: "the 'mSignatureTextField' outlet is nil") ;
     }
-    if nil == mVersionField {
+    if let outlet : Any = self.mVersionField {
+      if !(outlet is CanariVersionField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mVersionField' outlet is not an instance of 'CanariVersionField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'mVersionField' outlet is nil") ;
-//    }else if !mVersionField!.isKindOfClass (CanariVersionField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'mVersionField' outlet is not an instance of 'CanariVersionField'") ;
+                          line: #line,
+                          errorMessage: "the 'mVersionField' outlet is nil") ;
     }
-    if nil == resetVersionAndSignatureButton {
+    if let outlet : Any = self.resetVersionAndSignatureButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'resetVersionAndSignatureButton' outlet is not an instance of 'EBButton'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'resetVersionAndSignatureButton' outlet is nil") ;
-//    }else if !resetVersionAndSignatureButton!.isKindOfClass (EBButton) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'resetVersionAndSignatureButton' outlet is not an instance of 'EBButton'") ;
+                          line: #line,
+                          errorMessage: "the 'resetVersionAndSignatureButton' outlet is nil") ;
     }
-    if nil == transparencySlider {
+    if let outlet : Any = self.transparencySlider {
+      if !(outlet is EBSlider) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'transparencySlider' outlet is not an instance of 'EBSlider'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'transparencySlider' outlet is nil") ;
-//    }else if !transparencySlider!.isKindOfClass (EBSlider) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'transparencySlider' outlet is not an instance of 'EBSlider'") ;
+                          line: #line,
+                          errorMessage: "the 'transparencySlider' outlet is nil") ;
     }
-    if nil == transparencyTextField {
+    if let outlet : Any = self.transparencyTextField {
+      if !(outlet is EBDoubleField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'transparencyTextField' outlet is not an instance of 'EBDoubleField'") ;
+      }
+    }else{
       presentErrorWindow (file: #file,
-                              line: #line,
-                              errorMessage: "the 'transparencyTextField' outlet is nil") ;
-//    }else if !transparencyTextField!.isKindOfClass (EBDoubleField) {
-//      presentErrorWindow (file: #file,
-//                              line: #line,
-//                              errorMessage: "the 'transparencyTextField' outlet is not an instance of 'EBDoubleField'") ;
+                          line: #line,
+                          errorMessage: "the 'transparencyTextField' outlet is nil") ;
     }
   //--------------------------- Array controllers
     self.mSelectedCharacterController.bind_modelAndView (
