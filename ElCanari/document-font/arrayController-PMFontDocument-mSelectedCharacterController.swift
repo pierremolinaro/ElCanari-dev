@@ -332,7 +332,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let owner = model.owner, let managedObjectContext = owner.managedObjectContext () {
+    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -357,7 +357,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let owner = model.owner, let managedObjectContext = owner.managedObjectContext () {
+    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
       switch model.prop {
       case .empty, .multiple :
         break

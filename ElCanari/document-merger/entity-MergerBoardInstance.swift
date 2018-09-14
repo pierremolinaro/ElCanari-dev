@@ -329,10 +329,10 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.instanceRotation_property.addEBObserver (self.objectDisplay_property)
     self.myModel_property.addEBObserverOf_imageForInstances (self.objectDisplay_property)
   //--- Install undoers for properties
-    self.x_property.undoManager = undoManager ()
-    self.y_property.undoManager = undoManager ()
-    self.instanceRotation_property.undoManager = undoManager ()
-  //--- Install owner for relationships
+    self.x_property.undoManager = self.undoManager ()
+    self.y_property.undoManager = self.undoManager ()
+    self.instanceRotation_property.undoManager = self.undoManager ()
+  //--- Install undoers and opposite setter for relationships
     self.myRoot_property.owner = self
     self.myModel_property.owner = self
   //--- register properties for handling signature

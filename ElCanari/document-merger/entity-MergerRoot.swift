@@ -834,30 +834,33 @@ class MergerRoot : EBManagedObject,
     self.boardRect_property.addEBObserver (self.boardWidth_property)
     self.boardRect_property.addEBObserver (self.boardHeight_property)
   //--- Install undoers for properties
-    self.selectedPageIndex_property.undoManager = undoManager ()
-    self.zoom_property.undoManager = undoManager ()
-    self.automaticBoardSize_property.undoManager = undoManager ()
-    self.boardManualWidth_property.undoManager = undoManager ()
-    self.boardManualHeight_property.undoManager = undoManager ()
-    self.boardWidthUnit_property.undoManager = undoManager ()
-    self.boardHeightUnit_property.undoManager = undoManager ()
-    self.overlapingArrangment_property.undoManager = undoManager ()
-    self.selectedBoardXUnit_property.undoManager = undoManager ()
-    self.selectedBoardYUnit_property.undoManager = undoManager ()
-    self.boardLimitWidth_property.undoManager = undoManager ()
-    self.boardLimitWidthUnit_property.undoManager = undoManager ()
-    self.arrowMagnitude_property.undoManager = undoManager ()
-    self.arrowMagnitudeUnit_property.undoManager = undoManager ()
-    self.shiftArrowMagnitude_property.undoManager = undoManager ()
-    self.shiftArrowMagnitudeUnit_property.undoManager = undoManager ()
-    self.artworkName_property.undoManager = undoManager ()
-    self.generateGerberProductFile_property.undoManager = undoManager ()
-    self.generatePDFProductFile_property.undoManager = undoManager ()
-    self.generatedBoardArchiveFormat_property.undoManager = undoManager ()
-  //--- Install owner for relationships
+    self.selectedPageIndex_property.undoManager = self.undoManager ()
+    self.zoom_property.undoManager = self.undoManager ()
+    self.automaticBoardSize_property.undoManager = self.undoManager ()
+    self.boardManualWidth_property.undoManager = self.undoManager ()
+    self.boardManualHeight_property.undoManager = self.undoManager ()
+    self.boardWidthUnit_property.undoManager = self.undoManager ()
+    self.boardHeightUnit_property.undoManager = self.undoManager ()
+    self.overlapingArrangment_property.undoManager = self.undoManager ()
+    self.selectedBoardXUnit_property.undoManager = self.undoManager ()
+    self.selectedBoardYUnit_property.undoManager = self.undoManager ()
+    self.boardLimitWidth_property.undoManager = self.undoManager ()
+    self.boardLimitWidthUnit_property.undoManager = self.undoManager ()
+    self.arrowMagnitude_property.undoManager = self.undoManager ()
+    self.arrowMagnitudeUnit_property.undoManager = self.undoManager ()
+    self.shiftArrowMagnitude_property.undoManager = self.undoManager ()
+    self.shiftArrowMagnitudeUnit_property.undoManager = self.undoManager ()
+    self.artworkName_property.undoManager = self.undoManager ()
+    self.generateGerberProductFile_property.undoManager = self.undoManager ()
+    self.generatePDFProductFile_property.undoManager = self.undoManager ()
+    self.generatedBoardArchiveFormat_property.undoManager = self.undoManager ()
+  //--- Install undoers and opposite setter for relationships
     self.artwork_property.owner = self
-    self.boardModels_property.owner = self
-    self.boardInstances_property.owner = self
+    self.boardModels_property.undoManager = self.undoManager ()
+    self.boardInstances_property.undoManager = self.undoManager ()
+    self.boardInstances_property.setOppositeRelationship = { (_ inManagedObject : MergerBoardInstance) in
+      inManagedObject.myRoot_property.setProp (self)
+    }
   //--- register properties for handling signature
   }
 
@@ -3229,7 +3232,7 @@ class ToManyRelationshipReadWrite_MergerRoot_boardModels : ReadOnlyArrayOf_Board
 
   //····················································································································
 
-  weak var owner : MergerRoot?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -3248,6 +3251,12 @@ class ToManyRelationshipReadWrite_MergerRoot_boardModels : ReadOnlyArrayOf_Board
 final class ToManyRelationship_MergerRoot_boardModels :
        ToManyRelationshipReadWrite_MergerRoot_boardModels,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModel) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -3292,7 +3301,7 @@ final class ToManyRelationship_MergerRoot_boardModels :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -3358,6 +3367,8 @@ final class ToManyRelationship_MergerRoot_boardModels :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModel in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet)
@@ -3509,7 +3520,7 @@ class ToManyRelationshipReadWrite_MergerRoot_boardInstances : ReadOnlyArrayOf_Me
 
   //····················································································································
 
-  weak var owner : MergerRoot?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -3528,6 +3539,12 @@ class ToManyRelationshipReadWrite_MergerRoot_boardInstances : ReadOnlyArrayOf_Me
 final class ToManyRelationship_MergerRoot_boardInstances :
        ToManyRelationshipReadWrite_MergerRoot_boardInstances,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -3572,7 +3589,7 @@ final class ToManyRelationship_MergerRoot_boardInstances :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -3595,7 +3612,8 @@ final class ToManyRelationship_MergerRoot_boardInstances :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : MergerBoardInstance in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myRoot_property.setProp (owner)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject.myRoot_property.setProp (owner)
         }
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)

@@ -97,10 +97,10 @@ class BoardModelVia : EBManagedObject,
   //--- Install compute functions for transients
   //--- Install property observers for transients
   //--- Install undoers for properties
-    self.x_property.undoManager = undoManager ()
-    self.y_property.undoManager = undoManager ()
-    self.padDiameter_property.undoManager = undoManager ()
-  //--- Install owner for relationships
+    self.x_property.undoManager = self.undoManager ()
+    self.y_property.undoManager = self.undoManager ()
+    self.padDiameter_property.undoManager = self.undoManager ()
+  //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
   }
 

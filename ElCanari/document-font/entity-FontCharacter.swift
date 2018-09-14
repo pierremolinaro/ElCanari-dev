@@ -219,10 +219,10 @@ class FontCharacter : EBManagedObject,
     self.segmentArrayForDrawing_property.addEBObserver (self.gerberCode_property)
     self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
   //--- Install undoers for properties
-    self.codePoint_property.undoManager = undoManager ()
-    self.advance_property.undoManager = undoManager ()
-  //--- Install owner for relationships
-    self.segments_property.owner = self
+    self.codePoint_property.undoManager = self.undoManager ()
+    self.advance_property.undoManager = self.undoManager ()
+  //--- Install undoers and opposite setter for relationships
+    self.segments_property.undoManager = self.undoManager ()
   //--- register properties for handling signature
     self.advance_property.setSignatureObserver (observer:self)
     self.codePoint_property.setSignatureObserver (observer:self)
@@ -792,7 +792,7 @@ class ToManyRelationshipReadWrite_FontCharacter_segments : ReadOnlyArrayOf_Segme
 
   //····················································································································
 
-  weak var owner : FontCharacter?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -811,6 +811,12 @@ class ToManyRelationshipReadWrite_FontCharacter_segments : ReadOnlyArrayOf_Segme
 final class ToManyRelationship_FontCharacter_segments :
        ToManyRelationshipReadWrite_FontCharacter_segments,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentForFontCharacter) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -855,7 +861,7 @@ final class ToManyRelationship_FontCharacter_segments :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -873,6 +879,8 @@ final class ToManyRelationship_FontCharacter_segments :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentForFontCharacter in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x2_toElementsOfSet (addedObjectSet)

@@ -2655,36 +2655,39 @@ class BoardModel : EBManagedObject,
     g_Preferences?.mergerBoardViewDisplayBackPackages_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.imageForInstances_property)
   //--- Install undoers for properties
-    self.artworkName_property.undoManager = undoManager ()
-    self.name_property.undoManager = undoManager ()
-    self.modelWidth_property.undoManager = undoManager ()
-    self.modelWidthUnit_property.undoManager = undoManager ()
-    self.modelHeight_property.undoManager = undoManager ()
-    self.modelHeightUnit_property.undoManager = undoManager ()
-    self.zoom_property.undoManager = undoManager ()
-    self.modelLimitWidth_property.undoManager = undoManager ()
-    self.modelLimitWidthUnit_property.undoManager = undoManager ()
-  //--- Install owner for relationships
-    self.myInstances_property.owner = self
-    self.frontLegendLines_property.owner = self
-    self.backLegendLines_property.owner = self
-    self.frontLegendTexts_property.owner = self
-    self.frontLayoutTexts_property.owner = self
-    self.backLegendTexts_property.owner = self
-    self.backLayoutTexts_property.owner = self
-    self.internalBoardsLimits_property.owner = self
-    self.drills_property.owner = self
-    self.vias_property.owner = self
-    self.frontPads_property.owner = self
-    self.backPads_property.owner = self
-    self.backComponentNames_property.owner = self
-    self.frontComponentNames_property.owner = self
-    self.frontComponentValues_property.owner = self
-    self.backComponentValues_property.owner = self
-    self.backTracks_property.owner = self
-    self.frontTracks_property.owner = self
-    self.frontPackages_property.owner = self
-    self.backPackages_property.owner = self
+    self.artworkName_property.undoManager = self.undoManager ()
+    self.name_property.undoManager = self.undoManager ()
+    self.modelWidth_property.undoManager = self.undoManager ()
+    self.modelWidthUnit_property.undoManager = self.undoManager ()
+    self.modelHeight_property.undoManager = self.undoManager ()
+    self.modelHeightUnit_property.undoManager = self.undoManager ()
+    self.zoom_property.undoManager = self.undoManager ()
+    self.modelLimitWidth_property.undoManager = self.undoManager ()
+    self.modelLimitWidthUnit_property.undoManager = self.undoManager ()
+  //--- Install undoers and opposite setter for relationships
+    self.myInstances_property.undoManager = self.undoManager ()
+    self.myInstances_property.setOppositeRelationship = { (_ inManagedObject : MergerBoardInstance) in
+      inManagedObject.myModel_property.setProp (self)
+    }
+    self.frontLegendLines_property.undoManager = self.undoManager ()
+    self.backLegendLines_property.undoManager = self.undoManager ()
+    self.frontLegendTexts_property.undoManager = self.undoManager ()
+    self.frontLayoutTexts_property.undoManager = self.undoManager ()
+    self.backLegendTexts_property.undoManager = self.undoManager ()
+    self.backLayoutTexts_property.undoManager = self.undoManager ()
+    self.internalBoardsLimits_property.undoManager = self.undoManager ()
+    self.drills_property.undoManager = self.undoManager ()
+    self.vias_property.undoManager = self.undoManager ()
+    self.frontPads_property.undoManager = self.undoManager ()
+    self.backPads_property.undoManager = self.undoManager ()
+    self.backComponentNames_property.undoManager = self.undoManager ()
+    self.frontComponentNames_property.undoManager = self.undoManager ()
+    self.frontComponentValues_property.undoManager = self.undoManager ()
+    self.backComponentValues_property.undoManager = self.undoManager ()
+    self.backTracks_property.undoManager = self.undoManager ()
+    self.frontTracks_property.undoManager = self.undoManager ()
+    self.frontPackages_property.undoManager = self.undoManager ()
+    self.backPackages_property.undoManager = self.undoManager ()
   //--- register properties for handling signature
   }
 
@@ -7335,7 +7338,7 @@ class ToManyRelationshipReadWrite_BoardModel_myInstances : ReadOnlyArrayOf_Merge
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -7354,6 +7357,12 @@ class ToManyRelationshipReadWrite_BoardModel_myInstances : ReadOnlyArrayOf_Merge
 final class ToManyRelationship_BoardModel_myInstances :
        ToManyRelationshipReadWrite_BoardModel_myInstances,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -7398,7 +7407,7 @@ final class ToManyRelationship_BoardModel_myInstances :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -7421,7 +7430,8 @@ final class ToManyRelationship_BoardModel_myInstances :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : MergerBoardInstance in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
-          managedObject.myModel_property.setProp (owner)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject.myModel_property.setProp (owner)
         }
         addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
@@ -7529,7 +7539,7 @@ class ToManyRelationshipReadWrite_BoardModel_frontLegendLines : ReadOnlyArrayOf_
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -7548,6 +7558,12 @@ class ToManyRelationshipReadWrite_BoardModel_frontLegendLines : ReadOnlyArrayOf_
 final class ToManyRelationship_BoardModel_frontLegendLines :
        ToManyRelationshipReadWrite_BoardModel_frontLegendLines,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -7592,7 +7608,7 @@ final class ToManyRelationship_BoardModel_frontLegendLines :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -7611,6 +7627,8 @@ final class ToManyRelationship_BoardModel_frontLegendLines :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -7715,7 +7733,7 @@ class ToManyRelationshipReadWrite_BoardModel_backLegendLines : ReadOnlyArrayOf_S
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -7734,6 +7752,12 @@ class ToManyRelationshipReadWrite_BoardModel_backLegendLines : ReadOnlyArrayOf_S
 final class ToManyRelationship_BoardModel_backLegendLines :
        ToManyRelationshipReadWrite_BoardModel_backLegendLines,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -7778,7 +7802,7 @@ final class ToManyRelationship_BoardModel_backLegendLines :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -7797,6 +7821,8 @@ final class ToManyRelationship_BoardModel_backLegendLines :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -7901,7 +7927,7 @@ class ToManyRelationshipReadWrite_BoardModel_frontLegendTexts : ReadOnlyArrayOf_
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -7920,6 +7946,12 @@ class ToManyRelationshipReadWrite_BoardModel_frontLegendTexts : ReadOnlyArrayOf_
 final class ToManyRelationship_BoardModel_frontLegendTexts :
        ToManyRelationshipReadWrite_BoardModel_frontLegendTexts,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -7964,7 +7996,7 @@ final class ToManyRelationship_BoardModel_frontLegendTexts :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -7983,6 +8015,8 @@ final class ToManyRelationship_BoardModel_frontLegendTexts :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -8087,7 +8121,7 @@ class ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts : ReadOnlyArrayOf_
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -8106,6 +8140,12 @@ class ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts : ReadOnlyArrayOf_
 final class ToManyRelationship_BoardModel_frontLayoutTexts :
        ToManyRelationshipReadWrite_BoardModel_frontLayoutTexts,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -8150,7 +8190,7 @@ final class ToManyRelationship_BoardModel_frontLayoutTexts :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -8169,6 +8209,8 @@ final class ToManyRelationship_BoardModel_frontLayoutTexts :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -8273,7 +8315,7 @@ class ToManyRelationshipReadWrite_BoardModel_backLegendTexts : ReadOnlyArrayOf_S
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -8292,6 +8334,12 @@ class ToManyRelationshipReadWrite_BoardModel_backLegendTexts : ReadOnlyArrayOf_S
 final class ToManyRelationship_BoardModel_backLegendTexts :
        ToManyRelationshipReadWrite_BoardModel_backLegendTexts,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -8336,7 +8384,7 @@ final class ToManyRelationship_BoardModel_backLegendTexts :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -8355,6 +8403,8 @@ final class ToManyRelationship_BoardModel_backLegendTexts :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -8459,7 +8509,7 @@ class ToManyRelationshipReadWrite_BoardModel_backLayoutTexts : ReadOnlyArrayOf_S
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -8478,6 +8528,12 @@ class ToManyRelationshipReadWrite_BoardModel_backLayoutTexts : ReadOnlyArrayOf_S
 final class ToManyRelationship_BoardModel_backLayoutTexts :
        ToManyRelationshipReadWrite_BoardModel_backLayoutTexts,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -8522,7 +8578,7 @@ final class ToManyRelationship_BoardModel_backLayoutTexts :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -8541,6 +8597,8 @@ final class ToManyRelationship_BoardModel_backLayoutTexts :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -8645,7 +8703,7 @@ class ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits : ReadOnlyArra
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -8664,6 +8722,12 @@ class ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits : ReadOnlyArra
 final class ToManyRelationship_BoardModel_internalBoardsLimits :
        ToManyRelationshipReadWrite_BoardModel_internalBoardsLimits,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -8708,7 +8772,7 @@ final class ToManyRelationship_BoardModel_internalBoardsLimits :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -8727,6 +8791,8 @@ final class ToManyRelationship_BoardModel_internalBoardsLimits :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -8831,7 +8897,7 @@ class ToManyRelationshipReadWrite_BoardModel_drills : ReadOnlyArrayOf_SegmentEnt
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -8850,6 +8916,12 @@ class ToManyRelationshipReadWrite_BoardModel_drills : ReadOnlyArrayOf_SegmentEnt
 final class ToManyRelationship_BoardModel_drills :
        ToManyRelationshipReadWrite_BoardModel_drills,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -8894,7 +8966,7 @@ final class ToManyRelationship_BoardModel_drills :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -8913,6 +8985,8 @@ final class ToManyRelationship_BoardModel_drills :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -9017,7 +9091,7 @@ class ToManyRelationshipReadWrite_BoardModel_vias : ReadOnlyArrayOf_BoardModelVi
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -9036,6 +9110,12 @@ class ToManyRelationshipReadWrite_BoardModel_vias : ReadOnlyArrayOf_BoardModelVi
 final class ToManyRelationship_BoardModel_vias :
        ToManyRelationshipReadWrite_BoardModel_vias,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9080,7 +9160,7 @@ final class ToManyRelationship_BoardModel_vias :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -9097,6 +9177,8 @@ final class ToManyRelationship_BoardModel_vias :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelVia in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
@@ -9199,7 +9281,7 @@ class ToManyRelationshipReadWrite_BoardModel_frontPads : ReadOnlyArrayOf_BoardMo
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -9218,6 +9300,12 @@ class ToManyRelationshipReadWrite_BoardModel_frontPads : ReadOnlyArrayOf_BoardMo
 final class ToManyRelationship_BoardModel_frontPads :
        ToManyRelationshipReadWrite_BoardModel_frontPads,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9262,7 +9350,7 @@ final class ToManyRelationship_BoardModel_frontPads :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -9282,6 +9370,8 @@ final class ToManyRelationship_BoardModel_frontPads :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelPad in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_height_toElementsOfSet (addedObjectSet)
         addEBObserversOf_rotation_toElementsOfSet (addedObjectSet)
@@ -9387,7 +9477,7 @@ class ToManyRelationshipReadWrite_BoardModel_backPads : ReadOnlyArrayOf_BoardMod
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -9406,6 +9496,12 @@ class ToManyRelationshipReadWrite_BoardModel_backPads : ReadOnlyArrayOf_BoardMod
 final class ToManyRelationship_BoardModel_backPads :
        ToManyRelationshipReadWrite_BoardModel_backPads,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9450,7 +9546,7 @@ final class ToManyRelationship_BoardModel_backPads :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -9470,6 +9566,8 @@ final class ToManyRelationship_BoardModel_backPads :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelPad in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_height_toElementsOfSet (addedObjectSet)
         addEBObserversOf_rotation_toElementsOfSet (addedObjectSet)
@@ -9575,7 +9673,7 @@ class ToManyRelationshipReadWrite_BoardModel_backComponentNames : ReadOnlyArrayO
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -9594,6 +9692,12 @@ class ToManyRelationshipReadWrite_BoardModel_backComponentNames : ReadOnlyArrayO
 final class ToManyRelationship_BoardModel_backComponentNames :
        ToManyRelationshipReadWrite_BoardModel_backComponentNames,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9638,7 +9742,7 @@ final class ToManyRelationship_BoardModel_backComponentNames :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -9657,6 +9761,8 @@ final class ToManyRelationship_BoardModel_backComponentNames :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -9761,7 +9867,7 @@ class ToManyRelationshipReadWrite_BoardModel_frontComponentNames : ReadOnlyArray
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -9780,6 +9886,12 @@ class ToManyRelationshipReadWrite_BoardModel_frontComponentNames : ReadOnlyArray
 final class ToManyRelationship_BoardModel_frontComponentNames :
        ToManyRelationshipReadWrite_BoardModel_frontComponentNames,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -9824,7 +9936,7 @@ final class ToManyRelationship_BoardModel_frontComponentNames :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -9843,6 +9955,8 @@ final class ToManyRelationship_BoardModel_frontComponentNames :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -9947,7 +10061,7 @@ class ToManyRelationshipReadWrite_BoardModel_frontComponentValues : ReadOnlyArra
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -9966,6 +10080,12 @@ class ToManyRelationshipReadWrite_BoardModel_frontComponentValues : ReadOnlyArra
 final class ToManyRelationship_BoardModel_frontComponentValues :
        ToManyRelationshipReadWrite_BoardModel_frontComponentValues,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10010,7 +10130,7 @@ final class ToManyRelationship_BoardModel_frontComponentValues :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -10029,6 +10149,8 @@ final class ToManyRelationship_BoardModel_frontComponentValues :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -10133,7 +10255,7 @@ class ToManyRelationshipReadWrite_BoardModel_backComponentValues : ReadOnlyArray
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -10152,6 +10274,12 @@ class ToManyRelationshipReadWrite_BoardModel_backComponentValues : ReadOnlyArray
 final class ToManyRelationship_BoardModel_backComponentValues :
        ToManyRelationshipReadWrite_BoardModel_backComponentValues,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10196,7 +10324,7 @@ final class ToManyRelationship_BoardModel_backComponentValues :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -10215,6 +10343,8 @@ final class ToManyRelationship_BoardModel_backComponentValues :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -10319,7 +10449,7 @@ class ToManyRelationshipReadWrite_BoardModel_backTracks : ReadOnlyArrayOf_Segmen
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -10338,6 +10468,12 @@ class ToManyRelationshipReadWrite_BoardModel_backTracks : ReadOnlyArrayOf_Segmen
 final class ToManyRelationship_BoardModel_backTracks :
        ToManyRelationshipReadWrite_BoardModel_backTracks,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10382,7 +10518,7 @@ final class ToManyRelationship_BoardModel_backTracks :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -10401,6 +10537,8 @@ final class ToManyRelationship_BoardModel_backTracks :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -10505,7 +10643,7 @@ class ToManyRelationshipReadWrite_BoardModel_frontTracks : ReadOnlyArrayOf_Segme
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -10524,6 +10662,12 @@ class ToManyRelationshipReadWrite_BoardModel_frontTracks : ReadOnlyArrayOf_Segme
 final class ToManyRelationship_BoardModel_frontTracks :
        ToManyRelationshipReadWrite_BoardModel_frontTracks,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10568,7 +10712,7 @@ final class ToManyRelationship_BoardModel_frontTracks :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -10587,6 +10731,8 @@ final class ToManyRelationship_BoardModel_frontTracks :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -10691,7 +10837,7 @@ class ToManyRelationshipReadWrite_BoardModel_frontPackages : ReadOnlyArrayOf_Seg
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -10710,6 +10856,12 @@ class ToManyRelationshipReadWrite_BoardModel_frontPackages : ReadOnlyArrayOf_Seg
 final class ToManyRelationship_BoardModel_frontPackages :
        ToManyRelationshipReadWrite_BoardModel_frontPackages,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10754,7 +10906,7 @@ final class ToManyRelationship_BoardModel_frontPackages :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -10773,6 +10925,8 @@ final class ToManyRelationship_BoardModel_frontPackages :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
@@ -10877,7 +11031,7 @@ class ToManyRelationshipReadWrite_BoardModel_backPackages : ReadOnlyArrayOf_Segm
 
   //····················································································································
 
-  weak var owner : BoardModel?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -10896,6 +11050,12 @@ class ToManyRelationshipReadWrite_BoardModel_backPackages : ReadOnlyArrayOf_Segm
 final class ToManyRelationship_BoardModel_backPackages :
        ToManyRelationshipReadWrite_BoardModel_backPackages,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -10940,7 +11100,7 @@ final class ToManyRelationship_BoardModel_backPackages :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -10959,6 +11119,8 @@ final class ToManyRelationship_BoardModel_backPackages :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentEntity in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)

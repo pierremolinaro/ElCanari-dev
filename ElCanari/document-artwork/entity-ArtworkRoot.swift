@@ -276,19 +276,19 @@ class ArtworkRoot : EBManagedObject,
   //--- Install compute functions for transients
   //--- Install property observers for transients
   //--- Install undoers for properties
-    self.selectedTab_property.undoManager = undoManager ()
-    self.comments_property.undoManager = undoManager ()
-    self.minPPTPTTTWdisplayUnit_property.undoManager = undoManager ()
-    self.minPPTPTTTW_property.undoManager = undoManager ()
-    self.minValueForOARdisplayUnit_property.undoManager = undoManager ()
-    self.minValueForOARinEBUnit_property.undoManager = undoManager ()
-    self.minValueForPHDdisplayUnit_property.undoManager = undoManager ()
-    self.minValueForPHDinEBUnit_property.undoManager = undoManager ()
-    self.minValueForBoardLimitWidthDisplayUnit_property.undoManager = undoManager ()
-    self.minValueForBoardLimitWidth_property.undoManager = undoManager ()
-    self.drillDataFileExtension_property.undoManager = undoManager ()
-  //--- Install owner for relationships
-    self.fileGenerationParameterArray_property.owner = self
+    self.selectedTab_property.undoManager = self.undoManager ()
+    self.comments_property.undoManager = self.undoManager ()
+    self.minPPTPTTTWdisplayUnit_property.undoManager = self.undoManager ()
+    self.minPPTPTTTW_property.undoManager = self.undoManager ()
+    self.minValueForOARdisplayUnit_property.undoManager = self.undoManager ()
+    self.minValueForOARinEBUnit_property.undoManager = self.undoManager ()
+    self.minValueForPHDdisplayUnit_property.undoManager = self.undoManager ()
+    self.minValueForPHDinEBUnit_property.undoManager = self.undoManager ()
+    self.minValueForBoardLimitWidthDisplayUnit_property.undoManager = self.undoManager ()
+    self.minValueForBoardLimitWidth_property.undoManager = self.undoManager ()
+    self.drillDataFileExtension_property.undoManager = self.undoManager ()
+  //--- Install undoers and opposite setter for relationships
+    self.fileGenerationParameterArray_property.undoManager = self.undoManager ()
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.drillDataFileExtension_property.setSignatureObserver (observer:self)
@@ -1341,7 +1341,7 @@ class ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray : Rea
 
   //····················································································································
 
-  weak var owner : ArtworkRoot?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -1360,6 +1360,12 @@ class ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray : Rea
 final class ToManyRelationship_ArtworkRoot_fileGenerationParameterArray :
        ToManyRelationshipReadWrite_ArtworkRoot_fileGenerationParameterArray,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -1404,7 +1410,7 @@ final class ToManyRelationship_ArtworkRoot_fileGenerationParameterArray :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -1441,6 +1447,8 @@ final class ToManyRelationship_ArtworkRoot_fileGenerationParameterArray :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : ArtworkFileGenerationParameters in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_drawBoardLimits_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedObjectSet)

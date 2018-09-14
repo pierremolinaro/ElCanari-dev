@@ -9,18 +9,18 @@ import Cocoa
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_PMFontDocument_mSelectedCharacterController2
+//    ArrayController_FontRoot_mCharacterSelection2
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class ArrayController_FontRoot_mCharacterSelection2 : EBObject, EBTableViewDelegate, EBTableViewDataSource {
 
-  private var mModel : ToManyRelationshipReadWrite_FontRoot_mCharacterSelection2? = nil
+  private var mModel : ToManyRelationshipReadWrite_FontRoot_characters? = nil
 
   let sortedArray_property = TransientArrayOf_FontCharacter ()
 
   let selectedArray_property = TransientArrayOf_FontCharacter ()
 
-  private let mSelectedSet : SelectedSet_PMFontDocument_mSelectedCharacterController2
+  private let mSelectedSet : SelectedSet_FontRoot_mCharacterSelection2
 
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
@@ -50,7 +50,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObj
     }
   }
 
-  private let allowsEmptySelection = false
+  private let allowsEmptySelection = true
   private let allowsMultipleSelection = false
   
   //····················································································································
@@ -58,7 +58,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObj
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_PMFontDocument_mSelectedCharacterController2 (
+    mSelectedSet = SelectedSet_FontRoot_mCharacterSelection2 (
       allowsEmptySelection:allowsEmptySelection,
       allowsMultipleSelection:allowsMultipleSelection,
       sortedArray:self.sortedArray_property
@@ -135,7 +135,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObj
   //    bind_modelAndView
   //····················································································································
 
-  func bind_modelAndView (model:ToManyRelationshipReadWrite_FontRoot_mCharacterSelection2,
+  func bind_modelAndView (model:ToManyRelationshipReadWrite_FontRoot_characters,
                           tableViewArray:[EBTableView],
                           ebView: EBView?,
                           managedObjectContext : EBManagedObjectContext?,
@@ -332,7 +332,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObj
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let owner = model.owner, let managedObjectContext = owner.managedObjectContext () {
+    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -357,7 +357,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObj
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let owner = model.owner, let managedObjectContext = owner.managedObjectContext () {
+    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -434,10 +434,10 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObj
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_PMFontDocument_mSelectedCharacterController2
+//    SelectedSet_FontRoot_mCharacterSelection2
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_PMFontDocument_mSelectedCharacterController2 : EBAbstractProperty {
+final class SelectedSet_FontRoot_mCharacterSelection2 : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
   private let mSortedArray : TransientArrayOf_FontCharacter

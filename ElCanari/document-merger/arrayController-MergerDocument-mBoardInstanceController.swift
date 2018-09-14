@@ -339,7 +339,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let owner = model.owner, let managedObjectContext = owner.managedObjectContext () {
+    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -364,7 +364,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let owner = model.owner, let managedObjectContext = owner.managedObjectContext () {
+    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -596,7 +596,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         if (translation.x != 0.0) || (translation.y != 0.0) {
           if !self.mPerformEndUndoGroupingOnMouseUp {
             self.mPerformEndUndoGroupingOnMouseUp = true
-            mModel?.owner?.undoManager ()?.beginUndoGrouping ()
+            mModel?.undoManager?.beginUndoGrouping ()
           }
           for object in mSelectedSet.mSet {
             object.translate (xBy: translation.x, yBy:translation.y)
@@ -613,7 +613,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   func mouseUp (with inEvent : NSEvent) {
     if self.mPerformEndUndoGroupingOnMouseUp {
       self.mPerformEndUndoGroupingOnMouseUp = false
-      mModel?.owner?.undoManager ()?.endUndoGrouping ()
+      mModel?.undoManager?.endUndoGrouping ()
     }
     mLastMouseDraggedLocation = nil
     mSelectionRectangleOrigin = nil
@@ -660,7 +660,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     for object in mSelectedSet.mSet {
       if let idx = objects.index (of: object) {
         objects.remove(at: idx)
-        mManagedObjectContext?.removeManagedObject (object)
+        self.mManagedObjectContext?.removeManagedObject (object)
       }
     }
     mModel?.setProp (objects)

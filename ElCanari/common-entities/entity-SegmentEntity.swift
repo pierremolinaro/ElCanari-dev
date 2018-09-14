@@ -139,12 +139,12 @@ class SegmentEntity : EBManagedObject,
   //--- Install compute functions for transients
   //--- Install property observers for transients
   //--- Install undoers for properties
-    self.x1_property.undoManager = undoManager ()
-    self.y1_property.undoManager = undoManager ()
-    self.x2_property.undoManager = undoManager ()
-    self.y2_property.undoManager = undoManager ()
-    self.width_property.undoManager = undoManager ()
-  //--- Install owner for relationships
+    self.x1_property.undoManager = self.undoManager ()
+    self.y1_property.undoManager = self.undoManager ()
+    self.x2_property.undoManager = self.undoManager ()
+    self.y2_property.undoManager = self.undoManager ()
+    self.width_property.undoManager = self.undoManager ()
+  //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
   }
 

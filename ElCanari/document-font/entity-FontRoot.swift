@@ -349,12 +349,12 @@ class FontRoot : EBManagedObject,
     g_Preferences?.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
     self.characters_property.addEBObserverOf_codePoint (self.currentCharacterCodePointString_property)
   //--- Install undoers for properties
-    self.comments_property.undoManager = undoManager ()
-    self.nominalSize_property.undoManager = undoManager ()
-    self.selectedTab_property.undoManager = undoManager ()
-    self.selectedInspector_property.undoManager = undoManager ()
-  //--- Install owner for relationships
-    self.characters_property.owner = self
+    self.comments_property.undoManager = self.undoManager ()
+    self.nominalSize_property.undoManager = self.undoManager ()
+    self.selectedTab_property.undoManager = self.undoManager ()
+    self.selectedInspector_property.undoManager = self.undoManager ()
+  //--- Install undoers and opposite setter for relationships
+    self.characters_property.undoManager = self.undoManager ()
   //--- register properties for handling signature
     self.characters_property.setSignatureObserver (observer:self)
     self.comments_property.setSignatureObserver (observer:self)
@@ -1224,7 +1224,7 @@ class ToManyRelationshipReadWrite_FontRoot_characters : ReadOnlyArrayOf_FontChar
 
   //····················································································································
 
-  weak var owner : FontRoot?
+  weak var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -1243,6 +1243,12 @@ class ToManyRelationshipReadWrite_FontRoot_characters : ReadOnlyArrayOf_FontChar
 final class ToManyRelationship_FontRoot_characters :
        ToManyRelationshipReadWrite_FontRoot_characters,
        EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : FontCharacter) -> Void > = nil
+
+  //····················································································································
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
@@ -1287,7 +1293,7 @@ final class ToManyRelationship_FontRoot_characters :
         let oldSet = mSet
         mSet = Set (mValue)
       //--- Register old value in undo manager
-        owner?.undoManager()?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
@@ -1306,6 +1312,8 @@ final class ToManyRelationship_FontRoot_characters :
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : FontCharacter in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
+         //  managedObject._property.setProp (owner)
         }
         addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
         addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
