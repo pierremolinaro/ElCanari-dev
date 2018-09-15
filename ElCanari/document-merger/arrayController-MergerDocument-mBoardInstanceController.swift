@@ -18,17 +18,13 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   let sortedArray_property = TransientArrayOf_MergerBoardInstance ()
 
-  let selectedArray_property = TransientArrayOf_MergerBoardInstance ()
-
-  private let mSelectedSet : SelectedSet_MergerDocument_mBoardInstanceController
-
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [EBTableView] ()
-  private weak var mEBView : EBView? = nil
+  private var mEBView : EBView? = nil
   private var mManagedObjectContext : EBManagedObjectContext? = nil
 
-//--- Oberser for object display
+//--- Observer for object display
   private var mObjectDisplayObserver = EBOutletEvent ()
 
   //····················································································································
@@ -55,19 +51,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   private let allowsEmptySelection = true
   private let allowsMultipleSelection = true
-
-  var selectedGraphicObjectSet : Set <EBGraphicManagedObject> {
-    return self.selectedSet
-  }
-
-  //····················································································································
-  //    Undo manager
-  //····················································································································
-
-  var undoManager : EBUndoManager? {
-    return self.mModel?.undoManager
-  }
-
+  
   //····················································································································
   //    init
   //····················································································································
@@ -84,6 +68,63 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     setSelectedArrayComputeFunction ()
   //--- Set sorted array compute function
     setFilterAndSortFunction ()
+  }
+
+  //····················································································································
+  //    Undo manager
+  //····················································································································
+
+  var undoManager : EBUndoManager? {
+    return self.mModel?.undoManager
+  }
+
+  //····················································································································
+
+  var objectCount : Int {
+    let objects = mModel?.propval ?? []
+    return objects.count
+  }
+
+  //····················································································································
+  //   SELECTION
+  //····················································································································
+
+  let selectedArray_property = TransientArrayOf_MergerBoardInstance ()
+
+  //····················································································································
+
+  private let mSelectedSet : SelectedSet_MergerDocument_mBoardInstanceController
+
+  //····················································································································
+
+  var selectedSet : Set <MergerBoardInstance> { return mSelectedSet.mSet }
+
+  //····················································································································
+
+  var selectedIndexesSet : Set <Int> {
+    var result = Set <Int> ()
+    var idx = 0
+    for object in self.mModel?.propval ?? [] {
+      if mSelectedSet.mSet.contains (object) {
+        result.insert (idx)
+      }
+      idx += 1
+    }
+    return result
+  }
+
+  //····················································································································
+
+  func setSelection (_ inObjects : [MergerBoardInstance]) {
+    mSelectedSet.mSet = Set (inObjects)
+  }
+
+  //····················································································································
+  //  EBView interface
+  //····················································································································
+
+  var selectedGraphicObjectSet : Set <EBGraphicManagedObject> {
+    return self.selectedSet
   }
 
   //····················································································································
@@ -112,32 +153,6 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       }
     }
     mEBView?.updateObjectDisplay (displayArray)
-  }
-
-  //····················································································································
-  //   SET SELECTION
-  //····················································································································
-
-  func setSelection (_ inObjects : [MergerBoardInstance]) {
-    mSelectedSet.mSet = Set (inObjects)
-  }
-
-  //····················································································································
-  //   GET SELECTED OBJECT SET
-  //····················································································································
-
-  var selectedSet : Set <MergerBoardInstance> { return mSelectedSet.mSet }
-
-  var selectedIndexesSet : Set <Int> {
-    var result = Set <Int> ()
-    var idx = 0
-    for object in self.mModel?.propval ?? [] {
-      if mSelectedSet.mSet.contains (object) {
-        result.insert (idx)
-      }
-      idx += 1
-    }
-    return result
   }
 
   //····················································································································
@@ -490,13 +505,6 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   }
 
   //····················································································································
-
-  var objectCount : Int {
-    let objects = mModel?.propval ?? []
-    return objects.count
-  }
-
-  //····················································································································
   //  SELECTION OPERATIONS
   //····················································································································
 
@@ -682,10 +690,9 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   func setSelection (objectWithIndex inIndex : Int) {
     let objects = mModel?.propval ?? []
     let newSelectedObject = objects [inIndex]
-//    var newSelectedSet = self.mSelectedSet.mSet
-//    newSelectedSet.insert (newSelectedObject)
     self.mSelectedSet.mSet = Set ([newSelectedObject])
   }
+
 
   //····················································································································
 

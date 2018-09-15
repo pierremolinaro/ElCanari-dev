@@ -15,6 +15,7 @@ protocol EBViewControllerProtocol : class {
   var undoManager : EBUndoManager? { get }
 
 //--- Selection operations
+
   var selectedGraphicObjectSet : Set <EBGraphicManagedObject> { get }
 
   var selectedIndexesSet : Set <Int> { get }
@@ -83,17 +84,6 @@ protocol EBViewControllerProtocol : class {
   func set (controller inController : EBViewControllerProtocol?) {
     mViewController = inController
   }
-
-  //····················································································································
-  //    Object Display
-  //····················································································································
-
-//  private var mObjectDisplayArray = [EBShape] ()
-
-//  func requestObjectDisplay (_ inNewObjectDisplayArray : [EBShape], _ inInvalidRect : NSRect) {
-//    self.mObjectDisplayArray = inNewObjectDisplayArray
-//    self.setNeedsDisplay (inInvalidRect)
-//  }
 
   //····················································································································
   //    Selection Rectangle Layer
@@ -300,7 +290,6 @@ protocol EBViewControllerProtocol : class {
     if let viewController = self.mViewController {
     //--- Find index of object under mouse down
       let possibleObjectIndex : Int? = self.indexOfFrontmostObject (at: mouseDownLocation)
-  //    let objects = mModel?.propval ?? []
       let controlKey = inEvent.modifierFlags.contains (.control)
       if !controlKey {
         let shiftKey = inEvent.modifierFlags.contains (.shift)
@@ -308,28 +297,16 @@ protocol EBViewControllerProtocol : class {
         if shiftKey { // Shift key extends selection
           if let objectIndex = possibleObjectIndex {
             viewController.addToSelection (objectsWithIndex: [objectIndex])
-  //          var newSet = mSelectedSet.mSet
-  //          newSet.insert (objects [objectIndex])
-  //          mSelectedSet.mSet = newSet
           }
         }else if commandKey { // Command key toggles selection of object under click
           if let objectIndex = possibleObjectIndex {
-  //          let object = objects [objectIndex]
             if viewController.selectedIndexesSet.contains (objectIndex) {
               viewController.removeFromSelection (objectWithIndex: objectIndex)
-  //            var newSet = mSelectedSet.mSet
-  //            newSet.remove (object)
-  //            mSelectedSet.mSet = newSet
             }else{
               viewController.addToSelection (objectsWithIndex: [objectIndex])
-  //            var newSet = mSelectedSet.mSet
-  //            newSet.insert (object)
-  //            mSelectedSet.mSet = newSet
             }
           }
         }else if let objectIndex = possibleObjectIndex {
-          // NSLog ("Clicked objectindex \(objectIndex)")
-        //  let clickedObject = objects [objectIndex]
           if !viewController.selectedIndexesSet.contains (objectIndex) {
             viewController.setSelection (objectWithIndex: objectIndex)
           }

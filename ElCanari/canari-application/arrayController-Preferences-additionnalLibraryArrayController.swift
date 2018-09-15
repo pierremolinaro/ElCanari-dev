@@ -18,14 +18,10 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 
   let sortedArray_property = TransientArrayOf_CanariLibraryEntry ()
 
-  let selectedArray_property = TransientArrayOf_CanariLibraryEntry ()
-
-  private let mSelectedSet : SelectedSet_Preferences_additionnalLibraryArrayController
-
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [EBTableView] ()
-  private weak var mEBView : EBView? = nil
+  private var mEBView : EBView? = nil
   private var mManagedObjectContext : EBManagedObjectContext? = nil
 
   //····················································································································
@@ -71,18 +67,53 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   }
 
   //····················································································································
-  //   SET SELECTION
+  //    Undo manager
+  //····················································································································
+
+  var undoManager : EBUndoManager? {
+    return self.mModel?.undoManager
+  }
+
+  //····················································································································
+
+  var objectCount : Int {
+    let objects = mModel?.propval ?? []
+    return objects.count
+  }
+
+  //····················································································································
+  //   SELECTION
+  //····················································································································
+
+  let selectedArray_property = TransientArrayOf_CanariLibraryEntry ()
+
+  //····················································································································
+
+  private let mSelectedSet : SelectedSet_Preferences_additionnalLibraryArrayController
+
+  //····················································································································
+
+  var selectedSet : Set <CanariLibraryEntry> { return mSelectedSet.mSet }
+
+  //····················································································································
+
+  var selectedIndexesSet : Set <Int> {
+    var result = Set <Int> ()
+    var idx = 0
+    for object in self.mModel?.propval ?? [] {
+      if mSelectedSet.mSet.contains (object) {
+        result.insert (idx)
+      }
+      idx += 1
+    }
+    return result
+  }
+
   //····················································································································
 
   func setSelection (_ inObjects : [CanariLibraryEntry]) {
     mSelectedSet.mSet = Set (inObjects)
   }
-
-  //····················································································································
-  //   GET SELECTED OBJECT SET
-  //····················································································································
-
-  var selectedSet : Set <CanariLibraryEntry> { return mSelectedSet.mSet }
 
   //····················································································································
 

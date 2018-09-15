@@ -18,14 +18,10 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
 
   let sortedArray_property = TransientArrayOf_FontCharacter ()
 
-  let selectedArray_property = TransientArrayOf_FontCharacter ()
-
-  private let mSelectedSet : SelectedSet_PMFontDocument_mSelectedCharacterController
-
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [EBTableView] ()
-  private weak var mEBView : EBView? = nil
+  private var mEBView : EBView? = nil
   private var mManagedObjectContext : EBManagedObjectContext? = nil
 
   //····················································································································
@@ -71,18 +67,53 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
   }
 
   //····················································································································
-  //   SET SELECTION
+  //    Undo manager
+  //····················································································································
+
+  var undoManager : EBUndoManager? {
+    return self.mModel?.undoManager
+  }
+
+  //····················································································································
+
+  var objectCount : Int {
+    let objects = mModel?.propval ?? []
+    return objects.count
+  }
+
+  //····················································································································
+  //   SELECTION
+  //····················································································································
+
+  let selectedArray_property = TransientArrayOf_FontCharacter ()
+
+  //····················································································································
+
+  private let mSelectedSet : SelectedSet_PMFontDocument_mSelectedCharacterController
+
+  //····················································································································
+
+  var selectedSet : Set <FontCharacter> { return mSelectedSet.mSet }
+
+  //····················································································································
+
+  var selectedIndexesSet : Set <Int> {
+    var result = Set <Int> ()
+    var idx = 0
+    for object in self.mModel?.propval ?? [] {
+      if mSelectedSet.mSet.contains (object) {
+        result.insert (idx)
+      }
+      idx += 1
+    }
+    return result
+  }
+
   //····················································································································
 
   func setSelection (_ inObjects : [FontCharacter]) {
     mSelectedSet.mSet = Set (inObjects)
   }
-
-  //····················································································································
-  //   GET SELECTED OBJECT SET
-  //····················································································································
-
-  var selectedSet : Set <FontCharacter> { return mSelectedSet.mSet }
 
   //····················································································································
 
