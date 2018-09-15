@@ -860,7 +860,7 @@ class MergerRoot : EBManagedObject,
     self.artwork_property.owner = self
     self.boardModels_property.undoManager = self.undoManager ()
     self.boardInstances_property.undoManager = self.undoManager ()
-    self.boardInstances_property.setOppositeRelationship = { (_ inManagedObject : MergerBoardInstance?) in
+    self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
       inManagedObject?.myRoot_property.setProp (self)
     }
   //--- register properties for handling signature

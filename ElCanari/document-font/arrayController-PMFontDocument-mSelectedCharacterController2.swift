@@ -14,7 +14,7 @@ private let DEBUG_EVENT = false
 
 final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObject, EBTableViewDelegate, EBTableViewDataSource {
 
-  private var mModel : ToManyRelationshipReadWrite_FontRoot_mCharacterSelection2? = nil
+  private var mModel : ToManyRelationshipReadWrite_FontCharacter? = nil
 
   let sortedArray_property = TransientArrayOf_FontCharacter ()
 
@@ -135,7 +135,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObj
   //    bind_modelAndView
   //····················································································································
 
-  func bind_modelAndView (model:ToManyRelationshipReadWrite_FontRoot_mCharacterSelection2,
+  func bind_modelAndView (model:ToManyRelationshipReadWrite_FontCharacter,
                           tableViewArray:[EBTableView],
                           ebView: EBView?,
                           managedObjectContext : EBManagedObjectContext?,
@@ -332,7 +332,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObj
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let owner = model.owner, let managedObjectContext = owner.managedObjectContext () {
+    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -357,7 +357,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController2 : EBObj
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let owner = model.owner, let managedObjectContext = owner.managedObjectContext () {
+    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
       switch model.prop {
       case .empty, .multiple :
         break

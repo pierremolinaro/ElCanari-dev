@@ -2686,7 +2686,7 @@ class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property.undoManager = self.undoManager ()
   //--- Install undoers and opposite setter for relationships
     self.myInstances_property.undoManager = self.undoManager ()
-    self.myInstances_property.setOppositeRelationship = { (_ inManagedObject : MergerBoardInstance?) in
+    self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
       inManagedObject?.myModel_property.setProp (self)
     }
     self.frontLegendLines_property.undoManager = self.undoManager ()

@@ -4,7 +4,7 @@
 
 import Cocoa
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(MergerDocument) class MergerDocument : EBManagedDocument {
 
@@ -201,7 +201,6 @@ import Cocoa
     return self.documentFilePath_property.prop
   }
 
-
   //····················································································································
   //    Transient arraies
   //····················································································································
@@ -220,6 +219,28 @@ import Cocoa
 
   var mBoardModelSelection = SelectionController_MergerDocument_mBoardModelSelection ()
   var mBoardInstanceSelection = SelectionController_MergerDocument_mBoardInstanceSelection ()
+
+  //····················································································································
+  //    Multiple bindings controllers
+  //····················································································································
+
+  var mController_showPrefsForSettingMergerDisplayButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mDisplaySettingView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mNoModelMessage_hidden : MultipleBindingController_hidden? = nil
+  var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mAutomaticBoardSizeView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mManualBoardSizeView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mEmptyBoardMessage_hidden : MultipleBindingController_hidden? = nil
+  var mController_mOverlapSwitch_enabled : MultipleBindingController_enabled? = nil
+  var mController_mMoveRightButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mMoveLeftButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mMoveUpButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mMoveDownButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden? = nil
+  var mController_mDangerView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mLogTextView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -2681,30 +2702,8 @@ import Cocoa
   }
 
   //····················································································································
-  //    Multiple bindings controllers
-  //····················································································································
-
-  private var mController_showPrefsForSettingMergerDisplayButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mDisplaySettingView_hidden : MultipleBindingController_hidden? = nil
-  private var mController_mNoModelMessage_hidden : MultipleBindingController_hidden? = nil
-  private var mController_removeBoardModelButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_updateBoardModelButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mAutomaticBoardSizeView_hidden : MultipleBindingController_hidden? = nil
-  private var mController_mManualBoardSizeView_hidden : MultipleBindingController_hidden? = nil
-  private var mController_mEmptyBoardMessage_hidden : MultipleBindingController_hidden? = nil
-  private var mController_mOverlapSwitch_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mMoveRightButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mMoveLeftButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mMoveUpButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mMoveDownButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mNoArtworkMessage_hidden : MultipleBindingController_hidden? = nil
-  private var mController_mDangerView_hidden : MultipleBindingController_hidden? = nil
-  private var mController_mGenerateProductFilesActionButton_enabled : MultipleBindingController_enabled? = nil
-  private var mController_mLogTextView_hidden : MultipleBindingController_hidden? = nil
-
-  //····················································································································
 
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

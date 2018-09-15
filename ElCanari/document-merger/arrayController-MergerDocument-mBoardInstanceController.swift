@@ -4,7 +4,7 @@
 
 import Cocoa
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private let DEBUG_EVENT = false
 
@@ -25,11 +25,12 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [EBTableView] ()
-  private var mEBView : EBView? = nil
+  private weak var mEBView : EBView? = nil
   private var mManagedObjectContext : EBManagedObjectContext? = nil
 
 //--- Oberser for object display
   private var mObjectDisplayObserver = EBOutletEvent ()
+
   //····················································································································
   //    Sort Array
   //····················································································································
@@ -157,7 +158,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     mEBView = ebView
     self.mEBView?.set (controller: self)
     model.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
-    self.mObjectDisplayObserver.eventCallBack = { self.updateObjectDisplay () }
+    self.mObjectDisplayObserver.eventCallBack = { [weak self] in self?.updateObjectDisplay () }
   //--- Bind table views
     mTableViewArray = tableViewArray
     for tableView in tableViewArray {
@@ -173,7 +174,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    mModel?.removeEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
+    self.mModel?.removeEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
     mModel?.removeEBObserver (self.sortedArray_property)
     self.sortedArray_property.removeEBObserver (mSelectedSet)
     mSelectedSet.removeEBObserver (self.selectedArray_property)

@@ -74,7 +74,7 @@
 		CF5599511FDF364400ED5EE6 /* entity-MergerRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF55994E1FDF364400ED5EE6 /* entity-MergerRoot.swift */; };
 		CF5599521FDF364400ED5EE6 /* MergerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF55994F1FDF364400ED5EE6 /* MergerDocument.swift */; };
 		CF5599531FDF364400ED5EE6 /* MergerDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5599501FDF364400ED5EE6 /* MergerDocument.xib */; };
-		CF563869214BE01500792552 /* arrayController-FontRoot-mCharacterSelection2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF563868214BE01500792552 /* arrayController-FontRoot-mCharacterSelection2.swift */; };
+		CF563869214BE01500792552 /* arrayController-FontRoot-selectedCharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF563868214BE01500792552 /* arrayController-FontRoot-selectedCharacterController.swift */; };
 		CF56F3241C0372AD008D8A3C /* view-CanariCharacterGerberCodeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF56F3231C0372AD008D8A3C /* view-CanariCharacterGerberCodeTableView.swift */; };
 		CF58A2D01DD77E7E00146883 /* action-PMFontDocument-resetVersionAndSignatureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF58A2CF1DD77E7E00146883 /* action-PMFontDocument-resetVersionAndSignatureAction.swift */; };
 		CF58A3B71DD7887000146883 /* action-PMArtworkDocument-resetVersionAndSignatureAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF58A3B61DD7887000146883 /* action-PMArtworkDocument-resetVersionAndSignatureAction.swift */; };
@@ -413,7 +413,7 @@
 		CF55994E1FDF364400ED5EE6 /* entity-MergerRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-MergerRoot.swift"; sourceTree = "<group>"; };
 		CF55994F1FDF364400ED5EE6 /* MergerDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergerDocument.swift; sourceTree = "<group>"; };
 		CF5599501FDF364400ED5EE6 /* MergerDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MergerDocument.xib; sourceTree = "<group>"; };
-		CF563868214BE01500792552 /* arrayController-FontRoot-mCharacterSelection2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-FontRoot-mCharacterSelection2.swift"; sourceTree = "<group>"; };
+		CF563868214BE01500792552 /* arrayController-FontRoot-selectedCharacterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-FontRoot-selectedCharacterController.swift"; sourceTree = "<group>"; };
 		CF56F3231C0372AD008D8A3C /* view-CanariCharacterGerberCodeTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-CanariCharacterGerberCodeTableView.swift"; sourceTree = "<group>"; };
 		CF58A2CF1DD77E7E00146883 /* action-PMFontDocument-resetVersionAndSignatureAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PMFontDocument-resetVersionAndSignatureAction.swift"; sourceTree = "<group>"; };
 		CF58A3B61DD7887000146883 /* action-PMArtworkDocument-resetVersionAndSignatureAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PMArtworkDocument-resetVersionAndSignatureAction.swift"; sourceTree = "<group>"; };
@@ -1088,7 +1088,7 @@
 		CFDA57991BFA521A00EEF3CB /* document-font */ = {
 			isa = PBXGroup;
 			children = (
-				CF563868214BE01500792552 /* arrayController-FontRoot-mCharacterSelection2.swift */,
+				CF563868214BE01500792552 /* arrayController-FontRoot-selectedCharacterController.swift */,
 				CFC312BB214BD203002F2CE3 /* arrayController-PMFontDocument-mSelectedCharacterController2.swift */,
 				CFB8BADD214BBAB6006A1841 /* selectionController-FontRoot-mCharacterSelection.swift */,
 				CF90B77521427D4100E725B0 /* action-PMFontDocument-addCharacterAction.swift */,
@@ -1420,7 +1420,7 @@
 				CFEF3D2D20FA002700DA6106 /* CanariCancelButtonForPanel.swift in Sources */,
 				CF619DFF20ED0DB40024F387 /* transient-BoardModel-instanceCount.swift in Sources */,
 				CFDEC77720E0CD170065FBCE /* transient-BoardModel-viaShapes.swift in Sources */,
-				CF563869214BE01500792552 /* arrayController-FontRoot-mCharacterSelection2.swift in Sources */,
+				CF563869214BE01500792552 /* arrayController-FontRoot-selectedCharacterController.swift in Sources */,
 				CFDB681A20E2AC66006D4E90 /* transient-BoardModel-backComponentNameSegments.swift in Sources */,
 				CF58A3B71DD7887000146883 /* action-PMArtworkDocument-resetVersionAndSignatureAction.swift in Sources */,
 				CFD7E80520EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift in Sources */,

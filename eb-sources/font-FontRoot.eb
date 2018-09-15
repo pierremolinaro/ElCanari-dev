@@ -23,8 +23,9 @@ entity FontRoot {
 
   transient String currentCharacterCodePointString dependsFrom prefs.currentCharacterCodePoint, self.characters.all.codePoint ;
 
-  selectionController mCharacterSelection : self.characters ;
-  arrayController mCharacterSelection2 {allowsEmptySelection:yes, allowsMultipleSelection:no} self.characters ;
+#  selectionController mCharacterSelection : self.characters ;
+
+  arrayController selectedCharacterController {allowsEmptySelection:yes, allowsMultipleSelection:no} self.characters ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

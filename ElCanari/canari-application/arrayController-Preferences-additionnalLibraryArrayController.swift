@@ -4,7 +4,7 @@
 
 import Cocoa
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private let DEBUG_EVENT = false
 
@@ -25,7 +25,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [EBTableView] ()
-  private var mEBView : EBView? = nil
+  private weak var mEBView : EBView? = nil
   private var mManagedObjectContext : EBManagedObjectContext? = nil
 
   //····················································································································

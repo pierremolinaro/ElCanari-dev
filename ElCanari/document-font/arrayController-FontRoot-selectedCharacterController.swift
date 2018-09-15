@@ -4,15 +4,15 @@
 
 import Cocoa
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private let DEBUG_EVENT = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ArrayController_FontRoot_mCharacterSelection2
+//    ArrayController_FontRoot_selectedCharacterController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_FontRoot_mCharacterSelection2 : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
 
   private var mModel : ToManyRelationshipReadWrite_FontCharacter? = nil
 
@@ -20,12 +20,12 @@ final class ArrayController_FontRoot_mCharacterSelection2 : EBObject, EBTableVie
 
   let selectedArray_property = TransientArrayOf_FontCharacter ()
 
-  private let mSelectedSet : SelectedSet_FontRoot_mCharacterSelection2
+  private let mSelectedSet : SelectedSet_FontRoot_selectedCharacterController
 
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [EBTableView] ()
-  private var mEBView : EBView? = nil
+  private weak var mEBView : EBView? = nil
   private var mManagedObjectContext : EBManagedObjectContext? = nil
 
   //····················································································································
@@ -58,7 +58,7 @@ final class ArrayController_FontRoot_mCharacterSelection2 : EBObject, EBTableVie
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_FontRoot_mCharacterSelection2 (
+    mSelectedSet = SelectedSet_FontRoot_selectedCharacterController (
       allowsEmptySelection:allowsEmptySelection,
       allowsMultipleSelection:allowsMultipleSelection,
       sortedArray:self.sortedArray_property
@@ -434,10 +434,10 @@ final class ArrayController_FontRoot_mCharacterSelection2 : EBObject, EBTableVie
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_FontRoot_mCharacterSelection2
+//    SelectedSet_FontRoot_selectedCharacterController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectedSet_FontRoot_mCharacterSelection2 : EBAbstractProperty {
+final class SelectedSet_FontRoot_selectedCharacterController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
   private let mSortedArray : TransientArrayOf_FontCharacter
