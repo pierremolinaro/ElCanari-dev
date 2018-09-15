@@ -664,11 +664,11 @@ import Cocoa
                           errorMessage: "the 'resetVersionAndSignatureButton' outlet is nil") ;
     }
   //--------------------------- Array controllers
+    self.mDataController.setManagedObjectContext (self.managedObjectContext ())
     self.mDataController.bind_modelAndView (
       model: self.rootObject.fileGenerationParameterArray_property,
       tableViewArray: [mDataTableView!],
-      ebView: nil,
-      managedObjectContext: self.managedObjectContext (),
+      optionalEBView: nil,
       file: #file,
       line: #line
     )

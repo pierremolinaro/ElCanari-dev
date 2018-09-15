@@ -469,11 +469,11 @@ import Cocoa
                           errorMessage: "the 'transparencyTextField' outlet is nil") ;
     }
   //--------------------------- Array controllers
+    self.mSelectedCharacterController.setManagedObjectContext (self.managedObjectContext ())
     self.mSelectedCharacterController.bind_modelAndView (
       model: self.rootObject.characters_property,
       tableViewArray: [],
-      ebView: nil,
-      managedObjectContext: self.managedObjectContext (),
+      optionalEBView: nil,
       file: #file,
       line: #line
     )

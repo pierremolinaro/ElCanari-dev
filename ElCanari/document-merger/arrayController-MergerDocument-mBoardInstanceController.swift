@@ -21,8 +21,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [EBTableView] ()
-  private var mEBView : EBView? = nil
-  private var mManagedObjectContext : EBManagedObjectContext? = nil
+  private var mEBViews = [EBView] ()
 
 //--- Observer for object display
   private var mObjectDisplayObserver = EBOutletEvent ()
@@ -70,6 +69,16 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     setFilterAndSortFunction ()
   }
 
+  //····················································································································
+  //    Managed object context
+  //····················································································································
+
+  private var mManagedObjectContext : EBManagedObjectContext? = nil
+
+  func setManagedObjectContext (_ inManagedObjectContext : EBManagedObjectContext?) {
+    self.mManagedObjectContext = inManagedObjectContext
+  }
+  
   //····················································································································
   //    Undo manager
   //····················································································································
@@ -138,7 +147,9 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         selectionDisplayArray.append (EBShape ())
       }
     }
-    mEBView?.updateSelectionShape (selectionDisplayArray)
+    for view in self.mEBViews {
+      view.updateSelectionShape (selectionDisplayArray)
+    }
   }
 
   //····················································································································
@@ -152,7 +163,9 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         displayArray.append (EBShape ())
       }
     }
-    mEBView?.updateObjectDisplay (displayArray)
+    for view in self.mEBViews {
+      view.updateObjectDisplay (displayArray)
+    }
   }
 
   //····················································································································
@@ -208,22 +221,22 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   func bind_modelAndView (model:ToManyRelationshipReadWrite_MergerBoardInstance,
                           tableViewArray:[EBTableView],
-                          ebView: EBView?,
-                          managedObjectContext : EBManagedObjectContext?,
+                          optionalEBView: EBView?,
                           file:String, line:Int) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
   //--- Add observers
     self.mModel = model
-    self.mManagedObjectContext = managedObjectContext
     model.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
     mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
   //--- Bind ebView
-    mEBView = ebView
-    self.mEBView?.set (controller: self)
+    if let ebView = optionalEBView {
+      self.mEBViews.append (ebView)
+    }
+    optionalEBView?.set (controller: self)
     model.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
     self.mObjectDisplayObserver.eventCallBack = { [weak self] in self?.updateObjectDisplay () }
   //--- Bind table views

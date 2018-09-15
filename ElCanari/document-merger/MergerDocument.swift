@@ -1843,19 +1843,19 @@ import Cocoa
                           errorMessage: "the 'updateBoardModelButton' outlet is nil") ;
     }
   //--------------------------- Array controllers
+    self.mBoardModelController.setManagedObjectContext (self.managedObjectContext ())
     self.mBoardModelController.bind_modelAndView (
       model: self.rootObject.boardModels_property,
       tableViewArray: [mBoardModelTableView!],
-      ebView: nil,
-      managedObjectContext: self.managedObjectContext (),
+      optionalEBView: nil,
       file: #file,
       line: #line
     )
+    self.mBoardInstanceController.setManagedObjectContext (self.managedObjectContext ())
     self.mBoardInstanceController.bind_modelAndView (
       model: self.rootObject.boardInstances_property,
       tableViewArray: [],
-      ebView: mComposedBoardView,
-      managedObjectContext: self.managedObjectContext (),
+      optionalEBView: mComposedBoardView,
       file: #file,
       line: #line
     )

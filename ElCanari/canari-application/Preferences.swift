@@ -4800,8 +4800,7 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
     self.additionnalLibraryArrayController.bind_modelAndView (
       model: self.additionnalLibraryArray_property,
       tableViewArray: [mAdditionnalLibraryArrayTableView!],
-      ebView: nil,
-      managedObjectContext: nil,
+      optionalEBView: nil,
       file: #file,
       line: #line
     )
