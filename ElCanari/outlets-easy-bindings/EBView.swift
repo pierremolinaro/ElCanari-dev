@@ -12,28 +12,36 @@ protocol EBViewControllerProtocol : class {
 
   var objectCount : Int { get }
 
-  func mouseDown (with inEvent: NSEvent)
-  func mouseDragged (with inEvent : NSEvent)
-  func mouseUp (with inEvent : NSEvent)
+  var undoManager : EBUndoManager? { get }
 
-  func keyDown (with inEvent: NSEvent)
+//--- Selection operations
+  var selectedGraphicObjectSet : Set <EBGraphicManagedObject> { get }
+
+  var selectedIndexesSet : Set <Int> { get }
+
+  func deleteSelectionAndRemoveDeletedObjectsFromManagedObjectContext ()
 
   func selectAllObjects ()
 
-  func canBringForward () -> Bool
+  var canBringForward : Bool { get }
   func bringForward ()
 
-  func canBringToFront () -> Bool
+  var canBringToFront : Bool { get }
   func bringToFront ()
 
-  func canSendBackward () -> Bool
+  var canSendBackward : Bool { get }
   func sendBackward ()
 
-  func canSendToBack () -> Bool
+  var canSendToBack : Bool { get }
   func sendToBack ()
 
-  var      arrowKeyMagnitude : CGFloat { get set }
-  var shiftArrowKeyMagnitude : CGFloat { get set }
+  func setSelection (objectWithIndex inIndex : Int)
+
+  func addToSelection (objectsWithIndex inIndexes : [Int])
+
+  func removeFromSelection (objectWithIndex inIndex : Int)
+
+  func clearSelection ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -80,26 +88,12 @@ protocol EBViewControllerProtocol : class {
   //    Object Display
   //····················································································································
 
-  private var mObjectDisplayArray = [EBShape] ()
+//  private var mObjectDisplayArray = [EBShape] ()
 
-  func requestObjectDisplay (_ inNewObjectDisplayArray : [EBShape], _ inInvalidRect : NSRect) {
-    self.mObjectDisplayArray = inNewObjectDisplayArray
-    self.setNeedsDisplay (inInvalidRect)
-  }
-
-  //····················································································································
-  //    Selection Layer
-  //····················································································································
-
-  private var mSelectionShape = EBShape ()
-
-  var objectSelectionLayer = EBShape () {
-    didSet {
-      self.setNeedsDisplay (mSelectionShape.boundingBox)
-      mSelectionShape = self.objectSelectionLayer
-      self.setNeedsDisplay (mSelectionShape.boundingBox)
-    }
-  }
+//  func requestObjectDisplay (_ inNewObjectDisplayArray : [EBShape], _ inInvalidRect : NSRect) {
+//    self.mObjectDisplayArray = inNewObjectDisplayArray
+//    self.setNeedsDisplay (inInvalidRect)
+//  }
 
   //····················································································································
   //    Selection Rectangle Layer
@@ -155,35 +149,9 @@ protocol EBViewControllerProtocol : class {
     }
     self.mOverObjectsDisplay.draw (inDirtyRect)
     self.selectionRectangleLayer?.draw (inDirtyRect)
-    self.mSelectionShape.draw (inDirtyRect)
-  }
-
-  //····················································································································
-  // Mouse Events
-  //····················································································································
-
-  override func mouseDown (with inEvent: NSEvent) {
-    mViewController?.mouseDown (with: inEvent)
-  }
-
-  //····················································································································
-
-  override func mouseDragged (with inEvent : NSEvent) {
-    mViewController?.mouseDragged (with: inEvent)
-  }
-
-  //····················································································································
-
-  override func mouseUp (with inEvent : NSEvent) {
-    mViewController?.mouseUp (with: inEvent)
-  }
-
-  //····················································································································
-  // key Events
-  //····················································································································
-
-  override func keyDown (with inEvent: NSEvent) {
-    mViewController?.keyDown (with:inEvent)
+    for shape in self.mSelectionShapes {
+      shape.draw (inDirtyRect)
+    }
   }
 
   //····················································································································
@@ -196,13 +164,13 @@ protocol EBViewControllerProtocol : class {
     if action == #selector (EBView.selectAll(_:)) {
       validate = (mViewController?.objectCount ?? 0) > 0
     }else if action == #selector (EBView.bringToFront(_:)) {
-      validate = mViewController?.canBringToFront () ?? false
+      validate = mViewController?.canBringToFront ?? false
     }else if action == #selector (EBView.bringForward(_:)) {
-      validate = mViewController?.canBringForward () ?? false
+      validate = mViewController?.canBringForward ?? false
     }else if action == #selector (EBView.sendToBack(_:)) {
-      validate = mViewController?.canSendToBack () ?? false
+      validate = mViewController?.canSendToBack ?? false
     }else if action == #selector (EBView.sendBackward(_:)) {
-      validate = mViewController?.canSendBackward () ?? false
+      validate = mViewController?.canSendBackward ?? false
     }else{
       validate = super.validateMenuItem (inMenuItem)
     }
@@ -211,9 +179,284 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
+  //    Arrow Key Magnitude
+  //····················································································································
+
+
+  private var arrowKeyMagnitude : CGFloat = 10.0
+  private var mArrowKeyMagnitudeController : Controller_EBView_arrowKeyMagnitude?
+
+  func bind_arrowKeyMagnitude (_ property:EBReadOnlyProperty_CGFloat, file:String, line:Int) {
+    mArrowKeyMagnitudeController = Controller_EBView_arrowKeyMagnitude (property, outlet:self)
+  }
+
+  func unbind_arrowKeyMagnitude () {
+    mArrowKeyMagnitudeController?.unregister ()
+    mArrowKeyMagnitudeController = nil
+  }
+
+  //····················································································································
+
+  func set (arrowKeyMagnitude : CGFloat) {
+    self.arrowKeyMagnitude = arrowKeyMagnitude
+  }
+
+  //····················································································································
+  //    Shift Arrow Key Magnitude
+  //····················································································································
+
+  private var shiftArrowKeyMagnitude : CGFloat = 10.0
+  private var mShiftArrowKeyMagnitudeController : Controller_EBView_shiftArrowKeyMagnitude?
+
+  func bind_shiftArrowKeyMagnitude (_ property:EBReadOnlyProperty_CGFloat, file:String, line:Int) {
+    mShiftArrowKeyMagnitudeController = Controller_EBView_shiftArrowKeyMagnitude (property, outlet:self)
+  }
+
+  func unbind_shiftArrowKeyMagnitude () {
+    mShiftArrowKeyMagnitudeController?.unregister ()
+    mShiftArrowKeyMagnitudeController = nil
+  }
+
+  //····················································································································
+
+  func set (shiftArrowKeyMagnitude : CGFloat) {
+    self.shiftArrowKeyMagnitude = shiftArrowKeyMagnitude
+  }
+
+  //····················································································································
+  // Object display array
+  //····················································································································
+
+  private var mObjectDisplayArray = [EBShape] ()
+
+  //····················································································································
+
+  func updateObjectDisplay (_ inObjectDisplayArray : [EBShape]) {
+  //--- Find invalid rectangle
+    var invalidRect = NSZeroRect
+    let minCount = min (self.mObjectDisplayArray.count, inObjectDisplayArray.count)
+    var idx = 0
+    while idx < minCount {
+      if inObjectDisplayArray [idx] != self.mObjectDisplayArray [idx] {
+        invalidRect = invalidRect.union (inObjectDisplayArray [idx].boundingBox)
+        invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
+      }
+      idx += 1
+    }
+    while idx < self.mObjectDisplayArray.count {
+      invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
+      idx += 1
+    }
+    while idx < inObjectDisplayArray.count {
+      invalidRect = invalidRect.union (inObjectDisplayArray [idx].boundingBox)
+      idx += 1
+    }
+  //--- Store new object array and tell view to display
+    self.mObjectDisplayArray = inObjectDisplayArray
+    self.setNeedsDisplay (invalidRect)
+  }
+
+  //····················································································································
+  // Mouse Events
+  //····················································································································
+
+   private func indexOfFrontmostObject (at inLocation : NSPoint) -> Int? {
+    var possibleObjectIndex : Int? = nil
+    var idx = self.mObjectDisplayArray.count
+    while (idx > 0) && (possibleObjectIndex == nil) {
+      idx -= 1
+      if self.mObjectDisplayArray [idx].contains (point: inLocation) {
+        possibleObjectIndex = idx
+      }
+    }
+    return possibleObjectIndex
+  }
+
+  //····················································································································
+
+  private func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
+    var result = Set <Int> ()
+    var idx = 0
+    for object in self.mObjectDisplayArray {
+      if object.intersects (rect: inRect) {
+        result.insert (idx)
+      }
+      idx += 1
+    }
+    return result
+  }
+
+  //····················································································································
+
+  private var mLastMouseDraggedLocation : NSPoint? = nil
+  private var mSelectionRectangleOrigin : NSPoint? = nil
+  private var mPerformEndUndoGroupingOnMouseUp = false
+
+  //····················································································································
+
+  override func mouseDown (with inEvent: NSEvent) {
+    let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+    mLastMouseDraggedLocation = mouseDownLocation
+    if let viewController = self.mViewController {
+    //--- Find index of object under mouse down
+      let possibleObjectIndex : Int? = self.indexOfFrontmostObject (at: mouseDownLocation)
+  //    let objects = mModel?.propval ?? []
+      let controlKey = inEvent.modifierFlags.contains (.control)
+      if !controlKey {
+        let shiftKey = inEvent.modifierFlags.contains (.shift)
+        let commandKey = inEvent.modifierFlags.contains (.command)
+        if shiftKey { // Shift key extends selection
+          if let objectIndex = possibleObjectIndex {
+            viewController.addToSelection (objectsWithIndex: [objectIndex])
+  //          var newSet = mSelectedSet.mSet
+  //          newSet.insert (objects [objectIndex])
+  //          mSelectedSet.mSet = newSet
+          }
+        }else if commandKey { // Command key toggles selection of object under click
+          if let objectIndex = possibleObjectIndex {
+  //          let object = objects [objectIndex]
+            if viewController.selectedIndexesSet.contains (objectIndex) {
+              viewController.removeFromSelection (objectWithIndex: objectIndex)
+  //            var newSet = mSelectedSet.mSet
+  //            newSet.remove (object)
+  //            mSelectedSet.mSet = newSet
+            }else{
+              viewController.addToSelection (objectsWithIndex: [objectIndex])
+  //            var newSet = mSelectedSet.mSet
+  //            newSet.insert (object)
+  //            mSelectedSet.mSet = newSet
+            }
+          }
+        }else if let objectIndex = possibleObjectIndex {
+          // NSLog ("Clicked objectindex \(objectIndex)")
+        //  let clickedObject = objects [objectIndex]
+          if !viewController.selectedIndexesSet.contains (objectIndex) {
+            viewController.setSelection (objectWithIndex: objectIndex)
+          }
+        }else{ // Click outside an object : clear selection
+          viewController.clearSelection ()
+          mSelectionRectangleOrigin = mLastMouseDraggedLocation
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  override func mouseDragged (with inEvent : NSEvent) {
+    let mouseDraggedLocation = self.convert (inEvent.locationInWindow, from:nil)
+    if let selectionRectangleOrigin = mSelectionRectangleOrigin {
+      // NSLog ("Dragged")
+      let xMin = min (selectionRectangleOrigin.x, mouseDraggedLocation.x)
+      let yMin = min (selectionRectangleOrigin.y, mouseDraggedLocation.y)
+      let xMax = max (selectionRectangleOrigin.x, mouseDraggedLocation.x)
+      let yMax = max (selectionRectangleOrigin.y, mouseDraggedLocation.y)
+
+      let r = NSRect (x:xMin, y:yMin, width:xMax-xMin, height:yMax-yMin)
+      var shapes = [EBShape] ()
+      let bp = NSBezierPath (rect: r)
+      bp.lineWidth = 0.0
+      shapes.append (EBFilledBezierPathShape ([bp], NSColor.lightGray.withAlphaComponent (0.2)))
+      shapes.append (EBStrokeBezierPathShape ([bp], NSColor.lightGray))
+      self.selectionRectangleLayer = EBShape (shapes: shapes)
+      let indexSet = self.indexesOfObjects (intersecting:r)
+      mViewController?.addToSelection(objectsWithIndex: Array (indexSet))
+    }else if let lastMouseDraggedLocation = mLastMouseDraggedLocation {
+      var translation = CGPoint (x: mouseDraggedLocation.x - lastMouseDraggedLocation.x, y:mouseDraggedLocation.y - lastMouseDraggedLocation.y)
+      for object in self.mViewController?.selectedGraphicObjectSet ?? [] {
+        let p = object.acceptedTranslation (by:translation)
+        translation = p
+      }
+      if (translation.x != 0.0) || (translation.y != 0.0) {
+        if !self.mPerformEndUndoGroupingOnMouseUp {
+          self.mPerformEndUndoGroupingOnMouseUp = true
+          mViewController?.undoManager?.beginUndoGrouping ()
+        }
+        for object in mViewController?.selectedGraphicObjectSet ?? [] {
+          object.translate (xBy: translation.x, yBy:translation.y)
+        }
+      }
+      let mouseDraggedLocation = CGPoint (x: translation.x + lastMouseDraggedLocation.x, y: translation.y + lastMouseDraggedLocation.y)
+      mLastMouseDraggedLocation = mouseDraggedLocation
+    }
+  }
+
+  //····················································································································
+
+  override func mouseUp (with inEvent : NSEvent) {
+    if self.mPerformEndUndoGroupingOnMouseUp {
+      self.mPerformEndUndoGroupingOnMouseUp = false
+      mViewController?.undoManager?.endUndoGrouping ()
+    }
+    mLastMouseDraggedLocation = nil
+    mSelectionRectangleOrigin = nil
+    self.selectionRectangleLayer = nil
+  }
+
+
+  //····················································································································
+  // key Events
+  //····················································································································
+
+  override func keyDown (with inEvent: NSEvent) {
+    let amount : CGFloat = inEvent.modifierFlags.contains (.shift)
+      ? self.shiftArrowKeyMagnitude
+      : self.arrowKeyMagnitude
+    ;
+    for character in (inEvent.characters ?? "").unicodeScalars {
+      switch (Int (character.value)) {
+      case NSUpArrowFunctionKey :
+        _ = wantsToTranslateSelection (byX: 0.0, byY:amount)
+      case NSDownArrowFunctionKey :
+        _ = wantsToTranslateSelection (byX: 0.0, byY:-amount)
+      case NSLeftArrowFunctionKey :
+        _ = wantsToTranslateSelection (byX: -amount, byY:0.0)
+      case NSRightArrowFunctionKey :
+        _ = wantsToTranslateSelection (byX: amount, byY:0.0)
+      case 0x7F, NSDeleteFunctionKey :
+        deleteSelection ()
+      default :
+        break
+      }
+    }
+  }
+
+  //····················································································································
+
+  private func deleteSelection () {
+    mViewController?.deleteSelectionAndRemoveDeletedObjectsFromManagedObjectContext ()
+  }
+
+  //····················································································································
+
+  private func wantsToTranslateSelection (byX inDx: CGFloat, byY inDy: CGFloat) -> Bool {
+    var accepted = true
+    for object in mViewController?.selectedGraphicObjectSet ?? [] {
+      if !object.acceptToTranslate (xBy: inDx, yBy:inDy) {
+        accepted = false
+        break
+      }
+    }
+    if accepted {
+      for object in mViewController?.selectedGraphicObjectSet ?? [] {
+        object.translate (xBy: inDx, yBy:inDy)
+      }
+    }
+    return accepted
+  }
+
+  //····················································································································
+  //   Menu actions
+  //····················································································································
 
   override func selectAll (_ : Any?) {
     mViewController?.selectAllObjects ()
+  }
+
+  //····················································································································
+
+  @objc func bringForward () {
+    mViewController?.bringForward ()
   }
 
   //····················································································································
@@ -241,45 +484,21 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
-  //    Arrow Key Magnitude
+  //    Selection Layer
   //····················································································································
 
-  private var mArrowKeyMagnitudeController : Controller_EBView_arrowKeyMagnitude?
-
-  func bind_arrowKeyMagnitude (_ property:EBReadOnlyProperty_CGFloat, file:String, line:Int) {
-    mArrowKeyMagnitudeController = Controller_EBView_arrowKeyMagnitude (property, outlet:self)
-  }
-
-  func unbind_arrowKeyMagnitude () {
-    mArrowKeyMagnitudeController?.unregister ()
-    mArrowKeyMagnitudeController = nil
-  }
+  private var mSelectionShapes = [EBShape] ()
 
   //····················································································································
 
-  func set (arrowKeyMagnitude : CGFloat) {
-    mViewController?.arrowKeyMagnitude = arrowKeyMagnitude
-  }
-
-  //····················································································································
-  //    Shift Arrow Key Magnitude
-  //····················································································································
-
-  private var mShiftArrowKeyMagnitudeController : Controller_EBView_shiftArrowKeyMagnitude?
-
-  func bind_shiftArrowKeyMagnitude (_ property:EBReadOnlyProperty_CGFloat, file:String, line:Int) {
-    mShiftArrowKeyMagnitudeController = Controller_EBView_shiftArrowKeyMagnitude (property, outlet:self)
-  }
-
-  func unbind_shiftArrowKeyMagnitude () {
-    mShiftArrowKeyMagnitudeController?.unregister ()
-    mShiftArrowKeyMagnitudeController = nil
-  }
-
-  //····················································································································
-
-  func set (shiftArrowKeyMagnitude : CGFloat) {
-    mViewController?.shiftArrowKeyMagnitude = shiftArrowKeyMagnitude
+  func updateSelectionShape (_ inShapes : [EBShape]) {
+    for shape in self.mSelectionShapes {
+      self.setNeedsDisplay (shape.boundingBox)
+    }
+    for shape in inShapes {
+      self.setNeedsDisplay (shape.boundingBox)
+    }
+    self.mSelectionShapes = inShapes
   }
 
   //····················································································································

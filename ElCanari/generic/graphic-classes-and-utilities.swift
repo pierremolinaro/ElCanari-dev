@@ -26,9 +26,27 @@ class EBGraphicManagedObject : EBManagedObject {
 
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
+  var objectDisplay : EBShape? {
+    switch self.objectDisplay_property.prop {
+    case .empty, .multiple :
+      return nil
+    case .single (let s) :
+      return s
+    }
+  }
+
   //····················································································································
 
   var selectionDisplay_property = EBTransientProperty_EBShape ()
+
+  var selectionDisplay : EBShape? {
+    switch self.selectionDisplay_property.prop {
+    case .empty, .multiple :
+      return nil
+    case .single (let s) :
+      return s
+    }
+  }
 
   //····················································································································
 

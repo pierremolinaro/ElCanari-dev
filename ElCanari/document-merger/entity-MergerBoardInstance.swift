@@ -142,14 +142,14 @@ class MergerBoardInstance : EBGraphicManagedObject,
     }
   }
 
-  var selectionDisplay : EBShape? {
-    switch selectionDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+//  var selectionDisplay : EBShape? {
+//    switch selectionDisplay_property_selection {
+//    case .empty, .multiple :
+//      return nil
+//    case .single (let v) :
+//      return v
+//    }
+//  }
 
   //····················································································································
   //   Accessing objectDisplay transient property
@@ -161,14 +161,14 @@ class MergerBoardInstance : EBGraphicManagedObject,
     }
   }
 
-  var objectDisplay : EBShape? {
-    switch objectDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+//  var objectDisplay : EBShape? {
+//    switch objectDisplay_property_selection {
+//    case .empty, .multiple :
+//      return nil
+//    case .single (let v) :
+//      return v
+//    }
+//  }
 
   //····················································································································
   //    Stored Properties
