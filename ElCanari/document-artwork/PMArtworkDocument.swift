@@ -665,13 +665,8 @@ import Cocoa
     }
   //--------------------------- Array controllers
     self.mDataController.setManagedObjectContext (self.managedObjectContext ())
-    self.mDataController.bind_modelAndView (
-      model: self.rootObject.fileGenerationParameterArray_property,
-      tableViewArray: [mDataTableView!],
-      optionalEBView: nil,
-      file: #file,
-      line: #line
-    )
+    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property)
+    self.mDataController.bind_tableView (self.mDataTableView, file: #file, line: #line)
   //--------------------------- Selection controllers
     mDataSelection.bind_selection (
       model: mDataController.selectedArray_property,
@@ -883,7 +878,9 @@ import Cocoa
     self.mStatusMessage_property.readModelFunction = nil
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
-    mDataController.unbind_modelAndView ()
+    self.mDataController.unbind_tableView (self.mDataTableView)
+//    mDataController.unbind_modelAndView ()
+    mDataController.unbind_model ()
   //--------------------------- Unbind selection controllers
     mDataSelection.unbind_selection ()
   //--------------------------- Uninstall property observers for transients

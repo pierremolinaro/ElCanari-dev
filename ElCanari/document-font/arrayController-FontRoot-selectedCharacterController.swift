@@ -14,14 +14,11 @@ private let DEBUG_EVENT = false
 
 final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
 
-  private var mModel : ToManyRelationshipReadWrite_FontCharacter? = nil
-
   let sortedArray_property = TransientArrayOf_FontCharacter ()
 
   private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
   private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
   private var mTableViewArray = [EBTableView] ()
-  private var mEBViews = [EBView] ()
 
   //····················································································································
   //    Sort Array
@@ -66,6 +63,47 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
   }
 
   //····················································································································
+  //    Model
+  //····················································································································
+
+  private var mModel : ToManyRelationshipReadWrite_FontCharacter? = nil
+
+  //····················································································································
+
+  var objectCount : Int {
+    let objects = mModel?.propval ?? []
+    return objects.count
+  }
+
+  //····················································································································
+
+  func bind_model (_ inModel:ToManyRelationshipReadWrite_FontCharacter) {
+    self.mModel = inModel
+    inModel.addEBObserver (self.sortedArray_property)
+    self.sortedArray_property.addEBObserver (mSelectedSet)
+    mSelectedSet.addEBObserver (self.selectedArray_property)
+  //--- Add observed properties (for filtering and sorting)
+  }
+
+  //····················································································································
+
+  func unbind_model () {
+    self.mModel?.removeEBObserver (self.sortedArray_property)
+    self.sortedArray_property.removeEBObserver (mSelectedSet)
+    self.mSelectedSet.removeEBObserver (self.selectedArray_property)
+  //--- Remove observed properties (for filtering and sorting)
+    for tvc in mTableViewDataSourceControllerArray {
+      self.sortedArray_property.removeEBObserver (tvc)
+    }
+    for tvc in mTableViewSelectionControllerArray {
+      mSelectedSet.removeEBObserver (tvc)
+    }
+  //---
+    mSelectedSet.mSet = Set ()
+    mModel = nil
+ }
+
+  //····················································································································
   //    Managed object context
   //····················································································································
 
@@ -81,13 +119,6 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
 
   var undoManager : EBUndoManager? {
     return self.mModel?.undoManager
-  }
-
-  //····················································································································
-
-  var objectCount : Int {
-    let objects = mModel?.propval ?? []
-    return objects.count
   }
 
   //····················································································································
@@ -127,20 +158,24 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
   //····················································································································
 
   private final func setSelectedArrayComputeFunction () {
-    self.selectedArray_property.readModelFunction = {
-      switch self.sortedArray_property.prop {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        var result = [FontCharacter] ()
-        for object in v {
-          if self.mSelectedSet.mSet.contains (object) {
-            result.append (object)
+    self.selectedArray_property.readModelFunction = { [weak self] in
+      if let me = self {
+        switch me.sortedArray_property.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var result = [FontCharacter] ()
+          for object in v {
+            if me.mSelectedSet.mSet.contains (object) {
+              result.append (object)
+            }
           }
+          return .single (result)
         }
-        return .single (result)
+      }else{
+        return .empty
       }
     }
   }
@@ -148,8 +183,8 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
   //····················································································································
 
   private final func setFilterAndSortFunction () {
-    self.sortedArray_property.readModelFunction = {
-      if let model = self.mModel {
+    self.sortedArray_property.readModelFunction = { [weak self] in
+      if let me = self, let model = me.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -172,89 +207,49 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
   }
 
   //····················································································································
-  //    bind_modelAndView
+  //    bind_tableView
   //····················································································································
 
-  func bind_modelAndView (model:ToManyRelationshipReadWrite_FontCharacter,
-                          tableViewArray:[EBTableView],
-                          optionalEBView: EBView?,
-                          file:String, line:Int) {
+  func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-  //--- Add observers
-    self.mModel = model
-    model.addEBObserver (self.sortedArray_property)
-    self.sortedArray_property.addEBObserver (mSelectedSet)
-    mSelectedSet.addEBObserver (self.selectedArray_property)
-  //--- Add observed properties (for filtering and sorting)
-  //--- Bind ebView
-    if let ebView = optionalEBView {
-      self.mEBViews.append (ebView)
-    }
-  //--- Bind table views
-    mTableViewArray = tableViewArray
-    for tableView in tableViewArray {
-      bind_tableView (tableView: tableView, file:file, line:line)
+    if let tableView = inTableView {
+      tableView.allowsEmptySelection = allowsEmptySelection
+      tableView.allowsMultipleSelection = allowsMultipleSelection
+      tableView.dataSource = self
+      tableView.delegate = self
+    //--- Set table view data source controller
+      let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
+      self.sortedArray_property.addEBObserver (dataSourceTableViewController)
+      mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
+    //--- Set table view selection controller
+      let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
+       mSelectedSet.addEBObserver (selectionTableViewController)
+      mTableViewSelectionControllerArray.append (selectionTableViewController)
+    //--- Set descriptors from first column of table view
+      var newSortDescriptorArray = [(String, Bool)] ()
+      for column in tableView.tableColumns {
+        newSortDescriptorArray.append ((sw34_columnIdentifier (column), true)) // Ascending
+      }
+      mSortDescriptorArray = newSortDescriptorArray
+      mTableViewArray.append (tableView)
     }
   }
 
   //····················································································································
-  //    unbind_modelAndView
-  //····················································································································
-
-  func unbind_modelAndView () {
+ 
+  func unbind_tableView (_ inTableView : EBTableView?) {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    mModel?.removeEBObserver (self.sortedArray_property)
-    self.sortedArray_property.removeEBObserver (mSelectedSet)
-    mSelectedSet.removeEBObserver (self.selectedArray_property)
-  //--- Remove observed properties (for filtering and sorting)
-    for tvc in mTableViewDataSourceControllerArray {
-      self.sortedArray_property.removeEBObserver (tvc)
+    if let tableView = inTableView, let idx = self.mTableViewArray.index (of:tableView) {
+      self.sortedArray_property.removeEBObserver (self.mTableViewDataSourceControllerArray [idx])
+      self.mSelectedSet.removeEBObserver (self.mTableViewSelectionControllerArray [idx])
+      self.mTableViewArray.remove (at: idx)
+      self.mTableViewDataSourceControllerArray.remove (at: idx)
+      self.mTableViewSelectionControllerArray.remove (at: idx)
     }
-    for tvc in mTableViewSelectionControllerArray {
-      mSelectedSet.removeEBObserver (tvc)
-    }
-  //---
-    mTableViewArray = [EBTableView] ()
-    self.selectedArray_property.readModelFunction = nil
-    self.sortedArray_property.readModelFunction = nil
-    mSelectedSet.mSet = Set ()
-    mTableViewDataSourceControllerArray = []
-    mTableViewSelectionControllerArray = []
-    mModel = nil
- }
-
-  //····················································································································
-  //    bind_tableView
-  //····················································································································
-
-  private func bind_tableView (tableView:EBTableView,
-                               file:String,
-                               line:Int) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
-    tableView.allowsEmptySelection = allowsEmptySelection
-    tableView.allowsMultipleSelection = allowsMultipleSelection
-    tableView.dataSource = self
-    tableView.delegate = self
-  //--- Set table view data source controller
-    let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
-    self.sortedArray_property.addEBObserver (dataSourceTableViewController)
-    mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
-  //--- Set table view selection controller
-    let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
-    mSelectedSet.addEBObserver (selectionTableViewController)
-    mTableViewSelectionControllerArray.append (selectionTableViewController)
-  //--- Set descriptors from first column of table view
-    var newSortDescriptorArray = [(String, Bool)] ()
-    for column in tableView.tableColumns {
-      newSortDescriptorArray.append ((sw34_columnIdentifier (column), true)) // Ascending
-    }
-    mSortDescriptorArray = newSortDescriptorArray
   }
 
  //····················································································································

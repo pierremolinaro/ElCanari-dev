@@ -4797,13 +4797,8 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
       mController_mRemoveLibraryEntryButton_enabled = controller
     }
   //--------------------------- Array controller
-    self.additionnalLibraryArrayController.bind_modelAndView (
-      model: self.additionnalLibraryArray_property,
-      tableViewArray: [mAdditionnalLibraryArrayTableView!],
-      optionalEBView: nil,
-      file: #file,
-      line: #line
-    )
+    self.additionnalLibraryArrayController.bind_model (self.additionnalLibraryArray_property)
+    self.additionnalLibraryArrayController.bind_tableView (self.mAdditionnalLibraryArrayTableView, file: #file, line: #line)
   //--------------------------- Set targets / actions
     self.mRevealInFinderLibraryInUserApplicationSupportButton?.target = self
     self.mRevealInFinderLibraryInUserApplicationSupportButton?.action = #selector (Preferences.revealUserLibraryInFinderAction (_:))
@@ -4975,6 +4970,10 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
 //    self.mergerColorBackLegendLines_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackLegendLines)
 //    self.mergerColorBackground_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackground)
     self.additionnalLibraryArray_property.storeInPreferencesWithKey (inKey: "Preferences:additionnalLibraryArray")
+  //--------------------------- Array controller
+    self.additionnalLibraryArrayController.unbind_tableView (self.mAdditionnalLibraryArrayTableView)
+//    self.additionnalLibraryArrayController.unbind_modelAndView ()
+    self.additionnalLibraryArrayController.unbind_model ()
   }
 
   //····················································································································

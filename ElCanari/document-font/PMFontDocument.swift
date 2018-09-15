@@ -470,13 +470,7 @@ import Cocoa
     }
   //--------------------------- Array controllers
     self.mSelectedCharacterController.setManagedObjectContext (self.managedObjectContext ())
-    self.mSelectedCharacterController.bind_modelAndView (
-      model: self.rootObject.characters_property,
-      tableViewArray: [],
-      optionalEBView: nil,
-      file: #file,
-      line: #line
-    )
+    self.mSelectedCharacterController.bind_model (self.rootObject.characters_property)
   //--------------------------- Selection controllers
     mCharacterSelection.bind_selection (
       model: mSelectedCharacterController.selectedArray_property,
@@ -592,7 +586,8 @@ import Cocoa
   //--------------------------- Uninstall compute functions for transients
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
-    mSelectedCharacterController.unbind_modelAndView ()
+//    mSelectedCharacterController.unbind_modelAndView ()
+    mSelectedCharacterController.unbind_model ()
   //--------------------------- Unbind selection controllers
     mCharacterSelection.unbind_selection ()
   //--------------------------- Uninstall property observers for transients

@@ -1844,21 +1844,11 @@ import Cocoa
     }
   //--------------------------- Array controllers
     self.mBoardModelController.setManagedObjectContext (self.managedObjectContext ())
-    self.mBoardModelController.bind_modelAndView (
-      model: self.rootObject.boardModels_property,
-      tableViewArray: [mBoardModelTableView!],
-      optionalEBView: nil,
-      file: #file,
-      line: #line
-    )
+    self.mBoardModelController.bind_model (self.rootObject.boardModels_property)
     self.mBoardInstanceController.setManagedObjectContext (self.managedObjectContext ())
-    self.mBoardInstanceController.bind_modelAndView (
-      model: self.rootObject.boardInstances_property,
-      tableViewArray: [],
-      optionalEBView: mComposedBoardView,
-      file: #file,
-      line: #line
-    )
+    self.mBoardInstanceController.bind_model (self.rootObject.boardInstances_property)
+    self.mBoardModelController.bind_tableView (self.mBoardModelTableView, file: #file, line: #line)
+    self.mBoardInstanceController.bind_ebView (self.mComposedBoardView)
   //--------------------------- Selection controllers
     mBoardModelSelection.bind_selection (
       model: mBoardModelController.selectedArray_property,
@@ -2529,8 +2519,12 @@ import Cocoa
     self.importArtworkButtonTitle_property.readModelFunction = nil
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
-    mBoardModelController.unbind_modelAndView ()
-    mBoardInstanceController.unbind_modelAndView ()
+    self.mBoardModelController.unbind_tableView (self.mBoardModelTableView)
+    self.mBoardInstanceController.unbind_ebView (self.mComposedBoardView)
+//    mBoardModelController.unbind_modelAndView ()
+    mBoardModelController.unbind_model ()
+//    mBoardInstanceController.unbind_modelAndView ()
+    mBoardInstanceController.unbind_model ()
   //--------------------------- Unbind selection controllers
     mBoardModelSelection.unbind_selection ()
     mBoardInstanceSelection.unbind_selection ()
