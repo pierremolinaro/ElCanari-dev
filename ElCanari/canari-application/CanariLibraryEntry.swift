@@ -16,7 +16,12 @@ class CanariLibraryEntry : EBSimpleClass,
   //  Undo manager
   //····················································································································
 
-  var undoManager : EBUndoManager? = nil
+  var undoManager : EBUndoManager? = nil {
+    didSet {
+      self.mPath_property.undoManager = self.undoManager
+      self.mUses_property.undoManager = self.undoManager
+    }
+  }
 
   //····················································································································
   //   Accessing mPath stored property
@@ -460,25 +465,32 @@ class EBClassArray_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
       if oldValue != mValue {
         let oldSet = mSet
         mSet = Set (mValue)
-      //--- Update explorer
-       // if explorer != nil {
-       //   owner?.updateManagedObjectToManyRelationshipDisplay (mValue, popUpButton:explorer!)
-       // }
+      //--- Register old value in undo manager
+        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Removed object set
         let removedSet = oldSet.subtracting (mSet)
         removeEBObserversOf_mPath_fromElementsOfSet (removedSet)
         removeEBObserversOf_mUses_fromElementsOfSet (removedSet)
+        for object in removedSet {
+          object.undoManager = nil
+        }
       //--- Added object set
         let addedSet = mSet.subtracting (oldSet)
         addEBObserversOf_mPath_toElementsOfSet (addedSet)
         addEBObserversOf_mUses_toElementsOfSet (addedSet)
+        for object in addedSet {
+          object.undoManager = self.undoManager
+        }
       //--- Notify observers object count did change
         postEvent ()
-/*        if oldValue.count != mValue.count {
-          count.postEvent ()
-        } */
       }
     }
+  }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : [CanariLibraryEntry]) {
+    mValue = oldValue
   }
 
   //····················································································································

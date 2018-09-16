@@ -1,10 +1,8 @@
 {
   "NOTE" : [],
   "BUGFIX" : [
-    "Empty board rect was triggering CoreGraphics error",
-    "Merger generates correct M30 end code at the end of drill file"
   ],
-  "CHANGE" : ["New Merger document format", "New Font document format"],
-  "NEW" : []
+  "CHANGE" : [],
+  "NEW" : ["Adding Undo in Preferences"]
 }
 

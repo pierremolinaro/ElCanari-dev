@@ -3382,6 +3382,7 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
     self.mergerColorFrontLegendLines_property.undoManager = self.mUndoManager
     self.mergerColorBackLegendLines_property.undoManager = self.mUndoManager
     self.mergerColorBackground_property.undoManager = self.mUndoManager
+    self.additionnalLibraryArray_property.undoManager = self.mUndoManager
     self.additionnalLibraryArray_property.readInPreferencesWithKey (inKey: "Preferences:additionnalLibraryArray")
   //--- Property validation function
     self.currentCharacterCodePoint_property.validationFunction = self.validate_currentCharacterCodePoint
