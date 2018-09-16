@@ -2521,9 +2521,7 @@ import Cocoa
   //--------------------------- Unbind array controllers
     self.mBoardModelController.unbind_tableView (self.mBoardModelTableView)
     self.mBoardInstanceController.unbind_ebView (self.mComposedBoardView)
-//    mBoardModelController.unbind_modelAndView ()
     mBoardModelController.unbind_model ()
-//    mBoardInstanceController.unbind_modelAndView ()
     mBoardInstanceController.unbind_model ()
   //--------------------------- Unbind selection controllers
     mBoardModelSelection.unbind_selection ()

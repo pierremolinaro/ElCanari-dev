@@ -13,15 +13,30 @@ private let DEBUG_EVENT = false
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+ 
+  //····················································································································
+  //    init
+  //····················································································································
 
-  let sortedArray_property = TransientArrayOf_FontCharacter ()
-
-  private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
-  private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
-  private var mTableViewArray = [EBTableView] ()
+  override init () {
+    mSelectedSet = SelectedSet_PMFontDocument_mSelectedCharacterController (
+      allowsEmptySelection:allowsEmptySelection,
+      allowsMultipleSelection:allowsMultipleSelection,
+      sortedArray:self.sortedArray_property
+    )
+    super.init ()
+  //--- Set selected array compute function
+    setSelectedArrayComputeFunction ()
+  //--- Set sorted array compute function
+    setFilterAndSortFunction ()
+  }
 
   //····················································································································
   //    Sort Array
+  //····················································································································
+
+  let sortedArray_property = TransientArrayOf_FontCharacter ()
+
   //····················································································································
 
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
@@ -42,26 +57,13 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
     }
   }
 
+  //····················································································································
+  //    Attributes
+  //····················································································································
+
   private let allowsEmptySelection = false
   private let allowsMultipleSelection = false
   
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init () {
-    mSelectedSet = SelectedSet_PMFontDocument_mSelectedCharacterController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
-    )
-    super.init ()
-  //--- Set selected array compute function
-    setSelectedArrayComputeFunction ()
-  //--- Set sorted array compute function
-    setFilterAndSortFunction ()
-  }
-
   //····················································································································
   //    Model
   //····················································································································
@@ -208,6 +210,12 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
 
   //····················································································································
   //    bind_tableView
+  //····················································································································
+
+  private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
+  private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
+  private var mTableViewArray = [EBTableView] ()
+
   //····················································································································
 
   func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {

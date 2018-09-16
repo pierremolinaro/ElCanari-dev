@@ -156,7 +156,7 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
 
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-@objc(Preferences) class Preferences : EBObject {
+@objc(Preferences) class Preferences : EBObject, NSWindowDelegate {
 
   //····················································································································
   //    Outlets
@@ -3212,13 +3212,24 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   var mValueRevealInFinder_fonts_property = EBTransientProperty_CanariMenuItemListClass ()
   var mValueRevealInFinder_artworks_property = EBTransientProperty_CanariMenuItemListClass ()
 
-
   //····················································································································
   //    Array Controllers
   //····················································································································
 
   private var additionnalLibraryArrayController = ArrayController_Preferences_additionnalLibraryArrayController ()
 
+  //····················································································································
+  //    Undo Manager
+  //····················································································································
+
+  private var mUndoManager = EBUndoManager ()
+
+  //····················································································································
+  // The preferences window should register this object as delegate (do it in Interface Builder)
+
+  @objc func windowWillReturnUndoManager (_ window: NSWindow) -> UndoManager? {
+    return self.mUndoManager
+  }
 
   //····················································································································
   //    Init
@@ -3228,149 +3239,149 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
     super.init ()
     g_Preferences = self ;
   //--- Read from preferences
-//    self.errorMessageColor_property.readInPreferencesWithKey (inKey: Preferences_errorMessageColor)
-//    self.warningMessageColor_property.readInPreferencesWithKey (inKey: Preferences_warningMessageColor)
-//    self.successMessageColor_property.readInPreferencesWithKey (inKey: Preferences_successMessageColor)
-//    self.selectionHiliteColor_property.readInPreferencesWithKey (inKey: Preferences_selectionHiliteColor)
-//    self.hiliteWidthMultipliedByTen_property.readInPreferencesWithKey (inKey: Preferences_hiliteWidthMultipliedByTen)
-//    self.symbolColor_property.readInPreferencesWithKey (inKey: Preferences_symbolColor)
-//    self.dotColorOfSymbolGrid_property.readInPreferencesWithKey (inKey: Preferences_dotColorOfSymbolGrid)
-//    self.lineColorOfSymbolGrid_property.readInPreferencesWithKey (inKey: Preferences_lineColorOfSymbolGrid)
-//    self.symbolBackgroundColor_property.readInPreferencesWithKey (inKey: Preferences_symbolBackgroundColor)
-//    self.symbolDrawingWidthMultipliedByTen_property.readInPreferencesWithKey (inKey: Preferences_symbolDrawingWidthMultipliedByTen)
-//    self.pinNameFont_property.readInPreferencesWithKey (inKey: Preferences_pinNameFont)
-//    self.dotColorOfPackageGrid_property.readInPreferencesWithKey (inKey: Preferences_dotColorOfPackageGrid)
-//    self.lineColorOfPackageGrid_property.readInPreferencesWithKey (inKey: Preferences_lineColorOfPackageGrid)
-//    self.packageBackgroundColor_property.readInPreferencesWithKey (inKey: Preferences_packageBackgroundColor)
-//    self.packageColor_property.readInPreferencesWithKey (inKey: Preferences_packageColor)
-//    self.topSidePadColor_property.readInPreferencesWithKey (inKey: Preferences_topSidePadColor)
-//    self.bottomSidePadColor_property.readInPreferencesWithKey (inKey: Preferences_bottomSidePadColor)
-//    self.padNumberColor_property.readInPreferencesWithKey (inKey: Preferences_padNumberColor)
-//    self.padNumberFont_property.readInPreferencesWithKey (inKey: Preferences_padNumberFont)
-//    self.packageGuideColor_property.readInPreferencesWithKey (inKey: Preferences_packageGuideColor)
-//    self.packageDimensionColor_property.readInPreferencesWithKey (inKey: Preferences_packageDimensionColor)
-//    self.dimensionFont_property.readInPreferencesWithKey (inKey: Preferences_dimensionFont)
-//    self.padZoneColor_property.readInPreferencesWithKey (inKey: Preferences_padZoneColor)
-//    self.packageDrawingWidthMultipliedByTen_property.readInPreferencesWithKey (inKey: Preferences_packageDrawingWidthMultipliedByTen)
-//    self.mSymbolAndPackageGridDotColorForDevice_property.readInPreferencesWithKey (inKey: Preferences_mSymbolAndPackageGridDotColorForDevice)
-//    self.mSymbolAndPackageGridLineColorForDevice_property.readInPreferencesWithKey (inKey: Preferences_mSymbolAndPackageGridLineColorForDevice)
-//    self.mSymbolAndPackageBackgroundColorForDevice_property.readInPreferencesWithKey (inKey: Preferences_mSymbolAndPackageBackgroundColorForDevice)
-//    self.mPackageColorForDevice_property.readInPreferencesWithKey (inKey: Preferences_mPackageColorForDevice)
-//    self.mTopSidePadColorForDevice_property.readInPreferencesWithKey (inKey: Preferences_mTopSidePadColorForDevice)
-//    self.mBottomSidePadColorForDevice_property.readInPreferencesWithKey (inKey: Preferences_mBottomSidePadColorForDevice)
-//    self.mPadNumberColorForDevice_property.readInPreferencesWithKey (inKey: Preferences_mPadNumberColorForDevice)
-//    self.mPackageNameFontForDevice_property.readInPreferencesWithKey (inKey: Preferences_mPackageNameFontForDevice)
-//    self.mPadNumberFontForDevice_property.readInPreferencesWithKey (inKey: Preferences_mPadNumberFontForDevice)
-//    self.mSymbolColorForDevice_property.readInPreferencesWithKey (inKey: Preferences_mSymbolColorForDevice)
-//    self.mSymbolNameFontForDevice_property.readInPreferencesWithKey (inKey: Preferences_mSymbolNameFontForDevice)
-//    self.mPinNameFontForDevice_property.readInPreferencesWithKey (inKey: Preferences_mPinNameFontForDevice)
-//    self.symbolDrawingWidthForDeviceMultipliedByTen_property.readInPreferencesWithKey (inKey: Preferences_symbolDrawingWidthForDeviceMultipliedByTen)
-//    self.packageDrawingWidthForDeviceMultipliedByTen_property.readInPreferencesWithKey (inKey: Preferences_packageDrawingWidthForDeviceMultipliedByTen)
-//    self.dotColorGridForSchematic_property.readInPreferencesWithKey (inKey: Preferences_dotColorGridForSchematic)
-//    self.lineColorGridForSchematic_property.readInPreferencesWithKey (inKey: Preferences_lineColorGridForSchematic)
-//    self.symbolColorForUnplacedComponentsForSchematic_property.readInPreferencesWithKey (inKey: Preferences_symbolColorForUnplacedComponentsForSchematic)
-//    self.symbolColorForSchematic_property.readInPreferencesWithKey (inKey: Preferences_symbolColorForSchematic)
-//    self.pinNameFontForSchematic_property.readInPreferencesWithKey (inKey: Preferences_pinNameFontForSchematic)
-//    self.pinNameColorForSchematic_property.readInPreferencesWithKey (inKey: Preferences_pinNameColorForSchematic)
-//    self.pinNumberFontForSchematic_property.readInPreferencesWithKey (inKey: Preferences_pinNumberFontForSchematic)
-//    self.pinNumberColorForSchematic_property.readInPreferencesWithKey (inKey: Preferences_pinNumberColorForSchematic)
-//    self.connectionColorForSchematic_property.readInPreferencesWithKey (inKey: Preferences_connectionColorForSchematic)
-//    self.symbolDrawingWidthMultipliedByTenForSchematic_property.readInPreferencesWithKey (inKey: Preferences_symbolDrawingWidthMultipliedByTenForSchematic)
-//    self.dotColorGridForBoard_property.readInPreferencesWithKey (inKey: Preferences_dotColorGridForBoard)
-//    self.lineColorGridForBoard_property.readInPreferencesWithKey (inKey: Preferences_lineColorGridForBoard)
-//    self.boardBackgroundColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_boardBackgroundColorForBoard)
-//    self.errorBackgroundColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_errorBackgroundColorForBoard)
-//    self.drawErrorBackgroundForBoard_property.readInPreferencesWithKey (inKey: Preferences_drawErrorBackgroundForBoard)
-//    self.warningBackgroundColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_warningBackgroundColorForBoard)
-//    self.drawEWarningBackgroundForBoard_property.readInPreferencesWithKey (inKey: Preferences_drawEWarningBackgroundForBoard)
-//    self.boardLimitsColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_boardLimitsColorForBoard)
-//    self.boardClearanceColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_boardClearanceColorForBoard)
-//    self.topSideRestrictRectangleColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_topSideRestrictRectangleColorForBoard)
-//    self.bottomSideRestrictRectangleColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_bottomSideRestrictRectangleColorForBoard)
-//    self.topSideLegendColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_topSideLegendColorForBoard)
-//    self.topSideLayoutColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_topSideLayoutColorForBoard)
-//    self.bottomSideLayoutColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_bottomSideLayoutColorForBoard)
-//    self.bottomSideLegendColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_bottomSideLegendColorForBoard)
-//    self.topSidePadColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_topSidePadColorForBoard)
-//    self.bottomSidePadColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_bottomSidePadColorForBoard)
-//    self.padNumberFontForBoard_property.readInPreferencesWithKey (inKey: Preferences_padNumberFontForBoard)
-//    self.padNumberColorForBoard_property.readInPreferencesWithKey (inKey: Preferences_padNumberColorForBoard)
-//    self.packageDrawingWidthMultpliedByTenForBoard_property.readInPreferencesWithKey (inKey: Preferences_packageDrawingWidthMultpliedByTenForBoard)
-//    self.sampleString_property.readInPreferencesWithKey (inKey: Preferences_sampleString)
-//    self.sampleStringSize_property.readInPreferencesWithKey (inKey: Preferences_sampleStringSize)
-//    self.showGerberDrawingFlow_property.readInPreferencesWithKey (inKey: Preferences_showGerberDrawingFlow)
-//    self.showGerberDrawingIndexes_property.readInPreferencesWithKey (inKey: Preferences_showGerberDrawingIndexes)
-//    self.currentCharacterCodePoint_property.readInPreferencesWithKey (inKey: Preferences_currentCharacterCodePoint)
-//    self.fontEditionTransparency_property.readInPreferencesWithKey (inKey: Preferences_fontEditionTransparency)
-//    self.usesUserLibrary_property.readInPreferencesWithKey (inKey: Preferences_usesUserLibrary)
-//    self.checkForSystemLibraryAtStartUp_property.readInPreferencesWithKey (inKey: Preferences_checkForSystemLibraryAtStartUp)
-//    self.mLastSystemLibraryCheckTime_property.readInPreferencesWithKey (inKey: Preferences_mLastSystemLibraryCheckTime)
-//    self.systemLibraryCheckTimeInterval_property.readInPreferencesWithKey (inKey: Preferences_systemLibraryCheckTimeInterval)
-//    self.mergerModelViewHorizontalFlip_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewHorizontalFlip)
-//    self.mergerModelViewVerticalFlip_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewVerticalFlip)
-//    self.mergerModelViewDisplayHoles_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayHoles)
-//    self.mergerModelViewDisplayVias_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayVias)
-//    self.mergerModelViewDisplayFrontPads_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontPads)
-//    self.mergerModelViewDisplayInternalBoardsLimits_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayInternalBoardsLimits)
-//    self.mergerModelViewDisplayBoardLimits_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBoardLimits)
-//    self.mergerModelViewDisplayFrontComponentNames_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontComponentNames)
-//    self.mergerModelViewDisplayFrontComponentValues_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontComponentValues)
-//    self.mergerModelViewDisplayFrontPackages_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontPackages)
-//    self.mergerModelViewDisplayFrontLegendTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontLegendTexts)
-//    self.mergerModelViewDisplayFrontTracks_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontTracks)
-//    self.mergerModelViewDisplayFrontLayoutTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontLayoutTexts)
-//    self.mergerModelViewDisplayBackPads_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackPads)
-//    self.mergerModelViewDisplayBackComponentNames_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackComponentNames)
-//    self.mergerModelViewDisplayBackComponentValues_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackComponentValues)
-//    self.mergerModelViewDisplayBackLegendTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackLegendTexts)
-//    self.mergerModelViewDisplayBackPackages_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackPackages)
-//    self.mergerModelViewDisplayBackTracks_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackTracks)
-//    self.mergerModelViewDisplayBackLayoutTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackLayoutTexts)
-//    self.mergerModelViewDisplayFrontLegendLines_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontLegendLines)
-//    self.mergerModelViewDisplayBackLegendLines_property.readInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackLegendLines)
-//    self.mergerBoardViewHorizontalFlip_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewHorizontalFlip)
-//    self.mergerBoardViewVerticalFlip_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewVerticalFlip)
-//    self.mergerBoardViewDisplayHoles_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayHoles)
-//    self.mergerBoardViewDisplayVias_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayVias)
-//    self.mergerBoardViewDisplayFrontPads_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontPads)
-//    self.mergerBoardViewDisplayInternalBoardsLimits_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayInternalBoardsLimits)
-//    self.mergerBoardViewDisplayBoardLimits_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBoardLimits)
-//    self.mergerBoardViewDisplayFrontComponentNames_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontComponentNames)
-//    self.mergerBoardViewDisplayFrontComponentValues_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontComponentValues)
-//    self.mergerBoardViewDisplayFrontPackages_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontPackages)
-//    self.mergerBoardViewDisplayFrontLegendTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontLegendTexts)
-//    self.mergerBoardViewDisplayFrontTracks_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontTracks)
-//    self.mergerBoardViewDisplayFrontLayoutTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontLayoutTexts)
-//    self.mergerBoardViewDisplayBackPads_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackPads)
-//    self.mergerBoardViewDisplayBackComponentNames_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackComponentNames)
-//    self.mergerBoardViewDisplayBackComponentValues_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackComponentValues)
-//    self.mergerBoardViewDisplayBackLegendTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackLegendTexts)
-//    self.mergerBoardViewDisplayBackPackages_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackPackages)
-//    self.mergerBoardViewDisplayBackTracks_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackTracks)
-//    self.mergerBoardViewDisplayBackLayoutTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackLayoutTexts)
-//    self.mergerBoardViewDisplayFrontLegendLines_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontLegendLines)
-//    self.mergerBoardViewDisplayBackLegendLines_property.readInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackLegendLines)
-//    self.mergerColorHoles_property.readInPreferencesWithKey (inKey: Preferences_mergerColorHoles)
-//    self.mergerColorVias_property.readInPreferencesWithKey (inKey: Preferences_mergerColorVias)
-//    self.mergerColorFrontPads_property.readInPreferencesWithKey (inKey: Preferences_mergerColorFrontPads)
-//    self.mergerColorBoardLimits_property.readInPreferencesWithKey (inKey: Preferences_mergerColorBoardLimits)
-//    self.mergerColorInternalBoardsLimits_property.readInPreferencesWithKey (inKey: Preferences_mergerColorInternalBoardsLimits)
-//    self.mergerColorFrontComponentNames_property.readInPreferencesWithKey (inKey: Preferences_mergerColorFrontComponentNames)
-//    self.mergerColorFrontComponentValues_property.readInPreferencesWithKey (inKey: Preferences_mergerColorFrontComponentValues)
-//    self.mergerColorFrontPackages_property.readInPreferencesWithKey (inKey: Preferences_mergerColorFrontPackages)
-//    self.mergerColorFrontLegendTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerColorFrontLegendTexts)
-//    self.mergerColorFrontTracks_property.readInPreferencesWithKey (inKey: Preferences_mergerColorFrontTracks)
-//    self.mergerColorFrontLayoutTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerColorFrontLayoutTexts)
-//    self.mergerColorBackPads_property.readInPreferencesWithKey (inKey: Preferences_mergerColorBackPads)
-//    self.mergerColorBackComponentNames_property.readInPreferencesWithKey (inKey: Preferences_mergerColorBackComponentNames)
-//    self.mergerColorBackComponentValues_property.readInPreferencesWithKey (inKey: Preferences_mergerColorBackComponentValues)
-//    self.mergerColorBackLegendTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerColorBackLegendTexts)
-//    self.mergerColorBackPackages_property.readInPreferencesWithKey (inKey: Preferences_mergerColorBackPackages)
-//    self.mergerColorBackTracks_property.readInPreferencesWithKey (inKey: Preferences_mergerColorBackTracks)
-//    self.mergerColorBackLayoutTexts_property.readInPreferencesWithKey (inKey: Preferences_mergerColorBackLayoutTexts)
-//    self.mergerColorFrontLegendLines_property.readInPreferencesWithKey (inKey: Preferences_mergerColorFrontLegendLines)
-//    self.mergerColorBackLegendLines_property.readInPreferencesWithKey (inKey: Preferences_mergerColorBackLegendLines)
-//    self.mergerColorBackground_property.readInPreferencesWithKey (inKey: Preferences_mergerColorBackground)
+    self.errorMessageColor_property.undoManager = self.mUndoManager
+    self.warningMessageColor_property.undoManager = self.mUndoManager
+    self.successMessageColor_property.undoManager = self.mUndoManager
+    self.selectionHiliteColor_property.undoManager = self.mUndoManager
+    self.hiliteWidthMultipliedByTen_property.undoManager = self.mUndoManager
+    self.symbolColor_property.undoManager = self.mUndoManager
+    self.dotColorOfSymbolGrid_property.undoManager = self.mUndoManager
+    self.lineColorOfSymbolGrid_property.undoManager = self.mUndoManager
+    self.symbolBackgroundColor_property.undoManager = self.mUndoManager
+    self.symbolDrawingWidthMultipliedByTen_property.undoManager = self.mUndoManager
+    self.pinNameFont_property.undoManager = self.mUndoManager
+    self.dotColorOfPackageGrid_property.undoManager = self.mUndoManager
+    self.lineColorOfPackageGrid_property.undoManager = self.mUndoManager
+    self.packageBackgroundColor_property.undoManager = self.mUndoManager
+    self.packageColor_property.undoManager = self.mUndoManager
+    self.topSidePadColor_property.undoManager = self.mUndoManager
+    self.bottomSidePadColor_property.undoManager = self.mUndoManager
+    self.padNumberColor_property.undoManager = self.mUndoManager
+    self.padNumberFont_property.undoManager = self.mUndoManager
+    self.packageGuideColor_property.undoManager = self.mUndoManager
+    self.packageDimensionColor_property.undoManager = self.mUndoManager
+    self.dimensionFont_property.undoManager = self.mUndoManager
+    self.padZoneColor_property.undoManager = self.mUndoManager
+    self.packageDrawingWidthMultipliedByTen_property.undoManager = self.mUndoManager
+    self.mSymbolAndPackageGridDotColorForDevice_property.undoManager = self.mUndoManager
+    self.mSymbolAndPackageGridLineColorForDevice_property.undoManager = self.mUndoManager
+    self.mSymbolAndPackageBackgroundColorForDevice_property.undoManager = self.mUndoManager
+    self.mPackageColorForDevice_property.undoManager = self.mUndoManager
+    self.mTopSidePadColorForDevice_property.undoManager = self.mUndoManager
+    self.mBottomSidePadColorForDevice_property.undoManager = self.mUndoManager
+    self.mPadNumberColorForDevice_property.undoManager = self.mUndoManager
+    self.mPackageNameFontForDevice_property.undoManager = self.mUndoManager
+    self.mPadNumberFontForDevice_property.undoManager = self.mUndoManager
+    self.mSymbolColorForDevice_property.undoManager = self.mUndoManager
+    self.mSymbolNameFontForDevice_property.undoManager = self.mUndoManager
+    self.mPinNameFontForDevice_property.undoManager = self.mUndoManager
+    self.symbolDrawingWidthForDeviceMultipliedByTen_property.undoManager = self.mUndoManager
+    self.packageDrawingWidthForDeviceMultipliedByTen_property.undoManager = self.mUndoManager
+    self.dotColorGridForSchematic_property.undoManager = self.mUndoManager
+    self.lineColorGridForSchematic_property.undoManager = self.mUndoManager
+    self.symbolColorForUnplacedComponentsForSchematic_property.undoManager = self.mUndoManager
+    self.symbolColorForSchematic_property.undoManager = self.mUndoManager
+    self.pinNameFontForSchematic_property.undoManager = self.mUndoManager
+    self.pinNameColorForSchematic_property.undoManager = self.mUndoManager
+    self.pinNumberFontForSchematic_property.undoManager = self.mUndoManager
+    self.pinNumberColorForSchematic_property.undoManager = self.mUndoManager
+    self.connectionColorForSchematic_property.undoManager = self.mUndoManager
+    self.symbolDrawingWidthMultipliedByTenForSchematic_property.undoManager = self.mUndoManager
+    self.dotColorGridForBoard_property.undoManager = self.mUndoManager
+    self.lineColorGridForBoard_property.undoManager = self.mUndoManager
+    self.boardBackgroundColorForBoard_property.undoManager = self.mUndoManager
+    self.errorBackgroundColorForBoard_property.undoManager = self.mUndoManager
+    self.drawErrorBackgroundForBoard_property.undoManager = self.mUndoManager
+    self.warningBackgroundColorForBoard_property.undoManager = self.mUndoManager
+    self.drawEWarningBackgroundForBoard_property.undoManager = self.mUndoManager
+    self.boardLimitsColorForBoard_property.undoManager = self.mUndoManager
+    self.boardClearanceColorForBoard_property.undoManager = self.mUndoManager
+    self.topSideRestrictRectangleColorForBoard_property.undoManager = self.mUndoManager
+    self.bottomSideRestrictRectangleColorForBoard_property.undoManager = self.mUndoManager
+    self.topSideLegendColorForBoard_property.undoManager = self.mUndoManager
+    self.topSideLayoutColorForBoard_property.undoManager = self.mUndoManager
+    self.bottomSideLayoutColorForBoard_property.undoManager = self.mUndoManager
+    self.bottomSideLegendColorForBoard_property.undoManager = self.mUndoManager
+    self.topSidePadColorForBoard_property.undoManager = self.mUndoManager
+    self.bottomSidePadColorForBoard_property.undoManager = self.mUndoManager
+    self.padNumberFontForBoard_property.undoManager = self.mUndoManager
+    self.padNumberColorForBoard_property.undoManager = self.mUndoManager
+    self.packageDrawingWidthMultpliedByTenForBoard_property.undoManager = self.mUndoManager
+    self.sampleString_property.undoManager = self.mUndoManager
+    self.sampleStringSize_property.undoManager = self.mUndoManager
+    self.showGerberDrawingFlow_property.undoManager = self.mUndoManager
+    self.showGerberDrawingIndexes_property.undoManager = self.mUndoManager
+    self.currentCharacterCodePoint_property.undoManager = self.mUndoManager
+    self.fontEditionTransparency_property.undoManager = self.mUndoManager
+    self.usesUserLibrary_property.undoManager = self.mUndoManager
+    self.checkForSystemLibraryAtStartUp_property.undoManager = self.mUndoManager
+    self.mLastSystemLibraryCheckTime_property.undoManager = self.mUndoManager
+    self.systemLibraryCheckTimeInterval_property.undoManager = self.mUndoManager
+    self.mergerModelViewHorizontalFlip_property.undoManager = self.mUndoManager
+    self.mergerModelViewVerticalFlip_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayHoles_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayVias_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayFrontPads_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayInternalBoardsLimits_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayBoardLimits_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayFrontComponentNames_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayFrontComponentValues_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayFrontPackages_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayFrontLegendTexts_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayFrontTracks_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayFrontLayoutTexts_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayBackPads_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayBackComponentNames_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayBackComponentValues_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayBackLegendTexts_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayBackPackages_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayBackTracks_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayBackLayoutTexts_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayFrontLegendLines_property.undoManager = self.mUndoManager
+    self.mergerModelViewDisplayBackLegendLines_property.undoManager = self.mUndoManager
+    self.mergerBoardViewHorizontalFlip_property.undoManager = self.mUndoManager
+    self.mergerBoardViewVerticalFlip_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayHoles_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayVias_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayFrontPads_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayInternalBoardsLimits_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayBoardLimits_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayFrontComponentNames_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayFrontComponentValues_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayFrontPackages_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayFrontLegendTexts_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayFrontTracks_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayFrontLayoutTexts_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayBackPads_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayBackComponentNames_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayBackComponentValues_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayBackLegendTexts_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayBackPackages_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayBackTracks_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayBackLayoutTexts_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayFrontLegendLines_property.undoManager = self.mUndoManager
+    self.mergerBoardViewDisplayBackLegendLines_property.undoManager = self.mUndoManager
+    self.mergerColorHoles_property.undoManager = self.mUndoManager
+    self.mergerColorVias_property.undoManager = self.mUndoManager
+    self.mergerColorFrontPads_property.undoManager = self.mUndoManager
+    self.mergerColorBoardLimits_property.undoManager = self.mUndoManager
+    self.mergerColorInternalBoardsLimits_property.undoManager = self.mUndoManager
+    self.mergerColorFrontComponentNames_property.undoManager = self.mUndoManager
+    self.mergerColorFrontComponentValues_property.undoManager = self.mUndoManager
+    self.mergerColorFrontPackages_property.undoManager = self.mUndoManager
+    self.mergerColorFrontLegendTexts_property.undoManager = self.mUndoManager
+    self.mergerColorFrontTracks_property.undoManager = self.mUndoManager
+    self.mergerColorFrontLayoutTexts_property.undoManager = self.mUndoManager
+    self.mergerColorBackPads_property.undoManager = self.mUndoManager
+    self.mergerColorBackComponentNames_property.undoManager = self.mUndoManager
+    self.mergerColorBackComponentValues_property.undoManager = self.mUndoManager
+    self.mergerColorBackLegendTexts_property.undoManager = self.mUndoManager
+    self.mergerColorBackPackages_property.undoManager = self.mUndoManager
+    self.mergerColorBackTracks_property.undoManager = self.mUndoManager
+    self.mergerColorBackLayoutTexts_property.undoManager = self.mUndoManager
+    self.mergerColorFrontLegendLines_property.undoManager = self.mUndoManager
+    self.mergerColorBackLegendLines_property.undoManager = self.mUndoManager
+    self.mergerColorBackground_property.undoManager = self.mUndoManager
     self.additionnalLibraryArray_property.readInPreferencesWithKey (inKey: "Preferences:additionnalLibraryArray")
   //--- Property validation function
     self.currentCharacterCodePoint_property.validationFunction = self.validate_currentCharacterCodePoint
@@ -4826,153 +4837,9 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   //····················································································································
 
   func applicationWillTerminateAction (_ : NSNotification) {
-//    self.errorMessageColor_property.storeInPreferencesWithKey (inKey: Preferences_errorMessageColor)
-//    self.warningMessageColor_property.storeInPreferencesWithKey (inKey: Preferences_warningMessageColor)
-//    self.successMessageColor_property.storeInPreferencesWithKey (inKey: Preferences_successMessageColor)
-//    self.selectionHiliteColor_property.storeInPreferencesWithKey (inKey: Preferences_selectionHiliteColor)
-//    self.hiliteWidthMultipliedByTen_property.storeInPreferencesWithKey (inKey: Preferences_hiliteWidthMultipliedByTen)
-//    self.symbolColor_property.storeInPreferencesWithKey (inKey: Preferences_symbolColor)
-//    self.dotColorOfSymbolGrid_property.storeInPreferencesWithKey (inKey: Preferences_dotColorOfSymbolGrid)
-//    self.lineColorOfSymbolGrid_property.storeInPreferencesWithKey (inKey: Preferences_lineColorOfSymbolGrid)
-//    self.symbolBackgroundColor_property.storeInPreferencesWithKey (inKey: Preferences_symbolBackgroundColor)
-//    self.symbolDrawingWidthMultipliedByTen_property.storeInPreferencesWithKey (inKey: Preferences_symbolDrawingWidthMultipliedByTen)
-//    self.pinNameFont_property.storeInPreferencesWithKey (inKey: Preferences_pinNameFont)
-//    self.dotColorOfPackageGrid_property.storeInPreferencesWithKey (inKey: Preferences_dotColorOfPackageGrid)
-//    self.lineColorOfPackageGrid_property.storeInPreferencesWithKey (inKey: Preferences_lineColorOfPackageGrid)
-//    self.packageBackgroundColor_property.storeInPreferencesWithKey (inKey: Preferences_packageBackgroundColor)
-//    self.packageColor_property.storeInPreferencesWithKey (inKey: Preferences_packageColor)
-//    self.topSidePadColor_property.storeInPreferencesWithKey (inKey: Preferences_topSidePadColor)
-//    self.bottomSidePadColor_property.storeInPreferencesWithKey (inKey: Preferences_bottomSidePadColor)
-//    self.padNumberColor_property.storeInPreferencesWithKey (inKey: Preferences_padNumberColor)
-//    self.padNumberFont_property.storeInPreferencesWithKey (inKey: Preferences_padNumberFont)
-//    self.packageGuideColor_property.storeInPreferencesWithKey (inKey: Preferences_packageGuideColor)
-//    self.packageDimensionColor_property.storeInPreferencesWithKey (inKey: Preferences_packageDimensionColor)
-//    self.dimensionFont_property.storeInPreferencesWithKey (inKey: Preferences_dimensionFont)
-//    self.padZoneColor_property.storeInPreferencesWithKey (inKey: Preferences_padZoneColor)
-//    self.packageDrawingWidthMultipliedByTen_property.storeInPreferencesWithKey (inKey: Preferences_packageDrawingWidthMultipliedByTen)
-//    self.mSymbolAndPackageGridDotColorForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mSymbolAndPackageGridDotColorForDevice)
-//    self.mSymbolAndPackageGridLineColorForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mSymbolAndPackageGridLineColorForDevice)
-//    self.mSymbolAndPackageBackgroundColorForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mSymbolAndPackageBackgroundColorForDevice)
-//    self.mPackageColorForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mPackageColorForDevice)
-//    self.mTopSidePadColorForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mTopSidePadColorForDevice)
-//    self.mBottomSidePadColorForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mBottomSidePadColorForDevice)
-//    self.mPadNumberColorForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mPadNumberColorForDevice)
-//    self.mPackageNameFontForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mPackageNameFontForDevice)
-//    self.mPadNumberFontForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mPadNumberFontForDevice)
-//    self.mSymbolColorForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mSymbolColorForDevice)
-//    self.mSymbolNameFontForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mSymbolNameFontForDevice)
-//    self.mPinNameFontForDevice_property.storeInPreferencesWithKey (inKey: Preferences_mPinNameFontForDevice)
-//    self.symbolDrawingWidthForDeviceMultipliedByTen_property.storeInPreferencesWithKey (inKey: Preferences_symbolDrawingWidthForDeviceMultipliedByTen)
-//    self.packageDrawingWidthForDeviceMultipliedByTen_property.storeInPreferencesWithKey (inKey: Preferences_packageDrawingWidthForDeviceMultipliedByTen)
-//    self.dotColorGridForSchematic_property.storeInPreferencesWithKey (inKey: Preferences_dotColorGridForSchematic)
-//    self.lineColorGridForSchematic_property.storeInPreferencesWithKey (inKey: Preferences_lineColorGridForSchematic)
-//    self.symbolColorForUnplacedComponentsForSchematic_property.storeInPreferencesWithKey (inKey: Preferences_symbolColorForUnplacedComponentsForSchematic)
-//    self.symbolColorForSchematic_property.storeInPreferencesWithKey (inKey: Preferences_symbolColorForSchematic)
-//    self.pinNameFontForSchematic_property.storeInPreferencesWithKey (inKey: Preferences_pinNameFontForSchematic)
-//    self.pinNameColorForSchematic_property.storeInPreferencesWithKey (inKey: Preferences_pinNameColorForSchematic)
-//    self.pinNumberFontForSchematic_property.storeInPreferencesWithKey (inKey: Preferences_pinNumberFontForSchematic)
-//    self.pinNumberColorForSchematic_property.storeInPreferencesWithKey (inKey: Preferences_pinNumberColorForSchematic)
-//    self.connectionColorForSchematic_property.storeInPreferencesWithKey (inKey: Preferences_connectionColorForSchematic)
-//    self.symbolDrawingWidthMultipliedByTenForSchematic_property.storeInPreferencesWithKey (inKey: Preferences_symbolDrawingWidthMultipliedByTenForSchematic)
-//    self.dotColorGridForBoard_property.storeInPreferencesWithKey (inKey: Preferences_dotColorGridForBoard)
-//    self.lineColorGridForBoard_property.storeInPreferencesWithKey (inKey: Preferences_lineColorGridForBoard)
-//    self.boardBackgroundColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_boardBackgroundColorForBoard)
-//    self.errorBackgroundColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_errorBackgroundColorForBoard)
-//    self.drawErrorBackgroundForBoard_property.storeInPreferencesWithKey (inKey: Preferences_drawErrorBackgroundForBoard)
-//    self.warningBackgroundColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_warningBackgroundColorForBoard)
-//    self.drawEWarningBackgroundForBoard_property.storeInPreferencesWithKey (inKey: Preferences_drawEWarningBackgroundForBoard)
-//    self.boardLimitsColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_boardLimitsColorForBoard)
-//    self.boardClearanceColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_boardClearanceColorForBoard)
-//    self.topSideRestrictRectangleColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_topSideRestrictRectangleColorForBoard)
-//    self.bottomSideRestrictRectangleColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_bottomSideRestrictRectangleColorForBoard)
-//    self.topSideLegendColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_topSideLegendColorForBoard)
-//    self.topSideLayoutColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_topSideLayoutColorForBoard)
-//    self.bottomSideLayoutColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_bottomSideLayoutColorForBoard)
-//    self.bottomSideLegendColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_bottomSideLegendColorForBoard)
-//    self.topSidePadColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_topSidePadColorForBoard)
-//    self.bottomSidePadColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_bottomSidePadColorForBoard)
-//    self.padNumberFontForBoard_property.storeInPreferencesWithKey (inKey: Preferences_padNumberFontForBoard)
-//    self.padNumberColorForBoard_property.storeInPreferencesWithKey (inKey: Preferences_padNumberColorForBoard)
-//    self.packageDrawingWidthMultpliedByTenForBoard_property.storeInPreferencesWithKey (inKey: Preferences_packageDrawingWidthMultpliedByTenForBoard)
-//    self.sampleString_property.storeInPreferencesWithKey (inKey: Preferences_sampleString)
-//    self.sampleStringSize_property.storeInPreferencesWithKey (inKey: Preferences_sampleStringSize)
-//    self.showGerberDrawingFlow_property.storeInPreferencesWithKey (inKey: Preferences_showGerberDrawingFlow)
-//    self.showGerberDrawingIndexes_property.storeInPreferencesWithKey (inKey: Preferences_showGerberDrawingIndexes)
-//    self.currentCharacterCodePoint_property.storeInPreferencesWithKey (inKey: Preferences_currentCharacterCodePoint)
-//    self.fontEditionTransparency_property.storeInPreferencesWithKey (inKey: Preferences_fontEditionTransparency)
-//    self.usesUserLibrary_property.storeInPreferencesWithKey (inKey: Preferences_usesUserLibrary)
-//    self.checkForSystemLibraryAtStartUp_property.storeInPreferencesWithKey (inKey: Preferences_checkForSystemLibraryAtStartUp)
-//    self.mLastSystemLibraryCheckTime_property.storeInPreferencesWithKey (inKey: Preferences_mLastSystemLibraryCheckTime)
-//    self.systemLibraryCheckTimeInterval_property.storeInPreferencesWithKey (inKey: Preferences_systemLibraryCheckTimeInterval)
-//    self.mergerModelViewHorizontalFlip_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewHorizontalFlip)
-//    self.mergerModelViewVerticalFlip_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewVerticalFlip)
-//    self.mergerModelViewDisplayHoles_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayHoles)
-//    self.mergerModelViewDisplayVias_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayVias)
-//    self.mergerModelViewDisplayFrontPads_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontPads)
-//    self.mergerModelViewDisplayInternalBoardsLimits_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayInternalBoardsLimits)
-//    self.mergerModelViewDisplayBoardLimits_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBoardLimits)
-//    self.mergerModelViewDisplayFrontComponentNames_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontComponentNames)
-//    self.mergerModelViewDisplayFrontComponentValues_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontComponentValues)
-//    self.mergerModelViewDisplayFrontPackages_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontPackages)
-//    self.mergerModelViewDisplayFrontLegendTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontLegendTexts)
-//    self.mergerModelViewDisplayFrontTracks_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontTracks)
-//    self.mergerModelViewDisplayFrontLayoutTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontLayoutTexts)
-//    self.mergerModelViewDisplayBackPads_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackPads)
-//    self.mergerModelViewDisplayBackComponentNames_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackComponentNames)
-//    self.mergerModelViewDisplayBackComponentValues_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackComponentValues)
-//    self.mergerModelViewDisplayBackLegendTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackLegendTexts)
-//    self.mergerModelViewDisplayBackPackages_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackPackages)
-//    self.mergerModelViewDisplayBackTracks_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackTracks)
-//    self.mergerModelViewDisplayBackLayoutTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackLayoutTexts)
-//    self.mergerModelViewDisplayFrontLegendLines_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayFrontLegendLines)
-//    self.mergerModelViewDisplayBackLegendLines_property.storeInPreferencesWithKey (inKey: Preferences_mergerModelViewDisplayBackLegendLines)
-//    self.mergerBoardViewHorizontalFlip_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewHorizontalFlip)
-//    self.mergerBoardViewVerticalFlip_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewVerticalFlip)
-//    self.mergerBoardViewDisplayHoles_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayHoles)
-//    self.mergerBoardViewDisplayVias_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayVias)
-//    self.mergerBoardViewDisplayFrontPads_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontPads)
-//    self.mergerBoardViewDisplayInternalBoardsLimits_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayInternalBoardsLimits)
-//    self.mergerBoardViewDisplayBoardLimits_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBoardLimits)
-//    self.mergerBoardViewDisplayFrontComponentNames_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontComponentNames)
-//    self.mergerBoardViewDisplayFrontComponentValues_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontComponentValues)
-//    self.mergerBoardViewDisplayFrontPackages_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontPackages)
-//    self.mergerBoardViewDisplayFrontLegendTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontLegendTexts)
-//    self.mergerBoardViewDisplayFrontTracks_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontTracks)
-//    self.mergerBoardViewDisplayFrontLayoutTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontLayoutTexts)
-//    self.mergerBoardViewDisplayBackPads_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackPads)
-//    self.mergerBoardViewDisplayBackComponentNames_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackComponentNames)
-//    self.mergerBoardViewDisplayBackComponentValues_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackComponentValues)
-//    self.mergerBoardViewDisplayBackLegendTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackLegendTexts)
-//    self.mergerBoardViewDisplayBackPackages_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackPackages)
-//    self.mergerBoardViewDisplayBackTracks_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackTracks)
-//    self.mergerBoardViewDisplayBackLayoutTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackLayoutTexts)
-//    self.mergerBoardViewDisplayFrontLegendLines_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayFrontLegendLines)
-//    self.mergerBoardViewDisplayBackLegendLines_property.storeInPreferencesWithKey (inKey: Preferences_mergerBoardViewDisplayBackLegendLines)
-//    self.mergerColorHoles_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorHoles)
-//    self.mergerColorVias_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorVias)
-//    self.mergerColorFrontPads_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorFrontPads)
-//    self.mergerColorBoardLimits_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBoardLimits)
-//    self.mergerColorInternalBoardsLimits_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorInternalBoardsLimits)
-//    self.mergerColorFrontComponentNames_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorFrontComponentNames)
-//    self.mergerColorFrontComponentValues_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorFrontComponentValues)
-//    self.mergerColorFrontPackages_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorFrontPackages)
-//    self.mergerColorFrontLegendTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorFrontLegendTexts)
-//    self.mergerColorFrontTracks_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorFrontTracks)
-//    self.mergerColorFrontLayoutTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorFrontLayoutTexts)
-//    self.mergerColorBackPads_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackPads)
-//    self.mergerColorBackComponentNames_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackComponentNames)
-//    self.mergerColorBackComponentValues_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackComponentValues)
-//    self.mergerColorBackLegendTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackLegendTexts)
-//    self.mergerColorBackPackages_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackPackages)
-//    self.mergerColorBackTracks_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackTracks)
-//    self.mergerColorBackLayoutTexts_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackLayoutTexts)
-//    self.mergerColorFrontLegendLines_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorFrontLegendLines)
-//    self.mergerColorBackLegendLines_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackLegendLines)
-//    self.mergerColorBackground_property.storeInPreferencesWithKey (inKey: Preferences_mergerColorBackground)
     self.additionnalLibraryArray_property.storeInPreferencesWithKey (inKey: "Preferences:additionnalLibraryArray")
   //--------------------------- Array controller
     self.additionnalLibraryArrayController.unbind_tableView (self.mAdditionnalLibraryArrayTableView)
-//    self.additionnalLibraryArrayController.unbind_modelAndView ()
     self.additionnalLibraryArrayController.unbind_model ()
   }
 

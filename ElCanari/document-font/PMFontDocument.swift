@@ -586,7 +586,6 @@ import Cocoa
   //--------------------------- Uninstall compute functions for transients
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
-//    mSelectedCharacterController.unbind_modelAndView ()
     mSelectedCharacterController.unbind_model ()
   //--------------------------- Unbind selection controllers
     mCharacterSelection.unbind_selection ()

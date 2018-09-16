@@ -13,15 +13,30 @@ private let DEBUG_EVENT = false
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+ 
+  //····················································································································
+  //    init
+  //····················································································································
 
-  let sortedArray_property = TransientArrayOf_FontCharacter ()
-
-  private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
-  private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
-  private var mTableViewArray = [EBTableView] ()
+  override init () {
+    mSelectedSet = SelectedSet_FontRoot_selectedCharacterController (
+      allowsEmptySelection:allowsEmptySelection,
+      allowsMultipleSelection:allowsMultipleSelection,
+      sortedArray:self.sortedArray_property
+    )
+    super.init ()
+  //--- Set selected array compute function
+    setSelectedArrayComputeFunction ()
+  //--- Set sorted array compute function
+    setFilterAndSortFunction ()
+  }
 
   //····················································································································
   //    Sort Array
+  //····················································································································
+
+  let sortedArray_property = TransientArrayOf_FontCharacter ()
+
   //····················································································································
 
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
@@ -42,26 +57,13 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
     }
   }
 
+  //····················································································································
+  //    Attributes
+  //····················································································································
+
   private let allowsEmptySelection = true
   private let allowsMultipleSelection = false
   
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init () {
-    mSelectedSet = SelectedSet_FontRoot_selectedCharacterController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
-    )
-    super.init ()
-  //--- Set selected array compute function
-    setSelectedArrayComputeFunction ()
-  //--- Set sorted array compute function
-    setFilterAndSortFunction ()
-  }
-
   //····················································································································
   //    Model
   //····················································································································
@@ -208,6 +210,12 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
 
   //····················································································································
   //    bind_tableView
+  //····················································································································
+
+  private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
+  private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
+  private var mTableViewArray = [EBTableView] ()
+
   //····················································································································
 
   func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {

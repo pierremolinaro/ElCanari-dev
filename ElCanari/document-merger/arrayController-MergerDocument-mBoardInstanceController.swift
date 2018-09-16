@@ -13,18 +13,64 @@ private let DEBUG_EVENT = false
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, EBTableViewDelegate, EBTableViewDataSource, EBViewControllerProtocol {
+ 
+  //····················································································································
+  //    init
+  //····················································································································
 
-  let sortedArray_property = TransientArrayOf_MergerBoardInstance ()
-
-  private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
-  private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
-  private var mTableViewArray = [EBTableView] ()
-
-//--- Observer for object display
-  private var mObjectDisplayObserver = EBOutletEvent ()
+  override init () {
+    mSelectedSet = SelectedSet_MergerDocument_mBoardInstanceController (
+      allowsEmptySelection:allowsEmptySelection,
+      allowsMultipleSelection:allowsMultipleSelection,
+      sortedArray:self.sortedArray_property
+    )
+    super.init ()
+    self.mSelectedSet.set (callBack: { [weak self] in self?.computeSelectionShape () } )
+  //--- Selection observers
+    self.canBringForward_property.readModelFunction = { [weak self] in
+      if let me = self {
+        return .single (me.canBringForward)
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedSet.addEBObserver (self.canBringToFront_property)
+    self.canBringToFront_property.readModelFunction = { [weak self] in
+      if let me = self {
+        return .single (me.canBringToFront)
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedSet.addEBObserver (self.canBringToFront_property)
+    self.canSendBackward_property.readModelFunction = { [weak self] in
+      if let me = self {
+        return .single (me.canSendBackward)
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedSet.addEBObserver (self.canSendBackward_property)
+    self.canSendToBack_property.readModelFunction = { [weak self] in
+      if let me = self {
+        return .single (me.canSendToBack)
+      }else{
+        return .empty
+      }
+    }
+    self.mSelectedSet.addEBObserver (self.canSendToBack_property)
+  //--- Set selected array compute function
+    setSelectedArrayComputeFunction ()
+  //--- Set sorted array compute function
+    setFilterAndSortFunction ()
+  }
 
   //····················································································································
   //    Sort Array
+  //····················································································································
+
+  let sortedArray_property = TransientArrayOf_MergerBoardInstance ()
+
   //····················································································································
 
   private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
@@ -45,27 +91,13 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
   }
 
+  //····················································································································
+  //    Attributes
+  //····················································································································
+
   private let allowsEmptySelection = true
   private let allowsMultipleSelection = true
   
-  //····················································································································
-  //    init
-  //····················································································································
-
-  override init () {
-    mSelectedSet = SelectedSet_MergerDocument_mBoardInstanceController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
-    )
-    super.init ()
-    self.mSelectedSet.set (callBack: { [weak self] in self?.computeSelectionShape () } )
-  //--- Set selected array compute function
-    setSelectedArrayComputeFunction ()
-  //--- Set sorted array compute function
-    setFilterAndSortFunction ()
-  }
-
   //····················································································································
   //    Model
   //····················································································································
@@ -166,6 +198,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //  EBView interface
   //····················································································································
 
+  private var mObjectDisplayObserver = EBOutletEvent ()
   private var mEBViews = [EBView] ()
 
   //····················································································································
@@ -279,6 +312,12 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
   //    bind_tableView
+  //····················································································································
+
+  private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
+  private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
+  private var mTableViewArray = [EBTableView] ()
+
   //····················································································································
 
   func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {
@@ -574,6 +613,10 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   // BRING FORWARD
   //····················································································································
 
+  var canBringForward_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
   var canBringForward : Bool {
     let objects = mModel?.propval ?? []
     var result = (objects.count > 1) && (mSelectedSet.mSet.count > 0)
@@ -599,6 +642,10 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
   // BRING TO FRONT
+  //····················································································································
+
+  var canBringToFront_property = EBTransientProperty_Bool ()
+
   //····················································································································
 
   var canBringToFront : Bool {
@@ -633,6 +680,10 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   // SEND BACKWARD
   //····················································································································
 
+  var canSendBackward_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
   var canSendBackward : Bool {
     let objects = mModel?.propval ?? []
     var result = (objects.count > 1) && (mSelectedSet.mSet.count > 0)
@@ -658,6 +709,10 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   
   //····················································································································
   // SEND TO BACK
+  //····················································································································
+
+  var canSendToBack_property = EBTransientProperty_Bool ()
+
   //····················································································································
 
   func sendToBack () {

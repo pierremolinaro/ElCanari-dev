@@ -879,7 +879,6 @@ import Cocoa
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     self.mDataController.unbind_tableView (self.mDataTableView)
-//    mDataController.unbind_modelAndView ()
     mDataController.unbind_model ()
   //--------------------------- Unbind selection controllers
     mDataSelection.unbind_selection ()

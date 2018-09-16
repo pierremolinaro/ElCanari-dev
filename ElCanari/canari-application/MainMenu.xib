@@ -548,6 +548,9 @@
                     <outlet property="mView7" destination="5726" id="9XS-Ri-P0B"/>
                 </connections>
             </toolbar>
+            <connections>
+                <outlet property="delegate" destination="lAs-GB-mIJ" id="n6T-89-VVm"/>
+            </connections>
             <point key="canvasLocation" x="681" y="25"/>
         </window>
         <customView misplaced="YES" id="5405" userLabel="Page : General Prefs">
@@ -1964,7 +1967,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="9CFBFBBE-2A9B-49E4-90CF-C07696F7F442" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="BDDB246A-B5BB-4A61-ABE3-DBD9F475273C" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2490,7 +2493,7 @@ Gw
         </window>
     </objects>
     <resources>
-        <image name="9CFBFBBE-2A9B-49E4-90CF-C07696F7F442" width="20" height="20">
+        <image name="BDDB246A-B5BB-4A61-ABE3-DBD9F475273C" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
