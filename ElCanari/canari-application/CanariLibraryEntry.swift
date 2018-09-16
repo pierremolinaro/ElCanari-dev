@@ -427,12 +427,23 @@ class EBClassArray_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
   //····················································································································
 
   var undoManager : EBUndoManager? = nil
-
+  
+  //····················································································································
+  //  Preferences Key
   //····················································································································
 
-  func readInPreferencesWithKey (inKey : String) {
+  private let mPreferencesKey : String
+  
+  //····················································································································
+  //  Init
+  //····················································································································
+
+  init (_ inPreferencesKey : String) {
+    mPreferencesKey = inPreferencesKey
+    super.init ()
+  //--- Read from user defaults
     let ud = UserDefaults.standard
-    let value : Any? = ud.object (forKey: inKey)
+    let value : Any? = ud.object (forKey: self.mPreferencesKey)
     if let unwValue : Any = value {
       if let array : [NSDictionary] = unwValue as? [NSDictionary] {
         for dict in array {
@@ -443,20 +454,7 @@ class EBClassArray_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
       }
     }
   }
-
-  //····················································································································
-
-  func storeInPreferencesWithKey (inKey : String) {
-    let ud = UserDefaults.standard
-    var array = [NSDictionary] ()
-    for object in mValue {
-      let dict = NSMutableDictionary ()
-      object.saveInto (dictionary: dict)
-      array.append (dict)
-    }
-    ud.set (array, forKey:inKey)
-  }
-
+  
   //····················································································································
 
   private var mSet = Set<CanariLibraryEntry> ()
@@ -483,6 +481,17 @@ class EBClassArray_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
         }
       //--- Notify observers object count did change
         postEvent ()
+      //--- Store in user defaults (undo manager is nil during setup)
+        if self.undoManager != nil {
+          let ud = UserDefaults.standard
+          var array = [NSDictionary] ()
+          for object in mValue {
+            let dict = NSMutableDictionary ()
+            object.saveInto (dictionary: dict)
+            array.append (dict)
+          }
+          ud.set (array, forKey: self.mPreferencesKey)
+        }
       }
     }
   }

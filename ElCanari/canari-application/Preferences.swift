@@ -153,6 +153,7 @@ let Preferences_mergerColorBackLayoutTexts = "Preferences:mergerColorBackLayoutT
 let Preferences_mergerColorFrontLegendLines = "Preferences:mergerColorFrontLegendLines"
 let Preferences_mergerColorBackLegendLines = "Preferences:mergerColorBackLegendLines"
 let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
+let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3200,7 +3201,7 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   //    Stored Array Properties
   //····················································································································
 
-  var additionnalLibraryArray_property = EBClassArray_CanariLibraryEntry ()
+  var additionnalLibraryArray_property = EBClassArray_CanariLibraryEntry (Preferences_additionnalLibraryArray)
 
   //····················································································································
   //    Transient properties
@@ -3217,6 +3218,15 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   //····················································································································
 
   private var additionnalLibraryArrayController = ArrayController_Preferences_additionnalLibraryArrayController ()
+
+  //····················································································································
+  //    Multiple bindings controllers
+  //····················································································································
+
+  private var mController_nextSystemLibraryCheckDate_hidden : MultipleBindingController_hidden?
+  private var mController_systemLibraryCheckTimeIntervalPopupButton_hidden : MultipleBindingController_hidden?
+  private var mController_systemLibraryCheckTimeIntervalTitleTextField_hidden : MultipleBindingController_hidden?
+  private var mController_mRemoveLibraryEntryButton_enabled : MultipleBindingController_enabled?
 
   //····················································································································
   //    Undo Manager
@@ -3383,7 +3393,6 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
     self.mergerColorBackLegendLines_property.undoManager = self.mUndoManager
     self.mergerColorBackground_property.undoManager = self.mUndoManager
     self.additionnalLibraryArray_property.undoManager = self.mUndoManager
-    self.additionnalLibraryArray_property.readInPreferencesWithKey (inKey: "Preferences:additionnalLibraryArray")
   //--- Property validation function
     self.currentCharacterCodePoint_property.validationFunction = self.validate_currentCharacterCodePoint
   //---
@@ -4825,20 +4834,10 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
   }
 
   //····················································································································
-  //    Multiple bindings controller
-  //····················································································································
-
-  fileprivate var mController_nextSystemLibraryCheckDate_hidden : MultipleBindingController_hidden?
-  fileprivate var mController_systemLibraryCheckTimeIntervalPopupButton_hidden : MultipleBindingController_hidden?
-  fileprivate var mController_systemLibraryCheckTimeIntervalTitleTextField_hidden : MultipleBindingController_hidden?
-  fileprivate var mController_mRemoveLibraryEntryButton_enabled : MultipleBindingController_enabled?
-
-  //····················································································································
   //    applicationWillTerminateAction
   //····················································································································
 
   func applicationWillTerminateAction (_ : NSNotification) {
-    self.additionnalLibraryArray_property.storeInPreferencesWithKey (inKey: "Preferences:additionnalLibraryArray")
   //--------------------------- Array controller
     self.additionnalLibraryArrayController.unbind_tableView (self.mAdditionnalLibraryArrayTableView)
     self.additionnalLibraryArrayController.unbind_model ()
