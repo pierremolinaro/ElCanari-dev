@@ -1170,16 +1170,6 @@ func compare_String (left : EBReadOnlyProperty_String, right : EBReadOnlyPropert
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property class NSColor
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_NSColor  = EBReadOnlyClassProperty <NSColor>
-typealias EBTransientProperty_NSColor = EBTransientClassProperty <NSColor>
-typealias EBReadWriteProperty_NSColor = EBReadWriteClassProperty <NSColor>
-typealias EBPropertyProxy_NSColor     = EBPropertyClassProxy <NSColor>
-typealias EBStoredProperty_NSColor    = EBStoredClassProperty <NSColor>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property CGFloat
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1360,4 +1350,14 @@ typealias EBTransientProperty_NSFont = EBTransientClassProperty <NSFont>
 typealias EBReadWriteProperty_NSFont = EBReadWriteClassProperty <NSFont>
 typealias EBPropertyProxy_NSFont     = EBPropertyClassProxy <NSFont>
 typealias EBStoredProperty_NSFont    = EBStoredClassProperty <NSFont>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property class NSColor
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_NSColor  = EBReadOnlyClassProperty <NSColor>
+typealias EBTransientProperty_NSColor = EBTransientClassProperty <NSColor>
+typealias EBReadWriteProperty_NSColor = EBReadWriteClassProperty <NSColor>
+typealias EBPropertyProxy_NSColor     = EBPropertyClassProxy <NSColor>
+typealias EBStoredProperty_NSColor    = EBStoredClassProperty <NSColor>
 
