@@ -3201,7 +3201,7 @@ let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
   //    Stored Array Properties
   //····················································································································
 
-  var additionnalLibraryArray_property = EBClassArray_CanariLibraryEntry (Preferences_additionnalLibraryArray)
+  var additionnalLibraryArray_property = StoredArrayOf_CanariLibraryEntry (Preferences_additionnalLibraryArray)
 
   //····················································································································
   //    Transient properties

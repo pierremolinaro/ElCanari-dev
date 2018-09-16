@@ -68,7 +68,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //    Model
   //····················································································································
 
-  private var mModel : EBClassArray_CanariLibraryEntry? = nil
+  private var mModel : ReadWriteArrayOf_CanariLibraryEntry? = nil
 
   //····················································································································
 
@@ -79,7 +79,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 
   //····················································································································
 
-  func bind_model (_ inModel:EBClassArray_CanariLibraryEntry) {
+  func bind_model (_ inModel:ReadWriteArrayOf_CanariLibraryEntry) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)

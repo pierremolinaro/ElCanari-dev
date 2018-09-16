@@ -68,7 +68,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
   //    Model
   //····················································································································
 
-  private var mModel : ToManyRelationshipReadWrite_ArtworkFileGenerationParameters? = nil
+  private var mModel : ReadWriteArrayOf_ArtworkFileGenerationParameters? = nil
 
   //····················································································································
 
@@ -79,7 +79,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
 
   //····················································································································
 
-  func bind_model (_ inModel:ToManyRelationshipReadWrite_ArtworkFileGenerationParameters) {
+  func bind_model (_ inModel:ReadWriteArrayOf_ArtworkFileGenerationParameters) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)

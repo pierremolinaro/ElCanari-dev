@@ -632,10 +632,10 @@ class MergerRoot : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var boardModels_property = ToManyRelationship_BoardModel ()
- // var boardModels_property = ToManyRelationship_MergerRoot_boardModels ()
-  var boardInstances_property = ToManyRelationship_MergerBoardInstance ()
- // var boardInstances_property = ToManyRelationship_MergerRoot_boardInstances ()
+  var boardModels_property = StoredArrayOf_BoardModel ()
+ // var boardModels_property = StoredArrayOf_MergerRoot_boardModels ()
+  var boardInstances_property = StoredArrayOf_MergerBoardInstance ()
+ // var boardInstances_property = StoredArrayOf_MergerRoot_boardInstances ()
   var artwork_property = ToOneRelationship_MergerRoot_artwork ()
   var artwork_property_selection : EBSelection <Bool> { return .single (self.artwork_property.propval == nil) }
 
@@ -3062,11 +3062,11 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 //    To many relationship read write: MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_MergerRoot : ReadOnlyArrayOf_MergerRoot {
+class ReadWriteArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -3082,9 +3082,7 @@ class ToManyRelationshipReadWrite_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 //    To many relationship: MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_MergerRoot :
-       ToManyRelationshipReadWrite_MergerRoot,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -4040,3 +4038,4 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
 
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

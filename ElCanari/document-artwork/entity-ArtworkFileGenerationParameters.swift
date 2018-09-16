@@ -2376,11 +2376,11 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 //    To many relationship read write: ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_ArtworkFileGenerationParameters : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
+class ReadWriteArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -2396,9 +2396,7 @@ class ToManyRelationshipReadWrite_ArtworkFileGenerationParameters : ReadOnlyArra
 //    To many relationship: ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_ArtworkFileGenerationParameters :
-       ToManyRelationshipReadWrite_ArtworkFileGenerationParameters,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -2742,3 +2740,4 @@ protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : class {
 }
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -571,11 +571,11 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
 //    To many relationship read write: SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontCharacter {
+class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontCharacter {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -591,9 +591,7 @@ class ToManyRelationshipReadWrite_SegmentForFontCharacter : ReadOnlyArrayOf_Segm
 //    To many relationship: SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_SegmentForFontCharacter :
-       ToManyRelationshipReadWrite_SegmentForFontCharacter,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -785,3 +783,4 @@ protocol SegmentForFontCharacter_y2 : class {
 }
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

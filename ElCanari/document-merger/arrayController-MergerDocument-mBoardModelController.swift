@@ -68,7 +68,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //    Model
   //····················································································································
 
-  private var mModel : ToManyRelationshipReadWrite_BoardModel? = nil
+  private var mModel : ReadWriteArrayOf_BoardModel? = nil
 
   //····················································································································
 
@@ -79,7 +79,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
 
   //····················································································································
 
-  func bind_model (_ inModel:ToManyRelationshipReadWrite_BoardModel) {
+  func bind_model (_ inModel:ReadWriteArrayOf_BoardModel) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)

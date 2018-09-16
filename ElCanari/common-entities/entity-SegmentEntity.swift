@@ -647,11 +647,11 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 //    To many relationship read write: SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
+class ReadWriteArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -667,9 +667,7 @@ class ToManyRelationshipReadWrite_SegmentEntity : ReadOnlyArrayOf_SegmentEntity 
 //    To many relationship: SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_SegmentEntity :
-       ToManyRelationshipReadWrite_SegmentEntity,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -869,3 +867,4 @@ protocol SegmentEntity_width : class {
 }
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -461,11 +461,11 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 //    To many relationship read write: BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
+class ReadWriteArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -481,9 +481,7 @@ class ToManyRelationshipReadWrite_BoardModelVia : ReadOnlyArrayOf_BoardModelVia 
 //    To many relationship: BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModelVia :
-       ToManyRelationshipReadWrite_BoardModelVia,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -667,3 +665,4 @@ protocol BoardModelVia_padDiameter : class {
 }
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

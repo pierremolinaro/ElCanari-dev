@@ -139,8 +139,8 @@ class FontCharacter : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var segments_property = ToManyRelationship_SegmentForFontCharacter ()
- // var segments_property = ToManyRelationship_FontCharacter_segments ()
+  var segments_property = StoredArrayOf_SegmentForFontCharacter ()
+ // var segments_property = StoredArrayOf_FontCharacter_segments ()
 
   //····················································································································
   //    init
@@ -759,11 +759,11 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 //    To many relationship read write: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_FontCharacter : ReadOnlyArrayOf_FontCharacter {
+class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -779,9 +779,7 @@ class ToManyRelationshipReadWrite_FontCharacter : ReadOnlyArrayOf_FontCharacter 
 //    To many relationship: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_FontCharacter :
-       ToManyRelationshipReadWrite_FontCharacter,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -981,3 +979,4 @@ protocol FontCharacter_gerberCodeInstructionCountMessage : class {
 }
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

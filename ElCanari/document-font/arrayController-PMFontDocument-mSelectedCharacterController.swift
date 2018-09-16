@@ -68,7 +68,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
   //    Model
   //····················································································································
 
-  private var mModel : ToManyRelationshipReadWrite_FontCharacter? = nil
+  private var mModel : ReadWriteArrayOf_FontCharacter? = nil
 
   //····················································································································
 
@@ -79,7 +79,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
 
   //····················································································································
 
-  func bind_model (_ inModel:ToManyRelationshipReadWrite_FontCharacter) {
+  func bind_model (_ inModel:ReadWriteArrayOf_FontCharacter) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)

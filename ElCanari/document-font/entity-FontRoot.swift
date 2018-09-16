@@ -223,8 +223,8 @@ class FontRoot : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var characters_property = ToManyRelationship_FontCharacter ()
- // var characters_property = ToManyRelationship_FontRoot_characters ()
+  var characters_property = StoredArrayOf_FontCharacter ()
+ // var characters_property = StoredArrayOf_FontRoot_characters ()
 
   //····················································································································
   //    init
@@ -1167,11 +1167,11 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 //    To many relationship read write: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_FontRoot : ReadOnlyArrayOf_FontRoot {
+class ReadWriteArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -1187,9 +1187,7 @@ class ToManyRelationshipReadWrite_FontRoot : ReadOnlyArrayOf_FontRoot {
 //    To many relationship: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_FontRoot :
-       ToManyRelationshipReadWrite_FontRoot,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -1421,3 +1419,4 @@ protocol FontRoot_currentCharacterCodePointString : class {
 }
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

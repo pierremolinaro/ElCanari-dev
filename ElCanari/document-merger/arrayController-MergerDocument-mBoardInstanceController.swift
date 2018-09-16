@@ -102,7 +102,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //    Model
   //····················································································································
 
-  private var mModel : ToManyRelationshipReadWrite_MergerBoardInstance? = nil
+  private var mModel : ReadWriteArrayOf_MergerBoardInstance? = nil
 
   //····················································································································
 
@@ -113,7 +113,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
 
-  func bind_model (_ inModel:ToManyRelationshipReadWrite_MergerBoardInstance) {
+  func bind_model (_ inModel:ReadWriteArrayOf_MergerBoardInstance) {
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)

@@ -265,8 +265,8 @@ class ArtworkRoot : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var fileGenerationParameterArray_property = ToManyRelationship_ArtworkFileGenerationParameters ()
- // var fileGenerationParameterArray_property = ToManyRelationship_ArtworkRoot_fileGenerationParameterArray ()
+  var fileGenerationParameterArray_property = StoredArrayOf_ArtworkFileGenerationParameters ()
+ // var fileGenerationParameterArray_property = StoredArrayOf_ArtworkRoot_fileGenerationParameterArray ()
 
   //····················································································································
   //    init
@@ -1272,11 +1272,11 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 //    To many relationship read write: ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
+class ReadWriteArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -1292,9 +1292,7 @@ class ToManyRelationshipReadWrite_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 //    To many relationship: ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_ArtworkRoot :
-       ToManyRelationshipReadWrite_ArtworkRoot,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -1542,3 +1540,4 @@ protocol ArtworkRoot_drillDataFileExtension : class {
 }
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

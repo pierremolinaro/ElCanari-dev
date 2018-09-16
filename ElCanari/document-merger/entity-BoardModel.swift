@@ -1316,46 +1316,46 @@ class BoardModel : EBManagedObject,
   //    Relationships
   //····················································································································
 
-  var myInstances_property = ToManyRelationship_MergerBoardInstance ()
- // var myInstances_property = ToManyRelationship_BoardModel_myInstances ()
-  var frontLegendLines_property = ToManyRelationship_SegmentEntity ()
- // var frontLegendLines_property = ToManyRelationship_BoardModel_frontLegendLines ()
-  var backLegendLines_property = ToManyRelationship_SegmentEntity ()
- // var backLegendLines_property = ToManyRelationship_BoardModel_backLegendLines ()
-  var frontLegendTexts_property = ToManyRelationship_SegmentEntity ()
- // var frontLegendTexts_property = ToManyRelationship_BoardModel_frontLegendTexts ()
-  var frontLayoutTexts_property = ToManyRelationship_SegmentEntity ()
- // var frontLayoutTexts_property = ToManyRelationship_BoardModel_frontLayoutTexts ()
-  var backLegendTexts_property = ToManyRelationship_SegmentEntity ()
- // var backLegendTexts_property = ToManyRelationship_BoardModel_backLegendTexts ()
-  var backLayoutTexts_property = ToManyRelationship_SegmentEntity ()
- // var backLayoutTexts_property = ToManyRelationship_BoardModel_backLayoutTexts ()
-  var internalBoardsLimits_property = ToManyRelationship_SegmentEntity ()
- // var internalBoardsLimits_property = ToManyRelationship_BoardModel_internalBoardsLimits ()
-  var drills_property = ToManyRelationship_SegmentEntity ()
- // var drills_property = ToManyRelationship_BoardModel_drills ()
-  var vias_property = ToManyRelationship_BoardModelVia ()
- // var vias_property = ToManyRelationship_BoardModel_vias ()
-  var frontPads_property = ToManyRelationship_BoardModelPad ()
- // var frontPads_property = ToManyRelationship_BoardModel_frontPads ()
-  var backPads_property = ToManyRelationship_BoardModelPad ()
- // var backPads_property = ToManyRelationship_BoardModel_backPads ()
-  var backComponentNames_property = ToManyRelationship_SegmentEntity ()
- // var backComponentNames_property = ToManyRelationship_BoardModel_backComponentNames ()
-  var frontComponentNames_property = ToManyRelationship_SegmentEntity ()
- // var frontComponentNames_property = ToManyRelationship_BoardModel_frontComponentNames ()
-  var frontComponentValues_property = ToManyRelationship_SegmentEntity ()
- // var frontComponentValues_property = ToManyRelationship_BoardModel_frontComponentValues ()
-  var backComponentValues_property = ToManyRelationship_SegmentEntity ()
- // var backComponentValues_property = ToManyRelationship_BoardModel_backComponentValues ()
-  var backTracks_property = ToManyRelationship_SegmentEntity ()
- // var backTracks_property = ToManyRelationship_BoardModel_backTracks ()
-  var frontTracks_property = ToManyRelationship_SegmentEntity ()
- // var frontTracks_property = ToManyRelationship_BoardModel_frontTracks ()
-  var frontPackages_property = ToManyRelationship_SegmentEntity ()
- // var frontPackages_property = ToManyRelationship_BoardModel_frontPackages ()
-  var backPackages_property = ToManyRelationship_SegmentEntity ()
- // var backPackages_property = ToManyRelationship_BoardModel_backPackages ()
+  var myInstances_property = StoredArrayOf_MergerBoardInstance ()
+ // var myInstances_property = StoredArrayOf_BoardModel_myInstances ()
+  var frontLegendLines_property = StoredArrayOf_SegmentEntity ()
+ // var frontLegendLines_property = StoredArrayOf_BoardModel_frontLegendLines ()
+  var backLegendLines_property = StoredArrayOf_SegmentEntity ()
+ // var backLegendLines_property = StoredArrayOf_BoardModel_backLegendLines ()
+  var frontLegendTexts_property = StoredArrayOf_SegmentEntity ()
+ // var frontLegendTexts_property = StoredArrayOf_BoardModel_frontLegendTexts ()
+  var frontLayoutTexts_property = StoredArrayOf_SegmentEntity ()
+ // var frontLayoutTexts_property = StoredArrayOf_BoardModel_frontLayoutTexts ()
+  var backLegendTexts_property = StoredArrayOf_SegmentEntity ()
+ // var backLegendTexts_property = StoredArrayOf_BoardModel_backLegendTexts ()
+  var backLayoutTexts_property = StoredArrayOf_SegmentEntity ()
+ // var backLayoutTexts_property = StoredArrayOf_BoardModel_backLayoutTexts ()
+  var internalBoardsLimits_property = StoredArrayOf_SegmentEntity ()
+ // var internalBoardsLimits_property = StoredArrayOf_BoardModel_internalBoardsLimits ()
+  var drills_property = StoredArrayOf_SegmentEntity ()
+ // var drills_property = StoredArrayOf_BoardModel_drills ()
+  var vias_property = StoredArrayOf_BoardModelVia ()
+ // var vias_property = StoredArrayOf_BoardModel_vias ()
+  var frontPads_property = StoredArrayOf_BoardModelPad ()
+ // var frontPads_property = StoredArrayOf_BoardModel_frontPads ()
+  var backPads_property = StoredArrayOf_BoardModelPad ()
+ // var backPads_property = StoredArrayOf_BoardModel_backPads ()
+  var backComponentNames_property = StoredArrayOf_SegmentEntity ()
+ // var backComponentNames_property = StoredArrayOf_BoardModel_backComponentNames ()
+  var frontComponentNames_property = StoredArrayOf_SegmentEntity ()
+ // var frontComponentNames_property = StoredArrayOf_BoardModel_frontComponentNames ()
+  var frontComponentValues_property = StoredArrayOf_SegmentEntity ()
+ // var frontComponentValues_property = StoredArrayOf_BoardModel_frontComponentValues ()
+  var backComponentValues_property = StoredArrayOf_SegmentEntity ()
+ // var backComponentValues_property = StoredArrayOf_BoardModel_backComponentValues ()
+  var backTracks_property = StoredArrayOf_SegmentEntity ()
+ // var backTracks_property = StoredArrayOf_BoardModel_backTracks ()
+  var frontTracks_property = StoredArrayOf_SegmentEntity ()
+ // var frontTracks_property = StoredArrayOf_BoardModel_frontTracks ()
+  var frontPackages_property = StoredArrayOf_SegmentEntity ()
+ // var frontPackages_property = StoredArrayOf_BoardModel_frontPackages ()
+  var backPackages_property = StoredArrayOf_SegmentEntity ()
+ // var backPackages_property = StoredArrayOf_BoardModel_backPackages ()
 
   //····················································································································
   //    init
@@ -7042,11 +7042,11 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 //    To many relationship read write: BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModel : ReadOnlyArrayOf_BoardModel {
+class ReadWriteArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -7062,9 +7062,7 @@ class ToManyRelationshipReadWrite_BoardModel : ReadOnlyArrayOf_BoardModel {
 //    To many relationship: BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModel :
-       ToManyRelationshipReadWrite_BoardModel,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -7640,3 +7638,4 @@ protocol BoardModel_imageForInstances : class {
 }
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

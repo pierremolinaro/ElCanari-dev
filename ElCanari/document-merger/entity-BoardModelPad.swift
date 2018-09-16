@@ -740,11 +740,11 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 //    To many relationship read write: BoardModelPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
+class ReadWriteArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -760,9 +760,7 @@ class ToManyRelationshipReadWrite_BoardModelPad : ReadOnlyArrayOf_BoardModelPad 
 //    To many relationship: BoardModelPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_BoardModelPad :
-       ToManyRelationshipReadWrite_BoardModelPad,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -970,3 +968,4 @@ protocol BoardModelPad_rotation : class {
 }
 
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

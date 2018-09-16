@@ -1075,11 +1075,11 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 //    To many relationship read write: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ToManyRelationshipReadWrite_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance {
+class ReadWriteArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager?
+  var undoManager : EBUndoManager?
 
   //····················································································································
  
@@ -1095,9 +1095,7 @@ class ToManyRelationshipReadWrite_MergerBoardInstance : ReadOnlyArrayOf_MergerBo
 //    To many relationship: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ToManyRelationship_MergerBoardInstance :
-       ToManyRelationshipReadWrite_MergerBoardInstance,
-       EBSignatureObserverProtocol {
+final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -5091,3 +5089,4 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
 
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
