@@ -222,6 +222,14 @@ class BoardModelVia : EBManagedObject,
 class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelVia> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [BoardModelVia] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
@@ -404,7 +412,24 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
   var readModelFunction : Optional<() -> EBSelection < [BoardModelVia] > >
 
-  private var prop_cache : EBSelection < [BoardModelVia] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [BoardModelVia] >? 
+
+  //····················································································································
+
+  override var propval : [BoardModelVia] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -476,14 +501,10 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 class ReadWriteArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [BoardModelVia]) { } // Abstract method
  
-  var propval : [BoardModelVia] { return [] } // Abstract method
+  // var propval : [BoardModelVia] { return [] } // Abstract method
  
   //····················································································································
 

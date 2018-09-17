@@ -561,6 +561,14 @@ class ArtworkRoot : EBManagedObject,
 class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [ArtworkRoot] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
@@ -1199,7 +1207,24 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   var readModelFunction : Optional<() -> EBSelection < [ArtworkRoot] > >
 
-  private var prop_cache : EBSelection < [ArtworkRoot] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [ArtworkRoot] >? 
+
+  //····················································································································
+
+  override var propval : [ArtworkRoot] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -1287,14 +1312,10 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 class ReadWriteArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [ArtworkRoot]) { } // Abstract method
  
-  var propval : [ArtworkRoot] { return [] } // Abstract method
+  // var propval : [ArtworkRoot] { return [] } // Abstract method
  
   //····················································································································
 

@@ -592,6 +592,14 @@ class FontRoot : EBManagedObject,
 class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [FontRoot] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'comments' stored property
   //····················································································································
 
@@ -1111,7 +1119,24 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
   var readModelFunction : Optional<() -> EBSelection < [FontRoot] > >
 
-  private var prop_cache : EBSelection < [FontRoot] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [FontRoot] >? 
+
+  //····················································································································
+
+  override var propval : [FontRoot] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -1195,14 +1220,10 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 class ReadWriteArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [FontRoot]) { } // Abstract method
  
-  var propval : [FontRoot] { return [] } // Abstract method
+  // var propval : [FontRoot] { return [] } // Abstract method
  
   //····················································································································
 

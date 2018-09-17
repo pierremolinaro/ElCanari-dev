@@ -546,6 +546,14 @@ class MergerBoardInstance : EBGraphicManagedObject,
 class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <MergerBoardInstance> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [MergerBoardInstance] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
@@ -1008,7 +1016,24 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 
   var readModelFunction : Optional<() -> EBSelection < [MergerBoardInstance] > >
 
-  private var prop_cache : EBSelection < [MergerBoardInstance] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [MergerBoardInstance] >? 
+
+  //····················································································································
+
+  override var propval : [MergerBoardInstance] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -1090,14 +1115,10 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 class ReadWriteArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [MergerBoardInstance]) { } // Abstract method
  
-  var propval : [MergerBoardInstance] { return [] } // Abstract method
+  // var propval : [MergerBoardInstance] { return [] } // Abstract method
  
   //····················································································································
 

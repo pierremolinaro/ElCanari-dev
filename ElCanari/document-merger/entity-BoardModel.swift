@@ -3955,6 +3955,14 @@ class BoardModel : EBManagedObject,
 class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [BoardModel] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'artworkName' stored property
   //····················································································································
 
@@ -6887,7 +6895,24 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
   var readModelFunction : Optional<() -> EBSelection < [BoardModel] > >
 
-  private var prop_cache : EBSelection < [BoardModel] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [BoardModel] >? 
+
+  //····················································································································
+
+  override var propval : [BoardModel] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -7057,14 +7082,10 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 class ReadWriteArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [BoardModel]) { } // Abstract method
  
-  var propval : [BoardModel] { return [] } // Abstract method
+  // var propval : [BoardModel] { return [] } // Abstract method
  
   //····················································································································
 

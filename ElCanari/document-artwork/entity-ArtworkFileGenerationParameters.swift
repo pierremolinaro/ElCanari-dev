@@ -957,6 +957,14 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayProperty <ArtworkFileGenerationParameters> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [ArtworkFileGenerationParameters] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'drawBoardLimits' stored property
   //····················································································································
 
@@ -2279,7 +2287,24 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 
   var readModelFunction : Optional<() -> EBSelection < [ArtworkFileGenerationParameters] > >
 
-  private var prop_cache : EBSelection < [ArtworkFileGenerationParameters] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [ArtworkFileGenerationParameters] >? 
+
+  //····················································································································
+
+  override var propval : [ArtworkFileGenerationParameters] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -2391,14 +2416,10 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 class ReadWriteArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [ArtworkFileGenerationParameters]) { } // Abstract method
  
-  var propval : [ArtworkFileGenerationParameters] { return [] } // Abstract method
+  // var propval : [ArtworkFileGenerationParameters] { return [] } // Abstract method
  
   //····················································································································
 

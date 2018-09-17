@@ -39,9 +39,9 @@ document PMFontDocument root FontRoot {
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
 #--- Character controller
-#  arrayController mSelectedCharacterController2 {allowsEmptySelection:no, allowsMultipleSelection:no}
-#    root.selectedCharacterController.selectedArray
-#  ;
+  arrayController mSelectedCharacterController2 {allowsEmptySelection:no, allowsMultipleSelection:no}
+    root.selectedCharacterController.sortedArray
+  ;
 
   arrayController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
   selectionController mCharacterSelection : mSelectedCharacterController.selectedArray ;

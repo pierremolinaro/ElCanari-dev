@@ -290,6 +290,14 @@ class SegmentEntity : EBManagedObject,
 class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEntity> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [SegmentEntity] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'x1' stored property
   //····················································································································
 
@@ -586,7 +594,24 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   var readModelFunction : Optional<() -> EBSelection < [SegmentEntity] > >
 
-  private var prop_cache : EBSelection < [SegmentEntity] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [SegmentEntity] >? 
+
+  //····················································································································
+
+  override var propval : [SegmentEntity] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -662,14 +687,10 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 class ReadWriteArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [SegmentEntity]) { } // Abstract method
  
-  var propval : [SegmentEntity] { return [] } // Abstract method
+  // var propval : [SegmentEntity] { return [] } // Abstract method
  
   //····················································································································
 

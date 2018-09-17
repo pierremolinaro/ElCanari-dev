@@ -324,6 +324,14 @@ class BoardModelPad : EBManagedObject,
 class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelPad> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [BoardModelPad] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
@@ -677,7 +685,24 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
   var readModelFunction : Optional<() -> EBSelection < [BoardModelPad] > >
 
-  private var prop_cache : EBSelection < [BoardModelPad] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [BoardModelPad] >? 
+
+  //····················································································································
+
+  override var propval : [BoardModelPad] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -755,14 +780,10 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 class ReadWriteArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [BoardModelPad]) { } // Abstract method
  
-  var propval : [BoardModelPad] { return [] } // Abstract method
+  // var propval : [BoardModelPad] { return [] } // Abstract method
  
   //····················································································································
 

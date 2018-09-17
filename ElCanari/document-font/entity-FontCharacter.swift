@@ -405,6 +405,14 @@ class FontCharacter : EBManagedObject,
 class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharacter> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [FontCharacter] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'codePoint' stored property
   //····················································································································
 
@@ -698,7 +706,24 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   var readModelFunction : Optional<() -> EBSelection < [FontCharacter] > >
 
-  private var prop_cache : EBSelection < [FontCharacter] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [FontCharacter] >? 
+
+  //····················································································································
+
+  override var propval : [FontCharacter] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -774,14 +799,10 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [FontCharacter]) { } // Abstract method
  
-  var propval : [FontCharacter] { return [] } // Abstract method
+  // var propval : [FontCharacter] { return [] } // Abstract method
  
   //····················································································································
 

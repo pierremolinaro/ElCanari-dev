@@ -17,6 +17,8 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
 @objc (ApplicationDelegate) class ApplicationDelegate : NSObject, NSApplicationDelegate {
 
+  @IBOutlet private var mCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil // Only for retaining object
+
   //····················································································································
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
   //····················································································································
@@ -90,40 +92,6 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
     UserDefaults.standard.removeObserver (self, forKeyPath:SU_LAST_CHECK_TIME, context: nil)
   }
 
-//  //····················································································································
-//  //    Undo Manager
-//  //····················································································································
-//
-//  private var undoManager = EBUndoManager ()
-// 
-//  //····················································································································
-//
-//  @objc override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
-//    NSBeep ()
-//    let validate : Bool
-//    let action = inMenuItem.action
-//    if action == #selector (ApplicationDelegate.undo(_:)) {
-//      validate = self.undoManager.canUndo
-//    }else if action == #selector (ApplicationDelegate.redo(_:)) {
-//      validate = self.undoManager.canRedo
-//    }else{
-//      validate = super.validateMenuItem (inMenuItem)
-//    }
-//    return validate
-//  }
-//
-//  //····················································································································
-//
-//  @objc func undo (_ inSender : Any?) {
-//    self.undoManager.undo ()
-//  }
-//
-//  //····················································································································
-//
-//  @objc func redo (_ inSender : Any?) {
-//    self.undoManager.redo ()
-//  }
-//
   //····················································································································
 
 }

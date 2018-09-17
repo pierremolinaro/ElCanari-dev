@@ -273,6 +273,14 @@ class SegmentForFontCharacter : EBManagedObject,
 class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <SegmentForFontCharacter> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [SegmentForFontCharacter] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'x1' stored property
   //····················································································································
 
@@ -512,7 +520,24 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
 
   var readModelFunction : Optional<() -> EBSelection < [SegmentForFontCharacter] > >
 
-  private var prop_cache : EBSelection < [SegmentForFontCharacter] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [SegmentForFontCharacter] >? 
+
+  //····················································································································
+
+  override var propval : [SegmentForFontCharacter] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -586,14 +611,10 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
 class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontCharacter {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [SegmentForFontCharacter]) { } // Abstract method
  
-  var propval : [SegmentForFontCharacter] { return [] } // Abstract method
+  // var propval : [SegmentForFontCharacter] { return [] } // Abstract method
  
   //····················································································································
 

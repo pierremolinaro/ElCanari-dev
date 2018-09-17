@@ -324,6 +324,7 @@
 		CFF2653320E6863C00525C0F /* transient-BoardModel-frontLayoutTextsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2653120E6863C00525C0F /* transient-BoardModel-frontLayoutTextsSegments.swift */; };
 		CFF2653720E687E100525C0F /* transient-BoardModel-backLegendTextsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2653520E687E100525C0F /* transient-BoardModel-backLegendTextsSegments.swift */; };
 		CFF2653B20E689ED00525C0F /* transient-BoardModel-backLayoutTextsSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2653920E689ED00525C0F /* transient-BoardModel-backLayoutTextsSegments.swift */; };
+		CFF54D5A215011D900648380 /* arrayController-PMFontDocument-mSelectedCharacterController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC312BB214BD203002F2CE3 /* arrayController-PMFontDocument-mSelectedCharacterController2.swift */; };
 		CFF7B4271FDF28C800A5CF44 /* canari_artwork.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */; };
 		CFF7B4291FDF2E3400A5CF44 /* canari_merger.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */; };
 		CFFB18B71DDF6E35008B05C1 /* extension-CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFB18B61DDF6E35008B05C1 /* extension-CGRect.swift */; };
@@ -1395,6 +1396,7 @@
 				CF71F92A1B3EA3DF00FB5049 /* EBTextField.swift in Sources */,
 				CF3E2DF020EE6D1F00A7926B /* transient-MergerDocument-importArtworkButtonTitle.swift in Sources */,
 				CF0EFB331C0382BA0035FF76 /* CharacterSegmentListClass.swift in Sources */,
+				CFF54D5A215011D900648380 /* arrayController-PMFontDocument-mSelectedCharacterController2.swift in Sources */,
 				CFBAFCE41DE1ECAE00E972BE /* transient-Preferences-mValueRevealInFinder_devices.swift in Sources */,
 				CFF2651E20E670E400525C0F /* Preferences+showMergerDisplaySettings.swift in Sources */,
 				CF4C2C431DD9EA03002D570F /* Preferences+updateLibraryFromRepository.swift in Sources */,

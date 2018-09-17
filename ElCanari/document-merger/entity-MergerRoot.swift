@@ -1356,6 +1356,14 @@ class MergerRoot : EBManagedObject,
 class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   //····················································································································
+
+  var undoManager : EBUndoManager?
+
+  //····················································································································
+
+  var propval : [MergerRoot] { return [] } // Abstract method
+
+  //····················································································································
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
@@ -2955,7 +2963,24 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   var readModelFunction : Optional<() -> EBSelection < [MergerRoot] > >
 
-  private var prop_cache : EBSelection < [MergerRoot] >? 
+  //····················································································································
+
+   private var prop_cache : EBSelection < [MergerRoot] >? 
+
+  //····················································································································
+
+  override var propval : [MergerRoot] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -3077,14 +3102,10 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 class ReadWriteArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
-
-  var undoManager : EBUndoManager?
-
-  //····················································································································
  
   func setProp (_ value :  [MergerRoot]) { } // Abstract method
  
-  var propval : [MergerRoot] { return [] } // Abstract method
+  // var propval : [MergerRoot] { return [] } // Abstract method
  
   //····················································································································
 
