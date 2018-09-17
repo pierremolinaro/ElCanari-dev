@@ -86,6 +86,9 @@ class EBManagedObjectContext : EBObject {
     mUndoManager?.removeAllActions ()
     mUndoManager = nil
     for object in mManagedObjectSet {
+      object.resetControllers ()
+    }
+    for object in mManagedObjectSet {
       object.resetToManyRelationships ()
     }
     for object in mManagedObjectSet {

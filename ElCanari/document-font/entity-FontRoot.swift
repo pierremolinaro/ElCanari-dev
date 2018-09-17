@@ -227,6 +227,17 @@ class FontRoot : EBManagedObject,
  // var characters_property = StoredArrayOf_FontRoot_characters ()
 
   //····················································································································
+  //    Array Controllers
+  //····················································································································
+
+  var selectedCharacterController = ArrayController_FontRoot_selectedCharacterController ()
+
+  //····················································································································
+  //    Selection Controllers
+  //····················································································································
+
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -466,6 +477,7 @@ class FontRoot : EBManagedObject,
     )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
+    selectedCharacterController.addExplorer (name: "selectedCharacterController", y:&y, view:view)
   }
 
   //····················································································································
@@ -514,6 +526,10 @@ class FontRoot : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [FontCharacter])
+  //--------------------------- Array controllers
+    self.selectedCharacterController.setManagedObjectContext (self.managedObjectContext ())
+    self.selectedCharacterController.bind_model (self.characters_property)
+  //--------------------------- Selection controllers
   }
 
   //····················································································································
@@ -523,6 +539,15 @@ class FontRoot : EBManagedObject,
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     self.characters_property.setProp ([]) // Set relationships to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetControllers
+  //····················································································································
+
+  override func resetControllers () {
+    super.resetControllers ()
+    self.selectedCharacterController.unbind_model ()
   }
 
   //····················································································································

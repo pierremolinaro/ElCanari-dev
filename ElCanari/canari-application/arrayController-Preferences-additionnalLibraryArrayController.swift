@@ -109,7 +109,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //    Managed object context
   //····················································································································
 
-  private var mManagedObjectContext : EBManagedObjectContext? = nil
+  private weak var mManagedObjectContext : EBManagedObjectContext? = nil
 
   func setManagedObjectContext (_ inManagedObjectContext : EBManagedObjectContext?) {
     self.mManagedObjectContext = inManagedObjectContext

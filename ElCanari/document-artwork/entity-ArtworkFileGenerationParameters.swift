@@ -509,6 +509,16 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
 
   //····················································································································
+  //    Array Controllers
+  //····················································································································
+
+
+  //····················································································································
+  //    Selection Controllers
+  //····················································································································
+
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -884,6 +894,8 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
     self.measurementUnitForPadHoleInPDF_property.readFrom (dictionary: inDictionary, forKey:"measurementUnitForPadHoleInPDF")
     self.padHoleDiameterInPDF_property.readFrom (dictionary: inDictionary, forKey:"padHoleDiameterInPDF")
+  //--------------------------- Array controllers
+  //--------------------------- Selection controllers
   }
 
   //····················································································································

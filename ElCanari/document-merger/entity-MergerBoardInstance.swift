@@ -198,6 +198,16 @@ class MergerBoardInstance : EBGraphicManagedObject,
   var myModel_property_selection : EBSelection <Bool> { return .single (self.myModel_property.propval == nil) }
 
   //····················································································································
+  //    Array Controllers
+  //····················································································································
+
+
+  //····················································································································
+  //    Selection Controllers
+  //····················································································································
+
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -487,6 +497,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
     self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
     self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey:"instanceRotation")
+  //--------------------------- Array controllers
+  //--------------------------- Selection controllers
   }
 
   //····················································································································
