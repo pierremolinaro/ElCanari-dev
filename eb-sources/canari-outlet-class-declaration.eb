@@ -72,7 +72,7 @@ transient property class CanariMenuItemListClass ; # Used for populating « Open
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extern outlet class CanariViewWithZoomAndFlip : EBView $graphicController ;
+extern outlet class CanariViewWithZoomAndFlip : EBView ;
 binding CanariViewWithZoomAndFlip $size : transient Int, transient Int ;
 binding CanariViewWithZoomAndFlip $zoom : property Int ;
 binding CanariViewWithZoomAndFlip $horizontalFlip : transient Bool ;

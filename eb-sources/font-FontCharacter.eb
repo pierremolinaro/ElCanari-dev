@@ -6,8 +6,8 @@ entity FontCharacter {
   
   property @signature Int advance default 0 ;
 
-  transient CharacterSegmentListClass segmentArrayForDrawing
-    dependsFrom self.segments.all.x1, self.segments.all.y1, self.segments.all.x2, self.segments.all.y2 ;
+  transient CharacterSegmentListClass segmentArrayForDrawing dependsFrom
+     self.segments.all.x1, self.segments.all.y1, self.segments.all.x2, self.segments.all.y2 ;
 
   transient CharacterGerberCodeClass gerberCode dependsFrom self.segmentArrayForDrawing ;
 
