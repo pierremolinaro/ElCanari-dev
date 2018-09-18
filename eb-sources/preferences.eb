@@ -370,7 +370,7 @@ prefs {
   outlet NSTextView mLibraryUpdateLogTextView ;
 
 #--- Array of additionnal libraries
-  array CanariLibraryEntry additionnalLibraryArray ;
+  toMany CanariLibraryEntry additionnalLibraryArray ;
   outlet EBTableView mAdditionnalLibraryArrayTableView $tableValue additionnalLibraryArrayController ;
   arrayController additionnalLibraryArrayController {
     allowsEmptySelection:no, allowsMultipleSelection:no

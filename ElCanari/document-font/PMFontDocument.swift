@@ -20,7 +20,6 @@ import Cocoa
   @IBOutlet var gerberCodeInstructionCountMessageTextField : EBTextObserverField?
   @IBOutlet var mAddCharacterButton : EBButton?
   @IBOutlet var mAddSegmentButton : EBButton?
-  @IBOutlet var mCharacterEBView : EBView?
   @IBOutlet var mCurrentCharacterTextField : EBTextObserverField?
   @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton?
   @IBOutlet var mFontNominalSizeTextField : EBIntField?
@@ -56,10 +55,6 @@ import Cocoa
   var documentFilePath_property_selection : EBSelection <String> {
     return self.documentFilePath_property.prop
   }
-
-  //····················································································································
-  //    Transient arraies
-  //····················································································································
 
 
   //····················································································································
@@ -239,17 +234,6 @@ import Cocoa
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mAddSegmentButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mCharacterEBView {
-      if !(outlet is EBView) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mCharacterEBView' outlet is not an instance of 'EBView'") ;
-      }
-    }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mCharacterEBView' outlet is nil") ;
     }
     if let outlet : Any = self.mCurrentCharacterTextField {
       if !(outlet is EBTextObserverField) {
@@ -484,10 +468,9 @@ import Cocoa
     }
   //--------------------------- Array controllers
     self.mSelectedCharacterController2.setManagedObjectContext (self.managedObjectContext ())
-    self.mSelectedCharacterController2.bind_model (self.rootObject.selectedCharacterController.sortedArray_property)
+    self.mSelectedCharacterController2.bind_model (self.rootObject.selectedCharacterController.selectedArray_property)
     self.mSelectedCharacterController.setManagedObjectContext (self.managedObjectContext ())
     self.mSelectedCharacterController.bind_model (self.rootObject.characters_property)
-    self.mSelectedCharacterController2.bind_ebView (self.mCharacterEBView)
   //--------------------------- Selection controllers
     mCharacterSelection.bind_selection (
       model: mSelectedCharacterController.selectedArray_property,
@@ -603,7 +586,6 @@ import Cocoa
   //--------------------------- Uninstall compute functions for transients
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
-    self.mSelectedCharacterController2.unbind_ebView (self.mCharacterEBView)
     mSelectedCharacterController2.unbind_model ()
     mSelectedCharacterController.unbind_model ()
   //--------------------------- Unbind selection controllers
@@ -622,7 +604,6 @@ import Cocoa
     self.gerberCodeInstructionCountMessageTextField?.ebCleanUp ()
     self.mAddCharacterButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
-    self.mCharacterEBView?.ebCleanUp ()
     self.mCurrentCharacterTextField?.ebCleanUp ()
     self.mFontCharacterSelectButton?.ebCleanUp ()
     self.mFontNominalSizeTextField?.ebCleanUp ()

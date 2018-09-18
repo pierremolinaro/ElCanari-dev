@@ -8,11 +8,13 @@ import Cocoa
 //    Entity: SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SegmentForFontCharacter : EBManagedObject,
+class SegmentForFontCharacter : EBGraphicManagedObject,
   SegmentForFontCharacter_x1,
   SegmentForFontCharacter_y1,
   SegmentForFontCharacter_x2,
-  SegmentForFontCharacter_y2 {
+  SegmentForFontCharacter_y2,
+  SegmentForFontCharacter_selectionDisplay,
+  SegmentForFontCharacter_objectDisplay {
 
   //····················································································································
   //   Accessing x1 stored property
@@ -91,6 +93,44 @@ class SegmentForFontCharacter : EBManagedObject,
   }
 
   //····················································································································
+  //   Accessing selectionDisplay transient property
+  //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
+    get {
+      return self.selectionDisplay_property.prop
+    }
+  }
+
+  var selectionDisplay : EBShape? {
+    switch selectionDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Accessing objectDisplay transient property
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    get {
+      return self.objectDisplay_property.prop
+    }
+  }
+
+  var objectDisplay : EBShape? {
+    switch objectDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    Stored Properties
   //····················································································································
 
@@ -103,6 +143,8 @@ class SegmentForFontCharacter : EBManagedObject,
   //    Transient properties
   //····················································································································
 
+  // selectionDisplay_property is declared in super entity
+  // objectDisplay_property is declared in super entity
 
   //····················································································································
   //    Relationships
@@ -126,7 +168,61 @@ class SegmentForFontCharacter : EBManagedObject,
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
   //--- Install compute functions for transients
+    self.selectionDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x1_property_selection.kind ()
+        kind &= unwSelf.y1_property_selection.kind ()
+        kind &= unwSelf.x2_property_selection.kind ()
+        kind &= unwSelf.y2_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_SegmentForFontCharacter_selectionDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.objectDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x1_property_selection.kind ()
+        kind &= unwSelf.y1_property_selection.kind ()
+        kind &= unwSelf.x2_property_selection.kind ()
+        kind &= unwSelf.y2_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_SegmentForFontCharacter_objectDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
   //--- Install property observers for transients
+    self.x1_property.addEBObserver (self.selectionDisplay_property)
+    self.y1_property.addEBObserver (self.selectionDisplay_property)
+    self.x2_property.addEBObserver (self.selectionDisplay_property)
+    self.y2_property.addEBObserver (self.selectionDisplay_property)
+    self.x1_property.addEBObserver (self.objectDisplay_property)
+    self.y1_property.addEBObserver (self.objectDisplay_property)
+    self.x2_property.addEBObserver (self.objectDisplay_property)
+    self.y2_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers for properties
     self.x1_property.undoManager = self.undoManager ()
     self.y1_property.undoManager = self.undoManager ()
@@ -144,6 +240,14 @@ class SegmentForFontCharacter : EBManagedObject,
 
   deinit {
   //--- Remove observers
+    self.x1_property.removeEBObserver (self.selectionDisplay_property)
+    self.y1_property.removeEBObserver (self.selectionDisplay_property)
+    self.x2_property.removeEBObserver (self.selectionDisplay_property)
+    self.y2_property.removeEBObserver (self.selectionDisplay_property)
+    self.x1_property.removeEBObserver (self.objectDisplay_property)
+    self.y1_property.removeEBObserver (self.objectDisplay_property)
+    self.x2_property.removeEBObserver (self.objectDisplay_property)
+    self.y2_property.removeEBObserver (self.objectDisplay_property)
   }
 
   //····················································································································
@@ -185,6 +289,22 @@ class SegmentForFontCharacter : EBManagedObject,
       valueExplorer:&self.y2_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
+      valueExplorer:&self.objectDisplay_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -509,6 +629,118 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   }
 
   //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_selectionDisplay {
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_selectionDisplay {
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_objectDisplay {
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_objectDisplay {
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -568,6 +800,8 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
         removeEBObserversOf_x2_fromElementsOfSet (removedSet)
         removeEBObserversOf_y2_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
+        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -576,6 +810,8 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
         addEBObserversOf_x2_toElementsOfSet (addedSet)
         addEBObserversOf_y2_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
+        addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -686,6 +922,8 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
+        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
@@ -696,6 +934,8 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
+        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
@@ -813,6 +1053,18 @@ protocol SegmentForFontCharacter_x2 : class {
 
 protocol SegmentForFontCharacter_y2 : class {
   var y2 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SegmentForFontCharacter_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SegmentForFontCharacter_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
 }
 
 

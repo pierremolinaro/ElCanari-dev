@@ -39,12 +39,11 @@ document PMFontDocument root FontRoot {
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
 #--- Character controller
-  outlet EBView mCharacterEBView $graphicController self.mSelectedCharacterController2 ;
-
-
   arrayController mSelectedCharacterController2 {allowsEmptySelection:no, allowsMultipleSelection:no}
-    root.selectedCharacterController.sortedArray
+    root.selectedCharacterController.selectedArray
   ;
+
+#  outlet EBView mCharacterEBView $graphicController self.mSelectedCharacterController2.segments ;
 
 
   arrayController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
