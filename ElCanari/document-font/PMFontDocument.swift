@@ -61,7 +61,6 @@ import Cocoa
   //    Array Controllers
   //····················································································································
 
-  var mSelectedCharacterController2 = ArrayController_PMFontDocument_mSelectedCharacterController2 ()
   var mSelectedCharacterController = ArrayController_PMFontDocument_mSelectedCharacterController ()
 
   //····················································································································
@@ -107,7 +106,6 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    mSelectedCharacterController2.addExplorer (name: "mSelectedCharacterController2", y:&y, view:view)
     mSelectedCharacterController.addExplorer (name: "mSelectedCharacterController", y:&y, view:view)
     mCharacterSelection.addExplorer (name: "mCharacterSelection", y:&y, view:view)
     super.populateExplorerWindow (&y, view:view)
@@ -467,8 +465,6 @@ import Cocoa
                           errorMessage: "the 'transparencyTextField' outlet is nil") ;
     }
   //--------------------------- Array controllers
-    self.mSelectedCharacterController2.setManagedObjectContext (self.managedObjectContext ())
-    self.mSelectedCharacterController2.bind_model (self.rootObject.selectedCharacterController.selectedArray_property)
     self.mSelectedCharacterController.setManagedObjectContext (self.managedObjectContext ())
     self.mSelectedCharacterController.bind_model (self.rootObject.characters_property)
   //--------------------------- Selection controllers
@@ -586,7 +582,6 @@ import Cocoa
   //--------------------------- Uninstall compute functions for transients
     self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
-    mSelectedCharacterController2.unbind_model ()
     mSelectedCharacterController.unbind_model ()
   //--------------------------- Unbind selection controllers
     mCharacterSelection.unbind_selection ()
