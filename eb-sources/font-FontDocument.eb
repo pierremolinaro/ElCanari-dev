@@ -47,7 +47,7 @@ document PMFontDocument root FontRoot {
 
 
   arrayController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
-  selectionController mCharacterSelection : mSelectedCharacterController.selectedArray ;
+  selectionController mCharacterSelection : self.mSelectedCharacterController.selectedArray ;
 
 #--- Advancement
   outlet EBIntField advancementTextField $value mCharacterSelection.advance {sendContinously:yes, autoFormatter:yes} ;
