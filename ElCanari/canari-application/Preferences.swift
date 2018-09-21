@@ -148,12 +148,12 @@ let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
 let Preferences_errorMessageColor = "Preferences:errorMessageColor"
 let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
 let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
+let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 let Preferences_pinNameFont = "Preferences:pinNameFont"
 let Preferences_drawErrorBackgroundForBoard = "Preferences:drawErrorBackgroundForBoard"
 let Preferences_sampleString = "Preferences:sampleString"
 let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
-let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3616,6 +3616,18 @@ let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
   }
 
   //····················································································································
+  //   Property array: additionnalLibraryArray
+  //····················································································································
+
+  var additionnalLibraryArray_property = StoredArrayOf_CanariLibraryEntry(Preferences_additionnalLibraryArray)
+
+  //····················································································································
+
+  var additionnalLibraryArray_property_selection : EBSelection < [CanariLibraryEntry] > {
+    return self.additionnalLibraryArray_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: pinNameFont
   //····················································································································
 
@@ -3901,21 +3913,6 @@ let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
     }
   }
 
-  //····················································································································
-  //   Accessing additionnalLibraryArray stored array properties
-  //····················································································································
-
-  var additionnalLibraryArray_property_selection : EBSelection < [CanariLibraryEntry] > {
-    get {
-      return self.additionnalLibraryArray_property.prop
-    }
-  }
-
-  //····················································································································
-  //    Stored Array Properties
-  //····················································································································
-
-  var additionnalLibraryArray_property = StoredArrayOf_CanariLibraryEntry (Preferences_additionnalLibraryArray)
 
   //····················································································································
   //    Transient properties
@@ -4102,12 +4099,12 @@ let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
     self.errorMessageColor_property.undoManager = self.mUndoManager
     self.hiliteWidthMultipliedByTen_property.undoManager = self.mUndoManager
     self.usesUserLibrary_property.undoManager = self.mUndoManager
+    self.additionnalLibraryArray_property.undoManager = self.mUndoManager
     self.pinNameFont_property.undoManager = self.mUndoManager
     self.drawErrorBackgroundForBoard_property.undoManager = self.mUndoManager
     self.sampleString_property.undoManager = self.mUndoManager
     self.sampleStringSize_property.undoManager = self.mUndoManager
     self.mLastSystemLibraryCheckTime_property.undoManager = self.mUndoManager
-    self.additionnalLibraryArray_property.undoManager = self.mUndoManager
     NotificationCenter.default.addObserver (self,
       selector:#selector(Preferences.applicationWillTerminateAction(_:)),
       name:NSNotification.Name.NSApplicationWillTerminate,
