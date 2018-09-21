@@ -10,17 +10,14 @@ var g_Preferences : Preferences? = nil
 
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-let Preferences_errorMessageColor = "Preferences:errorMessageColor"
 let Preferences_warningMessageColor = "Preferences:warningMessageColor"
 let Preferences_successMessageColor = "Preferences:successMessageColor"
 let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
-let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
 let Preferences_symbolColor = "Preferences:symbolColor"
 let Preferences_dotColorOfSymbolGrid = "Preferences:dotColorOfSymbolGrid"
 let Preferences_lineColorOfSymbolGrid = "Preferences:lineColorOfSymbolGrid"
 let Preferences_symbolBackgroundColor = "Preferences:symbolBackgroundColor"
 let Preferences_symbolDrawingWidthMultipliedByTen = "Preferences:symbolDrawingWidthMultipliedByTen"
-let Preferences_pinNameFont = "Preferences:pinNameFont"
 let Preferences_dotColorOfPackageGrid = "Preferences:dotColorOfPackageGrid"
 let Preferences_lineColorOfPackageGrid = "Preferences:lineColorOfPackageGrid"
 let Preferences_packageBackgroundColor = "Preferences:packageBackgroundColor"
@@ -62,7 +59,6 @@ let Preferences_dotColorGridForBoard = "Preferences:dotColorGridForBoard"
 let Preferences_lineColorGridForBoard = "Preferences:lineColorGridForBoard"
 let Preferences_boardBackgroundColorForBoard = "Preferences:boardBackgroundColorForBoard"
 let Preferences_errorBackgroundColorForBoard = "Preferences:errorBackgroundColorForBoard"
-let Preferences_drawErrorBackgroundForBoard = "Preferences:drawErrorBackgroundForBoard"
 let Preferences_warningBackgroundColorForBoard = "Preferences:warningBackgroundColorForBoard"
 let Preferences_drawEWarningBackgroundForBoard = "Preferences:drawEWarningBackgroundForBoard"
 let Preferences_boardLimitsColorForBoard = "Preferences:boardLimitsColorForBoard"
@@ -78,15 +74,11 @@ let Preferences_bottomSidePadColorForBoard = "Preferences:bottomSidePadColorForB
 let Preferences_padNumberFontForBoard = "Preferences:padNumberFontForBoard"
 let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
 let Preferences_packageDrawingWidthMultpliedByTenForBoard = "Preferences:packageDrawingWidthMultpliedByTenForBoard"
-let Preferences_sampleString = "Preferences:sampleString"
-let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 let Preferences_showGerberDrawingFlow = "Preferences:showGerberDrawingFlow"
 let Preferences_showGerberDrawingIndexes = "Preferences:showGerberDrawingIndexes"
 let Preferences_currentCharacterCodePoint = "Preferences:currentCharacterCodePoint"
 let Preferences_fontEditionTransparency = "Preferences:fontEditionTransparency"
-let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_checkForSystemLibraryAtStartUp = "Preferences:checkForSystemLibraryAtStartUp"
-let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
 let Preferences_systemLibraryCheckTimeInterval = "Preferences:systemLibraryCheckTimeInterval"
 let Preferences_mergerModelViewHorizontalFlip = "Preferences:mergerModelViewHorizontalFlip"
 let Preferences_mergerModelViewVerticalFlip = "Preferences:mergerModelViewVerticalFlip"
@@ -153,11 +145,3601 @@ let Preferences_mergerColorBackLayoutTexts = "Preferences:mergerColorBackLayoutT
 let Preferences_mergerColorFrontLegendLines = "Preferences:mergerColorFrontLegendLines"
 let Preferences_mergerColorBackLegendLines = "Preferences:mergerColorBackLegendLines"
 let Preferences_mergerColorBackground = "Preferences:mergerColorBackground"
+let Preferences_errorMessageColor = "Preferences:errorMessageColor"
+let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedByTen"
+let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
+let Preferences_pinNameFont = "Preferences:pinNameFont"
+let Preferences_drawErrorBackgroundForBoard = "Preferences:drawErrorBackgroundForBoard"
+let Preferences_sampleString = "Preferences:sampleString"
+let Preferences_sampleStringSize = "Preferences:sampleStringSize"
+let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
 let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 @objc(Preferences) class Preferences : EBObject, NSWindowDelegate {
+
+  //····················································································································
+  //   Atomic property: warningMessageColor
+  //····················································································································
+
+  var warningMessageColor_property = EBStoredProperty_NSColor(NSColor.orange, prefKey: Preferences_warningMessageColor)
+
+  //····················································································································
+
+  var warningMessageColor : NSColor {
+    get {
+      return self.warningMessageColor_property.propval
+    }
+    set {
+      self.warningMessageColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var warningMessageColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.warningMessageColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: successMessageColor
+  //····················································································································
+
+  var successMessageColor_property = EBStoredProperty_NSColor(NSColor.blue, prefKey: Preferences_successMessageColor)
+
+  //····················································································································
+
+  var successMessageColor : NSColor {
+    get {
+      return self.successMessageColor_property.propval
+    }
+    set {
+      self.successMessageColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var successMessageColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.successMessageColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: selectionHiliteColor
+  //····················································································································
+
+  var selectionHiliteColor_property = EBStoredProperty_NSColor(NSColor.cyan, prefKey: Preferences_selectionHiliteColor)
+
+  //····················································································································
+
+  var selectionHiliteColor : NSColor {
+    get {
+      return self.selectionHiliteColor_property.propval
+    }
+    set {
+      self.selectionHiliteColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var selectionHiliteColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.selectionHiliteColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: symbolColor
+  //····················································································································
+
+  var symbolColor_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_symbolColor)
+
+  //····················································································································
+
+  var symbolColor : NSColor {
+    get {
+      return self.symbolColor_property.propval
+    }
+    set {
+      self.symbolColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var symbolColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.symbolColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: dotColorOfSymbolGrid
+  //····················································································································
+
+  var dotColorOfSymbolGrid_property = EBStoredProperty_NSColor(NSColor.black, prefKey: Preferences_dotColorOfSymbolGrid)
+
+  //····················································································································
+
+  var dotColorOfSymbolGrid : NSColor {
+    get {
+      return self.dotColorOfSymbolGrid_property.propval
+    }
+    set {
+      self.dotColorOfSymbolGrid_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var dotColorOfSymbolGrid_property_selection : EBSelection <NSColor> {
+    get {
+      return self.dotColorOfSymbolGrid_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: lineColorOfSymbolGrid
+  //····················································································································
+
+  var lineColorOfSymbolGrid_property = EBStoredProperty_NSColor(NSColor.gray, prefKey: Preferences_lineColorOfSymbolGrid)
+
+  //····················································································································
+
+  var lineColorOfSymbolGrid : NSColor {
+    get {
+      return self.lineColorOfSymbolGrid_property.propval
+    }
+    set {
+      self.lineColorOfSymbolGrid_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var lineColorOfSymbolGrid_property_selection : EBSelection <NSColor> {
+    get {
+      return self.lineColorOfSymbolGrid_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: symbolBackgroundColor
+  //····················································································································
+
+  var symbolBackgroundColor_property = EBStoredProperty_NSColor(NSColor.white, prefKey: Preferences_symbolBackgroundColor)
+
+  //····················································································································
+
+  var symbolBackgroundColor : NSColor {
+    get {
+      return self.symbolBackgroundColor_property.propval
+    }
+    set {
+      self.symbolBackgroundColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var symbolBackgroundColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.symbolBackgroundColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: symbolDrawingWidthMultipliedByTen
+  //····················································································································
+
+  var symbolDrawingWidthMultipliedByTen_property = EBStoredProperty_Int(5, prefKey: Preferences_symbolDrawingWidthMultipliedByTen)
+
+  //····················································································································
+
+  var symbolDrawingWidthMultipliedByTen : Int {
+    get {
+      return self.symbolDrawingWidthMultipliedByTen_property.propval
+    }
+    set {
+      self.symbolDrawingWidthMultipliedByTen_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var symbolDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> {
+    get {
+      return self.symbolDrawingWidthMultipliedByTen_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: dotColorOfPackageGrid
+  //····················································································································
+
+  var dotColorOfPackageGrid_property = EBStoredProperty_NSColor(NSColor.white, prefKey: Preferences_dotColorOfPackageGrid)
+
+  //····················································································································
+
+  var dotColorOfPackageGrid : NSColor {
+    get {
+      return self.dotColorOfPackageGrid_property.propval
+    }
+    set {
+      self.dotColorOfPackageGrid_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var dotColorOfPackageGrid_property_selection : EBSelection <NSColor> {
+    get {
+      return self.dotColorOfPackageGrid_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: lineColorOfPackageGrid
+  //····················································································································
+
+  var lineColorOfPackageGrid_property = EBStoredProperty_NSColor(NSColor.gray, prefKey: Preferences_lineColorOfPackageGrid)
+
+  //····················································································································
+
+  var lineColorOfPackageGrid : NSColor {
+    get {
+      return self.lineColorOfPackageGrid_property.propval
+    }
+    set {
+      self.lineColorOfPackageGrid_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var lineColorOfPackageGrid_property_selection : EBSelection <NSColor> {
+    get {
+      return self.lineColorOfPackageGrid_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: packageBackgroundColor
+  //····················································································································
+
+  var packageBackgroundColor_property = EBStoredProperty_NSColor(NSColor.black, prefKey: Preferences_packageBackgroundColor)
+
+  //····················································································································
+
+  var packageBackgroundColor : NSColor {
+    get {
+      return self.packageBackgroundColor_property.propval
+    }
+    set {
+      self.packageBackgroundColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var packageBackgroundColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.packageBackgroundColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: packageColor
+  //····················································································································
+
+  var packageColor_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_packageColor)
+
+  //····················································································································
+
+  var packageColor : NSColor {
+    get {
+      return self.packageColor_property.propval
+    }
+    set {
+      self.packageColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var packageColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.packageColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: topSidePadColor
+  //····················································································································
+
+  var topSidePadColor_property = EBStoredProperty_NSColor(NSColor.blue, prefKey: Preferences_topSidePadColor)
+
+  //····················································································································
+
+  var topSidePadColor : NSColor {
+    get {
+      return self.topSidePadColor_property.propval
+    }
+    set {
+      self.topSidePadColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var topSidePadColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.topSidePadColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: bottomSidePadColor
+  //····················································································································
+
+  var bottomSidePadColor_property = EBStoredProperty_NSColor(NSColor.green, prefKey: Preferences_bottomSidePadColor)
+
+  //····················································································································
+
+  var bottomSidePadColor : NSColor {
+    get {
+      return self.bottomSidePadColor_property.propval
+    }
+    set {
+      self.bottomSidePadColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var bottomSidePadColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.bottomSidePadColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: padNumberColor
+  //····················································································································
+
+  var padNumberColor_property = EBStoredProperty_NSColor(NSColor.red, prefKey: Preferences_padNumberColor)
+
+  //····················································································································
+
+  var padNumberColor : NSColor {
+    get {
+      return self.padNumberColor_property.propval
+    }
+    set {
+      self.padNumberColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var padNumberColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.padNumberColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: padNumberFont
+  //····················································································································
+
+  var padNumberFont_property = EBStoredProperty_NSFont(NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padNumberFont)
+
+  //····················································································································
+
+  var padNumberFont : NSFont {
+    get {
+      return self.padNumberFont_property.propval
+    }
+    set {
+      self.padNumberFont_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var padNumberFont_property_selection : EBSelection <NSFont> {
+    get {
+      return self.padNumberFont_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: packageGuideColor
+  //····················································································································
+
+  var packageGuideColor_property = EBStoredProperty_NSColor(NSColor.yellow, prefKey: Preferences_packageGuideColor)
+
+  //····················································································································
+
+  var packageGuideColor : NSColor {
+    get {
+      return self.packageGuideColor_property.propval
+    }
+    set {
+      self.packageGuideColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var packageGuideColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.packageGuideColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: packageDimensionColor
+  //····················································································································
+
+  var packageDimensionColor_property = EBStoredProperty_NSColor(NSColor.orange, prefKey: Preferences_packageDimensionColor)
+
+  //····················································································································
+
+  var packageDimensionColor : NSColor {
+    get {
+      return self.packageDimensionColor_property.propval
+    }
+    set {
+      self.packageDimensionColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var packageDimensionColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.packageDimensionColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: dimensionFont
+  //····················································································································
+
+  var dimensionFont_property = EBStoredProperty_NSFont(NSFont.systemFont (ofSize: 2.0), prefKey: Preferences_dimensionFont)
+
+  //····················································································································
+
+  var dimensionFont : NSFont {
+    get {
+      return self.dimensionFont_property.propval
+    }
+    set {
+      self.dimensionFont_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var dimensionFont_property_selection : EBSelection <NSFont> {
+    get {
+      return self.dimensionFont_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: padZoneColor
+  //····················································································································
+
+  var padZoneColor_property = EBStoredProperty_NSColor(NSColor.magenta, prefKey: Preferences_padZoneColor)
+
+  //····················································································································
+
+  var padZoneColor : NSColor {
+    get {
+      return self.padZoneColor_property.propval
+    }
+    set {
+      self.padZoneColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var padZoneColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.padZoneColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: packageDrawingWidthMultipliedByTen
+  //····················································································································
+
+  var packageDrawingWidthMultipliedByTen_property = EBStoredProperty_Int(15, prefKey: Preferences_packageDrawingWidthMultipliedByTen)
+
+  //····················································································································
+
+  var packageDrawingWidthMultipliedByTen : Int {
+    get {
+      return self.packageDrawingWidthMultipliedByTen_property.propval
+    }
+    set {
+      self.packageDrawingWidthMultipliedByTen_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var packageDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> {
+    get {
+      return self.packageDrawingWidthMultipliedByTen_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mSymbolAndPackageGridDotColorForDevice
+  //····················································································································
+
+  var mSymbolAndPackageGridDotColorForDevice_property = EBStoredProperty_NSColor(NSColor.black, prefKey: Preferences_mSymbolAndPackageGridDotColorForDevice)
+
+  //····················································································································
+
+  var mSymbolAndPackageGridDotColorForDevice : NSColor {
+    get {
+      return self.mSymbolAndPackageGridDotColorForDevice_property.propval
+    }
+    set {
+      self.mSymbolAndPackageGridDotColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mSymbolAndPackageGridDotColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mSymbolAndPackageGridDotColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mSymbolAndPackageGridLineColorForDevice
+  //····················································································································
+
+  var mSymbolAndPackageGridLineColorForDevice_property = EBStoredProperty_NSColor(NSColor.gray, prefKey: Preferences_mSymbolAndPackageGridLineColorForDevice)
+
+  //····················································································································
+
+  var mSymbolAndPackageGridLineColorForDevice : NSColor {
+    get {
+      return self.mSymbolAndPackageGridLineColorForDevice_property.propval
+    }
+    set {
+      self.mSymbolAndPackageGridLineColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mSymbolAndPackageGridLineColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mSymbolAndPackageGridLineColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mSymbolAndPackageBackgroundColorForDevice
+  //····················································································································
+
+  var mSymbolAndPackageBackgroundColorForDevice_property = EBStoredProperty_NSColor(NSColor.white, prefKey: Preferences_mSymbolAndPackageBackgroundColorForDevice)
+
+  //····················································································································
+
+  var mSymbolAndPackageBackgroundColorForDevice : NSColor {
+    get {
+      return self.mSymbolAndPackageBackgroundColorForDevice_property.propval
+    }
+    set {
+      self.mSymbolAndPackageBackgroundColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mSymbolAndPackageBackgroundColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mSymbolAndPackageBackgroundColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mPackageColorForDevice
+  //····················································································································
+
+  var mPackageColorForDevice_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_mPackageColorForDevice)
+
+  //····················································································································
+
+  var mPackageColorForDevice : NSColor {
+    get {
+      return self.mPackageColorForDevice_property.propval
+    }
+    set {
+      self.mPackageColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mPackageColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mPackageColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mTopSidePadColorForDevice
+  //····················································································································
+
+  var mTopSidePadColorForDevice_property = EBStoredProperty_NSColor(NSColor.blue, prefKey: Preferences_mTopSidePadColorForDevice)
+
+  //····················································································································
+
+  var mTopSidePadColorForDevice : NSColor {
+    get {
+      return self.mTopSidePadColorForDevice_property.propval
+    }
+    set {
+      self.mTopSidePadColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mTopSidePadColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mTopSidePadColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mBottomSidePadColorForDevice
+  //····················································································································
+
+  var mBottomSidePadColorForDevice_property = EBStoredProperty_NSColor(NSColor.green, prefKey: Preferences_mBottomSidePadColorForDevice)
+
+  //····················································································································
+
+  var mBottomSidePadColorForDevice : NSColor {
+    get {
+      return self.mBottomSidePadColorForDevice_property.propval
+    }
+    set {
+      self.mBottomSidePadColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mBottomSidePadColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mBottomSidePadColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mPadNumberColorForDevice
+  //····················································································································
+
+  var mPadNumberColorForDevice_property = EBStoredProperty_NSColor(NSColor.red, prefKey: Preferences_mPadNumberColorForDevice)
+
+  //····················································································································
+
+  var mPadNumberColorForDevice : NSColor {
+    get {
+      return self.mPadNumberColorForDevice_property.propval
+    }
+    set {
+      self.mPadNumberColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mPadNumberColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mPadNumberColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mPackageNameFontForDevice
+  //····················································································································
+
+  var mPackageNameFontForDevice_property = EBStoredProperty_NSFont(NSFont.systemFont (ofSize: 9.0), prefKey: Preferences_mPackageNameFontForDevice)
+
+  //····················································································································
+
+  var mPackageNameFontForDevice : NSFont {
+    get {
+      return self.mPackageNameFontForDevice_property.propval
+    }
+    set {
+      self.mPackageNameFontForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mPackageNameFontForDevice_property_selection : EBSelection <NSFont> {
+    get {
+      return self.mPackageNameFontForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mPadNumberFontForDevice
+  //····················································································································
+
+  var mPadNumberFontForDevice_property = EBStoredProperty_NSFont(NSFont.systemFont (ofSize: 5.0), prefKey: Preferences_mPadNumberFontForDevice)
+
+  //····················································································································
+
+  var mPadNumberFontForDevice : NSFont {
+    get {
+      return self.mPadNumberFontForDevice_property.propval
+    }
+    set {
+      self.mPadNumberFontForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mPadNumberFontForDevice_property_selection : EBSelection <NSFont> {
+    get {
+      return self.mPadNumberFontForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mSymbolColorForDevice
+  //····················································································································
+
+  var mSymbolColorForDevice_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_mSymbolColorForDevice)
+
+  //····················································································································
+
+  var mSymbolColorForDevice : NSColor {
+    get {
+      return self.mSymbolColorForDevice_property.propval
+    }
+    set {
+      self.mSymbolColorForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mSymbolColorForDevice_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mSymbolColorForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mSymbolNameFontForDevice
+  //····················································································································
+
+  var mSymbolNameFontForDevice_property = EBStoredProperty_NSFont(NSFont.systemFont (ofSize: 9.0), prefKey: Preferences_mSymbolNameFontForDevice)
+
+  //····················································································································
+
+  var mSymbolNameFontForDevice : NSFont {
+    get {
+      return self.mSymbolNameFontForDevice_property.propval
+    }
+    set {
+      self.mSymbolNameFontForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mSymbolNameFontForDevice_property_selection : EBSelection <NSFont> {
+    get {
+      return self.mSymbolNameFontForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mPinNameFontForDevice
+  //····················································································································
+
+  var mPinNameFontForDevice_property = EBStoredProperty_NSFont(NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_mPinNameFontForDevice)
+
+  //····················································································································
+
+  var mPinNameFontForDevice : NSFont {
+    get {
+      return self.mPinNameFontForDevice_property.propval
+    }
+    set {
+      self.mPinNameFontForDevice_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mPinNameFontForDevice_property_selection : EBSelection <NSFont> {
+    get {
+      return self.mPinNameFontForDevice_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: symbolDrawingWidthForDeviceMultipliedByTen
+  //····················································································································
+
+  var symbolDrawingWidthForDeviceMultipliedByTen_property = EBStoredProperty_Int(15, prefKey: Preferences_symbolDrawingWidthForDeviceMultipliedByTen)
+
+  //····················································································································
+
+  var symbolDrawingWidthForDeviceMultipliedByTen : Int {
+    get {
+      return self.symbolDrawingWidthForDeviceMultipliedByTen_property.propval
+    }
+    set {
+      self.symbolDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var symbolDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> {
+    get {
+      return self.symbolDrawingWidthForDeviceMultipliedByTen_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: packageDrawingWidthForDeviceMultipliedByTen
+  //····················································································································
+
+  var packageDrawingWidthForDeviceMultipliedByTen_property = EBStoredProperty_Int(15, prefKey: Preferences_packageDrawingWidthForDeviceMultipliedByTen)
+
+  //····················································································································
+
+  var packageDrawingWidthForDeviceMultipliedByTen : Int {
+    get {
+      return self.packageDrawingWidthForDeviceMultipliedByTen_property.propval
+    }
+    set {
+      self.packageDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var packageDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> {
+    get {
+      return self.packageDrawingWidthForDeviceMultipliedByTen_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: dotColorGridForSchematic
+  //····················································································································
+
+  var dotColorGridForSchematic_property = EBStoredProperty_NSColor(NSColor.black, prefKey: Preferences_dotColorGridForSchematic)
+
+  //····················································································································
+
+  var dotColorGridForSchematic : NSColor {
+    get {
+      return self.dotColorGridForSchematic_property.propval
+    }
+    set {
+      self.dotColorGridForSchematic_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var dotColorGridForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.dotColorGridForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: lineColorGridForSchematic
+  //····················································································································
+
+  var lineColorGridForSchematic_property = EBStoredProperty_NSColor(NSColor.gray, prefKey: Preferences_lineColorGridForSchematic)
+
+  //····················································································································
+
+  var lineColorGridForSchematic : NSColor {
+    get {
+      return self.lineColorGridForSchematic_property.propval
+    }
+    set {
+      self.lineColorGridForSchematic_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var lineColorGridForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.lineColorGridForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: symbolColorForUnplacedComponentsForSchematic
+  //····················································································································
+
+  var symbolColorForUnplacedComponentsForSchematic_property = EBStoredProperty_NSColor(NSColor.darkGray, prefKey: Preferences_symbolColorForUnplacedComponentsForSchematic)
+
+  //····················································································································
+
+  var symbolColorForUnplacedComponentsForSchematic : NSColor {
+    get {
+      return self.symbolColorForUnplacedComponentsForSchematic_property.propval
+    }
+    set {
+      self.symbolColorForUnplacedComponentsForSchematic_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var symbolColorForUnplacedComponentsForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.symbolColorForUnplacedComponentsForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: symbolColorForSchematic
+  //····················································································································
+
+  var symbolColorForSchematic_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_symbolColorForSchematic)
+
+  //····················································································································
+
+  var symbolColorForSchematic : NSColor {
+    get {
+      return self.symbolColorForSchematic_property.propval
+    }
+    set {
+      self.symbolColorForSchematic_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var symbolColorForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.symbolColorForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: pinNameFontForSchematic
+  //····················································································································
+
+  var pinNameFontForSchematic_property = EBStoredProperty_NSFont(NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFontForSchematic)
+
+  //····················································································································
+
+  var pinNameFontForSchematic : NSFont {
+    get {
+      return self.pinNameFontForSchematic_property.propval
+    }
+    set {
+      self.pinNameFontForSchematic_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var pinNameFontForSchematic_property_selection : EBSelection <NSFont> {
+    get {
+      return self.pinNameFontForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: pinNameColorForSchematic
+  //····················································································································
+
+  var pinNameColorForSchematic_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_pinNameColorForSchematic)
+
+  //····················································································································
+
+  var pinNameColorForSchematic : NSColor {
+    get {
+      return self.pinNameColorForSchematic_property.propval
+    }
+    set {
+      self.pinNameColorForSchematic_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var pinNameColorForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.pinNameColorForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: pinNumberFontForSchematic
+  //····················································································································
+
+  var pinNumberFontForSchematic_property = EBStoredProperty_NSFont(NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNumberFontForSchematic)
+
+  //····················································································································
+
+  var pinNumberFontForSchematic : NSFont {
+    get {
+      return self.pinNumberFontForSchematic_property.propval
+    }
+    set {
+      self.pinNumberFontForSchematic_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var pinNumberFontForSchematic_property_selection : EBSelection <NSFont> {
+    get {
+      return self.pinNumberFontForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: pinNumberColorForSchematic
+  //····················································································································
+
+  var pinNumberColorForSchematic_property = EBStoredProperty_NSColor(NSColor.darkGray, prefKey: Preferences_pinNumberColorForSchematic)
+
+  //····················································································································
+
+  var pinNumberColorForSchematic : NSColor {
+    get {
+      return self.pinNumberColorForSchematic_property.propval
+    }
+    set {
+      self.pinNumberColorForSchematic_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var pinNumberColorForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.pinNumberColorForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: connectionColorForSchematic
+  //····················································································································
+
+  var connectionColorForSchematic_property = EBStoredProperty_NSColor(NSColor.black, prefKey: Preferences_connectionColorForSchematic)
+
+  //····················································································································
+
+  var connectionColorForSchematic : NSColor {
+    get {
+      return self.connectionColorForSchematic_property.propval
+    }
+    set {
+      self.connectionColorForSchematic_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var connectionColorForSchematic_property_selection : EBSelection <NSColor> {
+    get {
+      return self.connectionColorForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: symbolDrawingWidthMultipliedByTenForSchematic
+  //····················································································································
+
+  var symbolDrawingWidthMultipliedByTenForSchematic_property = EBStoredProperty_Int(5, prefKey: Preferences_symbolDrawingWidthMultipliedByTenForSchematic)
+
+  //····················································································································
+
+  var symbolDrawingWidthMultipliedByTenForSchematic : Int {
+    get {
+      return self.symbolDrawingWidthMultipliedByTenForSchematic_property.propval
+    }
+    set {
+      self.symbolDrawingWidthMultipliedByTenForSchematic_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var symbolDrawingWidthMultipliedByTenForSchematic_property_selection : EBSelection <Int> {
+    get {
+      return self.symbolDrawingWidthMultipliedByTenForSchematic_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: dotColorGridForBoard
+  //····················································································································
+
+  var dotColorGridForBoard_property = EBStoredProperty_NSColor(NSColor.black, prefKey: Preferences_dotColorGridForBoard)
+
+  //····················································································································
+
+  var dotColorGridForBoard : NSColor {
+    get {
+      return self.dotColorGridForBoard_property.propval
+    }
+    set {
+      self.dotColorGridForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var dotColorGridForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.dotColorGridForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: lineColorGridForBoard
+  //····················································································································
+
+  var lineColorGridForBoard_property = EBStoredProperty_NSColor(NSColor.gray, prefKey: Preferences_lineColorGridForBoard)
+
+  //····················································································································
+
+  var lineColorGridForBoard : NSColor {
+    get {
+      return self.lineColorGridForBoard_property.propval
+    }
+    set {
+      self.lineColorGridForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var lineColorGridForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.lineColorGridForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: boardBackgroundColorForBoard
+  //····················································································································
+
+  var boardBackgroundColorForBoard_property = EBStoredProperty_NSColor(NSColor.black, prefKey: Preferences_boardBackgroundColorForBoard)
+
+  //····················································································································
+
+  var boardBackgroundColorForBoard : NSColor {
+    get {
+      return self.boardBackgroundColorForBoard_property.propval
+    }
+    set {
+      self.boardBackgroundColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var boardBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.boardBackgroundColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: errorBackgroundColorForBoard
+  //····················································································································
+
+  var errorBackgroundColorForBoard_property = EBStoredProperty_NSColor(NSColor.red, prefKey: Preferences_errorBackgroundColorForBoard)
+
+  //····················································································································
+
+  var errorBackgroundColorForBoard : NSColor {
+    get {
+      return self.errorBackgroundColorForBoard_property.propval
+    }
+    set {
+      self.errorBackgroundColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var errorBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.errorBackgroundColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: warningBackgroundColorForBoard
+  //····················································································································
+
+  var warningBackgroundColorForBoard_property = EBStoredProperty_NSColor(NSColor.orange, prefKey: Preferences_warningBackgroundColorForBoard)
+
+  //····················································································································
+
+  var warningBackgroundColorForBoard : NSColor {
+    get {
+      return self.warningBackgroundColorForBoard_property.propval
+    }
+    set {
+      self.warningBackgroundColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var warningBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.warningBackgroundColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: drawEWarningBackgroundForBoard
+  //····················································································································
+
+  var drawEWarningBackgroundForBoard_property = EBStoredProperty_Bool(true, prefKey: Preferences_drawEWarningBackgroundForBoard)
+
+  //····················································································································
+
+  var drawEWarningBackgroundForBoard : Bool {
+    get {
+      return self.drawEWarningBackgroundForBoard_property.propval
+    }
+    set {
+      self.drawEWarningBackgroundForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var drawEWarningBackgroundForBoard_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawEWarningBackgroundForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: boardLimitsColorForBoard
+  //····················································································································
+
+  var boardLimitsColorForBoard_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_boardLimitsColorForBoard)
+
+  //····················································································································
+
+  var boardLimitsColorForBoard : NSColor {
+    get {
+      return self.boardLimitsColorForBoard_property.propval
+    }
+    set {
+      self.boardLimitsColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var boardLimitsColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.boardLimitsColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: boardClearanceColorForBoard
+  //····················································································································
+
+  var boardClearanceColorForBoard_property = EBStoredProperty_NSColor(NSColor.yellow, prefKey: Preferences_boardClearanceColorForBoard)
+
+  //····················································································································
+
+  var boardClearanceColorForBoard : NSColor {
+    get {
+      return self.boardClearanceColorForBoard_property.propval
+    }
+    set {
+      self.boardClearanceColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var boardClearanceColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.boardClearanceColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: topSideRestrictRectangleColorForBoard
+  //····················································································································
+
+  var topSideRestrictRectangleColorForBoard_property = EBStoredProperty_NSColor(NSColor.blue, prefKey: Preferences_topSideRestrictRectangleColorForBoard)
+
+  //····················································································································
+
+  var topSideRestrictRectangleColorForBoard : NSColor {
+    get {
+      return self.topSideRestrictRectangleColorForBoard_property.propval
+    }
+    set {
+      self.topSideRestrictRectangleColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var topSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.topSideRestrictRectangleColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: bottomSideRestrictRectangleColorForBoard
+  //····················································································································
+
+  var bottomSideRestrictRectangleColorForBoard_property = EBStoredProperty_NSColor(NSColor.green, prefKey: Preferences_bottomSideRestrictRectangleColorForBoard)
+
+  //····················································································································
+
+  var bottomSideRestrictRectangleColorForBoard : NSColor {
+    get {
+      return self.bottomSideRestrictRectangleColorForBoard_property.propval
+    }
+    set {
+      self.bottomSideRestrictRectangleColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var bottomSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.bottomSideRestrictRectangleColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: topSideLegendColorForBoard
+  //····················································································································
+
+  var topSideLegendColorForBoard_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_topSideLegendColorForBoard)
+
+  //····················································································································
+
+  var topSideLegendColorForBoard : NSColor {
+    get {
+      return self.topSideLegendColorForBoard_property.propval
+    }
+    set {
+      self.topSideLegendColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var topSideLegendColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.topSideLegendColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: topSideLayoutColorForBoard
+  //····················································································································
+
+  var topSideLayoutColorForBoard_property = EBStoredProperty_NSColor(NSColor.blue, prefKey: Preferences_topSideLayoutColorForBoard)
+
+  //····················································································································
+
+  var topSideLayoutColorForBoard : NSColor {
+    get {
+      return self.topSideLayoutColorForBoard_property.propval
+    }
+    set {
+      self.topSideLayoutColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var topSideLayoutColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.topSideLayoutColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: bottomSideLayoutColorForBoard
+  //····················································································································
+
+  var bottomSideLayoutColorForBoard_property = EBStoredProperty_NSColor(NSColor.green, prefKey: Preferences_bottomSideLayoutColorForBoard)
+
+  //····················································································································
+
+  var bottomSideLayoutColorForBoard : NSColor {
+    get {
+      return self.bottomSideLayoutColorForBoard_property.propval
+    }
+    set {
+      self.bottomSideLayoutColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var bottomSideLayoutColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.bottomSideLayoutColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: bottomSideLegendColorForBoard
+  //····················································································································
+
+  var bottomSideLegendColorForBoard_property = EBStoredProperty_NSColor(NSColor.white, prefKey: Preferences_bottomSideLegendColorForBoard)
+
+  //····················································································································
+
+  var bottomSideLegendColorForBoard : NSColor {
+    get {
+      return self.bottomSideLegendColorForBoard_property.propval
+    }
+    set {
+      self.bottomSideLegendColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var bottomSideLegendColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.bottomSideLegendColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: topSidePadColorForBoard
+  //····················································································································
+
+  var topSidePadColorForBoard_property = EBStoredProperty_NSColor(NSColor.blue, prefKey: Preferences_topSidePadColorForBoard)
+
+  //····················································································································
+
+  var topSidePadColorForBoard : NSColor {
+    get {
+      return self.topSidePadColorForBoard_property.propval
+    }
+    set {
+      self.topSidePadColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var topSidePadColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.topSidePadColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: bottomSidePadColorForBoard
+  //····················································································································
+
+  var bottomSidePadColorForBoard_property = EBStoredProperty_NSColor(NSColor.green, prefKey: Preferences_bottomSidePadColorForBoard)
+
+  //····················································································································
+
+  var bottomSidePadColorForBoard : NSColor {
+    get {
+      return self.bottomSidePadColorForBoard_property.propval
+    }
+    set {
+      self.bottomSidePadColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var bottomSidePadColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.bottomSidePadColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: padNumberFontForBoard
+  //····················································································································
+
+  var padNumberFontForBoard_property = EBStoredProperty_NSFont(NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padNumberFontForBoard)
+
+  //····················································································································
+
+  var padNumberFontForBoard : NSFont {
+    get {
+      return self.padNumberFontForBoard_property.propval
+    }
+    set {
+      self.padNumberFontForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var padNumberFontForBoard_property_selection : EBSelection <NSFont> {
+    get {
+      return self.padNumberFontForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: padNumberColorForBoard
+  //····················································································································
+
+  var padNumberColorForBoard_property = EBStoredProperty_NSColor(NSColor.red, prefKey: Preferences_padNumberColorForBoard)
+
+  //····················································································································
+
+  var padNumberColorForBoard : NSColor {
+    get {
+      return self.padNumberColorForBoard_property.propval
+    }
+    set {
+      self.padNumberColorForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var padNumberColorForBoard_property_selection : EBSelection <NSColor> {
+    get {
+      return self.padNumberColorForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: packageDrawingWidthMultpliedByTenForBoard
+  //····················································································································
+
+  var packageDrawingWidthMultpliedByTenForBoard_property = EBStoredProperty_Int(5, prefKey: Preferences_packageDrawingWidthMultpliedByTenForBoard)
+
+  //····················································································································
+
+  var packageDrawingWidthMultpliedByTenForBoard : Int {
+    get {
+      return self.packageDrawingWidthMultpliedByTenForBoard_property.propval
+    }
+    set {
+      self.packageDrawingWidthMultpliedByTenForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var packageDrawingWidthMultpliedByTenForBoard_property_selection : EBSelection <Int> {
+    get {
+      return self.packageDrawingWidthMultpliedByTenForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: showGerberDrawingFlow
+  //····················································································································
+
+  var showGerberDrawingFlow_property = EBStoredProperty_Bool(true, prefKey: Preferences_showGerberDrawingFlow)
+
+  //····················································································································
+
+  var showGerberDrawingFlow : Bool {
+    get {
+      return self.showGerberDrawingFlow_property.propval
+    }
+    set {
+      self.showGerberDrawingFlow_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var showGerberDrawingFlow_property_selection : EBSelection <Bool> {
+    get {
+      return self.showGerberDrawingFlow_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: showGerberDrawingIndexes
+  //····················································································································
+
+  var showGerberDrawingIndexes_property = EBStoredProperty_Bool(true, prefKey: Preferences_showGerberDrawingIndexes)
+
+  //····················································································································
+
+  var showGerberDrawingIndexes : Bool {
+    get {
+      return self.showGerberDrawingIndexes_property.propval
+    }
+    set {
+      self.showGerberDrawingIndexes_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var showGerberDrawingIndexes_property_selection : EBSelection <Bool> {
+    get {
+      return self.showGerberDrawingIndexes_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: currentCharacterCodePoint
+  //····················································································································
+
+  var currentCharacterCodePoint_property = EBStoredProperty_Int(65, prefKey: Preferences_currentCharacterCodePoint)
+
+  //····················································································································
+
+  var currentCharacterCodePoint : Int {
+    get {
+      return self.currentCharacterCodePoint_property.propval
+    }
+    set {
+      self.currentCharacterCodePoint_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var currentCharacterCodePoint_property_selection : EBSelection <Int> {
+    get {
+      return self.currentCharacterCodePoint_property.prop
+    }
+  }
+
+  //····················································································································
+
+  func currentCharacterCodePoint_validateAndSetProp (_ inCandidateValue : Int, windowForSheet inWindow:NSWindow?) -> Bool {
+    return self.currentCharacterCodePoint_property.validateAndSetProp (inCandidateValue, windowForSheet:inWindow)
+  }
+
+  //····················································································································
+  //   Atomic property: fontEditionTransparency
+  //····················································································································
+
+  var fontEditionTransparency_property = EBStoredProperty_Double(0.5, prefKey: Preferences_fontEditionTransparency)
+
+  //····················································································································
+
+  var fontEditionTransparency : Double {
+    get {
+      return self.fontEditionTransparency_property.propval
+    }
+    set {
+      self.fontEditionTransparency_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var fontEditionTransparency_property_selection : EBSelection <Double> {
+    get {
+      return self.fontEditionTransparency_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: checkForSystemLibraryAtStartUp
+  //····················································································································
+
+  var checkForSystemLibraryAtStartUp_property = EBStoredProperty_Bool(true, prefKey: Preferences_checkForSystemLibraryAtStartUp)
+
+  //····················································································································
+
+  var checkForSystemLibraryAtStartUp : Bool {
+    get {
+      return self.checkForSystemLibraryAtStartUp_property.propval
+    }
+    set {
+      self.checkForSystemLibraryAtStartUp_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var checkForSystemLibraryAtStartUp_property_selection : EBSelection <Bool> {
+    get {
+      return self.checkForSystemLibraryAtStartUp_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: systemLibraryCheckTimeInterval
+  //····················································································································
+
+  var systemLibraryCheckTimeInterval_property = EBStoredProperty_Int(0, prefKey: Preferences_systemLibraryCheckTimeInterval)
+
+  //····················································································································
+
+  var systemLibraryCheckTimeInterval : Int {
+    get {
+      return self.systemLibraryCheckTimeInterval_property.propval
+    }
+    set {
+      self.systemLibraryCheckTimeInterval_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var systemLibraryCheckTimeInterval_property_selection : EBSelection <Int> {
+    get {
+      return self.systemLibraryCheckTimeInterval_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewHorizontalFlip
+  //····················································································································
+
+  var mergerModelViewHorizontalFlip_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewHorizontalFlip)
+
+  //····················································································································
+
+  var mergerModelViewHorizontalFlip : Bool {
+    get {
+      return self.mergerModelViewHorizontalFlip_property.propval
+    }
+    set {
+      self.mergerModelViewHorizontalFlip_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewHorizontalFlip_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewHorizontalFlip_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewVerticalFlip
+  //····················································································································
+
+  var mergerModelViewVerticalFlip_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewVerticalFlip)
+
+  //····················································································································
+
+  var mergerModelViewVerticalFlip : Bool {
+    get {
+      return self.mergerModelViewVerticalFlip_property.propval
+    }
+    set {
+      self.mergerModelViewVerticalFlip_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewVerticalFlip_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewVerticalFlip_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayHoles
+  //····················································································································
+
+  var mergerModelViewDisplayHoles_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerModelViewDisplayHoles)
+
+  //····················································································································
+
+  var mergerModelViewDisplayHoles : Bool {
+    get {
+      return self.mergerModelViewDisplayHoles_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayHoles_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayHoles_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayHoles_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayVias
+  //····················································································································
+
+  var mergerModelViewDisplayVias_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerModelViewDisplayVias)
+
+  //····················································································································
+
+  var mergerModelViewDisplayVias : Bool {
+    get {
+      return self.mergerModelViewDisplayVias_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayVias_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayVias_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayVias_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayFrontPads
+  //····················································································································
+
+  var mergerModelViewDisplayFrontPads_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerModelViewDisplayFrontPads)
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontPads : Bool {
+    get {
+      return self.mergerModelViewDisplayFrontPads_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayFrontPads_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontPads_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayFrontPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayInternalBoardsLimits
+  //····················································································································
+
+  var mergerModelViewDisplayInternalBoardsLimits_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerModelViewDisplayInternalBoardsLimits)
+
+  //····················································································································
+
+  var mergerModelViewDisplayInternalBoardsLimits : Bool {
+    get {
+      return self.mergerModelViewDisplayInternalBoardsLimits_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayInternalBoardsLimits_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayInternalBoardsLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayBoardLimits
+  //····················································································································
+
+  var mergerModelViewDisplayBoardLimits_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerModelViewDisplayBoardLimits)
+
+  //····················································································································
+
+  var mergerModelViewDisplayBoardLimits : Bool {
+    get {
+      return self.mergerModelViewDisplayBoardLimits_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayBoardLimits_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayBoardLimits_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayBoardLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayFrontComponentNames
+  //····················································································································
+
+  var mergerModelViewDisplayFrontComponentNames_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayFrontComponentNames)
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontComponentNames : Bool {
+    get {
+      return self.mergerModelViewDisplayFrontComponentNames_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayFrontComponentNames_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayFrontComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayFrontComponentValues
+  //····················································································································
+
+  var mergerModelViewDisplayFrontComponentValues_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayFrontComponentValues)
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontComponentValues : Bool {
+    get {
+      return self.mergerModelViewDisplayFrontComponentValues_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayFrontComponentValues_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayFrontComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayFrontPackages
+  //····················································································································
+
+  var mergerModelViewDisplayFrontPackages_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayFrontPackages)
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontPackages : Bool {
+    get {
+      return self.mergerModelViewDisplayFrontPackages_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayFrontPackages_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontPackages_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayFrontPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayFrontLegendTexts
+  //····················································································································
+
+  var mergerModelViewDisplayFrontLegendTexts_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayFrontLegendTexts)
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontLegendTexts : Bool {
+    get {
+      return self.mergerModelViewDisplayFrontLegendTexts_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayFrontLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayFrontLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayFrontTracks
+  //····················································································································
+
+  var mergerModelViewDisplayFrontTracks_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayFrontTracks)
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontTracks : Bool {
+    get {
+      return self.mergerModelViewDisplayFrontTracks_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayFrontTracks_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontTracks_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayFrontTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayFrontLayoutTexts
+  //····················································································································
+
+  var mergerModelViewDisplayFrontLayoutTexts_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayFrontLayoutTexts)
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontLayoutTexts : Bool {
+    get {
+      return self.mergerModelViewDisplayFrontLayoutTexts_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayFrontLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayFrontLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayBackPads
+  //····················································································································
+
+  var mergerModelViewDisplayBackPads_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerModelViewDisplayBackPads)
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackPads : Bool {
+    get {
+      return self.mergerModelViewDisplayBackPads_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayBackPads_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackPads_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayBackPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayBackComponentNames
+  //····················································································································
+
+  var mergerModelViewDisplayBackComponentNames_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayBackComponentNames)
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackComponentNames : Bool {
+    get {
+      return self.mergerModelViewDisplayBackComponentNames_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayBackComponentNames_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackComponentNames_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayBackComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayBackComponentValues
+  //····················································································································
+
+  var mergerModelViewDisplayBackComponentValues_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayBackComponentValues)
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackComponentValues : Bool {
+    get {
+      return self.mergerModelViewDisplayBackComponentValues_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayBackComponentValues_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackComponentValues_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayBackComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayBackLegendTexts
+  //····················································································································
+
+  var mergerModelViewDisplayBackLegendTexts_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayBackLegendTexts)
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackLegendTexts : Bool {
+    get {
+      return self.mergerModelViewDisplayBackLegendTexts_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayBackLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayBackLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayBackPackages
+  //····················································································································
+
+  var mergerModelViewDisplayBackPackages_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayBackPackages)
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackPackages : Bool {
+    get {
+      return self.mergerModelViewDisplayBackPackages_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayBackPackages_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackPackages_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayBackPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayBackTracks
+  //····················································································································
+
+  var mergerModelViewDisplayBackTracks_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayBackTracks)
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackTracks : Bool {
+    get {
+      return self.mergerModelViewDisplayBackTracks_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayBackTracks_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackTracks_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayBackTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayBackLayoutTexts
+  //····················································································································
+
+  var mergerModelViewDisplayBackLayoutTexts_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayBackLayoutTexts)
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackLayoutTexts : Bool {
+    get {
+      return self.mergerModelViewDisplayBackLayoutTexts_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayBackLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayBackLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayFrontLegendLines
+  //····················································································································
+
+  var mergerModelViewDisplayFrontLegendLines_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerModelViewDisplayFrontLegendLines)
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontLegendLines : Bool {
+    get {
+      return self.mergerModelViewDisplayFrontLegendLines_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayFrontLegendLines_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayFrontLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerModelViewDisplayBackLegendLines
+  //····················································································································
+
+  var mergerModelViewDisplayBackLegendLines_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerModelViewDisplayBackLegendLines)
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackLegendLines : Bool {
+    get {
+      return self.mergerModelViewDisplayBackLegendLines_property.propval
+    }
+    set {
+      self.mergerModelViewDisplayBackLegendLines_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerModelViewDisplayBackLegendLines_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerModelViewDisplayBackLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewHorizontalFlip
+  //····················································································································
+
+  var mergerBoardViewHorizontalFlip_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewHorizontalFlip)
+
+  //····················································································································
+
+  var mergerBoardViewHorizontalFlip : Bool {
+    get {
+      return self.mergerBoardViewHorizontalFlip_property.propval
+    }
+    set {
+      self.mergerBoardViewHorizontalFlip_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewHorizontalFlip_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewHorizontalFlip_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewVerticalFlip
+  //····················································································································
+
+  var mergerBoardViewVerticalFlip_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewVerticalFlip)
+
+  //····················································································································
+
+  var mergerBoardViewVerticalFlip : Bool {
+    get {
+      return self.mergerBoardViewVerticalFlip_property.propval
+    }
+    set {
+      self.mergerBoardViewVerticalFlip_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewVerticalFlip_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewVerticalFlip_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayHoles
+  //····················································································································
+
+  var mergerBoardViewDisplayHoles_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerBoardViewDisplayHoles)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayHoles : Bool {
+    get {
+      return self.mergerBoardViewDisplayHoles_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayHoles_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayHoles_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayHoles_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayVias
+  //····················································································································
+
+  var mergerBoardViewDisplayVias_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerBoardViewDisplayVias)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayVias : Bool {
+    get {
+      return self.mergerBoardViewDisplayVias_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayVias_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayVias_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayVias_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayFrontPads
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontPads_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerBoardViewDisplayFrontPads)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontPads : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontPads_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontPads_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontPads_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayInternalBoardsLimits
+  //····················································································································
+
+  var mergerBoardViewDisplayInternalBoardsLimits_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerBoardViewDisplayInternalBoardsLimits)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayInternalBoardsLimits : Bool {
+    get {
+      return self.mergerBoardViewDisplayInternalBoardsLimits_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayInternalBoardsLimits_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayInternalBoardsLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayBoardLimits
+  //····················································································································
+
+  var mergerBoardViewDisplayBoardLimits_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerBoardViewDisplayBoardLimits)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBoardLimits : Bool {
+    get {
+      return self.mergerBoardViewDisplayBoardLimits_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBoardLimits_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBoardLimits_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBoardLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayFrontComponentNames
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontComponentNames_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayFrontComponentNames)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontComponentNames : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontComponentNames_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontComponentNames_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayFrontComponentValues
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontComponentValues_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayFrontComponentValues)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontComponentValues : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontComponentValues_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontComponentValues_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayFrontPackages
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontPackages_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayFrontPackages)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontPackages : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontPackages_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontPackages_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontPackages_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayFrontLegendTexts
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLegendTexts_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayFrontLegendTexts)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLegendTexts : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontLegendTexts_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayFrontTracks
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontTracks_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayFrontTracks)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontTracks : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontTracks_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontTracks_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontTracks_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayFrontLayoutTexts
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLayoutTexts_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayFrontLayoutTexts)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLayoutTexts : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontLayoutTexts_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayBackPads
+  //····················································································································
+
+  var mergerBoardViewDisplayBackPads_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerBoardViewDisplayBackPads)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackPads : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackPads_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackPads_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackPads_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayBackComponentNames
+  //····················································································································
+
+  var mergerBoardViewDisplayBackComponentNames_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayBackComponentNames)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackComponentNames : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackComponentNames_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackComponentNames_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackComponentNames_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayBackComponentValues
+  //····················································································································
+
+  var mergerBoardViewDisplayBackComponentValues_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayBackComponentValues)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackComponentValues : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackComponentValues_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackComponentValues_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackComponentValues_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayBackLegendTexts
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLegendTexts_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayBackLegendTexts)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLegendTexts : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackLegendTexts_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayBackPackages
+  //····················································································································
+
+  var mergerBoardViewDisplayBackPackages_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayBackPackages)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackPackages : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackPackages_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackPackages_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackPackages_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayBackTracks
+  //····················································································································
+
+  var mergerBoardViewDisplayBackTracks_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayBackTracks)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackTracks : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackTracks_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackTracks_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackTracks_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayBackLayoutTexts
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLayoutTexts_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayBackLayoutTexts)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLayoutTexts : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackLayoutTexts_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayFrontLegendLines
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLegendLines_property = EBStoredProperty_Bool(false, prefKey: Preferences_mergerBoardViewDisplayFrontLegendLines)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLegendLines : Bool {
+    get {
+      return self.mergerBoardViewDisplayFrontLegendLines_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayFrontLegendLines_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayFrontLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerBoardViewDisplayBackLegendLines
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLegendLines_property = EBStoredProperty_Bool(true, prefKey: Preferences_mergerBoardViewDisplayBackLegendLines)
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLegendLines : Bool {
+    get {
+      return self.mergerBoardViewDisplayBackLegendLines_property.propval
+    }
+    set {
+      self.mergerBoardViewDisplayBackLegendLines_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerBoardViewDisplayBackLegendLines_property_selection : EBSelection <Bool> {
+    get {
+      return self.mergerBoardViewDisplayBackLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorHoles
+  //····················································································································
+
+  var mergerColorHoles_property = EBStoredProperty_NSColor(NSColor.white, prefKey: Preferences_mergerColorHoles)
+
+  //····················································································································
+
+  var mergerColorHoles : NSColor {
+    get {
+      return self.mergerColorHoles_property.propval
+    }
+    set {
+      self.mergerColorHoles_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorHoles_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorHoles_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorVias
+  //····················································································································
+
+  var mergerColorVias_property = EBStoredProperty_NSColor(NSColor.red, prefKey: Preferences_mergerColorVias)
+
+  //····················································································································
+
+  var mergerColorVias : NSColor {
+    get {
+      return self.mergerColorVias_property.propval
+    }
+    set {
+      self.mergerColorVias_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorVias_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorVias_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorFrontPads
+  //····················································································································
+
+  var mergerColorFrontPads_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_mergerColorFrontPads)
+
+  //····················································································································
+
+  var mergerColorFrontPads : NSColor {
+    get {
+      return self.mergerColorFrontPads_property.propval
+    }
+    set {
+      self.mergerColorFrontPads_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorFrontPads_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorBoardLimits
+  //····················································································································
+
+  var mergerColorBoardLimits_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_mergerColorBoardLimits)
+
+  //····················································································································
+
+  var mergerColorBoardLimits : NSColor {
+    get {
+      return self.mergerColorBoardLimits_property.propval
+    }
+    set {
+      self.mergerColorBoardLimits_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorBoardLimits_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBoardLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorInternalBoardsLimits
+  //····················································································································
+
+  var mergerColorInternalBoardsLimits_property = EBStoredProperty_NSColor(NSColor.yellow, prefKey: Preferences_mergerColorInternalBoardsLimits)
+
+  //····················································································································
+
+  var mergerColorInternalBoardsLimits : NSColor {
+    get {
+      return self.mergerColorInternalBoardsLimits_property.propval
+    }
+    set {
+      self.mergerColorInternalBoardsLimits_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorInternalBoardsLimits_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorInternalBoardsLimits_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorFrontComponentNames
+  //····················································································································
+
+  var mergerColorFrontComponentNames_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_mergerColorFrontComponentNames)
+
+  //····················································································································
+
+  var mergerColorFrontComponentNames : NSColor {
+    get {
+      return self.mergerColorFrontComponentNames_property.propval
+    }
+    set {
+      self.mergerColorFrontComponentNames_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorFrontComponentNames_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorFrontComponentValues
+  //····················································································································
+
+  var mergerColorFrontComponentValues_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_mergerColorFrontComponentValues)
+
+  //····················································································································
+
+  var mergerColorFrontComponentValues : NSColor {
+    get {
+      return self.mergerColorFrontComponentValues_property.propval
+    }
+    set {
+      self.mergerColorFrontComponentValues_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorFrontComponentValues_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorFrontPackages
+  //····················································································································
+
+  var mergerColorFrontPackages_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_mergerColorFrontPackages)
+
+  //····················································································································
+
+  var mergerColorFrontPackages : NSColor {
+    get {
+      return self.mergerColorFrontPackages_property.propval
+    }
+    set {
+      self.mergerColorFrontPackages_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorFrontPackages_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorFrontLegendTexts
+  //····················································································································
+
+  var mergerColorFrontLegendTexts_property = EBStoredProperty_NSColor(NSColor.brown, prefKey: Preferences_mergerColorFrontLegendTexts)
+
+  //····················································································································
+
+  var mergerColorFrontLegendTexts : NSColor {
+    get {
+      return self.mergerColorFrontLegendTexts_property.propval
+    }
+    set {
+      self.mergerColorFrontLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorFrontLegendTexts_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorFrontTracks
+  //····················································································································
+
+  var mergerColorFrontTracks_property = EBStoredProperty_NSColor(NSColor.blue, prefKey: Preferences_mergerColorFrontTracks)
+
+  //····················································································································
+
+  var mergerColorFrontTracks : NSColor {
+    get {
+      return self.mergerColorFrontTracks_property.propval
+    }
+    set {
+      self.mergerColorFrontTracks_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorFrontTracks_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorFrontLayoutTexts
+  //····················································································································
+
+  var mergerColorFrontLayoutTexts_property = EBStoredProperty_NSColor(NSColor.blue, prefKey: Preferences_mergerColorFrontLayoutTexts)
+
+  //····················································································································
+
+  var mergerColorFrontLayoutTexts : NSColor {
+    get {
+      return self.mergerColorFrontLayoutTexts_property.propval
+    }
+    set {
+      self.mergerColorFrontLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorFrontLayoutTexts_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorBackPads
+  //····················································································································
+
+  var mergerColorBackPads_property = EBStoredProperty_NSColor(NSColor.orange, prefKey: Preferences_mergerColorBackPads)
+
+  //····················································································································
+
+  var mergerColorBackPads : NSColor {
+    get {
+      return self.mergerColorBackPads_property.propval
+    }
+    set {
+      self.mergerColorBackPads_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorBackPads_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackPads_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorBackComponentNames
+  //····················································································································
+
+  var mergerColorBackComponentNames_property = EBStoredProperty_NSColor(NSColor.gray, prefKey: Preferences_mergerColorBackComponentNames)
+
+  //····················································································································
+
+  var mergerColorBackComponentNames : NSColor {
+    get {
+      return self.mergerColorBackComponentNames_property.propval
+    }
+    set {
+      self.mergerColorBackComponentNames_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorBackComponentNames_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackComponentNames_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorBackComponentValues
+  //····················································································································
+
+  var mergerColorBackComponentValues_property = EBStoredProperty_NSColor(NSColor.gray, prefKey: Preferences_mergerColorBackComponentValues)
+
+  //····················································································································
+
+  var mergerColorBackComponentValues : NSColor {
+    get {
+      return self.mergerColorBackComponentValues_property.propval
+    }
+    set {
+      self.mergerColorBackComponentValues_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorBackComponentValues_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackComponentValues_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorBackLegendTexts
+  //····················································································································
+
+  var mergerColorBackLegendTexts_property = EBStoredProperty_NSColor(NSColor.gray, prefKey: Preferences_mergerColorBackLegendTexts)
+
+  //····················································································································
+
+  var mergerColorBackLegendTexts : NSColor {
+    get {
+      return self.mergerColorBackLegendTexts_property.propval
+    }
+    set {
+      self.mergerColorBackLegendTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorBackLegendTexts_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackLegendTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorBackPackages
+  //····················································································································
+
+  var mergerColorBackPackages_property = EBStoredProperty_NSColor(NSColor.gray, prefKey: Preferences_mergerColorBackPackages)
+
+  //····················································································································
+
+  var mergerColorBackPackages : NSColor {
+    get {
+      return self.mergerColorBackPackages_property.propval
+    }
+    set {
+      self.mergerColorBackPackages_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorBackPackages_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackPackages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorBackTracks
+  //····················································································································
+
+  var mergerColorBackTracks_property = EBStoredProperty_NSColor(NSColor.green, prefKey: Preferences_mergerColorBackTracks)
+
+  //····················································································································
+
+  var mergerColorBackTracks : NSColor {
+    get {
+      return self.mergerColorBackTracks_property.propval
+    }
+    set {
+      self.mergerColorBackTracks_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorBackTracks_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackTracks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorBackLayoutTexts
+  //····················································································································
+
+  var mergerColorBackLayoutTexts_property = EBStoredProperty_NSColor(NSColor.green, prefKey: Preferences_mergerColorBackLayoutTexts)
+
+  //····················································································································
+
+  var mergerColorBackLayoutTexts : NSColor {
+    get {
+      return self.mergerColorBackLayoutTexts_property.propval
+    }
+    set {
+      self.mergerColorBackLayoutTexts_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorBackLayoutTexts_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackLayoutTexts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorFrontLegendLines
+  //····················································································································
+
+  var mergerColorFrontLegendLines_property = EBStoredProperty_NSColor(NSColor.gray, prefKey: Preferences_mergerColorFrontLegendLines)
+
+  //····················································································································
+
+  var mergerColorFrontLegendLines : NSColor {
+    get {
+      return self.mergerColorFrontLegendLines_property.propval
+    }
+    set {
+      self.mergerColorFrontLegendLines_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorFrontLegendLines_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorFrontLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorBackLegendLines
+  //····················································································································
+
+  var mergerColorBackLegendLines_property = EBStoredProperty_NSColor(NSColor.green, prefKey: Preferences_mergerColorBackLegendLines)
+
+  //····················································································································
+
+  var mergerColorBackLegendLines : NSColor {
+    get {
+      return self.mergerColorBackLegendLines_property.propval
+    }
+    set {
+      self.mergerColorBackLegendLines_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorBackLegendLines_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackLegendLines_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mergerColorBackground
+  //····················································································································
+
+  var mergerColorBackground_property = EBStoredProperty_NSColor(NSColor.lightGray, prefKey: Preferences_mergerColorBackground)
+
+  //····················································································································
+
+  var mergerColorBackground : NSColor {
+    get {
+      return self.mergerColorBackground_property.propval
+    }
+    set {
+      self.mergerColorBackground_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mergerColorBackground_property_selection : EBSelection <NSColor> {
+    get {
+      return self.mergerColorBackground_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: errorMessageColor
+  //····················································································································
+
+  var errorMessageColor_property = EBStoredProperty_NSColor(NSColor.red, prefKey: Preferences_errorMessageColor)
+
+  //····················································································································
+
+  var errorMessageColor : NSColor {
+    get {
+      return self.errorMessageColor_property.propval
+    }
+    set {
+      self.errorMessageColor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var errorMessageColor_property_selection : EBSelection <NSColor> {
+    get {
+      return self.errorMessageColor_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: hiliteWidthMultipliedByTen
+  //····················································································································
+
+  var hiliteWidthMultipliedByTen_property = EBStoredProperty_Int(15, prefKey: Preferences_hiliteWidthMultipliedByTen)
+
+  //····················································································································
+
+  var hiliteWidthMultipliedByTen : Int {
+    get {
+      return self.hiliteWidthMultipliedByTen_property.propval
+    }
+    set {
+      self.hiliteWidthMultipliedByTen_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var hiliteWidthMultipliedByTen_property_selection : EBSelection <Int> {
+    get {
+      return self.hiliteWidthMultipliedByTen_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: usesUserLibrary
+  //····················································································································
+
+  var usesUserLibrary_property = EBStoredProperty_Bool(true, prefKey: Preferences_usesUserLibrary)
+
+  //····················································································································
+
+  var usesUserLibrary : Bool {
+    get {
+      return self.usesUserLibrary_property.propval
+    }
+    set {
+      self.usesUserLibrary_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var usesUserLibrary_property_selection : EBSelection <Bool> {
+    get {
+      return self.usesUserLibrary_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: pinNameFont
+  //····················································································································
+
+  var pinNameFont_property = EBStoredProperty_NSFont(NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFont)
+
+  //····················································································································
+
+  var pinNameFont : NSFont {
+    get {
+      return self.pinNameFont_property.propval
+    }
+    set {
+      self.pinNameFont_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var pinNameFont_property_selection : EBSelection <NSFont> {
+    get {
+      return self.pinNameFont_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: drawErrorBackgroundForBoard
+  //····················································································································
+
+  var drawErrorBackgroundForBoard_property = EBStoredProperty_Bool(true, prefKey: Preferences_drawErrorBackgroundForBoard)
+
+  //····················································································································
+
+  var drawErrorBackgroundForBoard : Bool {
+    get {
+      return self.drawErrorBackgroundForBoard_property.propval
+    }
+    set {
+      self.drawErrorBackgroundForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var drawErrorBackgroundForBoard_property_selection : EBSelection <Bool> {
+    get {
+      return self.drawErrorBackgroundForBoard_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: sampleString
+  //····················································································································
+
+  var sampleString_property = EBStoredProperty_String("The quick brown fox jumps over the lazy dog", prefKey: Preferences_sampleString)
+
+  //····················································································································
+
+  var sampleString : String {
+    get {
+      return self.sampleString_property.propval
+    }
+    set {
+      self.sampleString_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var sampleString_property_selection : EBSelection <String> {
+    get {
+      return self.sampleString_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: sampleStringSize
+  //····················································································································
+
+  var sampleStringSize_property = EBStoredProperty_Double(24, prefKey: Preferences_sampleStringSize)
+
+  //····················································································································
+
+  var sampleStringSize : Double {
+    get {
+      return self.sampleStringSize_property.propval
+    }
+    set {
+      self.sampleStringSize_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var sampleStringSize_property_selection : EBSelection <Double> {
+    get {
+      return self.sampleStringSize_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Atomic property: mLastSystemLibraryCheckTime
+  //····················································································································
+
+  var mLastSystemLibraryCheckTime_property = EBStoredProperty_Date(Date (), prefKey: Preferences_mLastSystemLibraryCheckTime)
+
+  //····················································································································
+
+  var mLastSystemLibraryCheckTime : Date {
+    get {
+      return self.mLastSystemLibraryCheckTime_property.propval
+    }
+    set {
+      self.mLastSystemLibraryCheckTime_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mLastSystemLibraryCheckTime_property_selection : EBSelection <Date> {
+    get {
+      return self.mLastSystemLibraryCheckTime_property.prop
+    }
+  }
+
 
   //····················································································································
   //    Outlets
@@ -270,2726 +3852,6 @@ let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
   @IBOutlet var systemLibraryCheckTimeIntervalTitleTextField : NSTextField? = nil
 
   //····················································································································
-  //   Accessing errorMessageColor stored property
-  //····················································································································
-
-  var errorMessageColor : NSColor {
-    get {
-      return self.errorMessageColor_property.propval
-    }
-    set {
-      self.errorMessageColor_property.setProp (newValue)
-    }
-  }
-
-  var errorMessageColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.errorMessageColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing warningMessageColor stored property
-  //····················································································································
-
-  var warningMessageColor : NSColor {
-    get {
-      return self.warningMessageColor_property.propval
-    }
-    set {
-      self.warningMessageColor_property.setProp (newValue)
-    }
-  }
-
-  var warningMessageColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.warningMessageColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing successMessageColor stored property
-  //····················································································································
-
-  var successMessageColor : NSColor {
-    get {
-      return self.successMessageColor_property.propval
-    }
-    set {
-      self.successMessageColor_property.setProp (newValue)
-    }
-  }
-
-  var successMessageColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.successMessageColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing selectionHiliteColor stored property
-  //····················································································································
-
-  var selectionHiliteColor : NSColor {
-    get {
-      return self.selectionHiliteColor_property.propval
-    }
-    set {
-      self.selectionHiliteColor_property.setProp (newValue)
-    }
-  }
-
-  var selectionHiliteColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.selectionHiliteColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing hiliteWidthMultipliedByTen stored property
-  //····················································································································
-
-  var hiliteWidthMultipliedByTen : Int {
-    get {
-      return self.hiliteWidthMultipliedByTen_property.propval
-    }
-    set {
-      self.hiliteWidthMultipliedByTen_property.setProp (newValue)
-    }
-  }
-
-  var hiliteWidthMultipliedByTen_property_selection : EBSelection <Int> {
-    get {
-      return self.hiliteWidthMultipliedByTen_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing symbolColor stored property
-  //····················································································································
-
-  var symbolColor : NSColor {
-    get {
-      return self.symbolColor_property.propval
-    }
-    set {
-      self.symbolColor_property.setProp (newValue)
-    }
-  }
-
-  var symbolColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.symbolColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing dotColorOfSymbolGrid stored property
-  //····················································································································
-
-  var dotColorOfSymbolGrid : NSColor {
-    get {
-      return self.dotColorOfSymbolGrid_property.propval
-    }
-    set {
-      self.dotColorOfSymbolGrid_property.setProp (newValue)
-    }
-  }
-
-  var dotColorOfSymbolGrid_property_selection : EBSelection <NSColor> {
-    get {
-      return self.dotColorOfSymbolGrid_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing lineColorOfSymbolGrid stored property
-  //····················································································································
-
-  var lineColorOfSymbolGrid : NSColor {
-    get {
-      return self.lineColorOfSymbolGrid_property.propval
-    }
-    set {
-      self.lineColorOfSymbolGrid_property.setProp (newValue)
-    }
-  }
-
-  var lineColorOfSymbolGrid_property_selection : EBSelection <NSColor> {
-    get {
-      return self.lineColorOfSymbolGrid_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing symbolBackgroundColor stored property
-  //····················································································································
-
-  var symbolBackgroundColor : NSColor {
-    get {
-      return self.symbolBackgroundColor_property.propval
-    }
-    set {
-      self.symbolBackgroundColor_property.setProp (newValue)
-    }
-  }
-
-  var symbolBackgroundColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.symbolBackgroundColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing symbolDrawingWidthMultipliedByTen stored property
-  //····················································································································
-
-  var symbolDrawingWidthMultipliedByTen : Int {
-    get {
-      return self.symbolDrawingWidthMultipliedByTen_property.propval
-    }
-    set {
-      self.symbolDrawingWidthMultipliedByTen_property.setProp (newValue)
-    }
-  }
-
-  var symbolDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> {
-    get {
-      return self.symbolDrawingWidthMultipliedByTen_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing pinNameFont stored property
-  //····················································································································
-
-  var pinNameFont : NSFont {
-    get {
-      return self.pinNameFont_property.propval
-    }
-    set {
-      self.pinNameFont_property.setProp (newValue)
-    }
-  }
-
-  var pinNameFont_property_selection : EBSelection <NSFont> {
-    get {
-      return self.pinNameFont_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing dotColorOfPackageGrid stored property
-  //····················································································································
-
-  var dotColorOfPackageGrid : NSColor {
-    get {
-      return self.dotColorOfPackageGrid_property.propval
-    }
-    set {
-      self.dotColorOfPackageGrid_property.setProp (newValue)
-    }
-  }
-
-  var dotColorOfPackageGrid_property_selection : EBSelection <NSColor> {
-    get {
-      return self.dotColorOfPackageGrid_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing lineColorOfPackageGrid stored property
-  //····················································································································
-
-  var lineColorOfPackageGrid : NSColor {
-    get {
-      return self.lineColorOfPackageGrid_property.propval
-    }
-    set {
-      self.lineColorOfPackageGrid_property.setProp (newValue)
-    }
-  }
-
-  var lineColorOfPackageGrid_property_selection : EBSelection <NSColor> {
-    get {
-      return self.lineColorOfPackageGrid_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing packageBackgroundColor stored property
-  //····················································································································
-
-  var packageBackgroundColor : NSColor {
-    get {
-      return self.packageBackgroundColor_property.propval
-    }
-    set {
-      self.packageBackgroundColor_property.setProp (newValue)
-    }
-  }
-
-  var packageBackgroundColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.packageBackgroundColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing packageColor stored property
-  //····················································································································
-
-  var packageColor : NSColor {
-    get {
-      return self.packageColor_property.propval
-    }
-    set {
-      self.packageColor_property.setProp (newValue)
-    }
-  }
-
-  var packageColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.packageColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing topSidePadColor stored property
-  //····················································································································
-
-  var topSidePadColor : NSColor {
-    get {
-      return self.topSidePadColor_property.propval
-    }
-    set {
-      self.topSidePadColor_property.setProp (newValue)
-    }
-  }
-
-  var topSidePadColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.topSidePadColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing bottomSidePadColor stored property
-  //····················································································································
-
-  var bottomSidePadColor : NSColor {
-    get {
-      return self.bottomSidePadColor_property.propval
-    }
-    set {
-      self.bottomSidePadColor_property.setProp (newValue)
-    }
-  }
-
-  var bottomSidePadColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.bottomSidePadColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing padNumberColor stored property
-  //····················································································································
-
-  var padNumberColor : NSColor {
-    get {
-      return self.padNumberColor_property.propval
-    }
-    set {
-      self.padNumberColor_property.setProp (newValue)
-    }
-  }
-
-  var padNumberColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.padNumberColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing padNumberFont stored property
-  //····················································································································
-
-  var padNumberFont : NSFont {
-    get {
-      return self.padNumberFont_property.propval
-    }
-    set {
-      self.padNumberFont_property.setProp (newValue)
-    }
-  }
-
-  var padNumberFont_property_selection : EBSelection <NSFont> {
-    get {
-      return self.padNumberFont_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing packageGuideColor stored property
-  //····················································································································
-
-  var packageGuideColor : NSColor {
-    get {
-      return self.packageGuideColor_property.propval
-    }
-    set {
-      self.packageGuideColor_property.setProp (newValue)
-    }
-  }
-
-  var packageGuideColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.packageGuideColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing packageDimensionColor stored property
-  //····················································································································
-
-  var packageDimensionColor : NSColor {
-    get {
-      return self.packageDimensionColor_property.propval
-    }
-    set {
-      self.packageDimensionColor_property.setProp (newValue)
-    }
-  }
-
-  var packageDimensionColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.packageDimensionColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing dimensionFont stored property
-  //····················································································································
-
-  var dimensionFont : NSFont {
-    get {
-      return self.dimensionFont_property.propval
-    }
-    set {
-      self.dimensionFont_property.setProp (newValue)
-    }
-  }
-
-  var dimensionFont_property_selection : EBSelection <NSFont> {
-    get {
-      return self.dimensionFont_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing padZoneColor stored property
-  //····················································································································
-
-  var padZoneColor : NSColor {
-    get {
-      return self.padZoneColor_property.propval
-    }
-    set {
-      self.padZoneColor_property.setProp (newValue)
-    }
-  }
-
-  var padZoneColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.padZoneColor_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing packageDrawingWidthMultipliedByTen stored property
-  //····················································································································
-
-  var packageDrawingWidthMultipliedByTen : Int {
-    get {
-      return self.packageDrawingWidthMultipliedByTen_property.propval
-    }
-    set {
-      self.packageDrawingWidthMultipliedByTen_property.setProp (newValue)
-    }
-  }
-
-  var packageDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> {
-    get {
-      return self.packageDrawingWidthMultipliedByTen_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mSymbolAndPackageGridDotColorForDevice stored property
-  //····················································································································
-
-  var mSymbolAndPackageGridDotColorForDevice : NSColor {
-    get {
-      return self.mSymbolAndPackageGridDotColorForDevice_property.propval
-    }
-    set {
-      self.mSymbolAndPackageGridDotColorForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mSymbolAndPackageGridDotColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mSymbolAndPackageGridDotColorForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mSymbolAndPackageGridLineColorForDevice stored property
-  //····················································································································
-
-  var mSymbolAndPackageGridLineColorForDevice : NSColor {
-    get {
-      return self.mSymbolAndPackageGridLineColorForDevice_property.propval
-    }
-    set {
-      self.mSymbolAndPackageGridLineColorForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mSymbolAndPackageGridLineColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mSymbolAndPackageGridLineColorForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mSymbolAndPackageBackgroundColorForDevice stored property
-  //····················································································································
-
-  var mSymbolAndPackageBackgroundColorForDevice : NSColor {
-    get {
-      return self.mSymbolAndPackageBackgroundColorForDevice_property.propval
-    }
-    set {
-      self.mSymbolAndPackageBackgroundColorForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mSymbolAndPackageBackgroundColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mSymbolAndPackageBackgroundColorForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mPackageColorForDevice stored property
-  //····················································································································
-
-  var mPackageColorForDevice : NSColor {
-    get {
-      return self.mPackageColorForDevice_property.propval
-    }
-    set {
-      self.mPackageColorForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mPackageColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mPackageColorForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mTopSidePadColorForDevice stored property
-  //····················································································································
-
-  var mTopSidePadColorForDevice : NSColor {
-    get {
-      return self.mTopSidePadColorForDevice_property.propval
-    }
-    set {
-      self.mTopSidePadColorForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mTopSidePadColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mTopSidePadColorForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mBottomSidePadColorForDevice stored property
-  //····················································································································
-
-  var mBottomSidePadColorForDevice : NSColor {
-    get {
-      return self.mBottomSidePadColorForDevice_property.propval
-    }
-    set {
-      self.mBottomSidePadColorForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mBottomSidePadColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mBottomSidePadColorForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mPadNumberColorForDevice stored property
-  //····················································································································
-
-  var mPadNumberColorForDevice : NSColor {
-    get {
-      return self.mPadNumberColorForDevice_property.propval
-    }
-    set {
-      self.mPadNumberColorForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mPadNumberColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mPadNumberColorForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mPackageNameFontForDevice stored property
-  //····················································································································
-
-  var mPackageNameFontForDevice : NSFont {
-    get {
-      return self.mPackageNameFontForDevice_property.propval
-    }
-    set {
-      self.mPackageNameFontForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mPackageNameFontForDevice_property_selection : EBSelection <NSFont> {
-    get {
-      return self.mPackageNameFontForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mPadNumberFontForDevice stored property
-  //····················································································································
-
-  var mPadNumberFontForDevice : NSFont {
-    get {
-      return self.mPadNumberFontForDevice_property.propval
-    }
-    set {
-      self.mPadNumberFontForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mPadNumberFontForDevice_property_selection : EBSelection <NSFont> {
-    get {
-      return self.mPadNumberFontForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mSymbolColorForDevice stored property
-  //····················································································································
-
-  var mSymbolColorForDevice : NSColor {
-    get {
-      return self.mSymbolColorForDevice_property.propval
-    }
-    set {
-      self.mSymbolColorForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mSymbolColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mSymbolColorForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mSymbolNameFontForDevice stored property
-  //····················································································································
-
-  var mSymbolNameFontForDevice : NSFont {
-    get {
-      return self.mSymbolNameFontForDevice_property.propval
-    }
-    set {
-      self.mSymbolNameFontForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mSymbolNameFontForDevice_property_selection : EBSelection <NSFont> {
-    get {
-      return self.mSymbolNameFontForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mPinNameFontForDevice stored property
-  //····················································································································
-
-  var mPinNameFontForDevice : NSFont {
-    get {
-      return self.mPinNameFontForDevice_property.propval
-    }
-    set {
-      self.mPinNameFontForDevice_property.setProp (newValue)
-    }
-  }
-
-  var mPinNameFontForDevice_property_selection : EBSelection <NSFont> {
-    get {
-      return self.mPinNameFontForDevice_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing symbolDrawingWidthForDeviceMultipliedByTen stored property
-  //····················································································································
-
-  var symbolDrawingWidthForDeviceMultipliedByTen : Int {
-    get {
-      return self.symbolDrawingWidthForDeviceMultipliedByTen_property.propval
-    }
-    set {
-      self.symbolDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue)
-    }
-  }
-
-  var symbolDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> {
-    get {
-      return self.symbolDrawingWidthForDeviceMultipliedByTen_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing packageDrawingWidthForDeviceMultipliedByTen stored property
-  //····················································································································
-
-  var packageDrawingWidthForDeviceMultipliedByTen : Int {
-    get {
-      return self.packageDrawingWidthForDeviceMultipliedByTen_property.propval
-    }
-    set {
-      self.packageDrawingWidthForDeviceMultipliedByTen_property.setProp (newValue)
-    }
-  }
-
-  var packageDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> {
-    get {
-      return self.packageDrawingWidthForDeviceMultipliedByTen_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing dotColorGridForSchematic stored property
-  //····················································································································
-
-  var dotColorGridForSchematic : NSColor {
-    get {
-      return self.dotColorGridForSchematic_property.propval
-    }
-    set {
-      self.dotColorGridForSchematic_property.setProp (newValue)
-    }
-  }
-
-  var dotColorGridForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.dotColorGridForSchematic_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing lineColorGridForSchematic stored property
-  //····················································································································
-
-  var lineColorGridForSchematic : NSColor {
-    get {
-      return self.lineColorGridForSchematic_property.propval
-    }
-    set {
-      self.lineColorGridForSchematic_property.setProp (newValue)
-    }
-  }
-
-  var lineColorGridForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.lineColorGridForSchematic_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing symbolColorForUnplacedComponentsForSchematic stored property
-  //····················································································································
-
-  var symbolColorForUnplacedComponentsForSchematic : NSColor {
-    get {
-      return self.symbolColorForUnplacedComponentsForSchematic_property.propval
-    }
-    set {
-      self.symbolColorForUnplacedComponentsForSchematic_property.setProp (newValue)
-    }
-  }
-
-  var symbolColorForUnplacedComponentsForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.symbolColorForUnplacedComponentsForSchematic_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing symbolColorForSchematic stored property
-  //····················································································································
-
-  var symbolColorForSchematic : NSColor {
-    get {
-      return self.symbolColorForSchematic_property.propval
-    }
-    set {
-      self.symbolColorForSchematic_property.setProp (newValue)
-    }
-  }
-
-  var symbolColorForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.symbolColorForSchematic_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing pinNameFontForSchematic stored property
-  //····················································································································
-
-  var pinNameFontForSchematic : NSFont {
-    get {
-      return self.pinNameFontForSchematic_property.propval
-    }
-    set {
-      self.pinNameFontForSchematic_property.setProp (newValue)
-    }
-  }
-
-  var pinNameFontForSchematic_property_selection : EBSelection <NSFont> {
-    get {
-      return self.pinNameFontForSchematic_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing pinNameColorForSchematic stored property
-  //····················································································································
-
-  var pinNameColorForSchematic : NSColor {
-    get {
-      return self.pinNameColorForSchematic_property.propval
-    }
-    set {
-      self.pinNameColorForSchematic_property.setProp (newValue)
-    }
-  }
-
-  var pinNameColorForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.pinNameColorForSchematic_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing pinNumberFontForSchematic stored property
-  //····················································································································
-
-  var pinNumberFontForSchematic : NSFont {
-    get {
-      return self.pinNumberFontForSchematic_property.propval
-    }
-    set {
-      self.pinNumberFontForSchematic_property.setProp (newValue)
-    }
-  }
-
-  var pinNumberFontForSchematic_property_selection : EBSelection <NSFont> {
-    get {
-      return self.pinNumberFontForSchematic_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing pinNumberColorForSchematic stored property
-  //····················································································································
-
-  var pinNumberColorForSchematic : NSColor {
-    get {
-      return self.pinNumberColorForSchematic_property.propval
-    }
-    set {
-      self.pinNumberColorForSchematic_property.setProp (newValue)
-    }
-  }
-
-  var pinNumberColorForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.pinNumberColorForSchematic_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing connectionColorForSchematic stored property
-  //····················································································································
-
-  var connectionColorForSchematic : NSColor {
-    get {
-      return self.connectionColorForSchematic_property.propval
-    }
-    set {
-      self.connectionColorForSchematic_property.setProp (newValue)
-    }
-  }
-
-  var connectionColorForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.connectionColorForSchematic_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing symbolDrawingWidthMultipliedByTenForSchematic stored property
-  //····················································································································
-
-  var symbolDrawingWidthMultipliedByTenForSchematic : Int {
-    get {
-      return self.symbolDrawingWidthMultipliedByTenForSchematic_property.propval
-    }
-    set {
-      self.symbolDrawingWidthMultipliedByTenForSchematic_property.setProp (newValue)
-    }
-  }
-
-  var symbolDrawingWidthMultipliedByTenForSchematic_property_selection : EBSelection <Int> {
-    get {
-      return self.symbolDrawingWidthMultipliedByTenForSchematic_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing dotColorGridForBoard stored property
-  //····················································································································
-
-  var dotColorGridForBoard : NSColor {
-    get {
-      return self.dotColorGridForBoard_property.propval
-    }
-    set {
-      self.dotColorGridForBoard_property.setProp (newValue)
-    }
-  }
-
-  var dotColorGridForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.dotColorGridForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing lineColorGridForBoard stored property
-  //····················································································································
-
-  var lineColorGridForBoard : NSColor {
-    get {
-      return self.lineColorGridForBoard_property.propval
-    }
-    set {
-      self.lineColorGridForBoard_property.setProp (newValue)
-    }
-  }
-
-  var lineColorGridForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.lineColorGridForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardBackgroundColorForBoard stored property
-  //····················································································································
-
-  var boardBackgroundColorForBoard : NSColor {
-    get {
-      return self.boardBackgroundColorForBoard_property.propval
-    }
-    set {
-      self.boardBackgroundColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var boardBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.boardBackgroundColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing errorBackgroundColorForBoard stored property
-  //····················································································································
-
-  var errorBackgroundColorForBoard : NSColor {
-    get {
-      return self.errorBackgroundColorForBoard_property.propval
-    }
-    set {
-      self.errorBackgroundColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var errorBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.errorBackgroundColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing drawErrorBackgroundForBoard stored property
-  //····················································································································
-
-  var drawErrorBackgroundForBoard : Bool {
-    get {
-      return self.drawErrorBackgroundForBoard_property.propval
-    }
-    set {
-      self.drawErrorBackgroundForBoard_property.setProp (newValue)
-    }
-  }
-
-  var drawErrorBackgroundForBoard_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawErrorBackgroundForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing warningBackgroundColorForBoard stored property
-  //····················································································································
-
-  var warningBackgroundColorForBoard : NSColor {
-    get {
-      return self.warningBackgroundColorForBoard_property.propval
-    }
-    set {
-      self.warningBackgroundColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var warningBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.warningBackgroundColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing drawEWarningBackgroundForBoard stored property
-  //····················································································································
-
-  var drawEWarningBackgroundForBoard : Bool {
-    get {
-      return self.drawEWarningBackgroundForBoard_property.propval
-    }
-    set {
-      self.drawEWarningBackgroundForBoard_property.setProp (newValue)
-    }
-  }
-
-  var drawEWarningBackgroundForBoard_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawEWarningBackgroundForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardLimitsColorForBoard stored property
-  //····················································································································
-
-  var boardLimitsColorForBoard : NSColor {
-    get {
-      return self.boardLimitsColorForBoard_property.propval
-    }
-    set {
-      self.boardLimitsColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var boardLimitsColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.boardLimitsColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardClearanceColorForBoard stored property
-  //····················································································································
-
-  var boardClearanceColorForBoard : NSColor {
-    get {
-      return self.boardClearanceColorForBoard_property.propval
-    }
-    set {
-      self.boardClearanceColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var boardClearanceColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.boardClearanceColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing topSideRestrictRectangleColorForBoard stored property
-  //····················································································································
-
-  var topSideRestrictRectangleColorForBoard : NSColor {
-    get {
-      return self.topSideRestrictRectangleColorForBoard_property.propval
-    }
-    set {
-      self.topSideRestrictRectangleColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var topSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.topSideRestrictRectangleColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing bottomSideRestrictRectangleColorForBoard stored property
-  //····················································································································
-
-  var bottomSideRestrictRectangleColorForBoard : NSColor {
-    get {
-      return self.bottomSideRestrictRectangleColorForBoard_property.propval
-    }
-    set {
-      self.bottomSideRestrictRectangleColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var bottomSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.bottomSideRestrictRectangleColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing topSideLegendColorForBoard stored property
-  //····················································································································
-
-  var topSideLegendColorForBoard : NSColor {
-    get {
-      return self.topSideLegendColorForBoard_property.propval
-    }
-    set {
-      self.topSideLegendColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var topSideLegendColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.topSideLegendColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing topSideLayoutColorForBoard stored property
-  //····················································································································
-
-  var topSideLayoutColorForBoard : NSColor {
-    get {
-      return self.topSideLayoutColorForBoard_property.propval
-    }
-    set {
-      self.topSideLayoutColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var topSideLayoutColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.topSideLayoutColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing bottomSideLayoutColorForBoard stored property
-  //····················································································································
-
-  var bottomSideLayoutColorForBoard : NSColor {
-    get {
-      return self.bottomSideLayoutColorForBoard_property.propval
-    }
-    set {
-      self.bottomSideLayoutColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var bottomSideLayoutColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.bottomSideLayoutColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing bottomSideLegendColorForBoard stored property
-  //····················································································································
-
-  var bottomSideLegendColorForBoard : NSColor {
-    get {
-      return self.bottomSideLegendColorForBoard_property.propval
-    }
-    set {
-      self.bottomSideLegendColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var bottomSideLegendColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.bottomSideLegendColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing topSidePadColorForBoard stored property
-  //····················································································································
-
-  var topSidePadColorForBoard : NSColor {
-    get {
-      return self.topSidePadColorForBoard_property.propval
-    }
-    set {
-      self.topSidePadColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var topSidePadColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.topSidePadColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing bottomSidePadColorForBoard stored property
-  //····················································································································
-
-  var bottomSidePadColorForBoard : NSColor {
-    get {
-      return self.bottomSidePadColorForBoard_property.propval
-    }
-    set {
-      self.bottomSidePadColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var bottomSidePadColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.bottomSidePadColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing padNumberFontForBoard stored property
-  //····················································································································
-
-  var padNumberFontForBoard : NSFont {
-    get {
-      return self.padNumberFontForBoard_property.propval
-    }
-    set {
-      self.padNumberFontForBoard_property.setProp (newValue)
-    }
-  }
-
-  var padNumberFontForBoard_property_selection : EBSelection <NSFont> {
-    get {
-      return self.padNumberFontForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing padNumberColorForBoard stored property
-  //····················································································································
-
-  var padNumberColorForBoard : NSColor {
-    get {
-      return self.padNumberColorForBoard_property.propval
-    }
-    set {
-      self.padNumberColorForBoard_property.setProp (newValue)
-    }
-  }
-
-  var padNumberColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.padNumberColorForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing packageDrawingWidthMultpliedByTenForBoard stored property
-  //····················································································································
-
-  var packageDrawingWidthMultpliedByTenForBoard : Int {
-    get {
-      return self.packageDrawingWidthMultpliedByTenForBoard_property.propval
-    }
-    set {
-      self.packageDrawingWidthMultpliedByTenForBoard_property.setProp (newValue)
-    }
-  }
-
-  var packageDrawingWidthMultpliedByTenForBoard_property_selection : EBSelection <Int> {
-    get {
-      return self.packageDrawingWidthMultpliedByTenForBoard_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing sampleString stored property
-  //····················································································································
-
-  var sampleString : String {
-    get {
-      return self.sampleString_property.propval
-    }
-    set {
-      self.sampleString_property.setProp (newValue)
-    }
-  }
-
-  var sampleString_property_selection : EBSelection <String> {
-    get {
-      return self.sampleString_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing sampleStringSize stored property
-  //····················································································································
-
-  var sampleStringSize : Double {
-    get {
-      return self.sampleStringSize_property.propval
-    }
-    set {
-      self.sampleStringSize_property.setProp (newValue)
-    }
-  }
-
-  var sampleStringSize_property_selection : EBSelection <Double> {
-    get {
-      return self.sampleStringSize_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing showGerberDrawingFlow stored property
-  //····················································································································
-
-  var showGerberDrawingFlow : Bool {
-    get {
-      return self.showGerberDrawingFlow_property.propval
-    }
-    set {
-      self.showGerberDrawingFlow_property.setProp (newValue)
-    }
-  }
-
-  var showGerberDrawingFlow_property_selection : EBSelection <Bool> {
-    get {
-      return self.showGerberDrawingFlow_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing showGerberDrawingIndexes stored property
-  //····················································································································
-
-  var showGerberDrawingIndexes : Bool {
-    get {
-      return self.showGerberDrawingIndexes_property.propval
-    }
-    set {
-      self.showGerberDrawingIndexes_property.setProp (newValue)
-    }
-  }
-
-  var showGerberDrawingIndexes_property_selection : EBSelection <Bool> {
-    get {
-      return self.showGerberDrawingIndexes_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing currentCharacterCodePoint stored property
-  //····················································································································
-
-  var currentCharacterCodePoint : Int {
-    get {
-      return self.currentCharacterCodePoint_property.propval
-    }
-    set {
-      self.currentCharacterCodePoint_property.setProp (newValue)
-    }
-  }
-
-  var currentCharacterCodePoint_property_selection : EBSelection <Int> {
-    get {
-      return self.currentCharacterCodePoint_property.prop
-    }
-  }
-  func currentCharacterCodePoint_validateAndSetProp (_ inCandidateValue : Int, windowForSheet inWindow:NSWindow?) -> Bool {
-    return self.currentCharacterCodePoint_property.validateAndSetProp (inCandidateValue, windowForSheet:inWindow)
-  }
-
-  //····················································································································
-  //   Accessing fontEditionTransparency stored property
-  //····················································································································
-
-  var fontEditionTransparency : Double {
-    get {
-      return self.fontEditionTransparency_property.propval
-    }
-    set {
-      self.fontEditionTransparency_property.setProp (newValue)
-    }
-  }
-
-  var fontEditionTransparency_property_selection : EBSelection <Double> {
-    get {
-      return self.fontEditionTransparency_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing usesUserLibrary stored property
-  //····················································································································
-
-  var usesUserLibrary : Bool {
-    get {
-      return self.usesUserLibrary_property.propval
-    }
-    set {
-      self.usesUserLibrary_property.setProp (newValue)
-    }
-  }
-
-  var usesUserLibrary_property_selection : EBSelection <Bool> {
-    get {
-      return self.usesUserLibrary_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing checkForSystemLibraryAtStartUp stored property
-  //····················································································································
-
-  var checkForSystemLibraryAtStartUp : Bool {
-    get {
-      return self.checkForSystemLibraryAtStartUp_property.propval
-    }
-    set {
-      self.checkForSystemLibraryAtStartUp_property.setProp (newValue)
-    }
-  }
-
-  var checkForSystemLibraryAtStartUp_property_selection : EBSelection <Bool> {
-    get {
-      return self.checkForSystemLibraryAtStartUp_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mLastSystemLibraryCheckTime stored property
-  //····················································································································
-
-  var mLastSystemLibraryCheckTime : Date {
-    get {
-      return self.mLastSystemLibraryCheckTime_property.propval
-    }
-    set {
-      self.mLastSystemLibraryCheckTime_property.setProp (newValue)
-    }
-  }
-
-  var mLastSystemLibraryCheckTime_property_selection : EBSelection <Date> {
-    get {
-      return self.mLastSystemLibraryCheckTime_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing systemLibraryCheckTimeInterval stored property
-  //····················································································································
-
-  var systemLibraryCheckTimeInterval : Int {
-    get {
-      return self.systemLibraryCheckTimeInterval_property.propval
-    }
-    set {
-      self.systemLibraryCheckTimeInterval_property.setProp (newValue)
-    }
-  }
-
-  var systemLibraryCheckTimeInterval_property_selection : EBSelection <Int> {
-    get {
-      return self.systemLibraryCheckTimeInterval_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewHorizontalFlip stored property
-  //····················································································································
-
-  var mergerModelViewHorizontalFlip : Bool {
-    get {
-      return self.mergerModelViewHorizontalFlip_property.propval
-    }
-    set {
-      self.mergerModelViewHorizontalFlip_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewHorizontalFlip_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewHorizontalFlip_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewVerticalFlip stored property
-  //····················································································································
-
-  var mergerModelViewVerticalFlip : Bool {
-    get {
-      return self.mergerModelViewVerticalFlip_property.propval
-    }
-    set {
-      self.mergerModelViewVerticalFlip_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewVerticalFlip_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewVerticalFlip_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayHoles stored property
-  //····················································································································
-
-  var mergerModelViewDisplayHoles : Bool {
-    get {
-      return self.mergerModelViewDisplayHoles_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayHoles_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayHoles_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayHoles_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayVias stored property
-  //····················································································································
-
-  var mergerModelViewDisplayVias : Bool {
-    get {
-      return self.mergerModelViewDisplayVias_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayVias_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayVias_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayVias_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayFrontPads stored property
-  //····················································································································
-
-  var mergerModelViewDisplayFrontPads : Bool {
-    get {
-      return self.mergerModelViewDisplayFrontPads_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayFrontPads_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayFrontPads_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontPads_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayInternalBoardsLimits stored property
-  //····················································································································
-
-  var mergerModelViewDisplayInternalBoardsLimits : Bool {
-    get {
-      return self.mergerModelViewDisplayInternalBoardsLimits_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayInternalBoardsLimits_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayInternalBoardsLimits_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayBoardLimits stored property
-  //····················································································································
-
-  var mergerModelViewDisplayBoardLimits : Bool {
-    get {
-      return self.mergerModelViewDisplayBoardLimits_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayBoardLimits_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayBoardLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBoardLimits_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayFrontComponentNames stored property
-  //····················································································································
-
-  var mergerModelViewDisplayFrontComponentNames : Bool {
-    get {
-      return self.mergerModelViewDisplayFrontComponentNames_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayFrontComponentNames_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontComponentNames_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayFrontComponentValues stored property
-  //····················································································································
-
-  var mergerModelViewDisplayFrontComponentValues : Bool {
-    get {
-      return self.mergerModelViewDisplayFrontComponentValues_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayFrontComponentValues_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontComponentValues_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayFrontPackages stored property
-  //····················································································································
-
-  var mergerModelViewDisplayFrontPackages : Bool {
-    get {
-      return self.mergerModelViewDisplayFrontPackages_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayFrontPackages_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayFrontPackages_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontPackages_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayFrontLegendTexts stored property
-  //····················································································································
-
-  var mergerModelViewDisplayFrontLegendTexts : Bool {
-    get {
-      return self.mergerModelViewDisplayFrontLegendTexts_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayFrontLegendTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontLegendTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayFrontTracks stored property
-  //····················································································································
-
-  var mergerModelViewDisplayFrontTracks : Bool {
-    get {
-      return self.mergerModelViewDisplayFrontTracks_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayFrontTracks_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayFrontTracks_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontTracks_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayFrontLayoutTexts stored property
-  //····················································································································
-
-  var mergerModelViewDisplayFrontLayoutTexts : Bool {
-    get {
-      return self.mergerModelViewDisplayFrontLayoutTexts_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayFrontLayoutTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontLayoutTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayBackPads stored property
-  //····················································································································
-
-  var mergerModelViewDisplayBackPads : Bool {
-    get {
-      return self.mergerModelViewDisplayBackPads_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayBackPads_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayBackPads_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackPads_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayBackComponentNames stored property
-  //····················································································································
-
-  var mergerModelViewDisplayBackComponentNames : Bool {
-    get {
-      return self.mergerModelViewDisplayBackComponentNames_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayBackComponentNames_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayBackComponentNames_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackComponentNames_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayBackComponentValues stored property
-  //····················································································································
-
-  var mergerModelViewDisplayBackComponentValues : Bool {
-    get {
-      return self.mergerModelViewDisplayBackComponentValues_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayBackComponentValues_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayBackComponentValues_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackComponentValues_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayBackLegendTexts stored property
-  //····················································································································
-
-  var mergerModelViewDisplayBackLegendTexts : Bool {
-    get {
-      return self.mergerModelViewDisplayBackLegendTexts_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayBackLegendTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackLegendTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayBackPackages stored property
-  //····················································································································
-
-  var mergerModelViewDisplayBackPackages : Bool {
-    get {
-      return self.mergerModelViewDisplayBackPackages_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayBackPackages_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayBackPackages_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackPackages_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayBackTracks stored property
-  //····················································································································
-
-  var mergerModelViewDisplayBackTracks : Bool {
-    get {
-      return self.mergerModelViewDisplayBackTracks_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayBackTracks_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayBackTracks_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackTracks_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayBackLayoutTexts stored property
-  //····················································································································
-
-  var mergerModelViewDisplayBackLayoutTexts : Bool {
-    get {
-      return self.mergerModelViewDisplayBackLayoutTexts_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayBackLayoutTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackLayoutTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayFrontLegendLines stored property
-  //····················································································································
-
-  var mergerModelViewDisplayFrontLegendLines : Bool {
-    get {
-      return self.mergerModelViewDisplayFrontLegendLines_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayFrontLegendLines_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontLegendLines_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerModelViewDisplayBackLegendLines stored property
-  //····················································································································
-
-  var mergerModelViewDisplayBackLegendLines : Bool {
-    get {
-      return self.mergerModelViewDisplayBackLegendLines_property.propval
-    }
-    set {
-      self.mergerModelViewDisplayBackLegendLines_property.setProp (newValue)
-    }
-  }
-
-  var mergerModelViewDisplayBackLegendLines_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackLegendLines_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewHorizontalFlip stored property
-  //····················································································································
-
-  var mergerBoardViewHorizontalFlip : Bool {
-    get {
-      return self.mergerBoardViewHorizontalFlip_property.propval
-    }
-    set {
-      self.mergerBoardViewHorizontalFlip_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewHorizontalFlip_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewHorizontalFlip_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewVerticalFlip stored property
-  //····················································································································
-
-  var mergerBoardViewVerticalFlip : Bool {
-    get {
-      return self.mergerBoardViewVerticalFlip_property.propval
-    }
-    set {
-      self.mergerBoardViewVerticalFlip_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewVerticalFlip_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewVerticalFlip_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayHoles stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayHoles : Bool {
-    get {
-      return self.mergerBoardViewDisplayHoles_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayHoles_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayHoles_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayHoles_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayVias stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayVias : Bool {
-    get {
-      return self.mergerBoardViewDisplayVias_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayVias_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayVias_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayVias_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayFrontPads stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayFrontPads : Bool {
-    get {
-      return self.mergerBoardViewDisplayFrontPads_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayFrontPads_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayFrontPads_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontPads_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayInternalBoardsLimits stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayInternalBoardsLimits : Bool {
-    get {
-      return self.mergerBoardViewDisplayInternalBoardsLimits_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayInternalBoardsLimits_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayInternalBoardsLimits_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayBoardLimits stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayBoardLimits : Bool {
-    get {
-      return self.mergerBoardViewDisplayBoardLimits_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayBoardLimits_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayBoardLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBoardLimits_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayFrontComponentNames stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayFrontComponentNames : Bool {
-    get {
-      return self.mergerBoardViewDisplayFrontComponentNames_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayFrontComponentNames_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontComponentNames_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayFrontComponentValues stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayFrontComponentValues : Bool {
-    get {
-      return self.mergerBoardViewDisplayFrontComponentValues_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayFrontComponentValues_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontComponentValues_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayFrontPackages stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayFrontPackages : Bool {
-    get {
-      return self.mergerBoardViewDisplayFrontPackages_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayFrontPackages_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayFrontPackages_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontPackages_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayFrontLegendTexts stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayFrontLegendTexts : Bool {
-    get {
-      return self.mergerBoardViewDisplayFrontLegendTexts_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayFrontLegendTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontLegendTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayFrontTracks stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayFrontTracks : Bool {
-    get {
-      return self.mergerBoardViewDisplayFrontTracks_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayFrontTracks_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayFrontTracks_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontTracks_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayFrontLayoutTexts stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayFrontLayoutTexts : Bool {
-    get {
-      return self.mergerBoardViewDisplayFrontLayoutTexts_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayFrontLayoutTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontLayoutTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayBackPads stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayBackPads : Bool {
-    get {
-      return self.mergerBoardViewDisplayBackPads_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayBackPads_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayBackPads_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackPads_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayBackComponentNames stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayBackComponentNames : Bool {
-    get {
-      return self.mergerBoardViewDisplayBackComponentNames_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayBackComponentNames_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayBackComponentNames_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackComponentNames_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayBackComponentValues stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayBackComponentValues : Bool {
-    get {
-      return self.mergerBoardViewDisplayBackComponentValues_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayBackComponentValues_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayBackComponentValues_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackComponentValues_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayBackLegendTexts stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayBackLegendTexts : Bool {
-    get {
-      return self.mergerBoardViewDisplayBackLegendTexts_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayBackLegendTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackLegendTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayBackPackages stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayBackPackages : Bool {
-    get {
-      return self.mergerBoardViewDisplayBackPackages_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayBackPackages_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayBackPackages_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackPackages_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayBackTracks stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayBackTracks : Bool {
-    get {
-      return self.mergerBoardViewDisplayBackTracks_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayBackTracks_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayBackTracks_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackTracks_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayBackLayoutTexts stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayBackLayoutTexts : Bool {
-    get {
-      return self.mergerBoardViewDisplayBackLayoutTexts_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayBackLayoutTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackLayoutTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayFrontLegendLines stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayFrontLegendLines : Bool {
-    get {
-      return self.mergerBoardViewDisplayFrontLegendLines_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayFrontLegendLines_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontLegendLines_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerBoardViewDisplayBackLegendLines stored property
-  //····················································································································
-
-  var mergerBoardViewDisplayBackLegendLines : Bool {
-    get {
-      return self.mergerBoardViewDisplayBackLegendLines_property.propval
-    }
-    set {
-      self.mergerBoardViewDisplayBackLegendLines_property.setProp (newValue)
-    }
-  }
-
-  var mergerBoardViewDisplayBackLegendLines_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackLegendLines_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorHoles stored property
-  //····················································································································
-
-  var mergerColorHoles : NSColor {
-    get {
-      return self.mergerColorHoles_property.propval
-    }
-    set {
-      self.mergerColorHoles_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorHoles_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorHoles_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorVias stored property
-  //····················································································································
-
-  var mergerColorVias : NSColor {
-    get {
-      return self.mergerColorVias_property.propval
-    }
-    set {
-      self.mergerColorVias_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorVias_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorVias_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorFrontPads stored property
-  //····················································································································
-
-  var mergerColorFrontPads : NSColor {
-    get {
-      return self.mergerColorFrontPads_property.propval
-    }
-    set {
-      self.mergerColorFrontPads_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorFrontPads_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontPads_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorBoardLimits stored property
-  //····················································································································
-
-  var mergerColorBoardLimits : NSColor {
-    get {
-      return self.mergerColorBoardLimits_property.propval
-    }
-    set {
-      self.mergerColorBoardLimits_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorBoardLimits_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBoardLimits_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorInternalBoardsLimits stored property
-  //····················································································································
-
-  var mergerColorInternalBoardsLimits : NSColor {
-    get {
-      return self.mergerColorInternalBoardsLimits_property.propval
-    }
-    set {
-      self.mergerColorInternalBoardsLimits_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorInternalBoardsLimits_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorInternalBoardsLimits_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorFrontComponentNames stored property
-  //····················································································································
-
-  var mergerColorFrontComponentNames : NSColor {
-    get {
-      return self.mergerColorFrontComponentNames_property.propval
-    }
-    set {
-      self.mergerColorFrontComponentNames_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorFrontComponentNames_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontComponentNames_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorFrontComponentValues stored property
-  //····················································································································
-
-  var mergerColorFrontComponentValues : NSColor {
-    get {
-      return self.mergerColorFrontComponentValues_property.propval
-    }
-    set {
-      self.mergerColorFrontComponentValues_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorFrontComponentValues_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontComponentValues_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorFrontPackages stored property
-  //····················································································································
-
-  var mergerColorFrontPackages : NSColor {
-    get {
-      return self.mergerColorFrontPackages_property.propval
-    }
-    set {
-      self.mergerColorFrontPackages_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorFrontPackages_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontPackages_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorFrontLegendTexts stored property
-  //····················································································································
-
-  var mergerColorFrontLegendTexts : NSColor {
-    get {
-      return self.mergerColorFrontLegendTexts_property.propval
-    }
-    set {
-      self.mergerColorFrontLegendTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorFrontLegendTexts_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontLegendTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorFrontTracks stored property
-  //····················································································································
-
-  var mergerColorFrontTracks : NSColor {
-    get {
-      return self.mergerColorFrontTracks_property.propval
-    }
-    set {
-      self.mergerColorFrontTracks_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorFrontTracks_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontTracks_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorFrontLayoutTexts stored property
-  //····················································································································
-
-  var mergerColorFrontLayoutTexts : NSColor {
-    get {
-      return self.mergerColorFrontLayoutTexts_property.propval
-    }
-    set {
-      self.mergerColorFrontLayoutTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorFrontLayoutTexts_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontLayoutTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorBackPads stored property
-  //····················································································································
-
-  var mergerColorBackPads : NSColor {
-    get {
-      return self.mergerColorBackPads_property.propval
-    }
-    set {
-      self.mergerColorBackPads_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorBackPads_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackPads_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorBackComponentNames stored property
-  //····················································································································
-
-  var mergerColorBackComponentNames : NSColor {
-    get {
-      return self.mergerColorBackComponentNames_property.propval
-    }
-    set {
-      self.mergerColorBackComponentNames_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorBackComponentNames_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackComponentNames_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorBackComponentValues stored property
-  //····················································································································
-
-  var mergerColorBackComponentValues : NSColor {
-    get {
-      return self.mergerColorBackComponentValues_property.propval
-    }
-    set {
-      self.mergerColorBackComponentValues_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorBackComponentValues_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackComponentValues_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorBackLegendTexts stored property
-  //····················································································································
-
-  var mergerColorBackLegendTexts : NSColor {
-    get {
-      return self.mergerColorBackLegendTexts_property.propval
-    }
-    set {
-      self.mergerColorBackLegendTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorBackLegendTexts_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackLegendTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorBackPackages stored property
-  //····················································································································
-
-  var mergerColorBackPackages : NSColor {
-    get {
-      return self.mergerColorBackPackages_property.propval
-    }
-    set {
-      self.mergerColorBackPackages_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorBackPackages_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackPackages_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorBackTracks stored property
-  //····················································································································
-
-  var mergerColorBackTracks : NSColor {
-    get {
-      return self.mergerColorBackTracks_property.propval
-    }
-    set {
-      self.mergerColorBackTracks_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorBackTracks_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackTracks_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorBackLayoutTexts stored property
-  //····················································································································
-
-  var mergerColorBackLayoutTexts : NSColor {
-    get {
-      return self.mergerColorBackLayoutTexts_property.propval
-    }
-    set {
-      self.mergerColorBackLayoutTexts_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorBackLayoutTexts_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackLayoutTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorFrontLegendLines stored property
-  //····················································································································
-
-  var mergerColorFrontLegendLines : NSColor {
-    get {
-      return self.mergerColorFrontLegendLines_property.propval
-    }
-    set {
-      self.mergerColorFrontLegendLines_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorFrontLegendLines_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontLegendLines_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorBackLegendLines stored property
-  //····················································································································
-
-  var mergerColorBackLegendLines : NSColor {
-    get {
-      return self.mergerColorBackLegendLines_property.propval
-    }
-    set {
-      self.mergerColorBackLegendLines_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorBackLegendLines_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackLegendLines_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mergerColorBackground stored property
-  //····················································································································
-
-  var mergerColorBackground : NSColor {
-    get {
-      return self.mergerColorBackground_property.propval
-    }
-    set {
-      self.mergerColorBackground_property.setProp (newValue)
-    }
-  }
-
-  var mergerColorBackground_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackground_property.prop
-    }
-  }
-
-  //····················································································································
   //   Accessing mValueRevealInFinder_symbols transient property
   //····················································································································
 
@@ -3050,154 +3912,6 @@ let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
   }
 
   //····················································································································
-  //    Simple Stored Properties
-  //····················································································································
-
-  var errorMessageColor_property = EBStoredProperty_NSColor (NSColor.red, prefKey: Preferences_errorMessageColor)
-  var warningMessageColor_property = EBStoredProperty_NSColor (NSColor.orange, prefKey: Preferences_warningMessageColor)
-  var successMessageColor_property = EBStoredProperty_NSColor (NSColor.blue, prefKey: Preferences_successMessageColor)
-  var selectionHiliteColor_property = EBStoredProperty_NSColor (NSColor.cyan, prefKey: Preferences_selectionHiliteColor)
-  var hiliteWidthMultipliedByTen_property = EBStoredProperty_Int (15, prefKey: Preferences_hiliteWidthMultipliedByTen)
-  var symbolColor_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_symbolColor)
-  var dotColorOfSymbolGrid_property = EBStoredProperty_NSColor (NSColor.black, prefKey: Preferences_dotColorOfSymbolGrid)
-  var lineColorOfSymbolGrid_property = EBStoredProperty_NSColor (NSColor.gray, prefKey: Preferences_lineColorOfSymbolGrid)
-  var symbolBackgroundColor_property = EBStoredProperty_NSColor (NSColor.white, prefKey: Preferences_symbolBackgroundColor)
-  var symbolDrawingWidthMultipliedByTen_property = EBStoredProperty_Int (5, prefKey: Preferences_symbolDrawingWidthMultipliedByTen)
-  var pinNameFont_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFont)
-  var dotColorOfPackageGrid_property = EBStoredProperty_NSColor (NSColor.white, prefKey: Preferences_dotColorOfPackageGrid)
-  var lineColorOfPackageGrid_property = EBStoredProperty_NSColor (NSColor.gray, prefKey: Preferences_lineColorOfPackageGrid)
-  var packageBackgroundColor_property = EBStoredProperty_NSColor (NSColor.black, prefKey: Preferences_packageBackgroundColor)
-  var packageColor_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_packageColor)
-  var topSidePadColor_property = EBStoredProperty_NSColor (NSColor.blue, prefKey: Preferences_topSidePadColor)
-  var bottomSidePadColor_property = EBStoredProperty_NSColor (NSColor.green, prefKey: Preferences_bottomSidePadColor)
-  var padNumberColor_property = EBStoredProperty_NSColor (NSColor.red, prefKey: Preferences_padNumberColor)
-  var padNumberFont_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padNumberFont)
-  var packageGuideColor_property = EBStoredProperty_NSColor (NSColor.yellow, prefKey: Preferences_packageGuideColor)
-  var packageDimensionColor_property = EBStoredProperty_NSColor (NSColor.orange, prefKey: Preferences_packageDimensionColor)
-  var dimensionFont_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 2.0), prefKey: Preferences_dimensionFont)
-  var padZoneColor_property = EBStoredProperty_NSColor (NSColor.magenta, prefKey: Preferences_padZoneColor)
-  var packageDrawingWidthMultipliedByTen_property = EBStoredProperty_Int (15, prefKey: Preferences_packageDrawingWidthMultipliedByTen)
-  var mSymbolAndPackageGridDotColorForDevice_property = EBStoredProperty_NSColor (NSColor.black, prefKey: Preferences_mSymbolAndPackageGridDotColorForDevice)
-  var mSymbolAndPackageGridLineColorForDevice_property = EBStoredProperty_NSColor (NSColor.gray, prefKey: Preferences_mSymbolAndPackageGridLineColorForDevice)
-  var mSymbolAndPackageBackgroundColorForDevice_property = EBStoredProperty_NSColor (NSColor.white, prefKey: Preferences_mSymbolAndPackageBackgroundColorForDevice)
-  var mPackageColorForDevice_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_mPackageColorForDevice)
-  var mTopSidePadColorForDevice_property = EBStoredProperty_NSColor (NSColor.blue, prefKey: Preferences_mTopSidePadColorForDevice)
-  var mBottomSidePadColorForDevice_property = EBStoredProperty_NSColor (NSColor.green, prefKey: Preferences_mBottomSidePadColorForDevice)
-  var mPadNumberColorForDevice_property = EBStoredProperty_NSColor (NSColor.red, prefKey: Preferences_mPadNumberColorForDevice)
-  var mPackageNameFontForDevice_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 9.0), prefKey: Preferences_mPackageNameFontForDevice)
-  var mPadNumberFontForDevice_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 5.0), prefKey: Preferences_mPadNumberFontForDevice)
-  var mSymbolColorForDevice_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_mSymbolColorForDevice)
-  var mSymbolNameFontForDevice_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 9.0), prefKey: Preferences_mSymbolNameFontForDevice)
-  var mPinNameFontForDevice_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_mPinNameFontForDevice)
-  var symbolDrawingWidthForDeviceMultipliedByTen_property = EBStoredProperty_Int (15, prefKey: Preferences_symbolDrawingWidthForDeviceMultipliedByTen)
-  var packageDrawingWidthForDeviceMultipliedByTen_property = EBStoredProperty_Int (15, prefKey: Preferences_packageDrawingWidthForDeviceMultipliedByTen)
-  var dotColorGridForSchematic_property = EBStoredProperty_NSColor (NSColor.black, prefKey: Preferences_dotColorGridForSchematic)
-  var lineColorGridForSchematic_property = EBStoredProperty_NSColor (NSColor.gray, prefKey: Preferences_lineColorGridForSchematic)
-  var symbolColorForUnplacedComponentsForSchematic_property = EBStoredProperty_NSColor (NSColor.darkGray, prefKey: Preferences_symbolColorForUnplacedComponentsForSchematic)
-  var symbolColorForSchematic_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_symbolColorForSchematic)
-  var pinNameFontForSchematic_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNameFontForSchematic)
-  var pinNameColorForSchematic_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_pinNameColorForSchematic)
-  var pinNumberFontForSchematic_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 6.0), prefKey: Preferences_pinNumberFontForSchematic)
-  var pinNumberColorForSchematic_property = EBStoredProperty_NSColor (NSColor.darkGray, prefKey: Preferences_pinNumberColorForSchematic)
-  var connectionColorForSchematic_property = EBStoredProperty_NSColor (NSColor.black, prefKey: Preferences_connectionColorForSchematic)
-  var symbolDrawingWidthMultipliedByTenForSchematic_property = EBStoredProperty_Int (5, prefKey: Preferences_symbolDrawingWidthMultipliedByTenForSchematic)
-  var dotColorGridForBoard_property = EBStoredProperty_NSColor (NSColor.black, prefKey: Preferences_dotColorGridForBoard)
-  var lineColorGridForBoard_property = EBStoredProperty_NSColor (NSColor.gray, prefKey: Preferences_lineColorGridForBoard)
-  var boardBackgroundColorForBoard_property = EBStoredProperty_NSColor (NSColor.black, prefKey: Preferences_boardBackgroundColorForBoard)
-  var errorBackgroundColorForBoard_property = EBStoredProperty_NSColor (NSColor.red, prefKey: Preferences_errorBackgroundColorForBoard)
-  var drawErrorBackgroundForBoard_property = EBStoredProperty_Bool (true, prefKey: Preferences_drawErrorBackgroundForBoard)
-  var warningBackgroundColorForBoard_property = EBStoredProperty_NSColor (NSColor.orange, prefKey: Preferences_warningBackgroundColorForBoard)
-  var drawEWarningBackgroundForBoard_property = EBStoredProperty_Bool (true, prefKey: Preferences_drawEWarningBackgroundForBoard)
-  var boardLimitsColorForBoard_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_boardLimitsColorForBoard)
-  var boardClearanceColorForBoard_property = EBStoredProperty_NSColor (NSColor.yellow, prefKey: Preferences_boardClearanceColorForBoard)
-  var topSideRestrictRectangleColorForBoard_property = EBStoredProperty_NSColor (NSColor.blue, prefKey: Preferences_topSideRestrictRectangleColorForBoard)
-  var bottomSideRestrictRectangleColorForBoard_property = EBStoredProperty_NSColor (NSColor.green, prefKey: Preferences_bottomSideRestrictRectangleColorForBoard)
-  var topSideLegendColorForBoard_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_topSideLegendColorForBoard)
-  var topSideLayoutColorForBoard_property = EBStoredProperty_NSColor (NSColor.blue, prefKey: Preferences_topSideLayoutColorForBoard)
-  var bottomSideLayoutColorForBoard_property = EBStoredProperty_NSColor (NSColor.green, prefKey: Preferences_bottomSideLayoutColorForBoard)
-  var bottomSideLegendColorForBoard_property = EBStoredProperty_NSColor (NSColor.white, prefKey: Preferences_bottomSideLegendColorForBoard)
-  var topSidePadColorForBoard_property = EBStoredProperty_NSColor (NSColor.blue, prefKey: Preferences_topSidePadColorForBoard)
-  var bottomSidePadColorForBoard_property = EBStoredProperty_NSColor (NSColor.green, prefKey: Preferences_bottomSidePadColorForBoard)
-  var padNumberFontForBoard_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padNumberFontForBoard)
-  var padNumberColorForBoard_property = EBStoredProperty_NSColor (NSColor.red, prefKey: Preferences_padNumberColorForBoard)
-  var packageDrawingWidthMultpliedByTenForBoard_property = EBStoredProperty_Int (5, prefKey: Preferences_packageDrawingWidthMultpliedByTenForBoard)
-  var sampleString_property = EBStoredProperty_String ("The quick brown fox jumps over the lazy dog", prefKey: Preferences_sampleString)
-  var sampleStringSize_property = EBStoredProperty_Double (24, prefKey: Preferences_sampleStringSize)
-  var showGerberDrawingFlow_property = EBStoredProperty_Bool (true, prefKey: Preferences_showGerberDrawingFlow)
-  var showGerberDrawingIndexes_property = EBStoredProperty_Bool (true, prefKey: Preferences_showGerberDrawingIndexes)
-  var currentCharacterCodePoint_property = EBStoredProperty_Int (65, prefKey: Preferences_currentCharacterCodePoint)
-  var fontEditionTransparency_property = EBStoredProperty_Double (0.5, prefKey: Preferences_fontEditionTransparency)
-  var usesUserLibrary_property = EBStoredProperty_Bool (true, prefKey: Preferences_usesUserLibrary)
-  var checkForSystemLibraryAtStartUp_property = EBStoredProperty_Bool (true, prefKey: Preferences_checkForSystemLibraryAtStartUp)
-  var mLastSystemLibraryCheckTime_property = EBStoredProperty_Date (Date (), prefKey: Preferences_mLastSystemLibraryCheckTime)
-  var systemLibraryCheckTimeInterval_property = EBStoredProperty_Int (0, prefKey: Preferences_systemLibraryCheckTimeInterval)
-  var mergerModelViewHorizontalFlip_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewHorizontalFlip)
-  var mergerModelViewVerticalFlip_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewVerticalFlip)
-  var mergerModelViewDisplayHoles_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerModelViewDisplayHoles)
-  var mergerModelViewDisplayVias_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerModelViewDisplayVias)
-  var mergerModelViewDisplayFrontPads_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerModelViewDisplayFrontPads)
-  var mergerModelViewDisplayInternalBoardsLimits_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerModelViewDisplayInternalBoardsLimits)
-  var mergerModelViewDisplayBoardLimits_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerModelViewDisplayBoardLimits)
-  var mergerModelViewDisplayFrontComponentNames_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayFrontComponentNames)
-  var mergerModelViewDisplayFrontComponentValues_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayFrontComponentValues)
-  var mergerModelViewDisplayFrontPackages_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayFrontPackages)
-  var mergerModelViewDisplayFrontLegendTexts_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayFrontLegendTexts)
-  var mergerModelViewDisplayFrontTracks_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayFrontTracks)
-  var mergerModelViewDisplayFrontLayoutTexts_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayFrontLayoutTexts)
-  var mergerModelViewDisplayBackPads_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerModelViewDisplayBackPads)
-  var mergerModelViewDisplayBackComponentNames_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayBackComponentNames)
-  var mergerModelViewDisplayBackComponentValues_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayBackComponentValues)
-  var mergerModelViewDisplayBackLegendTexts_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayBackLegendTexts)
-  var mergerModelViewDisplayBackPackages_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayBackPackages)
-  var mergerModelViewDisplayBackTracks_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayBackTracks)
-  var mergerModelViewDisplayBackLayoutTexts_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayBackLayoutTexts)
-  var mergerModelViewDisplayFrontLegendLines_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerModelViewDisplayFrontLegendLines)
-  var mergerModelViewDisplayBackLegendLines_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerModelViewDisplayBackLegendLines)
-  var mergerBoardViewHorizontalFlip_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewHorizontalFlip)
-  var mergerBoardViewVerticalFlip_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewVerticalFlip)
-  var mergerBoardViewDisplayHoles_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerBoardViewDisplayHoles)
-  var mergerBoardViewDisplayVias_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerBoardViewDisplayVias)
-  var mergerBoardViewDisplayFrontPads_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerBoardViewDisplayFrontPads)
-  var mergerBoardViewDisplayInternalBoardsLimits_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerBoardViewDisplayInternalBoardsLimits)
-  var mergerBoardViewDisplayBoardLimits_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerBoardViewDisplayBoardLimits)
-  var mergerBoardViewDisplayFrontComponentNames_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayFrontComponentNames)
-  var mergerBoardViewDisplayFrontComponentValues_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayFrontComponentValues)
-  var mergerBoardViewDisplayFrontPackages_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayFrontPackages)
-  var mergerBoardViewDisplayFrontLegendTexts_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayFrontLegendTexts)
-  var mergerBoardViewDisplayFrontTracks_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayFrontTracks)
-  var mergerBoardViewDisplayFrontLayoutTexts_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayFrontLayoutTexts)
-  var mergerBoardViewDisplayBackPads_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerBoardViewDisplayBackPads)
-  var mergerBoardViewDisplayBackComponentNames_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayBackComponentNames)
-  var mergerBoardViewDisplayBackComponentValues_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayBackComponentValues)
-  var mergerBoardViewDisplayBackLegendTexts_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayBackLegendTexts)
-  var mergerBoardViewDisplayBackPackages_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayBackPackages)
-  var mergerBoardViewDisplayBackTracks_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayBackTracks)
-  var mergerBoardViewDisplayBackLayoutTexts_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayBackLayoutTexts)
-  var mergerBoardViewDisplayFrontLegendLines_property = EBStoredProperty_Bool (false, prefKey: Preferences_mergerBoardViewDisplayFrontLegendLines)
-  var mergerBoardViewDisplayBackLegendLines_property = EBStoredProperty_Bool (true, prefKey: Preferences_mergerBoardViewDisplayBackLegendLines)
-  var mergerColorHoles_property = EBStoredProperty_NSColor (NSColor.white, prefKey: Preferences_mergerColorHoles)
-  var mergerColorVias_property = EBStoredProperty_NSColor (NSColor.red, prefKey: Preferences_mergerColorVias)
-  var mergerColorFrontPads_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_mergerColorFrontPads)
-  var mergerColorBoardLimits_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_mergerColorBoardLimits)
-  var mergerColorInternalBoardsLimits_property = EBStoredProperty_NSColor (NSColor.yellow, prefKey: Preferences_mergerColorInternalBoardsLimits)
-  var mergerColorFrontComponentNames_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_mergerColorFrontComponentNames)
-  var mergerColorFrontComponentValues_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_mergerColorFrontComponentValues)
-  var mergerColorFrontPackages_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_mergerColorFrontPackages)
-  var mergerColorFrontLegendTexts_property = EBStoredProperty_NSColor (NSColor.brown, prefKey: Preferences_mergerColorFrontLegendTexts)
-  var mergerColorFrontTracks_property = EBStoredProperty_NSColor (NSColor.blue, prefKey: Preferences_mergerColorFrontTracks)
-  var mergerColorFrontLayoutTexts_property = EBStoredProperty_NSColor (NSColor.blue, prefKey: Preferences_mergerColorFrontLayoutTexts)
-  var mergerColorBackPads_property = EBStoredProperty_NSColor (NSColor.orange, prefKey: Preferences_mergerColorBackPads)
-  var mergerColorBackComponentNames_property = EBStoredProperty_NSColor (NSColor.gray, prefKey: Preferences_mergerColorBackComponentNames)
-  var mergerColorBackComponentValues_property = EBStoredProperty_NSColor (NSColor.gray, prefKey: Preferences_mergerColorBackComponentValues)
-  var mergerColorBackLegendTexts_property = EBStoredProperty_NSColor (NSColor.gray, prefKey: Preferences_mergerColorBackLegendTexts)
-  var mergerColorBackPackages_property = EBStoredProperty_NSColor (NSColor.gray, prefKey: Preferences_mergerColorBackPackages)
-  var mergerColorBackTracks_property = EBStoredProperty_NSColor (NSColor.green, prefKey: Preferences_mergerColorBackTracks)
-  var mergerColorBackLayoutTexts_property = EBStoredProperty_NSColor (NSColor.green, prefKey: Preferences_mergerColorBackLayoutTexts)
-  var mergerColorFrontLegendLines_property = EBStoredProperty_NSColor (NSColor.gray, prefKey: Preferences_mergerColorFrontLegendLines)
-  var mergerColorBackLegendLines_property = EBStoredProperty_NSColor (NSColor.green, prefKey: Preferences_mergerColorBackLegendLines)
-  var mergerColorBackground_property = EBStoredProperty_NSColor (NSColor.lightGray, prefKey: Preferences_mergerColorBackground)
-
-  //····················································································································
   //    Stored Array Properties
   //····················································································································
 
@@ -3249,17 +3963,14 @@ let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
     super.init ()
     g_Preferences = self ;
   //--- Read from preferences
-    self.errorMessageColor_property.undoManager = self.mUndoManager
     self.warningMessageColor_property.undoManager = self.mUndoManager
     self.successMessageColor_property.undoManager = self.mUndoManager
     self.selectionHiliteColor_property.undoManager = self.mUndoManager
-    self.hiliteWidthMultipliedByTen_property.undoManager = self.mUndoManager
     self.symbolColor_property.undoManager = self.mUndoManager
     self.dotColorOfSymbolGrid_property.undoManager = self.mUndoManager
     self.lineColorOfSymbolGrid_property.undoManager = self.mUndoManager
     self.symbolBackgroundColor_property.undoManager = self.mUndoManager
     self.symbolDrawingWidthMultipliedByTen_property.undoManager = self.mUndoManager
-    self.pinNameFont_property.undoManager = self.mUndoManager
     self.dotColorOfPackageGrid_property.undoManager = self.mUndoManager
     self.lineColorOfPackageGrid_property.undoManager = self.mUndoManager
     self.packageBackgroundColor_property.undoManager = self.mUndoManager
@@ -3301,7 +4012,6 @@ let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
     self.lineColorGridForBoard_property.undoManager = self.mUndoManager
     self.boardBackgroundColorForBoard_property.undoManager = self.mUndoManager
     self.errorBackgroundColorForBoard_property.undoManager = self.mUndoManager
-    self.drawErrorBackgroundForBoard_property.undoManager = self.mUndoManager
     self.warningBackgroundColorForBoard_property.undoManager = self.mUndoManager
     self.drawEWarningBackgroundForBoard_property.undoManager = self.mUndoManager
     self.boardLimitsColorForBoard_property.undoManager = self.mUndoManager
@@ -3317,15 +4027,12 @@ let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
     self.padNumberFontForBoard_property.undoManager = self.mUndoManager
     self.padNumberColorForBoard_property.undoManager = self.mUndoManager
     self.packageDrawingWidthMultpliedByTenForBoard_property.undoManager = self.mUndoManager
-    self.sampleString_property.undoManager = self.mUndoManager
-    self.sampleStringSize_property.undoManager = self.mUndoManager
     self.showGerberDrawingFlow_property.undoManager = self.mUndoManager
     self.showGerberDrawingIndexes_property.undoManager = self.mUndoManager
     self.currentCharacterCodePoint_property.undoManager = self.mUndoManager
+    self.currentCharacterCodePoint_property.validationFunction = self.validate_currentCharacterCodePoint
     self.fontEditionTransparency_property.undoManager = self.mUndoManager
-    self.usesUserLibrary_property.undoManager = self.mUndoManager
     self.checkForSystemLibraryAtStartUp_property.undoManager = self.mUndoManager
-    self.mLastSystemLibraryCheckTime_property.undoManager = self.mUndoManager
     self.systemLibraryCheckTimeInterval_property.undoManager = self.mUndoManager
     self.mergerModelViewHorizontalFlip_property.undoManager = self.mUndoManager
     self.mergerModelViewVerticalFlip_property.undoManager = self.mUndoManager
@@ -3392,14 +4099,19 @@ let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
     self.mergerColorFrontLegendLines_property.undoManager = self.mUndoManager
     self.mergerColorBackLegendLines_property.undoManager = self.mUndoManager
     self.mergerColorBackground_property.undoManager = self.mUndoManager
+    self.errorMessageColor_property.undoManager = self.mUndoManager
+    self.hiliteWidthMultipliedByTen_property.undoManager = self.mUndoManager
+    self.usesUserLibrary_property.undoManager = self.mUndoManager
+    self.pinNameFont_property.undoManager = self.mUndoManager
+    self.drawErrorBackgroundForBoard_property.undoManager = self.mUndoManager
+    self.sampleString_property.undoManager = self.mUndoManager
+    self.sampleStringSize_property.undoManager = self.mUndoManager
+    self.mLastSystemLibraryCheckTime_property.undoManager = self.mUndoManager
     self.additionnalLibraryArray_property.undoManager = self.mUndoManager
-  //--- Property validation function
-    self.currentCharacterCodePoint_property.validationFunction = self.validate_currentCharacterCodePoint
-  //---
     NotificationCenter.default.addObserver (self,
-     selector:#selector(Preferences.applicationWillTerminateAction(_:)),
-     name:NSNotification.Name.NSApplicationWillTerminate,
-     object:nil
+      selector:#selector(Preferences.applicationWillTerminateAction(_:)),
+      name:NSNotification.Name.NSApplicationWillTerminate,
+      object:nil
     )
   //--- Extern functions
   }
