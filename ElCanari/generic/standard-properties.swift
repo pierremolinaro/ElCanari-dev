@@ -1278,15 +1278,6 @@ typealias EBTransientProperty_CanariHorizontalRect = EBTransientValueProperty <C
 typealias EBReadOnlyProperty_InstanceIssueArray  = EBReadOnlyValueProperty <InstanceIssueArray>
 typealias EBTransientProperty_InstanceIssueArray = EBTransientValueProperty <InstanceIssueArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class CharacterGerberCodeClass
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CharacterGerberCodeClass  = EBReadOnlyClassProperty <CharacterGerberCodeClass>
-typealias EBTransientProperty_CharacterGerberCodeClass = EBTransientClassProperty <CharacterGerberCodeClass>
-typealias EBReadOnlyPropertyArray_CharacterGerberCodeClass  = EBReadOnlyClassProperty <[CharacterGerberCodeClass]>
-typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBTransientClassProperty <[CharacterGerberCodeClass]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CharacterSegmentListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1294,6 +1285,15 @@ typealias EBReadOnlyProperty_CharacterSegmentListClass  = EBReadOnlyClassPropert
 typealias EBTransientProperty_CharacterSegmentListClass = EBTransientClassProperty <CharacterSegmentListClass>
 typealias EBReadOnlyPropertyArray_CharacterSegmentListClass  = EBReadOnlyClassProperty <[CharacterSegmentListClass]>
 typealias EBTransientPropertyArray_CharacterSegmentListClass = EBTransientClassProperty <[CharacterSegmentListClass]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class CharacterGerberCodeClass
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CharacterGerberCodeClass  = EBReadOnlyClassProperty <CharacterGerberCodeClass>
+typealias EBTransientProperty_CharacterGerberCodeClass = EBTransientClassProperty <CharacterGerberCodeClass>
+typealias EBReadOnlyPropertyArray_CharacterGerberCodeClass  = EBReadOnlyClassProperty <[CharacterGerberCodeClass]>
+typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBTransientClassProperty <[CharacterGerberCodeClass]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date

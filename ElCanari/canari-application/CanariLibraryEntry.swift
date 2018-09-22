@@ -24,7 +24,11 @@ class CanariLibraryEntry : EBSimpleClass,
   }
 
   //····················································································································
-  //   Accessing mPath stored property
+  //   Atomic property: mPath
+  //····················································································································
+
+  var mPath_property = EBStoredProperty_String ("Hello")
+
   //····················································································································
 
   var mPath : String {
@@ -36,6 +40,8 @@ class CanariLibraryEntry : EBSimpleClass,
     }
   }
 
+  //····················································································································
+
   var mPath_property_selection : EBSelection <String> {
     get {
       return self.mPath_property.prop
@@ -43,7 +49,11 @@ class CanariLibraryEntry : EBSimpleClass,
   }
 
   //····················································································································
-  //   Accessing mUses stored property
+  //   Atomic property: mUses
+  //····················································································································
+
+  var mUses_property = EBStoredProperty_Bool (true)
+
   //····················································································································
 
   var mUses : Bool {
@@ -55,6 +65,8 @@ class CanariLibraryEntry : EBSimpleClass,
     }
   }
 
+  //····················································································································
+
   var mUses_property_selection : EBSelection <Bool> {
     get {
       return self.mUses_property.prop
@@ -62,7 +74,11 @@ class CanariLibraryEntry : EBSimpleClass,
   }
 
   //····················································································································
-  //   Accessing mStatusImage transient property
+  //   Transient property: mStatusImage
+  //····················································································································
+
+  var mStatusImage_property = EBTransientProperty_NSImage ()
+
   //····················································································································
 
   var mStatusImage_property_selection : EBSelection <NSImage> {
@@ -71,21 +87,6 @@ class CanariLibraryEntry : EBSimpleClass,
     }
   }
 
-  //····················································································································
-  //    Stored Properties
-  //····················································································································
-
-  var mPath_property = EBStoredProperty_String ("Hello")
-
-  //····················································································································
-
-  var mUses_property = EBStoredProperty_Bool (true)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var mStatusImage_property = EBTransientProperty_NSImage ()
 
   //····················································································································
   //    Extern delegates
@@ -99,8 +100,12 @@ class CanariLibraryEntry : EBSimpleClass,
 
   override init () {
     super.init ()
-  //--- Install compute functions for transients
-    mStatusImage_property.readModelFunction = { [weak self] in
+  //--- Atomic property: mPath
+    self.mPath_property.undoManager = self.undoManager
+  //--- Atomic property: mUses
+    self.mUses_property.undoManager = self.undoManager
+  //--- Atomic property: mStatusImage
+    self.mStatusImage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPath_property_selection.kind ()
         switch kind {
@@ -120,8 +125,7 @@ class CanariLibraryEntry : EBSimpleClass,
         return .empty
       }
     }
-  //--- Install property observers for transients
-    self.mPath_property.addEBObserver (mStatusImage_property)
+    self.mPath_property.addEBObserver (self.mStatusImage_property)
   //--- Extern functions
   //--- Extern delegates
     mExternDelegate0 = CanariLibraryEntryDelegate (object:self)
@@ -335,7 +339,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     }
   }
 
-  final func addEBObserversOf_mStatusImage_toElementsOfSet (inSet : Set<CanariLibraryEntry>) {
+  final func addEBObserversOf_mStatusImage_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
       for observer in mObserversOf_mStatusImage {
         managedObject.mStatusImage_property.addEBObserver (observer)
@@ -343,7 +347,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     }
   }
 
-  final func removeEBObserversOf_mStatusImage_fromElementsOfSet (inSet : Set<CanariLibraryEntry>) {
+  final func removeEBObserversOf_mStatusImage_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
       for observer in mObserversOf_mStatusImage {
         managedObject.mStatusImage_property.removeEBObserver (observer)
@@ -426,7 +430,13 @@ class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
   //  Undo manager
   //····················································································································
 
-  var undoManager : EBUndoManager? = nil
+  var undoManager : EBUndoManager? = nil {
+    didSet {
+      for object in self.propval {
+        object.undoManager = self.undoManager
+      }
+    }
+  }
 
   //····················································································································
   //  Abstract methods
@@ -488,6 +498,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry {
         let removedSet = oldSet.subtracting (mSet)
         removeEBObserversOf_mPath_fromElementsOfSet (removedSet)
         removeEBObserversOf_mUses_fromElementsOfSet (removedSet)
+        removeEBObserversOf_mStatusImage_fromElementsOfSet (removedSet)
         for object in removedSet {
           object.undoManager = nil
         }
@@ -495,6 +506,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry {
         let addedSet = mSet.subtracting (oldSet)
         addEBObserversOf_mPath_toElementsOfSet (addedSet)
         addEBObserversOf_mUses_toElementsOfSet (addedSet)
+        addEBObserversOf_mStatusImage_toElementsOfSet (addedSet)
         for object in addedSet {
           object.undoManager = self.undoManager
         }
