@@ -154,7 +154,6 @@ let Preferences_drawErrorBackgroundForBoard = "Preferences:drawErrorBackgroundFo
 let Preferences_sampleString = "Preferences:sampleString"
 let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
-let Preferences_additionnalLibraryArrayController = "Preferences:additionnalLibraryArrayController"
 
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3760,6 +3759,76 @@ let Preferences_additionnalLibraryArrayController = "Preferences:additionnalLibr
   var additionnalLibraryArrayController = ArrayController_Preferences_additionnalLibraryArrayController ()
 
   //····················································································································
+  //   Transient property: mValueRevealInFinder_packages
+  //····················································································································
+
+  var mValueRevealInFinder_packages_property = EBTransientProperty_CanariMenuItemListClass ()
+
+  //····················································································································
+
+  var mValueRevealInFinder_packages_property_selection : EBSelection <CanariMenuItemListClass> {
+    get {
+      return self.mValueRevealInFinder_packages_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mValueRevealInFinder_devices
+  //····················································································································
+
+  var mValueRevealInFinder_devices_property = EBTransientProperty_CanariMenuItemListClass ()
+
+  //····················································································································
+
+  var mValueRevealInFinder_devices_property_selection : EBSelection <CanariMenuItemListClass> {
+    get {
+      return self.mValueRevealInFinder_devices_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mValueRevealInFinder_fonts
+  //····················································································································
+
+  var mValueRevealInFinder_fonts_property = EBTransientProperty_CanariMenuItemListClass ()
+
+  //····················································································································
+
+  var mValueRevealInFinder_fonts_property_selection : EBSelection <CanariMenuItemListClass> {
+    get {
+      return self.mValueRevealInFinder_fonts_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mValueRevealInFinder_artworks
+  //····················································································································
+
+  var mValueRevealInFinder_artworks_property = EBTransientProperty_CanariMenuItemListClass ()
+
+  //····················································································································
+
+  var mValueRevealInFinder_artworks_property_selection : EBSelection <CanariMenuItemListClass> {
+    get {
+      return self.mValueRevealInFinder_artworks_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mValueRevealInFinder_symbols
+  //····················································································································
+
+  var mValueRevealInFinder_symbols_property = EBTransientProperty_CanariMenuItemListClass ()
+
+  //····················································································································
+
+  var mValueRevealInFinder_symbols_property_selection : EBSelection <CanariMenuItemListClass> {
+    get {
+      return self.mValueRevealInFinder_symbols_property.prop
+    }
+  }
+
+  //····················································································································
   //    Outlets
   //····················································································································
 
@@ -3869,66 +3938,11 @@ let Preferences_additionnalLibraryArrayController = "Preferences:additionnalLibr
   @IBOutlet var systemLibraryCheckTimeIntervalPopupButton : EBPopUpButton? = nil
   @IBOutlet var systemLibraryCheckTimeIntervalTitleTextField : NSTextField? = nil
 
-  //····················································································································
-  //   Accessing mValueRevealInFinder_symbols transient property
-  //····················································································································
-
-  var mValueRevealInFinder_symbols_property_selection : EBSelection <CanariMenuItemListClass> {
-    get {
-      return self.mValueRevealInFinder_symbols_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mValueRevealInFinder_packages transient property
-  //····················································································································
-
-  var mValueRevealInFinder_packages_property_selection : EBSelection <CanariMenuItemListClass> {
-    get {
-      return self.mValueRevealInFinder_packages_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mValueRevealInFinder_devices transient property
-  //····················································································································
-
-  var mValueRevealInFinder_devices_property_selection : EBSelection <CanariMenuItemListClass> {
-    get {
-      return self.mValueRevealInFinder_devices_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mValueRevealInFinder_fonts transient property
-  //····················································································································
-
-  var mValueRevealInFinder_fonts_property_selection : EBSelection <CanariMenuItemListClass> {
-    get {
-      return self.mValueRevealInFinder_fonts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing mValueRevealInFinder_artworks transient property
-  //····················································································································
-
-  var mValueRevealInFinder_artworks_property_selection : EBSelection <CanariMenuItemListClass> {
-    get {
-      return self.mValueRevealInFinder_artworks_property.prop
-    }
-  }
-
 
   //····················································································································
   //    Transient properties
   //····················································································································
 
-  var mValueRevealInFinder_symbols_property = EBTransientProperty_CanariMenuItemListClass ()
-  var mValueRevealInFinder_packages_property = EBTransientProperty_CanariMenuItemListClass ()
-  var mValueRevealInFinder_devices_property = EBTransientProperty_CanariMenuItemListClass ()
-  var mValueRevealInFinder_fonts_property = EBTransientProperty_CanariMenuItemListClass ()
-  var mValueRevealInFinder_artworks_property = EBTransientProperty_CanariMenuItemListClass ()
 
   //····················································································································
   //    Multiple bindings controllers
@@ -4251,6 +4265,136 @@ let Preferences_additionnalLibraryArrayController = "Preferences:additionnalLibr
     self.mLastSystemLibraryCheckTime_property.undoManager = self.mUndoManager
   //--- Array controller property: additionnalLibraryArrayController
     self.additionnalLibraryArrayController.bind_model (self.additionnalLibraryArray_property)
+  //--- Atomic property: mValueRevealInFinder_packages
+    self.mValueRevealInFinder_packages_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+  }
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_packages_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
+  //--- Atomic property: mValueRevealInFinder_devices
+    self.mValueRevealInFinder_devices_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+  }
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_devices_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_devices_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_devices_property)
+  //--- Atomic property: mValueRevealInFinder_fonts
+    self.mValueRevealInFinder_fonts_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+  }
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_fonts_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property)
+  //--- Atomic property: mValueRevealInFinder_artworks
+    self.mValueRevealInFinder_artworks_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+  }
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_artworks_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
+  //--- Atomic property: mValueRevealInFinder_symbols
+    self.mValueRevealInFinder_symbols_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+  }
+    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_symbols_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_symbols_property)
+    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_symbols_property)
   //--- Notify application will terminate
     NotificationCenter.default.addObserver (self,
       selector:#selector(Preferences.applicationWillTerminateAction(_:)),
@@ -5421,132 +5565,7 @@ let Preferences_additionnalLibraryArrayController = "Preferences:additionnalLibr
                           errorMessage: "the 'systemLibraryCheckTimeIntervalTitleTextField' outlet is nil") ;
     }
   //--------------------------- Install compute functions for transients
-    self.mValueRevealInFinder_symbols_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
-        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
-        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mValueRevealInFinder_packages_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
-        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
-        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mValueRevealInFinder_devices_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
-        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
-        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mValueRevealInFinder_fonts_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
-        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
-        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.mValueRevealInFinder_artworks_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.usesUserLibrary_property_selection.kind ()
-        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
-        kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.usesUserLibrary_property_selection, unwSelf.additionnalLibraryArray_property_selection, unwSelf.additionnalLibraryArray_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
   //--------------------------- Install property observers for transients
-    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_symbols_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_symbols_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_symbols_property)
-    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_packages_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
-    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_devices_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_devices_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_devices_property)
-    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_fonts_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property)
-    self.usesUserLibrary_property.addEBObserver (self.mValueRevealInFinder_artworks_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
-    self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
   //--------------------------- Install bindings
     mErrorMessageColorColorWell?.bind_color (self.errorMessageColor_property, file: #file, line: #line, sendContinously:false)
     mWarningMessageColorColorWell?.bind_color (self.warningMessageColor_property, file: #file, line: #line, sendContinously:false)
