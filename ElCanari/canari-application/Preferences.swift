@@ -3960,150 +3960,294 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     super.init ()
     g_Preferences = self ;
   //--- Read from preferences
+  //--- Atomic property: warningMessageColor
     self.warningMessageColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: successMessageColor
     self.successMessageColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: selectionHiliteColor
     self.selectionHiliteColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: symbolColor
     self.symbolColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: dotColorOfSymbolGrid
     self.dotColorOfSymbolGrid_property.undoManager = self.mUndoManager
+  //--- Atomic property: lineColorOfSymbolGrid
     self.lineColorOfSymbolGrid_property.undoManager = self.mUndoManager
+  //--- Atomic property: symbolBackgroundColor
     self.symbolBackgroundColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: symbolDrawingWidthMultipliedByTen
     self.symbolDrawingWidthMultipliedByTen_property.undoManager = self.mUndoManager
+  //--- Atomic property: dotColorOfPackageGrid
     self.dotColorOfPackageGrid_property.undoManager = self.mUndoManager
+  //--- Atomic property: lineColorOfPackageGrid
     self.lineColorOfPackageGrid_property.undoManager = self.mUndoManager
+  //--- Atomic property: packageBackgroundColor
     self.packageBackgroundColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: packageColor
     self.packageColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: topSidePadColor
     self.topSidePadColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: bottomSidePadColor
     self.bottomSidePadColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: padNumberColor
     self.padNumberColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: padNumberFont
     self.padNumberFont_property.undoManager = self.mUndoManager
+  //--- Atomic property: packageGuideColor
     self.packageGuideColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: packageDimensionColor
     self.packageDimensionColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: dimensionFont
     self.dimensionFont_property.undoManager = self.mUndoManager
+  //--- Atomic property: padZoneColor
     self.padZoneColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: packageDrawingWidthMultipliedByTen
     self.packageDrawingWidthMultipliedByTen_property.undoManager = self.mUndoManager
+  //--- Atomic property: mSymbolAndPackageGridDotColorForDevice
     self.mSymbolAndPackageGridDotColorForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mSymbolAndPackageGridLineColorForDevice
     self.mSymbolAndPackageGridLineColorForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mSymbolAndPackageBackgroundColorForDevice
     self.mSymbolAndPackageBackgroundColorForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mPackageColorForDevice
     self.mPackageColorForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mTopSidePadColorForDevice
     self.mTopSidePadColorForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mBottomSidePadColorForDevice
     self.mBottomSidePadColorForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mPadNumberColorForDevice
     self.mPadNumberColorForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mPackageNameFontForDevice
     self.mPackageNameFontForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mPadNumberFontForDevice
     self.mPadNumberFontForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mSymbolColorForDevice
     self.mSymbolColorForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mSymbolNameFontForDevice
     self.mSymbolNameFontForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: mPinNameFontForDevice
     self.mPinNameFontForDevice_property.undoManager = self.mUndoManager
+  //--- Atomic property: symbolDrawingWidthForDeviceMultipliedByTen
     self.symbolDrawingWidthForDeviceMultipliedByTen_property.undoManager = self.mUndoManager
+  //--- Atomic property: packageDrawingWidthForDeviceMultipliedByTen
     self.packageDrawingWidthForDeviceMultipliedByTen_property.undoManager = self.mUndoManager
+  //--- Atomic property: dotColorGridForSchematic
     self.dotColorGridForSchematic_property.undoManager = self.mUndoManager
+  //--- Atomic property: lineColorGridForSchematic
     self.lineColorGridForSchematic_property.undoManager = self.mUndoManager
+  //--- Atomic property: symbolColorForUnplacedComponentsForSchematic
     self.symbolColorForUnplacedComponentsForSchematic_property.undoManager = self.mUndoManager
+  //--- Atomic property: symbolColorForSchematic
     self.symbolColorForSchematic_property.undoManager = self.mUndoManager
+  //--- Atomic property: pinNameFontForSchematic
     self.pinNameFontForSchematic_property.undoManager = self.mUndoManager
+  //--- Atomic property: pinNameColorForSchematic
     self.pinNameColorForSchematic_property.undoManager = self.mUndoManager
+  //--- Atomic property: pinNumberFontForSchematic
     self.pinNumberFontForSchematic_property.undoManager = self.mUndoManager
+  //--- Atomic property: pinNumberColorForSchematic
     self.pinNumberColorForSchematic_property.undoManager = self.mUndoManager
+  //--- Atomic property: connectionColorForSchematic
     self.connectionColorForSchematic_property.undoManager = self.mUndoManager
+  //--- Atomic property: symbolDrawingWidthMultipliedByTenForSchematic
     self.symbolDrawingWidthMultipliedByTenForSchematic_property.undoManager = self.mUndoManager
+  //--- Atomic property: dotColorGridForBoard
     self.dotColorGridForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: lineColorGridForBoard
     self.lineColorGridForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: boardBackgroundColorForBoard
     self.boardBackgroundColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: errorBackgroundColorForBoard
     self.errorBackgroundColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: warningBackgroundColorForBoard
     self.warningBackgroundColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: drawEWarningBackgroundForBoard
     self.drawEWarningBackgroundForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: boardLimitsColorForBoard
     self.boardLimitsColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: boardClearanceColorForBoard
     self.boardClearanceColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: topSideRestrictRectangleColorForBoard
     self.topSideRestrictRectangleColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: bottomSideRestrictRectangleColorForBoard
     self.bottomSideRestrictRectangleColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: topSideLegendColorForBoard
     self.topSideLegendColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: topSideLayoutColorForBoard
     self.topSideLayoutColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: bottomSideLayoutColorForBoard
     self.bottomSideLayoutColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: bottomSideLegendColorForBoard
     self.bottomSideLegendColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: topSidePadColorForBoard
     self.topSidePadColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: bottomSidePadColorForBoard
     self.bottomSidePadColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: padNumberFontForBoard
     self.padNumberFontForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: padNumberColorForBoard
     self.padNumberColorForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: packageDrawingWidthMultpliedByTenForBoard
     self.packageDrawingWidthMultpliedByTenForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: showGerberDrawingFlow
     self.showGerberDrawingFlow_property.undoManager = self.mUndoManager
+  //--- Atomic property: showGerberDrawingIndexes
     self.showGerberDrawingIndexes_property.undoManager = self.mUndoManager
+  //--- Atomic property: currentCharacterCodePoint
     self.currentCharacterCodePoint_property.undoManager = self.mUndoManager
     self.currentCharacterCodePoint_property.validationFunction = self.validate_currentCharacterCodePoint
+  //--- Atomic property: fontEditionTransparency
     self.fontEditionTransparency_property.undoManager = self.mUndoManager
+  //--- Atomic property: checkForSystemLibraryAtStartUp
     self.checkForSystemLibraryAtStartUp_property.undoManager = self.mUndoManager
+  //--- Atomic property: systemLibraryCheckTimeInterval
     self.systemLibraryCheckTimeInterval_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewHorizontalFlip
     self.mergerModelViewHorizontalFlip_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewVerticalFlip
     self.mergerModelViewVerticalFlip_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayHoles
     self.mergerModelViewDisplayHoles_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayVias
     self.mergerModelViewDisplayVias_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayFrontPads
     self.mergerModelViewDisplayFrontPads_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayInternalBoardsLimits
     self.mergerModelViewDisplayInternalBoardsLimits_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayBoardLimits
     self.mergerModelViewDisplayBoardLimits_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayFrontComponentNames
     self.mergerModelViewDisplayFrontComponentNames_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayFrontComponentValues
     self.mergerModelViewDisplayFrontComponentValues_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayFrontPackages
     self.mergerModelViewDisplayFrontPackages_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayFrontLegendTexts
     self.mergerModelViewDisplayFrontLegendTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayFrontTracks
     self.mergerModelViewDisplayFrontTracks_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayFrontLayoutTexts
     self.mergerModelViewDisplayFrontLayoutTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayBackPads
     self.mergerModelViewDisplayBackPads_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayBackComponentNames
     self.mergerModelViewDisplayBackComponentNames_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayBackComponentValues
     self.mergerModelViewDisplayBackComponentValues_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayBackLegendTexts
     self.mergerModelViewDisplayBackLegendTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayBackPackages
     self.mergerModelViewDisplayBackPackages_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayBackTracks
     self.mergerModelViewDisplayBackTracks_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayBackLayoutTexts
     self.mergerModelViewDisplayBackLayoutTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayFrontLegendLines
     self.mergerModelViewDisplayFrontLegendLines_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerModelViewDisplayBackLegendLines
     self.mergerModelViewDisplayBackLegendLines_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewHorizontalFlip
     self.mergerBoardViewHorizontalFlip_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewVerticalFlip
     self.mergerBoardViewVerticalFlip_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayHoles
     self.mergerBoardViewDisplayHoles_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayVias
     self.mergerBoardViewDisplayVias_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayFrontPads
     self.mergerBoardViewDisplayFrontPads_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayInternalBoardsLimits
     self.mergerBoardViewDisplayInternalBoardsLimits_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayBoardLimits
     self.mergerBoardViewDisplayBoardLimits_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayFrontComponentNames
     self.mergerBoardViewDisplayFrontComponentNames_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayFrontComponentValues
     self.mergerBoardViewDisplayFrontComponentValues_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayFrontPackages
     self.mergerBoardViewDisplayFrontPackages_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayFrontLegendTexts
     self.mergerBoardViewDisplayFrontLegendTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayFrontTracks
     self.mergerBoardViewDisplayFrontTracks_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayFrontLayoutTexts
     self.mergerBoardViewDisplayFrontLayoutTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayBackPads
     self.mergerBoardViewDisplayBackPads_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayBackComponentNames
     self.mergerBoardViewDisplayBackComponentNames_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayBackComponentValues
     self.mergerBoardViewDisplayBackComponentValues_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayBackLegendTexts
     self.mergerBoardViewDisplayBackLegendTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayBackPackages
     self.mergerBoardViewDisplayBackPackages_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayBackTracks
     self.mergerBoardViewDisplayBackTracks_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayBackLayoutTexts
     self.mergerBoardViewDisplayBackLayoutTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayFrontLegendLines
     self.mergerBoardViewDisplayFrontLegendLines_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerBoardViewDisplayBackLegendLines
     self.mergerBoardViewDisplayBackLegendLines_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorHoles
     self.mergerColorHoles_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorVias
     self.mergerColorVias_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorFrontPads
     self.mergerColorFrontPads_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorBoardLimits
     self.mergerColorBoardLimits_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorInternalBoardsLimits
     self.mergerColorInternalBoardsLimits_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorFrontComponentNames
     self.mergerColorFrontComponentNames_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorFrontComponentValues
     self.mergerColorFrontComponentValues_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorFrontPackages
     self.mergerColorFrontPackages_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorFrontLegendTexts
     self.mergerColorFrontLegendTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorFrontTracks
     self.mergerColorFrontTracks_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorFrontLayoutTexts
     self.mergerColorFrontLayoutTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorBackPads
     self.mergerColorBackPads_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorBackComponentNames
     self.mergerColorBackComponentNames_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorBackComponentValues
     self.mergerColorBackComponentValues_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorBackLegendTexts
     self.mergerColorBackLegendTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorBackPackages
     self.mergerColorBackPackages_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorBackTracks
     self.mergerColorBackTracks_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorBackLayoutTexts
     self.mergerColorBackLayoutTexts_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorFrontLegendLines
     self.mergerColorFrontLegendLines_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorBackLegendLines
     self.mergerColorBackLegendLines_property.undoManager = self.mUndoManager
+  //--- Atomic property: mergerColorBackground
     self.mergerColorBackground_property.undoManager = self.mUndoManager
+  //--- Atomic property: errorMessageColor
     self.errorMessageColor_property.undoManager = self.mUndoManager
+  //--- Atomic property: hiliteWidthMultipliedByTen
     self.hiliteWidthMultipliedByTen_property.undoManager = self.mUndoManager
+  //--- Atomic property: usesUserLibrary
     self.usesUserLibrary_property.undoManager = self.mUndoManager
+  //--- Property array: additionnalLibraryArray
     self.additionnalLibraryArray_property.undoManager = self.mUndoManager
+  //--- Atomic property: pinNameFont
     self.pinNameFont_property.undoManager = self.mUndoManager
+  //--- Atomic property: drawErrorBackgroundForBoard
     self.drawErrorBackgroundForBoard_property.undoManager = self.mUndoManager
+  //--- Atomic property: sampleString
     self.sampleString_property.undoManager = self.mUndoManager
+  //--- Atomic property: sampleStringSize
     self.sampleStringSize_property.undoManager = self.mUndoManager
+  //--- Atomic property: mLastSystemLibraryCheckTime
     self.mLastSystemLibraryCheckTime_property.undoManager = self.mUndoManager
     NotificationCenter.default.addObserver (self,
       selector:#selector(Preferences.applicationWillTerminateAction(_:)),
