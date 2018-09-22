@@ -154,6 +154,7 @@ let Preferences_drawErrorBackgroundForBoard = "Preferences:drawErrorBackgroundFo
 let Preferences_sampleString = "Preferences:sampleString"
 let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
+let Preferences_additionnalLibraryArrayController = "Preferences:additionnalLibraryArrayController"
 
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3752,6 +3753,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     }
   }
 
+  //····················································································································
+  //   Array controller: additionnalLibraryArrayController
+  //····················································································································
+
+  var additionnalLibraryArrayController = ArrayController_Preferences_additionnalLibraryArrayController ()
 
   //····················································································································
   //    Outlets
@@ -3923,12 +3929,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   var mValueRevealInFinder_devices_property = EBTransientProperty_CanariMenuItemListClass ()
   var mValueRevealInFinder_fonts_property = EBTransientProperty_CanariMenuItemListClass ()
   var mValueRevealInFinder_artworks_property = EBTransientProperty_CanariMenuItemListClass ()
-
-  //····················································································································
-  //    Array Controllers
-  //····················································································································
-
-  private var additionnalLibraryArrayController = ArrayController_Preferences_additionnalLibraryArrayController ()
 
   //····················································································································
   //    Multiple bindings controllers
@@ -4249,6 +4249,9 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.sampleStringSize_property.undoManager = self.mUndoManager
   //--- Atomic property: mLastSystemLibraryCheckTime
     self.mLastSystemLibraryCheckTime_property.undoManager = self.mUndoManager
+  //--- Array controller property: additionnalLibraryArrayController
+    self.additionnalLibraryArrayController.bind_model (self.additionnalLibraryArray_property)
+  //--- Notify application will terminate
     NotificationCenter.default.addObserver (self,
       selector:#selector(Preferences.applicationWillTerminateAction(_:)),
       name:NSNotification.Name.NSApplicationWillTerminate,
@@ -5671,7 +5674,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       mController_mRemoveLibraryEntryButton_enabled = controller
     }
   //--------------------------- Array controller
-    self.additionnalLibraryArrayController.bind_model (self.additionnalLibraryArray_property)
     self.additionnalLibraryArrayController.bind_tableView (self.mAdditionnalLibraryArrayTableView, file: #file, line: #line)
   //--------------------------- Set targets / actions
     self.mRevealInFinderLibraryInUserApplicationSupportButton?.target = self
@@ -5693,6 +5695,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   func applicationWillTerminateAction (_ : NSNotification) {
   //--------------------------- Array controller
     self.additionnalLibraryArrayController.unbind_tableView (self.mAdditionnalLibraryArrayTableView)
+  //--- Array controller property: additionnalLibraryArrayController
     self.additionnalLibraryArrayController.unbind_model ()
   }
 
