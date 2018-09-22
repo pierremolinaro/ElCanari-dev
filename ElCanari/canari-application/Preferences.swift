@@ -3938,12 +3938,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var systemLibraryCheckTimeIntervalPopupButton : EBPopUpButton? = nil
   @IBOutlet var systemLibraryCheckTimeIntervalTitleTextField : NSTextField? = nil
 
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
@@ -5564,8 +5558,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
                           line: #line,
                           errorMessage: "the 'systemLibraryCheckTimeIntervalTitleTextField' outlet is nil") ;
     }
-  //--------------------------- Install compute functions for transients
-  //--------------------------- Install property observers for transients
   //--------------------------- Install bindings
     mErrorMessageColorColorWell?.bind_color (self.errorMessageColor_property, file: #file, line: #line, sendContinously:false)
     mWarningMessageColorColorWell?.bind_color (self.warningMessageColor_property, file: #file, line: #line, sendContinously:false)
