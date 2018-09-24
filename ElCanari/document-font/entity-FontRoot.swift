@@ -5,22 +5,80 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_comments : class {
+  var comments : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_nominalSize : class {
+  var nominalSize : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_selectedTab : class {
+  var selectedTab : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_selectedInspector : class {
+  var selectedInspector : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_sampleStringBezierPath : class {
+  var sampleStringBezierPath : NSBezierPath? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_sampleStringBezierPathWidth : class {
+  var sampleStringBezierPathWidth : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_sampleStringBezierPathAscent : class {
+  var sampleStringBezierPathAscent : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_sampleStringBezierPathDescent : class {
+  var sampleStringBezierPathDescent : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_currentCharacterCodePointString : class {
+  var currentCharacterCodePointString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class FontRoot : EBManagedObject,
-  FontRoot_comments,
-  FontRoot_nominalSize,
-  FontRoot_selectedTab,
-  FontRoot_selectedInspector,
-  FontRoot_sampleStringBezierPath,
-  FontRoot_sampleStringBezierPathWidth,
-  FontRoot_sampleStringBezierPathAscent,
-  FontRoot_sampleStringBezierPathDescent,
-  FontRoot_currentCharacterCodePointString {
+         FontRoot_comments,
+         FontRoot_nominalSize,
+         FontRoot_selectedTab,
+         FontRoot_selectedInspector,
+         FontRoot_sampleStringBezierPath,
+         FontRoot_sampleStringBezierPathWidth,
+         FontRoot_sampleStringBezierPathAscent,
+         FontRoot_sampleStringBezierPathDescent,
+         FontRoot_currentCharacterCodePointString {
 
   //····················································································································
-  //   Accessing comments stored property
+  //   Atomic property: comments
+  //····················································································································
+
+  var comments_property = EBStoredProperty_String ("")
+
   //····················································································································
 
   var comments : String {
@@ -32,14 +90,18 @@ class FontRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var comments_property_selection : EBSelection <String> {
-    get {
-      return self.comments_property.prop
-    }
+    return self.comments_property.prop
   }
 
   //····················································································································
-  //   Accessing nominalSize stored property
+  //   Atomic property: nominalSize
+  //····················································································································
+
+  var nominalSize_property = EBStoredProperty_Int (14)
+
   //····················································································································
 
   var nominalSize : Int {
@@ -51,14 +113,18 @@ class FontRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var nominalSize_property_selection : EBSelection <Int> {
-    get {
-      return self.nominalSize_property.prop
-    }
+    return self.nominalSize_property.prop
   }
 
   //····················································································································
-  //   Accessing selectedTab stored property
+  //   Atomic property: selectedTab
+  //····················································································································
+
+  var selectedTab_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var selectedTab : Int {
@@ -70,14 +136,18 @@ class FontRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var selectedTab_property_selection : EBSelection <Int> {
-    get {
-      return self.selectedTab_property.prop
-    }
+    return self.selectedTab_property.prop
   }
 
   //····················································································································
-  //   Accessing selectedInspector stored property
+  //   Atomic property: selectedInspector
+  //····················································································································
+
+  var selectedInspector_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var selectedInspector : Int {
@@ -89,148 +159,149 @@ class FontRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var selectedInspector_property_selection : EBSelection <Int> {
-    get {
-      return self.selectedInspector_property.prop
-    }
+    return self.selectedInspector_property.prop
   }
 
   //····················································································································
-  //   Accessing sampleStringBezierPath transient property
-  //····················································································································
-
-  var sampleStringBezierPath_property_selection : EBSelection <NSBezierPath> {
-    get {
-      return self.sampleStringBezierPath_property.prop
-    }
-  }
-
-  var sampleStringBezierPath : NSBezierPath? {
-    switch sampleStringBezierPath_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing sampleStringBezierPathWidth transient property
-  //····················································································································
-
-  var sampleStringBezierPathWidth_property_selection : EBSelection <String> {
-    get {
-      return self.sampleStringBezierPathWidth_property.prop
-    }
-  }
-
-  var sampleStringBezierPathWidth : String? {
-    switch sampleStringBezierPathWidth_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing sampleStringBezierPathAscent transient property
-  //····················································································································
-
-  var sampleStringBezierPathAscent_property_selection : EBSelection <String> {
-    get {
-      return self.sampleStringBezierPathAscent_property.prop
-    }
-  }
-
-  var sampleStringBezierPathAscent : String? {
-    switch sampleStringBezierPathAscent_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing sampleStringBezierPathDescent transient property
-  //····················································································································
-
-  var sampleStringBezierPathDescent_property_selection : EBSelection <String> {
-    get {
-      return self.sampleStringBezierPathDescent_property.prop
-    }
-  }
-
-  var sampleStringBezierPathDescent : String? {
-    switch sampleStringBezierPathDescent_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing currentCharacterCodePointString transient property
-  //····················································································································
-
-  var currentCharacterCodePointString_property_selection : EBSelection <String> {
-    get {
-      return self.currentCharacterCodePointString_property.prop
-    }
-  }
-
-  var currentCharacterCodePointString : String? {
-    switch currentCharacterCodePointString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing characters toMany relationship
-  //····················································································································
-
-  var characters_property_selection : EBSelection < [FontCharacter] > {
-    get {
-      return self.characters_property.prop
-    }
-  }
-
-  //····················································································································
-  //    Stored Properties
-  //····················································································································
-
-  var comments_property = EBStoredProperty_String ("")
-  var nominalSize_property = EBStoredProperty_Int (14)
-  var selectedTab_property = EBStoredProperty_Int (0)
-  var selectedInspector_property = EBStoredProperty_Int (0)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var sampleStringBezierPath_property = EBTransientProperty_NSBezierPath ()
-  var sampleStringBezierPathWidth_property = EBTransientProperty_String ()
-  var sampleStringBezierPathAscent_property = EBTransientProperty_String ()
-  var sampleStringBezierPathDescent_property = EBTransientProperty_String ()
-  var currentCharacterCodePointString_property = EBTransientProperty_String ()
-
-  //····················································································································
-  //    Relationships
+  //   To many property: characters
   //····················································································································
 
   var characters_property = StoredArrayOf_FontCharacter ()
- // var characters_property = StoredArrayOf_FontRoot_characters ()
+
+  //····················································································································
+  var characters_property_selection : EBSelection < [FontCharacter] > {
+      return self.characters_property.prop
+  }
+
+  //····················································································································
+  //   Array controller: selectedCharacterController
+  //····················································································································
+
+  var selectedCharacterController = ArrayController_FontRoot_selectedCharacterController ()
+
+  //····················································································································
+  //   Transient property: sampleStringBezierPath
+  //····················································································································
+
+  var sampleStringBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  //····················································································································
+
+  var sampleStringBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.sampleStringBezierPath_property.prop
+  }
+
+  //····················································································································
+
+    var sampleStringBezierPath : NSBezierPath? {
+    switch self.sampleStringBezierPath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: sampleStringBezierPathWidth
+  //····················································································································
+
+  var sampleStringBezierPathWidth_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var sampleStringBezierPathWidth_property_selection : EBSelection <String> {
+    return self.sampleStringBezierPathWidth_property.prop
+  }
+
+  //····················································································································
+
+    var sampleStringBezierPathWidth : String? {
+    switch self.sampleStringBezierPathWidth_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: sampleStringBezierPathAscent
+  //····················································································································
+
+  var sampleStringBezierPathAscent_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var sampleStringBezierPathAscent_property_selection : EBSelection <String> {
+    return self.sampleStringBezierPathAscent_property.prop
+  }
+
+  //····················································································································
+
+    var sampleStringBezierPathAscent : String? {
+    switch self.sampleStringBezierPathAscent_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: sampleStringBezierPathDescent
+  //····················································································································
+
+  var sampleStringBezierPathDescent_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var sampleStringBezierPathDescent_property_selection : EBSelection <String> {
+    return self.sampleStringBezierPathDescent_property.prop
+  }
+
+  //····················································································································
+
+    var sampleStringBezierPathDescent : String? {
+    switch self.sampleStringBezierPathDescent_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: currentCharacterCodePointString
+  //····················································································································
+
+  var currentCharacterCodePointString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var currentCharacterCodePointString_property_selection : EBSelection <String> {
+    return self.currentCharacterCodePointString_property.prop
+  }
+
+  //····················································································································
+
+    var currentCharacterCodePointString : String? {
+    switch self.currentCharacterCodePointString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Array Controllers
   //····················································································································
 
-  var selectedCharacterController = ArrayController_FontRoot_selectedCharacterController ()
 
   //····················································································································
   //    Selection Controllers
@@ -243,7 +314,19 @@ class FontRoot : EBManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
+  //--- Atomic property: comments
+    self.comments_property.undoManager = self.undoManager
+  //--- Atomic property: nominalSize
+    self.nominalSize_property.undoManager = self.undoManager
+  //--- Atomic property: selectedTab
+    self.selectedTab_property.undoManager = self.undoManager
+  //--- Atomic property: selectedInspector
+    self.selectedInspector_property.undoManager = self.undoManager
+  //--- To many property: characters
+    self.characters_property.undoManager = self.undoManager
+  //--- Array controller property: selectedCharacterController
+    self.selectedCharacterController.bind_model (self.characters_property)
+  //--- Atomic property: sampleStringBezierPath
     self.sampleStringBezierPath_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.nominalSize_property_selection.kind ()
@@ -268,6 +351,12 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
+    self.nominalSize_property.addEBObserver (self.sampleStringBezierPath_property)
+    self.characters_property.addEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
+    self.characters_property.addEBObserverOf_advance (self.sampleStringBezierPath_property)
+    g_Preferences?.sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
+    g_Preferences?.sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property)
+  //--- Atomic property: sampleStringBezierPathWidth
     self.sampleStringBezierPathWidth_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
@@ -288,6 +377,8 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
+    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathWidth_property)
+  //--- Atomic property: sampleStringBezierPathAscent
     self.sampleStringBezierPathAscent_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
@@ -308,6 +399,8 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
+    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathAscent_property)
+  //--- Atomic property: sampleStringBezierPathDescent
     self.sampleStringBezierPathDescent_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
@@ -328,6 +421,8 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
+    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
+  //--- Atomic property: currentCharacterCodePointString
     self.currentCharacterCodePointString_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.currentCharacterCodePoint_property_selection.kind ()
@@ -349,24 +444,9 @@ class FontRoot : EBManagedObject,
         return .empty
       }
     }
-  //--- Install property observers for transients
-    self.nominalSize_property.addEBObserver (self.sampleStringBezierPath_property)
-    self.characters_property.addEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
-    self.characters_property.addEBObserverOf_advance (self.sampleStringBezierPath_property)
-    g_Preferences?.sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
-    g_Preferences?.sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property)
-    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathWidth_property)
-    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathAscent_property)
-    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
     g_Preferences?.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
     self.characters_property.addEBObserverOf_codePoint (self.currentCharacterCodePointString_property)
-  //--- Install undoers for properties
-    self.comments_property.undoManager = self.undoManager ()
-    self.nominalSize_property.undoManager = self.undoManager ()
-    self.selectedTab_property.undoManager = self.undoManager ()
-    self.selectedInspector_property.undoManager = self.undoManager ()
   //--- Install undoers and opposite setter for relationships
-    self.characters_property.undoManager = self.undoManager ()
   //--- register properties for handling signature
     self.characters_property.setSignatureObserver (observer:self)
     self.comments_property.setSignatureObserver (observer:self)
@@ -376,6 +456,8 @@ class FontRoot : EBManagedObject,
 
   deinit {
   //--- Remove observers
+  //--- Array controller property: selectedCharacterController
+    self.selectedCharacterController.unbind_model ()
     self.nominalSize_property.removeEBObserver (self.sampleStringBezierPath_property)
     self.characters_property.removeEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
     self.characters_property.removeEBObserverOf_advance (self.sampleStringBezierPath_property)
@@ -468,16 +550,8 @@ class FontRoot : EBManagedObject,
       valueExplorer:&self.currentCharacterCodePointString_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "characters",
-      idx:characters_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&characters_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
-    selectedCharacterController.addExplorer (name: "selectedCharacterController", y:&y, view:view)
   }
 
   //····················································································································
@@ -485,15 +559,28 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: comments
     self.comments_property.mObserverExplorer = nil
     self.comments_property.mValueExplorer = nil
+  //--- Atomic property: nominalSize
     self.nominalSize_property.mObserverExplorer = nil
     self.nominalSize_property.mValueExplorer = nil
+  //--- Atomic property: selectedTab
     self.selectedTab_property.mObserverExplorer = nil
     self.selectedTab_property.mValueExplorer = nil
+  //--- Atomic property: selectedInspector
     self.selectedInspector_property.mObserverExplorer = nil
     self.selectedInspector_property.mValueExplorer = nil
+  //--- To many property: characters
     self.characters_property.mValueExplorer = nil
+ //   self.comments_property.mObserverExplorer = nil
+ //   self.comments_property.mValueExplorer = nil
+ //   self.nominalSize_property.mObserverExplorer = nil
+ //   self.nominalSize_property.mValueExplorer = nil
+ //   self.selectedTab_property.mObserverExplorer = nil
+ //   self.selectedTab_property.mValueExplorer = nil
+ //   self.selectedInspector_property.mObserverExplorer = nil
+ //   self.selectedInspector_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -503,11 +590,24 @@ class FontRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
-    self.nominalSize_property.storeIn (dictionary: ioDictionary, forKey: "nominalSize")
-    self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
-    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
-    store (managedObjectArray: characters_property.propval as NSArray, relationshipName:"characters", intoDictionary: ioDictionary) ;
+  //--- Atomic property: comments
+    self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
+  //--- Atomic property: nominalSize
+    self.nominalSize_property.storeIn (dictionary: ioDictionary, forKey:"nominalSize")
+  //--- Atomic property: selectedTab
+    self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey:"selectedTab")
+  //--- Atomic property: selectedInspector
+    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"selectedInspector")
+  //--- To many property: characters
+    self.store (
+      managedObjectArray: characters_property.propval as NSArray,
+      relationshipName: "characters",
+      intoDictionary: ioDictionary
+    )
+ //   self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+ //   self.nominalSize_property.storeIn (dictionary: ioDictionary, forKey: "nominalSize")
+ //   self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
+ //   self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
   }
 
   //····················································································································
@@ -517,18 +617,25 @@ class FontRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- Atomic property: comments
     self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+  //--- Atomic property: nominalSize
     self.nominalSize_property.readFrom (dictionary: inDictionary, forKey:"nominalSize")
+  //--- Atomic property: selectedTab
     self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
+  //--- Atomic property: selectedInspector
     self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
+  //--- To many property: characters
     self.characters_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "characters",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [FontCharacter])
+//    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+//    self.nominalSize_property.readFrom (dictionary: inDictionary, forKey:"nominalSize")
+//    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
+//    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
   //--------------------------- Array controllers
-    self.selectedCharacterController.setManagedObjectContext (self.managedObjectContext ())
-    self.selectedCharacterController.bind_model (self.characters_property)
   //--------------------------- Selection controllers
   }
 
@@ -537,17 +644,7 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.characters_property.setProp ([]) // Set relationships to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
-  }
-
-  //····················································································································
-  //   resetControllers
-  //····················································································································
-
-  override func resetControllers () {
-    super.resetControllers ()
-    self.selectedCharacterController.unbind_model ()
   }
 
   //····················································································································
@@ -560,11 +657,20 @@ class FontRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   resetToOneRelationships
+  //····················································································································
+
+  override func resetToOneRelationships () {
+    super.resetToOneRelationships ()
+  }
+
+  //····················································································································
   //   accessibleObjects
   //····················································································································
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: characters
     for managedObject : EBManagedObject in self.characters_property.propval {
       objects.append (managedObject)
     }
@@ -1296,14 +1402,14 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
           self.setOppositeRelationship? (nil)
         }
         removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : FontRoot in addedObjectSet {
@@ -1311,14 +1417,14 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
           self.setOppositeRelationship? (managedObject)
         }
         addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
         addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
         addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedObjectSet)
         addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
@@ -1409,60 +1515,5 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontRoot_comments : class {
-  var comments : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontRoot_nominalSize : class {
-  var nominalSize : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontRoot_selectedTab : class {
-  var selectedTab : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontRoot_selectedInspector : class {
-  var selectedInspector : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontRoot_sampleStringBezierPath : class {
-  var sampleStringBezierPath : NSBezierPath? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontRoot_sampleStringBezierPathWidth : class {
-  var sampleStringBezierPathWidth : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontRoot_sampleStringBezierPathAscent : class {
-  var sampleStringBezierPathAscent : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontRoot_sampleStringBezierPathDescent : class {
-  var sampleStringBezierPathDescent : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontRoot_currentCharacterCodePointString : class {
-  var currentCharacterCodePointString : String? { get }
-}
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

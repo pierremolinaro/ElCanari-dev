@@ -179,9 +179,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var warningMessageColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.warningMessageColor_property.prop
-    }
+    return self.warningMessageColor_property.prop
   }
 
   //····················································································································
@@ -204,9 +202,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var successMessageColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.successMessageColor_property.prop
-    }
+    return self.successMessageColor_property.prop
   }
 
   //····················································································································
@@ -229,9 +225,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var selectionHiliteColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.selectionHiliteColor_property.prop
-    }
+    return self.selectionHiliteColor_property.prop
   }
 
   //····················································································································
@@ -254,9 +248,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var symbolColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.symbolColor_property.prop
-    }
+    return self.symbolColor_property.prop
   }
 
   //····················································································································
@@ -279,9 +271,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var dotColorOfSymbolGrid_property_selection : EBSelection <NSColor> {
-    get {
-      return self.dotColorOfSymbolGrid_property.prop
-    }
+    return self.dotColorOfSymbolGrid_property.prop
   }
 
   //····················································································································
@@ -304,9 +294,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var lineColorOfSymbolGrid_property_selection : EBSelection <NSColor> {
-    get {
-      return self.lineColorOfSymbolGrid_property.prop
-    }
+    return self.lineColorOfSymbolGrid_property.prop
   }
 
   //····················································································································
@@ -329,9 +317,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var symbolBackgroundColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.symbolBackgroundColor_property.prop
-    }
+    return self.symbolBackgroundColor_property.prop
   }
 
   //····················································································································
@@ -354,9 +340,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var symbolDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> {
-    get {
-      return self.symbolDrawingWidthMultipliedByTen_property.prop
-    }
+    return self.symbolDrawingWidthMultipliedByTen_property.prop
   }
 
   //····················································································································
@@ -379,9 +363,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var dotColorOfPackageGrid_property_selection : EBSelection <NSColor> {
-    get {
-      return self.dotColorOfPackageGrid_property.prop
-    }
+    return self.dotColorOfPackageGrid_property.prop
   }
 
   //····················································································································
@@ -404,9 +386,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var lineColorOfPackageGrid_property_selection : EBSelection <NSColor> {
-    get {
-      return self.lineColorOfPackageGrid_property.prop
-    }
+    return self.lineColorOfPackageGrid_property.prop
   }
 
   //····················································································································
@@ -429,9 +409,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var packageBackgroundColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.packageBackgroundColor_property.prop
-    }
+    return self.packageBackgroundColor_property.prop
   }
 
   //····················································································································
@@ -454,9 +432,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var packageColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.packageColor_property.prop
-    }
+    return self.packageColor_property.prop
   }
 
   //····················································································································
@@ -479,9 +455,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var topSidePadColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.topSidePadColor_property.prop
-    }
+    return self.topSidePadColor_property.prop
   }
 
   //····················································································································
@@ -504,9 +478,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var bottomSidePadColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.bottomSidePadColor_property.prop
-    }
+    return self.bottomSidePadColor_property.prop
   }
 
   //····················································································································
@@ -529,9 +501,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var padNumberColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.padNumberColor_property.prop
-    }
+    return self.padNumberColor_property.prop
   }
 
   //····················································································································
@@ -554,9 +524,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var padNumberFont_property_selection : EBSelection <NSFont> {
-    get {
-      return self.padNumberFont_property.prop
-    }
+    return self.padNumberFont_property.prop
   }
 
   //····················································································································
@@ -579,9 +547,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var packageGuideColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.packageGuideColor_property.prop
-    }
+    return self.packageGuideColor_property.prop
   }
 
   //····················································································································
@@ -604,9 +570,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var packageDimensionColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.packageDimensionColor_property.prop
-    }
+    return self.packageDimensionColor_property.prop
   }
 
   //····················································································································
@@ -629,9 +593,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var dimensionFont_property_selection : EBSelection <NSFont> {
-    get {
-      return self.dimensionFont_property.prop
-    }
+    return self.dimensionFont_property.prop
   }
 
   //····················································································································
@@ -654,9 +616,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var padZoneColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.padZoneColor_property.prop
-    }
+    return self.padZoneColor_property.prop
   }
 
   //····················································································································
@@ -679,9 +639,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var packageDrawingWidthMultipliedByTen_property_selection : EBSelection <Int> {
-    get {
-      return self.packageDrawingWidthMultipliedByTen_property.prop
-    }
+    return self.packageDrawingWidthMultipliedByTen_property.prop
   }
 
   //····················································································································
@@ -704,9 +662,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mSymbolAndPackageGridDotColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mSymbolAndPackageGridDotColorForDevice_property.prop
-    }
+    return self.mSymbolAndPackageGridDotColorForDevice_property.prop
   }
 
   //····················································································································
@@ -729,9 +685,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mSymbolAndPackageGridLineColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mSymbolAndPackageGridLineColorForDevice_property.prop
-    }
+    return self.mSymbolAndPackageGridLineColorForDevice_property.prop
   }
 
   //····················································································································
@@ -754,9 +708,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mSymbolAndPackageBackgroundColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mSymbolAndPackageBackgroundColorForDevice_property.prop
-    }
+    return self.mSymbolAndPackageBackgroundColorForDevice_property.prop
   }
 
   //····················································································································
@@ -779,9 +731,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mPackageColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mPackageColorForDevice_property.prop
-    }
+    return self.mPackageColorForDevice_property.prop
   }
 
   //····················································································································
@@ -804,9 +754,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mTopSidePadColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mTopSidePadColorForDevice_property.prop
-    }
+    return self.mTopSidePadColorForDevice_property.prop
   }
 
   //····················································································································
@@ -829,9 +777,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mBottomSidePadColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mBottomSidePadColorForDevice_property.prop
-    }
+    return self.mBottomSidePadColorForDevice_property.prop
   }
 
   //····················································································································
@@ -854,9 +800,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mPadNumberColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mPadNumberColorForDevice_property.prop
-    }
+    return self.mPadNumberColorForDevice_property.prop
   }
 
   //····················································································································
@@ -879,9 +823,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mPackageNameFontForDevice_property_selection : EBSelection <NSFont> {
-    get {
-      return self.mPackageNameFontForDevice_property.prop
-    }
+    return self.mPackageNameFontForDevice_property.prop
   }
 
   //····················································································································
@@ -904,9 +846,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mPadNumberFontForDevice_property_selection : EBSelection <NSFont> {
-    get {
-      return self.mPadNumberFontForDevice_property.prop
-    }
+    return self.mPadNumberFontForDevice_property.prop
   }
 
   //····················································································································
@@ -929,9 +869,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mSymbolColorForDevice_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mSymbolColorForDevice_property.prop
-    }
+    return self.mSymbolColorForDevice_property.prop
   }
 
   //····················································································································
@@ -954,9 +892,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mSymbolNameFontForDevice_property_selection : EBSelection <NSFont> {
-    get {
-      return self.mSymbolNameFontForDevice_property.prop
-    }
+    return self.mSymbolNameFontForDevice_property.prop
   }
 
   //····················································································································
@@ -979,9 +915,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mPinNameFontForDevice_property_selection : EBSelection <NSFont> {
-    get {
-      return self.mPinNameFontForDevice_property.prop
-    }
+    return self.mPinNameFontForDevice_property.prop
   }
 
   //····················································································································
@@ -1004,9 +938,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var symbolDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> {
-    get {
-      return self.symbolDrawingWidthForDeviceMultipliedByTen_property.prop
-    }
+    return self.symbolDrawingWidthForDeviceMultipliedByTen_property.prop
   }
 
   //····················································································································
@@ -1029,9 +961,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var packageDrawingWidthForDeviceMultipliedByTen_property_selection : EBSelection <Int> {
-    get {
-      return self.packageDrawingWidthForDeviceMultipliedByTen_property.prop
-    }
+    return self.packageDrawingWidthForDeviceMultipliedByTen_property.prop
   }
 
   //····················································································································
@@ -1054,9 +984,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var dotColorGridForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.dotColorGridForSchematic_property.prop
-    }
+    return self.dotColorGridForSchematic_property.prop
   }
 
   //····················································································································
@@ -1079,9 +1007,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var lineColorGridForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.lineColorGridForSchematic_property.prop
-    }
+    return self.lineColorGridForSchematic_property.prop
   }
 
   //····················································································································
@@ -1104,9 +1030,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var symbolColorForUnplacedComponentsForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.symbolColorForUnplacedComponentsForSchematic_property.prop
-    }
+    return self.symbolColorForUnplacedComponentsForSchematic_property.prop
   }
 
   //····················································································································
@@ -1129,9 +1053,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var symbolColorForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.symbolColorForSchematic_property.prop
-    }
+    return self.symbolColorForSchematic_property.prop
   }
 
   //····················································································································
@@ -1154,9 +1076,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var pinNameFontForSchematic_property_selection : EBSelection <NSFont> {
-    get {
-      return self.pinNameFontForSchematic_property.prop
-    }
+    return self.pinNameFontForSchematic_property.prop
   }
 
   //····················································································································
@@ -1179,9 +1099,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var pinNameColorForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.pinNameColorForSchematic_property.prop
-    }
+    return self.pinNameColorForSchematic_property.prop
   }
 
   //····················································································································
@@ -1204,9 +1122,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var pinNumberFontForSchematic_property_selection : EBSelection <NSFont> {
-    get {
-      return self.pinNumberFontForSchematic_property.prop
-    }
+    return self.pinNumberFontForSchematic_property.prop
   }
 
   //····················································································································
@@ -1229,9 +1145,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var pinNumberColorForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.pinNumberColorForSchematic_property.prop
-    }
+    return self.pinNumberColorForSchematic_property.prop
   }
 
   //····················································································································
@@ -1254,9 +1168,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var connectionColorForSchematic_property_selection : EBSelection <NSColor> {
-    get {
-      return self.connectionColorForSchematic_property.prop
-    }
+    return self.connectionColorForSchematic_property.prop
   }
 
   //····················································································································
@@ -1279,9 +1191,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var symbolDrawingWidthMultipliedByTenForSchematic_property_selection : EBSelection <Int> {
-    get {
-      return self.symbolDrawingWidthMultipliedByTenForSchematic_property.prop
-    }
+    return self.symbolDrawingWidthMultipliedByTenForSchematic_property.prop
   }
 
   //····················································································································
@@ -1304,9 +1214,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var dotColorGridForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.dotColorGridForBoard_property.prop
-    }
+    return self.dotColorGridForBoard_property.prop
   }
 
   //····················································································································
@@ -1329,9 +1237,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var lineColorGridForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.lineColorGridForBoard_property.prop
-    }
+    return self.lineColorGridForBoard_property.prop
   }
 
   //····················································································································
@@ -1354,9 +1260,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var boardBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.boardBackgroundColorForBoard_property.prop
-    }
+    return self.boardBackgroundColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1379,9 +1283,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var errorBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.errorBackgroundColorForBoard_property.prop
-    }
+    return self.errorBackgroundColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1404,9 +1306,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var warningBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.warningBackgroundColorForBoard_property.prop
-    }
+    return self.warningBackgroundColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1429,9 +1329,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var drawEWarningBackgroundForBoard_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawEWarningBackgroundForBoard_property.prop
-    }
+    return self.drawEWarningBackgroundForBoard_property.prop
   }
 
   //····················································································································
@@ -1454,9 +1352,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var boardLimitsColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.boardLimitsColorForBoard_property.prop
-    }
+    return self.boardLimitsColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1479,9 +1375,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var boardClearanceColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.boardClearanceColorForBoard_property.prop
-    }
+    return self.boardClearanceColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1504,9 +1398,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var topSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.topSideRestrictRectangleColorForBoard_property.prop
-    }
+    return self.topSideRestrictRectangleColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1529,9 +1421,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var bottomSideRestrictRectangleColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.bottomSideRestrictRectangleColorForBoard_property.prop
-    }
+    return self.bottomSideRestrictRectangleColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1554,9 +1444,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var topSideLegendColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.topSideLegendColorForBoard_property.prop
-    }
+    return self.topSideLegendColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1579,9 +1467,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var topSideLayoutColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.topSideLayoutColorForBoard_property.prop
-    }
+    return self.topSideLayoutColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1604,9 +1490,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var bottomSideLayoutColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.bottomSideLayoutColorForBoard_property.prop
-    }
+    return self.bottomSideLayoutColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1629,9 +1513,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var bottomSideLegendColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.bottomSideLegendColorForBoard_property.prop
-    }
+    return self.bottomSideLegendColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1654,9 +1536,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var topSidePadColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.topSidePadColorForBoard_property.prop
-    }
+    return self.topSidePadColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1679,9 +1559,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var bottomSidePadColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.bottomSidePadColorForBoard_property.prop
-    }
+    return self.bottomSidePadColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1704,9 +1582,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var padNumberFontForBoard_property_selection : EBSelection <NSFont> {
-    get {
-      return self.padNumberFontForBoard_property.prop
-    }
+    return self.padNumberFontForBoard_property.prop
   }
 
   //····················································································································
@@ -1729,9 +1605,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var padNumberColorForBoard_property_selection : EBSelection <NSColor> {
-    get {
-      return self.padNumberColorForBoard_property.prop
-    }
+    return self.padNumberColorForBoard_property.prop
   }
 
   //····················································································································
@@ -1754,9 +1628,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var packageDrawingWidthMultpliedByTenForBoard_property_selection : EBSelection <Int> {
-    get {
-      return self.packageDrawingWidthMultpliedByTenForBoard_property.prop
-    }
+    return self.packageDrawingWidthMultpliedByTenForBoard_property.prop
   }
 
   //····················································································································
@@ -1779,9 +1651,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var showGerberDrawingFlow_property_selection : EBSelection <Bool> {
-    get {
-      return self.showGerberDrawingFlow_property.prop
-    }
+    return self.showGerberDrawingFlow_property.prop
   }
 
   //····················································································································
@@ -1804,9 +1674,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var showGerberDrawingIndexes_property_selection : EBSelection <Bool> {
-    get {
-      return self.showGerberDrawingIndexes_property.prop
-    }
+    return self.showGerberDrawingIndexes_property.prop
   }
 
   //····················································································································
@@ -1829,9 +1697,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var currentCharacterCodePoint_property_selection : EBSelection <Int> {
-    get {
-      return self.currentCharacterCodePoint_property.prop
-    }
+    return self.currentCharacterCodePoint_property.prop
   }
 
   //····················································································································
@@ -1860,9 +1726,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var fontEditionTransparency_property_selection : EBSelection <Double> {
-    get {
-      return self.fontEditionTransparency_property.prop
-    }
+    return self.fontEditionTransparency_property.prop
   }
 
   //····················································································································
@@ -1885,9 +1749,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var checkForSystemLibraryAtStartUp_property_selection : EBSelection <Bool> {
-    get {
-      return self.checkForSystemLibraryAtStartUp_property.prop
-    }
+    return self.checkForSystemLibraryAtStartUp_property.prop
   }
 
   //····················································································································
@@ -1910,9 +1772,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var systemLibraryCheckTimeInterval_property_selection : EBSelection <Int> {
-    get {
-      return self.systemLibraryCheckTimeInterval_property.prop
-    }
+    return self.systemLibraryCheckTimeInterval_property.prop
   }
 
   //····················································································································
@@ -1935,9 +1795,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewHorizontalFlip_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewHorizontalFlip_property.prop
-    }
+    return self.mergerModelViewHorizontalFlip_property.prop
   }
 
   //····················································································································
@@ -1960,9 +1818,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewVerticalFlip_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewVerticalFlip_property.prop
-    }
+    return self.mergerModelViewVerticalFlip_property.prop
   }
 
   //····················································································································
@@ -1985,9 +1841,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayHoles_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayHoles_property.prop
-    }
+    return self.mergerModelViewDisplayHoles_property.prop
   }
 
   //····················································································································
@@ -2010,9 +1864,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayVias_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayVias_property.prop
-    }
+    return self.mergerModelViewDisplayVias_property.prop
   }
 
   //····················································································································
@@ -2035,9 +1887,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayFrontPads_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontPads_property.prop
-    }
+    return self.mergerModelViewDisplayFrontPads_property.prop
   }
 
   //····················································································································
@@ -2060,9 +1910,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayInternalBoardsLimits_property.prop
-    }
+    return self.mergerModelViewDisplayInternalBoardsLimits_property.prop
   }
 
   //····················································································································
@@ -2085,9 +1933,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayBoardLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBoardLimits_property.prop
-    }
+    return self.mergerModelViewDisplayBoardLimits_property.prop
   }
 
   //····················································································································
@@ -2110,9 +1956,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontComponentNames_property.prop
-    }
+    return self.mergerModelViewDisplayFrontComponentNames_property.prop
   }
 
   //····················································································································
@@ -2135,9 +1979,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontComponentValues_property.prop
-    }
+    return self.mergerModelViewDisplayFrontComponentValues_property.prop
   }
 
   //····················································································································
@@ -2160,9 +2002,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayFrontPackages_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontPackages_property.prop
-    }
+    return self.mergerModelViewDisplayFrontPackages_property.prop
   }
 
   //····················································································································
@@ -2185,9 +2025,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontLegendTexts_property.prop
-    }
+    return self.mergerModelViewDisplayFrontLegendTexts_property.prop
   }
 
   //····················································································································
@@ -2210,9 +2048,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayFrontTracks_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontTracks_property.prop
-    }
+    return self.mergerModelViewDisplayFrontTracks_property.prop
   }
 
   //····················································································································
@@ -2235,9 +2071,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontLayoutTexts_property.prop
-    }
+    return self.mergerModelViewDisplayFrontLayoutTexts_property.prop
   }
 
   //····················································································································
@@ -2260,9 +2094,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayBackPads_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackPads_property.prop
-    }
+    return self.mergerModelViewDisplayBackPads_property.prop
   }
 
   //····················································································································
@@ -2285,9 +2117,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayBackComponentNames_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackComponentNames_property.prop
-    }
+    return self.mergerModelViewDisplayBackComponentNames_property.prop
   }
 
   //····················································································································
@@ -2310,9 +2140,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayBackComponentValues_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackComponentValues_property.prop
-    }
+    return self.mergerModelViewDisplayBackComponentValues_property.prop
   }
 
   //····················································································································
@@ -2335,9 +2163,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackLegendTexts_property.prop
-    }
+    return self.mergerModelViewDisplayBackLegendTexts_property.prop
   }
 
   //····················································································································
@@ -2360,9 +2186,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayBackPackages_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackPackages_property.prop
-    }
+    return self.mergerModelViewDisplayBackPackages_property.prop
   }
 
   //····················································································································
@@ -2385,9 +2209,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayBackTracks_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackTracks_property.prop
-    }
+    return self.mergerModelViewDisplayBackTracks_property.prop
   }
 
   //····················································································································
@@ -2410,9 +2232,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackLayoutTexts_property.prop
-    }
+    return self.mergerModelViewDisplayBackLayoutTexts_property.prop
   }
 
   //····················································································································
@@ -2435,9 +2255,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayFrontLegendLines_property.prop
-    }
+    return self.mergerModelViewDisplayFrontLegendLines_property.prop
   }
 
   //····················································································································
@@ -2460,9 +2278,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerModelViewDisplayBackLegendLines_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerModelViewDisplayBackLegendLines_property.prop
-    }
+    return self.mergerModelViewDisplayBackLegendLines_property.prop
   }
 
   //····················································································································
@@ -2485,9 +2301,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewHorizontalFlip_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewHorizontalFlip_property.prop
-    }
+    return self.mergerBoardViewHorizontalFlip_property.prop
   }
 
   //····················································································································
@@ -2510,9 +2324,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewVerticalFlip_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewVerticalFlip_property.prop
-    }
+    return self.mergerBoardViewVerticalFlip_property.prop
   }
 
   //····················································································································
@@ -2535,9 +2347,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayHoles_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayHoles_property.prop
-    }
+    return self.mergerBoardViewDisplayHoles_property.prop
   }
 
   //····················································································································
@@ -2560,9 +2370,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayVias_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayVias_property.prop
-    }
+    return self.mergerBoardViewDisplayVias_property.prop
   }
 
   //····················································································································
@@ -2585,9 +2393,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayFrontPads_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontPads_property.prop
-    }
+    return self.mergerBoardViewDisplayFrontPads_property.prop
   }
 
   //····················································································································
@@ -2610,9 +2416,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayInternalBoardsLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayInternalBoardsLimits_property.prop
-    }
+    return self.mergerBoardViewDisplayInternalBoardsLimits_property.prop
   }
 
   //····················································································································
@@ -2635,9 +2439,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayBoardLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBoardLimits_property.prop
-    }
+    return self.mergerBoardViewDisplayBoardLimits_property.prop
   }
 
   //····················································································································
@@ -2660,9 +2462,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayFrontComponentNames_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontComponentNames_property.prop
-    }
+    return self.mergerBoardViewDisplayFrontComponentNames_property.prop
   }
 
   //····················································································································
@@ -2685,9 +2485,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayFrontComponentValues_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontComponentValues_property.prop
-    }
+    return self.mergerBoardViewDisplayFrontComponentValues_property.prop
   }
 
   //····················································································································
@@ -2710,9 +2508,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayFrontPackages_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontPackages_property.prop
-    }
+    return self.mergerBoardViewDisplayFrontPackages_property.prop
   }
 
   //····················································································································
@@ -2735,9 +2531,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayFrontLegendTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontLegendTexts_property.prop
-    }
+    return self.mergerBoardViewDisplayFrontLegendTexts_property.prop
   }
 
   //····················································································································
@@ -2760,9 +2554,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayFrontTracks_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontTracks_property.prop
-    }
+    return self.mergerBoardViewDisplayFrontTracks_property.prop
   }
 
   //····················································································································
@@ -2785,9 +2577,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayFrontLayoutTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontLayoutTexts_property.prop
-    }
+    return self.mergerBoardViewDisplayFrontLayoutTexts_property.prop
   }
 
   //····················································································································
@@ -2810,9 +2600,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayBackPads_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackPads_property.prop
-    }
+    return self.mergerBoardViewDisplayBackPads_property.prop
   }
 
   //····················································································································
@@ -2835,9 +2623,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayBackComponentNames_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackComponentNames_property.prop
-    }
+    return self.mergerBoardViewDisplayBackComponentNames_property.prop
   }
 
   //····················································································································
@@ -2860,9 +2646,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayBackComponentValues_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackComponentValues_property.prop
-    }
+    return self.mergerBoardViewDisplayBackComponentValues_property.prop
   }
 
   //····················································································································
@@ -2885,9 +2669,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayBackLegendTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackLegendTexts_property.prop
-    }
+    return self.mergerBoardViewDisplayBackLegendTexts_property.prop
   }
 
   //····················································································································
@@ -2910,9 +2692,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayBackPackages_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackPackages_property.prop
-    }
+    return self.mergerBoardViewDisplayBackPackages_property.prop
   }
 
   //····················································································································
@@ -2935,9 +2715,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayBackTracks_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackTracks_property.prop
-    }
+    return self.mergerBoardViewDisplayBackTracks_property.prop
   }
 
   //····················································································································
@@ -2960,9 +2738,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayBackLayoutTexts_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackLayoutTexts_property.prop
-    }
+    return self.mergerBoardViewDisplayBackLayoutTexts_property.prop
   }
 
   //····················································································································
@@ -2985,9 +2761,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayFrontLegendLines_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayFrontLegendLines_property.prop
-    }
+    return self.mergerBoardViewDisplayFrontLegendLines_property.prop
   }
 
   //····················································································································
@@ -3010,9 +2784,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerBoardViewDisplayBackLegendLines_property_selection : EBSelection <Bool> {
-    get {
-      return self.mergerBoardViewDisplayBackLegendLines_property.prop
-    }
+    return self.mergerBoardViewDisplayBackLegendLines_property.prop
   }
 
   //····················································································································
@@ -3035,9 +2807,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorHoles_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorHoles_property.prop
-    }
+    return self.mergerColorHoles_property.prop
   }
 
   //····················································································································
@@ -3060,9 +2830,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorVias_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorVias_property.prop
-    }
+    return self.mergerColorVias_property.prop
   }
 
   //····················································································································
@@ -3085,9 +2853,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorFrontPads_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontPads_property.prop
-    }
+    return self.mergerColorFrontPads_property.prop
   }
 
   //····················································································································
@@ -3110,9 +2876,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorBoardLimits_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBoardLimits_property.prop
-    }
+    return self.mergerColorBoardLimits_property.prop
   }
 
   //····················································································································
@@ -3135,9 +2899,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorInternalBoardsLimits_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorInternalBoardsLimits_property.prop
-    }
+    return self.mergerColorInternalBoardsLimits_property.prop
   }
 
   //····················································································································
@@ -3160,9 +2922,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorFrontComponentNames_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontComponentNames_property.prop
-    }
+    return self.mergerColorFrontComponentNames_property.prop
   }
 
   //····················································································································
@@ -3185,9 +2945,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorFrontComponentValues_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontComponentValues_property.prop
-    }
+    return self.mergerColorFrontComponentValues_property.prop
   }
 
   //····················································································································
@@ -3210,9 +2968,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorFrontPackages_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontPackages_property.prop
-    }
+    return self.mergerColorFrontPackages_property.prop
   }
 
   //····················································································································
@@ -3235,9 +2991,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorFrontLegendTexts_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontLegendTexts_property.prop
-    }
+    return self.mergerColorFrontLegendTexts_property.prop
   }
 
   //····················································································································
@@ -3260,9 +3014,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorFrontTracks_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontTracks_property.prop
-    }
+    return self.mergerColorFrontTracks_property.prop
   }
 
   //····················································································································
@@ -3285,9 +3037,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorFrontLayoutTexts_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontLayoutTexts_property.prop
-    }
+    return self.mergerColorFrontLayoutTexts_property.prop
   }
 
   //····················································································································
@@ -3310,9 +3060,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorBackPads_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackPads_property.prop
-    }
+    return self.mergerColorBackPads_property.prop
   }
 
   //····················································································································
@@ -3335,9 +3083,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorBackComponentNames_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackComponentNames_property.prop
-    }
+    return self.mergerColorBackComponentNames_property.prop
   }
 
   //····················································································································
@@ -3360,9 +3106,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorBackComponentValues_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackComponentValues_property.prop
-    }
+    return self.mergerColorBackComponentValues_property.prop
   }
 
   //····················································································································
@@ -3385,9 +3129,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorBackLegendTexts_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackLegendTexts_property.prop
-    }
+    return self.mergerColorBackLegendTexts_property.prop
   }
 
   //····················································································································
@@ -3410,9 +3152,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorBackPackages_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackPackages_property.prop
-    }
+    return self.mergerColorBackPackages_property.prop
   }
 
   //····················································································································
@@ -3435,9 +3175,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorBackTracks_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackTracks_property.prop
-    }
+    return self.mergerColorBackTracks_property.prop
   }
 
   //····················································································································
@@ -3460,9 +3198,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorBackLayoutTexts_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackLayoutTexts_property.prop
-    }
+    return self.mergerColorBackLayoutTexts_property.prop
   }
 
   //····················································································································
@@ -3485,9 +3221,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorFrontLegendLines_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorFrontLegendLines_property.prop
-    }
+    return self.mergerColorFrontLegendLines_property.prop
   }
 
   //····················································································································
@@ -3510,9 +3244,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorBackLegendLines_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackLegendLines_property.prop
-    }
+    return self.mergerColorBackLegendLines_property.prop
   }
 
   //····················································································································
@@ -3535,9 +3267,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mergerColorBackground_property_selection : EBSelection <NSColor> {
-    get {
-      return self.mergerColorBackground_property.prop
-    }
+    return self.mergerColorBackground_property.prop
   }
 
   //····················································································································
@@ -3560,9 +3290,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var errorMessageColor_property_selection : EBSelection <NSColor> {
-    get {
-      return self.errorMessageColor_property.prop
-    }
+    return self.errorMessageColor_property.prop
   }
 
   //····················································································································
@@ -3585,9 +3313,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var hiliteWidthMultipliedByTen_property_selection : EBSelection <Int> {
-    get {
-      return self.hiliteWidthMultipliedByTen_property.prop
-    }
+    return self.hiliteWidthMultipliedByTen_property.prop
   }
 
   //····················································································································
@@ -3610,9 +3336,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var usesUserLibrary_property_selection : EBSelection <Bool> {
-    get {
-      return self.usesUserLibrary_property.prop
-    }
+    return self.usesUserLibrary_property.prop
   }
 
   //····················································································································
@@ -3647,9 +3371,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var pinNameFont_property_selection : EBSelection <NSFont> {
-    get {
-      return self.pinNameFont_property.prop
-    }
+    return self.pinNameFont_property.prop
   }
 
   //····················································································································
@@ -3672,9 +3394,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var drawErrorBackgroundForBoard_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawErrorBackgroundForBoard_property.prop
-    }
+    return self.drawErrorBackgroundForBoard_property.prop
   }
 
   //····················································································································
@@ -3697,9 +3417,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var sampleString_property_selection : EBSelection <String> {
-    get {
-      return self.sampleString_property.prop
-    }
+    return self.sampleString_property.prop
   }
 
   //····················································································································
@@ -3722,9 +3440,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var sampleStringSize_property_selection : EBSelection <Double> {
-    get {
-      return self.sampleStringSize_property.prop
-    }
+    return self.sampleStringSize_property.prop
   }
 
   //····················································································································
@@ -3747,9 +3463,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mLastSystemLibraryCheckTime_property_selection : EBSelection <Date> {
-    get {
-      return self.mLastSystemLibraryCheckTime_property.prop
-    }
+    return self.mLastSystemLibraryCheckTime_property.prop
   }
 
   //····················································································································
@@ -3767,8 +3481,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mValueRevealInFinder_packages_property_selection : EBSelection <CanariMenuItemListClass> {
-    get {
-      return self.mValueRevealInFinder_packages_property.prop
+    return self.mValueRevealInFinder_packages_property.prop
+  }
+
+  //····················································································································
+
+    var mValueRevealInFinder_packages : CanariMenuItemListClass? {
+    switch self.mValueRevealInFinder_packages_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -3781,8 +3504,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mValueRevealInFinder_devices_property_selection : EBSelection <CanariMenuItemListClass> {
-    get {
-      return self.mValueRevealInFinder_devices_property.prop
+    return self.mValueRevealInFinder_devices_property.prop
+  }
+
+  //····················································································································
+
+    var mValueRevealInFinder_devices : CanariMenuItemListClass? {
+    switch self.mValueRevealInFinder_devices_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -3795,8 +3527,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mValueRevealInFinder_fonts_property_selection : EBSelection <CanariMenuItemListClass> {
-    get {
-      return self.mValueRevealInFinder_fonts_property.prop
+    return self.mValueRevealInFinder_fonts_property.prop
+  }
+
+  //····················································································································
+
+    var mValueRevealInFinder_fonts : CanariMenuItemListClass? {
+    switch self.mValueRevealInFinder_fonts_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -3809,8 +3550,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mValueRevealInFinder_artworks_property_selection : EBSelection <CanariMenuItemListClass> {
-    get {
-      return self.mValueRevealInFinder_artworks_property.prop
+    return self.mValueRevealInFinder_artworks_property.prop
+  }
+
+  //····················································································································
+
+    var mValueRevealInFinder_artworks : CanariMenuItemListClass? {
+    switch self.mValueRevealInFinder_artworks_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -3823,8 +3573,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   var mValueRevealInFinder_symbols_property_selection : EBSelection <CanariMenuItemListClass> {
-    get {
-      return self.mValueRevealInFinder_symbols_property.prop
+    return self.mValueRevealInFinder_symbols_property.prop
+  }
+
+  //····················································································································
+
+    var mValueRevealInFinder_symbols : CanariMenuItemListClass? {
+    switch self.mValueRevealInFinder_symbols_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 
@@ -5708,6 +5467,21 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArrayController.unbind_tableView (self.mAdditionnalLibraryArrayTableView)
   //--- Array controller property: additionnalLibraryArrayController
     self.additionnalLibraryArrayController.unbind_model ()
+    self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_packages_property)
+    self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
+    self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
+    self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_devices_property)
+    self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_devices_property)
+    self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_devices_property)
+    self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_fonts_property)
+    self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property)
+    self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property)
+    self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_artworks_property)
+    self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
+    self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
+    self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_symbols_property)
+    self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_symbols_property)
+    self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_symbols_property)
   }
 
   //····················································································································

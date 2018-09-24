@@ -5,35 +5,38 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelVia_y : class {
+  var y : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelVia_padDiameter : class {
+  var padDiameter : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModelVia_x : class {
+  var x : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class BoardModelVia : EBManagedObject,
-  BoardModelVia_x,
-  BoardModelVia_y,
-  BoardModelVia_padDiameter {
+         BoardModelVia_y,
+         BoardModelVia_padDiameter,
+         BoardModelVia_x {
 
   //····················································································································
-  //   Accessing x stored property
+  //   Atomic property: y
   //····················································································································
 
-  var x : Int {
-    get {
-      return self.x_property.propval
-    }
-    set {
-      self.x_property.setProp (newValue)
-    }
-  }
+  var y_property = EBStoredProperty_Int (0)
 
-  var x_property_selection : EBSelection <Int> {
-    get {
-      return self.x_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing y stored property
   //····················································································································
 
   var y : Int {
@@ -45,14 +48,18 @@ class BoardModelVia : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var y_property_selection : EBSelection <Int> {
-    get {
-      return self.y_property.prop
-    }
+    return self.y_property.prop
   }
 
   //····················································································································
-  //   Accessing padDiameter stored property
+  //   Atomic property: padDiameter
+  //····················································································································
+
+  var padDiameter_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var padDiameter : Int {
@@ -64,28 +71,34 @@ class BoardModelVia : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var padDiameter_property_selection : EBSelection <Int> {
+    return self.padDiameter_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: x
+  //····················································································································
+
+  var x_property = EBStoredProperty_Int (0)
+
+  //····················································································································
+
+  var x : Int {
     get {
-      return self.padDiameter_property.prop
+      return self.x_property.propval
+    }
+    set {
+      self.x_property.setProp (newValue)
     }
   }
 
   //····················································································································
-  //    Stored Properties
-  //····················································································································
 
-  var x_property = EBStoredProperty_Int (0)
-  var y_property = EBStoredProperty_Int (0)
-  var padDiameter_property = EBStoredProperty_Int (0)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
+  var x_property_selection : EBSelection <Int> {
+    return self.x_property.prop
+  }
 
 
   //····················································································································
@@ -104,12 +117,12 @@ class BoardModelVia : EBManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-  //--- Install property observers for transients
-  //--- Install undoers for properties
-    self.x_property.undoManager = self.undoManager ()
-    self.y_property.undoManager = self.undoManager ()
-    self.padDiameter_property.undoManager = self.undoManager ()
+  //--- Atomic property: y
+    self.y_property.undoManager = self.undoManager
+  //--- Atomic property: padDiameter
+    self.padDiameter_property.undoManager = self.undoManager
+  //--- Atomic property: x
+    self.x_property.undoManager = self.undoManager
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
   }
@@ -127,14 +140,6 @@ class BoardModelVia : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "x",
-      idx:self.x_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "y",
       idx:self.y_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -150,6 +155,14 @@ class BoardModelVia : EBManagedObject,
       observerExplorer:&self.padDiameter_property.mObserverExplorer,
       valueExplorer:&self.padDiameter_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "x",
+      idx:self.x_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x_property.mObserverExplorer,
+      valueExplorer:&self.x_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -161,12 +174,21 @@ class BoardModelVia : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.x_property.mObserverExplorer = nil
-    self.x_property.mValueExplorer = nil
+  //--- Atomic property: y
     self.y_property.mObserverExplorer = nil
     self.y_property.mValueExplorer = nil
+  //--- Atomic property: padDiameter
     self.padDiameter_property.mObserverExplorer = nil
     self.padDiameter_property.mValueExplorer = nil
+  //--- Atomic property: x
+    self.x_property.mObserverExplorer = nil
+    self.x_property.mValueExplorer = nil
+ //   self.y_property.mObserverExplorer = nil
+ //   self.y_property.mValueExplorer = nil
+ //   self.padDiameter_property.mObserverExplorer = nil
+ //   self.padDiameter_property.mValueExplorer = nil
+ //   self.x_property.mObserverExplorer = nil
+ //   self.x_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -176,9 +198,15 @@ class BoardModelVia : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
-    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
-    self.padDiameter_property.storeIn (dictionary: ioDictionary, forKey: "padDiameter")
+  //--- Atomic property: y
+    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
+  //--- Atomic property: padDiameter
+    self.padDiameter_property.storeIn (dictionary: ioDictionary, forKey:"padDiameter")
+  //--- Atomic property: x
+    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+ //   self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+ //   self.padDiameter_property.storeIn (dictionary: ioDictionary, forKey: "padDiameter")
+ //   self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································
@@ -188,9 +216,15 @@ class BoardModelVia : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+  //--- Atomic property: y
     self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+  //--- Atomic property: padDiameter
     self.padDiameter_property.readFrom (dictionary: inDictionary, forKey:"padDiameter")
+  //--- Atomic property: x
+    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+//    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+//    self.padDiameter_property.readFrom (dictionary: inDictionary, forKey:"padDiameter")
+//    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
   //--------------------------- Array controllers
   //--------------------------- Selection controllers
   }
@@ -201,6 +235,22 @@ class BoardModelVia : EBManagedObject,
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetToManyRelationships
+  //····················································································································
+
+  override func resetToManyRelationships () {
+    super.resetToManyRelationships ()
+  }
+
+  //····················································································································
+  //   resetToOneRelationships
+  //····················································································································
+
+  override func resetToOneRelationships () {
+    super.resetToOneRelationships ()
   }
 
   //····················································································································
@@ -228,63 +278,6 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //····················································································································
 
   var propval : [BoardModelVia] { return [] } // Abstract method
-
-  //····················································································································
-  //   Observers of 'x' stored property
-  //····················································································································
-
-  private var mObserversOf_x = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_x.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_x.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_x {
-        managedObject.x_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in mObserversOf_x {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x_property.removeEBObserver (observer)
-      }
-    }
-  }
 
   //····················································································································
   //   Observers of 'y' stored property
@@ -401,6 +394,63 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   }
 
   //····················································································································
+  //   Observers of 'x' stored property
+  //····················································································································
+
+  private var mObserversOf_x = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_x.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.x_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_x.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.x_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_x {
+        managedObject.x_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
+    for observer in mObserversOf_x {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -455,16 +505,16 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
-        removeEBObserversOf_x_fromElementsOfSet (removedSet)
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
         removeEBObserversOf_padDiameter_fromElementsOfSet (removedSet)
+        removeEBObserversOf_x_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
-        addEBObserversOf_x_toElementsOfSet (addedSet)
         addEBObserversOf_y_toElementsOfSet (addedSet)
         addEBObserversOf_padDiameter_toElementsOfSet (addedSet)
+        addEBObserversOf_x_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
       //--- Update object set
         mSet = newSet
@@ -576,18 +626,18 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
+        removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModelVia in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
+        addEBObserversOf_y_toElementsOfSet (addedObjectSet)
         addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_y_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
@@ -678,24 +728,5 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelVia_x : class {
-  var x : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelVia_y : class {
-  var y : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModelVia_padDiameter : class {
-  var padDiameter : Int { get }
-}
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -773,11 +773,16 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
 
-  func setSelection (objectWithIndex inIndex : Int) {
+  func setSelection (objectsWithIndexes inIndexes : [Int]) {
     let objects = mModel?.propval ?? []
-    let newSelectedObject = objects [inIndex]
-    self.mSelectedSet.mSet = Set ([newSelectedObject])
+    var selectedObjects = [MergerBoardInstance] ()
+    for index in inIndexes {
+      let newSelectedObject = objects [index]
+      selectedObjects.append (newSelectedObject)
+    }
+    self.mSelectedSet.mSet = Set (selectedObjects)
   }
+
 
 
   //····················································································································

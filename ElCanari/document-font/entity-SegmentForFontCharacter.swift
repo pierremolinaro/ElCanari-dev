@@ -5,19 +5,59 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SegmentForFontCharacter_x1 : class {
+  var x1 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SegmentForFontCharacter_y1 : class {
+  var y1 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SegmentForFontCharacter_x2 : class {
+  var x2 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SegmentForFontCharacter_y2 : class {
+  var y2 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SegmentForFontCharacter_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SegmentForFontCharacter_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class SegmentForFontCharacter : EBGraphicManagedObject,
-  SegmentForFontCharacter_x1,
-  SegmentForFontCharacter_y1,
-  SegmentForFontCharacter_x2,
-  SegmentForFontCharacter_y2,
-  SegmentForFontCharacter_selectionDisplay,
-  SegmentForFontCharacter_objectDisplay {
+         SegmentForFontCharacter_x1,
+         SegmentForFontCharacter_y1,
+         SegmentForFontCharacter_x2,
+         SegmentForFontCharacter_y2,
+         SegmentForFontCharacter_selectionDisplay,
+         SegmentForFontCharacter_objectDisplay {
 
   //····················································································································
-  //   Accessing x1 stored property
+  //   Atomic property: x1
+  //····················································································································
+
+  var x1_property = EBStoredProperty_Int (2)
+
   //····················································································································
 
   var x1 : Int {
@@ -29,14 +69,18 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     }
   }
 
+  //····················································································································
+
   var x1_property_selection : EBSelection <Int> {
-    get {
-      return self.x1_property.prop
-    }
+    return self.x1_property.prop
   }
 
   //····················································································································
-  //   Accessing y1 stored property
+  //   Atomic property: y1
+  //····················································································································
+
+  var y1_property = EBStoredProperty_Int (1)
+
   //····················································································································
 
   var y1 : Int {
@@ -48,14 +92,18 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     }
   }
 
+  //····················································································································
+
   var y1_property_selection : EBSelection <Int> {
-    get {
-      return self.y1_property.prop
-    }
+    return self.y1_property.prop
   }
 
   //····················································································································
-  //   Accessing x2 stored property
+  //   Atomic property: x2
+  //····················································································································
+
+  var x2_property = EBStoredProperty_Int (9)
+
   //····················································································································
 
   var x2 : Int {
@@ -67,14 +115,18 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     }
   }
 
+  //····················································································································
+
   var x2_property_selection : EBSelection <Int> {
-    get {
-      return self.x2_property.prop
-    }
+    return self.x2_property.prop
   }
 
   //····················································································································
-  //   Accessing y2 stored property
+  //   Atomic property: y2
+  //····················································································································
+
+  var y2_property = EBStoredProperty_Int (8)
+
   //····················································································································
 
   var y2 : Int {
@@ -86,69 +138,11 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     }
   }
 
+  //····················································································································
+
   var y2_property_selection : EBSelection <Int> {
-    get {
-      return self.y2_property.prop
-    }
+    return self.y2_property.prop
   }
-
-  //····················································································································
-  //   Accessing selectionDisplay transient property
-  //····················································································································
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.selectionDisplay_property.prop
-    }
-  }
-
-  var selectionDisplay : EBShape? {
-    switch selectionDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing objectDisplay transient property
-  //····················································································································
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.objectDisplay_property.prop
-    }
-  }
-
-  var objectDisplay : EBShape? {
-    switch objectDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //    Stored Properties
-  //····················································································································
-
-  var x1_property = EBStoredProperty_Int (2)
-  var y1_property = EBStoredProperty_Int (1)
-  var x2_property = EBStoredProperty_Int (9)
-  var y2_property = EBStoredProperty_Int (8)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  // selectionDisplay_property is declared in super entity
-  // objectDisplay_property is declared in super entity
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
 
 
   //····················································································································
@@ -167,7 +161,15 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
+  //--- Atomic property: x1
+    self.x1_property.undoManager = self.undoManager
+  //--- Atomic property: y1
+    self.y1_property.undoManager = self.undoManager
+  //--- Atomic property: x2
+    self.x2_property.undoManager = self.undoManager
+  //--- Atomic property: y2
+    self.y2_property.undoManager = self.undoManager
+  //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -191,6 +193,11 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
         return .empty
       }
     }
+    self.x1_property.addEBObserver (self.selectionDisplay_property)
+    self.y1_property.addEBObserver (self.selectionDisplay_property)
+    self.x2_property.addEBObserver (self.selectionDisplay_property)
+    self.y2_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: objectDisplay
     self.objectDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
@@ -214,20 +221,10 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
         return .empty
       }
     }
-  //--- Install property observers for transients
-    self.x1_property.addEBObserver (self.selectionDisplay_property)
-    self.y1_property.addEBObserver (self.selectionDisplay_property)
-    self.x2_property.addEBObserver (self.selectionDisplay_property)
-    self.y2_property.addEBObserver (self.selectionDisplay_property)
     self.x1_property.addEBObserver (self.objectDisplay_property)
     self.y1_property.addEBObserver (self.objectDisplay_property)
     self.x2_property.addEBObserver (self.objectDisplay_property)
     self.y2_property.addEBObserver (self.objectDisplay_property)
-  //--- Install undoers for properties
-    self.x1_property.undoManager = self.undoManager ()
-    self.y1_property.undoManager = self.undoManager ()
-    self.x2_property.undoManager = self.undoManager ()
-    self.y2_property.undoManager = self.undoManager ()
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.x1_property.setSignatureObserver (observer:self)
@@ -315,14 +312,26 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: x1
     self.x1_property.mObserverExplorer = nil
     self.x1_property.mValueExplorer = nil
+  //--- Atomic property: y1
     self.y1_property.mObserverExplorer = nil
     self.y1_property.mValueExplorer = nil
+  //--- Atomic property: x2
     self.x2_property.mObserverExplorer = nil
     self.x2_property.mValueExplorer = nil
+  //--- Atomic property: y2
     self.y2_property.mObserverExplorer = nil
     self.y2_property.mValueExplorer = nil
+ //   self.x1_property.mObserverExplorer = nil
+ //   self.x1_property.mValueExplorer = nil
+ //   self.y1_property.mObserverExplorer = nil
+ //   self.y1_property.mValueExplorer = nil
+ //   self.x2_property.mObserverExplorer = nil
+ //   self.x2_property.mValueExplorer = nil
+ //   self.y2_property.mObserverExplorer = nil
+ //   self.y2_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -332,10 +341,18 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
-    self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
-    self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
-    self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
+  //--- Atomic property: x1
+    self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
+  //--- Atomic property: y1
+    self.y1_property.storeIn (dictionary: ioDictionary, forKey:"y1")
+  //--- Atomic property: x2
+    self.x2_property.storeIn (dictionary: ioDictionary, forKey:"x2")
+  //--- Atomic property: y2
+    self.y2_property.storeIn (dictionary: ioDictionary, forKey:"y2")
+ //   self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
+ //   self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+ //   self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+ //   self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
   }
 
   //····················································································································
@@ -345,10 +362,18 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
+  //--- Atomic property: y1
     self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
+  //--- Atomic property: x2
     self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
+  //--- Atomic property: y2
     self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
+//    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
+//    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
+//    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
+//    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
   //--------------------------- Array controllers
   //--------------------------- Selection controllers
   }
@@ -359,6 +384,22 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetToManyRelationships
+  //····················································································································
+
+  override func resetToManyRelationships () {
+    super.resetToManyRelationships ()
+  }
+
+  //····················································································································
+  //   resetToOneRelationships
+  //····················································································································
+
+  override func resetToOneRelationships () {
+    super.resetToOneRelationships ()
   }
 
   //····················································································································
@@ -922,24 +963,24 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SegmentForFontCharacter in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
@@ -1030,42 +1071,5 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SegmentForFontCharacter_x1 : class {
-  var x1 : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SegmentForFontCharacter_y1 : class {
-  var y1 : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SegmentForFontCharacter_x2 : class {
-  var x2 : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SegmentForFontCharacter_y2 : class {
-  var y2 : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SegmentForFontCharacter_selectionDisplay : class {
-  var selectionDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SegmentForFontCharacter_objectDisplay : class {
-  var objectDisplay : EBShape? { get }
-}
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

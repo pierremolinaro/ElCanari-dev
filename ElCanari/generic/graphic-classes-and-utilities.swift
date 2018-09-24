@@ -23,14 +23,55 @@ extension Int {
 class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
-
-  var objectDisplay_property = EBTransientProperty_EBShape ()
-
+  //   Transient property: selectionDisplay
   //····················································································································
 
   var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape> {
+    return self.selectionDisplay_property.prop
+  }
+
+  //····················································································································
+
+  var selectionDisplay : EBShape? {
+    switch self.selectionDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: objectDisplay
+  //····················································································································
+
+  var objectDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape> {
+    return self.objectDisplay_property.prop
+  }
+
+  //····················································································································
+
+  var objectDisplay : EBShape? {
+    switch self.objectDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Translation
+  //····················································································································
+
 
   @objc dynamic func acceptedTranslation (by inValue: CGPoint) -> CGPoint {
     return inValue

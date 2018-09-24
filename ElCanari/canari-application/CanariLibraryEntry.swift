@@ -43,9 +43,7 @@ class CanariLibraryEntry : EBSimpleClass,
   //····················································································································
 
   var mPath_property_selection : EBSelection <String> {
-    get {
-      return self.mPath_property.prop
-    }
+    return self.mPath_property.prop
   }
 
   //····················································································································
@@ -68,9 +66,7 @@ class CanariLibraryEntry : EBSimpleClass,
   //····················································································································
 
   var mUses_property_selection : EBSelection <Bool> {
-    get {
-      return self.mUses_property.prop
-    }
+    return self.mUses_property.prop
   }
 
   //····················································································································
@@ -82,8 +78,17 @@ class CanariLibraryEntry : EBSimpleClass,
   //····················································································································
 
   var mStatusImage_property_selection : EBSelection <NSImage> {
-    get {
-      return self.mStatusImage_property.prop
+    return self.mStatusImage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusImage : NSImage? {
+    switch self.mStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
     }
   }
 

@@ -5,18 +5,52 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontCharacter_codePoint : class {
+  var codePoint : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontCharacter_advance : class {
+  var advance : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontCharacter_segmentArrayForDrawing : class {
+  var segmentArrayForDrawing : CharacterSegmentListClass? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontCharacter_gerberCode : class {
+  var gerberCode : CharacterGerberCodeClass? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontCharacter_gerberCodeInstructionCountMessage : class {
+  var gerberCodeInstructionCountMessage : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class FontCharacter : EBManagedObject,
-  FontCharacter_codePoint,
-  FontCharacter_advance,
-  FontCharacter_segmentArrayForDrawing,
-  FontCharacter_gerberCode,
-  FontCharacter_gerberCodeInstructionCountMessage {
+         FontCharacter_codePoint,
+         FontCharacter_advance,
+         FontCharacter_segmentArrayForDrawing,
+         FontCharacter_gerberCode,
+         FontCharacter_gerberCodeInstructionCountMessage {
 
   //····················································································································
-  //   Accessing codePoint stored property
+  //   Atomic property: codePoint
+  //····················································································································
+
+  var codePoint_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var codePoint : Int {
@@ -28,14 +62,18 @@ class FontCharacter : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var codePoint_property_selection : EBSelection <Int> {
-    get {
-      return self.codePoint_property.prop
-    }
+    return self.codePoint_property.prop
   }
 
   //····················································································································
-  //   Accessing advance stored property
+  //   Atomic property: advance
+  //····················································································································
+
+  var advance_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var advance : Int {
@@ -47,100 +85,92 @@ class FontCharacter : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var advance_property_selection : EBSelection <Int> {
-    get {
-      return self.advance_property.prop
-    }
+    return self.advance_property.prop
   }
 
   //····················································································································
-  //   Accessing segmentArrayForDrawing transient property
-  //····················································································································
-
-  var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
-    get {
-      return self.segmentArrayForDrawing_property.prop
-    }
-  }
-
-  var segmentArrayForDrawing : CharacterSegmentListClass? {
-    switch segmentArrayForDrawing_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing gerberCode transient property
-  //····················································································································
-
-  var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
-    get {
-      return self.gerberCode_property.prop
-    }
-  }
-
-  var gerberCode : CharacterGerberCodeClass? {
-    switch gerberCode_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing gerberCodeInstructionCountMessage transient property
-  //····················································································································
-
-  var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
-    get {
-      return self.gerberCodeInstructionCountMessage_property.prop
-    }
-  }
-
-  var gerberCodeInstructionCountMessage : String? {
-    switch gerberCodeInstructionCountMessage_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing segments toMany relationship
-  //····················································································································
-
-  var segments_property_selection : EBSelection < [SegmentForFontCharacter] > {
-    get {
-      return self.segments_property.prop
-    }
-  }
-
-  //····················································································································
-  //    Stored Properties
-  //····················································································································
-
-  var codePoint_property = EBStoredProperty_Int (0)
-  var advance_property = EBStoredProperty_Int (0)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
-  var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
-  var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-  //    Relationships
+  //   To many property: segments
   //····················································································································
 
   var segments_property = StoredArrayOf_SegmentForFontCharacter ()
- // var segments_property = StoredArrayOf_FontCharacter_segments ()
+
+  //····················································································································
+  var segments_property_selection : EBSelection < [SegmentForFontCharacter] > {
+      return self.segments_property.prop
+  }
+
+  //····················································································································
+  //   Transient property: segmentArrayForDrawing
+  //····················································································································
+
+  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
+
+  //····················································································································
+
+  var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
+    return self.segmentArrayForDrawing_property.prop
+  }
+
+  //····················································································································
+
+    var segmentArrayForDrawing : CharacterSegmentListClass? {
+    switch self.segmentArrayForDrawing_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: gerberCode
+  //····················································································································
+
+  var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
+
+  //····················································································································
+
+  var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
+    return self.gerberCode_property.prop
+  }
+
+  //····················································································································
+
+    var gerberCode : CharacterGerberCodeClass? {
+    switch self.gerberCode_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: gerberCodeInstructionCountMessage
+  //····················································································································
+
+  var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
+    return self.gerberCodeInstructionCountMessage_property.prop
+  }
+
+  //····················································································································
+
+    var gerberCodeInstructionCountMessage : String? {
+    switch self.gerberCodeInstructionCountMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Array Controllers
@@ -158,7 +188,13 @@ class FontCharacter : EBManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
+  //--- Atomic property: codePoint
+    self.codePoint_property.undoManager = self.undoManager
+  //--- Atomic property: advance
+    self.advance_property.undoManager = self.undoManager
+  //--- To many property: segments
+    self.segments_property.undoManager = self.undoManager
+  //--- Atomic property: segmentArrayForDrawing
     self.segmentArrayForDrawing_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.segments_property_selection.kind ()
@@ -182,6 +218,11 @@ class FontCharacter : EBManagedObject,
         return .empty
       }
     }
+    self.segments_property.addEBObserverOf_x1 (self.segmentArrayForDrawing_property)
+    self.segments_property.addEBObserverOf_y1 (self.segmentArrayForDrawing_property)
+    self.segments_property.addEBObserverOf_x2 (self.segmentArrayForDrawing_property)
+    self.segments_property.addEBObserverOf_y2 (self.segmentArrayForDrawing_property)
+  //--- Atomic property: gerberCode
     self.gerberCode_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.segmentArrayForDrawing_property_selection.kind ()
@@ -202,6 +243,8 @@ class FontCharacter : EBManagedObject,
         return .empty
       }
     }
+    self.segmentArrayForDrawing_property.addEBObserver (self.gerberCode_property)
+  //--- Atomic property: gerberCodeInstructionCountMessage
     self.gerberCodeInstructionCountMessage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.gerberCode_property_selection.kind ()
@@ -222,18 +265,8 @@ class FontCharacter : EBManagedObject,
         return .empty
       }
     }
-  //--- Install property observers for transients
-    self.segments_property.addEBObserverOf_x1 (self.segmentArrayForDrawing_property)
-    self.segments_property.addEBObserverOf_y1 (self.segmentArrayForDrawing_property)
-    self.segments_property.addEBObserverOf_x2 (self.segmentArrayForDrawing_property)
-    self.segments_property.addEBObserverOf_y2 (self.segmentArrayForDrawing_property)
-    self.segmentArrayForDrawing_property.addEBObserver (self.gerberCode_property)
     self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
-  //--- Install undoers for properties
-    self.codePoint_property.undoManager = self.undoManager ()
-    self.advance_property.undoManager = self.undoManager ()
   //--- Install undoers and opposite setter for relationships
-    self.segments_property.undoManager = self.undoManager ()
   //--- register properties for handling signature
     self.advance_property.setSignatureObserver (observer:self)
     self.codePoint_property.setSignatureObserver (observer:self)
@@ -300,13 +333,6 @@ class FontCharacter : EBManagedObject,
       valueExplorer:&self.gerberCodeInstructionCountMessage_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "segments",
-      idx:segments_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&segments_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -316,11 +342,18 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: codePoint
     self.codePoint_property.mObserverExplorer = nil
     self.codePoint_property.mValueExplorer = nil
+  //--- Atomic property: advance
     self.advance_property.mObserverExplorer = nil
     self.advance_property.mValueExplorer = nil
+  //--- To many property: segments
     self.segments_property.mValueExplorer = nil
+ //   self.codePoint_property.mObserverExplorer = nil
+ //   self.codePoint_property.mValueExplorer = nil
+ //   self.advance_property.mObserverExplorer = nil
+ //   self.advance_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -330,9 +363,18 @@ class FontCharacter : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.codePoint_property.storeIn (dictionary: ioDictionary, forKey: "codePoint")
-    self.advance_property.storeIn (dictionary: ioDictionary, forKey: "advance")
-    store (managedObjectArray: segments_property.propval as NSArray, relationshipName:"segments", intoDictionary: ioDictionary) ;
+  //--- Atomic property: codePoint
+    self.codePoint_property.storeIn (dictionary: ioDictionary, forKey:"codePoint")
+  //--- Atomic property: advance
+    self.advance_property.storeIn (dictionary: ioDictionary, forKey:"advance")
+  //--- To many property: segments
+    self.store (
+      managedObjectArray: segments_property.propval as NSArray,
+      relationshipName: "segments",
+      intoDictionary: ioDictionary
+    )
+ //   self.codePoint_property.storeIn (dictionary: ioDictionary, forKey: "codePoint")
+ //   self.advance_property.storeIn (dictionary: ioDictionary, forKey: "advance")
   }
 
   //····················································································································
@@ -342,13 +384,18 @@ class FontCharacter : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- Atomic property: codePoint
     self.codePoint_property.readFrom (dictionary: inDictionary, forKey:"codePoint")
+  //--- Atomic property: advance
     self.advance_property.readFrom (dictionary: inDictionary, forKey:"advance")
+  //--- To many property: segments
     self.segments_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "segments",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentForFontCharacter])
+//    self.codePoint_property.readFrom (dictionary: inDictionary, forKey:"codePoint")
+//    self.advance_property.readFrom (dictionary: inDictionary, forKey:"advance")
   //--------------------------- Array controllers
   //--------------------------- Selection controllers
   }
@@ -358,7 +405,6 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.segments_property.setProp ([]) // Set relationships to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
@@ -372,11 +418,20 @@ class FontCharacter : EBManagedObject,
   }
 
   //····················································································································
+  //   resetToOneRelationships
+  //····················································································································
+
+  override func resetToOneRelationships () {
+    super.resetToOneRelationships ()
+  }
+
+  //····················································································································
   //   accessibleObjects
   //····················································································································
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: segments
     for managedObject : EBManagedObject in self.segments_property.propval {
       objects.append (managedObject)
     }
@@ -874,22 +929,22 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : FontCharacter in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
         addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
         addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
         addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
@@ -980,36 +1035,5 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontCharacter_codePoint : class {
-  var codePoint : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontCharacter_advance : class {
-  var advance : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontCharacter_segmentArrayForDrawing : class {
-  var segmentArrayForDrawing : CharacterSegmentListClass? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontCharacter_gerberCode : class {
-  var gerberCode : CharacterGerberCodeClass? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontCharacter_gerberCodeInstructionCountMessage : class {
-  var gerberCodeInstructionCountMessage : String? { get }
-}
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

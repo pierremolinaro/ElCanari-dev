@@ -5,41 +5,235 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_selectedPageIndex : class {
+  var selectedPageIndex : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_zoom : class {
+  var zoom : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_automaticBoardSize : class {
+  var automaticBoardSize : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardManualWidth : class {
+  var boardManualWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardManualHeight : class {
+  var boardManualHeight : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardWidthUnit : class {
+  var boardWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardHeightUnit : class {
+  var boardHeightUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_overlapingArrangment : class {
+  var overlapingArrangment : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_selectedBoardXUnit : class {
+  var selectedBoardXUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_selectedBoardYUnit : class {
+  var selectedBoardYUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardLimitWidth : class {
+  var boardLimitWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardLimitWidthUnit : class {
+  var boardLimitWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_arrowMagnitude : class {
+  var arrowMagnitude : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_arrowMagnitudeUnit : class {
+  var arrowMagnitudeUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_shiftArrowMagnitude : class {
+  var shiftArrowMagnitude : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_shiftArrowMagnitudeUnit : class {
+  var shiftArrowMagnitudeUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_artworkName : class {
+  var artworkName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_generateGerberProductFile : class {
+  var generateGerberProductFile : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_generatePDFProductFile : class {
+  var generatePDFProductFile : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_generatedBoardArchiveFormat : class {
+  var generatedBoardArchiveFormat : BoardArchiveFormat { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_cocoaArrowMagnitude : class {
+  var cocoaArrowMagnitude : CGFloat? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_cocoaShiftArrowMagnitude : class {
+  var cocoaShiftArrowMagnitude : CGFloat? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_modelNames : class {
+  var modelNames : MergerBoardModelArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardRect : class {
+  var boardRect : CanariHorizontalRect? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardDisplayRect : class {
+  var boardDisplayRect : CanariHorizontalRect? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardWidth : class {
+  var boardWidth : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_boardHeight : class {
+  var boardHeight : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerRoot_overObjectsDisplay : class {
+  var overObjectsDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class MergerRoot : EBManagedObject,
-  MergerRoot_selectedPageIndex,
-  MergerRoot_zoom,
-  MergerRoot_automaticBoardSize,
-  MergerRoot_boardManualWidth,
-  MergerRoot_boardManualHeight,
-  MergerRoot_boardWidthUnit,
-  MergerRoot_boardHeightUnit,
-  MergerRoot_overlapingArrangment,
-  MergerRoot_selectedBoardXUnit,
-  MergerRoot_selectedBoardYUnit,
-  MergerRoot_boardLimitWidth,
-  MergerRoot_boardLimitWidthUnit,
-  MergerRoot_arrowMagnitude,
-  MergerRoot_arrowMagnitudeUnit,
-  MergerRoot_shiftArrowMagnitude,
-  MergerRoot_shiftArrowMagnitudeUnit,
-  MergerRoot_artworkName,
-  MergerRoot_generateGerberProductFile,
-  MergerRoot_generatePDFProductFile,
-  MergerRoot_generatedBoardArchiveFormat,
-  MergerRoot_cocoaArrowMagnitude,
-  MergerRoot_cocoaShiftArrowMagnitude,
-  MergerRoot_modelNames,
-  MergerRoot_overObjectsDisplay,
-  MergerRoot_boardRect,
-  MergerRoot_boardDisplayRect,
-  MergerRoot_boardWidth,
-  MergerRoot_boardHeight {
+         MergerRoot_selectedPageIndex,
+         MergerRoot_zoom,
+         MergerRoot_automaticBoardSize,
+         MergerRoot_boardManualWidth,
+         MergerRoot_boardManualHeight,
+         MergerRoot_boardWidthUnit,
+         MergerRoot_boardHeightUnit,
+         MergerRoot_overlapingArrangment,
+         MergerRoot_selectedBoardXUnit,
+         MergerRoot_selectedBoardYUnit,
+         MergerRoot_boardLimitWidth,
+         MergerRoot_boardLimitWidthUnit,
+         MergerRoot_arrowMagnitude,
+         MergerRoot_arrowMagnitudeUnit,
+         MergerRoot_shiftArrowMagnitude,
+         MergerRoot_shiftArrowMagnitudeUnit,
+         MergerRoot_artworkName,
+         MergerRoot_generateGerberProductFile,
+         MergerRoot_generatePDFProductFile,
+         MergerRoot_generatedBoardArchiveFormat,
+         MergerRoot_cocoaArrowMagnitude,
+         MergerRoot_cocoaShiftArrowMagnitude,
+         MergerRoot_modelNames,
+         MergerRoot_boardRect,
+         MergerRoot_boardDisplayRect,
+         MergerRoot_boardWidth,
+         MergerRoot_boardHeight,
+         MergerRoot_overObjectsDisplay {
 
   //····················································································································
-  //   Accessing selectedPageIndex stored property
+  //   To many property: boardModels
+  //····················································································································
+
+  var boardModels_property = StoredArrayOf_BoardModel ()
+
+  //····················································································································
+  var boardModels_property_selection : EBSelection < [BoardModel] > {
+      return self.boardModels_property.prop
+  }
+
+  //····················································································································
+  //   To many property: boardInstances
+  //····················································································································
+
+  var boardInstances_property = StoredArrayOf_MergerBoardInstance ()
+
+  //····················································································································
+  var boardInstances_property_selection : EBSelection < [MergerBoardInstance] > {
+      return self.boardInstances_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: selectedPageIndex
+  //····················································································································
+
+  var selectedPageIndex_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var selectedPageIndex : Int {
@@ -51,14 +245,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var selectedPageIndex_property_selection : EBSelection <Int> {
-    get {
-      return self.selectedPageIndex_property.prop
-    }
+    return self.selectedPageIndex_property.prop
   }
 
   //····················································································································
-  //   Accessing zoom stored property
+  //   Atomic property: zoom
+  //····················································································································
+
+  var zoom_property = EBStoredProperty_Int (100)
+
   //····················································································································
 
   var zoom : Int {
@@ -70,14 +268,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var zoom_property_selection : EBSelection <Int> {
-    get {
-      return self.zoom_property.prop
-    }
+    return self.zoom_property.prop
   }
 
   //····················································································································
-  //   Accessing automaticBoardSize stored property
+  //   Atomic property: automaticBoardSize
+  //····················································································································
+
+  var automaticBoardSize_property = EBStoredProperty_Bool (true)
+
   //····················································································································
 
   var automaticBoardSize : Bool {
@@ -89,14 +291,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var automaticBoardSize_property_selection : EBSelection <Bool> {
-    get {
-      return self.automaticBoardSize_property.prop
-    }
+    return self.automaticBoardSize_property.prop
   }
 
   //····················································································································
-  //   Accessing boardManualWidth stored property
+  //   Atomic property: boardManualWidth
+  //····················································································································
+
+  var boardManualWidth_property = EBStoredProperty_Int (9000000)
+
   //····················································································································
 
   var boardManualWidth : Int {
@@ -108,14 +314,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var boardManualWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.boardManualWidth_property.prop
-    }
+    return self.boardManualWidth_property.prop
   }
 
   //····················································································································
-  //   Accessing boardManualHeight stored property
+  //   Atomic property: boardManualHeight
+  //····················································································································
+
+  var boardManualHeight_property = EBStoredProperty_Int (9000000)
+
   //····················································································································
 
   var boardManualHeight : Int {
@@ -127,14 +337,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var boardManualHeight_property_selection : EBSelection <Int> {
-    get {
-      return self.boardManualHeight_property.prop
-    }
+    return self.boardManualHeight_property.prop
   }
 
   //····················································································································
-  //   Accessing boardWidthUnit stored property
+  //   Atomic property: boardWidthUnit
+  //····················································································································
+
+  var boardWidthUnit_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var boardWidthUnit : Int {
@@ -146,14 +360,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var boardWidthUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.boardWidthUnit_property.prop
-    }
+    return self.boardWidthUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing boardHeightUnit stored property
+  //   Atomic property: boardHeightUnit
+  //····················································································································
+
+  var boardHeightUnit_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var boardHeightUnit : Int {
@@ -165,14 +383,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var boardHeightUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.boardHeightUnit_property.prop
-    }
+    return self.boardHeightUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing overlapingArrangment stored property
+  //   Atomic property: overlapingArrangment
+  //····················································································································
+
+  var overlapingArrangment_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var overlapingArrangment : Bool {
@@ -184,14 +406,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var overlapingArrangment_property_selection : EBSelection <Bool> {
-    get {
-      return self.overlapingArrangment_property.prop
-    }
+    return self.overlapingArrangment_property.prop
   }
 
   //····················································································································
-  //   Accessing selectedBoardXUnit stored property
+  //   Atomic property: selectedBoardXUnit
+  //····················································································································
+
+  var selectedBoardXUnit_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var selectedBoardXUnit : Int {
@@ -203,14 +429,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var selectedBoardXUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.selectedBoardXUnit_property.prop
-    }
+    return self.selectedBoardXUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing selectedBoardYUnit stored property
+  //   Atomic property: selectedBoardYUnit
+  //····················································································································
+
+  var selectedBoardYUnit_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var selectedBoardYUnit : Int {
@@ -222,14 +452,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var selectedBoardYUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.selectedBoardYUnit_property.prop
-    }
+    return self.selectedBoardYUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing boardLimitWidth stored property
+  //   Atomic property: boardLimitWidth
+  //····················································································································
+
+  var boardLimitWidth_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var boardLimitWidth : Int {
@@ -241,14 +475,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var boardLimitWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.boardLimitWidth_property.prop
-    }
+    return self.boardLimitWidth_property.prop
   }
 
   //····················································································································
-  //   Accessing boardLimitWidthUnit stored property
+  //   Atomic property: boardLimitWidthUnit
+  //····················································································································
+
+  var boardLimitWidthUnit_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var boardLimitWidthUnit : Int {
@@ -260,14 +498,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var boardLimitWidthUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.boardLimitWidthUnit_property.prop
-    }
+    return self.boardLimitWidthUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing arrowMagnitude stored property
+  //   Atomic property: arrowMagnitude
+  //····················································································································
+
+  var arrowMagnitude_property = EBStoredProperty_Int (900000)
+
   //····················································································································
 
   var arrowMagnitude : Int {
@@ -279,14 +521,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var arrowMagnitude_property_selection : EBSelection <Int> {
-    get {
-      return self.arrowMagnitude_property.prop
-    }
+    return self.arrowMagnitude_property.prop
   }
 
   //····················································································································
-  //   Accessing arrowMagnitudeUnit stored property
+  //   Atomic property: arrowMagnitudeUnit
+  //····················································································································
+
+  var arrowMagnitudeUnit_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var arrowMagnitudeUnit : Int {
@@ -298,14 +544,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var arrowMagnitudeUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.arrowMagnitudeUnit_property.prop
-    }
+    return self.arrowMagnitudeUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing shiftArrowMagnitude stored property
+  //   Atomic property: shiftArrowMagnitude
+  //····················································································································
+
+  var shiftArrowMagnitude_property = EBStoredProperty_Int (3600000)
+
   //····················································································································
 
   var shiftArrowMagnitude : Int {
@@ -317,14 +567,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var shiftArrowMagnitude_property_selection : EBSelection <Int> {
-    get {
-      return self.shiftArrowMagnitude_property.prop
-    }
+    return self.shiftArrowMagnitude_property.prop
   }
 
   //····················································································································
-  //   Accessing shiftArrowMagnitudeUnit stored property
+  //   Atomic property: shiftArrowMagnitudeUnit
+  //····················································································································
+
+  var shiftArrowMagnitudeUnit_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var shiftArrowMagnitudeUnit : Int {
@@ -336,14 +590,30 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.shiftArrowMagnitudeUnit_property.prop
-    }
+    return self.shiftArrowMagnitudeUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing artworkName stored property
+  //   To one property: artwork
+  //····················································································································
+
+  var artwork_property = ToOneRelationship_MergerRoot_artwork ()
+
+  //····················································································································
+
+  var artwork_property_selection : EBSelection <Bool> {
+    return .single (self.artwork_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Atomic property: artworkName
+  //····················································································································
+
+  var artworkName_property = EBStoredProperty_String ("")
+
   //····················································································································
 
   var artworkName : String {
@@ -355,14 +625,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var artworkName_property_selection : EBSelection <String> {
-    get {
-      return self.artworkName_property.prop
-    }
+    return self.artworkName_property.prop
   }
 
   //····················································································································
-  //   Accessing generateGerberProductFile stored property
+  //   Atomic property: generateGerberProductFile
+  //····················································································································
+
+  var generateGerberProductFile_property = EBStoredProperty_Bool (true)
+
   //····················································································································
 
   var generateGerberProductFile : Bool {
@@ -374,14 +648,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var generateGerberProductFile_property_selection : EBSelection <Bool> {
-    get {
-      return self.generateGerberProductFile_property.prop
-    }
+    return self.generateGerberProductFile_property.prop
   }
 
   //····················································································································
-  //   Accessing generatePDFProductFile stored property
+  //   Atomic property: generatePDFProductFile
+  //····················································································································
+
+  var generatePDFProductFile_property = EBStoredProperty_Bool (true)
+
   //····················································································································
 
   var generatePDFProductFile : Bool {
@@ -393,14 +671,18 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var generatePDFProductFile_property_selection : EBSelection <Bool> {
-    get {
-      return self.generatePDFProductFile_property.prop
-    }
+    return self.generatePDFProductFile_property.prop
   }
 
   //····················································································································
-  //   Accessing generatedBoardArchiveFormat stored property
+  //   Atomic property: generatedBoardArchiveFormat
+  //····················································································································
+
+  var generatedBoardArchiveFormat_property = EBStoredProperty_BoardArchiveFormat (BoardArchiveFormat.noGeneration)
+
   //····················································································································
 
   var generatedBoardArchiveFormat : BoardArchiveFormat {
@@ -412,232 +694,196 @@ class MergerRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var generatedBoardArchiveFormat_property_selection : EBSelection <BoardArchiveFormat> {
-    get {
-      return self.generatedBoardArchiveFormat_property.prop
-    }
+    return self.generatedBoardArchiveFormat_property.prop
   }
 
   //····················································································································
-  //   Accessing cocoaArrowMagnitude transient property
-  //····················································································································
-
-  var cocoaArrowMagnitude_property_selection : EBSelection <CGFloat> {
-    get {
-      return self.cocoaArrowMagnitude_property.prop
-    }
-  }
-
-  var cocoaArrowMagnitude : CGFloat? {
-    switch cocoaArrowMagnitude_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing cocoaShiftArrowMagnitude transient property
-  //····················································································································
-
-  var cocoaShiftArrowMagnitude_property_selection : EBSelection <CGFloat> {
-    get {
-      return self.cocoaShiftArrowMagnitude_property.prop
-    }
-  }
-
-  var cocoaShiftArrowMagnitude : CGFloat? {
-    switch cocoaShiftArrowMagnitude_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing modelNames transient property
-  //····················································································································
-
-  var modelNames_property_selection : EBSelection <MergerBoardModelArray> {
-    get {
-      return self.modelNames_property.prop
-    }
-  }
-
-  var modelNames : MergerBoardModelArray? {
-    switch modelNames_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing overObjectsDisplay transient property
-  //····················································································································
-
-  var overObjectsDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.overObjectsDisplay_property.prop
-    }
-  }
-
-  var overObjectsDisplay : EBShape? {
-    switch overObjectsDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardRect transient property
-  //····················································································································
-
-  var boardRect_property_selection : EBSelection <CanariHorizontalRect> {
-    get {
-      return self.boardRect_property.prop
-    }
-  }
-
-  var boardRect : CanariHorizontalRect? {
-    switch boardRect_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardDisplayRect transient property
-  //····················································································································
-
-  var boardDisplayRect_property_selection : EBSelection <CanariHorizontalRect> {
-    get {
-      return self.boardDisplayRect_property.prop
-    }
-  }
-
-  var boardDisplayRect : CanariHorizontalRect? {
-    switch boardDisplayRect_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardWidth transient property
-  //····················································································································
-
-  var boardWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.boardWidth_property.prop
-    }
-  }
-
-  var boardWidth : Int? {
-    switch boardWidth_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardHeight transient property
-  //····················································································································
-
-  var boardHeight_property_selection : EBSelection <Int> {
-    get {
-      return self.boardHeight_property.prop
-    }
-  }
-
-  var boardHeight : Int? {
-    switch boardHeight_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardModels toMany relationship
-  //····················································································································
-
-  var boardModels_property_selection : EBSelection < [BoardModel] > {
-    get {
-      return self.boardModels_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardInstances toMany relationship
-  //····················································································································
-
-  var boardInstances_property_selection : EBSelection < [MergerBoardInstance] > {
-    get {
-      return self.boardInstances_property.prop
-    }
-  }
-
-  //····················································································································
-  //    Stored Properties
-  //····················································································································
-
-  var selectedPageIndex_property = EBStoredProperty_Int (0)
-  var zoom_property = EBStoredProperty_Int (100)
-  var automaticBoardSize_property = EBStoredProperty_Bool (true)
-  var boardManualWidth_property = EBStoredProperty_Int (9000000)
-  var boardManualHeight_property = EBStoredProperty_Int (9000000)
-  var boardWidthUnit_property = EBStoredProperty_Int (90000)
-  var boardHeightUnit_property = EBStoredProperty_Int (90000)
-  var overlapingArrangment_property = EBStoredProperty_Bool (false)
-  var selectedBoardXUnit_property = EBStoredProperty_Int (90000)
-  var selectedBoardYUnit_property = EBStoredProperty_Int (90000)
-  var boardLimitWidth_property = EBStoredProperty_Int (90000)
-  var boardLimitWidthUnit_property = EBStoredProperty_Int (90000)
-  var arrowMagnitude_property = EBStoredProperty_Int (900000)
-  var arrowMagnitudeUnit_property = EBStoredProperty_Int (90000)
-  var shiftArrowMagnitude_property = EBStoredProperty_Int (3600000)
-  var shiftArrowMagnitudeUnit_property = EBStoredProperty_Int (90000)
-  var artworkName_property = EBStoredProperty_String ("")
-  var generateGerberProductFile_property = EBStoredProperty_Bool (true)
-  var generatePDFProductFile_property = EBStoredProperty_Bool (true)
-  var generatedBoardArchiveFormat_property = EBStoredProperty_BoardArchiveFormat (BoardArchiveFormat.noGeneration)
-
-  //····················································································································
-  //    Transient properties
+  //   Transient property: cocoaArrowMagnitude
   //····················································································································
 
   var cocoaArrowMagnitude_property = EBTransientProperty_CGFloat ()
+
+  //····················································································································
+
+  var cocoaArrowMagnitude_property_selection : EBSelection <CGFloat> {
+    return self.cocoaArrowMagnitude_property.prop
+  }
+
+  //····················································································································
+
+    var cocoaArrowMagnitude : CGFloat? {
+    switch self.cocoaArrowMagnitude_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: cocoaShiftArrowMagnitude
+  //····················································································································
+
   var cocoaShiftArrowMagnitude_property = EBTransientProperty_CGFloat ()
+
+  //····················································································································
+
+  var cocoaShiftArrowMagnitude_property_selection : EBSelection <CGFloat> {
+    return self.cocoaShiftArrowMagnitude_property.prop
+  }
+
+  //····················································································································
+
+    var cocoaShiftArrowMagnitude : CGFloat? {
+    switch self.cocoaShiftArrowMagnitude_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: modelNames
+  //····················································································································
+
   var modelNames_property = EBTransientProperty_MergerBoardModelArray ()
-  var overObjectsDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var modelNames_property_selection : EBSelection <MergerBoardModelArray> {
+    return self.modelNames_property.prop
+  }
+
+  //····················································································································
+
+    var modelNames : MergerBoardModelArray? {
+    switch self.modelNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardRect
+  //····················································································································
+
   var boardRect_property = EBTransientProperty_CanariHorizontalRect ()
+
+  //····················································································································
+
+  var boardRect_property_selection : EBSelection <CanariHorizontalRect> {
+    return self.boardRect_property.prop
+  }
+
+  //····················································································································
+
+    var boardRect : CanariHorizontalRect? {
+    switch self.boardRect_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardDisplayRect
+  //····················································································································
+
   var boardDisplayRect_property = EBTransientProperty_CanariHorizontalRect ()
+
+  //····················································································································
+
+  var boardDisplayRect_property_selection : EBSelection <CanariHorizontalRect> {
+    return self.boardDisplayRect_property.prop
+  }
+
+  //····················································································································
+
+    var boardDisplayRect : CanariHorizontalRect? {
+    switch self.boardDisplayRect_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardWidth
+  //····················································································································
+
   var boardWidth_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var boardWidth_property_selection : EBSelection <Int> {
+    return self.boardWidth_property.prop
+  }
+
+  //····················································································································
+
+    var boardWidth : Int? {
+    switch self.boardWidth_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardHeight
+  //····················································································································
+
   var boardHeight_property = EBTransientProperty_Int ()
 
   //····················································································································
-  //    Relationships
+
+  var boardHeight_property_selection : EBSelection <Int> {
+    return self.boardHeight_property.prop
+  }
+
   //····················································································································
 
-  var boardModels_property = StoredArrayOf_BoardModel ()
- // var boardModels_property = StoredArrayOf_MergerRoot_boardModels ()
-  var boardInstances_property = StoredArrayOf_MergerBoardInstance ()
- // var boardInstances_property = StoredArrayOf_MergerRoot_boardInstances ()
-  var artwork_property = ToOneRelationship_MergerRoot_artwork ()
-  var artwork_property_selection : EBSelection <Bool> { return .single (self.artwork_property.propval == nil) }
+    var boardHeight : Int? {
+    switch self.boardHeight_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: overObjectsDisplay
+  //····················································································································
+
+  var overObjectsDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var overObjectsDisplay_property_selection : EBSelection <EBShape> {
+    return self.overObjectsDisplay_property.prop
+  }
+
+  //····················································································································
+
+    var overObjectsDisplay : EBShape? {
+    switch self.overObjectsDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Array Controllers
@@ -655,7 +901,56 @@ class MergerRoot : EBManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
+  //--- To many property: boardModels
+    self.boardModels_property.undoManager = self.undoManager
+  //--- To many property: boardInstances
+    self.boardInstances_property.undoManager = self.undoManager
+    self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :MergerBoardInstance?) in
+      inManagedObject?.myRoot_property.setProp (self)
+    }
+  //--- Atomic property: selectedPageIndex
+    self.selectedPageIndex_property.undoManager = self.undoManager
+  //--- Atomic property: zoom
+    self.zoom_property.undoManager = self.undoManager
+  //--- Atomic property: automaticBoardSize
+    self.automaticBoardSize_property.undoManager = self.undoManager
+  //--- Atomic property: boardManualWidth
+    self.boardManualWidth_property.undoManager = self.undoManager
+  //--- Atomic property: boardManualHeight
+    self.boardManualHeight_property.undoManager = self.undoManager
+  //--- Atomic property: boardWidthUnit
+    self.boardWidthUnit_property.undoManager = self.undoManager
+  //--- Atomic property: boardHeightUnit
+    self.boardHeightUnit_property.undoManager = self.undoManager
+  //--- Atomic property: overlapingArrangment
+    self.overlapingArrangment_property.undoManager = self.undoManager
+  //--- Atomic property: selectedBoardXUnit
+    self.selectedBoardXUnit_property.undoManager = self.undoManager
+  //--- Atomic property: selectedBoardYUnit
+    self.selectedBoardYUnit_property.undoManager = self.undoManager
+  //--- Atomic property: boardLimitWidth
+    self.boardLimitWidth_property.undoManager = self.undoManager
+  //--- Atomic property: boardLimitWidthUnit
+    self.boardLimitWidthUnit_property.undoManager = self.undoManager
+  //--- Atomic property: arrowMagnitude
+    self.arrowMagnitude_property.undoManager = self.undoManager
+  //--- Atomic property: arrowMagnitudeUnit
+    self.arrowMagnitudeUnit_property.undoManager = self.undoManager
+  //--- Atomic property: shiftArrowMagnitude
+    self.shiftArrowMagnitude_property.undoManager = self.undoManager
+  //--- Atomic property: shiftArrowMagnitudeUnit
+    self.shiftArrowMagnitudeUnit_property.undoManager = self.undoManager
+  //--- To one property: artwork
+    self.artwork_property.owner = self
+  //--- Atomic property: artworkName
+    self.artworkName_property.undoManager = self.undoManager
+  //--- Atomic property: generateGerberProductFile
+    self.generateGerberProductFile_property.undoManager = self.undoManager
+  //--- Atomic property: generatePDFProductFile
+    self.generatePDFProductFile_property.undoManager = self.undoManager
+  //--- Atomic property: generatedBoardArchiveFormat
+    self.generatedBoardArchiveFormat_property.undoManager = self.undoManager
+  //--- Atomic property: cocoaArrowMagnitude
     self.cocoaArrowMagnitude_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.arrowMagnitude_property_selection.kind ()
@@ -676,6 +971,8 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
+    self.arrowMagnitude_property.addEBObserver (self.cocoaArrowMagnitude_property)
+  //--- Atomic property: cocoaShiftArrowMagnitude
     self.cocoaShiftArrowMagnitude_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.shiftArrowMagnitude_property_selection.kind ()
@@ -696,6 +993,8 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
+    self.shiftArrowMagnitude_property.addEBObserver (self.cocoaShiftArrowMagnitude_property)
+  //--- Atomic property: modelNames
     self.modelNames_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardModels_property_selection.kind ()
@@ -718,29 +1017,10 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-    self.overObjectsDisplay_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.boardRect_property_selection.kind ()
-        kind &= unwSelf.boardLimitWidth_property_selection.kind ()
-        kind &= g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection.kind ()
-        kind &= g_Preferences!.mergerColorBoardLimits_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.boardRect_property_selection, unwSelf.boardLimitWidth_property_selection, g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection, g_Preferences!.mergerColorBoardLimits_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_MergerRoot_overObjectsDisplay (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
+    self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
+    self.boardModels_property.addEBObserverOf_modelWidth (self.modelNames_property)
+    self.boardModels_property.addEBObserverOf_modelHeight (self.modelNames_property)
+  //--- Atomic property: boardRect
     self.boardRect_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.automaticBoardSize_property_selection.kind ()
@@ -764,6 +1044,11 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
+    self.automaticBoardSize_property.addEBObserver (self.boardRect_property)
+    self.boardManualWidth_property.addEBObserver (self.boardRect_property)
+    self.boardManualHeight_property.addEBObserver (self.boardRect_property)
+    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
+  //--- Atomic property: boardDisplayRect
     self.boardDisplayRect_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardManualWidth_property_selection.kind ()
@@ -786,6 +1071,10 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
+    self.boardManualWidth_property.addEBObserver (self.boardDisplayRect_property)
+    self.boardManualHeight_property.addEBObserver (self.boardDisplayRect_property)
+    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardDisplayRect_property)
+  //--- Atomic property: boardWidth
     self.boardWidth_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.boardRect_property_selection.kind ()
@@ -806,6 +1095,8 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
+    self.boardRect_property.addEBObserver (self.boardWidth_property)
+  //--- Atomic property: boardHeight
     self.boardHeight_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.boardRect_property_selection.kind ()
@@ -826,53 +1117,36 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-  //--- Install property observers for transients
-    self.arrowMagnitude_property.addEBObserver (self.cocoaArrowMagnitude_property)
-    self.shiftArrowMagnitude_property.addEBObserver (self.cocoaShiftArrowMagnitude_property)
-    self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
-    self.boardModels_property.addEBObserverOf_modelWidth (self.modelNames_property)
-    self.boardModels_property.addEBObserverOf_modelHeight (self.modelNames_property)
+    self.boardRect_property.addEBObserver (self.boardHeight_property)
+  //--- Atomic property: overObjectsDisplay
+    self.overObjectsDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.boardRect_property_selection.kind ()
+        kind &= unwSelf.boardLimitWidth_property_selection.kind ()
+        kind &= g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection.kind ()
+        kind &= g_Preferences!.mergerColorBoardLimits_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.boardRect_property_selection, unwSelf.boardLimitWidth_property_selection, g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection, g_Preferences!.mergerColorBoardLimits_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_MergerRoot_overObjectsDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
     self.boardRect_property.addEBObserver (self.overObjectsDisplay_property)
     self.boardLimitWidth_property.addEBObserver (self.overObjectsDisplay_property)
     g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.overObjectsDisplay_property)
     g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.overObjectsDisplay_property)
-    self.automaticBoardSize_property.addEBObserver (self.boardRect_property)
-    self.boardManualWidth_property.addEBObserver (self.boardRect_property)
-    self.boardManualHeight_property.addEBObserver (self.boardRect_property)
-    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
-    self.boardManualWidth_property.addEBObserver (self.boardDisplayRect_property)
-    self.boardManualHeight_property.addEBObserver (self.boardDisplayRect_property)
-    self.boardInstances_property.addEBObserverOf_instanceRect (self.boardDisplayRect_property)
-    self.boardRect_property.addEBObserver (self.boardWidth_property)
-    self.boardRect_property.addEBObserver (self.boardHeight_property)
-  //--- Install undoers for properties
-    self.selectedPageIndex_property.undoManager = self.undoManager ()
-    self.zoom_property.undoManager = self.undoManager ()
-    self.automaticBoardSize_property.undoManager = self.undoManager ()
-    self.boardManualWidth_property.undoManager = self.undoManager ()
-    self.boardManualHeight_property.undoManager = self.undoManager ()
-    self.boardWidthUnit_property.undoManager = self.undoManager ()
-    self.boardHeightUnit_property.undoManager = self.undoManager ()
-    self.overlapingArrangment_property.undoManager = self.undoManager ()
-    self.selectedBoardXUnit_property.undoManager = self.undoManager ()
-    self.selectedBoardYUnit_property.undoManager = self.undoManager ()
-    self.boardLimitWidth_property.undoManager = self.undoManager ()
-    self.boardLimitWidthUnit_property.undoManager = self.undoManager ()
-    self.arrowMagnitude_property.undoManager = self.undoManager ()
-    self.arrowMagnitudeUnit_property.undoManager = self.undoManager ()
-    self.shiftArrowMagnitude_property.undoManager = self.undoManager ()
-    self.shiftArrowMagnitudeUnit_property.undoManager = self.undoManager ()
-    self.artworkName_property.undoManager = self.undoManager ()
-    self.generateGerberProductFile_property.undoManager = self.undoManager ()
-    self.generatePDFProductFile_property.undoManager = self.undoManager ()
-    self.generatedBoardArchiveFormat_property.undoManager = self.undoManager ()
   //--- Install undoers and opposite setter for relationships
-    self.artwork_property.owner = self
-    self.boardModels_property.undoManager = self.undoManager ()
-    self.boardInstances_property.undoManager = self.undoManager ()
-    self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
-      inManagedObject?.myRoot_property.setProp (self)
-    }
   //--- register properties for handling signature
   }
 
@@ -885,10 +1159,6 @@ class MergerRoot : EBManagedObject,
     self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
     self.boardModels_property.removeEBObserverOf_modelWidth (self.modelNames_property)
     self.boardModels_property.removeEBObserverOf_modelHeight (self.modelNames_property)
-    self.boardRect_property.removeEBObserver (self.overObjectsDisplay_property)
-    self.boardLimitWidth_property.removeEBObserver (self.overObjectsDisplay_property)
-    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.overObjectsDisplay_property)
-    g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.overObjectsDisplay_property)
     self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
     self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
     self.boardManualHeight_property.removeEBObserver (self.boardRect_property)
@@ -898,6 +1168,10 @@ class MergerRoot : EBManagedObject,
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardDisplayRect_property)
     self.boardRect_property.removeEBObserver (self.boardWidth_property)
     self.boardRect_property.removeEBObserver (self.boardHeight_property)
+    self.boardRect_property.removeEBObserver (self.overObjectsDisplay_property)
+    self.boardLimitWidth_property.removeEBObserver (self.overObjectsDisplay_property)
+    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.overObjectsDisplay_property)
+    g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.overObjectsDisplay_property)
   }
 
   //····················································································································
@@ -1092,14 +1366,6 @@ class MergerRoot : EBManagedObject,
       valueExplorer:&self.modelNames_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "overObjectsDisplay",
-      idx:self.overObjectsDisplay_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.overObjectsDisplay_property.mObserverExplorer,
-      valueExplorer:&self.overObjectsDisplay_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "boardRect",
       idx:self.boardRect_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -1131,21 +1397,15 @@ class MergerRoot : EBManagedObject,
       observerExplorer:&self.boardHeight_property.mObserverExplorer,
       valueExplorer:&self.boardHeight_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "overObjectsDisplay",
+      idx:self.overObjectsDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.overObjectsDisplay_property.mObserverExplorer,
+      valueExplorer:&self.overObjectsDisplay_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "boardModels",
-      idx:boardModels_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&boardModels_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "boardInstances",
-      idx:boardInstances_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&boardInstances_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "artwork",
@@ -1162,50 +1422,115 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To many property: boardModels
+    self.boardModels_property.mValueExplorer = nil
+  //--- To many property: boardInstances
+    self.boardInstances_property.mValueExplorer = nil
+  //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.mObserverExplorer = nil
     self.selectedPageIndex_property.mValueExplorer = nil
+  //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
+  //--- Atomic property: automaticBoardSize
     self.automaticBoardSize_property.mObserverExplorer = nil
     self.automaticBoardSize_property.mValueExplorer = nil
+  //--- Atomic property: boardManualWidth
     self.boardManualWidth_property.mObserverExplorer = nil
     self.boardManualWidth_property.mValueExplorer = nil
+  //--- Atomic property: boardManualHeight
     self.boardManualHeight_property.mObserverExplorer = nil
     self.boardManualHeight_property.mValueExplorer = nil
+  //--- Atomic property: boardWidthUnit
     self.boardWidthUnit_property.mObserverExplorer = nil
     self.boardWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: boardHeightUnit
     self.boardHeightUnit_property.mObserverExplorer = nil
     self.boardHeightUnit_property.mValueExplorer = nil
+  //--- Atomic property: overlapingArrangment
     self.overlapingArrangment_property.mObserverExplorer = nil
     self.overlapingArrangment_property.mValueExplorer = nil
+  //--- Atomic property: selectedBoardXUnit
     self.selectedBoardXUnit_property.mObserverExplorer = nil
     self.selectedBoardXUnit_property.mValueExplorer = nil
+  //--- Atomic property: selectedBoardYUnit
     self.selectedBoardYUnit_property.mObserverExplorer = nil
     self.selectedBoardYUnit_property.mValueExplorer = nil
+  //--- Atomic property: boardLimitWidth
     self.boardLimitWidth_property.mObserverExplorer = nil
     self.boardLimitWidth_property.mValueExplorer = nil
+  //--- Atomic property: boardLimitWidthUnit
     self.boardLimitWidthUnit_property.mObserverExplorer = nil
     self.boardLimitWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: arrowMagnitude
     self.arrowMagnitude_property.mObserverExplorer = nil
     self.arrowMagnitude_property.mValueExplorer = nil
+  //--- Atomic property: arrowMagnitudeUnit
     self.arrowMagnitudeUnit_property.mObserverExplorer = nil
     self.arrowMagnitudeUnit_property.mValueExplorer = nil
+  //--- Atomic property: shiftArrowMagnitude
     self.shiftArrowMagnitude_property.mObserverExplorer = nil
     self.shiftArrowMagnitude_property.mValueExplorer = nil
+  //--- Atomic property: shiftArrowMagnitudeUnit
     self.shiftArrowMagnitudeUnit_property.mObserverExplorer = nil
     self.shiftArrowMagnitudeUnit_property.mValueExplorer = nil
-    self.artworkName_property.mObserverExplorer = nil
-    self.artworkName_property.mValueExplorer = nil
-    self.generateGerberProductFile_property.mObserverExplorer = nil
-    self.generateGerberProductFile_property.mValueExplorer = nil
-    self.generatePDFProductFile_property.mObserverExplorer = nil
-    self.generatePDFProductFile_property.mValueExplorer = nil
-    self.generatedBoardArchiveFormat_property.mObserverExplorer = nil
-    self.generatedBoardArchiveFormat_property.mValueExplorer = nil
+  //--- To one property: artwork
     self.artwork_property.mObserverExplorer = nil
     self.artwork_property.mValueExplorer = nil
-    self.boardModels_property.mValueExplorer = nil
-    self.boardInstances_property.mValueExplorer = nil
+  //--- Atomic property: artworkName
+    self.artworkName_property.mObserverExplorer = nil
+    self.artworkName_property.mValueExplorer = nil
+  //--- Atomic property: generateGerberProductFile
+    self.generateGerberProductFile_property.mObserverExplorer = nil
+    self.generateGerberProductFile_property.mValueExplorer = nil
+  //--- Atomic property: generatePDFProductFile
+    self.generatePDFProductFile_property.mObserverExplorer = nil
+    self.generatePDFProductFile_property.mValueExplorer = nil
+  //--- Atomic property: generatedBoardArchiveFormat
+    self.generatedBoardArchiveFormat_property.mObserverExplorer = nil
+    self.generatedBoardArchiveFormat_property.mValueExplorer = nil
+ //   self.selectedPageIndex_property.mObserverExplorer = nil
+ //   self.selectedPageIndex_property.mValueExplorer = nil
+ //   self.zoom_property.mObserverExplorer = nil
+ //   self.zoom_property.mValueExplorer = nil
+ //   self.automaticBoardSize_property.mObserverExplorer = nil
+ //   self.automaticBoardSize_property.mValueExplorer = nil
+ //   self.boardManualWidth_property.mObserverExplorer = nil
+ //   self.boardManualWidth_property.mValueExplorer = nil
+ //   self.boardManualHeight_property.mObserverExplorer = nil
+ //   self.boardManualHeight_property.mValueExplorer = nil
+ //   self.boardWidthUnit_property.mObserverExplorer = nil
+ //   self.boardWidthUnit_property.mValueExplorer = nil
+ //   self.boardHeightUnit_property.mObserverExplorer = nil
+ //   self.boardHeightUnit_property.mValueExplorer = nil
+ //   self.overlapingArrangment_property.mObserverExplorer = nil
+ //   self.overlapingArrangment_property.mValueExplorer = nil
+ //   self.selectedBoardXUnit_property.mObserverExplorer = nil
+ //   self.selectedBoardXUnit_property.mValueExplorer = nil
+ //   self.selectedBoardYUnit_property.mObserverExplorer = nil
+ //   self.selectedBoardYUnit_property.mValueExplorer = nil
+ //   self.boardLimitWidth_property.mObserverExplorer = nil
+ //   self.boardLimitWidth_property.mValueExplorer = nil
+ //   self.boardLimitWidthUnit_property.mObserverExplorer = nil
+ //   self.boardLimitWidthUnit_property.mValueExplorer = nil
+ //   self.arrowMagnitude_property.mObserverExplorer = nil
+ //   self.arrowMagnitude_property.mValueExplorer = nil
+ //   self.arrowMagnitudeUnit_property.mObserverExplorer = nil
+ //   self.arrowMagnitudeUnit_property.mValueExplorer = nil
+ //   self.shiftArrowMagnitude_property.mObserverExplorer = nil
+ //   self.shiftArrowMagnitude_property.mValueExplorer = nil
+ //   self.shiftArrowMagnitudeUnit_property.mObserverExplorer = nil
+ //   self.shiftArrowMagnitudeUnit_property.mValueExplorer = nil
+ //   self.artworkName_property.mObserverExplorer = nil
+ //   self.artworkName_property.mValueExplorer = nil
+ //   self.generateGerberProductFile_property.mObserverExplorer = nil
+ //   self.generateGerberProductFile_property.mValueExplorer = nil
+ //   self.generatePDFProductFile_property.mObserverExplorer = nil
+ //   self.generatePDFProductFile_property.mValueExplorer = nil
+ //   self.generatedBoardArchiveFormat_property.mObserverExplorer = nil
+ //   self.generatedBoardArchiveFormat_property.mValueExplorer = nil
+ //   self.artwork_property.mObserverExplorer = nil
+ //   self.artwork_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -1215,29 +1540,83 @@ class MergerRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
-    self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey: "automaticBoardSize")
-    self.boardManualWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardManualWidth")
-    self.boardManualHeight_property.storeIn (dictionary: ioDictionary, forKey: "boardManualHeight")
-    self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
-    self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
-    self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
-    self.selectedBoardXUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardXUnit")
-    self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardYUnit")
-    self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
-    self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
-    self.arrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitude")
-    self.arrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitudeUnit")
-    self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitude")
-    self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitudeUnit")
-    self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
-    self.generateGerberProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generateGerberProductFile")
-    self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generatePDFProductFile")
-    self.generatedBoardArchiveFormat_property.storeIn (dictionary: ioDictionary, forKey: "generatedBoardArchiveFormat")
-    store (managedObjectArray: boardModels_property.propval as NSArray, relationshipName:"boardModels", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: boardInstances_property.propval as NSArray, relationshipName:"boardInstances", intoDictionary: ioDictionary) ;
-    store (managedObject:self.artwork_property.propval, relationshipName:"artwork", intoDictionary: ioDictionary) ;
+  //--- To many property: boardModels
+    self.store (
+      managedObjectArray: boardModels_property.propval as NSArray,
+      relationshipName: "boardModels",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: boardInstances
+    self.store (
+      managedObjectArray: boardInstances_property.propval as NSArray,
+      relationshipName: "boardInstances",
+      intoDictionary: ioDictionary
+    )
+  //--- Atomic property: selectedPageIndex
+    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
+  //--- Atomic property: zoom
+    self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
+  //--- Atomic property: automaticBoardSize
+    self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey:"automaticBoardSize")
+  //--- Atomic property: boardManualWidth
+    self.boardManualWidth_property.storeIn (dictionary: ioDictionary, forKey:"boardManualWidth")
+  //--- Atomic property: boardManualHeight
+    self.boardManualHeight_property.storeIn (dictionary: ioDictionary, forKey:"boardManualHeight")
+  //--- Atomic property: boardWidthUnit
+    self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"boardWidthUnit")
+  //--- Atomic property: boardHeightUnit
+    self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey:"boardHeightUnit")
+  //--- Atomic property: overlapingArrangment
+    self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey:"overlapingArrangment")
+  //--- Atomic property: selectedBoardXUnit
+    self.selectedBoardXUnit_property.storeIn (dictionary: ioDictionary, forKey:"selectedBoardXUnit")
+  //--- Atomic property: selectedBoardYUnit
+    self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey:"selectedBoardYUnit")
+  //--- Atomic property: boardLimitWidth
+    self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey:"boardLimitWidth")
+  //--- Atomic property: boardLimitWidthUnit
+    self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"boardLimitWidthUnit")
+  //--- Atomic property: arrowMagnitude
+    self.arrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey:"arrowMagnitude")
+  //--- Atomic property: arrowMagnitudeUnit
+    self.arrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey:"arrowMagnitudeUnit")
+  //--- Atomic property: shiftArrowMagnitude
+    self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey:"shiftArrowMagnitude")
+  //--- Atomic property: shiftArrowMagnitudeUnit
+    self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey:"shiftArrowMagnitudeUnit")
+  //--- To one property: artwork
+    self.store (managedObject:self.artwork_property.propval,
+      relationshipName: "artwork",
+      intoDictionary: ioDictionary)
+  //--- Atomic property: artworkName
+    self.artworkName_property.storeIn (dictionary: ioDictionary, forKey:"artworkName")
+  //--- Atomic property: generateGerberProductFile
+    self.generateGerberProductFile_property.storeIn (dictionary: ioDictionary, forKey:"generateGerberProductFile")
+  //--- Atomic property: generatePDFProductFile
+    self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey:"generatePDFProductFile")
+  //--- Atomic property: generatedBoardArchiveFormat
+    self.generatedBoardArchiveFormat_property.storeIn (dictionary: ioDictionary, forKey:"generatedBoardArchiveFormat")
+ //   self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+ //   self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+ //   self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey: "automaticBoardSize")
+ //   self.boardManualWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardManualWidth")
+ //   self.boardManualHeight_property.storeIn (dictionary: ioDictionary, forKey: "boardManualHeight")
+ //   self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
+ //   self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
+ //   self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
+ //   self.selectedBoardXUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardXUnit")
+ //   self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardYUnit")
+ //   self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
+ //   self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
+ //   self.arrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitude")
+ //   self.arrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitudeUnit")
+ //   self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitude")
+ //   self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitudeUnit")
+ //   self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
+ //   self.generateGerberProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generateGerberProductFile")
+ //   self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generatePDFProductFile")
+ //   self.generatedBoardArchiveFormat_property.storeIn (dictionary: ioDictionary, forKey: "generatedBoardArchiveFormat")
+ //   store (managedObject:self.artwork_property.propval, relationshipName:"artwork", intoDictionary: ioDictionary) ;
   }
 
   //····················································································································
@@ -1247,42 +1626,90 @@ class MergerRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
-    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
-    self.automaticBoardSize_property.readFrom (dictionary: inDictionary, forKey:"automaticBoardSize")
-    self.boardManualWidth_property.readFrom (dictionary: inDictionary, forKey:"boardManualWidth")
-    self.boardManualHeight_property.readFrom (dictionary: inDictionary, forKey:"boardManualHeight")
-    self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
-    self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
-    self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
-    self.selectedBoardXUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardXUnit")
-    self.selectedBoardYUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardYUnit")
-    self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
-    self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
-    self.arrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitude")
-    self.arrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitudeUnit")
-    self.shiftArrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitude")
-    self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitudeUnit")
-    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
-    self.generateGerberProductFile_property.readFrom (dictionary: inDictionary, forKey:"generateGerberProductFile")
-    self.generatePDFProductFile_property.readFrom (dictionary: inDictionary, forKey:"generatePDFProductFile")
-    self.generatedBoardArchiveFormat_property.readFrom (dictionary: inDictionary, forKey:"generatedBoardArchiveFormat")
+  //--- To many property: boardModels
     self.boardModels_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "boardModels",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [BoardModel])
+  //--- To many property: boardInstances
     self.boardInstances_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "boardInstances",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [MergerBoardInstance])
+  //--- Atomic property: selectedPageIndex
+    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+  //--- Atomic property: zoom
+    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+  //--- Atomic property: automaticBoardSize
+    self.automaticBoardSize_property.readFrom (dictionary: inDictionary, forKey:"automaticBoardSize")
+  //--- Atomic property: boardManualWidth
+    self.boardManualWidth_property.readFrom (dictionary: inDictionary, forKey:"boardManualWidth")
+  //--- Atomic property: boardManualHeight
+    self.boardManualHeight_property.readFrom (dictionary: inDictionary, forKey:"boardManualHeight")
+  //--- Atomic property: boardWidthUnit
+    self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
+  //--- Atomic property: boardHeightUnit
+    self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
+  //--- Atomic property: overlapingArrangment
+    self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
+  //--- Atomic property: selectedBoardXUnit
+    self.selectedBoardXUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardXUnit")
+  //--- Atomic property: selectedBoardYUnit
+    self.selectedBoardYUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardYUnit")
+  //--- Atomic property: boardLimitWidth
+    self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
+  //--- Atomic property: boardLimitWidthUnit
+    self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
+  //--- Atomic property: arrowMagnitude
+    self.arrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitude")
+  //--- Atomic property: arrowMagnitudeUnit
+    self.arrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitudeUnit")
+  //--- Atomic property: shiftArrowMagnitude
+    self.shiftArrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitude")
+  //--- Atomic property: shiftArrowMagnitudeUnit
+    self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitudeUnit")
+  //--- To one property: artwork
     self.artwork_property.setProp (readEntityFromDictionary (
+      inRelationshipName: "artwork",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as? ArtworkRoot)
+  //--- Atomic property: artworkName
+    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
+  //--- Atomic property: generateGerberProductFile
+    self.generateGerberProductFile_property.readFrom (dictionary: inDictionary, forKey:"generateGerberProductFile")
+  //--- Atomic property: generatePDFProductFile
+    self.generatePDFProductFile_property.readFrom (dictionary: inDictionary, forKey:"generatePDFProductFile")
+  //--- Atomic property: generatedBoardArchiveFormat
+    self.generatedBoardArchiveFormat_property.readFrom (dictionary: inDictionary, forKey:"generatedBoardArchiveFormat")
+//    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+//    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+//    self.automaticBoardSize_property.readFrom (dictionary: inDictionary, forKey:"automaticBoardSize")
+//    self.boardManualWidth_property.readFrom (dictionary: inDictionary, forKey:"boardManualWidth")
+//    self.boardManualHeight_property.readFrom (dictionary: inDictionary, forKey:"boardManualHeight")
+//    self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
+//    self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
+//    self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
+//    self.selectedBoardXUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardXUnit")
+//    self.selectedBoardYUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardYUnit")
+//    self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
+//    self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
+//    self.arrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitude")
+//    self.arrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitudeUnit")
+//    self.shiftArrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitude")
+//    self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitudeUnit")
+//    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
+//    self.generateGerberProductFile_property.readFrom (dictionary: inDictionary, forKey:"generateGerberProductFile")
+//    self.generatePDFProductFile_property.readFrom (dictionary: inDictionary, forKey:"generatePDFProductFile")
+//    self.generatedBoardArchiveFormat_property.readFrom (dictionary: inDictionary, forKey:"generatedBoardArchiveFormat")
+ /*   self.artwork_property.setProp (readEntityFromDictionary (
         inRelationshipName: "artwork",
         inDictionary: inDictionary,
         managedObjectArray: &managedObjectArray
       ) as? ArtworkRoot
-    )
+    ) */
   //--------------------------- Array controllers
   //--------------------------- Selection controllers
   }
@@ -1292,16 +1719,6 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    do{
-      let objects = self.boardModels_property.propval
-      self.boardModels_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.boardInstances_property.propval
-      self.boardInstances_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
     if let object = self.artwork_property.propval {
       self.artwork_property.setProp (nil)
       self.managedObjectContext ()?.internalRemoveManagedObject (object, &ioObjectsToRemove) // Cascade removing from moc
@@ -1334,15 +1751,21 @@ class MergerRoot : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: boardModels
     for managedObject : EBManagedObject in self.boardModels_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: boardInstances
     for managedObject : EBManagedObject in self.boardInstances_property.propval {
       objects.append (managedObject)
     }
-    if let object = self.artwork_property.propval {
-      objects.append (object)
+  //--- To one property: artwork
+    if let managedObject = self.artwork_property.propval {
+      objects.append (managedObject)
     }
+ /*   if let object = self.artwork_property.propval {
+      objects.append (object)
+    } */
   }
 
   //····················································································································
@@ -2672,62 +3095,6 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
-  //   Observers of 'overObjectsDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_overObjectsDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_overObjectsDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_overObjectsDisplay.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.overObjectsDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_overObjectsDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_overObjectsDisplay.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.overObjectsDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_overObjectsDisplay_toElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_overObjectsDisplay {
-        managedObject.overObjectsDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_overObjectsDisplay_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_overObjectsDisplay {
-        managedObject.overObjectsDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
   //   Observers of 'boardRect' transient property
   //····················································································································
 
@@ -2952,6 +3319,62 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
+  //   Observers of 'overObjectsDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_overObjectsDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_overObjectsDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_overObjectsDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.overObjectsDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_overObjectsDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_overObjectsDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.overObjectsDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_overObjectsDisplay_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_overObjectsDisplay {
+        managedObject.overObjectsDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_overObjectsDisplay_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_overObjectsDisplay {
+        managedObject.overObjectsDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -3030,11 +3453,11 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_cocoaArrowMagnitude_fromElementsOfSet (removedSet)
         removeEBObserversOf_cocoaShiftArrowMagnitude_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
-        removeEBObserversOf_overObjectsDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
+        removeEBObserversOf_overObjectsDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -3062,11 +3485,11 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_cocoaArrowMagnitude_toElementsOfSet (addedSet)
         addEBObserversOf_cocoaShiftArrowMagnitude_toElementsOfSet (addedSet)
         addEBObserversOf_modelNames_toElementsOfSet (addedSet)
-        addEBObserversOf_overObjectsDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_boardRect_toElementsOfSet (addedSet)
         addEBObserversOf_boardDisplayRect_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
+        addEBObserversOf_overObjectsDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -3177,68 +3600,68 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardRect_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_cocoaArrowMagnitude_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_cocoaShiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelNames_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_overObjectsDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_cocoaArrowMagnitude_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_cocoaShiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelNames_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardRect_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_overObjectsDisplay_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : MergerRoot in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_arrowMagnitude_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
         addEBObserversOf_automaticBoardSize_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardManualHeight_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardManualWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardRect_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardManualHeight_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_cocoaArrowMagnitude_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_cocoaShiftArrowMagnitude_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelNames_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_overObjectsDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_overlapingArrangment_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_arrowMagnitude_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedObjectSet)
         addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_cocoaArrowMagnitude_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_cocoaShiftArrowMagnitude_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelNames_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardRect_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_overObjectsDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
@@ -3331,179 +3754,11 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_selectedPageIndex : class {
-  var selectedPageIndex : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_zoom : class {
-  var zoom : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_automaticBoardSize : class {
-  var automaticBoardSize : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardManualWidth : class {
-  var boardManualWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardManualHeight : class {
-  var boardManualHeight : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardWidthUnit : class {
-  var boardWidthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardHeightUnit : class {
-  var boardHeightUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_overlapingArrangment : class {
-  var overlapingArrangment : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_selectedBoardXUnit : class {
-  var selectedBoardXUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_selectedBoardYUnit : class {
-  var selectedBoardYUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardLimitWidth : class {
-  var boardLimitWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardLimitWidthUnit : class {
-  var boardLimitWidthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_arrowMagnitude : class {
-  var arrowMagnitude : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_arrowMagnitudeUnit : class {
-  var arrowMagnitudeUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_shiftArrowMagnitude : class {
-  var shiftArrowMagnitude : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_shiftArrowMagnitudeUnit : class {
-  var shiftArrowMagnitudeUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_artworkName : class {
-  var artworkName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_generateGerberProductFile : class {
-  var generateGerberProductFile : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_generatePDFProductFile : class {
-  var generatePDFProductFile : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_generatedBoardArchiveFormat : class {
-  var generatedBoardArchiveFormat : BoardArchiveFormat { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_cocoaArrowMagnitude : class {
-  var cocoaArrowMagnitude : CGFloat? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_cocoaShiftArrowMagnitude : class {
-  var cocoaShiftArrowMagnitude : CGFloat? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_modelNames : class {
-  var modelNames : MergerBoardModelArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_overObjectsDisplay : class {
-  var overObjectsDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardRect : class {
-  var boardRect : CanariHorizontalRect? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardDisplayRect : class {
-  var boardDisplayRect : CanariHorizontalRect? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardWidth : class {
-  var boardWidth : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerRoot_boardHeight : class {
-  var boardHeight : Int? { get }
-}
-
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: artwork
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
+
   //····················································································································
   //   Value explorer
   //····················································································································
@@ -3533,7 +3788,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
     didSet {
       if let unwrappedOwner = owner, oldValue !== mValue {
       //--- Register old value in undo manager
-        unwrappedOwner.undoManager()?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)

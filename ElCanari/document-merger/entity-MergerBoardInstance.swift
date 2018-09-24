@@ -5,21 +5,85 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstance_x : class {
+  var x : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstance_y : class {
+  var y : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstance_instanceRotation : class {
+  var instanceRotation : QuadrantRotation { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstance_instanceRect : class {
+  var instanceRect : CanariHorizontalRect? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstance_modelName : class {
+  var modelName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstance_boardLimitWidth : class {
+  var boardLimitWidth : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstance_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol MergerBoardInstance_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class MergerBoardInstance : EBGraphicManagedObject,
-  MergerBoardInstance_x,
-  MergerBoardInstance_y,
-  MergerBoardInstance_instanceRotation,
-  MergerBoardInstance_instanceRect,
-  MergerBoardInstance_modelName,
-  MergerBoardInstance_boardLimitWidth,
-  MergerBoardInstance_selectionDisplay,
-  MergerBoardInstance_objectDisplay {
+         MergerBoardInstance_x,
+         MergerBoardInstance_y,
+         MergerBoardInstance_instanceRotation,
+         MergerBoardInstance_instanceRect,
+         MergerBoardInstance_modelName,
+         MergerBoardInstance_boardLimitWidth,
+         MergerBoardInstance_selectionDisplay,
+         MergerBoardInstance_objectDisplay {
 
   //····················································································································
-  //   Accessing x stored property
+  //   To one property: myModel
+  //····················································································································
+
+  var myModel_property = ToOneRelationship_MergerBoardInstance_myModel ()
+
+  //····················································································································
+
+  var myModel_property_selection : EBSelection <Bool> {
+    return .single (self.myModel_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Atomic property: x
+  //····················································································································
+
+  var x_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var x : Int {
@@ -31,14 +95,18 @@ class MergerBoardInstance : EBGraphicManagedObject,
     }
   }
 
+  //····················································································································
+
   var x_property_selection : EBSelection <Int> {
-    get {
-      return self.x_property.prop
-    }
+    return self.x_property.prop
   }
 
   //····················································································································
-  //   Accessing y stored property
+  //   Atomic property: y
+  //····················································································································
+
+  var y_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var y : Int {
@@ -50,14 +118,18 @@ class MergerBoardInstance : EBGraphicManagedObject,
     }
   }
 
+  //····················································································································
+
   var y_property_selection : EBSelection <Int> {
-    get {
-      return self.y_property.prop
-    }
+    return self.y_property.prop
   }
 
   //····················································································································
-  //   Accessing instanceRotation stored property
+  //   Atomic property: instanceRotation
+  //····················································································································
+
+  var instanceRotation_property = EBStoredProperty_QuadrantRotation (QuadrantRotation.rotation0)
+
   //····················································································································
 
   var instanceRotation : QuadrantRotation {
@@ -69,133 +141,93 @@ class MergerBoardInstance : EBGraphicManagedObject,
     }
   }
 
+  //····················································································································
+
   var instanceRotation_property_selection : EBSelection <QuadrantRotation> {
-    get {
-      return self.instanceRotation_property.prop
-    }
+    return self.instanceRotation_property.prop
   }
 
   //····················································································································
-  //   Accessing instanceRect transient property
-  //····················································································································
-
-  var instanceRect_property_selection : EBSelection <CanariHorizontalRect> {
-    get {
-      return self.instanceRect_property.prop
-    }
-  }
-
-  var instanceRect : CanariHorizontalRect? {
-    switch instanceRect_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing modelName transient property
-  //····················································································································
-
-  var modelName_property_selection : EBSelection <String> {
-    get {
-      return self.modelName_property.prop
-    }
-  }
-
-  var modelName : String? {
-    switch modelName_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardLimitWidth transient property
-  //····················································································································
-
-  var boardLimitWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.boardLimitWidth_property.prop
-    }
-  }
-
-  var boardLimitWidth : Int? {
-    switch boardLimitWidth_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing selectionDisplay transient property
-  //····················································································································
-
-  var selectionDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.selectionDisplay_property.prop
-    }
-  }
-
-  var selectionDisplay : EBShape? {
-    switch selectionDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing objectDisplay transient property
-  //····················································································································
-
-  var objectDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.objectDisplay_property.prop
-    }
-  }
-
-  var objectDisplay : EBShape? {
-    switch objectDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //    Stored Properties
-  //····················································································································
-
-  var x_property = EBStoredProperty_Int (0)
-  var y_property = EBStoredProperty_Int (0)
-  var instanceRotation_property = EBStoredProperty_QuadrantRotation (QuadrantRotation.rotation0)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var instanceRect_property = EBTransientProperty_CanariHorizontalRect ()
-  var modelName_property = EBTransientProperty_String ()
-  var boardLimitWidth_property = EBTransientProperty_Int ()
-  // selectionDisplay_property is declared in super entity
-  // objectDisplay_property is declared in super entity
-
-  //····················································································································
-  //    Relationships
+  //   To one property: myRoot
   //····················································································································
 
   var myRoot_property = ToOneRelationship_MergerBoardInstance_myRoot ()
-  var myRoot_property_selection : EBSelection <Bool> { return .single (self.myRoot_property.propval == nil) }
-  var myModel_property = ToOneRelationship_MergerBoardInstance_myModel ()
-  var myModel_property_selection : EBSelection <Bool> { return .single (self.myModel_property.propval == nil) }
+
+  //····················································································································
+
+  var myRoot_property_selection : EBSelection <Bool> {
+    return .single (self.myRoot_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Transient property: instanceRect
+  //····················································································································
+
+  var instanceRect_property = EBTransientProperty_CanariHorizontalRect ()
+
+  //····················································································································
+
+  var instanceRect_property_selection : EBSelection <CanariHorizontalRect> {
+    return self.instanceRect_property.prop
+  }
+
+  //····················································································································
+
+    var instanceRect : CanariHorizontalRect? {
+    switch self.instanceRect_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: modelName
+  //····················································································································
+
+  var modelName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var modelName_property_selection : EBSelection <String> {
+    return self.modelName_property.prop
+  }
+
+  //····················································································································
+
+    var modelName : String? {
+    switch self.modelName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimitWidth
+  //····················································································································
+
+  var boardLimitWidth_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var boardLimitWidth_property_selection : EBSelection <Int> {
+    return self.boardLimitWidth_property.prop
+  }
+
+  //····················································································································
+
+    var boardLimitWidth : Int? {
+    switch self.boardLimitWidth_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Array Controllers
@@ -213,7 +245,17 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
+  //--- To one property: myModel
+    self.myModel_property.owner = self
+  //--- Atomic property: x
+    self.x_property.undoManager = self.undoManager
+  //--- Atomic property: y
+    self.y_property.undoManager = self.undoManager
+  //--- Atomic property: instanceRotation
+    self.instanceRotation_property.undoManager = self.undoManager
+  //--- To one property: myRoot
+    self.myRoot_property.owner = self
+  //--- Atomic property: instanceRect
     self.instanceRect_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -238,6 +280,12 @@ class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
+    self.x_property.addEBObserver (self.instanceRect_property)
+    self.y_property.addEBObserver (self.instanceRect_property)
+    self.myModel_property.addEBObserverOf_modelWidth (self.instanceRect_property)
+    self.myModel_property.addEBObserverOf_modelHeight (self.instanceRect_property)
+    self.instanceRotation_property.addEBObserver (self.instanceRect_property)
+  //--- Atomic property: modelName
     self.modelName_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.myModel_property.name_property_selection.kind ()
@@ -258,6 +306,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
+    self.myModel_property.addEBObserverOf_name (self.modelName_property)
+  //--- Atomic property: boardLimitWidth
     self.boardLimitWidth_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.myModel_property.modelLimitWidth_property_selection.kind ()
@@ -278,6 +328,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
+    self.myModel_property.addEBObserverOf_modelLimitWidth (self.boardLimitWidth_property)
+  //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.instanceRect_property_selection.kind ()
@@ -298,6 +350,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
+    self.instanceRect_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: objectDisplay
     self.objectDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
@@ -323,28 +377,13 @@ class MergerBoardInstance : EBGraphicManagedObject,
         return .empty
       }
     }
-  //--- Install property observers for transients
-    self.x_property.addEBObserver (self.instanceRect_property)
-    self.y_property.addEBObserver (self.instanceRect_property)
-    self.myModel_property.addEBObserverOf_modelWidth (self.instanceRect_property)
-    self.myModel_property.addEBObserverOf_modelHeight (self.instanceRect_property)
-    self.instanceRotation_property.addEBObserver (self.instanceRect_property)
-    self.myModel_property.addEBObserverOf_name (self.modelName_property)
-    self.myModel_property.addEBObserverOf_modelLimitWidth (self.boardLimitWidth_property)
-    self.instanceRect_property.addEBObserver (self.selectionDisplay_property)
     self.x_property.addEBObserver (self.objectDisplay_property)
     self.y_property.addEBObserver (self.objectDisplay_property)
     self.myModel_property.addEBObserverOf_modelWidth (self.objectDisplay_property)
     self.myModel_property.addEBObserverOf_modelHeight (self.objectDisplay_property)
     self.instanceRotation_property.addEBObserver (self.objectDisplay_property)
     self.myModel_property.addEBObserverOf_imageForInstances (self.objectDisplay_property)
-  //--- Install undoers for properties
-    self.x_property.undoManager = self.undoManager ()
-    self.y_property.undoManager = self.undoManager ()
-    self.instanceRotation_property.undoManager = self.undoManager ()
   //--- Install undoers and opposite setter for relationships
-    self.myRoot_property.owner = self
-    self.myModel_property.owner = self
   //--- register properties for handling signature
   }
 
@@ -442,18 +481,18 @@ class MergerBoardInstance : EBGraphicManagedObject,
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
-      "myRoot",
-      idx:self.myRoot_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&self.myRoot_property.mValueExplorer
-    )
-    createEntryForToOneRelationshipNamed (
       "myModel",
       idx:self.myModel_property.mEasyBindingsObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&self.myModel_property.mValueExplorer
+    )
+    createEntryForToOneRelationshipNamed (
+      "myRoot",
+      idx:self.myRoot_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.myRoot_property.mValueExplorer
     )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -463,16 +502,31 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.x_property.mObserverExplorer = nil
-    self.x_property.mValueExplorer = nil
-    self.y_property.mObserverExplorer = nil
-    self.y_property.mValueExplorer = nil
-    self.instanceRotation_property.mObserverExplorer = nil
-    self.instanceRotation_property.mValueExplorer = nil
-    self.myRoot_property.mObserverExplorer = nil
-    self.myRoot_property.mValueExplorer = nil
+  //--- To one property: myModel
     self.myModel_property.mObserverExplorer = nil
     self.myModel_property.mValueExplorer = nil
+  //--- Atomic property: x
+    self.x_property.mObserverExplorer = nil
+    self.x_property.mValueExplorer = nil
+  //--- Atomic property: y
+    self.y_property.mObserverExplorer = nil
+    self.y_property.mValueExplorer = nil
+  //--- Atomic property: instanceRotation
+    self.instanceRotation_property.mObserverExplorer = nil
+    self.instanceRotation_property.mValueExplorer = nil
+  //--- To one property: myRoot
+    self.myRoot_property.mObserverExplorer = nil
+    self.myRoot_property.mValueExplorer = nil
+ //   self.x_property.mObserverExplorer = nil
+ //   self.x_property.mValueExplorer = nil
+ //   self.y_property.mObserverExplorer = nil
+ //   self.y_property.mValueExplorer = nil
+ //   self.instanceRotation_property.mObserverExplorer = nil
+ //   self.instanceRotation_property.mValueExplorer = nil
+ //   self.myModel_property.mObserverExplorer = nil
+ //   self.myModel_property.mValueExplorer = nil
+ //   self.myRoot_property.mObserverExplorer = nil
+ //   self.myRoot_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -482,9 +536,15 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
-    self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
-    self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey: "instanceRotation")
+  //--- Atomic property: x
+    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+  //--- Atomic property: y
+    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
+  //--- Atomic property: instanceRotation
+    self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey:"instanceRotation")
+ //   self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+ //   self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+ //   self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey: "instanceRotation")
   }
 
   //····················································································································
@@ -494,9 +554,15 @@ class MergerBoardInstance : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- Atomic property: x
     self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+  //--- Atomic property: y
     self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+  //--- Atomic property: instanceRotation
     self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey:"instanceRotation")
+//    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+//    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+//    self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey:"instanceRotation")
   //--------------------------- Array controllers
   //--------------------------- Selection controllers
   }
@@ -506,9 +572,17 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.myRoot_property.setProp (nil) // Set relationship to nil
     self.myModel_property.setProp (nil) // Set relationship to nil
+    self.myRoot_property.setProp (nil) // Set relationship to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetToManyRelationships
+  //····················································································································
+
+  override func resetToManyRelationships () {
+    super.resetToManyRelationships ()
   }
 
   //····················································································································
@@ -517,8 +591,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   override func resetToOneRelationships () {
     super.resetToOneRelationships ()
-    self.myRoot_property.setProp (nil)
     self.myModel_property.setProp (nil)
+    self.myRoot_property.setProp (nil)
   }
 
   //····················································································································
@@ -527,12 +601,20 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-    if let object = self.myRoot_property.propval {
-      objects.append (object)
+  //--- To one property: myModel
+    if let managedObject = self.myModel_property.propval {
+      objects.append (managedObject)
     }
-    if let object = self.myModel_property.propval {
-      objects.append (object)
+  //--- To one property: myRoot
+    if let managedObject = self.myRoot_property.propval {
+      objects.append (managedObject)
     }
+ /*   if let object = self.myModel_property.propval {
+      objects.append (object)
+    } */
+ /*   if let object = self.myRoot_property.propval {
+      objects.append (object)
+    } */
   }
 
   //····················································································································
@@ -1190,28 +1272,28 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_instanceRotation_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelName_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_instanceRotation_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelName_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : MergerBoardInstance in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_instanceRotation_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelName_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_instanceRotation_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelName_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
@@ -1304,1404 +1386,11 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerBoardInstance_x : class {
-  var x : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerBoardInstance_y : class {
-  var y : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerBoardInstance_instanceRotation : class {
-  var instanceRotation : QuadrantRotation { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerBoardInstance_instanceRect : class {
-  var instanceRect : CanariHorizontalRect? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerBoardInstance_modelName : class {
-  var modelName : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerBoardInstance_boardLimitWidth : class {
-  var boardLimitWidth : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerBoardInstance_selectionDisplay : class {
-  var selectionDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol MergerBoardInstance_objectDisplay : class {
-  var objectDisplay : EBShape? { get }
-}
-
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To one relationship: myRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
-  //····················································································································
-  //   Value explorer
-  //····················································································································
-
-  var mValueExplorer : NSButton? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        switch prop {
-        case .empty, .multiple :
-          break ;
-        case .single (let v) :
-          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
-        }
-      }
-    }
-  }
-
-  weak var owner : MergerBoardInstance? {
-    didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
-      }
-    }
-  }
- 
-  weak private var mValue : MergerRoot? {
-    didSet {
-      if let unwrappedOwner = owner, oldValue !== mValue {
-      //--- Register old value in undo manager
-        unwrappedOwner.undoManager()?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
-      //--- Update explorer
-        if let unwrappedExplorer = mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
-        }
-      //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.boardInstances_property.remove (unwrappedOwner)
-        }
-      //--- Set new opposite relation ship
-        if let unwrappedValue = mValue {
-          unwrappedValue.boardInstances_property.add (unwrappedOwner)
-        }
-      //--- Remove property observers of old object
-        oldValue?.arrowMagnitude_property.removeEBObserversFrom (mObserversOf_arrowMagnitude)
-        oldValue?.arrowMagnitudeUnit_property.removeEBObserversFrom (mObserversOf_arrowMagnitudeUnit)
-        oldValue?.artworkName_property.removeEBObserversFrom (mObserversOf_artworkName)
-        oldValue?.automaticBoardSize_property.removeEBObserversFrom (mObserversOf_automaticBoardSize)
-        oldValue?.boardDisplayRect_property.removeEBObserversFrom (mObserversOf_boardDisplayRect)
-        oldValue?.boardHeight_property.removeEBObserversFrom (mObserversOf_boardHeight)
-        oldValue?.boardHeightUnit_property.removeEBObserversFrom (mObserversOf_boardHeightUnit)
-        oldValue?.boardLimitWidth_property.removeEBObserversFrom (mObserversOf_boardLimitWidth)
-        oldValue?.boardLimitWidthUnit_property.removeEBObserversFrom (mObserversOf_boardLimitWidthUnit)
-        oldValue?.boardManualHeight_property.removeEBObserversFrom (mObserversOf_boardManualHeight)
-        oldValue?.boardManualWidth_property.removeEBObserversFrom (mObserversOf_boardManualWidth)
-        oldValue?.boardRect_property.removeEBObserversFrom (mObserversOf_boardRect)
-        oldValue?.boardWidth_property.removeEBObserversFrom (mObserversOf_boardWidth)
-        oldValue?.boardWidthUnit_property.removeEBObserversFrom (mObserversOf_boardWidthUnit)
-        oldValue?.cocoaArrowMagnitude_property.removeEBObserversFrom (mObserversOf_cocoaArrowMagnitude)
-        oldValue?.cocoaShiftArrowMagnitude_property.removeEBObserversFrom (mObserversOf_cocoaShiftArrowMagnitude)
-        oldValue?.generateGerberProductFile_property.removeEBObserversFrom (mObserversOf_generateGerberProductFile)
-        oldValue?.generatePDFProductFile_property.removeEBObserversFrom (mObserversOf_generatePDFProductFile)
-        oldValue?.generatedBoardArchiveFormat_property.removeEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
-        oldValue?.modelNames_property.removeEBObserversFrom (mObserversOf_modelNames)
-        oldValue?.overObjectsDisplay_property.removeEBObserversFrom (mObserversOf_overObjectsDisplay)
-        oldValue?.overlapingArrangment_property.removeEBObserversFrom (mObserversOf_overlapingArrangment)
-        oldValue?.selectedBoardXUnit_property.removeEBObserversFrom (mObserversOf_selectedBoardXUnit)
-        oldValue?.selectedBoardYUnit_property.removeEBObserversFrom (mObserversOf_selectedBoardYUnit)
-        oldValue?.selectedPageIndex_property.removeEBObserversFrom (mObserversOf_selectedPageIndex)
-        oldValue?.shiftArrowMagnitude_property.removeEBObserversFrom (mObserversOf_shiftArrowMagnitude)
-        oldValue?.shiftArrowMagnitudeUnit_property.removeEBObserversFrom (mObserversOf_shiftArrowMagnitudeUnit)
-        oldValue?.zoom_property.removeEBObserversFrom (mObserversOf_zoom)
-      //--- Add property observers to new object
-        mValue?.arrowMagnitude_property.addEBObserversFrom (mObserversOf_arrowMagnitude)
-        mValue?.arrowMagnitudeUnit_property.addEBObserversFrom (mObserversOf_arrowMagnitudeUnit)
-        mValue?.artworkName_property.addEBObserversFrom (mObserversOf_artworkName)
-        mValue?.automaticBoardSize_property.addEBObserversFrom (mObserversOf_automaticBoardSize)
-        mValue?.boardDisplayRect_property.addEBObserversFrom (mObserversOf_boardDisplayRect)
-        mValue?.boardHeight_property.addEBObserversFrom (mObserversOf_boardHeight)
-        mValue?.boardHeightUnit_property.addEBObserversFrom (mObserversOf_boardHeightUnit)
-        mValue?.boardLimitWidth_property.addEBObserversFrom (mObserversOf_boardLimitWidth)
-        mValue?.boardLimitWidthUnit_property.addEBObserversFrom (mObserversOf_boardLimitWidthUnit)
-        mValue?.boardManualHeight_property.addEBObserversFrom (mObserversOf_boardManualHeight)
-        mValue?.boardManualWidth_property.addEBObserversFrom (mObserversOf_boardManualWidth)
-        mValue?.boardRect_property.addEBObserversFrom (mObserversOf_boardRect)
-        mValue?.boardWidth_property.addEBObserversFrom (mObserversOf_boardWidth)
-        mValue?.boardWidthUnit_property.addEBObserversFrom (mObserversOf_boardWidthUnit)
-        mValue?.cocoaArrowMagnitude_property.addEBObserversFrom (mObserversOf_cocoaArrowMagnitude)
-        mValue?.cocoaShiftArrowMagnitude_property.addEBObserversFrom (mObserversOf_cocoaShiftArrowMagnitude)
-        mValue?.generateGerberProductFile_property.addEBObserversFrom (mObserversOf_generateGerberProductFile)
-        mValue?.generatePDFProductFile_property.addEBObserversFrom (mObserversOf_generatePDFProductFile)
-        mValue?.generatedBoardArchiveFormat_property.addEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
-        mValue?.modelNames_property.addEBObserversFrom (mObserversOf_modelNames)
-        mValue?.overObjectsDisplay_property.addEBObserversFrom (mObserversOf_overObjectsDisplay)
-        mValue?.overlapingArrangment_property.addEBObserversFrom (mObserversOf_overlapingArrangment)
-        mValue?.selectedBoardXUnit_property.addEBObserversFrom (mObserversOf_selectedBoardXUnit)
-        mValue?.selectedBoardYUnit_property.addEBObserversFrom (mObserversOf_selectedBoardYUnit)
-        mValue?.selectedPageIndex_property.addEBObserversFrom (mObserversOf_selectedPageIndex)
-        mValue?.shiftArrowMagnitude_property.addEBObserversFrom (mObserversOf_shiftArrowMagnitude)
-        mValue?.shiftArrowMagnitudeUnit_property.addEBObserversFrom (mObserversOf_shiftArrowMagnitudeUnit)
-        mValue?.zoom_property.addEBObserversFrom (mObserversOf_zoom)
-       //--- Notify observers
-        postEvent ()
-      }
-    }
-  }
-
-  var propval : MergerRoot? { get { return mValue } }
-
-  var prop : EBSelection <MergerRoot?> { get { return .single (mValue) } }
-
-  func setProp (_ value : MergerRoot?) { mValue = value }
-
-  //····················································································································
-
-  @objc func performUndo (_ oldValue : MergerRoot?) {
-    mValue = oldValue
-  }
-
-  //····················································································································
-
-  func remove (_ object : MergerRoot) {
-    if mValue === object {
-      mValue = nil
-    }
-  }
-  
-  //····················································································································
-
-  func add (_ object : MergerRoot) {
-    mValue = object
-  }
-
-  //····················································································································
-  //   Observable property: arrowMagnitude
-  //····················································································································
-
-  private var mObserversOf_arrowMagnitude = EBWeakEventSet ()
-
-  //····················································································································
-
-  var arrowMagnitude_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.arrowMagnitude_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_arrowMagnitude.insert (inObserver)
-    if let object = self.propval {
-      object.arrowMagnitude_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_arrowMagnitude.remove (inObserver)
-    if let object = self.propval {
-      object.arrowMagnitude_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: arrowMagnitudeUnit
-  //····················································································································
-
-  private var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var arrowMagnitudeUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.arrowMagnitudeUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
-    mObserversOf_arrowMagnitudeUnit.insert (inObserver)
-    if let object = self.propval {
-      object.arrowMagnitudeUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
-    mObserversOf_arrowMagnitudeUnit.remove (inObserver)
-    if let object = self.propval {
-      object.arrowMagnitudeUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: artworkName
-  //····················································································································
-
-  private var mObserversOf_artworkName = EBWeakEventSet ()
-
-  //····················································································································
-
-  var artworkName_property_selection : EBSelection <String?> {
-    get {
-      if let model = self.propval {
-        switch (model.artworkName_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    mObserversOf_artworkName.insert (inObserver)
-    if let object = self.propval {
-      object.artworkName_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    mObserversOf_artworkName.remove (inObserver)
-    if let object = self.propval {
-      object.artworkName_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: automaticBoardSize
-  //····················································································································
-
-  private var mObserversOf_automaticBoardSize = EBWeakEventSet ()
-
-  //····················································································································
-
-  var automaticBoardSize_property_selection : EBSelection <Bool?> {
-    get {
-      if let model = self.propval {
-        switch (model.automaticBoardSize_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
-    mObserversOf_automaticBoardSize.insert (inObserver)
-    if let object = self.propval {
-      object.automaticBoardSize_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
-    mObserversOf_automaticBoardSize.remove (inObserver)
-    if let object = self.propval {
-      object.automaticBoardSize_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: boardDisplayRect
-  //····················································································································
-
-  private var mObserversOf_boardDisplayRect = EBWeakEventSet ()
-
-  //····················································································································
-
-  var boardDisplayRect_property_selection : EBSelection <CanariHorizontalRect?> {
-    get {
-      if let model = self.propval {
-        switch (model.boardDisplayRect_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
-    mObserversOf_boardDisplayRect.insert (inObserver)
-    if let object = self.propval {
-      object.boardDisplayRect_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
-    mObserversOf_boardDisplayRect.remove (inObserver)
-    if let object = self.propval {
-      object.boardDisplayRect_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: boardHeight
-  //····················································································································
-
-  private var mObserversOf_boardHeight = EBWeakEventSet ()
-
-  //····················································································································
-
-  var boardHeight_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.boardHeight_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_boardHeight (_ inObserver : EBEvent) {
-    mObserversOf_boardHeight.insert (inObserver)
-    if let object = self.propval {
-      object.boardHeight_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardHeight (_ inObserver : EBEvent) {
-    mObserversOf_boardHeight.remove (inObserver)
-    if let object = self.propval {
-      object.boardHeight_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: boardHeightUnit
-  //····················································································································
-
-  private var mObserversOf_boardHeightUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var boardHeightUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.boardHeightUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardHeightUnit.insert (inObserver)
-    if let object = self.propval {
-      object.boardHeightUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardHeightUnit.remove (inObserver)
-    if let object = self.propval {
-      object.boardHeightUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: boardLimitWidth
-  //····················································································································
-
-  private var mObserversOf_boardLimitWidth = EBWeakEventSet ()
-
-  //····················································································································
-
-  var boardLimitWidth_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.boardLimitWidth_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardLimitWidth.insert (inObserver)
-    if let object = self.propval {
-      object.boardLimitWidth_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardLimitWidth.remove (inObserver)
-    if let object = self.propval {
-      object.boardLimitWidth_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: boardLimitWidthUnit
-  //····················································································································
-
-  private var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var boardLimitWidthUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.boardLimitWidthUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardLimitWidthUnit.insert (inObserver)
-    if let object = self.propval {
-      object.boardLimitWidthUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardLimitWidthUnit.remove (inObserver)
-    if let object = self.propval {
-      object.boardLimitWidthUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: boardManualHeight
-  //····················································································································
-
-  private var mObserversOf_boardManualHeight = EBWeakEventSet ()
-
-  //····················································································································
-
-  var boardManualHeight_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.boardManualHeight_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
-    mObserversOf_boardManualHeight.insert (inObserver)
-    if let object = self.propval {
-      object.boardManualHeight_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
-    mObserversOf_boardManualHeight.remove (inObserver)
-    if let object = self.propval {
-      object.boardManualHeight_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: boardManualWidth
-  //····················································································································
-
-  private var mObserversOf_boardManualWidth = EBWeakEventSet ()
-
-  //····················································································································
-
-  var boardManualWidth_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.boardManualWidth_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardManualWidth.insert (inObserver)
-    if let object = self.propval {
-      object.boardManualWidth_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardManualWidth.remove (inObserver)
-    if let object = self.propval {
-      object.boardManualWidth_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: boardRect
-  //····················································································································
-
-  private var mObserversOf_boardRect = EBWeakEventSet ()
-
-  //····················································································································
-
-  var boardRect_property_selection : EBSelection <CanariHorizontalRect?> {
-    get {
-      if let model = self.propval {
-        switch (model.boardRect_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_boardRect (_ inObserver : EBEvent) {
-    mObserversOf_boardRect.insert (inObserver)
-    if let object = self.propval {
-      object.boardRect_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardRect (_ inObserver : EBEvent) {
-    mObserversOf_boardRect.remove (inObserver)
-    if let object = self.propval {
-      object.boardRect_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: boardWidth
-  //····················································································································
-
-  private var mObserversOf_boardWidth = EBWeakEventSet ()
-
-  //····················································································································
-
-  var boardWidth_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.boardWidth_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_boardWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardWidth.insert (inObserver)
-    if let object = self.propval {
-      object.boardWidth_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardWidth.remove (inObserver)
-    if let object = self.propval {
-      object.boardWidth_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: boardWidthUnit
-  //····················································································································
-
-  private var mObserversOf_boardWidthUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var boardWidthUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.boardWidthUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardWidthUnit.insert (inObserver)
-    if let object = self.propval {
-      object.boardWidthUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardWidthUnit.remove (inObserver)
-    if let object = self.propval {
-      object.boardWidthUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: cocoaArrowMagnitude
-  //····················································································································
-
-  private var mObserversOf_cocoaArrowMagnitude = EBWeakEventSet ()
-
-  //····················································································································
-
-  var cocoaArrowMagnitude_property_selection : EBSelection <CGFloat?> {
-    get {
-      if let model = self.propval {
-        switch (model.cocoaArrowMagnitude_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_cocoaArrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_cocoaArrowMagnitude.insert (inObserver)
-    if let object = self.propval {
-      object.cocoaArrowMagnitude_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_cocoaArrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_cocoaArrowMagnitude.remove (inObserver)
-    if let object = self.propval {
-      object.cocoaArrowMagnitude_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: cocoaShiftArrowMagnitude
-  //····················································································································
-
-  private var mObserversOf_cocoaShiftArrowMagnitude = EBWeakEventSet ()
-
-  //····················································································································
-
-  var cocoaShiftArrowMagnitude_property_selection : EBSelection <CGFloat?> {
-    get {
-      if let model = self.propval {
-        switch (model.cocoaShiftArrowMagnitude_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_cocoaShiftArrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_cocoaShiftArrowMagnitude.insert (inObserver)
-    if let object = self.propval {
-      object.cocoaShiftArrowMagnitude_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_cocoaShiftArrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_cocoaShiftArrowMagnitude.remove (inObserver)
-    if let object = self.propval {
-      object.cocoaShiftArrowMagnitude_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: generateGerberProductFile
-  //····················································································································
-
-  private var mObserversOf_generateGerberProductFile = EBWeakEventSet ()
-
-  //····················································································································
-
-  var generateGerberProductFile_property_selection : EBSelection <Bool?> {
-    get {
-      if let model = self.propval {
-        switch (model.generateGerberProductFile_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
-    mObserversOf_generateGerberProductFile.insert (inObserver)
-    if let object = self.propval {
-      object.generateGerberProductFile_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
-    mObserversOf_generateGerberProductFile.remove (inObserver)
-    if let object = self.propval {
-      object.generateGerberProductFile_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: generatePDFProductFile
-  //····················································································································
-
-  private var mObserversOf_generatePDFProductFile = EBWeakEventSet ()
-
-  //····················································································································
-
-  var generatePDFProductFile_property_selection : EBSelection <Bool?> {
-    get {
-      if let model = self.propval {
-        switch (model.generatePDFProductFile_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
-    mObserversOf_generatePDFProductFile.insert (inObserver)
-    if let object = self.propval {
-      object.generatePDFProductFile_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
-    mObserversOf_generatePDFProductFile.remove (inObserver)
-    if let object = self.propval {
-      object.generatePDFProductFile_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: generatedBoardArchiveFormat
-  //····················································································································
-
-  private var mObserversOf_generatedBoardArchiveFormat = EBWeakEventSet ()
-
-  //····················································································································
-
-  var generatedBoardArchiveFormat_property_selection : EBSelection <BoardArchiveFormat?> {
-    get {
-      if let model = self.propval {
-        switch (model.generatedBoardArchiveFormat_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
-    mObserversOf_generatedBoardArchiveFormat.insert (inObserver)
-    if let object = self.propval {
-      object.generatedBoardArchiveFormat_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
-    mObserversOf_generatedBoardArchiveFormat.remove (inObserver)
-    if let object = self.propval {
-      object.generatedBoardArchiveFormat_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: modelNames
-  //····················································································································
-
-  private var mObserversOf_modelNames = EBWeakEventSet ()
-
-  //····················································································································
-
-  var modelNames_property_selection : EBSelection <MergerBoardModelArray?> {
-    get {
-      if let model = self.propval {
-        switch (model.modelNames_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_modelNames (_ inObserver : EBEvent) {
-    mObserversOf_modelNames.insert (inObserver)
-    if let object = self.propval {
-      object.modelNames_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_modelNames (_ inObserver : EBEvent) {
-    mObserversOf_modelNames.remove (inObserver)
-    if let object = self.propval {
-      object.modelNames_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: overObjectsDisplay
-  //····················································································································
-
-  private var mObserversOf_overObjectsDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  var overObjectsDisplay_property_selection : EBSelection <EBShape?> {
-    get {
-      if let model = self.propval {
-        switch (model.overObjectsDisplay_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_overObjectsDisplay (_ inObserver : EBEvent) {
-    mObserversOf_overObjectsDisplay.insert (inObserver)
-    if let object = self.propval {
-      object.overObjectsDisplay_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_overObjectsDisplay (_ inObserver : EBEvent) {
-    mObserversOf_overObjectsDisplay.remove (inObserver)
-    if let object = self.propval {
-      object.overObjectsDisplay_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: overlapingArrangment
-  //····················································································································
-
-  private var mObserversOf_overlapingArrangment = EBWeakEventSet ()
-
-  //····················································································································
-
-  var overlapingArrangment_property_selection : EBSelection <Bool?> {
-    get {
-      if let model = self.propval {
-        switch (model.overlapingArrangment_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
-    mObserversOf_overlapingArrangment.insert (inObserver)
-    if let object = self.propval {
-      object.overlapingArrangment_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
-    mObserversOf_overlapingArrangment.remove (inObserver)
-    if let object = self.propval {
-      object.overlapingArrangment_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: selectedBoardXUnit
-  //····················································································································
-
-  private var mObserversOf_selectedBoardXUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var selectedBoardXUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.selectedBoardXUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
-    mObserversOf_selectedBoardXUnit.insert (inObserver)
-    if let object = self.propval {
-      object.selectedBoardXUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
-    mObserversOf_selectedBoardXUnit.remove (inObserver)
-    if let object = self.propval {
-      object.selectedBoardXUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: selectedBoardYUnit
-  //····················································································································
-
-  private var mObserversOf_selectedBoardYUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var selectedBoardYUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.selectedBoardYUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
-    mObserversOf_selectedBoardYUnit.insert (inObserver)
-    if let object = self.propval {
-      object.selectedBoardYUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
-    mObserversOf_selectedBoardYUnit.remove (inObserver)
-    if let object = self.propval {
-      object.selectedBoardYUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: selectedPageIndex
-  //····················································································································
-
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
-
-  //····················································································································
-
-  var selectedPageIndex_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.selectedPageIndex_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    mObserversOf_selectedPageIndex.insert (inObserver)
-    if let object = self.propval {
-      object.selectedPageIndex_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    mObserversOf_selectedPageIndex.remove (inObserver)
-    if let object = self.propval {
-      object.selectedPageIndex_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: shiftArrowMagnitude
-  //····················································································································
-
-  private var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
-
-  //····················································································································
-
-  var shiftArrowMagnitude_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.shiftArrowMagnitude_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_shiftArrowMagnitude.insert (inObserver)
-    if let object = self.propval {
-      object.shiftArrowMagnitude_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_shiftArrowMagnitude.remove (inObserver)
-    if let object = self.propval {
-      object.shiftArrowMagnitude_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: shiftArrowMagnitudeUnit
-  //····················································································································
-
-  private var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
-
-  //····················································································································
-
-  var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.shiftArrowMagnitudeUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
-    mObserversOf_shiftArrowMagnitudeUnit.insert (inObserver)
-    if let object = self.propval {
-      object.shiftArrowMagnitudeUnit_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
-    mObserversOf_shiftArrowMagnitudeUnit.remove (inObserver)
-    if let object = self.propval {
-      object.shiftArrowMagnitudeUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: zoom
-  //····················································································································
-
-  private var mObserversOf_zoom = EBWeakEventSet ()
-
-  //····················································································································
-
-  var zoom_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.zoom_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
-    mObserversOf_zoom.insert (inObserver)
-    if let object = self.propval {
-      object.zoom_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
-    mObserversOf_zoom.remove (inObserver)
-    if let object = self.propval {
-      object.zoom_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To one relationship: myModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
+
   //····················································································································
   //   Value explorer
   //····················································································································
@@ -2731,7 +1420,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     didSet {
       if let unwrappedOwner = owner, oldValue !== mValue {
       //--- Register old value in undo manager
-        unwrappedOwner.undoManager()?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
@@ -2745,7 +1434,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
           unwrappedValue.myInstances_property.add (unwrappedOwner)
         }
       //--- Remove property observers of old object
-        oldValue?.artworkName_property.removeEBObserversFrom (mObserversOf_artworkName)
         oldValue?.backComponentNameSegments_property.removeEBObserversFrom (mObserversOf_backComponentNameSegments)
         oldValue?.backComponentNamesBezierPaths_property.removeEBObserversFrom (mObserversOf_backComponentNamesBezierPaths)
         oldValue?.backComponentValueSegments_property.removeEBObserversFrom (mObserversOf_backComponentValueSegments)
@@ -2784,7 +1472,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         oldValue?.holesBezierPaths_property.removeEBObserversFrom (mObserversOf_holesBezierPaths)
         oldValue?.imageForInstances_property.removeEBObserversFrom (mObserversOf_imageForInstances)
         oldValue?.imageForModel_property.removeEBObserversFrom (mObserversOf_imageForModel)
-        oldValue?.instanceCount_property.removeEBObserversFrom (mObserversOf_instanceCount)
         oldValue?.internalBoardsLimitsBezierPaths_property.removeEBObserversFrom (mObserversOf_internalBoardsLimitsBezierPaths)
         oldValue?.internalBoardsLimitsSegments_property.removeEBObserversFrom (mObserversOf_internalBoardsLimitsSegments)
         oldValue?.modelHeight_property.removeEBObserversFrom (mObserversOf_modelHeight)
@@ -2798,7 +1485,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         oldValue?.viasBezierPaths_property.removeEBObserversFrom (mObserversOf_viasBezierPaths)
         oldValue?.zoom_property.removeEBObserversFrom (mObserversOf_zoom)
       //--- Add property observers to new object
-        mValue?.artworkName_property.addEBObserversFrom (mObserversOf_artworkName)
         mValue?.backComponentNameSegments_property.addEBObserversFrom (mObserversOf_backComponentNameSegments)
         mValue?.backComponentNamesBezierPaths_property.addEBObserversFrom (mObserversOf_backComponentNamesBezierPaths)
         mValue?.backComponentValueSegments_property.addEBObserversFrom (mObserversOf_backComponentValueSegments)
@@ -2837,7 +1523,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         mValue?.holesBezierPaths_property.addEBObserversFrom (mObserversOf_holesBezierPaths)
         mValue?.imageForInstances_property.addEBObserversFrom (mObserversOf_imageForInstances)
         mValue?.imageForModel_property.addEBObserversFrom (mObserversOf_imageForModel)
-        mValue?.instanceCount_property.addEBObserversFrom (mObserversOf_instanceCount)
         mValue?.internalBoardsLimitsBezierPaths_property.addEBObserversFrom (mObserversOf_internalBoardsLimitsBezierPaths)
         mValue?.internalBoardsLimitsSegments_property.addEBObserversFrom (mObserversOf_internalBoardsLimitsSegments)
         mValue?.modelHeight_property.addEBObserversFrom (mObserversOf_modelHeight)
@@ -2880,49 +1565,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
 
   func add (_ object : BoardModel) {
     mValue = object
-  }
-
-  //····················································································································
-  //   Observable property: artworkName
-  //····················································································································
-
-  private var mObserversOf_artworkName = EBWeakEventSet ()
-
-  //····················································································································
-
-  var artworkName_property_selection : EBSelection <String?> {
-    get {
-      if let model = self.propval {
-        switch (model.artworkName_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    mObserversOf_artworkName.insert (inObserver)
-    if let object = self.propval {
-      object.artworkName_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    mObserversOf_artworkName.remove (inObserver)
-    if let object = self.propval {
-      object.artworkName_property.removeEBObserver (inObserver)
-    }
   }
 
   //····················································································································
@@ -4560,49 +3202,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   }
 
   //····················································································································
-  //   Observable property: instanceCount
-  //····················································································································
-
-  private var mObserversOf_instanceCount = EBWeakEventSet ()
-
-  //····················································································································
-
-  var instanceCount_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.instanceCount_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
-    mObserversOf_instanceCount.insert (inObserver)
-    if let object = self.propval {
-      object.instanceCount_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
-    mObserversOf_instanceCount.remove (inObserver)
-    if let object = self.propval {
-      object.instanceCount_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
   //   Observable property: internalBoardsLimitsBezierPaths
   //····················································································································
 
@@ -5072,6 +3671,1307 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     mObserversOf_viasBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.viasBezierPaths_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: zoom
+  //····················································································································
+
+  private var mObserversOf_zoom = EBWeakEventSet ()
+
+  //····················································································································
+
+  var zoom_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.zoom_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
+    mObserversOf_zoom.insert (inObserver)
+    if let object = self.propval {
+      object.zoom_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
+    mObserversOf_zoom.remove (inObserver)
+    if let object = self.propval {
+      object.zoom_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: myRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
+
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  weak var owner : MergerBoardInstance? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  weak private var mValue : MergerRoot? {
+    didSet {
+      if let unwrappedOwner = owner, oldValue !== mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
+        }
+      //--- Reset old opposite relation ship
+        if let unwrappedOldValue = oldValue {
+          unwrappedOldValue.boardInstances_property.remove (unwrappedOwner)
+        }
+      //--- Set new opposite relation ship
+        if let unwrappedValue = mValue {
+          unwrappedValue.boardInstances_property.add (unwrappedOwner)
+        }
+      //--- Remove property observers of old object
+        oldValue?.arrowMagnitude_property.removeEBObserversFrom (mObserversOf_arrowMagnitude)
+        oldValue?.arrowMagnitudeUnit_property.removeEBObserversFrom (mObserversOf_arrowMagnitudeUnit)
+        oldValue?.artworkName_property.removeEBObserversFrom (mObserversOf_artworkName)
+        oldValue?.automaticBoardSize_property.removeEBObserversFrom (mObserversOf_automaticBoardSize)
+        oldValue?.boardDisplayRect_property.removeEBObserversFrom (mObserversOf_boardDisplayRect)
+        oldValue?.boardHeight_property.removeEBObserversFrom (mObserversOf_boardHeight)
+        oldValue?.boardHeightUnit_property.removeEBObserversFrom (mObserversOf_boardHeightUnit)
+        oldValue?.boardLimitWidth_property.removeEBObserversFrom (mObserversOf_boardLimitWidth)
+        oldValue?.boardLimitWidthUnit_property.removeEBObserversFrom (mObserversOf_boardLimitWidthUnit)
+        oldValue?.boardManualHeight_property.removeEBObserversFrom (mObserversOf_boardManualHeight)
+        oldValue?.boardManualWidth_property.removeEBObserversFrom (mObserversOf_boardManualWidth)
+        oldValue?.boardRect_property.removeEBObserversFrom (mObserversOf_boardRect)
+        oldValue?.boardWidth_property.removeEBObserversFrom (mObserversOf_boardWidth)
+        oldValue?.boardWidthUnit_property.removeEBObserversFrom (mObserversOf_boardWidthUnit)
+        oldValue?.cocoaArrowMagnitude_property.removeEBObserversFrom (mObserversOf_cocoaArrowMagnitude)
+        oldValue?.cocoaShiftArrowMagnitude_property.removeEBObserversFrom (mObserversOf_cocoaShiftArrowMagnitude)
+        oldValue?.generateGerberProductFile_property.removeEBObserversFrom (mObserversOf_generateGerberProductFile)
+        oldValue?.generatePDFProductFile_property.removeEBObserversFrom (mObserversOf_generatePDFProductFile)
+        oldValue?.generatedBoardArchiveFormat_property.removeEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
+        oldValue?.modelNames_property.removeEBObserversFrom (mObserversOf_modelNames)
+        oldValue?.overlapingArrangment_property.removeEBObserversFrom (mObserversOf_overlapingArrangment)
+        oldValue?.selectedBoardXUnit_property.removeEBObserversFrom (mObserversOf_selectedBoardXUnit)
+        oldValue?.selectedBoardYUnit_property.removeEBObserversFrom (mObserversOf_selectedBoardYUnit)
+        oldValue?.selectedPageIndex_property.removeEBObserversFrom (mObserversOf_selectedPageIndex)
+        oldValue?.shiftArrowMagnitude_property.removeEBObserversFrom (mObserversOf_shiftArrowMagnitude)
+        oldValue?.shiftArrowMagnitudeUnit_property.removeEBObserversFrom (mObserversOf_shiftArrowMagnitudeUnit)
+        oldValue?.zoom_property.removeEBObserversFrom (mObserversOf_zoom)
+      //--- Add property observers to new object
+        mValue?.arrowMagnitude_property.addEBObserversFrom (mObserversOf_arrowMagnitude)
+        mValue?.arrowMagnitudeUnit_property.addEBObserversFrom (mObserversOf_arrowMagnitudeUnit)
+        mValue?.artworkName_property.addEBObserversFrom (mObserversOf_artworkName)
+        mValue?.automaticBoardSize_property.addEBObserversFrom (mObserversOf_automaticBoardSize)
+        mValue?.boardDisplayRect_property.addEBObserversFrom (mObserversOf_boardDisplayRect)
+        mValue?.boardHeight_property.addEBObserversFrom (mObserversOf_boardHeight)
+        mValue?.boardHeightUnit_property.addEBObserversFrom (mObserversOf_boardHeightUnit)
+        mValue?.boardLimitWidth_property.addEBObserversFrom (mObserversOf_boardLimitWidth)
+        mValue?.boardLimitWidthUnit_property.addEBObserversFrom (mObserversOf_boardLimitWidthUnit)
+        mValue?.boardManualHeight_property.addEBObserversFrom (mObserversOf_boardManualHeight)
+        mValue?.boardManualWidth_property.addEBObserversFrom (mObserversOf_boardManualWidth)
+        mValue?.boardRect_property.addEBObserversFrom (mObserversOf_boardRect)
+        mValue?.boardWidth_property.addEBObserversFrom (mObserversOf_boardWidth)
+        mValue?.boardWidthUnit_property.addEBObserversFrom (mObserversOf_boardWidthUnit)
+        mValue?.cocoaArrowMagnitude_property.addEBObserversFrom (mObserversOf_cocoaArrowMagnitude)
+        mValue?.cocoaShiftArrowMagnitude_property.addEBObserversFrom (mObserversOf_cocoaShiftArrowMagnitude)
+        mValue?.generateGerberProductFile_property.addEBObserversFrom (mObserversOf_generateGerberProductFile)
+        mValue?.generatePDFProductFile_property.addEBObserversFrom (mObserversOf_generatePDFProductFile)
+        mValue?.generatedBoardArchiveFormat_property.addEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
+        mValue?.modelNames_property.addEBObserversFrom (mObserversOf_modelNames)
+        mValue?.overlapingArrangment_property.addEBObserversFrom (mObserversOf_overlapingArrangment)
+        mValue?.selectedBoardXUnit_property.addEBObserversFrom (mObserversOf_selectedBoardXUnit)
+        mValue?.selectedBoardYUnit_property.addEBObserversFrom (mObserversOf_selectedBoardYUnit)
+        mValue?.selectedPageIndex_property.addEBObserversFrom (mObserversOf_selectedPageIndex)
+        mValue?.shiftArrowMagnitude_property.addEBObserversFrom (mObserversOf_shiftArrowMagnitude)
+        mValue?.shiftArrowMagnitudeUnit_property.addEBObserversFrom (mObserversOf_shiftArrowMagnitudeUnit)
+        mValue?.zoom_property.addEBObserversFrom (mObserversOf_zoom)
+       //--- Notify observers
+        postEvent ()
+      }
+    }
+  }
+
+  var propval : MergerRoot? { get { return mValue } }
+
+  var prop : EBSelection <MergerRoot?> { get { return .single (mValue) } }
+
+  func setProp (_ value : MergerRoot?) { mValue = value }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : MergerRoot?) {
+    mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : MergerRoot) {
+    if mValue === object {
+      mValue = nil
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : MergerRoot) {
+    mValue = object
+  }
+
+  //····················································································································
+  //   Observable property: arrowMagnitude
+  //····················································································································
+
+  private var mObserversOf_arrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  var arrowMagnitude_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.arrowMagnitude_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_arrowMagnitude.insert (inObserver)
+    if let object = self.propval {
+      object.arrowMagnitude_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_arrowMagnitude.remove (inObserver)
+    if let object = self.propval {
+      object.arrowMagnitude_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: arrowMagnitudeUnit
+  //····················································································································
+
+  private var mObserversOf_arrowMagnitudeUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var arrowMagnitudeUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.arrowMagnitudeUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
+    mObserversOf_arrowMagnitudeUnit.insert (inObserver)
+    if let object = self.propval {
+      object.arrowMagnitudeUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
+    mObserversOf_arrowMagnitudeUnit.remove (inObserver)
+    if let object = self.propval {
+      object.arrowMagnitudeUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: artworkName
+  //····················································································································
+
+  private var mObserversOf_artworkName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var artworkName_property_selection : EBSelection <String?> {
+    get {
+      if let model = self.propval {
+        switch (model.artworkName_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
+    mObserversOf_artworkName.insert (inObserver)
+    if let object = self.propval {
+      object.artworkName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
+    mObserversOf_artworkName.remove (inObserver)
+    if let object = self.propval {
+      object.artworkName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: automaticBoardSize
+  //····················································································································
+
+  private var mObserversOf_automaticBoardSize = EBWeakEventSet ()
+
+  //····················································································································
+
+  var automaticBoardSize_property_selection : EBSelection <Bool?> {
+    get {
+      if let model = self.propval {
+        switch (model.automaticBoardSize_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
+    mObserversOf_automaticBoardSize.insert (inObserver)
+    if let object = self.propval {
+      object.automaticBoardSize_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
+    mObserversOf_automaticBoardSize.remove (inObserver)
+    if let object = self.propval {
+      object.automaticBoardSize_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardDisplayRect
+  //····················································································································
+
+  private var mObserversOf_boardDisplayRect = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardDisplayRect_property_selection : EBSelection <CanariHorizontalRect?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardDisplayRect_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
+    mObserversOf_boardDisplayRect.insert (inObserver)
+    if let object = self.propval {
+      object.boardDisplayRect_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
+    mObserversOf_boardDisplayRect.remove (inObserver)
+    if let object = self.propval {
+      object.boardDisplayRect_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardHeight
+  //····················································································································
+
+  private var mObserversOf_boardHeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardHeight_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardHeight_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardHeight (_ inObserver : EBEvent) {
+    mObserversOf_boardHeight.insert (inObserver)
+    if let object = self.propval {
+      object.boardHeight_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardHeight (_ inObserver : EBEvent) {
+    mObserversOf_boardHeight.remove (inObserver)
+    if let object = self.propval {
+      object.boardHeight_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardHeightUnit
+  //····················································································································
+
+  private var mObserversOf_boardHeightUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardHeightUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardHeightUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
+    mObserversOf_boardHeightUnit.insert (inObserver)
+    if let object = self.propval {
+      object.boardHeightUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
+    mObserversOf_boardHeightUnit.remove (inObserver)
+    if let object = self.propval {
+      object.boardHeightUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardLimitWidth
+  //····················································································································
+
+  private var mObserversOf_boardLimitWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardLimitWidth_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardLimitWidth_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
+    mObserversOf_boardLimitWidth.insert (inObserver)
+    if let object = self.propval {
+      object.boardLimitWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
+    mObserversOf_boardLimitWidth.remove (inObserver)
+    if let object = self.propval {
+      object.boardLimitWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardLimitWidthUnit
+  //····················································································································
+
+  private var mObserversOf_boardLimitWidthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardLimitWidthUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardLimitWidthUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
+    mObserversOf_boardLimitWidthUnit.insert (inObserver)
+    if let object = self.propval {
+      object.boardLimitWidthUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
+    mObserversOf_boardLimitWidthUnit.remove (inObserver)
+    if let object = self.propval {
+      object.boardLimitWidthUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardManualHeight
+  //····················································································································
+
+  private var mObserversOf_boardManualHeight = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardManualHeight_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardManualHeight_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
+    mObserversOf_boardManualHeight.insert (inObserver)
+    if let object = self.propval {
+      object.boardManualHeight_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
+    mObserversOf_boardManualHeight.remove (inObserver)
+    if let object = self.propval {
+      object.boardManualHeight_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardManualWidth
+  //····················································································································
+
+  private var mObserversOf_boardManualWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardManualWidth_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardManualWidth_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
+    mObserversOf_boardManualWidth.insert (inObserver)
+    if let object = self.propval {
+      object.boardManualWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
+    mObserversOf_boardManualWidth.remove (inObserver)
+    if let object = self.propval {
+      object.boardManualWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardRect
+  //····················································································································
+
+  private var mObserversOf_boardRect = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardRect_property_selection : EBSelection <CanariHorizontalRect?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardRect_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardRect (_ inObserver : EBEvent) {
+    mObserversOf_boardRect.insert (inObserver)
+    if let object = self.propval {
+      object.boardRect_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardRect (_ inObserver : EBEvent) {
+    mObserversOf_boardRect.remove (inObserver)
+    if let object = self.propval {
+      object.boardRect_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardWidth
+  //····················································································································
+
+  private var mObserversOf_boardWidth = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardWidth_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardWidth_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardWidth (_ inObserver : EBEvent) {
+    mObserversOf_boardWidth.insert (inObserver)
+    if let object = self.propval {
+      object.boardWidth_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardWidth (_ inObserver : EBEvent) {
+    mObserversOf_boardWidth.remove (inObserver)
+    if let object = self.propval {
+      object.boardWidth_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: boardWidthUnit
+  //····················································································································
+
+  private var mObserversOf_boardWidthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var boardWidthUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.boardWidthUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
+    mObserversOf_boardWidthUnit.insert (inObserver)
+    if let object = self.propval {
+      object.boardWidthUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
+    mObserversOf_boardWidthUnit.remove (inObserver)
+    if let object = self.propval {
+      object.boardWidthUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: cocoaArrowMagnitude
+  //····················································································································
+
+  private var mObserversOf_cocoaArrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  var cocoaArrowMagnitude_property_selection : EBSelection <CGFloat?> {
+    get {
+      if let model = self.propval {
+        switch (model.cocoaArrowMagnitude_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_cocoaArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_cocoaArrowMagnitude.insert (inObserver)
+    if let object = self.propval {
+      object.cocoaArrowMagnitude_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cocoaArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_cocoaArrowMagnitude.remove (inObserver)
+    if let object = self.propval {
+      object.cocoaArrowMagnitude_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: cocoaShiftArrowMagnitude
+  //····················································································································
+
+  private var mObserversOf_cocoaShiftArrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  var cocoaShiftArrowMagnitude_property_selection : EBSelection <CGFloat?> {
+    get {
+      if let model = self.propval {
+        switch (model.cocoaShiftArrowMagnitude_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_cocoaShiftArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_cocoaShiftArrowMagnitude.insert (inObserver)
+    if let object = self.propval {
+      object.cocoaShiftArrowMagnitude_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cocoaShiftArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_cocoaShiftArrowMagnitude.remove (inObserver)
+    if let object = self.propval {
+      object.cocoaShiftArrowMagnitude_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: generateGerberProductFile
+  //····················································································································
+
+  private var mObserversOf_generateGerberProductFile = EBWeakEventSet ()
+
+  //····················································································································
+
+  var generateGerberProductFile_property_selection : EBSelection <Bool?> {
+    get {
+      if let model = self.propval {
+        switch (model.generateGerberProductFile_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
+    mObserversOf_generateGerberProductFile.insert (inObserver)
+    if let object = self.propval {
+      object.generateGerberProductFile_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
+    mObserversOf_generateGerberProductFile.remove (inObserver)
+    if let object = self.propval {
+      object.generateGerberProductFile_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: generatePDFProductFile
+  //····················································································································
+
+  private var mObserversOf_generatePDFProductFile = EBWeakEventSet ()
+
+  //····················································································································
+
+  var generatePDFProductFile_property_selection : EBSelection <Bool?> {
+    get {
+      if let model = self.propval {
+        switch (model.generatePDFProductFile_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
+    mObserversOf_generatePDFProductFile.insert (inObserver)
+    if let object = self.propval {
+      object.generatePDFProductFile_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
+    mObserversOf_generatePDFProductFile.remove (inObserver)
+    if let object = self.propval {
+      object.generatePDFProductFile_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: generatedBoardArchiveFormat
+  //····················································································································
+
+  private var mObserversOf_generatedBoardArchiveFormat = EBWeakEventSet ()
+
+  //····················································································································
+
+  var generatedBoardArchiveFormat_property_selection : EBSelection <BoardArchiveFormat?> {
+    get {
+      if let model = self.propval {
+        switch (model.generatedBoardArchiveFormat_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
+    mObserversOf_generatedBoardArchiveFormat.insert (inObserver)
+    if let object = self.propval {
+      object.generatedBoardArchiveFormat_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
+    mObserversOf_generatedBoardArchiveFormat.remove (inObserver)
+    if let object = self.propval {
+      object.generatedBoardArchiveFormat_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: modelNames
+  //····················································································································
+
+  private var mObserversOf_modelNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  var modelNames_property_selection : EBSelection <MergerBoardModelArray?> {
+    get {
+      if let model = self.propval {
+        switch (model.modelNames_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_modelNames (_ inObserver : EBEvent) {
+    mObserversOf_modelNames.insert (inObserver)
+    if let object = self.propval {
+      object.modelNames_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_modelNames (_ inObserver : EBEvent) {
+    mObserversOf_modelNames.remove (inObserver)
+    if let object = self.propval {
+      object.modelNames_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: overlapingArrangment
+  //····················································································································
+
+  private var mObserversOf_overlapingArrangment = EBWeakEventSet ()
+
+  //····················································································································
+
+  var overlapingArrangment_property_selection : EBSelection <Bool?> {
+    get {
+      if let model = self.propval {
+        switch (model.overlapingArrangment_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
+    mObserversOf_overlapingArrangment.insert (inObserver)
+    if let object = self.propval {
+      object.overlapingArrangment_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
+    mObserversOf_overlapingArrangment.remove (inObserver)
+    if let object = self.propval {
+      object.overlapingArrangment_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: selectedBoardXUnit
+  //····················································································································
+
+  private var mObserversOf_selectedBoardXUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectedBoardXUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.selectedBoardXUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
+    mObserversOf_selectedBoardXUnit.insert (inObserver)
+    if let object = self.propval {
+      object.selectedBoardXUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
+    mObserversOf_selectedBoardXUnit.remove (inObserver)
+    if let object = self.propval {
+      object.selectedBoardXUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: selectedBoardYUnit
+  //····················································································································
+
+  private var mObserversOf_selectedBoardYUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectedBoardYUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.selectedBoardYUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
+    mObserversOf_selectedBoardYUnit.insert (inObserver)
+    if let object = self.propval {
+      object.selectedBoardYUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
+    mObserversOf_selectedBoardYUnit.remove (inObserver)
+    if let object = self.propval {
+      object.selectedBoardYUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: selectedPageIndex
+  //····················································································································
+
+  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectedPageIndex_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.selectedPageIndex_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+    mObserversOf_selectedPageIndex.insert (inObserver)
+    if let object = self.propval {
+      object.selectedPageIndex_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+    mObserversOf_selectedPageIndex.remove (inObserver)
+    if let object = self.propval {
+      object.selectedPageIndex_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: shiftArrowMagnitude
+  //····················································································································
+
+  private var mObserversOf_shiftArrowMagnitude = EBWeakEventSet ()
+
+  //····················································································································
+
+  var shiftArrowMagnitude_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.shiftArrowMagnitude_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_shiftArrowMagnitude.insert (inObserver)
+    if let object = self.propval {
+      object.shiftArrowMagnitude_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
+    mObserversOf_shiftArrowMagnitude.remove (inObserver)
+    if let object = self.propval {
+      object.shiftArrowMagnitude_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: shiftArrowMagnitudeUnit
+  //····················································································································
+
+  private var mObserversOf_shiftArrowMagnitudeUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var shiftArrowMagnitudeUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.shiftArrowMagnitudeUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
+    mObserversOf_shiftArrowMagnitudeUnit.insert (inObserver)
+    if let object = self.propval {
+      object.shiftArrowMagnitudeUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
+    mObserversOf_shiftArrowMagnitudeUnit.remove (inObserver)
+    if let object = self.propval {
+      object.shiftArrowMagnitudeUnit_property.removeEBObserver (inObserver)
     }
   }
 

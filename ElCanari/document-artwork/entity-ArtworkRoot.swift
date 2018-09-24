@@ -5,24 +5,94 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_selectedTab : class {
+  var selectedTab : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_comments : class {
+  var comments : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_minPPTPTTTWdisplayUnit : class {
+  var minPPTPTTTWdisplayUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_minPPTPTTTW : class {
+  var minPPTPTTTW : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_minValueForOARdisplayUnit : class {
+  var minValueForOARdisplayUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_minValueForOARinEBUnit : class {
+  var minValueForOARinEBUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_minValueForPHDdisplayUnit : class {
+  var minValueForPHDdisplayUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_minValueForPHDinEBUnit : class {
+  var minValueForPHDinEBUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_minValueForBoardLimitWidthDisplayUnit : class {
+  var minValueForBoardLimitWidthDisplayUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_minValueForBoardLimitWidth : class {
+  var minValueForBoardLimitWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkRoot_drillDataFileExtension : class {
+  var drillDataFileExtension : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ArtworkRoot : EBManagedObject,
-  ArtworkRoot_selectedTab,
-  ArtworkRoot_comments,
-  ArtworkRoot_minPPTPTTTWdisplayUnit,
-  ArtworkRoot_minPPTPTTTW,
-  ArtworkRoot_minValueForOARdisplayUnit,
-  ArtworkRoot_minValueForOARinEBUnit,
-  ArtworkRoot_minValueForPHDdisplayUnit,
-  ArtworkRoot_minValueForPHDinEBUnit,
-  ArtworkRoot_minValueForBoardLimitWidthDisplayUnit,
-  ArtworkRoot_minValueForBoardLimitWidth,
-  ArtworkRoot_drillDataFileExtension {
+         ArtworkRoot_selectedTab,
+         ArtworkRoot_comments,
+         ArtworkRoot_minPPTPTTTWdisplayUnit,
+         ArtworkRoot_minPPTPTTTW,
+         ArtworkRoot_minValueForOARdisplayUnit,
+         ArtworkRoot_minValueForOARinEBUnit,
+         ArtworkRoot_minValueForPHDdisplayUnit,
+         ArtworkRoot_minValueForPHDinEBUnit,
+         ArtworkRoot_minValueForBoardLimitWidthDisplayUnit,
+         ArtworkRoot_minValueForBoardLimitWidth,
+         ArtworkRoot_drillDataFileExtension {
 
   //····················································································································
-  //   Accessing selectedTab stored property
+  //   Atomic property: selectedTab
+  //····················································································································
+
+  var selectedTab_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var selectedTab : Int {
@@ -34,14 +104,18 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var selectedTab_property_selection : EBSelection <Int> {
-    get {
-      return self.selectedTab_property.prop
-    }
+    return self.selectedTab_property.prop
   }
 
   //····················································································································
-  //   Accessing comments stored property
+  //   Atomic property: comments
+  //····················································································································
+
+  var comments_property = EBStoredProperty_String ("")
+
   //····················································································································
 
   var comments : String {
@@ -53,14 +127,18 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var comments_property_selection : EBSelection <String> {
-    get {
-      return self.comments_property.prop
-    }
+    return self.comments_property.prop
   }
 
   //····················································································································
-  //   Accessing minPPTPTTTWdisplayUnit stored property
+  //   Atomic property: minPPTPTTTWdisplayUnit
+  //····················································································································
+
+  var minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (90)
+
   //····················································································································
 
   var minPPTPTTTWdisplayUnit : Int {
@@ -72,14 +150,18 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.minPPTPTTTWdisplayUnit_property.prop
-    }
+    return self.minPPTPTTTWdisplayUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing minPPTPTTTW stored property
+  //   Atomic property: minPPTPTTTW
+  //····················································································································
+
+  var minPPTPTTTW_property = EBStoredProperty_Int (18000)
+
   //····················································································································
 
   var minPPTPTTTW : Int {
@@ -91,14 +173,18 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var minPPTPTTTW_property_selection : EBSelection <Int> {
-    get {
-      return self.minPPTPTTTW_property.prop
-    }
+    return self.minPPTPTTTW_property.prop
   }
 
   //····················································································································
-  //   Accessing minValueForOARdisplayUnit stored property
+  //   Atomic property: minValueForOARdisplayUnit
+  //····················································································································
+
+  var minValueForOARdisplayUnit_property = EBStoredProperty_Int (90)
+
   //····················································································································
 
   var minValueForOARdisplayUnit : Int {
@@ -110,14 +196,18 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var minValueForOARdisplayUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.minValueForOARdisplayUnit_property.prop
-    }
+    return self.minValueForOARdisplayUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing minValueForOARinEBUnit stored property
+  //   Atomic property: minValueForOARinEBUnit
+  //····················································································································
+
+  var minValueForOARinEBUnit_property = EBStoredProperty_Int (18000)
+
   //····················································································································
 
   var minValueForOARinEBUnit : Int {
@@ -129,14 +219,18 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var minValueForOARinEBUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.minValueForOARinEBUnit_property.prop
-    }
+    return self.minValueForOARinEBUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing minValueForPHDdisplayUnit stored property
+  //   Atomic property: minValueForPHDdisplayUnit
+  //····················································································································
+
+  var minValueForPHDdisplayUnit_property = EBStoredProperty_Int (90)
+
   //····················································································································
 
   var minValueForPHDdisplayUnit : Int {
@@ -148,14 +242,18 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var minValueForPHDdisplayUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.minValueForPHDdisplayUnit_property.prop
-    }
+    return self.minValueForPHDdisplayUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing minValueForPHDinEBUnit stored property
+  //   Atomic property: minValueForPHDinEBUnit
+  //····················································································································
+
+  var minValueForPHDinEBUnit_property = EBStoredProperty_Int (18000)
+
   //····················································································································
 
   var minValueForPHDinEBUnit : Int {
@@ -167,14 +265,18 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var minValueForPHDinEBUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.minValueForPHDinEBUnit_property.prop
-    }
+    return self.minValueForPHDinEBUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing minValueForBoardLimitWidthDisplayUnit stored property
+  //   Atomic property: minValueForBoardLimitWidthDisplayUnit
+  //····················································································································
+
+  var minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var minValueForBoardLimitWidthDisplayUnit : Int {
@@ -186,14 +288,18 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.minValueForBoardLimitWidthDisplayUnit_property.prop
-    }
+    return self.minValueForBoardLimitWidthDisplayUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing minValueForBoardLimitWidth stored property
+  //   Atomic property: minValueForBoardLimitWidth
+  //····················································································································
+
+  var minValueForBoardLimitWidth_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var minValueForBoardLimitWidth : Int {
@@ -205,14 +311,18 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var minValueForBoardLimitWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.minValueForBoardLimitWidth_property.prop
-    }
+    return self.minValueForBoardLimitWidth_property.prop
   }
 
   //····················································································································
-  //   Accessing drillDataFileExtension stored property
+  //   Atomic property: drillDataFileExtension
+  //····················································································································
+
+  var drillDataFileExtension_property = EBStoredProperty_String ("drf")
+
   //····················································································································
 
   var drillDataFileExtension : String {
@@ -224,49 +334,23 @@ class ArtworkRoot : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drillDataFileExtension_property_selection : EBSelection <String> {
-    get {
-      return self.drillDataFileExtension_property.prop
-    }
+    return self.drillDataFileExtension_property.prop
   }
 
   //····················································································································
-  //   Accessing fileGenerationParameterArray toMany relationship
-  //····················································································································
-
-  var fileGenerationParameterArray_property_selection : EBSelection < [ArtworkFileGenerationParameters] > {
-    get {
-      return self.fileGenerationParameterArray_property.prop
-    }
-  }
-
-  //····················································································································
-  //    Stored Properties
-  //····················································································································
-
-  var selectedTab_property = EBStoredProperty_Int (0)
-  var comments_property = EBStoredProperty_String ("")
-  var minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (90)
-  var minPPTPTTTW_property = EBStoredProperty_Int (18000)
-  var minValueForOARdisplayUnit_property = EBStoredProperty_Int (90)
-  var minValueForOARinEBUnit_property = EBStoredProperty_Int (18000)
-  var minValueForPHDdisplayUnit_property = EBStoredProperty_Int (90)
-  var minValueForPHDinEBUnit_property = EBStoredProperty_Int (18000)
-  var minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (90000)
-  var minValueForBoardLimitWidth_property = EBStoredProperty_Int (90000)
-  var drillDataFileExtension_property = EBStoredProperty_String ("drf")
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-
-  //····················································································································
-  //    Relationships
+  //   To many property: fileGenerationParameterArray
   //····················································································································
 
   var fileGenerationParameterArray_property = StoredArrayOf_ArtworkFileGenerationParameters ()
- // var fileGenerationParameterArray_property = StoredArrayOf_ArtworkRoot_fileGenerationParameterArray ()
+
+  //····················································································································
+  var fileGenerationParameterArray_property_selection : EBSelection < [ArtworkFileGenerationParameters] > {
+      return self.fileGenerationParameterArray_property.prop
+  }
+
 
   //····················································································································
   //    Array Controllers
@@ -284,22 +368,31 @@ class ArtworkRoot : EBManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-  //--- Install property observers for transients
-  //--- Install undoers for properties
-    self.selectedTab_property.undoManager = self.undoManager ()
-    self.comments_property.undoManager = self.undoManager ()
-    self.minPPTPTTTWdisplayUnit_property.undoManager = self.undoManager ()
-    self.minPPTPTTTW_property.undoManager = self.undoManager ()
-    self.minValueForOARdisplayUnit_property.undoManager = self.undoManager ()
-    self.minValueForOARinEBUnit_property.undoManager = self.undoManager ()
-    self.minValueForPHDdisplayUnit_property.undoManager = self.undoManager ()
-    self.minValueForPHDinEBUnit_property.undoManager = self.undoManager ()
-    self.minValueForBoardLimitWidthDisplayUnit_property.undoManager = self.undoManager ()
-    self.minValueForBoardLimitWidth_property.undoManager = self.undoManager ()
-    self.drillDataFileExtension_property.undoManager = self.undoManager ()
+  //--- Atomic property: selectedTab
+    self.selectedTab_property.undoManager = self.undoManager
+  //--- Atomic property: comments
+    self.comments_property.undoManager = self.undoManager
+  //--- Atomic property: minPPTPTTTWdisplayUnit
+    self.minPPTPTTTWdisplayUnit_property.undoManager = self.undoManager
+  //--- Atomic property: minPPTPTTTW
+    self.minPPTPTTTW_property.undoManager = self.undoManager
+  //--- Atomic property: minValueForOARdisplayUnit
+    self.minValueForOARdisplayUnit_property.undoManager = self.undoManager
+  //--- Atomic property: minValueForOARinEBUnit
+    self.minValueForOARinEBUnit_property.undoManager = self.undoManager
+  //--- Atomic property: minValueForPHDdisplayUnit
+    self.minValueForPHDdisplayUnit_property.undoManager = self.undoManager
+  //--- Atomic property: minValueForPHDinEBUnit
+    self.minValueForPHDinEBUnit_property.undoManager = self.undoManager
+  //--- Atomic property: minValueForBoardLimitWidthDisplayUnit
+    self.minValueForBoardLimitWidthDisplayUnit_property.undoManager = self.undoManager
+  //--- Atomic property: minValueForBoardLimitWidth
+    self.minValueForBoardLimitWidth_property.undoManager = self.undoManager
+  //--- Atomic property: drillDataFileExtension
+    self.drillDataFileExtension_property.undoManager = self.undoManager
+  //--- To many property: fileGenerationParameterArray
+    self.fileGenerationParameterArray_property.undoManager = self.undoManager
   //--- Install undoers and opposite setter for relationships
-    self.fileGenerationParameterArray_property.undoManager = self.undoManager ()
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.drillDataFileExtension_property.setSignatureObserver (observer:self)
@@ -412,13 +505,6 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "fileGenerationParameterArray",
-      idx:fileGenerationParameterArray_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&fileGenerationParameterArray_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -428,29 +514,63 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: selectedTab
     self.selectedTab_property.mObserverExplorer = nil
     self.selectedTab_property.mValueExplorer = nil
+  //--- Atomic property: comments
     self.comments_property.mObserverExplorer = nil
     self.comments_property.mValueExplorer = nil
+  //--- Atomic property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
     self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
+  //--- Atomic property: minPPTPTTTW
     self.minPPTPTTTW_property.mObserverExplorer = nil
     self.minPPTPTTTW_property.mValueExplorer = nil
+  //--- Atomic property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.mObserverExplorer = nil
     self.minValueForOARdisplayUnit_property.mValueExplorer = nil
+  //--- Atomic property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.mObserverExplorer = nil
     self.minValueForOARinEBUnit_property.mValueExplorer = nil
+  //--- Atomic property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.mObserverExplorer = nil
     self.minValueForPHDdisplayUnit_property.mValueExplorer = nil
+  //--- Atomic property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.mObserverExplorer = nil
     self.minValueForPHDinEBUnit_property.mValueExplorer = nil
+  //--- Atomic property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer = nil
     self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer = nil
+  //--- Atomic property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
     self.minValueForBoardLimitWidth_property.mValueExplorer = nil
+  //--- Atomic property: drillDataFileExtension
     self.drillDataFileExtension_property.mObserverExplorer = nil
     self.drillDataFileExtension_property.mValueExplorer = nil
+  //--- To many property: fileGenerationParameterArray
     self.fileGenerationParameterArray_property.mValueExplorer = nil
+ //   self.selectedTab_property.mObserverExplorer = nil
+ //   self.selectedTab_property.mValueExplorer = nil
+ //   self.comments_property.mObserverExplorer = nil
+ //   self.comments_property.mValueExplorer = nil
+ //   self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
+ //   self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
+ //   self.minPPTPTTTW_property.mObserverExplorer = nil
+ //   self.minPPTPTTTW_property.mValueExplorer = nil
+ //   self.minValueForOARdisplayUnit_property.mObserverExplorer = nil
+ //   self.minValueForOARdisplayUnit_property.mValueExplorer = nil
+ //   self.minValueForOARinEBUnit_property.mObserverExplorer = nil
+ //   self.minValueForOARinEBUnit_property.mValueExplorer = nil
+ //   self.minValueForPHDdisplayUnit_property.mObserverExplorer = nil
+ //   self.minValueForPHDdisplayUnit_property.mValueExplorer = nil
+ //   self.minValueForPHDinEBUnit_property.mObserverExplorer = nil
+ //   self.minValueForPHDinEBUnit_property.mValueExplorer = nil
+ //   self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer = nil
+ //   self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer = nil
+ //   self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
+ //   self.minValueForBoardLimitWidth_property.mValueExplorer = nil
+ //   self.drillDataFileExtension_property.mObserverExplorer = nil
+ //   self.drillDataFileExtension_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -460,18 +580,45 @@ class ArtworkRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
-    self.minPPTPTTTWdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTWdisplayUnit")
-    self.minPPTPTTTW_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTW")
-    self.minValueForOARdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARdisplayUnit")
-    self.minValueForOARinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARinEBUnit")
-    self.minValueForPHDdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDdisplayUnit")
-    self.minValueForPHDinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDinEBUnit")
-    self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
-    self.minValueForBoardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidth")
-    self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
-    store (managedObjectArray: fileGenerationParameterArray_property.propval as NSArray, relationshipName:"fileGenerationParameterArray", intoDictionary: ioDictionary) ;
+  //--- Atomic property: selectedTab
+    self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey:"selectedTab")
+  //--- Atomic property: comments
+    self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
+  //--- Atomic property: minPPTPTTTWdisplayUnit
+    self.minPPTPTTTWdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"minPPTPTTTWdisplayUnit")
+  //--- Atomic property: minPPTPTTTW
+    self.minPPTPTTTW_property.storeIn (dictionary: ioDictionary, forKey:"minPPTPTTTW")
+  //--- Atomic property: minValueForOARdisplayUnit
+    self.minValueForOARdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"minValueForOARdisplayUnit")
+  //--- Atomic property: minValueForOARinEBUnit
+    self.minValueForOARinEBUnit_property.storeIn (dictionary: ioDictionary, forKey:"minValueForOARinEBUnit")
+  //--- Atomic property: minValueForPHDdisplayUnit
+    self.minValueForPHDdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"minValueForPHDdisplayUnit")
+  //--- Atomic property: minValueForPHDinEBUnit
+    self.minValueForPHDinEBUnit_property.storeIn (dictionary: ioDictionary, forKey:"minValueForPHDinEBUnit")
+  //--- Atomic property: minValueForBoardLimitWidthDisplayUnit
+    self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey:"minValueForBoardLimitWidthDisplayUnit")
+  //--- Atomic property: minValueForBoardLimitWidth
+    self.minValueForBoardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey:"minValueForBoardLimitWidth")
+  //--- Atomic property: drillDataFileExtension
+    self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey:"drillDataFileExtension")
+  //--- To many property: fileGenerationParameterArray
+    self.store (
+      managedObjectArray: fileGenerationParameterArray_property.propval as NSArray,
+      relationshipName: "fileGenerationParameterArray",
+      intoDictionary: ioDictionary
+    )
+ //   self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
+ //   self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+ //   self.minPPTPTTTWdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTWdisplayUnit")
+ //   self.minPPTPTTTW_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTW")
+ //   self.minValueForOARdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARdisplayUnit")
+ //   self.minValueForOARinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARinEBUnit")
+ //   self.minValueForPHDdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDdisplayUnit")
+ //   self.minValueForPHDinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDinEBUnit")
+ //   self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
+ //   self.minValueForBoardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidth")
+ //   self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
   }
 
   //····················································································································
@@ -481,22 +628,45 @@ class ArtworkRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- Atomic property: selectedTab
     self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
+  //--- Atomic property: comments
     self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+  //--- Atomic property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minPPTPTTTWdisplayUnit")
+  //--- Atomic property: minPPTPTTTW
     self.minPPTPTTTW_property.readFrom (dictionary: inDictionary, forKey:"minPPTPTTTW")
+  //--- Atomic property: minValueForOARdisplayUnit
     self.minValueForOARdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForOARdisplayUnit")
+  //--- Atomic property: minValueForOARinEBUnit
     self.minValueForOARinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForOARinEBUnit")
+  //--- Atomic property: minValueForPHDdisplayUnit
     self.minValueForPHDdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDdisplayUnit")
+  //--- Atomic property: minValueForPHDinEBUnit
     self.minValueForPHDinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDinEBUnit")
+  //--- Atomic property: minValueForBoardLimitWidthDisplayUnit
     self.minValueForBoardLimitWidthDisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidthDisplayUnit")
+  //--- Atomic property: minValueForBoardLimitWidth
     self.minValueForBoardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidth")
+  //--- Atomic property: drillDataFileExtension
     self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
+  //--- To many property: fileGenerationParameterArray
     self.fileGenerationParameterArray_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "fileGenerationParameterArray",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [ArtworkFileGenerationParameters])
+//    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
+//    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+//    self.minPPTPTTTWdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minPPTPTTTWdisplayUnit")
+//    self.minPPTPTTTW_property.readFrom (dictionary: inDictionary, forKey:"minPPTPTTTW")
+//    self.minValueForOARdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForOARdisplayUnit")
+//    self.minValueForOARinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForOARinEBUnit")
+//    self.minValueForPHDdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDdisplayUnit")
+//    self.minValueForPHDinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDinEBUnit")
+//    self.minValueForBoardLimitWidthDisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidthDisplayUnit")
+//    self.minValueForBoardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidth")
+//    self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
   //--------------------------- Array controllers
   //--------------------------- Selection controllers
   }
@@ -506,11 +676,6 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    do{
-      let objects = self.fileGenerationParameterArray_property.propval
-      self.fileGenerationParameterArray_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
@@ -524,11 +689,20 @@ class ArtworkRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   resetToOneRelationships
+  //····················································································································
+
+  override func resetToOneRelationships () {
+    super.resetToOneRelationships ()
+  }
+
+  //····················································································································
   //   accessibleObjects
   //····················································································································
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: fileGenerationParameterArray
     for managedObject : EBManagedObject in self.fileGenerationParameterArray_property.propval {
       objects.append (managedObject)
     }
@@ -1387,34 +1561,34 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
+        removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : ArtworkRoot in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
+        addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
         addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet)
         addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet)
         addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
@@ -1505,72 +1679,5 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_selectedTab : class {
-  var selectedTab : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_comments : class {
-  var comments : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_minPPTPTTTWdisplayUnit : class {
-  var minPPTPTTTWdisplayUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_minPPTPTTTW : class {
-  var minPPTPTTTW : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_minValueForOARdisplayUnit : class {
-  var minValueForOARdisplayUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_minValueForOARinEBUnit : class {
-  var minValueForOARinEBUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_minValueForPHDdisplayUnit : class {
-  var minValueForPHDdisplayUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_minValueForPHDinEBUnit : class {
-  var minValueForPHDinEBUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_minValueForBoardLimitWidthDisplayUnit : class {
-  var minValueForBoardLimitWidthDisplayUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_minValueForBoardLimitWidth : class {
-  var minValueForBoardLimitWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkRoot_drillDataFileExtension : class {
-  var drillDataFileExtension : String { get }
-}
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

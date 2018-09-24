@@ -47,12 +47,14 @@ import Cocoa
   //  Getters
   //····················································································································
 
-  final func undoManager () -> EBUndoManager? {
-    return mManagedObjectContext?.undoManager ()
+  final var undoManager : EBUndoManager? {
+    return self.mManagedObjectContext?.undoManager ()
   }
 
+  //····················································································································
+
   final func managedObjectContext () -> EBManagedObjectContext? {
-    return mManagedObjectContext
+    return self.mManagedObjectContext
   }
 
   //····················································································································

@@ -5,84 +5,381 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_name : class {
+  var name : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_modelWidth : class {
+  var modelWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_modelWidthUnit : class {
+  var modelWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_modelHeight : class {
+  var modelHeight : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_modelHeightUnit : class {
+  var modelHeightUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_zoom : class {
+  var zoom : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_modelLimitWidth : class {
+  var modelLimitWidth : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_modelLimitWidthUnit : class {
+  var modelLimitWidthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_artworkName : class {
+  var artworkName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontLegendLinesSegments : class {
+  var frontLegendLinesSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontLegendLinesBezierPaths : class {
+  var frontLegendLinesBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backLegendLinesSegments : class {
+  var backLegendLinesSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backLegendLinesBezierPaths : class {
+  var backLegendLinesBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontLegendTextsSegments : class {
+  var frontLegendTextsSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontLegendTextsBezierPaths : class {
+  var frontLegendTextsBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontLayoutTextsSegments : class {
+  var frontLayoutTextsSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontLayoutTextsBezierPaths : class {
+  var frontLayoutTextsBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backLegendTextsSegments : class {
+  var backLegendTextsSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backLegendTextsBezierPaths : class {
+  var backLegendTextsBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backLayoutTextsSegments : class {
+  var backLayoutTextsSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backLayoutTextsBezierPaths : class {
+  var backLayoutTextsBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_internalBoardsLimitsSegments : class {
+  var internalBoardsLimitsSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_internalBoardsLimitsBezierPaths : class {
+  var internalBoardsLimitsBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_drillSegments : class {
+  var drillSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_holesBezierPaths : class {
+  var holesBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_viaShapes : class {
+  var viaShapes : MergerViaShapeArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_viasBezierPaths : class {
+  var viasBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontPadArray : class {
+  var frontPadArray : MergerPadArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontPadsBezierPaths : class {
+  var frontPadsBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backPadArray : class {
+  var backPadArray : MergerPadArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backPadsBezierPaths : class {
+  var backPadsBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_boardLimits : class {
+  var boardLimits : MergerBoardLimits? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_boardLimitsBezierPaths : class {
+  var boardLimitsBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backComponentNameSegments : class {
+  var backComponentNameSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backComponentNamesBezierPaths : class {
+  var backComponentNamesBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontComponentNameSegments : class {
+  var frontComponentNameSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontComponentNamesBezierPaths : class {
+  var frontComponentNamesBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontComponentValueSegments : class {
+  var frontComponentValueSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontComponentValuesBezierPaths : class {
+  var frontComponentValuesBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backComponentValueSegments : class {
+  var backComponentValueSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backComponentValuesBezierPaths : class {
+  var backComponentValuesBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backTrackSegments : class {
+  var backTrackSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backTracksBezierPaths : class {
+  var backTracksBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontTrackSegments : class {
+  var frontTrackSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontTracksBezierPaths : class {
+  var frontTracksBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontPackagesSegments : class {
+  var frontPackagesSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontPackagesBezierPaths : class {
+  var frontPackagesBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backPackagesSegments : class {
+  var backPackagesSegments : MergerSegmentArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_backPackagesBezierPaths : class {
+  var backPackagesBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_imageForModel : class {
+  var imageForModel : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_imageForInstances : class {
+  var imageForInstances : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_instanceCount : class {
+  var instanceCount : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class BoardModel : EBManagedObject,
-  BoardModel_artworkName,
-  BoardModel_name,
-  BoardModel_modelWidth,
-  BoardModel_modelWidthUnit,
-  BoardModel_modelHeight,
-  BoardModel_modelHeightUnit,
-  BoardModel_zoom,
-  BoardModel_modelLimitWidth,
-  BoardModel_modelLimitWidthUnit,
-  BoardModel_instanceCount,
-  BoardModel_frontLegendLinesSegments,
-  BoardModel_frontLegendLinesBezierPaths,
-  BoardModel_backLegendLinesSegments,
-  BoardModel_backLegendLinesBezierPaths,
-  BoardModel_frontLegendTextsSegments,
-  BoardModel_frontLegendTextsBezierPaths,
-  BoardModel_frontLayoutTextsSegments,
-  BoardModel_frontLayoutTextsBezierPaths,
-  BoardModel_backLegendTextsSegments,
-  BoardModel_backLegendTextsBezierPaths,
-  BoardModel_backLayoutTextsSegments,
-  BoardModel_backLayoutTextsBezierPaths,
-  BoardModel_internalBoardsLimitsSegments,
-  BoardModel_internalBoardsLimitsBezierPaths,
-  BoardModel_drillSegments,
-  BoardModel_holesBezierPaths,
-  BoardModel_viaShapes,
-  BoardModel_viasBezierPaths,
-  BoardModel_frontPadArray,
-  BoardModel_frontPadsBezierPaths,
-  BoardModel_backPadArray,
-  BoardModel_backPadsBezierPaths,
-  BoardModel_boardLimits,
-  BoardModel_boardLimitsBezierPaths,
-  BoardModel_backComponentNameSegments,
-  BoardModel_backComponentNamesBezierPaths,
-  BoardModel_frontComponentNameSegments,
-  BoardModel_frontComponentNamesBezierPaths,
-  BoardModel_frontComponentValueSegments,
-  BoardModel_frontComponentValuesBezierPaths,
-  BoardModel_backComponentValueSegments,
-  BoardModel_backComponentValuesBezierPaths,
-  BoardModel_backTrackSegments,
-  BoardModel_backTracksBezierPaths,
-  BoardModel_frontTrackSegments,
-  BoardModel_frontTracksBezierPaths,
-  BoardModel_frontPackagesSegments,
-  BoardModel_frontPackagesBezierPaths,
-  BoardModel_backPackagesSegments,
-  BoardModel_backPackagesBezierPaths,
-  BoardModel_imageForModel,
-  BoardModel_imageForInstances {
+         BoardModel_name,
+         BoardModel_modelWidth,
+         BoardModel_modelWidthUnit,
+         BoardModel_modelHeight,
+         BoardModel_modelHeightUnit,
+         BoardModel_zoom,
+         BoardModel_modelLimitWidth,
+         BoardModel_modelLimitWidthUnit,
+         BoardModel_artworkName,
+         BoardModel_frontLegendLinesSegments,
+         BoardModel_frontLegendLinesBezierPaths,
+         BoardModel_backLegendLinesSegments,
+         BoardModel_backLegendLinesBezierPaths,
+         BoardModel_frontLegendTextsSegments,
+         BoardModel_frontLegendTextsBezierPaths,
+         BoardModel_frontLayoutTextsSegments,
+         BoardModel_frontLayoutTextsBezierPaths,
+         BoardModel_backLegendTextsSegments,
+         BoardModel_backLegendTextsBezierPaths,
+         BoardModel_backLayoutTextsSegments,
+         BoardModel_backLayoutTextsBezierPaths,
+         BoardModel_internalBoardsLimitsSegments,
+         BoardModel_internalBoardsLimitsBezierPaths,
+         BoardModel_drillSegments,
+         BoardModel_holesBezierPaths,
+         BoardModel_viaShapes,
+         BoardModel_viasBezierPaths,
+         BoardModel_frontPadArray,
+         BoardModel_frontPadsBezierPaths,
+         BoardModel_backPadArray,
+         BoardModel_backPadsBezierPaths,
+         BoardModel_boardLimits,
+         BoardModel_boardLimitsBezierPaths,
+         BoardModel_backComponentNameSegments,
+         BoardModel_backComponentNamesBezierPaths,
+         BoardModel_frontComponentNameSegments,
+         BoardModel_frontComponentNamesBezierPaths,
+         BoardModel_frontComponentValueSegments,
+         BoardModel_frontComponentValuesBezierPaths,
+         BoardModel_backComponentValueSegments,
+         BoardModel_backComponentValuesBezierPaths,
+         BoardModel_backTrackSegments,
+         BoardModel_backTracksBezierPaths,
+         BoardModel_frontTrackSegments,
+         BoardModel_frontTracksBezierPaths,
+         BoardModel_frontPackagesSegments,
+         BoardModel_frontPackagesBezierPaths,
+         BoardModel_backPackagesSegments,
+         BoardModel_backPackagesBezierPaths,
+         BoardModel_imageForModel,
+         BoardModel_imageForInstances,
+         BoardModel_instanceCount {
 
   //····················································································································
-  //   Accessing artworkName stored property
+  //   Atomic property: name
   //····················································································································
 
-  var artworkName : String {
-    get {
-      return self.artworkName_property.propval
-    }
-    set {
-      self.artworkName_property.setProp (newValue)
-    }
-  }
+  var name_property = EBStoredProperty_String ("")
 
-  var artworkName_property_selection : EBSelection <String> {
-    get {
-      return self.artworkName_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing name stored property
   //····················································································································
 
   var name : String {
@@ -94,14 +391,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var name_property_selection : EBSelection <String> {
-    get {
-      return self.name_property.prop
-    }
+    return self.name_property.prop
   }
 
   //····················································································································
-  //   Accessing modelWidth stored property
+  //   Atomic property: modelWidth
+  //····················································································································
+
+  var modelWidth_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var modelWidth : Int {
@@ -113,14 +414,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var modelWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.modelWidth_property.prop
-    }
+    return self.modelWidth_property.prop
   }
 
   //····················································································································
-  //   Accessing modelWidthUnit stored property
+  //   Atomic property: modelWidthUnit
+  //····················································································································
+
+  var modelWidthUnit_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var modelWidthUnit : Int {
@@ -132,14 +437,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var modelWidthUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.modelWidthUnit_property.prop
-    }
+    return self.modelWidthUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing modelHeight stored property
+  //   Atomic property: modelHeight
+  //····················································································································
+
+  var modelHeight_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var modelHeight : Int {
@@ -151,14 +460,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var modelHeight_property_selection : EBSelection <Int> {
-    get {
-      return self.modelHeight_property.prop
-    }
+    return self.modelHeight_property.prop
   }
 
   //····················································································································
-  //   Accessing modelHeightUnit stored property
+  //   Atomic property: modelHeightUnit
+  //····················································································································
+
+  var modelHeightUnit_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var modelHeightUnit : Int {
@@ -170,14 +483,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var modelHeightUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.modelHeightUnit_property.prop
-    }
+    return self.modelHeightUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing zoom stored property
+  //   Atomic property: zoom
+  //····················································································································
+
+  var zoom_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var zoom : Int {
@@ -189,14 +506,139 @@ class BoardModel : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var zoom_property_selection : EBSelection <Int> {
-    get {
-      return self.zoom_property.prop
-    }
+    return self.zoom_property.prop
   }
 
   //····················································································································
-  //   Accessing modelLimitWidth stored property
+  //   To many property: frontLegendLines
+  //····················································································································
+
+  var frontLegendLines_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
+  var frontLegendLines_property_selection : EBSelection < [SegmentEntity] > {
+      return self.frontLegendLines_property.prop
+  }
+
+  //····················································································································
+  //   To many property: backLegendLines
+  //····················································································································
+
+  var backLegendLines_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
+  var backLegendLines_property_selection : EBSelection < [SegmentEntity] > {
+      return self.backLegendLines_property.prop
+  }
+
+  //····················································································································
+  //   To many property: frontLegendTexts
+  //····················································································································
+
+  var frontLegendTexts_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
+  var frontLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
+      return self.frontLegendTexts_property.prop
+  }
+
+  //····················································································································
+  //   To many property: frontLayoutTexts
+  //····················································································································
+
+  var frontLayoutTexts_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
+  var frontLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
+      return self.frontLayoutTexts_property.prop
+  }
+
+  //····················································································································
+  //   To many property: backLegendTexts
+  //····················································································································
+
+  var backLegendTexts_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
+  var backLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
+      return self.backLegendTexts_property.prop
+  }
+
+  //····················································································································
+  //   To many property: backLayoutTexts
+  //····················································································································
+
+  var backLayoutTexts_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
+  var backLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
+      return self.backLayoutTexts_property.prop
+  }
+
+  //····················································································································
+  //   To many property: internalBoardsLimits
+  //····················································································································
+
+  var internalBoardsLimits_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
+  var internalBoardsLimits_property_selection : EBSelection < [SegmentEntity] > {
+      return self.internalBoardsLimits_property.prop
+  }
+
+  //····················································································································
+  //   To many property: drills
+  //····················································································································
+
+  var drills_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
+  var drills_property_selection : EBSelection < [SegmentEntity] > {
+      return self.drills_property.prop
+  }
+
+  //····················································································································
+  //   To many property: vias
+  //····················································································································
+
+  var vias_property = StoredArrayOf_BoardModelVia ()
+
+  //····················································································································
+  var vias_property_selection : EBSelection < [BoardModelVia] > {
+      return self.vias_property.prop
+  }
+
+  //····················································································································
+  //   To many property: frontPads
+  //····················································································································
+
+  var frontPads_property = StoredArrayOf_BoardModelPad ()
+
+  //····················································································································
+  var frontPads_property_selection : EBSelection < [BoardModelPad] > {
+      return self.frontPads_property.prop
+  }
+
+  //····················································································································
+  //   To many property: backPads
+  //····················································································································
+
+  var backPads_property = StoredArrayOf_BoardModelPad ()
+
+  //····················································································································
+  var backPads_property_selection : EBSelection < [BoardModelPad] > {
+      return self.backPads_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: modelLimitWidth
+  //····················································································································
+
+  var modelLimitWidth_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var modelLimitWidth : Int {
@@ -208,14 +650,18 @@ class BoardModel : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var modelLimitWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.modelLimitWidth_property.prop
-    }
+    return self.modelLimitWidth_property.prop
   }
 
   //····················································································································
-  //   Accessing modelLimitWidthUnit stored property
+  //   Atomic property: modelLimitWidthUnit
+  //····················································································································
+
+  var modelLimitWidthUnit_property = EBStoredProperty_Int (0)
+
   //····················································································································
 
   var modelLimitWidthUnit : Int {
@@ -227,1135 +673,1123 @@ class BoardModel : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var modelLimitWidthUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.modelLimitWidthUnit_property.prop
-    }
+    return self.modelLimitWidthUnit_property.prop
   }
 
   //····················································································································
-  //   Accessing instanceCount transient property
+  //   To many property: backComponentNames
   //····················································································································
 
-  var instanceCount_property_selection : EBSelection <Int> {
-    get {
-      return self.instanceCount_property.prop
-    }
-  }
-
-  var instanceCount : Int? {
-    switch instanceCount_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontLegendLinesSegments transient property
-  //····················································································································
-
-  var frontLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontLegendLinesSegments_property.prop
-    }
-  }
-
-  var frontLegendLinesSegments : MergerSegmentArray? {
-    switch frontLegendLinesSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontLegendLinesBezierPaths transient property
-  //····················································································································
-
-  var frontLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontLegendLinesBezierPaths_property.prop
-    }
-  }
-
-  var frontLegendLinesBezierPaths : BezierPathArray? {
-    switch frontLegendLinesBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backLegendLinesSegments transient property
-  //····················································································································
-
-  var backLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backLegendLinesSegments_property.prop
-    }
-  }
-
-  var backLegendLinesSegments : MergerSegmentArray? {
-    switch backLegendLinesSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backLegendLinesBezierPaths transient property
-  //····················································································································
-
-  var backLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backLegendLinesBezierPaths_property.prop
-    }
-  }
-
-  var backLegendLinesBezierPaths : BezierPathArray? {
-    switch backLegendLinesBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontLegendTextsSegments transient property
-  //····················································································································
-
-  var frontLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontLegendTextsSegments_property.prop
-    }
-  }
-
-  var frontLegendTextsSegments : MergerSegmentArray? {
-    switch frontLegendTextsSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontLegendTextsBezierPaths transient property
-  //····················································································································
-
-  var frontLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontLegendTextsBezierPaths_property.prop
-    }
-  }
-
-  var frontLegendTextsBezierPaths : BezierPathArray? {
-    switch frontLegendTextsBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontLayoutTextsSegments transient property
-  //····················································································································
-
-  var frontLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontLayoutTextsSegments_property.prop
-    }
-  }
-
-  var frontLayoutTextsSegments : MergerSegmentArray? {
-    switch frontLayoutTextsSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontLayoutTextsBezierPaths transient property
-  //····················································································································
-
-  var frontLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontLayoutTextsBezierPaths_property.prop
-    }
-  }
-
-  var frontLayoutTextsBezierPaths : BezierPathArray? {
-    switch frontLayoutTextsBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backLegendTextsSegments transient property
-  //····················································································································
-
-  var backLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backLegendTextsSegments_property.prop
-    }
-  }
-
-  var backLegendTextsSegments : MergerSegmentArray? {
-    switch backLegendTextsSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backLegendTextsBezierPaths transient property
-  //····················································································································
-
-  var backLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backLegendTextsBezierPaths_property.prop
-    }
-  }
-
-  var backLegendTextsBezierPaths : BezierPathArray? {
-    switch backLegendTextsBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backLayoutTextsSegments transient property
-  //····················································································································
-
-  var backLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backLayoutTextsSegments_property.prop
-    }
-  }
-
-  var backLayoutTextsSegments : MergerSegmentArray? {
-    switch backLayoutTextsSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backLayoutTextsBezierPaths transient property
-  //····················································································································
-
-  var backLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backLayoutTextsBezierPaths_property.prop
-    }
-  }
-
-  var backLayoutTextsBezierPaths : BezierPathArray? {
-    switch backLayoutTextsBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing internalBoardsLimitsSegments transient property
-  //····················································································································
-
-  var internalBoardsLimitsSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.internalBoardsLimitsSegments_property.prop
-    }
-  }
-
-  var internalBoardsLimitsSegments : MergerSegmentArray? {
-    switch internalBoardsLimitsSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing internalBoardsLimitsBezierPaths transient property
-  //····················································································································
-
-  var internalBoardsLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.internalBoardsLimitsBezierPaths_property.prop
-    }
-  }
-
-  var internalBoardsLimitsBezierPaths : BezierPathArray? {
-    switch internalBoardsLimitsBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing drillSegments transient property
-  //····················································································································
-
-  var drillSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.drillSegments_property.prop
-    }
-  }
-
-  var drillSegments : MergerSegmentArray? {
-    switch drillSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing holesBezierPaths transient property
-  //····················································································································
-
-  var holesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.holesBezierPaths_property.prop
-    }
-  }
-
-  var holesBezierPaths : BezierPathArray? {
-    switch holesBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing viaShapes transient property
-  //····················································································································
-
-  var viaShapes_property_selection : EBSelection <MergerViaShapeArray> {
-    get {
-      return self.viaShapes_property.prop
-    }
-  }
-
-  var viaShapes : MergerViaShapeArray? {
-    switch viaShapes_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing viasBezierPaths transient property
-  //····················································································································
-
-  var viasBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.viasBezierPaths_property.prop
-    }
-  }
-
-  var viasBezierPaths : BezierPathArray? {
-    switch viasBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontPadArray transient property
-  //····················································································································
-
-  var frontPadArray_property_selection : EBSelection <MergerPadArray> {
-    get {
-      return self.frontPadArray_property.prop
-    }
-  }
-
-  var frontPadArray : MergerPadArray? {
-    switch frontPadArray_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontPadsBezierPaths transient property
-  //····················································································································
-
-  var frontPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontPadsBezierPaths_property.prop
-    }
-  }
-
-  var frontPadsBezierPaths : BezierPathArray? {
-    switch frontPadsBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backPadArray transient property
-  //····················································································································
-
-  var backPadArray_property_selection : EBSelection <MergerPadArray> {
-    get {
-      return self.backPadArray_property.prop
-    }
-  }
-
-  var backPadArray : MergerPadArray? {
-    switch backPadArray_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backPadsBezierPaths transient property
-  //····················································································································
-
-  var backPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backPadsBezierPaths_property.prop
-    }
-  }
-
-  var backPadsBezierPaths : BezierPathArray? {
-    switch backPadsBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardLimits transient property
-  //····················································································································
-
-  var boardLimits_property_selection : EBSelection <MergerBoardLimits> {
-    get {
-      return self.boardLimits_property.prop
-    }
-  }
-
-  var boardLimits : MergerBoardLimits? {
-    switch boardLimits_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing boardLimitsBezierPaths transient property
-  //····················································································································
-
-  var boardLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.boardLimitsBezierPaths_property.prop
-    }
-  }
-
-  var boardLimitsBezierPaths : BezierPathArray? {
-    switch boardLimitsBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backComponentNameSegments transient property
-  //····················································································································
-
-  var backComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backComponentNameSegments_property.prop
-    }
-  }
-
-  var backComponentNameSegments : MergerSegmentArray? {
-    switch backComponentNameSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backComponentNamesBezierPaths transient property
-  //····················································································································
-
-  var backComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backComponentNamesBezierPaths_property.prop
-    }
-  }
-
-  var backComponentNamesBezierPaths : BezierPathArray? {
-    switch backComponentNamesBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontComponentNameSegments transient property
-  //····················································································································
-
-  var frontComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontComponentNameSegments_property.prop
-    }
-  }
-
-  var frontComponentNameSegments : MergerSegmentArray? {
-    switch frontComponentNameSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontComponentNamesBezierPaths transient property
-  //····················································································································
-
-  var frontComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontComponentNamesBezierPaths_property.prop
-    }
-  }
-
-  var frontComponentNamesBezierPaths : BezierPathArray? {
-    switch frontComponentNamesBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontComponentValueSegments transient property
-  //····················································································································
-
-  var frontComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontComponentValueSegments_property.prop
-    }
-  }
-
-  var frontComponentValueSegments : MergerSegmentArray? {
-    switch frontComponentValueSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontComponentValuesBezierPaths transient property
-  //····················································································································
-
-  var frontComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontComponentValuesBezierPaths_property.prop
-    }
-  }
-
-  var frontComponentValuesBezierPaths : BezierPathArray? {
-    switch frontComponentValuesBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backComponentValueSegments transient property
-  //····················································································································
-
-  var backComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backComponentValueSegments_property.prop
-    }
-  }
-
-  var backComponentValueSegments : MergerSegmentArray? {
-    switch backComponentValueSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backComponentValuesBezierPaths transient property
-  //····················································································································
-
-  var backComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backComponentValuesBezierPaths_property.prop
-    }
-  }
-
-  var backComponentValuesBezierPaths : BezierPathArray? {
-    switch backComponentValuesBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backTrackSegments transient property
-  //····················································································································
-
-  var backTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backTrackSegments_property.prop
-    }
-  }
-
-  var backTrackSegments : MergerSegmentArray? {
-    switch backTrackSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backTracksBezierPaths transient property
-  //····················································································································
-
-  var backTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backTracksBezierPaths_property.prop
-    }
-  }
-
-  var backTracksBezierPaths : BezierPathArray? {
-    switch backTracksBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontTrackSegments transient property
-  //····················································································································
-
-  var frontTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontTrackSegments_property.prop
-    }
-  }
-
-  var frontTrackSegments : MergerSegmentArray? {
-    switch frontTrackSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontTracksBezierPaths transient property
-  //····················································································································
-
-  var frontTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontTracksBezierPaths_property.prop
-    }
-  }
-
-  var frontTracksBezierPaths : BezierPathArray? {
-    switch frontTracksBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontPackagesSegments transient property
-  //····················································································································
-
-  var frontPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontPackagesSegments_property.prop
-    }
-  }
-
-  var frontPackagesSegments : MergerSegmentArray? {
-    switch frontPackagesSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontPackagesBezierPaths transient property
-  //····················································································································
-
-  var frontPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontPackagesBezierPaths_property.prop
-    }
-  }
-
-  var frontPackagesBezierPaths : BezierPathArray? {
-    switch frontPackagesBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
+  var backComponentNames_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
-  //   Accessing backPackagesSegments transient property
-  //····················································································································
-
-  var backPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backPackagesSegments_property.prop
-    }
-  }
-
-  var backPackagesSegments : MergerSegmentArray? {
-    switch backPackagesSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing backPackagesBezierPaths transient property
-  //····················································································································
-
-  var backPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backPackagesBezierPaths_property.prop
-    }
-  }
-
-  var backPackagesBezierPaths : BezierPathArray? {
-    switch backPackagesBezierPaths_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing imageForModel transient property
-  //····················································································································
-
-  var imageForModel_property_selection : EBSelection <EBShape> {
-    get {
-      return self.imageForModel_property.prop
-    }
-  }
-
-  var imageForModel : EBShape? {
-    switch imageForModel_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing imageForInstances transient property
-  //····················································································································
-
-  var imageForInstances_property_selection : EBSelection <EBShape> {
-    get {
-      return self.imageForInstances_property.prop
-    }
-  }
-
-  var imageForInstances : EBShape? {
-    switch imageForInstances_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Accessing myInstances toMany relationship
-  //····················································································································
-
-  var myInstances_property_selection : EBSelection < [MergerBoardInstance] > {
-    get {
-      return self.myInstances_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontLegendLines toMany relationship
-  //····················································································································
-
-  var frontLegendLines_property_selection : EBSelection < [SegmentEntity] > {
-    get {
-      return self.frontLegendLines_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing backLegendLines toMany relationship
-  //····················································································································
-
-  var backLegendLines_property_selection : EBSelection < [SegmentEntity] > {
-    get {
-      return self.backLegendLines_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontLegendTexts toMany relationship
-  //····················································································································
-
-  var frontLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
-    get {
-      return self.frontLegendTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontLayoutTexts toMany relationship
-  //····················································································································
-
-  var frontLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
-    get {
-      return self.frontLayoutTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing backLegendTexts toMany relationship
-  //····················································································································
-
-  var backLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
-    get {
-      return self.backLegendTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing backLayoutTexts toMany relationship
-  //····················································································································
-
-  var backLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
-    get {
-      return self.backLayoutTexts_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing internalBoardsLimits toMany relationship
-  //····················································································································
-
-  var internalBoardsLimits_property_selection : EBSelection < [SegmentEntity] > {
-    get {
-      return self.internalBoardsLimits_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing drills toMany relationship
-  //····················································································································
-
-  var drills_property_selection : EBSelection < [SegmentEntity] > {
-    get {
-      return self.drills_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing vias toMany relationship
-  //····················································································································
-
-  var vias_property_selection : EBSelection < [BoardModelVia] > {
-    get {
-      return self.vias_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing frontPads toMany relationship
-  //····················································································································
-
-  var frontPads_property_selection : EBSelection < [BoardModelPad] > {
-    get {
-      return self.frontPads_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing backPads toMany relationship
-  //····················································································································
-
-  var backPads_property_selection : EBSelection < [BoardModelPad] > {
-    get {
-      return self.backPads_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Accessing backComponentNames toMany relationship
-  //····················································································································
-
   var backComponentNames_property_selection : EBSelection < [SegmentEntity] > {
-    get {
       return self.backComponentNames_property.prop
-    }
   }
 
   //····················································································································
-  //   Accessing frontComponentNames toMany relationship
+  //   To many property: frontComponentNames
   //····················································································································
 
+  var frontComponentNames_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
   var frontComponentNames_property_selection : EBSelection < [SegmentEntity] > {
-    get {
       return self.frontComponentNames_property.prop
-    }
   }
 
   //····················································································································
-  //   Accessing frontComponentValues toMany relationship
+  //   To many property: frontComponentValues
   //····················································································································
 
+  var frontComponentValues_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
   var frontComponentValues_property_selection : EBSelection < [SegmentEntity] > {
-    get {
       return self.frontComponentValues_property.prop
-    }
   }
 
   //····················································································································
-  //   Accessing backComponentValues toMany relationship
+  //   To many property: backComponentValues
   //····················································································································
 
+  var backComponentValues_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
   var backComponentValues_property_selection : EBSelection < [SegmentEntity] > {
-    get {
       return self.backComponentValues_property.prop
-    }
   }
 
   //····················································································································
-  //   Accessing backTracks toMany relationship
+  //   To many property: backTracks
   //····················································································································
 
+  var backTracks_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
   var backTracks_property_selection : EBSelection < [SegmentEntity] > {
-    get {
       return self.backTracks_property.prop
-    }
   }
 
   //····················································································································
-  //   Accessing frontTracks toMany relationship
+  //   To many property: frontTracks
   //····················································································································
 
+  var frontTracks_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
   var frontTracks_property_selection : EBSelection < [SegmentEntity] > {
-    get {
       return self.frontTracks_property.prop
-    }
   }
 
   //····················································································································
-  //   Accessing frontPackages toMany relationship
+  //   To many property: frontPackages
   //····················································································································
 
+  var frontPackages_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
   var frontPackages_property_selection : EBSelection < [SegmentEntity] > {
-    get {
       return self.frontPackages_property.prop
-    }
   }
 
   //····················································································································
-  //   Accessing backPackages toMany relationship
+  //   To many property: backPackages
   //····················································································································
 
+  var backPackages_property = StoredArrayOf_SegmentEntity ()
+
+  //····················································································································
   var backPackages_property_selection : EBSelection < [SegmentEntity] > {
-    get {
       return self.backPackages_property.prop
-    }
   }
 
   //····················································································································
-  //    Stored Properties
+  //   Atomic property: artworkName
   //····················································································································
 
   var artworkName_property = EBStoredProperty_String ("")
-  var name_property = EBStoredProperty_String ("")
-  var modelWidth_property = EBStoredProperty_Int (0)
-  var modelWidthUnit_property = EBStoredProperty_Int (0)
-  var modelHeight_property = EBStoredProperty_Int (0)
-  var modelHeightUnit_property = EBStoredProperty_Int (0)
-  var zoom_property = EBStoredProperty_Int (0)
-  var modelLimitWidth_property = EBStoredProperty_Int (0)
-  var modelLimitWidthUnit_property = EBStoredProperty_Int (0)
 
   //····················································································································
-  //    Transient properties
-  //····················································································································
 
-  var instanceCount_property = EBTransientProperty_Int ()
-  var frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var drillSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
-  var viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var frontPadArray_property = EBTransientProperty_MergerPadArray ()
-  var frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var backPadArray_property = EBTransientProperty_MergerPadArray ()
-  var backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
-  var boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
-  var backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-  var imageForModel_property = EBTransientProperty_EBShape ()
-  var imageForInstances_property = EBTransientProperty_EBShape ()
+  var artworkName : String {
+    get {
+      return self.artworkName_property.propval
+    }
+    set {
+      self.artworkName_property.setProp (newValue)
+    }
+  }
 
   //····················································································································
-  //    Relationships
+
+  var artworkName_property_selection : EBSelection <String> {
+    return self.artworkName_property.prop
+  }
+
+  //····················································································································
+  //   To many property: myInstances
   //····················································································································
 
   var myInstances_property = StoredArrayOf_MergerBoardInstance ()
- // var myInstances_property = StoredArrayOf_BoardModel_myInstances ()
-  var frontLegendLines_property = StoredArrayOf_SegmentEntity ()
- // var frontLegendLines_property = StoredArrayOf_BoardModel_frontLegendLines ()
-  var backLegendLines_property = StoredArrayOf_SegmentEntity ()
- // var backLegendLines_property = StoredArrayOf_BoardModel_backLegendLines ()
-  var frontLegendTexts_property = StoredArrayOf_SegmentEntity ()
- // var frontLegendTexts_property = StoredArrayOf_BoardModel_frontLegendTexts ()
-  var frontLayoutTexts_property = StoredArrayOf_SegmentEntity ()
- // var frontLayoutTexts_property = StoredArrayOf_BoardModel_frontLayoutTexts ()
-  var backLegendTexts_property = StoredArrayOf_SegmentEntity ()
- // var backLegendTexts_property = StoredArrayOf_BoardModel_backLegendTexts ()
-  var backLayoutTexts_property = StoredArrayOf_SegmentEntity ()
- // var backLayoutTexts_property = StoredArrayOf_BoardModel_backLayoutTexts ()
-  var internalBoardsLimits_property = StoredArrayOf_SegmentEntity ()
- // var internalBoardsLimits_property = StoredArrayOf_BoardModel_internalBoardsLimits ()
-  var drills_property = StoredArrayOf_SegmentEntity ()
- // var drills_property = StoredArrayOf_BoardModel_drills ()
-  var vias_property = StoredArrayOf_BoardModelVia ()
- // var vias_property = StoredArrayOf_BoardModel_vias ()
-  var frontPads_property = StoredArrayOf_BoardModelPad ()
- // var frontPads_property = StoredArrayOf_BoardModel_frontPads ()
-  var backPads_property = StoredArrayOf_BoardModelPad ()
- // var backPads_property = StoredArrayOf_BoardModel_backPads ()
-  var backComponentNames_property = StoredArrayOf_SegmentEntity ()
- // var backComponentNames_property = StoredArrayOf_BoardModel_backComponentNames ()
-  var frontComponentNames_property = StoredArrayOf_SegmentEntity ()
- // var frontComponentNames_property = StoredArrayOf_BoardModel_frontComponentNames ()
-  var frontComponentValues_property = StoredArrayOf_SegmentEntity ()
- // var frontComponentValues_property = StoredArrayOf_BoardModel_frontComponentValues ()
-  var backComponentValues_property = StoredArrayOf_SegmentEntity ()
- // var backComponentValues_property = StoredArrayOf_BoardModel_backComponentValues ()
-  var backTracks_property = StoredArrayOf_SegmentEntity ()
- // var backTracks_property = StoredArrayOf_BoardModel_backTracks ()
-  var frontTracks_property = StoredArrayOf_SegmentEntity ()
- // var frontTracks_property = StoredArrayOf_BoardModel_frontTracks ()
-  var frontPackages_property = StoredArrayOf_SegmentEntity ()
- // var frontPackages_property = StoredArrayOf_BoardModel_frontPackages ()
-  var backPackages_property = StoredArrayOf_SegmentEntity ()
- // var backPackages_property = StoredArrayOf_BoardModel_backPackages ()
+
+  //····················································································································
+  var myInstances_property_selection : EBSelection < [MergerBoardInstance] > {
+      return self.myInstances_property.prop
+  }
+
+  //····················································································································
+  //   Transient property: frontLegendLinesSegments
+  //····················································································································
+
+  var frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var frontLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.frontLegendLinesSegments_property.prop
+  }
+
+  //····················································································································
+
+    var frontLegendLinesSegments : MergerSegmentArray? {
+    switch self.frontLegendLinesSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontLegendLinesBezierPaths
+  //····················································································································
+
+  var frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var frontLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.frontLegendLinesBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var frontLegendLinesBezierPaths : BezierPathArray? {
+    switch self.frontLegendLinesBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backLegendLinesSegments
+  //····················································································································
+
+  var backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var backLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.backLegendLinesSegments_property.prop
+  }
+
+  //····················································································································
+
+    var backLegendLinesSegments : MergerSegmentArray? {
+    switch self.backLegendLinesSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backLegendLinesBezierPaths
+  //····················································································································
+
+  var backLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var backLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.backLegendLinesBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var backLegendLinesBezierPaths : BezierPathArray? {
+    switch self.backLegendLinesBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontLegendTextsSegments
+  //····················································································································
+
+  var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var frontLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.frontLegendTextsSegments_property.prop
+  }
+
+  //····················································································································
+
+    var frontLegendTextsSegments : MergerSegmentArray? {
+    switch self.frontLegendTextsSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontLegendTextsBezierPaths
+  //····················································································································
+
+  var frontLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var frontLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.frontLegendTextsBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var frontLegendTextsBezierPaths : BezierPathArray? {
+    switch self.frontLegendTextsBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontLayoutTextsSegments
+  //····················································································································
+
+  var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var frontLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.frontLayoutTextsSegments_property.prop
+  }
+
+  //····················································································································
+
+    var frontLayoutTextsSegments : MergerSegmentArray? {
+    switch self.frontLayoutTextsSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontLayoutTextsBezierPaths
+  //····················································································································
+
+  var frontLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var frontLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.frontLayoutTextsBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var frontLayoutTextsBezierPaths : BezierPathArray? {
+    switch self.frontLayoutTextsBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backLegendTextsSegments
+  //····················································································································
+
+  var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var backLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.backLegendTextsSegments_property.prop
+  }
+
+  //····················································································································
+
+    var backLegendTextsSegments : MergerSegmentArray? {
+    switch self.backLegendTextsSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backLegendTextsBezierPaths
+  //····················································································································
+
+  var backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var backLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.backLegendTextsBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var backLegendTextsBezierPaths : BezierPathArray? {
+    switch self.backLegendTextsBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backLayoutTextsSegments
+  //····················································································································
+
+  var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var backLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.backLayoutTextsSegments_property.prop
+  }
+
+  //····················································································································
+
+    var backLayoutTextsSegments : MergerSegmentArray? {
+    switch self.backLayoutTextsSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backLayoutTextsBezierPaths
+  //····················································································································
+
+  var backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var backLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.backLayoutTextsBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var backLayoutTextsBezierPaths : BezierPathArray? {
+    switch self.backLayoutTextsBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: internalBoardsLimitsSegments
+  //····················································································································
+
+  var internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var internalBoardsLimitsSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.internalBoardsLimitsSegments_property.prop
+  }
+
+  //····················································································································
+
+    var internalBoardsLimitsSegments : MergerSegmentArray? {
+    switch self.internalBoardsLimitsSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: internalBoardsLimitsBezierPaths
+  //····················································································································
+
+  var internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var internalBoardsLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.internalBoardsLimitsBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var internalBoardsLimitsBezierPaths : BezierPathArray? {
+    switch self.internalBoardsLimitsBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: drillSegments
+  //····················································································································
+
+  var drillSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var drillSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.drillSegments_property.prop
+  }
+
+  //····················································································································
+
+    var drillSegments : MergerSegmentArray? {
+    switch self.drillSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: holesBezierPaths
+  //····················································································································
+
+  var holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var holesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.holesBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var holesBezierPaths : BezierPathArray? {
+    switch self.holesBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: viaShapes
+  //····················································································································
+
+  var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
+
+  //····················································································································
+
+  var viaShapes_property_selection : EBSelection <MergerViaShapeArray> {
+    return self.viaShapes_property.prop
+  }
+
+  //····················································································································
+
+    var viaShapes : MergerViaShapeArray? {
+    switch self.viaShapes_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: viasBezierPaths
+  //····················································································································
+
+  var viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var viasBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.viasBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var viasBezierPaths : BezierPathArray? {
+    switch self.viasBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontPadArray
+  //····················································································································
+
+  var frontPadArray_property = EBTransientProperty_MergerPadArray ()
+
+  //····················································································································
+
+  var frontPadArray_property_selection : EBSelection <MergerPadArray> {
+    return self.frontPadArray_property.prop
+  }
+
+  //····················································································································
+
+    var frontPadArray : MergerPadArray? {
+    switch self.frontPadArray_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontPadsBezierPaths
+  //····················································································································
+
+  var frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var frontPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.frontPadsBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var frontPadsBezierPaths : BezierPathArray? {
+    switch self.frontPadsBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backPadArray
+  //····················································································································
+
+  var backPadArray_property = EBTransientProperty_MergerPadArray ()
+
+  //····················································································································
+
+  var backPadArray_property_selection : EBSelection <MergerPadArray> {
+    return self.backPadArray_property.prop
+  }
+
+  //····················································································································
+
+    var backPadArray : MergerPadArray? {
+    switch self.backPadArray_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backPadsBezierPaths
+  //····················································································································
+
+  var backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var backPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.backPadsBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var backPadsBezierPaths : BezierPathArray? {
+    switch self.backPadsBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimits
+  //····················································································································
+
+  var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
+
+  //····················································································································
+
+  var boardLimits_property_selection : EBSelection <MergerBoardLimits> {
+    return self.boardLimits_property.prop
+  }
+
+  //····················································································································
+
+    var boardLimits : MergerBoardLimits? {
+    switch self.boardLimits_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardLimitsBezierPaths
+  //····················································································································
+
+  var boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var boardLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.boardLimitsBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var boardLimitsBezierPaths : BezierPathArray? {
+    switch self.boardLimitsBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backComponentNameSegments
+  //····················································································································
+
+  var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var backComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.backComponentNameSegments_property.prop
+  }
+
+  //····················································································································
+
+    var backComponentNameSegments : MergerSegmentArray? {
+    switch self.backComponentNameSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backComponentNamesBezierPaths
+  //····················································································································
+
+  var backComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var backComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.backComponentNamesBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var backComponentNamesBezierPaths : BezierPathArray? {
+    switch self.backComponentNamesBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontComponentNameSegments
+  //····················································································································
+
+  var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var frontComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.frontComponentNameSegments_property.prop
+  }
+
+  //····················································································································
+
+    var frontComponentNameSegments : MergerSegmentArray? {
+    switch self.frontComponentNameSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontComponentNamesBezierPaths
+  //····················································································································
+
+  var frontComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var frontComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.frontComponentNamesBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var frontComponentNamesBezierPaths : BezierPathArray? {
+    switch self.frontComponentNamesBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontComponentValueSegments
+  //····················································································································
+
+  var frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var frontComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.frontComponentValueSegments_property.prop
+  }
+
+  //····················································································································
+
+    var frontComponentValueSegments : MergerSegmentArray? {
+    switch self.frontComponentValueSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontComponentValuesBezierPaths
+  //····················································································································
+
+  var frontComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var frontComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.frontComponentValuesBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var frontComponentValuesBezierPaths : BezierPathArray? {
+    switch self.frontComponentValuesBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backComponentValueSegments
+  //····················································································································
+
+  var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var backComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.backComponentValueSegments_property.prop
+  }
+
+  //····················································································································
+
+    var backComponentValueSegments : MergerSegmentArray? {
+    switch self.backComponentValueSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backComponentValuesBezierPaths
+  //····················································································································
+
+  var backComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var backComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.backComponentValuesBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var backComponentValuesBezierPaths : BezierPathArray? {
+    switch self.backComponentValuesBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backTrackSegments
+  //····················································································································
+
+  var backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var backTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.backTrackSegments_property.prop
+  }
+
+  //····················································································································
+
+    var backTrackSegments : MergerSegmentArray? {
+    switch self.backTrackSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backTracksBezierPaths
+  //····················································································································
+
+  var backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var backTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.backTracksBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var backTracksBezierPaths : BezierPathArray? {
+    switch self.backTracksBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontTrackSegments
+  //····················································································································
+
+  var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var frontTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.frontTrackSegments_property.prop
+  }
+
+  //····················································································································
+
+    var frontTrackSegments : MergerSegmentArray? {
+    switch self.frontTrackSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontTracksBezierPaths
+  //····················································································································
+
+  var frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var frontTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.frontTracksBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var frontTracksBezierPaths : BezierPathArray? {
+    switch self.frontTracksBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontPackagesSegments
+  //····················································································································
+
+  var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var frontPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.frontPackagesSegments_property.prop
+  }
+
+  //····················································································································
+
+    var frontPackagesSegments : MergerSegmentArray? {
+    switch self.frontPackagesSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontPackagesBezierPaths
+  //····················································································································
+
+  var frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var frontPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.frontPackagesBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var frontPackagesBezierPaths : BezierPathArray? {
+    switch self.frontPackagesBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backPackagesSegments
+  //····················································································································
+
+  var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
+
+  //····················································································································
+
+  var backPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
+    return self.backPackagesSegments_property.prop
+  }
+
+  //····················································································································
+
+    var backPackagesSegments : MergerSegmentArray? {
+    switch self.backPackagesSegments_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: backPackagesBezierPaths
+  //····················································································································
+
+  var backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var backPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.backPackagesBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+    var backPackagesBezierPaths : BezierPathArray? {
+    switch self.backPackagesBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: imageForModel
+  //····················································································································
+
+  var imageForModel_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var imageForModel_property_selection : EBSelection <EBShape> {
+    return self.imageForModel_property.prop
+  }
+
+  //····················································································································
+
+    var imageForModel : EBShape? {
+    switch self.imageForModel_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: imageForInstances
+  //····················································································································
+
+  var imageForInstances_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var imageForInstances_property_selection : EBSelection <EBShape> {
+    return self.imageForInstances_property.prop
+  }
+
+  //····················································································································
+
+    var imageForInstances : EBShape? {
+    switch self.imageForInstances_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: instanceCount
+  //····················································································································
+
+  var instanceCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var instanceCount_property_selection : EBSelection <Int> {
+    return self.instanceCount_property.prop
+  }
+
+  //····················································································································
+
+    var instanceCount : Int? {
+    switch self.instanceCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Array Controllers
@@ -1373,27 +1807,68 @@ class BoardModel : EBManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-    self.instanceCount_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.myInstances_property.count_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.myInstances_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardModel_instanceCount (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
+  //--- Atomic property: name
+    self.name_property.undoManager = self.undoManager
+  //--- Atomic property: modelWidth
+    self.modelWidth_property.undoManager = self.undoManager
+  //--- Atomic property: modelWidthUnit
+    self.modelWidthUnit_property.undoManager = self.undoManager
+  //--- Atomic property: modelHeight
+    self.modelHeight_property.undoManager = self.undoManager
+  //--- Atomic property: modelHeightUnit
+    self.modelHeightUnit_property.undoManager = self.undoManager
+  //--- Atomic property: zoom
+    self.zoom_property.undoManager = self.undoManager
+  //--- To many property: frontLegendLines
+    self.frontLegendLines_property.undoManager = self.undoManager
+  //--- To many property: backLegendLines
+    self.backLegendLines_property.undoManager = self.undoManager
+  //--- To many property: frontLegendTexts
+    self.frontLegendTexts_property.undoManager = self.undoManager
+  //--- To many property: frontLayoutTexts
+    self.frontLayoutTexts_property.undoManager = self.undoManager
+  //--- To many property: backLegendTexts
+    self.backLegendTexts_property.undoManager = self.undoManager
+  //--- To many property: backLayoutTexts
+    self.backLayoutTexts_property.undoManager = self.undoManager
+  //--- To many property: internalBoardsLimits
+    self.internalBoardsLimits_property.undoManager = self.undoManager
+  //--- To many property: drills
+    self.drills_property.undoManager = self.undoManager
+  //--- To many property: vias
+    self.vias_property.undoManager = self.undoManager
+  //--- To many property: frontPads
+    self.frontPads_property.undoManager = self.undoManager
+  //--- To many property: backPads
+    self.backPads_property.undoManager = self.undoManager
+  //--- Atomic property: modelLimitWidth
+    self.modelLimitWidth_property.undoManager = self.undoManager
+  //--- Atomic property: modelLimitWidthUnit
+    self.modelLimitWidthUnit_property.undoManager = self.undoManager
+  //--- To many property: backComponentNames
+    self.backComponentNames_property.undoManager = self.undoManager
+  //--- To many property: frontComponentNames
+    self.frontComponentNames_property.undoManager = self.undoManager
+  //--- To many property: frontComponentValues
+    self.frontComponentValues_property.undoManager = self.undoManager
+  //--- To many property: backComponentValues
+    self.backComponentValues_property.undoManager = self.undoManager
+  //--- To many property: backTracks
+    self.backTracks_property.undoManager = self.undoManager
+  //--- To many property: frontTracks
+    self.frontTracks_property.undoManager = self.undoManager
+  //--- To many property: frontPackages
+    self.frontPackages_property.undoManager = self.undoManager
+  //--- To many property: backPackages
+    self.backPackages_property.undoManager = self.undoManager
+  //--- Atomic property: artworkName
+    self.artworkName_property.undoManager = self.undoManager
+  //--- To many property: myInstances
+    self.myInstances_property.undoManager = self.undoManager
+    self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :MergerBoardInstance?) in
+      inManagedObject?.myModel_property.setProp (self)
     }
+  //--- Atomic property: frontLegendLinesSegments
     self.frontLegendLinesSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLegendLines_property_selection.kind ()
@@ -1418,6 +1893,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontLegendLines_property.addEBObserverOf_x1 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.addEBObserverOf_y1 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.addEBObserverOf_x2 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.addEBObserverOf_y2 (self.frontLegendLinesSegments_property)
+    self.frontLegendLines_property.addEBObserverOf_width (self.frontLegendLinesSegments_property)
+  //--- Atomic property: frontLegendLinesBezierPaths
     self.frontLegendLinesBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontLegendLinesSegments_property_selection.kind ()
@@ -1438,6 +1919,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontLegendLinesSegments_property.addEBObserver (self.frontLegendLinesBezierPaths_property)
+  //--- Atomic property: backLegendLinesSegments
     self.backLegendLinesSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLegendLines_property_selection.kind ()
@@ -1462,6 +1945,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backLegendLines_property.addEBObserverOf_x1 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.addEBObserverOf_y1 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.addEBObserverOf_x2 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.addEBObserverOf_y2 (self.backLegendLinesSegments_property)
+    self.backLegendLines_property.addEBObserverOf_width (self.backLegendLinesSegments_property)
+  //--- Atomic property: backLegendLinesBezierPaths
     self.backLegendLinesBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backLegendLinesSegments_property_selection.kind ()
@@ -1482,6 +1971,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backLegendLinesSegments_property.addEBObserver (self.backLegendLinesBezierPaths_property)
+  //--- Atomic property: frontLegendTextsSegments
     self.frontLegendTextsSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLegendTexts_property_selection.kind ()
@@ -1506,6 +1997,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontLegendTexts_property.addEBObserverOf_x1 (self.frontLegendTextsSegments_property)
+    self.frontLegendTexts_property.addEBObserverOf_y1 (self.frontLegendTextsSegments_property)
+    self.frontLegendTexts_property.addEBObserverOf_x2 (self.frontLegendTextsSegments_property)
+    self.frontLegendTexts_property.addEBObserverOf_y2 (self.frontLegendTextsSegments_property)
+    self.frontLegendTexts_property.addEBObserverOf_width (self.frontLegendTextsSegments_property)
+  //--- Atomic property: frontLegendTextsBezierPaths
     self.frontLegendTextsBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontLegendTextsSegments_property_selection.kind ()
@@ -1526,6 +2023,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontLegendTextsSegments_property.addEBObserver (self.frontLegendTextsBezierPaths_property)
+  //--- Atomic property: frontLayoutTextsSegments
     self.frontLayoutTextsSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLayoutTexts_property_selection.kind ()
@@ -1550,6 +2049,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontLayoutTexts_property.addEBObserverOf_x1 (self.frontLayoutTextsSegments_property)
+    self.frontLayoutTexts_property.addEBObserverOf_y1 (self.frontLayoutTextsSegments_property)
+    self.frontLayoutTexts_property.addEBObserverOf_x2 (self.frontLayoutTextsSegments_property)
+    self.frontLayoutTexts_property.addEBObserverOf_y2 (self.frontLayoutTextsSegments_property)
+    self.frontLayoutTexts_property.addEBObserverOf_width (self.frontLayoutTextsSegments_property)
+  //--- Atomic property: frontLayoutTextsBezierPaths
     self.frontLayoutTextsBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontLayoutTextsSegments_property_selection.kind ()
@@ -1570,6 +2075,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontLayoutTextsSegments_property.addEBObserver (self.frontLayoutTextsBezierPaths_property)
+  //--- Atomic property: backLegendTextsSegments
     self.backLegendTextsSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLegendTexts_property_selection.kind ()
@@ -1594,6 +2101,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backLegendTexts_property.addEBObserverOf_x1 (self.backLegendTextsSegments_property)
+    self.backLegendTexts_property.addEBObserverOf_y1 (self.backLegendTextsSegments_property)
+    self.backLegendTexts_property.addEBObserverOf_x2 (self.backLegendTextsSegments_property)
+    self.backLegendTexts_property.addEBObserverOf_y2 (self.backLegendTextsSegments_property)
+    self.backLegendTexts_property.addEBObserverOf_width (self.backLegendTextsSegments_property)
+  //--- Atomic property: backLegendTextsBezierPaths
     self.backLegendTextsBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backLegendTextsSegments_property_selection.kind ()
@@ -1614,6 +2127,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backLegendTextsSegments_property.addEBObserver (self.backLegendTextsBezierPaths_property)
+  //--- Atomic property: backLayoutTextsSegments
     self.backLayoutTextsSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLayoutTexts_property_selection.kind ()
@@ -1638,6 +2153,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backLayoutTexts_property.addEBObserverOf_x1 (self.backLayoutTextsSegments_property)
+    self.backLayoutTexts_property.addEBObserverOf_y1 (self.backLayoutTextsSegments_property)
+    self.backLayoutTexts_property.addEBObserverOf_x2 (self.backLayoutTextsSegments_property)
+    self.backLayoutTexts_property.addEBObserverOf_y2 (self.backLayoutTextsSegments_property)
+    self.backLayoutTexts_property.addEBObserverOf_width (self.backLayoutTextsSegments_property)
+  //--- Atomic property: backLayoutTextsBezierPaths
     self.backLayoutTextsBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backLayoutTextsSegments_property_selection.kind ()
@@ -1658,6 +2179,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backLayoutTextsSegments_property.addEBObserver (self.backLayoutTextsBezierPaths_property)
+  //--- Atomic property: internalBoardsLimitsSegments
     self.internalBoardsLimitsSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.internalBoardsLimits_property_selection.kind ()
@@ -1682,6 +2205,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.internalBoardsLimits_property.addEBObserverOf_x1 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.addEBObserverOf_y1 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.addEBObserverOf_x2 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.addEBObserverOf_y2 (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimits_property.addEBObserverOf_width (self.internalBoardsLimitsSegments_property)
+  //--- Atomic property: internalBoardsLimitsBezierPaths
     self.internalBoardsLimitsBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.internalBoardsLimitsSegments_property_selection.kind ()
@@ -1702,6 +2231,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.internalBoardsLimitsSegments_property.addEBObserver (self.internalBoardsLimitsBezierPaths_property)
+  //--- Atomic property: drillSegments
     self.drillSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.drills_property_selection.kind ()
@@ -1726,6 +2257,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.drills_property.addEBObserverOf_x1 (self.drillSegments_property)
+    self.drills_property.addEBObserverOf_y1 (self.drillSegments_property)
+    self.drills_property.addEBObserverOf_x2 (self.drillSegments_property)
+    self.drills_property.addEBObserverOf_y2 (self.drillSegments_property)
+    self.drills_property.addEBObserverOf_width (self.drillSegments_property)
+  //--- Atomic property: holesBezierPaths
     self.holesBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.drillSegments_property_selection.kind ()
@@ -1746,6 +2283,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.drillSegments_property.addEBObserver (self.holesBezierPaths_property)
+  //--- Atomic property: viaShapes
     self.viaShapes_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.vias_property_selection.kind ()
@@ -1768,6 +2307,10 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.vias_property.addEBObserverOf_x (self.viaShapes_property)
+    self.vias_property.addEBObserverOf_y (self.viaShapes_property)
+    self.vias_property.addEBObserverOf_padDiameter (self.viaShapes_property)
+  //--- Atomic property: viasBezierPaths
     self.viasBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.viaShapes_property_selection.kind ()
@@ -1788,6 +2331,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.viaShapes_property.addEBObserver (self.viasBezierPaths_property)
+  //--- Atomic property: frontPadArray
     self.frontPadArray_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontPads_property_selection.kind ()
@@ -1813,6 +2358,13 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontPads_property.addEBObserverOf_x (self.frontPadArray_property)
+    self.frontPads_property.addEBObserverOf_y (self.frontPadArray_property)
+    self.frontPads_property.addEBObserverOf_width (self.frontPadArray_property)
+    self.frontPads_property.addEBObserverOf_height (self.frontPadArray_property)
+    self.frontPads_property.addEBObserverOf_shape (self.frontPadArray_property)
+    self.frontPads_property.addEBObserverOf_rotation (self.frontPadArray_property)
+  //--- Atomic property: frontPadsBezierPaths
     self.frontPadsBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontPadArray_property_selection.kind ()
@@ -1833,6 +2385,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontPadArray_property.addEBObserver (self.frontPadsBezierPaths_property)
+  //--- Atomic property: backPadArray
     self.backPadArray_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backPads_property_selection.kind ()
@@ -1858,6 +2412,13 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backPads_property.addEBObserverOf_x (self.backPadArray_property)
+    self.backPads_property.addEBObserverOf_y (self.backPadArray_property)
+    self.backPads_property.addEBObserverOf_width (self.backPadArray_property)
+    self.backPads_property.addEBObserverOf_height (self.backPadArray_property)
+    self.backPads_property.addEBObserverOf_shape (self.backPadArray_property)
+    self.backPads_property.addEBObserverOf_rotation (self.backPadArray_property)
+  //--- Atomic property: backPadsBezierPaths
     self.backPadsBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backPadArray_property_selection.kind ()
@@ -1878,6 +2439,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backPadArray_property.addEBObserver (self.backPadsBezierPaths_property)
+  //--- Atomic property: boardLimits
     self.boardLimits_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.modelWidth_property_selection.kind ()
@@ -1901,6 +2464,11 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.modelWidth_property.addEBObserver (self.boardLimits_property)
+    self.modelHeight_property.addEBObserver (self.boardLimits_property)
+    self.modelLimitWidth_property.addEBObserver (self.boardLimits_property)
+    g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.boardLimits_property)
+  //--- Atomic property: boardLimitsBezierPaths
     self.boardLimitsBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.modelWidth_property_selection.kind ()
@@ -1923,6 +2491,10 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.modelWidth_property.addEBObserver (self.boardLimitsBezierPaths_property)
+    self.modelHeight_property.addEBObserver (self.boardLimitsBezierPaths_property)
+    self.modelLimitWidth_property.addEBObserver (self.boardLimitsBezierPaths_property)
+  //--- Atomic property: backComponentNameSegments
     self.backComponentNameSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backComponentNames_property_selection.kind ()
@@ -1947,6 +2519,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backComponentNames_property.addEBObserverOf_x1 (self.backComponentNameSegments_property)
+    self.backComponentNames_property.addEBObserverOf_y1 (self.backComponentNameSegments_property)
+    self.backComponentNames_property.addEBObserverOf_x2 (self.backComponentNameSegments_property)
+    self.backComponentNames_property.addEBObserverOf_y2 (self.backComponentNameSegments_property)
+    self.backComponentNames_property.addEBObserverOf_width (self.backComponentNameSegments_property)
+  //--- Atomic property: backComponentNamesBezierPaths
     self.backComponentNamesBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backComponentNameSegments_property_selection.kind ()
@@ -1967,6 +2545,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backComponentNameSegments_property.addEBObserver (self.backComponentNamesBezierPaths_property)
+  //--- Atomic property: frontComponentNameSegments
     self.frontComponentNameSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontComponentNames_property_selection.kind ()
@@ -1991,6 +2571,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontComponentNames_property.addEBObserverOf_x1 (self.frontComponentNameSegments_property)
+    self.frontComponentNames_property.addEBObserverOf_y1 (self.frontComponentNameSegments_property)
+    self.frontComponentNames_property.addEBObserverOf_x2 (self.frontComponentNameSegments_property)
+    self.frontComponentNames_property.addEBObserverOf_y2 (self.frontComponentNameSegments_property)
+    self.frontComponentNames_property.addEBObserverOf_width (self.frontComponentNameSegments_property)
+  //--- Atomic property: frontComponentNamesBezierPaths
     self.frontComponentNamesBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontComponentNameSegments_property_selection.kind ()
@@ -2011,6 +2597,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontComponentNameSegments_property.addEBObserver (self.frontComponentNamesBezierPaths_property)
+  //--- Atomic property: frontComponentValueSegments
     self.frontComponentValueSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontComponentValues_property_selection.kind ()
@@ -2035,6 +2623,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontComponentValues_property.addEBObserverOf_x1 (self.frontComponentValueSegments_property)
+    self.frontComponentValues_property.addEBObserverOf_y1 (self.frontComponentValueSegments_property)
+    self.frontComponentValues_property.addEBObserverOf_x2 (self.frontComponentValueSegments_property)
+    self.frontComponentValues_property.addEBObserverOf_y2 (self.frontComponentValueSegments_property)
+    self.frontComponentValues_property.addEBObserverOf_width (self.frontComponentValueSegments_property)
+  //--- Atomic property: frontComponentValuesBezierPaths
     self.frontComponentValuesBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontComponentValueSegments_property_selection.kind ()
@@ -2055,6 +2649,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontComponentValueSegments_property.addEBObserver (self.frontComponentValuesBezierPaths_property)
+  //--- Atomic property: backComponentValueSegments
     self.backComponentValueSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backComponentValues_property_selection.kind ()
@@ -2079,6 +2675,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backComponentValues_property.addEBObserverOf_x1 (self.backComponentValueSegments_property)
+    self.backComponentValues_property.addEBObserverOf_y1 (self.backComponentValueSegments_property)
+    self.backComponentValues_property.addEBObserverOf_x2 (self.backComponentValueSegments_property)
+    self.backComponentValues_property.addEBObserverOf_y2 (self.backComponentValueSegments_property)
+    self.backComponentValues_property.addEBObserverOf_width (self.backComponentValueSegments_property)
+  //--- Atomic property: backComponentValuesBezierPaths
     self.backComponentValuesBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backComponentValueSegments_property_selection.kind ()
@@ -2099,6 +2701,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backComponentValueSegments_property.addEBObserver (self.backComponentValuesBezierPaths_property)
+  //--- Atomic property: backTrackSegments
     self.backTrackSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backTracks_property_selection.kind ()
@@ -2123,6 +2727,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backTracks_property.addEBObserverOf_x1 (self.backTrackSegments_property)
+    self.backTracks_property.addEBObserverOf_y1 (self.backTrackSegments_property)
+    self.backTracks_property.addEBObserverOf_x2 (self.backTrackSegments_property)
+    self.backTracks_property.addEBObserverOf_y2 (self.backTrackSegments_property)
+    self.backTracks_property.addEBObserverOf_width (self.backTrackSegments_property)
+  //--- Atomic property: backTracksBezierPaths
     self.backTracksBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backTrackSegments_property_selection.kind ()
@@ -2143,6 +2753,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backTrackSegments_property.addEBObserver (self.backTracksBezierPaths_property)
+  //--- Atomic property: frontTrackSegments
     self.frontTrackSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontTracks_property_selection.kind ()
@@ -2167,6 +2779,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontTracks_property.addEBObserverOf_x1 (self.frontTrackSegments_property)
+    self.frontTracks_property.addEBObserverOf_y1 (self.frontTrackSegments_property)
+    self.frontTracks_property.addEBObserverOf_x2 (self.frontTrackSegments_property)
+    self.frontTracks_property.addEBObserverOf_y2 (self.frontTrackSegments_property)
+    self.frontTracks_property.addEBObserverOf_width (self.frontTrackSegments_property)
+  //--- Atomic property: frontTracksBezierPaths
     self.frontTracksBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontTrackSegments_property_selection.kind ()
@@ -2187,6 +2805,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontTrackSegments_property.addEBObserver (self.frontTracksBezierPaths_property)
+  //--- Atomic property: frontPackagesSegments
     self.frontPackagesSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontPackages_property_selection.kind ()
@@ -2211,6 +2831,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontPackages_property.addEBObserverOf_x1 (self.frontPackagesSegments_property)
+    self.frontPackages_property.addEBObserverOf_y1 (self.frontPackagesSegments_property)
+    self.frontPackages_property.addEBObserverOf_x2 (self.frontPackagesSegments_property)
+    self.frontPackages_property.addEBObserverOf_y2 (self.frontPackagesSegments_property)
+    self.frontPackages_property.addEBObserverOf_width (self.frontPackagesSegments_property)
+  //--- Atomic property: frontPackagesBezierPaths
     self.frontPackagesBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontPackagesSegments_property_selection.kind ()
@@ -2231,6 +2857,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.frontPackagesSegments_property.addEBObserver (self.frontPackagesBezierPaths_property)
+  //--- Atomic property: backPackagesSegments
     self.backPackagesSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backPackages_property_selection.kind ()
@@ -2255,6 +2883,12 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backPackages_property.addEBObserverOf_x1 (self.backPackagesSegments_property)
+    self.backPackages_property.addEBObserverOf_y1 (self.backPackagesSegments_property)
+    self.backPackages_property.addEBObserverOf_x2 (self.backPackagesSegments_property)
+    self.backPackages_property.addEBObserverOf_y2 (self.backPackagesSegments_property)
+    self.backPackages_property.addEBObserverOf_width (self.backPackagesSegments_property)
+  //--- Atomic property: backPackagesBezierPaths
     self.backPackagesBezierPaths_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backPackagesSegments_property_selection.kind ()
@@ -2275,6 +2909,8 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    self.backPackagesSegments_property.addEBObserver (self.backPackagesBezierPaths_property)
+  //--- Atomic property: imageForModel
     self.imageForModel_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
@@ -2357,6 +2993,70 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
+    g_Preferences?.mergerColorBackground_property.addEBObserver (self.imageForModel_property)
+    self.modelWidth_property.addEBObserver (self.imageForModel_property)
+    self.modelHeight_property.addEBObserver (self.imageForModel_property)
+    self.boardLimitsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.imageForModel_property)
+    self.internalBoardsLimitsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayInternalBoardsLimits_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorInternalBoardsLimits_property.addEBObserver (self.imageForModel_property)
+    self.frontTracksBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontTracks_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontTracks_property.addEBObserver (self.imageForModel_property)
+    self.backTracksBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackTracks_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackTracks_property.addEBObserver (self.imageForModel_property)
+    self.frontPadsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontPads_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontPads_property.addEBObserver (self.imageForModel_property)
+    self.backPadsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackPads_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackPads_property.addEBObserver (self.imageForModel_property)
+    self.viasBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayVias_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorVias_property.addEBObserver (self.imageForModel_property)
+    self.holesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayHoles_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorHoles_property.addEBObserver (self.imageForModel_property)
+    self.frontLegendLinesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontLegendLines_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontLegendLines_property.addEBObserver (self.imageForModel_property)
+    self.backLegendLinesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackLegendLines_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackLegendLines_property.addEBObserver (self.imageForModel_property)
+    self.frontLegendTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontLegendTexts_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontLegendTexts_property.addEBObserver (self.imageForModel_property)
+    self.frontLayoutTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontLayoutTexts_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontLayoutTexts_property.addEBObserver (self.imageForModel_property)
+    self.backLegendTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackLegendTexts_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackLegendTexts_property.addEBObserver (self.imageForModel_property)
+    self.backLayoutTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackLayoutTexts_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackLayoutTexts_property.addEBObserver (self.imageForModel_property)
+    self.backComponentNamesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackComponentNames_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackComponentNames_property.addEBObserver (self.imageForModel_property)
+    self.frontComponentNamesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontComponentNames_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontComponentNames_property.addEBObserver (self.imageForModel_property)
+    self.frontComponentValuesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontComponentValues_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontComponentValues_property.addEBObserver (self.imageForModel_property)
+    self.backComponentValuesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackComponentValues_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackComponentValues_property.addEBObserver (self.imageForModel_property)
+    self.frontPackagesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayFrontPackages_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorFrontPackages_property.addEBObserver (self.imageForModel_property)
+    self.backPackagesBezierPaths_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerModelViewDisplayBackPackages_property.addEBObserver (self.imageForModel_property)
+    g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.imageForModel_property)
+  //--- Atomic property: imageForInstances
     self.imageForInstances_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
@@ -2437,192 +3137,6 @@ class BoardModel : EBManagedObject,
         return .empty
       }
     }
-  //--- Install property observers for transients
-    self.myInstances_property.addEBObserver (self.instanceCount_property)
-    self.frontLegendLines_property.addEBObserverOf_x1 (self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.addEBObserverOf_y1 (self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.addEBObserverOf_x2 (self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.addEBObserverOf_y2 (self.frontLegendLinesSegments_property)
-    self.frontLegendLines_property.addEBObserverOf_width (self.frontLegendLinesSegments_property)
-    self.frontLegendLinesSegments_property.addEBObserver (self.frontLegendLinesBezierPaths_property)
-    self.backLegendLines_property.addEBObserverOf_x1 (self.backLegendLinesSegments_property)
-    self.backLegendLines_property.addEBObserverOf_y1 (self.backLegendLinesSegments_property)
-    self.backLegendLines_property.addEBObserverOf_x2 (self.backLegendLinesSegments_property)
-    self.backLegendLines_property.addEBObserverOf_y2 (self.backLegendLinesSegments_property)
-    self.backLegendLines_property.addEBObserverOf_width (self.backLegendLinesSegments_property)
-    self.backLegendLinesSegments_property.addEBObserver (self.backLegendLinesBezierPaths_property)
-    self.frontLegendTexts_property.addEBObserverOf_x1 (self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.addEBObserverOf_y1 (self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.addEBObserverOf_x2 (self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.addEBObserverOf_y2 (self.frontLegendTextsSegments_property)
-    self.frontLegendTexts_property.addEBObserverOf_width (self.frontLegendTextsSegments_property)
-    self.frontLegendTextsSegments_property.addEBObserver (self.frontLegendTextsBezierPaths_property)
-    self.frontLayoutTexts_property.addEBObserverOf_x1 (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.addEBObserverOf_y1 (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.addEBObserverOf_x2 (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.addEBObserverOf_y2 (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTexts_property.addEBObserverOf_width (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTextsSegments_property.addEBObserver (self.frontLayoutTextsBezierPaths_property)
-    self.backLegendTexts_property.addEBObserverOf_x1 (self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.addEBObserverOf_y1 (self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.addEBObserverOf_x2 (self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.addEBObserverOf_y2 (self.backLegendTextsSegments_property)
-    self.backLegendTexts_property.addEBObserverOf_width (self.backLegendTextsSegments_property)
-    self.backLegendTextsSegments_property.addEBObserver (self.backLegendTextsBezierPaths_property)
-    self.backLayoutTexts_property.addEBObserverOf_x1 (self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.addEBObserverOf_y1 (self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.addEBObserverOf_x2 (self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.addEBObserverOf_y2 (self.backLayoutTextsSegments_property)
-    self.backLayoutTexts_property.addEBObserverOf_width (self.backLayoutTextsSegments_property)
-    self.backLayoutTextsSegments_property.addEBObserver (self.backLayoutTextsBezierPaths_property)
-    self.internalBoardsLimits_property.addEBObserverOf_x1 (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.addEBObserverOf_y1 (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.addEBObserverOf_x2 (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.addEBObserverOf_y2 (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimits_property.addEBObserverOf_width (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimitsSegments_property.addEBObserver (self.internalBoardsLimitsBezierPaths_property)
-    self.drills_property.addEBObserverOf_x1 (self.drillSegments_property)
-    self.drills_property.addEBObserverOf_y1 (self.drillSegments_property)
-    self.drills_property.addEBObserverOf_x2 (self.drillSegments_property)
-    self.drills_property.addEBObserverOf_y2 (self.drillSegments_property)
-    self.drills_property.addEBObserverOf_width (self.drillSegments_property)
-    self.drillSegments_property.addEBObserver (self.holesBezierPaths_property)
-    self.vias_property.addEBObserverOf_x (self.viaShapes_property)
-    self.vias_property.addEBObserverOf_y (self.viaShapes_property)
-    self.vias_property.addEBObserverOf_padDiameter (self.viaShapes_property)
-    self.viaShapes_property.addEBObserver (self.viasBezierPaths_property)
-    self.frontPads_property.addEBObserverOf_x (self.frontPadArray_property)
-    self.frontPads_property.addEBObserverOf_y (self.frontPadArray_property)
-    self.frontPads_property.addEBObserverOf_width (self.frontPadArray_property)
-    self.frontPads_property.addEBObserverOf_height (self.frontPadArray_property)
-    self.frontPads_property.addEBObserverOf_shape (self.frontPadArray_property)
-    self.frontPads_property.addEBObserverOf_rotation (self.frontPadArray_property)
-    self.frontPadArray_property.addEBObserver (self.frontPadsBezierPaths_property)
-    self.backPads_property.addEBObserverOf_x (self.backPadArray_property)
-    self.backPads_property.addEBObserverOf_y (self.backPadArray_property)
-    self.backPads_property.addEBObserverOf_width (self.backPadArray_property)
-    self.backPads_property.addEBObserverOf_height (self.backPadArray_property)
-    self.backPads_property.addEBObserverOf_shape (self.backPadArray_property)
-    self.backPads_property.addEBObserverOf_rotation (self.backPadArray_property)
-    self.backPadArray_property.addEBObserver (self.backPadsBezierPaths_property)
-    self.modelWidth_property.addEBObserver (self.boardLimits_property)
-    self.modelHeight_property.addEBObserver (self.boardLimits_property)
-    self.modelLimitWidth_property.addEBObserver (self.boardLimits_property)
-    g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.boardLimits_property)
-    self.modelWidth_property.addEBObserver (self.boardLimitsBezierPaths_property)
-    self.modelHeight_property.addEBObserver (self.boardLimitsBezierPaths_property)
-    self.modelLimitWidth_property.addEBObserver (self.boardLimitsBezierPaths_property)
-    self.backComponentNames_property.addEBObserverOf_x1 (self.backComponentNameSegments_property)
-    self.backComponentNames_property.addEBObserverOf_y1 (self.backComponentNameSegments_property)
-    self.backComponentNames_property.addEBObserverOf_x2 (self.backComponentNameSegments_property)
-    self.backComponentNames_property.addEBObserverOf_y2 (self.backComponentNameSegments_property)
-    self.backComponentNames_property.addEBObserverOf_width (self.backComponentNameSegments_property)
-    self.backComponentNameSegments_property.addEBObserver (self.backComponentNamesBezierPaths_property)
-    self.frontComponentNames_property.addEBObserverOf_x1 (self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.addEBObserverOf_y1 (self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.addEBObserverOf_x2 (self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.addEBObserverOf_y2 (self.frontComponentNameSegments_property)
-    self.frontComponentNames_property.addEBObserverOf_width (self.frontComponentNameSegments_property)
-    self.frontComponentNameSegments_property.addEBObserver (self.frontComponentNamesBezierPaths_property)
-    self.frontComponentValues_property.addEBObserverOf_x1 (self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.addEBObserverOf_y1 (self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.addEBObserverOf_x2 (self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.addEBObserverOf_y2 (self.frontComponentValueSegments_property)
-    self.frontComponentValues_property.addEBObserverOf_width (self.frontComponentValueSegments_property)
-    self.frontComponentValueSegments_property.addEBObserver (self.frontComponentValuesBezierPaths_property)
-    self.backComponentValues_property.addEBObserverOf_x1 (self.backComponentValueSegments_property)
-    self.backComponentValues_property.addEBObserverOf_y1 (self.backComponentValueSegments_property)
-    self.backComponentValues_property.addEBObserverOf_x2 (self.backComponentValueSegments_property)
-    self.backComponentValues_property.addEBObserverOf_y2 (self.backComponentValueSegments_property)
-    self.backComponentValues_property.addEBObserverOf_width (self.backComponentValueSegments_property)
-    self.backComponentValueSegments_property.addEBObserver (self.backComponentValuesBezierPaths_property)
-    self.backTracks_property.addEBObserverOf_x1 (self.backTrackSegments_property)
-    self.backTracks_property.addEBObserverOf_y1 (self.backTrackSegments_property)
-    self.backTracks_property.addEBObserverOf_x2 (self.backTrackSegments_property)
-    self.backTracks_property.addEBObserverOf_y2 (self.backTrackSegments_property)
-    self.backTracks_property.addEBObserverOf_width (self.backTrackSegments_property)
-    self.backTrackSegments_property.addEBObserver (self.backTracksBezierPaths_property)
-    self.frontTracks_property.addEBObserverOf_x1 (self.frontTrackSegments_property)
-    self.frontTracks_property.addEBObserverOf_y1 (self.frontTrackSegments_property)
-    self.frontTracks_property.addEBObserverOf_x2 (self.frontTrackSegments_property)
-    self.frontTracks_property.addEBObserverOf_y2 (self.frontTrackSegments_property)
-    self.frontTracks_property.addEBObserverOf_width (self.frontTrackSegments_property)
-    self.frontTrackSegments_property.addEBObserver (self.frontTracksBezierPaths_property)
-    self.frontPackages_property.addEBObserverOf_x1 (self.frontPackagesSegments_property)
-    self.frontPackages_property.addEBObserverOf_y1 (self.frontPackagesSegments_property)
-    self.frontPackages_property.addEBObserverOf_x2 (self.frontPackagesSegments_property)
-    self.frontPackages_property.addEBObserverOf_y2 (self.frontPackagesSegments_property)
-    self.frontPackages_property.addEBObserverOf_width (self.frontPackagesSegments_property)
-    self.frontPackagesSegments_property.addEBObserver (self.frontPackagesBezierPaths_property)
-    self.backPackages_property.addEBObserverOf_x1 (self.backPackagesSegments_property)
-    self.backPackages_property.addEBObserverOf_y1 (self.backPackagesSegments_property)
-    self.backPackages_property.addEBObserverOf_x2 (self.backPackagesSegments_property)
-    self.backPackages_property.addEBObserverOf_y2 (self.backPackagesSegments_property)
-    self.backPackages_property.addEBObserverOf_width (self.backPackagesSegments_property)
-    self.backPackagesSegments_property.addEBObserver (self.backPackagesBezierPaths_property)
-    g_Preferences?.mergerColorBackground_property.addEBObserver (self.imageForModel_property)
-    self.modelWidth_property.addEBObserver (self.imageForModel_property)
-    self.modelHeight_property.addEBObserver (self.imageForModel_property)
-    self.boardLimitsBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.imageForModel_property)
-    self.internalBoardsLimitsBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayInternalBoardsLimits_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorInternalBoardsLimits_property.addEBObserver (self.imageForModel_property)
-    self.frontTracksBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontTracks_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontTracks_property.addEBObserver (self.imageForModel_property)
-    self.backTracksBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackTracks_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackTracks_property.addEBObserver (self.imageForModel_property)
-    self.frontPadsBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontPads_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontPads_property.addEBObserver (self.imageForModel_property)
-    self.backPadsBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackPads_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackPads_property.addEBObserver (self.imageForModel_property)
-    self.viasBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayVias_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorVias_property.addEBObserver (self.imageForModel_property)
-    self.holesBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayHoles_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorHoles_property.addEBObserver (self.imageForModel_property)
-    self.frontLegendLinesBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontLegendLines_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontLegendLines_property.addEBObserver (self.imageForModel_property)
-    self.backLegendLinesBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackLegendLines_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackLegendLines_property.addEBObserver (self.imageForModel_property)
-    self.frontLegendTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontLegendTexts_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontLegendTexts_property.addEBObserver (self.imageForModel_property)
-    self.frontLayoutTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontLayoutTexts_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontLayoutTexts_property.addEBObserver (self.imageForModel_property)
-    self.backLegendTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackLegendTexts_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackLegendTexts_property.addEBObserver (self.imageForModel_property)
-    self.backLayoutTextsBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackLayoutTexts_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackLayoutTexts_property.addEBObserver (self.imageForModel_property)
-    self.backComponentNamesBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackComponentNames_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackComponentNames_property.addEBObserver (self.imageForModel_property)
-    self.frontComponentNamesBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontComponentNames_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontComponentNames_property.addEBObserver (self.imageForModel_property)
-    self.frontComponentValuesBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontComponentValues_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontComponentValues_property.addEBObserver (self.imageForModel_property)
-    self.backComponentValuesBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackComponentValues_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackComponentValues_property.addEBObserver (self.imageForModel_property)
-    self.frontPackagesBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayFrontPackages_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorFrontPackages_property.addEBObserver (self.imageForModel_property)
-    self.backPackagesBezierPaths_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerModelViewDisplayBackPackages_property.addEBObserver (self.imageForModel_property)
-    g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.imageForModel_property)
     g_Preferences?.mergerColorBackground_property.addEBObserver (self.imageForInstances_property)
     self.modelWidth_property.addEBObserver (self.imageForInstances_property)
     self.modelHeight_property.addEBObserver (self.imageForInstances_property)
@@ -2684,40 +3198,29 @@ class BoardModel : EBManagedObject,
     self.backPackagesBezierPaths_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerBoardViewDisplayBackPackages_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.imageForInstances_property)
-  //--- Install undoers for properties
-    self.artworkName_property.undoManager = self.undoManager ()
-    self.name_property.undoManager = self.undoManager ()
-    self.modelWidth_property.undoManager = self.undoManager ()
-    self.modelWidthUnit_property.undoManager = self.undoManager ()
-    self.modelHeight_property.undoManager = self.undoManager ()
-    self.modelHeightUnit_property.undoManager = self.undoManager ()
-    self.zoom_property.undoManager = self.undoManager ()
-    self.modelLimitWidth_property.undoManager = self.undoManager ()
-    self.modelLimitWidthUnit_property.undoManager = self.undoManager ()
-  //--- Install undoers and opposite setter for relationships
-    self.myInstances_property.undoManager = self.undoManager ()
-    self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
-      inManagedObject?.myModel_property.setProp (self)
+  //--- Atomic property: instanceCount
+    self.instanceCount_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.myInstances_property.count_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.myInstances_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardModel_instanceCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
     }
-    self.frontLegendLines_property.undoManager = self.undoManager ()
-    self.backLegendLines_property.undoManager = self.undoManager ()
-    self.frontLegendTexts_property.undoManager = self.undoManager ()
-    self.frontLayoutTexts_property.undoManager = self.undoManager ()
-    self.backLegendTexts_property.undoManager = self.undoManager ()
-    self.backLayoutTexts_property.undoManager = self.undoManager ()
-    self.internalBoardsLimits_property.undoManager = self.undoManager ()
-    self.drills_property.undoManager = self.undoManager ()
-    self.vias_property.undoManager = self.undoManager ()
-    self.frontPads_property.undoManager = self.undoManager ()
-    self.backPads_property.undoManager = self.undoManager ()
-    self.backComponentNames_property.undoManager = self.undoManager ()
-    self.frontComponentNames_property.undoManager = self.undoManager ()
-    self.frontComponentValues_property.undoManager = self.undoManager ()
-    self.backComponentValues_property.undoManager = self.undoManager ()
-    self.backTracks_property.undoManager = self.undoManager ()
-    self.frontTracks_property.undoManager = self.undoManager ()
-    self.frontPackages_property.undoManager = self.undoManager ()
-    self.backPackages_property.undoManager = self.undoManager ()
+    self.myInstances_property.addEBObserver (self.instanceCount_property)
+  //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
   }
 
@@ -2725,7 +3228,6 @@ class BoardModel : EBManagedObject,
 
   deinit {
   //--- Remove observers
-    self.myInstances_property.removeEBObserver (self.instanceCount_property)
     self.frontLegendLines_property.removeEBObserverOf_x1 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.removeEBObserverOf_y1 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.removeEBObserverOf_x2 (self.frontLegendLinesSegments_property)
@@ -2971,6 +3473,7 @@ class BoardModel : EBManagedObject,
     self.backPackagesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerBoardViewDisplayBackPackages_property.removeEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.imageForInstances_property)
+    self.myInstances_property.removeEBObserver (self.instanceCount_property)
   }
 
   //····················································································································
@@ -2979,14 +3482,6 @@ class BoardModel : EBManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
-    createEntryForPropertyNamed (
-      "artworkName",
-      idx:self.artworkName_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.artworkName_property.mObserverExplorer,
-      valueExplorer:&self.artworkName_property.mValueExplorer
-    )
     createEntryForPropertyNamed (
       "name",
       idx:self.name_property.mEasyBindingsObjectIndex,
@@ -3051,15 +3546,15 @@ class BoardModel : EBManagedObject,
       observerExplorer:&self.modelLimitWidthUnit_property.mObserverExplorer,
       valueExplorer:&self.modelLimitWidthUnit_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "instanceCount",
-      idx:self.instanceCount_property.mEasyBindingsObjectIndex,
+      "artworkName",
+      idx:self.artworkName_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.instanceCount_property.mObserverExplorer,
-      valueExplorer:&self.instanceCount_property.mValueExplorer
+      observerExplorer:&self.artworkName_property.mObserverExplorer,
+      valueExplorer:&self.artworkName_property.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "frontLegendLinesSegments",
       idx:self.frontLegendLinesSegments_property.mEasyBindingsObjectIndex,
@@ -3396,147 +3891,15 @@ class BoardModel : EBManagedObject,
       observerExplorer:&self.imageForInstances_property.mObserverExplorer,
       valueExplorer:&self.imageForInstances_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "instanceCount",
+      idx:self.instanceCount_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.instanceCount_property.mObserverExplorer,
+      valueExplorer:&self.instanceCount_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "myInstances",
-      idx:myInstances_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&myInstances_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontLegendLines",
-      idx:frontLegendLines_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontLegendLines_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backLegendLines",
-      idx:backLegendLines_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backLegendLines_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontLegendTexts",
-      idx:frontLegendTexts_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontLegendTexts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontLayoutTexts",
-      idx:frontLayoutTexts_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontLayoutTexts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backLegendTexts",
-      idx:backLegendTexts_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backLegendTexts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backLayoutTexts",
-      idx:backLayoutTexts_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backLayoutTexts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "internalBoardsLimits",
-      idx:internalBoardsLimits_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&internalBoardsLimits_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "drills",
-      idx:drills_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&drills_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "vias",
-      idx:vias_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&vias_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontPads",
-      idx:frontPads_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontPads_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backPads",
-      idx:backPads_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backPads_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backComponentNames",
-      idx:backComponentNames_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backComponentNames_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontComponentNames",
-      idx:frontComponentNames_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontComponentNames_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontComponentValues",
-      idx:frontComponentValues_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontComponentValues_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backComponentValues",
-      idx:backComponentValues_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backComponentValues_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backTracks",
-      idx:backTracks_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backTracks_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontTracks",
-      idx:frontTracks_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontTracks_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "frontPackages",
-      idx:frontPackages_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&frontPackages_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "backPackages",
-      idx:backPackages_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&backPackages_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -3546,44 +3909,91 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-    self.artworkName_property.mObserverExplorer = nil
-    self.artworkName_property.mValueExplorer = nil
+  //--- Atomic property: name
     self.name_property.mObserverExplorer = nil
     self.name_property.mValueExplorer = nil
+  //--- Atomic property: modelWidth
     self.modelWidth_property.mObserverExplorer = nil
     self.modelWidth_property.mValueExplorer = nil
+  //--- Atomic property: modelWidthUnit
     self.modelWidthUnit_property.mObserverExplorer = nil
     self.modelWidthUnit_property.mValueExplorer = nil
+  //--- Atomic property: modelHeight
     self.modelHeight_property.mObserverExplorer = nil
     self.modelHeight_property.mValueExplorer = nil
+  //--- Atomic property: modelHeightUnit
     self.modelHeightUnit_property.mObserverExplorer = nil
     self.modelHeightUnit_property.mValueExplorer = nil
+  //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
+  //--- To many property: frontLegendLines
+    self.frontLegendLines_property.mValueExplorer = nil
+  //--- To many property: backLegendLines
+    self.backLegendLines_property.mValueExplorer = nil
+  //--- To many property: frontLegendTexts
+    self.frontLegendTexts_property.mValueExplorer = nil
+  //--- To many property: frontLayoutTexts
+    self.frontLayoutTexts_property.mValueExplorer = nil
+  //--- To many property: backLegendTexts
+    self.backLegendTexts_property.mValueExplorer = nil
+  //--- To many property: backLayoutTexts
+    self.backLayoutTexts_property.mValueExplorer = nil
+  //--- To many property: internalBoardsLimits
+    self.internalBoardsLimits_property.mValueExplorer = nil
+  //--- To many property: drills
+    self.drills_property.mValueExplorer = nil
+  //--- To many property: vias
+    self.vias_property.mValueExplorer = nil
+  //--- To many property: frontPads
+    self.frontPads_property.mValueExplorer = nil
+  //--- To many property: backPads
+    self.backPads_property.mValueExplorer = nil
+  //--- Atomic property: modelLimitWidth
     self.modelLimitWidth_property.mObserverExplorer = nil
     self.modelLimitWidth_property.mValueExplorer = nil
+  //--- Atomic property: modelLimitWidthUnit
     self.modelLimitWidthUnit_property.mObserverExplorer = nil
     self.modelLimitWidthUnit_property.mValueExplorer = nil
-    self.myInstances_property.mValueExplorer = nil
-    self.frontLegendLines_property.mValueExplorer = nil
-    self.backLegendLines_property.mValueExplorer = nil
-    self.frontLegendTexts_property.mValueExplorer = nil
-    self.frontLayoutTexts_property.mValueExplorer = nil
-    self.backLegendTexts_property.mValueExplorer = nil
-    self.backLayoutTexts_property.mValueExplorer = nil
-    self.internalBoardsLimits_property.mValueExplorer = nil
-    self.drills_property.mValueExplorer = nil
-    self.vias_property.mValueExplorer = nil
-    self.frontPads_property.mValueExplorer = nil
-    self.backPads_property.mValueExplorer = nil
+  //--- To many property: backComponentNames
     self.backComponentNames_property.mValueExplorer = nil
+  //--- To many property: frontComponentNames
     self.frontComponentNames_property.mValueExplorer = nil
+  //--- To many property: frontComponentValues
     self.frontComponentValues_property.mValueExplorer = nil
+  //--- To many property: backComponentValues
     self.backComponentValues_property.mValueExplorer = nil
+  //--- To many property: backTracks
     self.backTracks_property.mValueExplorer = nil
+  //--- To many property: frontTracks
     self.frontTracks_property.mValueExplorer = nil
+  //--- To many property: frontPackages
     self.frontPackages_property.mValueExplorer = nil
+  //--- To many property: backPackages
     self.backPackages_property.mValueExplorer = nil
+  //--- Atomic property: artworkName
+    self.artworkName_property.mObserverExplorer = nil
+    self.artworkName_property.mValueExplorer = nil
+  //--- To many property: myInstances
+    self.myInstances_property.mValueExplorer = nil
+ //   self.name_property.mObserverExplorer = nil
+ //   self.name_property.mValueExplorer = nil
+ //   self.modelWidth_property.mObserverExplorer = nil
+ //   self.modelWidth_property.mValueExplorer = nil
+ //   self.modelWidthUnit_property.mObserverExplorer = nil
+ //   self.modelWidthUnit_property.mValueExplorer = nil
+ //   self.modelHeight_property.mObserverExplorer = nil
+ //   self.modelHeight_property.mValueExplorer = nil
+ //   self.modelHeightUnit_property.mObserverExplorer = nil
+ //   self.modelHeightUnit_property.mValueExplorer = nil
+ //   self.zoom_property.mObserverExplorer = nil
+ //   self.zoom_property.mValueExplorer = nil
+ //   self.modelLimitWidth_property.mObserverExplorer = nil
+ //   self.modelLimitWidth_property.mValueExplorer = nil
+ //   self.modelLimitWidthUnit_property.mObserverExplorer = nil
+ //   self.modelLimitWidthUnit_property.mValueExplorer = nil
+ //   self.artworkName_property.mObserverExplorer = nil
+ //   self.artworkName_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -3593,35 +4003,153 @@ class BoardModel : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
-    self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
-    self.modelWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelWidth")
-    self.modelWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelWidthUnit")
-    self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey: "modelHeight")
-    self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelHeightUnit")
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
-    self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidth")
-    self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidthUnit")
-    store (managedObjectArray: myInstances_property.propval as NSArray, relationshipName:"myInstances", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: frontLegendLines_property.propval as NSArray, relationshipName:"frontLegendLines", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: backLegendLines_property.propval as NSArray, relationshipName:"backLegendLines", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: frontLegendTexts_property.propval as NSArray, relationshipName:"frontLegendTexts", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: frontLayoutTexts_property.propval as NSArray, relationshipName:"frontLayoutTexts", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: backLegendTexts_property.propval as NSArray, relationshipName:"backLegendTexts", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: backLayoutTexts_property.propval as NSArray, relationshipName:"backLayoutTexts", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: internalBoardsLimits_property.propval as NSArray, relationshipName:"internalBoardsLimits", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: drills_property.propval as NSArray, relationshipName:"drills", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: vias_property.propval as NSArray, relationshipName:"vias", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: frontPads_property.propval as NSArray, relationshipName:"frontPads", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: backPads_property.propval as NSArray, relationshipName:"backPads", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: backComponentNames_property.propval as NSArray, relationshipName:"backComponentNames", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: frontComponentNames_property.propval as NSArray, relationshipName:"frontComponentNames", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: frontComponentValues_property.propval as NSArray, relationshipName:"frontComponentValues", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: backComponentValues_property.propval as NSArray, relationshipName:"backComponentValues", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: backTracks_property.propval as NSArray, relationshipName:"backTracks", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: frontTracks_property.propval as NSArray, relationshipName:"frontTracks", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: frontPackages_property.propval as NSArray, relationshipName:"frontPackages", intoDictionary: ioDictionary) ;
-    store (managedObjectArray: backPackages_property.propval as NSArray, relationshipName:"backPackages", intoDictionary: ioDictionary) ;
+  //--- Atomic property: name
+    self.name_property.storeIn (dictionary: ioDictionary, forKey:"name")
+  //--- Atomic property: modelWidth
+    self.modelWidth_property.storeIn (dictionary: ioDictionary, forKey:"modelWidth")
+  //--- Atomic property: modelWidthUnit
+    self.modelWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"modelWidthUnit")
+  //--- Atomic property: modelHeight
+    self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey:"modelHeight")
+  //--- Atomic property: modelHeightUnit
+    self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey:"modelHeightUnit")
+  //--- Atomic property: zoom
+    self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
+  //--- To many property: frontLegendLines
+    self.store (
+      managedObjectArray: frontLegendLines_property.propval as NSArray,
+      relationshipName: "frontLegendLines",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: backLegendLines
+    self.store (
+      managedObjectArray: backLegendLines_property.propval as NSArray,
+      relationshipName: "backLegendLines",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: frontLegendTexts
+    self.store (
+      managedObjectArray: frontLegendTexts_property.propval as NSArray,
+      relationshipName: "frontLegendTexts",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: frontLayoutTexts
+    self.store (
+      managedObjectArray: frontLayoutTexts_property.propval as NSArray,
+      relationshipName: "frontLayoutTexts",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: backLegendTexts
+    self.store (
+      managedObjectArray: backLegendTexts_property.propval as NSArray,
+      relationshipName: "backLegendTexts",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: backLayoutTexts
+    self.store (
+      managedObjectArray: backLayoutTexts_property.propval as NSArray,
+      relationshipName: "backLayoutTexts",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: internalBoardsLimits
+    self.store (
+      managedObjectArray: internalBoardsLimits_property.propval as NSArray,
+      relationshipName: "internalBoardsLimits",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: drills
+    self.store (
+      managedObjectArray: drills_property.propval as NSArray,
+      relationshipName: "drills",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: vias
+    self.store (
+      managedObjectArray: vias_property.propval as NSArray,
+      relationshipName: "vias",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: frontPads
+    self.store (
+      managedObjectArray: frontPads_property.propval as NSArray,
+      relationshipName: "frontPads",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: backPads
+    self.store (
+      managedObjectArray: backPads_property.propval as NSArray,
+      relationshipName: "backPads",
+      intoDictionary: ioDictionary
+    )
+  //--- Atomic property: modelLimitWidth
+    self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey:"modelLimitWidth")
+  //--- Atomic property: modelLimitWidthUnit
+    self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"modelLimitWidthUnit")
+  //--- To many property: backComponentNames
+    self.store (
+      managedObjectArray: backComponentNames_property.propval as NSArray,
+      relationshipName: "backComponentNames",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: frontComponentNames
+    self.store (
+      managedObjectArray: frontComponentNames_property.propval as NSArray,
+      relationshipName: "frontComponentNames",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: frontComponentValues
+    self.store (
+      managedObjectArray: frontComponentValues_property.propval as NSArray,
+      relationshipName: "frontComponentValues",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: backComponentValues
+    self.store (
+      managedObjectArray: backComponentValues_property.propval as NSArray,
+      relationshipName: "backComponentValues",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: backTracks
+    self.store (
+      managedObjectArray: backTracks_property.propval as NSArray,
+      relationshipName: "backTracks",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: frontTracks
+    self.store (
+      managedObjectArray: frontTracks_property.propval as NSArray,
+      relationshipName: "frontTracks",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: frontPackages
+    self.store (
+      managedObjectArray: frontPackages_property.propval as NSArray,
+      relationshipName: "frontPackages",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: backPackages
+    self.store (
+      managedObjectArray: backPackages_property.propval as NSArray,
+      relationshipName: "backPackages",
+      intoDictionary: ioDictionary
+    )
+  //--- Atomic property: artworkName
+    self.artworkName_property.storeIn (dictionary: ioDictionary, forKey:"artworkName")
+  //--- To many property: myInstances
+    self.store (
+      managedObjectArray: myInstances_property.propval as NSArray,
+      relationshipName: "myInstances",
+      intoDictionary: ioDictionary
+    )
+ //   self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
+ //   self.modelWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelWidth")
+ //   self.modelWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelWidthUnit")
+ //   self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey: "modelHeight")
+ //   self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelHeightUnit")
+ //   self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+ //   self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidth")
+ //   self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidthUnit")
+ //   self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
   }
 
   //····················································································································
@@ -3631,115 +4159,153 @@ class BoardModel : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
+  //--- Atomic property: name
     self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
+  //--- Atomic property: modelWidth
     self.modelWidth_property.readFrom (dictionary: inDictionary, forKey:"modelWidth")
+  //--- Atomic property: modelWidthUnit
     self.modelWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelWidthUnit")
+  //--- Atomic property: modelHeight
     self.modelHeight_property.readFrom (dictionary: inDictionary, forKey:"modelHeight")
+  //--- Atomic property: modelHeightUnit
     self.modelHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"modelHeightUnit")
+  //--- Atomic property: zoom
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
-    self.modelLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidth")
-    self.modelLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidthUnit")
-    self.myInstances_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "myInstances",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [MergerBoardInstance])
+  //--- To many property: frontLegendLines
     self.frontLegendLines_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLegendLines",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: backLegendLines
     self.backLegendLines_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backLegendLines",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: frontLegendTexts
     self.frontLegendTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLegendTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: frontLayoutTexts
     self.frontLayoutTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLayoutTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: backLegendTexts
     self.backLegendTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backLegendTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: backLayoutTexts
     self.backLayoutTexts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backLayoutTexts",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: internalBoardsLimits
     self.internalBoardsLimits_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "internalBoardsLimits",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: drills
     self.drills_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "drills",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: vias
     self.vias_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "vias",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [BoardModelVia])
+  //--- To many property: frontPads
     self.frontPads_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontPads",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [BoardModelPad])
+  //--- To many property: backPads
     self.backPads_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backPads",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [BoardModelPad])
+  //--- Atomic property: modelLimitWidth
+    self.modelLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidth")
+  //--- Atomic property: modelLimitWidthUnit
+    self.modelLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidthUnit")
+  //--- To many property: backComponentNames
     self.backComponentNames_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backComponentNames",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: frontComponentNames
     self.frontComponentNames_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontComponentNames",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: frontComponentValues
     self.frontComponentValues_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontComponentValues",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: backComponentValues
     self.backComponentValues_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backComponentValues",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: backTracks
     self.backTracks_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backTracks",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: frontTracks
     self.frontTracks_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontTracks",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: frontPackages
     self.frontPackages_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontPackages",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- To many property: backPackages
     self.backPackages_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backPackages",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
+  //--- Atomic property: artworkName
+    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
+  //--- To many property: myInstances
+    self.myInstances_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "myInstances",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [MergerBoardInstance])
+//    self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
+//    self.modelWidth_property.readFrom (dictionary: inDictionary, forKey:"modelWidth")
+//    self.modelWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelWidthUnit")
+//    self.modelHeight_property.readFrom (dictionary: inDictionary, forKey:"modelHeight")
+//    self.modelHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"modelHeightUnit")
+//    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+//    self.modelLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidth")
+//    self.modelLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidthUnit")
+//    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
   //--------------------------- Array controllers
   //--------------------------- Selection controllers
   }
@@ -3749,102 +4315,6 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.myInstances_property.setProp ([]) // Set relationships to nil
-    do{
-      let objects = self.frontLegendLines_property.propval
-      self.frontLegendLines_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.backLegendLines_property.propval
-      self.backLegendLines_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.frontLegendTexts_property.propval
-      self.frontLegendTexts_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.frontLayoutTexts_property.propval
-      self.frontLayoutTexts_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.backLegendTexts_property.propval
-      self.backLegendTexts_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.backLayoutTexts_property.propval
-      self.backLayoutTexts_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.internalBoardsLimits_property.propval
-      self.internalBoardsLimits_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.drills_property.propval
-      self.drills_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.vias_property.propval
-      self.vias_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.frontPads_property.propval
-      self.frontPads_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.backPads_property.propval
-      self.backPads_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.backComponentNames_property.propval
-      self.backComponentNames_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.frontComponentNames_property.propval
-      self.frontComponentNames_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.frontComponentValues_property.propval
-      self.frontComponentValues_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.backComponentValues_property.propval
-      self.backComponentValues_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.backTracks_property.propval
-      self.backTracks_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.frontTracks_property.propval
-      self.frontTracks_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.frontPackages_property.propval
-      self.frontPackages_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-    do{
-      let objects = self.backPackages_property.propval
-      self.backPackages_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
@@ -3854,7 +4324,6 @@ class BoardModel : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
-    self.myInstances_property.setProp ([])
     self.frontLegendLines_property.setProp ([])
     self.backLegendLines_property.setProp ([])
     self.frontLegendTexts_property.setProp ([])
@@ -3874,6 +4343,15 @@ class BoardModel : EBManagedObject,
     self.frontTracks_property.setProp ([])
     self.frontPackages_property.setProp ([])
     self.backPackages_property.setProp ([])
+    self.myInstances_property.setProp ([])
+  }
+
+  //····················································································································
+  //   resetToOneRelationships
+  //····················································································································
+
+  override func resetToOneRelationships () {
+    super.resetToOneRelationships ()
   }
 
   //····················································································································
@@ -3882,64 +4360,84 @@ class BoardModel : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-    for managedObject : EBManagedObject in self.myInstances_property.propval {
-      objects.append (managedObject)
-    }
+  //--- To many property: frontLegendLines
     for managedObject : EBManagedObject in self.frontLegendLines_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: backLegendLines
     for managedObject : EBManagedObject in self.backLegendLines_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: frontLegendTexts
     for managedObject : EBManagedObject in self.frontLegendTexts_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: frontLayoutTexts
     for managedObject : EBManagedObject in self.frontLayoutTexts_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: backLegendTexts
     for managedObject : EBManagedObject in self.backLegendTexts_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: backLayoutTexts
     for managedObject : EBManagedObject in self.backLayoutTexts_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: internalBoardsLimits
     for managedObject : EBManagedObject in self.internalBoardsLimits_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: drills
     for managedObject : EBManagedObject in self.drills_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: vias
     for managedObject : EBManagedObject in self.vias_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: frontPads
     for managedObject : EBManagedObject in self.frontPads_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: backPads
     for managedObject : EBManagedObject in self.backPads_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: backComponentNames
     for managedObject : EBManagedObject in self.backComponentNames_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: frontComponentNames
     for managedObject : EBManagedObject in self.frontComponentNames_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: frontComponentValues
     for managedObject : EBManagedObject in self.frontComponentValues_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: backComponentValues
     for managedObject : EBManagedObject in self.backComponentValues_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: backTracks
     for managedObject : EBManagedObject in self.backTracks_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: frontTracks
     for managedObject : EBManagedObject in self.frontTracks_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: frontPackages
     for managedObject : EBManagedObject in self.frontPackages_property.propval {
       objects.append (managedObject)
     }
+  //--- To many property: backPackages
     for managedObject : EBManagedObject in self.backPackages_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: myInstances
+    for managedObject : EBManagedObject in self.myInstances_property.propval {
       objects.append (managedObject)
     }
   }
@@ -3961,63 +4459,6 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   var propval : [BoardModel] { return [] } // Abstract method
-
-  //····················································································································
-  //   Observers of 'artworkName' stored property
-  //····················································································································
-
-  private var mObserversOf_artworkName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_artworkName.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.artworkName_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_artworkName.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.artworkName_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_artworkName_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_artworkName {
-        managedObject.artworkName_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_artworkName_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for observer in mObserversOf_artworkName {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.artworkName_property.removeEBObserver (observer)
-      }
-    }
-  }
 
   //····················································································································
   //   Observers of 'name' stored property
@@ -4476,57 +4917,58 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
-  //   Observers of 'instanceCount' transient property
+  //   Observers of 'artworkName' stored property
   //····················································································································
 
-  private var mObserversOf_instanceCount = EBWeakEventSet ()
+  private var mObserversOf_artworkName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+  final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_instanceCount.insert (inObserver)
+    mObserversOf_artworkName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.instanceCount_property.addEBObserver (inObserver)
+        managedObject.artworkName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_instanceCount.remove (inObserver)
+    mObserversOf_artworkName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.instanceCount_property.removeEBObserver (inObserver)
+        managedObject.artworkName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : Set<BoardModel>) {
+  final func addEBObserversOf_artworkName_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_instanceCount {
-        managedObject.instanceCount_property.addEBObserver (observer)
+      for observer in mObserversOf_artworkName {
+        managedObject.artworkName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_instanceCount {
-        managedObject.instanceCount_property.removeEBObserver (observer)
+  final func removeEBObserversOf_artworkName_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for observer in mObserversOf_artworkName {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.artworkName_property.removeEBObserver (observer)
       }
     }
   }
@@ -6884,6 +7326,62 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
+  //   Observers of 'instanceCount' transient property
+  //····················································································································
+
+  private var mObserversOf_instanceCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_instanceCount.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instanceCount_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_instanceCount.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instanceCount_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_instanceCount {
+        managedObject.instanceCount_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_instanceCount {
+        managedObject.instanceCount_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -6938,7 +7436,6 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
-        removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
         removeEBObserversOf_name_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedSet)
@@ -6947,8 +7444,8 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
-        removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedSet)
@@ -6991,10 +7488,10 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_imageForModel_fromElementsOfSet (removedSet)
         removeEBObserversOf_imageForInstances_fromElementsOfSet (removedSet)
+        removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
-        addEBObserversOf_artworkName_toElementsOfSet (addedSet)
         addEBObserversOf_name_toElementsOfSet (addedSet)
         addEBObserversOf_modelWidth_toElementsOfSet (addedSet)
         addEBObserversOf_modelWidthUnit_toElementsOfSet (addedSet)
@@ -7003,8 +7500,8 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         addEBObserversOf_zoom_toElementsOfSet (addedSet)
         addEBObserversOf_modelLimitWidth_toElementsOfSet (addedSet)
         addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_artworkName_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
-        addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedSet)
@@ -7047,6 +7544,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_imageForModel_toElementsOfSet (addedSet)
         addEBObserversOf_imageForInstances_toElementsOfSet (addedSet)
+        addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -7157,116 +7655,116 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
+        removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drillSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontPadArray_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPadArray_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimits_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drillSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPadArray_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_imageForModel_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : BoardModel in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
+        addEBObserversOf_name_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drillSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_holesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_viasBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontPadArray_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPadArray_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backPadsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimits_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drillSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPadArray_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontTrackSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_holesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_imageForModel_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet)
         addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_name_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_viasBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
@@ -7357,318 +7855,5 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_artworkName : class {
-  var artworkName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_name : class {
-  var name : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_modelWidth : class {
-  var modelWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_modelWidthUnit : class {
-  var modelWidthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_modelHeight : class {
-  var modelHeight : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_modelHeightUnit : class {
-  var modelHeightUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_zoom : class {
-  var zoom : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_modelLimitWidth : class {
-  var modelLimitWidth : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_modelLimitWidthUnit : class {
-  var modelLimitWidthUnit : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_instanceCount : class {
-  var instanceCount : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontLegendLinesSegments : class {
-  var frontLegendLinesSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontLegendLinesBezierPaths : class {
-  var frontLegendLinesBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backLegendLinesSegments : class {
-  var backLegendLinesSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backLegendLinesBezierPaths : class {
-  var backLegendLinesBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontLegendTextsSegments : class {
-  var frontLegendTextsSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontLegendTextsBezierPaths : class {
-  var frontLegendTextsBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontLayoutTextsSegments : class {
-  var frontLayoutTextsSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontLayoutTextsBezierPaths : class {
-  var frontLayoutTextsBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backLegendTextsSegments : class {
-  var backLegendTextsSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backLegendTextsBezierPaths : class {
-  var backLegendTextsBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backLayoutTextsSegments : class {
-  var backLayoutTextsSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backLayoutTextsBezierPaths : class {
-  var backLayoutTextsBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_internalBoardsLimitsSegments : class {
-  var internalBoardsLimitsSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_internalBoardsLimitsBezierPaths : class {
-  var internalBoardsLimitsBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_drillSegments : class {
-  var drillSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_holesBezierPaths : class {
-  var holesBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_viaShapes : class {
-  var viaShapes : MergerViaShapeArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_viasBezierPaths : class {
-  var viasBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontPadArray : class {
-  var frontPadArray : MergerPadArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontPadsBezierPaths : class {
-  var frontPadsBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backPadArray : class {
-  var backPadArray : MergerPadArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backPadsBezierPaths : class {
-  var backPadsBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_boardLimits : class {
-  var boardLimits : MergerBoardLimits? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_boardLimitsBezierPaths : class {
-  var boardLimitsBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backComponentNameSegments : class {
-  var backComponentNameSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backComponentNamesBezierPaths : class {
-  var backComponentNamesBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontComponentNameSegments : class {
-  var frontComponentNameSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontComponentNamesBezierPaths : class {
-  var frontComponentNamesBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontComponentValueSegments : class {
-  var frontComponentValueSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontComponentValuesBezierPaths : class {
-  var frontComponentValuesBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backComponentValueSegments : class {
-  var backComponentValueSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backComponentValuesBezierPaths : class {
-  var backComponentValuesBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backTrackSegments : class {
-  var backTrackSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backTracksBezierPaths : class {
-  var backTracksBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontTrackSegments : class {
-  var frontTrackSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontTracksBezierPaths : class {
-  var frontTracksBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontPackagesSegments : class {
-  var frontPackagesSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_frontPackagesBezierPaths : class {
-  var frontPackagesBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backPackagesSegments : class {
-  var backPackagesSegments : MergerSegmentArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_backPackagesBezierPaths : class {
-  var backPackagesBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_imageForModel : class {
-  var imageForModel : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_imageForInstances : class {
-  var imageForInstances : EBShape? { get }
-}
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

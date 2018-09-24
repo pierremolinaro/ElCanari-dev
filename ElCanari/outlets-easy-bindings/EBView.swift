@@ -36,7 +36,7 @@ protocol EBViewControllerProtocol : class {
   var canSendToBack : Bool { get }
   func sendToBack ()
 
-  func setSelection (objectWithIndex inIndex : Int)
+  func setSelection (objectsWithIndexes inIndexes : [Int])
 
   func addToSelection (objectsWithIndex inIndexes : [Int])
 
@@ -285,6 +285,7 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   override func mouseDown (with inEvent: NSEvent) {
+    super.mouseDown (with: inEvent)
     let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
     mLastMouseDraggedLocation = mouseDownLocation
     if let viewController = self.mViewController {
@@ -308,7 +309,7 @@ protocol EBViewControllerProtocol : class {
           }
         }else if let objectIndex = possibleObjectIndex {
           if !viewController.selectedIndexesSet.contains (objectIndex) {
-            viewController.setSelection (objectWithIndex: objectIndex)
+            viewController.setSelection (objectsWithIndexes: [objectIndex])
           }
         }else{ // Click outside an object : clear selection
           viewController.clearSelection ()
@@ -321,6 +322,7 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   override func mouseDragged (with inEvent : NSEvent) {
+    super.mouseDragged (with: inEvent)
     let mouseDraggedLocation = self.convert (inEvent.locationInWindow, from:nil)
     if let selectionRectangleOrigin = mSelectionRectangleOrigin {
       // NSLog ("Dragged")
@@ -337,7 +339,7 @@ protocol EBViewControllerProtocol : class {
       shapes.append (EBStrokeBezierPathShape ([bp], NSColor.lightGray))
       self.selectionRectangleLayer = EBShape (shapes: shapes)
       let indexSet = self.indexesOfObjects (intersecting:r)
-      mViewController?.addToSelection(objectsWithIndex: Array (indexSet))
+      mViewController?.setSelection (objectsWithIndexes: Array (indexSet))
     }else if let lastMouseDraggedLocation = mLastMouseDraggedLocation {
       var translation = CGPoint (x: mouseDraggedLocation.x - lastMouseDraggedLocation.x, y:mouseDraggedLocation.y - lastMouseDraggedLocation.y)
       for object in self.mViewController?.selectedGraphicObjectSet ?? [] {
@@ -361,6 +363,7 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   override func mouseUp (with inEvent : NSEvent) {
+    super.mouseUp (with: inEvent)
     if self.mPerformEndUndoGroupingOnMouseUp {
       self.mPerformEndUndoGroupingOnMouseUp = false
       mViewController?.undoManager?.endUndoGrouping ()

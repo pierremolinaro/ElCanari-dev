@@ -5,36 +5,178 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawBoardLimits : class {
+  var drawBoardLimits : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawInternalBoardLimits : class {
+  var drawInternalBoardLimits : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawComponentNamesTopSide : class {
+  var drawComponentNamesTopSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawComponentNamesBottomSide : class {
+  var drawComponentNamesBottomSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawComponentValuesTopSide : class {
+  var drawComponentValuesTopSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawComponentValuesBottomSide : class {
+  var drawComponentValuesBottomSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawPackageLegendTopSide : class {
+  var drawPackageLegendTopSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawPackageLegendBottomSide : class {
+  var drawPackageLegendBottomSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawPadHolesInPDF : class {
+  var drawPadHolesInPDF : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawPadsTopSide : class {
+  var drawPadsTopSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawPadsBottomSide : class {
+  var drawPadsBottomSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawTextsLayoutTopSide : class {
+  var drawTextsLayoutTopSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawTextsLayoutBottomSide : class {
+  var drawTextsLayoutBottomSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawTextsLegendTopSide : class {
+  var drawTextsLegendTopSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawTextsLegendBottomSide : class {
+  var drawTextsLegendBottomSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawTracksTopSide : class {
+  var drawTracksTopSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawTracksBottomSide : class {
+  var drawTracksBottomSide : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_drawVias : class {
+  var drawVias : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_fileExtension : class {
+  var fileExtension : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_horizontalMirror : class {
+  var horizontalMirror : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_name : class {
+  var name : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF : class {
+  var measurementUnitForPadHoleInPDF : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : class {
+  var padHoleDiameterInPDF : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ArtworkFileGenerationParameters : EBManagedObject,
-  ArtworkFileGenerationParameters_drawBoardLimits,
-  ArtworkFileGenerationParameters_drawInternalBoardLimits,
-  ArtworkFileGenerationParameters_drawComponentNamesTopSide,
-  ArtworkFileGenerationParameters_drawComponentNamesBottomSide,
-  ArtworkFileGenerationParameters_drawComponentValuesTopSide,
-  ArtworkFileGenerationParameters_drawComponentValuesBottomSide,
-  ArtworkFileGenerationParameters_drawPackageLegendTopSide,
-  ArtworkFileGenerationParameters_drawPackageLegendBottomSide,
-  ArtworkFileGenerationParameters_drawPadHolesInPDF,
-  ArtworkFileGenerationParameters_drawPadsTopSide,
-  ArtworkFileGenerationParameters_drawPadsBottomSide,
-  ArtworkFileGenerationParameters_drawTextsLayoutTopSide,
-  ArtworkFileGenerationParameters_drawTextsLayoutBottomSide,
-  ArtworkFileGenerationParameters_drawTextsLegendTopSide,
-  ArtworkFileGenerationParameters_drawTextsLegendBottomSide,
-  ArtworkFileGenerationParameters_drawTracksTopSide,
-  ArtworkFileGenerationParameters_drawTracksBottomSide,
-  ArtworkFileGenerationParameters_drawVias,
-  ArtworkFileGenerationParameters_fileExtension,
-  ArtworkFileGenerationParameters_horizontalMirror,
-  ArtworkFileGenerationParameters_name,
-  ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF,
-  ArtworkFileGenerationParameters_padHoleDiameterInPDF {
+         ArtworkFileGenerationParameters_drawBoardLimits,
+         ArtworkFileGenerationParameters_drawInternalBoardLimits,
+         ArtworkFileGenerationParameters_drawComponentNamesTopSide,
+         ArtworkFileGenerationParameters_drawComponentNamesBottomSide,
+         ArtworkFileGenerationParameters_drawComponentValuesTopSide,
+         ArtworkFileGenerationParameters_drawComponentValuesBottomSide,
+         ArtworkFileGenerationParameters_drawPackageLegendTopSide,
+         ArtworkFileGenerationParameters_drawPackageLegendBottomSide,
+         ArtworkFileGenerationParameters_drawPadHolesInPDF,
+         ArtworkFileGenerationParameters_drawPadsTopSide,
+         ArtworkFileGenerationParameters_drawPadsBottomSide,
+         ArtworkFileGenerationParameters_drawTextsLayoutTopSide,
+         ArtworkFileGenerationParameters_drawTextsLayoutBottomSide,
+         ArtworkFileGenerationParameters_drawTextsLegendTopSide,
+         ArtworkFileGenerationParameters_drawTextsLegendBottomSide,
+         ArtworkFileGenerationParameters_drawTracksTopSide,
+         ArtworkFileGenerationParameters_drawTracksBottomSide,
+         ArtworkFileGenerationParameters_drawVias,
+         ArtworkFileGenerationParameters_fileExtension,
+         ArtworkFileGenerationParameters_horizontalMirror,
+         ArtworkFileGenerationParameters_name,
+         ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF,
+         ArtworkFileGenerationParameters_padHoleDiameterInPDF {
 
   //····················································································································
-  //   Accessing drawBoardLimits stored property
+  //   Atomic property: drawBoardLimits
+  //····················································································································
+
+  var drawBoardLimits_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawBoardLimits : Bool {
@@ -46,14 +188,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawBoardLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawBoardLimits_property.prop
-    }
+    return self.drawBoardLimits_property.prop
   }
 
   //····················································································································
-  //   Accessing drawInternalBoardLimits stored property
+  //   Atomic property: drawInternalBoardLimits
+  //····················································································································
+
+  var drawInternalBoardLimits_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawInternalBoardLimits : Bool {
@@ -65,14 +211,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawInternalBoardLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawInternalBoardLimits_property.prop
-    }
+    return self.drawInternalBoardLimits_property.prop
   }
 
   //····················································································································
-  //   Accessing drawComponentNamesTopSide stored property
+  //   Atomic property: drawComponentNamesTopSide
+  //····················································································································
+
+  var drawComponentNamesTopSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawComponentNamesTopSide : Bool {
@@ -84,14 +234,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawComponentNamesTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawComponentNamesTopSide_property.prop
-    }
+    return self.drawComponentNamesTopSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawComponentNamesBottomSide stored property
+  //   Atomic property: drawComponentNamesBottomSide
+  //····················································································································
+
+  var drawComponentNamesBottomSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawComponentNamesBottomSide : Bool {
@@ -103,14 +257,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawComponentNamesBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawComponentNamesBottomSide_property.prop
-    }
+    return self.drawComponentNamesBottomSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawComponentValuesTopSide stored property
+  //   Atomic property: drawComponentValuesTopSide
+  //····················································································································
+
+  var drawComponentValuesTopSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawComponentValuesTopSide : Bool {
@@ -122,14 +280,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawComponentValuesTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawComponentValuesTopSide_property.prop
-    }
+    return self.drawComponentValuesTopSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawComponentValuesBottomSide stored property
+  //   Atomic property: drawComponentValuesBottomSide
+  //····················································································································
+
+  var drawComponentValuesBottomSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawComponentValuesBottomSide : Bool {
@@ -141,14 +303,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawComponentValuesBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawComponentValuesBottomSide_property.prop
-    }
+    return self.drawComponentValuesBottomSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawPackageLegendTopSide stored property
+  //   Atomic property: drawPackageLegendTopSide
+  //····················································································································
+
+  var drawPackageLegendTopSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawPackageLegendTopSide : Bool {
@@ -160,14 +326,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawPackageLegendTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawPackageLegendTopSide_property.prop
-    }
+    return self.drawPackageLegendTopSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawPackageLegendBottomSide stored property
+  //   Atomic property: drawPackageLegendBottomSide
+  //····················································································································
+
+  var drawPackageLegendBottomSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawPackageLegendBottomSide : Bool {
@@ -179,14 +349,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawPackageLegendBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawPackageLegendBottomSide_property.prop
-    }
+    return self.drawPackageLegendBottomSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawPadHolesInPDF stored property
+  //   Atomic property: drawPadHolesInPDF
+  //····················································································································
+
+  var drawPadHolesInPDF_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawPadHolesInPDF : Bool {
@@ -198,14 +372,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawPadHolesInPDF_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawPadHolesInPDF_property.prop
-    }
+    return self.drawPadHolesInPDF_property.prop
   }
 
   //····················································································································
-  //   Accessing drawPadsTopSide stored property
+  //   Atomic property: drawPadsTopSide
+  //····················································································································
+
+  var drawPadsTopSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawPadsTopSide : Bool {
@@ -217,14 +395,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawPadsTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawPadsTopSide_property.prop
-    }
+    return self.drawPadsTopSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawPadsBottomSide stored property
+  //   Atomic property: drawPadsBottomSide
+  //····················································································································
+
+  var drawPadsBottomSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawPadsBottomSide : Bool {
@@ -236,14 +418,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawPadsBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawPadsBottomSide_property.prop
-    }
+    return self.drawPadsBottomSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawTextsLayoutTopSide stored property
+  //   Atomic property: drawTextsLayoutTopSide
+  //····················································································································
+
+  var drawTextsLayoutTopSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawTextsLayoutTopSide : Bool {
@@ -255,14 +441,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawTextsLayoutTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTextsLayoutTopSide_property.prop
-    }
+    return self.drawTextsLayoutTopSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawTextsLayoutBottomSide stored property
+  //   Atomic property: drawTextsLayoutBottomSide
+  //····················································································································
+
+  var drawTextsLayoutBottomSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawTextsLayoutBottomSide : Bool {
@@ -274,14 +464,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTextsLayoutBottomSide_property.prop
-    }
+    return self.drawTextsLayoutBottomSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawTextsLegendTopSide stored property
+  //   Atomic property: drawTextsLegendTopSide
+  //····················································································································
+
+  var drawTextsLegendTopSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawTextsLegendTopSide : Bool {
@@ -293,14 +487,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawTextsLegendTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTextsLegendTopSide_property.prop
-    }
+    return self.drawTextsLegendTopSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawTextsLegendBottomSide stored property
+  //   Atomic property: drawTextsLegendBottomSide
+  //····················································································································
+
+  var drawTextsLegendBottomSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawTextsLegendBottomSide : Bool {
@@ -312,14 +510,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawTextsLegendBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTextsLegendBottomSide_property.prop
-    }
+    return self.drawTextsLegendBottomSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawTracksTopSide stored property
+  //   Atomic property: drawTracksTopSide
+  //····················································································································
+
+  var drawTracksTopSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawTracksTopSide : Bool {
@@ -331,14 +533,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawTracksTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTracksTopSide_property.prop
-    }
+    return self.drawTracksTopSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawTracksBottomSide stored property
+  //   Atomic property: drawTracksBottomSide
+  //····················································································································
+
+  var drawTracksBottomSide_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawTracksBottomSide : Bool {
@@ -350,14 +556,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawTracksBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTracksBottomSide_property.prop
-    }
+    return self.drawTracksBottomSide_property.prop
   }
 
   //····················································································································
-  //   Accessing drawVias stored property
+  //   Atomic property: drawVias
+  //····················································································································
+
+  var drawVias_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var drawVias : Bool {
@@ -369,14 +579,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var drawVias_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawVias_property.prop
-    }
+    return self.drawVias_property.prop
   }
 
   //····················································································································
-  //   Accessing fileExtension stored property
+  //   Atomic property: fileExtension
+  //····················································································································
+
+  var fileExtension_property = EBStoredProperty_String ("?")
+
   //····················································································································
 
   var fileExtension : String {
@@ -388,14 +602,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var fileExtension_property_selection : EBSelection <String> {
-    get {
-      return self.fileExtension_property.prop
-    }
+    return self.fileExtension_property.prop
   }
 
   //····················································································································
-  //   Accessing horizontalMirror stored property
+  //   Atomic property: horizontalMirror
+  //····················································································································
+
+  var horizontalMirror_property = EBStoredProperty_Bool (false)
+
   //····················································································································
 
   var horizontalMirror : Bool {
@@ -407,14 +625,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var horizontalMirror_property_selection : EBSelection <Bool> {
-    get {
-      return self.horizontalMirror_property.prop
-    }
+    return self.horizontalMirror_property.prop
   }
 
   //····················································································································
-  //   Accessing name stored property
+  //   Atomic property: name
+  //····················································································································
+
+  var name_property = EBStoredProperty_String ("Unnamed")
+
   //····················································································································
 
   var name : String {
@@ -426,14 +648,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var name_property_selection : EBSelection <String> {
-    get {
-      return self.name_property.prop
-    }
+    return self.name_property.prop
   }
 
   //····················································································································
-  //   Accessing measurementUnitForPadHoleInPDF stored property
+  //   Atomic property: measurementUnitForPadHoleInPDF
+  //····················································································································
+
+  var measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var measurementUnitForPadHoleInPDF : Int {
@@ -445,14 +671,18 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int> {
-    get {
-      return self.measurementUnitForPadHoleInPDF_property.prop
-    }
+    return self.measurementUnitForPadHoleInPDF_property.prop
   }
 
   //····················································································································
-  //   Accessing padHoleDiameterInPDF stored property
+  //   Atomic property: padHoleDiameterInPDF
+  //····················································································································
+
+  var padHoleDiameterInPDF_property = EBStoredProperty_Int (90000)
+
   //····················································································································
 
   var padHoleDiameterInPDF : Int {
@@ -464,48 +694,11 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     }
   }
 
+  //····················································································································
+
   var padHoleDiameterInPDF_property_selection : EBSelection <Int> {
-    get {
-      return self.padHoleDiameterInPDF_property.prop
-    }
+    return self.padHoleDiameterInPDF_property.prop
   }
-
-  //····················································································································
-  //    Stored Properties
-  //····················································································································
-
-  var drawBoardLimits_property = EBStoredProperty_Bool (false)
-  var drawInternalBoardLimits_property = EBStoredProperty_Bool (false)
-  var drawComponentNamesTopSide_property = EBStoredProperty_Bool (false)
-  var drawComponentNamesBottomSide_property = EBStoredProperty_Bool (false)
-  var drawComponentValuesTopSide_property = EBStoredProperty_Bool (false)
-  var drawComponentValuesBottomSide_property = EBStoredProperty_Bool (false)
-  var drawPackageLegendTopSide_property = EBStoredProperty_Bool (false)
-  var drawPackageLegendBottomSide_property = EBStoredProperty_Bool (false)
-  var drawPadHolesInPDF_property = EBStoredProperty_Bool (false)
-  var drawPadsTopSide_property = EBStoredProperty_Bool (false)
-  var drawPadsBottomSide_property = EBStoredProperty_Bool (false)
-  var drawTextsLayoutTopSide_property = EBStoredProperty_Bool (false)
-  var drawTextsLayoutBottomSide_property = EBStoredProperty_Bool (false)
-  var drawTextsLegendTopSide_property = EBStoredProperty_Bool (false)
-  var drawTextsLegendBottomSide_property = EBStoredProperty_Bool (false)
-  var drawTracksTopSide_property = EBStoredProperty_Bool (false)
-  var drawTracksBottomSide_property = EBStoredProperty_Bool (false)
-  var drawVias_property = EBStoredProperty_Bool (false)
-  var fileExtension_property = EBStoredProperty_String ("?")
-  var horizontalMirror_property = EBStoredProperty_Bool (false)
-  var name_property = EBStoredProperty_String ("Unnamed")
-  var measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (90000)
-  var padHoleDiameterInPDF_property = EBStoredProperty_Int (90000)
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-
-  //····················································································································
-  //    Relationships
-  //····················································································································
 
 
   //····················································································································
@@ -524,32 +717,52 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Install compute functions for transients
-  //--- Install property observers for transients
-  //--- Install undoers for properties
-    self.drawBoardLimits_property.undoManager = self.undoManager ()
-    self.drawInternalBoardLimits_property.undoManager = self.undoManager ()
-    self.drawComponentNamesTopSide_property.undoManager = self.undoManager ()
-    self.drawComponentNamesBottomSide_property.undoManager = self.undoManager ()
-    self.drawComponentValuesTopSide_property.undoManager = self.undoManager ()
-    self.drawComponentValuesBottomSide_property.undoManager = self.undoManager ()
-    self.drawPackageLegendTopSide_property.undoManager = self.undoManager ()
-    self.drawPackageLegendBottomSide_property.undoManager = self.undoManager ()
-    self.drawPadHolesInPDF_property.undoManager = self.undoManager ()
-    self.drawPadsTopSide_property.undoManager = self.undoManager ()
-    self.drawPadsBottomSide_property.undoManager = self.undoManager ()
-    self.drawTextsLayoutTopSide_property.undoManager = self.undoManager ()
-    self.drawTextsLayoutBottomSide_property.undoManager = self.undoManager ()
-    self.drawTextsLegendTopSide_property.undoManager = self.undoManager ()
-    self.drawTextsLegendBottomSide_property.undoManager = self.undoManager ()
-    self.drawTracksTopSide_property.undoManager = self.undoManager ()
-    self.drawTracksBottomSide_property.undoManager = self.undoManager ()
-    self.drawVias_property.undoManager = self.undoManager ()
-    self.fileExtension_property.undoManager = self.undoManager ()
-    self.horizontalMirror_property.undoManager = self.undoManager ()
-    self.name_property.undoManager = self.undoManager ()
-    self.measurementUnitForPadHoleInPDF_property.undoManager = self.undoManager ()
-    self.padHoleDiameterInPDF_property.undoManager = self.undoManager ()
+  //--- Atomic property: drawBoardLimits
+    self.drawBoardLimits_property.undoManager = self.undoManager
+  //--- Atomic property: drawInternalBoardLimits
+    self.drawInternalBoardLimits_property.undoManager = self.undoManager
+  //--- Atomic property: drawComponentNamesTopSide
+    self.drawComponentNamesTopSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawComponentNamesBottomSide
+    self.drawComponentNamesBottomSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawComponentValuesTopSide
+    self.drawComponentValuesTopSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawComponentValuesBottomSide
+    self.drawComponentValuesBottomSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawPackageLegendTopSide
+    self.drawPackageLegendTopSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawPackageLegendBottomSide
+    self.drawPackageLegendBottomSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawPadHolesInPDF
+    self.drawPadHolesInPDF_property.undoManager = self.undoManager
+  //--- Atomic property: drawPadsTopSide
+    self.drawPadsTopSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawPadsBottomSide
+    self.drawPadsBottomSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawTextsLayoutTopSide
+    self.drawTextsLayoutTopSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawTextsLayoutBottomSide
+    self.drawTextsLayoutBottomSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawTextsLegendTopSide
+    self.drawTextsLegendTopSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawTextsLegendBottomSide
+    self.drawTextsLegendBottomSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawTracksTopSide
+    self.drawTracksTopSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawTracksBottomSide
+    self.drawTracksBottomSide_property.undoManager = self.undoManager
+  //--- Atomic property: drawVias
+    self.drawVias_property.undoManager = self.undoManager
+  //--- Atomic property: fileExtension
+    self.fileExtension_property.undoManager = self.undoManager
+  //--- Atomic property: horizontalMirror
+    self.horizontalMirror_property.undoManager = self.undoManager
+  //--- Atomic property: name
+    self.name_property.undoManager = self.undoManager
+  //--- Atomic property: measurementUnitForPadHoleInPDF
+    self.measurementUnitForPadHoleInPDF_property.undoManager = self.undoManager
+  //--- Atomic property: padHoleDiameterInPDF
+    self.padHoleDiameterInPDF_property.undoManager = self.undoManager
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer:self)
@@ -784,52 +997,121 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: drawBoardLimits
     self.drawBoardLimits_property.mObserverExplorer = nil
     self.drawBoardLimits_property.mValueExplorer = nil
+  //--- Atomic property: drawInternalBoardLimits
     self.drawInternalBoardLimits_property.mObserverExplorer = nil
     self.drawInternalBoardLimits_property.mValueExplorer = nil
+  //--- Atomic property: drawComponentNamesTopSide
     self.drawComponentNamesTopSide_property.mObserverExplorer = nil
     self.drawComponentNamesTopSide_property.mValueExplorer = nil
+  //--- Atomic property: drawComponentNamesBottomSide
     self.drawComponentNamesBottomSide_property.mObserverExplorer = nil
     self.drawComponentNamesBottomSide_property.mValueExplorer = nil
+  //--- Atomic property: drawComponentValuesTopSide
     self.drawComponentValuesTopSide_property.mObserverExplorer = nil
     self.drawComponentValuesTopSide_property.mValueExplorer = nil
+  //--- Atomic property: drawComponentValuesBottomSide
     self.drawComponentValuesBottomSide_property.mObserverExplorer = nil
     self.drawComponentValuesBottomSide_property.mValueExplorer = nil
+  //--- Atomic property: drawPackageLegendTopSide
     self.drawPackageLegendTopSide_property.mObserverExplorer = nil
     self.drawPackageLegendTopSide_property.mValueExplorer = nil
+  //--- Atomic property: drawPackageLegendBottomSide
     self.drawPackageLegendBottomSide_property.mObserverExplorer = nil
     self.drawPackageLegendBottomSide_property.mValueExplorer = nil
+  //--- Atomic property: drawPadHolesInPDF
     self.drawPadHolesInPDF_property.mObserverExplorer = nil
     self.drawPadHolesInPDF_property.mValueExplorer = nil
+  //--- Atomic property: drawPadsTopSide
     self.drawPadsTopSide_property.mObserverExplorer = nil
     self.drawPadsTopSide_property.mValueExplorer = nil
+  //--- Atomic property: drawPadsBottomSide
     self.drawPadsBottomSide_property.mObserverExplorer = nil
     self.drawPadsBottomSide_property.mValueExplorer = nil
+  //--- Atomic property: drawTextsLayoutTopSide
     self.drawTextsLayoutTopSide_property.mObserverExplorer = nil
     self.drawTextsLayoutTopSide_property.mValueExplorer = nil
+  //--- Atomic property: drawTextsLayoutBottomSide
     self.drawTextsLayoutBottomSide_property.mObserverExplorer = nil
     self.drawTextsLayoutBottomSide_property.mValueExplorer = nil
+  //--- Atomic property: drawTextsLegendTopSide
     self.drawTextsLegendTopSide_property.mObserverExplorer = nil
     self.drawTextsLegendTopSide_property.mValueExplorer = nil
+  //--- Atomic property: drawTextsLegendBottomSide
     self.drawTextsLegendBottomSide_property.mObserverExplorer = nil
     self.drawTextsLegendBottomSide_property.mValueExplorer = nil
+  //--- Atomic property: drawTracksTopSide
     self.drawTracksTopSide_property.mObserverExplorer = nil
     self.drawTracksTopSide_property.mValueExplorer = nil
+  //--- Atomic property: drawTracksBottomSide
     self.drawTracksBottomSide_property.mObserverExplorer = nil
     self.drawTracksBottomSide_property.mValueExplorer = nil
+  //--- Atomic property: drawVias
     self.drawVias_property.mObserverExplorer = nil
     self.drawVias_property.mValueExplorer = nil
+  //--- Atomic property: fileExtension
     self.fileExtension_property.mObserverExplorer = nil
     self.fileExtension_property.mValueExplorer = nil
+  //--- Atomic property: horizontalMirror
     self.horizontalMirror_property.mObserverExplorer = nil
     self.horizontalMirror_property.mValueExplorer = nil
+  //--- Atomic property: name
     self.name_property.mObserverExplorer = nil
     self.name_property.mValueExplorer = nil
+  //--- Atomic property: measurementUnitForPadHoleInPDF
     self.measurementUnitForPadHoleInPDF_property.mObserverExplorer = nil
     self.measurementUnitForPadHoleInPDF_property.mValueExplorer = nil
+  //--- Atomic property: padHoleDiameterInPDF
     self.padHoleDiameterInPDF_property.mObserverExplorer = nil
     self.padHoleDiameterInPDF_property.mValueExplorer = nil
+ //   self.drawBoardLimits_property.mObserverExplorer = nil
+ //   self.drawBoardLimits_property.mValueExplorer = nil
+ //   self.drawInternalBoardLimits_property.mObserverExplorer = nil
+ //   self.drawInternalBoardLimits_property.mValueExplorer = nil
+ //   self.drawComponentNamesTopSide_property.mObserverExplorer = nil
+ //   self.drawComponentNamesTopSide_property.mValueExplorer = nil
+ //   self.drawComponentNamesBottomSide_property.mObserverExplorer = nil
+ //   self.drawComponentNamesBottomSide_property.mValueExplorer = nil
+ //   self.drawComponentValuesTopSide_property.mObserverExplorer = nil
+ //   self.drawComponentValuesTopSide_property.mValueExplorer = nil
+ //   self.drawComponentValuesBottomSide_property.mObserverExplorer = nil
+ //   self.drawComponentValuesBottomSide_property.mValueExplorer = nil
+ //   self.drawPackageLegendTopSide_property.mObserverExplorer = nil
+ //   self.drawPackageLegendTopSide_property.mValueExplorer = nil
+ //   self.drawPackageLegendBottomSide_property.mObserverExplorer = nil
+ //   self.drawPackageLegendBottomSide_property.mValueExplorer = nil
+ //   self.drawPadHolesInPDF_property.mObserverExplorer = nil
+ //   self.drawPadHolesInPDF_property.mValueExplorer = nil
+ //   self.drawPadsTopSide_property.mObserverExplorer = nil
+ //   self.drawPadsTopSide_property.mValueExplorer = nil
+ //   self.drawPadsBottomSide_property.mObserverExplorer = nil
+ //   self.drawPadsBottomSide_property.mValueExplorer = nil
+ //   self.drawTextsLayoutTopSide_property.mObserverExplorer = nil
+ //   self.drawTextsLayoutTopSide_property.mValueExplorer = nil
+ //   self.drawTextsLayoutBottomSide_property.mObserverExplorer = nil
+ //   self.drawTextsLayoutBottomSide_property.mValueExplorer = nil
+ //   self.drawTextsLegendTopSide_property.mObserverExplorer = nil
+ //   self.drawTextsLegendTopSide_property.mValueExplorer = nil
+ //   self.drawTextsLegendBottomSide_property.mObserverExplorer = nil
+ //   self.drawTextsLegendBottomSide_property.mValueExplorer = nil
+ //   self.drawTracksTopSide_property.mObserverExplorer = nil
+ //   self.drawTracksTopSide_property.mValueExplorer = nil
+ //   self.drawTracksBottomSide_property.mObserverExplorer = nil
+ //   self.drawTracksBottomSide_property.mValueExplorer = nil
+ //   self.drawVias_property.mObserverExplorer = nil
+ //   self.drawVias_property.mValueExplorer = nil
+ //   self.fileExtension_property.mObserverExplorer = nil
+ //   self.fileExtension_property.mValueExplorer = nil
+ //   self.horizontalMirror_property.mObserverExplorer = nil
+ //   self.horizontalMirror_property.mValueExplorer = nil
+ //   self.name_property.mObserverExplorer = nil
+ //   self.name_property.mValueExplorer = nil
+ //   self.measurementUnitForPadHoleInPDF_property.mObserverExplorer = nil
+ //   self.measurementUnitForPadHoleInPDF_property.mValueExplorer = nil
+ //   self.padHoleDiameterInPDF_property.mObserverExplorer = nil
+ //   self.padHoleDiameterInPDF_property.mValueExplorer = nil
     super.clearObjectExplorer ()
   }
 
@@ -839,29 +1121,75 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-    self.drawBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawBoardLimits")
-    self.drawInternalBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawInternalBoardLimits")
-    self.drawComponentNamesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesTopSide")
-    self.drawComponentNamesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesBottomSide")
-    self.drawComponentValuesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesTopSide")
-    self.drawComponentValuesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesBottomSide")
-    self.drawPackageLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendTopSide")
-    self.drawPackageLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendBottomSide")
-    self.drawPadHolesInPDF_property.storeIn (dictionary: ioDictionary, forKey: "drawPadHolesInPDF")
-    self.drawPadsTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsTopSide")
-    self.drawPadsBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsBottomSide")
-    self.drawTextsLayoutTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutTopSide")
-    self.drawTextsLayoutBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutBottomSide")
-    self.drawTextsLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendTopSide")
-    self.drawTextsLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendBottomSide")
-    self.drawTracksTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksTopSide")
-    self.drawTracksBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksBottomSide")
-    self.drawVias_property.storeIn (dictionary: ioDictionary, forKey: "drawVias")
-    self.fileExtension_property.storeIn (dictionary: ioDictionary, forKey: "fileExtension")
-    self.horizontalMirror_property.storeIn (dictionary: ioDictionary, forKey: "horizontalMirror")
-    self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
-    self.measurementUnitForPadHoleInPDF_property.storeIn (dictionary: ioDictionary, forKey: "measurementUnitForPadHoleInPDF")
-    self.padHoleDiameterInPDF_property.storeIn (dictionary: ioDictionary, forKey: "padHoleDiameterInPDF")
+  //--- Atomic property: drawBoardLimits
+    self.drawBoardLimits_property.storeIn (dictionary: ioDictionary, forKey:"drawBoardLimits")
+  //--- Atomic property: drawInternalBoardLimits
+    self.drawInternalBoardLimits_property.storeIn (dictionary: ioDictionary, forKey:"drawInternalBoardLimits")
+  //--- Atomic property: drawComponentNamesTopSide
+    self.drawComponentNamesTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawComponentNamesTopSide")
+  //--- Atomic property: drawComponentNamesBottomSide
+    self.drawComponentNamesBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawComponentNamesBottomSide")
+  //--- Atomic property: drawComponentValuesTopSide
+    self.drawComponentValuesTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawComponentValuesTopSide")
+  //--- Atomic property: drawComponentValuesBottomSide
+    self.drawComponentValuesBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawComponentValuesBottomSide")
+  //--- Atomic property: drawPackageLegendTopSide
+    self.drawPackageLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawPackageLegendTopSide")
+  //--- Atomic property: drawPackageLegendBottomSide
+    self.drawPackageLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawPackageLegendBottomSide")
+  //--- Atomic property: drawPadHolesInPDF
+    self.drawPadHolesInPDF_property.storeIn (dictionary: ioDictionary, forKey:"drawPadHolesInPDF")
+  //--- Atomic property: drawPadsTopSide
+    self.drawPadsTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawPadsTopSide")
+  //--- Atomic property: drawPadsBottomSide
+    self.drawPadsBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawPadsBottomSide")
+  //--- Atomic property: drawTextsLayoutTopSide
+    self.drawTextsLayoutTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTextsLayoutTopSide")
+  //--- Atomic property: drawTextsLayoutBottomSide
+    self.drawTextsLayoutBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTextsLayoutBottomSide")
+  //--- Atomic property: drawTextsLegendTopSide
+    self.drawTextsLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTextsLegendTopSide")
+  //--- Atomic property: drawTextsLegendBottomSide
+    self.drawTextsLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTextsLegendBottomSide")
+  //--- Atomic property: drawTracksTopSide
+    self.drawTracksTopSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTracksTopSide")
+  //--- Atomic property: drawTracksBottomSide
+    self.drawTracksBottomSide_property.storeIn (dictionary: ioDictionary, forKey:"drawTracksBottomSide")
+  //--- Atomic property: drawVias
+    self.drawVias_property.storeIn (dictionary: ioDictionary, forKey:"drawVias")
+  //--- Atomic property: fileExtension
+    self.fileExtension_property.storeIn (dictionary: ioDictionary, forKey:"fileExtension")
+  //--- Atomic property: horizontalMirror
+    self.horizontalMirror_property.storeIn (dictionary: ioDictionary, forKey:"horizontalMirror")
+  //--- Atomic property: name
+    self.name_property.storeIn (dictionary: ioDictionary, forKey:"name")
+  //--- Atomic property: measurementUnitForPadHoleInPDF
+    self.measurementUnitForPadHoleInPDF_property.storeIn (dictionary: ioDictionary, forKey:"measurementUnitForPadHoleInPDF")
+  //--- Atomic property: padHoleDiameterInPDF
+    self.padHoleDiameterInPDF_property.storeIn (dictionary: ioDictionary, forKey:"padHoleDiameterInPDF")
+ //   self.drawBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawBoardLimits")
+ //   self.drawInternalBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawInternalBoardLimits")
+ //   self.drawComponentNamesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesTopSide")
+ //   self.drawComponentNamesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesBottomSide")
+ //   self.drawComponentValuesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesTopSide")
+ //   self.drawComponentValuesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesBottomSide")
+ //   self.drawPackageLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendTopSide")
+ //   self.drawPackageLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendBottomSide")
+ //   self.drawPadHolesInPDF_property.storeIn (dictionary: ioDictionary, forKey: "drawPadHolesInPDF")
+ //   self.drawPadsTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsTopSide")
+ //   self.drawPadsBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsBottomSide")
+ //   self.drawTextsLayoutTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutTopSide")
+ //   self.drawTextsLayoutBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutBottomSide")
+ //   self.drawTextsLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendTopSide")
+ //   self.drawTextsLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendBottomSide")
+ //   self.drawTracksTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksTopSide")
+ //   self.drawTracksBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksBottomSide")
+ //   self.drawVias_property.storeIn (dictionary: ioDictionary, forKey: "drawVias")
+ //   self.fileExtension_property.storeIn (dictionary: ioDictionary, forKey: "fileExtension")
+ //   self.horizontalMirror_property.storeIn (dictionary: ioDictionary, forKey: "horizontalMirror")
+ //   self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
+ //   self.measurementUnitForPadHoleInPDF_property.storeIn (dictionary: ioDictionary, forKey: "measurementUnitForPadHoleInPDF")
+ //   self.padHoleDiameterInPDF_property.storeIn (dictionary: ioDictionary, forKey: "padHoleDiameterInPDF")
   }
 
   //····················································································································
@@ -871,29 +1199,75 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- Atomic property: drawBoardLimits
     self.drawBoardLimits_property.readFrom (dictionary: inDictionary, forKey:"drawBoardLimits")
+  //--- Atomic property: drawInternalBoardLimits
     self.drawInternalBoardLimits_property.readFrom (dictionary: inDictionary, forKey:"drawInternalBoardLimits")
+  //--- Atomic property: drawComponentNamesTopSide
     self.drawComponentNamesTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesTopSide")
+  //--- Atomic property: drawComponentNamesBottomSide
     self.drawComponentNamesBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesBottomSide")
+  //--- Atomic property: drawComponentValuesTopSide
     self.drawComponentValuesTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesTopSide")
+  //--- Atomic property: drawComponentValuesBottomSide
     self.drawComponentValuesBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesBottomSide")
+  //--- Atomic property: drawPackageLegendTopSide
     self.drawPackageLegendTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawPackageLegendTopSide")
+  //--- Atomic property: drawPackageLegendBottomSide
     self.drawPackageLegendBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawPackageLegendBottomSide")
+  //--- Atomic property: drawPadHolesInPDF
     self.drawPadHolesInPDF_property.readFrom (dictionary: inDictionary, forKey:"drawPadHolesInPDF")
+  //--- Atomic property: drawPadsTopSide
     self.drawPadsTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawPadsTopSide")
+  //--- Atomic property: drawPadsBottomSide
     self.drawPadsBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawPadsBottomSide")
+  //--- Atomic property: drawTextsLayoutTopSide
     self.drawTextsLayoutTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLayoutTopSide")
+  //--- Atomic property: drawTextsLayoutBottomSide
     self.drawTextsLayoutBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLayoutBottomSide")
+  //--- Atomic property: drawTextsLegendTopSide
     self.drawTextsLegendTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLegendTopSide")
+  //--- Atomic property: drawTextsLegendBottomSide
     self.drawTextsLegendBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLegendBottomSide")
+  //--- Atomic property: drawTracksTopSide
     self.drawTracksTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawTracksTopSide")
+  //--- Atomic property: drawTracksBottomSide
     self.drawTracksBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawTracksBottomSide")
+  //--- Atomic property: drawVias
     self.drawVias_property.readFrom (dictionary: inDictionary, forKey:"drawVias")
+  //--- Atomic property: fileExtension
     self.fileExtension_property.readFrom (dictionary: inDictionary, forKey:"fileExtension")
+  //--- Atomic property: horizontalMirror
     self.horizontalMirror_property.readFrom (dictionary: inDictionary, forKey:"horizontalMirror")
+  //--- Atomic property: name
     self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
+  //--- Atomic property: measurementUnitForPadHoleInPDF
     self.measurementUnitForPadHoleInPDF_property.readFrom (dictionary: inDictionary, forKey:"measurementUnitForPadHoleInPDF")
+  //--- Atomic property: padHoleDiameterInPDF
     self.padHoleDiameterInPDF_property.readFrom (dictionary: inDictionary, forKey:"padHoleDiameterInPDF")
+//    self.drawBoardLimits_property.readFrom (dictionary: inDictionary, forKey:"drawBoardLimits")
+//    self.drawInternalBoardLimits_property.readFrom (dictionary: inDictionary, forKey:"drawInternalBoardLimits")
+//    self.drawComponentNamesTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesTopSide")
+//    self.drawComponentNamesBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentNamesBottomSide")
+//    self.drawComponentValuesTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesTopSide")
+//    self.drawComponentValuesBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawComponentValuesBottomSide")
+//    self.drawPackageLegendTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawPackageLegendTopSide")
+//    self.drawPackageLegendBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawPackageLegendBottomSide")
+//    self.drawPadHolesInPDF_property.readFrom (dictionary: inDictionary, forKey:"drawPadHolesInPDF")
+//    self.drawPadsTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawPadsTopSide")
+//    self.drawPadsBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawPadsBottomSide")
+//    self.drawTextsLayoutTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLayoutTopSide")
+//    self.drawTextsLayoutBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLayoutBottomSide")
+//    self.drawTextsLegendTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLegendTopSide")
+//    self.drawTextsLegendBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawTextsLegendBottomSide")
+//    self.drawTracksTopSide_property.readFrom (dictionary: inDictionary, forKey:"drawTracksTopSide")
+//    self.drawTracksBottomSide_property.readFrom (dictionary: inDictionary, forKey:"drawTracksBottomSide")
+//    self.drawVias_property.readFrom (dictionary: inDictionary, forKey:"drawVias")
+//    self.fileExtension_property.readFrom (dictionary: inDictionary, forKey:"fileExtension")
+//    self.horizontalMirror_property.readFrom (dictionary: inDictionary, forKey:"horizontalMirror")
+//    self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
+//    self.measurementUnitForPadHoleInPDF_property.readFrom (dictionary: inDictionary, forKey:"measurementUnitForPadHoleInPDF")
+//    self.padHoleDiameterInPDF_property.readFrom (dictionary: inDictionary, forKey:"padHoleDiameterInPDF")
   //--------------------------- Array controllers
   //--------------------------- Selection controllers
   }
@@ -904,6 +1278,22 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetToManyRelationships
+  //····················································································································
+
+  override func resetToManyRelationships () {
+    super.resetToManyRelationships ()
+  }
+
+  //····················································································································
+  //   resetToOneRelationships
+  //····················································································································
+
+  override func resetToOneRelationships () {
+    super.resetToOneRelationships ()
   }
 
   //····················································································································
@@ -2492,27 +2882,27 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
           self.setOppositeRelationship? (nil)
         }
         removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_drawVias_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_fileExtension_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_horizontalMirror_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
@@ -2521,27 +2911,27 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
           self.setOppositeRelationship? (managedObject)
         }
         addEBObserversOf_drawBoardLimits_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawPadsBottomSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawPadsTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drawPadsBottomSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawTextsLayoutTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawTracksBottomSide_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawTracksTopSide_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_drawTracksBottomSide_toElementsOfSet (addedObjectSet)
         addEBObserversOf_drawVias_toElementsOfSet (addedObjectSet)
         addEBObserversOf_fileExtension_toElementsOfSet (addedObjectSet)
         addEBObserversOf_horizontalMirror_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (addedObjectSet)
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (addedObjectSet)
         addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
@@ -2633,144 +3023,5 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
   //····················································································································
  
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawBoardLimits : class {
-  var drawBoardLimits : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawInternalBoardLimits : class {
-  var drawInternalBoardLimits : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawComponentNamesTopSide : class {
-  var drawComponentNamesTopSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawComponentNamesBottomSide : class {
-  var drawComponentNamesBottomSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawComponentValuesTopSide : class {
-  var drawComponentValuesTopSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawComponentValuesBottomSide : class {
-  var drawComponentValuesBottomSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawPackageLegendTopSide : class {
-  var drawPackageLegendTopSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawPackageLegendBottomSide : class {
-  var drawPackageLegendBottomSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawPadHolesInPDF : class {
-  var drawPadHolesInPDF : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawPadsTopSide : class {
-  var drawPadsTopSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawPadsBottomSide : class {
-  var drawPadsBottomSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawTextsLayoutTopSide : class {
-  var drawTextsLayoutTopSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawTextsLayoutBottomSide : class {
-  var drawTextsLayoutBottomSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawTextsLegendTopSide : class {
-  var drawTextsLegendTopSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawTextsLegendBottomSide : class {
-  var drawTextsLegendBottomSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawTracksTopSide : class {
-  var drawTracksTopSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawTracksBottomSide : class {
-  var drawTracksBottomSide : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_drawVias : class {
-  var drawVias : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_fileExtension : class {
-  var fileExtension : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_horizontalMirror : class {
-  var horizontalMirror : Bool { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_name : class {
-  var name : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF : class {
-  var measurementUnitForPadHoleInPDF : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : class {
-  var padHoleDiameterInPDF : Int { get }
-}
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
