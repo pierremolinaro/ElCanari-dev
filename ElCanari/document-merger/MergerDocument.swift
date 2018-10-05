@@ -9,6 +9,215 @@ import Cocoa
 @objc(MergerDocument) class MergerDocument : EBManagedDocument {
 
   //····················································································································
+  //   Array controller: mBoardModelController
+  //····················································································································
+
+  var mBoardModelController = ArrayController_MergerDocument_mBoardModelController ()
+
+  //····················································································································
+  //   Selection controller: mBoardModelSelection
+  //····················································································································
+
+  var mBoardModelSelection = SelectionController_MergerDocument_mBoardModelSelection ()
+
+  //····················································································································
+  //   Array controller: mBoardInstanceController
+  //····················································································································
+
+  var mBoardInstanceController = ArrayController_MergerDocument_mBoardInstanceController ()
+
+  //····················································································································
+  //   Selection controller: mBoardInstanceSelection
+  //····················································································································
+
+  var mBoardInstanceSelection = SelectionController_MergerDocument_mBoardInstanceSelection ()
+
+  //····················································································································
+  //   Transient property: documentFilePath
+  //····················································································································
+
+  var documentFilePath_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var documentFilePath_property_selection : EBSelection <String> {
+    return self.documentFilePath_property.prop
+  }
+
+  //····················································································································
+
+    var documentFilePath : String? {
+    switch self.documentFilePath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: incorrectDocumentFileErrorMessage
+  //····················································································································
+
+  var incorrectDocumentFileErrorMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var incorrectDocumentFileErrorMessage_property_selection : EBSelection <String> {
+    return self.incorrectDocumentFileErrorMessage_property.prop
+  }
+
+  //····················································································································
+
+    var incorrectDocumentFileErrorMessage : String? {
+    switch self.incorrectDocumentFileErrorMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: documentIsUnnamed
+  //····················································································································
+
+  var documentIsUnnamed_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var documentIsUnnamed_property_selection : EBSelection <Bool> {
+    return self.documentIsUnnamed_property.prop
+  }
+
+  //····················································································································
+
+    var documentIsUnnamed : Bool? {
+    switch self.documentIsUnnamed_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: importArtworkButtonTitle
+  //····················································································································
+
+  var importArtworkButtonTitle_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var importArtworkButtonTitle_property_selection : EBSelection <String> {
+    return self.importArtworkButtonTitle_property.prop
+  }
+
+  //····················································································································
+
+    var importArtworkButtonTitle : String? {
+    switch self.importArtworkButtonTitle_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  var issues_property = EBTransientProperty_InstanceIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <InstanceIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+    var issues : InstanceIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusImage
+  //····················································································································
+
+  var mStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var mStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mStatusImage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusImage : NSImage? {
+    switch self.mStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusMessage
+  //····················································································································
+
+  var mStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var mStatusMessage_property_selection : EBSelection <String> {
+    return self.mStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusMessage : String? {
+    switch self.mStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: documentFileNameOk
+  //····················································································································
+
+  var documentFileNameOk_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var documentFileNameOk_property_selection : EBSelection <Bool> {
+    return self.documentFileNameOk_property.prop
+  }
+
+  //····················································································································
+
+    var documentFileNameOk : Bool? {
+    switch self.documentFileNameOk_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+
+  //····················································································································
   //    Outlets
   //····················································································································
 
@@ -153,65 +362,6 @@ import Cocoa
   @IBOutlet var updateBoardModelButton : EBButton?
 
   //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var issues_property = EBTransientProperty_InstanceIssueArray ()
-  var issues_property_selection : EBSelection <InstanceIssueArray> {
-    return self.issues_property.prop
-  }
-
-  var mStatusImage_property = EBTransientProperty_NSImage ()
-  var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.prop
-  }
-
-  var mStatusMessage_property = EBTransientProperty_String ()
-  var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.prop
-  }
-
-  var documentFileNameOk_property = EBTransientProperty_Bool ()
-  var documentFileNameOk_property_selection : EBSelection <Bool> {
-    return self.documentFileNameOk_property.prop
-  }
-
-  var incorrectDocumentFileErrorMessage_property = EBTransientProperty_String ()
-  var incorrectDocumentFileErrorMessage_property_selection : EBSelection <String> {
-    return self.incorrectDocumentFileErrorMessage_property.prop
-  }
-
-  var documentIsUnnamed_property = EBTransientProperty_Bool ()
-  var documentIsUnnamed_property_selection : EBSelection <Bool> {
-    return self.documentIsUnnamed_property.prop
-  }
-
-  var importArtworkButtonTitle_property = EBTransientProperty_String ()
-  var importArtworkButtonTitle_property_selection : EBSelection <String> {
-    return self.importArtworkButtonTitle_property.prop
-  }
-
-  var documentFilePath_property = EBTransientProperty_String ()
-  var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.prop
-  }
-
-
-  //····················································································································
-  //    Array Controllers
-  //····················································································································
-
-  var mBoardModelController = ArrayController_MergerDocument_mBoardModelController ()
-  var mBoardInstanceController = ArrayController_MergerDocument_mBoardInstanceController ()
-
-  //····················································································································
-  //    Selection Controllers
-  //····················································································································
-
-  var mBoardModelSelection = SelectionController_MergerDocument_mBoardModelSelection ()
-  var mBoardInstanceSelection = SelectionController_MergerDocument_mBoardInstanceSelection ()
-
-  //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
@@ -263,10 +413,15 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    mBoardModelController.addExplorer (name: "mBoardModelController", y:&y, view:view)
-    mBoardInstanceController.addExplorer (name: "mBoardInstanceController", y:&y, view:view)
-    mBoardModelSelection.addExplorer (name: "mBoardModelSelection", y:&y, view:view)
-    mBoardInstanceSelection.addExplorer (name: "mBoardInstanceSelection", y:&y, view:view)
+  //--- Array controller property: mBoardModelController
+    self.mBoardModelController.addExplorer (name: "mBoardModelController", y:&y, view:view)
+  //--- Selection controller property: mBoardModelSelection
+    self.mBoardModelSelection.addExplorer (name: "mBoardModelSelection", y:&y, view:view)
+  //--- Array controller property: mBoardInstanceController
+    self.mBoardInstanceController.addExplorer (name: "mBoardInstanceController", y:&y, view:view)
+  //--- Selection controller property: mBoardInstanceSelection
+    self.mBoardInstanceSelection.addExplorer (name: "mBoardInstanceSelection", y:&y, view:view)
+  //---
     super.populateExplorerWindow (&y, view:view)
   }
 
@@ -1833,25 +1988,83 @@ import Cocoa
                           line: #line,
                           errorMessage: "the 'updateBoardModelButton' outlet is nil") ;
     }
-  //--------------------------- Array controllers
+  //--- Array controller property: mBoardModelController
     self.mBoardModelController.setManagedObjectContext (self.managedObjectContext ())
     self.mBoardModelController.bind_model (self.rootObject.boardModels_property)
+  //--- Selection controller property: mBoardModelSelection
+    self.mBoardModelSelection.bind_selection (model: self.mBoardModelController.selectedArray_property, file: #file, line: #line)
+  //--- Array controller property: mBoardInstanceController
     self.mBoardInstanceController.setManagedObjectContext (self.managedObjectContext ())
     self.mBoardInstanceController.bind_model (self.rootObject.boardInstances_property)
-    self.mBoardModelController.bind_tableView (self.mBoardModelTableView, file: #file, line: #line)
-    self.mBoardInstanceController.bind_ebView (self.mComposedBoardView)
-  //--------------------------- Selection controllers
-    mBoardModelSelection.bind_selection (
-      model: mBoardModelController.selectedArray_property,
-      file: #file,
-      line: #line
-    )
-    mBoardInstanceSelection.bind_selection (
-      model: mBoardInstanceController.selectedArray_property,
-      file: #file,
-      line: #line
-    )
-  //--------------------------- Transient compute functions
+  //--- Selection controller property: mBoardInstanceSelection
+    self.mBoardInstanceSelection.bind_selection (model: self.mBoardInstanceController.selectedArray_property, file: #file, line: #line)
+  //--- Atomic property: incorrectDocumentFileErrorMessage
+    self.incorrectDocumentFileErrorMessage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.documentFilePath_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.documentFilePath_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_MergerDocument_incorrectDocumentFileErrorMessage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
+  //--- Atomic property: documentIsUnnamed
+    self.documentIsUnnamed_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.documentFilePath_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.documentFilePath_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_MergerDocument_documentIsUnnamed (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.documentFilePath_property.addEBObserver (self.documentIsUnnamed_property)
+  //--- Atomic property: importArtworkButtonTitle
+    self.importArtworkButtonTitle_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.artworkName_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.artworkName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_MergerDocument_importArtworkButtonTitle (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
+  //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.overlapingArrangment_property_selection.kind ()
@@ -1876,6 +2089,12 @@ import Cocoa
         return .empty
       }
     }
+    self.rootObject.overlapingArrangment_property.addEBObserver (self.issues_property)
+    self.rootObject.boardRect_property.addEBObserver (self.issues_property)
+    self.rootObject.boardDisplayRect_property.addEBObserver (self.issues_property)
+    self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property)
+    self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property)
+  //--- Atomic property: mStatusImage
     self.mStatusImage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -1896,6 +2115,8 @@ import Cocoa
         return .empty
       }
     }
+    self.issues_property.addEBObserver (self.mStatusImage_property)
+  //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
@@ -1916,6 +2137,8 @@ import Cocoa
         return .empty
       }
     }
+    self.issues_property.addEBObserver (self.mStatusMessage_property)
+  //--- Atomic property: documentFileNameOk
     self.documentFileNameOk_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
@@ -1936,79 +2159,9 @@ import Cocoa
         return .empty
       }
     }
-    self.incorrectDocumentFileErrorMessage_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.documentFilePath_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.documentFilePath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerDocument_incorrectDocumentFileErrorMessage (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.documentIsUnnamed_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.documentFilePath_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.documentFilePath_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerDocument_documentIsUnnamed (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.importArtworkButtonTitle_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.rootObject.artworkName_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.rootObject.artworkName_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_MergerDocument_importArtworkButtonTitle (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
-  //--------------------------- Install property observers for transients
-    self.rootObject.overlapingArrangment_property.addEBObserver (self.issues_property)
-    self.rootObject.boardRect_property.addEBObserver (self.issues_property)
-    self.rootObject.boardDisplayRect_property.addEBObserver (self.issues_property)
-    self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property)
-    self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property)
-    self.issues_property.addEBObserver (self.mStatusImage_property)
-    self.issues_property.addEBObserver (self.mStatusMessage_property)
     self.documentFilePath_property.addEBObserver (self.documentFileNameOk_property)
-    self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
-    self.documentFilePath_property.addEBObserver (self.documentIsUnnamed_property)
-    self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
+    self.mBoardModelController.bind_tableView (self.mBoardModelTableView, file: #file, line: #line)
+    self.mBoardInstanceController.bind_ebView (self.mComposedBoardView)
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
     mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
@@ -2500,24 +2653,20 @@ import Cocoa
     mController_mGenerateProductFilesActionButton_enabled = nil
     self.rootObject.artwork_property.removeEBObserver (mController_mLogTextView_hidden!)
     mController_mLogTextView_hidden = nil
-  //--------------------------- Uninstall compute functions for transients
-    self.issues_property.readModelFunction = nil
-    self.mStatusImage_property.readModelFunction = nil
-    self.mStatusMessage_property.readModelFunction = nil
-    self.documentFileNameOk_property.readModelFunction = nil
-    self.incorrectDocumentFileErrorMessage_property.readModelFunction = nil
-    self.documentIsUnnamed_property.readModelFunction = nil
-    self.importArtworkButtonTitle_property.readModelFunction = nil
-    self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     self.mBoardModelController.unbind_tableView (self.mBoardModelTableView)
     self.mBoardInstanceController.unbind_ebView (self.mComposedBoardView)
-    mBoardModelController.unbind_model ()
-    mBoardInstanceController.unbind_model ()
-  //--------------------------- Unbind selection controllers
-    mBoardModelSelection.unbind_selection ()
-    mBoardInstanceSelection.unbind_selection ()
-  //--------------------------- Uninstall property observers for transients
+  //--- Array controller property: mBoardModelController
+    self.mBoardModelController.unbind_model ()
+  //--- Selection controller property: mBoardModelSelection
+    self.mBoardModelSelection.unbind_selection ()
+  //--- Array controller property: mBoardInstanceController
+    self.mBoardInstanceController.unbind_model ()
+  //--- Selection controller property: mBoardInstanceSelection
+    self.mBoardInstanceSelection.unbind_selection ()
+    self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
+    self.documentFilePath_property.removeEBObserver (self.documentIsUnnamed_property)
+    self.rootObject.artworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
     self.rootObject.overlapingArrangment_property.removeEBObserver (self.issues_property)
     self.rootObject.boardRect_property.removeEBObserver (self.issues_property)
     self.rootObject.boardDisplayRect_property.removeEBObserver (self.issues_property)
@@ -2526,9 +2675,6 @@ import Cocoa
     self.issues_property.removeEBObserver (self.mStatusImage_property)
     self.issues_property.removeEBObserver (self.mStatusMessage_property)
     self.documentFilePath_property.removeEBObserver (self.documentFileNameOk_property)
-    self.documentFilePath_property.removeEBObserver (self.incorrectDocumentFileErrorMessage_property)
-    self.documentFilePath_property.removeEBObserver (self.documentIsUnnamed_property)
-    self.rootObject.artworkName_property.removeEBObserver (self.importArtworkButtonTitle_property)
   //--------------------------- Remove targets / actions
     showPrefsForSettingMergerDisplayButton?.target = nil
     dismissPrefsForSettingMergerDisplayButton?.target = nil

@@ -9,6 +9,111 @@ import Cocoa
 @objc(PMArtworkDocument) class PMArtworkDocument : EBManagedDocument {
 
   //····················································································································
+  //   Array controller: mDataController
+  //····················································································································
+
+  var mDataController = ArrayController_PMArtworkDocument_mDataController ()
+
+  //····················································································································
+  //   Selection controller: mDataSelection
+  //····················································································································
+
+  var mDataSelection = SelectionController_PMArtworkDocument_mDataSelection ()
+
+  //····················································································································
+  //   Transient property: documentFilePath
+  //····················································································································
+
+  var documentFilePath_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var documentFilePath_property_selection : EBSelection <String> {
+    return self.documentFilePath_property.prop
+  }
+
+  //····················································································································
+
+    var documentFilePath : String? {
+    switch self.documentFilePath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mGeneratedFileCountString
+  //····················································································································
+
+  var mGeneratedFileCountString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var mGeneratedFileCountString_property_selection : EBSelection <String> {
+    return self.mGeneratedFileCountString_property.prop
+  }
+
+  //····················································································································
+
+    var mGeneratedFileCountString : String? {
+    switch self.mGeneratedFileCountString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusImage
+  //····················································································································
+
+  var mStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var mStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mStatusImage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusImage : NSImage? {
+    switch self.mStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusMessage
+  //····················································································································
+
+  var mStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var mStatusMessage_property_selection : EBSelection <String> {
+    return self.mStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusMessage : String? {
+    switch self.mStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+
+  //····················································································································
   //    Outlets
   //····················································································································
 
@@ -58,43 +163,6 @@ import Cocoa
   @IBOutlet var resetVersionAndSignatureButton : EBButton?
 
   //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var mGeneratedFileCountString_property = EBTransientProperty_String ()
-  var mGeneratedFileCountString_property_selection : EBSelection <String> {
-    return self.mGeneratedFileCountString_property.prop
-  }
-
-  var mStatusImage_property = EBTransientProperty_NSImage ()
-  var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.prop
-  }
-
-  var mStatusMessage_property = EBTransientProperty_String ()
-  var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.prop
-  }
-
-  var documentFilePath_property = EBTransientProperty_String ()
-  var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.prop
-  }
-
-
-  //····················································································································
-  //    Array Controllers
-  //····················································································································
-
-  var mDataController = ArrayController_PMArtworkDocument_mDataController ()
-
-  //····················································································································
-  //    Selection Controllers
-  //····················································································································
-
-  var mDataSelection = SelectionController_PMArtworkDocument_mDataSelection ()
-
-  //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
@@ -131,8 +199,11 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    mDataController.addExplorer (name: "mDataController", y:&y, view:view)
-    mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
+  //--- Array controller property: mDataController
+    self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
+  //---
     super.populateExplorerWindow (&y, view:view)
   }
 
@@ -654,17 +725,12 @@ import Cocoa
                           line: #line,
                           errorMessage: "the 'resetVersionAndSignatureButton' outlet is nil") ;
     }
-  //--------------------------- Array controllers
+  //--- Array controller property: mDataController
     self.mDataController.setManagedObjectContext (self.managedObjectContext ())
     self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property)
-    self.mDataController.bind_tableView (self.mDataTableView, file: #file, line: #line)
-  //--------------------------- Selection controllers
-    mDataSelection.bind_selection (
-      model: mDataController.selectedArray_property,
-      file: #file,
-      line: #line
-    )
-  //--------------------------- Transient compute functions
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property, file: #file, line: #line)
+  //--- Atomic property: mGeneratedFileCountString
     self.mGeneratedFileCountString_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDataController.sortedArray_property.count_property_selection.kind ()
@@ -685,6 +751,8 @@ import Cocoa
         return .empty
       }
     }
+    self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property)
+  //--- Atomic property: mStatusImage
     self.mStatusImage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
@@ -706,6 +774,9 @@ import Cocoa
         return .empty
       }
     }
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusImage_property)
+  //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
@@ -727,13 +798,9 @@ import Cocoa
         return .empty
       }
     }
-    self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
-  //--------------------------- Install property observers for transients
-    self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusImage_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusMessage_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusMessage_property)
+    self.mDataController.bind_tableView (self.mDataTableView, file: #file, line: #line)
   //--------------------------- Install regular bindings
     mSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
     mMinPPTPTTTWinEBUnitPopUp?.bind_selectedTag (self.rootObject.minPPTPTTTWdisplayUnit_property, file: #file, line: #line)
@@ -863,17 +930,12 @@ import Cocoa
     mController_mRemoveGenerationFileButton_enabled = nil
     self.mDataSelection.drawPadHolesInPDF_property.removeEBObserver (mController_mPadHoleDefinitionView_hidden!)
     mController_mPadHoleDefinitionView_hidden = nil
-  //--------------------------- Uninstall compute functions for transients
-    self.mGeneratedFileCountString_property.readModelFunction = nil
-    self.mStatusImage_property.readModelFunction = nil
-    self.mStatusMessage_property.readModelFunction = nil
-    self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
     self.mDataController.unbind_tableView (self.mDataTableView)
-    mDataController.unbind_model ()
-  //--------------------------- Unbind selection controllers
-    mDataSelection.unbind_selection ()
-  //--------------------------- Uninstall property observers for transients
+  //--- Array controller property: mDataController
+    self.mDataController.unbind_model ()
+  //--- Selection controller property: mDataSelection
+    self.mDataSelection.unbind_selection ()
     self.mDataController.sortedArray_property.count_property.removeEBObserver (self.mGeneratedFileCountString_property)
     self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.mStatusImage_property)
     self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.mStatusImage_property)

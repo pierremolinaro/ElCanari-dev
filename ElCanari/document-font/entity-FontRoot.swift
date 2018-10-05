@@ -299,16 +299,6 @@ class FontRoot : EBManagedObject,
 
 
   //····················································································································
-  //    Array Controllers
-  //····················································································································
-
-
-  //····················································································································
-  //    Selection Controllers
-  //····················································································································
-
-
-  //····················································································································
   //    init
   //····················································································································
 
@@ -325,6 +315,7 @@ class FontRoot : EBManagedObject,
   //--- To many property: characters
     self.characters_property.undoManager = self.undoManager
   //--- Array controller property: selectedCharacterController
+    self.selectedCharacterController.setManagedObjectContext (self.managedObjectContext ())
     self.selectedCharacterController.bind_model (self.characters_property)
   //--- Atomic property: sampleStringBezierPath
     self.sampleStringBezierPath_property.readModelFunction = { [weak self] in
@@ -635,8 +626,6 @@ class FontRoot : EBManagedObject,
 //    self.nominalSize_property.readFrom (dictionary: inDictionary, forKey:"nominalSize")
 //    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
 //    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
-  //--------------------------- Array controllers
-  //--------------------------- Selection controllers
   }
 
   //····················································································································
@@ -645,6 +634,14 @@ class FontRoot : EBManagedObject,
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetControllers
+  //····················································································································
+
+  override func resetControllers () {
+    super.resetControllers ()
   }
 
   //····················································································································

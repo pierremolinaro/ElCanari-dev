@@ -9,6 +9,42 @@ import Cocoa
 @objc(PMFontDocument) class PMFontDocument : EBManagedDocument {
 
   //····················································································································
+  //   Array controller: mSelectedCharacterController
+  //····················································································································
+
+  var mSelectedCharacterController = ArrayController_PMFontDocument_mSelectedCharacterController ()
+
+  //····················································································································
+  //   Selection controller: mCharacterSelection
+  //····················································································································
+
+  var mCharacterSelection = SelectionController_PMFontDocument_mCharacterSelection ()
+
+  //····················································································································
+  //   Transient property: documentFilePath
+  //····················································································································
+
+  var documentFilePath_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var documentFilePath_property_selection : EBSelection <String> {
+    return self.documentFilePath_property.prop
+  }
+
+  //····················································································································
+
+    var documentFilePath : String? {
+    switch self.documentFilePath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+
+  //····················································································································
   //    Outlets
   //····················································································································
 
@@ -41,28 +77,6 @@ import Cocoa
   @IBOutlet var resetVersionAndSignatureButton : EBButton?
   @IBOutlet var transparencySlider : EBSlider?
   @IBOutlet var transparencyTextField : EBDoubleField?
-
-  //····················································································································
-  //    Transient properties
-  //····················································································································
-
-  var documentFilePath_property = EBTransientProperty_String ()
-  var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.prop
-  }
-
-
-  //····················································································································
-  //    Array Controllers
-  //····················································································································
-
-  var mSelectedCharacterController = ArrayController_PMFontDocument_mSelectedCharacterController ()
-
-  //····················································································································
-  //    Selection Controllers
-  //····················································································································
-
-  var mCharacterSelection = SelectionController_PMFontDocument_mCharacterSelection ()
 
   //····················································································································
   //    Multiple bindings controllers
@@ -101,8 +115,11 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    mSelectedCharacterController.addExplorer (name: "mSelectedCharacterController", y:&y, view:view)
-    mCharacterSelection.addExplorer (name: "mCharacterSelection", y:&y, view:view)
+  //--- Array controller property: mSelectedCharacterController
+    self.mSelectedCharacterController.addExplorer (name: "mSelectedCharacterController", y:&y, view:view)
+  //--- Selection controller property: mCharacterSelection
+    self.mCharacterSelection.addExplorer (name: "mCharacterSelection", y:&y, view:view)
+  //---
     super.populateExplorerWindow (&y, view:view)
   }
 
@@ -459,18 +476,11 @@ import Cocoa
                           line: #line,
                           errorMessage: "the 'transparencyTextField' outlet is nil") ;
     }
-  //--------------------------- Array controllers
+  //--- Array controller property: mSelectedCharacterController
     self.mSelectedCharacterController.setManagedObjectContext (self.managedObjectContext ())
     self.mSelectedCharacterController.bind_model (self.rootObject.characters_property)
-  //--------------------------- Selection controllers
-    mCharacterSelection.bind_selection (
-      model: mSelectedCharacterController.selectedArray_property,
-      file: #file,
-      line: #line
-    )
-  //--------------------------- Transient compute functions
-    self.documentFilePath_property.readModelFunction = { return .single (self.computeTransient_documentFilePath ()) }
-  //--------------------------- Install property observers for transients
+  //--- Selection controller property: mCharacterSelection
+    self.mCharacterSelection.bind_selection (model: self.mSelectedCharacterController.selectedArray_property, file: #file, line: #line)
   //--------------------------- Install regular bindings
     mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
@@ -574,13 +584,11 @@ import Cocoa
     mController_mFontCharacterSelectButton_enabled = nil
     self.rootObject.characters_property.count_property.removeEBObserver (mController_currentCharacterStepper_enabled!)
     mController_currentCharacterStepper_enabled = nil
-  //--------------------------- Uninstall compute functions for transients
-    self.documentFilePath_property.readModelFunction = nil
   //--------------------------- Unbind array controllers
-    mSelectedCharacterController.unbind_model ()
-  //--------------------------- Unbind selection controllers
-    mCharacterSelection.unbind_selection ()
-  //--------------------------- Uninstall property observers for transients
+  //--- Array controller property: mSelectedCharacterController
+    self.mSelectedCharacterController.unbind_model ()
+  //--- Selection controller property: mCharacterSelection
+    self.mCharacterSelection.unbind_selection ()
   //--------------------------- Remove targets / actions
     mAddCharacterButton?.target = nil
     mAddSegmentButton?.target = nil

@@ -353,16 +353,6 @@ class ArtworkRoot : EBManagedObject,
 
 
   //····················································································································
-  //    Array Controllers
-  //····················································································································
-
-
-  //····················································································································
-  //    Selection Controllers
-  //····················································································································
-
-
-  //····················································································································
   //    init
   //····················································································································
 
@@ -667,8 +657,6 @@ class ArtworkRoot : EBManagedObject,
 //    self.minValueForBoardLimitWidthDisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidthDisplayUnit")
 //    self.minValueForBoardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidth")
 //    self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
-  //--------------------------- Array controllers
-  //--------------------------- Selection controllers
   }
 
   //····················································································································
@@ -677,6 +665,14 @@ class ArtworkRoot : EBManagedObject,
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
     super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetControllers
+  //····················································································································
+
+  override func resetControllers () {
+    super.resetControllers ()
   }
 
   //····················································································································

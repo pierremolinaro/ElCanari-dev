@@ -230,16 +230,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
 
   //····················································································································
-  //    Array Controllers
-  //····················································································································
-
-
-  //····················································································································
-  //    Selection Controllers
-  //····················································································································
-
-
-  //····················································································································
   //    init
   //····················································································································
 
@@ -563,8 +553,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
 //    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
 //    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
 //    self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey:"instanceRotation")
-  //--------------------------- Array controllers
-  //--------------------------- Selection controllers
   }
 
   //····················································································································
@@ -575,6 +563,14 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.myModel_property.setProp (nil) // Set relationship to nil
     self.myRoot_property.setProp (nil) // Set relationship to nil
     super.cascadeObjectRemoving (&ioObjectsToRemove)
+  }
+
+  //····················································································································
+  //   resetControllers
+  //····················································································································
+
+  override func resetControllers () {
+    super.resetControllers ()
   }
 
   //····················································································································
