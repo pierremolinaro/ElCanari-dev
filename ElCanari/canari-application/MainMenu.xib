@@ -224,11 +224,6 @@
                             <menuItem isSeparatorItem="YES" id="74">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Page Setup…" keyEquivalent="P" id="77">
-                                <connections>
-                                    <action selector="runPageLayout:" target="-1" id="87"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Print…" keyEquivalent="p" id="78">
                                 <connections>
                                     <action selector="printDocument:" target="-1" id="200"/>
@@ -1971,7 +1966,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
-                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="4CDBE892-40E2-4885-A068-AF099161E71D" id="5747"/>
+                                                    <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="DF98CF70-863E-4BF0-98CA-7E3509E5BCFF" id="5747"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ZJk-0z-0nr" customClass="EBImageObserverView_TableViewCell">
@@ -2497,7 +2492,7 @@ Gw
         </window>
     </objects>
     <resources>
-        <image name="4CDBE892-40E2-4885-A068-AF099161E71D" width="20" height="20">
+        <image name="DF98CF70-863E-4BF0-98CA-7E3509E5BCFF" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -472,6 +472,35 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  // Menu Events
+  //····················································································································
+
+  override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
+    let validate : Bool
+    let action = inMenuItem.action
+    if action == #selector (EBManagedDocument.print(_:)) {
+      validate = self.windowForSheet?.firstResponder is EBView
+    }else{
+      validate = super.validateMenuItem (inMenuItem)
+    }
+    // NSLog ("VALIDATE \(action) -> \(validate)")
+    return validate
+  }
+
+  //····················································································································
+  //   PRINT
+  //····················································································································
+
+  @objc override func print (_ inSender : Any?) {
+    if let view = self.windowForSheet?.firstResponder as? EBView {
+      let printOperation = NSPrintOperation (view: view, printInfo: self.printInfo)
+      let printPanel = printOperation.printPanel
+      printPanel.options = [printPanel.options, .showsPaperSize, .showsOrientation, .showsScaling]
+      self.runModalPrintOperation (printOperation, delegate:nil, didRun:nil, contextInfo:nil)
+    }
+  }
+
+  //····················································································································
 
 }
 
