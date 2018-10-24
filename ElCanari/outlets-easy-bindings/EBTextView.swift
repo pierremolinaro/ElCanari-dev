@@ -73,8 +73,7 @@ import Cocoa
   //····················································································································
 
   func textDidChange (_ notification: Notification) {
-    let str = mOutlet.string ?? ""
-    _ = mObject.validateAndSetProp (str, windowForSheet:mOutlet.window)
+    _ = mObject.validateAndSetProp (mOutlet.string, windowForSheet:mOutlet.window)
   }
 
   //····················································································································

@@ -75,7 +75,7 @@ struct GeometricOblong {
     let newLayer = CAShapeLayer ()
     newLayer.path = mutablePath
     newLayer.lineWidth = self.height
-    newLayer.lineCap = kCALineCapRound
+    newLayer.lineCap = CAShapeLayerLineCap.round
     return newLayer
   }
 

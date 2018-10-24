@@ -45,9 +45,9 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
       for tableView in mTableViewArray {
         var first = true
         for (key, ascending) in mSortDescriptorArray {
-          if let column = sw34_tableColumn (tableView, withIdentifier: key) {
+          if let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
             tableView.setIndicatorImage (
-              first ? (ascending ? sw34_imageNamed ("NSAscendingSortIndicator") : sw34_imageNamed ("NSDescendingSortIndicator")) : nil,
+              first ? (ascending ? NSImage (named: NSImage.Name ("NSAscendingSortIndicator"))! : NSImage (named: NSImage.Name ("NSDescendingSortIndicator"))!) : nil,
               in:column
             )
             first = false
@@ -238,7 +238,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
       for column in tableView.tableColumns {
-        newSortDescriptorArray.append ((sw34_columnIdentifier (column), true)) // Ascending
+        newSortDescriptorArray.append ((column.identifier.rawValue, true)) // Ascending
       }
       mSortDescriptorArray = newSortDescriptorArray
       mTableViewArray.append (tableView)
@@ -326,7 +326,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
   func tableView (_ tableView: NSTableView, mouseDownInHeaderOf inTableColumn: NSTableColumn) {
     var newSortDescriptorArray = [(String, Bool)] ()
     for (columnName, ascending) in mSortDescriptorArray {
-      if sw34_isColumn (inTableColumn, hasIdentifier: columnName) {
+      if inTableColumn.identifier == NSUserInterfaceItemIdentifier (columnName) {
         newSortDescriptorArray.insert ((columnName, !ascending), at:0)
       }else{
         newSortDescriptorArray.append ((columnName, !ascending))

@@ -28,11 +28,11 @@ extension MergerDocument {
         alert.addButton (withTitle: "Show issues") // 1002
         alert.beginSheetModal (
           for: self.windowForSheet!,
-          completionHandler: {(response : Int) in
+          completionHandler: {(response : NSApplication.ModalResponse) in
             // NSLog ("response \(response)")
-            if response == 1001 { // Proceed anyway
+            if response == .alertFirstButtonReturn /* 1001 */ { // Proceed anyway
               self.generateProductFiles ()
-            }else if response == 1002 { // Show issues
+            }else if response == .alertSecondButtonReturn /* 1002 */ { // Show issues
             //--- Select board page
               self.rootObject.selectedPageIndex = 1
             //--- Remove display setting wiew

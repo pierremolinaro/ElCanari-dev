@@ -211,11 +211,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
       setProp (validatedValue)
     case EBValidationResult.rejectWithBeep :
       result = false
-      #if swift(>=4)
-        __NSBeep ()
-      #else
-        NSBeep ()
-      #endif
+      __NSBeep ()
     case EBValidationResult.rejectWithAlert (let informativeText) :
       result = false
       let alert = NSAlert ()
@@ -226,8 +222,8 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
       if let window = inWindow {
         alert.beginSheetModal (
           for:window,
-          completionHandler:{ (response : SW34_ApplicationModalResponse) in
-            if response == sw34_AlertSecondButtonReturn { // Discard Change
+          completionHandler:{ (response : NSApplication.ModalResponse) in
+            if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Discard Change
               self.postEvent ()
             }
           }
@@ -239,24 +235,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
     return result
   }
 
-  //····················································································································
-
-//  func readInPreferencesWithKey (inKey : String) {
-//    let ud = UserDefaults.standard
-//    let value : Any? = ud.object (forKey:inKey)
-//    if let unwValue : NSObject = value as? NSObject {
-//      setProp (T.convertFromNSObject (object:unwValue))
-//    }
-//  }
-
-  //····················································································································
-
-  // func storeInPreferencesWithKey (inKey : String) {
-  //  let ud = UserDefaults.standard
-  //  ud.set (mValue.convertToNSObject (), forKey:inKey)
-  // }
-
-  //····················································································································
+ //····················································································································
 
   func storeIn (dictionary:NSMutableDictionary, forKey inKey:String) {
     dictionary.setValue (mValue.convertToNSObject (), forKey:inKey)
@@ -840,11 +819,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
       setProp (validatedValue)
     case EBValidationResult.rejectWithBeep :
       result = false
-      #if swift(>=4)
-        __NSBeep ()
-      #else
-        NSBeep ()
-      #endif
+      __NSBeep ()
     case EBValidationResult.rejectWithAlert (let informativeText) :
       result = false
       let alert = NSAlert ()
@@ -855,8 +830,8 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
       if let window = inWindow {
         alert.beginSheetModal (
           for:window,
-          completionHandler:{ (response : SW34_ApplicationModalResponse) in
-            if response == sw34_AlertSecondButtonReturn { // Discard Change
+          completionHandler:{ (response : NSApplication.ModalResponse) in
+            if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Discard Change
               self.postEvent ()
             }
           }

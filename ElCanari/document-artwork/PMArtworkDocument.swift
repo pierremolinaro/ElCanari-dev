@@ -211,15 +211,9 @@ import Cocoa
   //    windowNibName
   //····················································································································
 
-  #if swift(>=4)
-    override var windowNibName : NSNib.Name {
-      return NSNib.Name ("PMArtworkDocument")
-    }
-  #else
-    override var windowNibName : String {
-      return "PMArtworkDocument"
-    }
-  #endif
+  override var windowNibName : NSNib.Name {
+    return NSNib.Name ("PMArtworkDocument")
+  }
   
   //····················································································································
   //    rootEntityClassName

@@ -4151,7 +4151,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //--- Notify application will terminate
     NotificationCenter.default.addObserver (self,
       selector:#selector(Preferences.applicationWillTerminateAction(_:)),
-      name:NSNotification.Name.NSApplicationWillTerminate,
+      name:NSApplication.willTerminateNotification,
       object:nil
     )
   //--- Extern functions
@@ -5462,7 +5462,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //    applicationWillTerminateAction
   //····················································································································
 
-  func applicationWillTerminateAction (_ : NSNotification) {
+  @objc func applicationWillTerminateAction (_ : NSNotification) {
   //--------------------------- Array controller
     self.additionnalLibraryArrayController.unbind_tableView (self.mAdditionnalLibraryArrayTableView)
   //--- Array controller property: additionnalLibraryArrayController

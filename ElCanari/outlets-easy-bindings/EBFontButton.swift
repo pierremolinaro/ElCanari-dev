@@ -35,7 +35,7 @@ import Cocoa
   func showFontManager () {
     if let font = mFont {
       self.window?.makeFirstResponder (self)
-      let fontManager = NSFontManager.shared ()
+      let fontManager = NSFontManager.shared 
       fontManager.delegate = self
       fontManager.setSelectedFont (font, isMultiple:false)
       fontManager.orderFrontFontPanel (self)
@@ -44,7 +44,7 @@ import Cocoa
 
   //····················································································································
 
-  override func changeFont (_ sender : Any?) {
+  func changeFont (_ sender : Any?) {
     if let valueController = mValueController, let fontManager = sender as! NSFontManager? {
       let newFont = fontManager.convert (mFont!)
       valueController.mObject.setProp (newFont)

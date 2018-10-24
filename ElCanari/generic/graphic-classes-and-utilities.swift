@@ -708,11 +708,7 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
   override func draw (_ inDirtyRect: NSRect) {
     if let backColor = mBackColor {
       backColor.setFill ()
-      #if swift(>=4)
-        __NSRectFill (inDirtyRect)
-      #else
-        NSRectFill (inDirtyRect)
-      #endif
+      __NSRectFill (inDirtyRect)
     }
   //--- Bezier paths
     self.mShape.draw (inDirtyRect)
@@ -737,13 +733,13 @@ extension NSBezierPath {
     for idx in 0 ..< self.elementCount {
       let type = self.element (at: idx, associatedPoints: &points)
       switch type {
-      case .moveToBezierPathElement:
+      case .moveTo:
         path.move (to: points[0])
-      case .lineToBezierPathElement:
+      case .lineTo:
         path.addLine (to: points[0])
-      case .curveToBezierPathElement:
+      case .curveTo:
         path.addCurve (to: points[2], control1: points[0], control2: points[1])
-      case .closePathBezierPathElement:
+      case .closePath:
         path.closeSubpath ()
       }
     }
@@ -755,15 +751,15 @@ extension NSBezierPath {
   public var pathByStroking : CGPath {
     let lineCap : CGLineCap
     switch self.lineCapStyle {
-    case .buttLineCapStyle : lineCap = .butt
-    case .roundLineCapStyle : lineCap = .round
-    case .squareLineCapStyle : lineCap = .square
+    case .butt : lineCap = .butt
+    case .round : lineCap = .round
+    case .square : lineCap = .square
     }
     let lineJoin : CGLineJoin
     switch self.lineJoinStyle {
-    case .bevelLineJoinStyle : lineJoin = .bevel
-    case .miterLineJoinStyle : lineJoin = .miter
-    case .roundLineJoinStyle : lineJoin = .round
+    case .bevel : lineJoin = .bevel
+    case .miter : lineJoin = .miter
+    case .round : lineJoin = .round
     }
     return self.cgPath.copy (
       strokingWithWidth: self.lineWidth,

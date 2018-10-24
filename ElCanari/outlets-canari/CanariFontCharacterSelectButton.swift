@@ -46,11 +46,7 @@ import Cocoa
                     y:eventLocationInWindowCoordinates.y - s.height / 2.0,
                     width:s.width,
                     height:s.height)
-    #if swift(>=4)
-      let viewController = NSViewController.init (nibName:nil, bundle:nil)
-    #else
-      let viewController = NSViewController.init (nibName:nil, bundle:nil)!
-    #endif
+    let viewController = NSViewController.init (nibName:nil, bundle:nil)
     let selectionView = CanariFontCharacterSelectView (frame:r)
     selectionView.setMouseDownSelectedCharacterCode (mSelectedCharacterCode)
     viewController.view = selectionView

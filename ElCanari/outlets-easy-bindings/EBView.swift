@@ -148,7 +148,7 @@ protocol EBViewControllerProtocol : class {
   // Menu Events
   //····················································································································
 
-  override func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
+  func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
     let action = inMenuItem.action
     if action == #selector (EBView.selectAll(_:)) {
@@ -162,7 +162,7 @@ protocol EBViewControllerProtocol : class {
     }else if action == #selector (EBView.sendBackward(_:)) {
       validate = mViewController?.canSendBackward ?? false
     }else{
-      validate = super.validateMenuItem (inMenuItem)
+      validate = false // super.validateMenuItem (inMenuItem)
     }
     // NSLog ("VALIDATE \(action) -> \(validate)")
     return validate
@@ -385,15 +385,15 @@ protocol EBViewControllerProtocol : class {
     ;
     for character in (inEvent.characters ?? "").unicodeScalars {
       switch (Int (character.value)) {
-      case NSUpArrowFunctionKey :
+      case NSEvent.SpecialKey.upArrow.rawValue :
         _ = wantsToTranslateSelection (byX: 0.0, byY:amount)
-      case NSDownArrowFunctionKey :
+      case NSEvent.SpecialKey.downArrow.rawValue :
         _ = wantsToTranslateSelection (byX: 0.0, byY:-amount)
-      case NSLeftArrowFunctionKey :
+      case NSEvent.SpecialKey.leftArrow.rawValue :
         _ = wantsToTranslateSelection (byX: -amount, byY:0.0)
-      case NSRightArrowFunctionKey :
+      case NSEvent.SpecialKey.rightArrow.rawValue :
         _ = wantsToTranslateSelection (byX: amount, byY:0.0)
-      case 0x7F, NSDeleteFunctionKey :
+      case 0x7F, NSEvent.SpecialKey.deleteForward.rawValue :
         deleteSelection ()
       default :
         break

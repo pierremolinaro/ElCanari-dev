@@ -70,14 +70,14 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
 
   func tableView (_ tableView: NSTableView, objectValueFor inTableColumn: NSTableColumn?, row: Int) -> Any? {
     var result : Any? = nil
-    if sw34_isColumn (inTableColumn, hasIdentifier: "image") {
+    if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("image") {
       switch mModelArray [row].mKind {
       case .gap :
-        result = sw34_imageNamed ("orange20")
+        result = NSImage (named: NSImage.Name ("orange20"))!
       case .intersecting, .outside :
-        result = sw34_imageNamed ("red20")
+        result = NSImage (named: NSImage.Name ("red20"))!
       }
-    }else if sw34_isColumn (inTableColumn, hasIdentifier: "title") {
+    }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("title") {
       switch mModelArray [row].mKind {
       case .gap :
         result = "Gap"

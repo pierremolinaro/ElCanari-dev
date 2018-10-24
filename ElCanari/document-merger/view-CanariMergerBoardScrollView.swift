@@ -21,22 +21,14 @@ import Cocoa
 
   required init? (coder: NSCoder) {
     super.init (coder:coder)
-    #if swift(>=4)
-      self.registerForDraggedTypes ([kDragAndDropModelType])
-    #else
-      self.register (forDraggedTypes: [kDragAndDropModelType])
-    #endif
+    self.registerForDraggedTypes ([kDragAndDropModelType])
   }
 
   //····················································································································
 
   override init (frame:NSRect) {
     super.init (frame:frame)
-    #if swift(>=4)
-      self.registerForDraggedTypes ([kDragAndDropModelType])
-    #else
-      self.register (forDraggedTypes: [kDragAndDropModelType])
-    #endif
+    self.registerForDraggedTypes ([kDragAndDropModelType])
   }
   
   //····················································································································
@@ -94,11 +86,11 @@ import Cocoa
 
   override func concludeDragOperation (_ inSender: NSDraggingInfo?) {
     if let sender = inSender, let document = mDocument, let documentView = self.documentView {
-      let draggingLocationInWindow = sender.draggingLocation ()
+      let draggingLocationInWindow = sender.draggingLocation 
       let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from:nil)
       // NSLog ("concludeDragOperation at \(draggingLocationInWindow), \(documentView) \(draggingLocationInDestinationView)")
-      let pasteboard = sender.draggingPasteboard ()
-      if let data = pasteboard.data (forType: kDragAndDropModelType), let boardModelName = String (data: data, encoding: .ascii) {
+      let pasteboard = sender.draggingPasteboard 
+      if let data = pasteboard.data (forType: NSPasteboard.PasteboardType(rawValue: kDragAndDropModelType.rawValue)), let boardModelName = String (data: data, encoding: .ascii) {
         // NSLog ("\(boardModelName)")
         var possibleBoardModel : BoardModel? = nil
         for boardModel in document.rootObject.boardModels_property.propval {

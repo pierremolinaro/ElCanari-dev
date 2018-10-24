@@ -75,7 +75,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
   //····················································································································
 
   final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize)
+    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
     let tf = NSTextField (frame:secondColumn (y))
     tf.isEnabled = true
     tf.isEditable = false

@@ -48,7 +48,7 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   //····················································································································
 
-  override func controlTextDidChange (_ inNotification : Notification) {
+  func controlTextDidChange (_ inNotification : Notification) {
 /*    if mSendContinously {
       NSApp.sendAction (self.action, to: self.target, from: self)
     }*/

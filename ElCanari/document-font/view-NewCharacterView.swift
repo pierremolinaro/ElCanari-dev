@@ -119,7 +119,7 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
   override func draw (_ inDirtyRect: NSRect) {
   //--- Draw background
     NSColor.white.setFill ()
-    NSRectFill (inDirtyRect)
+    __NSRectFill (inDirtyRect)
   //--- Draw lines
     let visibleRect = self.visibleRect
     var line = Int ((PLACEMENT_GRID * CGFloat (LINE_COUNT) - inDirtyRect.maxY) / PLACEMENT_GRID)
@@ -129,9 +129,9 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
 //    Swift.print ("First line \(line), y \(y)")
     while (line < LINE_COUNT) && (y > visibleRect.minY) {
       y -= PLACEMENT_GRID
-      let dict : [String : Any]
+      let dict : [NSAttributedString.Key : Any]
       if let font = NSFont (name: "Menlo", size: 12.0) {
-        dict = [NSFontAttributeName : font]
+        dict = [NSAttributedString.Key.font : font]
       }else{
         dict = [:]
       }
@@ -144,10 +144,10 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
         if let selectedCharacter = mSelectedCharacter, selectedCharacter == code {
           let r = CGRect (x:x, y:y, width: PLACEMENT_GRID, height: PLACEMENT_GRID)
           NSColor.lightGray.setFill ()
-          NSRectFill (r)
+          __NSRectFill (r)
         }
         let title = String (format: "%C", code)
-        let dict = [NSForegroundColorAttributeName : mImplementedCharacterSet.contains (code) ? NSColor.lightGray : NSColor.blue]
+        let dict = [NSAttributedString.Key.foregroundColor : mImplementedCharacterSet.contains (code) ? NSColor.lightGray : NSColor.blue]
         let attributedString = NSAttributedString (string: title, attributes: dict)
         let size = attributedString.size ()
         attributedString.draw (at: CGPoint (x:x + (PLACEMENT_GRID - size.width) / 2.0, y: y + 3.0))

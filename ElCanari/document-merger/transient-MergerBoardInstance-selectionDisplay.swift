@@ -18,7 +18,7 @@ func transient_MergerBoardInstance_selectionDisplay (
   let r : NSRect = self_instanceRect.cocoaRect() //.insetBy (dx: 0.5, dy: 0.5)
   let bp = NSBezierPath (rect: r)
   bp.lineWidth = 0.0
-  bp.lineJoinStyle = .roundLineJoinStyle
+  bp.lineJoinStyle = .round
   let shapes = EBShape ()
   shapes.append (shape: EBFilledBezierPathShape ([bp], NSColor.cyan.withAlphaComponent (0.15)))
   shapes.append (shape: EBStrokeBezierPathShape ([bp], NSColor.cyan))

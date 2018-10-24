@@ -36,7 +36,7 @@ func transient_MergerDocument_issues (
             let intersectionEnlarged : NSRect = intersection.cocoaRect ().insetBy (dx: -3.0, dy: -3.0)
             let bp1 = NSBezierPath (rect: cocoaDisplayRect)
             bp1.appendRect (intersectionEnlarged)
-            bp1.windingRule = .evenOddWindingRule
+            bp1.windingRule = .evenOdd
             let shapes = EBShape ()
             shapes.append (shape: EBFilledBezierPathShape ([bp1], NSColor.gray.withAlphaComponent (0.5)))
             let bp2 = NSBezierPath (rect: intersectionEnlarged)
@@ -57,7 +57,7 @@ func transient_MergerDocument_issues (
           let intersectionEnlarged : NSRect = instanceRect.cocoaRect ().insetBy (dx: -3.0, dy: -3.0)
           let bp1 = NSBezierPath (rect: cocoaDisplayRect)
           bp1.appendRect (intersectionEnlarged)
-          bp1.windingRule = .evenOddWindingRule
+          bp1.windingRule = .evenOdd
           let shapes = EBShape ()
           shapes.append (shape: EBFilledBezierPathShape ([bp1], NSColor.gray.withAlphaComponent (0.5)))
           let bp2 = NSBezierPath (rect: intersectionEnlarged)

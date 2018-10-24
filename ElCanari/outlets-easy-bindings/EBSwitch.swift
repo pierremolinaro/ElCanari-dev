@@ -82,13 +82,13 @@ import Cocoa
   private func updateOutlet () {
     switch mObject.prop {
     case .empty :
-      mOutlet.state = sw34_OffState
+      mOutlet.state = NSControl.StateValue.off
       mOutlet.enableFromValueBinding (false)
     case .multiple :
-      mOutlet.state = sw34_MixedState
+      mOutlet.state = NSControl.StateValue.mixed
       mOutlet.enableFromValueBinding (false)
     case .single (let v) :
-      mOutlet.state = v ? sw34_OnState : sw34_OffState
+      mOutlet.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
       mOutlet.enableFromValueBinding (true)
     }
   }
@@ -96,7 +96,7 @@ import Cocoa
   //···················································································································· 
 
   func updateModel () {
-    mObject.setProp (mOutlet.state == sw34_OnState)
+    mObject.setProp (mOutlet.state == NSControl.StateValue.on)
   }
 }
 

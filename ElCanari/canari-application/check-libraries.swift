@@ -34,11 +34,7 @@ func checkLibrary (_ window : NSWindow,
       errorCount:&errorCount,
       warningCount:&warningCount
     )
-    #if swift(>=4)
-      let ws = NSWorkspace.shared
-    #else
-      let ws = NSWorkspace.shared ()
-    #endif
+    let ws = NSWorkspace.shared
     for path in deviceToUpdateSet {
       ws.open (URL (fileURLWithPath: path))
     }
@@ -70,8 +66,8 @@ func checkLibrary (_ window : NSWindow,
       alert.addButton (withTitle: "Ok")
       alert.addButton (withTitle: "Show Log Window")
       alert.informativeText = "Select the 'Show Log Window' button for details."
-      alert.beginSheetModal (for: window, completionHandler: {(inReturnCode : NSModalResponse) in
-        if (NSAlertSecondButtonReturn == inReturnCode) {
+      alert.beginSheetModal (for: window, completionHandler: {(inReturnCode : NSApplication.ModalResponse) in
+        if (NSApplication.ModalResponse.alertSecondButtonReturn == inReturnCode) {
           logView?.window?.makeKeyAndOrderFront (nil)
         }
       })

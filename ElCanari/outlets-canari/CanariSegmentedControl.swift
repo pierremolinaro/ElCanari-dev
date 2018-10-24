@@ -79,11 +79,7 @@ import Cocoa
     //--- Attach view
       if let viewToAttach = possibleViewToAttach {
         viewToAttach.frame = masterView.bounds
-        #if swift(>=4)
-          viewToAttach.autoresizingMask = [.width, .height]
-        #else
-          viewToAttach.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
-        #endif
+        viewToAttach.autoresizingMask = [.width, .height]
         if let attachedView = mAttachedView {
           attachedView.saveFirstResponder ()
           masterView.replaceSubview (attachedView, with: viewToAttach)

@@ -38,9 +38,9 @@ extension MergerDocument {
     //--- MANDATORY! This object is set to NSOpenPanel delegate that DOES NOT retain it
       gPanel = OpenPanelDelegateForFilteringBoardModels (boardModelNames)
       openPanel.delegate = gPanel
-      openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : SW34_ApplicationModalResponse) in
+      openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : NSApplication.ModalResponse) in
         gPanel = nil
-        if returnCode == sw34_FileHandlingPanelOKButton {
+        if returnCode == NSApplication.ModalResponse (NSFileHandlingPanelOKButton) {
           if let url = openPanel.url, url.isFileURL {
             let filePath = url.path
             if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {

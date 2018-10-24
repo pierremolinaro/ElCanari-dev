@@ -17,8 +17,8 @@ func transient_CanariLibraryEntry_mStatusImage (
 //--- START OF USER ZONE 2
   let fm = FileManager ()
   let possibleImage : NSImage? = fm.fileExists (atPath: self_mPath)
-    ? sw34_imageNamed ("green14")
-    : sw34_imageNamed ("red14")
+    ? NSImage (named: NSImage.Name ("green14"))!
+    : NSImage (named: NSImage.Name ("red14"))!
   return possibleImage!
 //--- END OF USER ZONE 2
 }

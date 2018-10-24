@@ -34,7 +34,7 @@ import Cocoa
   //    NSTextFieldDelegate delegate function
   //····················································································································
 
-  override func controlTextDidChange (_ inNotification : Notification) {
+  func controlTextDidChange (_ inNotification : Notification) {
     if mSendContinously {
       if let inputString = currentEditor()?.string {
         // NSLog ("inputString %@", inputString)
@@ -67,8 +67,8 @@ import Cocoa
       alert.addButton (withTitle: "Discard Change")
       alert.beginSheetModal (
         for: window,
-        completionHandler:{ (response : SW34_ApplicationModalResponse) -> Void in
-          if response == sw34_AlertSecondButtonReturn { // Discard Change
+        completionHandler:{ (response : NSApplication.ModalResponse) -> Void in
+          if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Discard Change
  //         self.integerValue = self.myIntegerValue.0
           }
         }

@@ -19,11 +19,8 @@ extension Preferences {
     op.canChooseDirectories = true
     op.canChooseFiles = false
     op.beginSheetModal (for: (sender as! NSButton).window!,
-      completionHandler: { (inReturnCode : SW34_ApplicationModalResponse) in
-        #if swift(>=4)
-          let NSModalResponseOK = NSApplication.ModalResponse.OK
-        #endif
-        if inReturnCode == NSModalResponseOK {
+      completionHandler: { (inReturnCode : NSApplication.ModalResponse) in
+        if inReturnCode == NSApplication.ModalResponse.OK {
           let URLToAdd : URL = op.urls [0]
           let pathToAdd : String? = URLToAdd.path
           if let unwPathToAdd = pathToAdd {

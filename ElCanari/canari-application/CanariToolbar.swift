@@ -45,7 +45,7 @@ let MERGER_PREFS_INDEX = 8
 
   //····················································································································
 
-  override init (identifier: SW34_NSToolbar_Identifier) {
+  override init (identifier: NSToolbar.Identifier) {
     super.init (identifier:identifier)
     noteObjectAllocation (self)
   }
@@ -161,11 +161,7 @@ let MERGER_PREFS_INDEX = 8
         r.origin.y -= attachedPageHeight - currentHeight ;
         masterView.addSubview (unwViewToAttach)
         unwViewToAttach.frame = masterView.bounds
-        #if swift(>=4)
-          unwViewToAttach.autoresizingMask = [.width, .height]
-        #else
-          unwViewToAttach.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
-        #endif
+        unwViewToAttach.autoresizingMask = [.width, .height]
         masterView.window!.title = unwTitle + " " + mWindowDefaultTitle
         masterView.window!.setFrame (r, display:true, animate:true)
       }

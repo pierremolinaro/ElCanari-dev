@@ -108,13 +108,13 @@ private var gDebugObject : EBAllocationDebug? = nil
   @IBOutlet var mReuseTableViewCellsButton : NSButton?
 
 
-  fileprivate var mTopLevelObjects = NSArray ()
+  fileprivate var mTopLevelObjects : NSArray? = nil
 
   private var mDebugMenuInstalled = false
 
   private var mAllocationStatsWindowVisibleAtLaunch : Bool = true {
     didSet {
-      mAllocationStatsWindowVisibleAtLaunchCheckbox?.state = mAllocationStatsWindowVisibleAtLaunch ? 1 : 0
+      mAllocationStatsWindowVisibleAtLaunchCheckbox?.state = NSControl.StateValue(rawValue: mAllocationStatsWindowVisibleAtLaunch ? 1 : 0)
     }
   }
 
@@ -158,7 +158,7 @@ private var gDebugObject : EBAllocationDebug? = nil
     let nc = NotificationCenter.default
     nc.addObserver (self,
       selector:#selector(EBAllocationDebug.applicationWillTerminateAction(_:)),
-      name:NSNotification.Name.NSApplicationWillTerminate,
+      name:NSApplication.willTerminateNotification,
       object:nil
     )
     gDebugObject = self
@@ -195,20 +195,20 @@ private var gDebugObject : EBAllocationDebug? = nil
     mDisplayFilter = df.integer (forKey: prefsEnableObjectAllocationStatsDisplayFilter)
   //--- Enable / disable object allocation debug
     mEnableObjectAllocationDebug?.bind (
-      NSValueBinding,
-      to: NSUserDefaultsController.shared (),
+      NSBindingName(rawValue: NSBindingName.value.rawValue),
+      to: NSUserDefaultsController.shared ,
       withKeyPath: "values." + prefsEnableObjectAllocationDebugString,
       options: nil
     )
     if gEnableObjectAllocationDebug {
       mReuseTableViewCellsButton?.bind (
-        NSValueBinding,
-        to: NSUserDefaultsController.shared (),
+        NSBindingName(rawValue: NSBindingName.value.rawValue),
+        to: NSUserDefaultsController.shared ,
         withKeyPath: "values." + prefsReuseTableViewCells,
         options: nil
       )
     }else{
-      mReuseTableViewCellsButton?.state = NSOnState
+      mReuseTableViewCellsButton?.state = NSControl.StateValue.on
     }
     mDisplayFilterPopUpButton?.isEnabled = gEnableObjectAllocationDebug
     mStatsTableView?.isEnabled = gEnableObjectAllocationDebug
@@ -220,7 +220,7 @@ private var gDebugObject : EBAllocationDebug? = nil
   //--- will call windowDidBecomeKey: and windowWillClose:
     mAllocationStatsWindow?.delegate = self
   //--- Allocation stats window visibility at Launch
-    mAllocationStatsWindowVisibleAtLaunchCheckbox?.state = mAllocationStatsWindowVisibleAtLaunch ? 1 : 0
+    mAllocationStatsWindowVisibleAtLaunchCheckbox?.state = NSControl.StateValue(rawValue: mAllocationStatsWindowVisibleAtLaunch ? 1 : 0)
     mAllocationStatsWindowVisibleAtLaunchCheckbox?.target = self
     mAllocationStatsWindowVisibleAtLaunchCheckbox?.action = #selector(EBAllocationDebug.setAllocationStatsWindowVisibleAtLaunchAction(_:))
     if mAllocationStatsWindowVisibleAtLaunch {
@@ -252,7 +252,7 @@ private var gDebugObject : EBAllocationDebug? = nil
         userInfo: nil,
         repeats: true
       )
-      RunLoop.current.add (mRefreshTimer!, forMode:RunLoopMode.defaultRunLoopMode)
+      RunLoop.current.add (mRefreshTimer!, forMode:RunLoop.Mode.default)
       mRefreshDisplay = true
       displayAllocation ()
     }
@@ -281,7 +281,7 @@ private var gDebugObject : EBAllocationDebug? = nil
   //    refreshDisplay:
   //····················································································································
 
-  func refreshDisplay (_ timer : Timer) {
+  @objc func refreshDisplay (_ timer : Timer) {
     displayAllocation ()
   }
   
@@ -289,15 +289,15 @@ private var gDebugObject : EBAllocationDebug? = nil
   //    setAllocationStatsWindowVisibleAtLaunchAction:
   //····················································································································
   
-  func setAllocationStatsWindowVisibleAtLaunchAction (_: Any!) {
-    mAllocationStatsWindowVisibleAtLaunch = mAllocationStatsWindowVisibleAtLaunchCheckbox?.state != 0
+  @objc func setAllocationStatsWindowVisibleAtLaunchAction (_: Any!) {
+    mAllocationStatsWindowVisibleAtLaunch = mAllocationStatsWindowVisibleAtLaunchCheckbox?.state.rawValue != 0
   }
 
   //····················································································································
   //    setDisplayFilerAction:
   //····················································································································
   
-  func setDisplayFilerAction (_: Any!) {
+  @objc func setDisplayFilerAction (_: Any!) {
     if let displayFilterPopUpButton = mDisplayFilterPopUpButton {
       mDisplayFilter = displayFilterPopUpButton.indexOfSelectedItem
     }
@@ -307,7 +307,7 @@ private var gDebugObject : EBAllocationDebug? = nil
   //    applicationWillTerminateAction:
   //····················································································································
   
-  func applicationWillTerminateAction (_: Notification) {
+  @objc func applicationWillTerminateAction (_: Notification) {
     let ud = UserDefaults.standard
     ud.set (mAllocationStatsWindowVisibleAtLaunch,
       forKey:prefsEnableObjectAllocationStatsWindowVisible
@@ -408,7 +408,7 @@ private var gDebugObject : EBAllocationDebug? = nil
                   objectValueFor objectValueForTableColumn: NSTableColumn?,
                   row:Int) -> Any? {
     let theRecord : EBAllocationItemDisplay = mAllocationStatsDataSource [row] as! EBAllocationItemDisplay
-    return theRecord.value (forKey: objectValueForTableColumn!.identifier as String)
+    return theRecord.value (forKey: objectValueForTableColumn!.identifier.rawValue as String)
   }
   
   //····················································································································

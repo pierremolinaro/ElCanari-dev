@@ -103,16 +103,16 @@ class CanariViewWithZoomAndFlip : EBView {
       NotificationCenter.default.addObserver (
         self,
         selector: #selector (CanariViewWithZoomAndFlip.updateAfterSuperviewResising(_:)),
-        name: sw34_frameDidChangeNotification,
+        name: NSView.frameDidChangeNotification,
         object: clipView
       )
       if let scrollView = clipView.superview as? CanariScrollViewWithPlacard {
         let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
         let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
         mZoomPopUpButton = zoomPopUpButton
-        zoomPopUpButton.font = NSFont.systemFont (ofSize:sw34_smallSystemFontSize)
+        zoomPopUpButton.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
         zoomPopUpButton.autoenablesItems = false
-        zoomPopUpButton.bezelStyle = NSShadowlessSquareBezelStyle
+        zoomPopUpButton.bezelStyle = .shadowlessSquare
         if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {
           popUpButtonCell.arrowPosition = .arrowAtBottom
         }
@@ -153,7 +153,7 @@ class CanariViewWithZoomAndFlip : EBView {
             mZoomPopUpButton = nil ;
             NotificationCenter.default.removeObserver (
               self,
-              name: NSNotification.Name.NSViewFrameDidChange,
+              name: NSView.frameDidChangeNotification,
               object: clipView
             )
           }
@@ -241,11 +241,7 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   override func drawFocusRingMask () {
-    #if swift(>=4)
-      __NSRectFill (self.bounds)
-    #else
-      NSRectFill (self.bounds)
-    #endif
+    __NSRectFill (self.bounds)
   }
 
   //····················································································································

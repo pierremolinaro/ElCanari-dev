@@ -123,8 +123,8 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
     case .empty, .multiple :
       return nil
     case .single (let v) :
-      let columnIdentifier = inTableColumn!.identifier
-      let result : NSTableCellView = tableView.make (withIdentifier: columnIdentifier, owner:self) as! NSTableCellView
+      let columnIdentifier = inTableColumn!.identifier.rawValue
+      let result : NSTableCellView = tableView.makeView (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: columnIdentifier), owner:self) as! NSTableCellView
       if !reuseTableViewCells () {
         result.identifier = nil // So result cannot be reused, will be freed
       }

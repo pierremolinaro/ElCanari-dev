@@ -18,7 +18,7 @@ func transient_segmentsToBezierPaths (_ segments : MergerSegmentArray) -> Bezier
      bp.move (to: NSPoint (x: canariUnitToCocoa (segment.x1), y: canariUnitToCocoa (segment.y1)))
      bp.line (to: NSPoint (x: canariUnitToCocoa (segment.x2), y: canariUnitToCocoa (segment.y2)))
      bp.lineWidth = canariUnitToCocoa (segment.width)
-     bp.lineCapStyle = .roundLineCapStyle
+     bp.lineCapStyle = .round
      result.append (bp)
   }
   return result
@@ -140,7 +140,7 @@ final class MergerSegmentArray : EBSimpleClass {
       bp.move (to:CGPoint (x:x1f, y:y1f))
       bp.line (to:CGPoint (x:x2f, y:y2f))
       bp.lineWidth = width
-      bp.lineCapStyle = .roundLineCapStyle
+      bp.lineCapStyle = .round
       ioBezierPaths.append (bp)
     }
   }
@@ -190,7 +190,7 @@ final class MergerSegmentArray : EBSimpleClass {
       bp.move (to:CGPoint (x:x1f, y:y1f))
       bp.line (to:CGPoint (x:x2f, y:y2f))
       bp.lineWidth = pdfDrillDiameter
-      bp.lineCapStyle = .roundLineCapStyle
+      bp.lineCapStyle = .round
       ioBezierPaths.append (bp)
     }
   }

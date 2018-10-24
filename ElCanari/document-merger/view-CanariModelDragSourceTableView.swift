@@ -11,11 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#if swift(>=4)
-  let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.board.model")
-#else
-  let kDragAndDropModelType = "drag.and.drop.board.model"
-#endif
+let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.board.model")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   CanariModelDragSourceTableView
@@ -49,7 +45,7 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
     noteObjectAllocation (self)
     self.dataSource = self
     self.setDraggingSourceOperationMask (.copy, forLocal:true)
-    self.register (forDraggedTypes: [kDragAndDropModelType])
+    self.registerForDraggedTypes ([kDragAndDropModelType])
   }
   
   //····················································································································
@@ -127,7 +123,7 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
       let pdfData = buildPDFimage (frame:r, shapes: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
       return NSImage (data: pdfData)!
     }else{
-      return sw34_imageNamed ("exclamation")
+      return NSImage (named: NSImage.Name ("exclamation"))!
     }
   }
 

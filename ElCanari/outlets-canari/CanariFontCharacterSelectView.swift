@@ -84,16 +84,16 @@ private let LEFT_MARGIN      : CGFloat = 40.0
 //    NSBezierPath.stroke (NSInsetRect (self.bounds, 1.0, 1.0))
   //--- "MacRoman" title
     do{
-      let titleAttributes : [String:AnyObject] = [
-        NSFontAttributeName : NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize / 1.5)
+      let titleAttributes : [NSAttributedString.Key:AnyObject] = [
+        NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize / 1.5)
       ]
       "Mac".draw   (at: NSPoint (x:5.0, y: 1.0 + 14.5 * CHARACTER_HEIGHT), withAttributes:titleAttributes)
       "Roman".draw (at: NSPoint (x:5.0, y: 1.0 + 14.0 * CHARACTER_HEIGHT), withAttributes:titleAttributes)
     }
   //---
-    let titleAttributes : [String:AnyObject] = [
-      NSFontAttributeName : NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize),
-      NSForegroundColorAttributeName : NSColor.blue
+    let titleAttributes : [NSAttributedString.Key:AnyObject] = [
+      NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize),
+      NSAttributedString.Key.foregroundColor : NSColor.blue
     ]
   //--- Title
     for c : UInt in 0 ... 15 {
@@ -102,17 +102,17 @@ private let LEFT_MARGIN      : CGFloat = 40.0
       let s = String (format:"%C", arguments: [pointCode])
       let size = s.size (withAttributes: titleAttributes)
       let p = NSPoint (x:r.origin.x + (CHARACTER_WIDTH - size.width) / 2.0, y:r.origin.y)
-      s.draw (at: p, withAttributes:titleAttributes)
+      s.draw (at: p, withAttributes: titleAttributes)
     }
   //--- Row title
     for c : UInt in 2 ... 15 {
       let p = originForUpperRowsTitle (c)
       let s = String (format:"%04hX:", arguments: [c * 16])
-      s.draw (at: p, withAttributes:titleAttributes)
+      s.draw (at: p, withAttributes: titleAttributes)
     }
   //---
-    let attributes : [String:AnyObject] = [
-      NSFontAttributeName : NSFont.boldSystemFont (ofSize: sw34_smallSystemFontSize)
+    let attributes : [NSAttributedString.Key:AnyObject] = [
+      NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
     ]
     for c : UInt in 0x20 ... 0xFF {
       drawCharacter (c, attributes:attributes)
@@ -121,7 +121,7 @@ private let LEFT_MARGIN      : CGFloat = 40.0
 
   //····················································································································
 
-  func drawCharacter (_ inCharacter : UInt, attributes:[String:AnyObject]) {
+  func drawCharacter (_ inCharacter : UInt, attributes:[NSAttributedString.Key:AnyObject]) {
     let r = rectangleForCharacter (inCharacter)
     if mSelectedCharacterCode == inCharacter {
       NSColor.lightGray.setFill ()
@@ -135,7 +135,7 @@ private let LEFT_MARGIN      : CGFloat = 40.0
     let s = String (data: data, encoding: .macOSRoman)!
     let size = s.size (withAttributes: attributes)
     let p = NSPoint (x:r.origin.x + (CHARACTER_WIDTH - size.width) / 2.0, y:r.origin.y)
-    s.draw (at: p, withAttributes:attributes)
+    s.draw (at: p, withAttributes: attributes)
   }
 
   //····················································································································

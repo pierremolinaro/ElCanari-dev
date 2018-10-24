@@ -31,7 +31,7 @@ func transient_BoardModel_boardLimitsBezierPaths (
   bp.line (to : CGPoint (x:right, y:bottom))
   bp.close ()
   bp.lineWidth = limitWidth
-  bp.lineCapStyle = .roundLineCapStyle
+  bp.lineCapStyle = .round
   var array = BezierPathArray ()
   array.append (bp)
   return array

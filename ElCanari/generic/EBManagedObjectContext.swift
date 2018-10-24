@@ -143,8 +143,8 @@ class EBManagedObjectContext : EBObject {
       alert.addButton (withTitle: "Ignore Error")
       alert.addButton (withTitle: "Perform Correction")
       alert.beginSheetModal (for: windowForSheet,
-        completionHandler: {(response : SW34_ApplicationModalResponse) in
-          if response == sw34_AlertSecondButtonReturn /* 1001 */ { // Perform correction
+        completionHandler: {(response : NSApplication.ModalResponse) in
+          if response == NSApplication.ModalResponse.alertSecondButtonReturn /* 1001 */ { // Perform correction
             self.mManagedObjectSet.subtract (unreachableObjectSet)
             self.mManagedObjectSet.formUnion (unregisteredObjectSet)
           }

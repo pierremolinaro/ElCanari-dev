@@ -22,8 +22,8 @@ extension PMFontDocument {
       }
       self.mNewCharacterView?.setImplementedCharacterSet (implementedCharacterSet)
     //--- Display sheet
-      window.beginSheet (panel, completionHandler: { (response : NSModalResponse) in
-        if response == NSModalResponseStop, let codePoint = self.mNewCharacterView?.selectedCharacter {
+      window.beginSheet (panel, completionHandler: { (response : NSApplication.ModalResponse) in
+        if response == NSApplication.ModalResponse.stop, let codePoint = self.mNewCharacterView?.selectedCharacter {
           var characterSet = self.rootObject.characters_property.propval
           let newCharacter = FontCharacter (managedObjectContext: self.managedObjectContext())
           newCharacter.codePoint = codePoint

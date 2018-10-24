@@ -24,7 +24,7 @@ func transient_MergerRoot_overObjectsDisplay (
       let r = self_boardRect.cocoaRect()
       let bp = NSBezierPath (rect: r.insetBy (dx: limitWidth / 2.0, dy: limitWidth / 2.0))
       bp.lineWidth = limitWidth
-      bp.lineJoinStyle = .roundLineJoinStyle
+      bp.lineJoinStyle = .round
       let boardLimits = EBStrokeBezierPathShape ([bp], prefs_mergerColorBoardLimits)
       array.append (boardLimits)
     }

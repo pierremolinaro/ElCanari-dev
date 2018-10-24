@@ -588,16 +588,16 @@ extension MergerDocument {
             clockwise: angle > 0.0
           )
           bp.lineWidth = CGFloat (widthMM)
-          NSBezierPath.setDefaultFlatness (CGFloat (widthMM) / 10.0)
+          NSBezierPath.defaultFlatness = CGFloat (widthMM) / 10.0
           let flattenedBP = bp.flattened
           var currentPoint = NSPoint ()
           for idx in 0 ..< flattenedBP.elementCount {
             var pointArray = [NSPoint (), NSPoint (), NSPoint ()] // 3-point array
-            let element : NSBezierPathElement = flattenedBP.element(at:idx, associatedPoints: &pointArray)
+            let element : NSBezierPath.ElementType = flattenedBP.element(at:idx, associatedPoints: &pointArray)
             switch element {
-            case .moveToBezierPathElement :
+            case .moveTo :
               currentPoint = pointArray [0]
-            case .lineToBezierPathElement :
+            case .lineTo :
               let packageLine = SegmentEntity (managedObjectContext: self.managedObjectContext())
               packageLine.x1 = millimeterToCanariUnit (CGFloat (currentPoint.x))
               packageLine.y1 = millimeterToCanariUnit (CGFloat (currentPoint.y))
@@ -616,9 +616,9 @@ extension MergerDocument {
               }else{
                 ioErrorArray.append (("Invalid module layer: \(layer)", #line))
               }
-            case .curveToBezierPathElement :
+            case .curveTo :
               ioErrorArray.append (("Invalid curveToBezierPathElement", #line))
-            case .closePathBezierPathElement :
+            case .closePath :
               ioErrorArray.append (("Invalid closePathBezierPathElement", #line))
             }
           }

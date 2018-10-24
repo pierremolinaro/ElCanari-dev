@@ -45,9 +45,9 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
       for tableView in mTableViewArray {
         var first = true
         for (key, ascending) in mSortDescriptorArray {
-          if let column = sw34_tableColumn (tableView, withIdentifier: key) {
+          if let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
             tableView.setIndicatorImage (
-              first ? (ascending ? sw34_imageNamed ("NSAscendingSortIndicator") : sw34_imageNamed ("NSDescendingSortIndicator")) : nil,
+              first ? (ascending ? NSImage (named: NSImage.Name ("NSAscendingSortIndicator"))! : NSImage (named: NSImage.Name ("NSDescendingSortIndicator"))!) : nil,
               in:column
             )
             first = false
@@ -261,7 +261,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
        mSelectedSet.addEBObserver (selectionTableViewController)
       mTableViewSelectionControllerArray.append (selectionTableViewController)
     //--- Check 'name' column
-      if let column : NSTableColumn = sw34_tableColumn (tableView, withIdentifier: "name") {
+      if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
         presentErrorWindow (file: file, line: line, errorMessage:"\"name\" column view unknown")
@@ -269,7 +269,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()
       for column in tableView.tableColumns {
-        newSortDescriptorArray.append ((sw34_columnIdentifier (column), true)) // Ascending
+        newSortDescriptorArray.append ((column.identifier.rawValue, true)) // Ascending
       }
       mSortDescriptorArray = newSortDescriptorArray
       mTableViewArray.append (tableView)
@@ -357,7 +357,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
   func tableView (_ tableView: NSTableView, mouseDownInHeaderOf inTableColumn: NSTableColumn) {
     var newSortDescriptorArray = [(String, Bool)] ()
     for (columnName, ascending) in mSortDescriptorArray {
-      if sw34_isColumn (inTableColumn, hasIdentifier: columnName) {
+      if inTableColumn.identifier == NSUserInterfaceItemIdentifier (columnName) {
         newSortDescriptorArray.insert ((columnName, !ascending), at:0)
       }else{
         newSortDescriptorArray.append ((columnName, !ascending))
@@ -380,16 +380,12 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
     case .empty, .multiple :
       return nil
     case .single (let v) :
-      #if swift(>=4)
-        let result : NSTableCellView = tableView.makeView (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
-      #else
-        let result : NSTableCellView = tableView.make (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
-      #endif
+      let result : NSTableCellView = tableView.makeView (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
       if !reuseTableViewCells () {
         result.identifier = nil // So result cannot be reused, will be freed
       }
       let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
-      if sw34_isColumn (inTableColumn, hasIdentifier: "name") {
+      if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("name") {
         if let cell : EBTextField_TableViewCell = result as? EBTextField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_value ()
@@ -398,7 +394,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
           cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
         }
       }else{
-        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
+        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier.rawValue))'")
       }
       return result
     } 
@@ -589,4 +585,3 @@ final class SelectedSet_PMArtworkDocument_mDataController : EBAbstractProperty {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

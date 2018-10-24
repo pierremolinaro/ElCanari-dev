@@ -44,8 +44,8 @@ extension MergerDocument {
         mInsertArrayOfBoardsYCountField?.stringValue = "1"
       }
     //--- Display panel
-      self.windowForSheet?.beginSheet (panel, completionHandler: { (inResponse : SW34_ApplicationModalResponse) in
-        if inResponse == sw34_NSModalResponseStop {
+      self.windowForSheet?.beginSheet (panel, completionHandler: { (inResponse : NSApplication.ModalResponse) in
+        if inResponse == NSApplication.ModalResponse.stop {
           if let xCount = Int (self.mInsertArrayOfBoardsXCountField?.stringValue ?? ""),
              let yCount = Int (self.mInsertArrayOfBoardsYCountField?.stringValue ?? "") {
             let boardModel = self.rootObject.boardModels_property.propval [insertArrayOfBoardsPopUpButton.selectedTag()]

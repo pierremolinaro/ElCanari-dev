@@ -52,10 +52,10 @@ extension MergerDocument {
         openPanel.isAccessoryViewDisclosed = true
       }
     //--- Dialog
-      openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : SW34_ApplicationModalResponse) in
+      openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : NSApplication.ModalResponse) in
         gPanelDelegate?.restoreSavedURLAndReleasePanel ()
         gPanelDelegate = nil
-        if returnCode == sw34_FileHandlingPanelOKButton {
+        if returnCode == NSApplication.ModalResponse (NSFileHandlingPanelOKButton) {
           if let url = openPanel.url, url.isFileURL {
             let filePath = url.path
           //--- Load file, as plist

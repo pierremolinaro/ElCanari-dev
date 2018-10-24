@@ -42,19 +42,19 @@ import Cocoa
   override func awakeFromNib () {
     if let updater = mSparkleUpdater {
       mUpdateCheckbox?.bind (
-        "value",
+        NSBindingName(rawValue: "value"),
         to:updater,
         withKeyPath: "automaticallyChecksForUpdates",
         options: nil
       )
       mUpdateIntervalPopUpButton?.bind (
-        "selectedTag",
+        NSBindingName(rawValue: "selectedTag"),
         to:updater,
         withKeyPath: "updateCheckInterval",
         options: nil
       )
       mUpdateIntervalPopUpButton?.bind (
-        "enabled",
+        NSBindingName(rawValue: "enabled"),
         to:updater,
         withKeyPath: "automaticallyChecksForUpdates",
         options: nil

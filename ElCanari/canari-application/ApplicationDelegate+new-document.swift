@@ -9,7 +9,7 @@ extension ApplicationDelegate {
   //····················································································································
 
   @IBAction func actionNewMergerDocument (_ inSender : AnyObject) {
-    let dc = NSDocumentController.shared ()
+    let dc = NSDocumentController.shared 
     do{
       let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Merger")
       if let newDocument = possibleNewDocument as? NSDocument {
@@ -25,7 +25,7 @@ extension ApplicationDelegate {
   //····················································································································
 
   @IBAction func actionNewArtworkDocument (_ inSender : AnyObject) {
-    let dc = NSDocumentController.shared ()
+    let dc = NSDocumentController.shared 
     do{
       let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Artwork")
       if let newDocument = possibleNewDocument as? NSDocument {
@@ -41,7 +41,7 @@ extension ApplicationDelegate {
   //····················································································································
 
   @IBAction func actionNewFontDocument (_ inSender : AnyObject) {
-    let dc = NSDocumentController.shared ()
+    let dc = NSDocumentController.shared 
     do{
       let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Font")
       if let newDocument = possibleNewDocument as? NSDocument {

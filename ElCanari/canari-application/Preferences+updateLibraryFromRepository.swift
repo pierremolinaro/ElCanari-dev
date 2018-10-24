@@ -140,7 +140,7 @@ func performLibraryUpdate (_ inWindow : EBWindow?, _ inLogTextView : NSTextView)
     if let alert = possibleAlert {
       alert.beginSheetModal (
         for: window,
-        completionHandler: { (response : Int) in window.orderOut (nil) }
+        completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) }
       )
     }else{
       window.orderOut (nil)
@@ -816,14 +816,14 @@ class CanariLibraryUpdateController : EBObject {
 
   func bind () {
     if let tableView = g_Preferences?.mTableViewInLibraryUpdateWindow {
-      tableView.tableColumn (withIdentifier: "name")?.bind (
-        "value",
+      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.bind (
+        NSBindingName(rawValue: "value"),
         to:self.mArrayController,
         withKeyPath:"arrangedObjects.relativePath",
         options:nil
       )
-      tableView.tableColumn (withIdentifier: "action")?.bind (
-        "value",
+      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.bind (
+        NSBindingName(rawValue: "value"),
         to:self.mArrayController,
         withKeyPath:"arrangedObjects.actionName",
         options:nil
@@ -836,8 +836,8 @@ class CanariLibraryUpdateController : EBObject {
 
   func unbind () { //--- Remove bindings
     if let tableView = g_Preferences?.mTableViewInLibraryUpdateWindow {
-      tableView.tableColumn(withIdentifier: "name")?.unbind ("value")
-      tableView.tableColumn(withIdentifier: "action")?.unbind ("value")
+      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.unbind (NSBindingName(rawValue: "value"))
+      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.unbind (NSBindingName(rawValue: "value"))
       mArrayController.content = nil
     }
   }
@@ -966,7 +966,7 @@ private func commitAllActions (_ inActionArray : [LibraryOperationElement],
         alert.addButton (withTitle: "Ok")
         alert.beginSheetModal (
           for: window,
-          completionHandler: { (response : Int) in window.orderOut (nil) ; enableItemsAfterCompletion () }
+          completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) ; enableItemsAfterCompletion () }
         )
       }catch let error {
         let alert = NSAlert ()
@@ -975,7 +975,7 @@ private func commitAllActions (_ inActionArray : [LibraryOperationElement],
         alert.informativeText = "A file system operation returns \(error) error"
         alert.beginSheetModal (
           for: window,
-          completionHandler: { (response : Int) in window.orderOut (nil) ; enableItemsAfterCompletion () }
+          completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) ; enableItemsAfterCompletion () }
         )
       }
     }

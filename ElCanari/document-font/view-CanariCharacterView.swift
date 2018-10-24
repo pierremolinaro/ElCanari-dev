@@ -87,7 +87,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   override func drawFocusRingMask () {
-    NSRectFill (self.bounds)
+    __NSRectFill (self.bounds)
   }
 
   //····················································································································
@@ -111,7 +111,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   override func draw (_ inDirtyRect: NSRect) {
   //--- Background
     NSColor.white.setFill ()
-    NSRectFill (inDirtyRect)
+    __NSRectFill (inDirtyRect)
   //--- Border
     let r = self.bounds.insetBy (dx: 0.5, dy: 0.5)
     var bp = NSBezierPath (rect: r)
@@ -148,8 +148,8 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     NSColor.black.setStroke ()
     bp.stroke ()
   //--- Add X axis values
-    let textAttributes : [String : Any] = [
-      NSFontAttributeName : NSFont.userFixedPitchFont (ofSize: 11.0)!
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : NSFont.userFixedPitchFont (ofSize: 11.0)!
     ]
     for x in 0 ... 16 {
       let xx = xForX (x * 2)
@@ -181,7 +181,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       bp.line (to: CGPoint (x: xForX (segment.x2), y: yForY (segment.y2)))
     }
     bp.lineWidth = PLACEMENT_GRID * 2.0
-    bp.lineCapStyle = .roundLineCapStyle
+    bp.lineCapStyle = .round
     NSColor.black.withAlphaComponent (self.mSegmentTransparency).setStroke ()
     bp.stroke ()
   //--- Character advancement
@@ -214,7 +214,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       NSColor.orange.setFill ()
       NSColor.orange.setStroke ()
       strokePath.lineWidth = 1.0
-      strokePath.lineCapStyle = .roundLineCapStyle
+      strokePath.lineCapStyle = .round
       strokePath.stroke ()
       fillPath.fill ()
     }
@@ -224,9 +224,9 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       for segment in self.mSegmentList {
         let x = (xForX (segment.x1) + xForX (segment.x2)) / 2.0
         let y = (yForY (segment.y1) + yForY (segment.y2)) / 2.0
-        let textAttributes : [String : Any] = [
-          NSFontAttributeName : NSFont.userFixedPitchFont (ofSize: 18.0)!,
-          NSForegroundColorAttributeName : NSColor.yellow
+        let textAttributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : NSFont.userFixedPitchFont (ofSize: 18.0)!,
+          NSAttributedString.Key.foregroundColor : NSColor.yellow
         ]
         let s = "\(idx)"
         let size = s.size (withAttributes: textAttributes)
@@ -423,7 +423,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //  Menu actions
   //····················································································································
 
-  final override func validateMenuItem (_ menuItem: NSMenuItem) -> Bool {
+  final func validateMenuItem (_ menuItem: NSMenuItem) -> Bool {
     let action = menuItem.action
     if action == #selector (CanariCharacterView.delete(_:)) {
       return mSelection.count > 0
@@ -442,9 +442,9 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     }else if action == #selector (CanariCharacterView.cut(_:)) {
       return (mSelection.count > 0) && (self.mSegmentList.count > 0)
     }else if action == #selector (CanariCharacterView.paste(_:)) {
-      return NSPasteboard.general ().data (forType: PRIVATE_PASTEBOARD_TYPE) != nil
+      return NSPasteboard.general .data (forType: PRIVATE_PASTEBOARD_TYPE) != nil
     }else{
-      return super.validateMenuItem (menuItem)
+      return false // super.validateMenuItem (menuItem)
     }
   }
 
@@ -465,7 +465,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   @objc func bringForward (_ sender : Any?) {
     if mSelection.count == 0 {
-      sw34_Beep ()
+      __NSBeep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = newSegmentArray.count
@@ -484,7 +484,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   @objc func bringToFront (_ sender : Any?) {
     if mSelection.count == 0 {
-      sw34_Beep ()
+      __NSBeep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = -1
@@ -503,7 +503,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   @objc func sendBackward (_ sender : Any?) {
     if mSelection.count == 0 {
-      sw34_Beep ()
+      __NSBeep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = -1
@@ -522,7 +522,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   @objc func sendToBack (_ sender : Any?) {
     if mSelection.count == 0 {
-      sw34_Beep ()
+      __NSBeep ()
     }else{
       var newSegmentArray = self.mSegmentList
       var idx = newSegmentArray.count
@@ -543,7 +543,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   final func deleteSelection () {
     if mSelection.count == 0 {
-      sw34_Beep ()
+      __NSBeep ()
     }else{
       var newSegmentArray = self.mSegmentList
       for segment in mSelection {
@@ -627,7 +627,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       }
       mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }else{
-      sw34_Beep ()
+      __NSBeep ()
     }
   }
   
@@ -654,7 +654,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
       }
       mFontDocument?.defineSegmentsForCurrentCharacter (newSegmentArray)
     }else{
-      sw34_Beep ()
+      __NSBeep ()
     }
   }
   
@@ -662,24 +662,24 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //   PASTEBOARD
   //····················································································································
 
-  private let PRIVATE_PASTEBOARD_TYPE = "AZERTY"
+  private let PRIVATE_PASTEBOARD_TYPE = NSPasteboard.PasteboardType (rawValue: "AZERTY")
   
   //····················································································································
 
   private final func setPasteboardPrivateObjectType () {
-    register (forDraggedTypes: [PRIVATE_PASTEBOARD_TYPE])
+    registerForDraggedTypes ([PRIVATE_PASTEBOARD_TYPE])
   }
 
   //····················································································································
 
   @objc func paste (_ sender : Any?) {
   //--- Get General Pasteboard
-    let pb = NSPasteboard.general ()
+    let pb = NSPasteboard.general 
   //--- Find a matching type name
-    let possibleMatchingTypeName : String? = pb.availableType (from: [PRIVATE_PASTEBOARD_TYPE])
+    let possibleMatchingTypeName : String? = pb.availableType (from: [PRIVATE_PASTEBOARD_TYPE]).map { $0.rawValue }
     if let matchingTypeName = possibleMatchingTypeName {
     //--- Get data from pasteboard
-      let possibleArchive : Data? = pb.data (forType:matchingTypeName)
+      let possibleArchive : Data? = pb.data (forType:NSPasteboard.PasteboardType(rawValue: matchingTypeName))
       if let archive = possibleArchive {
       //--- Unarchive to get array of archived objects
         let unarchivedObject : Any? = NSUnarchiver.unarchiveObject (with: archive)
@@ -706,7 +706,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
 
   @objc func copy (_ sender : Any?) {
   //--- Declare pasteboard types
-    let pb = NSPasteboard.general ()
+    let pb = NSPasteboard.general 
     pb.declareTypes ([PRIVATE_PASTEBOARD_TYPE], owner:self)
   //--- Copy private representation
     var segmentArray = [[NSNumber]] ()
@@ -743,15 +743,15 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     let unicodeChar = unicodeScalars [unicodeScalars.startIndex].value
     // Swift.print ("\(Int (unicodeChar))")
     switch Int (unicodeChar) {
-    case NSUpArrowFunctionKey :
+    case NSEvent.SpecialKey.upArrow.rawValue :
       moveSelection (byX : 0, byY: amount)
-    case NSDownArrowFunctionKey :
+    case NSEvent.SpecialKey.downArrow.rawValue :
       moveSelection (byX : 0, byY: -amount)
-    case NSLeftArrowFunctionKey :
+    case NSEvent.SpecialKey.leftArrow.rawValue :
       moveSelection (byX : -amount, byY: 0)
-    case NSRightArrowFunctionKey :
+    case NSEvent.SpecialKey.rightArrow.rawValue :
       moveSelection (byX : amount, byY: 0)
-    case NSDeleteFunctionKey, 127 /* Back */ :
+    case NSEvent.SpecialKey.deleteForward.rawValue, 127 /* Back */ :
       deleteSelection ()
     default :
       super.keyDown (with: event)
