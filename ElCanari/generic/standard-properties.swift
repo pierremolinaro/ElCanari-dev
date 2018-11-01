@@ -235,7 +235,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
     return result
   }
 
- //····················································································································
+  //····················································································································
 
   func storeIn (dictionary:NSMutableDictionary, forKey inKey:String) {
     dictionary.setValue (mValue.convertToNSObject (), forKey:inKey)

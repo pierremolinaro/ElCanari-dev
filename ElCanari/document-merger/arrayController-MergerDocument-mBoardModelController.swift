@@ -394,7 +394,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
           cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
         }
       }else{
-        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier.rawValue))'")
+        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
       }
       return result
     } 
@@ -585,3 +585,4 @@ final class SelectedSet_MergerDocument_mBoardModelController : EBAbstractPropert
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

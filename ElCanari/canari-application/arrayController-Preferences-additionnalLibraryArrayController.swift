@@ -413,7 +413,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
           cell.mCellOutlet?.action = #selector (CanariLibraryEntry.revealLibraryInFinderAction(_:))
         }
       }else{
-        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier.rawValue))'")
+        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
       }
       return result
     } 
@@ -603,3 +603,4 @@ final class SelectedSet_Preferences_additionnalLibraryArrayController : EBAbstra
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

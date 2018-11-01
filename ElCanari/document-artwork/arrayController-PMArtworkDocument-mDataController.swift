@@ -394,7 +394,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
           cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
         }
       }else{
-        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier.rawValue))'")
+        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
       }
       return result
     } 
@@ -585,3 +585,4 @@ final class SelectedSet_PMArtworkDocument_mDataController : EBAbstractProperty {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
