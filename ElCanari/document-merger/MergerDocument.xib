@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="15G22010" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="101003" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -153,7 +153,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="EBApplication"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="21" userLabel="Window">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="73" y="851" width="700" height="500"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <value key="minSize" type="size" width="400" height="300"/>
@@ -212,7 +212,7 @@ AAAAAAEGA
                         <nil key="toolTip"/>
                         <size key="minSize" width="82" height="19"/>
                         <size key="maxSize" width="178" height="32"/>
-                        <button key="view" verticalHuggingPriority="750" misplaced="YES" id="Y3w-4l-ytx" customClass="EBButton">
+                        <button key="view" verticalHuggingPriority="750" id="Y3w-4l-ytx" customClass="EBButton">
                             <rect key="frame" x="5" y="14" width="138" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundRect" title="Display Settings" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cPL-s0-ZlO">
@@ -249,7 +249,7 @@ AAAAAAEGA
             <rect key="frame" x="0.0" y="0.0" width="700" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" misplaced="YES" id="2Wu-Dh-CTo" customClass="EBButton">
+                <button verticalHuggingPriority="750" id="2Wu-Dh-CTo" customClass="EBButton">
                     <rect key="frame" x="20" y="459" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="+" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3xV-MG-4yz">
@@ -257,7 +257,7 @@ AAAAAAEGA
                         <font key="font" metaFont="cellTitle"/>
                     </buttonCell>
                 </button>
-                <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="7Kv-FP-h6t">
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="7Kv-FP-h6t">
                     <rect key="frame" x="20" y="139" width="212" height="311"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="oAS-F8-HR9">
@@ -289,7 +289,7 @@ AAAAAAEGA
                                                 <rect key="frame" x="1" y="1" width="207" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="TGu-Py-x0D" customClass="EBTextField">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="TGu-Py-x0D" customClass="EBTextField">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="nkR-v3-rgo">
@@ -323,7 +323,7 @@ AAAAAAEGA
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <scrollView wantsLayer="YES" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="tch-UL-HLT" customClass="CanariScrollViewWithPlacard">
+                <scrollView wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="tch-UL-HLT" customClass="CanariScrollViewWithPlacard">
                     <rect key="frame" x="260" y="0.0" width="440" height="500"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" wantsLayer="YES" id="PpI-BL-fb0">
@@ -346,7 +346,7 @@ AAAAAAEGA
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button verticalHuggingPriority="750" misplaced="YES" id="9BP-El-GfJ" customClass="EBButton">
+                <button verticalHuggingPriority="750" id="9BP-El-GfJ" customClass="EBButton">
                     <rect key="frame" x="192" y="457" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="-" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EVf-tb-GGZ">
@@ -354,7 +354,7 @@ AAAAAAEGA
                         <font key="font" metaFont="cellTitle"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" id="1lJ-Hv-DyN" customClass="EBButton">
+                <button verticalHuggingPriority="750" id="1lJ-Hv-DyN" customClass="EBButton">
                     <rect key="frame" x="68" y="457" width="120" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Update…" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Z2K-mq-82S">
@@ -362,7 +362,7 @@ AAAAAAEGA
                         <font key="font" metaFont="cellTitle"/>
                     </buttonCell>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="Ti9-vf-Dz4" customClass="EBIntObserverField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Ti9-vf-Dz4" customClass="EBIntObserverField">
                     <rect key="frame" x="102" y="9" width="62" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="Jyu-wm-btp">
@@ -371,7 +371,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="9j7-y6-wzZ">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="9j7-y6-wzZ">
                     <rect key="frame" x="43" y="9" width="55" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Instances" id="piJ-i5-JEw">
@@ -380,7 +380,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="AK2-cU-S3E" customClass="CanariDimensionObserverTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="AK2-cU-S3E" customClass="CanariDimensionObserverTextField">
                     <rect key="frame" x="102" y="33" width="62" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="right" title="100,23" id="BGP-i2-v8O">
@@ -393,7 +393,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton misplaced="YES" id="BAu-HE-bAl" customClass="EBPopUpButton">
+                <popUpButton id="BAu-HE-bAl" customClass="EBPopUpButton">
                     <rect key="frame" x="170" y="37" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="mil" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286" inset="2" preferredEdge="maxY" selectedItem="gi6-C5-yES" id="Q3R-Tq-sXK">
@@ -410,7 +410,7 @@ AAAAAAEGA
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="f0C-K9-iUE" customClass="CanariDimensionObserverTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="f0C-K9-iUE" customClass="CanariDimensionObserverTextField">
                     <rect key="frame" x="102" y="86" width="62" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="right" title="100,23" id="GVg-mA-0Av">
@@ -423,7 +423,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="Niu-Df-Kdt" customClass="CanariDimensionObserverTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Niu-Df-Kdt" customClass="CanariDimensionObserverTextField">
                     <rect key="frame" x="102" y="61" width="62" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="right" title="100,23" id="I9o-Ea-aWB">
@@ -436,7 +436,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton misplaced="YES" id="8AK-fL-5Og" customClass="EBPopUpButton">
+                <popUpButton id="8AK-fL-5Og" customClass="EBPopUpButton">
                     <rect key="frame" x="170" y="90" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="mil" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286" inset="2" preferredEdge="maxY" selectedItem="CiT-vW-aAZ" id="hOJ-hQ-EU8">
@@ -453,7 +453,7 @@ AAAAAAEGA
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="IZc-wU-Bdx">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="IZc-wU-Bdx">
                     <rect key="frame" x="19" y="117" width="79" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Artwork Name" id="ngq-rc-IuX">
@@ -462,7 +462,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="WGO-w3-ZLe">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="WGO-w3-ZLe">
                     <rect key="frame" x="19" y="33" width="79" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Limit Width" id="0Y0-S1-Qt9">
@@ -471,7 +471,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="4rs-A1-gDX">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="4rs-A1-gDX">
                     <rect key="frame" x="19" y="86" width="79" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Model Width" id="mrx-yg-iNI">
@@ -480,7 +480,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="We8-ro-FPi">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="We8-ro-FPi">
                     <rect key="frame" x="19" y="61" width="79" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Model Height" id="ILs-Sc-Pcm">
@@ -489,7 +489,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="AyG-8t-ISk" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="AyG-8t-ISk" customClass="EBTextField">
                     <rect key="frame" x="262" y="230" width="436" height="39"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No Board Model" id="yF0-gU-0Yr">
@@ -498,7 +498,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton misplaced="YES" id="7ZX-iP-2iR" customClass="EBPopUpButton">
+                <popUpButton id="7ZX-iP-2iR" customClass="EBPopUpButton">
                     <rect key="frame" x="170" y="65" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="mil" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="2286" inset="2" preferredEdge="maxY" selectedItem="ONh-Vm-ATN" id="LLR-Hc-Mh5">
@@ -515,7 +515,7 @@ AAAAAAEGA
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="sNV-XY-ihk" customClass="EBTextObserverField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="sNV-XY-ihk" customClass="EBTextObserverField">
                     <rect key="frame" x="102" y="117" width="132" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="Gno-IL-Wte">
@@ -527,18 +527,18 @@ AAAAAAEGA
             </subviews>
             <point key="canvasLocation" x="761" y="-221"/>
         </customView>
-        <customView wantsLayer="YES" misplaced="YES" id="r18-cj-dWP" userLabel="Page : Board" customClass="CanariViewWithKeyView">
+        <customView wantsLayer="YES" id="r18-cj-dWP" userLabel="Page : Board" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="700" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView wantsLayer="YES" focusRingType="none" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="100" verticalLineScroll="10" verticalPageScroll="100" usesPredominantAxisScrolling="NO" id="P6R-Ak-MaY" customClass="CanariMergerBoardScrollView">
+                <scrollView wantsLayer="YES" focusRingType="none" horizontalLineScroll="10" horizontalPageScroll="100" verticalLineScroll="10" verticalPageScroll="100" usesPredominantAxisScrolling="NO" id="P6R-Ak-MaY" customClass="CanariMergerBoardScrollView">
                     <rect key="frame" x="260" y="0.0" width="440" height="667"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" wantsLayer="YES" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="nFP-mw-Omh">
                         <rect key="frame" x="1" y="1" width="423" height="650"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView wantsLayer="YES" focusRingType="none" misplaced="YES" id="nao-E9-sci" customClass="CanariViewWithZoomAndFlip" customModule="ElCanari" customModuleProvider="target">
+                            <customView wantsLayer="YES" focusRingType="none" id="nao-E9-sci" customClass="CanariViewWithZoomAndFlip" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="554" width="452" height="417"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
@@ -561,7 +561,7 @@ AAAAAAEGA
                         <outlet property="menu" destination="3Qt-fi-qrc" id="zgF-Xj-rpA"/>
                     </connections>
                 </scrollView>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="TY5-Zu-VN8" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="TY5-Zu-VN8" customClass="EBTextField">
                     <rect key="frame" x="262" y="308" width="436" height="52"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Empty Board" id="v44-nv-gAx">
@@ -570,14 +570,14 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="HPb-eM-j4t">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="HPb-eM-j4t">
                     <rect key="frame" x="-1" y="0.0" width="260" height="666"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="Rhq-X7-8JB">
                         <rect key="frame" x="1" y="1" width="243" height="649"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <tabView misplaced="YES" id="Dp9-Pn-vhh">
+                            <tabView id="Dp9-Pn-vhh">
                                 <rect key="frame" x="0.0" y="0.0" width="243" height="623"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -587,7 +587,7 @@ AAAAAAEGA
                                             <rect key="frame" x="10" y="33" width="223" height="577"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField verticalHuggingPriority="750" id="ieK-KT-COc" customClass="CanariDimensionTextField">
+                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="ieK-KT-COc" customClass="CanariDimensionTextField">
                                                     <rect key="frame" x="96" y="266" width="51" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="100,23" drawsBackground="YES" id="uCm-s8-7ei">
@@ -596,7 +596,7 @@ AAAAAAEGA
                                                             <decimal key="maximum" value="NaN"/>
                                                         </numberFormatter>
                                                         <font key="font" metaFont="smallSystemBold"/>
-                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <connections>
@@ -620,7 +620,7 @@ AAAAAAEGA
                                                         </menu>
                                                     </popUpButtonCell>
                                                 </popUpButton>
-                                                <textField verticalHuggingPriority="750" id="2I2-Md-UHL" customClass="CanariDimensionTextField">
+                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="2I2-Md-UHL" customClass="CanariDimensionTextField">
                                                     <rect key="frame" x="96" y="241" width="51" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="100,23" drawsBackground="YES" id="SPv-cv-0TX">
@@ -629,7 +629,7 @@ AAAAAAEGA
                                                             <decimal key="maximum" value="NaN"/>
                                                         </numberFormatter>
                                                         <font key="font" metaFont="smallSystemBold"/>
-                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <connections>
@@ -653,7 +653,7 @@ AAAAAAEGA
                                                         </menu>
                                                     </popUpButtonCell>
                                                 </popUpButton>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Def-5Y-45v">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Def-5Y-45v">
                                                     <rect key="frame" x="8" y="239" width="85" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Shift Arrow Key" id="B0X-cp-hmM">
@@ -662,7 +662,7 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="sRr-jk-4v3">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="sRr-jk-4v3">
                                                     <rect key="frame" x="8" y="264" width="70" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Arrow Key" id="7JS-iX-SLY">
@@ -684,7 +684,7 @@ AAAAAAEGA
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="lgH-tn-3jv">
                                                         <rect key="frame" x="1" y="1" width="138" height="79"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="bu8-Fi-9kF" customClass="CanariModelDragSourceTableView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="79"/>
@@ -785,7 +785,7 @@ AAAAAAEGA
                                                         </segments>
                                                     </segmentedCell>
                                                 </segmentedControl>
-                                                <textField verticalHuggingPriority="750" id="3Y8-1B-wfY" customClass="CanariDimensionTextField">
+                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3Y8-1B-wfY" customClass="CanariDimensionTextField">
                                                     <rect key="frame" x="85" y="151" width="51" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="100,23" drawsBackground="YES" id="Fid-eb-rgf">
@@ -794,14 +794,14 @@ AAAAAAEGA
                                                             <decimal key="maximum" value="NaN"/>
                                                         </numberFormatter>
                                                         <font key="font" metaFont="smallSystemBold"/>
-                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <connections>
                                                         <outlet property="nextKeyView" destination="nao-E9-sci" id="aIO-Ob-qdD"/>
                                                     </connections>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="oCs-M2-5wO">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="oCs-M2-5wO">
                                                     <rect key="frame" x="21" y="126" width="43" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Bottom" id="ZDq-nN-sc4">
@@ -810,7 +810,7 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Tex-YZ-f9K">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Tex-YZ-f9K">
                                                     <rect key="frame" x="21" y="149" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Right" id="4Z1-JB-9Ma">
@@ -819,7 +819,7 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mXA-ym-vky">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="mXA-ym-vky">
                                                     <rect key="frame" x="20" y="176" width="44" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Model" id="oTZ-ac-uBf">
@@ -828,7 +828,7 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField verticalHuggingPriority="750" id="MsJ-Cn-aEZ" customClass="CanariDimensionTextField">
+                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="MsJ-Cn-aEZ" customClass="CanariDimensionTextField">
                                                     <rect key="frame" x="85" y="126" width="51" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="100,23" drawsBackground="YES" id="bS1-8o-ilr">
@@ -837,14 +837,14 @@ AAAAAAEGA
                                                             <decimal key="maximum" value="NaN"/>
                                                         </numberFormatter>
                                                         <font key="font" metaFont="smallSystemBold"/>
-                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <connections>
                                                         <outlet property="nextKeyView" destination="nao-E9-sci" id="g52-Bq-3fl"/>
                                                     </connections>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="aNU-VY-dQY" customClass="EBTextObserverField">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="aNU-VY-dQY" customClass="EBTextObserverField">
                                                     <rect key="frame" x="83" y="176" width="121" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="3Ek-v5-Gif">
@@ -891,7 +891,7 @@ AAAAAAEGA
                                                     <rect key="frame" x="68" y="357" width="145" height="62"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" id="Lat-bY-8XF" customClass="CanariDimensionObserverTextField">
+                                                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Lat-bY-8XF" customClass="CanariDimensionObserverTextField">
                                                             <rect key="frame" x="18" y="36" width="55" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="100,23" id="ZAk-VU-5YX">
@@ -938,7 +938,7 @@ AAAAAAEGA
                                                                 </menu>
                                                             </popUpButtonCell>
                                                         </popUpButton>
-                                                        <textField verticalHuggingPriority="750" id="7dt-7v-ArC" customClass="CanariDimensionObserverTextField">
+                                                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="7dt-7v-ArC" customClass="CanariDimensionObserverTextField">
                                                             <rect key="frame" x="18" y="6" width="55" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="100,23" id="kbS-XA-F6p">
@@ -970,7 +970,7 @@ AAAAAAEGA
                                                         </menu>
                                                     </popUpButtonCell>
                                                 </popUpButton>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZQd-IZ-3IG">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="ZQd-IZ-3IG">
                                                     <rect key="frame" x="45" y="362" width="39" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Height" id="CDe-4L-WiF">
@@ -983,7 +983,7 @@ AAAAAAEGA
                                                     <rect key="frame" x="68" y="357" width="145" height="62"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" id="h2g-XG-45M" customClass="CanariDimensionTextField">
+                                                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="h2g-XG-45M" customClass="CanariDimensionTextField">
                                                             <rect key="frame" x="20" y="39" width="51" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="100,23" drawsBackground="YES" id="J2U-eF-G3h">
@@ -992,7 +992,7 @@ AAAAAAEGA
                                                                     <decimal key="maximum" value="NaN"/>
                                                                 </numberFormatter>
                                                                 <font key="font" metaFont="smallSystemBold"/>
-                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
@@ -1030,7 +1030,7 @@ AAAAAAEGA
                                                                 </menu>
                                                             </popUpButtonCell>
                                                         </popUpButton>
-                                                        <textField verticalHuggingPriority="750" id="pNf-w2-84c" customClass="CanariDimensionTextField">
+                                                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="pNf-w2-84c" customClass="CanariDimensionTextField">
                                                             <rect key="frame" x="20" y="9" width="51" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="100,23" drawsBackground="YES" id="47Z-fh-BcE">
@@ -1039,13 +1039,13 @@ AAAAAAEGA
                                                                     <decimal key="maximum" value="NaN"/>
                                                                 </numberFormatter>
                                                                 <font key="font" metaFont="smallSystemBold"/>
-                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
                                                     </subviews>
                                                 </customView>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="maE-at-eFa">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="maE-at-eFa">
                                                     <rect key="frame" x="20" y="334" width="64" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Limit Width" id="YU9-Ak-g5F">
@@ -1054,7 +1054,7 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="s7Q-cO-PSS">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="s7Q-cO-PSS">
                                                     <rect key="frame" x="49" y="392" width="35" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Width" id="RH9-px-7BB">
@@ -1063,7 +1063,7 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField verticalHuggingPriority="750" id="sRW-Ca-N8E" customClass="CanariDimensionTextField">
+                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="sRW-Ca-N8E" customClass="CanariDimensionTextField">
                                                     <rect key="frame" x="90" y="336" width="51" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="100,23" drawsBackground="YES" id="i20-cp-tOB">
@@ -1072,7 +1072,7 @@ AAAAAAEGA
                                                             <decimal key="maximum" value="NaN"/>
                                                         </numberFormatter>
                                                         <font key="font" metaFont="smallSystemBold"/>
-                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <connections>
@@ -1095,7 +1095,7 @@ AAAAAAEGA
                                                         <font key="font" metaFont="smallSystem"/>
                                                     </buttonCell>
                                                 </button>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="ojq-i4-U5k">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="ojq-i4-U5k">
                                                     <rect key="frame" x="-1" y="204" width="105" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Selected Instance" id="h9W-QV-Hjs">
@@ -1104,7 +1104,7 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="g8G-9q-V7z">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="g8G-9q-V7z">
                                                     <rect key="frame" x="-3" y="294" width="124" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Arrow Key Magnitude" id="KEd-2M-xL3">
@@ -1113,7 +1113,7 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="Dn8-AD-dZB">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Dn8-AD-dZB">
                                                     <rect key="frame" x="-1" y="453" width="38" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Board" id="WQ9-In-1Jy">
@@ -1122,7 +1122,7 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="FTK-2m-GPG">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="FTK-2m-GPG">
                                                     <rect key="frame" x="2" y="560" width="39" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Model" id="g1t-6V-EXn">
@@ -1131,7 +1131,7 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="1MZ-Ml-xFR">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1MZ-Ml-xFR">
                                                     <rect key="frame" x="-1" y="73" width="97" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Move Selection" id="Xyl-T2-ynk">
@@ -1148,7 +1148,7 @@ AAAAAAEGA
                                             <rect key="frame" x="10" y="33" width="223" height="577"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="Uhu-ce-6v5" customClass="EBTextObserverField">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Uhu-ce-6v5" customClass="EBTextObserverField">
                                                     <rect key="frame" x="-5" y="557" width="233" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-- issues --" id="XYG-Q8-aXY">
@@ -1157,12 +1157,12 @@ AAAAAAEGA
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="kWh-Ef-t3b">
+                                                <scrollView autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="kWh-Ef-t3b">
                                                     <rect key="frame" x="9" y="17" width="197" height="504"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="bte-fr-Xrs">
                                                         <rect key="frame" x="1" y="1" width="195" height="502"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="E87-Xh-jB6" customClass="MergerIssueTableView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="195" height="502"/>
@@ -1209,7 +1209,7 @@ AAAAAAEGA
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
-                                                <button verticalHuggingPriority="750" misplaced="YES" id="XUR-ya-7kL" customClass="EBButton">
+                                                <button verticalHuggingPriority="750" id="XUR-ya-7kL" customClass="EBButton">
                                                     <rect key="frame" x="9" y="530" width="197" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <buttonCell key="cell" type="roundRect" title="Hide issue" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Af-ax-xg4">
@@ -1240,11 +1240,11 @@ AAAAAAEGA
             </subviews>
             <point key="canvasLocation" x="386" y="-977.5"/>
         </customView>
-        <customView misplaced="YES" id="12W-qU-wNi" userLabel="Page : Product" customClass="CanariViewWithKeyView">
+        <customView id="12W-qU-wNi" userLabel="Page : Product" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="923" height="684"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="7QM-ql-usB" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="7QM-ql-usB" customClass="EBTextField">
                     <rect key="frame" x="20" y="306" width="878" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No Artwork" id="b6k-p1-6nQ">
@@ -1253,23 +1253,23 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="Hnb-pY-QcN">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="Hnb-pY-QcN">
                     <rect key="frame" x="22" y="14" width="891" height="543"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="Ia8-1D-Xh1">
+                    <clipView key="contentView" drawsBackground="NO" id="Ia8-1D-Xh1">
                         <rect key="frame" x="1" y="1" width="874" height="541"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textView editable="NO" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Rki-OK-VtG">
+                            <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Rki-OK-VtG">
                                 <rect key="frame" x="0.0" y="0.0" width="874" height="541"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <size key="minSize" width="874" height="541"/>
                                 <size key="maxSize" width="1043" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Yq8-Dm-rnu">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
@@ -1280,7 +1280,7 @@ AAAAAAEGA
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="syb-21-rHW" customClass="EBTextObserverField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="syb-21-rHW" customClass="EBTextObserverField">
                     <rect key="frame" x="18" y="626" width="163" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="center" title="---attached artwork name" id="9b7-cU-Khb">
@@ -1289,7 +1289,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" misplaced="YES" id="mUF-7a-S2r" customClass="EBButton">
+                <button verticalHuggingPriority="750" id="mUF-7a-S2r" customClass="EBButton">
                     <rect key="frame" x="20" y="647" width="159" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Import Artwork…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="clL-WI-dw4">
@@ -1297,16 +1297,16 @@ AAAAAAEGA
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <customView misplaced="YES" id="kZQ-iy-L4Z">
+                <customView id="kZQ-iy-L4Z">
                     <rect key="frame" x="201" y="639" width="348" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <imageView misplaced="YES" id="GNS-IE-7yO">
+                        <imageView id="GNS-IE-7yO">
                             <rect key="frame" x="0.0" y="4" width="22" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusPartiallyAvailable" id="qa2-mi-TEn"/>
                         </imageView>
-                        <textField verticalHuggingPriority="750" misplaced="YES" id="gwG-XI-zVs">
+                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="gwG-XI-zVs">
                             <rect key="frame" x="18" y="3" width="332" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="It is recommended that you rename the document" id="zlR-2v-gJa">
@@ -1317,7 +1317,7 @@ AAAAAAEGA
                         </textField>
                     </subviews>
                 </customView>
-                <button misplaced="YES" id="81g-3K-hsT" customClass="EBSwitch">
+                <button id="81g-3K-hsT" customClass="EBSwitch">
                     <rect key="frame" x="279" y="576" width="90" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="PDF Files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="JRC-5W-W05">
@@ -1325,7 +1325,7 @@ AAAAAAEGA
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button misplaced="YES" id="sfd-Ok-J1H" customClass="EBSwitch">
+                <button id="sfd-Ok-J1H" customClass="EBSwitch">
                     <rect key="frame" x="186" y="576" width="90" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Gerber Files" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="q8a-7i-avf">
@@ -1333,7 +1333,7 @@ AAAAAAEGA
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" id="5Wu-A4-TL6" customClass="EBButton">
+                <button verticalHuggingPriority="750" id="5Wu-A4-TL6" customClass="EBButton">
                     <rect key="frame" x="22" y="576" width="159" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Generate Files" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="iAB-kd-UEz">
@@ -1341,7 +1341,7 @@ AAAAAAEGA
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="doX-6B-wh1" customClass="EBTextObserverField">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="doX-6B-wh1" customClass="EBTextObserverField">
                     <rect key="frame" x="199" y="600" width="706" height="39"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="justified" id="81G-Tz-Yj7">
@@ -1351,7 +1351,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" misplaced="YES" id="a1Z-gP-Hcs" customClass="CanariBoardBoardArchivePopUpButton">
+                <popUpButton verticalHuggingPriority="750" id="a1Z-gP-Hcs" customClass="CanariBoardBoardArchivePopUpButton">
                     <rect key="frame" x="465" y="576" width="128" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Do Not Generate" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="3TW-pU-g6M" id="5mj-Ac-WS7">
@@ -1366,7 +1366,7 @@ AAAAAAEGA
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="2oe-bN-13f">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="2oe-bN-13f">
                     <rect key="frame" x="373" y="572" width="86" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Board Archive" id="d1t-on-VCS">
@@ -1388,26 +1388,26 @@ AAAAAAEGA
                 <outlet property="mDocument" destination="-2" id="iAN-fp-VCy"/>
             </connections>
         </menu>
-        <customView wantsLayer="YES" misplaced="YES" id="gM7-40-CET" userLabel="View : Display settings" customClass="CanariViewWithBackground" customModule="ElCanari" customModuleProvider="target">
+        <customView wantsLayer="YES" id="gM7-40-CET" userLabel="View : Display settings" customClass="CanariViewWithBackground" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="260" height="733"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <subviews>
-                <customView misplaced="YES" id="KG5-rN-Y3k">
+                <customView id="KG5-rN-Y3k">
                     <rect key="frame" x="0.0" y="-2" width="260" height="735"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <subviews>
-                        <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="yde-Z5-dGm">
+                        <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="yde-Z5-dGm">
                             <rect key="frame" x="0.0" y="39" width="260" height="696"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <clipView key="contentView" id="FKc-MP-5iw">
                                 <rect key="frame" x="1" y="1" width="243" height="679"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <customView misplaced="YES" id="DvX-Ap-QJ4">
+                                    <customView id="DvX-Ap-QJ4">
                                         <rect key="frame" x="0.0" y="74" width="240" height="680"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
-                                            <button misplaced="YES" id="Lb2-iL-9kP" customClass="EBSwitch">
+                                            <button id="Lb2-iL-9kP" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="592" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="hxc-hm-vvZ">
@@ -1415,7 +1415,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="kyK-0C-dX0" customClass="EBSwitch">
+                                            <button id="kyK-0C-dX0" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="592" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2im-t4-X0i">
@@ -1423,7 +1423,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="k0o-YH-sUI">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="k0o-YH-sUI">
                                                 <rect key="frame" x="130" y="643" width="43" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Model" id="Cz4-bg-XFG">
@@ -1432,7 +1432,7 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="Dvo-xZ-auq">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Dvo-xZ-auq">
                                                 <rect key="frame" x="170" y="643" width="41" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Board" id="WEa-PX-o58">
@@ -1441,7 +1441,7 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <button misplaced="YES" id="Mkv-dF-f27" customClass="EBSwitch">
+                                            <button id="Mkv-dF-f27" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="617" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="t7s-kb-gmc">
@@ -1449,7 +1449,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="N3I-RP-vAw" customClass="EBSwitch">
+                                            <button id="N3I-RP-vAw" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="617" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="PX7-W4-179">
@@ -1457,7 +1457,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="orh-TU-cdx">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="orh-TU-cdx">
                                                 <rect key="frame" x="8" y="620" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Horizontal Flip" id="Dgv-BD-ozu">
@@ -1466,7 +1466,7 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="qmD-8X-K57">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="qmD-8X-K57">
                                                 <rect key="frame" x="8" y="595" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Vertical Flip" id="Cmj-ut-3gD">
@@ -1475,12 +1475,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="gvA-rl-bc1" customClass="EBColorWell">
+                                            <colorWell id="gvA-rl-bc1" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="568" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="JJC-uY-o75" customClass="EBSwitch">
+                                            <button id="JJC-uY-o75" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="567" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="ovS-sA-Ci1">
@@ -1488,7 +1488,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="iB8-zj-oDI" customClass="EBSwitch">
+                                            <button id="iB8-zj-oDI" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="567" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Lh5-nt-0aD">
@@ -1496,7 +1496,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="OcW-1L-wvs">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="OcW-1L-wvs">
                                                 <rect key="frame" x="8" y="570" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Holes" id="pJi-kH-sVT">
@@ -1505,12 +1505,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="t0u-dX-I6g" customClass="EBColorWell">
+                                            <colorWell id="t0u-dX-I6g" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="543" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="3IY-gv-3yS" customClass="EBSwitch">
+                                            <button id="3IY-gv-3yS" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="542" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="7pA-xm-1aA">
@@ -1518,7 +1518,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="tEs-5D-1uo" customClass="EBSwitch">
+                                            <button id="tEs-5D-1uo" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="542" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="VMT-On-Nre">
@@ -1526,7 +1526,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="2bW-PK-IX8">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="2bW-PK-IX8">
                                                 <rect key="frame" x="8" y="545" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Vias" id="vmK-Ut-xhj">
@@ -1535,12 +1535,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="jnP-wg-3Bg" customClass="EBColorWell">
+                                            <colorWell id="jnP-wg-3Bg" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="518" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="3zZ-3x-Hia" customClass="EBSwitch">
+                                            <button id="3zZ-3x-Hia" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="517" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="qyF-qc-jKW">
@@ -1548,7 +1548,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="9ag-o1-Sb3" customClass="EBSwitch">
+                                            <button id="9ag-o1-Sb3" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="517" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="KZ1-db-FPE">
@@ -1556,7 +1556,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="wiC-9M-LMo">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="wiC-9M-LMo">
                                                 <rect key="frame" x="8" y="520" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Board Limits" id="Jw2-28-rNt">
@@ -1565,12 +1565,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="mWj-xo-yYT" customClass="EBColorWell">
+                                            <colorWell id="mWj-xo-yYT" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="493" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="OE6-bc-h1T" customClass="EBSwitch">
+                                            <button id="OE6-bc-h1T" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="492" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="DUL-2n-jXM">
@@ -1578,12 +1578,12 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <colorWell misplaced="YES" id="eKL-AZ-hB1" customClass="EBColorWell">
+                                            <colorWell id="eKL-AZ-hB1" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="468" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="yFG-AD-aWj">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="yFG-AD-aWj">
                                                 <rect key="frame" x="34" y="446" width="187" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Front" id="it3-xj-CVY">
@@ -1592,12 +1592,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="SFa-uQ-gOD" customClass="EBColorWell">
+                                            <colorWell id="SFa-uQ-gOD" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="420" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="Lpy-L0-X2d" customClass="EBSwitch">
+                                            <button id="Lpy-L0-X2d" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="419" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="sIl-GX-Lwz">
@@ -1605,7 +1605,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="5sQ-5V-cU3" customClass="EBSwitch">
+                                            <button id="5sQ-5V-cU3" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="419" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="WlQ-WA-fHR">
@@ -1613,7 +1613,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="XbV-lS-Lq0">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="XbV-lS-Lq0">
                                                 <rect key="frame" x="8" y="422" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Pads" id="phH-4j-FWw">
@@ -1622,7 +1622,7 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="6gD-Sb-56H">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="6gD-Sb-56H">
                                                 <rect key="frame" x="8" y="470" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Background" id="aHi-D1-kgf">
@@ -1631,12 +1631,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="6fz-V5-TeI" customClass="EBColorWell">
+                                            <colorWell id="6fz-V5-TeI" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="395" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="UHj-t5-O5j" customClass="EBSwitch">
+                                            <button id="UHj-t5-O5j" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="394" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="b12-Q8-qvB">
@@ -1644,7 +1644,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="h4P-gh-2xC" customClass="EBSwitch">
+                                            <button id="h4P-gh-2xC" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="394" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2ah-LQ-sUC">
@@ -1652,7 +1652,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="Lde-ka-NSb">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Lde-ka-NSb">
                                                 <rect key="frame" x="8" y="397" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Names" id="YlX-1A-pMq">
@@ -1661,12 +1661,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="uE3-b7-jUT" customClass="EBColorWell">
+                                            <colorWell id="uE3-b7-jUT" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="370" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="lwM-GH-FmG" customClass="EBSwitch">
+                                            <button id="lwM-GH-FmG" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="369" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="AJL-5F-RHg">
@@ -1674,7 +1674,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="dqM-Zd-gjr" customClass="EBSwitch">
+                                            <button id="dqM-Zd-gjr" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="369" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Ezg-Oh-f1Y">
@@ -1682,7 +1682,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="pc4-Is-qzB">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="pc4-Is-qzB">
                                                 <rect key="frame" x="8" y="372" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Values" id="6O8-3v-Zm3">
@@ -1691,12 +1691,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="qlh-u2-vH8" customClass="EBColorWell">
+                                            <colorWell id="qlh-u2-vH8" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="345" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="tit-ee-lgl" customClass="EBSwitch">
+                                            <button id="tit-ee-lgl" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="344" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Gy5-lk-6C3">
@@ -1704,7 +1704,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="nqO-um-N1O" customClass="EBSwitch">
+                                            <button id="nqO-um-N1O" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="344" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="hDI-uk-t2d">
@@ -1712,7 +1712,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="iYg-AX-3eU">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="iYg-AX-3eU">
                                                 <rect key="frame" x="8" y="347" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Packages" id="mUU-Tc-m3f">
@@ -1721,12 +1721,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="aIk-ac-M9p" customClass="EBColorWell">
+                                            <colorWell id="aIk-ac-M9p" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="320" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="IYZ-zl-ah2" customClass="EBSwitch">
+                                            <button id="IYZ-zl-ah2" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="319" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="hBm-7s-6EF">
@@ -1734,7 +1734,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="0br-8l-Gqy" customClass="EBSwitch">
+                                            <button id="0br-8l-Gqy" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="319" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="THU-3G-ohh">
@@ -1742,7 +1742,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="7yl-Xl-NVy">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="7yl-Xl-NVy">
                                                 <rect key="frame" x="8" y="322" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Legend Texts" id="vca-3x-SRE">
@@ -1751,12 +1751,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="yD6-76-QrJ" customClass="EBColorWell">
+                                            <colorWell id="yD6-76-QrJ" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="295" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="iUD-wC-saR" customClass="EBSwitch">
+                                            <button id="iUD-wC-saR" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="294" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Gfr-ow-NXo">
@@ -1764,7 +1764,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="etr-un-hgY" customClass="EBSwitch">
+                                            <button id="etr-un-hgY" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="294" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="vma-da-Ggp">
@@ -1772,7 +1772,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="t1J-Uv-V0O">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="t1J-Uv-V0O">
                                                 <rect key="frame" x="8" y="297" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Legend Lines" id="4HI-K2-klv">
@@ -1781,12 +1781,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="Vg5-Qk-Ukz" customClass="EBColorWell">
+                                            <colorWell id="Vg5-Qk-Ukz" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="270" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="1o2-8V-MMH" customClass="EBSwitch">
+                                            <button id="1o2-8V-MMH" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="269" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="bU3-Ad-bNc">
@@ -1794,7 +1794,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="cPf-rQ-ge8" customClass="EBSwitch">
+                                            <button id="cPf-rQ-ge8" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="269" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="a0B-Sp-PsL">
@@ -1802,7 +1802,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="u6N-Wg-vI0">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="u6N-Wg-vI0">
                                                 <rect key="frame" x="8" y="272" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Layout Texts" id="LlK-1W-bD4">
@@ -1811,12 +1811,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="XuA-x0-XB4" customClass="EBColorWell">
+                                            <colorWell id="XuA-x0-XB4" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="245" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="5TE-je-FFd" customClass="EBSwitch">
+                                            <button id="5TE-je-FFd" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="244" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="eZq-aP-N7b">
@@ -1824,7 +1824,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="kfZ-nC-Wi7" customClass="EBSwitch">
+                                            <button id="kfZ-nC-Wi7" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="244" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="ydy-PV-xbi">
@@ -1832,7 +1832,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="e8n-Z2-swR">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="e8n-Z2-swR">
                                                 <rect key="frame" x="8" y="247" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Tracks" id="gyV-YF-4mN">
@@ -1841,12 +1841,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="ZoF-7Z-hpc" customClass="EBColorWell">
+                                            <colorWell id="ZoF-7Z-hpc" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="195" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="TNM-am-Cnm" customClass="EBSwitch">
+                                            <button id="TNM-am-Cnm" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="194" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Nhw-1Z-gMk">
@@ -1854,7 +1854,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="Fwy-mf-ClJ" customClass="EBSwitch">
+                                            <button id="Fwy-mf-ClJ" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="194" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="eyI-JG-PcI">
@@ -1862,7 +1862,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="Kij-yy-vWY">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Kij-yy-vWY">
                                                 <rect key="frame" x="8" y="197" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Pads" id="vp6-8p-S7e">
@@ -1871,12 +1871,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="fGN-hx-PDV" customClass="EBColorWell">
+                                            <colorWell id="fGN-hx-PDV" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="170" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="IzM-sk-vfQ" customClass="EBSwitch">
+                                            <button id="IzM-sk-vfQ" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="169" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="lt5-LL-uDC">
@@ -1884,7 +1884,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="36j-pc-QnB" customClass="EBSwitch">
+                                            <button id="36j-pc-QnB" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="169" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="4cU-g2-d9B">
@@ -1892,7 +1892,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="vUx-C7-nEN">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="vUx-C7-nEN">
                                                 <rect key="frame" x="8" y="172" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Names" id="LBe-UC-5uI">
@@ -1901,12 +1901,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="v3p-m5-8RF" customClass="EBColorWell">
+                                            <colorWell id="v3p-m5-8RF" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="145" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="x0k-XF-xQ7" customClass="EBSwitch">
+                                            <button id="x0k-XF-xQ7" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="144" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="nsN-1E-N8d">
@@ -1914,7 +1914,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="xL1-nI-6QB" customClass="EBSwitch">
+                                            <button id="xL1-nI-6QB" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="144" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="iry-Wz-0z7">
@@ -1922,7 +1922,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="SYA-3a-h29">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="SYA-3a-h29">
                                                 <rect key="frame" x="8" y="147" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Component Values" id="CbF-jF-Efq">
@@ -1931,12 +1931,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="UyW-0j-DwU" customClass="EBColorWell">
+                                            <colorWell id="UyW-0j-DwU" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="120" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="lBS-3p-hjW" customClass="EBSwitch">
+                                            <button id="lBS-3p-hjW" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="119" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="13M-Co-AmU">
@@ -1944,7 +1944,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="g0W-li-ool" customClass="EBSwitch">
+                                            <button id="g0W-li-ool" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="119" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="FXt-uh-EGg">
@@ -1952,7 +1952,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="xFL-Th-Wex">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="xFL-Th-Wex">
                                                 <rect key="frame" x="8" y="122" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Packages" id="mhl-FV-6ND">
@@ -1961,12 +1961,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="OiK-jm-MBJ" customClass="EBColorWell">
+                                            <colorWell id="OiK-jm-MBJ" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="95" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="v7K-3f-Pvc" customClass="EBSwitch">
+                                            <button id="v7K-3f-Pvc" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="94" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="kys-pp-d9k">
@@ -1974,7 +1974,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="diK-UY-X8z" customClass="EBSwitch">
+                                            <button id="diK-UY-X8z" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="94" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="nSo-qM-7cd">
@@ -1982,7 +1982,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="Hsw-ZU-6OT">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Hsw-ZU-6OT">
                                                 <rect key="frame" x="8" y="97" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Legend Texts" id="psJ-mf-UKJ">
@@ -1991,12 +1991,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="ecX-wk-voF" customClass="EBColorWell">
+                                            <colorWell id="ecX-wk-voF" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="70" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="K4R-Ty-b5F" customClass="EBSwitch">
+                                            <button id="K4R-Ty-b5F" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="69" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="fOj-KH-kfa">
@@ -2004,7 +2004,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="Ifu-dt-5dq" customClass="EBSwitch">
+                                            <button id="Ifu-dt-5dq" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="69" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="HYJ-xU-hzm">
@@ -2012,7 +2012,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="gbd-fe-aUV">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="gbd-fe-aUV">
                                                 <rect key="frame" x="8" y="72" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Legend Lines" id="bJL-n0-u5h">
@@ -2021,12 +2021,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="SwI-f7-6Q4" customClass="EBColorWell">
+                                            <colorWell id="SwI-f7-6Q4" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="45" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="5Wo-PP-8Ew" customClass="EBSwitch">
+                                            <button id="5Wo-PP-8Ew" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="44" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="rv0-MP-a6Q">
@@ -2034,7 +2034,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="6ih-Nr-vX0" customClass="EBSwitch">
+                                            <button id="6ih-Nr-vX0" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="44" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="mym-2s-7lV">
@@ -2042,7 +2042,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="jJf-XP-dga">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="jJf-XP-dga">
                                                 <rect key="frame" x="8" y="47" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Layout Texts" id="R8K-zS-mvn">
@@ -2051,12 +2051,12 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <colorWell misplaced="YES" id="8oS-Ca-nR2" customClass="EBColorWell">
+                                            <colorWell id="8oS-Ca-nR2" customClass="EBColorWell">
                                                 <rect key="frame" x="157" y="20" width="36" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </colorWell>
-                                            <button misplaced="YES" id="FNp-Lr-YjW" customClass="EBSwitch">
+                                            <button id="FNp-Lr-YjW" customClass="EBSwitch">
                                                 <rect key="frame" x="197" y="19" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="Dov-a8-Dy0">
@@ -2064,7 +2064,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <button misplaced="YES" id="NrV-vx-bxw" customClass="EBSwitch">
+                                            <button id="NrV-vx-bxw" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="19" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="NmW-bE-IiL">
@@ -2072,7 +2072,7 @@ AAAAAAEGA
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
                                             </button>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="Jdl-Af-VxD">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Jdl-Af-VxD">
                                                 <rect key="frame" x="8" y="22" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Tracks" id="7bT-IW-LrH">
@@ -2081,7 +2081,7 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="OGZ-J8-QhS">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="OGZ-J8-QhS">
                                                 <rect key="frame" x="34" y="221" width="187" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Back" id="UmL-6t-gBf">
@@ -2090,7 +2090,7 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" misplaced="YES" id="Bpm-6R-tOi">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Bpm-6R-tOi">
                                                 <rect key="frame" x="8" y="494" width="118" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Internal Board Limits" id="hp7-9l-DZl">
@@ -2099,7 +2099,7 @@ AAAAAAEGA
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <button misplaced="YES" id="v7k-MN-2Mv" customClass="EBSwitch">
+                                            <button id="v7k-MN-2Mv" customClass="EBSwitch">
                                                 <rect key="frame" x="129" y="492" width="24" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="5Cd-HO-nKQ">
@@ -2121,7 +2121,7 @@ AAAAAAEGA
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
-                        <button verticalHuggingPriority="750" misplaced="YES" id="p7c-wF-1Pv" customClass="EBButton">
+                        <button verticalHuggingPriority="750" id="p7c-wF-1Pv" customClass="EBButton">
                             <rect key="frame" x="170" y="14" width="70" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <buttonCell key="cell" type="roundRect" title="Done" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="weL-Df-d10">
@@ -2140,16 +2140,16 @@ AAAAAAEGA
             <rect key="contentRect" x="132" y="380" width="491" height="300"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" misplaced="YES" id="Xri-xB-035">
+            <view key="contentView" id="Xri-xB-035">
                 <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView misplaced="YES" id="aF5-Jq-qYp">
+                    <imageView id="aF5-Jq-qYp">
                         <rect key="frame" x="20" y="141" width="89" height="90"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="NSApplicationIcon" id="GFr-6K-H2O"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="IAs-tS-1fr">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="IAs-tS-1fr">
                         <rect key="frame" x="177" y="263" width="296" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Insert an array of boards" id="7pj-BK-3GB">
@@ -2158,7 +2158,7 @@ AAAAAAEGA
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <popUpButton verticalHuggingPriority="750" misplaced="YES" id="Rzz-3i-LrD">
+                    <popUpButton verticalHuggingPriority="750" id="Rzz-3i-LrD">
                         <rect key="frame" x="253" y="203" width="221" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="iZ4-kv-ggr" id="rtt-Ol-KGA">
@@ -2173,7 +2173,7 @@ AAAAAAEGA
                             </menu>
                         </popUpButtonCell>
                     </popUpButton>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="A3N-lz-aQA">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="A3N-lz-aQA">
                         <rect key="frame" x="177" y="208" width="72" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Model" id="qFC-LV-kjV">
@@ -2182,7 +2182,7 @@ AAAAAAEGA
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="mj4-HE-wIg">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="mj4-HE-wIg">
                         <rect key="frame" x="177" y="170" width="72" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="X Count" id="3fn-xj-yMj">
@@ -2191,7 +2191,7 @@ AAAAAAEGA
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="G0X-ih-KqI">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="G0X-ih-KqI">
                         <rect key="frame" x="177" y="139" width="72" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Y Count" id="K4x-Qd-Hxk">
@@ -2200,7 +2200,7 @@ AAAAAAEGA
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <segmentedControl verticalHuggingPriority="750" misplaced="YES" id="hvo-jb-lRT">
+                    <segmentedControl verticalHuggingPriority="750" id="hvo-jb-lRT">
                         <rect key="frame" x="253" y="104" width="219" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="automatic" trackingMode="selectOne" id="NNq-9d-uio">
@@ -2213,7 +2213,7 @@ AAAAAAEGA
                             </segments>
                         </segmentedCell>
                     </segmentedControl>
-                    <button verticalHuggingPriority="750" misplaced="YES" id="gVY-xq-Qco" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                    <button verticalHuggingPriority="750" id="gVY-xq-Qco" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="403" y="13" width="75" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Insert" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HAC-FK-rHr">
@@ -2221,7 +2221,7 @@ AAAAAAEGA
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                     </button>
-                    <textField verticalHuggingPriority="750" misplaced="YES" id="C8Z-fi-sAg">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="C8Z-fi-sAg">
                         <rect key="frame" x="255" y="168" width="46" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="oMt-cg-zmU">
@@ -2229,11 +2229,11 @@ AAAAAAEGA
                                 <real key="minimum" value="1"/>
                             </numberFormatter>
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" misplaced="YES" id="CdM-zB-V9k">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="CdM-zB-V9k">
                         <rect key="frame" x="255" y="136" width="46" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Td8-iX-7B2">
@@ -2241,11 +2241,11 @@ AAAAAAEGA
                                 <real key="minimum" value="1"/>
                             </numberFormatter>
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="tog-vE-Fvz">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="tog-vE-Fvz">
                         <rect key="frame" x="177" y="111" width="74" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Orientation" id="fjr-lZ-Y5v">
@@ -2254,7 +2254,7 @@ AAAAAAEGA
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" misplaced="YES" id="00c-TV-6Q8" customClass="CanariCancelButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                    <button verticalHuggingPriority="750" id="00c-TV-6Q8" customClass="CanariCancelButtonForPanel" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="175" y="13" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eER-aj-vEy">
@@ -2269,27 +2269,27 @@ Gw
             </view>
             <point key="canvasLocation" x="-668.5" y="-401"/>
         </window>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="PAN-4y-duD" userLabel="Panel : Help for Board Panel" customClass="NSPanel">
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="PAN-4y-duD" userLabel="Panel : Help for Board Panel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="139" y="81" width="461" height="201"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <view key="contentView" misplaced="YES" id="m8U-0R-sFg">
+            <view key="contentView" id="m8U-0R-sFg">
                 <rect key="frame" x="0.0" y="0.0" width="461" height="201"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="Le2-vh-bXD">
+                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="Le2-vh-bXD">
                         <rect key="frame" x="20" y="61" width="421" height="120"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="aGn-fM-2YF">
                             <rect key="frame" x="0.0" y="0.0" width="421" height="120"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="yoz-7e-njB">
+                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="yoz-7e-njB">
                                     <rect key="frame" x="0.0" y="0.0" width="421" height="120"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="421" height="120"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <attributedString key="textStorage">
@@ -2318,7 +2318,6 @@ Gw
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="23Q-bS-bGA">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
@@ -2329,7 +2328,7 @@ Gw
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button verticalHuggingPriority="750" misplaced="YES" id="CEr-gn-unV" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                    <button verticalHuggingPriority="750" id="CEr-gn-unV" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="383" y="13" width="64" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="t52-z3-WhJ">

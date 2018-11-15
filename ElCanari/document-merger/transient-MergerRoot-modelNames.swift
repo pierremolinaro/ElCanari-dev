@@ -21,7 +21,7 @@ func transient_MergerRoot_modelNames (
   var idx = 0
   while idx < self_boardModels_name.count {
     let model = MergerBoardModelNameAndSize (
-      name:self_boardModels_name [idx].name,
+      name: self_boardModels_name [idx].name,
       width: self_boardModels_modelWidth [idx].modelWidth,
       height: self_boardModels_modelHeight [idx].modelHeight
     )
