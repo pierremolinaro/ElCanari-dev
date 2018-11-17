@@ -76,10 +76,10 @@ private func installDebugMenu () {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBAllocationItemDisplay) class EBAllocationItemDisplay : NSObject {
-  var mClassname : String
-  var mAllCount : Int
-  var mLive : Int
-  var mSnapshot : Int
+  @objc dynamic var mClassname : String
+  @objc dynamic var mAllCount : Int
+  @objc dynamic var mLive : Int
+  @objc dynamic var mSnapshot : Int
 
   init (classname : String, allCount : Int, live : Int, snapshot : Int) {
     mClassname = classname

@@ -69,14 +69,12 @@ document PMFontDocument root FontRoot {
 #--- Current Character
   outlet CanariFontCharacterSelectButton mFontCharacterSelectButton
     $codePoint prefs.currentCharacterCodePoint
-    $enabled root.characters.count > 1
-   ;
+  ;
 
   outlet EBTextObserverField mCurrentCharacterTextField $valueObserver root.currentCharacterCodePointString ;
 
   outlet EBStepper currentCharacterStepper
     $value prefs.currentCharacterCodePoint {sendContinously:yes}
-    $enabled root.characters.count > 1
   ;
     
   outlet EBButton mAddSegmentButton $run self.addSegmentAction ;

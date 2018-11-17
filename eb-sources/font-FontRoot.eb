@@ -21,7 +21,8 @@ entity FontRoot {
   
   transient String sampleStringBezierPathDescent dependsFrom self.sampleStringBezierPath ;
 
-  transient String currentCharacterCodePointString dependsFrom prefs.currentCharacterCodePoint, self.characters.all.codePoint ;
+  transient String currentCharacterCodePointString dependsFrom prefs.currentCharacterCodePoint ;
+  #self.characters.all.codePoint ;
 
   arrayController selectedCharacterController {allowsEmptySelection:yes, allowsMultipleSelection:no} self.characters ;
 

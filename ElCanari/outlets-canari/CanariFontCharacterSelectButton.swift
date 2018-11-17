@@ -8,12 +8,9 @@ import Cocoa
 
   //····················································································································
 
-  fileprivate var mSelectedCharacterCode : UInt = 0x167 {
+  fileprivate var mSelectedCharacterCode : Int = 0x167 {
     didSet {
-      let data = Data ([UInt8 (mSelectedCharacterCode)])
-      let s = String (data: data, encoding: .macOSRoman)!
-   //   let s = String (format:"%C", arguments: [mSelectedCharacterCode])
-      self.title = s
+      self.title = String (Unicode.Scalar (mSelectedCharacterCode)!)
     }
   }
 
@@ -135,7 +132,7 @@ final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleContr
       mOutlet.title = ""
     case .single (let v) :
       mOutlet.enableFromValueBinding (true)
-      mOutlet.mSelectedCharacterCode = UInt (v)
+      mOutlet.mSelectedCharacterCode = v
     case .multiple :
       mOutlet.enableFromValueBinding (false)
       mOutlet.title = ""

@@ -9,8 +9,8 @@ private let LEFT_MARGIN      : CGFloat = 40.0
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(CanariFontCharacterSelectView) class CanariFontCharacterSelectView : NSView, EBUserClassNameProtocol {
-  private var mSelectedCharacterCode : UInt = 0
-  private var mMouseDownCharacterCode : UInt = 0
+  private var mSelectedCharacterCode : Int = 0
+  private var mMouseDownCharacterCode : Int = 0
 
   //····················································································································
 
@@ -34,13 +34,13 @@ private let LEFT_MARGIN      : CGFloat = 40.0
 
   //····················································································································
   
-  func selectedCharacterCode () -> UInt {
+  func selectedCharacterCode () -> Int {
     return mSelectedCharacterCode
   }
 
   //····················································································································
   
-  func setMouseDownSelectedCharacterCode (_ inCharacterCode : UInt) {
+  func setMouseDownSelectedCharacterCode (_ inCharacterCode : Int) {
     mMouseDownCharacterCode = inCharacterCode
   }
 
@@ -58,8 +58,8 @@ private let LEFT_MARGIN      : CGFloat = 40.0
       let eventLocationInLocalCoordinates = self.convert (eventLocationInWindowCoordinates, from:nil)
     //--- Find character under mouse
       var found = false
-      var selectedCharCode : UInt = 0
-      var c : UInt = 0x20
+      var selectedCharCode : Int = 0
+      var c : Int = 0x20
       while (c < 0x100) && !found {
         if (NSPointInRect (eventLocationInLocalCoordinates, rectangleForCharacter (c))) {
           found = true
@@ -85,10 +85,9 @@ private let LEFT_MARGIN      : CGFloat = 40.0
   //--- "MacRoman" title
     do{
       let titleAttributes : [NSAttributedString.Key:AnyObject] = [
-        NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize / 1.5)
+        NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
       ]
-      "Mac".draw   (at: NSPoint (x:5.0, y: 1.0 + 14.5 * CHARACTER_HEIGHT), withAttributes:titleAttributes)
-      "Roman".draw (at: NSPoint (x:5.0, y: 1.0 + 14.0 * CHARACTER_HEIGHT), withAttributes:titleAttributes)
+      "UTF".draw (at: NSPoint (x:5.0, y: 1.0 + 14.0 * CHARACTER_HEIGHT), withAttributes:titleAttributes)
     }
   //---
     let titleAttributes : [NSAttributedString.Key:AnyObject] = [
@@ -105,8 +104,10 @@ private let LEFT_MARGIN      : CGFloat = 40.0
       s.draw (at: p, withAttributes: titleAttributes)
     }
   //--- Row title
-    for c : UInt in 2 ... 15 {
-      let p = originForUpperRowsTitle (c)
+    var line : UInt = 2
+    for c : UInt in Array (2 ... 7) + Array (10 ... 15) {
+      let p = originForUpperRowsTitle (line)
+      line += 1
       let s = String (format:"%04hX:", arguments: [c * 16])
       s.draw (at: p, withAttributes: titleAttributes)
     }
@@ -114,14 +115,14 @@ private let LEFT_MARGIN      : CGFloat = 40.0
     let attributes : [NSAttributedString.Key:AnyObject] = [
       NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
     ]
-    for c : UInt in 0x20 ... 0xFF {
+    for c : Int in Array (0x20 ... 0x7F) + Array (0xA0 ... 0xFF) {
       drawCharacter (c, attributes:attributes)
     }
   }
 
   //····················································································································
 
-  func drawCharacter (_ inCharacter : UInt, attributes:[NSAttributedString.Key:AnyObject]) {
+  func drawCharacter (_ inCharacter : Int, attributes:[NSAttributedString.Key:AnyObject]) {
     let r = rectangleForCharacter (inCharacter)
     if mSelectedCharacterCode == inCharacter {
       NSColor.lightGray.setFill ()
@@ -131,8 +132,7 @@ private let LEFT_MARGIN      : CGFloat = 40.0
       NSColor.blue.setStroke ()
       NSBezierPath.stroke (NSInsetRect (r, 0.5, 0.5))
     }
-    let data = Data ([UInt8 (inCharacter)])
-    let s = String (data: data, encoding: .macOSRoman)!
+    let s = String (Unicode.Scalar (inCharacter)!)
     let size = s.size (withAttributes: attributes)
     let p = NSPoint (x:r.origin.x + (CHARACTER_WIDTH - size.width) / 2.0, y:r.origin.y)
     s.draw (at: p, withAttributes: attributes)
@@ -170,10 +170,14 @@ private func rectangleForColumnTitle (_ inCharacter : UInt) -> NSRect {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func rectangleForCharacter (_ inCharacter : UInt) -> NSRect {
+private func rectangleForCharacter (_ inCharacter : Int) -> NSRect {
+  var line = inCharacter / 16
+  if inCharacter >= 0x80 {
+    line -= 2
+  }
   let r = NSRect (
     x: 1.0 + LEFT_MARGIN + CGFloat (inCharacter % 16) * CHARACTER_WIDTH,
-    y: 1.0 + CGFloat (15 - (inCharacter / 16)) * CHARACTER_HEIGHT,
+    y: 1.0 + CGFloat (15 - line) * CHARACTER_HEIGHT,
     width: CHARACTER_WIDTH,
     height: CHARACTER_HEIGHT
   )

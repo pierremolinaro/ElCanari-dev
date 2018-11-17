@@ -82,8 +82,6 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
-  var mController_mFontCharacterSelectButton_enabled : MultipleBindingController_enabled? = nil
-  var mController_currentCharacterStepper_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -506,26 +504,6 @@ import Cocoa
     currentCharacterView?.bind_displayDrawingIndexes (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
     commentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction:{
-          return (self.rootObject.characters_property.count_property_selection > EBSelection.single (1))
-        },
-        outlet:self.mFontCharacterSelectButton
-      )
-      self.rootObject.characters_property.count_property.addEBObserver (controller)
-      mController_mFontCharacterSelectButton_enabled = controller
-    }
-    do{
-      let controller = MultipleBindingController_enabled (
-        computeFunction:{
-          return (self.rootObject.characters_property.count_property_selection > EBSelection.single (1))
-        },
-        outlet:self.currentCharacterStepper
-      )
-      self.rootObject.characters_property.count_property.addEBObserver (controller)
-      mController_currentCharacterStepper_enabled = controller
-    }
   //--------------------------- Set targets / actions
     mAddCharacterButton?.target = self
     mAddCharacterButton?.action = #selector (PMFontDocument.addCharacterAction (_:))
@@ -574,10 +552,6 @@ import Cocoa
     currentCharacterView?.unbind_displayDrawingIndexes ()
     commentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
-    self.rootObject.characters_property.count_property.removeEBObserver (mController_mFontCharacterSelectButton_enabled!)
-    mController_mFontCharacterSelectButton_enabled = nil
-    self.rootObject.characters_property.count_property.removeEBObserver (mController_currentCharacterStepper_enabled!)
-    mController_currentCharacterStepper_enabled = nil
   //--------------------------- Unbind array controllers
   //--- Array controller property: mSelectedCharacterController
     self.mSelectedCharacterController.unbind_model ()

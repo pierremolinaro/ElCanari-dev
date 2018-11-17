@@ -30,6 +30,12 @@ protocol FontRoot_selectedInspector : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol FontRoot_currentCharacterCodePointString : class {
+  var currentCharacterCodePointString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol FontRoot_sampleStringBezierPath : class {
   var sampleStringBezierPath : NSBezierPath? { get }
 }
@@ -53,12 +59,6 @@ protocol FontRoot_sampleStringBezierPathDescent : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontRoot_currentCharacterCodePointString : class {
-  var currentCharacterCodePointString : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -67,11 +67,11 @@ class FontRoot : EBManagedObject,
          FontRoot_nominalSize,
          FontRoot_selectedTab,
          FontRoot_selectedInspector,
+         FontRoot_currentCharacterCodePointString,
          FontRoot_sampleStringBezierPath,
          FontRoot_sampleStringBezierPathWidth,
          FontRoot_sampleStringBezierPathAscent,
-         FontRoot_sampleStringBezierPathDescent,
-         FontRoot_currentCharacterCodePointString {
+         FontRoot_sampleStringBezierPathDescent {
 
   //····················································································································
   //   Atomic property: comments
@@ -183,6 +183,29 @@ class FontRoot : EBManagedObject,
   var selectedCharacterController = ArrayController_FontRoot_selectedCharacterController ()
 
   //····················································································································
+  //   Transient property: currentCharacterCodePointString
+  //····················································································································
+
+  var currentCharacterCodePointString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var currentCharacterCodePointString_property_selection : EBSelection <String> {
+    return self.currentCharacterCodePointString_property.prop
+  }
+
+  //····················································································································
+
+    var currentCharacterCodePointString : String? {
+    switch self.currentCharacterCodePointString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: sampleStringBezierPath
   //····················································································································
 
@@ -274,29 +297,6 @@ class FontRoot : EBManagedObject,
     }
   }
 
-  //····················································································································
-  //   Transient property: currentCharacterCodePointString
-  //····················································································································
-
-  var currentCharacterCodePointString_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var currentCharacterCodePointString_property_selection : EBSelection <String> {
-    return self.currentCharacterCodePointString_property.prop
-  }
-
-  //····················································································································
-
-    var currentCharacterCodePointString : String? {
-    switch self.currentCharacterCodePointString_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
 
   //····················································································································
   //    init
@@ -317,6 +317,24 @@ class FontRoot : EBManagedObject,
   //--- Array controller property: selectedCharacterController
     self.selectedCharacterController.setManagedObjectContext (self.managedObjectContext ())
     self.selectedCharacterController.bind_model (self.characters_property)
+  //--- Atomic property: currentCharacterCodePointString
+    self.currentCharacterCodePointString_property.readModelFunction = {
+        let kind = g_Preferences!.currentCharacterCodePoint_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (g_Preferences!.currentCharacterCodePoint_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_FontRoot_currentCharacterCodePointString (v0))
+          default :
+            return .empty
+          }
+        }
+    }
+    g_Preferences?.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
   //--- Atomic property: sampleStringBezierPath
     self.sampleStringBezierPath_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -413,30 +431,6 @@ class FontRoot : EBManagedObject,
       }
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
-  //--- Atomic property: currentCharacterCodePointString
-    self.currentCharacterCodePointString_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = g_Preferences!.currentCharacterCodePoint_property_selection.kind ()
-        kind &= unwSelf.characters_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (g_Preferences!.currentCharacterCodePoint_property_selection, unwSelf.characters_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_FontRoot_currentCharacterCodePointString (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    g_Preferences?.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
-    self.characters_property.addEBObserverOf_codePoint (self.currentCharacterCodePointString_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.characters_property.setSignatureObserver (observer:self)
@@ -449,6 +443,7 @@ class FontRoot : EBManagedObject,
   //--- Remove observers
   //--- Array controller property: selectedCharacterController
     self.selectedCharacterController.unbind_model ()
+    g_Preferences?.currentCharacterCodePoint_property.removeEBObserver (self.currentCharacterCodePointString_property)
     self.nominalSize_property.removeEBObserver (self.sampleStringBezierPath_property)
     self.characters_property.removeEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
     self.characters_property.removeEBObserverOf_advance (self.sampleStringBezierPath_property)
@@ -457,8 +452,6 @@ class FontRoot : EBManagedObject,
     self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathWidth_property)
     self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathAscent_property)
     self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathDescent_property)
-    g_Preferences?.currentCharacterCodePoint_property.removeEBObserver (self.currentCharacterCodePointString_property)
-    self.characters_property.removeEBObserverOf_codePoint (self.currentCharacterCodePointString_property)
   }
 
   //····················································································································
@@ -501,6 +494,14 @@ class FontRoot : EBManagedObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
+      "currentCharacterCodePointString",
+      idx:self.currentCharacterCodePointString_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.currentCharacterCodePointString_property.mObserverExplorer,
+      valueExplorer:&self.currentCharacterCodePointString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "sampleStringBezierPath",
       idx:self.sampleStringBezierPath_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -531,14 +532,6 @@ class FontRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.sampleStringBezierPathDescent_property.mObserverExplorer,
       valueExplorer:&self.sampleStringBezierPathDescent_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "currentCharacterCodePointString",
-      idx:self.currentCharacterCodePointString_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.currentCharacterCodePointString_property.mObserverExplorer,
-      valueExplorer:&self.currentCharacterCodePointString_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -931,6 +924,62 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   }
 
   //····················································································································
+  //   Observers of 'currentCharacterCodePointString' transient property
+  //····················································································································
+
+  private var mObserversOf_currentCharacterCodePointString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_currentCharacterCodePointString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.currentCharacterCodePointString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_currentCharacterCodePointString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.currentCharacterCodePointString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (_ inSet : Set<FontRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_currentCharacterCodePointString {
+        managedObject.currentCharacterCodePointString_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (_ inSet : Set<FontRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_currentCharacterCodePointString {
+        managedObject.currentCharacterCodePointString_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'sampleStringBezierPath' transient property
   //····················································································································
 
@@ -1155,62 +1204,6 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   }
 
   //····················································································································
-  //   Observers of 'currentCharacterCodePointString' transient property
-  //····················································································································
-
-  private var mObserversOf_currentCharacterCodePointString = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_currentCharacterCodePointString.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.currentCharacterCodePointString_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_currentCharacterCodePointString.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.currentCharacterCodePointString_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_currentCharacterCodePointString {
-        managedObject.currentCharacterCodePointString_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_currentCharacterCodePointString {
-        managedObject.currentCharacterCodePointString_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -1270,11 +1263,11 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
         removeEBObserversOf_selectedTab_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
+        removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedSet)
         removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedSet)
         removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedSet)
         removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedSet)
-        removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -1283,11 +1276,11 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
         addEBObserversOf_selectedTab_toElementsOfSet (addedSet)
         addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
+        addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedSet)
         addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedSet)
         addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedSet)
         addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedSet)
         addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedSet)
-        addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -1402,11 +1395,11 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
         removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : FontRoot in addedObjectSet {
@@ -1417,11 +1410,11 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
         addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
         addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedObjectSet)
         addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedObjectSet)
         addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }

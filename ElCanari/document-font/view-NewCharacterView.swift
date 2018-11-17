@@ -66,14 +66,14 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
   //    Implemented character set
   //····················································································································
 
-  fileprivate var mImplementedCharacterSet = Set <Int> ()
+  private var mImplementedCharacterSet = Set <Int> ()
 
   //····················································································································
 
   func setImplementedCharacterSet (_ inSet : Set <Int>) {
     mImplementedCharacterSet = inSet
     self.setNeedsDisplay (self.visibleRect)
-   // self.needsDisplay = true
+  //  self.needsDisplay = true
     mSelectedCharacter = nil
   }
 
@@ -141,10 +141,13 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
       var x = ADDRESS_COLUMN_WIDTH
       for idx in 0 ..< 16 {
         let code = (line + 2) * 16 + idx
+        let rChar = CGRect (x:x, y:y, width: PLACEMENT_GRID, height: PLACEMENT_GRID)
         if let selectedCharacter = mSelectedCharacter, selectedCharacter == code {
-          let r = CGRect (x:x, y:y, width: PLACEMENT_GRID, height: PLACEMENT_GRID)
           NSColor.lightGray.setFill ()
-          __NSRectFill (r)
+          __NSRectFill (rChar)
+        }else if mImplementedCharacterSet.contains (code) {
+          NSColor.yellow.setFill ()
+          __NSRectFill (rChar)
         }
         let title = String (format: "%C", code)
         let dict = [NSAttributedString.Key.foregroundColor : mImplementedCharacterSet.contains (code) ? NSColor.lightGray : NSColor.blue]
@@ -159,7 +162,7 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  Draw rect
+  //  mouseDown
   //····················································································································
 
   override func mouseDown (with inEvent: NSEvent) {
