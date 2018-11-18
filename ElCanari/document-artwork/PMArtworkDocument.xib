@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="15G22010" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -57,7 +58,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="21" userLabel="Window">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" unifiedTitleAndToolbar="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="5" y="252" width="618" height="505"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
@@ -82,7 +83,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="48" height="48"/>
-                        <imageView key="view" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="hy4-bz-6Bw" customClass="EBImageObserverView">
+                        <imageView key="view" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hy4-bz-6Bw" customClass="EBImageObserverView">
                             <rect key="frame" x="9" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red20" id="hPr-1n-KCO"/>
@@ -92,7 +93,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="38" height="17"/>
                         <size key="maxSize" width="83" height="19"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qej-Pe-6zZ" customClass="CanariSignatureField">
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="qej-Pe-6zZ" customClass="CanariSignatureField">
                             <rect key="frame" x="0.0" y="14" width="83" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="EEEE:EEEE" id="qXS-iz-bHm">
@@ -106,7 +107,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="28" height="17"/>
                         <size key="maxSize" width="42" height="19"/>
-                        <textField key="view" verticalHuggingPriority="750" id="tkH-wA-fdW" customClass="CanariVersionField">
+                        <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="tkH-wA-fdW" customClass="CanariVersionField">
                             <rect key="frame" x="3" y="14" width="42" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="center" title="999" id="UQh-YE-UCB">
@@ -155,16 +156,16 @@
             </toolbar>
             <point key="canvasLocation" x="739" y="197"/>
         </window>
-        <customView misplaced="YES" id="215" userLabel="Page : Minima" customClass="CanariViewWithKeyView">
+        <customView id="215" userLabel="Page : Minima" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="618" height="505"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView misplaced="YES" id="216">
+                <imageView id="216">
                     <rect key="frame" x="274" y="344" width="324" height="148"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="artwork" id="496"/>
                 </imageView>
-                <popUpButton misplaced="YES" id="247" customClass="EBPopUpButton">
+                <popUpButton id="247" customClass="EBPopUpButton">
                     <rect key="frame" x="518" y="254" width="80" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="square" title="inch" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="250" id="508">
@@ -181,7 +182,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="246">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="246">
                     <rect key="frame" x="303" y="257" width="133" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for OAR" id="507">
@@ -190,7 +191,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="244" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="244" customClass="CanariDimensionTextField">
                     <rect key="frame" x="441" y="255" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="506">
@@ -199,11 +200,11 @@
                             <decimal key="maximum" value="NaN"/>
                         </numberFormatter>
                         <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton misplaced="YES" id="235" customClass="EBPopUpButton">
+                <popUpButton id="235" customClass="EBPopUpButton">
                     <rect key="frame" x="518" y="282" width="80" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="square" title="inch" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="240" id="505">
@@ -220,7 +221,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="233" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="233" customClass="CanariDimensionTextField">
                     <rect key="frame" x="441" y="282" width="68" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="504">
@@ -229,11 +230,11 @@
                             <decimal key="maximum" value="NaN"/>
                         </numberFormatter>
                         <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="232">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="232">
                     <rect key="frame" x="296" y="284" width="140" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for PHD" id="503">
@@ -242,7 +243,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton misplaced="YES" id="221" customClass="EBPopUpButton">
+                <popUpButton id="221" customClass="EBPopUpButton">
                     <rect key="frame" x="518" y="310" width="80" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="square" title="mil" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="2286" inset="2" preferredEdge="maxY" selectedItem="226" id="500">
@@ -259,7 +260,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="219" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="219" customClass="CanariDimensionTextField">
                     <rect key="frame" x="441" y="311" width="68" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="499">
@@ -268,11 +269,11 @@
                             <decimal key="maximum" value="NaN"/>
                         </numberFormatter>
                         <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="218">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="218">
                     <rect key="frame" x="218" y="313" width="218" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for PP, TP, TT and TW" id="498">
@@ -281,7 +282,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="217">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="217">
                     <rect key="frame" x="18" y="358" width="250" height="134"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" id="497">
@@ -296,11 +297,11 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="jrF-mx-3Vj">
+                <box verticalHuggingPriority="750" boxType="separator" id="jrF-mx-3Vj">
                     <rect key="frame" x="12" y="244" width="586" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
-                <popUpButton misplaced="YES" id="4jZ-WW-zLa" customClass="EBPopUpButton">
+                <popUpButton id="4jZ-WW-zLa" customClass="EBPopUpButton">
                     <rect key="frame" x="518" y="20" width="80" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="square" title="inch" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="2286000" inset="2" preferredEdge="maxY" selectedItem="GDc-OR-K4n" id="4M9-WC-a2G">
@@ -317,7 +318,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="f8m-D9-DWu">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="f8m-D9-DWu">
                     <rect key="frame" x="189" y="23" width="247" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Minimum value for Board Limit Width" id="otj-kt-K3m">
@@ -326,7 +327,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="6W5-zA-y5i" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="6W5-zA-y5i" customClass="CanariDimensionTextField">
                     <rect key="frame" x="441" y="21" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="ahh-wn-rdA">
@@ -335,7 +336,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                             <decimal key="maximum" value="NaN"/>
                         </numberFormatter>
                         <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -346,16 +347,16 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
             <rect key="frame" x="0.0" y="0.0" width="618" height="410"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="Gtj-h4-Qq4" customClass="EBTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Gtj-h4-Qq4" customClass="EBTextField">
                     <rect key="frame" x="321" y="322" width="240" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="xyz" drawsBackground="YES" id="Nwr-1t-yY8">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="08K-n2-IxX">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="08K-n2-IxX">
                     <rect key="frame" x="240" y="373" width="138" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Drill Data Format" id="V9a-wA-COk">
@@ -364,7 +365,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" id="pY3-wY-vKY">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="pY3-wY-vKY">
                     <rect key="frame" x="46" y="325" width="269" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Drill Information File Extension" id="KjA-FC-88h">
@@ -433,10 +434,10 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                                         <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="name"/>
                                                         <prototypeCellViews>
                                                             <tableCellView id="NGB-2l-etK" customClass="EBTextField_TableViewCell">
-                                                                <rect key="frame" x="1" y="1" width="189.5" height="17"/>
+                                                                <rect key="frame" x="1" y="1" width="190" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
-                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="bCT-Re-Cge" customClass="EBTextField">
+                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="bCT-Re-Cge" customClass="EBTextField">
                                                                         <rect key="frame" x="0.0" y="3" width="190" height="14"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="Sgz-AZ-LtX">
@@ -470,7 +471,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </tableHeaderView>
                                 </scrollView>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="lrV-dp-Ndm" customClass="EBTextObserverField">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="lrV-dp-Ndm" customClass="EBTextObserverField">
                                     <rect key="frame" x="-2" y="480" width="214" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="WHY-Nr-jpC">
@@ -485,11 +486,11 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                             <rect key="frame" x="220" y="0.0" width="378" height="505"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <customView misplaced="YES" id="621">
+                                <customView id="621">
                                     <rect key="frame" x="163" y="50" width="189" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" id="596" customClass="CanariDimensionTextField">
+                                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="596" customClass="CanariDimensionTextField">
                                             <rect key="frame" x="58" y="2" width="56" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="607">
@@ -501,11 +502,11 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                                     <decimal key="maximum" value="NaN"/>
                                                 </numberFormatter>
                                                 <font key="font" metaFont="smallSystemBold"/>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" id="618">
+                                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="618">
                                             <rect key="frame" x="-2" y="4" width="57" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="Diameter:" id="619">
@@ -514,7 +515,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <popUpButton misplaced="YES" id="597" customClass="EBPopUpButton">
+                                        <popUpButton id="597" customClass="EBPopUpButton">
                                             <rect key="frame" x="116" y="3" width="73" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="roundRect" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" inset="2" preferredEdge="maxY" id="598">
@@ -535,7 +536,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         </popUpButton>
                                     </subviews>
                                 </customView>
-                                <button misplaced="YES" id="281" customClass="EBSwitch">
+                                <button id="281" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="52" width="115" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Pad Holes in PDF" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="513">
@@ -551,7 +552,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <textField verticalHuggingPriority="750" misplaced="YES" id="484">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="484">
                                     <rect key="frame" x="17" y="128" width="339" height="14"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Other Elements:" id="530">
@@ -560,7 +561,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" misplaced="YES" id="482">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="482">
                                     <rect key="frame" x="12" y="435" width="344" height="14"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Top Side Elements:" usesSingleLineMode="YES" id="529">
@@ -569,7 +570,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <button misplaced="YES" id="287" customClass="EBSwitch">
+                                <button id="287" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="319" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Component Values" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="517">
@@ -577,7 +578,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="293" customClass="EBSwitch">
+                                <button id="293" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="338" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Component Names" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="523">
@@ -585,7 +586,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="296" customClass="EBSwitch">
+                                <button id="296" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="300" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Package Legends" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="526">
@@ -593,7 +594,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="289" customClass="EBSwitch">
+                                <button id="289" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="376" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Tracks on Top Side" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="519">
@@ -601,7 +602,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="294" customClass="EBSwitch">
+                                <button id="294" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="72" width="309" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Board Limits" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="524">
@@ -609,7 +610,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="284" customClass="EBSwitch">
+                                <button id="284" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="108" width="309" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Vias" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="514">
@@ -617,7 +618,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="290" customClass="EBSwitch">
+                                <button id="290" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="206" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Pads on Bottom Side" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="520">
@@ -625,7 +626,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="295" customClass="EBSwitch">
+                                <button id="295" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="225" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Tracks on Bottom Side" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="525">
@@ -633,7 +634,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="285" customClass="EBSwitch">
+                                <button id="285" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="357" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Pads on Top Side" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="515">
@@ -641,7 +642,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="292" customClass="EBSwitch">
+                                <button id="292" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="263" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Texts on Legend Bottom Side" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="522">
@@ -649,7 +650,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="288" customClass="EBSwitch">
+                                <button id="288" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="244" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Texts on Layout Bottom Side" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="518">
@@ -657,7 +658,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="286" customClass="EBSwitch">
+                                <button id="286" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="395" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Texts on Layout Top Side" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="516">
@@ -673,16 +674,16 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <textField verticalHuggingPriority="750" id="297" customClass="EBTextField">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="297" customClass="EBTextField">
                                     <rect key="frame" x="48" y="457" width="306" height="19"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="xyz" drawsBackground="YES" id="527">
                                         <font key="font" metaFont="smallSystemBold"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" id="298">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="298">
                                     <rect key="frame" x="12" y="480" width="345" height="14"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="File Extension:" id="528">
@@ -691,7 +692,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" misplaced="YES" id="568">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="568">
                                     <rect key="frame" x="12" y="281" width="344" height="14"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Bottom Side Elements:" id="569">
@@ -700,7 +701,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <button misplaced="YES" id="570" customClass="EBSwitch">
+                                <button id="570" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="168" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Component Values" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="575">
@@ -708,7 +709,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="571" customClass="EBSwitch">
+                                <button id="571" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="187" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Component Names" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="574">
@@ -716,7 +717,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button misplaced="YES" id="572" customClass="EBSwitch">
+                                <button id="572" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="149" width="310" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Package Legends" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="573">
@@ -724,7 +725,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <textField verticalHuggingPriority="750" misplaced="YES" id="576">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="576">
                                     <rect key="frame" x="22" y="35" width="333" height="14"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Option:" id="577">
@@ -733,7 +734,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <button misplaced="YES" id="Esz-HZ-WuD" customClass="EBSwitch">
+                                <button id="Esz-HZ-WuD" customClass="EBSwitch">
                                     <rect key="frame" x="45" y="90" width="309" height="18"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Internal Board Limits" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="MtT-q1-vmw">
@@ -756,7 +757,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
             <rect key="frame" x="0.0" y="0.0" width="618" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="334" customClass="CanariSignatureField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="334" customClass="CanariSignatureField">
                     <rect key="frame" x="101" y="541" width="94" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="1234-5678" id="537">
@@ -765,7 +766,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="333">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="333">
                     <rect key="frame" x="17" y="541" width="80" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Signature:" id="536">
@@ -774,7 +775,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="331">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="331">
                     <rect key="frame" x="17" y="563" width="80" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Version:" id="534">
@@ -786,15 +787,15 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="325">
                     <rect key="frame" x="102" y="20" width="496" height="513"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="vTR-7f-X1o">
+                    <clipView key="contentView" drawsBackground="NO" id="vTR-7f-X1o">
                         <rect key="frame" x="1" y="1" width="479" height="511"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textView importsGraphics="NO" richText="NO" usesFontPanel="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="326" customClass="EBTextView">
+                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="326" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="479" height="511"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <size key="minSize" width="479" height="511"/>
                                 <size key="maxSize" width="631" height="10000000"/>
                                 <attributedString key="textStorage">
@@ -810,7 +811,6 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="546">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
@@ -821,7 +821,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <textField verticalHuggingPriority="750" id="324">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="324">
                     <rect key="frame" x="17" y="519" width="80" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Comments:" id="539">
@@ -830,7 +830,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="332" customClass="CanariVersionField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="332" customClass="CanariVersionField">
                     <rect key="frame" x="100" y="563" width="28" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="X.Y" id="535">
@@ -839,7 +839,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button toolTip="Resets version to 0.0 and clears history." verticalHuggingPriority="750" misplaced="YES" id="336" customClass="EBButton">
+                <button toolTip="Resets version to 0.0 and clears history." verticalHuggingPriority="750" id="336" customClass="EBButton">
                     <rect key="frame" x="211" y="560" width="176" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Reset Version and Signature" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="538">

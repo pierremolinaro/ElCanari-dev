@@ -1387,7 +1387,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (mSet)
-        for managedObject : FontRoot in removedObjectSet {
+        for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }

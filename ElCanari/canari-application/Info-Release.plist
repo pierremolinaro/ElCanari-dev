@@ -54,6 +54,22 @@
 			<key>NSDocumentClass</key>
 			<string>MergerDocument</string>
 		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>ElCanariSymbol</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>canari_symbol</string>
+			<key>CFBundleTypeName</key>
+			<string>El Canari Symvol</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<integer>0</integer>
+			<key>NSDocumentClass</key>
+			<string>SymbolDocument</string>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>

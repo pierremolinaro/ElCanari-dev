@@ -215,6 +215,8 @@ class EBManagedObjectContext : EBObject {
       result = MergerBoardInstance (managedObjectContext:self)
     }else if inEntityTypeName == "MergerRoot" {
       result = MergerRoot (managedObjectContext:self)
+    }else if inEntityTypeName == "SymbolRoot" {
+      result = SymbolRoot (managedObjectContext:self)
     }else{
        let dictionary : [String : Any] = [
         NSLocalizedDescriptionKey : "Cannot read document",

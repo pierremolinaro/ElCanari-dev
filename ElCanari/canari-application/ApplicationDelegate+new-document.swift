@@ -41,9 +41,25 @@ extension ApplicationDelegate {
   //····················································································································
 
   @IBAction func actionNewFontDocument (_ inSender : AnyObject) {
-    let dc = NSDocumentController.shared 
+    let dc = NSDocumentController.shared
     do{
       let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Font")
+      if let newDocument = possibleNewDocument as? NSDocument {
+        dc.addDocument (newDocument)
+        newDocument.makeWindowControllers ()
+        newDocument.showWindows ()
+      }
+    }catch let error {
+      dc.presentError (error)
+    }
+  }
+
+  //····················································································································
+
+  @IBAction func actionNewSymbolDocument (_ inSender : AnyObject) {
+    let dc = NSDocumentController.shared
+    do{
+      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Symbol")
       if let newDocument = possibleNewDocument as? NSDocument {
         dc.addDocument (newDocument)
         newDocument.makeWindowControllers ()

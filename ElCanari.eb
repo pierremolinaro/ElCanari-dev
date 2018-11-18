@@ -6,7 +6,6 @@ include "eb-sources/transient-property-classes-structs.eb" ;
 include "eb-sources/preferences.eb" ;
 #include "eb-sources/shapes.ebt" ;
 #include "eb-sources/library.ebt" ;
-#include "eb-sources/symbolDocument.ebt" ;
 #include "eb-sources/packageDocument.ebt" ;
 #include "eb-sources/deviceDocument.ebt" ;
 #--- Font
@@ -28,4 +27,6 @@ include "eb-sources/BoardModel.eb" ;
 include "eb-sources/MergerBoardInstance.eb" ;
 include "eb-sources/MergerRoot.eb" ;
 include "eb-sources/mergerDocument.eb" ;
-
+#--- Symbol
+include "eb-sources/symbol-symbolRoot.eb" ;
+include "eb-sources/symbol-symbolDocument.eb" ;
