@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CF5C4C6A219F04D600EAC52A"
-               BuildableName = "ElCanari-Release.app"
+               BuildableName = "ElCanari.app"
                BlueprintName = "ElCanari-Release"
                ReferencedContainer = "container:ElCanari.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CF5C4C6A219F04D600EAC52A"
-            BuildableName = "ElCanari-Release.app"
+            BuildableName = "ElCanari.app"
             BlueprintName = "ElCanari-Release"
             ReferencedContainer = "container:ElCanari.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CF5C4C6A219F04D600EAC52A"
-            BuildableName = "ElCanari-Release.app"
+            BuildableName = "ElCanari.app"
             BlueprintName = "ElCanari-Release"
             ReferencedContainer = "container:ElCanari.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CF5C4C6A219F04D600EAC52A"
-            BuildableName = "ElCanari-Release.app"
+            BuildableName = "ElCanari.app"
             BlueprintName = "ElCanari-Release"
             ReferencedContainer = "container:ElCanari.xcodeproj">
          </BuildableReference>

@@ -47,18 +47,6 @@ let PMFontComment = "PMFontComment"
 //    rootObject.characters_property.setProp (characterArray)
 //    rootObject.nominalSize = 21
 
-
-
-
-  //--- Add empty characters
-//    var characterSet = [FontCharacter] ()
-//    for codePoint in 0x20 ... 0x7F {
-//      let newCharacter = FontCharacter (managedObjectContext: self.managedObjectContext())
-//      newCharacter.codePoint = codePoint
-//      characterSet.append (newCharacter)
-//    }
-//    characterSet = characterSet.sorted (by :{$0.codePoint < $1.codePoint})
-//    self.rootObject.characters_property.setProp (characterSet)
   }
 
   //····················································································································
@@ -120,7 +108,7 @@ let PMFontComment = "PMFontComment"
       options: .new,
       context: nil
     )
-    self.updateCurrentCharacterSelection ()
+//    self.updateCurrentCharacterSelection ()
   }
 
   //····················································································································

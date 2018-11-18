@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA0EFB9E19094440C317E21B"
-               BuildableName = "ElCanari.app"
+               BuildableName = "ElCanari-Debug.app"
                BlueprintName = "ElCanari-Debug"
                ReferencedContainer = "container:ElCanari.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA0EFB9E19094440C317E21B"
-            BuildableName = "ElCanari.app"
+            BuildableName = "ElCanari-Debug.app"
             BlueprintName = "ElCanari-Debug"
             ReferencedContainer = "container:ElCanari.xcodeproj">
          </BuildableReference>
@@ -56,12 +56,22 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA0EFB9E19094440C317E21B"
-            BuildableName = "ElCanari.app"
+            BuildableName = "ElCanari-Debug.app"
             BlueprintName = "ElCanari-Debug"
             ReferencedContainer = "container:ElCanari.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
+         <AdditionalOption
+            key = "MallocStackLogging"
+            value = ""
+            isEnabled = "YES">
+         </AdditionalOption>
+         <AdditionalOption
+            key = "PrefersMallocStackLoggingLite"
+            value = ""
+            isEnabled = "YES">
+         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -75,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA0EFB9E19094440C317E21B"
-            BuildableName = "ElCanari.app"
+            BuildableName = "ElCanari-Debug.app"
             BlueprintName = "ElCanari-Debug"
             ReferencedContainer = "container:ElCanari.xcodeproj">
          </BuildableReference>
