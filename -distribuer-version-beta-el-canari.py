@@ -110,7 +110,7 @@ os.chdir (TEMP_DIR + "/ElCanari-dev-master")
 ANNEE = str (datetime.datetime.now().year)
 print "ANNÉE : '" + ANNEE + "'"
 #-------------------- Obtenir le numéro de build
-plistFileFullPath = TEMP_DIR + "/ElCanari-dev-master/ElCanari/canari-application/Info.plist"
+plistFileFullPath = TEMP_DIR + "/ElCanari-dev-master/ElCanari/canari-application/Info-Debug.plist"
 plistDictionary = plistlib.readPlist (plistFileFullPath)
 buildString = plistDictionary ['PMBuildString']
 # print "Build String '" + buildString + "'"
