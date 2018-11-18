@@ -46,6 +46,19 @@ let PMFontComment = "PMFontComment"
 //    }
 //    rootObject.characters_property.setProp (characterArray)
 //    rootObject.nominalSize = 21
+
+
+
+
+  //--- Add empty characters
+//    var characterSet = [FontCharacter] ()
+//    for codePoint in 0x20 ... 0x7F {
+//      let newCharacter = FontCharacter (managedObjectContext: self.managedObjectContext())
+//      newCharacter.codePoint = codePoint
+//      characterSet.append (newCharacter)
+//    }
+//    characterSet = characterSet.sorted (by :{$0.codePoint < $1.codePoint})
+//    self.rootObject.characters_property.setProp (characterSet)
   }
 
   //····················································································································
@@ -114,11 +127,24 @@ let PMFontComment = "PMFontComment"
 
   fileprivate func updateCurrentCharacterSelection () {
     if let codePoint = g_Preferences?.currentCharacterCodePoint {
+    //--- Search for character
+      var found = false
       for character in self.rootObject.characters_property.propval {
         if character.codePoint == codePoint {
           self.mSelectedCharacterController.select (object: character)
+          found = true
           break
         }
+      }
+    //--- There is no character for this code point: create it
+      if !found {
+        var characterSet = self.rootObject.characters_property.propval
+        let newCharacter = FontCharacter (managedObjectContext: self.managedObjectContext())
+        newCharacter.codePoint = codePoint
+        characterSet.append (newCharacter)
+        characterSet = characterSet.sorted (by: {$0.codePoint < $1.codePoint})
+        self.rootObject.characters_property.setProp (characterSet)
+        self.mSelectedCharacterController.select (object: newCharacter)
       }
     }
   }

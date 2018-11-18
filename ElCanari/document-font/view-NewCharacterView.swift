@@ -73,7 +73,7 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
   func setImplementedCharacterSet (_ inSet : Set <Int>) {
     mImplementedCharacterSet = inSet
     self.setNeedsDisplay (self.visibleRect)
-  //  self.needsDisplay = true
+ //   self.needsDisplay = true
     mSelectedCharacter = nil
   }
 
@@ -121,13 +121,9 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
     NSColor.white.setFill ()
     __NSRectFill (inDirtyRect)
   //--- Draw lines
-    let visibleRect = self.visibleRect
     var line = Int ((PLACEMENT_GRID * CGFloat (LINE_COUNT) - inDirtyRect.maxY) / PLACEMENT_GRID)
-//    Swift.print ("visibleRect bottom \(visibleRect.minY), top \(visibleRect.maxY)")
-//    Swift.print ("inDirtyRect bottom \(inDirtyRect.minY), top \(inDirtyRect.maxY)")
     var y = PLACEMENT_GRID * CGFloat (LINE_COUNT - line)
-//    Swift.print ("First line \(line), y \(y)")
-    while (line < LINE_COUNT) && (y > visibleRect.minY) {
+    while (line < LINE_COUNT) && (y > inDirtyRect.minY) {
       y -= PLACEMENT_GRID
       let dict : [NSAttributedString.Key : Any]
       if let font = NSFont (name: "Menlo", size: 12.0) {
@@ -158,7 +154,6 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
       }
       line += 1
     }
- //   Swift.print ("End line \(line), y \(y)")
   }
 
   //····················································································································

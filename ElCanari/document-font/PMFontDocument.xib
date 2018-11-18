@@ -634,7 +634,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" copiesOnScroll="NO" id="Z8P-ja-716">
                             <rect key="frame" x="1" y="1" width="363" height="298"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <customView id="ggH-gl-Jr4" customClass="NewCharacterView" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="202" width="163" height="96"/>
