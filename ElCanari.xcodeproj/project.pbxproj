@@ -755,12 +755,12 @@
 		CF5B06F7213EC3C9005D6B37 /* enum-QuadrantRotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-QuadrantRotation.swift"; sourceTree = "<group>"; };
 		CF5B06F8213EC3C9005D6B37 /* entity-SegmentEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SegmentEntity.swift"; sourceTree = "<group>"; };
 		CF5B06FB213EC703005D6B37 /* CanariSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariSegment.swift; sourceTree = "<group>"; };
-		CF5C4DB4219F04D600EAC52A /* ElCanari-Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ElCanari-Release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF5C4DB4219F04D600EAC52A /* ElCanari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElCanari.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5C4DB5219F04D700EAC52A /* ElCanari copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ElCanari copy-Info.plist"; path = "/Volumes/dev-svn/ElCanari-dev/ElCanari copy-Info.plist"; sourceTree = "<absolute>"; };
 		CF5CEFB91DD8C53100A70419 /* extension-NSBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSBezierPath.swift"; sourceTree = "<group>"; };
 		CF5CEFBB1DD8C6B600A70419 /* extension-CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPoint.swift"; sourceTree = "<group>"; };
 		CF5CF7391B46D53D0052AC7A /* ApplicationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
-		CF6172581B3C4B4300F3CA82 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF6172581B3C4B4300F3CA82 /* Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Debug.plist"; sourceTree = "<group>"; };
 		CF6172591B3C4B4300F3CA82 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		CF61725E1B3C4BA900F3CA82 /* application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = application.swift; sourceTree = "<group>"; };
 		CF61725F1B3C4BA900F3CA82 /* easy-bindings-utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "easy-bindings-utilities.swift"; sourceTree = "<group>"; };
@@ -865,7 +865,7 @@
 		CF71FA3D1B3EA87800FB5049 /* EBAllocationDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBAllocationDebug.swift; sourceTree = "<group>"; };
 		CF71FA3E1B3EA87800FB5049 /* EBAllocationDebug.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBAllocationDebug.xib; sourceTree = "<group>"; };
 		CF7357C620F6421C00915629 /* transient-MergerBoardInstance-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerBoardInstance-selectionDisplay.swift"; sourceTree = "<group>"; };
-		CF747FAF1B3C3D8D00140C49 /* ElCanari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElCanari.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF747FAF1B3C3D8D00140C49 /* ElCanari-Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ElCanari-Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF747FC61B3C419D00140C49 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		CF75947C20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariScrollViewWithPlacard.swift; sourceTree = "<group>"; };
 		CF75947E20DFCE9400FF2FDF /* CanariViewWithZoomAndFlip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariViewWithZoomAndFlip.swift; sourceTree = "<group>"; };
@@ -903,6 +903,7 @@
 		CF95F6DE20FA399C0080EFFC /* view-CanariMergerBoardScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "view-CanariMergerBoardScrollView.swift"; sourceTree = "<group>"; };
 		CF9AE9F71BFA763C00B68F69 /* entity-FontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-FontCharacter.swift"; sourceTree = "<group>"; };
 		CF9AE9F81BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SegmentForFontCharacter.swift"; sourceTree = "<group>"; };
+		CFA085E921A17A6B00DFD00B /* Info-Release.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Release.plist"; sourceTree = "<group>"; };
 		CFA655CA21060672001E5067 /* action-MergerDocument-moveDownAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-moveDownAction.swift"; sourceTree = "<group>"; };
 		CFA655CB21060672001E5067 /* action-MergerDocument-moveLeftAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-moveLeftAction.swift"; sourceTree = "<group>"; };
 		CFA655CC21060672001E5067 /* action-MergerDocument-moveRightAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-moveRightAction.swift"; sourceTree = "<group>"; };
@@ -1199,7 +1200,8 @@
 				CF6BC04A1DE1C008002D935F /* class-CanariMenuItemListClass.swift */,
 				CF6BC04E1DE1C43F002D935F /* controller-CanariMenu-CanariMenuItemListClass.swift */,
 				CFC129221B44887700B1866D /* file-metadata-dictionary.swift */,
-				CF6172581B3C4B4300F3CA82 /* Info.plist */,
+				CF6172581B3C4B4300F3CA82 /* Info-Debug.plist */,
+				CFA085E921A17A6B00DFD00B /* Info-Release.plist */,
 				CF861AA21B3F04460006BE63 /* library-utilities.swift */,
 				CF6172591B3C4B4300F3CA82 /* MainMenu.xib */,
 				CF61726C1B3C4C4F00F3CA82 /* Preferences.swift */,
@@ -1382,8 +1384,8 @@
 		CF747FB01B3C3D8D00140C49 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CF747FAF1B3C3D8D00140C49 /* ElCanari.app */,
-				CF5C4DB4219F04D600EAC52A /* ElCanari-Release.app */,
+				CF747FAF1B3C3D8D00140C49 /* ElCanari-Debug.app */,
+				CF5C4DB4219F04D600EAC52A /* ElCanari.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1505,7 +1507,7 @@
 			name = "ElCanari-Debug";
 			productInstallPath = "$(HOME)/bin";
 			productName = canari;
-			productReference = CF747FAF1B3C3D8D00140C49 /* ElCanari.app */;
+			productReference = CF747FAF1B3C3D8D00140C49 /* ElCanari-Debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CF5C4C6A219F04D600EAC52A /* ElCanari-Release */ = {
@@ -1525,7 +1527,7 @@
 			name = "ElCanari-Release";
 			productInstallPath = "$(HOME)/bin";
 			productName = canari;
-			productReference = CF5C4DB4219F04D600EAC52A /* ElCanari-Release.app */;
+			productReference = CF5C4DB4219F04D600EAC52A /* ElCanari.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2363,11 +2365,11 @@
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				INFOPLIST_FILE = "ElCanari copy-Info.plist";
+				INFOPLIST_FILE = "ElCanari/canari-application/Info-Release.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.canari;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ElCanari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_PNG_TEXT = YES;
@@ -2392,11 +2394,11 @@
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				INFOPLIST_FILE = "ElCanari copy-Info.plist";
+				INFOPLIST_FILE = "ElCanari/canari-application/Info-Release.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.canari;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ElCanari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_PNG_TEXT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ElCanari/canari-application/canari-Bridging-Header.h";
@@ -2503,11 +2505,11 @@
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				INFOPLIST_FILE = "ElCanari/canari-application/Info.plist";
+				INFOPLIST_FILE = "ElCanari/canari-application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.canari;
-				PRODUCT_NAME = ElCanari;
+				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_PNG_TEXT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ElCanari/canari-application/canari-Bridging-Header.h";
@@ -2531,11 +2533,11 @@
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
-				INFOPLIST_FILE = "ElCanari/canari-application/Info.plist";
+				INFOPLIST_FILE = "ElCanari/canari-application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.canari;
-				PRODUCT_NAME = ElCanari;
+				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_PNG_TEXT = YES;
