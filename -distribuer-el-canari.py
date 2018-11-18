@@ -124,7 +124,7 @@ plistlib.writePlist (plistDictionary, plistFileFullPath)
 #-------------------- Compiler le projet Xcode
 runCommand (["rm", "-fr", "build"])
 runCommand (["/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
-             "-target", "ElCanari",
+             "-target", "ElCanari-Release",
              "-configuration", "Release"
             ])
 #-------------------- Créer l'archive BZ2 de Canari
