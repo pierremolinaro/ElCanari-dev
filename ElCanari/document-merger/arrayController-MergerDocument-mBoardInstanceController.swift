@@ -207,12 +207,20 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     return self.selectedSet
   }
 
-  //····················································································································
+   //····················································································································
+
+  var objectArray : [EBGraphicManagedObject] {
+    return self.mModel?.propval ?? []
+  }
+
+ //····················································································································
 
   func computeSelectionShape () {
     var selectionDisplayArray = [EBShape] ()
-    for object in self.mSelectedSet.mSet {
-      if let shape = object.selectionDisplay {
+    for object in self.mModel?.propval ?? [] {
+      if !mSelectedSet.mSet.contains (object) {
+        selectionDisplayArray.append (EBShape ())
+      }else if let shape = object.selectionDisplay {
         selectionDisplayArray.append (shape)
       }else{
         selectionDisplayArray.append (EBShape ())

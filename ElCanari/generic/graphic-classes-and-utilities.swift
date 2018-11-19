@@ -61,7 +61,6 @@ class EBGraphicManagedObject : EBManagedObject {
   //   Translation
   //····················································································································
 
-
   @objc dynamic func acceptedTranslation (by inValue: CGPoint) -> CGPoint {
     return inValue
   }
@@ -75,6 +74,17 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
 
   @objc dynamic func translate (xBy inDx: CGFloat, yBy inDy: CGFloat) {
+  }
+
+  //····················································································································
+
+  @objc dynamic func acceptedMove (knob inKnobIndex : Int, by inValue: CGPoint) -> CGPoint {
+    return inValue
+  }
+
+  //····················································································································
+
+  @objc dynamic func move (knob inKnobIndex : Int, xBy inDx: CGFloat, yBy inDy: CGFloat) {
   }
 
   //····················································································································

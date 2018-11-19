@@ -347,6 +347,19 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  //   Knob Index
+  //····················································································································
+
+  func knobIndex (at inPoint : NSPoint) -> Int? {
+    for shape in self.mShapes {
+      if let idx = shape.knobIndex (at: inPoint) {
+        return idx
+      }
+    }
+    return nil
+  }
+
+  //····················································································································
   /// Returns a Boolean value indicating whether two values are equal.
   ///
   /// Equality is the inverse of inequality. For any values `a` and `b`,
@@ -423,6 +436,138 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBKnobShape
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class EBKnobShape : EBShape {
+  private let mKnobSize : CGFloat = 2.0
+  private let mPoint : CGPoint
+  private let mIndex : Int
+
+  //····················································································································
+  //  Init
+  //····················································································································
+
+  init (at inPoint: CGPoint, index inIndex : Int) {
+    mPoint = inPoint
+    mIndex = inIndex
+    super.init ()
+  }
+
+  //····················································································································
+  //  transformedBy
+  //····················································································································
+
+  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
+    let p = inAffineTransform.transform (self.mPoint)
+    let result = EBKnobShape (at: p, index: self.mIndex)
+    self.internalTransform (result, by: inAffineTransform)
+    return result
+  }
+
+  //····················································································································
+  // rect
+  //····················································································································
+
+  fileprivate var rect : NSRect {
+    return NSRect (x: mPoint.x - mKnobSize / 2.0, y: mPoint.y - mKnobSize / 2.0, width: mKnobSize, height: mKnobSize)
+  }
+
+  //····················································································································
+  // boundingBox (used for invalidating drawings)
+  //····················································································································
+
+  override var boundingBox : NSRect {
+    return self.rect.insetBy (dx: -1.0, dy: -1.0)
+  }
+
+  //····················································································································
+  //  Draw Rect
+  //····················································································································
+
+  override func draw (_ inDirtyRect: NSRect) {
+    super.draw (inDirtyRect)
+    let bp = NSBezierPath (rect: self.rect)
+    bp.lineWidth = 0.0
+    bp.lineCapStyle = .round
+    NSColor.white.setFill ()
+    bp.fill ()
+    NSColor.black.setStroke ()
+    bp.stroke ()
+  }
+
+  //····················································································································
+  //   Contains point
+  //····················································································································
+
+  override func contains (point inPoint : NSPoint) -> Bool {
+    var result = self.rect.contains (inPoint)
+    if !result {
+      result = super.contains (point: inPoint)
+    }
+    return result
+  }
+
+  //····················································································································
+  //   Knob Index
+  //····················································································································
+
+  override func knobIndex (at inPoint : NSPoint) -> Int? {
+    if self.rect.contains (inPoint) {
+      return self.mIndex
+    }else{
+      return super.knobIndex (at: inPoint)
+    }
+  }
+
+  //····················································································································
+  //   intersects
+  //····················································································································
+
+  override func intersects (rect inRect : NSRect) -> Bool {
+    var result = self.rect.intersects (inRect)
+    if !result {
+      result = super.intersects (rect: inRect)
+    }
+    return result
+  }
+
+  //····················································································································
+  //   isEqualTo
+  //····················································································································
+
+  override func isEqualTo (_ inOperand : EBShape) -> Bool {
+    var equal = false
+    if let operand = inOperand as? EBKnobShape {
+      equal = self.mPoint == operand.mPoint
+      if equal {
+        equal = super.isEqualTo (inOperand)
+      }
+    }
+    return equal
+  }
+
+  //····················································································································
+  /// The hash value.
+  ///
+  /// Hash values are not guaranteed to be equal across different executions of
+  /// your program. Do not save hash values to use during a future execution.
+  //····················································································································
+
+  override public var hashValue : Int {
+    var h = super.hashValue
+    h.rotateLeft ()
+    h ^= self.mPoint.x.hashValue
+    h.rotateLeft ()
+    h ^= self.mPoint.y.hashValue
+    return h
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBStrokeBezierPathShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -473,6 +618,7 @@ class EBStrokeBezierPathShape : EBShape {
   //····················································································································
 
   override func draw (_ inDirtyRect: NSRect) {
+    super.draw (inDirtyRect)
     self.mColor.setStroke ()
     for bp in self.mPaths {
       bp.stroke ()
@@ -642,6 +788,7 @@ class EBFilledBezierPathShape : EBShape {
   //····················································································································
 
   override func draw (_ inDirtyRect: NSRect) {
+    super.draw (inDirtyRect)
     self.mColor.setFill ()
     for bp in self.mPaths {
       bp.fill ()

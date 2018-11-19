@@ -18,19 +18,11 @@ func transient_SymbolSegment_selectionDisplay (
        _ self_y2 : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let s : CGFloat = 2.0
   let p1 = CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
   let p2 = CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
-  let r1 = CGRect (x: p1.x - s / 2.0, y: p1.y - s / 2.0, width: s, height: s)
-  let r2 = CGRect (x: p2.x - s / 2.0, y: p2.y - s / 2.0, width: s, height: s)
-  let bp = NSBezierPath ()
-  bp.appendRect (r1)
-  bp.appendRect (r2)
-  bp.lineWidth = 1.0
-  bp.lineCapStyle = .round
   let shape = EBShape ()
-  shape.append (shape: EBStrokeBezierPathShape ([bp], NSColor.black))
-  shape.append (shape: EBFilledBezierPathShape ([bp], NSColor.white))
+  shape.append (shape: EBKnobShape (at: p1, index: SYMBOL_SEGMENT_ENDPOINT_1))
+  shape.append (shape: EBKnobShape (at: p2, index: SYMBOL_SEGMENT_ENDPOINT_2))
   return shape
 //--- END OF USER ZONE 2
 }

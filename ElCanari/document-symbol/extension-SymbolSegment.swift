@@ -1,6 +1,11 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let SYMBOL_SEGMENT_ENDPOINT_1 = 1
+let SYMBOL_SEGMENT_ENDPOINT_2 = 2
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -50,6 +55,18 @@ extension SymbolSegment {
     self.y1 += cocoaToCanariUnit (inDy)
     self.x2 += cocoaToCanariUnit (inDx)
     self.y2 += cocoaToCanariUnit (inDy)
+  }
+
+  //····················································································································
+
+  override func move (knob inKnobIndex : Int, xBy inDx: CGFloat, yBy inDy: CGFloat) {
+    if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_1 {
+      self.x1 += cocoaToCanariUnit (inDx)
+      self.y1 += cocoaToCanariUnit (inDy)
+    }else if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_2 {
+      self.x2 += cocoaToCanariUnit (inDx)
+      self.y2 += cocoaToCanariUnit (inDy)
+    }
   }
 
   //····················································································································
