@@ -68,7 +68,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>SymbolDocument</string>
+			<string>CanariSymbolDocument</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>

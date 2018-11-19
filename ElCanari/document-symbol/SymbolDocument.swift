@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(PMSymbolDocument) class PMSymbolDocument : EBManagedDocument {
+@objc(SymbolDocument) class SymbolDocument : EBManagedDocument {
 
   //····················································································································
   //   Transient property: documentFilePath
@@ -36,6 +36,7 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
 
   //····················································································································
   //    Multiple bindings controllers
@@ -81,7 +82,7 @@ import Cocoa
   //····················································································································
 
   override var windowNibName : NSNib.Name {
-    return NSNib.Name ("PMSymbolDocument")
+    return NSNib.Name ("SymbolDocument")
   }
   
   //····················································································································
@@ -104,7 +105,19 @@ import Cocoa
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
   //--------------------------- Outlet checking
+    if let outlet : Any = self.mPageSegmentedControl {
+      if !(outlet is CanariSegmentedControl) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mPageSegmentedControl' outlet is nil") ;
+    }
   //--------------------------- Install regular bindings
+    mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
   //--------------------------- Update display
@@ -118,10 +131,12 @@ import Cocoa
 
   override func removeUserInterface () {
   //--------------------------- Unbind regular bindings
+    mPageSegmentedControl?.unbind_selectedPage ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
+    self.mPageSegmentedControl?.ebCleanUp ()
   }
 
   //····················································································································

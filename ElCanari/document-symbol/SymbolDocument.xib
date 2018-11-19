@@ -6,45 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="PMSymbolDocument">
+        <customObject id="-2" userLabel="File's Owner" customClass="SymbolDocument">
             <connections>
-                <outlet property="addSymbolBezierCurveButton" destination="1185" id="1191"/>
-                <outlet property="addSymbolCircleButton" destination="1188" id="1190"/>
-                <outlet property="addSymbolLineButton" destination="1182" id="1184"/>
-                <outlet property="addSymbolPinButton" destination="1198" id="1200"/>
-                <outlet property="addSymbolSolidRectButton" destination="1192" id="1194"/>
-                <outlet property="addSymbolTextButton" destination="1195" id="1197"/>
-                <outlet property="commentTextView" destination="926" id="937"/>
-                <outlet property="displayInspectorView" destination="647" id="1123"/>
-                <outlet property="displaysShadowsCheckbox" destination="664" id="666"/>
-                <outlet property="pinInspectorView" destination="528" id="619"/>
-                <outlet property="pinNameDisplayAlignmentPopupButton" destination="630" id="636"/>
-                <outlet property="pinNameTextField" destination="530" id="622"/>
-                <outlet property="pinNumberDisplayAlignmentPopupButton" destination="623" id="629"/>
-                <outlet property="pinVisibleInSchematicsCheckBox" destination="531" id="621"/>
-                <outlet property="resetVersionAndHistoryButton" destination="935" id="939"/>
-                <outlet property="segmentedControl" destination="1090" id="1093"/>
-                <outlet property="selectedObjectInspectorBaseView" destination="1124" id="1125"/>
-                <outlet property="statusImageView" destination="1083" id="1086"/>
-                <outlet property="statusTextView" destination="917" id="922"/>
-                <outlet property="symbolGridInspectorView" destination="580" id="1167"/>
-                <outlet property="symbolGridStepPopUpButton" destination="1138" id="1213"/>
-                <outlet property="symbolGridStylePopUpButton" destination="1139" id="1169"/>
-                <outlet property="symbolGridTextField" destination="1136" id="1174"/>
-                <outlet property="symbolHorizontalFlipButton" destination="582" id="596"/>
-                <outlet property="symbolInspectorSegmentedControl" destination="1208" id="1210"/>
-                <outlet property="symbolInspectorViewOutlet" destination="1114" id="1128"/>
-                <outlet property="symbolMeasurementUnitsFactorPopUpButton" destination="1137" id="1170"/>
-                <outlet property="symbolScrollView" destination="894" id="911"/>
-                <outlet property="symbolSignatureTextField" destination="933" id="940"/>
-                <outlet property="symbolVerticalFlipButton" destination="583" id="597"/>
-                <outlet property="symbolView" destination="895" id="912"/>
-                <outlet property="symbolZoomFlipInspectorView" destination="580" id="599"/>
-                <outlet property="textDisplayAlignmentPopupButton" destination="846" id="862"/>
-                <outlet property="textInspectorView" destination="844" id="863"/>
-                <outlet property="textValueTextField" destination="860" id="864"/>
-                <outlet property="versionTextField" destination="928" id="941"/>
-                <outlet property="window" destination="5" id="51"/>
+                <outlet property="mPageSegmentedControl" destination="1090" id="xiJ-uP-7gb"/>
+                <outlet property="window" destination="5" id="830-Dz-zFq"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -115,6 +80,7 @@
                     <toolbarItem reference="1085"/>
                 </defaultToolbarItems>
             </toolbar>
+            <point key="canvasLocation" x="-187" y="-297"/>
         </window>
         <customView id="528" userLabel="pinInspector">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
@@ -419,7 +385,7 @@
                 </textField>
             </subviews>
         </customView>
-        <customView id="881" userLabel="Page : symbol" customClass="PMViewWithKeyView">
+        <customView id="881" userLabel="Page : symbol" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="656" height="385"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -499,23 +465,21 @@
                     </buttonCell>
                 </button>
                 <segmentedControl verticalHuggingPriority="750" id="1208">
-                    <rect key="frame" x="35" y="322" width="180" height="23"/>
+                    <rect key="frame" x="19" y="322" width="217" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" segmentDistribution="fill" style="smallSquare" trackingMode="selectOne" id="1209">
-                        <font key="font" metaFont="system"/>
+                    <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="1209">
+                        <font key="font" metaFont="cellTitle"/>
                         <segments>
-                            <segment toolTip="Selected Object Inspector" image="selected-object" width="58"/>
-                            <segment toolTip="Zoom and Flip Inspector" image="loupe" width="59" tag="1"/>
-                            <segment toolTip="Display Inspector" image="display" width="59" tag="2"/>
+                            <segment toolTip="Selected Object Inspector" image="selected-object" width="70"/>
+                            <segment toolTip="Zoom and Flip Inspector" image="loupe" width="71" tag="1"/>
+                            <segment toolTip="Display Inspector" image="display" width="70" tag="2"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
             </subviews>
-            <connections>
-                <outlet property="mSavedKeyView" destination="895" id="952"/>
-            </connections>
+            <point key="canvasLocation" x="132" y="474.5"/>
         </customView>
-        <customView id="915" userLabel="Page : messages" customClass="PMViewWithKeyView">
+        <customView id="915" userLabel="Page : messages" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="636" height="350"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -549,7 +513,7 @@
                 </scrollView>
             </subviews>
         </customView>
-        <customView id="923" userLabel="Page : infos" customClass="PMViewWithKeyView">
+        <customView id="923" userLabel="Page : infos" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="622" height="385"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -650,9 +614,6 @@ Cg
                     </scroller>
                 </scrollView>
             </subviews>
-            <connections>
-                <outlet property="mSavedKeyView" destination="926" id="953"/>
-            </connections>
         </customView>
         <customView id="1124" userLabel="selectedObjectInspector">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
