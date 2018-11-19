@@ -3966,24 +3966,7 @@ class BoardModel : EBManagedObject,
     self.artworkName_property.mValueExplorer = nil
   //--- To many property: myInstances
     self.myInstances_property.mValueExplorer = nil
- //   self.name_property.mObserverExplorer = nil
- //   self.name_property.mValueExplorer = nil
- //   self.modelWidth_property.mObserverExplorer = nil
- //   self.modelWidth_property.mValueExplorer = nil
- //   self.modelWidthUnit_property.mObserverExplorer = nil
- //   self.modelWidthUnit_property.mValueExplorer = nil
- //   self.modelHeight_property.mObserverExplorer = nil
- //   self.modelHeight_property.mValueExplorer = nil
- //   self.modelHeightUnit_property.mObserverExplorer = nil
- //   self.modelHeightUnit_property.mValueExplorer = nil
- //   self.zoom_property.mObserverExplorer = nil
- //   self.zoom_property.mValueExplorer = nil
- //   self.modelLimitWidth_property.mObserverExplorer = nil
- //   self.modelLimitWidth_property.mValueExplorer = nil
- //   self.modelLimitWidthUnit_property.mObserverExplorer = nil
- //   self.modelLimitWidthUnit_property.mValueExplorer = nil
- //   self.artworkName_property.mObserverExplorer = nil
- //   self.artworkName_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 

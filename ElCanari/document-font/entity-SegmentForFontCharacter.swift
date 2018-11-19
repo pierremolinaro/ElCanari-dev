@@ -314,14 +314,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //--- Atomic property: y2
     self.y2_property.mObserverExplorer = nil
     self.y2_property.mValueExplorer = nil
- //   self.x1_property.mObserverExplorer = nil
- //   self.x1_property.mValueExplorer = nil
- //   self.y1_property.mObserverExplorer = nil
- //   self.y1_property.mValueExplorer = nil
- //   self.x2_property.mObserverExplorer = nil
- //   self.x2_property.mValueExplorer = nil
- //   self.y2_property.mObserverExplorer = nil
- //   self.y2_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 

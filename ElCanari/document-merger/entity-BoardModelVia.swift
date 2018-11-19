@@ -173,12 +173,7 @@ class BoardModelVia : EBManagedObject,
   //--- Atomic property: x
     self.x_property.mObserverExplorer = nil
     self.x_property.mValueExplorer = nil
- //   self.y_property.mObserverExplorer = nil
- //   self.y_property.mValueExplorer = nil
- //   self.padDiameter_property.mObserverExplorer = nil
- //   self.padDiameter_property.mValueExplorer = nil
- //   self.x_property.mObserverExplorer = nil
- //   self.x_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 

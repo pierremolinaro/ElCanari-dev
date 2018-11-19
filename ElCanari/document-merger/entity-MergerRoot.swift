@@ -1479,48 +1479,7 @@ class MergerRoot : EBManagedObject,
   //--- Atomic property: generatedBoardArchiveFormat
     self.generatedBoardArchiveFormat_property.mObserverExplorer = nil
     self.generatedBoardArchiveFormat_property.mValueExplorer = nil
- //   self.selectedPageIndex_property.mObserverExplorer = nil
- //   self.selectedPageIndex_property.mValueExplorer = nil
- //   self.zoom_property.mObserverExplorer = nil
- //   self.zoom_property.mValueExplorer = nil
- //   self.automaticBoardSize_property.mObserverExplorer = nil
- //   self.automaticBoardSize_property.mValueExplorer = nil
- //   self.boardManualWidth_property.mObserverExplorer = nil
- //   self.boardManualWidth_property.mValueExplorer = nil
- //   self.boardManualHeight_property.mObserverExplorer = nil
- //   self.boardManualHeight_property.mValueExplorer = nil
- //   self.boardWidthUnit_property.mObserverExplorer = nil
- //   self.boardWidthUnit_property.mValueExplorer = nil
- //   self.boardHeightUnit_property.mObserverExplorer = nil
- //   self.boardHeightUnit_property.mValueExplorer = nil
- //   self.overlapingArrangment_property.mObserverExplorer = nil
- //   self.overlapingArrangment_property.mValueExplorer = nil
- //   self.selectedBoardXUnit_property.mObserverExplorer = nil
- //   self.selectedBoardXUnit_property.mValueExplorer = nil
- //   self.selectedBoardYUnit_property.mObserverExplorer = nil
- //   self.selectedBoardYUnit_property.mValueExplorer = nil
- //   self.boardLimitWidth_property.mObserverExplorer = nil
- //   self.boardLimitWidth_property.mValueExplorer = nil
- //   self.boardLimitWidthUnit_property.mObserverExplorer = nil
- //   self.boardLimitWidthUnit_property.mValueExplorer = nil
- //   self.arrowMagnitude_property.mObserverExplorer = nil
- //   self.arrowMagnitude_property.mValueExplorer = nil
- //   self.arrowMagnitudeUnit_property.mObserverExplorer = nil
- //   self.arrowMagnitudeUnit_property.mValueExplorer = nil
- //   self.shiftArrowMagnitude_property.mObserverExplorer = nil
- //   self.shiftArrowMagnitude_property.mValueExplorer = nil
- //   self.shiftArrowMagnitudeUnit_property.mObserverExplorer = nil
- //   self.shiftArrowMagnitudeUnit_property.mValueExplorer = nil
- //   self.artworkName_property.mObserverExplorer = nil
- //   self.artworkName_property.mValueExplorer = nil
- //   self.generateGerberProductFile_property.mObserverExplorer = nil
- //   self.generateGerberProductFile_property.mValueExplorer = nil
- //   self.generatePDFProductFile_property.mObserverExplorer = nil
- //   self.generatePDFProductFile_property.mValueExplorer = nil
- //   self.generatedBoardArchiveFormat_property.mObserverExplorer = nil
- //   self.generatedBoardArchiveFormat_property.mValueExplorer = nil
- //   self.artwork_property.mObserverExplorer = nil
- //   self.artwork_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 

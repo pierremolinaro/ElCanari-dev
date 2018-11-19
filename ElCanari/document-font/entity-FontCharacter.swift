@@ -340,10 +340,7 @@ class FontCharacter : EBManagedObject,
     self.advance_property.mValueExplorer = nil
   //--- To many property: segments
     self.segments_property.mValueExplorer = nil
- //   self.codePoint_property.mObserverExplorer = nil
- //   self.codePoint_property.mValueExplorer = nil
- //   self.advance_property.mObserverExplorer = nil
- //   self.advance_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 

@@ -38,14 +38,6 @@ document PMFontDocument root FontRoot {
   outlet CanariSignatureField mSignatureTextField $signature signature ;
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
-#--- Character controller
-#  arrayController mSelectedCharacterController2 {allowsEmptySelection:no, allowsMultipleSelection:no}
-#    root.selectedCharacterController.selectedArray
-#  ;
-
-#  outlet EBView mCharacterEBView $graphicController self.mSelectedCharacterController2.segments ;
-
-
   arrayController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
   selectionController mCharacterSelection : self.mSelectedCharacterController.selectedArray ;
 

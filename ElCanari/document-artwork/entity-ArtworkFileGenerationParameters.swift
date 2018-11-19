@@ -1056,52 +1056,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: padHoleDiameterInPDF
     self.padHoleDiameterInPDF_property.mObserverExplorer = nil
     self.padHoleDiameterInPDF_property.mValueExplorer = nil
- //   self.drawBoardLimits_property.mObserverExplorer = nil
- //   self.drawBoardLimits_property.mValueExplorer = nil
- //   self.drawInternalBoardLimits_property.mObserverExplorer = nil
- //   self.drawInternalBoardLimits_property.mValueExplorer = nil
- //   self.drawComponentNamesTopSide_property.mObserverExplorer = nil
- //   self.drawComponentNamesTopSide_property.mValueExplorer = nil
- //   self.drawComponentNamesBottomSide_property.mObserverExplorer = nil
- //   self.drawComponentNamesBottomSide_property.mValueExplorer = nil
- //   self.drawComponentValuesTopSide_property.mObserverExplorer = nil
- //   self.drawComponentValuesTopSide_property.mValueExplorer = nil
- //   self.drawComponentValuesBottomSide_property.mObserverExplorer = nil
- //   self.drawComponentValuesBottomSide_property.mValueExplorer = nil
- //   self.drawPackageLegendTopSide_property.mObserverExplorer = nil
- //   self.drawPackageLegendTopSide_property.mValueExplorer = nil
- //   self.drawPackageLegendBottomSide_property.mObserverExplorer = nil
- //   self.drawPackageLegendBottomSide_property.mValueExplorer = nil
- //   self.drawPadHolesInPDF_property.mObserverExplorer = nil
- //   self.drawPadHolesInPDF_property.mValueExplorer = nil
- //   self.drawPadsTopSide_property.mObserverExplorer = nil
- //   self.drawPadsTopSide_property.mValueExplorer = nil
- //   self.drawPadsBottomSide_property.mObserverExplorer = nil
- //   self.drawPadsBottomSide_property.mValueExplorer = nil
- //   self.drawTextsLayoutTopSide_property.mObserverExplorer = nil
- //   self.drawTextsLayoutTopSide_property.mValueExplorer = nil
- //   self.drawTextsLayoutBottomSide_property.mObserverExplorer = nil
- //   self.drawTextsLayoutBottomSide_property.mValueExplorer = nil
- //   self.drawTextsLegendTopSide_property.mObserverExplorer = nil
- //   self.drawTextsLegendTopSide_property.mValueExplorer = nil
- //   self.drawTextsLegendBottomSide_property.mObserverExplorer = nil
- //   self.drawTextsLegendBottomSide_property.mValueExplorer = nil
- //   self.drawTracksTopSide_property.mObserverExplorer = nil
- //   self.drawTracksTopSide_property.mValueExplorer = nil
- //   self.drawTracksBottomSide_property.mObserverExplorer = nil
- //   self.drawTracksBottomSide_property.mValueExplorer = nil
- //   self.drawVias_property.mObserverExplorer = nil
- //   self.drawVias_property.mValueExplorer = nil
- //   self.fileExtension_property.mObserverExplorer = nil
- //   self.fileExtension_property.mValueExplorer = nil
- //   self.horizontalMirror_property.mObserverExplorer = nil
- //   self.horizontalMirror_property.mValueExplorer = nil
- //   self.name_property.mObserverExplorer = nil
- //   self.name_property.mValueExplorer = nil
- //   self.measurementUnitForPadHoleInPDF_property.mObserverExplorer = nil
- //   self.measurementUnitForPadHoleInPDF_property.mValueExplorer = nil
- //   self.padHoleDiameterInPDF_property.mObserverExplorer = nil
- //   self.padHoleDiameterInPDF_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 

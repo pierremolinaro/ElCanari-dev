@@ -6,229 +6,142 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_selectedInspector : class {
-  var selectedInspector : Int { get }
+protocol SymbolSegment_y1 : class {
+  var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_horizontalFlip : class {
-  var horizontalFlip : Bool { get }
+protocol SymbolSegment_x2 : class {
+  var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_verticalFlip : class {
-  var verticalFlip : Bool { get }
+protocol SymbolSegment_y2 : class {
+  var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_gridStyle : class {
-  var gridStyle : Int { get }
+protocol SymbolSegment_x1 : class {
+  var x1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_gridStep : class {
-  var gridStep : Int { get }
+protocol SymbolSegment_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_selectedPageIndex : class {
-  var selectedPageIndex : Int { get }
+protocol SymbolSegment_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SymbolRoot_gridDisplay : class {
-  var gridDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: SymbolRoot
+//    Entity: SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SymbolRoot : EBManagedObject,
-         SymbolRoot_selectedInspector,
-         SymbolRoot_horizontalFlip,
-         SymbolRoot_verticalFlip,
-         SymbolRoot_gridStyle,
-         SymbolRoot_gridStep,
-         SymbolRoot_selectedPageIndex,
-         SymbolRoot_gridDisplay {
+class SymbolSegment : EBGraphicManagedObject,
+         SymbolSegment_y1,
+         SymbolSegment_x2,
+         SymbolSegment_y2,
+         SymbolSegment_x1,
+         SymbolSegment_objectDisplay,
+         SymbolSegment_selectionDisplay {
 
   //····················································································································
-  //   Atomic property: selectedInspector
+  //   Atomic property: y1
   //····················································································································
 
-  var selectedInspector_property = EBStoredProperty_Int (0)
+  var y1_property = EBStoredProperty_Int (228600)
 
   //····················································································································
 
-  var selectedInspector : Int {
+  var y1 : Int {
     get {
-      return self.selectedInspector_property.propval
+      return self.y1_property.propval
     }
     set {
-      self.selectedInspector_property.setProp (newValue)
+      self.y1_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var selectedInspector_property_selection : EBSelection <Int> {
-    return self.selectedInspector_property.prop
+  var y1_property_selection : EBSelection <Int> {
+    return self.y1_property.prop
   }
 
   //····················································································································
-  //   Atomic property: horizontalFlip
+  //   Atomic property: x2
   //····················································································································
 
-  var horizontalFlip_property = EBStoredProperty_Bool (false)
+  var x2_property = EBStoredProperty_Int (915400)
 
   //····················································································································
 
-  var horizontalFlip : Bool {
+  var x2 : Int {
     get {
-      return self.horizontalFlip_property.propval
+      return self.x2_property.propval
     }
     set {
-      self.horizontalFlip_property.setProp (newValue)
+      self.x2_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var horizontalFlip_property_selection : EBSelection <Bool> {
-    return self.horizontalFlip_property.prop
+  var x2_property_selection : EBSelection <Int> {
+    return self.x2_property.prop
   }
 
   //····················································································································
-  //   Atomic property: verticalFlip
+  //   Atomic property: y2
   //····················································································································
 
-  var verticalFlip_property = EBStoredProperty_Bool (false)
+  var y2_property = EBStoredProperty_Int (915400)
 
   //····················································································································
 
-  var verticalFlip : Bool {
+  var y2 : Int {
     get {
-      return self.verticalFlip_property.propval
+      return self.y2_property.propval
     }
     set {
-      self.verticalFlip_property.setProp (newValue)
+      self.y2_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var verticalFlip_property_selection : EBSelection <Bool> {
-    return self.verticalFlip_property.prop
+  var y2_property_selection : EBSelection <Int> {
+    return self.y2_property.prop
   }
 
   //····················································································································
-  //   Atomic property: gridStyle
+  //   Atomic property: x1
   //····················································································································
 
-  var gridStyle_property = EBStoredProperty_Int (2)
+  var x1_property = EBStoredProperty_Int (228600)
 
   //····················································································································
 
-  var gridStyle : Int {
+  var x1 : Int {
     get {
-      return self.gridStyle_property.propval
+      return self.x1_property.propval
     }
     set {
-      self.gridStyle_property.setProp (newValue)
+      self.x1_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var gridStyle_property_selection : EBSelection <Int> {
-    return self.gridStyle_property.prop
-  }
-
-  //····················································································································
-  //   Atomic property: gridStep
-  //····················································································································
-
-  var gridStep_property = EBStoredProperty_Int (4)
-
-  //····················································································································
-
-  var gridStep : Int {
-    get {
-      return self.gridStep_property.propval
-    }
-    set {
-      self.gridStep_property.setProp (newValue)
-    }
-  }
-
-  //····················································································································
-
-  var gridStep_property_selection : EBSelection <Int> {
-    return self.gridStep_property.prop
-  }
-
-  //····················································································································
-  //   To many property: symbolObjects
-  //····················································································································
-
-  var symbolObjects_property = StoredArrayOf_SymbolSegment ()
-
-  //····················································································································
-  var symbolObjects_property_selection : EBSelection < [SymbolSegment] > {
-      return self.symbolObjects_property.prop
-  }
-
-  //····················································································································
-  //   Atomic property: selectedPageIndex
-  //····················································································································
-
-  var selectedPageIndex_property = EBStoredProperty_Int (0)
-
-  //····················································································································
-
-  var selectedPageIndex : Int {
-    get {
-      return self.selectedPageIndex_property.propval
-    }
-    set {
-      self.selectedPageIndex_property.setProp (newValue)
-    }
-  }
-
-  //····················································································································
-
-  var selectedPageIndex_property_selection : EBSelection <Int> {
-    return self.selectedPageIndex_property.prop
-  }
-
-  //····················································································································
-  //   Transient property: gridDisplay
-  //····················································································································
-
-  var gridDisplay_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  var gridDisplay_property_selection : EBSelection <EBShape> {
-    return self.gridDisplay_property.prop
-  }
-
-  //····················································································································
-
-    var gridDisplay : EBShape? {
-    switch self.gridDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
+  var x1_property_selection : EBSelection <Int> {
+    return self.x1_property.prop
   }
 
 
@@ -238,36 +151,32 @@ class SymbolRoot : EBManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.undoManager = self.undoManager
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.undoManager = self.undoManager
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.undoManager = self.undoManager
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.undoManager = self.undoManager
-  //--- Atomic property: gridStep
-    self.gridStep_property.undoManager = self.undoManager
-  //--- To many property: symbolObjects
-    self.symbolObjects_property.undoManager = self.undoManager
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.undoManager = self.undoManager
-  //--- Atomic property: gridDisplay
-    self.gridDisplay_property.readModelFunction = { [weak self] in
+  //--- Atomic property: y1
+    self.y1_property.undoManager = self.undoManager
+  //--- Atomic property: x2
+    self.x2_property.undoManager = self.undoManager
+  //--- Atomic property: y2
+    self.y2_property.undoManager = self.undoManager
+  //--- Atomic property: x1
+    self.x1_property.undoManager = self.undoManager
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.gridStyle_property_selection.kind ()
-        kind &= unwSelf.gridStep_property_selection.kind ()
-        kind &= g_Preferences!.dotColorOfSymbolGrid_property_selection.kind ()
-        kind &= g_Preferences!.lineColorOfSymbolGrid_property_selection.kind ()
+        var kind = unwSelf.x1_property_selection.kind ()
+        kind &= unwSelf.y1_property_selection.kind ()
+        kind &= unwSelf.x2_property_selection.kind ()
+        kind &= unwSelf.y2_property_selection.kind ()
+        kind &= g_Preferences!.symbolColor_property_selection.kind ()
+        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.gridStyle_property_selection, unwSelf.gridStep_property_selection, g_Preferences!.dotColorOfSymbolGrid_property_selection, g_Preferences!.lineColorOfSymbolGrid_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolRoot_gridDisplay (v0, v1, v2, v3))
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_SymbolSegment_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -276,23 +185,62 @@ class SymbolRoot : EBManagedObject,
         return .empty
       }
     }
-    self.gridStyle_property.addEBObserver (self.gridDisplay_property)
-    self.gridStep_property.addEBObserver (self.gridDisplay_property)
-    g_Preferences?.dotColorOfSymbolGrid_property.addEBObserver (self.gridDisplay_property)
-    g_Preferences?.lineColorOfSymbolGrid_property.addEBObserver (self.gridDisplay_property)
+    self.x1_property.addEBObserver (self.objectDisplay_property)
+    self.y1_property.addEBObserver (self.objectDisplay_property)
+    self.x2_property.addEBObserver (self.objectDisplay_property)
+    self.y2_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x1_property_selection.kind ()
+        kind &= unwSelf.y1_property_selection.kind ()
+        kind &= unwSelf.x2_property_selection.kind ()
+        kind &= unwSelf.y2_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_SymbolSegment_selectionDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x1_property.addEBObserver (self.selectionDisplay_property)
+    self.y1_property.addEBObserver (self.selectionDisplay_property)
+    self.x2_property.addEBObserver (self.selectionDisplay_property)
+    self.y2_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.symbolObjects_property.setSignatureObserver (observer:self)
+    self.x1_property.setSignatureObserver (observer:self)
+    self.x2_property.setSignatureObserver (observer:self)
+    self.y1_property.setSignatureObserver (observer:self)
+    self.y2_property.setSignatureObserver (observer:self)
   }
 
   //····················································································································
 
   deinit {
   //--- Remove observers
-    self.gridStyle_property.removeEBObserver (self.gridDisplay_property)
-    self.gridStep_property.removeEBObserver (self.gridDisplay_property)
-    g_Preferences?.dotColorOfSymbolGrid_property.removeEBObserver (self.gridDisplay_property)
-    g_Preferences?.lineColorOfSymbolGrid_property.removeEBObserver (self.gridDisplay_property)
+    self.x1_property.removeEBObserver (self.objectDisplay_property)
+    self.y1_property.removeEBObserver (self.objectDisplay_property)
+    self.x2_property.removeEBObserver (self.objectDisplay_property)
+    self.y2_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    self.x1_property.removeEBObserver (self.selectionDisplay_property)
+    self.y1_property.removeEBObserver (self.selectionDisplay_property)
+    self.x2_property.removeEBObserver (self.selectionDisplay_property)
+    self.y2_property.removeEBObserver (self.selectionDisplay_property)
   }
 
   //····················································································································
@@ -302,61 +250,53 @@ class SymbolRoot : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "selectedInspector",
-      idx:self.selectedInspector_property.mEasyBindingsObjectIndex,
+      "y1",
+      idx:self.y1_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.selectedInspector_property.mObserverExplorer,
-      valueExplorer:&self.selectedInspector_property.mValueExplorer
+      observerExplorer:&self.y1_property.mObserverExplorer,
+      valueExplorer:&self.y1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "horizontalFlip",
-      idx:self.horizontalFlip_property.mEasyBindingsObjectIndex,
+      "x2",
+      idx:self.x2_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.horizontalFlip_property.mObserverExplorer,
-      valueExplorer:&self.horizontalFlip_property.mValueExplorer
+      observerExplorer:&self.x2_property.mObserverExplorer,
+      valueExplorer:&self.x2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "verticalFlip",
-      idx:self.verticalFlip_property.mEasyBindingsObjectIndex,
+      "y2",
+      idx:self.y2_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.verticalFlip_property.mObserverExplorer,
-      valueExplorer:&self.verticalFlip_property.mValueExplorer
+      observerExplorer:&self.y2_property.mObserverExplorer,
+      valueExplorer:&self.y2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "gridStyle",
-      idx:self.gridStyle_property.mEasyBindingsObjectIndex,
+      "x1",
+      idx:self.x1_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.gridStyle_property.mObserverExplorer,
-      valueExplorer:&self.gridStyle_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gridStep",
-      idx:self.gridStep_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gridStep_property.mObserverExplorer,
-      valueExplorer:&self.gridStep_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "selectedPageIndex",
-      idx:self.selectedPageIndex_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
-      valueExplorer:&self.selectedPageIndex_property.mValueExplorer
+      observerExplorer:&self.x1_property.mObserverExplorer,
+      valueExplorer:&self.x1_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "gridDisplay",
-      idx:self.gridDisplay_property.mEasyBindingsObjectIndex,
+      "objectDisplay",
+      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.gridDisplay_property.mObserverExplorer,
-      valueExplorer:&self.gridDisplay_property.mValueExplorer
+      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
+      valueExplorer:&self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer:&self.selectionDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -368,26 +308,18 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.mObserverExplorer = nil
-    self.selectedInspector_property.mValueExplorer = nil
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.mObserverExplorer = nil
-    self.horizontalFlip_property.mValueExplorer = nil
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.mObserverExplorer = nil
-    self.verticalFlip_property.mValueExplorer = nil
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.mObserverExplorer = nil
-    self.gridStyle_property.mValueExplorer = nil
-  //--- Atomic property: gridStep
-    self.gridStep_property.mObserverExplorer = nil
-    self.gridStep_property.mValueExplorer = nil
-  //--- To many property: symbolObjects
-    self.symbolObjects_property.mValueExplorer = nil
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.mObserverExplorer = nil
-    self.selectedPageIndex_property.mValueExplorer = nil
+  //--- Atomic property: y1
+    self.y1_property.mObserverExplorer = nil
+    self.y1_property.mValueExplorer = nil
+  //--- Atomic property: x2
+    self.x2_property.mObserverExplorer = nil
+    self.x2_property.mValueExplorer = nil
+  //--- Atomic property: y2
+    self.y2_property.mObserverExplorer = nil
+    self.y2_property.mValueExplorer = nil
+  //--- Atomic property: x1
+    self.x1_property.mObserverExplorer = nil
+    self.x1_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -398,30 +330,18 @@ class SymbolRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"selectedInspector")
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"horizontalFlip")
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"verticalFlip")
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey:"gridStyle")
-  //--- Atomic property: gridStep
-    self.gridStep_property.storeIn (dictionary: ioDictionary, forKey:"gridStep")
-  //--- To many property: symbolObjects
-    self.store (
-      managedObjectArray: symbolObjects_property.propval as NSArray,
-      relationshipName: "symbolObjects",
-      intoDictionary: ioDictionary
-    )
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
- //   self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
- //   self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
- //   self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
- //   self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey: "gridStyle")
- //   self.gridStep_property.storeIn (dictionary: ioDictionary, forKey: "gridStep")
- //   self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+  //--- Atomic property: y1
+    self.y1_property.storeIn (dictionary: ioDictionary, forKey:"y1")
+  //--- Atomic property: x2
+    self.x2_property.storeIn (dictionary: ioDictionary, forKey:"x2")
+  //--- Atomic property: y2
+    self.y2_property.storeIn (dictionary: ioDictionary, forKey:"y2")
+  //--- Atomic property: x1
+    self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
+ //   self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+ //   self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+ //   self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
+ //   self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
   }
 
   //····················································································································
@@ -431,30 +351,18 @@ class SymbolRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"horizontalFlip")
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.readFrom (dictionary: inDictionary, forKey:"verticalFlip")
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.readFrom (dictionary: inDictionary, forKey:"gridStyle")
-  //--- Atomic property: gridStep
-    self.gridStep_property.readFrom (dictionary: inDictionary, forKey:"gridStep")
-  //--- To many property: symbolObjects
-    self.symbolObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "symbolObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SymbolSegment])
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
-//    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
-//    self.horizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"horizontalFlip")
-//    self.verticalFlip_property.readFrom (dictionary: inDictionary, forKey:"verticalFlip")
-//    self.gridStyle_property.readFrom (dictionary: inDictionary, forKey:"gridStyle")
-//    self.gridStep_property.readFrom (dictionary: inDictionary, forKey:"gridStep")
-//    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+  //--- Atomic property: y1
+    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
+  //--- Atomic property: x2
+    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
+  //--- Atomic property: y2
+    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
+  //--- Atomic property: x1
+    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
+//    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
+//    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
+//    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
+//    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
   }
 
   //····················································································································
@@ -479,7 +387,6 @@ class SymbolRoot : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
-    self.symbolObjects_property.setProp ([])
   }
 
   //····················································································································
@@ -496,10 +403,6 @@ class SymbolRoot : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: symbolObjects
-    for managedObject : EBManagedObject in self.symbolObjects_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································
@@ -508,7 +411,10 @@ class SymbolRoot : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.symbolObjects_property.signature ())
+    crc.accumulateUInt32 (self.x1_property.signature ())
+    crc.accumulateUInt32 (self.x2_property.signature ())
+    crc.accumulateUInt32 (self.y1_property.signature ())
+    crc.accumulateUInt32 (self.y2_property.signature ())
     return crc
   }
 
@@ -517,10 +423,10 @@ class SymbolRoot : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SymbolRoot
+//    ReadOnlyArrayOf_SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
+class ReadOnlyArrayOf_SymbolSegment : ReadOnlyAbstractArrayProperty <SymbolSegment> {
 
   //····················································································································
 
@@ -528,402 +434,344 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
   //····················································································································
 
-  var propval : [SymbolRoot] { return [] } // Abstract method
+  var propval : [SymbolSegment] { return [] } // Abstract method
 
   //····················································································································
-  //   Observers of 'selectedInspector' stored property
+  //   Observers of 'y1' stored property
   //····················································································································
 
-  private var mObserversOf_selectedInspector = EBWeakEventSet ()
+  private var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectedInspector.insert (inObserver)
+    mObserversOf_y1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedInspector_property.addEBObserver (inObserver)
+        managedObject.y1_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectedInspector.remove (inObserver)
+    mObserversOf_y1.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedInspector_property.removeEBObserver (inObserver)
+        managedObject.y1_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectedInspector_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SymbolSegment>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectedInspector {
-        managedObject.selectedInspector_property.addEBObserver (observer)
+      for observer in mObserversOf_y1 {
+        managedObject.y1_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for observer in mObserversOf_selectedInspector {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SymbolSegment>) {
+    for observer in mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.selectedInspector_property.removeEBObserver (observer)
+        managedObject.y1_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'horizontalFlip' stored property
+  //   Observers of 'x2' stored property
   //····················································································································
 
-  private var mObserversOf_horizontalFlip = EBWeakEventSet ()
+  private var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_horizontalFlip.insert (inObserver)
+    mObserversOf_x2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.horizontalFlip_property.addEBObserver (inObserver)
+        managedObject.x2_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_horizontalFlip.remove (inObserver)
+    mObserversOf_x2.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.horizontalFlip_property.removeEBObserver (inObserver)
+        managedObject.x2_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_horizontalFlip_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SymbolSegment>) {
     for managedObject in inSet {
-      for observer in mObserversOf_horizontalFlip {
-        managedObject.horizontalFlip_property.addEBObserver (observer)
+      for observer in mObserversOf_x2 {
+        managedObject.x2_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_horizontalFlip_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for observer in mObserversOf_horizontalFlip {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SymbolSegment>) {
+    for observer in mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.horizontalFlip_property.removeEBObserver (observer)
+        managedObject.x2_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'verticalFlip' stored property
+  //   Observers of 'y2' stored property
   //····················································································································
 
-  private var mObserversOf_verticalFlip = EBWeakEventSet ()
+  private var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_verticalFlip.insert (inObserver)
+    mObserversOf_y2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.verticalFlip_property.addEBObserver (inObserver)
+        managedObject.y2_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_verticalFlip.remove (inObserver)
+    mObserversOf_y2.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.verticalFlip_property.removeEBObserver (inObserver)
+        managedObject.y2_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_verticalFlip_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SymbolSegment>) {
     for managedObject in inSet {
-      for observer in mObserversOf_verticalFlip {
-        managedObject.verticalFlip_property.addEBObserver (observer)
+      for observer in mObserversOf_y2 {
+        managedObject.y2_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_verticalFlip_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for observer in mObserversOf_verticalFlip {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SymbolSegment>) {
+    for observer in mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.verticalFlip_property.removeEBObserver (observer)
+        managedObject.y2_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'gridStyle' stored property
+  //   Observers of 'x1' stored property
   //····················································································································
 
-  private var mObserversOf_gridStyle = EBWeakEventSet ()
+  private var mObserversOf_x1 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_gridStyle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_gridStyle.insert (inObserver)
+    mObserversOf_x1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStyle_property.addEBObserver (inObserver)
+        managedObject.x1_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_gridStyle (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_gridStyle.remove (inObserver)
+    mObserversOf_x1.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStyle_property.removeEBObserver (inObserver)
+        managedObject.x1_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_gridStyle_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SymbolSegment>) {
     for managedObject in inSet {
-      for observer in mObserversOf_gridStyle {
-        managedObject.gridStyle_property.addEBObserver (observer)
+      for observer in mObserversOf_x1 {
+        managedObject.x1_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_gridStyle_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for observer in mObserversOf_gridStyle {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SymbolSegment>) {
+    for observer in mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.gridStyle_property.removeEBObserver (observer)
+        managedObject.x1_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'gridStep' stored property
+  //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_gridStep = EBWeakEventSet ()
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_gridStep (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_gridStep.insert (inObserver)
+    mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStep_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_gridStep (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_gridStep.remove (inObserver)
+    mObserversOf_objectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStep_property.removeEBObserver (inObserver)
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_gridStep_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolSegment>) {
     for managedObject in inSet {
-      for observer in mObserversOf_gridStep {
-        managedObject.gridStep_property.addEBObserver (observer)
+      for observer in mObserversOf_objectDisplay {
+        managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_gridStep_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for observer in mObserversOf_gridStep {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.gridStep_property.removeEBObserver (observer)
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolSegment>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_objectDisplay {
+        managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'selectedPageIndex' stored property
+  //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectedPageIndex.insert (inObserver)
+    mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectedPageIndex.remove (inObserver)
+    mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex_property.removeEBObserver (inObserver)
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolSegment>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectedPageIndex {
-        managedObject.selectedPageIndex_property.addEBObserver (observer)
+      for observer in mObserversOf_selectionDisplay {
+        managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for observer in mObserversOf_selectedPageIndex {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.selectedPageIndex_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'gridDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_gridDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_gridDisplay.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.gridDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_gridDisplay.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.gridDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_gridDisplay_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolSegment>) {
     for managedObject in inSet {
-      for observer in mObserversOf_gridDisplay {
-        managedObject.gridDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gridDisplay_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_gridDisplay {
-        managedObject.gridDisplay_property.removeEBObserver (observer)
+      for observer in mObserversOf_selectionDisplay {
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -933,20 +781,20 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolRoot
+//    TransientArrayOf_SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
+class TransientArrayOf_SymbolSegment : ReadOnlyArrayOf_SymbolSegment {
 
-  var readModelFunction : Optional<() -> EBSelection < [SymbolRoot] > >
-
-  //····················································································································
-
-   private var prop_cache : EBSelection < [SymbolRoot] >? 
+  var readModelFunction : Optional<() -> EBSelection < [SymbolSegment] > >
 
   //····················································································································
 
-  override var propval : [SymbolRoot] {
+   private var prop_cache : EBSelection < [SymbolSegment] >? 
+
+  //····················································································································
+
+  override var propval : [SymbolSegment] {
     if let value = prop_cache {
       switch value {
       case .empty, .multiple :
@@ -967,41 +815,39 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
   //····················································································································
 
-  private var mSet = Set <SymbolRoot> ()
+  private var mSet = Set <SymbolSegment> ()
 
-  override var prop : EBSelection < [SymbolRoot] > {
+  override var prop : EBSelection < [SymbolSegment] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <SymbolRoot>
+        let newSet : Set <SymbolSegment>
         switch prop_cache! {
         case .multiple, .empty :
-          newSet = Set <SymbolRoot> ()
+          newSet = Set <SymbolSegment> ()
         case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
-        removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
-        removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedSet)
-        removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
-        removeEBObserversOf_gridStyle_fromElementsOfSet (removedSet)
-        removeEBObserversOf_gridStep_fromElementsOfSet (removedSet)
-        removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
+        removeEBObserversOf_y1_fromElementsOfSet (removedSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedSet)
+        removeEBObserversOf_y2_fromElementsOfSet (removedSet)
+        removeEBObserversOf_x1_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
-        removeEBObserversOf_gridDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
-        addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
-        addEBObserversOf_horizontalFlip_toElementsOfSet (addedSet)
-        addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
-        addEBObserversOf_gridStyle_toElementsOfSet (addedSet)
-        addEBObserversOf_gridStep_toElementsOfSet (addedSet)
-        addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
+        addEBObserversOf_y1_toElementsOfSet (addedSet)
+        addEBObserversOf_x2_toElementsOfSet (addedSet)
+        addEBObserversOf_y2_toElementsOfSet (addedSet)
+        addEBObserversOf_x1_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
-        addEBObserversOf_gridDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -1031,30 +877,30 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: SymbolRoot
+//    To many relationship read write: SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
+class ReadWriteArrayOf_SymbolSegment : ReadOnlyArrayOf_SymbolSegment {
 
   //····················································································································
  
-  func setProp (_ value :  [SymbolRoot]) { } // Abstract method
+  func setProp (_ value :  [SymbolSegment]) { } // Abstract method
  
-  // var propval : [SymbolRoot] { return [] } // Abstract method
+  // var propval : [SymbolSegment] { return [] } // Abstract method
  
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SymbolRoot
+//    To many relationship: SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserverProtocol {
+final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolSegment?) -> Void > = nil
 
   //····················································································································
 
@@ -1093,8 +939,8 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
 
   //····················································································································
 
-  private var mSet = Set <SymbolRoot> ()
-  private var mValue = [SymbolRoot] () {
+  private var mSet = Set <SymbolSegment> ()
+  private var mValue = [SymbolSegment] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -1112,47 +958,45 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_gridDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : SymbolRoot in addedObjectSet {
+        for managedObject : SymbolSegment in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_gridDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
     }
   }
 
-  override var prop : EBSelection < [SymbolRoot] > { return .single (mValue) }
+  override var prop : EBSelection < [SymbolSegment] > { return .single (mValue) }
 
-  override func setProp (_ inValue : [SymbolRoot]) { mValue = inValue }
+  override func setProp (_ inValue : [SymbolSegment]) { mValue = inValue }
 
-  override var propval : [SymbolRoot] { return mValue }
+  override var propval : [SymbolSegment] { return mValue }
 
   //····················································································································
 
-  @objc func performUndo (_ oldValue : [SymbolRoot]) {
+  @objc func performUndo (_ oldValue : [SymbolSegment]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : SymbolRoot) {
+  func remove (_ object : SymbolSegment) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -1163,7 +1007,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : SymbolRoot) {
+  func add (_ object : SymbolSegment) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)

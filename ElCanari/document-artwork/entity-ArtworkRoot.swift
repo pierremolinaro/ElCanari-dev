@@ -539,28 +539,7 @@ class ArtworkRoot : EBManagedObject,
     self.drillDataFileExtension_property.mValueExplorer = nil
   //--- To many property: fileGenerationParameterArray
     self.fileGenerationParameterArray_property.mValueExplorer = nil
- //   self.selectedTab_property.mObserverExplorer = nil
- //   self.selectedTab_property.mValueExplorer = nil
- //   self.comments_property.mObserverExplorer = nil
- //   self.comments_property.mValueExplorer = nil
- //   self.minPPTPTTTWdisplayUnit_property.mObserverExplorer = nil
- //   self.minPPTPTTTWdisplayUnit_property.mValueExplorer = nil
- //   self.minPPTPTTTW_property.mObserverExplorer = nil
- //   self.minPPTPTTTW_property.mValueExplorer = nil
- //   self.minValueForOARdisplayUnit_property.mObserverExplorer = nil
- //   self.minValueForOARdisplayUnit_property.mValueExplorer = nil
- //   self.minValueForOARinEBUnit_property.mObserverExplorer = nil
- //   self.minValueForOARinEBUnit_property.mValueExplorer = nil
- //   self.minValueForPHDdisplayUnit_property.mObserverExplorer = nil
- //   self.minValueForPHDdisplayUnit_property.mValueExplorer = nil
- //   self.minValueForPHDinEBUnit_property.mObserverExplorer = nil
- //   self.minValueForPHDinEBUnit_property.mValueExplorer = nil
- //   self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer = nil
- //   self.minValueForBoardLimitWidthDisplayUnit_property.mValueExplorer = nil
- //   self.minValueForBoardLimitWidth_property.mObserverExplorer = nil
- //   self.minValueForBoardLimitWidth_property.mValueExplorer = nil
- //   self.drillDataFileExtension_property.mObserverExplorer = nil
- //   self.drillDataFileExtension_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 

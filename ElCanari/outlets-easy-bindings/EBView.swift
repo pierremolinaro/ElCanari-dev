@@ -101,6 +101,35 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
+  //    $underObjectsDisplay binding
+  //····················································································································
+
+  private var mUnderObjectsDisplayController : Controller_EBView_underObjectsDisplay?
+
+  func bind_underObjectsDisplay (_ objects:EBReadOnlyProperty_EBShape, file:String, line:Int) {
+    mUnderObjectsDisplayController = Controller_EBView_underObjectsDisplay (objects, outlet:self)
+  }
+
+  func unbind_underObjectsDisplay () {
+    mUnderObjectsDisplayController?.unregister ()
+    mUnderObjectsDisplayController = nil
+  }
+
+  //····················································································································
+
+  private var mUnderObjectsDisplay = EBShape ()
+
+  //····················································································································
+
+  func setUnderObjectsDisplay (_ inDisplay : EBShape) {
+    if self.mUnderObjectsDisplay != inDisplay {
+      self.setNeedsDisplay (self.mUnderObjectsDisplay.boundingBox)
+      self.setNeedsDisplay (inDisplay.boundingBox)
+    }
+    self.mUnderObjectsDisplay = inDisplay
+  }
+
+  //····················································································································
   //    $overObjectsDisplay binding
   //····················································································································
 
@@ -134,10 +163,10 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   override func draw (_ inDirtyRect: NSRect) {
+    self.mUnderObjectsDisplay.draw (inDirtyRect)
     for object in self.mObjectDisplayArray {
       object.draw (inDirtyRect)
     }
-    self.mOverObjectsDisplay.draw (inDirtyRect)
     self.selectionRectangleLayer?.draw (inDirtyRect)
     for shape in self.mSelectionShapes {
       shape.draw (inDirtyRect)
@@ -548,6 +577,39 @@ final class Controller_EBView_shiftArrowKeyMagnitude : EBSimpleController {
       mOutlet.set (shiftArrowKeyMagnitude:v)
     case .multiple :
       break
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_EBView_underObjectsDisplay
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class Controller_EBView_underObjectsDisplay : EBSimpleController {
+
+  private let mLayer : EBReadOnlyProperty_EBShape
+  private let mOutlet : EBView
+
+  //····················································································································
+
+  init (_ layer : EBReadOnlyProperty_EBShape, outlet : EBView) {
+    mLayer = layer
+    mOutlet = outlet
+    super.init (observedObjects:[layer], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+  }
+
+  //····················································································································
+
+  private func updateOutlet () {
+    switch mLayer.prop {
+    case .empty, .multiple :
+      mOutlet.setUnderObjectsDisplay (EBShape ())
+    case .single (let v) :
+      mOutlet.setUnderObjectsDisplay (v)
     }
   }
 

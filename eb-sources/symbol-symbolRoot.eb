@@ -1,9 +1,43 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+graphic entity SymbolSegment {
+  property @signature Int x1 default 2_286_00 ;
+  property @signature Int y1 default 2_286_00 ;
+  property @signature Int x2 default 9_154_00 ;
+  property @signature Int y2 default 9_154_00 ;
+  
+  transient EBShape objectDisplay dependsFrom
+     self.x1, self.y1, self.x2, self.y2, prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
+  ;
+  transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 entity SymbolRoot {
 #--- Selected page index
   property Int selectedPageIndex default 0 ;
+
+#--- Selected inspector
+  property Int selectedInspector default 0 ;
+  
+#--- Grid and display inspector
+  property Bool horizontalFlip default no ;
+  property Bool verticalFlip default no ;
+  property Int gridStyle default 2 ; # 0: No grid, 1: dots, 2: lines
+  property Int gridStep default 4 ;
+
+#--- Symbol definition
+  toMany @cascading @signature SymbolSegment symbolObjects ;
+
+#--- Grid display
+  transient EBShape gridDisplay dependsFrom
+    self.gridStyle, self.gridStep,
+    prefs.dotColorOfSymbolGrid, prefs.lineColorOfSymbolGrid
+  ;
 }
+
+
 
 #----------------------------------------------------------------------------*
 ##     S Y M B O L    D O C U M E N T                                         *

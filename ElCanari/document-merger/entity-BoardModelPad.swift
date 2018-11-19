@@ -302,18 +302,7 @@ class BoardModelPad : EBManagedObject,
   //--- Atomic property: x
     self.x_property.mObserverExplorer = nil
     self.x_property.mValueExplorer = nil
- //   self.y_property.mObserverExplorer = nil
- //   self.y_property.mValueExplorer = nil
- //   self.width_property.mObserverExplorer = nil
- //   self.width_property.mValueExplorer = nil
- //   self.height_property.mObserverExplorer = nil
- //   self.height_property.mValueExplorer = nil
- //   self.shape_property.mObserverExplorer = nil
- //   self.shape_property.mValueExplorer = nil
- //   self.rotation_property.mObserverExplorer = nil
- //   self.rotation_property.mValueExplorer = nil
- //   self.x_property.mObserverExplorer = nil
- //   self.x_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 

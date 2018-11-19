@@ -9,6 +9,12 @@ import Cocoa
 @objc(SymbolDocument) class SymbolDocument : EBManagedDocument {
 
   //····················································································································
+  //   Array controller: mSymbolObjectsController
+  //····················································································································
+
+  var mSymbolObjectsController = ArrayController_SymbolDocument_mSymbolObjectsController ()
+
+  //····················································································································
   //   Transient property: documentFilePath
   //····················································································································
 
@@ -36,7 +42,16 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  @IBOutlet var mAddSegmentButton : EBButton?
+  @IBOutlet var mComposedSymbolView : CanariViewWithZoomAndFlip?
+  @IBOutlet var mDisplayInspectorView : NSView?
+  @IBOutlet var mGridStep : EBPopUpButton?
+  @IBOutlet var mGridStyle : EBPopUpButton?
+  @IBOutlet var mHorizontalFlip : EBSwitch?
+  @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mSymbolZoomFlipInspectorView : NSView?
+  @IBOutlet var mVerticalFlip : EBSwitch?
 
   //····················································································································
   //    Multiple bindings controllers
@@ -73,6 +88,8 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+  //--- Array controller property: mSymbolObjectsController
+    self.mSymbolObjectsController.addExplorer (name: "mSymbolObjectsController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -105,6 +122,83 @@ import Cocoa
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
   //--------------------------- Outlet checking
+    if let outlet : Any = self.mAddSegmentButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mAddSegmentButton' outlet is not an instance of 'EBButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mAddSegmentButton' outlet is nil") ;
+    }
+    if let outlet : Any = self.mComposedSymbolView {
+      if !(outlet is CanariViewWithZoomAndFlip) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mComposedSymbolView' outlet is not an instance of 'CanariViewWithZoomAndFlip'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mComposedSymbolView' outlet is nil") ;
+    }
+    if let outlet : Any = self.mDisplayInspectorView {
+      if !(outlet is NSView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mDisplayInspectorView' outlet is not an instance of 'NSView'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mDisplayInspectorView' outlet is nil") ;
+    }
+    if let outlet : Any = self.mGridStep {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mGridStep' outlet is not an instance of 'EBPopUpButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mGridStep' outlet is nil") ;
+    }
+    if let outlet : Any = self.mGridStyle {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mGridStyle' outlet is not an instance of 'EBPopUpButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mGridStyle' outlet is nil") ;
+    }
+    if let outlet : Any = self.mHorizontalFlip {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mHorizontalFlip' outlet is not an instance of 'EBSwitch'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mHorizontalFlip' outlet is nil") ;
+    }
+    if let outlet : Any = self.mInspectorSegmentedControl {
+      if !(outlet is CanariSegmentedControl) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mInspectorSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mInspectorSegmentedControl' outlet is nil") ;
+    }
     if let outlet : Any = self.mPageSegmentedControl {
       if !(outlet is CanariSegmentedControl) {
         presentErrorWindow (file: #file,
@@ -116,10 +210,46 @@ import Cocoa
                           line: #line,
                           errorMessage: "the 'mPageSegmentedControl' outlet is nil") ;
     }
+    if let outlet : Any = self.mSymbolZoomFlipInspectorView {
+      if !(outlet is NSView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mSymbolZoomFlipInspectorView' outlet is not an instance of 'NSView'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mSymbolZoomFlipInspectorView' outlet is nil") ;
+    }
+    if let outlet : Any = self.mVerticalFlip {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mVerticalFlip' outlet is not an instance of 'EBSwitch'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mVerticalFlip' outlet is nil") ;
+    }
+  //--- Array controller property: mSymbolObjectsController
+    self.mSymbolObjectsController.setManagedObjectContext (self.managedObjectContext ())
+    self.mSymbolObjectsController.bind_model (self.rootObject.symbolObjects_property)
+    self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView)
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
+    mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
+    mHorizontalFlip?.bind_value (self.rootObject.horizontalFlip_property, file: #file, line: #line)
+    mVerticalFlip?.bind_value (self.rootObject.verticalFlip_property, file: #file, line: #line)
+    mGridStyle?.bind_selectedTag (self.rootObject.gridStyle_property, file: #file, line: #line)
+    mGridStep?.bind_selectedTag (self.rootObject.gridStep_property, file: #file, line: #line)
+    mComposedSymbolView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
+    mComposedSymbolView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
+    mComposedSymbolView?.bind_underObjectsDisplay (self.rootObject.gridDisplay_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
+    mAddSegmentButton?.target = self
+    mAddSegmentButton?.action = #selector (SymbolDocument.addSegmentAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -132,11 +262,32 @@ import Cocoa
   override func removeUserInterface () {
   //--------------------------- Unbind regular bindings
     mPageSegmentedControl?.unbind_selectedPage ()
+    mInspectorSegmentedControl?.unbind_selectedPage ()
+    mHorizontalFlip?.unbind_value ()
+    mVerticalFlip?.unbind_value ()
+    mGridStyle?.unbind_selectedTag ()
+    mGridStep?.unbind_selectedTag ()
+    mComposedSymbolView?.unbind_horizontalFlip ()
+    mComposedSymbolView?.unbind_verticalFlip ()
+    mComposedSymbolView?.unbind_underObjectsDisplay ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
+    self.mSymbolObjectsController.unbind_ebView (self.mComposedSymbolView)
+  //--- Array controller property: mSymbolObjectsController
+    self.mSymbolObjectsController.unbind_model ()
   //--------------------------- Remove targets / actions
+    mAddSegmentButton?.target = nil
   //--------------------------- Clean up outlets
+    self.mAddSegmentButton?.ebCleanUp ()
+    self.mComposedSymbolView?.ebCleanUp ()
+    self.mDisplayInspectorView?.ebCleanUp ()
+    self.mGridStep?.ebCleanUp ()
+    self.mGridStyle?.ebCleanUp ()
+    self.mHorizontalFlip?.ebCleanUp ()
+    self.mInspectorSegmentedControl?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mSymbolZoomFlipInspectorView?.ebCleanUp ()
+    self.mVerticalFlip?.ebCleanUp ()
   }
 
   //····················································································································

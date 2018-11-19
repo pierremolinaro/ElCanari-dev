@@ -216,7 +216,7 @@ class CanariViewWithZoomAndFlip : EBView {
   //  Zoom pop up button activation
   //····················································································································
 
-  func setZoomFromController (_ inZoom : Int, _ inActivate : Bool) {
+  func setZoom (_ inZoom : Int, activateZoomPopUpButton inActivate : Bool) {
     scaleToZoom (inZoom, mHorizontalFlip, mVerticalFlip)
     mZoom = inZoom
     mZoomPopUpButton?.isEnabled = inActivate
@@ -404,11 +404,11 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
   private func updateOutlet () {
     switch mZoom.prop {
     case .empty :
-      mOutlet.setZoomFromController (100, false)
+      mOutlet.setZoom (100, activateZoomPopUpButton: false)
     case .single (let v) :
-      mOutlet.setZoomFromController (v, true)
+      mOutlet.setZoom (v, activateZoomPopUpButton: true)
     case .multiple :
-      mOutlet.setZoomFromController (100, false)
+      mOutlet.setZoom (100, activateZoomPopUpButton: false)
     }
   }
 

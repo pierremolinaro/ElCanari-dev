@@ -557,14 +557,7 @@ class FontRoot : EBManagedObject,
     self.selectedInspector_property.mValueExplorer = nil
   //--- To many property: characters
     self.characters_property.mValueExplorer = nil
- //   self.comments_property.mObserverExplorer = nil
- //   self.comments_property.mValueExplorer = nil
- //   self.nominalSize_property.mObserverExplorer = nil
- //   self.nominalSize_property.mValueExplorer = nil
- //   self.selectedTab_property.mObserverExplorer = nil
- //   self.selectedTab_property.mValueExplorer = nil
- //   self.selectedInspector_property.mObserverExplorer = nil
- //   self.selectedInspector_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 

@@ -507,16 +507,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //--- To one property: myRoot
     self.myRoot_property.mObserverExplorer = nil
     self.myRoot_property.mValueExplorer = nil
- //   self.x_property.mObserverExplorer = nil
- //   self.x_property.mValueExplorer = nil
- //   self.y_property.mObserverExplorer = nil
- //   self.y_property.mValueExplorer = nil
- //   self.instanceRotation_property.mObserverExplorer = nil
- //   self.instanceRotation_property.mValueExplorer = nil
- //   self.myModel_property.mObserverExplorer = nil
- //   self.myModel_property.mValueExplorer = nil
- //   self.myRoot_property.mObserverExplorer = nil
- //   self.myRoot_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 

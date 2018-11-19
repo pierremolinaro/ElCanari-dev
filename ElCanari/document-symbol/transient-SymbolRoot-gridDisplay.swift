@@ -11,12 +11,54 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontCharacter_characterIsDefined (
-       _ self_advance : Int,                     
-       _ self_segments_count : Int
-) -> Bool {
+func transient_SymbolRoot_gridDisplay (
+       _ self_gridStyle : Int,         
+       _ self_gridStep : Int,          
+       _ prefs_dotColorOfSymbolGrid : NSColor,
+       _ prefs_lineColorOfSymbolGrid : NSColor
+) -> EBShape {
 //--- START OF USER ZONE 2
-  return (self_advance > 0) || (self_segments_count > 0)
+  let mils25 : CGFloat = 25.0 * 72.0 / 1000.0
+  let N = 25
+  let shape = EBShape ()
+  if self_gridStyle == 1 { // Dots
+    let bp = NSBezierPath ()
+    bp.lineWidth = 0.0
+    bp.lineCapStyle = .round
+    var x = 0
+    while x <= N {
+      let xf = CGFloat (x) * mils25
+      var y = 0
+      while y <= N {
+        let yf = CGFloat (y) * mils25
+//        bp.move (to: NSPoint (x: xf, y: yf))
+//        bp.line (to: NSPoint (x: xf, y: yf))
+        let r = CGRect (x: xf - 0.5, y: yf - 0.5, width: 1.0, height: 1.0)
+        bp.appendOval (in: r)
+        y += self_gridStep
+      }
+      x += self_gridStep
+    }
+    shape.append (shape: EBFilledBezierPathShape ([bp], prefs_dotColorOfSymbolGrid))
+  }else if self_gridStyle == 2 { // Lines
+    let bp = NSBezierPath ()
+    bp.lineWidth = 0.0
+    bp.lineCapStyle = .round
+    var x = 0
+    while x <= N {
+      bp.move (to: NSPoint (x: CGFloat (x) *  mils25, y: 0.0))
+      bp.line (to: NSPoint (x: CGFloat (x) *  mils25, y: CGFloat (N) *  mils25))
+      x += self_gridStep
+    }
+    var y = 0
+    while y <= N {
+      bp.move (to: NSPoint (x: 0.0,                   y: CGFloat (y) *  mils25))
+      bp.line (to: NSPoint (x: CGFloat (N) *  mils25, y: CGFloat (y) *  mils25))
+      y += self_gridStep
+    }
+    shape.append (shape: EBStrokeBezierPathShape ([bp], prefs_lineColorOfSymbolGrid))
+  }
+  return shape
 //--- END OF USER ZONE 2
 }
 

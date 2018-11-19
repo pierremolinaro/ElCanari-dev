@@ -3,6 +3,39 @@
 document SymbolDocument root SymbolRoot {
 #--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
+
+
+#--------- Page : Symbol
+#--- Inspector segment control
+  outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
+
+#--- Zoom and Flip Inspector
+  outlet NSView mSymbolZoomFlipInspectorView ;
+  outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
+  outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
+  outlet EBPopUpButton mGridStyle $selectedTag root.gridStyle ;
+  outlet EBPopUpButton mGridStep $selectedTag root.gridStep ;
+
+#  outlet symbolHorizontalFlipButton : NSButton $value root.symbolHorizontalFlip;
+#  outlet symbolVerticalFlipButton : NSButton $value root.symbolVerticalFlip;
+
+#--- Display Inspector
+  outlet NSView mDisplayInspectorView ;
+#  outlet displaysShadowsCheckbox : NSButton $value root.displaysShadows ;
+
+#--- Buttons for new elements
+  action addSegmentAction ;
+  outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
+
+#--- Symbol display
+  arrayController mSymbolObjectsController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.symbolObjects ;
+  outlet CanariViewWithZoomAndFlip mComposedSymbolView
+#    $size root.boardWidth, root.boardHeight
+    $horizontalFlip root.horizontalFlip
+    $verticalFlip root.verticalFlip
+    $underObjectsDisplay root.gridDisplay
+    $graphicController self.mSymbolObjectsController
+  ;
 }
 
 #----------------------------------------------------------------------------*
