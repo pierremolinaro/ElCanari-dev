@@ -37,6 +37,7 @@ class SymbolObjectsView : CanariViewWithZoomAndFlip {
     let mils25 : CGFloat = 25.0 * 72.0 / 1000.0
     self.set (arrowKeyMagnitude : mils25)
     self.set (shiftArrowKeyMagnitude : mils25 * 4.0)
+    self.mDraggingObjectsIsAlignedOnArrowKeyMagnitude = true
   }
 
   //····················································································································

@@ -58,14 +58,33 @@ extension SymbolSegment {
   }
 
   //····················································································································
+  //  Knob
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: CGFloat, yBy inDy: CGFloat) {
+  override func canMove (knob inKnobIndex : Int, by inValue: CGPoint) -> Bool {
+    var accept = false
     if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_1 {
-      self.x1 += cocoaToCanariUnit (inDx)
-      self.y1 += cocoaToCanariUnit (inDy)
+      let newX = self.x1 + cocoaToCanariUnit (inValue.x)
+      let newY = self.y1 + cocoaToCanariUnit (inValue.y)
+      accept = (newX >= 0) && (newY >= 0)
     }else if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_2 {
-      self.x2 += cocoaToCanariUnit (inDx)
-      self.y2 += cocoaToCanariUnit (inDy)
+      let newX = self.x2 + cocoaToCanariUnit (inValue.x)
+      let newY = self.y2 + cocoaToCanariUnit (inValue.y)
+      accept = (newX >= 0) && (newY >= 0)
+    }
+    return accept
+ }
+
+  //····················································································································
+
+  override func move (knob inKnobIndex : Int, by inTranslation: CGPoint) {
+    if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_1 {
+      self.x1 += cocoaToCanariUnit (inTranslation.x)
+      self.y1 += cocoaToCanariUnit (inTranslation.y)
+    }else if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_2 {
+      self.x2 += cocoaToCanariUnit (inTranslation.x)
+      self.y2 += cocoaToCanariUnit (inTranslation.y)
     }
   }
 
