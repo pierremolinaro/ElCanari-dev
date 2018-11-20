@@ -146,7 +146,7 @@ document MergerDocument root MergerRoot {
   tableViewController mBoardModelController {allowsEmptySelection:no, allowsMultipleSelection:no} root.boardModels {
      column "name" sort name EBTextField $value self.name {sendContinously:no}
   }
-  selectionController mBoardModelSelection : self.mBoardModelController.selectedArray ;
+  selectionController BoardModel mBoardModelSelection : self.mBoardModelController.selectedArray ;
 
 #--- Artwork model name
   outlet EBTextObserverField mArtworkNameTextField $valueObserver mBoardModelSelection.artworkName ;
@@ -261,7 +261,7 @@ document MergerDocument root MergerRoot {
 
 #--- Composed Board View
   arrayController mBoardInstanceController : root.boardInstances ;
-  selectionController mBoardInstanceSelection : self.mBoardInstanceController.selectedArray ;
+  selectionController MergerBoardInstance mBoardInstanceSelection : self.mBoardInstanceController.selectedArray ;
   outlet CanariViewWithZoomAndFlip mComposedBoardView
     $size root.boardWidth, root.boardHeight
     $zoom root.zoom

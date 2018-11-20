@@ -62,7 +62,8 @@ document PMArtworkDocument root ArtworkRoot {
   outlet EBButton mAddGenerationFileButton $run mDataController.add ;
   outlet EBButton mRemoveGenerationFileButton $run mDataController.remove $enabled mDataController.selectedArray.count > 0 ;
 
-  selectionController mDataSelection : self.mDataController.selectedArray ;
+  selectionController ArtworkFileGenerationParameters mDataSelection : self.mDataController.selectedArray ;
+
   outlet EBTextField mExtensionTextField $value mDataSelection.fileExtension {sendContinously:no} ;
   outlet EBSwitch mDrawBoardInternalLimitsSwitch $value mDataSelection.drawInternalBoardLimits ;
   outlet EBSwitch mDrawBoardLimitsSwitch $value mDataSelection.drawBoardLimits ;

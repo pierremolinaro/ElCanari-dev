@@ -947,18 +947,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<String> ()
+          var s = Set <String> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.artworkName_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.artworkName_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1017,18 +1019,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backComponentNameSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backComponentNameSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1057,18 +1061,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backComponentNamesBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backComponentNamesBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1097,18 +1103,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backComponentValueSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backComponentValueSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1137,18 +1145,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backComponentValuesBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backComponentValuesBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1177,18 +1187,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backLayoutTextsBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backLayoutTextsBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1217,18 +1229,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backLayoutTextsSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backLayoutTextsSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1257,18 +1271,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backLegendLinesBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backLegendLinesBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1297,18 +1313,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backLegendLinesSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backLegendLinesSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1337,18 +1355,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backLegendTextsBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backLegendTextsBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1377,18 +1397,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backLegendTextsSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backLegendTextsSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1417,18 +1439,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backPackagesBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backPackagesBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1457,18 +1481,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backPackagesSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backPackagesSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1497,18 +1523,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerPadArray> ()
+          var s = Set <MergerPadArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backPadArray_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backPadArray_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1537,18 +1565,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backPadsBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backPadsBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1577,18 +1607,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backTrackSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backTrackSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1617,18 +1649,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.backTracksBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.backTracksBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1657,18 +1691,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerBoardLimits> ()
+          var s = Set <MergerBoardLimits> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.boardLimits_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.boardLimits_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1697,18 +1733,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.boardLimitsBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.boardLimitsBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1737,18 +1775,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drillSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.drillSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1777,18 +1817,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontComponentNameSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontComponentNameSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1817,18 +1859,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontComponentNamesBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontComponentNamesBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1857,18 +1901,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontComponentValueSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontComponentValueSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1897,18 +1943,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontComponentValuesBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontComponentValuesBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1937,18 +1985,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontLayoutTextsBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontLayoutTextsBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1977,18 +2027,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontLayoutTextsSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontLayoutTextsSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2017,18 +2069,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontLegendLinesBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontLegendLinesBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2057,18 +2111,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontLegendLinesSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontLegendLinesSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2097,18 +2153,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontLegendTextsBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontLegendTextsBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2137,18 +2195,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontLegendTextsSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontLegendTextsSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2177,18 +2237,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontPackagesBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontPackagesBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2217,18 +2279,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontPackagesSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontPackagesSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2257,18 +2321,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerPadArray> ()
+          var s = Set <MergerPadArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontPadArray_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontPadArray_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2297,18 +2363,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontPadsBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontPadsBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2337,18 +2405,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontTrackSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontTrackSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2377,18 +2447,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.frontTracksBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.frontTracksBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2417,18 +2489,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.holesBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.holesBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2457,18 +2531,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<EBShape> ()
+          var s = Set <EBShape> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.imageForInstances_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.imageForInstances_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2497,18 +2573,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<EBShape> ()
+          var s = Set <EBShape> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.imageForModel_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.imageForModel_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2537,18 +2615,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.instanceCount_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.instanceCount_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2577,18 +2657,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.internalBoardsLimitsBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.internalBoardsLimitsBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2617,18 +2699,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerSegmentArray> ()
+          var s = Set <MergerSegmentArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.internalBoardsLimitsSegments_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.internalBoardsLimitsSegments_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2657,18 +2741,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.modelHeight_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.modelHeight_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2727,18 +2813,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.modelHeightUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.modelHeightUnit_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2797,18 +2885,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.modelLimitWidth_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.modelLimitWidth_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2867,18 +2957,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.modelLimitWidthUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.modelLimitWidthUnit_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2937,18 +3029,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.modelWidth_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.modelWidth_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -3007,18 +3101,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.modelWidthUnit_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.modelWidthUnit_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -3077,18 +3173,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<String> ()
+          var s = Set <String> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.name_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.name_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -3147,18 +3245,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<MergerViaShapeArray> ()
+          var s = Set <MergerViaShapeArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.viaShapes_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.viaShapes_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -3187,18 +3287,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<BezierPathArray> ()
+          var s = Set <BezierPathArray> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.viasBezierPaths_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.viasBezierPaths_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -3227,18 +3329,20 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.zoom_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? BoardModel {
+              switch baseObject.zoom_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {

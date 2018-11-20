@@ -602,18 +602,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawBoardLimits_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawBoardLimits_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -672,18 +674,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawComponentNamesBottomSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawComponentNamesBottomSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -742,18 +746,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawComponentNamesTopSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawComponentNamesTopSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -812,18 +818,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawComponentValuesBottomSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawComponentValuesBottomSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -882,18 +890,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawComponentValuesTopSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawComponentValuesTopSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -952,18 +962,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawInternalBoardLimits_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawInternalBoardLimits_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1022,18 +1034,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawPackageLegendBottomSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawPackageLegendBottomSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1092,18 +1106,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawPackageLegendTopSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawPackageLegendTopSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1162,18 +1178,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawPadHolesInPDF_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawPadHolesInPDF_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1232,18 +1250,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawPadsBottomSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawPadsBottomSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1302,18 +1322,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawPadsTopSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawPadsTopSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1372,18 +1394,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawTextsLayoutBottomSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawTextsLayoutBottomSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1442,18 +1466,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawTextsLayoutTopSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawTextsLayoutTopSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1512,18 +1538,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawTextsLegendBottomSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawTextsLegendBottomSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1582,18 +1610,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawTextsLegendTopSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawTextsLegendTopSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1652,18 +1682,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawTracksBottomSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawTracksBottomSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1722,18 +1754,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawTracksTopSide_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawTracksTopSide_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1792,18 +1826,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.drawVias_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.drawVias_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1862,18 +1898,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<String> ()
+          var s = Set <String> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.fileExtension_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.fileExtension_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1932,18 +1970,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Bool> ()
+          var s = Set <Bool> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.horizontalMirror_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.horizontalMirror_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2002,18 +2042,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.measurementUnitForPadHoleInPDF_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.measurementUnitForPadHoleInPDF_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2072,18 +2114,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<String> ()
+          var s = Set <String> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.name_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.name_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2142,18 +2186,20 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.padHoleDiameterInPDF_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? ArtworkFileGenerationParameters {
+              switch baseObject.padHoleDiameterInPDF_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {

@@ -255,18 +255,20 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.boardLimitWidth_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? MergerBoardInstance {
+              switch baseObject.boardLimitWidth_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -295,18 +297,20 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<CanariHorizontalRect> ()
+          var s = Set <CanariHorizontalRect> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.instanceRect_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? MergerBoardInstance {
+              switch baseObject.instanceRect_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -335,18 +339,20 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<QuadrantRotation> ()
+          var s = Set <QuadrantRotation> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.instanceRotation_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? MergerBoardInstance {
+              switch baseObject.instanceRotation_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -405,18 +411,20 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<String> ()
+          var s = Set <String> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.modelName_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? MergerBoardInstance {
+              switch baseObject.modelName_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -445,18 +453,20 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<EBShape> ()
+          var s = Set <EBShape> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.objectDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? MergerBoardInstance {
+              switch baseObject.objectDisplay_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -485,18 +495,20 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<EBShape> ()
+          var s = Set <EBShape> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.selectionDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? MergerBoardInstance {
+              switch baseObject.selectionDisplay_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -525,18 +537,20 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.x_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? MergerBoardInstance {
+              switch baseObject.x_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -595,18 +609,20 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.y_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? MergerBoardInstance {
+              switch baseObject.y_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {

@@ -39,7 +39,7 @@ document PMFontDocument root FontRoot {
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
   tableViewController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
-  selectionController mCharacterSelection : self.mSelectedCharacterController.selectedArray ;
+  selectionController FontCharacter mCharacterSelection : self.mSelectedCharacterController.selectedArray ;
 
 #--- Advancement
   outlet EBIntField advancementTextField $value mCharacterSelection.advance {sendContinously:yes, autoFormatter:yes} ;

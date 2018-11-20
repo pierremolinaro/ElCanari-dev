@@ -204,18 +204,20 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.advance_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? FontCharacter {
+              switch baseObject.advance_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -274,18 +276,20 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<Int> ()
+          var s = Set <Int> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.codePoint_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? FontCharacter {
+              switch baseObject.codePoint_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -344,18 +348,20 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<CharacterGerberCodeClass> ()
+          var s = Set <CharacterGerberCodeClass> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.gerberCode_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? FontCharacter {
+              switch baseObject.gerberCode_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -384,18 +390,20 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<String> ()
+          var s = Set <String> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.gerberCodeInstructionCountMessage_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? FontCharacter {
+              switch baseObject.gerberCodeInstructionCountMessage_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -424,18 +432,20 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set<CharacterSegmentListClass> ()
+          var s = Set <CharacterSegmentListClass> ()
           var isMultipleSelection = false
-          for object in v {
-            switch object.segmentArrayForDrawing_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
+          for baseObject in v {
+//            if let object = baseObject as? FontCharacter {
+              switch baseObject.segmentArrayForDrawing_property_selection {
+              case .empty :
+                return .empty
+              case .multiple :
+                isMultipleSelection = true
+              case .single (let vProp) :
+                s.insert (vProp)
+              }
             }
-          }
+//          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
