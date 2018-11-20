@@ -26,9 +26,9 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
     )
     super.init ()
   //--- Set selected array compute function
-    setSelectedArrayComputeFunction ()
+    self.setSelectedArrayComputeFunction ()
   //--- Set sorted array compute function
-    setFilterAndSortFunction ()
+    self.setFilterAndSortFunction ()
   }
 
   //····················································································································

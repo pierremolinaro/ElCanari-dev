@@ -20,9 +20,9 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   override init () {
     mSelectedSet = SelectedSet_SymbolDocument_mSymbolObjectsController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.objectArray_property
+      allowsEmptySelection: true,
+      allowsMultipleSelection: true,
+      sortedArray: self.objectArray_property
     )
     super.init ()
     self.mSelectedSet.set (callBack: { [weak self] in self?.computeSelectionShape () } )
@@ -60,7 +60,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
     }
     self.mSelectedSet.addEBObserver (self.canSendToBack_property)
   //--- Set selected array compute function
-    setSelectedArrayComputeFunction ()
+    self.setSelectedArrayComputeFunction ()
   }
 
   //····················································································································
@@ -69,13 +69,6 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   let objectArray_property = TransientArrayOf_SymbolSegment ()
 
-  //····················································································································
-  //    Attributes
-  //····················································································································
-
-  private let allowsEmptySelection = true
-  private let allowsMultipleSelection = true
-  
   //····················································································································
   //    Model
   //····················································································································

@@ -28,7 +28,7 @@ document SymbolDocument root SymbolRoot {
   outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
 
 #--- Symbol display
-  arrayController mSymbolObjectsController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.symbolObjects ;
+  arrayController mSymbolObjectsController : root.symbolObjects ;
   outlet CanariViewWithZoomAndFlip mComposedSymbolView
 #    $size root.boardWidth, root.boardHeight
     $horizontalFlip root.horizontalFlip

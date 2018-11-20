@@ -12,7 +12,7 @@ private let DEBUG_EVENT = false
 //    ArrayController_FontRoot_selectedCharacterController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBTableViewDelegate, EBTableViewDataSource {
+final class ArrayController_FontRoot_selectedCharacterController : EBObject {
  
   //····················································································································
   //    init
@@ -20,50 +20,21 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
 
   override init () {
     mSelectedSet = SelectedSet_FontRoot_selectedCharacterController (
-      allowsEmptySelection:allowsEmptySelection,
-      allowsMultipleSelection:allowsMultipleSelection,
-      sortedArray:self.sortedArray_property
+      allowsEmptySelection: true,
+      allowsMultipleSelection: true,
+      sortedArray: self.objectArray_property
     )
     super.init ()
   //--- Set selected array compute function
-    setSelectedArrayComputeFunction ()
-  //--- Set sorted array compute function
-    setFilterAndSortFunction ()
+    self.setSelectedArrayComputeFunction ()
   }
 
   //····················································································································
-  //    Sort Array
+  //    Object Array
   //····················································································································
 
-  let sortedArray_property = TransientArrayOf_FontCharacter ()
+  let objectArray_property = TransientArrayOf_FontCharacter ()
 
-  //····················································································································
-
-  private var mSortDescriptorArray = [(String, Bool)] () { // Key, ascending
-    didSet {
-      self.sortedArray_property.postEvent ()
-      for tableView in mTableViewArray {
-        var first = true
-        for (key, ascending) in mSortDescriptorArray {
-          if let column = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: key)) {
-            tableView.setIndicatorImage (
-              first ? (ascending ? NSImage (named: NSImage.Name ("NSAscendingSortIndicator"))! : NSImage (named: NSImage.Name ("NSDescendingSortIndicator"))!) : nil,
-              in:column
-            )
-            first = false
-          }
-        }
-      }
-    }
-  }
-
-  //····················································································································
-  //    Attributes
-  //····················································································································
-
-  private let allowsEmptySelection = true
-  private let allowsMultipleSelection = false
-  
   //····················································································································
   //    Model
   //····················································································································
@@ -81,25 +52,17 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
 
   func bind_model (_ inModel:ReadWriteArrayOf_FontCharacter) {
     self.mModel = inModel
-    inModel.addEBObserver (self.sortedArray_property)
-    self.sortedArray_property.addEBObserver (mSelectedSet)
+    inModel.addEBObserver (self.objectArray_property)
+    self.objectArray_property.addEBObserver (mSelectedSet)
     mSelectedSet.addEBObserver (self.selectedArray_property)
-  //--- Add observed properties (for filtering and sorting)
   }
 
   //····················································································································
 
   func unbind_model () {
-    self.mModel?.removeEBObserver (self.sortedArray_property)
-    self.sortedArray_property.removeEBObserver (mSelectedSet)
+    self.mModel?.removeEBObserver (self.objectArray_property)
+    self.objectArray_property.removeEBObserver (mSelectedSet)
     self.mSelectedSet.removeEBObserver (self.selectedArray_property)
-  //--- Remove observed properties (for filtering and sorting)
-    for tvc in mTableViewDataSourceControllerArray {
-      self.sortedArray_property.removeEBObserver (tvc)
-    }
-    for tvc in mTableViewSelectionControllerArray {
-      mSelectedSet.removeEBObserver (tvc)
-    }
   //---
     mSelectedSet.mSet = Set ()
     mModel = nil
@@ -162,7 +125,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
   private final func setSelectedArrayComputeFunction () {
     self.selectedArray_property.readModelFunction = { [weak self] in
       if let me = self {
-        switch me.sortedArray_property.prop {
+        switch me.objectArray_property.prop {
         case .empty :
           return .empty
         case .multiple :
@@ -183,25 +146,6 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
   }
 
   //····················································································································
-
-  private final func setFilterAndSortFunction () {
-    self.sortedArray_property.readModelFunction = { [weak self] in
-      if let me = self, let model = me.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          return .single (modelArray)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //····················································································································
   //    Explorer
   //····················································································································
 
@@ -209,61 +153,9 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
   }
 
   //····················································································································
-  //    bind_tableView
-  //····················································································································
-
-  private var mTableViewDataSourceControllerArray = [DataSource_EBTableView_controller] ()
-  private var mTableViewSelectionControllerArray = [Selection_EBTableView_controller] ()
-  private var mTableViewArray = [EBTableView] ()
-
-  //····················································································································
-
-  func bind_tableView (_ inTableView : EBTableView?, file : String, line : Int) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
-    if let tableView = inTableView {
-      tableView.allowsEmptySelection = allowsEmptySelection
-      tableView.allowsMultipleSelection = allowsMultipleSelection
-      tableView.dataSource = self
-      tableView.delegate = self
-    //--- Set table view data source controller
-      let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
-      self.sortedArray_property.addEBObserver (dataSourceTableViewController)
-      mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
-    //--- Set table view selection controller
-      let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
-       mSelectedSet.addEBObserver (selectionTableViewController)
-      mTableViewSelectionControllerArray.append (selectionTableViewController)
-    //--- Set descriptors from first column of table view
-      var newSortDescriptorArray = [(String, Bool)] ()
-      for column in tableView.tableColumns {
-        newSortDescriptorArray.append ((column.identifier.rawValue, true)) // Ascending
-      }
-      mSortDescriptorArray = newSortDescriptorArray
-      mTableViewArray.append (tableView)
-    }
-  }
-
-  //····················································································································
- 
-  func unbind_tableView (_ inTableView : EBTableView?) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
-    if let tableView = inTableView, let idx = self.mTableViewArray.index (of:tableView) {
-      self.sortedArray_property.removeEBObserver (self.mTableViewDataSourceControllerArray [idx])
-      self.mSelectedSet.removeEBObserver (self.mTableViewSelectionControllerArray [idx])
-      self.mTableViewArray.remove (at: idx)
-      self.mTableViewDataSourceControllerArray.remove (at: idx)
-      self.mTableViewSelectionControllerArray.remove (at: idx)
-    }
-  }
-
- //····················································································································
 
   func selectedObjectIndexSet () -> NSIndexSet {
-    switch self.sortedArray_property.prop {
+    switch self.objectArray_property.prop {
     case .empty, .multiple :
        return NSIndexSet ()
     case .single (let v) :
@@ -282,72 +174,6 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
     }
   }
 
-  //····················································································································
-  //    T A B L E V I E W    D A T A S O U R C E : numberOfRows (in:)
-  //····················································································································
-
-  func numberOfRows (in _ : NSTableView) -> Int {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
-    switch self.sortedArray_property.prop {
-    case .empty, .multiple :
-      return 0
-    case .single (let v) :
-      return v.count
-    }
-  }
-
-  //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
-  //····················································································································
-
-  func tableViewSelectionDidChange (_ notification : Notification) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
-    switch self.sortedArray_property.prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      let tableView = notification.object as! EBTableView
-      var newSelectedObjectSet = Set <FontCharacter> ()
-      for index in tableView.selectedRowIndexes {
-        newSelectedObjectSet.insert (v.objectAtIndex (index, file: #file, line: #line))
-      }
-      mSelectedSet.mSet = newSelectedObjectSet
-    }
-  }
-
-  //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:mouseDownInHeaderOfTableColumn:
-  //····················································································································
-
-  func tableView (_ tableView: NSTableView, mouseDownInHeaderOf inTableColumn: NSTableColumn) {
-    var newSortDescriptorArray = [(String, Bool)] ()
-    for (columnName, ascending) in mSortDescriptorArray {
-      if inTableColumn.identifier == NSUserInterfaceItemIdentifier (columnName) {
-        newSortDescriptorArray.insert ((columnName, !ascending), at:0)
-      }else{
-        newSortDescriptorArray.append ((columnName, !ascending))
-      }
-    }
-    mSortDescriptorArray = newSortDescriptorArray
-  }
-
-  //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
-  //····················································································································
-
-  func tableView (_ tableView : NSTableView,
-                  viewFor inTableColumn: NSTableColumn?,
-                  row inRowIndex: Int) -> NSView? {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
-    return nil 
-  }
- 
   //····················································································································
   //    select
   //····················································································································
@@ -405,7 +231,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject, EBT
       case .empty, .multiple :
         break
       case .single (let model_prop) :
-        switch self.sortedArray_property.prop {
+        switch self.objectArray_property.prop {
         case .empty, .multiple :
           break
         case .single (let sortedArray_prop) :

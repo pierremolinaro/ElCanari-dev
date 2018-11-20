@@ -260,7 +260,7 @@ document MergerDocument root MergerRoot {
  outlet EBTextField mEmptyBoardMessage $hidden root.boardInstances.count > 0 ;
 
 #--- Composed Board View
-  tableViewController mBoardInstanceController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.boardInstances ;
+  arrayController mBoardInstanceController : root.boardInstances ;
   selectionController mBoardInstanceSelection : self.mBoardInstanceController.selectedArray ;
   outlet CanariViewWithZoomAndFlip mComposedBoardView
     $size root.boardWidth, root.boardHeight
