@@ -13,7 +13,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   private var mModel : ReadOnlyArrayOf_BoardModel?
 
   //····················································································································
-  //   SELECTION OBSERVABLE PROPERTIES
+  //   Selection observable property: artworkName
   //····················································································································
 
   var artworkName_property = EBPropertyProxy_String ()
@@ -23,6 +23,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.artworkName_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backComponentNameSegments
+  //····················································································································
+
   var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -30,6 +35,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backComponentNameSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backComponentNames
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: backComponentNamesBezierPaths
+  //····················································································································
+
   var backComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -37,6 +51,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backComponentNamesBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backComponentValueSegments
+  //····················································································································
+
   var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -44,6 +63,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backComponentValueSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backComponentValues
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: backComponentValuesBezierPaths
+  //····················································································································
+
   var backComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -51,6 +79,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backComponentValuesBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backLayoutTexts
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: backLayoutTextsBezierPaths
+  //····················································································································
+
   var backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -58,6 +95,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backLayoutTextsBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backLayoutTextsSegments
+  //····················································································································
+
   var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -65,6 +107,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backLayoutTextsSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backLegendLines
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: backLegendLinesBezierPaths
+  //····················································································································
+
   var backLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -72,6 +123,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backLegendLinesBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backLegendLinesSegments
+  //····················································································································
+
   var backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -79,6 +135,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backLegendLinesSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backLegendTexts
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: backLegendTextsBezierPaths
+  //····················································································································
+
   var backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -86,6 +151,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backLegendTextsBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backLegendTextsSegments
+  //····················································································································
+
   var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -93,6 +163,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backLegendTextsSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backPackages
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: backPackagesBezierPaths
+  //····················································································································
+
   var backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -100,6 +179,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backPackagesBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backPackagesSegments
+  //····················································································································
+
   var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -107,6 +191,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backPackagesSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backPadArray
+  //····················································································································
+
   var backPadArray_property = EBTransientProperty_MergerPadArray ()
 
   var backPadArray_property_selection : EBSelection <MergerPadArray> {
@@ -114,6 +203,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backPadArray_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backPads
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: backPadsBezierPaths
+  //····················································································································
+
   var backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -121,6 +219,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backPadsBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backTrackSegments
+  //····················································································································
+
   var backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -128,6 +231,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backTrackSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: backTracks
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: backTracksBezierPaths
+  //····················································································································
+
   var backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -135,6 +247,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.backTracksBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: boardLimits
+  //····················································································································
+
   var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
 
   var boardLimits_property_selection : EBSelection <MergerBoardLimits> {
@@ -142,6 +259,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.boardLimits_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: boardLimitsBezierPaths
+  //····················································································································
+
   var boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var boardLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -149,6 +271,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.boardLimitsBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: drillSegments
+  //····················································································································
+
   var drillSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var drillSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -156,6 +283,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.drillSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: drills
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: frontComponentNameSegments
+  //····················································································································
+
   var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -163,6 +299,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontComponentNameSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontComponentNames
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: frontComponentNamesBezierPaths
+  //····················································································································
+
   var frontComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -170,6 +315,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontComponentNamesBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontComponentValueSegments
+  //····················································································································
+
   var frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -177,6 +327,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontComponentValueSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontComponentValues
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: frontComponentValuesBezierPaths
+  //····················································································································
+
   var frontComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -184,6 +343,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontComponentValuesBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontLayoutTexts
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: frontLayoutTextsBezierPaths
+  //····················································································································
+
   var frontLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -191,6 +359,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontLayoutTextsBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontLayoutTextsSegments
+  //····················································································································
+
   var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -198,6 +371,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontLayoutTextsSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontLegendLines
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: frontLegendLinesBezierPaths
+  //····················································································································
+
   var frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -205,6 +387,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontLegendLinesBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontLegendLinesSegments
+  //····················································································································
+
   var frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -212,6 +399,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontLegendLinesSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontLegendTexts
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: frontLegendTextsBezierPaths
+  //····················································································································
+
   var frontLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -219,6 +415,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontLegendTextsBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontLegendTextsSegments
+  //····················································································································
+
   var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -226,6 +427,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontLegendTextsSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontPackages
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: frontPackagesBezierPaths
+  //····················································································································
+
   var frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -233,6 +443,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontPackagesBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontPackagesSegments
+  //····················································································································
+
   var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -240,6 +455,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontPackagesSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontPadArray
+  //····················································································································
+
   var frontPadArray_property = EBTransientProperty_MergerPadArray ()
 
   var frontPadArray_property_selection : EBSelection <MergerPadArray> {
@@ -247,6 +467,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontPadArray_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontPads
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: frontPadsBezierPaths
+  //····················································································································
+
   var frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -254,6 +483,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontPadsBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontTrackSegments
+  //····················································································································
+
   var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -261,6 +495,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontTrackSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: frontTracks
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: frontTracksBezierPaths
+  //····················································································································
+
   var frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -268,6 +511,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.frontTracksBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: holesBezierPaths
+  //····················································································································
+
   var holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var holesBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -275,6 +523,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.holesBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: imageForInstances
+  //····················································································································
+
   var imageForInstances_property = EBTransientProperty_EBShape ()
 
   var imageForInstances_property_selection : EBSelection <EBShape> {
@@ -282,6 +535,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.imageForInstances_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: imageForModel
+  //····················································································································
+
   var imageForModel_property = EBTransientProperty_EBShape ()
 
   var imageForModel_property_selection : EBSelection <EBShape> {
@@ -289,6 +547,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.imageForModel_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: instanceCount
+  //····················································································································
+
   var instanceCount_property = EBTransientProperty_Int ()
 
   var instanceCount_property_selection : EBSelection <Int> {
@@ -296,6 +559,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.instanceCount_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: internalBoardsLimits
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: internalBoardsLimitsBezierPaths
+  //····················································································································
+
   var internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var internalBoardsLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -303,6 +575,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.internalBoardsLimitsBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: internalBoardsLimitsSegments
+  //····················································································································
+
   var internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var internalBoardsLimitsSegments_property_selection : EBSelection <MergerSegmentArray> {
@@ -310,6 +587,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.internalBoardsLimitsSegments_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: modelHeight
+  //····················································································································
+
   var modelHeight_property = EBPropertyProxy_Int ()
 
   var modelHeight_property_selection : EBSelection <Int> {
@@ -317,6 +599,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.modelHeight_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: modelHeightUnit
+  //····················································································································
+
   var modelHeightUnit_property = EBPropertyProxy_Int ()
 
   var modelHeightUnit_property_selection : EBSelection <Int> {
@@ -324,6 +611,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.modelHeightUnit_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: modelLimitWidth
+  //····················································································································
+
   var modelLimitWidth_property = EBPropertyProxy_Int ()
 
   var modelLimitWidth_property_selection : EBSelection <Int> {
@@ -331,6 +623,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.modelLimitWidth_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: modelLimitWidthUnit
+  //····················································································································
+
   var modelLimitWidthUnit_property = EBPropertyProxy_Int ()
 
   var modelLimitWidthUnit_property_selection : EBSelection <Int> {
@@ -338,6 +635,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.modelLimitWidthUnit_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: modelWidth
+  //····················································································································
+
   var modelWidth_property = EBPropertyProxy_Int ()
 
   var modelWidth_property_selection : EBSelection <Int> {
@@ -345,6 +647,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.modelWidth_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: modelWidthUnit
+  //····················································································································
+
   var modelWidthUnit_property = EBPropertyProxy_Int ()
 
   var modelWidthUnit_property_selection : EBSelection <Int> {
@@ -352,6 +659,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.modelWidthUnit_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: myInstances
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: name
+  //····················································································································
+
   var name_property = EBPropertyProxy_String ()
 
   var name_property_selection : EBSelection <String> {
@@ -359,6 +675,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.name_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: viaShapes
+  //····················································································································
+
   var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
 
   var viaShapes_property_selection : EBSelection <MergerViaShapeArray> {
@@ -366,6 +687,15 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.viaShapes_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: vias
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: viasBezierPaths
+  //····················································································································
+
   var viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var viasBezierPaths_property_selection : EBSelection <BezierPathArray> {
@@ -373,6 +703,11 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
       return self.viasBezierPaths_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: zoom
+  //····················································································································
+
   var zoom_property = EBPropertyProxy_Int ()
 
   var zoom_property_selection : EBSelection <Int> {

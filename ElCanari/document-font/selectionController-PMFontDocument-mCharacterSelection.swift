@@ -13,7 +13,7 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
   private var mModel : ReadOnlyArrayOf_FontCharacter?
 
   //····················································································································
-  //   SELECTION OBSERVABLE PROPERTIES
+  //   Selection observable property: advance
   //····················································································································
 
   var advance_property = EBPropertyProxy_Int ()
@@ -23,6 +23,11 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
       return self.advance_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: codePoint
+  //····················································································································
+
   var codePoint_property = EBPropertyProxy_Int ()
 
   var codePoint_property_selection : EBSelection <Int> {
@@ -30,6 +35,11 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
       return self.codePoint_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: gerberCode
+  //····················································································································
+
   var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
 
   var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
@@ -37,6 +47,11 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
       return self.gerberCode_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: gerberCodeInstructionCountMessage
+  //····················································································································
+
   var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
 
   var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
@@ -44,6 +59,11 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
       return self.gerberCodeInstructionCountMessage_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: segmentArrayForDrawing
+  //····················································································································
+
   var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
 
   var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
@@ -51,6 +71,10 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
       return self.segmentArrayForDrawing_property.prop
     }
   }
+
+  //····················································································································
+  //   Selection observable property: segments
+  //····················································································································
 
   //····················································································································
   //   BIND SELECTION
