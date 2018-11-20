@@ -372,7 +372,7 @@ prefs {
 #--- Array of additionnal libraries
   toMany CanariLibraryEntry additionnalLibraryArray ;
   outlet EBTableView mAdditionnalLibraryArrayTableView $tableValue additionnalLibraryArrayController ;
-  arrayController additionnalLibraryArrayController {
+  tableViewController additionnalLibraryArrayController {
     allowsEmptySelection:no, allowsMultipleSelection:no
   } self.additionnalLibraryArray {
      column "path" EBTextObserverField $valueObserver self.mPath

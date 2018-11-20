@@ -38,7 +38,7 @@ document PMFontDocument root FontRoot {
   outlet CanariSignatureField mSignatureTextField $signature signature ;
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
-  arrayController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
+  tableViewController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
   selectionController mCharacterSelection : self.mSelectedCharacterController.selectedArray ;
 
 #--- Advancement

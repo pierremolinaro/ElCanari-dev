@@ -55,7 +55,7 @@ document PMArtworkDocument root ArtworkRoot {
 
 #--- Data Tab
   outlet EBTableView mDataTableView $tableValue mDataController ;
-  arrayController mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
+  tableViewController mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
      column "name" sort name EBTextField $value self.name {sendContinously:no}
   }
 
