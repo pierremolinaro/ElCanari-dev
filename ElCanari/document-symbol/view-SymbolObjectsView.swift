@@ -38,7 +38,7 @@ class SymbolObjectsView : CanariViewWithZoomAndFlip {
   //····················································································································
 
   func configurationOnInit () {
-    self.setZoom (500, activateZoomPopUpButton: false)
+    self.setZoom (500, activateZoomPopUpButton: true)
     self.set (arrowKeyMagnitude: SYMBOL_GRID_IN_COCOA_UNIT)
     self.set (shiftArrowKeyMagnitude: SYMBOL_GRID_IN_COCOA_UNIT * 4.0)
     self.mDraggingObjectsIsAlignedOnArrowKeyMagnitude = true

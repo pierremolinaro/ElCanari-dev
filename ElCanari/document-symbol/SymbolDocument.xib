@@ -114,7 +114,7 @@
             <rect key="frame" x="0.0" y="0.0" width="656" height="385"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="894" customClass="PM_scroll_view_with_placards">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="894" customClass="CanariScrollViewWithPlacard">
                     <rect key="frame" x="253" y="-1" width="403" height="385"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="xCD-Dw-CrS">
