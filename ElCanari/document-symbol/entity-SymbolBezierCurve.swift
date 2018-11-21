@@ -24,6 +24,30 @@ protocol SymbolBezierCurve_y2 : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolBezierCurve_cpx1 : class {
+  var cpx1 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolBezierCurve_cpy1 : class {
+  var cpy1 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolBezierCurve_cpx2 : class {
+  var cpx2 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolBezierCurve_cpy2 : class {
+  var cpy2 : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolBezierCurve_x1 : class {
   var x1 : Int { get }
 }
@@ -48,6 +72,10 @@ class SymbolBezierCurve : SymbolObject,
          SymbolBezierCurve_y1,
          SymbolBezierCurve_x2,
          SymbolBezierCurve_y2,
+         SymbolBezierCurve_cpx1,
+         SymbolBezierCurve_cpy1,
+         SymbolBezierCurve_cpx2,
+         SymbolBezierCurve_cpy2,
          SymbolBezierCurve_x1,
          SymbolBezierCurve_objectDisplay,
          SymbolBezierCurve_selectionDisplay {
@@ -56,7 +84,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: y1
   //····················································································································
 
-  var y1_property = EBStoredProperty_Int (228600)
+  var y1_property = EBStoredProperty_Int (915400)
 
   //····················································································································
 
@@ -79,7 +107,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: x2
   //····················································································································
 
-  var x2_property = EBStoredProperty_Int (915400)
+  var x2_property = EBStoredProperty_Int (228600)
 
   //····················································································································
 
@@ -102,7 +130,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: y2
   //····················································································································
 
-  var y2_property = EBStoredProperty_Int (915400)
+  var y2_property = EBStoredProperty_Int (228600)
 
   //····················································································································
 
@@ -119,6 +147,98 @@ class SymbolBezierCurve : SymbolObject,
 
   var y2_property_selection : EBSelection <Int> {
     return self.y2_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: cpx1
+  //····················································································································
+
+  var cpx1_property = EBStoredProperty_Int (915400)
+
+  //····················································································································
+
+  var cpx1 : Int {
+    get {
+      return self.cpx1_property.propval
+    }
+    set {
+      self.cpx1_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var cpx1_property_selection : EBSelection <Int> {
+    return self.cpx1_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: cpy1
+  //····················································································································
+
+  var cpy1_property = EBStoredProperty_Int (915400)
+
+  //····················································································································
+
+  var cpy1 : Int {
+    get {
+      return self.cpy1_property.propval
+    }
+    set {
+      self.cpy1_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var cpy1_property_selection : EBSelection <Int> {
+    return self.cpy1_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: cpx2
+  //····················································································································
+
+  var cpx2_property = EBStoredProperty_Int (915400)
+
+  //····················································································································
+
+  var cpx2 : Int {
+    get {
+      return self.cpx2_property.propval
+    }
+    set {
+      self.cpx2_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var cpx2_property_selection : EBSelection <Int> {
+    return self.cpx2_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: cpy2
+  //····················································································································
+
+  var cpy2_property = EBStoredProperty_Int (228600)
+
+  //····················································································································
+
+  var cpy2 : Int {
+    get {
+      return self.cpy2_property.propval
+    }
+    set {
+      self.cpy2_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var cpy2_property_selection : EBSelection <Int> {
+    return self.cpy2_property.prop
   }
 
   //····················································································································
@@ -157,6 +277,14 @@ class SymbolBezierCurve : SymbolObject,
     self.x2_property.undoManager = self.undoManager
   //--- Atomic property: y2
     self.y2_property.undoManager = self.undoManager
+  //--- Atomic property: cpx1
+    self.cpx1_property.undoManager = self.undoManager
+  //--- Atomic property: cpy1
+    self.cpy1_property.undoManager = self.undoManager
+  //--- Atomic property: cpx2
+    self.cpx2_property.undoManager = self.undoManager
+  //--- Atomic property: cpy2
+    self.cpy2_property.undoManager = self.undoManager
   //--- Atomic property: x1
     self.x1_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
@@ -166,6 +294,10 @@ class SymbolBezierCurve : SymbolObject,
         kind &= unwSelf.y1_property_selection.kind ()
         kind &= unwSelf.x2_property_selection.kind ()
         kind &= unwSelf.y2_property_selection.kind ()
+        kind &= unwSelf.cpx1_property_selection.kind ()
+        kind &= unwSelf.cpy1_property_selection.kind ()
+        kind &= unwSelf.cpx2_property_selection.kind ()
+        kind &= unwSelf.cpy2_property_selection.kind ()
         kind &= g_Preferences!.symbolColor_property_selection.kind ()
         kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
         switch kind {
@@ -174,9 +306,9 @@ class SymbolBezierCurve : SymbolObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_SymbolBezierCurve_objectDisplay (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.cpx1_property_selection, unwSelf.cpy1_property_selection, unwSelf.cpx2_property_selection, unwSelf.cpy2_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+            return .single (transient_SymbolBezierCurve_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
           default :
             return .empty
           }
@@ -189,6 +321,10 @@ class SymbolBezierCurve : SymbolObject,
     self.y1_property.addEBObserver (self.objectDisplay_property)
     self.x2_property.addEBObserver (self.objectDisplay_property)
     self.y2_property.addEBObserver (self.objectDisplay_property)
+    self.cpx1_property.addEBObserver (self.objectDisplay_property)
+    self.cpy1_property.addEBObserver (self.objectDisplay_property)
+    self.cpx2_property.addEBObserver (self.objectDisplay_property)
+    self.cpy2_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
@@ -198,15 +334,19 @@ class SymbolBezierCurve : SymbolObject,
         kind &= unwSelf.y1_property_selection.kind ()
         kind &= unwSelf.x2_property_selection.kind ()
         kind &= unwSelf.y2_property_selection.kind ()
+        kind &= unwSelf.cpx1_property_selection.kind ()
+        kind &= unwSelf.cpy1_property_selection.kind ()
+        kind &= unwSelf.cpx2_property_selection.kind ()
+        kind &= unwSelf.cpy2_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolBezierCurve_selectionDisplay (v0, v1, v2, v3))
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.cpx1_property_selection, unwSelf.cpy1_property_selection, unwSelf.cpx2_property_selection, unwSelf.cpy2_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_SymbolBezierCurve_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -219,8 +359,16 @@ class SymbolBezierCurve : SymbolObject,
     self.y1_property.addEBObserver (self.selectionDisplay_property)
     self.x2_property.addEBObserver (self.selectionDisplay_property)
     self.y2_property.addEBObserver (self.selectionDisplay_property)
+    self.cpx1_property.addEBObserver (self.selectionDisplay_property)
+    self.cpy1_property.addEBObserver (self.selectionDisplay_property)
+    self.cpx2_property.addEBObserver (self.selectionDisplay_property)
+    self.cpy2_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
+    self.cpx1_property.setSignatureObserver (observer:self)
+    self.cpx2_property.setSignatureObserver (observer:self)
+    self.cpy1_property.setSignatureObserver (observer:self)
+    self.cpy2_property.setSignatureObserver (observer:self)
     self.x1_property.setSignatureObserver (observer:self)
     self.x2_property.setSignatureObserver (observer:self)
     self.y1_property.setSignatureObserver (observer:self)
@@ -235,12 +383,20 @@ class SymbolBezierCurve : SymbolObject,
     self.y1_property.removeEBObserver (self.objectDisplay_property)
     self.x2_property.removeEBObserver (self.objectDisplay_property)
     self.y2_property.removeEBObserver (self.objectDisplay_property)
+    self.cpx1_property.removeEBObserver (self.objectDisplay_property)
+    self.cpy1_property.removeEBObserver (self.objectDisplay_property)
+    self.cpx2_property.removeEBObserver (self.objectDisplay_property)
+    self.cpy2_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     self.x1_property.removeEBObserver (self.selectionDisplay_property)
     self.y1_property.removeEBObserver (self.selectionDisplay_property)
     self.x2_property.removeEBObserver (self.selectionDisplay_property)
     self.y2_property.removeEBObserver (self.selectionDisplay_property)
+    self.cpx1_property.removeEBObserver (self.selectionDisplay_property)
+    self.cpy1_property.removeEBObserver (self.selectionDisplay_property)
+    self.cpx2_property.removeEBObserver (self.selectionDisplay_property)
+    self.cpy2_property.removeEBObserver (self.selectionDisplay_property)
   }
 
   //····················································································································
@@ -272,6 +428,38 @@ class SymbolBezierCurve : SymbolObject,
       view:view,
       observerExplorer:&self.y2_property.mObserverExplorer,
       valueExplorer:&self.y2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cpx1",
+      idx:self.cpx1_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.cpx1_property.mObserverExplorer,
+      valueExplorer:&self.cpx1_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cpy1",
+      idx:self.cpy1_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.cpy1_property.mObserverExplorer,
+      valueExplorer:&self.cpy1_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cpx2",
+      idx:self.cpx2_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.cpx2_property.mObserverExplorer,
+      valueExplorer:&self.cpx2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "cpy2",
+      idx:self.cpy2_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.cpy2_property.mObserverExplorer,
+      valueExplorer:&self.cpy2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x1",
@@ -317,6 +505,18 @@ class SymbolBezierCurve : SymbolObject,
   //--- Atomic property: y2
     self.y2_property.mObserverExplorer = nil
     self.y2_property.mValueExplorer = nil
+  //--- Atomic property: cpx1
+    self.cpx1_property.mObserverExplorer = nil
+    self.cpx1_property.mValueExplorer = nil
+  //--- Atomic property: cpy1
+    self.cpy1_property.mObserverExplorer = nil
+    self.cpy1_property.mValueExplorer = nil
+  //--- Atomic property: cpx2
+    self.cpx2_property.mObserverExplorer = nil
+    self.cpx2_property.mValueExplorer = nil
+  //--- Atomic property: cpy2
+    self.cpy2_property.mObserverExplorer = nil
+    self.cpy2_property.mValueExplorer = nil
   //--- Atomic property: x1
     self.x1_property.mObserverExplorer = nil
     self.x1_property.mValueExplorer = nil
@@ -336,6 +536,14 @@ class SymbolBezierCurve : SymbolObject,
     self.x2_property.storeIn (dictionary: ioDictionary, forKey:"x2")
   //--- Atomic property: y2
     self.y2_property.storeIn (dictionary: ioDictionary, forKey:"y2")
+  //--- Atomic property: cpx1
+    self.cpx1_property.storeIn (dictionary: ioDictionary, forKey:"cpx1")
+  //--- Atomic property: cpy1
+    self.cpy1_property.storeIn (dictionary: ioDictionary, forKey:"cpy1")
+  //--- Atomic property: cpx2
+    self.cpx2_property.storeIn (dictionary: ioDictionary, forKey:"cpx2")
+  //--- Atomic property: cpy2
+    self.cpy2_property.storeIn (dictionary: ioDictionary, forKey:"cpy2")
   //--- Atomic property: x1
     self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
   }
@@ -353,6 +561,14 @@ class SymbolBezierCurve : SymbolObject,
     self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
   //--- Atomic property: y2
     self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
+  //--- Atomic property: cpx1
+    self.cpx1_property.readFrom (dictionary: inDictionary, forKey:"cpx1")
+  //--- Atomic property: cpy1
+    self.cpy1_property.readFrom (dictionary: inDictionary, forKey:"cpy1")
+  //--- Atomic property: cpx2
+    self.cpx2_property.readFrom (dictionary: inDictionary, forKey:"cpx2")
+  //--- Atomic property: cpy2
+    self.cpy2_property.readFrom (dictionary: inDictionary, forKey:"cpy2")
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
   }
@@ -403,6 +619,10 @@ class SymbolBezierCurve : SymbolObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
+    crc.accumulateUInt32 (self.cpx1_property.signature ())
+    crc.accumulateUInt32 (self.cpx2_property.signature ())
+    crc.accumulateUInt32 (self.cpy1_property.signature ())
+    crc.accumulateUInt32 (self.cpy2_property.signature ())
     crc.accumulateUInt32 (self.x1_property.signature ())
     crc.accumulateUInt32 (self.x2_property.signature ())
     crc.accumulateUInt32 (self.y1_property.signature ())
@@ -595,6 +815,234 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y2_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'cpx1' stored property
+  //····················································································································
+
+  private var mObserversOf_cpx1 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_cpx1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_cpx1.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cpx1_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cpx1 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_cpx1.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cpx1_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_cpx1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_cpx1 {
+        managedObject.cpx1_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for observer in mObserversOf_cpx1 {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.cpx1_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'cpy1' stored property
+  //····················································································································
+
+  private var mObserversOf_cpy1 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_cpy1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_cpy1.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cpy1_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cpy1 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_cpy1.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cpy1_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_cpy1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_cpy1 {
+        managedObject.cpy1_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for observer in mObserversOf_cpy1 {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.cpy1_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'cpx2' stored property
+  //····················································································································
+
+  private var mObserversOf_cpx2 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_cpx2 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_cpx2.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cpx2_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cpx2 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_cpx2.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cpx2_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_cpx2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_cpx2 {
+        managedObject.cpx2_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for observer in mObserversOf_cpx2 {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.cpx2_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'cpy2' stored property
+  //····················································································································
+
+  private var mObserversOf_cpy2 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_cpy2 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_cpy2.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cpy2_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_cpy2 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_cpy2.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.cpy2_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_cpy2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_cpy2 {
+        managedObject.cpy2_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for observer in mObserversOf_cpy2 {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.cpy2_property.removeEBObserver (observer)
       }
     }
   }
@@ -826,6 +1274,10 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
         removeEBObserversOf_y1_fromElementsOfSet (removedSet)
         removeEBObserversOf_x2_fromElementsOfSet (removedSet)
         removeEBObserversOf_y2_fromElementsOfSet (removedSet)
+        removeEBObserversOf_cpx1_fromElementsOfSet (removedSet)
+        removeEBObserversOf_cpy1_fromElementsOfSet (removedSet)
+        removeEBObserversOf_cpx2_fromElementsOfSet (removedSet)
+        removeEBObserversOf_cpy2_fromElementsOfSet (removedSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
@@ -836,6 +1288,10 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
         addEBObserversOf_y1_toElementsOfSet (addedSet)
         addEBObserversOf_x2_toElementsOfSet (addedSet)
         addEBObserversOf_y2_toElementsOfSet (addedSet)
+        addEBObserversOf_cpx1_toElementsOfSet (addedSet)
+        addEBObserversOf_cpy1_toElementsOfSet (addedSet)
+        addEBObserversOf_cpx2_toElementsOfSet (addedSet)
+        addEBObserversOf_cpy2_toElementsOfSet (addedSet)
         addEBObserversOf_x1_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
@@ -953,6 +1409,10 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
         removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_cpx1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_cpy1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_cpx2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_cpy2_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
@@ -965,6 +1425,10 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
         addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
         addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_cpx1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_cpy1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_cpx2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_cpy2_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)

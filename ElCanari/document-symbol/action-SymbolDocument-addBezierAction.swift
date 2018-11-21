@@ -14,7 +14,9 @@ import Cocoa
 extension SymbolDocument {
   @objc func addBezierAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    ENTER USER CODE HERE
+    let newBezier = SymbolBezierCurve (managedObjectContext: self.managedObjectContext())
+    self.rootObject.symbolObjects_property.add (newBezier)
+    self.mSymbolObjectsController.select (object: newBezier)
 //--- END OF USER ZONE 2
   }
 }
